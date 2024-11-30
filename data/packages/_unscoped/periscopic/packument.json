@@ -1,0 +1,525 @@
+{
+	"name": "periscopic",
+	"dist-tags": {
+		"latest": "4.0.2"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "periscopic",
+			"version": "1.0.0",
+			"dependencies": {
+				"is-reference": "^1.1.3"
+			},
+			"devDependencies": {
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-ftydZZH2Ca4FdWJXDwQ1Uuz4VEBhh4jXuT1bprR4qg/zM2+FhulluBUxnQXI0olDqADmsQRE1eHLs42iIhNjtA==",
+				"shasum": "3cc2077b82c4fd541dadd4eea6bb4f412dd36617",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-1.0.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 12224,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJddVfTCRA9TVsSAnZWagAABi8P/jd63j+j5oUiTG5IiVwQ\nQSD9CSXabLhf0+G4pm6Dmwa82ZD6B41Ugw2KJSNf/vYLDkJ+ReeG5/+aqhYz\n/NPKZcrVtk5e8BSqoztiXPYMcYQRGTQE/PhXt2HAoKdrr9HKalRqHwBDyU5t\nao/Fi1wv3efAJCMzKAj1onREBonsU52+Otk+kDw2xUefJ4QKl3kO5pP5nrgI\nXSfOtoYIDcmIiIKgCPXhRvA5BC3X9srli0l2tJU7/CHYvwMHF7cwzbBJNLWn\nLqs5hAFZFQ68rrrTCgcJQeBbghPYWwLAvrkmWm/XWfcUzkAWdW/+W8v7NWUA\nuVxFJCDzoCSXw1wytGHVMC9JfhYzdgyL4kU8qVAGOtfQZoiZ9IKSUU1CwJLK\nvkdndnv5rlwZw5NEGvb8SoTQD0GvUz2iXxTLICUseMk/QZdufZOOWeFmhEaL\nY8Oi2Q567mLF6DfgpTttL84dQ8HgYsn9F1xDDHFWFZv76VkIjaFoNpQ1te7e\nuf7AMTkuQ14fzJJ1eX1lwczdTX6ZbjJO97KOcKdnVw1uM+NwFJgWg4cKGorh\nBSP1r46/uG4XHnhcgj+xxIZkK0ImQVOU14zN8Y56viriCDXgM/jOjjHw1T/j\nCtLIxseJ2XQJIos3p0C2ZaNouGlToqC8O9yXLalEbgbPBiG/Oa9VzsB/2lA4\nPgky\r\n=R3Ah\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCqlPlPP77neZa8il2GfWc3rMRSm1gtUhd/+8B3+hwY1gIgew92Vnkbsm9JNqr8yJSwf/h/YENlbHc6lN6UeCZ4mUE="
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "periscopic",
+			"version": "1.0.1",
+			"dependencies": {
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-JcSQ6sufVNGT04lPr2f2qGuJ2FCkZcbWBw0gQ8mzSVf9+6bEX9ea6l48+PdAekjJIHlEwSrqJND1TR2cC1FbtQ==",
+				"shasum": "f57dc04ccf7eb885fdab9509f2e0b1a24bd33004",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-1.0.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 12387,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdiYBxCRA9TVsSAnZWagAAQPkP/jLUTHLgdUgf4yhtrtMv\nzHLTxL4VGPLu6FYHimE9mH1unCRaQbpaFMBKngietsgKK7NhUpg7MNW2uwLE\n+7K7JDP2IGktcgfHJouLKDru0TSsxEVckJWPBapGAb+hVT/4GjSVk7rPP2wg\nRkDa+WecqUsbvtrOvFBDLHOMx6pQmtBGIxos3FhSKF/S3wn4mff1z0y2Q+Wr\nsQt/b/GB7Z2y8dGkm92yUlzf+IVqHMy4eJ+UDnqIn86vcPFfhu0c+BGFPK05\n1ETOYDhVSVZ9lnhY7Ry3FuOy415jgDcu/I0ua8Vvf8MisAUWvk6qvG7Kp7tH\nCVxcqXzc5fPbL7QRk9V3IY5amJLwNyjrBl9vLXazf1sPCweDZLBmkrhOfZ6M\nDD7CjmEAS9SEXY2EFswHMqZXvEUGkjytRqQTRuM+rYd1u1MPny6GSSp4iOWt\nRh2Vjjvz9mreBwa0jxVVKCdwiGYVFBOoEOWotrlvjnpgZkgdPsRFVzWzspD5\n5Lwa6G/kglzcErhLHmQmLe43IjqNruL6edVV+9O9CLj6jBPKZLWXNIaGi7Iz\nk8ue+Cliq8NH+m1tE+avQ/DBk5yiW+t/OGNgwVaSslgv6QcafRdyZzS1ZT+Q\nMSUc9aM4I+56X8QHNoOJZ9g/L67ZY25NrpI+IafZnB95njezU99CPQAp5LBR\ndjBH\r\n=vJTL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEhJ05Hj6i2xHp7k28pkgDcEcCPawJCDcbIQkpNrxD3yAiEAhLk/ouhZVBOesGBpslxspZaDdpMd8m1w0bzCXt7Gdw4="
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "periscopic",
+			"version": "1.0.2",
+			"dependencies": {
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-KpKBKadLf8THXOxswQBhOY8E1lVVhfUidacPtQBrq7KDXaNkQLUPiTmXagzqpJGECP3/0gDXYFO6CZHVbGvOSw==",
+				"shasum": "bfbf1e24350709740a9318299a4081a753269f00",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-1.0.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 12498,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdo50lCRA9TVsSAnZWagAAjzIP/1QNB62JnIajBFQL8X61\nm/pCdH2UAioh6R4SDlj9F9Ck0Cr3KEVaphHhumxe5sEAwoxadvh123fOaOqB\nB+8n4eliT/Q3r4mMmaPY/wGspP25W8x+yZq37mxri9wHjoCvJPF4FRUUAE4Q\naKDqWPvmOP/OsSWOJJn8eZFoZuXazHTTyaBEQdIEwpkQVdx6gE15LJ2HrM1P\n4iOzbTnSybB9Hmv82DN2zYQHz2PImUCKwSs2SOI9flVEdtUYHTvH2HgKx909\nS6+A1YE8ljaldfpWpeowN6euC4zdrDcZLeVgbekvhxKZCTEHJej3fCToByNF\n9ykxzUUJuEnlUO8HFMJ3NswBH09ye36olesEabyvHq7Zyx9bvMbOhYW/PiVf\nXxl5rOY3tvBcEIo1u7W4qd3wqEyjY4ZeLljwjGwkYY1D+DdP49MFJUOi1tw6\njl2gXYTijweZ+3eCZH9maHfITUBofrSS/IDe5lEiHOf75Xvp4cr08zkOcQcK\n2Ev3OYEYImjRKxpZXizDc38dfKFwtm2XZFFtX4lA3eExt/djdIBM7ZGsfen7\n/wa5KOwH1hF2oyFfP2jpRFxGtCIBagNZ5VUPLvUohUCxwOk1497TLQBw/0Ww\nNteNgtgNBX8LF52LF8oZLtjaIuIFyuFigVF9HNlOpzbLRC8zbhGdacpBLsSw\n7xCZ\r\n=hc6y\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEjXDJUPrXBxflpmkd31YfDsHsIR2Wd6pj9Hd2SCvqWCAiEA0QCLjjEH/zjg4g+4/givhPI29XtpT9JZfqzsAs3LkJc="
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "periscopic",
+			"version": "1.1.0",
+			"dependencies": {
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"estree-walker": "^0.8.1",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-sUdDgd8G35JjpBqHGnuc2MECoyUryHGfjtsKFPS6N8MEGHtxoIML8yEWydL1zf+W8EoChX4L7A9AvVRJuM6Lqg==",
+				"shasum": "bf098009499935f4b6775db810f116ed98f5478b",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-1.1.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13856,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJds2mfCRA9TVsSAnZWagAAeqkP/0BkvK9fmgXeOc9fLGhO\nyLhDniInAv1M6YRINCG1g5QvygquovsjoIvRNEwGd3C+J0wrZlD0z+oiOLDh\n53mwcV/EvD/6F4Xb+A/wAnl7jEtq3r3LyVLlbqGNQDbphjuF56VxZoj9knYZ\nA0MPvilKBDmO6uJL1Dr2tktTRMQ/wEd/3pqGgilnMFnPKS15uvMmIci+D7OF\nDRwzyJZx4+UnKoq5lQ59+E9ld1Pf0T04yr5CxiBaxRVejwKWS+AGoJphHK9f\nk4cCH87XGB8dZdweo18n56ho6ZGgiRZsNJgjHYm36ECdbXlKWFi23YuU+gMn\nQcaeybzIufH/DthJWP9ht+qNEf5hrzJrosYE9Wgt4CawND1bVDrAVrgta22w\n8wa6d3MmYF+0AgTorQSptb7lbrj9+wPmfmWZaG+urvCG6BK29cIZhWITzjbC\nPmc7dATk6qFu0YIsmslDUikrSvktE1rN3BRfe+uZ0LTDSIy6Gfk0e6qPnF/I\nNOf1ehjHV4aXBSBaDr6K59OAAeV6Ejm160thCg+LOuqT/9SBzAMpzXBbblnT\nIb7KUjcKGuN7IMfO8/7pCXyItSiHUM80s3JV2wLXrsRdvptKKtIEMB15T+EL\nrsocgsK9+lkip7N/1LeoCxDezg4b1ABhjR0HLw3CMvz1hnm+SyJFcCY+itAk\nyWV2\r\n=ae4g\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDcgqd7PVbxNMHGwbvRPmdCd6kMGL2oLrXiDGCdhW6BkAIhAPLL2IPismY6dv3vxoUkobCjn7A2kBGbXuygVEfzqtXz"
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "periscopic",
+			"version": "2.0.0",
+			"dependencies": {
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"estree-walker": "^0.8.1",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-2YVtztswd6ud5b0+IDD26UhEm1QvlTsR3s7G59CD0txGyhfvQ39YhNuueSmzT5VzHUxiIH0E8S04JSQpXMJ8/g==",
+				"shasum": "8c16c2298727e5621432de92c7bf9fbfdb2c2597",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-2.0.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 14571,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdwtE7CRA9TVsSAnZWagAAXqMP/iZjQ1raZdzZbn7oPeIQ\nAM8XW2yfsz3iNDjUPXu9hpx/x3br09Bg3ZZoti1aeNld2rdTV239C3G+D6H9\nt5/spnrMbdzCPCT3akySv4HZi/x2JNrExfQasvRllMFFrF774M808jJXeJQF\nuLxyFdIGkno3wmzgFNn7D++8O1n6aEEq3XIXoPcEX5q0AuKPEp0Eax7y/wPx\ngb8sSnHqNpzTdjIense9jDef4XsRcGdpq2YQIrZkrvybI91wtR1Yz69p/IQV\nsRm6qFENB/Ang4qVpU3q3WDRzt0hiD+8RE9cfixdj/Ccfxkf1eVL3AYqrkCi\nZJXO9f3X0AE6frvhZanxwQHpAA6mHlgNqYdXyEqaFnTi9U1KuJXH3XSTIHCa\n1gXAEojrq2Q7tcHmTozVfxzlWOTH1KTcGH5OaF2zRzwOqUQK1P6646o2308U\nbBSFk/RBnuwf1pEpdK5NRUQKgRGO6tVkYIsgvmUFuK2M4Pd+aAfGcKBU3AMh\ny3HxhLazSklJ3xkudLbQG1MPcbI85LdG78L6d07JPZOg/UY3BABr8zw4g5Ib\nPYoXa+Y90Hqy9wd+HJw0QFdSshahQzBf+IGAcUMzqCRhrb8aGxwhr/4rbAfH\n5yKyjQHI7sc0C0qcp6sgWirKgO+b0ReY5E26IKKBaLsMwZAYPSbWHKca0voG\nork+\r\n=Y+PL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEyyBu+Ov15PD75hQFTYeYLf+cK0uws7dOfc+hRIz65sAiEAyPWIXKy3JOKbo3pm3jAZeLEhHZCpNS05QQbfI+wABbI="
+					}
+				]
+			}
+		},
+		"2.0.1": {
+			"name": "periscopic",
+			"version": "2.0.1",
+			"dependencies": {
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"@types/mocha": "^5.2.5",
+				"@types/node": "^10.9.4",
+				"acorn": "^7.0.0",
+				"estree-walker": "^0.8.1",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sander": "^0.6.0",
+				"sucrase": "^3.9.5",
+				"tiny-glob": "^0.2.6",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-twJ8e4RatllMAcbmBqKj8cvZ94HtqSzbb8hJoGj4iSCcCHXxKb06HRxOq4heyq2x/6mKynJDvTTreHCz+m6lJw==",
+				"shasum": "c6578152a83e76c5e09b11cd2fc6a97c1e8806cc",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-2.0.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 14389,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdyeA7CRA9TVsSAnZWagAAa5gP/0M+BORxrvxp2tgmUENr\nRfj+XanibaHwNQlyOoj+hrynWE/EJWB359vT3JlIQL4NS5sC/FlpX2P/Mj/c\nEuxGtpB6oZH0CFibD2cfiQgaOQTv4F7q4dbpvRA2BxZvIcCJkcZ6VbhgD/M4\nehlIGfnii/KNqU8mJwdfNJcfDfelCsaxGRXgfg3BCxTRQEajaPNTRelHwV+1\nIBI3QU4WKymi6aSq4Orl1GI18CEB/k4RvtVHWpw+vSU2Tzido/S+VQC9PJMk\n8gJMOd7+iuXZODv06OUtqonGDlBHUP+mI3BPObN2MSB36KT5gwZDNpRHlBBy\nr8Ty8AVLYVQnPfP6EdNeH9zlMXJQAeyESvj9le5OqFnUORVOzbfYmwhiR9Hc\nIWi9M1i2mYlHwMVJDeKQJwbE74c/U3sc9GZC6wZpknEpuqcZfyl6SX6TMF5K\nSZLNjSB8q6z9bnJ92MVsYZ/typ4PM4uf70DaP9E1qoAZmQx3hl98Go1wAGzx\naWNmLd7QDEbfJqYQ+J2bWG1/NfHuburh7M2Uz6mbvfRKmy6Hamzok6KakiZw\nO/iPatwR21jNvqsU/DMwkqybJGLWSbvvsRRIzcMNFbxaML/owBnratopE/9Z\nDcIbFAwLtPBhB9oKe6FLhFQ9f/tr5IJnAFxJpu2tjCCcfsr6P4ik/kCCB4bg\nVlks\r\n=1Zr/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD6llpU0Luu2pQgul65ikaRTANHpqRYh2IHY9h0mepO1QIhAKET1PLoePVbTSNEJ4i1L3ae3I6EkMKwEqoCwD2L5Zey"
+					}
+				]
+			}
+		},
+		"2.0.2": {
+			"name": "periscopic",
+			"version": "2.0.2",
+			"dependencies": {
+				"estree-walker": "^1.0.0",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"@types/mocha": "^5.2.5",
+				"acorn": "^7.0.0",
+				"mocha": "^5.2.0",
+				"rollup": "^0.65.2",
+				"rollup-plugin-sucrase": "^2.1.0",
+				"sucrase": "^3.9.5",
+				"typescript": "^3.6.2"
+			},
+			"dist": {
+				"integrity": "sha512-Ngkg+fjibPB9V2ss67QY3EmNd+NBoXoxUkNEsDdvo4wk4yPW0LHyRh37/L61bkifUQsbtJxrbt8DE1oLjdV9Nw==",
+				"shasum": "17cb0fd368b6e7774cbaa62fa74897c01c7a1bf3",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-2.0.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 14828,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd4WZpCRA9TVsSAnZWagAAzSQP/0BJ4E40Fm6RKBXTiQPj\naIqnQOY2e3MFb5d44zEIvPkLkLJHPR2zzl+p/2i6eD9eev93IodXlpB8rzlm\n7g4WQIptFNhvI/n//am7fYQzZd17CsKm4ScwKMmq8ydE0HWhNF0pFtzWDK7C\n4jiBU6OfB3fmEwoScLV7Guw6NmyOsGJ/LkHSeekiggdfNWetO2gOWr25lM99\nGk5l+graJFdg3WFQ8lf1XLrlYod24Crk3nGA6OGFoKCoYghe93oldnuV89zb\nKIMyz63xiCrHxQqxB2qw2+2Z7sVuDHTLrZs1UVUPMBEkhuC5ydbSeXNanZjr\nfXI73+ZBpyDWqVESguYx4KKXWbOpTKplGM6aIq9mNoAnHzaTOHbunT4ICG+y\neJhRg9Qqm8hILlfa3MOR0r1PfvueqFNOiDCvo9yjjQopPN4fnrSxsBK4RgAe\n909FnvQbLLbFjU+Wyt68AZNLxe+W4dwSV0fYEdtr7r6rq4KV4eb96VBP+mA0\nampi1Ag2TYXdm6JwfD8Bl+0mK3jNOvBw2hP3lg439eptbRzTrCf9EskbuzRn\nhgsyfHNjZ34H7tNujpDdUxJQYbXGX7IBA2FiDH34IJy63EiTPIE+yKtOWGrm\n1bzJ05ahveSIgD0FnZPoSKSLvlo4kmnkGjUMjZn8R9VhOLqT1AJz/qkA9ggX\n1xjv\r\n=it9/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCyYqfmaFTYG2B0srCPOqOKnXeVP4jTtaU7OHHhOtpGzAIhAKzsBtmI8VfnJR7QAP1Sa+2be/EM/3AAJnYg5/A6r6tH"
+					}
+				]
+			}
+		},
+		"2.0.3": {
+			"name": "periscopic",
+			"version": "2.0.3",
+			"dependencies": {
+				"estree-walker": "^2.0.2",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"rollup": "^0.65.2",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-FuCZe61mWxQOJAQFEfmt9FjzebRlcpFz8sFPbyaCKtdusPkMEbA9ey0eARnRav5zAhmXznhaQkKGFAPn7X9NUw==",
+				"shasum": "326e16c46068172ca9a9d20af1a684cd0796fa99",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-2.0.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 21603,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfz8MuCRA9TVsSAnZWagAAupIQAJ6pBKEr2oLJVGXihAYk\nIfLdHsQvG1Qin33ODqMfAYhjm5Yo2/5LuMZMD/nvA4YD2xNuFFEzUofuJsp/\nTXHIPCCEitRM9HB5CNghn0H0SFTvHkCzXj6Ez3p73SO9NvYTOt+7j9m/RXuI\nGkIFZEpEMuDFgRISTidnOxpid4q5QJ/en08px0hZzzIQ/hRIg72oyoEAkgL0\nLFxDOaQ8C3+JuvREahp0dHIokt/VdIH1cJ+BOI/FOeipAHOAHZG4FhlgWOoO\nPoziz6vHyKdgyMHJZ1FEGGJbelC37eIhiWb96R6AuHqleSejoHvBVYJ4oIQT\nViVIoW4WY95OwjRL/YARxe5dnIFyS4TuZWAtJihR2vXrg0LfaWjMQpq5V7DA\nUcFvHr1ck0BMvVYZ5DXcYB/K4j8zF5AQB1zZRD4VeZ8EWErnyDRCMROOqZKv\nlKJhhcx28ekDzm9ReGdGHW9mCuzdDma5Z+ilp2+fJJ4BPaDILV4aF6Ataats\nW7WSsOCwmkVRoclcUE37nbY+kW5httmM1TWIjWad26tUhtR86MeVx3mSTCqh\neeEQUNm6Mm8B6QUHt1vzqzcxeyKuyhbHUMBmSXK/8QAgR+LJjGzWgFiSVGNs\n/+wxlN3HGeGg/2Ph8x0hGOFcK6X0d+UwYCbHMiF75n4Pb4kuwAtUcZLgrLgU\nogBv\r\n=uPMX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDCV1Tt6NPqEXiPZL4nyLfr9Yzpyo4u/vIRPHRVJ/tfRAIgBVzt5AHZ38mgRQrap+U3SXaad8NcNnByrUjCrBcXahM="
+					}
+				]
+			}
+		},
+		"3.0.0": {
+			"name": "periscopic",
+			"version": "3.0.0",
+			"dependencies": {
+				"estree-walker": "^2.0.2",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-m/MBWIgwELB00OdTvM+Ei5saKHNKmyFWy0iW2MpbADmIdK/sL+kir3Yvb+Z2vzYeItZVtemA0bgAg5lZXoJmaA==",
+				"shasum": "474aaec74bec1eed136e2516c935e736a5efc6dd",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 15078,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgFH4kCRA9TVsSAnZWagAAr+wP/iJHmZPY5NTgu+Lj4JbS\nkA4ZXCs4JaQTHOemYiiurpPRm9B2rOLS4dN6oo8PjPMWO4YonmIEr437sADL\nm1vUqj5ZOp/MJ2TPPcAD1tsEHAUFsq/DY9PtGOhye0a+34EsCkdRTRryjlBr\nkQo2VBYnON//jZuqz3m2hDQ70ZMz8+HaFunpKRWjW3a5xMEdcyV5JwgvJhnl\naby6ytaRGtLgzhQdIOOjfjQn1fihedbXHm+oNYNgRHrbgeFzftFm+XqCmLnB\nKRY07ki6wBnfwuz7X4RCIEqTGHEC3+hlNDvh2JzUDLBREJjsoKTCH5wN1UAS\nTgacAWoioSp9RlEHu1Es6Lc0oI275DyaU+SZ4CdtODLjp44CGOMce4ouQCt4\n1dgbVQouxHkkLmALdyEhdTNx1CDttYy2cEVQWqJ2M6JPhHIe+xFH7JJJcO0Y\n/AbjcMLDOUqtSMNdOTGb3X4tJpP9EQ1PmigxKv8B9zvbxpk9BA+v75oeyxf/\nbx0vPmQLibOCpnayUVC1N2LFNyqDK8j8ltSbi+s221vmBVEuUcrUy5UoLw8h\n+6XK0U7qgaq2qkRCkRQKGsPFPZASQraPjJNWlJ0NVqb2/Y+AnChPlC/cJoDg\nkgELdlIYKzm3b8dEu+qWc/lae9xQm9P2sDlrUbK3ViJXt8CSHwcUBudfqM1i\n1K++\r\n=7Lck\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCn/wtyhAl9x8lKMpVJ2PH/tKFgAO3hgCH4fzymw6fBWgIhAJR1zIr5U59NflT4R4QfWL3wID4v/tL7cGgVxEXqJY3D"
+					}
+				]
+			}
+		},
+		"3.0.1": {
+			"name": "periscopic",
+			"version": "3.0.1",
+			"dependencies": {
+				"estree-walker": "^3.0.0",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-J+Pqw1eAAceENAM5xK7X0xKKhxYp0YrWwXIDzRYg+r7xK6BJ+D3skBSiThoFNc/uHN4FD++/BK/CS5LG631SJQ==",
+				"shasum": "a6413b754b3f1ce79d5af992cf959ae305a15272",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 15220,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgom7HCRA9TVsSAnZWagAAtrMP/1O3Y5crFjVhErmOF9kD\nxoPilpYJc22AMM7qPReuQG6Y0r4fD9zeyT89wd0j8emH52ANgZtjf3DQGa8P\n8lbzy7Hymo12hhkbCQKcum28M7VT+JgztH/v27xvzJsa+aZ8jVj0ml1ExEvA\nS7OZmlrmtYulJD/5YROwZ56+FghETnDawgQdsuHfIz6tYqkh3qiM6Pje542J\nDFR/8EQqApvrhyZQiVKPA4LG1ZmjUu3sKMZDcrvvJWB91T9G3j6Pv71XSwHv\ngsZXj/bPnjKWqlfHHzGxwylBjpeLt4hwNBRmNu1FegkA5Wl2R0D3V6+KNnTY\nKGuWqanIvgGh9BsRLccBZql+wF+RjubwqTFRzcPkGdVdHE9ZQwmAgTy6BeS4\nmsoqRPM9A+yKHL3oypK3XzI59PsPqcfOVE7eA9iIjKqiX6t7YDYIXCkRstOB\nqq3IwJs0SSZQxRMFHnL2mBB/jFA3WZhLJSOsqDunOCHmwOoAYTxBaS87wQrz\nsdV5cT4q153sGOjhFy3O08MBgUTB4N3C6nO63x5MUh5TIBAQd6T43vIj0o7P\nut/AG+4D41AomlR1ySr9U93qW+HWTfxPdelA9XZeTdrylPSPXFKKC3/jKJHv\nz0hIHftJHefX1mhzWLxZHEkRDgViD1xHAC7L0/McZIQDwcc+F4qi35f4gekm\no4oE\r\n=vay/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDLTuEmdAFln4QFd7c1YxCalG8kW5lE51sfG7Njhi78QwIgUok9rPV4dJiIWZF1f2BumY+5bMzD/sRAoxBPddGdmd8="
+					}
+				]
+			}
+		},
+		"3.0.2": {
+			"name": "periscopic",
+			"version": "3.0.2",
+			"dependencies": {
+				"estree-walker": "^3.0.0",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-tikfSnGDCk8Ch40MyW3bUi5wt/LoMSKyojv+8WkAyhmhao248H4h/zNzvABjibM/YXxQXJ54FHBgWlFjgt7JvQ==",
+				"shasum": "f3a8965dc2cffec8e5bd22bb74f8b00404e39f3e",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 11958,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgonCvCRA9TVsSAnZWagAAigoP/RHAYe7eKmSkDb1XiK/c\nu4scSM+NX/aX5MkE7ZXdcrRiRkogwlZknOi8uiB8gbDESXcxKRV9lfhDYvXU\nGYzQgwp/PIGj/2QEoPVbvX/yUx5GP5SiRaivHc+UgeLs7gM3rEhytYCZ9F2W\naxA5JeW2NtmHKZqvywX22W7rhNe3O0DCxxvlgcZuKPOhTkY1vWm0IVcq3/Xc\njfK1KJ0Nmshtno7asqhYsVEtRJ0u7qHQoz9E4ZuVnPS1/zLjNZKQjmgZUMYx\nhKDqmryLiEhX2H0sIHtX7xx/nRo1sZ8wq/CLNWY8zAv/NYReAq7LVJwG/F2Q\n5mDDMlb+C8ZTp7ik35XPZPI+8bvDtI21BjZKESnkeNjGl3P3F90Lh5Vp7IbH\nO1P2Vh0EwNwL012p3wLsAeRbRQ0yfo7i8dwBvDu6VXqYFjO0cEVSpVZYrz6j\nhoSqygQasq8OMDWyWsqpnvvo+SnpJmtkpO32vq5gPTrpECks1COLQKAR9HXU\ntlSyzXxX0nU+1V2uYnS6aDP4hUhxcxFF/y57pno85tVEm+nlEYXrQQXnASvL\nNlI0sG96VerxaO1JO2QdqMsQ5fpl15Fd2vQZxxT8XU124CZOvcJcyLPGqyh7\nFPqmORES6IcOYc5qYvmyjT05w3iCgQfZRMh92MR+EWg7QIdzLzaNnRjTdcvZ\ndx1V\r\n=W0uY\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCBiDQ4Jidw2NOFjUi7Z7q8/s1C30pBpcFjUzLPZJL5fQIgRsQFKUgx138VxCQsJTBSVixWZskJ1gOMf7qfYL39+bA="
+					}
+				]
+			}
+		},
+		"3.0.3": {
+			"name": "periscopic",
+			"version": "3.0.3",
+			"dependencies": {
+				"estree-walker": "^3.0.0",
+				"is-reference": "^1.1.4"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-8wX0FcHlCndaln004f0tLr3tHLLpSQQHqVAiunx859Fz1jZ75OG5Hpt5F9DLmM0YnfGuDZPJC3Yh0w9eCngj/g==",
+				"shasum": "e2d5f2545941a7769cef2e5bdccd6e26fade277a",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 12088,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg9vwUCRA9TVsSAnZWagAA8l8QAKM4wBvU0gaiJz0BVwY4\nQtQt2tEASp7taOFcniEzvL1zdwU4EdYb9FhYrUyRLZup5IixeB4mCMIJqOdt\nSYGhUB+Cn/dXfIAbWKpMFUmPrKHidwt2RW6mrHBF46GJ/IrCXLm1ql0Ss+xg\nZdiO36De/9RScUxdjhlMil70BneB7rZBbZIOYX8B6IYZJRPNB86GxpmoUEKk\n8PAWzlG32kwlE5MPYl2fXH4baQ2/YoPKbsvZ6d4J50lsDnk1y+r0lE81wwt0\njTPQk580zNkt6FKgOSTvFf57Tf1fp8gcFNwoUhTBodaZrJq0eMbXNjJ66lI7\n7Vgm8Zsknz/dls5mmHYktrmA/sG49ZMxSiQjkSgb6Iir8DpF8yXgPuElAaF3\nkd+zhzZZj0G3vjEbXbekAf2SSBC1woRKLUlQjEdAkUfNN+a1nS+lbEED4u2h\nbN9tqJBm/wDUQhrBcRO/umUXn6sG9PZHeWzqd6voSPnRqsxfUqcUJ6AmxMhx\n6XA4NxNJv/YUjCp14h0Eg9BCoQGx/THdDQlPmYcvbr2Hf2ABO4ltAaznF3eG\nasIkVLDeEX6Ps3hqazA3kdDiJQyqDI2L71bsmQ1UOkOdLAO2+wB4FblFYxH6\nKEDS4FI4zGp4OSrsO+V7A3q283XxC3NHgotaX6QteVJ0lDZDiqO5wNEKmRvg\nQDAw\r\n=AuJJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDfTp6zcpz/jjkCmXswYgXdhNtlAf8F4HjpQXIjGbPTUgIhAJct84OgKw0pklAP8ZuS9G2OkYX2AePLFSg0w8LRw11J"
+					}
+				]
+			}
+		},
+		"3.0.4": {
+			"name": "periscopic",
+			"version": "3.0.4",
+			"dependencies": {
+				"estree-walker": "^3.0.0",
+				"is-reference": "^3.0.0"
+			},
+			"devDependencies": {
+				"@types/estree": "0.0.39",
+				"acorn": "^7.0.0",
+				"typescript": "^4.1.2",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-SFx68DxCv0Iyo6APZuw/AKewkkThGwssmU0QWtTlvov3VAtPX+QJ4CadwSaz8nrT5jPIuxdvJWB4PnD2KNDxQg==",
+				"shasum": "b3fbed0d1bc844976b977173ca2cd4a0ef4fa8d1",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.0.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 12271,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg92CvCRA9TVsSAnZWagAAXUQP/iN+wBXHH+ciLGEJfPTk\n7bWycw0wzC5XmUcEIQuJVbYIVD5ojIc8aY5toAX/RjfCnNRt9hu0+JU2o4cz\nHcvYHFrv92u2E8FC7n2KMj7JSh+IcXpgjk9cdrWGL0lkbFRjZgNzK61izBM2\nVF0Z9hiC74SYv4uydT8nkghYdCSSAG9+1mzu+Bb1yVA3BefSpN8ScOOOnXJV\nR74/eVfS3+Ux47aCeCVlsbV7Jncf8zziX52lkG/dvtAOY4QsnuyO/lKudr5n\nhourG7CkEcDOSJ0hZqOzZB2Lg+c73j0jOzg4txbSF/RILnE8hBK8EEzOmzJr\nPeNtcvj/82FmNw/SW5v7lpE7sZhbwGhdzxwVL76AONtPCiGLEYS09zyGEgsf\n9jQQfmzhsF55yBwRqp+fQKuwWRE/aKkVzh5eRfdC+v6s13eII3XbTSVXkTgN\nJxcA+HnHkYjhzGG7At0D1B1S/eYXsUr3lMFFiyZbmtIL6O/IBRpwVo8IuC1j\nEpsJZ9GeaxT3tAlB3ndqxW8PzTRkdceQylMNeOMqCVmxgEqEjQSV64ONj3GP\nzObu/CHxUBJoQBCM4EnqWB1ogVsPejM5Y/V9DKZCQGF5DG8TC1TW4DP4GFhy\nWZ/n/lV9QpK0SSzGsudWPOcKvdh9/Msb3lS49i+9gHDh+bQm3Q75rrlhsSza\n8qLH\r\n=RnF8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDJPRs6u4zm9p3ifrA38dWnkoyjydx13BxKbhE6ykzrYgIgC6ISyH3JjBb7Y6clpdUsT+xD9s9BNFPoTmAD+fMmYfk="
+					}
+				]
+			}
+		},
+		"3.1.0": {
+			"name": "periscopic",
+			"version": "3.1.0",
+			"dependencies": {
+				"@types/estree": "^1.0.0",
+				"estree-walker": "^3.0.0",
+				"is-reference": "^3.0.0"
+			},
+			"devDependencies": {
+				"acorn": "^8.0.0",
+				"typescript": "^4.9.0",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==",
+				"shasum": "7e9037bf51c5855bd33b48928828db4afa79d97a",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-3.1.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 11219,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEhf8w5nUlenrR7FdLb0OXFsiEbL8V2OdZoJCe1DXCCTAiEA6F87+WOiY2zG75SIlWAGnyt0Wr8DwAun619ahZLI+xA="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj0uWIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqBvg/9HndcfDhrUgA4kO+VszJ6M77aWKbBXQtJ3pxgITP7IH2Ua2d5\r\n+cEgkWFAI17zu+HeabYykiHll/coEeUXaZe5Ixq6iKogt6s9QAC3chvBTy/g\r\npXYZBg/QogtYPWdjEPBj+LxJpbqsnz9rrQ65RrDjKrS6CJfjMfV0DK45TSDU\r\nCR/0V+oPVURZYtiKU9WDEU8TrOR8CSiLYKvmfQl5HFva9OhGS0rnUAW4Q4iw\r\n1XZg1CvFf/jOTsI6JuT9FGTgOjTzPt9WsvzTHQ0CYbU5Y3cC8eijpmuJ+loa\r\nYUuFWxn6lCDdU66Y8oH3NHBjrqdrTtlr6m9t38MPe440Mt5rPY+oG65h/UfP\r\neAKB1qyobsWovfnJc3C94CVaCXIpZAPydRNp0AKtdEJP4bG801mio2plXm0T\r\nKkGCBPirVvdws0ClHNADAL870fZs4+EY+RhcNHfMkhFrkwg/TzCUavfcZRtY\r\naSL3RZ7wmRrnm9E56nAASZQx/WVevPIpV6GTpNu/9tsT8+gx9cUW+1eGJCEA\r\nBg+zEQ6ZDcc9vOmzFMkjrhqJDxf221COJlJOdh3CTMr/eYquJr6jK4kratbF\r\n/0zqLo9zs+p3mI/vLb9FLtF3C3fkKcUHl/SPbB3UEbfAjE3gpdO7z6UA3rSr\r\noZ4vTubMX26ZAe15C2s5V6J3fs1SLHj55jg=\r\n=I3AA\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.0": {
+			"name": "periscopic",
+			"version": "4.0.0",
+			"dependencies": {
+				"@types/estree": "^1.0.0",
+				"is-reference": "^3.0.0",
+				"zimmerframe": "^1.0.0"
+			},
+			"devDependencies": {
+				"acorn": "^8.0.0",
+				"dts-buddy": "^0.2.4",
+				"typescript": "^4.9.0",
+				"uvu": "^0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-t8M45TJNAI4m5Ruv3NOTVqQMXya4p/oyE/W9hJpoz43VOOHfiAQ9skNUnH1sX+QbCftYivx5daMc4qmF7alTpQ==",
+				"shasum": "615ce0d47c1493a579a882116bdd033ecaf3fde1",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-4.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 11117,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBZvYBTbAjbKcOq24LNcBFclH1ykOv7UJQRea3va4AaOAiEAxpYLmHObIF4pREzmo3GEvKh1XF8YykLPmLETfpBLZ9k="
+					}
+				]
+			}
+		},
+		"4.0.1": {
+			"name": "periscopic",
+			"version": "4.0.1",
+			"dependencies": {
+				"@types/estree": "*",
+				"is-reference": "^3.0.2",
+				"zimmerframe": "^1.0.0"
+			},
+			"devDependencies": {
+				"acorn": "^8.10.0",
+				"dts-buddy": "^0.2.4",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"dist": {
+				"integrity": "sha512-HuIvuPqTd1fZNk4Fq2vQd/f8khiyEbaL4J2z5a7dtqw0IhOPpDq8x1jsiLS4GyhSIuXdH5E2LtptF3noNdCzZQ==",
+				"shasum": "c4066bddc762a91c72cec259e5aa2c98b63a6c60",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-4.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 11113,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEm0ysFD0KMo0rUFq6ic08Sb9cae0Q81QWwll4vBm5sVAiEAzWDaupWtrFKCFK7BQ0Ems2ROwDHS+Zm4O9E3qY6la5g="
+					}
+				]
+			}
+		},
+		"4.0.2": {
+			"name": "periscopic",
+			"version": "4.0.2",
+			"dependencies": {
+				"@types/estree": "*",
+				"is-reference": "^3.0.2",
+				"zimmerframe": "^1.0.0"
+			},
+			"devDependencies": {
+				"acorn": "^8.10.0",
+				"dts-buddy": "^0.2.4",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"dist": {
+				"integrity": "sha512-sqpQDUy8vgB7ycLkendSKS6HnVz1Rneoc3Rc+ZBUCe2pbqlVuCC5vF52l0NJ1aiMg/r1qfYF9/myz8CZeI2rjA==",
+				"shasum": "75961389a7e4fc902349e75abbaa373dfd6902a5",
+				"tarball": "https://registry.npmjs.org/periscopic/-/periscopic-4.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 10735,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCJ88eWXN8/yQDJvyfTAkTDuF4nBrT4vFelhYi6Bd3AggIgQoNQLRjPqlfGh/3FPzl6Mu4Bns/aFDL1NSZRN4kB7zQ="
+					}
+				]
+			}
+		}
+	}
+}

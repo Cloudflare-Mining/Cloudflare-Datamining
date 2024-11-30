@@ -1,0 +1,163 @@
+{
+	"name": "stylis-plugin-extra-scope",
+	"dist-tags": {
+		"latest": "0.3.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "stylis-plugin-extra-scope",
+			"version": "0.1.0",
+			"devDependencies": {
+				"@babel/core": "7.0.0-beta.42",
+				"@babel/preset-env": "7.0.0-beta.42",
+				"babel-core": "^7.0.0-bridge.0",
+				"babel-jest": "^22.4.3",
+				"husky": "^0.14.3",
+				"jest": "^22.4.3",
+				"lint-staged": "^7.0.0",
+				"prettier": "^1.11.1",
+				"rimraf": "^2.6.2",
+				"rollup": "^0.57.1",
+				"rollup-plugin-babel": "^4.0.0-beta.3",
+				"stylis": "^3.5.0"
+			},
+			"dist": {
+				"integrity": "sha512-Jx5E/DdGpxgdsGiQ+3QAZB0IV9eo9jESBX1MwfvH/ytOlU3JvaA1aDXuOQIcBVXpHTM9LZtQb2klW67ScWJFfQ==",
+				"shasum": "5d30400b7aac6eef0eed09486733f89b3af0b4fd",
+				"tarball": "https://registry.npmjs.org/stylis-plugin-extra-scope/-/stylis-plugin-extra-scope-0.1.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 2615,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbGwMDCRA9TVsSAnZWagAAWtEP/2Q+ydsBwwkJvuwlemro\nPPbc42KKEqJH6mnoXFo44JSWgkX+FiNKTDuVybfRlYd8UDpY4YKZt2+dt1cN\noXO9VZREngaqrk6iXdZypsWe1iFAyVvibcPgc0wBZzWDGlRz3J1Txkpe9uHt\nvGzOS/qENfsINl6AeG4MDog67m3zPRxKmmBE+vWZdYq35vkOhdDB/9T8N9EH\ndAWR2g2+CFcumFFWO5ChrLcnd2vnQplmrWV3XxPAbPhyEzBPsBh7v9NXV4cZ\nL/cDpcfP214TNdgW3QfiroL1KKZhS7itIYOMRGRyUJani47uqVW0sGQHJfkI\nXfYWzP+N3Mnf2UNE3emtMSmivOmbLZs9WNE8yhGbnM6ngMvtGoGOUoGn/0pC\nIDWVeayXXhDAnc7bpdgTfIJ9UVHWYHr/gR/JITnAUT1nQ2127u8Cu5fFD10J\nXvJXkJARVeQ6CTiRXUq0mdauYU9KrzGBTFbY6cI4+CcTevQi6lv2cKjMXSLu\nzW74ozoI6HpzSZ9RXJmjkzYGa3mbi1Z6lXwSDoXbO1PL7ibPsgAh9Ru6XFHl\nNCtG7gmJvGZO8ZC6j69fE3cyhtfxHbdMyxZzzPuYJ78Ho5wX1JTszrDWVrd7\nLbZAyNzcvIzJtpNzhC6FKajfd+4p5t3ocNWBtzWgW8hEss5yuVGIwXEn1y40\nbgrD\r\n=ErX0\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCXV77J0rJT6Hip6Fu8rKZ7OrWPkgdu3aKTuGjm/WBvOgIgadGfZl6Kn21m+EqZTyBje8krMGLAYH9sGCVIVHVwqUw="
+					}
+				]
+			}
+		},
+		"0.1.1": {
+			"name": "stylis-plugin-extra-scope",
+			"version": "0.1.1",
+			"devDependencies": {
+				"@babel/core": "7.0.0-beta.42",
+				"@babel/preset-env": "7.0.0-beta.42",
+				"babel-core": "^7.0.0-bridge.0",
+				"babel-jest": "^22.4.3",
+				"husky": "^0.14.3",
+				"jest": "^22.4.3",
+				"lint-staged": "^7.0.0",
+				"prettier": "^1.11.1",
+				"rimraf": "^2.6.2",
+				"rollup": "^0.57.1",
+				"rollup-plugin-babel": "^4.0.0-beta.3",
+				"stylis": "^3.5.0"
+			},
+			"dist": {
+				"integrity": "sha512-0dRLrsgLb8H4qnzDwoMAMfm4sayeMrG9SpI/NycWR7Cx1hPf4byj8SeA8x7gzensvEDk94tut0lQn9hX3DBGiw==",
+				"shasum": "57899046899aa5102632b8e1f4b3d71c575395b5",
+				"tarball": "https://registry.npmjs.org/stylis-plugin-extra-scope/-/stylis-plugin-extra-scope-0.1.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 2685,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbG5AyCRA9TVsSAnZWagAAoY4QAItrQnr3pXAJm6zhJS5l\nmclJSv5ESWFvi4qqUIziC1uroHfgGGl3JVjlwjkllAm9/M2omcdeoesiEORl\nsrHdDz4/82f84F32ORC4tlNNyH9kRfU2HHjMgoV9nISZ/a7ZEJjqzEBF2nbF\nlGrcWuNpugKW6zDRtgzN28edDwyzV+0y+Y3+gQCyDphBdgtTXmCwB/gAJXPO\nkH0pQGOOUj1FSdBvq53Ht1+FG4HS1YvHKzPAvL1cGOFYCSJPTG6GPvJWstP1\npzACjo9LSXBvQgY45xIXD5dx++uZEHhIAlXMxDW0WgzsOx5SLIRIstKvUINK\nuKfoe4cguyqEpSs8yg2mLdeDF9zQQrXhHpuW1OSUJl+brl4nEEeEZWlyBzSh\nbXQdMcwjqC9Jk2azOFb5WrCiDI5sQ4/+VrYZaWoZhqWnfohmH+zJzJleIFNb\nE8gyRvX8UtSNogVbci2XbdST2FVFmnGaLP6RZJqwLWqvESJLubm1y61BNmGT\nn5/qnGenJhWsejwviKAuT0/9OgEdYSg9MSdtiQWI9VdBPt3YxEB6ItOPuVD+\n7Su9kFJDa/YWJy7SJyGyoYS50SqHbMHck1QKhfzfd/MmLpLb/BP7em5CdMot\nJwp6GmlzELzbjeGupL2NWulcwpjbddJDKdPXs7X91/1GJWBF2abTMILpVpe3\n+rDc\r\n=rLtk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOTevcwckSbPe4Uva5lX8/OZ0ZrX4nS1Sc2BnVv2G3hAIhAK9xdX+UW/JZOzfMzie8qWk5Fy73pziHp8IaC1ny6jew"
+					}
+				]
+			}
+		},
+		"0.2.0": {
+			"name": "stylis-plugin-extra-scope",
+			"version": "0.2.0",
+			"devDependencies": {
+				"@babel/core": "^7.8.3",
+				"@babel/preset-env": "^7.8.3",
+				"babel-jest": "^25.1.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"rimraf": "^3.0.0",
+				"rollup": "^1.29.1",
+				"rollup-plugin-babel": "^4.3.3",
+				"stylis": "^3.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-RLwHqyQyMKKt4WWY05JdpO+0x9OHRfzZIIoDIq19AejJWdzJiaVaM7ZKn8JJ0WJQlZeg2rIHYNrHZAA35FZ4ng==",
+				"shasum": "2309d0dcf6501f5638d60ec164e62557cc334dd0",
+				"tarball": "https://registry.npmjs.org/stylis-plugin-extra-scope/-/stylis-plugin-extra-scope-0.2.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 2969,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeKbeaCRA9TVsSAnZWagAAJ48P/R6JVASDqaTnl3A3hrhI\nyXgBRvMqCk+5+koqJeeu//vR4IRZcQ3DxfpEaIxeQK5JsO67jXrht8PjoG0z\nKK6anRG+YF+u62MoLh9zEO+4/eZwjsJVjITIaQtDgj0+PBKKf7ArS15SHPDa\ny0VOWPsQtCEMwnX2cInD881/TAB3dSB5D+jWfkUCzJy8C3fouqGSB+Bp0txa\n6dZ2VAAG0qaMva/m3hiwAvJDixtc5vnT1sDZz5XrQuyEuD27Or7AOB+K6CxY\nt1vkxESrUgyx3sQzI9H4StFLzsFN3k6KL2N6VedBMYzZsaf5kXGsnBvk3LCJ\nUnd1MvjCOZAWy8Ca1zweF9lZVfoD1zxrA5K3Qu6UpLJIb//46fBxb+F373mi\nkLtV5XjxrMUGYK/oS4+pI/hEQhMgrlc5cGr6wTPJ9jvIM9RePQqmUM3ITNsY\nUgTcu7iDFHuGoDiYti64BorI1VyUZ+8YDxcBwseDUs1/ub/HfygX9DyTI7w7\nTu5xOIpTprIv8eSqdYCg4u+DUcqEAtGei4jwbzwQXhhuBPOV2taO2ttqnSLJ\nGt+seQVhLxDbhrRRitj0xRSnQyMSfL9lyWjdZ0qwWB4MP+zBpt79RSiAeNFt\ns45MB4Yg8/pCoJk9crNJzXTK4cNyDZ+jlt3W6/UbsABSx3uPq3TIKuYLy56y\nvvk3\r\n=TYWX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDTTbtciaWrEF0v/r6zlO8/S8Cko9wkcQN2kjelUwoWqAiB8US83gr9NpQ+Hmbi47+zfwHf0ZBhEiu48xv15HkjG+g=="
+					}
+				]
+			}
+		},
+		"0.2.1": {
+			"name": "stylis-plugin-extra-scope",
+			"version": "0.2.1",
+			"devDependencies": {
+				"@babel/core": "^7.8.3",
+				"@babel/preset-env": "^7.8.3",
+				"babel-jest": "^25.1.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"rimraf": "^3.0.0",
+				"rollup": "^1.29.1",
+				"rollup-plugin-babel": "^4.3.3",
+				"stylis": "^3.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-sQ0PoUCp87EfQwH2sNnfXeUtHdz66Q6bxAgK+73EvNvyNlc+9JkTED6LZOZOaYKhPkHu4nw1ls4wD71VTWUQ2Q==",
+				"shasum": "9f6abfd49c587c29bbf47a16070c425da5d57417",
+				"tarball": "https://registry.npmjs.org/stylis-plugin-extra-scope/-/stylis-plugin-extra-scope-0.2.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 3571,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeVvSjCRA9TVsSAnZWagAAdcAP/23Y41RscQYTiXiOrRdn\nLtBrTwUQiGb5HKxj4Oha/dbY+oCmcQYAR5PAMvV+mDfkjHCtOKz8yR71Jj65\n31fmW54m7TvNT2G//CAra0opev3Dx9zA16Fxfpzk+qp/XMn7eccDRt3xeX1V\no2PNFGcwJLMad0Ekp6jbPvfKmJjzo+t3NA9Wz4acRXmoNcdhxDeNIkC9VdoX\nsID4X2uMaRpn0c0VOPEj2m+RRVMsi4clefbtKaU7/d6LhBQR/Q3XhAD3fcdV\nYH7gSq7nd7Gk5P9AQgWeVi3dabKiw76PSnln0wBHyUMyz0h1x9BPpnVzJKR/\nnoxsfyYuhJQRh3PHOH1e+ZCcq7LnXphz6sNMy+Dw0gEidCvyP76tMWKo1tRY\nfnb562qX3JvUNv/M6CEacyu7jAnriMFYGRKIZFcS7dpDs6F7WvcMc+pCBdP5\n1VwwdDN5sLikZ/lxdNSjWWBTYDdWJCJxw33n3auuNwG3gQA4y1MHYkRRzLNq\n1EQiihEkBphxIgz6/RF7LmOynzcwdukfHUn20Yu9QweX6lBVC/aRIVgis978\nH8BFUQPFfFjcMi/Ms7pxN047HVNY7Q08qja9pdwCXXBJ3SSahk3J66Q421U3\n/ZxirCiXMaKHRcIDiKo6MX3YjJ7hKUGUTkkx84r6JthpnogxfuMr/vtII9xb\nqc8X\r\n=nCjE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEwT+o5G+BV8CawxNoXrdb5+zYlksvjUYA10xGq5/oa9AiEAqDNx+nihwDPIlrSxLREDODiT8AgGmr0Uj6QFbZVIZ5E="
+					}
+				]
+			}
+		},
+		"0.3.0": {
+			"name": "stylis-plugin-extra-scope",
+			"version": "0.3.0",
+			"devDependencies": {
+				"@babel/core": "^7.12.10",
+				"@babel/preset-env": "^7.12.11",
+				"@preconstruct/cli": "^2.0.1",
+				"babel-jest": "^26.6.3",
+				"husky": "^4.3.8",
+				"jest": "^26.6.3",
+				"lint-staged": "^10.5.3",
+				"prettier": "^2.2.1",
+				"stylis": "^3.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-SaZ+SQk9saypYdJPmVv0cboRGyknxtvWdw1eCphd24wYKdgLdoLMZrZi4w3F24mLFCd+De8hCTPcfJXmL+C1Xg==",
+				"shasum": "8a19135273856694f7559a78d4d7a48928cd03e4",
+				"tarball": "https://registry.npmjs.org/stylis-plugin-extra-scope/-/stylis-plugin-extra-scope-0.3.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 5353,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgDUBECRA9TVsSAnZWagAAnlYP/3QKl6FDTHD2cgDSiXGD\nsxu0/Fe2ZxhvU9sM0MqJ1m+UL23jPGUr7uE7j8NJ1j65mBGbDVjUHiFJhDKa\n1VjGg0jDf5QTUmjCpwx80B9bfmTtOcyhMdw7UJS/OWXwIuKcbilDBlydIXdL\n+FanYPoWIMh64fcVo7ObcIBIF3cQe0s2pObo2XIc1boa4u1offPU08f2VbRC\n8kXNzij9u0fAbE76TMNlhXjV8XGp38SEL/bihNefCsj0U+grWLhxX8D4J0PM\nvpUOoUPB2PM/gaxZj8MROi5tF7N39rKh7ANo3gadOK387Hdxr0nNTAmRd8EJ\nhiASIKMexOqJMW6/KTNHu1lTHTBJakDs6xhOzK9ic/bFID9N6zrcFVYzavLg\nL02b2p5jVJOH+q9/FjcFzYSyFXvaYgBPMLSAY1YwOw5k9TFKGnGopX9LOqY9\nYxaEdgZo1zBky/LH19Zn07wLZAJKHonsCVs+0UMsf6Pt3ZJFgUf7bYDRX1Hh\n5XU+zAySmlieFIGeNkNNXKHZ0jbQ5Fvar3b++R93bY3b2pWqBOAy+ggLdTGG\nGuN3Zc6fgFoCGZx4ghINZoJHafhUCpb2Mx1Yg4//fCaAoazKKwGSg35Wh3CL\nvy/t0JmY/dmvGmCAK58q+OXw7gmOvRaa/5titjhDHwcbqXBwKIFX1Zk91e2K\nCLvV\r\n=LvQz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAguKnK7SooXUPLK21sN8TGIo5/4Ob/0LmpqN3OGpGk6AiEA491ekxsP0U62b05zJG3c8CRqJ15B+a1hHpU1XPcRneE="
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,1943 @@
+{
+	"name": "@fiverr/i18n",
+	"dist-tags": {
+		"2019-06-25-fix-scope-lookup-order": "2.0.0-rc-ee193ec",
+		"2020-04-02-revert": "1.8.3-rc-e8dbcf4",
+		"add-types_pre": "1.8.4-rc-35c577a",
+		"templates-support_pre": "1.9.0-rc-c6101c9",
+		"lion_484_templates_support_ci_test_pre": "2.0.0-rc-e8b1c60",
+		"lion_484_templates_support_ci_test_pre-ci_update": "2.0.0-rc-a2d6566",
+		"upgrade-paraphrase_rc": "1.8.5-rc-0e57bba",
+		"lion_484_templates_support_pre": "2.0.0-rc-077e494",
+		"latest": "1.9.2",
+		"lion_484_templates_support_rc": "1.9.2-rc-fdc1541"
+	},
+	"versions": {
+		"1.0.0-rc.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.0.0-rc.1",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.9.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.0",
+				"mocha": "^3.4.2"
+			},
+			"dist": {
+				"shasum": "30cdc9bd02802eaaa2693e20ed2648d8d94aea9c",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.0.0-rc.1.tgz",
+				"integrity": "sha512-YxTdiN7ScAsK0noUP5P3M6oeIxwh0Rl2Af4jnu1VoDUzvJts0HmMQ+c0NA6kvYlIeZ7GVWDpH5KGfPDYwi1Jpw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpcztSlL/xxF4qatubOvOA5od1Atn2QZU4E2FuoUjJrQIgY5jCWiE2ZClG3oHvy0hKRrlzSwj4yHbydVtEeDg4mBM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.5"
+			}
+		},
+		"1.0.0-rc.2": {
+			"name": "@fiverr/i18n",
+			"version": "1.0.0-rc.2",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.9.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.0",
+				"mocha": "^3.4.2"
+			},
+			"dist": {
+				"shasum": "5b197223c95859161f432729d57d664c05c9bbb9",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.0.0-rc.2.tgz",
+				"integrity": "sha512-obD77FrMmx/Ge3LryICZkwS2HvPuT6ecnhDGaO7uUMoTPnUyoWdqUgJMev799FRaCwhb6m0xU/6nc1aiLWydeg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDmb5GUi0QDO6LoLtP/rMfldsVjMMJ0abcKTH0b0a3BGwIhALj1aHpDnNMw4pc03RCOtqvhm4hWy7ZEIEAi4jCfJAqZ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.5"
+			}
+		},
+		"1.0.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.0.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.9.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.0",
+				"mocha": "^3.4.2"
+			},
+			"dist": {
+				"shasum": "a4925292e35e6db037015f85d7aba56e53f5fbc0",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.0.0.tgz",
+				"integrity": "sha512-2j2wpIDRYkcBsbgEA1FMA5TBvrWyW3nhVTAkSQACibGp7rjkvVepU+GMfzoDBHj1x7TwpEY9owPd6Pxj/5in1Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIDRpLwWNiuEC6ys2MH/nfgUyzZujDbQxWXdI5tx1OKsyAiAu2t3ZlEYVEoie3BapnewBQkouem01aM6Hte/GDvCdtg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.5"
+			}
+		},
+		"1.1.0-rc": {
+			"name": "@fiverr/i18n",
+			"version": "1.1.0-rc",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "03115224fb3419db464350c6062f0d08dcfce5e9",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.1.0-rc.tgz",
+				"integrity": "sha512-5mfFAfRu4/gKz8Y+Q+GrbYGjGyLNbMtPxcstOm3X7JOG7u7+Zppg+VCKR7vJ0Lvuc2B0i8xRyRJmf+72DKTgOw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC/J3PtNF5pkQU9sdaJFKnhll7eco2NHD1GY0yZ7SgD8QIhAIc7uVpj15PD9sUUDvI2xjYE7eTpeG7dUgsR4oKLFdOa",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.1.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.1.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "86b85a5508bcf7e9f5827ef887bf0d8484ea0741",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.1.0.tgz",
+				"integrity": "sha512-lm/diRDHJ+tjYE4vMlOgn4Gynyh5huco6dC+lDBDi1y4wuXuz+7bTTwAfWgYOk9oEKLTm+wn+Cfpf8YrtgdHcQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGodzJ8ZksMCE/dCyRLlvs0rPlPhBGpyUoLtEgIyZnaLAiEAwychl9gK9TUqaRjLudpxwoK5sBJ3NN5qXadeqcbJElA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.2.0-rc": {
+			"name": "@fiverr/i18n",
+			"version": "1.2.0-rc",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "bf22c28c7b173211a0435bd9930477362ee60dc6",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.2.0-rc.tgz",
+				"integrity": "sha512-li8pD2PXzk55fQP7QfbPeXunuiuOyc3CDgXRPiAFNXuJa/dQuDKe0rs4bXYO4+tUR51d5kHt4gVCcQu0Ie8zcA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCqgewETgHMjQSF7jb4BKcwHgFlY21DS5IRCDOs91UkLwIgJHfuOuyIPhRb677dKHemon6wxsc+beGDxKKBCIyou4s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.2.0-rc.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.2.0-rc.1",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "3566a498ac43dcb4eff2786c1f2f7094952d16e8",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.2.0-rc.1.tgz",
+				"integrity": "sha512-AR3I4zJi7VVpGygBW3KLe6FDJsvTCRZY42xkhn2A8QqYbetnydJ4pp9dSRlqtww00gAUgkumQj2o3L8kQfPINw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCu76ytPSZ4X0yX+I+wsTtALxQpyfdHrkk2euyaTbvBgQIgEqimoLVw3biLvlaZRTq7NDA6a6pNTrMfQ8jyRPWNcQg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.2.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.2.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "90a712a5e566ee1b38d305c8a4e3134e8be3048b",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.2.0.tgz",
+				"integrity": "sha512-kIbqVXH6YTLAsRUQBgW24J2HVZm7dc2ZHKW1FGop5luucrQTuD0N79wo0VAXi7MGiAhWJ7LHkW0TiurYia4sbA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCGQg0H5Xyj3MwFmg5/+WRoaadssUfFtlESZ6F1AwtiNgIgePQyvkzj4QvhoZBWqM++rqdQPsE6WhtYCgSCS5I662A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.3.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.3.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.1",
+				"eslint": "^4.6.1",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "c09146e112c15e4f2dbebd46bd6af1ab0eef0d21",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.3.0.tgz",
+				"integrity": "sha512-bPujtLiKeLyplIe0m4RBFC1vJeMOENgLg4jC4Rl4hWzpQi6x4sttPtytODzM8n8EMwwwyq2GaVzVyAObB//oLA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCF6pWJv/88rxxMrnFUNiUf4J0zGgxckG5NNTsuDFN2GAIhALqKBphMgHZL6KjXfQ/b6cwB6cCc1y04K/o2HJyzSpGB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.4.0-rc.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.4.0-rc.1",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.3",
+				"eslint": "^4.7.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "41c66900d943c2ca2671402758ff4a3b6bf2a84f",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.4.0-rc.1.tgz",
+				"integrity": "sha512-I7GZvpa3VWtkw6LmRlNjo4jzG+/+VQD3in+zwB2Hs3SeJlgw5yIky0nn1tctHvX6KTWNzgiHFnuFxnjJkPhMiQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCdnigCa7bnr4UjjnaETgyeYCQUjmqsMFW4wVBJyRMDIAIhAPWQ0VWqYERri6rgF0ot1331jE6I1t/vLGl6/usmIHMH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.4.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.4.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.3",
+				"eslint": "^4.7.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "89db8cff9c12e5265ebf55a71f2c84a0cbde2956",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.4.0.tgz",
+				"integrity": "sha512-Xm6Z5dJZwgUNl7b/JgOuqrXrpTJSiYNGPwaSc4tC4z6OvCWVTCDNY6IVnXR5qZrsJEDiUHgmlz9V9JDgirk5Cw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBDuxnCjTe5Brr6OF1tdHTov9rvMEABrfNdzRtq0NhiSAiAbPI597Yy2PXPbtByFl4inDMgeLqwEi72ttmHO2WB8lg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.0",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^3.5.3",
+				"eslint": "^4.7.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.16"
+			},
+			"dist": {
+				"shasum": "36bcc0dbd59151e0fd5824ed8c6ee0d6bcab2006",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.0.tgz",
+				"integrity": "sha512-7fkAXOvLruyskpTLw5wi7hnvwWNsRHc+zqj4gD4xSzS+oYXcyEy/6h1E14cXEqdcCPaRLp7nqGem5gbbQPDhgA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCulK4iQYe2sFLQrhHqdyf0LKSLFXMoAWverpMOXPQM9wIhAIOCjNxmbIuXN+f74q0qnC4UAW/eFD5JS1XGKntDSLL9",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.1",
+			"dependencies": {
+				"deep-freeze": "0.0.1",
+				"@fiverr/futile": "^1.10.0"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^4.0.1",
+				"eslint": "^4.7.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.3.0",
+				"@fiverr/eslint-config-fiverr": "0.0.18"
+			},
+			"dist": {
+				"shasum": "16649442439ce758e6ca56a77072eef95f74f8b8",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.1.tgz",
+				"integrity": "sha512-i7IZZqkbZLM/462VVB7pwRT/j6+mA2TQzAiPuGEkxmt2/2TkMnY9lSH8wCkx/36Ek9MoKJI/ZHg/+YRRX4tPWg==",
+				"signatures": [
+					{
+						"sig": "MEQCIEXun/8sNN+vuXvV0Icu4/o19Lt+PKwhz+tlJk5SeoWpAiBxgEzkkt3SKzQZzqU4FSguaJ6Rb6j3lK4zhCrFycRPBg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.2": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.2",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.3.0",
+				"deep-freeze": "0.0.1",
+				"lodash.merge": "^4.6.1"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^5.2.0",
+				"eslint": "^5.2.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.10.0",
+				"@fiverr/eslint-config-fiverr": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "c960dbec82faca115c108b84a363b3d78dc0f020",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.2.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-6MjlL9QpIqVVTACfMnNcZi6VJnvH0uuQm+V+EWIZbphSYm72JTYqxOcSFnIO01wxOHrUArjkuEcsOPVc5Vs95g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCt57Sx+AM3dtzIHdqpbAJ+qxEGvJ4gAiqUCl5F9RnEQwIgToXOok66rnrOUwfXYCR6hG13XH5ouzWh2HhNt3LNUQs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31380,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbXxGQCRA9TVsSAnZWagAA/fQP/277ekkJeu3jDH4dRoFO\nR3JTLuxTagxHtAe/6AgQX671iCLmAMEVCU3sy8WxkTZDJ/FG/k4mBzs8oLdG\nxz7cNPHm4ar1r+N16ZqQpaED1DjPOIdy/nibQls2RfeAhFK3A8S1mQdTgHEk\nMligJlytsz53T6+8P/dsRUx4grcQ9OBYAShJ4Y+aNGulrOZKtG++Uyr0QCVH\nCj/p+ud4sPaEf9wbnUt9GITpVG33AYdB1d4Ghg+zHXRhjbCRC8FC5lCdy3Wv\nj0ts51rBKd+KozQ5e3gbbIG8SLb/wHOnpBOI2DdzrBQQW9msPJbHEAz7fyYx\nSsuubAF0WHmLpvzgS066D5qk+eZ2G0Oj+4TVFDv2Xm7vH4kI9+UuVAPWO94n\nJp5hDVRkiJzvFeed/VRpjOBysch7GyGG3ARy5EuIz8l/Jj81bmVE6VWmtLcs\nwlgacgRHTiL1HVjfYjEaul1cnQsFVQ3fZ4BiQymoQ4CWzt6/l+IqQJ9qwMGs\nSmLArPwHZ3dyBiSX+hVr3Q6Ip23VtlNHKI7ywBaAsv397YoGL6bZylvVkVrn\nJTzeKHGgXw2yV0oLwRhvT8zjYglnsH/wnEvvOs3M6jq/Zh1u8PPudjgVom/9\nH2dbrmK8dkjP5ny6e1yU3axPpvKWrgCGWnlMBQ4hunDAugAIR3yDNh1d0O2C\n/j4I\r\n=woke\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.3": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.3",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.3.0",
+				"deep-freeze": "0.0.1",
+				"lodash.merge": "^4.6.1"
+			},
+			"devDependencies": {
+				"chai": "^4.1.2",
+				"mocha": "^5.2.0",
+				"eslint": "^5.2.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.10.0",
+				"@fiverr/eslint-config-fiverr": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "fbe885a8086cd5243aa6c3b7fc080c590ace6953",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.3.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-ZilEZPG2S/UqONiET8kNCCFg+YY4OrzjKH2IUohxB/PK0uJGc/2t7pEXpgFMkmOciHDRqF749vRHSVaeCBRXOQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAMhyLqkclHLcq2szpCmwHrhLLEh8AjH/feynYL4QkggIgceGxlkswvBW66xctT9GiyXJ9PIbdLJCEvsG8IX72etU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31375,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbyI0OCRA9TVsSAnZWagAAJPkQAKH9gcKLGw5Badl99Hon\n77MZWkA08ZrJCa77WBJqP0SdKNwY655o1NIvzo2YChk48N0koQPECi+wPhhY\nTChav9Fw0zOgSCCkZ3Bl8f23sv9+rPT0+XLiQ3/vRH5F6rfCM9sKTvgmCmDs\nbFi7Wcokqd98fpqwxLZh++TQB0UUD2tNdoFMmYdPw4GbYZizbC4puteg9nJU\nl//wzyB3FL0tqOoa0hzTWak6ldatMz2TJjmDIjlDQSvq6yq0wXxd5d8DyqJK\nuPqyNUSomdeHUqEXy+jU+Q0Kc3TOObHYapwSuESe/lJmNTkMqQU30eAqtJht\nSbiX2A1QroT5xkJ0hecOHbtqY3I5BQwMX/5GIQGAjfqjbvRUBSN6RgmZgxR7\nYLRCcWFgfc87RHF7w/5mkMvmno7t4/V0VKzQv29T956y1nTLHKr4vV51Grh8\nu53OvNYJK4hKDMqzcPUm2FaUNNbUliLeDOOzevlClrLlYRUEXIyiRiyt8bkz\nMRL83VODppn0cXMvCeN340jeLpQazIaFkEAkKtOPikgRegCJQAjz91iUxFwy\nIp6X1lMOZFALFC7TcPmY6JSwtGS9c2djxV7trSVHSmitu33ptbov4+3ZXC9a\nFqXNCVuA302rPs3SIx5P5fcFbUvi5ZTJSZJJ4bInQ+T2X3P+orQoGlonWdpq\nFeh1\r\n=j1SE\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.4": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.4",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.4.3",
+				"deep-freeze": "0.0.1",
+				"lodash.merge": "^4.6.1"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^5.2.0",
+				"eslint": "^5.8.0",
+				"import-fresh": "^2.0.0",
+				"eslint-plugin-react": "^7.11.1",
+				"@fiverr/eslint-config-fiverr": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "d7ce957cfb6be6f903c53fad3f6142479ebbe0a0",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-+7UBUw98MJkTbO7DmbebTzo2m0Jmp4XEtpbN6Fd+8Si7Ill7XmTah+WVCRuNPpNDDjeQL8rbH/U1PN9xKdPDjQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcPTweUmvPoWPSzW8DW4gYVznNCDanS0nIBeGeTuggegIhAO8DPjOPxZOiwz4WpnKZgyRFmUkPWoKOdMGRvdOYSlzu",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28117,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb4o12CRA9TVsSAnZWagAAKIsP/j4Qa7oee7l4Aod2CthW\no3O4FQGq064DYZAVnUoXIIOch95mkig8l99vqfmZx2iDen8lRTkUnIcrjxou\n8EMctk5MEtWSelCAcHUOJMf6f+C4HuG5VWPO5GqcAJ5kCBViECIG4h4J7/6i\nqHvz5e2XNISsYB4iE0YdkytpLOhDI5yjiZlLNIVlx2Qns2HTKC1CGv6xBr5G\nwzzCgqQHnH5G+3Wnhx/dLgjgI0Q8DSXA6lIStqgFRXsi1rQVosCX3Ehmkn/d\nIg+DC+5bKySXXqY/koTwrmcBYOekTG1zipHw5EVk8G8AbLP6PFqNSdrw1kLK\nzN9uJoSTqJqCc3izkVWA8SwClPpYP7LzQwA2rkR8SN+Dp9fUBAvt/39M8PBd\n5ir2m7Vh/1nJ7P/vmqixElbintEWdOBpv/bBFOiUPS8QtvB9QY44mb0Hzwx9\n+pdsf56vKBN6YhWIFqo5ygqlr9OAVyp+FHn5fjnKW3/z54nsOA81THrblRQ1\n6m2tUZi97T0IHN8ZvNJ0NjmKm+WamngQZRtJyhmlmuzk6Oe5nj3ijztFvm5g\n2s4RRnZrWMV68JhRlpSnFsTAyYJqkAj0dFTVvHEkYkh1V+AxIJzErlfCAd9G\nyv1ejjBl2cS8IbVAQuYtuA3y+wyfAswrki7cv5ACQqB+w7FOuhz/h+iwSl98\nyrQ8\r\n=Yqr9\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.5": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.5",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.0",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.3"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.0.0",
+				"eslint": "^5.16.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.1.0",
+				"@fiverr/eslint-config-fiverr": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "d26fd43515628dbefbd87d76f967518c062ff28a",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.5.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-o+d1ZRc1oY6guls6CuGJbiY5mnYxluCIteQCAJh/PodQfgwd8c6Ll889zY2JOtU1bw7K5P4qJXeAffmz+MRvtQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpRKce3XwG08HLoMC34RLWaAO3+UnoNuSbZNabKbJ6bgIgPUaZ/5w2ggpDUWO2C5UKU0fCMfEmkPOvao6vNPiHxJo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27651,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdCzGVCRA9TVsSAnZWagAAqvIP/2cHYSV2TLjXN9aRvgKk\nSUyJnpzkW9dKHK5OK8lXXBVgVFEOyfUJu17fdQNHCV5xBCIM4cQTZCpvRCer\nsPRyu5OFn03iFYZR47WuNOOehsUWVgmjiTAuKIMTWLOQEBkByqzpacqPcvRy\nlB7MussSJOjWnYLaNO/MvYvbralt13thk5xqnhYdjS3AOQRT9IfAqHb4W3wc\nu3eVo8XTSErYJXHlAI+MdEW9liAEmQTYJ2VSx71jvVw8w0UAt7/UK0kPnDSG\nA09lssVXjc/zF+IqqS+9jdlOn/3Nl8BwK3Qk36UlFn6K8DDmR03OLglkjKa2\nRha8b2CZr7EDsUFT5msxB+efqohFX8SS53OIrZ4sZ+GWYJ65KKiUl6yQylDF\n1tkZx8ajr7t934coQJpjrMwJeFLK0TnhXpbItU+5jXUGsN+2rMOEtzuatkmR\nxJZ8U7eXjNUdnWhk6nFQp/Fln7MM0dXSjzawBp8XR1FTxIe5G7uAqR8rWjGY\nz3mLZUCPME9IhRWnxV884Zs5m6b8j6KhpJ21TY3zbbj17+553Z7nI9cOsuxZ\n41T2FRJ6tdIWb2x7t3ZsNuUgjmxDmudVE7d37D3x1hOJhHHMqegfBliWaVBZ\np8PymUWwZv8FMJMhqp8SDo8/mv1ieXxehFx7oplV99IQZfHHWDFf5thgV0RW\njE+u\r\n=d+UZ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.6": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.6",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.0",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.4"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.0.0",
+				"eslint": "^6.0.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.2",
+				"@fiverr/eslint-config-fiverr": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "ddd739f1c53509aefc5bd2c9346643b25180e1d8",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.6.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-rlLxbcj1T1RSWjvrslS7sv5ERKJWagMZ0jTNrqXRMVYJrvVCKTkVyqJoJmDd+9c6+5XAUjCrpN5TOX1jZpAI7g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDA0uFMdYqpJ57dh0uZ6vCcQXjwZhVvMWc6e77hQ8F+jAIgN0M8ZxITAN04VhQe5Ykc9tw8Wp0hhlTJ0KLYsFbygC0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27847,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdEb4MCRA9TVsSAnZWagAAYxMP/iP5GclQ+tgA3z/laZwE\nZ2rx8BMPyu0BZp/8+bZKHC3CrUbQRPB1yYWZ6XDmUKTpgaZoAZ23XIkyXSbm\nsmUCozl9XlrxXOMm05Q7/iGxsGleW/AEMFrIkqe6J32oAgatt5f3lQKsqH+r\nMzCX/6eiVzdXnRhngb89q/sEuMQ9qc7TonxFjMnZg9M73iLJuuATCxKJQzhr\nq8saT5ZpQBWS3VJJCC6soiFzprtDCL9dhSluWVydBb0xnY5TzJ5bmj7FfZPF\nHUcmu9XSaRrabFnKLlnGval6b2FsPCmXiv0EbggrNpim6Z1gAI2mCW26qn2O\n/LCUGezyfezRhwnDzD/4MZ1GbBvgNIhmR/uWOyQnzWs+X7Sp2HcEyklzk5R2\nuE1h3tKS8CLQfd1bl5vvZGH9g9zAS0RwxBQkVZADJmtzIUOn+5qGYvwQ/uIM\nrtuA4DJmJTLMuKPtl+iN7ITyJo4892X9ZLn15A9mgQJcFzfttSHM55fXb3Gd\n6rxwTbsxcgdv0NejOzRmyqslJ7n4USJQ0/ZQ/hgE+KGJVhsEcNZrut0IIxFO\nUYbhfZ7ts9e75d9p/CfMmr3RH/Sj82EuH7EOmXjtf4e2TQUzXZUyf5egLh4z\n6SB7p5pxD7FpOQaw+lCfDS3ObkKo9Szk2dLBokLHsZBfZjOpWGjO8nE+QfK9\nKUFs\r\n=WrJK\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-ee193ec": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-ee193ec",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.0",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.4"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.0.0",
+				"eslint": "^6.0.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.2",
+				"@fiverr/eslint-config-fiverr": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "259ea40fd4319a1383fa4a40b95e82a5543dac73",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-ee193ec.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-A5gahLl5M/TH6gtyU68uReREAjqYZJa8xyVHJ73Oo6jCnT5b450qdjsVzG14uXWIHI5rAC/6Gq/B4Uppxkpj2w==",
+				"signatures": [
+					{
+						"sig": "MEUCIDoRibyFLYt6A/N5Sta6r+Mkixccdt3blZAi3NRt+xWPAiEA4AK8jXurAu0dYE5+YxFQvNJKVbVqVKSrgds5i37+YkM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28295,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdEd48CRA9TVsSAnZWagAAnLkP/07LJCBpzDk9my1kbuIg\n5g9/fFjCFrb5uXbnd8h4MWv1hqKYdt9G9MVPosTEJ/LsduMablIfF4FRUovi\njljE/yx7Hj4cv4dviE4vlvvHi8TQ90QeGBoqKj0XmnvEd/914lIJKKSsQe1B\ni7ouUad+cdbtYagF4kiuqT/f4RZfJVREev9DpCcp9ExOoP0SaoWg8V4rHljz\n2fzRYFCmASz0c/R32RMWbq1qjtOuDjw3Rg2GArNQuHSdzkTh0QGJdPlkaODK\nPZ70+b0Ymjb2O/G+pZp9in/W/g6CzL0+BnVPcemZ0oSeuc4PJu/Ab0ciKFz+\nXHUHo6QEsIVBEY3jGa+OL/L8cVujh7/9aZFzimBPGA0pi5XkFqd7CcPfijGE\nVBn/k8pn1rYbXKVV/Unjz34hO96K8Ic+PC9ZBZ/jiryX6ZTTBWBiX9H/YWmY\n6Oy+g+sBjnCS8zVOzy7kN39xUV3ZqBXlH93rxJX0OAmvqDO14n6NwMABgSCS\nsdG7MVoSoC6ZqQXQPeZvwuUo/sOvIs34kXBS+V+l+xhS2VEfpYgDSFSEN5sX\nGYq4dspodU65qeLBILpDuzXU3T5u/hANes9LNei3w1p1sKwQ3i/nUnOTSdv0\niCJ33bX8th6iLzAUtFfyEaHpokdG86XL5ZzE7nZc5uWeVFZaLgJW+lTEtg+4\nOB/i\r\n=vOq+\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.7": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.7",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.0",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.4"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.0.0",
+				"eslint": "^6.0.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.2",
+				"@fiverr/eslint-config-fiverr": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "f2f3a5e8ed95a4e8c0a90cb78206dcb531dd62cc",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.7.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-ryzAfYwCoKfHbx/PCIAs3iGC4YekTqRm5rPV9tZVw/GSu23NK90a9eH77LAJxu4F8DB29Xqi6pJh3a8D1/h9uw==",
+				"signatures": [
+					{
+						"sig": "MEQCIC4kRneflj0ZbJeDA4bXBomSUxjhghUbHNeTKnidqCy6AiB3+UZ80ffCXsti+O1cxEHyCEaA9xT1mzzk3t4808ewvg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28259,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdRoWxCRA9TVsSAnZWagAAda8P/1klKHoglpN8AKfH2t9O\nyCTt2g56W5goYOJrMzX5NsscDXNCPOFmqHoLJAJ99NkLBn8r4k0Gl3kVNs8B\nZTyFMMPT75hokWnI+zM7Z0NplXipUGfbOxXLptQHxK4CvgN/skaXo+Voo/zH\nQ/mzmVAMSWK0r3XoScbdgr/F9bdqA/W4nQFs5BH6B2Rr7R9HOh/6yHIvfpkD\nEMwv7AMVT3ukGpPzJnGt+VraSRUCyzilcJLR5geJASInopQpDjnRBJBpSVAm\nirbZ4xwbSNIDdiBM8TBaSjJpD+4ZYn+QI8mSZewsuq1tTf/u0QmMMCTIhWeu\nLxyTXTzn+ve1ZV1gsTTi9jP5wxcrUqSVeK7PF9iXEyBXITBBfdhyRlhT/sPD\nJNIs50LpzPP7bEMB4KoPnDgmkZ2uLc72eyOPLkGk0HUjbESk3l6HCkWhE9O+\nnEdOEwpy93nRlIEKEtr4VZAXeVil2K+AZuDMhHvid1/crf69SRZ6PF8FWV83\nertr6rp7a9jNcBWIdDq4Zg/Cv2sD/Kv1DM0qb84AKYkmrbj6A3hnXnmmO7lb\nx2NhH9n/+82vYvFpn7vN3tSEcphEhQwu+KpqPNtcA1atN55BjbKbSi4OIpP+\nSfy26Zq6yaOvDmPnGGt1Cd6bT2tPHYwnKgv4bNHoeWB8wdPm3FpI9NHVR119\ns685\r\n=+tlP\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.5.8": {
+			"name": "@fiverr/i18n",
+			"version": "1.5.8",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.0",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.5"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.0",
+				"eslint": "^6.3.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.2"
+			},
+			"dist": {
+				"shasum": "026e44949fdcda618007a84170eca82b57da8df1",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.5.8.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-BUucuLZ5nzBcI8reGj50FPD8zf7Plpg4OPAbm7HD8yVExkeLabwr/Kap2PG/ctLi+YcZvpJtFGVZKd/AupLcgQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDeZ3FMOe6jzlkjHz6yMZOK1BPuCG6Zzmz9VryAuQAtJAiBaggyy6c+aceXSWgiFbyZos9066xZRv48WycqvtxOMyw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28322,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJddpvNCRA9TVsSAnZWagAAj38P/2ww4qQS9V0/309ObATh\nUGewZ9WPv6Jy+DqKJHwYaa7xdBNVC0ZC5zspJ6TDL39Jv/OV89v6LfYrXRfs\nHpA/eysXMpU20rlHq8YBlFtXAhV4dIMaA/IW1anQh5X1WB82Foq1CGO80/8J\n9mYejtyfGGScAOP2bCqSxw2PGxiUSrG5/hu1LqK2wVyUIhmgG2E5Q1+VYktl\nWF+UmBUx0F/EsDjklrcs/5f+FU6muyqTrQHUkXEnhXM/KVF2Xq2sbknvDzdc\nBc/NvKtarr/UacafCST3yNBYgBeJSIdsQ8UhvBbTmplvZjpK+u/ODgmtie8u\nmdQDoCo3ALCGk0qFeJIiihpC/5PGPheoffksOtVSiesBZw10kMqAwWqNrBud\nbi5FlBl56kmwRKZ/wvCma+nM+Ih1XKgfQOBeLJE5+/rO3bKd+44onHSOfA5I\nzbDaGKnBLQJ/ufq3fEu7jSsBtWj96FRiOSvrGKS49SMFuDRb142ip4Nj8/nr\nH6GKjQHHfn9DPaTmVwbYbsg20d9ew66QEDZcimBrepoZZVXE9joLE9A2kbbJ\nbo0oFyvGX1XixWkBIdokv4yeaGstEutDinO7toKpYpIjbNJJp3Z+36XVlYOk\ngGoVYbSvqzs2ECJoyhxL2E9SuyfHV6aARiDlH8rKE3cr3Rkg9iCbUl/8yMzw\nQ+Yq\r\n=O3J0\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.6.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.6.0",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.5"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "109e2b5f7974cec6fe37b127c2d77cd95b55e8d9",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.6.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-zopc4OLiU5ajfQyVct9T96XUNVI2jOaJtwA4AJd/LREEJq/uK+b2RF9WJF0nVTqe/9TAbrRjAk/wG98CVmh6Qw==",
+				"signatures": [
+					{
+						"sig": "MEQCIF4lBdIpa2RPk8Jf6vkXze0b5VhhhdqQWV6tUKnVMzefAiB43XFV1w0JD9OqIVwW8RqTlJtZxJL5NW93hrrMvXsEhw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31273,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd7i77CRA9TVsSAnZWagAAl/kP/j4ZCDvs6gXLW+cAegjc\npZBXjIWCCme9C71P+avc57FOiSZ66lnfmbIsUZkVIW6k1Fe2rnfQ8imOjkxI\nvKyTxl4dIR6IUNLUBd1cNCdP/B561EbO3EeqKUn6NaobdSkFc0W8U9oeTjAP\nDN+h8rHRfw3PeS7+elMrwAjjks3C8x0yOidc8FSw4KkThEBz1EKe3hFQuBer\nVYoV9N9Of7xDx1rS0/eV1TC0DaDL5kxFbyTY2dw13aOuoWDErOUNnUjaWBZb\n5gIWFn3wbfjElBpfoak9GPCNZQD/imIEsA0uk6k4ZyUczeFILipjhsGRr9tg\nZZDY+1aps6ycdcdVlBBpqefunVAZy4d+aQdyhEdlt1VK5az6M3s8U/VPlldG\nX2SRSpKnMp/FGFxHoR7PAoKan3imW1PQNAvNvHwNZwvZ0NVVkTduzkeHvzP5\nIlnESklQXz3pGA9fxrb4f8MB7G9mYDhKm5cWOpC7jF5+/6buOqrUzZ2gqLg/\ncDrT+bOi8jOvPhq+i+uHnunXXXJpA+JgaPF4KaG45BUSHxgrIjBkTyACBZ7p\nW1RwwqXslNeSbXODtyjiMN6KK7Tqy9QP2oun5QZFz32ocoyti7hMZvI69FLs\n6QLnCIVPNTXoKyWoH0EBbNX01Mlq2N34ACMO7JG/b63yqdN+5n7tIPHVIybV\nVku+\r\n=6mhS\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.7.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.7.0",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.5"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "630422612dec59aea4891f9d4f97b34688e63c7e",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.7.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-FSp+Lj4Bgg95mTGTiuYhzegNg8NPJ8FsfbqlTRSEjWof37TFPi48qHoikc2cODU8KJO/L/F8/hQokuJ7S8REXg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCF/Jbx2fEWRAO4tHsn6upRx8XXDV/iW0+I5fsNfC32agIgdQnNIB1Y0eGwrAVs9vdBoIFrS/7pjRW+EeEAbBTWUYI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35325,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd+h4tCRA9TVsSAnZWagAAVVMP/1qTkF3tj7W9qryJV16T\nNU2rUA3hapDRVeZyTyhdnWBLhUPeUmQsHTwT4Ni7zdFsqzAkQnv2Czm3FHgH\nB12bl6ezlUCiRgmYWi6Pkx8q+/RRSTxApEVtpE2WIt/45DIIcqtRaKPWPyPh\ndM/WGf73nxBZBGshQ+a/3CmTUbQqlJFAhqzCVrkpYxh4fg83hqqaHMXHZi3j\nlkRZjfA31X7XIbwB/SmQBFdXL9UH+xXgkav2XvuMzEhycHZJG3XZwQhq5OYn\nCPhdl/UJ5zLAntcNkuhXGlL5HDV0yveDnt0dAfyZ2AKYtQlXEcC8Z3H/Z5eJ\nNHQMNHJmSXs4cmxmqXDNCqbawxPh29vHR787JiVrZidqP9bWsGj9FGHqFCp0\n6Jlc9FCYFWoJPmnvDQM44o+tQtR37DdPSXdbGx72t05EnRjeynv7uOAn3fHJ\nR8LRZtc+/uOFyDNGszT4ymIyw+xHy/UVf4x9IRgUEUAn7iWp9JfmGB8KC1fb\n3PG4Q9st4UlRgEuct0jvGHsrMTCNGx6F21WctVabWeiqe008MNNoZePQVl4u\nNmiR1SYOECk7xSloUWJNM8ojkDM91kv6Fr/ANegB9sOCcRVSiSidpB7MHNob\nxlM8+tFJZh540i8+w7T5ZBoJUv7t/azMPJ0PpiGvgPfC2pqZlh3v0Q9e617i\nqBn2\r\n=A21i\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.0",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.5"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "8e55638c39a8f89104e9139bf289ac5c9b8968b0",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-wgA8jHXEgfXnfoAGERj5uy5+sOpEQfQeUph3KA0uPOx0saf7Tu4jZrIEbERIJcRum/utioCXj75RXWLgZxx7/g==",
+				"signatures": [
+					{
+						"sig": "MEQCIBHgweZsfwZCLL8Lb2wyEPBaXevGVAV930NujQV6xsVDAiAyHGbZmwXuuyA4hecBhnNmYVwF5vuQoekCXnpmPPTDoA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36975,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeDgTKCRA9TVsSAnZWagAACM8P/jOPDEwqB4G53Ip+NPFq\ngO8SB/j7H5iD0kr9RmLLDnJVeFyKs3AKM5P9RmGjYyMfL1Ib6/Ko0gS8B2XV\nyE+AKkJA1X92rw6CEzcLB8196nkqqpDN8fudXqij8wNkw7zK/a9mqeMPZmep\nw/qfCOoOtpXbCJcLgxUndsTk5zpVnymNfp6GG28YzR6WyUjEvawSDFfthAVi\nE2FPcPxefMgYNubhop9PFwqyEpO7Ptk2XX//gkY1wt7W7t6vSRakoP1KGXWW\neAEc5dskHOSaoUczrjvvel4FUqD6hyWr3m0OXl6r/m0MCCidvMTlRLcF1+OY\npvr1Ybt2abW+tW7kZbIWg9waLTov544tkbqXfUDM3MOnK8FUp2A4jqPYM3fh\nam1NBuQYXdH0S0o8JxXGCHtXSWzJI9NNwQju6QRZJ3wjrehxSIjPH0qzakpO\nc9/PhVfuNS9rfmRp+30YAkc/SvA1KDTgMCMGASBjILGyZJKyKz0PJigjVx4n\n9uZtWaaYQBaBlmMJPsVwmmYPzbhWMemxEY+OOD39kvl+ZfUGgtnmyTiFQ/Zf\nDGGbXV0VG5UpXkzlkEOO+l9aqLDW0uFYp/+1LnitfbwlrE5Q9S8/fJfWyu8E\nZh5Db+PL333IhIsaxf/ahiIoTLUdmZ7xOHpmaXgbehp/HtAuNeWJFGYMidRA\nJqCX\r\n=4vSS\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.1",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^1.2.5"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "9b1c31070791d70ee44405680ce978fcc9d96056",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-Qwd5kN4Xf++KKFrEN353L5bKqdEHUpaXG56UlUglwFSwZf3cjijD1JeLBwLTuiKhKt30KsmJ9xgiezWjKE+MEA==",
+				"signatures": [
+					{
+						"sig": "MEUCICyqWrBh5ap4hF04zeP2pZ6G+GbasEuVG2SzPogZEgqYAiEAjal1Pp2kHMof4DF082yNwKwhkcGtmHo+HU5J2Abfqkk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37753,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeJsSnCRA9TVsSAnZWagAAUMYP/01YRYQNG87Pwx71J3cz\nyFrYuyEuY7O4zok6woj7q2ZBfxclNk1F6KoV8HsuFVBJ4dKpvbJqRHcRDoYb\nEkWbSs8JaJ5xoG0XExP+ZasVaHqNybMMW4i+Km5vrVzNHiA9UBsRnqnjErdP\nY0FLW/B2vDkL5YZ6RqHXc4RA67VkwPYv1qClHEb7VIgLHFg2N4vQn/6YqEt0\n7bwhjc6grywqqYSDb3lufFkgV4EYeFe6whdQGxQ2aaXedgUpEItffBLYbK2/\nQuhg219KszOlfenlSurmuQHisumKqVv12UcXIDVAn4TBxZ8B6ruZWW0IWVgO\nNOjLHd4pKwv7VcwLGI0bPz76oJi3GwQmhRF9n7dxu0JUCE3DeFcRLuOT6/lK\ngWATTI4oxxUHfBbWqyNexb7IOi8wfb3nR72lOOtEEetIzhkWkPbE6m/9PZho\nglpsxqvXaRYy1P4UyXrjbcdmNGzNE7eF0qHkNNVsSvOIlASF/jZD9PkwlA0A\n+s2rvA5sjXD6PG4jjjoIFFR/29bs5xcSJ4uzd4IJjR8+xqlzgGhjeZ8W+KAp\n4qyG2qVIxL2ptLc2JoQq69EqsNcU/cYEod5joqBEwgNtz9xbinE93YrUM4XD\nALSzB7XEzl/P8Dvgi82izmryLWshsF9SS8K9xT/fPBI6ofSZmUxFbNSLcU2Q\nrYsJ\r\n=z4sW\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.2": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.2",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"lodash.merge": "^4.6.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "017dd622ecf1e4221bc9dbcac8355faa40eb3132",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.2.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-sJQK9sLVKtAWvPo/VlDNnZvGul0Oa8r/bMCRw2HByIpChGNq3wAbkayHjyoGegGCRqwksxHSqg64QUJgWGIliA==",
+				"signatures": [
+					{
+						"sig": "MEQCIA8JjSxabH39QEUpq7pIcn/TGyZyR5xfIEZaDuWEbffnAiBjwi4gBmuC+iPCMSZKDr6SqqtILrBYa/G38gElGcdTHQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38280,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeeOhDCRA9TVsSAnZWagAAhMkP/0SwZ1XYNoRfAYZnXykQ\nZl2XLqH1/3+FntBe7ZYCuklRFQfSLjH3DZyfMWruAFmQl02SULb9j1f5KN9m\n4E0Ly49SffqntMcWyytYrfVfsEmyRbhez9ReyYXPg2a6Ll838tHEPtdV9n3W\nLvvwfQ4cruQIcEyPqleYdU8ZW+gzr8L4P7reyf6itVDLdQH7mcBtsQrMng/3\n8jbor3/67MuqlPZAgPour0Pq4Zeh3ZORD/nCqqL1dxsMJ2zdY8LwHDqxLil3\nvDKQz7vXbJYz6qMfwsOSCSrRmpkdMGkFoYH5R05z0i59d2K/E9qwZurnZyl/\nSSTdx5+8Ltikzax0o8Hk/3gFTfT8mKykhbv/suzXLoDSaq/xpEMVIT3zsORv\njmZt3kX5iBURqSnrnuCZr/JrQh4ooObg0y1Bq9ZBTXHfTaKa2pqRnCLVa1dR\nwxak/sattCAlPwYHX4C97iz3f9U4Bi/5ykAqrm6MucK8oXm95VxB8rjD+OTy\npzV2PidcZdA/OcufXeVMFZMzR92+HHCPYKKAn9KVFD/ldqwoWMcsTRTSHFne\n669NOsWlhNlSR+jPacFRdq+wectU2+DvoDKfI/Ei41t8EnMDZCbsb7/UFHBx\nq3V6G0FHsItlVBpUUTbtwtuALxGvyNbKoVmgXiWXDTcZDXV6hEsmI09hzX4L\ny/Sn\r\n=8z2s\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.3-rc-a09d949": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.3-rc-a09d949",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "82841c87f5eb480746a192bb23f6653e5a2d9ebd",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.3-rc-a09d949.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-Ri0vTu8ibCjX5DBf14CsaFmkaKDYzg5CCDeNGEOzq2QXqDvYnzaRcAvQ37rRneoBmvt/3dSYb5pu4eQliXbHZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBcodbn72on6Uc85D3vZ7eYAV5tJtEVvWoRuHIF/h278AiEAo1zgQF2dW2vYrUyDRvGpeHRtsBTkNvhDiZc50+FM2A4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37775,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJehfYGCRA9TVsSAnZWagAAwFkP/3+U8sWf+2US5ZlCo+3A\nqOWN267RzDmtKmTthXUUtP/t/biKSQRJEbbJFjN4v2bHBKqkSfaWFX+vHhBu\nGRPvW4ASa5PZHGYzs4wiq6GXDXVp/aqvPxN/aF9ZkxB/tVBcNnXGltPFzUgv\nh2LF95x0Unk0Aifaw700gdA2XFxSbCJ28Z4lnakoSl2Ge75TnVaxiDYApfDb\nSFAuqeccSspAOvof086jqz6QYPU35m4xqT2vM2e1Xxx+/smqE3KGuEtrwP7p\nd0HzDRIOGGyYVwjz8H8smj7nFG7vdUdSV6n8PnV3q6+BYvHKPy6SMypcKUud\nGr13sF/fN7Rtyrgt6TeLYUpSYY1g5Uv2QNw7iQfE8MP1tmBD/vkRKgTdEj7R\nNE47bozrzoeIYe9P4jtOknVpPpqY8+u7RwSKInl5kTPbAbf4bjrQkxKrdMdS\nJAm5g/7rwk+tJpWtOE3HWpTxUIf4ahXad6eCgQZnw7j8PRnYYn3abXE826qO\nF/Wp/RXfU3FygQLy3wir03rqwetZa3av+ymd3GFCkQzRq9xuO7qYWclrP/Vc\nrWSWPxHKqojChkMEO4YR/8LSsDFwVZdawGJLUSxSWWMadzpDpZYVPjWchrgD\nW8PLJ6xJaXtywDKRrIKtazLGxRNzGZc2jqcYXqbWJWNv5s9v8/Q+rHu+Vk6W\nt5rJ\r\n=wYII\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.3-rc-e8dbcf4": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.3-rc-e8dbcf4",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "45e2df64232a01c5a91cd2d92605708af0db3228",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.3-rc-e8dbcf4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-y/++VNke847zvUUH51UGlus+59eiT3Bm48459+0mkRM+oglHfl7g5yi5d5e5w/K+ASQy4hZ8iA2Ym+JIu03tkg==",
+				"signatures": [
+					{
+						"sig": "MEQCID7AfxTIfAcF3IjfW6fQ7ErXuLmuVlFLDxSgRVOcf1urAiAWOc6HAz1MnAWFvoNIwxUT2VJQahvIsf+XElL7oj9eOw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38314,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJehfbcCRA9TVsSAnZWagAA9RcP/1Ih1jIKWg+mqyrPs6xD\nnHoLVDcuilcMuEZEGpplU0OIbr1vcQKiESfwNAPzHN1WPjBradT4JzSsXpIW\nKayZxCR8rQKgzEXiZi3MNokMJi4My1V+CuifVOikipgAFMHc8zm/pVKkBPz5\n6NNVses1MN8xYcK+NWGYFjZftEI0e0QwyM+fjbaGv6h/Cxqqhq4nJ0R9ZLGi\n3whQiotmiaU+sdGqTQUu8QvXkXU4ssqjoKIKWFeLZwD9YpcFszJ7wEv1s1kX\nBTAwq3HhMOgWv8ybi6jpik3RiX9iFukuGSH5XEJMPZeCVcBNUW0STns1qINv\nhyP75YDNqUxWV5HQPe0KXCeg46vN3hG6Iv47oOmT9T3G0bEX6E8KO74/lfJC\nbdgmJL8QOJSeihGWh/zZEN/PhPvXih38eyJwMbv/xuG2XYn6ip3bKTOhEUwV\nMqLjwe7YuwJr9MaRMBj6U4mR3Rbps68GQol4Vr2hTPPBC7SEx6Y5B59nuPeO\n8HBfqUSeHSSsihxWR2u9GZtCvxEm/x3Z3TkkFW4y9L4jbXIqzCOSVW4KxQ1T\n8DuGYvkQTz/K+zNNT5AHnrOBMJyb9svYYDFCIsfW4tbogTsZM27G+NWA6qac\nFEYIXxpg7rrKb/NrfcYhV/oudRvwuAS4jVBQydRPDyMKe55DWEbDr50k3uqr\nfrDp\r\n=sa4B\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.3": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.3",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^6.5.1",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "4bd2aa2a10ce62ba4939d676103eef417e427ae1",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.3.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-P0GhHWBgw11PRNnS2AM3KqJ3ukAlIDDlQpo8NOHTpi87DULPnK0aLdjZTjoX3Z0T8u2SzNkqTN0tRY/9vmaFsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDGD+dZ6LtiZeViECH3LYE9MAqDyo+aeZUFxwJ+S2bOUAiEAoaYjjo8FfXCXZIQGF2bFHxdYkHUdOps30CY0zaqhY2w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38292,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeiXl3CRA9TVsSAnZWagAASNAQAI9LPzKYYkUck9fa6iYI\ntbuYB5GmmJw7QSqxfzXaRO0m1Cu4w32m3qtm+WaIzM7H83191NM/mBi6yBU0\nor/SPhGQnL2pg1+YG1G4fu8ilptU3GYDtPW0jFb3dHgqRdmerQFnZc5d8mtC\nppnO2vYw90daRvdtwuprE64VVtNR5w11l1u2iWacALpvCWnlf7X6bT+Otmgp\nnT+c0GaKowIkCzE4iwjHHq8UwC8tZahpyuRAm+rxDkZlnqTnXi3Hd8eq6ufY\nepL7XeExey9ZBM6f+IgTOePh7v40OdZt+ETDh+Ii4SMw3ui/vKLl25uOKJd2\n3BJKBlYDK8cwgvmzIqvRGUCwFhM0jWdKNne/IQXSt40Wo4/A4PBzN/Ay+wmo\nBFzqg+OXpWOCyowZfiU00cFI0FwRc+tJ3nTZDW1R2UKXPOSFcCWTXginCbx1\nnBsfg4HpobF7AZzewBC52mraQMz4sBxcP2IIdZLYebE2vAJ25jCspZLGjhPs\nYjG1o7lD3zA8+OrEDkLaty6OV/ZTaAl9bTC9lKa/hqiKf7ad/8C1+MKMhW1n\nDru04YnwTRwXT0KC63LM2nMXKCpGMv9SbcDZ88URb/eBn420B5eOneGRzKdj\nlkHtx/g3daTBzgBqY8u1D67R64qbEPWrMQ/oP5CsZ3f+pJzMlERCiGhrhVWq\nNnFj\r\n=Br0U\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.4-rc-cfd3847": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.4-rc-cfd3847",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "b5f0b2b81747818d3dfb98f76beebb641a575cd5",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.4-rc-cfd3847.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-5pPM0kUqYzqwOkIL3OhyMNzklFUGYm66SwU5d2ra9u2g355l07c6VNR93GHoanrIWRImq2fal/Kiqg5JTAReBQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGRCDccvaq0mw9D8wnp1d4yJ4gZKyRD5HuWRVubsF4+hAiEAiwVDt2CevG5WRnBLwk4nklOtpnqcaEMbQOtAM0lHCpY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39102,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkPQQNACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUYw//QCvI/fPrIQNASqqnlSnETRQhxD1EZDjczExcZ89XdSN3llKC\r\n4nU2dhkhhefsMIuXU5iyTw6x/8l16NXfXbD0QwgPbUaLyyzL5cngegwTG8Nx\r\nlESj27ZD22LJcOp3BepmSQSWcpat3yGMqtZX5oasQ8iEqhoJj1ZWCodAn9kU\r\nftd3/JaebPqqD6MetNbZRdjmsm2w6W1F1/4PpbAbnjd9IJpjYpGM6fKQ7Npk\r\nA8QAAeNAUsjEFxQ9WbkDy5yb5hUa0fTSigrAR/Yx48d4VZ31BQaT4cMvm8sj\r\nMWZMCFnZCELFx55AElVICo1NXnn3SSmigJYvz+llV8z7w3DmB4Av30gz+gEn\r\n6+0j9wBOa3k+3foDBsvJzu80xKPKNrrbvr6pNSTcwpTF+sRmyLoa3SDHD1JI\r\nKaYdRGfo6gTox7SzFYzUx25mbpgz0agNkuzSBqnJPtwzqbPZk7afTKUjmI4D\r\nLfxP26ctzo/1D+t1FrBqKdX4ZMLLKaYZGECIF4GyMn59zF8y4ILj7li2s58C\r\ntxg+XNuCwd0SgK3LGRT7yU3x9lD9gK76+Yt6XShXrvGCcR/DBxd4OiIQkGq6\r\n+VjhKoArJ9VYK5oJ5vhVn6n3W1GT5YrvnD0AJaK8nFC6CjBFE6VQLDcjSK5i\r\nYrYkBE4T7T0qWQeRXlO/h5GGO9vuQZzf9iY=\r\n=fycQ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.4-rc-35c577a": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.4-rc-35c577a",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "72b30f91a4eebc410ff6b2e9c3e1b9d39172469d",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.4-rc-35c577a.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-LJ7/jdi2AtHaFF8jhQbsd9PzpWn6ErCE/whUeZ86Ji6hg1aFntsRZ14nTB51+o2NZ2ghdzHTBrPLhz1++zf9pQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAWaNFJAkNB/lXyw+h+alwi/zsQlM3AfQjzAeoLxQ5TGAiEAiwQeRLI15Z+oli7x/ga1h840SW56U5o4MNFvuNUudms=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39110,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkPSAjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpFsA/5AVLhkrgv7YmPPxZlex3bXaxZLoBSPTeWfJAyuzT/MRMkqyWf\r\n9G4lnWa9AdvFjgZeyEpKJvoWFf7/+qL5dfS2T8g37g2tz7eZ/bD3lhI6Mhqx\r\ncDQRiaehe0FzotgLMHuccl9Uy0xucLdc6+toSKd0lFmoZFkpPbMsHPyW+oUx\r\ntbmwuJXEMPP04kk9Z3XDvVrIzaBiMjrWEAs7tzUmH1ncNOHbKjxj1r/7Mwe6\r\nzKF5mx/tgDrDXFL23mlmWmAEoIooUgpOxqymJ+1hmyXDe71B+/WwHchZ9v0L\r\nM2luWExY37hS2MOi93o3WytNxyoVRQr0NcaT2GBSuhgPTFlNih/v9CZFilN+\r\n40Its3UEntb0vFbVUgMm01yKj9/NaNVtWLREEJPMAJhOOL1WPJcVSDyzEUgK\r\n0b2UwyY8S4r52eYGFtqXyXmZaZPsuB+i3Jl+Cw06Cw+Yxna2+/Ije3lmBGsp\r\naL2SXd49wl0ofqZae8Qyh4inQ1Mfgh34pxVy2anjPAWL4Gjagzj3P/Zaf63m\r\nTPzX0P6AAFbeqcKpvt1+dU1DG4fPO7L/9lrrDgG/cnNukBbuw3APuzuSQt73\r\nsHC/xtc01AZfXShmg+73OkJegvILRE+qpracJIjcQc+V6YYsqF8HINXbSbyU\r\ngVtF89Zy31xXF2H+888jUYo0Vfj027AwS+Y=\r\n=2/vz\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-617d015": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-617d015",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "99816458f726855bbac1e44f3b5eae195b972a69",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-617d015.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-2YK0oKDtau411+yDpNpNkINOzbTi2A2jWTqySbg5Zxt7l+fs4IdACrMs3pIa6Q9+e7nQsreokpTYl4N0BWpKBQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZXFLSL7SVR8yFRCLlVA7pd7ODYG7VGXSw/1IznEl8wAIgQsw7D+EDZdtA324LMMJtTG6P98TA5IczrK7MD+l+4/4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44379,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkU8HhACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqZ8g/+OQn28CIO0n8o1NhIn21vLDYQi0l0GJW2ZKCqRB1ONxFL5Ik+\r\nPH29pHwIIBvMB2EJLfeYj9s61rVgmkzon+RWeCYl9nXlWeJXmx7MD/+h7nuX\r\nhWgbquIgZl/d7/2V7Hq04xEaAP1fxrlVr1asKBnyunhGc170C19fIg60NafK\r\nyGHWYl3sIZor86YHWCSOJ/PzWz0m3+VGs0sRrYxjj7rw5gWJO4jcA1ZsgKNN\r\nfsXSypUka+X8UiEPgXt2hwdUkCARHsC+3vhJtCdHTDSP9MS+cC8Q/FptgLqZ\r\n24rVwcM2q7QJjUXwf8kjniIRfJFHUUoTB3SWG+HdOGamAQKY2lNUs1sngjj3\r\nROfiIiRLVxcL6/QPFIrqh7X4mqzrRRHu9anknahLvV0EtcEUgCWOBrBORWf0\r\nqmO37UJXoi4pHB1WCBl15VjRAj+xlEDnrII2zkB2ks/m3qKTGaDqBD6aY0s+\r\nhoaJRSH8JsB2vWhk+R4cKKEUoNrpjco7rHeg4CRqlk108Dwjj7salMDh27TL\r\nioECazd4yEFydR/rdkJ1132zysfJuELOh1j73uuXhpEBqkNl+YoPho50kvsM\r\nLo0lz9HTRqSruIMcjO5mC/Tsxk2QapTPMmT9keza6mwLiaG9dmSFWfv6Hdmm\r\n1I1ywV71NxxM/eKIGYW37CEchUl88B1WUXM=\r\n=hQAf\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-989f479": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-989f479",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "992ff526560186e8485609147d13d91722c55b12",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-989f479.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-goEyCzCHENf2kUWcVFMFNWXaO0OQuptVAXQLmlC0lCmhkk2dzkF14hTOJkDPO9TDiT3OfwJwsAA8YM1g6bpIyQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD3KAUUo7cOiUXijrHB91bn7HqJ1lWWaFmlH9xwmpVZ6wIga6KZLLMRQ2wGuYPndn/LFb835JQkh4DyQgdFUk015I8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44379,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkU8L7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmprxQ/+PNxKbjCTpl9U5/XHUVkzsFgw09AiT72AlJqgnTkONfhMDm5g\r\n/jndCigEzIio2PsGeCpvrKMMX+ZgOyKN6ng719KQ/gXBfti1Eo2XnanTXpCk\r\nX17n6r9a2JaER+mqVY9N9CmJtbq5CURFplwrcmAx4l2xTbsrvfG0xTkUnAXv\r\nLe8d2ZamOqNbJjDb/r4C0qH6lqfjgjfzIO3DL8EOYyYjYutC8iWYH/9OOXsD\r\ngrlDT75fm4smUhWs9AyU7e2Ju2FOVIxPk8zeZb0MfwfdcsZ5f0KCpSerK5cm\r\nSyx3W9+qyhNRtVRHeMOvaI3Vj7xvz7PfR25oWhW/yeCmRqWbXr8eKUDpk3BC\r\nM0SepvT4v2Y+6/87W9/Ct16b8oI5GcF9aZpmZftMtW5dbtnxCguvZq+Yt9mC\r\nefgu16Gt130DTlAJKS3FcTerwaDqRTegMg5Rc9qzhuUxxwiGMrxLN4cYycId\r\nPqIBztJfeM2Vq0Dy7M0PWocEyyXJ2Tb2J4kJNAK9it+ZcO9RfnAcSJCW8+yf\r\n0dPY0xLqzkpOBx79LL6IqaGdsR8pfmEArel4xICoo0inDoVJ5toNupFjVuqp\r\nGPLDPk3gNltm15ToFdH7aPZlH/yeCH39m0TMeEnJDqnustfVqhSjimfhCNnW\r\nYCTDgLVCLARH8v/+fIneOE2PsMgdnNmbyEg=\r\n=nCRY\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-2b9da0b": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-2b9da0b",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "15e19019ea8278e3f29fa896381755bd14b38af0",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-2b9da0b.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-gd+JH89pfrK5No0ECRXwlAZz2USMJ6TDbPC+j6aBULEx5tmt/00ZiDkbC8F78wF+m0w95ZHkLlSY8C268jlN2g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC4ZKNcerqt4sxpzBgPi4v87nFPEows1mmoJwkxt5ZNEgIhAO/KW11zJhjxl2RMn0iq+Zr/jjoKZrrVPoz+4jMUloKr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44656
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-3527d92": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-3527d92",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "616855ce8018a3ca1dbbce453571b7f45fed43d8",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-3527d92.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-mAuRVH4I6Bu4klVAvSqvi/Mmo88BrV3gBiO2VtqKgZG2A3lbtWmwHgR5W1yyqitq8y1jYSbR220SfftjpBDfqw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEJLmOiQVpAFlE8iAvBqv3+x1/vSjOFvsEIL7+h2DR4gAiAOheBKBHDwiOCSILLkwZr6zLNZPBWN+8O5CpUmSL6q5w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44654
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-52cc27b": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-52cc27b",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "fbc339e8aded3149eb53b1a787ea069133a61135",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-52cc27b.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-UMF11Mh3Vsh7rT7LwE6JR1el+/nPcJn/3cUT0zZm9ZBFYIechQC28GTK5JfbAgjoyGPNx4Nf9+aA9MdS1TVuYQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCzEWEqSBCHpeuJiJ9FVLHSSY1rI2t65nPjDGmxyJUi/AIhAP1nxDoz1YXAV3dbw+zORxYCzJ3FjT/l8QOiB20Sg8V2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44654
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-d4e70b7": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-d4e70b7",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "bac364aee13e679c5b33759142d6d9414c07d9ca",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-d4e70b7.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-6ZbiewmFcJXih0JCXY8sDS7kINXITuHf5Q9OKFgCZ4oDJtgnj5B7lfw04ruDgFX+QczKbP6CUSD8lUyDZ91X5Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC/lvNNGmBPKYlDtJYVVwVmKIayJDyG8jjS44Ag1fqftgIhALKLQmNrWnPoBT5ntIdb+xHSeJrZM5yrhAOyQkYzGN6W",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44654
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-be6ab7b": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-be6ab7b",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "e435bafc572e14908e137eac17d3ce05b76cef3a",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-be6ab7b.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-E7lg2qit+ivMIq44sl+vKjklpTqunbYWuf24Gn6Hk1yvsLIo2QlJ/gnS3kocd98/5XDcrxPlGCD+ZFj7fvjhCg==",
+				"signatures": [
+					{
+						"sig": "MEUCIELXn12x7xo28d/35VzbdMDU5lJTiYu4veA5Nn3t6iLDAiEA/uY9vU05fwaN9lie+8a6oKybWGy3/0sAScN1yyzZbNY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44654
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-c6101c9": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-c6101c9",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "5eb186a9e8a004a2d73906cf94653a3e313fdaee",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-c6101c9.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-XqeDVyEn81+ccsicIltxYydXkcU/vv75DGvgAda3oxJ8g1GZj2t2zKgRIaVExIpRmBADul1YqUllPaea7L/sbw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGwkcy1k4nol0Xwe5yli7dhJspdHhogvjTS+yTztLNr0AiBGNbR/l4tpBVTh00KvwCVfFS0E++gRinIHyOuKaRYW9g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 50168
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-dded3b2": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-dded3b2",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "90aa7043e1631cd97c22c8e22c509f894514a673",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-dded3b2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-R0rKcQIUPt1U1CaNCKlttaAG6hN3NWVUldqf67BwIphVlsayS9x1+3VNWn+a+F3xpn1rzxAlTH+273sUGVbMWA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDZbAGaXOUqzG37evRGlgaZknrA+oCP/iQwktmowbGYOgIhANS3Nb54URjTjivU7a24WdrmZEakXsZAcKkT5puET53o",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 49824
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-1dff4e5": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-1dff4e5",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "6260ea364c60a96e11f08ed116f3878d0fca28f3",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-1dff4e5.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-HCLo9+d+BXY6l3+wvioeQ022iTzwfgCsFH9U9rMpgc2IU1O1WWiBb8fqGkLE4/i/GBdxzEUh1QtK2qwG6yR6UQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIG1J5ShkSYVD/dEji8Mao6lTmXt7Yx9d8226k22iTQmuAiBbtp0rKgOOWH20+aFH7nGaT/KLkBpIwgbLGPVvuTuS2Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 49758
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-b2c4588": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-b2c4588",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "43c49d755fb191c2583400a009f21b6bf939be14",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-b2c4588.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-jyeaOZuDgXZYH/w20Ly+reZ0sJojkxw4Jx9vTybxSPwpYf4nnwZfxrVxFsN4/8r4UJB93pGLnyZxTJ/dKMBgzA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC3OhMVVobKtwtYV45dGLhKdTg6HVEXBd58ejTIpZkJPQIgTOjOLu+gxriXGn3GBHtS991eH3OCmcQ3TY+pXyOM6q4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 46738
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-a7d2bbc": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-a7d2bbc",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "91a9a6a0480d4b39c8d3e38f31e488800220aab5",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-a7d2bbc.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-cxQQ4ee+BcFbOgrKT4IVde591yT3yInsIVNiVnrqMC+pe5Y10+aWlIjrDE3itAD8vkR9YoKAUUzOBm9jVO2+cQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD4E7jDIJNaBu9IDPv+TIhCx6GoRMgJ3nFofCROPEqUZgIgROpPjgn2Zav7kX7Ibk+vgLgUTfl3Pixn36JJ+jqiysM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 49758
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-4135a49": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-4135a49",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "ef578394cc030aebd3a7f66c3b6214c2eb62c257",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-4135a49.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-d1J4l3chhyMkSOQcEi2YrT01sMok3VrLzMkzgIVtkrNtVnNjtlOKzzBpHsjt0aY/309DEkmlPv1occD8doqQow==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD3m51IqRrGQhsnQ5YOWXpjYrm0PHYisZlHCp8FcvGsegIhAMWgGXvknLlYWlXkjZgF1ISgBbFDIVT2hk8WZXVL71dK",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 50382
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.4": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.4",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "58d3e883dc673b67589d6225b6005132cc857da0",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-mbtaGSbU7NcU9NEzlAnY92Bvso7MHirsvOjFi5Mr7NJv83eMO77vg+LTD+Kbi+sOd1Wo7NwzI9V61bMZPX1ktQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCZA3pplsFc+74fiS8wAr3fLWWTusACCKiPYnRI/xft+AIhAMSrQj9rRNEoilVJtMZ588Crwiqcsv71+D7x+iKjce34",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38396
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0-rc-9a9ae6f": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0-rc-9a9ae6f",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "8aa962cfca27809dc0ca7997c6c4e5f89f2b1c04",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0-rc-9a9ae6f.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-7ypTzanTXqHcfIjgkfhnV4tkecGUll0q80+mdlF3fTMk2OJvwI1Y92Xn/W6XwsRbE7VJfQo/HTww6gqVXSd7Cw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCtz+htx0irClyYm0q0RRzVpWaAklFr1L+av1PZXHXvEgIhAL5F6mhEp5W+GEY6cBcCKsL5JXwsHQL6s7Hno8EfE9po",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 51620
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-05b1cde": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-05b1cde",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "4b9a1e3b4cb2036a1f894a0091c3a1f15d95746f",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-05b1cde.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-iBwdhRkXBCFQUSkyoxobBlK9x8CxnTlIf+MNA+DwrjZ4r2ekITizsdPD++bYQWs3AWsJZyZ7hHQUxYtq7cmkaQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDSgZA8R0d2p+ztrLGTh5U7iVcCIX5hj2D9YMndONzWZQIgH1b+fYjieT60pWnIsIaSRfYxAmTil2fqUES6D9ZVbXs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52036
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-e8b1c60": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-e8b1c60",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "e42e1eb3b2a60f932a018fe36e7f743e0f9a55ad",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-e8b1c60.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-S4p20F1jWSU6r/CJrDVJZdPV6SOkRzbI6EEeKk7ivV9G1d1U/JTUivTZvQR9okMfxJoLOOPhyFGwGSKFRQEDyQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFS/JcbZfOB5OEQE+1m3NPdACGLX0CYCnxUW3NISCJRKAiEA1txl/u6gfoFglBjVR6raDO8p1WAZ69BQC/4s2FtAnHo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52044
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-fab705e": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-fab705e",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "857b65ff68d8bf1d5fbf5805001172e9618b0d01",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-fab705e.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-qcnNVgE0lt2QlZX90dWlGpHK5z/0ZcmMI1VVpM+4it29thv6jGGCv5/qljcV0xf8rqHZPESfnaEojee3n8e38g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDD/iNJCms/9yEMittg8PQ5CiKEuP6uEqvmw3ty6qDCgAIgd+4w2I+FSwVGB7D27OyOwJxVcydiqQENN9oeCqwUstc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52054
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-b6671dd": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-b6671dd",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "5bc9a74f9767e6e4106409e20c916df730e67da6",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-b6671dd.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-UMrZzPIha5BcE2Ca9PiNNPc7YHgwhoHkdsCWIEU31alHgph9vx/UPhCxwPue9FKz8absh215dCCRMqe2qwielA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDJ71rqJkLKgP0k4Cw+lLXNskIfbGO0zPhxZMbYLdvcdAIgVNn5+KKuP922Yinhki2F0ST+qXiVRuvqdJc2hWV4Pxc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52054
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-a2d6566": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-a2d6566",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "5e195cb85eb32ee09916a7f171a56ddefdeb3125",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-a2d6566.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-fXZiOqgmJUFEDrKKL7SwQRg457jsyXUgYLQe01LVnnEkZwUmgF5y20B6A7NOb4K0M649g0QFj14dTFNp7ppXkQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDhxaYWdUvMnV4yZfBjQMRZrRH2qxcvGquaG6tp68sQTwIgQE29lwLn1J6f2j7n113mCkCwPBeZI5J0Avzy6/reVA4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52054
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.8.5-rc-0e57bba": {
+			"name": "@fiverr/i18n",
+			"version": "1.8.5-rc-0e57bba",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^3.1.1",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "3a7107c12fa8201c1bd4ee5433af862278bcd594",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.8.5-rc-0e57bba.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-aDHJdu4IMGaZBG2wMw65f3f5uT++EWetkrOxVGlgePmTJAjoCsmfoQAPgSm+elWnYGq1M/YgX6CSbgr0PjRDPw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEMcBEh+ct1Z0P05756Z8mcGgaAa/qUD9Qcwala+Y+6cAiAeS0dnyIYSwOH20DJdHTeABJ0n/ij/wqBoTPsfwd4Q1g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38426
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-e892c7b": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-e892c7b",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "6f8895af789fba3f622ec7e98871af577a8bb714",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-e892c7b.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-fUGQiLZThp7qU7718i4F7WfGoupNgTNbpN6Pgv6BQW70+i6B2c4POganTrjS+77E8yT4IGQqOv/CpeWa7exjSw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7u3NF6F7s62LqG27IValPl7z6pu22+AH7skooKkmyJwIgNyMK+v2O1QOSgeL6s+JvOkbVyVUt8lti7m+ijGhlf6k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52154
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"2.0.0-rc-077e494": {
+			"name": "@fiverr/i18n",
+			"version": "2.0.0-rc-077e494",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "1d1783b61834b37e86eeb4f815afda3582b2e245",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-2.0.0-rc-077e494.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-hpr4UkBmdNGBOL17rekz56ySbw6YBZB0cshGZvStY7EndPiv1t299mYIm/y7CtVr4OBkLgGUsrIuFsk192/XRQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDXABX1JnfYOpnLkFR3prf+V6J4gefU4E6XOej+9Am+jAIhAOjvISddE2kJTxj28vh28ENpV0fNEFU3YeHWjOP/3BaX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52154
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.0": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.0",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "ae70de31ac639446b62f00f3b6696822ae4368f1",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-R76iJISzkqwq9nGyjI2jwOxBbkBRFhOG2B/EdjDDnOqJopk1g7Y8hFjhWjZw3ipcyA757x1qVa8fZFCU/aLNzw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDFA5vE7BvjTCWoGk/6pwCDGyP+K3MKNwtnEad2QoV3VAIhAKtjflz/LZvh5FJjRAXeWyu4sFPqgYaRwW096BuIK+KO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 54177
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.1": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.1",
+			"dependencies": {
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "7a85d69a2222b6fd5fdf0e9c935f98a65acb2ad6",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-RWHMvky8USQCLjLFNH2rKvdznCMQAvcfPdl/CVcvwHo3tGsw8hyLphN5L6BJsKbeCB3DEH5WXyCyczdI8988Lg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDcTiD8VtaayvZK00UvR7aW4+8qSfY3s7/jqp2oPefnnQIhALuBQqBMCPGq57f6Ra80x5jn1bZuT1l9hRzad9hQ4Yqd",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38396
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.2-rc-fdc1541": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.2-rc-fdc1541",
+			"dependencies": {
+				"lodash": "^4.17.21",
+				"paraphrase": "^1.7.3",
+				"deep-freeze": "0.0.1",
+				"@recursive/assign": "^2.0.2"
+			},
+			"devDependencies": {
+				"chai": "^4.2.0",
+				"mocha": "^6.2.1",
+				"eslint": "^7.2.0",
+				"import-fresh": "^3.0.0",
+				"eslint-plugin-log": "^1.2.3",
+				"@fiverr/eslint-config-fiverr": "^3.1.3"
+			},
+			"dist": {
+				"shasum": "e9054e8b8abbf3a56a6ad314b0c038ce4fdc262b",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.2-rc-fdc1541.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-01Nib2vLED8dkTKqFQ5jlQj2JBKyRLy24MvBji+ifcJy8tDy16OBTF8beKmwdBm7I3E3vMaDJPM1n74HQsrRGw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHiGjP+F6zpekoJuSLly/o+S7jBzyoW5OgjdlS9G2TqLAiBssSz2Pxz18uejppaiMhq9rIv2Qs5cZoYSRO7bEn5SoA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 54211
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		},
+		"1.9.2": {
+			"name": "@fiverr/i18n",
+			"version": "1.9.2",
+			"dependencies": {
+				"@recursive/assign": "^2.0.2",
+				"deep-freeze": "0.0.1",
+				"lodash.get": "^4.4.2",
+				"paraphrase": "^1.7.3"
+			},
+			"devDependencies": {
+				"@fiverr/eslint-config-fiverr": "^3.1.3",
+				"chai": "^4.2.0",
+				"eslint": "^7.2.0",
+				"eslint-plugin-log": "^1.2.3",
+				"import-fresh": "^3.0.0",
+				"mocha": "^6.2.1"
+			},
+			"dist": {
+				"integrity": "sha512-PIvel/AUObad9xjSEGb3m3Cr+hRVZy6GZe7T0fjHACvA5ys8myI/kcAwpuhkjfs8GhMenfBCLapRHc+hfh9g9Q==",
+				"shasum": "0b559c712dc73ef2ca789f5e44c2b0362da31bf5",
+				"tarball": "https://registry.npmjs.org/@fiverr/i18n/-/i18n-1.9.2.tgz",
+				"fileCount": 16,
+				"unpackedSize": 38396,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDIZtICym1WzlW2eEiS8QdVFR+239EgtGI0bwaJ3UQdpgIgEyDQPP/sXkycKCks72U8KcjFvTw8XjUp8+PL+fegQSI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.9.4"
+			}
+		}
+	}
+}

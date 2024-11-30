@@ -1,0 +1,120 @@
+{
+	"name": "microsoft-adal-angular6",
+	"dist-tags": {
+		"latest": "1.3.0"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "microsoft-adal-angular6",
+			"version": "1.0.0",
+			"dependencies": {
+				"adal-angular": "^1.0.15",
+				"@types/adal": "^1.0.29",
+				"tslib": "^1.9.0"
+			},
+			"peerDependencies": {
+				"@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+				"@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-AU5/WfeHfyb/YhSjewaS/Cqr/SttV1msg33yReH/7B3EtBwlI3+logvo3ez6wJe37D/TYHtxXaoHsX8fYQOcxg==",
+				"shasum": "f8000d8f875b86596e9ffe7d7cd876fdd87447e1",
+				"tarball": "https://registry.npmjs.org/microsoft-adal-angular6/-/microsoft-adal-angular6-1.0.0.tgz",
+				"fileCount": 26,
+				"unpackedSize": 143592,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbC4N8CRA9TVsSAnZWagAAKoEP/2Scuo+3Zrk/9nkyE2AR\nI3TRAE4FZt+THhngOY813WQm9TlEnx0ZnuL+n6smqSh8zscGr4jXhm5SMb4D\nn/fgEhTocQJbjNHPV9qieONGbOJSPO35krKTRac4uC/N0L+Yz43wbo2DoX9v\nmZAe47u9JtHDIuq6AgmNzy15rs8j5JtUUYlEvXx2DvISGq8RkgJEWbA3cbbp\nEmFiIvC0T7+RMRpFgc1UkzAvJHmQ4zh40u3LZPUnLxGf0ihE78LQvqqtznrz\nOj230szPiB0QTGDTucyzy+vUjKwuWGc1YXKNWxHAJW+6K1la8GPaQPj590nX\np3JnMgPFc4a1LSQF+kjAeDKGNLHu65vXACKbwdATJR1npkq0kAbutF4djN3v\nIWi3CoxcMAfdR7bQdsVwrDzb25hvdBJAjT2/hhmrTm4L5l81neK/R38slC/x\n0g1cTgb3imN/ydMxyOplUmUW9Bi8y6hKL+/5FOOzuUfIcGkUs0PdrTDGUR2A\nVXlXIjgd7snMDouVz7xJb7m606FovL5tKXjBYf3ptE3KdXO4sulFr8vgUd5L\nQw0snYzxySaQTtEA4JZ8TGQSxo65qDDsWWKEelRwqkbVLE2ZoTmHbK7RoJo1\nh6R1XxFASQHfgptAsk6WtIv2qV243Ubh328bPY3OZUcfJ/dxCbNS0+907rAV\nj48q\r\n=hoUn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDKrLLK/Sz5v1ayiLSiZfXP5CL56FGMxlv5LOEDEgUlDAIgPMW/cHNBjrEMry+Gf8n3jMv8rBVkmjFpxytzRhkaJRY="
+					}
+				]
+			},
+			"metadata": "microsoft-adal-angular6.metadata.json"
+		},
+		"1.1.0": {
+			"name": "microsoft-adal-angular6",
+			"version": "1.1.0",
+			"dependencies": {
+				"adal-angular": "^1.0.15",
+				"@types/adal": "^1.0.29",
+				"tslib": "^1.9.0"
+			},
+			"peerDependencies": {
+				"@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+				"@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-k4z6M3Hj7c2S3+DFRJsWbq0CCsPaqTiIw2gJFLMDbKOMpdvQNYJQsABN5YD1W7yft++V/g4LveLWR8VISHTG/A==",
+				"shasum": "87dc142fe93307ae44c8f9957a42b311292d889b",
+				"tarball": "https://registry.npmjs.org/microsoft-adal-angular6/-/microsoft-adal-angular6-1.1.0.tgz",
+				"fileCount": 26,
+				"unpackedSize": 147790,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcMFzGCRA9TVsSAnZWagAAapUP/3gc30J9fRu4XWS1WqA5\nexs9ohv5yG4DLBNWrhE2T6OV5kgNSg0JRFv9DdB4TyPw6CzCrBb3RTqnOy4w\naAPNHwE2fkos1kI86cqB5fzH12+7KZZ05z6MycmZqnEtIHh3Gqwf+yceLwkf\nfbW22K4PnkQbTuT1EE0zw/2xYjwHkJz8PfxN7FSkiASBmbIz/gK5zoh6dg8d\nPi27fA/H6qwHVoh4m7kxS6O0/SQhhwK/Ddi8kURbMPvz6QnQbJVenG23s9eO\nroM9RGk++45UP0EHEhU2cmCv2FfeJ0SRBfeZwEMUl585yanADJHWusV38Mwh\nOoK+vEIj4aakhFJS9cb4SpGL+cGh7eeeS0biaiYN8OEsj9JteYTXdK4RXISV\ne/TSWFE4NjxCxKMm76TClp/TiAUlhSRIvZnvEfF/ZwLDIMyGsSOkV8LTbF46\nObG+y3EAJVnCKOEQBui1GrzkMi6gsbL2t8rOHIs+xOD/PbZT3T8clRWGrzUm\nIoqHN5WJSR7y2nzE7/ESghrvaSHo9Vuf9dcS6BNwucmXWWHF5EDwnEwfK1pq\nujgbOgorE3rvpbWdKElR9oHBe+se3QyUEJiLksw1yl8/eYMhhmj0Ua70QMF0\nt4/m9Q6PWJ+Bt48ysWzZtz7zKtRZ7AIzmEGWGot5pUS/LQD0Wq1CwQhYaMjF\nnm0t\r\n=ZS+Q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICLPpMtLmcj3Cw/HVnjJKXVubH5ic0eK50EuYlVCFo15AiBFVw7YUIsZcdsGsxayBfvHGvukeHs6ERLjnmUv8JsqCw=="
+					}
+				]
+			},
+			"metadata": "microsoft-adal-angular6.metadata.json"
+		},
+		"1.2.0": {
+			"name": "microsoft-adal-angular6",
+			"version": "1.2.0",
+			"dependencies": {
+				"adal-angular": "^1.0.15",
+				"@types/adal": "^1.0.29",
+				"tslib": "^1.9.0"
+			},
+			"peerDependencies": {
+				"@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+				"@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-CwbECqPCXT1LM4Mz1M5zKObIfZL7La/dObe7iToJvk1L2P14BJcnuif0CAH3SRqs0MnPgKvdtFo84a/cg4JhqQ==",
+				"shasum": "e535755ede51cb355e9f7213894ae999889dff1a",
+				"tarball": "https://registry.npmjs.org/microsoft-adal-angular6/-/microsoft-adal-angular6-1.2.0.tgz",
+				"fileCount": 26,
+				"unpackedSize": 151302,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJci/FgCRA9TVsSAnZWagAAXXsP/0Vo9qhkb5c/OlQUNq2J\nPntqyhZpq5iWf81p/Y4QBdkq69y9yKRLB4qkCt6GtZMYntwuupiruAXqfkB6\nM4uzvHmJkQgBLm4oA7T52fBDZFObvlJuLN1y8ThAg2Bh1ob2TzE+RwsUNGsw\nYyl6jE+KODMQRnr1/lBUvVAXT9RFMZ+RSvFnLJOW/ei3b3Q07fiCwaMgRUqY\nHsQtEr2SKnTP99IeqnQPwplRigsuOo2nUj3WOfo7/y/U6su9I8tqfnLBKcft\nj1GRKe+liK6jN+W9sr/OU+n2IkOVkiyQpbRW0xTF1YUZ7Ot5KIP3c0a7ZOiV\n3LSqC1KjfUz8WfmEM3PUl616g/TotyW92Tz6OXDmQhRepULH3byusLERtFAA\n4ShLqhdF4JdtVO8Epi+2ONmK/OOckNl1M9KW5mr454ptuo2Wki2x9sU+2Smk\nuO+Lck4b6p0ijXR+OyJV60DfbnRGyZLa45A5n2ZJlgl9gQXzw8eKO2+rQBnc\nVrgLDUBRT4ZAiqOdLu17LCdUDDGsogOHDKE6uOIkpGi0P5A88KP5/XKdH7IX\nCy9SV7taYotwMzrcwoMaiXOoL09+ul7dUWrvDvcmfX1QnWku2Z2ZtqxS4A0t\nipXvt+R9ZDtcoM88VLOdHTfLX7HCJ+pwHMXVX+YM0wcmd7dGMcxhMTZAlBnn\nkGa9\r\n=ulp8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCvqnK/5SzH6xgOnppX0uMlfxq7+2ntC6y0GAtIy9SZaQIga3xQZEC4yGTItxvJdEaxb+/hFA20hAlKP4pGYJcehvw="
+					}
+				]
+			},
+			"metadata": "microsoft-adal-angular6.metadata.json"
+		},
+		"1.3.0": {
+			"name": "microsoft-adal-angular6",
+			"version": "1.3.0",
+			"dependencies": {
+				"adal-angular": "^1.0.15",
+				"@types/adal": "^1.0.29",
+				"tslib": "^1.9.0"
+			},
+			"peerDependencies": {
+				"@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+				"@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-kr6pinOpabP7rcSsI7FSuAar6nNeMNB5pZai4N2dCeXnvOrHy9uAM1QjC/ap/lkuc3e/O/eWg49szWMqUvUV8A==",
+				"shasum": "26245953e4b9a6db067d42d4e5ffd0075dd17089",
+				"tarball": "https://registry.npmjs.org/microsoft-adal-angular6/-/microsoft-adal-angular6-1.3.0.tgz",
+				"fileCount": 26,
+				"unpackedSize": 146380,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcoGR3CRA9TVsSAnZWagAASmAP/0D8/vlqF8PMfjxL7Iss\n0gAAITGo8he5Eho8e7DkRDandH3WrJVLLpkNeQKnl2eDqbUUBj3qPGd5nIQj\nLwm4Slsl6GjKcjRBmTn/iaPMgkEaHD0P4l+bjLrStnIYW9pUDbGbaMlQAAAZ\n0u6qPGuoafLaO9LsyxYPxF60ct4d1rQumwqBEq4hsBShYFzcIg2oXbVLR/EJ\nHZiTPZoTOXBug4Pmv3fqCLOd88Bjg2uWPx/stXHJ5TSwIfi4Sm9h/l7iFQbR\nrkaEbGyB5nTLslQfl+QtwGYIuH+yGHpUDnw8RbJjW5SunIeQTI7wha0X1rNd\nrpZvlBL+nHBlREfdFwZus7SEhuYJjZ5vf3O67mWEF+qb+/I4IPcPnWx4DzfG\n29c4FPJdYP+myOag6dBuya1ltuzu6nY7M1mCjmd63Y2tbOqajCsU6rs40CAw\nNK9ZsiUGqHWoHeZ+yCshh6H4WhC3EuvXBWTUc7DkZJobcM6LA78TLPFxu+sk\ni2540ZRTb6aTk5LYAV0cvP1II0opj0wDVP6vkXzu4V/hKyMSEvBBQ6ZvQXCt\nhulFM1OftpcrInQGGPzU82yGwwlr1BjF/G65duwa+1KBK/+u351nyvhasrVM\nZ8qYCLqLBU0piQr8LMdpqO3OfIwjFk+BffY3X/shJFi57OQoyCkUvZG0SbEX\nOgfd\r\n=DywM\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDANkVG0dDj3KWtvaXfbBAbhIFN/r5ofNk7j3xRTlzl2gIgOYqe+hGEvYEobt6nMvp2YMi3CfcdhE6tpe5rFSLAkYU="
+					}
+				]
+			},
+			"metadata": "microsoft-adal-angular6.metadata.json"
+		}
+	}
+}

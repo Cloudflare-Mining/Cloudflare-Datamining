@@ -1,0 +1,167 @@
+{
+	"name": "@kamino-finance/scope-sdk",
+	"dist-tags": {
+		"latest": "8.0.2"
+	},
+	"versions": {
+		"8.0.0": {
+			"name": "@kamino-finance/scope-sdk",
+			"version": "8.0.0",
+			"dependencies": {
+				"bn.js": "^5.2.1",
+				"decimal.js": "^10.3.1",
+				"@solana/web3.js": "^1.78.4",
+				"@coral-xyz/anchor": "^0.29.0",
+				"@solana/buffer-layout": "^4.0.1"
+			},
+			"devDependencies": {
+				"chai": "^4.3.7",
+				"mocha": "^10.2.0",
+				"eslint": "^8.4.0",
+				"prettier": "^3.3.2",
+				"ts-mocha": "^10.0.0",
+				"typescript": "^5.5.4",
+				"@types/bs58": "^4.0.4",
+				"@types/chai": "^4.3.5",
+				"@types/bn.js": "^5.1.5",
+				"@types/mocha": "^10.0.7",
+				"tweetnacl-ts": "^1.0.3",
+				"chai-bignumber": "^3.1.0",
+				"chai-decimaljs": "^0.0.1",
+				"chai-as-promised": "^7.1.1",
+				"@types/node-fetch": "^2.6.7",
+				"anchor-client-gen": "^0.28.1",
+				"typescript-eslint": "^0.0.1-alpha.0",
+				"eslint-plugin-mocha": "^10.1.0",
+				"eslint-plugin-react": "^7.27.1",
+				"eslint-plugin-import": "^2.25.3",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.3.0",
+				"@types/chai-as-promised": "^7.1.8",
+				"@typescript-eslint/parser": "^5.5.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.5.0"
+			},
+			"dist": {
+				"shasum": "5d56efe45189a74752c606b3a7284b0a3f7bbe21",
+				"tarball": "https://registry.npmjs.org/@kamino-finance/scope-sdk/-/scope-sdk-8.0.0.tgz",
+				"fileCount": 734,
+				"integrity": "sha512-Lhs6WNLKmtGZNjkgLSSYsriecs/fsUAg4yUqlJuyhpntGmMF+G+IWeihSz/4ZWG0WFQefEkLJx8bl7+RFIhLjw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDFHcKYlCP9ZDQLEBMh3cWDBKjD8v24XbfXjGG+wrI6OAiEA9S3gW2JkuAty5m0V7jLNHPwYQEZCdaTTNygjwZRd6Y0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 3763850
+			}
+		},
+		"8.0.1": {
+			"name": "@kamino-finance/scope-sdk",
+			"version": "8.0.1",
+			"dependencies": {
+				"bn.js": "^5.2.1",
+				"decimal.js": "^10.3.1",
+				"@solana/web3.js": "^1.78.4",
+				"@coral-xyz/anchor": "^0.29.0",
+				"@solana/buffer-layout": "^4.0.1"
+			},
+			"devDependencies": {
+				"chai": "^4.3.7",
+				"mocha": "^10.2.0",
+				"eslint": "^8.4.0",
+				"prettier": "^3.3.2",
+				"ts-mocha": "^10.0.0",
+				"typescript": "^5.5.4",
+				"@types/bs58": "^4.0.4",
+				"@types/chai": "^4.3.5",
+				"@types/bn.js": "^5.1.5",
+				"@types/mocha": "^10.0.7",
+				"tweetnacl-ts": "^1.0.3",
+				"chai-bignumber": "^3.1.0",
+				"chai-decimaljs": "^0.0.1",
+				"chai-as-promised": "^7.1.1",
+				"@types/node-fetch": "^2.6.7",
+				"anchor-client-gen": "^0.28.1",
+				"typescript-eslint": "^0.0.1-alpha.0",
+				"eslint-plugin-mocha": "^10.1.0",
+				"eslint-plugin-react": "^7.27.1",
+				"eslint-plugin-import": "^2.25.3",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.3.0",
+				"@types/chai-as-promised": "^7.1.8",
+				"@typescript-eslint/parser": "^5.5.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.5.0"
+			},
+			"dist": {
+				"shasum": "479d1a35b63512848d971a7e14d90071457b5a7b",
+				"tarball": "https://registry.npmjs.org/@kamino-finance/scope-sdk/-/scope-sdk-8.0.1.tgz",
+				"fileCount": 734,
+				"integrity": "sha512-FDgPBkKOf3trbTT3nX9OBpHSL9Nvvw34WJXQr9cxQnzz8/yb7+R1WKhbCpiO9NdLg/+EmkXIA5ZnPVJkdfwolg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDB8bEV42R32E49ps0CZwHjBel9zcP175l1dpAJPPyUmQIgH+GQGROPP69vBCmkQuNU3laAngdnWcLGLYjRl0gqecU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 3763850
+			}
+		},
+		"8.0.2": {
+			"name": "@kamino-finance/scope-sdk",
+			"version": "8.0.2",
+			"dependencies": {
+				"@coral-xyz/anchor": "^0.29.0",
+				"@solana/buffer-layout": "^4.0.1",
+				"@solana/web3.js": "^1.78.4",
+				"bn.js": "^5.2.1",
+				"decimal.js": "^10.3.1"
+			},
+			"devDependencies": {
+				"@types/bn.js": "^5.1.5",
+				"@types/bs58": "^4.0.4",
+				"@types/chai": "^4.3.5",
+				"@types/chai-as-promised": "^7.1.8",
+				"@types/mocha": "^10.0.7",
+				"@types/node-fetch": "^2.6.7",
+				"@typescript-eslint/eslint-plugin": "^5.5.0",
+				"@typescript-eslint/parser": "^5.5.0",
+				"anchor-client-gen": "^0.28.1",
+				"chai": "^4.3.7",
+				"chai-as-promised": "^7.1.1",
+				"chai-bignumber": "^3.1.0",
+				"chai-decimaljs": "^0.0.1",
+				"eslint": "^8.4.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-import": "^2.25.3",
+				"eslint-plugin-mocha": "^10.1.0",
+				"eslint-plugin-react": "^7.27.1",
+				"mocha": "^10.2.0",
+				"prettier": "^3.3.2",
+				"start-server-and-test": "^2.0.0",
+				"ts-mocha": "^10.0.0",
+				"tweetnacl-ts": "^1.0.3",
+				"typescript": "^5.5.4",
+				"typescript-eslint": "^0.0.1-alpha.0"
+			},
+			"dist": {
+				"shasum": "4d455af1b3dff03c34a86fd638efeef4797d65bc",
+				"integrity": "sha512-sAk55REz9bJknQXYYld+IdXdhYechw1esaPU9372P7n1oUSdkGRCFjbKUhrxyFy80/br79UbBlAEUYhyop3B0Q==",
+				"tarball": "https://registry.npmjs.org/@kamino-finance/scope-sdk/-/scope-sdk-8.0.2.tgz",
+				"fileCount": 734,
+				"unpackedSize": 3763850,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC8gTbcs3JnVcw/yn0JmYTJRuMxGjTQVnz54UT+o8bPRAiEAwe0FXiPcfl3+/4txBl6wxzAWtjrLzqVzUiwQzrkzZEM="
+					}
+				]
+			}
+		}
+	}
+}

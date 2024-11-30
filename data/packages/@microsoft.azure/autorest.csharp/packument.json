@@ -1,0 +1,2608 @@
+{
+	"name": "@microsoft.azure/autorest.csharp",
+	"dist-tags": {
+		"latest": "2.3.102",
+		"preview": "2.3.100",
+		"stream-filename": "2.2.60",
+		"extensible-enum": "2.2.67",
+		"FixValidateMethod": "2.3.90"
+	},
+	"versions": {
+		"1.9.0": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.0",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.2",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-IsPhcGeic9NrM5/6Z3wAMYxX4Ev7XnGSl4kf2jytpWanbAr5J1foNS3U7gpKku7PSYNmE9S3AeNMYBjLcJBjMw==",
+				"shasum": "d7c47c5b836db17145517b39c46fd62e505508e5",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.0.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE0S/QfZ/3FA0SeLEIdXjLZ37GfHC8VCYgAUj0+FIiNYAiEAilAgJVKNFbEeDZtK2IoApfcpMG3MRMyHGGPWUWeMwlE="
+					}
+				]
+			}
+		},
+		"1.9.1": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.1",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.2",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-oNujYVvZLlL7BAFdiLTpXgs8FEA+KK2g24p3+vOoQqZircjeRRoHI3Bccp0fW4YSUwKRdRrlSRKnNSR6HEawjQ==",
+				"shasum": "e37e5d7045ced0c8966ca6b2be0b8b794a0748bb",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.1.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDgoAkwGvtzwyeDRWRcBy8OXCsMk/mO2ng51h2BR2WrLAIgaQxqVNRxlGUwht3ixZgCwAANRFrDtzbAWR+R5+rFW2M="
+					}
+				]
+			}
+		},
+		"1.9.2": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.2",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.4",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-IOFvF/h24fmnVRSxoWCXt1tvakTRUsHTbgQU41sW0qA1eqJbN3o7JjYVkWm7Z8hmgUR/5J0CGpH7hrk/k8lEUg==",
+				"shasum": "c8e0f197dbe37fe32e93f5f203be2bdb73526d50",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.2.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCMkXotWWuzx+sp3CBO9vzXrQ2CC+TpuRJdqJo57tMcDwIgdg9EfaOGU6NOduXKmAyVUWgw6V91eQwkj4txsANnVI0="
+					}
+				]
+			}
+		},
+		"1.9.3": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.3",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.4",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-+dzVA25zueSVXroUu1WktHtk+J4LpRP9Az0IziNWoHKAlqwV1FVL/rnvHYA1wyY8KGM5Oy23ZYDBntPvUSuwMw==",
+				"shasum": "2a25fc24ce57d80267c74bcd186a9aa245313e98",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.3.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH189r8EFBmls1iD91p+KbbS3/qorbK06m7nMSHe9g3TAiEAq6MItCiJLEMxyszZrtWWEaYkzZ0BCBZwRzklMxvTBpM="
+					}
+				]
+			}
+		},
+		"1.9.4": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.4",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.6",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-fWpjLBLfqRUgMUOtu27+NhMmWCxtomSP6J50VhUpup/MmwDm6gmbgdPuhS2P7sEPgpZ8MIMJKYGnxELdVua2Ew==",
+				"shasum": "74765b7ca5679f108fb14b35b85dff3072bbf6a2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.4.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCnqaLs+pg8lXs5WKC/AG0NzhRXrl/9emz5RsQe+eMmXgIgbbp4k8zUKohULOM55bLV/DNJd0sJ87E2NDwC+IYI3XU="
+					}
+				]
+			}
+		},
+		"1.9.5": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.5",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.6",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-RRzIyeBDFmUqvKnZEqUNUPuJDBz3WJf1CXQaX5bF2Eej0SwRRMbhMkOnqIVeWHK+dPUwQOO+HWJ3iifNhKT9sQ==",
+				"shasum": "106dda658fc01ccbcc492768627edbfc6c77e6f9",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.5.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF4XzBgnoKfeGr9i1ITKQzCcfEABPVoMsm0l4YLHLlMWAiEA4poUB63atKOCjGONlAry7/P9UU8exmc4HbudGFlo3dU="
+					}
+				]
+			}
+		},
+		"1.9.19": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "1.9.19",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "1.9.6",
+				"autorest": "^1.9.1",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-+OYRhBf+/yRyAEwz+aD21IKYS8CNRHnp9Kokyibv7I9pmLVSgjGx+lctLPmT+YK9qdPcO4t+o5e7dJxfMveFJg==",
+				"shasum": "72bd058593d6ae532375ed04c12cfa660652ac5d",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-1.9.19.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDZ64pJ/6dvw47gNxYBjmmPovDsCv7jNeLBhf+phFYj7QIhAPFnPPPeeZxvrRP0IRM36IspvUHyRxtVTi3xPf2xTKEA"
+					}
+				]
+			}
+		},
+		"2.0.21": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.0.21",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "~2.0.0",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "a31c13457f70eb87aeae73ff3af5e556e7e3773e",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.0.21.tgz",
+				"integrity": "sha512-eS1UbIGqHsOcD9ypoknUavj0v2vxwizSdjJ/hWDIM0Bl+2bfaHTzJAWWTx/T7sLrDzVFe/gCiNMHmX6AC18/8g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCLReFO7UEOwv9js20L0e3RqYmBV2QcVxxIuZaDn9+6ywIhAKbmO49sLuT66Ajk9e5WSufv6Aos+D9sY6n4iR+KAMIh"
+					}
+				]
+			}
+		},
+		"2.0.22": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.0.22",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "~2.0.0",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5789a83eaba229d01521ff94dcf92f77b18db3ba",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.0.22.tgz",
+				"integrity": "sha512-vEJazsYAPq4WeJMfBlXZwwqg8jLRVvYakVtFKQMutWXr83stRyUiILI3mLin/vVSHYRzAYep6XReUDh/i3D+cQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBi6N4AWCaUxPKI85VenI8QO2Atib48u8tGfqGEQ1qUVAiEA+kSAJtVxJV+IB4OL4RD/lgtxEA3L3+aklOgLJCW8KiU="
+					}
+				]
+			}
+		},
+		"2.0.23": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.0.23",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "~2.0.0",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "cdf4ed2b160a47e099d0b438ca682d4340e0f6be",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.0.23.tgz",
+				"integrity": "sha512-KF/Mvc3cJRmjRkyrbUjNGIoSIOZ0qKwPPbJZVHj98N+m06l6X3eg9jDos2WJBVqjgnKw6+0erXODMAKZPx35NA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDcP37HHTHBoVdJPpXCqJAGaHsLarVUS35V4UfwH7IdQAIgQspBmIuHbvm01mPbCTkrl9z1C8njUsl4rZlOoiL9yz4="
+					}
+				]
+			}
+		},
+		"2.1.24": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.24",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "~2.0.0",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "76fc6dfaf2847c2876d44ce7826c54aa06b16aac",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.24.tgz",
+				"integrity": "sha512-sFmMoHjDAjczBH0r+QETFrpuOEpPJWApiGzmtjV2ZV8wH7B/IVU9YtDc3SNk+DPVrFFJe0EmeCsQEgzY7rn9rg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGWrYeHBKsGWfmeaTlpJe1qNLXsiVfRBwi/4A4a40CCsAiAPNNkM4pkqUXU8eJYvhvPI50/1p5FStZ5tTss8EHo2hQ=="
+					}
+				]
+			}
+		},
+		"2.1.25": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.25",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.1.0"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "~2.0.0",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.1.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "79034faf15d6d1a65f7a13fdf5be5789ea50f9e4",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.25.tgz",
+				"integrity": "sha512-wlCHpSSP5DdTCxZEXKIiO4O9jiLAZZR5A8r0qFpHY1qSyC0ur6iMafA/wGkZhXZ0dxFsZX/KcNjhF3sg6SDKiQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG+2DCi6kpzEQtjU1pMmIJTsmiNMSTzdpCqeJLHKP4/5AiBHgjRj1izbXfQJyTy0D+ByGSkhJblsGYP3ClyymNLfSw=="
+					}
+				]
+			}
+		},
+		"2.1.27": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.27",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.1.22",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "941e2b1b32b5142f3a99821870e2b5687496395c",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.27.tgz",
+				"integrity": "sha512-uXFMRFL7Yh5qInI7WHobr8DTD99zoVDCwvyzPQ2cj7nffP9Vuas+00DpRkMPaWokvuCfkzNQmJkKMAOw9rJCsQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDyEsV1995e4S9kMqxad2i9nPGP2kj4x8Ftvv9Scn7QowIgAKzEkZo+LaeIb+mp4UYaHxTNQwcVOBObnTuRqI4/EVo="
+					}
+				]
+			}
+		},
+		"2.1.28": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.28",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.1.22",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e4d4997a54c9c4465f8fd3715fdd3353dd7abea0",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.28.tgz",
+				"integrity": "sha512-zy+H4YmGcVR1exudEMt4WLn/nvLk6btWE0ytIStCM1GpesPiEE6Y6SPWGgcCEOW+gSkAPhFOtF1D+TouyEmHlA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAZtqWV4vKxQWK1RoZh3O95xIGK5ejau1GoJz/lfDMGEAiA8VTFvvK4k2huNAkhf/Z6Fnk8Pyz2Eq4HeHTZhodsfnA=="
+					}
+				]
+			}
+		},
+		"2.1.30": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.30",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"@microsoft.azure/autorest.modeler": "2.1.22",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e6fa65c0c4c458011afede65e7b30a1619ad7283",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.30.tgz",
+				"integrity": "sha512-QsCumnT9xqy0rTTfXMw8fadZXjjMC6Ry2VebGi+hDFF2xtBfQNkUpmPJwPP4mMyv3XaAv1Ecqmm5Jtfzp8ctxQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDihOADvs2mt8waiNDz6qwN3XrfQzCFlDN0rBUM0Lo+dAiARUS6dvyq1QlbW18JqRWaIbvOhZWm1nk4Fqq7/kPo3bA=="
+					}
+				]
+			}
+		},
+		"2.1.31": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.31",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"@microsoft.azure/autorest.modeler": "2.1.26",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e086652a3a9cee744f661e6ae951f5202909492f",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.31.tgz",
+				"integrity": "sha512-I+XwqHBc/HKFvMKey+trpG9cHj6B0UFBHC3awwGhLUcYq3s+bRBR+lDYqFcEumbgkHJs653jdjOoWiihZ/4o8g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCESl10E2iNY0Q6zzGPnSa4BQrJ6javcsA4Nliq83bQWQIgZc8NUxWfKNEyOKYdFezrMb7rzSKGShdOFRpK/HfVDQ0="
+					}
+				]
+			}
+		},
+		"2.1.32": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.32",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"@microsoft.azure/autorest.modeler": "2.1.26",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "3b157d1388511cb1e6931ef965fc66b54e47b08b",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.32.tgz",
+				"integrity": "sha512-AKUwcxHrPYoQycQizbc2LRZR/O2kDB9QjiqS8+NWTVJQ4ubrtzolSHXll55uZXP4kdBo6zVJX5v6UBuIfd22Ig==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCeAKRBAeaaAivhLJQX8L97WCmLFlB2RG7Y19KPprrICQIhAI0MBRCj2stSpPzSJMobthbsxYDma2w+WCjc9W4bQ8Y8"
+					}
+				]
+			}
+		},
+		"2.1.33": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.33",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"@microsoft.azure/autorest.modeler": "2.1.26",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "13dcfcae45540f21e96172f872c7bfdf1507a79f",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.33.tgz",
+				"integrity": "sha512-MCy5CSUSU7GZ+9qna+UNAtAjZ5lQPr+jnFMdD/Ny7aha755QnB4wN8GfuT9yL0rSpZ7yZzgTBub/GVFjqmiMHQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBBYlm4D7kIlq8JaWZVve/hWx7+ez+pVyvQOeU4hI/3kAiEArI5Z7wzvg26B+o15eDrEYvLTdz2A/8fKnXx4TVqcetM="
+					}
+				]
+			}
+		},
+		"2.1.34": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.34",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^1.9.0",
+				"@microsoft.azure/autorest.modeler": "2.1.26",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "8ac40d6bc91fa4ad00ef31885132413eb165ea47",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.34.tgz",
+				"integrity": "sha512-pDWW6FO2FrIy71dosYvvpVwBu7lZZBTtda948VjrIN2fKSu+zj5wE3ei4yBdGXNCelmW4ZU0APUhHgvDrqLrgw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCje16Xzh1+J1DdLmUq3oo5bX/9l+nbgO6oCzK1mXYpkQIhAMUt6DN+yCcVF3m0hDuUTBAWpzfI8KNBIaLFkBXLwngu"
+					}
+				]
+			}
+		},
+		"2.1.35": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.1.35",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.1.26",
+				"autorest": "^2.0.0",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "9598a35fbf70b31d14aef3e4a1318166fb9bb6d2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.1.35.tgz",
+				"integrity": "sha512-0FinKRpKYiP8CkIaKYem31GJ1V+1ir4PavlVZL1SUeKIKjT7XS9v19WYW2iSMvJfWKN9EY8vxHMRN3F4EV8+Mg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCPJ/kNA2kRfztmaJAUG8xyg8iOMveBnCZrhtKNCYR4kQIgCT9FF8jTl4wiWda+odQwmElZMF6c/sV/mJaNUBde8ZM="
+					}
+				]
+			}
+		},
+		"2.2.36": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.36",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.2.27",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5e803515f2e38d6ad323d1bfcfb327c36f51ca02",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.36.tgz",
+				"integrity": "sha512-XV1SXCXW83KOM3mzyeN98MfC57zbosc3kfOIZOI9WJHJ60lZ2S1HmDtJAoYNCGYDaqQbUQwa8aOKIWZIJCuhMQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC86St6c5tF0ptWdAy0FJXDA1rD6onR5YPYannDJYS0KwIgQNAgnwjVp6sfQGzXkWw4rF8PGyd12uV69jXYuEf1V1s="
+					}
+				]
+			}
+		},
+		"2.2.37": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.37",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.2.27",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "7cb7fce8f02e8f65f6ee662541996a6522fc58f7",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.37.tgz",
+				"integrity": "sha512-g3m396Zr9In5hw+IptpdQxRqNhAI3fBpXHp3L+WdKxik01WTHtaCxopu0PWPjPMNN0QC6rYWqj+FA6NMwiOSCQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCkn/YXZbRlDyaZiOtcjDAladiqCM9RvWTvyzvOLoNiGAIhAJGxun4R26FqwPgb0LED9LQBEpMuvoFuIBruRNG0V36R"
+					}
+				]
+			}
+		},
+		"2.2.38": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.38",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.3.31",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "84a2adbdba75b1fafcd6f85ae3cbdf472ff9a556",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.38.tgz",
+				"integrity": "sha512-HRYO/26ozaIWPRSnzxaKl899Soe6f5xBgL828PtMIkbA+6/xUAnpMCJ+HNnviVRKb0KX/Ngv5Av204lr/anr4g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD29HsT1NiaBy6toVVgAwlSgWF03bBo/GU4zUaj0RVD8QIhAK17TBTMGGW4DCLYIZNE4b+zsD3Mr9xFqcyXvoV8BED+"
+					}
+				]
+			}
+		},
+		"2.2.39": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.39",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.3.31",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f704ab5efe977ce122ecdb4adbe8e278bff452d5",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.39.tgz",
+				"integrity": "sha512-reZb/vgR5Ab7psmt6N3kkMf/1eK6PThPBCnM3e1/cxA3lYzRRXpxHoRYg3hyGNtPMa/523y7VE0qgHYrdSHMsA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCk4o23YyKelOGQjM/l2S1z5NDWDVQ5wKveCb8a2em9RAIhAK5X12Qs8/y06qDu6BRYpZRuGcc56xhC8NcCryKhlTLO"
+					}
+				]
+			}
+		},
+		"2.2.40": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.40",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "1.9.2",
+				"@microsoft.azure/autorest.modeler": "2.3.31",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "7befc3c548f13d554ea89b13b0cdd1be5b457e75",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.40.tgz",
+				"integrity": "sha512-NbgGwTSA4w+avGmsuBKPki8fhtpP1aRoNJfPFs89YeWxVfOuGz3f/d0X72x7XzdFn9puB6Y0/pEQJT5yO5aftQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHUzwNgmncebRM4Aq3ARw/SG7p5D3oO6Ru2icXo3mXChAiBH7LfDJE90NV6xcc/jiZFIjoLQ0hNgU1M+vEws8QSCMA=="
+					}
+				]
+			}
+		},
+		"2.2.41": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.41",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.9",
+				"@microsoft.azure/autorest.modeler": "2.3.31",
+				"autorest": "^2.0.4189",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f26a0f3163199f8a996275149903029d1ea5d563",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.41.tgz",
+				"integrity": "sha512-Je+4rM+FZQNxFcmZVt6m639oslHkiUGgAjCvI4i4rDFt3HAEPW4mhyoz5tAZOSshU2iKVELMt+eYqdpdJ/coyw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDhCQuImeOOz5xonBF3CwxZwujQ09Orr3JwkIC+dyWu9QIgGEw1lUmEPsqSYkP1uN0I72EouZDD/bVcrY4E5u9La64="
+					}
+				]
+			}
+		},
+		"2.2.42": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.42",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.9",
+				"@microsoft.azure/autorest.modeler": "2.3.38",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "48d3ae409f50a10663319b91b1e8ea91db9e2fea",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.42.tgz",
+				"integrity": "sha512-bVA5Up/QWyhUy01bugf6H9KEcdAwpQZxIb+Bbl5ZQIg8JCCcmtn9/1iPUINrGpZ8LzNeDg4CdnWZ+827OpcBqA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCOVSpYbPSqHIDh2VlaSTtjqRZf5yfYDsvgXFefxVns8AIgbgM6NnvrfbLMO4JgPBmkgYtD9NZrLte+LRMCcUGGS5Q="
+					}
+				]
+			}
+		},
+		"2.2.43": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.43",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.9",
+				"@microsoft.azure/autorest.modeler": "2.3.38",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b1d45be2768017a35f28c9a8f02c7350a51f1ad6",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.43.tgz",
+				"integrity": "sha512-h5y21EpcwSSE59llBPZnM+CViaha6u3I/hh2jVZUkCG+nz7HMhFrOLEISDYt1txq4iCyBUDYQPyC6+LlS8GweQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDzoorHr9/Bc7JHI9fP0lB0lUI7gVqj5EWWVDDNNXsRaAiEAhKt/O1+lhNKuj36u7jcxw5tyP55Uck5Uf9H8v1yybkg="
+					}
+				]
+			}
+		},
+		"2.2.44": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.44",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.9",
+				"@microsoft.azure/autorest.modeler": "2.3.38",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "87b6ff79e9ecb05b5cc24b55587d27b00de43faf",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.44.tgz",
+				"integrity": "sha512-zo9NEBqbKqHuXmDfZYwDOM4pGXsvj89gsg57naMYP3kPg/+otVKzPQbhGcCnLCyn7nemwVa+fSUr9YkNsl0psw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBA1414/XKpIOMhv7GWgsxQLrpu1DBjCKqDutUPQtAmdAiEAiKw2xQaY1kiuwdkj7vGT+vnPEvgn6oDno1OoE47YqHY="
+					}
+				]
+			}
+		},
+		"2.2.45": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.45",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.9",
+				"@microsoft.azure/autorest.modeler": "2.3.38",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f0119229eeaf4bc57abbe935f649cf628df39a25",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.45.tgz",
+				"integrity": "sha512-WoGKozrJoWnu/Giu9cVAr+Gz5VovGis/xnDpb/neNSM4w0IJCyDQjFGaUA7uzmBIHALLUTlDCsqXA9/34JH+sQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEhjfhL7mNuVzYgLnAfun5OeTYqsnXYPYAaOCwyy6gOxAiA8OpK02amQUs+jKx2n+moCo1k7XwEvaXylFQGwzlZgNQ=="
+					}
+				]
+			}
+		},
+		"2.2.46": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.46",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.13",
+				"@microsoft.azure/autorest.modeler": "2.3.38",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6980ce915fbb48a8321e30d9253d5292d6930136",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.46.tgz",
+				"integrity": "sha512-Kzf4cEFbTH/0OwnyU+GvDFgwq06/oW9WgndJ3jcD9s4K8pzUbW0QgmNOhg5mxry73Taw28GUf715y6xW3aGV3Q==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEjRaO/kC6ooLguaVdDNTe52ekXGtO7y06LBhTzCD8/tAiEAjZryvjOxIm2YiUbZ8psxWMMtA8i3YMP6Q7FtkIBO5xs="
+					}
+				]
+			}
+		},
+		"2.2.47": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.47",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.13",
+				"@microsoft.azure/autorest.modeler": "2.3.39",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "1b27d9d8db3348bc207ba9189212b7f3960724da",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.47.tgz",
+				"integrity": "sha512-GQnYKRqMOq46VGHsOf+uWK5c6GxOvheSvllI43aMGxAP8k6qoFyySikJmMujx30p05APJ5RwANhTHcCR8pVlKA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD+I2YYqpPH7weIKg+GHQaUQUBceCaFWEGKxT0oEOgsSwIgUC8coCYQJbndcmOsWWVn3s7WB45nKdWFnV3dDTxn3Oc="
+					}
+				]
+			}
+		},
+		"2.2.48": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.48",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "2.3.13",
+				"@microsoft.azure/autorest.modeler": "2.3.39",
+				"autorest": "^2.0.4202",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "ffee88a47171e744e18332d366b1ca21bf33dc06",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.48.tgz",
+				"integrity": "sha512-2f6IJb/shybwxYeIfpQtP99vti9O7XJmNdy1BpCyksFJ9huoi2+Fm8Usdj33WjOp9BoN2KX1/cneUbQMsglJXQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEnnWQyy13iowgNdBGBabqnSdmXYJeZxclrO5Km5EIm7AiEAuyGzptGx/ToQg4NlIASoKRJb4SFrvePebrYYmVX5qug="
+					}
+				]
+			}
+		},
+		"2.2.49": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.49",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.42",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6c9d731fffbd3176bc9c0817effd10721775f5c2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.49.tgz",
+				"integrity": "sha512-lJ219DY3EvHHjPCdp/Q5mJ4k3K6KU4xtuOyhi3NMX+LcRrH8g4KFHRotHsMNdfRTLx/IqhgPWoVdrs1ATv3koA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDKm+ttgXlMCmArLUNn3VXFkmeEAQo0Sl37X36sh7pe3gIhAPvcqCWWUvjN3zbUuoCyCNbOfMJgMSqov5RlQw7K3xt7"
+					}
+				]
+			}
+		},
+		"2.2.50": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.50",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6060588ffde86137f91f16396cde8e580aa49aea",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.50.tgz",
+				"integrity": "sha512-0brnqv9RHTqbDm5KHBZJHYrJhXZWa+q7Abojg7X8c4NxDqlxkVyTak5ttvMYax+eNmKpKQp5D+xHhFJ7DDB6qQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICh+yxTK5w9zydoZ3CGu5xANxtB+XUAn+DkwzgeviS/3AiEAhytz3VXTe3z/CpTsLfWEf9KJ9FedF4qj4YATOdntQ1M="
+					}
+				]
+			}
+		},
+		"2.2.51": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.51",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "51df292b4dba562841b26ebf701ab40c2dbba816",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.51.tgz",
+				"integrity": "sha512-xWxC/ErC6CHO3WBnocBzX/2TN+UcfrpjmCQL80Cc6jdFlQvBfhm9/xfkzQvQVdvtSbMf+Go8dGyK05X+6unK2g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAmys8zFk9I4MdNsCjNxULysxKomdRQoxwb4XY+MO83VAiEA3i4w0TAJ9c+R8BLQOjDBXUXmzvD7vJrx+QNHLfw/yTs="
+					}
+				]
+			}
+		},
+		"2.2.53": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.53",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "7e870f9d9e61ad6dbfd9863f44801086293e485a",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.53.tgz",
+				"integrity": "sha512-m7Nbbh5CciXOUq2sEEqN2gTK33OLyLK/Vt6GCDZwx2MUSUeLZM0gC+Ym0xiF1w0tY4TlpzBys/DmuDJgYgBjKw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDp94HKn20GgNkwoM2XuYyQtW+R8KRopd1jydlmDYl0GQIgGE2z7PG1Put344lnOhlPXjnhY1jOghX8L5HmNh+nheY="
+					}
+				]
+			}
+		},
+		"2.2.54": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.54",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "bf1e5a62e0c8382c95d48341ba62336ecb5192da",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.54.tgz",
+				"integrity": "sha512-iFa+huaUwLmxoEygz4Nyi1ms2gRY/sBshWglQF1FBwewuYkd4iJo5qZugljGxPp2YMUMPU7BUIOGV1TFkTEwNQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBxnVccjrUaTxY5U11ZPLqXfk8XBXc/qa9amhLH0eP+JAiEAyIL7wUQVF9HvW49/5msS5u4lDaoC6fEXGRwP2+cY2GI="
+					}
+				]
+			}
+		},
+		"2.2.55": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.55",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.14",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "83f639901c02a0100690d6d804df448a9e28c8cf",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.55.tgz",
+				"integrity": "sha512-BjgTTM9riuNcrRbSLeLfQ7fryJcrgW8kU8D4uAW6QUtZKbB7BC5Y3iy9u3CCXXeytkK9puHq05SJU8+E8H5sVg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH4huM37x/Br8APMAh9yyTZuuUXzSgwj2dNi7nM5CBSJAiEAiam7xUEPn52jbx+BJu2r/yAprMWjJXLGUfzsoSfa3vs="
+					}
+				]
+			}
+		},
+		"2.2.56": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.56",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "9b9761a234855ecfc19247a13239a45da43f5cbe",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.56.tgz",
+				"integrity": "sha512-vi7jlKMm6VaygOGLdraZsXNg9WkLsbEWhDAp2M0P5mUt1iwlQpM0v3HgewCwSF034tAD8ZQVuz6St8ukf1ctZA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDLt1AWpqxwTOnkT3H8JamQNSuUzx5xM8nFd6OzkD8PiQIgA2SnBOkwbzuPYLTK5R/tpr6D2Ea9LCQoStMVltG0bnk="
+					}
+				]
+			}
+		},
+		"2.2.57": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.57",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "1c34126b88b00aeade84cae8b86fb66be57576ce",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.57.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19010651,
+				"integrity": "sha512-tCp2LDYZUwSm8/F/WM7uXXZJjgjfTXJ7h9HPOJ8jlz1m8gjb3EDH5wXvxygPK0gTWMC+YpPXrp5wZ3zpjJbFKA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDsKxAQ9f5qvf4Fp7haqY1hUX0VAFNr2xvbPdPYQoaMsAiASFhKy8Iw4SRGumdVm3uGfEwKseFcVnDzAfzsBMQ749A=="
+					}
+				]
+			}
+		},
+		"2.2.58": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.58",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "21905128e8049a7129b7832816047c5005725ca0",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.58.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19010651,
+				"integrity": "sha512-5DUeGrnMSocIY9WnsBaAfi297ud8hYfDuJSJeCdy2NAn+Ntdn9k8de/nh6jAdqFOP+xnvEj0B3tjNq4htoPZAA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBnYRYpvb6syzTq+Aid0zHSVVNMTOVFR42aRn8gAimJJAiA+8b391P6DUiUtfdRQPR9YFcxi2WeksmxfXJPbomE/fA=="
+					}
+				]
+			}
+		},
+		"2.2.59": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.59",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "2cf3d3626e5076ff46045a9c1f6732877b68a8a2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.59.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19021063,
+				"integrity": "sha512-lzZ6XTDe53JSuSwQkAJ4gt/wTQlbOHih23szZFAukuPajrEqlJX9mhe5Svt6pxOnG9gT0dKerhvZ2f7ILUeRfA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB1a8Ay20R82lX2K2aCu9VVw8Zsz0cZuFmE0SzwK1UaKAiBqPRCDmlFAnqm863jeiVXmt41QlaUTuf15G94J/pNrtQ=="
+					}
+				]
+			}
+		},
+		"2.2.60": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.60",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.3.43",
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"autorest": "^2.0.4215",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "c1eed2438105f484cbe6e936e38f63751b4e1f15",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.60.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19021088,
+				"integrity": "sha512-MGiJDWQ9YWxZ4P7bxYvKvRu1yeadQicEmsqrIQvzJbxV0AG4ebP5O/PbzHXuFy8xa97HRyZk5nbbYnLjTzz0EA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGxMghNg3unudo/jdmFy9dkgm+qTco/QZ+tKM2QAYwt+AiEAr8jIzgiK8LeeVw6A2k8gEW3dp1coOS9NP6HkOGcDsFE="
+					}
+				]
+			}
+		},
+		"2.2.61": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.61",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.50",
+				"autorest": "^2.0.4245",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5311405665975590d065477551561e814ed16807",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.61.tgz",
+				"fileCount": 86,
+				"unpackedSize": 19202070,
+				"integrity": "sha512-zbGPVPrsb6lYTvl4RfnYQHQPynS4+wq26dlaT/RUwWH+IYwJOeeLn+U7EUZTWLFtcWEIzeKCSD3nf8z0jjSLRg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCtfBUled8UreotrE0ofi+1pnM+x8jOzx6na19hlCSaXwIgfjfMPsTAKWhFaaOcywsmv7CZkFxcXja41dLQS1gYvCE="
+					}
+				]
+			}
+		},
+		"2.2.67": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.2.67",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.3.22",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "023097d514c1375285ea59c5d975d9131a3e6429",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.2.67.tgz",
+				"fileCount": 86,
+				"unpackedSize": 19083202,
+				"integrity": "sha512-+RE24zm4pV0lEOwzu1ij81FI0Nnf55apfv4IPaTHd3FVg3a18Q7Diug4WZEM8FLr9mVKQbTgsQM9w34XKDrVqQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDJd2glJo8KGz4rYSIZ4FvWvqX9JuSwa6PzZ0Ad6XwS1QIhAPrvFOtSm/P65Gv1JNhZpgVanoFUZyHQ79bCYjqW+SC8"
+					}
+				]
+			}
+		},
+		"2.3.64": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.64",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.4.3",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "c36e6d46459abc7cc0a89168e05dd18014cddb39",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.64.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19008949,
+				"integrity": "sha512-+c7jM23xQWP7kEidP1DJ1+fqiCI58G6q666fCnhvcPvzc2CZL73z/CXl5syiq3EQRgBo0xWgTTXRIkWqjXxBgg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOS0JRz1tqSq2Ym+N6wrNu3HJPi7zRA25y4UWARFgMqAIhALQqFeCzRFMGqtZUVffXbDoj0bSDwY0oBAklem53Jbq+"
+					}
+				]
+			}
+		},
+		"2.3.65": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.65",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.4.3",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "03b1481bcefd545d934b3637f97c9f6700f0e41d",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.65.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19008118,
+				"integrity": "sha512-q8FJLJTKqH3Uh4hkrUZj3COIOkh5s8mUQ44rshxu4oY8G4qYAvXcf0NZo7HPs8iNCHitb3KxLuloJHHFMyTJnA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDNl0QpDqwCzUMn4zUowrwm1vsD43TCjbu3uRMH77Qw+AIhAIZzVnNv5HxHtjzzqYzFrPNNOon+hbO9+P4MA4RbN3nj"
+					}
+				]
+			}
+		},
+		"2.3.66": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.66",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e661bddc66ab3aa43ba3281c25256d4771e6525b",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.66.tgz",
+				"fileCount": 86,
+				"unpackedSize": 19029068,
+				"integrity": "sha512-BGD5EoGmpKS/Xhacmk9arXkD7IIv/vwe6SSea8qGKVjs0swfIDa7a+K4gHKwv5hlGa1DTiqkPTZ/efzX++V2Zg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQClmg4yYiMLlSzpzYDXSyMgrehB/q+b+2aVmfybC5B7CwIhAMBB3EqCny6S4r3LxekLIMx4w5/jfsz+O8vVw16eR0Zx"
+					}
+				]
+			}
+		},
+		"2.3.68": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.68",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "a3fc6e44efe7ef5432f716389770b97dd779cb3f",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.68.tgz",
+				"fileCount": 91,
+				"unpackedSize": 19028170,
+				"integrity": "sha512-5xtVAXDuyMOYgLrVmnwu4GGGklBLnOyjZhI3BdKE19iD2Nw2q0gP1AZ0ScX08Ld/AFScCVXCQ/lph165u9MRwg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIA8gvO4+vad4AiIx0mGIIPfrxi9TpmlZNxAgK3o2t7rKAiBFwpVvTbdShei/gO2X+Om5ztKPyYH49Zt1GP1Jnr+8tA=="
+					}
+				]
+			}
+		},
+		"2.3.69": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.69",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "44a6f672b43a4ad1d025f4305e9ac3a344c6bd35",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.69.tgz",
+				"fileCount": 86,
+				"unpackedSize": 19030014,
+				"integrity": "sha512-ewG9/6Krkd9xRpFxgPAQHmdEYfBud+G7nCrWY5c8izEFJyWszXwZTIGSSz64F6l2ouPCcJmRfy973Eg2rXdvSg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDmzQa7GhbkA0+HvDfY7BfNCMnmnr6uY5Nxf48ThHAgDwIhAKMGB7/l1OuNtYghFnqO76Em03axO9qQfkEfRMSsYeBv"
+					}
+				]
+			}
+		},
+		"2.3.70": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.70",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "fa162e04550502e6bf3f391eeeeceaa0364ef386",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.70.tgz",
+				"fileCount": 86,
+				"unpackedSize": 19030014,
+				"integrity": "sha512-ak57MSM2SfpxldnpDeRqN5gh/T72uPsmQkzfhN1DJlQvGpH5GE7yqjiMTSjx/lqpro48LKvNFSj3lmJY1qa69A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFxzwO15brARzp7TnGi6lIECzHJ2e569lawz3GP6pa7XAiAkhhOdvwEaQFBA5RVigk+uJ9Qi/LpMSg13QpGfpwUA7g=="
+					}
+				]
+			}
+		},
+		"2.3.71": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.71",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "c5a7a779b94a3452cd113619dbd44a581efde00c",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.71.tgz",
+				"fileCount": 85,
+				"unpackedSize": 19029395,
+				"integrity": "sha512-1FLapT0IRTUy+k0Qu90juapZF73f+L5MTzDXx3nnkbYcvuM0kjEOFGZTzN6ECTFR3LCZjFY97JgOns1T0zK0hg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDI6iZBqXa/DQkJaFHytaqUY/R3IqgwRMcYPcWh7GR7KgIhAN1XnJ9noO1D5AfzSDDGwpnTrmoj5uzET91P925Xrz83"
+					}
+				]
+			}
+		},
+		"2.3.72": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.72",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b63486c85c66a2f2b99c551c7139ff4f1c797df6",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.72.tgz",
+				"fileCount": 90,
+				"unpackedSize": 19023414,
+				"integrity": "sha512-s3NbYZL2Z+DsYssWuQHWxas7QSCR8e6abGmz5CAJzPDxM/0hlnePU3fQ4ekRrQrH/MVUR1JP/9sxB+vV1MZJ+A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIG8mAuCpHRvvMkfRlcyJvg5mLBPJpbWFtecMI972XdVwAiEAg7YUlGqh5UgWSwxAIqKEmXHjW2f8qgCRCdtT9KftZNA="
+					}
+				]
+			}
+		},
+		"2.3.73": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.73",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "fc2d4675a4edc94ad671b18598e99308ab1abf26",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.73.tgz",
+				"fileCount": 90,
+				"unpackedSize": 19023414,
+				"integrity": "sha512-dGGSvnfCiSXeLCYxmi+GOFlN9cctqIf2JTLv0FFLVV/dPMcJY5Wl1DLgtRDoYnETjo1lm84Ou8Q2zNVva+tvkg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDzEWXhxVpbdkFnCKSs6CgzQJp/v1MjwaExJRULLauQxwIgA4GMFNcvC0PfPm210X4Hii4NRrODKCmbDENEv0fwdng="
+					}
+				]
+			}
+		},
+		"2.3.74": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.74",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.1",
+				"@microsoft.azure/autorest.modeler": "2.3.51",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e1e7b3bc5f73c1c12a4d49e36fcf54b74507b92b",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.74.tgz",
+				"fileCount": 90,
+				"unpackedSize": 19025630,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa31ZtCRA9TVsSAnZWagAAAOgP/R2l0g6Ir4Nx/wORdjvP\nk3Z2tc7fjhrWfYuCdTZyPJvjguseQJVaGwurkW9uF1OhgOtDFx8Bdu/qOhDQ\nVrJzhs5Voc4U589tjTjmcAWtSLTkaSPQJDUIgjH8wJYJKFQEQo0h0MV3Y7FJ\nVq9JiNxrJOKJrRLoZYM/iOTNfJjcuPr9cwWXtaN5uK4KrwQ6JjvqP4qVef7v\nZQ31PdSgp/2cVfRcdgP/XopyvlwYcFIG4hGLNcYjpbZp4LCvfzXMZ3Is/yIb\nJrNXlpCh1k2pcRelpvCVZ0Q40DwM6UmyBQK23pfxanweLyrkfQETUskB++E3\ngcQB3iX5rzbjawEmR3RVWjQT7Iw2LAgV0zNMTDVGTESx0ZHALj4FqQXtd/1C\nDs55Deky+FiCD80cLL+OuH65unWtqpF9qfTA85qVi5YRBmwmVQgAymD+pS1n\nG/O2DodAvpUh/yw9hu5Z655fcfmftDGFx04GjaciXJV+YnJ4GkZvt2GQp3UW\nMSExl9gopl9xYll/cDsxZA/H7F/b2VSPI57tUC+XFhRGbWgs/M7ILb8tZg8H\nvgUAVI91BgtQ3AEyROmiWdb/tQ+XGhg3dcBV/GKAAcQD6y5a400KxqZcbcAQ\nYHaYeQsMm9aN42123qGgJFPLpwKUiEC1xl4ZwiX3DIX8u9TSroRJuy+OizLM\njxsw\r\n=Dx4S\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-p/iaQlEapzelf8n/cBwPg6UuSrZU6cFtTNSP1eEEsY/KMYBryXK8qAIFU4lnh2uAiSrWI79kbo9aeIb5B5BnCQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCLVwj+nbR76tGH8hIDuLeb+DmT8b3u7xEqGkq4idMdKAIhALF7bNl3rswAuMhY+xAZEyzMtGOBhRWZ14xw+FtgflZd"
+					}
+				]
+			}
+		},
+		"2.3.77": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.77",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "c313fced022f6d4d913fdcdfd2eeae45d45a2cdd",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.77.tgz",
+				"fileCount": 131,
+				"unpackedSize": 24979572,
+				"integrity": "sha512-+kmLuPLxOI9j22kqX1zxr/htddhXXGDASq2dnJfCqDEhA8tXAmRlUDpLYwOTyZR9moHMyUYD63bdvWTHxiM9uQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQChhnNwceYWLdDwaDM8EhxiFvDEMfJBYRWC8uoVVZ9bCAIgQtUcPggkJA2ZqEj5q+Ztod4KYjqy4yNrCAEcJuh+09A="
+					}
+				]
+			}
+		},
+		"2.3.78": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.78",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "7ae31810d25da6562c9aace725c07e000647e8b2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.78.tgz",
+				"fileCount": 131,
+				"unpackedSize": 24979572,
+				"integrity": "sha512-2EhihqKZsuOVQ8bcOQkK0eG7yZpJHVtNarRBXCUz5QL2s7fwY160G2ADcVoVZt82n+1SGJ9+d6Dzt67hTv+avQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCcntD2X+7imNI7gjWxI9C1aioMwWhbN6h8NkPObS+kpQIgfIE4zbVRQx3rLCw4zJXIby3BXsC/F3cyjIQaPv+XPPs="
+					}
+				]
+			}
+		},
+		"2.3.79": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.79",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "86fe8883efe7971d465d1245d8eaaa15bc04d892",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.79.tgz",
+				"fileCount": 131,
+				"unpackedSize": 24982983,
+				"integrity": "sha512-130QtBXMSZdN5JGTv561V7MZuqDsVo8J50vcO5c9168Yi6sJCfrku91oqH95t/+Mnzsq4BYHJLAjiQxbu0c8Hg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICTL9jugGNwlsakplpxbw3r059vuHovBt25Q3bNibHD8AiEAjQEm/SOWlX0DOWmhoIZR1hacsLdQg2Sw0IaTLkA95Sg="
+					}
+				]
+			}
+		},
+		"2.3.80": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.80",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "2171b2fc3640ac2d49e2c528d82b4fae80d35d2f",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.80.tgz",
+				"integrity": "sha512-wRbAJMnEjWcokLQ5NzRdKA5Sw0cNpNhQOPChQWJYKzs4SktYoVSrpSXxJMXICNTBa8JjkM7925VI38Z0oR1tfA==",
+				"fileCount": 131,
+				"unpackedSize": 24989205,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbaJLPCRA9TVsSAnZWagAA5v4QAJ/xnvBq33WaVQBlHYHV\nUas1J/ITrCCrYwbWUqoc9X7zY5/tw+ie+JptMEWsn8H/PTrpc+HcvFGt8T+Q\nBp2DUCgGaOL99ELpOPlgaMSzIlEk35zrUnibYTjJiedylTfXWgFLkP70DNfl\n5jPJzC/x0t/XlO0bM4r/usWwRNPMS/pMRVhosVXx4T6S3SI9LZbOH1hwbqwk\nrqSkuFhzbu8/Tx7r1PSxbmcYvxa8SoU+387hkJonoLI7u6SXoJEiize8XYBo\ngn2bxYQsCzG/NZdV/Kdeh0EnaJVTgqGCZ86Xcz3NTGZqjeedNglQU+zdSeGG\ng37fm+ail7wlOVepInsabV2Ji8UWbs0yF67IwGI0gAnm2B2HkxYcWy6TtEb2\nKlzHJrB/OVbPkY0md6DH0cLsvBTZUfUzDBZ6+On+endk7usu0i9ULe7avHbD\n/1qRCNwLMVB+M/WIn26vdepyo8oohNYAosCNefWQfc12WYi0C4YSd86cCWfZ\nUYa1mkpZydqKNk9GJEax5rmzHbgZz5MXaQ1c+XlPLAcsuQPiV9vzjvBu6zKV\ngGlty0+oVNEr3tOGMJOAqvYnSv6WZYp96ZK5/DvTP3m59UOhparAJHub23E6\nyaG4ypKaID8xbqANjtABd++HD8T/do2mAl6jeiIez1mU+X5IURLxe8Vol4bl\nttOH\r\n=HXYh\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCQvv+JNiF8uhbWIj7N0YjhOnMOXDarjko1tJr23bxRoQIhAJ9XIGRDoBGs7EiHXP1rJRSqkGAX1P/o7MUGDhxvh6Bz"
+					}
+				]
+			}
+		},
+		"2.3.81": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.81",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5e4c24ad1871e2f05ad38863d19dba31a9078883",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.81.tgz",
+				"integrity": "sha512-W4oto1zjHu53iBx6JeXVfKYXaRCOu39V8Yk45e6TNyDaAWJUfSnEhQg+F2l7vtMhPU075qpQlRT4jfYIqsX5Yg==",
+				"fileCount": 131,
+				"unpackedSize": 24994033,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbonO6CRA9TVsSAnZWagAAaeMQAJXSayuwbbsJsu/WnZVo\nZjxyqCu3Gxoao6K+utJJdWN80f/3tu08qx9r+0SN9MNR7sNbwLD3m6pvzUxV\na9X6umukW1i+dPsmRihmQTY41FQN995rM9BXoZZHyWN4JvAuium3uVJ8CwxP\n5VRi0wnp3G8uurepnx8W+mjGQWvoU/Nc4gLRn7YFA+Dzndb1ufl2vlLCzPHw\nQj/koxO+vWcM9b5hAFHS1DqynafGbI6dwjTa+unRqHB7rXKylNv6UdS51bzK\nb3E2BXAVHKJoEq9f8aQDeL1fsbJuCIGm1O0nusslJJF8w7Vh92IwBnquMb48\n0Eq2Gw2mCKdZs3g0u9tWdjKxCtS34k4nWLikrxMiQ2q9brb+FnoSxB6UOrCj\nmDs3x9y3L1xGB8u+YerRwyqURrjZxtxXPDQ0hQFWMOwCpcYyFYDXUu37emyI\nudhvz8RO7apLmo42hocuLq3/XcDGa4xv8VorkMk/RPpsfxbUUhfkS9N+YYhg\nW8GkQlhcPOwj9h1NbKIOrKimvPU4dUeL/t3gBZaerPx9uYZQvihTT4yjvBVB\nFv+eSkbep1B7sOVLfMoC7Z1FcUQywIzTYrfzGRp6LSyecN/vGEU3Mss4zL5I\nL/ijBHC3URMmXAbEbUyYsS1HBOi1e0gg4vF3gJiF0IafiiYgSQPftBr2r7LD\n+9q+\r\n=+lT4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF/FALjmFE4idiQIWDGce1+GJnN2zT9bo86X5RJwP5BlAiB5L1PX1U0kXuhgoXN/GP4gmzT4IRs/zrCfxDVM07lPzA=="
+					}
+				]
+			}
+		},
+		"2.3.82": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.82",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "fd9876552e6bbc266aa2516cbce01f352cc470bc",
+				"integrity": "sha512-7KD0UMgr4b/XqF9UZ+dikN/FoNxskg5s15gCei54lkVTfMb0IUsYBnaP8CEASlbUg9azCqIxNKWzKGaitDMSyw==",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.82.tgz",
+				"fileCount": 131,
+				"unpackedSize": 24994498,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbq9X/CRA9TVsSAnZWagAA800QAIWjwnZHbO4NWFdopMXS\nEo3UGoTwgqnfJCHL4qqfPTNBTByZqywuFT7W7OjyY/QcN53OgyVfmMeeI3BC\n3D09FDCxxh4/JnSwJJO3j2Jq5FQR5sFAYcB33eS/Z4OVw69pckzMPc/mQDZ6\nAvlDw2Le/vjK4Azwr7RSpH7v/3onkrW2bgzAAQHQ3wn3slbqg3lib/BMaFDW\nGqwAT9ydhBAC8YmfvsY20TKLPS/BHQyNRZadB7sQWJBdYRY7ydLYaEb14C9B\n/Pd4uGlDsmwxSIyV6UUyHAKGMR4T5exl6NANs5+0DBXN10PdCIVSLiN36KAt\nzsAKlWXil64HRiW/eRJprdta/JWQWsTi7OgbcR8pRFtFSeuqnpnaitcMMu7H\nrdgiocgRsViz4eYlH+gI9bBjWYJVZ1SewsjO2c58RLrm3bkQqqwoaI1kQ9Ti\ndMlVNMd2cQbLwd7xi+RmMNWyrr+lWzVFOWo/AVgunyizn4yBU8daMDDs4AQk\n/oty2KGBPdj8MP5dxhIKGlaBU4Zaj1dcWhBGYuLmdeOQUr5bVn/Wt7OfPWXD\nj9ATV2kDcG/YI9jY5jzGX0HKZFirWoEnrXPiK2XYdFZ1UIWkiUelovr1KiaP\nDKEudqT/8XdUukrqhfZHeynlmpbhdMqRbTxgKqdJdMm7YUMEx5eTfIxAuBkv\nW14q\r\n=GLN4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHLDsp78/psg3A92sZhyGzZZ+645ebrApLPXqzDT6USQAiEAn1ikTupTLrtWS6R8bO+gNRS+nAhOxS73GL3uQoIhqq8="
+					}
+				]
+			}
+		},
+		"2.3.83": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.83",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "ca1d77a43c9c3a6a7c7a4d3e807d81f0bb4e28fb",
+				"integrity": "sha512-JLrP0qdqsCueErsPulH4pAzxdo8o5tF8GbfbvmX2evL9qRV6BoE3HvxKwleuqWFhuE2b6Z2Wy/XRDQk8og/cjg==",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.83.tgz",
+				"fileCount": 131,
+				"unpackedSize": 24991415,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb7wncCRA9TVsSAnZWagAA2gEQAKQOCw4P8R6pxnHQ//cx\nSSkIeZ4Wj8u4e4fgHljUQP7Oaoosf3ZKJZ0J4j4khd7D93NBI3mhDtWzNgcV\nKn64A3QWzeZb0li/kBUuudhslh1QdYJzjxaOykv3dTwiPA1sqaJvav6R9V0Y\nmAmYoeVeQzJW5jwrE9YRY/JxC+EdJ7m9VktlRWnkVqbJrykq4KDGKH/gyfD7\nz9wpGa3HUkdy7HivgtHJxfSaUFwb8hbtKuIXiV66CKuN5MwDFwGu8w8QQRMH\nFIyVFdQeqx6lg13N+p3SGE9LoQ4y/Ar30JqdjH+pOTAPWo0B2LylixlMzNAA\nPyj21MC6BPwTmaQdo2s0dYbmhRdzjEwD870rVs2ULM1wkreiTJIgTz5xVvv7\nuJ7YB/Pd17k69R1hZFjDTzt8uWjVGRjjPtDRQAQQEZtetudsFMZqi/A4F1z9\nDHFn7YIUeAXmDTH2+ohuV3N1cM3CTXdoV/kfLoUlIx2gU2vXybcIQXwuYdUs\npYLCryVar/T29fINxpDpQ/COw3SbKV6n/aXydgYueU3XEjNVv8Por1YuJdU3\nT54zkrDGtJaJwReqEy2WGhSA8IXitmqa3c+WlUCk9ClQ1Jox6V8hHV1SZcSm\nKK0NcNkqg5/kztSrRDo8OIeIV5pFIzE4xclgh/7q/dy8WbiFlrWStBnB2eF6\n2Sf9\r\n=EEIg\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBLNhSpLRwg7juwv221NAsNJyQj2Yogna2LX3cNMNH5fAiB+i0xcigE+Z6bgGO99TMql9iIwYl9eyeIltXIw9tv9cg=="
+					}
+				]
+			}
+		},
+		"2.3.84": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.84",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "9d813306847325337aa9c53728454d3bbe71f4e9",
+				"integrity": "sha512-EzwkzWU/SO+EgUZ6pk9v4jqdSYgkXaZegHx/yg7mMBR2rlDcxBbcMQKERqLSZRjfvd8L6ZFL0T/syDty2TfRtA==",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.84.tgz",
+				"fileCount": 131,
+				"unpackedSize": 25010503,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcYe/zCRA9TVsSAnZWagAA0PUP/2FlKew7By9VU6wobNpU\nX5Vmaaz0tbsPBGDYXzCrERLqArnWFXJ+K/O6m8GgY883ZKTE+wzpEsHi5Io9\nGQ//3YIHzT6ix4qfY0sinmRJ1i/4F2F6zl4+D3RpHvxHgNlPVmaWunnHQS1F\nT2AiviygrdH0NJLPSeVPRUGvpmfCdKRSVwDpdsMF6gWJxw2wYmJjs83mhgUK\nrJMKMJTxHuyeeqP4okNPUTWqK5vFzbIQXGnhBOKuHGztgdYDwYkqg83ZAUfh\nIbIPOGZsO5Q1rWB4JATrCU2Ud/IIZDCiZuRay8YwWPJ0hgdlFGmr7PCW4PBO\nUDrRiZH2fBQed8IH9uAzwOnDWcXK0aXzqTgwYFzJWO9T9/tnGu2u9kcjwtBn\noo6/edKQQ3IHdJQUFtp3g6ehuEUkHepyD0GzSsWHtpiKspF9t9VcsodRLgD2\nvu81L2SHoHD4ZaJUzAyYgETksrnoZIvNPaVvVl2ZVRk3AJbbDacD7Wix5Sor\nFKiIifJHw0HCGglqGt8PmSD6I60gJaGzkGUh5mvBq9tAZ019tsy+pQEDyNxz\nJkaEVSaxh2a0f91uFJTbVucZJC9nwxxLvJ6PAHZOdocWEbW/KxHaY+ckN9eF\nG0A6jm1nF9j+J4kv8yF4wLcbwl4DCJLeHEGX1ZDUn2FfVWqNf0Fj0EK2Jp2R\nJTeq\r\n=Gv9+\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBPXmVYLiUJiehWM8M7zGyWsdzGpwqspXOUz8/AtXlK3AiEAtgiwFFJtyab1/HR+Bypy06pfiZ+tkaGCBQSItGlbXig="
+					}
+				]
+			}
+		},
+		"2.3.90": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.90",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e1ab6d32f0dabcd5e6be0b75fa4eb2f9d456ae1e",
+				"integrity": "sha512-GuUJzKIQfucUUtCRLklJZ3l0eVLtJrIKUjD+ZM+4bJ4OAVokekjCujYpzIY8x9qy6/FKpQ8UN4BpyyJfJ8LYVA==",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.90.tgz",
+				"fileCount": 123,
+				"unpackedSize": 25041186,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfaluMCRA9TVsSAnZWagAA7DQP/3uSYOugfzjj3ryLF1ff\nkhy7ITpVimrOonOWv1TfChdqMiYVKYzXV3QZADU0SPynvY3r0nkK0thNzhgI\nXUVPQKVe+3h2N91nmkp0PwaCJRR3KqxsxdEuk0gNuUfClV0sDWERFoGtQUx9\nSvT7JiJ8kpe/dWOaMTPMBBlut5oWg2HAD7QZGC5OxMzibvkxpcPV8Mg100Lt\nS3wRIGki9b+hHbYdDN/nVfqGEhCCjEjj8s4o5zYgx9GUyLcubXa/1M3VSlWe\njt6acutXZUzsLF0RNxCn56MA1fsZX+8ZPMJ1xm/OmUnndcIkUiET0esw0Ql7\n83+/NCMHipLCVIE2hlA3auhz3veOB5l7xXSWTEBTRoloCFbkHdTM5b5ZuqCN\n+4kL+fdt3ZFq0Vqngf/T5787YgmFozIrkQVSBPBu/upFbQCD8CtHs6IspOz6\ncTqpcILQb5iflCav0AyTj0yBnA1pPAy6+HnxoRe2eE6u6zKgKz428wH6Qao5\nePFs1mhm7C4dikr9S7CrdOFu5cjPjgLoBQGZbq9vpYr0+3V088TVuMozWME7\nYJSmrG7d67L0kt6EP0hI1xbAOWkx+BTzSE62sr1Rblel7+NMn+9R466QVd2H\nW6JDqdjKgLTy8VSI+lGcChW3TZfVo2dw1pWgPT0R17YAyUAJG+QeEJqELPaG\nrJFt\r\n=B7AV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDNWA8eE/nuhiYubhwte/CWucqwMZM+QZD3/3atzVG9AgIgSl9hGxM+Ga+xhtJt5Jx0W3lwbFGazyNyxukotsdE/ko="
+					}
+				]
+			}
+		},
+		"2.3.91": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.91",
+			"dependencies": {
+				"dotnet-2.0.0": "^1.4.4"
+			},
+			"devDependencies": {
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"dotnet-sdk-2.0.0": "^1.4.4",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "8cdeb8514a2710e0f8e7847e7570e0152e8c5d71",
+				"integrity": "sha512-7IKD+Q/qfXQHd4oBGee5JXFnj4x3cIMCONmTBkF5ORm0mUZVgU3eDHGeb8oJsbdFsqQHuy54AA4RQq+qHseWRQ==",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.91.tgz",
+				"fileCount": 131,
+				"unpackedSize": 25029183,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfjgWsCRA9TVsSAnZWagAAV1AQAJ12gfaf27sPN/yeanaK\nAOAwwHdVT461qhTwb+8iAUex/Vbh1thIh25vHEi+gyAKeyks2ddxnvYUfbrn\nKYGskalQedlnq6jla4Iasta5c4QmuKyywqhuMc4A0vFSIlN3BUDRjYMuk/0S\nO3S1GBiDREQ6htmIee6N6EDSxWb8osd211zjFrP+B5ftdC7rTbPjqvFHk70b\njaNTRgIm57j9jM4EYVzTsAbeWt9OugihqeDrhm2otdvWUCyP1g/IUyHGAXe3\nk2yz5ouGbVNAdjq/J3LnQWBkHIzrxNzpS8tojjGQ8Y/B5Fb64Nv0ci1kkMvT\n5HXqTLa3QbnW5UY91Y7NOSGbHuVnCRmfSTJSG6Fn+lWGVlZ5MUyD7RpVDXW2\nGUdoB8NacNy6Y7gak1M4Hojig0zRTUKIRJgUVpTH5kEs6zoj6Umdl4pRr8gC\nuI/bjOipBlndAkaXhvkLpNYPNSNRku9FL/GPTacIKfAi92poPsHPJZomx1g2\nXx1zEul6/FSOYGJ+nqKiGxuWFn7jTFIxUMeDYM38cPMKmzdIJXIf1qBNej6x\nw6qRUx++I5O31sGviyzkwjP9QHiXKvACMBb2agXkcBTPBlkTVIJqOK1521Ri\nVETRtnWcjmVGPhWdv3ePsePGe+ckRofNOOkvcHimy2PSlDWQRGyPPtiMvmw4\nWx8k\r\n=Hbrt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH2rUU1AMPrd+lEWMRxdcuyVm37DKrYKqaJivhGq+oCeAiAecbr1DaSjGZbaskDjT2blsasEhgd8Fl38Na82VGHTyA=="
+					}
+				]
+			}
+		},
+		"2.3.100": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.100",
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-96Gsn7zXmupjP0zrfxN2Gt7u9of8ggGVKVo4E0ijve2aQEOFOoiSemFQ21jBahkuUQA86RZ9oBNPK9S/uLZjXQ==",
+				"shasum": "4aa15be0894df7deef750f12352f53afac0de02c",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.100.tgz",
+				"fileCount": 130,
+				"unpackedSize": 24811345,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHjp1v1/Z7jMPEKxJriZMfO1F6xYlTlcC72NvpgxYC2rAiEA2WJjDhszG1YcoeQoeFN9SqgM1YTs04kTcsf7BR3sq64="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkErxVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqh4A//ftU3AkR6nfPqsKszCI5AdYelMHTXVz6cOEB5EJxfsm605BzB\r\nyt+8jrmLWT3Dd0bATA4xSS3brxN/nlRNnJRmdJRdfLS0ooVeyUk/TzUaZf9d\r\nWQheCasinBEZS9eYXkglKDpvobvoW77Q10jWBFNisocnIsQQWsFTKaewoNSt\r\nN5Vv00OrjtJ9bmqMkPTZCxow+jD0y7Loy4qbMOMd2F3ttYMeLoFO/JxXn88f\r\nv9UbiDWe6F1Aff6sEdb4OWjFZv8/DiQCNe6eM/tUHFbFUyfxw2p4YUaIrnBW\r\n7brEvNPAlHMKNRxZ/YyDPoJQEjnUezUpt9n0sx4LrFTHi8jdBq5Ka+aY119D\r\nif3BaMHtQKaQYSifmLZ78qGTLnj1PWLp7Bon+gVRoiu+MhTVeZNEqDgrAEDA\r\nh3LhtWPUY4DQhVPxEeLKNVkBpC2IL3Gb2nvxMoMjdySuREyFCeltXauLGMqW\r\nRhcr/ZRFCl8MzpI3x8UzmFSbUbPorqKt4AK75hLGRG8JsxiKN4zH+e4Gn/et\r\n6fobXEl4rVNwHtm86MDgCafT1JdR/8CSUodlMj8X9tAoQpLgD1+JGivvqY1F\r\nJ35JL52+GXkrpmyiiRuRETettX8aVpVZExT07MNPX/jeZxlVg3zcHSJRPhxJ\r\n3GyAjqU9soyuNmKaHw9qpHXvpdv5gkXvfRs=\r\n=bLcR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.3.101": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.101",
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-CyrwQ+jo4CU4XvdVjSogl67cJe7fKo/Z66u8nCPqsp4gJFt7XOv2sOLWDR5wLrlc1MN2vifgV2sW6Z2Nboj9+Q==",
+				"shasum": "6bce4a2de420103d573f353f5af8efd4f75052c6",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.101.tgz",
+				"fileCount": 130,
+				"unpackedSize": 24811345,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE7SVNZjVRKZfAi5W7aqKqsK/tdPCkKO0ocI+3MS8E/oAiEApZLehDvTAldkiwxVaQSka/tLTML58jC2FPQKg5cCDew="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkFBrwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmos9Q/+N7xu1AUrzqY4VwQwwYVdHIBU8FsM5fwuzQO7st9cUch2gA24\r\nQ//ESjGnHgXxyKjnbi3ixR8hItu39SWCQ3YtslzB+MBJHKEK3U6o+zizkvaW\r\n0s237YNF3Y8IIGCEWn1eCtYxAR+XugU1do7WmXeikYVyV9hRJ6/mGLquvxBk\r\nw4ZMJUDWG02R4Zba53HTvzO+VA5RWAMMxg6tAlTk+tzZ/e2qLyzrPvw7GaFt\r\nj4ZcEQBuibmbY3b5ZhnenGA9YIEdEjkPgsMdUzbn9hqJa7F9K8CPjFgc4a15\r\n6jErodU8EWv4ioPjOsY9+fwRlefRzExu9sMyZxLGCfYdD54cwF60x0BSQXyO\r\nwjUW3lstjn/E/96sXfAN7D2yK5QONdwdw58dYzpcErRtahVjcA1qhFnG6YFM\r\nCpg0q2eLMenvAzeI67ert4qyGYvpI1pSzJKONu/uMlrpdg5U49TllVh+xR4X\r\nwUUlX/6hm2aLzh1MuXc4MX9EB+OW761T9DbU1IPphnYorI45AXbsbshxHCG9\r\nt3BgZwHYBlmjCvqHritYNE04XELBHxmrFCMgIJZpQEnYyM+bCNEIbtLhgOJa\r\nDpPi0F7Dzr2xZQQrfwN2LYJu5C8zm6HuLszvm/LbOE8cccibHTw7M8W8tqU3\r\nX2fl7Pl/03W8TWhezAevQe1KFHY8jZXSFQc=\r\n=vcYr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.3.102": {
+			"name": "@microsoft.azure/autorest.csharp",
+			"version": "2.3.102",
+			"devDependencies": {
+				"@microsoft.azure/autorest.modeler": "2.3.55",
+				"@microsoft.azure/autorest.testserver": "^2.5.16",
+				"autorest": "^2.0.4255",
+				"coffee-script": "^1.11.1",
+				"gulp": "^3.9.1",
+				"gulp-filter": "^5.0.0",
+				"gulp-line-ending-corrector": "^1.0.1",
+				"iced-coffee-script": "^108.0.11",
+				"marked": "^0.3.6",
+				"marked-terminal": "^2.0.0",
+				"moment": "^2.17.1",
+				"run-sequence": "*",
+				"shx": "^0.2.2",
+				"through2-parallel": "^0.1.3",
+				"yargs": "^8.0.2",
+				"yarn": "^1.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-mOYqD3whmctwQIa0J+bWIMjUW8hR4RLR2+dQa9TnD7feEvPYXVeut70yl+VutkPciIvZ2LpuHWLkL2SQmDNwgQ==",
+				"shasum": "6533286f7d13b4bebc400cf414b1de80548e7405",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/autorest.csharp/-/autorest.csharp-2.3.102.tgz",
+				"fileCount": 130,
+				"unpackedSize": 24831658,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDJpNWB21WOA4JQrevboaPeA2LgEfaHd+ofYVujiJxgpgIgRZsLVt0yqFmtN7VQpm7NJlGp2rkmXRptdpQ3V1BFsIY="
+					}
+				]
+			}
+		}
+	}
+}

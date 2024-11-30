@@ -1,0 +1,1571 @@
+{
+	"name": "@manypkg/cli",
+	"dist-tags": {
+		"ignore-invalid-ranges": "0.0.0-ignore-invalid-ranges.1",
+		"latest": "0.23.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@manypkg/cli",
+			"version": "0.1.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"sver": "^1.8.2",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"fs-extra": "^8.1.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "4d09ce03ce8301e9536293c2676737ec290ba159",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.1.0.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-uyEK0GQDNCRnElGCu7uiLtgIGnEJiDKvyc2Y8QuxKnnuH3vSG0gnpraAyVBP89EYo4A1JiGJ7V29MnUJJgK9+A==",
+				"signatures": [
+					{
+						"sig": "MEQCIETL9WZQ8O0w6vrV3rbeOLWKb3b/o4astTZrF4GZOh92AiA9jd1JDJhigADRwdvbsJ0E7+5Xnwlk6WRIfwKoF7/FeQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 109718,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdW0EMCRA9TVsSAnZWagAAj9wQAJDVhGa+Ck8drN80e1zN\n7pv/lqeX+dpsGyiU7okQmMEh/IOr/3QcITwajdKRlH3gXLSH/7Jxed0Xjj7u\nMoqklCu3w6tvO+xoPtfFhOmA+ceGvWwwCRQLkZkro5v9zLA/I+Y/XpS6x49J\nxdwhBqHfSbgJTvKefyP5q+tt9arUfsfEZzSZTBqLX0lbH7QuWQ3fv5IZt3b/\nnN9FtWBs8OWT5Zbz57D1EdFRhuyZAYDpd3kJONp8G6ZS7fb40hVLiMuU0yVu\nVZ/bRwDxb1FNvUdhXNF7fV9/sn6tVRWbYcaaYtBCK63yCK8TMKz8NiJly+7P\nLvNRMOiaRAkp9GhP/Erka3gS4fNPzndsj+JlTus6rdFRsj0gBZAlRhhNRbmJ\nPd6sntL6PEpzFtBpdz7PEo5jj8Yfbec3cyS8wSSZH/f7xqtCIeY+dyoU68Y6\nL6YsTyY+1XqfVFEEzKhzwpxfKwXHr2lLjoYOxSWwgGCeMVvDhJWU5hrBRE44\nm2nB4WLz1FNbq8F7w7/CzB4ynlAyBqHs5wZrPU6ilN95tUgL+5dMt+qhdfCJ\nx/lzYFx43IzrDMn/DYIy8cmRmuiXD3H4lCpIcLXvtf8zDK2DSGnOibj8VUIO\nsI1fNnePHBnNEBxLaQnHg3hcWVjdmGUgt3QOVl0XfHOJsuBzwpmI/G27ygKX\n7RQH\r\n=bkpr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.0": {
+			"name": "@manypkg/cli",
+			"version": "0.2.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"sver": "^1.8.2",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "e6761d2af3eebcbcc36276d9fbffd3412341ee30",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.2.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-qD6aC0fAQVA5SbEm0dxCPsinnpkQpCe5iI9PRBbEH+UkhxSz1hCFXAJQ9huWmioeYW0oKt0THOK/cUXSYZXVBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCIsnH7+RAU3BUAc+BtL2emH3r1TRfmVrhg9jyjqsTACAIgT2bLiax9eomkIwTctdPLiaVykvHh2jIVitmXWP/Hdz0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 157208,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdaGmOCRA9TVsSAnZWagAAoMAP/07SGVc4j92r8Vdi48r2\n3W1QlYqXspfw0NfNvp3M1DPDfxp1Jc/0kxJUrpD33gKOGTzDke61+vMf6tue\nfCJdf37p+hf7FxHRXtJzoTZ1g7TssBQYpnZNFY81V+XTs1mXPgGuT3puI2Id\nwZMIHTFb/HQCdkAUTds6+8ksYnyW7lsIDLQOd+JKL2S9114XdA+F94RAmLdd\nhW56vtwdKpBzY5iiQhH4iH7/0z2+4QcwIyvP+TazFYZgQmgjYeGGyAmbiIho\nIis9RfgqDV7uhG9VWiPg+RZM+v72z4FA1ntYsvRGLcmwFzBE5A/ewzZyK7Yk\nGhvJ9tnr1TxNcsqpzfBNo+pDMmrY8AuOJ0bq9eL7FSAMRkWOI+jd8fWweUQj\nA97+kx9dA6O0KtbUS6slQ2LDYverL87pzwov/FXwxdkhpEfqKEIiU3mVzka3\nnQBNZ1amrE6xQkIZcYb0RfeGylfxeMBmZfS5bA5TqIhNisBa2E9/lL6mXyhP\nbI8uKX969mh+4NxV00St6I0z0HLurepoOIRxviJg3bvm4uBDUAW+i1Ztc1Sq\nYqFptvypnR6/IsxVvW/WCxk6VR7DDv781HNSjZfgeyOjQUFn/Fp17+3xFqQ5\nlUENmNQqrWlFDtxRRTFFc/KMLJIsgTrJEnLD3EdBA15e9QH64OXXoOf4/ALQ\n5r6A\r\n=m0Ec\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.0": {
+			"name": "@manypkg/cli",
+			"version": "0.3.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.2.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "9356affe1908abcb965ee70a1fe4b8b9cb8676b2",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.3.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-CjBboL8qZBT2Ay/1jeW1U6z4clS7cwQ7kPHvDLiuYJ8SI6DDQb7iKthpYU9X5fcdU0H2EM/3kMQxI8lcT9Ejgw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCPWD5KiqIW1tte+tJeJkxyXcPbGVYFeTrpRDZmuxpy8wIhAMwnDx8wkPEEnsxUwq0e4UN6uKBFeA7GGuKrAFG7dEsQ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 158448,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdagrjCRA9TVsSAnZWagAA6o4P/2m+WjHkm/vdOYTsMUEo\n6OGoL7mylbfGr5eFLIyKgcrdieduhwxi28NvU/b1ZHynqfptwKNGRH/raB7E\nBUZXjhVtEdUCaitp19QMpLS4xdON6e8pdFMmdscBiBmEvB6aHJmMDALA1hd+\nQuDxtwTRWR0df6GoZIkfe7aR0BfnBkVvMDNJK8PphVaXc/wVWJKwwQEQZhst\nWas//YUNjuDJ1fYaWWYLzRxEmBGP/E2XgDYk/1dpc2ePe1yHgWITnXJNpdp+\nSTwY0jfyTN3VGaEfpLx9e4KPE2ypbA/ogTWo+8zE26xUUohHzda3XsIafsmg\nq9IZYx/F0Y1FL9AGZrZlrzRE9TxLtTwtdwuIK0EZfA/AsWZVFFrHee2yg3oD\niwTncGrgeKM9USrOkL6OQYDO4AAJZkKP7P9tlvkZzNKConEGTnR29RPidxnT\nyvgd19CgrR3KHmX4lgernPX8acrHhQy51lfzLPb4m/lfjUIxkR5vX6JXU+jF\nQxcmu5ozaE7EHS9HViqGu4mc6GfbWLXR0yUCsTmiDLaFwpasaG/+zM6VByy8\nB5aBKfK+MEX3L8bqMKnzBrL/eck5bg8Bec2MaVZhw7E4vjymedByc0iNcSDc\nC887/9ka3xs/LUR3NPMcIH26JcCsq0Dz3sqz91WeVhBP5r9UZPSfMpXa+ZLp\nXFvU\r\n=CkQh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.0": {
+			"name": "@manypkg/cli",
+			"version": "0.4.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.2.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "9f51f64d094eac00926905d033e62affe34ed114",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.4.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-bnlUrAw/A73zENkK2pJtAurnPqCBxbqberJh6llQiO8uUsrkLBrFeitvm77yNT50QjCTfx1mHuaY4FjC2nfKeQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBh66SggxK7pwD7jDIFzofH6L4zl0HnUeRyRzzxX1sTCAiEA4OE2YjrFk6K/r9Cy/Jd8ahpdyWZyTkkl8cWw6l8jc1E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 161572,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdcx4vCRA9TVsSAnZWagAAuBUP/jLfue4hWjfLJz2rCLUA\nL1v/b63v1DXi74EULEtBI5ZT6fm2EfyQGuBMwdsLcRAFxj5qQsB5FLjVdroh\nl3nEH6PaqTvHtioK2Ce5dgnNrGMNQ0p55MCYjCNGJZKqE0MZ1A2bEGpVZxyD\nQYCcfj6CM5oXi9YEwUcTb0xvvIRBJjB+LC4aKo6nVixku8lTx9QsUOmyilsK\n0RZlzj7IsBtmx5pZg48qH93SH836scTwWwsfhdA3jzcyilMSRssYHVUnldiO\nLQDfCOyIF5cSjOuSZjGc2cTxuMRqynZzEnpdZzkavstwdwsB3YnyXKN6W3aD\ny3ezkk9yTg7BuQi1ziHf13fDfJsi2Gn0EKO4e2DAJu4pKqzJAWNY1UGx8e0I\nl7m6Xb3B1B3p5I1GzoI5r1lBHhdyUEMN7KO3wUssXY9Qd8xwZzfu63wWcu2h\nwoC1KtwYJ4yqCySntJ2Flw2kpjss2dFYy1YmOOkruhaGdVJXnb5VA/2oITS6\n75z7R0+WoYeOAjmQg4JAYKlXZToouJZ0UlsT3OcY10cURTDR0LdD6Qi2hCes\nrinI1dJ9Kmt/PFpTcYV3wI7+MyjsMqDIquzcTVJpMeorw2+FWySNuhHneIwM\nfHGVaqXBMQbmG56+PtxALw1zjzNnpwk3QoIX5vmo2zUzt4AUwLkZpUpiXJlx\nkW5T\r\n=Ygpa\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.0": {
+			"name": "@manypkg/cli",
+			"version": "0.5.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.3.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "210815671fbaaea7fe5d588a51045261e770c281",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.5.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-aYjno7DDk1nUXY4R3dzf+PWY7AITM/mLQlZdOXnUioAqcxhsE3HeAv3MrxXin4WekJ40sIQKDN3U1rTuvAZOfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBj+FNLQwqdXc4nQhZeceChc5buFbNTDRN/dsAYbv/wYAiEAvn8femS7x8jTnj1Qsg2Q0UJcq+Pwx2Qtaa/mspG5EwA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 108263,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdda8yCRA9TVsSAnZWagAAYRYP/iDU2BtOiYebtpNJI3/i\nhBKspkVeqtCGzaI8zXpurBkwRXp7UQeHDaSeFSpjgv3Vu6O9xX3mueK3ItbW\nneFv7oaM1FM/RahiPepSRkwNGRiarISY4yzwCOb+bDwmp835LNSApZxys+hp\n/490rGnm1XpMeI4PWya6+K92ExHFX3WgxuxBHM6nWMrQQ9OsN2fTjM1uMaPP\n93xGXaCHDOOYA8eJ30AoaWz0zgNsL7vCXM/DoU8KsNqsY/VdiEuZC6bTdXiI\n73GKq2pX2v0ji1qrlLnN5S5MaohD+7xVoaK1gp8LcJmfSWjKsoNWF98foJ+r\nbDCwQJEalnu/G8ClDuiPl8fHJYGcmdewmO+GoaUY7uwdanAdWhJwe0ypu7b4\n4snfuRs8SAV9MqC/SC/uk+807E45JOakuxrLqFiOH//DHFzpFE7+Pn8Zpams\nzMIOTiUK8XcTNss+eLa7WX0FEQh8xPvV64fWLR8lYDdEl4i29UNCSNEA+Gnq\n9XHHc7A7BBaVm9Dsk17ZCDxR3BxazZ0p3/VZdm2uojh/JwR+PAD9bdj1ocEn\na0O5QQIhLBuhr62DdvIuUl2RezXtTK+EfyxCJ3xCEUURYoAfiLGOuzUj16wW\n7WP+2VYLzda/OAf+g60Iu9EztBB2bAzg+LtyIjY1KHjQM1OJmqse/1esI+MZ\ntSnQ\r\n=DG1X\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.1": {
+			"name": "@manypkg/cli",
+			"version": "0.5.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.3.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "8c402d277679938a30562d58e2d3b2e0fd57c948",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.5.1.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-qWVQyfq7Tt4mhIJzUEhnvi+dTdsEHTW16IpCd01bXGcod1eZZgktjV1atgbrBZ7lRcWZVdCJIdqw9HIycCUxGw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDm3oohj8h8YVW5nv0hS6PX9q7QQQOSQe1qyxjs8RLyCQIhANLPwayn2UbjyTUgeM4T6BYdrTeoQtXZoiGd6B85w0g7",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173071,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJddw2nCRA9TVsSAnZWagAARbAQAJl1V8G3VLww7fSp2FNf\nC6rLjH28xa8BPrBDGhYKQq8G5hOhL/1Ms1qHDbletzUtzdUcht+vTH5OJYwy\nHRJJfEJYFe3OzUxrJ2ia66qIaC1d+fZEsFxqk7ZSt1HUcWKWvIvUvbSK0ZEE\n2ngaSfUwy/0coubHP7P+W+RR+7P1HKLBLaH7byF0h0jGzp6cFz4Ql3yEOKW+\nKsAjk1xRzxRhUdlXyjvM0L+WG7jk/WNdOP5aSvuTUf69yU+LqX+H5FauxJMv\nybZIyN0E/GLBuXWLI6OKTjmVOtUhcyspMNb1EkKu5ZRgTvhzSQLwR4FcVvaq\nS0wNcTzm1RMWo/iEvNd44MMSa4wi3NXbRm1mpgKZHnQ1TC7ELJv+6gJL3Cox\nHcDHHuC1LJRuoP1ozpbJrWYPyJmQ7JRGL7F94zRIvDX8n7MKVhZVNk2nOAN0\njVLy/2KPIBx4kwSDcmQTwrI2BLfmVyNyAb2vUQ7Ui/anh+0ez/j8D/CqlP72\nj2JpbtjcHGY666lHsgfFZH88xSVFvKSkLSN2jbXPrKNt+HayMfw8Tc6xGFpN\nP1wM1gDDv8q0sK8xQr+7Bh7FqjLN45FmNGFUAs7nFVcEJ3+rqqwqSBaOaX3e\nKTD64GmptEots71m3SIAOo1SM/78aAiuifaMKR0P3xcQA5yE9UMFEqF5HiNd\nBKBK\r\n=TyBd\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.2": {
+			"name": "@manypkg/cli",
+			"version": "0.5.2",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.3.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "40d7bd1d587dc5918eec777659cf56f125953b49",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.5.2.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-7tdZyiDDMH7pf84JYR6iN8JOKnQUO9tEhQZZ4fGBlhCt1yv+12N+vj9QIZFzZpYXG0NAsi4LOPxIXvPaybdUKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC+WwCXtMNpfzAYNazjTltbVaJdBkb3+7lJf6WRyqxWqwIgYI2c2XGUXuQXfdYSaKWSnlxBihYT6F/SxUQkg/EsBm4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173455,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdd1LTCRA9TVsSAnZWagAAnx8P/1LERxbF/2FA6aDqB7GW\nGIDrRVoUYExrek35MYUZolb/NvMPRRPqG4l2QLFu2IhtrI1fZo6DDSznso4j\n1vMPltWydRcIh3qMWGIXnpH8Y0I05OkL61W/hzjInpoxK2mvJfF5azBTgT+e\nDcMnivoKOeUz+TTHuaimQ+XsHINoT7ffWUdClnP1NuiEcoZay2yKmQwZNMxd\nuy0wr9gK3ZcUWSrmhFu3w5LnOMs3+0fcQe9PcR+yk73SzI7ra0oQF7NHGfGw\ngIo77+sGmYT3nPU7+ZxV9FBTeTPOXgYwhYQN/GgNdTRwiMaxlnq/1O3osota\nQ/SF9ItDbrtgN9hjtLDSGe3Zc7WnLfVbBvq5KzDTGaKqxx1wpwKWn2aobgOk\n/KeKoGqYnTsbx8wo+O/2lPF6VNejjc45mATbeZ+RvlAcshEiuEGVr+ZO/1zs\nZHND0PpUikCSAtFkZtRMart1ut6I3DPmBxkKiP92STOJlKcFbF4vpNdPpqeZ\nnIf3ZknwdLcCovGOHNzoB0TB55QGLIp7JahBnkn3EJLplQrAXhzfq2KfU0It\nob/6blKD/OyR0j1L2Tfk2A29hYOJP8hqFx2w5t3KaNpqN94BNtcghi0kJXrH\nLXS8iZmzPcdxWoUFgW2ZHd18uZKX5GCWBcZsormsspHcWiWh0Lcm0Md9ms5y\nxxWW\r\n=YjO3\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.6.0": {
+			"name": "@manypkg/cli",
+			"version": "0.6.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"sembear": "^0.4.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "7a262a644572d3caee28b7c3ba0d032438dd9d79",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.6.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-tHQIxQeRDRUZe1Og3nTqVg2QzpyU/u3fnvd1aHOmhWtbdjaLMxkq6oniiJrRrcJKrbJHPSX8kweIreDzFQiUhQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIG9dgJzDZC/Ssqa96uU4n3gcv7npq3nIZ6m/rM0528uuAiEAjcJBVAVttpb240/f4XIkdn/8qk5P0aB5lCSZTwXZSwc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173549,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdeeY7CRA9TVsSAnZWagAAG40P/i76byJvcRxbLZR97VqV\nib22v4bAVFRhMGP1tDwSJx1Vz/zKkpF2UrAFHJhZsF7BbD8QurcVK7D4Vnqp\n7iGW31xhnVvKXf2EjzCO2Kv0MD0YU9G6a6aRWSZKJiZKize5q5GOlJ2s+i5v\n8ybeFdzppwG7w/sStT9Z30gDUlcpY+CweYEbhEtoX86mP3LGQlS0ktJL3F0Y\nceCcBBgQv1qoWjrmbfQXIR8fh4JSwl5vsqoYauztnqssw+koIXZyPUKNbF1X\nPon4GXokFYLdKcIY8X/moQ3IXy78PzCnd9JJJQhxzdKr8VWv97ihAkZcDTey\nQSgzSm6/28hd8zFNI1vdSj2JBBGOSHRFw6aCBUJo7cpV8DFfwyqTHk9Bt0Aa\ntpNc7VWuJVJBg6yJeTBiC2OlwI0Yoq9hj2HButAKzdcSozRGYfe1+gWjxaSe\nq1q6Y6actN+TFMrV1qzvuWC9K0PqG49+xO/KH/UeOlGnDYCNoXGblzlS4dBy\nmiH6KOsw/zvRLCdrmyPf/7JzBEpD7hf6NlimW1wQ5cH8bTZEWtxhfAgaLLqq\nXatnH2dxDn8M/MqE1ubboo882cfWnuLBEpwolV6PB97ydEYJG4X4446cjx1K\nO0e8urFTAX3HCwmyQ8tcqFXh8S3Zr9WNs78ua/qLmUhzWgSAxuvkpK/4QXwM\nMhXY\r\n=Voss\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.7.0": {
+			"name": "@manypkg/cli",
+			"version": "0.7.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.4.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.4.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "2849798d231006d22073155482b226d40a66392a",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.7.0.tgz",
+				"fileCount": 47,
+				"integrity": "sha512-yu6SDfwkgrMw/EBR8EwFI5cmgfYABK7Yttz906qDQaDiBLvmH7+KLg/j/OOc61uCqQzSWA8jNVFsx6rPX+0yJw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBe+k3LpSzz9FugIVjmKlK7O1oxKRq6ZIc7PamSve3DjAiEAvMgM0TUz7vdFSYnYjNBLtPhtOm6W11No0evXpF5U6x8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 181719,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdm/3RCRA9TVsSAnZWagAAanEQAJeY6w9XVGhZSksNYEdn\nBWHo8PyRXeFqpwMZ1RgFQ2/1J/a2sbycFw5lbjmtaix4Y+HHgYGdAjzGN01Z\niOYbtH8QOIWopmym9X4dx7giRQ+vtj+NqqAQENCQ+8u03JB6oPktphzkJxGN\nv8JYnDGOUus934EGWJmDoVQrXsAmc6aGpVKFE4RvK1jd/erD/RZYrilmFOA7\nnCzwjdUHnhH2woIaqYkxbAQhAcVfhAod9/NVeh45czpz+Y0wop9tuC5SFHoL\nF/VTkKR7Aev2oepzKAuPA3x1H7j7WYjV4+kXUdcJXHi/Q6HSiPBRxw5e2hZB\n4GBmxgnPJxuqSHe+R/rQtNyiCK9LNmZ6sHqA8ptUBFh675CvP8THiW64Ttx6\nfjpPoUl26n9MXP4+nqAp1LGHNmByjzrvfPzItmkz0oFuQNTyH823nrS+giTj\n9UnfOPMzepFj3ABJrN4jDlajVPjdR+jRuow/HP7T7IPHhB4muUxUA5NAldbX\nkxd0Pzylvg/jxguuZb8pcW+2SKEcqWFjPK85meAoYYyX8saCYU22qXAIDmoY\nYtTn7+raEi/wJhyWNBP9zmgLiggEpbn13oC0a5ejGgLSPm1nI3J4m5z3/OLc\nzER49GWGB0Df/iL/1hNPzmPefdDRMi/pN4quW9IyoDei05p9W7vOD432wS2t\nF7/f\r\n=EZw6\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.8.0": {
+			"name": "@manypkg/cli",
+			"version": "0.8.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.4.1",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.5.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "eb19b2ca406c3861a1ddded8cc082b51ae6c74c6",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.8.0.tgz",
+				"fileCount": 51,
+				"integrity": "sha512-svaovvlTN1dDVPNZKZV6E3Tgsc0QxnJTp3UWSVBFa3GaNvX8a/O2eKMCTBSqqdrMUxGVeGZjKDErQMNgtx3R4Q==",
+				"signatures": [
+					{
+						"sig": "MEQCID7xGDeWdwq/ehS6UQwNNvAz4KxYJtaryvIUfBN05LFLAiAqzY+TO7qeRVlBIywX70RORpqnhxuDD1kwzx1sLXGckw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 192568,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdsjLsCRA9TVsSAnZWagAAH9EP/j2Y0DgRV5UL3y0mWash\nAQE20PKdaUVff0u04rzoyhAVxhiTVblnTxMbdYK3+sE5jryJhrfllV+mWn9g\nnj1pcwxABbnDZH0A4nybN1Pmh5fZcfJZ3ZumVddNlSxZAeCSF4C9WosXvkUq\nZMgW2k2nW7CRrzzXBSQ4zNBrOcVWQSujinB5cQyMpxRlSvvQzMx0nukGhkCD\nPAJ7IoaCWbx0cKeB5D9IRq9L9GO9dVfgTCJI9S6NkOiGLrFFNDbYiAmO3CZQ\nYiYoYH9H5ZYTrrgKVwnbjsMcAdH1Lv8cHUd3VhaGETrLmOAQTtTqXIcqEcRw\nVfP24VgxlBLlxajotWSDHj7VucH7Bkhwbn1MapqDnuwN+zcpkLfZCRuWZ7TV\nWE2PEaPU+tPm43FdJ1wJRGPUAIldLTCMAsYaabVkrH7tjnPZS+3MjSBkra2Y\nOls/Fg9zNlK6PaVE+as7WL66vQE3TQTEmdxO73m+bdghP4uLniBUro2lJuye\nKI3A2mwnwQyHOApgOlJ73XE8SgA7l5ffDWXkCBsozL7QrRYT4Qi2EYQQsZWW\nut5iC/B6TqhjIOh4es6iApVq2U1CFlmHS0bv+nyCODVbk5vZgit71bZkFYWt\nw8ViYcsOTIlDLdXkl8IFI8VxnVVzjqoJxAMjZxXh+WUapgcFjjXKgQxGwuBx\neDtx\r\n=FCQe\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.8.1": {
+			"name": "@manypkg/cli",
+			"version": "0.8.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.4.1",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.5.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "0cf3290d57a0f9a0380372c315b0af7bf703f5d9",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.8.1.tgz",
+				"fileCount": 53,
+				"integrity": "sha512-AFWwD5Je9O2sqZOwGs1wU7gBkE0YL5sUawPwB9PwopCA9Ms0S0+DqdlB34DA0bdHqH3iRoEPUoCZ4VkhARLyng==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6Q6VbaasCq5dmz2lvgd3C3VnhZjjF6/pFqaEW2hJjtQIgf2OAIIqDZNhDAW9XoH/KSXKce1by2aVIvkRwNV26aMs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 197364,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdu7YZCRA9TVsSAnZWagAAgZkP/1e1S3xd3LoypSLEqni7\ni9DoifUWwD5BO+mnKHD8rDL6htFw7zb13UaR7qVTl9nVZlT/w0M+Br60VQBh\n10TZzx4O2Veogk4yrU2El3m6xsb1/Ly5Y36HGzXfIyF+5fOdIYM1G6lTHR6z\nGz7yQ6BLTdPidPjuCWyH7o8WA0NsAl3XT71B98qBbJwlk/jXviEzx0gnrbH2\n4Whyd0+yD6lL6wg4hO4DOKxx3ETF/msWCjROQxWUELIxfVNLNhPeQJleFtL4\np8AfiV6muRAVYTVmCEX37GDU+v8Aqag4en0SC55f4MadzoHVLQEaqKd4rZ6u\nYsXmWulEQQXhyArGtT/pVy7eCYolJULvSlY+pFTGZWlpNwqmlST0n3iCQcC/\nLeCmRvP/Z3zseKhJme1xsv2X2EEPgJI9+BS5AnYWSSAUoi0uCHGNb6c5hxlS\n4GmyicrUm1pgmdZjWbPhJMu/aUqRjXf05DqiAXPQeuCQz7vslJX1u+g7jTT0\nsjnuMVg1Qp+QRq31IWojjfYQovRmGNqAbmoQH2UPjJAXa+ohdfsCJDJWX8kj\nffjh1IK8ll4BgVC9hBdbNVQLn7NEin4UCZMNSd7vVVncVa8Ct20MiSd5gUP6\nEeRh97X2EtDt08EJmLFdvWVD446JQdqz2ivJt4Otkc7ZnxZAJqN86xcLl5Qa\noN5D\r\n=Mtrm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.9.0": {
+			"name": "@manypkg/cli",
+			"version": "0.9.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.5.0",
+				"find-workspaces-root": "^0.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0"
+			},
+			"bin": {
+				"m": "./script-runner-bin.js",
+				"manypkg": "./bin.js"
+			},
+			"dist": {
+				"shasum": "152714d12b7bcfb89caa5141bbc2a907b1b8a56b",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.9.0.tgz",
+				"fileCount": 53,
+				"integrity": "sha512-Y0V+GTDzeDCSoNSS75nVSSk2V5HgGZyVOID6XUeBhRVzs1ZLqTfUCS3F8+KLVES06GP/6sRQJaUgC7zmmjYelA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtP5bQ5JzFHXAk/B8oXtiKg0+zyn/bbseuHKBjipts9gIgU7fsjlBXHX4rV6JqKyg5q4cYWx63MlE+1TJvy4Amh+U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 198661,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdxKasCRA9TVsSAnZWagAA5VQP/23KYSlgVgDmz1+yB86h\ntxedeS/b0hqaHBMbe8ZqrtneaSDiqk81gJjF1jOsd59c6suxufiR2g3uWPKs\n6TBd/tGX1Kr5tQE1EOEMllyn7em0jqlgw6xaDcyyn8i1WuyEvV/bDnFFysfG\nzEAr9jALyqMK6/q30IvbJ3izCSYWrjx3KDTTCT5drxRnQyg2f6iaYSWMznqg\nWNnXfkmEqj7bBVQYv2SoOcMjydvQAV2wDXa9UY0SbKdaFYH7sakNxBbbrRQY\nIpgi6gsBMA9fzdMDIZjQDoJoXfNrdeor51WfZPM9Q3QW1b0Y8WdC4ii16HWF\nBa9fhfmcQJn4qByJo6bjx/qJduidXS0NVGeyxQvau3aAOmLgOOZIL0FLRvqe\nJQtfPbUwuBCX3kovWpb9VPUcxlpr2wo/mjjF5pHgqdUDduzirJiARiZLtz5Z\nuXP3e9QFXIIa1//Oyt+rhz4SuhaooTd9syeJ+FVhCvT8YZGRTgStR1sLl8Qo\nuo04fhX9m+gcUdn9wGHXua2Sm5EvVffyJln5COWhuPQxvTDhYM0aC10aukqA\nop6CSHWu/kWHrnMeFir4euL8SP6eYE7G2x4F4WHkicNGJbddSxoNOrM8hfUU\nj5DYhxC7B6/iU36sfj0qUP/FCLghTaSi2So7LsVDdlgKP5lwo59HhJcf0/oF\nWxLJ\r\n=Nk5C\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.10.0": {
+			"name": "@manypkg/cli",
+			"version": "0.10.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"find-workspaces-root": "^0.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"m": "script-runner-bin.js",
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "16b4ce157146afa2f75eadf7d6e90b0a3c3d4bfd",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.10.0.tgz",
+				"fileCount": 57,
+				"integrity": "sha512-8WU9uSD+myMMQpHoMt7em+PHPEx69cwaRb6RTW7J9qv+OshPycaXLQrUKWXEzluc/jKRApoI+4MTjAemZs/d5w==",
+				"signatures": [
+					{
+						"sig": "MEQCIGgBoti59j5agOIYLl++JcV+yNRIkNmxJ85O4dh/G6oAAiBmaViTGc5vo4l6hj7leMOXEFhbdzU3XdifdJa9fX4Y0g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 212893,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRe2oCRA9TVsSAnZWagAAlC0P/1OB0j6GWl7FNqRbeWJv\nTFi5ffxzO12SYxVp9YbKkkUoM/Zn/JK9h31JerxcuUPcerHSJZ+FaMRWYdKH\nt1kJUNXLSEjT4YN3xhIEngHTPLtOXfNL5YRT+aDIwD7aX7Sg8Wd6dFXQeaRb\nSVLGfrWnVuU+tTRlVcy9kXPaHnDVme3vgfaopvLvTW51eJkdWQkHaqKm95CG\nx9MxvGi+8LO7ZhukWq978qJKosBpjZiRbPrykmoVqGrUo5UoEs+m7Ygd+Uaa\n805VZiYQG1t5leKdQ4D3F6Kdnv3bSPGFTvhsjHHYqCrO6qmwwYe4eWRmioIT\n1bSGHpHaF0kLxFCTDFOUjACT7UeEYac1H08m2jp3KTVqy//Ze2RHfsVTASnZ\nl8DNVWD/rUYkPpCqKNgPejFCa9Tb0C/azdM/OUyPluEEDl/Ld40KOzXik+2s\nRAqDE0JVbk/SC+GcztJSrqOlfvYrlmuKhOlzj6zov1ZMUGQPxi3X5kNQnz64\nPA2BlVpqA+eAt5mxbt3rs3GnroNtaXeAKKQMWJKq/QjmJjL8n7HleJ55KVyf\njp2/FDDcZ1PuagK3VpavifOMbquSnwSK9q+WC3VhnvUa2caTK075D9sOLk6W\n3PF3E3aSYMkYCE6LnMPECr4qTE3wc9mZ9QVVVmfHSbT4ATm73CL7ktyJXlTy\nGegd\r\n=oI7v\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.10.1": {
+			"name": "@manypkg/cli",
+			"version": "0.10.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"find-workspaces-root": "^0.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"m": "script-runner-bin.js",
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "5105df8932f90f882a562d107a6d438797e2086b",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.10.1.tgz",
+				"fileCount": 57,
+				"integrity": "sha512-U8niAA7TmLwTrMAJsspuhOQgArryTIUmKKLHbj3aSS0XBT/gXZKG8zRZRDHiEm1rpKywun1Ex5HM/DSQL1PQ+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIGZzETQAc/sTgPf62GiiheJBWEwUyo56VqE5+t2xYF8yAiEA6dO47it7XyDFRFmlECokPrxdl1xVtvrK0ED5Xr9KgRo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 214761,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeXuJKCRA9TVsSAnZWagAA+wsQAIdrScVIv6SkqUMFLgff\nnbPxPmZXJ54rs0B0SQQ7tvUX4TRNVSatcrSRmVpxbECqD1gkpF1E8GuhGR6k\n3sEiG7b6Dl3ArSxw9b41D1p+Y3hp+qvLc0GXqnS2T2iNcCEviH6RVJRJt21e\nUL16Ry/jXQC3zg0U0EQ0zmKq7SaivYyELNutBN3e7OQrc+b+7poRKTEbEBcp\nWhZYnNCr3+zqIlfibRD7ezFHHflh0DMYt4KAbsNr8FPtCa5whhWiNAmEhGi5\nmkUfgr1CL7LVmG5HQythOBKiw7BsaPV4bu7wRK56Hywl+ti85O446iTqKTOL\nn9bauOtRuIO6v4BGcFsbLZxAzRJ/HP2AfsWsUJbZHmS8DlvpA+AUVNzBqC0U\nc3fTYYbq+PMOd9xQ/3o+p37I+lYQqq69ZASWs1NaAjBFjK/O7a+za0CGNIi5\n7pekth+CcEqm3JgSYOFnWD3RlGMKeDnY/fQ/b+9ISz/34oGd8vpYuT5Zs2uR\nJEO7GYokX/FkvVSE+kOQ5mH0Gp1UX5lg2TS2EaHww278LHmAvqavMG57C4Mv\nBVcHk0jEDGZM6UTnRX+b5lNLdOSnroRrvGcqlq6/RDZQy9FH0Y3AoN5iZtJ1\nP9l/6uc4NJtryooegwyDlt/V2nbTPprbFRMSzTlvMQOEEhcLzyjCQKiZzQNF\nUjKS\r\n=IBEb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.11.0": {
+			"name": "@manypkg/cli",
+			"version": "0.11.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"find-workspaces-root": "^0.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"m": "script-runner-bin.js",
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "16d64b804d2f39cb52befd06e2cb33ab1ec846b7",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.11.0.tgz",
+				"fileCount": 60,
+				"integrity": "sha512-JIw6i9MZTObX7L9lQsSF5ohL2T0jJuT4wU/NX/s1YwKd38A3XUORirsK6a3y2eIEfkIt0DB3AnaZYS+Vnn4QSA==",
+				"signatures": [
+					{
+						"sig": "MEQCICiOA9DMNewWkgatJLwCCQAAfM/BqzZnJCqJxEh7E2beAiBLrmz+4vfJSvEII6JtXDe0otNWtXoSwpcgsrp+sJAZhQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 227991,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeXv3fCRA9TVsSAnZWagAAfzAP/2bhj4V7Ye6SgLzb3fu8\nhP89u2dQStlYiKpvc+/4brBhefaV2yUEztlt+LxB35uqEcUJnh+y9TjdfmSr\n5U9geDs26SFhsOORkAjLYK6B6WqAgXlwL6efjnu2WIsanK4qHdjAZS7ulkvL\nNEXAgGM8GM2+HOT+D/heurR1UwTF+nLr0nzoVDd7l3veh+3XhgFSgvlQ/f6u\nq2ZNxj/TCKv4A39Qe89g8dlRraFG7yAcocN+Snw9/4BzoeUgUYzb7y8Bqhhb\nKJ0M0agIirU0yHi23gnPFbsR/wuxWCl/QZoFQ4TxECdiq1xR8prBonopwH1F\nAbyryQ0K3aHpG459HBcgzieVE9WYqV5Xr2hVNvXkM0NXHSPfqZ1zEJSwMa/u\nDN7rfL2WEarNRRqs5o8Yw229ef57vwbeTRQsxQGlOvru4+QcN/QyrjELurtM\nNroXW3l8ZD7TjMvWwKw211k8NQl72Zhrn1vmLd4PrO5C8QHwCezV59dCWUdp\nm3/ViPUqhE3qOlIXsMcpZ2cULYlCdCwf2R/2hyeHisHwjZuZLnDV6yTPsttZ\n35/Qryx6AcRdWPDb6DN7yEpoe088oLUmJfWTOTmm0BX+u5gJjArd8aeeA0lH\nMor6CDSdjgr1uo6JbqH8VWEPT7aWAjnYwJRFlHJWgaEaKBQIVsl3uyWovDy1\nhZiA\r\n=YqRf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.11.1": {
+			"name": "@manypkg/cli",
+			"version": "0.11.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"find-workspaces-root": "^0.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"m": "script-runner-bin.js",
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "1be7f661e0e1b7132809ff485f19694db4f29ce0",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.11.1.tgz",
+				"fileCount": 60,
+				"integrity": "sha512-Ya4kKY8+VW4L0UXn0MfX7x6pezT5hgZeIVwwCnDMCjcR0RlRrpIk3NV6kX6A4QkZVe9ifA8ZRX6kCbjeXTY0Mg==",
+				"signatures": [
+					{
+						"sig": "MEUCIF2Pf52kFHORwuKYP4ve3RN0TDMLBlc6BTFxoiwHj21VAiEAq7rs8wunQGPk+0Q+47UtRL7b70GPWH6lV2KYM3VGUCc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 235793,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeapWTCRA9TVsSAnZWagAA/SIP/3/o/814lTajJkLzyOdV\nx7yLWnUgJ3V4QEKgmNlQgp41AFYvB9+WyGkbTRAs1nL144T94KPpJPR9rsJ7\n0l+LGYPh9QL+Vwusb50/xbM4O0F22bClmCm0NWMm+rHaLfZrlB3hoEROOKM3\nncYHVdxY/NMikxdinLbws3GAO0ECyaq9bwq381UkbV5NSv7T5G2IOpcLOP3B\nO1/KZTYamxb9985fy4t4cIIm9pNCW0VWc8bvnMNVohbtsQnHfCAIerCuC+Nd\n5DOSAkUuffN1CrO09Zu4dQ/UOTh1PNLj8l6HcgcH/FRFNcD6GwWg2X9AUwOj\nfCR02kYhLWGnXpXpwjm0+FWFTfTeMGk2nNAOm3UETvylXd62J1IJOjmlVJTU\nSyM5EhNsKMC7a1szX1GEiTRykfLR00zYIDnK+Hl/gHXfUZUaQGluvDMXRSf9\n5OAD1KeU1vV7S6lC06p9oKMRDlAB6PfLiB26clN66LuAoGF6t+gWlxNcL4MR\nh/0++u49i371JgoEumBYngfDR53gdq57tUxAyjbCVguYwMaT+22mKEc906N0\nx4HmevFQ1i2UWjz41AqA3ClAJU8P8eVZhjtjoZdKGJIOTcCHkUILMv/en0h9\n8VJigaNYeUVm++vSZBc3npFWFCllvfci/qcDz3/Y9x41V986f+sUdzmNFl19\nYQTX\r\n=4ica\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.12.0": {
+			"name": "@manypkg/cli",
+			"version": "0.12.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.0.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "4a9b82dcd3bd9434bb95876537c87e4d2ee27bdb",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.12.0.tgz",
+				"fileCount": 48,
+				"integrity": "sha512-T04bCQiNdM9zO5URSjOASdxGj0xOrs47Y4j44+LVJzPiBrxGrL2426Q6mVSr12QnnzpocaIILRZbF5111T9hMw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDnGKC2XDNUYQWR/yZT9KHIw0q8k0A9NADfponH/29WUAIgN66fL+coGF7CFEjQzcOZf+9t4N9pp4nnXPkvNbwv/MU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 182061,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeoTpPCRA9TVsSAnZWagAAWL0P/1zGUIAdlUW7TvzBjCGj\nCTLaOOCBvDUzdlyhx73JKUuwK1/Q19csISW1EY9sck0h2739Ys72kpXAtMW+\nSIFRUt7moo65faBYm4WJaTaTaOxgK6UZgiflAkxpzZj4yAv3Wtiz91dyDN8Y\nDpEeeBc2zRR8FrVOzw1TfIzEh5etWCd3r9GNbbt06ujnPNuZjeQajZ/+5vCf\nxRIOsiT9FO+CD9VzDtTLy09Q8jYkRp0gq/xHCeJuDTJxTXFjtLkup7yJOPNA\nw2ZH0bK6f7ph9+r08hzNqkEAj6NfoGY+8n3XD90TSJK0oeBckIF/DUvvL9Et\nD0fE2jDxsqeyC4TRfY7U1nwcUSejL8IZy9RBwB6wPuB1C1IsPP/6uWnvdYnp\nxND+R7UJ53HuBnUEVVLyeQHPEDUN/Bsbi8i4JP2rp4cIiPDGaPIN58MwPZL6\nmLl+KAdH1zItRjDSpZ/WJ/MMOAvoD5BSV/d7fKP0CduVyvlCA5663RZQgVTV\nyMCSF8YdthYWWWkKZg8d9FISHVQAVXfQK0fEMFvbIedw6IWTmPIGbZCYVieM\nC86sLOW9VkyWMwt8exTMkdR/lMz5o4qA4d/nT7fmsW27mL6CHW/2c77v2u75\n5KiBM7Fu9vtctC7TddnM/U3y/P6JpBoaRMjJvq41e11Xrc8D4PFuEj9389BO\n8V/f\r\n=Wlk5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.13.0": {
+			"name": "@manypkg/cli",
+			"version": "0.13.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.0.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "89af036933de367b5f8c6027032c86e265d761d7",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.13.0.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-H38xh5mJ0Cwev6Dke+vcyKEj152u7jl5aNaqx/QDVnjLpbSTUExENxIQ9smKeLDX/ZskEzbvLETMwNXAbAdq7Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQ/ZZV+WYXI0nB2Ohtmum8IsW5R8MrlxUq9PZ91ZT5EgIgGMRG5ARXT4L34yD0Fn0GIojWLUpGcn8hM7DIavQBF8c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 174944,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeuLEMCRA9TVsSAnZWagAAPAMP/2AV3kyyv8aD8Q3B/Bi4\n8NPvA2bMcVE53u1852Cbg7ep/05XuJvitidJgIrmkL2dcnhoqkZaDHvK6YbM\ntVC6/fySvJdJwLtvH8aAT5igfQVrLEPs6tY7VWlvJ220VruB4doRc900UIXo\n5HUFhl0avjF06Pc7Jj6/vuDd68a14BDTodr445H4XPFXFs7OzWPR6oSfwfrS\nFDCmL2SUiKAaQL4gkx/gA+9xFFuJwItS67q7pwKNj1wcIfFJIGS+LsQd9u6a\nNFh829qZRbp7nUa5ljvpTt0xMsZJohnJtNZpyNBnqyDffj9LDPNpQwZSZQid\nxGh69JeqRT1nWhfmU12pQs4au3Kg4nm3BeskCe1KKT165ya3yb3iJUEVDrG8\nwvQnWWJcwFjzaV3rRwWQ68honJQvBHadhspyxxRzN7hiiEP0Ui2f0IzikWm6\n65w53ZvTcj8N8zyGhA5boVoCx26M3+lFJWiWHP2G2LAvvAiZHJ65t1zkyPXF\np9c4rJB+p0Y3/wQ72Yc7LZf96D6SZXkM+wO6XBHmSEjjlmYsMwwFoQf9ytUh\nhSp7nVP9hX7Xmlafzk5WbPBYMXdIVgw4kLLbBz/nepAQqE6OSI10Zg96kD4g\nLewmea0u9nKQeARY194LaE6SLgqysXngpa9+q51OixhVYJhIf+61HsG++dGe\nYWb0\r\n=R+MI\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-ignore-invalid-ranges": {
+			"name": "@manypkg/cli",
+			"version": "0.0.0-ignore-invalid-ranges",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.0.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "301ab75190fd2179dd2ac41843dd61f2a1b2e396",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.0.0-ignore-invalid-ranges.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-HmjKU1R2D4n28fGMdGw9utMPGyB+1NTodaqhIHeXflcWXWFd5yGaPxRvdx8UwflzzFB5L1xz2TQaYkwBI2pdgw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDbkpueXJDa70wiCy6UYRVekGpE9GKZup+ghCC6y72OcQIhAPS5RCERPwjzHLv3AhScHfN9bHB8Uw9852T7ifs9+yT2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175786,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJezI9lCRA9TVsSAnZWagAAUYIP/j4b0g+Vcr2nBVC7v6N2\n29giYmotJ7bpAzoBzQd8l0q3ksjH5zyiTjxsAFYF8gkOorBspcE8h6Mo07cf\nP4LfT8eDarcIRCo82f2sxlLnwDnKy312J1oYFsrirf44KZEokm/84TXY6p4O\nkhJf8F6UZAg5oJRDUpO5Cp/sRdsdC8iVATgV1ze34maVP7rjfy3F4vBQ6N4k\n1TJrmpf3bXB69ERfRmKgcSX/5P+/aRvQgj3DCs0uUZOSWyGC3bHVBcVl6ndK\nIeK1wFPknEA7+yriHugfEkpqk+FKiRqDhUHITLeESUHoapHCWa2PpfyRkpb2\nns1GOiZbGTgZ4IJXgetlaZMAO9E15XjSMkzOIZzvT8cnJAwZJLlvVQNVI/SB\nxF5/ES4D9pkCSAVVwi+8UyGP9Uq/g2NjqKxKGFAR/G1GbWMfU0rgIAIs8Svx\njYcQEjwapfKBMAIOp/2PXVcnlPrW1WA7xzbWw8c1SAZDDxMMe1cQTSkFC7UU\nlFajIlz8GRZag1HffHdHmT28ELTb7YgA4PnRYQsOMc4918kuvn0nGswZecsU\nzpfo2rh5wDkf21wdUXGLHCRzMja2mNZpqF4zU4/pSScF8079Kcb5hM2/sDJW\nfgmlKjCgcxiTUPRumyKX5ZAYeU/gcuiCqAz79RO/oSVVnAr6N1lc2O923+33\naj0V\r\n=9RvS\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-ignore-invalid-ranges.1": {
+			"name": "@manypkg/cli",
+			"version": "0.0.0-ignore-invalid-ranges.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.0.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "31783dc1e43d70e9046e4272ba21639cda0d73f2",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.0.0-ignore-invalid-ranges.1.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-JVLto9NLS6Zyvr4eLuy3/Y3yA4N/OVHqVe5AmUTTiFVHXZvAlF7W145Uf2Li75miWPjG0HKtple0mrTtTcrndw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDg4E4inZkdxJPcLfVEXgZ0SqYL1pQoRA6O7jd3nRLWwwIhAO+bWMoxaHgdhSSdgXNUfMnl0hwTAwOvJieBthQ6Xj0L",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175971,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJezJGjCRA9TVsSAnZWagAAsdQQAJnJQ2hxUEw6DhhoYfMb\nb53tiQEGNHc+p9zNuBi/Tu5a/5YWOI++Be7+QrZ1QVL2WcZ4xafWWIOnPKp/\nrBKuvZwyszVYp5cQ437n/+i7ocj5yLPQ6e+T7fa1GagrNy6j6snmW7fr+XNU\nbF1D/ywf2MEKa+FuZqn+922HOaax7DlGHtB0mIIy5CsQql87c4SeDEYxxAWm\nMA1ONmrvKIJXp8CeTfsA+A/6AD8hrGj1pXpUvo/7yHOVA4kShsotVGwiiiKZ\n0863mj16w/yIDj24NFpu4UfCKn+rplKo6bPoE2isNljdKslOhbcJ68FmMxSI\nQpjqPzD8JS0VWGiOrZhxd8AEdfy9/dOS/JEi+vALxQWvAYKXPaemv6jqIt/W\nD3upF6BoGeO49XTZYirHI6XfZTNVgE5f+MYfvzChOOV0clwbBu5vL7/J3wDH\nNN1hlWb8b7krBYDVD4rEUhq8n8HYo+69RX1aNA33BOXdqCb21b4cRS0ZuuOZ\ng8OM0J9WR51BvthBPzdk/7ds+qo6+z/gn7HIGTddpCnFO4SZVPubRfzFIMoE\nypnOYPITUWJuMkufEbL2/j1SVbmdIJfcGJ7tlolWtJKgOeew1cUSeUk+VFl7\nXHnvjlcLStKw22py/HcN1JuZkSCZ708O75CgGLcDXqcySOt76AE2/UkyUfPx\nRab1\r\n=SoFn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.14.0": {
+			"name": "@manypkg/cli",
+			"version": "0.14.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "0fc56a621d0f61c2a7cc46ca2c8da0b4ac635080",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.14.0.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-orXFFDjc0n1dNi+nWQvmz+HUBZqMUl+nislQVwe/vUefaSrtnwHWME/NqBreKRnE4j0PecMFLPL6sI7DCesSzg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBd55qdpBwgjoYvAnhyQtWjWImvoKVWED03Rz2P2THcHAiBcXMIqNTCbR7ws++iIH0kjhOjGlkjpnnTXT5M9ROemQw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 183798,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe9I7rCRA9TVsSAnZWagAANJEP/24odpAcxNk49wxQUtsv\nAQSkwPgu1VzDI4MWmGCZKncT/dc8sT6lLLBnUkBbzyO3hD149+y7QXH+8V/N\ntoiSfl7/zhNSCwpyxZQUatvHmYOapxjifLCESc7jsLVhq/FaNd13EJhbWlCX\nqU8H8J+LNcOlZNGtw3W1LQ1SZBRFzPTdfNbTxHTaSdN10Wi61aBuI3FTyTG9\nJrjPDTAfgcLcGDn6vEw8FprqXCQgOWLm+P2EtGNYkYw4chL6x1CzRMg4U4Lw\nYk+THPYNgWvlOhW8L/bdpFiJFWl5qMLYVMujy1zjJzsBiMS9qq9BLsolfoqY\nkHNalQC9L2SlDduDoCRlqHkirgsFA++zKC5vliUhmLkuAqMrXj3YpZFfzqCM\nwis1Y+US1fQr6VNH8P79M3VP7lGX/Frw1z9VYJH1PAuzWm6HNnNGxI3FlPVa\nz4WoTn4VlFSDpDn6lhmpzkKDTVPwe6nmWSY+TJnJGn1S9z4AhTCeNtMd4vWI\nVp/Iy6snqt/2pODq259TBjqKkZQswrNMZ3yrRZsXQh+djAM+Y5jf1FkzBRLQ\nEm2pQD1AGY9D5OLK9tJkXQzdmrB4TcNuzve1+IzOyS9v4dFkTSDRCsX3bOVl\nqrk03JNQuneOAhQslepCN/EijMhVH887Ck/ZRNiZaJjFazErv/5ym2srlAtJ\nLiJd\r\n=Z9e7\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.15.0": {
+			"name": "@manypkg/cli",
+			"version": "0.15.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "7ba225c933bb5126af20663666cc360a6ff4406a",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.15.0.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-Ax/SpP/SusLIMIY0zbwRl6JqjijmPAuM469IZAQmq9S0U7xkoloT/jJ+HRn47Y3aokMgjjC8E0KW0y3+BcPp6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIGdTF8gFegw1ZsJyPUT7WR9E+6r4ydzkm4A1c4/VpMwHAiEAu4Z+ghNKtvs/5SgLp2OXUkiBmy+IMhOm/awnCzeq+lE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 188659,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfMyMwCRA9TVsSAnZWagAAYBcP/1/4unB+6J61l3fIogvV\n+S0WNihGfBEgHC2TUplQFUfKaFrqzqYInD/Zk98bb67uU4a4LFO5grbXQEWm\ndLtut5ld41jWTyzylpGn49G3JxKEJtf8ZC5VboSbpOA6wj0BAFOAQY8KGaNM\niuWFkDIQOGTmlSfRJWofv6l5hMWl5rT3E/1ZAPwW6fmq7lIjbGfkFvPW1glU\n77t0LzfKn2UirfFn2qS4USRn4BstUlqMMCi4c0yx8GobSVq+207SxbQUUm8X\nWZ5QDbJ4nbqYgpRaWevzQQnzTCkPakZGALuNr55y4IvFFRYx1jQXnzrJ7X+A\n5HTvZQRGxrkc9fM2b/aj9uNlDIcaI6Ih1y6pbRXPKy3nxbd9t+sXUIQmAST+\ncT8xQ97JVVntMmsWzb4zdI3cVS1v8wKqVrpuSpl4OlD1goLH1SNLISBrkzFK\nCiK1kAM3+49h1BXZ+dXjrtb2bTm2nSqdo54jShX1bbre8y/XTzXuRmFZFMrW\nmqVPtWAOd0IqyaHdoXwT6J+sNlVl7bQ897chTFsHQN0xNs7qLU5/sPpu4x/O\nPsfL0v38FxR/5CWAL9b0N/r1VMJDmsz6W8otxs+a1zSpqEAQtU4meweHpBTK\nnU9BWM3Qo6ctykcDbKv1TTSxPRxpn9IINB2m50yuIiHIZjP9/WSOiHa2CEBq\nOZE8\r\n=8sTd\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.16.0": {
+			"name": "@manypkg/cli",
+			"version": "0.16.0",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "ff1a7b3534a00e4807aaa2d6e357011ae16916cf",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.16.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-m+V7xqe36PahwUVfnOrt1srFzELE0tlwPHfbL53/GGiIx/CAINivG/vI397ZV5HKHA0xRyXmovq/0VGdVucKZw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDwVwNsYEKVtU45YAT20e3Hm6l/7kIwS0nWDVZHslUfXAIhAIjJSbw99vE7rYLL16rff7vJl3bQPOHyIR7wNsipVEnV",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 223274,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfWXh+CRA9TVsSAnZWagAAHrUQAKBkrd6nIbl97chNyHA1\nfOOsmtEVeobfRK6gD5dLdfEgll2sRdp3EbqKDltEVXxxlSd654FTnpb45FRO\nP4jKwNc1/mlWKAIA/Ra+REqGMq4YEM0VL4sk/qnQPNVRalITHWHMxXPtOvqC\nKTBPwe6PrIG1m5PF9Kz7VTr6bmFjMs/nYbQ5ancjv0M4vG7JDEWIqnW09Yh2\nVTPBzlR4bnM1QaXG4BT9Igvwf1j3g7HNdOstCtuziG6xZfWsYMnsvQ36agIL\nSLb0oVxgev5M5TZbKqRx53lujVpp6NZhJ9uOm3vPLKaVM63ingv69BvSn5aY\n7phg/pUBQw47r7StjFCNP371OMqh+ZKkZI9a+cnEWU98ddzY+ufuAY0BGhjA\nz4gLcSex10OUNOdO5oBUPGWaZO6YkFPG/7UQNQCWuxsa3759rcptx4a5pO8w\nqWU93bYzJ3rFjEQjsG1ZKRzkm3EwnfSqKbJ1Wp0aDCHMjJ2jjAawYUaYxwhC\nwUv85KngynBB1wllhjJrNTymoABbsfpzQS6tYCNlqiwyKRd+VPNy0VKoDG9B\n4FG98JjfKAABAy0Yw+8QM+oEGYH+bIrmU2x8D0b9VMC0JfaC2RXf+uN7Wde5\nV7DMOdATX2GyiOjmw8whTnMFFu8KMResiOALK51fUfzs/hmFOYOqXxYo8NYT\ntxiw\r\n=wL18\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.16.1": {
+			"name": "@manypkg/cli",
+			"version": "0.16.1",
+			"dependencies": {
+				"meow": "^5.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "6b92ba8d2fb2b4fd3310a51bdd2e95adb4f30629",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.16.1.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-Au9opeNo23lab7Hu+WHbyNGy3BpcTQec5W/tPC3S4iMAxpbZYxhAQ26A6074MioUyuzFuTaltLF6+XBC11sjNw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpuqIcm+9AV/5BafSttAFkUMJbTfbJ5pCS3tQtuZcjaQIgIhaPDgSMeY5ZmIZDzO7TmtDCrwZ0PAOH5q8gsFg3HCQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 223537,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfYEiiCRA9TVsSAnZWagAAWmoP/jQUVBi3+7WWkpvxnlSB\nhPQysYA47z/jxmw8xu8DXT7ojEP5MfEHoIMncX74TG5hGkc8V3vXJ+s+ltJJ\nuXPPIlDXCBft5eTRpXkBiY9dP1UA9xJepwiv/QtpgmCaOnUdSI39dEORGl2K\nPjj0TY6EA0/vn3OQoyf33/r6fAWUoqr5ajwcPYOup3Ajro5OkpKG4xn8Q2Bq\nutFPehSAD4SW/D57q496m2qCm/Ulqm4Ylmj+MxrVegiDcb5CXNjZKCrKtImI\nSN6CJMZHzsIeO7yvg1RVkoLmH5uMY2p+gspb4oEyCaJk1h3msqYOqH0lrf13\n6UDKxdR4Pl1zQ/6an3FWhu1Zy5KAc2/G+QdMnyOPs49GU27Q4YlEYd15AmG0\n2HQ1HrOahpd0mmbfTmx4uk+MYqifLLaYrswLKUeFc3YUVyhDp5NF3s9viOo6\nDlDSJRQCTCGomc+33fpsEN0DaQNCWBWFZE461bsksogzYul7gB9WcEFhNXmI\ng4zJmqvGjC1krBVRGRKkgq5HtL85/qgNBRCbq3HW31rh9AGZ0hQ+EOlhKp6n\nLGdx6++5tmlmuq05YE8ZQUwb9BSxGD7qSoknCpILaiXRcflaHoS0ETOWKmMt\nY5VXj/VsIZ8x1c2NfIY78x4SsSY0sy7TwTMJu/AtFgxvWE7MVqeBq6RAytlW\n25NH\r\n=R4el\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.16.2": {
+			"name": "@manypkg/cli",
+			"version": "0.16.2",
+			"dependencies": {
+				"meow": "^6.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "e949583d83fd051d0cb732d24657967b1f81c591",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.16.2.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-RaQCOJnXWbNwCaFmPr+e2qpHwRgrFD7rf8NRC80z/SifdEYB14zbeyw/Dra5X8lvCopL0V6fy4EBuWkeNSxV5Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDZfU7lOPoiQoIZf7zd7OJhJfj9ggKu1j6KwVB8Ig7aGgIhALDRpH9uHQRIz6QYAvMA5OgToo3rsk9tQZj/jqS+B51R",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 224067,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf0+uxCRA9TVsSAnZWagAAHeYP/RjWZsSnYGkpySBya403\ndUcknZBKepXicfMgeXwUIO9f6db1rdZX46TC1fc2Y+T2tioBbOCj2TiaN04Z\nRg4Wx5uOOR7xdDPnnZQE5dbyA/PTKUwV7e/rDrwsmBjQPVlUuVaYBjZZke6P\nPMNg2uxp0NiZ1sfXeQWBIuLFQwKp4awNEenVM6cbP2rCusuiasCivZrLRPsU\nZJmhliJqWpxA3l+8KbHdA3ny4LHSvdUkint+C7B+C8TjLVaLOuN1LoSKfNR/\nw1VqAGzZL0kSzL2k/Pg+R9XJxBU4gC4G2oOxBCodB0x4B/PUB8+3UN1iqVJd\nzp4KzZsFNvnoGXiRK1I7llL502XE8iZ+oPu/if9E7dEGn3OV7L7eJ5EOG/Li\njuGJayRZhLwqDwWjAYNY/2MN4Ziykf1oUf23dWvK0HGApLLvwKc8+XDqS/zm\n+J0sqAeWzjIq+JuQqvWVJh6ax/YKsB04hyxJEKiTd7Nt5iiCUwLm3tf0Dj2g\nzsZ8YsFXxBCP2F1h7nvShQrPAdP3Aj9jrSuxK/j20gegB7u+sD0OG+5aZ4j8\naGNyP2xa1OFtve///3IGNfcgGS6Jw+HBuyBkjuX2oQOqxYQMpUjsRLlMbheH\nJZoQFKbv1DSmP/gw/FA6tqBLx+vKbEoLM/xaWHc3Lt+UHItl6FqPwh/+hV1J\nQZSB\r\n=MXyt\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.17.0": {
+			"name": "@manypkg/cli",
+			"version": "0.17.0",
+			"dependencies": {
+				"meow": "^6.0.0",
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "d5b91a150acca808a53bcc90046712a6efb44f5d",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.17.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-GTVvO73tAwkHtBqKS5DfIqT54BLCJxE9FMdS3nZTMv48piR8Ykd/gHAJedMiMDENGavZd06C8ySo4HLtyil5jA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFgzTXyvYydOen1VS8N/Jh/1oWRJNCxaO7j7ojOIpUg0AiEA8yHauTBHGUzXtltKiRV/FhCWEYYHpX1qcEQChqm5EWU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 229703,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf2qFzCRA9TVsSAnZWagAABC0P/1BtyxaBlz353QoROgLn\n4vplUpfaDqN2P52vmIV0NGYL+YpuRs1GxFIEY8ifzqtzi3A8uLZ94GzBCh9b\nrspzvZ+E0rXZXf2rJVU8eWqIk1R4VCT8t3lsZ784VtEkHQw/2Sg58WQ0XCMZ\nzMXZcfxlwaopg7OmDlp9TeC6MgyrT54EdC/ZdvwrRh4ZsP+RfAixN6EaAga6\nCg3WJtJCkKvohq2sImEvxeGiY5gLSIgMDFfHPG4A2TnoYARui8/PzkLVMn6N\nLNpA/x7tSrhh/GsOFVcckdWCF7q51GBgPoPCsnPEpzUOExzpyY90/adfE/fR\nrobDstKrlzpipWduIqge2TZ+yvj5z7qpcm9UYcoetMDBu50neeGgkUKjmNIP\njazKucjnOdhVJUPJiE99Cn6hLvja7pSvCgiDbXIlNzK+yZEHRQOPs7z2CW5L\noLlvmpHzE0wMI3tpZHwL5Xk/zSUCQi2D8OXVYg6pYbwGi4lwtMvek54QU77/\nLv2Pw221TOuh3znd3hLtaCE/CutHFpF3WorPW3babQiCLQ4kW9RNTUOQnp/w\nnR20rbbs6YGUq5hCyzNYq2yVMuq0wdawWwaLumG5+23g+tCkb+YXFj1sc3oa\ntsHcOUcmYDKkL7LipiBmwGh7V+A3xArge//SfW/QyDiWJ2SkkJpgd1WJj8L5\nBgWQ\r\n=8TID\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.18.0": {
+			"name": "@manypkg/cli",
+			"version": "0.18.0",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "2b40d5aa7f88d43142e041de8fc8d7e44aa28a1d",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.18.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-dlgraFHLEnCJ8hrGULCOLZuiJWSzaWDgq0tq+O7pe37K37S2Mjrb7x/BcNHj8caZLf3kiPC0KW0iSMo8UyvpbQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCMXIsx2fYBQHIKqlJie2TELLms7kVgAAwd8mFJ+lYTfQIhAOuhcATDwIxWUtBN0ugBUH9KeqZ7q4Nj8nVCQ+zNOKtl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 230918,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgrDp7CRA9TVsSAnZWagAAoZYP+gOIiKZgUqkQFxyhsb+x\nfFtyGCBVmf/GWoXGG2sDF5NjzMOKDJ+hwIYh6+hW55ZqK6i92Wys07jEUODI\nl+L8Yq8mBsnLaUpbc/0EvKU1s/OXx8f5gEMf3g7g0T6R86XOlc/KMw+B7W/1\ndyuVrJKvBQIJ6S0mAzTEvJOk0HOptOr63vmuFbD1i9SMS7yK82J9ycyua4HV\ndDNVhCPxJGGduGbuxZTwhUqdTT/5WW+wOmAP4fy3Y8PBGtljt4lWU4uKUf+u\nyk4m+6uimueib/05tFlyMqjxnH/dFom3UWht/o7Z4BKSk/TNDOpGo0HK1IGg\niNNmOZLa4jgy+ikzOAnT63mPKgWQRC7rF8fRD01EVZhxRc2Q7kFnU8uGTeLU\n2c9SWX4labKiX6naGJrppEJ9CsMYExhLwfczX29qbWhctd+ZgxwWcLVfa2E5\nbW3YWgYH3mR8ROEUobS9cK4I6EiZumKE0i3pj/gR5Rs1sZ8Bjxnl/0JJKoTn\nckztOqhI+rVm29ZjeHxslJoV+mUx3hqNhVIyVV2fyRsgy0LYXyfj/ZiKRQab\noXXHqRiM8bvXTmA0RlAOyLYGfjqxdL2Q/IBWEEdWh7R+BhhnaicCxDXum+rD\nVfIeM2dMlwHk2HjbzfTgebHvntY9lh8KqXeR9xfKnrayFRTmX16tCucIDO9+\n7H8H\r\n=dZda\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.19.0": {
+			"name": "@manypkg/cli",
+			"version": "0.19.0",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.2",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "4cf8cce52e3ff698840cae752d70e9a204606189",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.19.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-/vK7vsCGbB3qIkZisJZDb6S4GSrR81LR+BOT3SUXYgAt/HtqxAgCTX1AhZRRF4fWQtBUtaIEAPjMjp8pOc0UUQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC1NzKEYfNDIxv88ykI5b1o5Mib/ugjI0o6xkL92RfR1gIgGxjTkVPuPfbkmXbGTNyUWwx1eIVkhDEq5KiBOvGlgHg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 241211
+			}
+		},
+		"0.19.1": {
+			"name": "@manypkg/cli",
+			"version": "0.19.1",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"get-workspaces": "^0.6.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.3",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "2dec45d340e1265276625c4b6c9b284d3376bd10",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.19.1.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-EXBPPh6wYSKmSD5DdUjNG2rc55C2G/poIJ0D3O8tnk83o3nZh8g94JwN5/AumbSsDZ0yagmkS+DChNlRhIUG7w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCyurS88jcoBHMY+XMI6O9P9rR/dbQqb2um7o/xqdOeIAIhALFCrmQqk+F61ZCYkyim33T/2S1b8bPL8U2UwYx2Elkw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 241666,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2QjqCRA9TVsSAnZWagAAJNwP/35qAazE+JjvkiCOKiHl\n8o7KZhiko//quhYIy3eO+o0dCQFyy/kZngOe/aeCFoRtYVAsmkqS79eYEykd\nW0z86bJ1spS7EbgM9NvN+jjyaslQ6KFKhOZpMnZFSeAjzkuRdstm6jxLYQqr\n4oUyE1cMg1rMsBzf+zPlv7b+ZW1klhF70BpQ/IFYL4Dcw6pFacwCPKLqCSbT\nwa0k+Z6ssE0RUa47gfu0o5PKEjBvIcnCmG48dE8MPQUaFGQxO/D2j0gcMsST\n00b39qXuQevRnuw1gFK9ciBbrYYQ7woRoKoHGbb6vY/nGF622QadxYLDy2W7\nHoNm94ZXLS/RYng/+6/c+vml3FbIu5rf6TVKbxJJNnRrbce5zRRwnwV4mnpG\nEubEty8N8Ho3XeWaJRYw8ibejcfHFJNPbtnje37aS+xRqVKqRQ2ZmcayyMU9\nIGqP47l8S8LAda6uPd9lgx61WQ6LWXgNXkgNJqTodRBWn+uBKYENslNW1wE8\nCqPidfl/AiEiYwNhjXKVERYWqR9H7hDgT/LkSfTXDEcr+jhG87Ef+/ZqVdrn\nbJ27C5opX6zKtt1AZfKbY72hWT4uQ3WfPCYywgN8Ml9lgMCGScoWFRnYZ1Zq\nc1ykoHdWugHY2/aXKnbWvVr+BvQh/pwdexivJ6hqB322/sU9k7VkPq0dS53/\n8Fsy\r\n=gydY\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.19.2": {
+			"name": "@manypkg/cli",
+			"version": "0.19.2",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"@babel/runtime": "^7.5.5",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^1.1.3",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "0b8a466aa66464d228c3b0b0438d95c35e2338c0",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.19.2.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-DXx/P1lyunNoFWwOj1MWBucUhaIJljoiAGOpO2fE0GKMBCI6EZBZD0Up1+fQZoXBecKXRgV9mGgLvIB2fOQ0KQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD0KcLrjCZephpvuAzEBKvgKKAD2emtyFNEFMPyoTWOCQIgKPpywywaI11pvb2xCtInqkcL2ejB8a5Uoc9fj1A898g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 241910,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNQ6rACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqvnBAAnmutcVrnxZq75Mr6vwxdzvx3oiaSs4C2ncgfO4Edgjx4X4Wn\r\nIoQLHkycKFqxYCsnXDo1VdD7tzuEgFYVsztt6V4LcmwV/bOYfqN/2N4xLyT9\r\nNWJ2zDYJsQ1q7OV2pKaCN4Nv5y4CYiotnWovaYTAoCYmGO7DJzUz/y1ixpxG\r\nzbgjwFvz1KakubwNeCWxBT10uVfZ5KhotULCNm/cs0QLJ+a5kkmaltHmOs38\r\npZWJgxQC77T1E4/5ykxJQeR6a1hC+FVSFIMpVoiQYIVWDIJ6ksvFMEFWwtt9\r\nsFsZ4sG1fpHXktgcRvuY7xDogSWTNxoc/TXZTJ/bdnr1/I+ep8T0nn89DkXb\r\nvIGFUsUh7YQHlzjgFXmuVINsA3lqsQDgKBrxumq+0hNM9h3H5c/X55hKiYWZ\r\nKho1XWXQQwrQD/5d1uQqx6+CPCPyExZ3dbGRRDoYOYlr8PuSdIOonHIC5PSc\r\n8ArBikjcwG6iJkSxjEmZ3HyCaRKlydTaCAffg74WR61CBKBSg8HobvSD9tEG\r\nOWXNYoaE3kHVWpCp5RHAvKwyVbvo9MbGuyW4YMfJdwCyFd5q4kBhJB631a7n\r\nCJO6XikV+pz2J+6pMn4YB3D4SY07DviSKB6NJuMwbRSTlVOS8SQYXvUjyLK0\r\n891D+kfQYJfvBxbWi9WCuWAaMAIMyIr4uz4=\r\n=Z2B8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.20.0": {
+			"name": "@manypkg/cli",
+			"version": "0.20.0",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.0.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "fe4fec8fc49e831e94fa48c9b41d8fcea1aa20e2",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.20.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-xOAyzHp4cF6+1VxCeVi14k4WJBbKAExuYVA+wXlCHPLoTUv64D2HQrLUOFO8bXtzW9KFhGhdP2xGFq9n9rSDiw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAmuiCs9KP5l2Wa+Yi89Z0vvTVdLfXY9NXxk36jSuAJUAiEAhXXr2uhhASuCKwxNlEQmgV1cdJXtcBgv2+xc47fgv+I=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175309,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjzxVaACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrA+A/+LE4XJV9LJtFWhf6Y33PCxrThj10F7lI5Wv1JP80tMTdLJEhK\r\nKWzFYnOJrU8/nPcsdlwV5XgePupwowFuSv65p2XqhZE1ixZv2S4te8IIFis4\r\nke4DHR6Yaiw/cv9Gpj//xPcAWVmH9v3fABUuJLGepg6LPPyfxiuVeMv4C0/s\r\nnFWSb6kUoOCN6brAs17+op6/6G6jqGVFTmfNZBOC+963jwM7g/MyRnIMeN0N\r\ngFPl2gsevF2M71tV0SuRj2hFkMf/+cY0w4lEAFa6XNWf4eTIF22LRfQX0xfN\r\nr0y9GHZgz/FvpSJGp2++ka3+WJ85tV3keoXB3WIxbF5lfdFHdzuNM0WlZbMf\r\nEOJLH4lTLD7yn5s4HJm7/kwvqUlh2zvNuzQEpQscn+WVZsSAv4SZLqPDL0JR\r\nDagptozjJLaHY2Pf+yPdyzAWh6Q61RQDDUxMok2/b/6fraXLgeWpwIuqFGur\r\nO3L+mRn6vPjmojNnUcVyjHROBxEB9XJqYjgBZgkzWbINSQg81sS0L+WOkCLj\r\nAhIcQfI2/XQkqOa4RgJcTc0H+i+TrQaYgWO/Cv9Jc4WJD9KWOiVThmEIsjc7\r\n8epxsWQCcK13T30qhU8Sr0iQQN0YOuCKHVi8zBDdNV5JQs06yoi8I0OgVW5e\r\n6RHCmAl3FexCChIzoCJLhQwYtPdY2e6V1VI=\r\n=yY5F\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.21.0": {
+			"name": "@manypkg/cli",
+			"version": "0.21.0",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^6.5.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "e36f97b544aac6304ab79817eaa720c091a122f6",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.21.0.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-q/JF25il2EXtyPpc5U/Pp7TMgJot/WmFkyh7M9FiutQkliHp58UqUxIPeUObLu9EtoAp/uP21t+TMDsq1DMbeg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7n0N7IcNJG7q50GVkMGJIh1mG6x8gxeuy9e5wtiiRygIgS3lpYmqrYGFSLrg+0rli5Iqe65q9RhI9sy7lbx7jCCU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175844
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.21.1": {
+			"name": "@manypkg/cli",
+			"version": "0.21.1",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^8.1.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "2b80fd42dfabc657937064acfb53736cfbd1ade0",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.21.1.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-v9Orok25sBcFfTSniDLx1FsRRXsn2qz7EiC3cPMKtTNDTwSE2Teq/nXUPX73xNd1NIjMwTXfio1QWsQ9O36Atg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDxY6rKQH7ABI3DQMXIN4YNRR9cJ1MahClISht3syjuTgIhAI51vSMgxAekTQGzpX2glkuMVI9lZTc8rX3aTWaEsbEW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175842
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.21.2": {
+			"name": "@manypkg/cli",
+			"version": "0.21.2",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^8.1.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.0",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "35e1167b386cfb1d2776e0b188492da75ba74336",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.21.2.tgz",
+				"fileCount": 50,
+				"integrity": "sha512-Q9apaGBmzSqtzoYgQnY8onKmUOpigsUtAcbB/M0rQDsc6rXZlkDhDUkpwNQlt1Y1XQD0cVUgElbUsiLgtTi9jQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDCMFJpDxMDMMEKM0qTjwktZ/wmvqjz4TDk3xwT1rgX8wIhAPwLJ/fAPUhNIfhkZhowAfSwGydSv7UO7N5ik61xbe88",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 176773
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.21.3": {
+			"name": "@manypkg/cli",
+			"version": "0.21.3",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^8.1.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "6bd83afd8851a5ade97970260810fefde5499c43",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.21.3.tgz",
+				"fileCount": 53,
+				"integrity": "sha512-ro6j5b+44dN2AfId23voWxdlOqUCSbCwUHrUwq0LpoN/oZy6zQFAHDwYHbw50j2nL9EgpwIA03ZjaBceuUcMrw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDPdrU/Locwz9gAL/CoHy4V5m+0s4LwCYVf8Z9iHtgHjwIgdydLnzmW2e+EDZfnuisEWAOinhc4NHu/8AoNP7jPS6A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 185684
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.21.4": {
+			"name": "@manypkg/cli",
+			"version": "0.21.4",
+			"dependencies": {
+				"chalk": "^2.4.2",
+				"semver": "^6.3.0",
+				"find-up": "^4.1.0",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.5.0",
+				"fs-extra": "^8.1.0",
+				"spawndamnit": "^2.0.0",
+				"package-json": "^8.1.0",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.1",
+				"validate-npm-package-name": "^3.0.0"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "e17d4bd3e1defceec0acf0449b7309d0490b6cd0",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.21.4.tgz",
+				"fileCount": 53,
+				"integrity": "sha512-EACxxb+c/t6G0l1FrlyewZeBnyR5V1cLkXjnBfsay5TN1UgbilFpG6POglzn+lVJet9NqnEKe3RLHABzkIDZ0Q==",
+				"signatures": [
+					{
+						"sig": "MEQCICinIbEKoCA0Z+5s/g4Q7eEb+QU8zkpcabBas+cnINW1AiBmIC+g4X0rMhnp/94gNDCcX6G4JBFKxA9rW4O5Lda7QA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 186040
+			},
+			"engines": {
+				"node": ">=14.18.0"
+			}
+		},
+		"0.22.0": {
+			"name": "@manypkg/cli",
+			"version": "0.22.0",
+			"dependencies": {
+				"semver": "^7.6.3",
+				"p-limit": "^2.2.1",
+				"sembear": "^0.7.0",
+				"tinyexec": "^0.3.1",
+				"picocolors": "^1.1.0",
+				"package-json": "^10.0.1",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"parse-github-url": "^1.0.2",
+				"@manypkg/get-packages": "^2.2.1",
+				"validate-npm-package-name": "^5.0.1"
+			},
+			"devDependencies": {
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0",
+				"@changesets/types": "^5.2.1"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"shasum": "e4fc1f4632c7171cbc454b3e0a22e54ab35d90d2",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.22.0.tgz",
+				"fileCount": 36,
+				"integrity": "sha512-HwONx0Pr9ucehlrMvFMSuztLiKfwPYkjRDc0ymL5RiGYBk1slX8k3RWy+F01f1T+JLbImthSGMwY04Ojt20nTA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCKArDNjgDutnS5Ai3DCxO0frcF/R5MTzYHWSC8a0GX7wIhANYFfeuTdpBRiWHcxiK/FXQ/qMW/CPvIZnLpA5Qj835U",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 170564
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		},
+		"0.23.0": {
+			"name": "@manypkg/cli",
+			"version": "0.23.0",
+			"dependencies": {
+				"@manypkg/get-packages": "^2.2.1",
+				"detect-indent": "^6.0.0",
+				"normalize-path": "^3.0.0",
+				"p-limit": "^2.2.1",
+				"package-json": "^10.0.1",
+				"parse-github-url": "^1.0.2",
+				"picocolors": "^1.1.0",
+				"sembear": "^0.7.0",
+				"semver": "^7.6.3",
+				"tinyexec": "^0.3.1",
+				"validate-npm-package-name": "^5.0.1"
+			},
+			"devDependencies": {
+				"@changesets/types": "^5.2.1",
+				"fixturez": "^1.1.0",
+				"strip-ansi": "^6.0.0"
+			},
+			"bin": {
+				"manypkg": "bin.js"
+			},
+			"dist": {
+				"integrity": "sha512-9N0GuhUZhrDbOS2rer1/ZWaO8RvPOUI+kKTwlq74iQXomL+725E9Vfvl9U64FYwnLkQCxCmPZ9nBs/u8JwFnSw==",
+				"shasum": "abc6915c59160f1556f081b96857adba55f3f68b",
+				"tarball": "https://registry.npmjs.org/@manypkg/cli/-/cli-0.23.0.tgz",
+				"fileCount": 36,
+				"unpackedSize": 171012,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEE5Q5vUllJhtqztTFXUdHrYIWTmHZYL5+1MHfoOVQkHAiBth1aDsd4k+ZtJI3B4z4gECiKn1ovE9cr/44x43tOT1A=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		}
+	}
+}

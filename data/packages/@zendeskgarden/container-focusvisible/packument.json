@@ -1,0 +1,710 @@
+{
+	"name": "@zendeskgarden/container-focusvisible",
+	"dist-tags": {
+		"latest": "2.0.6"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.1.0",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "55e2a509d934e354a11800eca3e2ae8758e43601",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.1.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-kLoU4UtsK/ntGQgAvu+9vL1Iqr7HOlT5NZVOEOBTNjjyhJjtrQFP7FL1YiFbERuM8hNqrNKcy7kUxMAw4J//LA==",
+				"signatures": [
+					{
+						"sig": "MEUCIA8J9tJhIsmFicIEzr9aqufLmaPJIq69lvkxjMbZq68fAiEAi6u99rt+apW2EehCn8q4KAjTvgR9pG5NkdUfc4qs02g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41408,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdTZcqCRA9TVsSAnZWagAAknAP/iZVNInkFkMJ2TUbPgnK\nn2Q61RHEXnk+KGGpj6epvrTcZERT34fje7U4F5Hq3JlG3yo/BDXwxDc4JJJy\nT20UZ1q1RZh/bh4Yzyygl/0FXR99D//UeQCwHL2V0+CZU7GnCyVL1Syw1GqQ\n9xk7jSe2lPWZKrpT+JWujK80PQaoSGjlw5f/G+zGs52Dx7zcrFhZMCtQJ8IA\ndXGpKj5ulHjIsMxv180xM+NPT1liNI0TQjxOElKi4AqP1TdPIf3l8PDDv3z2\n8JxuXXzn9QDpworptL8pd2fk5BXU8iwqpk4f55tZWRgVAYyIxTNm+k+ZVPlR\nsusMwFapNuw8i5j1nO15dOYdi04PTyazAtuExx1ymdCVdwQRTWTKl+vHwUjE\nvtoi+wElq0+3KcRoQ4YbS9plsOekGfOOe+O79tPXnZ2YFp6PJ10ewqenC8ao\nzOLeZoj1TjcpaTmeFQZdLVC8Sga6rGSW02h7OQFgiKY60WEgq0lOx8OtQBpS\n2rruL21c9VHaBeIyFdmVa0Bbd2FJaBBL5be/m+CI/FSDeUxwOCGVbcn1r7bM\nDjQR0O/eSayRdwXTazAjiDh5V7O3iW+xuu3beJE5SMdzJ+AruoVY2k8WjKVq\nqbGvbojOlziXqb/XG2Ov0FDoWnnWBpjQxcO0UnqY7hu5rohJ6gdv1ZoPdR/t\nRYRd\r\n=KFmw\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.2.0",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "d1b0031f8d5d93dfb88d37a77624d1ce6413c59f",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.2.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-idVtZV9+9/d2cu8UyZ22HwV5RqV3AA+zTvOrf4CmxoP+nN6V/3CSmX2TUYvSxmhXDsJVaamTC+kDvA13hFg5Nw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCeKGyqec6cNMnLuhlOq1DyR4C/3OJFpRnUmPc0z4fAHgIgZMAGJEBPMXtb6N2iQW/tk8pahpKwd029gjDxxixxtYQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41847,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdg9E4CRA9TVsSAnZWagAA84UP/10SPmX5oUjxIbLL5FfP\nCRsD8TuTN9gOhwMp8oxqGeSnvOlZR9PaqJ9VkW6C1W9W5uXU0PSi0IcVmBKm\nEIO/lN6vdsg2sZQKWk8Th0uh2z9tbsWVPSnxiWgHUFoXbgPW9bnJbRXgTAFE\nZ/WB4WBBNZlKdIGevmVU6INaZDKM+E/htHbXHzg883fConNTfsfpGMIYv8b6\nzrPrYaNLVIrCIMitfWJxTwqdKEHYf9/gVg5q+KFKOKalZELUfz9xjg6NyQt5\nHwhzW/Fs+Seh8ifxm6UI6f5KEi2mJS0IKedmtO6nXrpra3D+MUxRVGv/mh3j\nq0Gb+y4kFOxY5mDlMtNq5JDKhKHmu9GcdrwYeHl6mhW1TL7cHuD0CNP1U1n6\nSTHh3dl2/fQmOGyN+y8QbBlr2OqEBUnP34JKTpOveUN3H1DySszcgjyy68xV\nWvDKAaQ7bqJLGeP522vr916pEtVZE1Ak5TipXvAcZ4xHKBuxmG/hXexfbXMk\nK6QYpkSdIAukROYDb9egQ4R4CTFm/B1WL+5PzGLDxL3bccKljJEaPXs7aH7E\n9+qjRcySAWxjNmOf+WHgyx8xyEB/xJEd2HC3e9sWajSOJiOlczFtOLLHOfsT\ntM/OfLjgNco1NNrk4Mosi87L4dI7nN2k8n0Zs5BSGkDiOQRGu5/gK43NWN0M\noXCU\r\n=KQJb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.1": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.2.1",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "e1fb0fca80644cf4fae6e4b0c1b1eab90fae666e",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.2.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-2cVGcs/0W3Bm3CX3aLw970jQt5eZsNwdRIvB0Y+vPaaTFo7jw6x07GBbJh21HyTtv37eS/SPW9fisO+qVA/4Pw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDwjkGmgq2MDUUWJ28mJq57lshZM5QOUctEBYLcVlNrywIgNB8dDOW37G2BP2pVUJmTWmVKCphRMP2BulTv8ct5o8Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40201,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdyyVTCRA9TVsSAnZWagAA+U4P+QC/NsFxE5CSSf8jek7R\n3cigOzyZ02BnUzE6SZQWLQZwHfujQ3+sJUk10ejHXHgKRmzYddcDv+BTmbDN\nMi60xulN7bY+RANdgNA8wjq8om3su6Tvnf5MF/0zQYaVD7aQ4UP57Aw0+Z5y\nARmk2VO+geAbtPOzRT/X/39+ch3tYDFKmIil6fJ0WS31YfaRafyuB8AHXnE/\nq1So8WCXxJc9Ug/bEwlxga5g6ftkvFhavPYi4RuMbWKdHMqp5RY2PJfs1sEz\n15jnlZl1pAoT/8YpUS0HRSN3MbPZpFa70jUkkS4nd7PiIr8o7PNUu+nU4BQN\nTPQP0syJTyAagk3Td31ya3+5TgYZLAghpo1X5L5kvYwatzvZqM2nCsFxjWAM\nAa7yaFx/MWTeXaa7iYF4wVXGtP64H3o4nFz3hl8htdQ+//sBOz6thk+STxuR\nDl8WyFcG43rU+9/v22VnQiIiZTl3U7L2nXBv0I6X3WxpFfqiLUfQhQbApFv6\n5X/NN9kOb68d/56WpzwKwIL4G8XdAGloZdht6dX8Rsg8jQKo7ceNDSVnF9n9\nmiBss+HPdIS9fD29t8QL39NKNEVCBO4ycwRiIYkm474Eqc9tqrs42z1yvzEH\nQXf49tfTzOBNHU67YcwbvVcAIBq+oVi/SS91yi2Ks4DvE5Eoy58t03tRfmqK\nmIP8\r\n=9Y0j\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.3.0",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "71b673cc437ad9d6ed2eb840b76e9775b72e4aaa",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.3.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-hM+SF/NY4WaqYKUsxovUJT09BxvZxt2X+s0r7gqiaM0+gNhKSW/gbEWJYbBEx/FCnOPMu+mqRVd8mZ/ekz2O0A==",
+				"signatures": [
+					{
+						"sig": "MEUCIG1E5y6appZsJZK2nNj9nEJY9CUhR/uhaZYtSJfzUMWEAiEAtxUbEXaCOti25tGUcwG6xWeOO8KT3AKec6eGc7PnyJc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 43468,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdzbH5CRA9TVsSAnZWagAAu30P/06pgLCWT0LAMK52OCSz\nOMEtxDQiAw5q+7uKVmRbHp1IYpEHQHDIof8oxoCk1BO08Ec+WGZgxa4+0g3T\nLxFezoVX9VocXQNh4gwueDK9DsMAAoVv8iZtJaTmU2BXux0vrCLOZnJ/lm8a\nYljN2pp7qx/rqRoi8J78XWHgJ5/e+oO8kmFe4AoklUrFiazp9uZOzHS6dbHm\nIHZiqQyqDTjo+cWHLhfRgpo+288v1T03JKIwXVw0APPwZ7tBOd29+wQ8vlrf\nAn3eq4kNRO/SKuPjLj/9x8suWybi3lK0MRogoybd7xveXt4BApAVeL4S68B/\ndOi7Nc9upbjL4Ua95ERM45BseoavSvk4dN+V79pkMmlQWwoJo8+0mZt4WS9O\n/slBTh9kXplvcpSe8xdq02Wic3Aqmpk1k7tLP9MUgr7f03Adg5uyGg7m3RL+\nXoZdCkA7wBB93XlQEgPqiEIWygxJl501SBrrZDtqeY9Tk9czEJ8nJfsCZU3/\n752hRp2fr4TWGR89prqAxJqp4FhdtcjcaQoH69voEcrRoffyBctGVO/g/MfN\nRKJNiA0U1Q+0akqhhLfzmMkh0OkHVc1zMLxW4NOSm/KBX96RuQ6HVFYVz9ve\nfTR0wy0a3JGEQN7YgsRIOsI5J/iZZnhM5D29/0rNJlu+yUWa6qoKMhBgOyph\nRXx/\r\n=b6Dz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.0",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "a9fec810f17dca474c935f25ba24b1adbd6cafb6",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-6Vhcg99gBwJYlIkoHXO/3dp7mCNrsmfc85617ovol3pR0ak3iqhktvsCTY0sYj+/x8rVB4LKfaeCbkGiWgYzfQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIB/Jv0rw6yO7Qpzs/cHhU5diRICxymuwfi3eN5AuI4ohAiAHfixEkoQEW1FIrb84htiokMqhh7obYFvoIuEVw8JfJA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32776,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeREQlCRA9TVsSAnZWagAAxA0P/icxdRvqdhrBnoi2PEgo\nH4XdNPMrP9FrRsuuhzB1Yxg8ynhKWFGiL2X5b7t9twXJSM8YOpR6Iwl7WzbJ\nhijubYJAAlIatPrba2oWpxSAb5wn2jAOwQ2vj6kK7F417MS4NdFOZ27gnSD5\nEUmdrBNa1bHCMIGGr6LbqKhFKK4zkwvZueFuPMrQZtJCGBydOVI+Q5icsGps\nkTM8fc5/x2HGqsXPqmmQt9txFz+b+rnoHfUFzdqKpOkHqu4jKIHqy2cgQtNq\nJKqyTz3r1S/W9M7UhXwp/fjHBiUTVVn+PQZimHbwTQzkymaq5xF7bO9SZ7YS\nNCx9dpNh0cMdw4ppORsWf60ON8ZSm2mE2mjRg1ARTwjvTlNI8s98FzFOe8PP\nm7W9uISvLbqRkNIRyecWmYeXN+qdP7IJrokiemfYoEcOmvo2MllyH3GFP3MM\nkXcDDW2ImhR34cnccuYxGU7by64b6KVjhprB+TDHBO5z1E4pNGfdakFyZ3Ux\nHl3dOP/9BAQdLCLhhZ5sXnuISFN+Rmzco0xdwXteUJtyoRgjMnSxKKJVeCkm\nkXlLFnVGvx6BUjahaQ5RHGOthGJkoh7Gi8EbEa7jiyhFUMl8sx5HEkCGI8Jm\nbdDPu+Wb8OgnO8CyqRaF3wHw3QYQSjX7qWKWSt1gjQllsh78yrncI+Qj+BKZ\nywIA\r\n=ixtf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.1": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.1",
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "87d013163297c3ceffc5b5c99240477c563a7c13",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-8gG4WGPxvz9aZ2vk7Yqfp2LVvfMOA6OhiF0alT4B0ds5SMO3JF1B0GMhRReR/nA97TS8TPHmWlw+QusQTWsq3A==",
+				"signatures": [
+					{
+						"sig": "MEQCIDJd+KvBOIrw0jLe32rCE6VvGhMJ0Hs2hU2HVGA7mBx8AiBRDNbIlElUGnBD/WcNu+84kBcQk12eD9PJFXRA6qZncg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37385,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRgWJCRA9TVsSAnZWagAA5PEQAIiw+31djhzXzojNHQVp\nh7lEA47raR2I3amhkAhgyBPDYRX7I8pBol0oK2Aqf8x55FfL5+NF+ZVbQpk6\nS/6Vhmh+RMXLpJrVTnZ+CQFL1IoYCsiiAS/Uoyh+/Qi6aMDbXfyFso4geGuu\nv8bqBHtI/vhsjWpEtdgOQ8QHt/Bv8VQ5/0Xu6JprfmCxwgoMkObh8I2S6G2S\nJegg42xTPoeEQQsFAO3XvLV0LNigBwc6XuepUGLvKLLH0tEWoi5ZQ2VTPuKR\no4D2BxuaErrhxSKYnW67hPp2ANYsXfbiNpQOqLt5LEcUOZQTS7otdyspPM2+\nRTr8jSvzYkowqyt4zNqze+omf0eynLHXKcd7GMX25yAQwj+zdBi6jUurRpjZ\nFHNOhL6YaEBRa+d1wSDSEKnoBxx87e6sNQVNMEVaNYBTV+eZo1NAcsoBuhR5\nzWH50oD2LU6eyATs4Nub9ZKZEwoZeiC3od0zLxtdvSZCEwBp1DFwECtu/hVg\nkSMLI/klKUGfXfEPnUXaaanxufBq8c/wfGoz5h2PmCf8V3uWUH7DBwFyrewZ\ndhySI+cYIbnUfMY3IgV96jLDhHMAOlPKddvmxLc6SYK3JLPtwAGeQxjDFpDS\nlZznHI6jSuu7w+sqWhZ3OTHNWwqILTa/k/2K3Z2TiQ7oh/RGdlhKhzI4sFWR\nW6jc\r\n=u1v7\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.2": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.2",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "f1fe2f9e33c8af1fc838fac6dabc5ec0e93cfe9c",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.2.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-UlT1Wq2vWci3xUk4BGZnKLtEJtDf1OACMtCa0kTSL7Lk40qD+rM3BIiay0GYOfeDKQ+Ar/mk32GPqcYzpa/tbA==",
+				"signatures": [
+					{
+						"sig": "MEQCICvb35066qSlEgHAq8J+0HWVBWMJ3902TEf3U446h57UAiBGzGvtO+colvCkSLFxOcgsacOWnrChoJrs+RhTc31VtQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 34977,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeTdBnCRA9TVsSAnZWagAAQ6gQAJTKOz3pEyi/Ap/ipoMm\nGyaDX/0Ws4Txy0xIPPT10jl5QcvlcqE1xOWkMzR8i+rxzFnLCuXNyABpMvIU\nJypExliV0azDi73t8pK5IxzcJBUF7MkOB+Pj1R9NmWwPvQ4FFtD2OKer9Nof\nMOiqFoXOWYlIp+L1n8UWAFyjkLE2/SUVyFz37r0F4JTXtDrYrpovcDnDwSfm\n5gAQfnl60vl62myjqB9luLEJOqP9WtsKu1dgZSlxnH6pleL1RnsUEBpy1FY4\nwPOANrYLoBKCwY6QVWc1uI+3ugvrxlSnX91apxrQhK/aug5hhGDV4qVfmqHc\nc73C0DC4axislUJawfirLUWjgWtYo4nSMPuQTVB5cKdZGiex52K6hYdsXbHK\nv++uU8W99CaZfinw07vZTSWgloErYaps/68i17KpmcFG5FzRS/A80EWpZe89\nw2fIJeIoXrLsa/FxNfB7gqPR1sKbZG7QVyHRcl541pUGKIuk5svCDmC5cTiH\n2ihNNuKS4B4wDy85JdjlE3GET4lL8k0cIUirUzOUgvTBbZpm/GFyagJbYREg\naOoYOAztddxBzTUibL1J5F3KRJE2LUZvN0HAYR3umO5ckeCjQgNLWJSoK/HF\nENtXDgPYJM2WAl/hCXaIjuUo6LjeLOW7Uw/V4uLV3xOr6isSfEx4mv0jua+5\nefK/\r\n=Vsao\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.3": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.3",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "9e2c1d882ecf9adc91f6e84eaca997fc9019f67a",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.3.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-4NpwhFzhRXE230mtaGUsvmwh6LxB1Cky/LJuX7ZYZkwEgjgaLO1m0qLOiRfEa4jJ2yKrsk2f+OOuyFwy7QIAcw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBLJcuQVt/oZx8CheSuOVmJ7UnDlPYpV8PGY9EbeTimdAiEA3rZcys+6zfJ6t+vJwDMw27YnPVan+KFLewSuVURYRJY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35108,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeXTbRCRA9TVsSAnZWagAAQPkQAIsJ/Fpw0dYF8cc0dSPh\nXEMRjIRHebCvUuE1cuC72rRW/Gbz0xWokwSV8IVXgdC7LWQLfnxMV9tzriRn\nkIop91Iei4wiGtJ/1BaT5UjuNW0deJyRAqcK2RyXl4EeuPJA1GL4kXlPYYZs\nc0HwrDz2UCfiIKPXc8zwpT/ImlhNLF4mWaEvqqN95lKGcSQiwoc3CjTSoj6r\nvTVKyg3lE4uigcy7d4tDMwpUwyMzHxOSbhqhot4ai17c8HnAvU0nE/9Jz9yQ\n19nqO5MtC2c8lCFA2eIWwKUPfyiXBrGXDSdxoI1mGWcJ9CqeXUL3pavvlIhY\nwA36kqEzr+D3cgQ7EMTP2h2Jba1/JpzA0XWbka4iVyugezssBnAl75YffFK4\n4sBcFpvmgo5uezj93Ym2jIzTABuswRUrAq2vvJKgQ22jy6pxh5m7x+zFWXC5\nD/mDBPf3abfnGjE4qwTZxsBMxOurz88r0yxgqD6OYgw3d5ctfUjAxY8QaauH\n8NaoKkEPni8e+E+kvt3/c/J4V9kP2BHO4y/izvfth4Z7YPdZwnSiB+UdvZyb\nO1yKGF0bvEmaz0qCBMH77cSK1zMq1macQMzd5wPFh/UceA0ncOTPEyZrzMgP\nrtZg48twXzkHDeWtWSWzL2xc3ePvlMgEKAm6yCc5twcUIwpLB/b6MoZJoVhx\nA9T7\r\n=EnsN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.4": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.4",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "3f7b3045a832615b9f0e2d3166cec08ce7a0e819",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.4.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-xUjHUlr+VH/CMDnrrLFtQLYG3IirgYIjKwvRB0xVBtNusvtf6NuxnaxarfM+ZsmpYPLqApII8+ZQXlkZQ6hAXQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFJ+ufIamF8P4wIzPLwToY2gi8U3Y2G9OzDpz0EKEjdfAiEA5Y8y6ukQiMCY/SCLKfSdjBzGhiEzSQy8y5/8FR7hde0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35421,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe4Rg/CRA9TVsSAnZWagAAdMoQAI7uOdA/GVtsOh17VrD1\nj+LJd7TuYlTnM8QuJyXY3Y6YVCg+RHhAjuaPsKkkI4UCelxBRNQsaNHjE695\nKr60RNI1CdJaUp9RfcZn7DGuhSYZqxAv8FiVxNpob6i7BHRkZ89ooGmZCgWG\n8nAxF5EuOG5gwsuwEVxEuFkhD1+A89szG3wU28cbaHYawsG0GfBwsrziKBbO\n0W9LmmXc8T9j7U6xk/KmdEA8wnQ4tn+kM1UVohSZKRU/IxK0oUxK7kt5PBkN\nLyP5oHOoxMLvGEs6Xz/snOpPDk3+KpmXice6YHyO0tw162IS/7MG40PlWtkC\nf/aM9HCbM5rpf86+e4Ve8pqqJHV/1FOmPv/fuNa9vSiPZTaM9zCBMvV4Ljhv\nrlJP4MV26cG2V6m2T9MnUKssxgqUlJp475SAwAy+1c4rRkElb6sofLjP3gBq\nyi/DwxPwNIuJpPfpadNBqjQQxeS23NPvRvFZmHnfZOru/NGhtEVl6tflfmNB\nYDNLliFMJZ2vbGjswAMFK48NREW9j/Pd7uKdUR52YxcuvAkJSDc7yhMQOtaR\nqUaSXDTXBUFs1oxvvE5YyPORqieJD7bSiCtmhJDqtmlBekp5ZZ5E7FmC+IMm\n6HWvgjnrygYhKkbpR2R9qFcSaxiQy1tKJAp9uhR0uaVYVgDkoKbtcttuth4X\nEo22\r\n=DbZ8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.5": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.5",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "6b9f701730ff21c36173e4bd5fab6b36e6d57e0b",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.5.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-cFCdDHda8s50oXVY7yqf1ZBI+n0HR2wvbVK604SX+BV9U/KYkkqvNWxZ46SCppLG7b8O7DG4XpzUPow1VPOS/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDvoIDTwponuSu08+LVB6fFc3yE1s+toeniZiExZd7w7QIgV+oNnJ6oeN7HskTasK19V3w+Wxa4afwO7nkCEM06+c8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36671,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfkzNpCRA9TVsSAnZWagAArUkP/0TJiWUIP91ycH7eJPce\nrSwstWDQD/G9zUmhBpGjmFoxGsgshcV/I9IgnrGCmfNYCcl6/xTEcJaEWwAd\nwQcdIqfTBFxewhKsQhN5xCDSPxHFUQrq1sCjJS4KL/HrNoTvbtKGLHYxYzeo\nmk/2RknItk2sZQKpDL4s3/kQRl51CDImgiFwpsg+YsuZPvLN4ZX1Kd3w/8ET\nh+Jc/8d+AWIfsehvKQHadbYKLoYCdP6idEtf+0HVJZL7yRvNGcrP+RG9/6f4\ngHfjnH1dFelknjHljX819dXoHx6dZSUwFuEeAeUqQrY21megwiVA/2Rw4nno\nAwC2iShMwUFgbQSwXLfmpzL/kJZPSnDzqbKPe9vOmiA1T4ATgpS0pxdzK1E7\nUAGid659qZQDs4oQaRRFrRKwFLG6ZFD4riPNrZJ7e6dLhLplKXy0dmxIXtHr\nx0PmQLih/P+t0boP5Hy3sPnRRg2qR6Nxv15nyw2EFu2TeFQARP2yr4W/cs7N\n7hHMBH9w2OoddpIit5Kjxd7Neh8k5hUWRYtRrSmMpOcpfKfhTkGSN8DCKpgO\ntJUNeCQvFAdOZkuPTXnX7ljDB/nzZAo6k0IhOL+bWBlyPG7lx5H55uSMLsDJ\nJtSzRzB/L0BR5pJSLvpEucj2nf7jUC5Ds7j/HNEhx2QbpJkbkjcrKZtt+E5S\nwvO2\r\n=eur4\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.6": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.6",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "bf1736353babb632ff04e4f7330c7da98bdd8ce0",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.6.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-YLGJ2+i9PKzP4ND9OtuWrUomJvKp+Mel8QSIGsWkUQ6DqabVZPi2//BZ0slqnyq4LcIS0MjTSCLi28H6IFjrrA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDXwekyrxC1dOvbpFk7e9Bi/vsNytB7+3cleLuCr7eLjAIhANxEgdnemUuzt5+TA+JtRonE463r2dJBUBaART2oYfPx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36930,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgAOARCRA9TVsSAnZWagAAGrQP/jOJoCCSrZXoYW7vFXVs\nIsT9SDKZ7CZzny/vfaHISKVAD6LeL0DD/zOugODZ+gR7QjT8oA9rXbTQpp5w\nueAOZvfm4vJNFTidN2srfdkcJth2+bdoTukD6MSIuGXQDi6WM8lmO2JCgwJw\n7qKg+J17faOKRQEe1CTbXnYWoi5VlY7LfdKbVPpPoa06yCb28/+Zc9Sd1lQe\nwZxjMPFYb6YI9oDugRTeDtqM2QipTBn484cZ6+x10O2SghbyU6XAIx8iCqpP\n93OBnfzvdaZloA/VrERfs60crkPmzfRa4KRUWpzHBuh9QJouvwPnRXrJE2kW\n5+jMc5snSzMCC9AcCKmcAj1h5hbM5FwsKLpr2MCDnTb2PC/jc/sqqxicWC3M\nEQP3uY005vGLrR9U4nsT3SMVu24GYOkavPbQR4nV4aGJpmMkQk+jBnJNPS9K\n+c1yx6Gd2CtBD97xpvPgxf5hJxFx4nPRPCOLmhQqBean8EDwyIJFQ+aaj+Ys\nM1XPwC08X+yp+Hln4wDqtcojIMaL2JENzXgcmeE2C6RFPXf1KjDLTsuyvSPb\nmbmr/JtyM5ZVGyxIfJGtiv7CbN4yCmtlm9BUAoIvAXGkXN25ZFvrLAJspwXS\nx4XqdAw6ACrMCOO3/pKUwNUwZb4tXqd/N0T7P/cJTGX3Inx1WxC8nU5JyQa8\nydf+\r\n=LAsU\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.7": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.7",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "4998ba0a9fa2064c9e217b8671fec7e216638000",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.7.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-3UPjzU14i7Eh0SGlVYp8Z8EFYpyynFAez9NScIZ/9/yBS5wwkgrtE2/VDl4K3jsg9MXFe0031zeHS5+fJpQw9g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCO39Ez94U4FUX6iMsLuFH6EmorcWCASzRD2vv1h7gvDgIhAOznLklCWDGPvKZ1Hs1zABskrqC5fl5qxCmgU3/mMqeg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37187,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgN9kwCRA9TVsSAnZWagAA24sP/ilrgIp1C7CYDXaJWxAG\nbt7I5rpdRS0/nNRe0yE00m+rxbfUfaz8VmX1SbwNA9M/7UTM7StD6y4PSVUE\ngvHLYtyCzKVeN8DrPNbMbynH6MpevZOnQCOMNvOUiJzvEG/nL5JN9L3D4Avh\nhau4kroSraeMtZt3ZmCXTRVBpv9g0th7HAhOgXPSQNprCBKYZjYvMtq7fsFo\nLDe5daCfjwGGJiM9QCAuRtaMV1N60azz57JgjaM1tH+PH+q/hOcmBGoKJtVu\nIiw1eO1Cx2d6uBjbyZEoMla5nCu0bWMe0MoMz80xgq3WkYaC2Xp7FSy7C9UN\n+rsssviZMx+bP1Vwov1+qJNGpqxS1KzM0+bCvQnqH0MO+3kodbe0oNVRwMg1\nrisRlW1zQS65SYRZ0kteGlHjezVXw36FNbjvSd2ebHxKzSjxQ1CbLa90HKtn\nNxnbwNA48G/ZwNLDYqPaEMoMjyChxatlLnIhvyyNL9SA3EL9h4kK2lm5P7Kr\nn9jS0wenVaMlp515x03LhaqPAhuM9ZuY+KQ68Izn0sd4OELkViGwQmNZe4NG\n1hVwenc4fNrBJ2F+mvDUgKWlB7YmIJgXyvES82BApAJBSmn+r2K9vAld3YkT\nib+PCKiAkhh3y+BYga3q7TGJpnOtKZwDJC82UySam9J5J1ac1TLTSceJfdHk\nve/y\r\n=A6Ll\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.8": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.8",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "97026300d1766bf7b30c218eb614b87900b26ebd",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.8.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-oCd7ippef7YupfHaKOvyBwiCShFKYfJZRGFei1iLOhfWDtr7znrjgiLHwIw7TBlbGz/uSqaF0mPkwkvVjAebAQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDm48V07oQvM4cSFoanqwl3gc7UkQ+boal84I4V7906EAIge3EcEMTGGK5OOuNufdKldMAJNPsrqkgTyqVqb+NFmxg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37498,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhGn6OCRA9TVsSAnZWagAAJAIP/RLtSBlUiSEN8Y8fiGZb\nazjr7FtpQ6rkhaJynPyUZWp4hAidsOOWQKbVCS/UjFmLH61TSk1uhCM27+2Y\nprwRZ8ocy+K3Qz/S+QkllVLUkIQum09HgGP3dQo25AVWjQ5CQI6ITPwdulmn\neV1yiVlp4NY6NkCE+GWxzDDZhKHvIx1VHaVP05n7xrw1MQA4m2iHjEQedYR3\n5lLyeswdWNP+/DDrFNdeRCBj39rTXZCVkzpAW1y1A6Hxq9sdw7I4KYpfRlYy\nXtrDTE5E1Ia0hqbFXiCLNz1HSzpwZuj5On+U08vc+7Q5MX1fpZDRaTMZ6T4b\nvvsznoqqtO5CxG0JmBlxmkqdl9aw6bzVNjVL2CenkerE491O4k/sbvaSEIWJ\nqbMUt61nCsSCV/2b87U38ajFlp8BKd/0SUpibtO5pQUz/ryD+75HxaBFVqBU\nSKrGo4A+bAuoA1DXEInm8Og4UemLbNhiV5E6/GWneGGt+Q3uzfY+CQGc5RPz\nHk1v5Tm3pQvBSni8ukdqqNDrkylNTl4LEIj+nIAZ1HPkIFt4T7sY0QlWQcEm\nW31lfkGnAw93MybwQCsdbnXpW4bkiiysRCY45oDfPGSr1+8QAlywkE7Uhy91\n1mNgRfD/NBQ1WcyQWwdAPpvHtdf4oNyRac4vlhOeTVzWSEpVdeVuQrEcT68i\nFEzK\r\n=7f49\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.9": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.9",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "a728806bd0854a6cdcb501fe80810f1324ad0c11",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.9.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-d5FeaKt0FjwIr2jW23j5og4slnr5ZQ9ICSSJkM8aHkR6tOriFR00beAP8XQQVX26HJkOQy+NkXfD5B65EnumOg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCaJstDECWDwxBErZj7jDuEpLtL0uIDVdjk51XRjFmQ5gIhAJ34XewqEITJ4z30+pbeyzPM17zVy+TUfaKAgT2w+Jrr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37908,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2ic9CRA9TVsSAnZWagAAQpoP/Raqvgq9pI6Weq9UtqWp\nDXGhSMSt1RbxP4dkF9HzlSLue+/ULpEWSuyHI4NRR/bDZB5iizXtTYJdDrb7\n+UbAeQ/LzOgwYLDuKjWgDNh9i3NlzjHqLETKChIPSzBubx0vogKvsTQISHj4\nNwyl5j8EQ+9G4pkOd/+9W6TWq1qnKseoW8wRSFWy4d5h8DOD4tzI0rGkSvLD\n8w8rB+shW1j+HASyMa0JSSOw32Z36S5rJIGlzJiH7FlMkER06gTWbP3xi6Sv\nU05v+5J+cka8bvkQuKqilRZVnrRV0QpBWwEiChTRTCZCy2DupbtMUSeL9rO8\nvOKMJROQdn82+f50l83l0HH9S99bVDzBcE2jnVc2iAdOvZRPeNb6aL1nQ/rO\n10qULBfwBae+2gScsnZBsSJq0twV5WobaH7Fclu+mhequI033RKnDvP1X+Qo\ntXZiT8f6uUUBE4o9jqbcPdQZrq18g6LgixX3RbiwrbOfiEiziwUax3yklLvs\n8RhKbz66wUeYGwxEaP00gSllGxPwbQrExYulKX471l4Sg+pJHz9xOKJZww4A\nAyGCgb7adqTrRbo89zOFQDUtm93Z3kbWzRLRqXM4T8VvE8qi14SFierUaZp3\nLRe6LCyU2khE6Ficu+DAO2W6n7oOnHTV2BGNidjKuV+xYIaM1vFu19LmLLu/\nCPJk\r\n=iKga\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.10": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "0.4.10",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "6562f279f5a8c26c5dca06169a9d70ef0c1b770c",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.10.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-SlWNbPPCquD1GaOKF1bj7VL7vbIvuYTS5uvYsDfi3JsIJmiM89Vk502s7f7+WuxsU3/WcL+Eu2EnjBRxSCbRJg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD1eEHK8ZnlE49cT/VVjrBoIobJxez3+9OElT1WPycbswIhAN6oY2LyMEhQXx1WJhBmuUC8cgMpRLsdsE824Ytjzj0e",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38319,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiRg6HACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrH+A//Z+fCWMA1efCxhx0yJSESlLDn6E3xpK5qa2J0OhtocpciFJ96\r\nXEA3hy5qCI0+cmQoAhDhA3HC5qfF9RA3g2q35AqTZRsIojZ1xm+8kOVg+oQ3\r\nsWAEq6Nm3fTPzVJfWg2bmjQrmFPUqP5QjIt3EQR7V6oYxL/bVcrlCg0IGF7+\r\n7W+eyaM6azEOGmJvqX3csxf9zUKluLLKrWDV/HQHCWYhFfK5i1xJS42qMpzx\r\nNR72uYK1Y4YXXYNan1YQHikqiJzSNSvDLAqFNeJmv0pXiHiq8J/NfTWlkTNX\r\nrv/GMcPtZnIg9VCwAq9f5c3xNVDscym1//eb8dv2MCSFrN0T9H998POITeLU\r\n1WGU1L+xD8zglxhNdIZd2uqJkMPz3q/LyVBMMcGEcFJOBXWb3y+/BzQFqNs2\r\n3CW07fxCnOs5aHjdxGqDLPCSZXU4dfEojsQWNTMeH8MeHPeg5psLWkSYNlgo\r\nThVCYs+KdKSDTtEEthYy3n7HUvcaLbBSdiN3vGoM4HOESukQOenw/x7/A2VG\r\n2qpMHd4BMIBCNvbKraqW9eV/K3+UOi8NRSl2wTT2YATUMBAqUpbP9O8uA3Pl\r\nIp0JA/qSJPxqu1RSjV869Ahj2ED1zKIhN4J8pdqMBtDDExWgxYidbBI2W5WR\r\nTZuixYE28v424WCYofLTGbwS0wszjPIuwao=\r\n=07sO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.0",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "f421f5ab919cfd753049738711d83b5b42837375",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-K1pX1UxP6b/pK861sTlUgrP0i0JqPvlgJvpeU2+muKdmv/8z/ft30+Iv9EGH1lnOCEMI22s65XdZrh2R76Jymg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDPnSCt103uWpHs+e0eJEKdQpKiT2vKArcqHgY04uK00gIhAOAf8wRIEw7baFJzY0EN0YDqFNyfRJn7hfIqTDU0LNF3",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39759,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJirHwuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo9qw//VBLDaT9ukb1qoylzshhmkSUoT3HYYQlt+Ks3/V+cg5bIm+kX\r\ndTgpho2tZ4nl1CN3jlTkgAyE1qsDzaMevSIPWz1ibjL0zIf0dWGkfPjkhB3O\r\nYH9PeqGgJPlNiFgsQiM+u/cuhQRGx17g7uTLGotQIGOOubjTUwcmaerhxRas\r\niZMCX2kSBR3Q/iaL7mLOefB22IqI81JnYGEqzYcHrjM9Dk4QS/WzOM8AIyaf\r\nfrMEXFFKXkp+QsUNq9VU7WbOpIe+uUbH/1oBJ6WTBLWFjPk2EzLvOfQpDbWe\r\nPRKTYA0hWP1BfLJh3GB1V1aZ8pOeHseX1JHhgeDGaCqRq1dcZ5Vn4iGhAvqa\r\nOuisX78WugosoIW7XLF2yGPbCRY+Tr6R8kCguophgpG6Y6YspThmBmptqpqj\r\nWVj+3hYYxaheIxZLnZadpO4qa8FV6j8biJRUi8A9wUtH/hg/A1+jDaoUnNwy\r\nGdtQUi8T7/NNQcSqgXLEF9QVQfbYTD62MeaNbEKpEW4zXNKbd8U26P7fUnjZ\r\nJQFNgUQRy1Pf0D8Jmu/irhM1Kq7z3Z0kQmUqR2+qnWqRl8cOE4pYXujSHvZK\r\n+2it7X6U69sBS4PGpVt6UOp/ef6bTPLdpJVgdksTbinpWnulgVGFDUhZuakX\r\ntqCA7AMGIM+PtL7k1mMCPXFDPNjKVTDeBjM=\r\n=RkQn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.1": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.1",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "41d5799414982630851ec861f2f32d6aed77d9a4",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.1.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-oc0BKacovBZSb3djdFfilbmHgPW6Gmj7ImAoK6Z8qnKXAYkt4nq92Z8AjKzsWn8VDCKBYcL/WkK5BFcIL9nb3g==",
+				"signatures": [
+					{
+						"sig": "MEUCIGpDXbhXJ8pUcRmKe14OrYihKx0KLTd1VYyelT+GX8lIAiEA5GxWKhKv094aM8STTPXrOJXjMnZlQ7NgOw94cpBnYO0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30097,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjRDkBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqWFA/+MwY2ZKkoqNi9HKHd+ovlNDs+ojx5HCNVEDjpO5bc/uYBi13N\r\nUw51IZiNi0kJcNgrXI4QFDlphJSJCzUQML+/RUJyahYiEeVnGysTOSJoXe4h\r\no2TD92gowICLplh7WxIh8DMoahVgtahKL5xng7Gg85D0zyS9VF0Oy0s0Sws0\r\nU8OH+iJ7kk03dTi2BG+bm8pIJtnNxsP/ia7Ye3vAVkGig0gQ9M/l3YQ8U9/N\r\niyMSj0H7+MGrSC2zdMeYFD+ds3mTzihZablV9FwC5m7QfBQKJGi909osvbVs\r\np2pR9tCcRi/hosnzL6dzbfWJtXNiHI0yOFcgt/2pFrrmrqiJgCKDCOEFgrDf\r\n4lo9Py3j1Mk/G+8d8Pj1BtscBEuRQJkGIVPEqDjWcBgc2FnUqQyKnlB25H/A\r\nuKEVD+EGomQ/wGA2DdcjXjMRtYAKrNs2bO15CvGFQfi7mnZwhSz0Js9i6KS3\r\niXs4E8sLx7PmOmJxUwXjzcu54EdSYtNVPEdv9eiBRyn6n8BovD3IhoFY5r3N\r\nSsHCe6wgtEVXoa8mOjMbYqyM+LA9O81jqEJVGzYo4+VpRrAlsLIvZBf4Yq75\r\nT7k8U5nlYUmmmI01gX6nxjo56INsFYtBmE0McOVRNlnsWWl1Tkx1umCbAM0P\r\nbQ38pbbYMfwtcXFBAsSUMz5j0dEVX5jxMSY=\r\n=HodE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.2": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.2",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "79d8d593f186b963ebe5210101c0a7fb994cbf97",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.2.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-hmaq/Mxc4gSJ7xhVxwW+Jplllub2KPnJqsLa29osWfFrkBrJ4IqOJ2K5vFb7m/d/r3n9vHO7qATnfS0r1DcqCg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDyaRxEfuBobInpmx/b/GeahWz7CE8RjgSmnAgeqS4tFgIgfhLQ2tKmoCav0oSoZHTYI0zqhJR+adqwm8SDz1+0WAg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29640,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj79obACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoamw//fc+rkCYoVpd+pWDEtLhgVZ+PoUG138dy7BfeRLjd2JZqvYkY\r\nD3Xmxj5CbwhpWSzRnl1W2UPpwEs3Zt69+r74Ccllt2BvQMEckbOH+HskBP8V\r\ntI1IT5Qn1Cvxh8MasJD03YDjGcUsbgpMXoJR5rg2QeqLD06k7JynrXC5BX0i\r\nmYfY61vvjmJKvw9E5+5ILTyNortALbSqz5t2QSXFPtkVVdI/mZjjlSNwOpNf\r\naNpenkDXv2JzJWAeaXXxYRwoMS1lrPV/PvPnZgN9OPpitRfUeF8UMLuN289P\r\nuoEpKmXWRhUYUXImexkH4GVj54lmxBiFFEv8wIbGreZGE0YWmJ3oJ7G+k0Ln\r\nl0nU0fUMd1OGZwPnlAuzMD3iuj3xTlk9IoOeT53oy9GdwPWFOcTvTdcmEwmf\r\nrvSGxuf7SJyujaCANo+Kj+AUPJSAUf9TWz2/nuw3mtftQFrZKrgDwVmQXCl8\r\neqBEyJqcTdxAZvZTSWxSSa/JqemULabmEHohLlIECtKTEvBJO5LVmoiWbaRS\r\nx2ON6P2Dy36iTTsqderK/3pZBx46UBSmzLUaGNFvSbbA3Vm+VLqHx1zplPNY\r\nvqcChpk5vQ4owrLD5/eTSd4XTrqmWgoz3UPdBpcCTmiCcuuuqxYP6zrwQ23i\r\nn6d2HujW4gsFBCcawx/T7fi48JgSY7w2IUw=\r\n=kwYL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.4": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.4",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "a9eb2d8af7fabdc89746a189ca5cbc9f09f11671",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.4.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-yODGcqIeQo7S/t36otUzcQ2Ly6Yj1aYtFb7HK934YfCh/i1kaLD5GHcqR1ipuJMk2xLMbRf4GUON36isVZe2Yg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCN9QbV6xPlHiwqGr1LebnHtPf8KK7+YuN7mivE1uBdKwIgVPTTcfytYPeLV3wLeoNSZo6P5owqZpL1PhIlDy2qJdw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29640,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkFKz9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoc5A//YxRLjSB2p44Q73OV24xRprQSdl4mPeoTwUZC8mdWRjpJKqev\r\n7ds9DGqp53cWoU5ppAmn7wntNbUxI38R+dZ2kVnE4kehHrv7glU/gaNWs46d\r\nIUupEI+YBtRyuEiQ0Xd+4GHq128076Pw49FK2AxmuJVsgt04rir+iMM+PgCy\r\npJ4b1AuR+2jkovuImSiZrxojG6FWK0xeMtryLxuiYfKNTevZ1V+i37xQGKbq\r\nUbWcyihTKudNs2cV2ERfjV0oDLmdi/GAcJpu20VpNnL9zMHzZA8m7qAdHOBa\r\n2mEJ4TDdY81jmDcSkf9WRYX71xds2VWfIpWsolJ5JTTqmVobTvyArqm4jRe4\r\nn55kQ/vST8SPvX17PUd3bCZVitMFUvufQ/Z/vx4bYgCRAXoJOug9DKPzh+NM\r\nNg/QmVUEDUkJqwXsDTP82rSN6ftHHsK58M342Oq9Aoqwj7EtXoGkIft4G32s\r\nGiSTj4kMK1tkQka1GDDC1S0M7umOsyiWIYzpFCYsiu7iMkgnvzSt8GRgzLOQ\r\nQ2gJ3ROpM6/syPB45xu9sXvkUIR9U4ghZlnfaZ2vLOuu1wq4GkOtzLo/Wvqg\r\n4SUsRUy39wWHWPk/sOCH5/hUCuDYFh6tPsve1aXaO38yLMmHClk3EIyUVvLL\r\n6j/6QEnWp1qAv2Lro90psA3I4hon0V3H3iw=\r\n=wfR8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.5": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.5",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "a5eb69bda1f380d6be5ef59bf916d8259006689b",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.5.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-pHDrLl7Fx06M/E/SslCdfrG9Ys3VXQc1+xhsSjxG4Q0Z7rpz53FKdYSsq6ZyR0ydm0tdL+xgerT4kxU5V66T2g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQClQaIzoxG8wa9U/Xk7ZNhJhrGJdiVr3s6GlnVWDe4aJgIgFJgxCaXzgeRINj31DZTLrgUQ0+ZrS91irhb8ngiORWU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29640,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQBMwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq0Ag/+K4tRn8aC5CsC5uy/pf1wh2kWoFCbdl29orcfCqKYxiONEDdZ\r\n+9Q3zoJ9Iysb7Iv1pHjPOPosdOSQqlb/v2nJzJUQZSdFfLl8Pljrx0NkzoWh\r\nF2AKwDxfD9EIMjHJx2smgSwa012Y17tOj3AhE4bEiU0vcxRYZRSWxzL9YHvg\r\nLcMI5GJHvwJrG9dGaRHa00ivw7IL+cxQhLuwWGsRun967lzZi/Yj7YNwfSwF\r\nPKIoJYCnVZ1/qWl9OAoFXORYw//Q0ZYfYIF3ZJurcH/s9PYS/tId7rOeWcog\r\nvrPxu5ca0J8c459ajbynNcRSlAdx3C6o7zKIeF8q84+zlMC8H5C5ktqdg964\r\nYAGW7COk4ymFWVfXcro4YLgfGFl3q8UolNcVJLZV40HF9E2Fdsa7K1YDupJB\r\njpChozKFOoh6ehQRUW4xO76e+ucQqapmZsfz+Zmo6Y1U/OXfxAzpeIWMVlEs\r\nU5nBefkrETIbzhfYhZx08M7wnpUQbJxe2HIun+LtGkCzM+yzZCJRj93u37YZ\r\nZeby+oWaXZ/hh+PqPeZdM1qC5ZAkBfoT9QaiPWzKw6zMu8mSmx/r6MLsCiXb\r\nC6Ys5HDKSwW0NIujyw1SibETAk7w297rs+NtMOgn4buYCth5buBWcPLCLPbR\r\n2cErAprgeEgMAFvHOYxsMyv2rQRQjlNRKrQ=\r\n=PATH\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.6": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "1.0.6",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "89986125f6e1d00e739e184f1ffdd150944ea195",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-1.0.6.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-cTJW2vWKPGLo6kUooRmvfeFE730gHH7DIleeplze+1GhnY6bC5SgNm1L3WpoZmbuyl35CdWGjFah0oMUcr18rg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHLPR079behDLaqwYCa9oZO6ID3GsfI2AD1j+YUjbueXAiAqNWYqDKNzmoJRuWLGUAd6G22YSKhgno8ECqRyeetqIQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29593
+			}
+		},
+		"2.0.0": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.0",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "048d66f5cc5d633c4c13363f6849cf9e58c45f3c",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.0.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-Oz+o9V/V0umbxxciwHqMp7DZr2XMW4IG3mKqB5S2elToAacbqFAkSn75xgg+hbCu+dzjNlI4yUdBX7ic0i2YXw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC1TH5t6Zh21OdyXBd6j67BBHNRFnmkfnF/WFSnAMTxxQIhAMjP5Bj5hcZz2mNwBCVxln37UiTfQX2VQ7Smn+VQBFv+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29593
+			}
+		},
+		"2.0.1": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.1",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "ceb4d9a13b2369da42ba97906c2de6b450ce0918",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.1.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-UBU8aqbBD5PXbtJ/ODyKMqeGKw8brkoJ/vvCPkfANnAtQUkdHfU2yqBSRxzpquN0mqEWw5NL+68iaue4wCHKbQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGrjRXvD7lLN243nAt6Jna3HaABXIwXrV9uJ6oLfrb6HAiAQVftMK8NbL4wSoN5TSGX3pBcdmh2aIeFPY6MsEY7Tgg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29515
+			}
+		},
+		"2.0.2": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.2",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "d11e6d5d8fc43dce0988f2152f8752622b900a89",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.2.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-sAEfL+zHEvZ4VP1K2p36zTdJbghxrhTaK7U1Xj6pq+i9YRSs+1CbqLId2Fe9I8zKbFj273fA3y5TisPtmcX41w==",
+				"signatures": [
+					{
+						"sig": "MEUCIBfm/+JINm1KZkABKoYsQwt/A14qKA1yzv9C2Agq8ZThAiEAh7mW2qNqAwCTczpOGXFd3pNJKN6+tSmFqhn+ckm9UAU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29515
+			}
+		},
+		"2.0.3": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.3",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "ec74f8d609598ff4f7a3229cba246ee8315254e5",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.3.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-uG/02EUaiViZHzNOo786dNacBTwkXZz7M13GzGnwTftkrLiKerYp45xtNJVdgdSlawwhnyohQ4s3Qkcg/3iqYg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDdyJb4OYIkVOit+j1qRQP9FnHZEr6ym/f0hmysDbnO0wIhAM3BKKqiJQBBvB+c1954yUtIZssqTb5MY6GOTXfj3evx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29515
+			}
+		},
+		"2.0.4": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.4",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "82288dae830b011c0dfcbc603a7d6ae4b748a6d6",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.4.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-TyWIUtcqzuLx2eh3AtHVEZzHWJa/Y89CmnhLGOBN4zDHj2phSN32lntzoR0zYpTdQom4YEjGs4JzbyGzhuVGzw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDuBQfN07SM0fHH8o1CBzJ8I6KtfBrYQKGZKBi5h9rr3wIgWX52h+oy9hknfSp4gZSUY7iAy95vxIDlWbU26OsHBJQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29515
+			}
+		},
+		"2.0.5": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.5",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.0",
+				"react-dom": ">=16.8.0",
+				"prop-types": "^15.6.1"
+			},
+			"dist": {
+				"shasum": "98d4fd3343f2c8fd6eccd0a2f4fdd0c9409848fa",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.5.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-8s/DiCvwpNjYaloPI5wxLsjezdsTYxWD4Mbts3QErjgV+dbKiKfMtUSHr6z6MV9Fm6f7P98k+qHR2oVa2Fc2sA==",
+				"signatures": [
+					{
+						"sig": "MEUCIF3Lpd5jIX4chMHqcdNT4wOJe602RYrEU7tmbPZ7Re+4AiEAyu3vC9yMZdKCxA0S46fZSVlKFeGVEKLkA5w3qB+mgJ8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29483
+			}
+		},
+		"2.0.6": {
+			"name": "@zendeskgarden/container-focusvisible",
+			"version": "2.0.6",
+			"dependencies": {
+				"@babel/runtime": "^7.8.4"
+			},
+			"peerDependencies": {
+				"prop-types": "^15.6.1",
+				"react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+				"react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-P7PM5oy6HlitkifAxMYEfKrKMyB1IpwdWplFqeoU0B4EnGiMaJsEdJLbFsQVw/qa7YK5ScXetK+/kL4HKi+Bfw==",
+				"shasum": "6d0435b71ccee8b02497eb48cafb59d227524b30",
+				"tarball": "https://registry.npmjs.org/@zendeskgarden/container-focusvisible/-/container-focusvisible-2.0.6.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29525,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB3MhxflSJTqf5aPE9Vu2/4OaFMoa3Sqleh/AX0o8iKwAiBnuUyVaewt6ET7z6hUJoD9RjxBG/kEPV7EfPaIcGZbnw=="
+					}
+				]
+			}
+		}
+	}
+}

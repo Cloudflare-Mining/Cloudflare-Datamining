@@ -1,0 +1,35 @@
+{
+	"name": "@gerhobbelt/ast-util",
+	"dist-tags": {
+		"latest": "0.6.1-4"
+	},
+	"versions": {
+		"0.6.1-4": {
+			"name": "@gerhobbelt/ast-util",
+			"version": "0.6.1-4",
+			"dependencies": {
+				"@gerhobbelt/ast-types": "0.9.13-4",
+				"private": "0.1.7"
+			},
+			"devDependencies": {
+				"esprima-fb": "15001.1001.0-dev-harmony-fb",
+				"mocha": "3.5.0",
+				"@gerhobbelt/recast": "0.12.7-7"
+			},
+			"dist": {
+				"integrity": "sha512-NP7YZh7rR6CNiMLyKTF+qb2Epx0r5x/zKQ3Z14TgXl73YJurC8WkMkFM9nDj8cRXb6R+f+BEu4DqAvvYKMxbqg==",
+				"shasum": "a746b4dbea5c4a45ad17abca96b0af0f7937bb8a",
+				"tarball": "https://registry.npmjs.org/@gerhobbelt/ast-util/-/ast-util-0.6.1-4.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCPgackCjqxJ0Kgs7VYnVxb9wnrXemECBoFnJVkwbfjEwIgaDBhwRuup+LVXhHzry52tHi5hjK/6Q9/57Hmf6+vJ0g="
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 4.0"
+			}
+		}
+	}
+}

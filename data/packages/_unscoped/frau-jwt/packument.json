@@ -1,0 +1,915 @@
+{
+	"name": "frau-jwt",
+	"dist-tags": {
+		"latest": "3.1.0"
+	},
+	"versions": {
+		"1.0.2": {
+			"name": "frau-jwt",
+			"version": "1.0.2",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.8.0",
+				"lie": "^3.0.1",
+				"superagent": "^1.3.0"
+			},
+			"devDependencies": {
+				"chai": "^3.2.0",
+				"chai-as-promised": "^5.1.0",
+				"coveralls": "^2.11.3",
+				"istanbul": "^0.3.17",
+				"mocha": "^2.2.5",
+				"nock": "^2.10.0",
+				"sinon": "^1.15.4"
+			},
+			"dist": {
+				"shasum": "514369ad5c7a2b763ba0d431c5b29c2a25ac89fd",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.2.tgz",
+				"integrity": "sha512-xU0qVZoHMMewrDWJfwRZ2bL1Bn8pGbBsfgaBl3X3naZd29rQ/o9Sohq7SUPKrrnooV+zPSDvn5PGU6tIUxPs4g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHbs0+OfeFwinLs3qlOTgOyNzMCRCRwP7Kx5Sj6UoA/nAiEAkrEU/DA3GVRpxpYMYIvEMLSfdLoJ8scH4k13HAWcGEo="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "frau-jwt",
+			"version": "1.0.3",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.8.0",
+				"lie": "^3.0.1",
+				"superagent": "^1.3.0"
+			},
+			"devDependencies": {
+				"browserify": "^11.0.1",
+				"chai": "^3.2.0",
+				"chai-as-promised": "^5.1.0",
+				"coveralls": "^2.11.3",
+				"gulp": "^3.9.0",
+				"gulp-frau-publisher": "^2.3.1",
+				"istanbul": "^0.3.17",
+				"mocha": "^2.2.5",
+				"nock": "^2.10.0",
+				"peanut-gallery": "^1.0.0",
+				"rimraf": "^2.4.2",
+				"sinon": "^1.15.4",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "a553c5a32daf86fa1d043edad9f0c9ee9943b9d8",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.3.tgz",
+				"integrity": "sha512-+jSHfG5p6NCIrIMvz4CUunmmv6eNUMz3pKGCvuOAHlec6FS4tsrFOLFNu65aCwli2AGKXYBDOqRZiWK2eV+LpA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC7zPE7dghQMehawE3yDTiI2Il9oqaLx/+ZvPborReZDAIgRS/GI/FIjuSRJOsfVK6JSZOnls5QdovCdQAwZ7+Oro0="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "frau-jwt",
+			"version": "1.0.4",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.8.0",
+				"lie": "^3.0.1",
+				"superagent": "^1.3.0"
+			},
+			"devDependencies": {
+				"browserify": "^11.0.1",
+				"chai": "^3.2.0",
+				"chai-as-promised": "^5.1.0",
+				"coveralls": "^2.11.3",
+				"gulp": "^3.9.0",
+				"gulp-frau-publisher": "^2.3.1",
+				"istanbul": "^0.3.17",
+				"mocha": "^2.2.5",
+				"nock": "^2.10.0",
+				"peanut-gallery": "^1.0.0",
+				"rimraf": "^2.4.2",
+				"sinon": "^1.15.4",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "c2233a92b0b874b059711016404aacdde029be8e",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.4.tgz",
+				"integrity": "sha512-oqPpEP/SzXD8p0LCX+jayKPyOap+ajDkKEm2rPIwKAYm14291yPfiakt/hSVRwcklsjmOfnACI4O2lZiTJZsGA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFjoz74GHhwYR77DKVyVFzQsFDz3uvCWJBvSmbLx4tSEAiBvfYgk/4JI/YUbKWyGId0RURGbj1Vq0Y8TGX4CP/m+IQ=="
+					}
+				]
+			}
+		},
+		"1.0.5": {
+			"name": "frau-jwt",
+			"version": "1.0.5",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.11.1",
+				"lie": "^3.0.1",
+				"superagent": "^1.3.0"
+			},
+			"devDependencies": {
+				"browserify": "^11.0.1",
+				"chai": "^3.2.0",
+				"chai-as-promised": "^5.1.0",
+				"coveralls": "^2.11.3",
+				"gulp": "^3.9.0",
+				"gulp-frau-publisher": "^2.3.1",
+				"istanbul": "^0.3.17",
+				"mocha": "^2.2.5",
+				"nock": "^2.10.0",
+				"peanut-gallery": "^1.0.0",
+				"rimraf": "^2.4.2",
+				"sinon": "^1.15.4",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "1894b265a965d918580e92a7d51f576684acb396",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.5.tgz",
+				"integrity": "sha512-Ef6Jva9n8kOcZBuDb2bi11z0eXWZN8uDSWeg5hug3W7Z1iiGTgdQHte7ZH+1C2uKOVJlbRLj/fzy8foXZzYAAQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEGDgmM0PFzGdbazW3xR6VcloVqP4wBxE+5KexIZgFvtAiEAh91Hekuu1IfqNOTptud63HX+x/qbdhOPdQrn2TxC88Y="
+					}
+				]
+			}
+		},
+		"1.0.6": {
+			"name": "frau-jwt",
+			"version": "1.0.6",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.11.2",
+				"lie": "^3.0.1",
+				"superagent": "^1.3.0"
+			},
+			"devDependencies": {
+				"browserify": "^11.0.1",
+				"chai": "^3.2.0",
+				"chai-as-promised": "^5.1.0",
+				"coveralls": "^2.11.3",
+				"gulp": "^3.9.0",
+				"gulp-frau-publisher": "^2.3.1",
+				"istanbul": "^0.3.17",
+				"mocha": "^2.2.5",
+				"nock": "^2.10.0",
+				"peanut-gallery": "^1.0.0",
+				"rimraf": "^2.4.2",
+				"sinon": "^1.15.4",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "3fc4323da3edd45e93e8a917a92177b46cffccc0",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.6.tgz",
+				"integrity": "sha512-zY53PqxRVEgp58R0odwbLopD95arEbi6pYYkjpcOWHGVK31FaRM5jRc5vKKSEwxYdh3xx3YMpLWHm3rqQqKdVw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCR55e2fdRNHpIJfJNYIE3XtxyE8rTK07OZvIA4yYefZAIhAMJXvKWWnboyiZ4eL2rVMQGqovNZlu2PeH1+wSV23rx3"
+					}
+				]
+			}
+		},
+		"1.0.7": {
+			"name": "frau-jwt",
+			"version": "1.0.7",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.13.1",
+				"lie": "^3.0.2",
+				"superagent": "^1.8.3"
+			},
+			"devDependencies": {
+				"browserify": "^13.0.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^5.3.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^2.7.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^2.4.5",
+				"nock": "^8.0.0",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^1.17.3",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "5c82ecd0238efd4e0e15d0739ca5d543d683a946",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.7.tgz",
+				"integrity": "sha512-6Neoj4dG3zQ1bKVwm9CjdZIOzcaLCSpvjJnVyv35zJLo3M5k3/5SqndAzeT6DMaoDDPghG7EGhsSCwslkobf0Q==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC3uT55IdGtM8RQx72zoE0W/fAUIQkGd7+ioZa1ZFDECgIgf8K7NOOO7yFiFFlGuIPA+dsQKt+BIxjEgeLKLRN806s="
+					}
+				]
+			}
+		},
+		"1.0.8": {
+			"name": "frau-jwt",
+			"version": "1.0.8",
+			"dependencies": {
+				"frau-framed": "^1.0.0",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.13.1",
+				"lie": "^3.0.2",
+				"superagent": "^1.8.3"
+			},
+			"devDependencies": {
+				"browserify": "^13.0.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^5.3.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^2.7.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^2.4.5",
+				"nock": "^8.0.0",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^1.17.3",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "61750c4075de2de32d413a7c2aff4ca3d5f18d5e",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.0.8.tgz",
+				"integrity": "sha512-WiFHLcvL2lVYIYj9ipwRyo/QoR47LohFqYS3VRZbfjUXanblQx26FzUeTrNSE8UXPcpHfAAjwu5LBanErV8T+w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC55nBit1el987tpc8BwwipPW8gcGOSV08gB6qQ4fAAEQIhAMJjiIZ4eW+rfpkVjttunQBk6WKIWa0QoUh9VqBy5X4M"
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "frau-jwt",
+			"version": "1.1.0",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.13.1",
+				"lie": "^3.0.2",
+				"superagent": "^1.8.3"
+			},
+			"devDependencies": {
+				"browserify": "^13.0.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^5.3.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^2.7.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^2.4.5",
+				"nock": "^8.0.0",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^1.17.3",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "41277a8b7fef6c7e12c622ebbebcfebd3ea4ea4b",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.1.0.tgz",
+				"integrity": "sha512-Bue/d2iMC4/Uf2j7vUnwquTz+KsDukidie5GuLqihchNyfqtf6t63iC1ocoCgEYHVj0jIBxSGfI6jyV99gTiCA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFa+EVFd4MAfLTL+1sjZV/4fkK8qtl6jcnOjUPYeJqlzAiEA/hpPcX+Zv3hAk7HoOZm8erp91VF5zWFS7yHPr74EkEk="
+					}
+				]
+			}
+		},
+		"1.1.1": {
+			"name": "frau-jwt",
+			"version": "1.1.1",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^1.0.1",
+				"ifrau": "^0.13.1",
+				"lie": "^3.0.2",
+				"superagent": "^1.8.3"
+			},
+			"devDependencies": {
+				"browserify": "^13.0.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^5.3.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^2.7.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^2.4.5",
+				"nock": "^8.0.0",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^1.17.3",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "f87f8a6775fc4c7f78bbcdf9f28bde9f279b9765",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-1.1.1.tgz",
+				"integrity": "sha512-Rve/ZBs1e8VD3Jx53aqp/8/nrDDcoKk45DVsIPQk5WS5YAS1k8V6qsi+2xTSVk5gI+NRvUwkiDlfjAO+EOeyWw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDZLqxllK1XnTbMXGjqLBxpJCIj8GYdhiqosp7qfjEI1wIgJ5qpuE2pufKJX1iJ53obrTpBFCSAJ5fhoOx5IW9Hbzk="
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "frau-jwt",
+			"version": "2.0.0",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.13.1",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^13.0.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^5.3.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^2.7.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^2.4.5",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^1.17.3",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "d1f4791b4b45f1d5d24b4075ffefb2606f71c669",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.0.tgz",
+				"integrity": "sha512-ROzy/CsQnbcaMtIx9LOT4d4Lc5O2vaXkusK7u0OytiGl9Qfo0cv8MMEtaqusy0SeauTijHgWxKBlAeUTRRfclA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCwBgFEcQRznrWXQa5B364EgppX/t2XawgBj1p3JQTj8wIhAIl/jcVBwokZwuTPn/fwj64QqGCnBQ21b3iEeQZAYg6k"
+					}
+				]
+			}
+		},
+		"2.0.1": {
+			"name": "frau-jwt",
+			"version": "2.0.1",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.21.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "bdcd1736813fc97e9a4bfcf4930b18204186563f",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.1.tgz",
+				"integrity": "sha512-j158YaAzAWPpd86gOOkDyjY/PjvAl+J9SJG6vLFN8qYMzDWZan+phuXIi/6Qg9FCzwkiBkbKJoBI2/kiSEhBPQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCGJfCwftHJeuKxykddIkdef218cPekVai0tVsgHJZ46wIgNgkkx6Tjt8sa7EokvI8TOG5U3EjumtdqkI7Avw8An/g="
+					}
+				]
+			}
+		},
+		"2.0.2": {
+			"name": "frau-jwt",
+			"version": "2.0.2",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.25.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "4c21319e640614f22cd75a5d2176622203cf1c14",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.2.tgz",
+				"integrity": "sha512-CH19SorzQIY4pdVgUcjJ8LUi+A2ACFsLpKVIx70RT9LqnxmmgHHKjFLfEdrPsqIZueeB/AnOmTbo/y25lfkbMQ==",
+				"fileCount": 8,
+				"unpackedSize": 17886,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcbt3pCRA9TVsSAnZWagAAhekQAKJmfZU+PC+a3Px1H/YJ\nUhCLnydqPtFXbWcyQetZfoacl+45c93FQ3GCn+6oD+luyTdHLaWTAQy7SnnN\niU/IEFy/d6liAgK2wXshsJHzltP8hMayGDhPaJLJhhXiTwR9zEeEBygMnhJ/\nEKJPvx2+98YYIV5SCTaRzbqOxf84M54Uh+pKXyAsgwUhbJQjJwhCF7nFYNXN\nADCNL0VZzSW3yvQr9CcFNJ62At9U/i2aink+gdzrKW2iwTRhxDxigyfGMByg\nGJrR9eMARPk4Y7uYfEhzVNNgQidDJKOaxJJdJAnTJZaj6XUyXqmXuTolEC/r\n2YnSHTHvZHKenV/lS3FJE5fc3X+G0bykmhas5Q897oKGTh6ERVD8R/YyaN2d\nINoXZ9pZG/P3OVjMnKejvxXlDSEaXTelksk1GLusgwSvgOOo4++9DUzjqkrL\nDxBjOE/nkM0+B1wQQwWFEuu6xUL/nb/ZWN8WVbve6YzCP549hxXqkXcaz95Y\nxS5UIWPcAOSb9f89glDjFWFta13Xd81SyHocYa6V5wfEBSFXYbbc+nq/TYuv\nqfA2YD5zvV1wnWJJ9oBUZ07lRwnlNpXDxZKSUlH2bRd4y5l2Z6gJLHYca0a0\nKWJbZSwbI8sCU/7nR5wd6l6xD8unpgu+i6Vy3XQSf0p/+eOBIRlf63/vY1sF\nuky1\r\n=vkh1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDXxGYgPQj2LK2X8oJcFy/zDKPzBBfM238atharrOUvzQIhAKrCcQZREYcnkwdB5a4iuFJOB8HhsDm1ZqvDu92VyFUU"
+					}
+				]
+			}
+		},
+		"2.0.3": {
+			"name": "frau-jwt",
+			"version": "2.0.3",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.27.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.5.3",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "17043b3be46752cc8c654473be84bf65d4ff6883",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.3.tgz",
+				"integrity": "sha512-aa6QOt5Qy7Yh//pkWeK1Rb+wnMw0UeJVFK/x2dpeySdw8Ygg0+zwQL6IqNNegtnx0sPGobsgs5vdwKzlIigqlQ==",
+				"fileCount": 9,
+				"unpackedSize": 17927,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdI060CRA9TVsSAnZWagAAetEP/jFjaLkJ9Ag63vxE3nUd\nIuARXOwkb+PhjSSSUffCeO9/aFvu7XtO5yTDSJ9rNZ6co7Gm3Kw5vv9PQspg\nHgrwmRwIP88Jrawx40XiatgjOviCepIltMCzUrFkZ26gjI6uzWGjJ5Y7BJv9\nMANPUoV33Kw3yNkBhmVmW3torGyBjUnrObTS5LSWWQ6FVmvAQsZVJ2UUybGJ\nbFi+aR4zmisRFgU3Tm0/ik4ppBGVOCdyFNS7VShy4Y2yGTv8dHZiyUArg/ao\nCCPpyF8MVd6SDrne+lttgWhjcNg8w/Bjr1q3VLirPUVddIkXHf0x/uBKr1J9\n9WcWiU+U7QFipx1nPhKvtRoxUtFCIkDeionlMELG+H9Ey4XPa/PNemXGoG+h\ne7vzi0gHyRq0lK5K+g+uLwHMNYeScFPJayyyiGq/ifFLUydMkbCGiTbHQecW\nXzmnfMIp7hUuj56v3aW+nT81UhesMnCNRUrf1XS8+fN2YYEyGw4UJwt58Rmm\nqjW1tT/pDEBcCJeoJLJRqx1Y56ia9HDREeRebXKHSZyKCxzIBKvi9p6YqweM\nPajLIsgdOQetIYd0jgSnkn8kuuy11VSPNRE/K3u4wINz4RyUolX5HGi8eyMZ\ndrabnFEVfD4mv49hvATst64hcFRICgcc2jUXgLIXCiC8XVtyPClRl8sa4b4R\n8hp7\r\n=sa53\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDlhTStH5a6rtDyATjtj/2RuJJu41nhPNMnn1Gz9wjn5wIgc5E2D/hmX4CYBWOONJhUAZZ3uSPI+wdXUYkh1oN7BQ8="
+					}
+				]
+			}
+		},
+		"2.0.4": {
+			"name": "frau-jwt",
+			"version": "2.0.4",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.27.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"deumdify": "^1",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"shasum": "406e355d7fbc1324b20e12192366661501c913a7",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.4.tgz",
+				"integrity": "sha512-PXhK5vzRnjs3KK4V4lUe8eQ6D+J6uXB7hVvU9J8r27UPQVevqR87TqG0r3IzXoh+F+HTZtyvYvuyA8pEpkrh6A==",
+				"fileCount": 9,
+				"unpackedSize": 17937,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfNv5aCRA9TVsSAnZWagAAfNYP+QF6bCa962jr1EoWXUUO\ncm/Qa/hJFCiofbC9Bgli+Oa6vu+4NdSbTTIdyxjawdYswBLeKm0xbXhjyKmU\nMz2UUigaumNS6tvWKHmAjLJs4oORcP2RHKH0es6QVVVoAU9pJl5uK9jFuIcA\n23OSWnw1jLPIrMDeZpTYi8DoKhZFOSTXCpPGdCATMrL+1qGbi5TcVr1OtkH+\nV9n8+Wco7Mole2juMWwAP/4bWSxXAYzU3AwIie3vuZCMPrKCJrmrCsBNXT92\nD0XiHSLpX4uMqyqRjEDPI/fa27e/uNoin8n538ofzxLRimQZK9xiI04+75Qp\nhsgj8fW/KxSXgfcgulry62xOckJnD0gBv2UWHd1mfk4WlGtx2Nv5rSV9Lf6y\n9ks36qJDpL61AoJYUVnGsijZB0ad5UAjizT8Oxjbcm83TvdWszUnyZBVlN62\nmN4VxU6o5PKrSwiaOBCNPhLtMthLsYWDed1Wsx1j1znnjm52Tote9riyXhII\n+lAc1ARrVxERBXpdge6mujW09TTm6G2L6AQ0EBP5ZbWDZGJbkZ162Kt/DYl9\nRJso5N4mbEfcu9x/YHVrlYMkBFDbT8ayvagg9FiZggi1mrgc9XMflTk68fUg\njPOXsn0FzE1wER2Q1mBVqYuo8H3ZhKrpynnDQyW8TnojzrA8OdCknM5F7FyG\n4Rwq\r\n=9ofY\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCjb3tnBGlYSDiar0G7tISfse3S9M0mxEpYrVwfZTT8eQIgCuRDeKqNQHs8noaxoLbYxD4DlBV4lMbbUngWy+BbEBM="
+					}
+				]
+			}
+		},
+		"2.0.5": {
+			"name": "frau-jwt",
+			"version": "2.0.5",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.27.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"deumdify": "^1",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-LUWD5mycmyVsfSdAMTt/YgnO/bMyiCMG4KMLfqyVG0f+k8YcMF3+ASUASECCBFMGGGG6EQz+FDZgvmzzVKoMbw==",
+				"shasum": "0cbd8c58e1dc89b5fb9dbf901dcdd10a85236122",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.5.tgz",
+				"fileCount": 9,
+				"unpackedSize": 17937,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfNwLxCRA9TVsSAnZWagAAd6sP/iznBzHSRnbbzcTstPhC\n3+WLQ87sYZVfc/bU6xo+bkJ+mik3faIc7HF222V1UBWD1kDhh46GGMbk5ihc\nf4152LSTFubU5UjqG2S9+jQmVCP1rIX4JoZTLG+DMI0E5gY3Zea1B0z7XmQs\nvG+tIAlAnUsF5jtO7b7SBPaDH3l2iTbtDYI/pyOJuY/jn/QPXyu3O0kMGmQL\nqKR2b84U2a2LNxSSz8EmvL6FnInAumdJ3gtSpsFBI+PaDlvp5+xgX8li4J1M\nvIxQI1SbnYU+JdzjHoF7jvPpXegaDX0c3tbKgOaCq5i/w3kQnf4ZvEF+FlCQ\nZ+Pa7CRfX4lUCGqhKeoVI/rrEacgQ3hjfZ10I4dYeUZceo1vPqeG08/2zb7s\ngJKThSHYOIdkcXLEOb6ZXbzwZEUwdzGDrGMRAJU1XgnnBTdqSpha5Qx6Im3R\nnNTKA77lZMuwt31BNEZXvWLfsQYr2bkfRyoDprhyxEkmp2V8wUraxXIm8XOf\nSk9MdogDv58Y00aAeOXWr3YlUy6mleFdWxOLreDTUEB5FxMVnMmqOIKe7DaP\nhXP6hwzmgngJ50JhC12L5iKMcSok+pwG6jzqndRMw3qD3vZ9jHXxOcsvNLG5\nL7bU6ay865nAxmVQvNelfSjLLOfZT7k/asrlj0+wf9XymmR5EvvDivaO6ieh\nipfo\r\n=18dF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOhqNy8zjnf2ZJbbRf8jREcHni7VZaZ5n7cjQBk9FANwIhAO9m1kfnUtpbJI83b2fpeZbNJi9/wGhOyk6oaN3fNpFO"
+					}
+				]
+			}
+		},
+		"2.0.6": {
+			"name": "frau-jwt",
+			"version": "2.0.6",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.27.0",
+				"lie": "^3.0.2",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"coveralls": "^2.11.9",
+				"deumdify": "^1",
+				"eslint": "^3.19.0",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"istanbul": "^0.4.3",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-Qm7zSQqIJSKotzWpAWJajhJzjdPhr1QlPnjOiWy/ajcwVN3xpQnJiPNzDYt2qjdKyB2eS4Ujn4vUuqQlkNrEjw==",
+				"shasum": "4606598fbed25d84b83dbdfee45053af8dad33de",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.0.6.tgz",
+				"fileCount": 9,
+				"unpackedSize": 17937,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfNwS9CRA9TVsSAnZWagAAwTkQAIypeaXT9GJV7GC2FOpI\nzHlDwpHNtUAa4AoZX0OV2PVeCQWndV4ZG1A7Efn/OyE/Ux//IW6k6+R0WeqX\n0s7I3Qw56sXoguJaORkSGuVZdpy9rypLUChpa2CY8Q2rtz3A1jPFR6wqlR19\nTt+mCwYMOXVHPnLfVUCnkWxZdFYl3E7GMwxqZdsRpEN4vVt0AbpCto8bfObd\nwsz9rZmtp3wtk/g8zchMyL/HuCcBpiHn2QZ+DYk2S3jmjhYOVvicfz5QBymI\nRQl5zj3IW34vDpwjnn6dDqPG/j/4o388Cwg3+c93AwqOBfJX4++VgsPVKh4r\nHjIFPUTLQbu+5Z7E2PmmftVFdclyTet3TS1PM7KT4EI25rUJha+FQdaAWDcq\nZkkN1skeEngHQK47XiSYQy4md0vEK5bgGtWSz7u5ExLGm7YzI6VVwxpwYBHe\nquNgQ53vMjydA5NdDfeiU5oYJxQrXRkkCke069ilk8ubPvkSoVdrMNnHCEfd\nQKJP/35ADNHqAV33eABokdiX7QhQu2e/tm9Deo1MX/sfhRiv5ftD5AqOPrxw\nDgBbqvStyGFobT0YfHeCdjq7fBscNerLCmcgPX1u2qjXbPaT8kYHXmj5M6Gn\nTrju7aoVgKSoi3jyMHDC97QURYgFuPlHEvVbIWZG56XiuOocdOYpBDro+mqf\ndxh5\r\n=OuIn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIExJDgxJH+ptQ3ca46bxCiBM37IB7pFkSzhsY4QeyZkaAiEA7hivlDwdf2dO1a51/DleMUHwhMu7EXukwKLlmit5nEk="
+					}
+				]
+			}
+		},
+		"2.1.0": {
+			"name": "frau-jwt",
+			"version": "2.1.0",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.39.0",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"deumdify": "^1",
+				"eslint": "^7",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-Jcp8KOgluNqANXticQ/M+Dmkwvkn1nnW6vmq+bec0+QaNd041ed5XpQwBQW0g9HcO+tXBNkSMus+okcaATyabw==",
+				"shasum": "22fed60f2906d72839d9aa86240ab782bf7fb7e2",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.1.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 17504,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2rfQCRA9TVsSAnZWagAA07YP/j0pBDOZ+L4ndnU/vVzm\nWIWYrNNpDc1u/WRg4aMEPU3kkhKzTQyj/oEGsQa7wK29Ew+3VLq6XKFFMoHB\ntfoPcVsZmkz238CRmUaPjRS3r7gigPj02J9v2H9yXMJBmO34cTTyiAE8SRWC\nSa8FPvrEj1sJLCNXNathoLLCL+LrrDe/YhrgOhmQWz2Izzm4UwntlOl5UeA+\neEKEsdd1ZqMMoa40goGAN+OizVngDVCs/+i5I7Q1rTeH33zlhatVf/tR/DPU\nURZR67B0VNzAnaNUJuNIePLQkP99p7zJ3Vjh7OmQy2P2M05BcXtdBcVX8UEx\nR7BVb2eKwpV8FKvvOzIqOoy0f6oLDqH8XlsQkMLO74jcQFeoVa03p4ejgLCN\nNRI9nBAemiD8ctKLUIOv+nJsF+1bmpGATN28ai5RcDZku4j9hU3EBSOeKRa/\nr/4LWyrlMcP8Z5nbW5E95GccqAKSERtuPyeEWoRtPnXa/VHZh/9ZvicHl54U\npfjm/Gvg5IgttG5ajFYMQOu7A4ihs1UtnaHkIxAZQwQ2zQh8MGFj0tp2g/Eu\nJNsyyEtZ9T9miuGX+jZEYspQYxodeF85Sgw1b3zrno+zvYioUHh2mwNZIOvc\noh7fiOWx5Bcx3m3cDnfYci6heXauWbIR+rU0qOJuyWVDCi7gpGJ0CE9EjCOg\nOyD6\r\n=AQKn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDPvYEI5UJ29ZaIBeYaVOUZF2le9l5sRFeHTezW5QcFCQIhAPUsO9JqAiFE3SIk5myAlUE8G0yvz0bvoCijjiXAnscB"
+					}
+				]
+			}
+		},
+		"2.2.0": {
+			"name": "frau-jwt",
+			"version": "2.2.0",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.39.0",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"deumdify": "^1",
+				"eslint": "^7",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"peanut-gallery": "^1.1.1",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-pHmNPj0ueiUoUFzirZTdOkZiU5VSiHU5zeKh5N86kSftg/cYFQ2LIffiSzgry2vO+LLkJWreXDeas8wf2YU1Kg==",
+				"shasum": "0580b5c8c8813bd6bbd4bccd2f63fe353aa98559",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.2.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 17646,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDSA+0DTPJAS2zvjWkHfjPkZgwfDqWgj234hPbTHkxs7gIgVYFD5poroOT7b4IPfy5ZAGBLL/efe++/5zXfQCOha3I="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiVzSFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo0Yw/+NzIYTuLwSqQFBNDWvQZ040Kat/PXcFc8WNc9j80iAlf7u7zR\r\nrLnXzettsor+MMLxAfmQ/4FYTXaBY/W2MFf6Sz4fFijvg4OdmHQ5Mux0+up4\r\nrayYaB7NWAj2eYT/RNOUpUWXhTUtOVzoWlXn57kKC3k1Tox030o4LZlKBSu3\r\nxRsuiuhwOwAgQe1Pb+BUDSAqalHTT7h6xFreqQVcRy79dI6n65kC4txYSIvw\r\nRaeLGoLS9u+EzdCBJDOLzzE+w+K5fN1ReVBU5u/5+PQPzl7yrLgAl49YrHVu\r\n+tXJN9iUCb3/OCFGpoW611CvY5s7jdL5PoQP88CJcGTPiRP4Lx7xIY8ciLrI\r\nwpRXHb9+rBN+zV+X2TnkXbqtY8um65xx8CUr59jDz4fqXr3HhdK9wBLMQAPC\r\nX7zNoYkSIDnL4zCFwyf4Kfj8irIFQv6PQqYL41xc+ZtXYOTVNX06GBrqGtqb\r\nvWDWtmdUXqFcJwzfcsNXO3o0CgPXP4HJkr1gPhKZCfHtdmqv1qhhMzXzuvl0\r\n8tmWIwTzKrs8AW0oNAwB0B6mnaxKQlw7mAPrZrMyY3MM03m0losAvJFI3Wfq\r\nMQfVUWjbEQbgwHvxpPiXYOVuLNXphp0o0mtnpcvyg1GMdWR+PhFBY8+G8gSH\r\nRyrT0rmUROeRePesryUl+dFmBJs+ZgbVMcQ=\r\n=GFxT\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.2.1": {
+			"name": "frau-jwt",
+			"version": "2.2.1",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.39.0",
+				"superagent": "^3.4.1"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"deumdify": "^1",
+				"eslint": "^7",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-sX+CU4IanrIQP3CUsI/xKECMiJl9Qa8um6FqlHZOVYZSbBJsLgQZnKdF4bKGVEZjWpTiVACt1QgG8QX9PJ/lwQ==",
+				"shasum": "8cd9ec49fe94f4f45024b3b659a086c5d5d829db",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.2.1.tgz",
+				"fileCount": 9,
+				"unpackedSize": 18021,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGm2bdVpjTVSdsWaUnO1BiY/w684ba0uG4C81kjFk75yAiEA6+/RYgqX5TDb8CWMu23OtTxI5JCUAXu5AdE5O7M2kmE="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJib8z1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrJqg/+K3CXmU/UWbErCCojL3FQEwxar5tXrcAzKgJAOPiu+qQGDRPi\r\nVLA1U7xyfefZrLtgVeVo06wfXvOIk7HBGxDGwl0ujDeq+Xl5rG6FQh/s+n0o\r\nh0Bn+cTzPjCTcwgZek+xvJvrJIP/YcbnCbcvrFql0iO+ELBUtb8Z05hI1M2b\r\nzWiSPzCAZuUvGUHLfvgSc2W2LWzIv+4VAQF9GtDWNUWC1nAsiQooCtcyBWWr\r\n8AlvPxi85eEz0Q/jqIjwZOo7BCGMLis12pOpmfAzrxEkCuJalVMv6QLZdkVJ\r\nfDZU352BxEP6olKE3rx4fmz8WZ+ZPvI0CBSypmtMX4qg8eK8ppgniGrGSoM9\r\nyvnnXqR+96kaY7eu5UbLV3FWcpK5HYnsS7Kdbzz6+91OK+SCxgORC5igjgak\r\nOCt2zFWZtaWGwE2LYipKTszY4Sb+E/O1/rSpmFOrayDTUz1os6/DRwLNq1wc\r\nOQRTM87RgHzroF0HGKN+G0MyAhXVZn5Nb8OjKCjz8rjdkIA8zDYZtZZWtxT3\r\nXW9fa+QHsba6aaX19XAQABgJJQ0B/jPOU4kB7o0ahvtHMfjeSpCMYUTFPxdD\r\nFHF4CXq5dn3cEfIKYWA7w85U/iCYtZSLDoQSIqqExwsp+Ma9ojaeGXiJ7+Ze\r\nacq4/j9yuljmuk7NYkWCvaRGSBegc3cyDl8=\r\n=yxFy\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.3.0": {
+			"name": "frau-jwt",
+			"version": "2.3.0",
+			"dependencies": {
+				"frau-framed": "^1.0.1",
+				"frau-superagent-xsrf-token": "^2.0.0",
+				"ifrau": "^0.39.0",
+				"superagent": "^7"
+			},
+			"devDependencies": {
+				"browserify": "^14.3.0",
+				"chai": "^3.5.0",
+				"chai-as-promised": "^6.0.0",
+				"deumdify": "^1",
+				"eslint": "^7",
+				"eslint-config-brightspace": "^0.2.0",
+				"frau-publisher": "^2.7.12",
+				"mocha": "^3.3.0",
+				"nock": "^9.0.4",
+				"rimraf": "^2.5.2",
+				"sinon": "^2.1.0",
+				"uglifyify": "^3.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-UA3122CIl3CYDJ5Q7PUbYlbnnxb8JxQb2nrLkFnHJ7VXm9HYcniJi3x8SIvxG2fkM/NjdvFHyW+NtzsMjEtfqg==",
+				"shasum": "c4ac8cbf404fc1042f476697955abf79e6b4a17c",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-2.3.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 18017,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDKfOjhO0Ozgq29R6hePVU8B1fBheMQ4mnyQwDNKTosFAiEAnEq8tv5r3LQkSQg0S6hfz0dAhXkJ/7rGJh/25eSCouo="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJisOtqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrKxxAAgS5wPYO9Py57gxSDsydULZ1wLYaGm/stYoXbzPBzxqvLukoj\r\niMwjdUFCp7fT98f0s6e+iIihSk3RxuvVyF0ttzd/hawGt8r2ewK5nbczbF1e\r\ncT8IZXFFgHgKHy+wG4APwn6vAqJdNeNIleTlqOK8ZHj4NtHe/wDk7mCk+qWh\r\nLGFZz0J17TnTPivnXNIHLsPo3cOaumMRPZ0WTHIaU7hWT77HHE4Dlm+XZGP8\r\nGASsEHbPW0lIFFAJjLDfJVl6zI0ep9B/zwtFF2egCs8BqyiLcGUjsZ6Q77G0\r\ntb6opiKJGum4owQNkO3iwYnyV6Ccdky02D3545i8YRC2LqmluXIBxSu5JX0B\r\nHNb5Rw/hKHkNlPbTXosHaKuKPt94OxOrVrKRlXfr272CSvvhd85im3eSh5Wa\r\np/eNfPJaGgxq5uUKq5WapYF65v0fp+TrDgMkrxCJo7TSw//AmgjFpZD0t2hu\r\n7PZ5pTSZOqBTvfAe3tjjFoI3sRZvfNUT3FsnRStbCpIOSczZZpfjQVbP7KL+\r\nCHXubbSqVQ0usbkjND7NE9DGYOfZ1yRxQkLNIZTKXznjuDknU5lQXSpkXAtz\r\n5ncq0UDnXU7cg6Se1Rpv3MMTrGiP2zaBr3HnZIcPShMH84+U+74FvsULO935\r\nyriAuHEU3fZ6z1e3nQgjJDWDleyS4UL5Fqo=\r\n=y5Zk\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.0": {
+			"name": "frau-jwt",
+			"version": "3.0.0",
+			"dependencies": {
+				"frau-framed": "^1",
+				"frau-xsrf-token": "^3",
+				"ifrau": "^0.39"
+			},
+			"devDependencies": {
+				"@babel/eslint-parser": "^7",
+				"@open-wc/testing": "^3",
+				"@web/test-runner": "^0.13",
+				"eslint": "^8",
+				"eslint-config-brightspace": "^0.18",
+				"eslint-plugin-html": "^6",
+				"eslint-plugin-import": "^2",
+				"eslint-plugin-lit": "^1",
+				"eslint-plugin-sort-class-members": "^1",
+				"sinon": "^14"
+			},
+			"dist": {
+				"integrity": "sha512-RdoZBmEDkCu5nV5FGQ29htoE4TuHMYbi1etXDS+XKZ0/lpnwT5Ssby1odWyDRifOODh3bqE+EQI2gy8u78wP/w==",
+				"shasum": "bf5fff802ae2c2d4c0cabf337b5903a738b4331b",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-3.0.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 19357,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIA4S6XSoNh8ci+3MtvhAk1i8vN/rQ62gTuiiYoLunKP7AiBBhYWL/gkPCIdWm12yttz+apoqe5q9vXwrhhpdKXB2hQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJivZITACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmotQw/9Flm3uvQUAq4x9UoDo8HhHhGkrC3t7VlY3FtOpzUpyMOMVVN1\r\njXvfUOacp0yZjXHWeWx02+s0gZt502kBGZtpyxjpWTbLqV3yJVIJxy9bhgt4\r\nfS86/NRKbS/3VsgSJtdP+wGbjsH1PgHIeg4dorirKKlN8dLU9yq0sQXMJ4HS\r\nwLaE0AQ16jrRQPFpUCkU8joX7GCFNkARwIgi9LFhpC7kc6q9s9uiq7fbDX2J\r\ncLYs4zNC3Bn10f8ruF2XRynIzkQPNza/BwOLHhDFVc1yavOw6z5zpheSIkus\r\nGOXraORoztvdB8197IAkLiWAv68fpoNL8c145caNvo1JbVxLxt5NVStiKmN8\r\nhFJcSlYko8kFMsmuVOVtQu5h5FCXweMHN7tyqMmeZwzuwlCuQAk3E11qFrD+\r\n3HlXCwsez0tNbPQDUlfKi/xUcWVPpFbNeATuLWAt77YIB4Bp0gC1sA14f6/d\r\nM47J8yj87fRLOzH8DZFATUbXit2a7CshGngZhfeOdP9uK4fy5wwobRmdLuCY\r\n81bT3tfQkofMM8C1Q/q2+S6ztJe6fKU5EKQ2MVI0jNhPH/2MMZBMrZnAp+IN\r\nwhNJzRyx/BhxArxxA/iysm9UfQQ0PVqgBf+36iWs+Irxp8o5tE4dBvvpXpz0\r\n/Rfd/cl7L2Y5YQjH6igxW1BzYTeOJn3tNVM=\r\n=sxfa\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.1": {
+			"name": "frau-jwt",
+			"version": "3.0.1",
+			"dependencies": {
+				"frau-framed": "^1",
+				"frau-xsrf-token": "^3",
+				"ifrau": "^0.40"
+			},
+			"devDependencies": {
+				"@babel/eslint-parser": "^7",
+				"@open-wc/testing": "^3",
+				"@web/test-runner": "^0.13",
+				"eslint": "^8",
+				"eslint-config-brightspace": "^0.18",
+				"eslint-plugin-html": "^6",
+				"eslint-plugin-import": "^2",
+				"eslint-plugin-lit": "^1",
+				"eslint-plugin-sort-class-members": "^1",
+				"sinon": "^14"
+			},
+			"dist": {
+				"integrity": "sha512-1KLMuzCUZUI8HD+m6BrWQ87TsW0zFwq2qZK57JRaXj1Q22R+87j+ib3WAJj6QUBkz8F3ikWjRubqLbLQDXo0Ug==",
+				"shasum": "28bfe33b87046de1166b932d7d9edf15519dfcc8",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-3.0.1.tgz",
+				"fileCount": 9,
+				"unpackedSize": 19357,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDGH/xxe0bYuqBEEoe4wlOvB49O9+r3NH0+lsPskStYQQIgKMOdZLp3P5gUifQHx9Lbzh9SiW+fzdO9iDe9NqWuVBM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjTV9UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqgxQ//RLczwdXyyBqU9zyfHVEXj6yuQHkblvqdAjW2aGkAKMa77qE0\r\n86GFzISzYdFVNl7XYH+k08dmdJ8xEkq3gf5cJmL/q4LuvpWPCVzLyHC7YCfw\r\njdVnKmG+pXYN5c7NFAUTS62UBA3ysEwFX/sODHyRxAJ3MHb0E3Pjc7P+smb8\r\nrqD6Sx0rX9Ngg4KvMo7T/scfP89e9Bf/bA0Xr+sXmMh32pP/2EFSfjXVUXIR\r\nau/CuVjSojOBJK6yCBlwxgkbxpNybcESPrhKgkdPDigHaxjiMnbYsjYMLCEN\r\nXRCUeAzMDNR9VVg4S+dmW/TkfW6ndg1BoUvxWwH06HXDwSja1q9bwLHqH6xi\r\nFZyikkf3xZzzuKLLebq5UTYj7UDTGYJSQehiVBEWG7TaBpiujf+3s7VN/MNW\r\nJlpz1LapuB3vSZz/1K8lwiQ+jpJFWYnTf2CO4W1Gaeb35NBOzuXzfzkShmZj\r\nZ0XmJLWNmlTyj5NO6BXwOC7TlQVJNkWZChyA4B0sskjy6BmwyWD/Sh+nznaW\r\nwymBs9l86/qBtZF7qfczNh+TV2cchfKweTEXu5b+6a/DpLRmwGG2JxT6N3kM\r\ne+Ukv+nb+J4M6r0ftA+6XuRpco1OOubKwYtX+3+F9TO6S/4DrC7HCFUnrfOd\r\nWfXy1S9NV1n/G4D77bGf+0/riknX9ar34lY=\r\n=1BIu\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.2": {
+			"name": "frau-jwt",
+			"version": "3.0.2",
+			"dependencies": {
+				"frau-framed": "^1",
+				"frau-xsrf-token": "^3",
+				"ifrau": "^0.41"
+			},
+			"devDependencies": {
+				"@babel/eslint-parser": "^7",
+				"@open-wc/testing": "^3",
+				"@web/test-runner": "^0.13",
+				"eslint": "^8",
+				"eslint-config-brightspace": "^0.18",
+				"eslint-plugin-html": "^6",
+				"eslint-plugin-import": "^2",
+				"eslint-plugin-lit": "^1",
+				"eslint-plugin-sort-class-members": "^1",
+				"sinon": "^14"
+			},
+			"dist": {
+				"integrity": "sha512-t97sZwP+UDz+Zj+BQZ9RwMSu7a2g2h7FAwasnM566E+iVzS8XxhShO+fPe88UWS95r92hkezIKLQzpc979BPHw==",
+				"shasum": "92003c5e5b7fdc96499f469e6c03e8f7ae0126d3",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-3.0.2.tgz",
+				"fileCount": 9,
+				"unpackedSize": 19361,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEPHi20jdHJLX3nvvwDz9Bqhw/hHvfKN9eMbxjYFtvRTAiEAzMaflNVLL2y/Sfe8LCylfVlHbh/z+K+CJh7KztcT2l8="
+					}
+				]
+			}
+		},
+		"3.1.0": {
+			"name": "frau-jwt",
+			"version": "3.1.0",
+			"dependencies": {
+				"frau-framed": "^1",
+				"frau-xsrf-token": "^3",
+				"ifrau": "^0.41"
+			},
+			"devDependencies": {
+				"@babel/eslint-parser": "^7",
+				"@open-wc/testing": "^3",
+				"@web/test-runner": "^0.13",
+				"eslint": "^8",
+				"eslint-config-brightspace": "^0.18",
+				"eslint-plugin-html": "^6",
+				"eslint-plugin-import": "^2",
+				"eslint-plugin-lit": "^1",
+				"eslint-plugin-sort-class-members": "^1",
+				"sinon": "^14"
+			},
+			"dist": {
+				"integrity": "sha512-h3ujvohIUAaMMzP4vRb8nrioGLjSbKppsT5PXn/rtVd7XBMlJp55w3ULD3IJSy4WR1yLgBp3bDP9xu8cQUAHIg==",
+				"shasum": "62a4a3079c412d42e7585b056aebf6079daa36d8",
+				"tarball": "https://registry.npmjs.org/frau-jwt/-/frau-jwt-3.1.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 17194,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGh7vgOIm4UJ2EHN4AS497rB2dxXyNUDnJyiH8bbkW4QAiEAjc1XH8c3zUW3ii53eY46ysf/dZmUz1hSp4RaudMXEYc="
+					}
+				]
+			}
+		}
+	}
+}

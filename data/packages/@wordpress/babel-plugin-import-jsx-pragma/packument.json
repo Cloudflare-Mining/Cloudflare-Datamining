@@ -1,0 +1,3069 @@
+{
+	"name": "@wordpress/babel-plugin-import-jsx-pragma",
+	"dist-tags": {
+		"wp-5.7": "3.0.1",
+		"wp-5.8": "3.0.5",
+		"wp-5.9": "3.1.0",
+		"wp-6.0": "3.1.3",
+		"wp-6.1": "4.0.1",
+		"wp-6.2": "4.9.2",
+		"wp-6.3": "4.18.2",
+		"wp-6.4": "4.25.13",
+		"wp-6.5": "4.34.1",
+		"wp-6.6": "5.0.1",
+		"wp-6.7": "5.8.1",
+		"latest": "5.13.0",
+		"next": "5.12.1-next.082ed6819.0"
+	},
+	"versions": {
+		"1.0.0-alpha.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.0-alpha.2",
+			"devDependencies": {
+				"babel-core": "^6.26.3",
+				"babel-plugin-syntax-jsx": "^6.18.0"
+			},
+			"dist": {
+				"shasum": "574c10c3150b811e195a30f91ab047a58421527a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.0-alpha.2.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-I7K363temPVXgPhWpeCkMge3gyJq/3A/wN512gszibgAiAUQxzYyhoSk4NqE7eriyIhmK31+aH0dnO6LjhOhsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7I4aGmnJqgJr85Qyud2UjotdilUZLzqNRNBISMwErOAIgGUSTp9UhFQrPaffNvkzpHqKEw1cIHuIIC0H5F+ezDDw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13835,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbOeAHCRA9TVsSAnZWagAA9bkP/0g7zaaxGZGD1Y3pUyQp\n9fF8gJJc912zpNpfkFpjjIUJyWPzsq6+qGJLy2CqwEhUiIi9T6eN3TNmomFW\nEoBb0V13zwWyuSBniekRBVDL9+b3kOc9TuX5aQQ5Nuzvkau13WhkwYhGIXW4\naT37k80ZAawRyx7rIp75L8bWCd91V6lFEySI+7ycLQYHaGwPd9wWO2kTnQBq\nkfIKmvoCwvoIYW1YpcCWjR5JeoSxAqaLiRwdzzloYZRQgkYB9lY958Bexjjh\n8fiOCjExh3r8kFgwBGOMZ1Z1UWNfq6bQYWnAA44Rp/tnNj/w9OMn23BeC2bh\nbojZ7iq2IZgmbTqbQXiVvGlDmiw63S+GcX8eQmQKamULUZ+skt02H0t6cKsv\nfndzMILTRc/w9yKQ11J4kjWG6D+zF1hzg7jeDmnmMlMn9YDFvDEWp1aj3kek\nBgEqhA3ElRv4cn62z2YA5dcBoR7fe/r5lYkQdCpAFZsgs5Wi1afjbvE79b4o\njcfkvDI8hnXrKomrMgm4nMkYkc+iIgklZmvxA/E9Yk9WSz9Ibh+fzUz7c4Bv\nF972C1I90RAb1LCFqWynMwcOe3+CtZVNEZcdimb5CjWbcqjB6UXD1GDPeyhd\nCPL49zjMK096+mMpHT1Rqk3yPFuRA2vteb/8HiVkwDDnc3tgo2UNQw7ZQ0rZ\nxXjp\r\n=C9tq\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.0-alpha.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.0-alpha.3",
+			"devDependencies": {
+				"@babel/core": "^7.0.0-beta.52",
+				"@babel/plugin-syntax-jsx": "^7.0.0-beta.52"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0-beta.52"
+			},
+			"dist": {
+				"shasum": "04a3f1c1b7077ca5a3730ea440c081d6821c01a9",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.0-alpha.3.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-b3bcyHmSUbNPalfypNrZXb1w5l04TpPB0ulFjpEEW0mT5TvSObL/Ly40orpCn639H1OSk/fYmnSfo05eAojZUw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDfPdWRwrUWkWURE5LH9SQ32CI20KUecslqe2RErMsHxAiBs7rhBITqdCilz98mC788LFneGuYTmWnwk0J7Zi0TXFA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10385,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbRyexCRA9TVsSAnZWagAAwiIP/2OT0Il2Wy5UNpOgMIfW\nAMVCPbTFQNgaauwe4H891sjlu9dlTjfAkwv4oRWYWny/lHdcBV0aYEcyzD13\n3nssCu6VUeRH1eMkT2C2Ep5Qwca8AFTObiKhUlnZ/QLyHPDCMrUOBD151NTm\nuYCVRsuzG0uZSG+/Ru0k6yQBiY9nwxr/bgukrceK8a3cmYLZKm+k6Lw0I6hF\nZeog7TygHb/KnI3EVfg3tiThePPedoJeTzMAI+9XhKDiMPEtzckairTX8TMl\n/GU960Jj4aUD+JV2YHliFhoM+jXya/r8wBqMuDxvmCTfK4sE4Q4Yssh9foBM\nyqWrgCuR5N5dYj8tBKFYl5xCGVETPqvDTIEb9xIsuP+JigR0CBAFHaNejYMD\nPF2IE8B48u2H8hmGx6GOonbsQp55dlBDYrlqNKXogKVsmjF4pimsE5gPrdy+\nByIIC4KezZYkubl201IPvQhY5EQFB2kS8m3TW6WW3UbC9rsu9J9QxVT/4oJP\nV9xfGNpsqX1LRkFdhl531lMXojh43K1Yv69Vs1Q5cmxjKSGzLLJNb1e/PLdv\nhSn/P01VQblarPqjrUxcIPp3X+Z94H2xkYToknzbfRVmsbpnSTCiGVKbJzgx\nxBTR4W0ENUB8YRL5eKS9QI61u5O1Ok1oH1rimTCcoFoT/ZG/9i8+Xq3/D+9l\nlZbo\r\n=1nY4\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.0",
+			"devDependencies": {
+				"@babel/core": "^7.0.0-beta.52",
+				"@babel/plugin-syntax-jsx": "^7.0.0-beta.52"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0-beta.52"
+			},
+			"dist": {
+				"shasum": "239f24f954fc9948bd9c6e6d3e0a2af0ce46c776",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-mXOGHMu7ckmW74dm9ld323Z7TkJ9qhTWajtlFv6SC2zsPsIlp01pQGKNtglOZKnCbKvY+wiLaXpyXcI4eggeIg==",
+				"signatures": [
+					{
+						"sig": "MEUCICvEc1bgYSWSfFqJITF11p/9uOHJ0S38gbFK6kd7kCcTAiEAmCs7T7cXrLk7wxhU9N7CsNQOuCYRmgW1HMwEJ9Nm8zs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10377,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbTu64CRA9TVsSAnZWagAA/i8P/AnA8Tm2+UNNlFNAKZ99\nacPwOufjRH4vfNK9pJ5tlbg1NBu0VLeFh1bwK6xq5sOXGfImlgM0+k33Gr+B\nljvVE9aZIzQIiFnifOQcLsBHRVWlzWoCx7QOsWzFoQ6vdz6K8Qw4fP3B0qXF\no9skGjpQJMS9NAnqnTuiKWF5g2Ou15PZ7dU2MfhZSxkKAVuEkNIRWkhYX6LB\ngZaXI3HduWCcdhYbwM0D6HarnWBSRACU6VJpFnHvKa36stIDCT9E7Y8NKS6s\nDbJtnqeS5LHXR6lATmGD23IOMAeIwkf8M29Bs3FLYvTH0f6SFxN77djg8zwY\nrTsO6cWCBf3rKq+YPzAeFDfHbpKPnBiakkungG2vDpsmqqnm9VPYlcUo1Rag\nU912F7L80T5cyIEnBf0xH93530L04Kc8VcxaAmnIKrCZNUKx3RoG8UrnjcTo\nS0nwtGJVpNJSJYllVA5vf6KDEnSg5J26OMkUQkFgdhYVj2ncWoSMtjfnr6TA\n7gKE4Q8gQvwsCxPC0xrjl1ecPxOt6TcFTorV2F1ugxA8gkdC1V8RkH/L/emg\n6IlQO7oauH8zT9eJdFM8DyakrecMeyNBfkVw03mRWN+IvDanx+UN7LLlvH+x\n0Ylhc+89Duep98tgY7W6Z89Ubr3oZttQ/o3a5mLxMevpCVsa3Xl6wOX4SjUC\nDl8c\r\n=8pVP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.1",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0-beta.52"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.0.0-beta.52",
+				"@babel/plugin-syntax-jsx": "^7.0.0-beta.52"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0-beta.52"
+			},
+			"dist": {
+				"shasum": "bf8393b9942e1ecfd6522fdfc6aa55edcc761dd1",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-JTgqTb3gQTpYspTsUXro+ZT4vpTnEXMacnNCJpKQScK7EerQt0sIhy+g7TjKp9P0+wTDKj71wqfolmEj5tmKiQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIB3wKRB0RJXmyAD3f++syBZcEtSdhBhpXERJpdI9u6T/AiEA7NBmoD37S0tAC+Y7D5WvVaXafvzgp9/bpmvBqAxXbkY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10437,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbUatKCRA9TVsSAnZWagAAajAP/3eaXY3J2LXSbpqZPRji\nad8bH4GvBRdl5ChVBp1ZFARS6BFVcqqdlKmXlxZJQRU/GNtAeciEZDasSwI9\nJwGTx3fprD1r3avxuE+OcKZ/iaun5YLSWG+tO/o2m1AJOydU77mmlLlJ5rKt\n1fL8P6XBvb4EAZuBGbNXqbhawkd3VGD1KpZp4dDFoEqcqpL+SXSnQmuuK/RM\njdppjD/xHXheBTyAGR4/8aadqc91PWurnpGm0PFgo+4++Ucu6vCJ7fv7TVYc\n7blNyIJ4Gwe/TuaCiZ9FQUcihoUkA0+AVv2wyra3MT/GMSvEsbNCj8/maf0G\nIDtPiGwl/02uvh1ixeNFxxSwnMY7T8uGUkG0ReQhxEGFdc1s92Yyqaw1bIXP\nhyhaN3oAUkdvfMk+gxKeAUt44lNzVk8IMDCqLKuBKcEyIcaGgsa/CFWKm96T\nAcJbNGWCi2DDXcQLKxhCFtMDUJvF50lEVnIrRBfJDlpJBW1Q/ss8iI7Fo9Wh\nTYYJg+NnQ+MEnC4EKozlDD/7RlH3dU54Gyi9dRZgAeATOSFYCKy043lObCwM\nwL9BC+UtVI9UKNcOodnj+sKCaAw2FA3rbYumXsRb16cRDhy1ZXqJqKFCpvME\n67mzAuyYBuAvw1tHD41x5s6EcneGTTNhPrFVZXeg6YXrAZuoJvOhikp3f31C\n6AGV\r\n=q3N1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.2",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0-beta.52"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.0.0-beta.52",
+				"@babel/plugin-syntax-jsx": "^7.0.0-beta.52"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0-beta.52"
+			},
+			"dist": {
+				"shasum": "29bc7f9ee99aab744bb197bd07bf5a778cd27987",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-tIx7b9uisi5bRrfRMT6ga4zutUKfPHanahNv3P97XsLHTfpbWkBbMLFLL/3J6nQsS9Dc5yXsmQtuDjlafSx+nQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCHgwp194Lcv75zhTwJjKNFo5qBynAXu5YEUAginlKP+wIhAKPtpqqM3ZKO+YJbJAHYALkvBVL+fdKj0tKbk6H5jAML",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10432,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbYYAHCRA9TVsSAnZWagAAZIgP/jAA9cTRscr9T76MZJVU\n2uxavLKEEfWc+Wdj9gBS9YJE8gxR68AZogF6av18bVu/whyS4aAHc4n8Rv93\n1dn7/40J8nk/I3IsRJjFPTAV9w0WXzv3mSpiqJATnjb0UYtZWDCbocFS6trY\nW286BlfbDJyjrmPQIYmJrUjxk1M2INWQ7txG7/30t4cXDkaw6SeBCr4Bws9g\nIrWLrs85fsUYKsahYVNOta0TR3PSf8EoVSLLIp2r9qFHWog38a7OfQKxKe4D\n1Od4xHymvTXZskfCT/l88940iVpaeubvBYyzLJPlhl43/YCdX/psAJQh+Nbs\nisBXofoyNbJuZszdxOIBXoDPi4wUHQJKw2ZL+wbloBkweR5dlduckw82t/kk\nClOWrPj2jKIo5C7qgQE7Sp7rdZ2n0dhQBnUEsGnIa8Gv6LDtDvtUEdICUulq\nN8DbUNCn5xA5LEKgBK4AbeGQv5IFbG2FiEIb/FQ/bYrQce18Mv/Rr7XI0O74\ncLag2uF6ypSu2N39JyOayl5nxhWjj5pGmlvJKVjZyEjji53zdCvVjuL3Y+7A\nFwRgi6at+yyyZMGoQNtEN59TI27PzMSGdAmTaDPS26i5RBvUGGv1l23irBYa\nOOoIYcOaWL8sdSD5Vcr0qTd4te/ydLMh2iwywW2x//GFYMWe4kg6bfZATsP7\ngWwc\r\n=VdVc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.0.3",
+			"dependencies": {
+				"@babel/runtime-corejs2": "7.0.0-beta.56"
+			},
+			"devDependencies": {
+				"@babel/core": "7.0.0-beta.56",
+				"@babel/plugin-syntax-jsx": "7.0.0-beta.56"
+			},
+			"peerDependencies": {
+				"@babel/core": "7.0.0-beta.56"
+			},
+			"dist": {
+				"shasum": "6ecc0355fcd790db43c2c83b9bea441b0cbd0249",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.0.3.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-rhsuSJeHAiM7s18uC5vZqQ8xX+gyEP4iSWy65D082e84F+o2SL+vQtIUL5zCzUWVm0wl0ExAF0Ti3B/0kXdpaQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXK6BopJTrrxNNG2I27eG3TCYiWZyi6TRB5dkvQq7fUQIhAMa5DC8ZEz2gX+mFylvHA9zxSEVPDwtCYWe4xNBy+or+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40590,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbbDEcCRA9TVsSAnZWagAAaFMQAKMbQNDSlOKjTFkSPur7\nZ/gJ2kCJtkrAOz1scVvsJlJHJ1D0pzTRXlrKtg9Ru/ZerbM69aZJ2G47/KXg\no85Bf9dwe6hgjXjplXBWUihtpLWyUrIR77qrTFRvGS6seJ++ciQK0hVFlDsF\nvaFbBWRHrSjgIM0ECZyYspvwG/SqqktNYoA4jwBJHZSLmnty34VthkCgK3zW\nkJ29OKqM8yS+jzVe8hBWhtUOMme34cIiSMBtHLRF3Avb7f3THaMdOBi0yNlq\nhd5CSTR59c947jXPdazKq0A1NxpLMrbMQd5KmN+Kb/WUyBShyECm6PYrfkIA\nlgE1I662ySQRsL6+Ul4Xl9gOBeUcVWYXzAWwbSvYOS1PPFypsip9zsJJPY9m\nlYeNnKe4A2pN1SM2R4/aNyHi0KYkf9b5B0mWOVV9Jb0J/U1kPIUTeB5PejC1\n4/K02gpIfdqic/yHlqGe/p6Q5CuXzCOxVDzJ9RWM9YZeCFaoGaoooQWGUIXR\ntvuc+P4oHM6jBmYcTxtseNnP/V+LosfZ4Ka0CC2EKQ+hiVAd8rPfOwqoJtG9\nSjHNuKe9W0TYUPF127VBHODWF+wq2EPHqyYTOvIlgP2tQCtfUuOaEcQtRyib\nMI5ebr26pZ2Eri75JYzSSEFdLdvh/sGAOqNio6BPgUJAytlAbq/iWjeTbEwy\nnhgs\r\n=J9Ng\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.1.0",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.0.0",
+				"@babel/plugin-syntax-jsx": "^7.0.0"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "1414c5924c0109644e7f6252582bea67d8b415f8",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.1.0.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-hoU4Y6AZJ4db3b2fScugnGNR7LlESMV1+FiwY1k9S8lTfBSje81YKEKMQ+I9GWHDXeyJoX+AKE0pUHs1SUDqnA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5B7ASOhkmc00Uqx0h+BP6TZrMHKsdZKzmUvlfnVN2DgIgCILX7tjzL6mL2jZWx8Z9ZRhYYLvzvdZlmGq3gZkhgyE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40607,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbj8IbCRA9TVsSAnZWagAA3pIP/1eUbBKCdaF0tmRdXV7k\n1dioese+N4Pm0oGsL6b/lJKr0PLR/xz7OdvdehqErjA+/HMIrx74zA5skd+i\ndRH4Nu/62xAhSdYEcjINhsp8WC5h/KAPpC1vqKwMjfDIDchnBOsY8sK9u9sy\nIRAPEgdhHMhtxmqKLraPBdVMs1jeKclIVm4BqYl9cOPceArLMsk/TgCkebHC\n8uejs+jo9BYC4DN4f3Xo2RjdVJQcNkkZOPPaC/SlKqGNRIhvsv04fSnejP4y\npG5XChpD+ShCuBYKDI3l1LuqAzZV+hJlW31D5MCcZHjWFcqZZn1Qg5aBTuGs\nTt4ZLV/d5SRq/bQNu+JXSPPJjHLPMBecBPmSUv8Co9/i+jHMMyGiv/3AwhBz\nEhvL5YxxSGHQGavNOe/BatzlwhaDbi5wVGonEN+d1rL2wy345RY6zl8apSQ7\nyju14tp+brsWjyyb7rf/tw6cMoufO45dDNgvoYTEseiJMkBL5KhD/o2Mztdw\nALXMsS0q6uR2nEtEaq71bXTHpYp6q8Eu6XGWPMnCrDLnceKZlnVGy6RPs207\nKyDAg2qod0J6bHwH1EPWw6asjMNQEKCoqG+Fk+z0sNegoh5+sJH80Ii4U7rz\nHpS1FhTa1gZoDHB5VBWHMLkJeUlHryDyBsdVcqN93nrYMGEip2TpxQ6KKEo+\nlM9u\r\n=osni\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.1.1",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.0.0",
+				"@babel/plugin-syntax-jsx": "^7.0.0"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "fb962255eb1e3ef5dabad4c02df071e6179aff72",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.1.1.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-B0egWMIvKdRVN1pBKV3NqhWz+noJcWcocEWZ6KyWkwzOvWO11Sg2cLz00hBowLAo7z38rjOONKSb31rEuP4r/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQJyvw10g2Z2BT6VSSYblY8gzAvfI6rskDsUtNLB9ZFgIgbb3qWllsYTjn/JfvvXjB7283ruU2hDSlrb4eVcWw8TM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40591,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbsTCjCRA9TVsSAnZWagAAy6wP/RxOvzgo8TwmufhYmnqM\nUtteyI9p4uQcs3cRc/o8JZXJJhcQgPcW3mwLPuF0ixpf9J31zZfhZmzoUb+9\nZf8gl9xui28H8gR8Gzf+hrqTvQlnMBXlQ9llzQxd/dIBIz/NJWFmgfdLCiZM\nOyD6ZHV8F+rYP1duKm37Y+E1o4jb+Senutnc9Vf/oGVusOgGbfPAw2QLtihN\n1S9eQhIiZmDa/mbBQGct2H80A7p7Is3HNiYCnPT+FJWli0Who6tNpOrFe2kg\nUfVJClbPFupWC1i7lUwfZprDHEQC3cPF6MUIle2PFjn4xhFDQDdvmZCMbzb9\nlxfLXNRzeRfjw12gD8xMtg2Dz4pQD2afOYDpvYN86ylmX0UZDjvn4DdPgSSz\nahAHGQrQPUkSCmCOydL1NDtdI4j9G41DEUI+Ubugm+3gTKxQCKs9wawNqxJ4\nyEe8FRDGr7HGc21x4KQNlG/3Meb+1cr8zb4lo++bYf8wzm5iETW7yoh22dbk\nK0djIcBTXZf8k7f3qt+SgCRDMVPjcV4tW+7HYPX2VwmmKuRE3aLvSSilI6p7\neyLojdBlb605CWsjyz1upofF3iPMEomQ5mke5nVaLz/qUP+jzDJrl2tz3y7W\ncIQoimU0wy68hu9rZ07pMarDwpJxN5PbbxTHs+CvskWiHSIUXqeaFr8nNybh\nozXV\r\n=wOB+\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.1.2",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.0.0",
+				"@babel/plugin-syntax-jsx": "^7.0.0"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "e1b47259c5a95009152f00a840e691d833507da7",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.1.2.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-0w43MP56yecSLUNr1ayus2bFM7y2k9O1SpFvc7c6bAlabJ6euTpkZscVIZSjzTR+d90wSu1BclzxiX58Y4oAwQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCF/avKKysBD1eaZPLJEDp1IoHUjHxtzrUKAM2gKmAcAgIhAM9OuML0AEZbgaLs1QOGTD0lP7sSuSyNEGklFuCufEfz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40607,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbvmnaCRA9TVsSAnZWagAAyk4QAJrcADCIcA/CJ7E5jL2S\nvTGKfnRxkYTRNps4Qtvl67IdIszittKUE1ukyOw+RkO7QeF0pQ+OSFFEC6Ow\njJY3lFFPiRHYjMVEKlslb9DtRDAQ9tXvuDdkcsbJL8oXvf2OBJX7/uQifn13\nxiUyTyxb9CwQACeH080Cud3JpOoBLMhQzZlPlYvSQhyssbOtoxiRRcC43rm0\nl3jvRzqybx7PQ8o24Ne+LiHVnww1sNWMkzaUsoOUmD2aDZvys7OVjtIh8IRG\nPnWgFbJHAoYCTHMyp8uXijylRwuBZ0i1r8EhP798XpV5rhWwQFMPHBKysKg6\nK6lgiPXQhReVJYNnrdTnuP9Z2pcK52cPc0yhqLx6dMKIi5bDvDVkzLswSZ/T\nTnliKG3kl0zN5EcCRsh9hh2/cVs1UWMh0XpINZ6/EuL22FVJAS3ogYQKa6o7\nRMKFn8LSIquUKDERo0tESa90THixAszJnbaXNXeiKm8Y4Vo+J6X+tWSdpbAa\ndxN3QnqZcz9dPYeNWNpffmQ+fUMXpveo0f71+yJDUkLXr7inqgA4ozhJ7g0c\nn1Lck9zOlld/2/qcKMIcXpimEgnmOBgj3ddkGu1IbVMFg9/dkcSVU7ZHsGF+\nSVHt/KjhW4odwPAWr8S/cpyUs+G19dvyVOsR8I/QOubk2ayJnVt71Hb71kkf\nZ0Sc\r\n=HtrG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "1.1.3",
+			"dependencies": {
+				"@babel/runtime": "^7.0.0"
+			},
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "c014185d8d2236fabc9fbc2ae855f35c719fbb27",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-1.1.3.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-WkVeFZpM5yuHigWe8llZDeMRa4bhMQoHu9dzs1s3cmB1do2mhk341Iw34FidWto14Dzd+383K71vxJejqjKOwQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHhXvySz+ZcaY4VrP0ue2wLAi8TbUkSct5dtm4Uyz/YvAiEAhdRkELql1sfRB4NflzXhaKum4rBF04Yjvg4GXlstwLU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40505,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcNhm8CRA9TVsSAnZWagAAnqoQAI+UUocsqb6KvYOJ6TNS\nYHvl7Uf8LEVIEOoTNuHYETWODGtEo4BwL2nTAGaTB8EeOGsmJ63jw7C/+/db\noJ0jkI8yJ7rsmzP9WyaSYNhTwtaPyRSyh4yx7q4MA929OmTidMtXVjztQQhz\nmHR3ThIM05O5hrj3ES4CcqCT2oMtL9mab3FncdJKPDkQHJ8EkyoXDK882nHF\nVZMVbijxUQcwjTUW8l5YGfcqXPMXsbNPZlNbFsXq16sYjmZskbX5AGgoKFHF\ny95KHzGv+5k6JV1v2fME6LLfRS/SU0hGMXTBd501lrpyPGs3fHiS67WdZyx+\noqhCAkZFBQDOEMO3gSoMy/02mb8pdhueCSm/BKlFbykIycqtZttLXnFuDntn\nLU1OKiCfxwMliJK42OLwkCBGEk85nPCnMujZLoMOdHuU8/bpYYwbPpxSjwWl\nYEr9YTcuYxWUeuR2kGbUKR8rzTzFXqTXb+Im0GBltMz+BfzPsOw2fIowb4xV\nfRKO/uxVXMB9Ko60Hgm19dpceJJ/m+fa/DJVVu26pKJMnKSGCVzC3R8RWv/p\nuyyt/uc24ZIClCwiU2gwkJsOSEtv7UHBscDKQ+m521UwTh4g2dLeqY45ZshS\nkHPD3vd+FXCd4Nt01sLrgZiXcEHENNdpral6bJu2Sg5bbDIlCG8kYUfpdZDE\nNHYX\r\n=k+Jc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.0.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "c7c31c8eecd1acfea6313228847bb4267371066a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-aBeW3yaJze+e+dB+Tfs1lA9zGiPAOQ2mt0FbvpNB2Bskq9WoXWrZknV4c4SzqYBTkvTnsB38dtf91bTbsvIcnQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDQbKR3fIiHwKFbdHUfC104bZIvkGvWiU3g6iw1mWqC3AiAUUjsn7k3DmryQcwln4bwJkV5fZCQoC7cHKbWd/pFHQA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25545,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcf6oTCRA9TVsSAnZWagAAuKkP/13cfc5tgoHuFnONLlpU\nzS5fh8P5nittmaYc1Hwd4gxjMk9LidclveFo9kqXgIpT8ykpSvsuSPnU524W\n11Gxtfka9Jm9R0WzLNjgxi2h8koZ+7m4xiyrdJZ11VCkngyXiVbmlzWGeq/v\n/KkhQSEk4jcFHNKQ88d0UPigGzQZfg40BYEH9ifMEXKX/kEqOoeHK26BDgpu\npHp6QoAH4dSxCemRhHoNRXiK8ZjIpRWTbRm6x3+l/mOIf27/6T/RUVlJkEA0\nZ/0asvWOzgZglRUays6HgbHvL2U5neHDmxsEMcBr+oai0oYff7Pe2GDCO8bv\nSBxvplAoy1ORzHZkw52TQjMdQQDD1wssASHfsP9EwFk6hFdrYmu0ceBEXZMI\nzVyUDNjbuwy1yQ3C11PyxTWlGd6TlMqF+1o6bcYPOJNnn7bBF2bgo5qc5w81\nMJOWA+KQTkJWvtQHLY7WM0vpNCUqhL5EcV4GBY+bb8oLwZvfrdDjOpHbnM7f\nThy4Nlfy0liPxAs1nUrL/xc2tsuUMhSmaga2SJq63C939aAr6GVDyYV6KF6O\nzwKZgxF6QtnatZvdr22jR9GwvpBtJo0aYMRHeFB3JeWCj0X2rUUBaHQdlWji\nvUgvupLjxCA45Hk3vwGgpXaH2oy7wqqbNacEshRP6NmrxY7NwWlEAPIkra9k\nSENa\r\n=sW6H\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.1.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.1.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "694971911e96940da2af1d904bde4d0e375cb5d4",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-EuEX/wyR+26Z2GTcaK9kMbBBmN1oIgGj5Q2zjp4O5lWFCKNJS0pHEstRI9nlzTjsr+RCUOYKg6Sge9b0DETr7w==",
+				"signatures": [
+					{
+						"sig": "MEUCICvUXxhRd+rugtK2nhNg0oMdgTz4ilHevs7wZTwl3v7SAiEAo50Sag6L+qwj6GW6NIv1D45ZRXWiYNYne5Xz2PUa75c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25789,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcknehCRA9TVsSAnZWagAAHBAP/0sJOrhXBROkXpZCZgKU\npx+ZDg1h+Tw1dY4JJeFi1gxTBqsbTzAjIqFrEqKBf1JV5eXSjMU5D92qcJIr\nj9ERRIK7VuN+QapchcaIu9ljYOfRQjJoTgXis4RzJXCGEEN3x8kkOa0x4hWx\nV7cqDhr79KtFwrlQOYL+9ZD4sE617hZkTs5Bt5UM9UN28dnjcOfU750PuH0Z\n0ErySBDX/HlX5Pm53cnAlQndph50bnvx9PQaHcEOsvRUa1K5REuHXXG2s2+H\n7gWAedr3Nc218ECvyXO3IeTv8Kdqx6FCBUzXMmefbnWAegQ+3k6NsjAU652m\nMkg/DAvz4PyLDOZQ1k88/+tTeAYgGPeoDd+UZDcXKQ41ETfFdD2pyExzWaM7\nSg/dm0q4OdGWSC89UQZDqpuDYeqDHAwq9lQqUAB6gpb61Pa1HMLmzwrsY0lB\nzQpJ+Ubhpg7j+bfd9W/U6z/RoAnHJG/0LadvBf1S6IBzMENMPiwF7GiR1S+4\nLeahi7XUbvCMvvO7EZOGYwM9qegMgO4rvv80ar58ODqwqO74kNZj5uLnOPk2\n97HtR6QPqr5Z3vhljb2Wa1eAWm/1vsbeCRzva3Cc7ujA0FGqviJ0l2DCIv9m\npLPWEOIopJiuyYg5blQ4jIqiqoFekjKMug3vLNIsDEH6YftXwulV2g7yhPLA\nHEcy\r\n=OIP8\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.2.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.2.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "31ddeb743efea6626c93299d11c75270f66d5f9a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-H31qqjbXrQebue4ho8bu/vCPkVCENalxQMMAQOGulmQxOQ6IF+9uwglCR6ZiAWhZmPo6LFq0NQ+IPLSUX8IS8Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCCcFKgVI7uI19ctGT92lhL4PzHPvIGLxUk1VtJfHBSgQIgbI02zy/q95LWZrtd2KHOxvsM0HH4Ql2VBKEC23OW0b4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27255,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc491VCRA9TVsSAnZWagAA7TYP/3TGaSm1l5w4H8g0uqph\nVKibR7tzPuoc6GB0Wd09DK9AN4Zagjpe3sqMN4NTrosDkisIG4tDgqkiR7EO\nhSjZYlmCV57RYgGM1fhPX05Z6xppKre+Sck1f9C9mTmEhPgfoJqIW/IPdDwZ\nC2soBM4PZn5Zf8dzPJPG0EMAZpcpu0WXgL7V4rrXB8DXMiUVVyfoq4vyDLuw\nL4SLNxFVqZftc5w18S2e+GQMJDAXYzY/cnwrutCGviFxxhtZEh8eDNdi9X2W\nwB3VRkODqqHvLceheDKeMjPWilo8FWswS5Bd5e5xwpPGjnPOKo15aLoBQgGu\nO9wU5sa9zu5p/oLmVzluqeNEAGeK0np1NM9gTCxgB9v/7CuJtENGEyLSGW6d\nXX71xX9BXcfIEDoIRE/RH/ot+1xk/gA4qaoCANEfN4pvAXGCiczkAtw9w1fF\ny/NGsmkg6PpA8ND1x39H7X55UZai/xKnHBNgKSxoXL/Q4rHJ7kGJ9LWGU7oO\nQP28o4YW5jSqDt/IY+Yt72ne1jC/48E2dr9F8jKr6hzZfPCCrX1q9R5l5AEI\na0zwUQQzHcseuaL9ANUU9q+x/zsebapExvoShGWlsr+Kfe3tyrJqvJm2TSSK\ntEnBWe75ZeoLjyMpxfBZY3tS2fLHW8RY77z0dFXOxhYskLZCRSXEb9hRKpWO\nTwV5\r\n=rGoS\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.3.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.3.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "330b736fa383437ce1abc442f6cf61cd46437ee9",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.3.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-b45c4x1+OvQm1f6egrBruO8eVF4bRVRZ8ojM1ttDcMi+K/qXfun3J6O8xXpSnA5eeNCZaJL3DhIk/aoNBbpwzw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDHjz2fFz+57la7ukPKHqkQb7HKI/dH0efoaYobA34ziwIgEVnAxeweYIZt5JW1Mbc6YYTd4LIAdYLJ8cyPOJPFK8w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27255,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdSBMjCRA9TVsSAnZWagAA0ncP/1GfJ8K1WzK7GQpHatdW\n30CZYCrjw9aHOeGWVWbAu4+STkr7pbfycdtBGFpIf9WLrzqKGd9AWgVOwP/5\niH8D6ZD2CDVBm0m9QUswD5qBnzAuQMbpqzBLINvxKZYZePas10zvSQOd8iLY\nQh0tZK++/ggDHRx6QZw30QSnUzE6Jl76dKZLLajJAr498cmmvjbHqKiuF5/t\nT0vZKEbRmtxDFKKXc69pUeGc8IbXIHYcgPwFO/2LrmvKsXsMoHeRWCBNqifd\nKJiqAMDi1M3KCI2wy4sFvEMm/Z2imYXGctCCsFP6iT09pWxXuHdWIfaoXOli\nVXIBVKtb5nHUyyb/P7ezDJ2P/wlHwtIu6Qz9n2YjNs17l4e84mWFOy5hLRIx\nxAW0G2ehcfgaU6QLZhFgYRn9dZLh3+cJW5ecUpNnhmw4usjdCrFQDr0+/o9d\n2e6Qe/ZY2E9NQccWstsjrmpiLBqNBaKXEY734WgIbnsLp+038EgT5dX2PwYE\nHPJOrMQLACulDMbE9Vue/4AEvolDtwMDG+DPpSAlvQPPxBoWb/fKVEYNEBYg\npst4wFHi5T5bVkdpTTFoQLCAqd7DqPZhgU7q2fN36++8vz6hpLsOSsDaQ7Ky\nnZqRTCneP9KOO2qYfofG99RVTaoBe3cL4R01Z57tl+a744cIFVW8nFOLXOHR\nLGjy\r\n=yYAx\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.4.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.4.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "01835191cf14047898518ff47a7b6914cece5d19",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.4.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-52ZN4cWHF/Ts9UPk4urhzonz4s9e4jvhUQ96cs8UWkqvuTjli+YZhYjSl/eFX8yIP4Xk8V54NvW4C/VRilAk5g==",
+				"signatures": [
+					{
+						"sig": "MEUCICKDwq5WowrzJbQuhKTPdf1vkTkzyS/5kG3AqfhheSx5AiEAmlU6fai7wZVCzDiBMZvjHayLjGlwMgfU48hYtMxXTeQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27283,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeHHTUCRA9TVsSAnZWagAAL+QQAIgx54FxggK3obezWVwy\n2Oicugr6kdRmvfKgBF65BqoqN6uvdY3dW+CH5Hfu6CnATSbD2fyX4nSzy3W3\nG4H7R5ztHfwsFmn9vNTRaIhwXMuHtXENxluPcJpPwZuV9hU8zFsY3Nq/Y4+j\nE/7ZiRZppVOXpIO0Vk6tPLVNGJq2MVQBJ2A4jlfB7nU1j/pnol9F80XXyGq0\nWGxC7Tv04G2EIPRGqdrkAt/rMhWljfhyqAybit01IYIKOuU+zFPzVnRmmKhZ\n9LW4rz8NLYDkgc+RlYKB1ed4qOCPsTmw4rQiAFmocntNrwOtvbFfGl2SXWIE\n7z7fEsPOVQg/+sHVPyep0bCEGtczsdenqHbVDTxKodJaHj77sWGqn2Ic1SyI\nwQDnfK9nWgRoJiEdTGdCb0nMVTFblmun202F/zhaFT1QwTO/RgLPVSj0Yedz\na4WOzp1gpDg/LRueh1hypLNtRHFU6yGK3/CJkXLu8KQvPlHSKylp/IH+BoGV\nuDCZnaLV54Z7rAPoJ5sUbbmnxwBoqvXB9ouPW6uWpEPq5P9dT9UwS+RT21qf\nngqnANtbaULdcbxI1VPVNFa56bFi3ICetsKVM32HRRsC/xJTH4uN4OfM5h2X\nzZO5g4CQyjT7kk/r6k6p5RvVq1AtFOrKQOcAItICROdAp6DG7B2JPMtpn/mZ\nnNW4\r\n=NKpL\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.5.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.5.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "d140f902be16f9bef38abafd2a05e040e8aed29e",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.5.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-fvb9+BBi5ns95pTKj2R/YoGbIbA2oBb2YNxRr0pSmeuURFqzeaQIzE+lFnkLCkWVp3DCkXQ1x92+5aWqOqfqzg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEQYrfJ2i48gcmj605RhzPYxfhHwb8XcxTFVnXhCU5F+AiEA34R1kKwFls6dN0cizcW4KXQAelvNEubjsX/YJEsu98w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27346,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeOSlzCRA9TVsSAnZWagAA96gP/RaQvjFVSjVqWvMzilT9\nCxdEvCeYkWY/nlP5f3lix0QkIPMmZGU+wzWpWsF/YuTt5p+TjQf0ehRgdllK\nK4OPhks3/5n3JFFeI67FCO2tki8KsoK5PQ4KX6CJ6NZIS2QbbVzCUuhzGvW3\n7BD8lu/5Ty4liDDzvYO3MPRoMPtpp2LeetqamNUwvKOmxzwnBhJ3AVoBm/td\ncXQIEsdmXSVssPaEpMQ3ZgeFW5vi6Bsz7lnTeurl97EnzB3crTIy/xbcVk8I\nmTVpNel4GpUS81lpKAyuc3pLEFt8tJfY9d2jXgBJgNyzWNH+2lzuUQ2cPphS\nLdtnnFDhboznrt5LCI1/0MjASuEl1pYRB4iDJlQIfm+71aWpc69NEf8fXpnI\nTUCI9ooB4EfD0Nzbvvy1G8wCxvCgJFMLBstop7rXuYRiiweCIB7jwc1oEtzg\nwqK9WUu4OF7U72NHl7en81oW4zPUgrhGcI+Ea+Bn4AtfNo68h6hrAVc9fs8t\nBoaHDYt92dCfE5sFEvevv0wwdP3hmZOFcdsEmOrR+t/hSQoCq3IZfLbUJ4E0\nmQkrXLwcbTbCYp9bzac2EqBLr3moONplP9LKG/Fv3eq9isLJntKe6KhOqTpc\nNvhivxLusEQD95PdEsWNPKx4jBlcHJkVLHjY0qRdGNaYsi0mY3RuLGpEtPgN\nMLx3\r\n=MHfS\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.6.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.6.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "0b2ee40d1a8d1bda40aadb417b27ff6f82881258",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.6.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-hYR+Tcq9NFeSwmcR5HSAYz8cHubcv0KLYnoQWViijiynUDtwS+yqFdog8Z0FoOOozfoxweRLxI8rw5vmNxO0ag==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCpbwZmJnNDTWQjksswXayAu0IBKCq+EqRNLry35FIBBAIhAMrGenweq5mvvlaitqZ8OXGekECjQgzzfuiB/2Q0I/c9",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27485,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe50b/CRA9TVsSAnZWagAAmVQP/1klOTbqAU8CGYdAtzjL\nrGqK9tS8S5byW82ZBHnvE1OQHpERpy3A0t62o0E+V6sPk+fB7B/vAUeYEoCK\n8YVa2zmS/GSftQhyFLyt76CMfRCjnmHj1E585W86U2yy7mTjEqSdK5J0eVJs\npXFc4e/2Jo9ctYH327e0dBL/PTX8+3+jmX5F1ZDPsBYTGTlJGLEgE+SAJDV6\n7byUUmvyHK/i6Wk9s53eALctSSXVybT8RBBsuZBOY9sCZE2F6tvFjuWO1vKd\nWZfhdXJ+YTCh6kVWB2bwZXOhGrLCNotEc8qbbYANN3c9IlgazvSOCFf6AiYG\nohAjMWSxWqF7i1/iKHqBcEgejwjCyUyXnJ2oFKBjh3RxyrRotoKBuHyPzuQZ\ngxow0YpZvIsaaQ30y/yVzP3JsPuyvtbtgZA3dfxdZD5j+lmRSK6V+CqqD2M8\nOgm+vKjOoPqPPjR6dNbGeh4J+W7aqW0y283p3y66WOb5puYtKnST4Z92y06V\nj8/meFrXzWtu5oCCfOyQ5z9K9MiqMp6/0xOVC15CSh74eBi3mDV2mIZ/K8nL\nc3owHho4xxvzz5NvUAQVhrtB2VCAUPVgqA6HX9d21JwyUXCw6yZCS63+wrcJ\nF5QGUZIOKLe2ukNUTZfoMJ44V3wXIucbR/+Up6/qvL1LOX5Fffa5PdwQRUm2\nZYFo\r\n=2mCF\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.6.1-rc.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.6.1-rc.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "7a67003338428191367195cb3e24000ddee575a0",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.6.1-rc.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-rX+l74Sl/TqB2K8ifEP6HuTRIA227Rt5yKlnc8vAXbpZbCcRR1mpJj4+JedZeDPmRDWrQBg73lV+vg3gUvXsqg==",
+				"signatures": [
+					{
+						"sig": "MEUCIGwQNTCwRn20IQmKucnGJf+TMxWTVEOunrZ4UsGsQIjsAiEAx8i6v9NT7+yXlD9c0WxLRFO1xcelrPEMr3Y2XM0HhR8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27528,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe82oeCRA9TVsSAnZWagAA8ZAQAISdRX2mB4z7Gkrmniyp\nItc+MVuZSrHFCmV67d+YOsQpGYlai6//6jTw9wYJs7zOunvOokSMb1l7YcvK\nudXZcEKaCtyyfZ1THIFkDrb5vczGTAp5XMjMl4Qs6Iuo1axzrQLRBBbUtsbN\nvSZ9jy9vFpNBjuTNdpGFCcSeMlkvLy1beSity2a4k7K/wty617WasXyHt/xh\nEhf+msWfzYd5Gxy21oVuGaZJ+0Iyk1miWQ81o44p9mgeXOz1HV1nvX9YBiac\nGdN7YyGtXlWaoI+uxaFV0n9Kl8DYszZbnOpD0AeuPW6P6J6T+5dA4JBsUCm8\nNGDqtYhHl0CiMmbq93Fc4fMdrh1+nm1norZrUjH40RsHr5w46nqy+IckZTQh\nEC4jkH5Fg7lvpMEKBKnz5B1hLeDIoy5t3jqmFmZRwv7n7bxzNpiNAgIOqwC2\njKyzBWMq2Tm1KA/ig1zxnStxAwAOHdVZKLNUSHIn3MdrnvMRudU5lID3iOrP\nYrx4vxaZwm51M7oIe0OHBTrX6vK3VXAFEb6qbO30Ztg9ZAYLc+RmelOYZcLg\nI0d0AyTCdrzXwJcqIvNVqbL7JTRDKMsB/13eArm6jW8hY0zik0fykUmx3cNb\n9samxbGtuG55l4K7MeRTdwDR7giOAfRq6fi31SCgY0B7n70+kB3lskdBKjwo\nm3mE\r\n=6OeS\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"2.7.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "2.7.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "30fcdb6bb3a3eb37f551021aac338918455782eb",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.7.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-yR+rSyfHKfevW84vKBOERpjEslD/o00CaYMftywVYOjsOQ8GLS6xv/VgDcpQ8JomJ9eRRInLRpeGKTM3lOa4xQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpmIQv7LylctyFHBepsrRNXLr7MvNKMsqeK9YGqMDEtgIhANDBbYE3HLjzaNm7ITvKThebdzM0I/JQXBzy6H/N1mSk",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27523,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe830ACRA9TVsSAnZWagAABa4P/jMYOMjBOPaFIO+QG5HZ\nd59jJC7oTde2QLDTNT4Ywe8/V9yOxto1F2HvdkW0s5p27ItsHxmCPnS4lu9x\nNAsLEHojD2/NuRL0pHegdHT8o/ugnhZ671q48aZ9lWlfSqLmhvrit/dJV8I+\nD9+xy1AAnM2vj0tGaHBYcAuDcTNFmhbfw4K1y9lPwhvoclUXessivaEYNIpd\nl/1uatAX2rQzA5Mk9znST3Cnnnn384VwHsIAj7ED2oWM8nZUz6wHf4VZ+fOY\nDVfB0jVNCReCYzNDpvb5tGjNxfOk3X2VuUkcZ6i4qnC3K/ZHkLHhSoPDLhqf\n90CsoZfhS9tGhN8LcqvKjV20YXpk8q+0zEIXFAOOqUKz8LKaYrsLgoHg/gIA\nfiL62g1hnBJFl3kcov3ilG2S7Pjvyyd3CIBxDSQA12F6WznL3Y3rWEvKhKKI\nC/aoGzTcaJek0R0rVBoPB9I4J2lBtWNho79fb5idDIAdaGwBgWwat6jQczyk\nj8y7u/RGSQhuzTDOLLyDEfcN9CnKbg3ZniUvm7ZijfszJtV3gkhTvH30msHi\nj+bp0N9kY498yWihrF7m9gD/iirDXQ4lyNnp2BfsZwT605+tkUd2RM/CRh/5\n6P2sJq/UJ65Jy13e1DNncoldgEoC8AVdz2N5bvcsFs8hD7zFp0qdL0X5TE6x\nkVB8\r\n=RzQ2\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"3.0.0-next.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.0-next.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "41bac74e4408373dd8c6daf0ecac76388396277c",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.0-next.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-lukpxJE22fpkoSuRZgosO9wJRpa8+Rvl/JsllsANHMKZfQUxJ1/x0PhdAiTm+nv9z1wtE8lNSUA1MegcHEd+Kw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCwE+zUYhNa2OnhdMnUv/SxwI165vf/hvUUlF7/YN1bvwIhAPw56jaBLf3JDm6lyXO2kBfxhivyMYevV077FeX3JP9d",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCBVNCRA9TVsSAnZWagAAyZwP/0VO2qlPcKaDbJZRGEdi\noVrc6ALjPgQfYqjVIqBIg73wo2YCyUkro5ezubFSQ0WSg/9h2yKDGmCV17y3\nlS/htZ3fz10LBOJmDyYxHROSHxZ49DRsTARkTGPufUO/fM8sMzWsuo+vmvGW\nUeT0Udx6a9hH7VcPi2Fd9i7zmO0MgfEFMwm33v2TV1d9zo5MWbwegX92PXnK\nB2cu/aKL+8PjR+3Fnf0pmi0owyjKz3RJqi1VHcuFjmoFB7ics6AlMvDlRqZz\n0cINj/m3RZFyLC6VCy7SfBOv40MI8R+Gs/YUvgMTzM+6sgHGXZSMUeSVQMfk\nkLhbrj93BT+KdTphYpRrHT7eswVMRb4vQQUzuZ+eajggiqgx7Oa+yQ10F1ME\n8wQ4mi2fMi9WuSmZBf9iKGNbAGFCxDPBgBwa9euFmzEHRh1TMPIVtvhDQLrL\ntzgqC17Hz1vIYiu9ZzRJUBs0mE59cql7K+Y+9OeamYs9Je7uw8LaN6nMcZXa\nFQTDlxNmSB+xilAsgdqpgx0xrZfzs2iXsbcJlP4xyO/Y2F2ZHEfzLZG/6B0P\nE8QN+gwKhWbp+SePRch3822G6MWT4t4lIepfvPv18EjI7FkbPnRPow4dEMMw\nbI1vgS/Jc0sddO2Lxq9OH1ZxgYt4AiIXXyF33BXqMGruxYhvEBHQqHXjh2hE\nc7LH\r\n=Vsrk\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "bfe7cfc124b29e54ea2a426c57d731a69829573a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-adx5mN2NUPNAFz27EOaeDwQVJyAcJUel0Zn25Dmh8Dlrsxr7yfCTdX3Gr0+UwTpoclA1BcM1UUZklFnNiEoVHQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCV2/cg3prn00WsSNrAHTqLUKpOJWBMu2E2XT6pB8NBFQIgTGFzIPclZBwlQb+URk20Dc36XfVjGmRKM0U+SeMLCSs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27795,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCNAsCRA9TVsSAnZWagAAGWQP/1nsRw5tap3JC5jWzeOb\n2VqHyr6AfVuRP2VC1bBobE+ZdJASp0q/49/6Q0NjGWxvXPyk2L28nHog/5gQ\nN3c07g3I0QyO1F1YHbt3zqs0HXgGstvvD1P9XIpK6pEWFSHqLFdybanFCb+P\n3tZzjpdycUrhyoi2nnIPHa1P1D9RMHno9Hwt9z9G+6gFJZmKF8DPmvDjUvmL\nkiI/c9bS/qQR9nd0z4HOSiKPFannzlOZHLgTGZECBXy5sWdoUzf9VqcNxvTB\nuEHAj6Ui/8QXoEr3gJwZBpAvrRT+0OYdirYcnehxwtEiuGkGSGDY8mGsxhG7\n3RAYzRLKcgXeon0Mdoy6kBz+ZnUPfSP6w91fFAhMpSxZfFJ1zJqUKaqP2GKB\nIzIwuFajcRz/gmxyJc2QuKvoV4fnG5JUeFGubyMjWP8h4R0uKBp/UJIRobam\nTWPhRgG615ZyCZeGq+vdhvne1gqhpOazQKIsTLutXsTXKK3j5tMEDZz+M3sd\nH5mx8C5ambjG/FJOfupKrnsSvGBdRNmbHbp+LmUNiDtjgkJXAFfHYQAUIKCT\nuv9qICNOIcR5w5FcnvmpZw/cLXIwze2qLB85Iz3eUFMwWFpYMcFhQwleTNHO\n6eH9GBVdcJXe5D+nRZkwYoP2NpnExOuLl9NZzG/cd3cRZO48xzbXZzhaMHKo\n91kY\r\n=YgaZ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.1",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "43a91eb79df1b5d8936d354a5ec3e3507472948e",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-vwd43RNda63/URoAQ+CnLiEkgYG+yYe6S19sWGQ/ekPeORFh7l8J/1MgegPBSt/w5fPQ8UK2DUgavTU0AElPKg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDSJqDMOByi2YzrZuRNw6uZ+K8Gw0Gl561zbJ5mKKe+EgIhALJPT4/f4bmKMMcUMw+gtIj8DhgCXtjAlZ/JfM0patUg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27791,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgF3JnCRA9TVsSAnZWagAACpgP/jGcoTyoJAMLGjoHwb5u\nxc8Pt8VCCUrLqMxUyuk5C217rlyzKo06x8msQcLxE2Kdhl7FWnZHSqV8Bfge\nq8uqPkjO3BFGk1jKTOTtMcK86MVCTu4evWdfUeKthCEOqdv9FXzXU/cmbrPT\ncJFdN97UYIKGPyzPdAuk1GD6dhgrhe/pWHtYuhopG4Bio10lqXTv21ETKfj9\nzSEbMJ44ajJW0fD0ke4lIWm7ZsJ2d53x3KgwGjvxcYHk32wwqGYmVHx/Tjpm\nZdQC1n3gc/IxBhN5b17EF5RCiG2lp4q+zyR8d7cvUKmfkN1v2h1zPLhITvYL\nSQaFKzWldx9Au6Busv3YfxdJZCy+wAOkY5hdRVLq3Q5iJmD1f7Vl9aDV4Rsg\nHGTDiwUOnlyuLxJhVZibfUOj5fI8AfMJAfxDjXwsvjVhkdX9DQrZCI0LUdlY\nmFjkcXjqeS2avjSRdumZEKyBDWk0FYpLkEXNOF408zo5xd+kJP2vOjD0hnoc\n3uosgiQqwhDvmk4dFw7Sk8ZHUqza/Ih7BdFVBtydy29z4K0hA/enFmVZcGmb\nD/WRL9EeILa0Y+NlyYYmQ4lM/UvMde3qbnT0GQ/zBLQMZ+ifHx3Qj1ofUT5v\nLVTcgXfmv7Vk2qUvStDojoXdWQPkaRT1O1MtF8Xg4cujFCXWOLEOvC5wEf+Z\nekwT\r\n=Wv0B\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.2-next.645224df70.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.2-next.645224df70.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "9e184462453674242de250b0ff4c77e60bf6400a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.2-next.645224df70.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-PZGYy2O/HbWT03AB+5rMLhWkF1YjijzKou0dtes5IM9JiFnGIgMjzFslIMD3BHTZsc/SHZAdlKG1yVwtcXpHEA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGOXul0MjSK9ORSCxWLq0p/ZDO5ssikugAF4d0NZfmFgAiBSxXPkaIA379AUzaAbgHLRXexBhaQn9d1X4nGXthUDag==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgOOSZCRA9TVsSAnZWagAAkI8QAJ7q5JHLKTJY2VZCQBDp\n9TXDHfZ+z4bRAvmHy+aGbwFPO7Q9MeIm6EK1RG9O9/1+1W7lbL6/bGQnhDmM\nBNgUZxqhHjmJXzs/CEjjsUttU6JRkHgetGqtSS4kIwLMNiEqNQKxpE/oqEWS\n8eereHmCmFAPgVz7DzGO5DgO42aNiN1JYmS1HsHwpF5OW1JPvZTLbu3NQvJq\n4eYQftcXdXU0HCh8ykOTdAxT94vm0uMzBt55Xdd5GemkM43rncdsbp6t8jNq\nAqVIE4iqSeEKPkw4qlGi3ExRA495HcQHtx0w0yJ8pVvCz1rrGuw+G+438tHK\n9qFQUOWMh6ijOTnwGHQBkGATQ6s2eRGnvNFu3QdygtXxwg2HZ8L58mg95hP8\nTjwY9NFG6eO3jeKzJaHd5fy6mIrRotq4hjti938/WT360cDYcRJ8jIQtQR5W\nUXsGAmgiHt6cdIVn8T6+4CZa7HQN16pzbus2rY3X9XrLiBIS/pTompv+k6TT\ndoT0khnMe/Fll6PVsu+RZgPoXKtKOiDIZ7pkOB2DbS9iWDyf3E8rnrS9S+az\n3VqdozuzGXDLTpW/W4Ap7MNMVIJTjvZkcE+/IUKEG+khdWro3j1d96ne5saW\ncGt2t0g4sDDlJr0p4ruVfDjuL1AOddt/77rZDmNGZvL5EMSGmOzj6Uc2M7Hv\nFs3L\r\n=6Ut2\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.2-next.53e2173694.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.2-next.53e2173694.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "b4daf0a4f4374835218aea7b6ce2491b346f6332",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.2-next.53e2173694.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-xT29Bk0+JSo2g9wkC1qqUgxW0NuTk89xIkMaLRG7L63iPZM6cs9jnfRiAXUVm92wqr1WYbmIJHXhM3+fH6omgg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDoteRoR0ikZtowfHWv2gR9LRkFO/BXrBke9BB75T8h1wIgScn2dxrtFHpFryVyBmnvQj7rbVNxauqUoxUDwinTtEU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgSdPbCRA9TVsSAnZWagAAIvUQAKOsY3ln8gCD/l9hq0De\nJCjz2MOsJaKeZzbAGY5ZzV3gDSwLbvfhU+RIyPflIXJkAkr8lRVszzQJNtLH\naChbfuXf+Rd5k77DMEVe/lrozqn/IV94/NdfT0vRJvu9kkAeqIepYcPe9MXW\nO3pnS8p5QAIQAziBX5wDxqqpk+SrHMccbIio7wqhOnujyUi3LsZP5gZvF4sN\nXnD+JUkrIUxQSBXaJ6RDcSr3kdjZEppSl5V0S1aMTbzIKAf44PsuxtYhazvd\nlKkF3FGeN4eEUej7qyM9/OC18cc1DzBraRLr9N14j4Mve+dbEitz9VYO9WrF\naHv9sBEkW/FZ+sl9FirlDv+KD2QOaWi8WlR/rnuw4oBYl6uNHEztsYTeS8jv\nIJnfY9KVfgExyJiiOtsDDBxT5BRq0T6v7Bu94I7EDPIud8MMihc5+YEd9fis\n+jXVjh9OUsc7EezmCXTkeEaJfnsCwcbuonEUe7VhZz4NBUIp3wn7tckkzOnE\nNahFK1rat0P4qnfwy7NX9p4ww9Jh47otMeUCI82w47krjwUCWmiLSD6b3sSd\nSwsNLT2YNJMZG7dyY/sDcRL5X0bLmkJTfDhqrX+yfT6VsRr4LHZrYC07AbyN\nbxexi872lhLmfrVpcRDlZt3El1pf0nEyUaUQFpgOYxvRjs5ud6nFefTso3jv\nYTpo\r\n=od5e\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.2-next.5c9849e156.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.2-next.5c9849e156.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "3de1509f5816807822702c4587c94bd8880162bf",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.2-next.5c9849e156.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-FFCTr+xGBbbkBFb45FjO+CEKEmi7qSvr2P+GEEaXFH+BjU27pW1nWzhdUyFIi//ax42q3rOsDJhRALIdSn8EuA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFUuQjqwhAGAXTKnpZWydgrsiD9ZveV0CJoL9fwkVIx9AiEApw4CaQNKxEQHenh1JxAe6j7DqGF2AlM0pslOyweS1VQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgXaEPCRA9TVsSAnZWagAAetIP/04BVhcB5TUt/0pc7loT\nlLscDLcCUX7VpyCwWsM5nTya8BOJiqtrse0Fr0P4A0XxMr7V0QGI3BLLsA21\nQDkXYe2X/Do5GrrUwl6GwWohruVVR9cwaYikNSdLOPkdPpyTSgtGbp9U9C3T\nVH9LMULVdrLjVuGR/lKsxaUH4APKJ1iRjHaRF/jpNE1CT5G27WYlvbt4MXQO\nNlRCmMHnv/jHkjyBNxzXKwZIdQEbNLUSokA4nnFvnbfG1gocO12mIE1A6NX+\nu9wPoC1sgCzVd1RUz6ksMs7dann+UJpuXalxavQs7aU+MGHdtEG8LQg5mpd6\npSLmjxzi6VyYksTsW7n7GDsuhhRxwV7/dzgg0eXoqFIl2UzMblFM3NBi1MT4\nNfj1+cVK3J3btUZjqDLdpMLnrVxUBt/DzCFgZh7vZ2UYKw0h9MrckgfDQdj3\nwcnkYqt4kZ3vuuTn+O7dA/bAmchOw2fqYkqdyDi6jRRGgDRWdGOah51g/sHJ\nBIDlTmy53u9YPLXjf8snp0/nC/W6PQpinTFEMQGfkVpIn92ukB2+AD9CQ1lt\n/uf28eia3D9bvr/NsC4iFgW8JHmlayQrswpCspz17Z35A31jhjeDq2F/sYfx\nv7IwMCMnU+BmM20Y/GC0qx2RJd0+hP6lj81LUbLnfpnnQyrrcFtgDAqOHbpP\nUxZd\r\n=yfgk\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.2",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "64593b16accc730c56e341029fc75782d10c6da9",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-l/6TRs0oZATS5s3mZhMg79tLcyyosiszdD0Om149c+rEgZ2PJS1vGgrNJvGiU5yj+42Xuz7196IZ0zbXjy8aUQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEoeTu4isgu+HFO2cNNqvhvzjaReKzgEva0qiN8D74xBAiAQr51jJSLoMbvkHElI7K0JyhKj+kgr+0ZcLcru4G217A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27791,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgbBh+CRA9TVsSAnZWagAAZJoQAJ68lvrdeIo/cOFpfJfH\n6Kur4UpB5qp7evSbU5mFVK6+n2t1N6aP6sfjPYkDNOoY6oQqAqTMjmwVYgh+\noFF9fCEkcmJP0U2geLYQpO8gXwwfVfS+VtwJi4hHZ6eumzsJJpPyklKyCfd1\nIwb9KYEdkn0WCkSAtcX5sRlvD4e9P3MYyjHf+A9DPFMtkLwGAny0atW/cQKq\nwyM4qwDRqzU2qSvEgWPMUVBX42867HlUThzUqF1Gygl7FVCs+944Ma0XF6dL\nJaYJOAAJV2mwuQjxNPl9nPnXvSx8y8AuEZ5j92LlMvkblk+ROdtrdvXm2J+P\n2qQeSo87pfq+X4LqON8+xAQ1fiU7YRnwbDSrf+P3hYLstt4zggQdC1+7gEin\nrKRXxW1Gx36oMR4tO+PyhvT8ScoTCpuqp+XMfU5rZdpwKPzF76Ezhby7S7/m\ngW6dsnd3J5TSCYbXAWQw2vAiZB3G4ZqBy92kV8XH6eYuQb1oqY/0HIZ2efKw\nUDXTMYUFEr/lqDjc7319B6+4MnbToORztp1EIcSOMr/GvtKR+NEDaFg+vvUN\nzO7D6NbnjyuhYk0mv0tbqb7Vrhzh3dqyjXxMSGqdY2LTOfj9tohHwxIo3+td\n8HahUrsUKMdnVPKhzcGnlDAV5zSyIeMSAfPyyjAAdWt3DN7YEQv/jQJiZ9JG\n8071\r\n=Jx6Y\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.3-next.a2b36aa19d.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.3-next.a2b36aa19d.0",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "4a1f0d43bd40a6ab6e728e7fde7936ecf6199c49",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.3-next.a2b36aa19d.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-SdPnXbTzUToFzdOn7MQL8Gw6C0p1axzyPBgEresy7YdixzG5pwGE2992okwWSNAyuJ+xNccCODD1TjWIcr64yg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD/LycuQUPCd4pKdSc8qsrCiMT5LaDFtczcctuxAMkzpgIhAIyy2Zsrnu0w8qXT2G3JRKA6zwAiZQwVe1eFJ8A/43tP",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgbuC/CRA9TVsSAnZWagAAJJQP/jsfgsToJ51ZC3kpYP8k\n/W9ZI6/YNSeuDPkxu3nPTWHR70bn6DtdXQDcmP/i7S2TqrOhn1ymy310oinK\n2bVRUMG3g4pko6HlLXREX4ordhxdDwH8E6MMusQK+UJGjj/WCo48Mh/fNa9x\nf4jDohFB8FyfiGGEPvJpBy1vosGmf6GD+A9oERxYqgdgYajJJUNwhe/LtHMO\nKQ3RjizbB3Z0PBTKXA7T71WFKMPnpru0ZH0QgE1dFcKF8pqSn6nRksnRnou/\nWs+6OPfEp5nRbS20kGRX+vLhdB7cR5I/HKvZqPRaCgKNRpLHE0B4FwBj3mLv\n6vfzpWNqBu/HkgeESuPmHmUELLIVFWHaJKkSIHUd0CnhFuXFLUDrLpLd3c/E\nTOH03Fbu1prl4JfJYe8dpppiepAC2lO4aocIfwRXgET6yo2A4e/knUh5aoS/\nbi9L13R1D9oN8vBkXQPU4JdEowdeBgK+TFYGfOdACcRpM6I/wfh/Ox/rW/AX\nOYqSLWyIecodIeVXWmQsSHrbXQjPXE6aVmkgoLyvmKuKHoFV+UiP3tEabWxP\nKGJX0W91giQLj+iOE9YlQTXWnHWBid4hIIg9wWcLRk78qfTaF1ov/F3ljnL7\nnutanCYgBpdQ9/Pk0jUbBw7wThV3qGWhA3p7VWTEtt+RbOvFjXGcXuPBkkh5\nCZ1W\r\n=eMWD\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.3",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "d6a091371fd66fa78d1aaa1e9bcdfc0895663af7",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-XGF1ovD+/u9yw5JAFMWVd0PRtU9HNNhVizbNn1CN0OlpENaeN9IFUhhK/JHxtvl3xaOHv/pjjP3msTLGH9RK6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIHaDJg3FJykA6peZd+J+J+lPeFIvTtuGHw4+8EnBqPJhAiEA2oUVWzxkf7T69KX72GHzl6P8KWuVuPczOF4Pmwh5/L8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27791,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgd/mwCRA9TVsSAnZWagAAavUP+QBK6CIvvI8nqxQjnSyV\nEHXFDXnTJmE+nk0pokLeswloFdX6uBqZykOYQYjLtG1zJZqcPnoMEfk1L+BG\nq/qVgkveXJ+qWOTLvwVuBjsbWINb0JbStPjUmzOwsCd1QV4FAVzX4IKApD6K\nsmMCsELq1x6cmDpx7ydOoIcI1TLE1YuD5TnER90G3FZSK97UvSMqqv1zzUfw\nEV1W7J4fTi2YeG0Xztv+nCrDccyMNB2QNRgwV0kxv4DLGBEGkdk94xh+Tixe\nDxzvGm+jSWda6n4/dszHuN8iHLKR8A/1R3QBCEOOV0Dqs/6EFXGtRSWlnSrI\nRzhYlf5xuKzL/fC/EbYW1mVG391b/CS8ZaGSB9Rb+XUuG9+OLHWuakewbm67\ne6nQITNaBziKtR5j2P7nM9m9NXEFnj4Zw3Vsx9FXJLkAfMdDFj9mbQ45Iyur\nN09ENtJAL1+zHMeA6f4H/x/jIfa+hr4iUp34ohgnqtvVQLkfrMJ7Rp03ucDm\ndLPU0Es6nhxOqTOJl58cLb9P0CGr7nKs2JVyZ6qrGD2gPjsDO5XxL8G9Nuo6\nFqqQXUaewXRiDqULleEUSC3LPcJjqTAuEoI0AsWd3XBC7XFqrUFJgtmtS1Qz\nOKHDHuASUBF10O3fEPt9fOEFT/hRMFvQD82pV/B+5f/ov7oFOBpSSnTwBMUr\nE2Wc\r\n=W8+f\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.4": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.4",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "967680fd183dae79b1cab57eba495916b9e69389",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.4.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Ke36lo2KtNZpga/J57uqvHDRfFlTcHIBtP6VcDl81QGcWSuKKvdMbPAUzp680sUDf3F9PNksKi/gKa3FDGMvfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCMqgilbyXtuR89R+XtOM7aLyxHrKMNWJ/IZDxOueHEOQIgRlhGl2XFeiYlptQDz7aAxA6xadvwjZQFUnfSRNuFaFU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45116,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgnll0CRA9TVsSAnZWagAAva8P/0+FtL0qWx3Bfi1dnqyM\nPwIqaBhehlFDSOiH2gSuttH9FjV2Aq2/KQzyU/eUu0UqaWx2DfCo8I4H4qH0\nyPkVUCxktxbP5/moWAz1thT+J/UtlWo6hFFlTq3Txwj6vND0au4xOFXYA+a1\n1zJShzERwIaB1u+gYpXs6Yb8+U6VIwX1KCSsaHppwJIq/+CFoeSmiLLgZCQ9\nByHOR8sdhBbB3VGNwwd8H4El1nTGyRuVUoiK1qbqz91zN/HRjozquAevXUgr\niix8Yvwek23NdXhEaXY8q16zjdCKMsdOa1VoUUZVyT6TCPXTzIoTtOCLqKXQ\nrRPb7NyIPENcly/3cAqthcy4fBoXTXTB3/bwEDfN53CBLvazhywNFszNWwLa\nj/4R8WpNFbpOFTxAHt0y3kTC73tehw2Qm4xfOVFrF7IMVBgApU9SYMxpef28\nEgc3nOjrvBRwVanbttLtKnsUuoo3gGrzew3xzTdkdz1eIVjnOvMuCSJwdm3A\neFcsU6k0z02tEVT8uiHZ3eN8OrY+SMUNWKa+yCpTAdIsF2TpPiOLLR+GlPI1\newVsyZMce0SfbeuHp3kjqBNd4+ENluBNeetChteCycKb6eEGW4ChqnO6fsOb\n56sookJaTR8SXvTzPmWW+ndD2yAg8mAQae4u2oli18JiAukex4q6mdq06SCh\n+B8f\r\n=dzTD\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.0.5": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.0.5",
+			"peerDependencies": {
+				"@babel/core": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "7f861642690022e746ca02ffc10d7853898b5695",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.0.5.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-1xzZGFV5Bwox4XcE59I88q0/robJ35LoQNkKPC4tmfzd1XaAoJCZpp5T8LSJJtKKloeoO1JstrvMf3ltZLQ5IA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEqENNg4J+zHGYAokMKPRYXxxofMAGZmL7dKgI2qzPoCAiEAw16agZIaq6vqJr3yi5iynyrqv7+xFOJYKvJE4jvO2kU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45116,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgtMHkCRA9TVsSAnZWagAA8VkP/Ay62n8sulywWELrCo4M\nGNZZYrhBQBVG/RZ3dsSfdyamyO/QJsbHFf/iC/LuhzoLgquCFnhh+JW6nvsy\n4+iIOTEhN1baVPvR7KOA15X9DVKPXBDsIYR0jdUFc+i7KXacq/cJt83ODxjL\nhRmg/IN/gDW4PibVzEszy/kjy/2f51Nq2jMQ/YxHASaUR5qDOxRtitIxsTgK\nZfeJ2w+kpuf1JRYp/zkFwIYPA/hsgAfFU9h446YVFBK7NHvD+zI/r1NSgBYz\n7wW1EqTxoX74uB60i+uaWcyfmN6HCi/yuSnI917zW9zXMTmnDFDgyU0EfCi4\nFTP0B3rlhHvTHRHDqBiQeNIWavJxl1d9FXVCsmEFwTtCi1lnb+N4ft6xXfSE\nuNGsOLsbMNcdyO3ylNSjNv98UFMlG0KR0SwBAEj8WbeTz8cv37dj7uBhGO6/\nvOew56itD0FObL5W2E0Kwqv9yurTnOhhedm9KHtTUIGTZ6J2HbbMZB3xbE8I\n64ACVOHfskQFaLawZQlPNRHqF+iPzujf4C62UCKT0eyq6UkZhn+1V4S5Y767\ni8bjSBuDsOT7/2l0mcF64FjmX7ybCWA94KmzBfXvOpN6jrpel0bcrxtMJsXk\n+FFxB7Gm5/eEa/ue3nA/TgiiFNhqKaEwu4xL713AGSg5GOBCBAYIz8f0H37j\nOkb4\r\n=HaLH\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "0a1be89a64bb938f91b733c31bfebd89519c2548",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-518mL3goaSeXtJCQcPK9OYHUUiA0sjXuoGWHBwRalkyTIQZZy5ZZzlwrlSc9ESZcOw9BZ+Uo8CJRjV2OWnx+Zw==",
+				"signatures": [
+					{
+						"sig": "MEUCICB9mW2Yc+LxR3UTTL7sJnsVeQefhd6dxAaOWKIqRDsWAiEAjDaoYf3f33lKmqUXDhuO1JLTu+UMvJIeuW2aG29yS+E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45117,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg98x8CRA9TVsSAnZWagAAD3UP/iGHOtfYXsBxrVNH4fsW\nv/I75EP1a3/1tTTVxEF8yD6Whdrhkzi/NWujVz2zUIw1uy72svhVprV3RGIS\no6X4qI9Ed622MAxcnMjWRALZByB0jFfF8kTy4osdDYYaSm3je0pN3yJGPx2t\n8cxLlnL1L5TrhEIV3U7U5pkJRZafD/V6TC+9OXh5K9cDWfnINhzcTp1ZvVuX\nDoVZOIYVqa82Hw2ov9eHoto0ZKEqcc1lwC3VGNV+T6u+zWnh59NqEU47NmLd\nWg4niQPeh91NwdIbgW94ytu7E/jo6L5F6ZnOKqWLhwc/ZYHjYLw3+tmjwPl5\n9hCFSBySUb1fffFoJLBjD9MRnsVDHAJH26x9O4+5YEFOavXnYFWPe/2aSTaR\nEmJv6LW8i+4TxY2KITMIOeoz1kQH5sz76If3gWp8NsX8eoF6cfMHqZFcZ+M7\nJXxkkHFET14YHmoAcbuhZAOvokh7Se0W73nKIRerg9Rk0lL5dh08HKLQJ2N3\nLgHC72fGobcBio8AIYJs5csJPXcsEiKBZjx6QC9dK7IypnkxbFxap/vMSE7g\nvnKC4h+ahjpkbbyj26Z4oK5icnJ299TWRlWssy5U4Epzgj3rTFfaC7npaJBD\n4/lcIU5t4f7ZfJbTG1p+GS1SHvJeqoOIpbXb91E4Bn6Q4EdDV+OcdkrzT1JS\nVzRO\r\n=WrtY\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.1-next.5df0cd52b7.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.1-next.5df0cd52b7.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "23226f22ca25eb4a106b420cbc3c499e52b51cd0",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1-next.5df0cd52b7.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-OPzB7qdQGUYJ4QuUqfaROkMcJaNqAArwmSukJjConsigflnX7woiRzi5rr4ZIVy6f7bkgY+rKXy+V3Hxlh45Vw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCucXTScI5Y0KyxDHrzudKlE/uNfvBgHbYTavdysIzazgIhALa7mdLIYgrQuT0rVnPlKduHWOfPiOADeUy2wiGDV5o+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45135,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhG6TPCRA9TVsSAnZWagAApHoP/iRAIB//9UNW9i3g3loN\nqUsEN0YRij1mQgvC5lnqCoUj0SmzuhBAzpF3EhBDA35m0Q9CJ/ZwesQBrekr\nq2XbrLeUeMP1wlwnq3V3MNvQX2npThRchJYA5IcKnHM54WlVbWSY1x5XP9Jz\nTBFNLyq+KXVAvgoz/aql7GSkCLNjW6yacEb4VheKFJx8HZ3uAVNRPPvxBdWb\nOyDxrsdeJ1bzBvO8jjNEh5cxYG5RENFwQ3xccrqqltJCw0rWQrzxCTf1pk1v\nw2uwxA6C08QIdjQT11xY3GXKBhVUD4FrxCd2TzAJGfpszWLHsfwv984h861Y\nqNX2zPeOCpiheFTRiRg9hP1Lsy9J5JmJ3Per+jzS4GBhJwUANxl9XmjOikO5\nXcm6AcFe6Zb2itnSDpJR9ZaX4OdshUYpz3kr7EiEE78oV+RBY8op7KShKq7m\nkquvphJRsYCeWXA/C9RzP4DTctjIqhyPkStWSNfx5UViffbXAa3wqWb+6hH+\nipdT1SxN3frlDFaLsSY2HDHK0nsqqGpi1P/P4oDkC+KBFcSojPbEQPuwgelE\npM1JyUY9HVcnu2UjsuP892n+N2gVvcrfbIoWoDZciBAMAijMm13P3Uu80y85\nE6fv9wff5Cp4tJP02kXur4BqkLx+ABvfc43FJtGZ/bhSWg2Q5ZpUQRNekv/p\n4iBJ\r\n=GuLf\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.1-next.253d9b6e21.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.1-next.253d9b6e21.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "e61b6137454dea8307090b6645c2d6c422be5db8",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1-next.253d9b6e21.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Koxn0sHScua4LQEzc3BBznlGFsryLLRCwDFoCUS+EknE+Vx9+B1y5DDfdkZKzW4sotf69vttfGbU3t3R3J2HzQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCJ3cMUG+e6C8FXKVhu/jQHwK5Au9YwfPE/Zpx80qQcLAIgcf7nmS18TWzaOfpGaGL98cwcGrbk3J6mDLEXFznHEO0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45135,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhHPb0CRA9TVsSAnZWagAAtVsP/0ipdwJkXYkNsYkQ8u8b\nrsBuEISubkidBFunmJIrFxTzrUmrEHrIk3ufZNGvCxNmDEgHzDKzT+BWrWKZ\nuFLR4N6mbxcY6cQ5QKOTWw7yFda1csSfg5aq/JRiV9vdkgHmyB452nzzogBC\nnBGJqxmXW+EmpVI/nIuj45RF75EYRA/EZvm+eucx8yByg2DsM33vHEb7wpzr\ndRcraVz3E23UCgA5TwpkxsCMCiBVK1lD/hArYW3ZYEltnt0J2DRnW164qnO9\nrkR8EUCYg+yHWKC2uxwE8sQagGIwyyiYuAOSK0Zl4plAiqMEtIUeQCdhNFM8\npx2sCsqk7x2wGfL1svsj4ab4eAupSYyo7d2M+vR9b/+HpFDxa6/1bD1KrC7s\nH+wteb7YpYTjq4crcn+IRh93esJK/fxS6YED5mi+Ggzpe2I3qPymzojxyamn\n6u6uC0KoOr3RKfGl1Xb5W8hIrByf8bSpPKzXdDLucy1ilGCnhcBHgbe6K1aV\niXP+BqxsCQg0uHsOJE+twz9sNVcsBr5caOva3EsAS0PPsUOFgtg0BASalyCo\nsuFMd3DQX2Q63w9cMuP68stK4kWS3lxS6srwAofJgpo2H5drYme8IC56FgWi\nL3FeiCbFlEvqGtHKZp4KqTMNH6ggbgu2qmIRsbWcXtCtE5Ef6SfeIc2z6MGw\niZQm\r\n=HgyY\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.1-next.33ec3857e2.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.1-next.33ec3857e2.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "b4d12108db7178fc7e24c4a012a7bfffdea1a43a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1-next.33ec3857e2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-VxYY8xC1dnWh56LlEdNYrdFIoAMwWTMyCz+Eliy2Mm9ZkxXs/3YXgcmG8xbTsFP3kSn51obLGFavkRtIHVTzcQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGUDIBZM5UGAUE/zaRFWh/uXQeq+T+98Z68aqK7qbe7LAiEAivK+6FGa5vXU8336F+wyucijbaqbNK4kd/8eVEAI2jI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45135,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhwDyKCRA9TVsSAnZWagAAXH8QAIWiB+Ecep5/HdE9XQYJ\nFNK0C1ExtQYfx6tRRi0MIklacCwRVBQkdyN9RQCQQOladew8zzxZpDn0yuBJ\nq3iwFNQ2wox8+ySs4OCcM2XpIYrQ09nkCet48OfV1s9Bml+D6WNXMeR6YTpQ\nDb8AFjRACVl7eDAZGXSrPMn5Mvii0t8eSKOTdtS7pftevjGh+NGbJLZ4IMLD\nZCX8UT2g8yRiYqUm0YXqam031SklZam4YbrXFL3k3DCnXMkNaRijSggh0ld4\n7HVB40+r4v6BT3pSKjWi8KhMr6Z57lpiAJF8C2QhDR2KHbX0IH318oZIcwyP\nBBa7FvoqfqS4fPoNnMTpEGx4LVNX8a7ECd0i/r1UtrkfjpVSjCck8/CVTyl2\nHGQUMzmusv1jVfvyrA26rYP70qzpQR8oWhd9Q5tzDwofLmG7g/fu+xMunl0P\nnOx0xRYmN/UuryqP4AMMz7LWO2WAkcwx8JtcKzLJO+w/iML15x2NYI37qw6u\n/ALsourzV4sgrNoiTm2NYAltWecfMKyr/dCBppVu7kOitg6CGiKo5Tvu5qe9\nMCM3/wGkipWVWMqC8IxtJdEPxsg8Hla4YNK5Q6uERtwDAW1kB9hmD5fmaxND\n3jmVaQub8gbKxb/17aAP+7dZPWS0+Tl9yng0kAckr8T/cDLOt1c2W7xOhlXj\nbb3j\r\n=BRN4\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "f2d127526f92d7cbdfc51ec0f25cea9203c5efb7",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-0gopMgFMVBtJiYTwsxq4ERhbeHV2iI11fHt52fguBr8eS7h61ufp3uZy0aapdh8vQh80S2v1rgdYJwAWb73r1w==",
+				"signatures": [
+					{
+						"sig": "MEUCICfG6B25YBZzoVhE5WcbhZrIAYYrlCBijUxUn5+L/2B4AiEApsYk3/cMBjHReuxfg4rCIay+Pc0Q3T/RDf+mB17kE2o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45717,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBM6dCRA9TVsSAnZWagAAdcEP/jmlaeGlMU5tPqPXBqak\nrqZM19yEK62xSrxXaNs1xQJ1hfCySRw67PmYaGoc5oWyFkBRJrsTC/B5mi3P\nW+RXX/4zKC4JbehhZ9K8zsWAq7Tngm+Lqwq9K3tGWuOSxqZqs/v7amq3vm09\nr3wfMpKxOZdh5T3eevaHIZ/q7hKvKkWAerc4HFmAQynn+6+qoKbt+jWFFHbU\nqKLsbGskvCFH1bpDGdaCWLh4yAnswwio0MFCdoaNj9L0HarKpfoxVPPcNtIF\nf/JhFUN/vPthvKQiZd4f5fAs7eZxRwxMqU2v7S29coYtZrY32UpvmZofIFT3\nMB/tNKWvdDC/7i3xZXgYzE0AaS8tkyNEnHa4f3hvAtW/zd245F+vf+41Zs6G\na14qdK5zHxHYihMredCzOf/MvvebSUkgcpObG/o3b3Wubfmyr9Np9/gJb3uK\n/QWcxWnj9K3mHEu4THZhxrbdnFT2LTtGI7BJ/yUW1B8M6YFW7j/1Wq3iYWns\ne6wYCOrMPSD6UirhaFTe6UXoWon2zqiZvAlry5aaaX17fBRe7uSFZ+WktMIz\nL/rHPMAh6PImarlmM7tFmoI9v/4OrUxcJI12Zf3WTJ8BoVFO45ffh09RNr75\nHGcT4atX8TdS55/IRAYMuntUIjbc1/QbAjY+yoeUOlqBg5f/LRBvrruLUBlp\nIxpM\r\n=l6tc\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.1-next.f435e9e01b.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.1-next.f435e9e01b.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "2f9543d0a09bf71d63d07feb3363c0c8551fa8a3",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1-next.f435e9e01b.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-rMIX5l/EHeSy5kcQY6DqcIDc9xkVI+mHSvE46H2dOBgd8xkQ/yNZi0RoXxAXUnpbROoiZc71jI3pkvO+en9C8g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDK+F0zp/meejVGbVtEKkHV3CJ0pc9yrdr2AKjstpKXLwIhAJGoMVeNDVHKBxPBGRCWCKRS/oQ6i0cDTeAv4AC80NQP",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45735,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiFhLWACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrzDRAAob71/6mlX7G8rDUzmpQ8G6nCpuDnA5ae04cbmLoQ3PBlPyYO\r\naZmLNZzvqQ/8bf9PxWjnEIeIUD5DaqovYFFWmRzjMl/38pB79Xa2l1VQFDoL\r\nY22JpFxHjFa/ljex2L61wLRHT1mfKihJr48JFn/yxorrPSwV7rzIVL9DVDIR\r\ni9A2iWwl0uOgwjKYkdDSXIE7Z0jdChIfMbDsfKNjtFNiGhJGG1PfUpjuy8Va\r\ngHO/J1w68b1J/+1l+mQFo3rzWjJQt8ylCFWOABV0Q5TCNUSPkud0Qdw32YSQ\r\n4wE7hE+eD9UwXhbFSiuDL42ZO8GKa0MoyPuplm2H65HQGPI/O1LQrDcYi5gT\r\nxzd4rC1MQAnpZuR78par63T5klUAnq2iJKUFFqm1oVFPMWnyu8U0WF1b3iZR\r\nfRAMj11L3xgImjUhmhhObIDmRar9mF1/aMlg0Yfrq+KDUb8HEMMjE4Z2OwGP\r\nbkB3iFlUNf8xgiu6E2Ct3G+W5hx6NdP6zfFZo0bDsmwp3n4cIhCLjVI9h/UO\r\nTjE3IPv+SEApVWqTaEwRaSnECjzAh1ThWThKJoiVjGBtATf0cbDX5fgHFvEJ\r\nTvZtgcFwOnJsQnErwcN4p2thADEmwlYjMWhL0NNY/11nxM2SrQ+LJOdnVdN8\r\n68V6KRRddUUbWkhG73oGv3/axPuyvA5Fjck=\r\n=OCJH\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.2-next.a55ed9455a.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.2-next.a55ed9455a.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "d543ff7822e9c0d45383a0ef2a5ef01ffd370106",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.2-next.a55ed9455a.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-EE+wCA3aSBXkhIDkGidk4SGHNGe6SmDgQdmkXJOOQY1I3+yvWKcxg/qolF4dd0G8Sp1Juxx17qsCnmxZC1dpzA==",
+				"signatures": [
+					{
+						"sig": "MEQCICnf1SdGb3384UxWoNGMvS46x4YZBGFAOXzGcRPD6Jf5AiBZ1FGe4v5OR4lm+kNMyRXAMefgdluskYhqM/f9uKjYzw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45735,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiKGPsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpAkxAAoyibKwIr5EGfer5b4NhOcAXJfj7A5uxHIS/foBKjINemeFqx\r\nWjyRkPNk/h9DaRfIuOH00QCOQ+fkBeA5r1VLM/uNtEJe/fOgKg1Msq17cHAo\r\ntk0GSO0lCce1ftInHxQ473dIDpRIkpcTRoFMPcHVPRJaLQmywxE7VlnM0Vdx\r\nGV+BaCuHePOTA/GFrw2CtLjL/o/puF6/xU/BZ4pIVyBJwb+tdsSCs3vhfir+\r\nAjUZ7ftZGflkMjohCkItxIP3O9BE1pH5emhCzA406ibRaqFmwl1tLCsHH/xH\r\nK7YvKJyVZkkqC16TFABIHwLsMflvr6v05hh+s/8u3a8LHGCtZSHHns1mPnzB\r\nWRjyA8VTmFxb3neZJKGKefjDnuX0rF+by3mUsyxOcG+9ey+KhdnxbOtmwIdb\r\nLmdH6EjJpw2hLFmDp3HqqyxRY7aQRUE8tu979mvMQ7YCecqBTshivH4/+rdD\r\nwE6Ns9TrmRc665N4xC3245HBVrwlYytZgv4B7ouNRFTGB1qmojDWm6bZ7+4u\r\nafh69pQeg4RekCsJyVFtv1aDK2yJd5SbQ3OWNMQ2sfd7jpwJqZB8DbI9opeb\r\ncpcxy9pl20AKy3Ol0d3PFN8VKkEzpzg3hApBvNvBK8WbEphmYRZ6U4LJcbDO\r\n7/2V5z6sSGRJW6FqUfLKWd3fGRhzrTmHBmU=\r\n=Jz60\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.2.0-next.e230fbab09.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.2.0-next.e230fbab09.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "bf0c3ae9fc61c24be9ead8414c03e830813a0b78",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.2.0-next.e230fbab09.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-wT/s95z4n9PykJ6OXZLLT9f+i94hbaiBJ70l+BfBfTl0VFjg9acS0zX16oCL0BYzNrW71OTfFV1bBQjcdQsMvw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDe++dJzO7hw2Zw/RbQmvkgTyu9pyns+hdOUQXvQs2JKgIgHTpIHiPxtQSvtkwmzGVw9aCO6A8wmBP7J0MEdvswb6k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45735,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiKOC2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq9Eg/8CFFvC7Uamgx0JDH/WXG48INSoVwKdMSWyyU3/Zf/3PXjemm6\r\nGD3u5Heo51d4xF0eLIOc/tW2Qi3ku3vIWjWVf27vyESkUF1Su7xdpAIa56ZN\r\nYGa8KyVowgxh8GiESk0f9ZT1pwa8CLl9C3fw43L65TqmwTS8e6Ll4SYgP4IV\r\n+RR+xQYEXLYMBdoEFPrVQTsCPBgt5weH67cox68UJ898LP+yY6fpqgJH0SSW\r\no5/ejtGQb95LTe5RYGp1pEsZXivtdfvjNURGViesuBrMVwOi47GI1hFT8iqu\r\nbIHXisSloUxeaQTSTMX7o8GWNfkSQZydTUVsJsnT7B9fHfb38+LL1fcD55p1\r\nbAf+IZ9TlJesYwcf9te8900qeuhkhioXjjCcout819bSQ9a05C6qPHd2U0Lv\r\nAOOvnZpEc9Ve7EjMAHuAeFpSQsEKXWskwrH1Og9QEukSQ/LuBNIEm8FjpspH\r\niXftS1VL+eFshIgTjz2GrGjSfI5TdzXR3iWyg6YYMoUmVkB6v1lRJDJmTb97\r\n/KkRzAZsNEhwSQRFYvWIiGAYlcY7sDRXaU6A6b7KBWEOyUgVkXNY9wIYJzd4\r\nsgvXS4ytmw7Lj4b4MgJgKGd4PgBzaOxItfQTjfchKM5ByUZPJSuT4rtJmLJD\r\ncUQONd7+1Hj7ssWaO9uqfZFa1h8LNjUxBwU=\r\n=A+Js\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.2",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "71596ae30b390ddb23680147011a26dce11f88e1",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-oMJnM3cJlu1hQMO4XmTFDhNPclj0cLRIeV5Y6uIF/9oNhhSfaMFu+ty0B4zBYodqwes/vbndwRg4j2q2bhG/Dg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDrLxnYWgtWanZQYS3KsTL+QVp2OFv19COJ2kuKnz52SwIhALQuD1wY38X/GrRDAOvPtguCfmHwEwyiPJ2ADMY5jpoo",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45717,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiK2JeACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrH0Q/+MWkrCrc8x6Rz3iAi4pc2y/3XIRFPNlcHBgiWb0yiFkuJPD5i\r\n3O+OLNHfo6hy/H9MjYiRYYynczSalpjlgZA7jjl4AZxGeUtd8Nn+OeYC66cY\r\nRACAxONFINwcR0RSbDlzSBoWfEhyK11k9W+AvYdxvXY+RxctC364IRYzS7jg\r\nwgywyhuuSsYYwAS+/ymoY8Q1LkEZnxUf0zRBvmfY3WfER32ze8bVEhSgHpnZ\r\noF5T+Y6wwqsKYfhDWKI6SUb26+m4s+/PQCDq+916q15P0wFZCG+5stOBKlH+\r\njo+2j3vKqXmT7hUGnbWsnz+KGXPjoYOZrWmnZziJ9o7VvceF4eVtU24t/lYo\r\nyA/pilm/Nuynbv3vjZMhRVbGM4JhDpkDTFHP7Fi/DJ9Xgugclz7UwqvQnQ3/\r\nkvtf79Vx8Y05ldc5qnAcvH+6UKWeKi1YZD7ubQqzOACLOec08iDT9LAcCins\r\nfpyxz++8st+OCuzHS2GiMRY/wRfl22ur8rCxlfMY+NXF4LHU43IBpHzM39fs\r\nQBTHBZ/kIu4qWMC+QRoRwhcM8HNNhHry7wWS1JRp3ut0FllsxcgOPxuvKCZu\r\nUazKRimWv32BQUUe58D+b0vUEVeSe5W3FT10uHXUkn8qXNYVakpqyD+By45Y\r\nJUTyL1zY2t5UjvMvMxnh5rWAs4unlDOuMyA=\r\n=pbtx\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.1.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.1.3",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "3f9e2686e93655de13a4a3a7d13e84d38aab564c",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-moP10dIFV/r9QfG/3B6Qo6rlJNgxBPbdgflJtrFTM1xjnScnYhJ5YuVdCbLM0jt3dhDSXJ5gTnZEwPM8UoY7rg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFJEVxkQMDrOMGmrO7j4e89JdegEPCkoFLCiT0vSTFXmAiEA4eEacoy03K7EHF0G0Ks/pC1jDwhpqMKpaJ9Mupg6dA4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45717,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiXrzRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrY1Q/8DaBzNP/jh0kBLbtpXHu9ws5NO2NtLKQ2qpLtDfaCIsS8oZUA\r\nttYYsdEpF9joyKQZHlOvVGrsBAoULQLCZvUH9XIIQRovtFYduNP8OPgAtBRn\r\nWnPbA8yDmWZ0bjkj6CGIF+znscRY9Lk6dQ+WgU9w/1cWMoaif6rgCjHEyPfn\r\na9J7IcjT5JwFRqJ6e25AC8euZOSX6Me95dux+f4ukTOilb12P0LRfTez0uwa\r\nu7ux6F1tmVAvF5RlhJDh7gDojhGLVuIkHJV/BxIyrcbZqBpErDoKHWa9LtOx\r\n5+vXF0SMLDVIJlIBvMXcdPnvi721/n+Gt03NztJqbk9vgCHtXpk22bXoQeQ6\r\n9jt1TH2M5PHa7d0DmK4NfgCD5xwUA0JqMp4aV7jAxeIQXyNrKEuwxwXyTG/B\r\nD48K6tFQLuSzieuqui7creagcQ64mhX6sdX9xy+AU62jbiJKKV4fGJ7eLc62\r\nDQlDPst2VxMy71MGoqCxgXeACuxfmGhRGs/pko0og1ulP1uUiCuGYCjLmff0\r\nfpGIdauaI1fCazUEgYlmc0PzELMspaImG5fIHS00zyOILyMNvAfQ5hdEaNY2\r\na/zgGT5L9nrPl007/FyIOH9PjC9UXsMvmPasPFwWBqNKKZYYj009jQq7GwAK\r\n+WShnY5iz0HU+p/byGh8pUvFRKQrqAhUj9k=\r\n=mFgG\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"3.2.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "3.2.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "0d4dc9ca50ed0cf1c14966db602351b13625303a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-XK3Sdpi9MWoy5qPHnRroY/ypX0VtT5yI5809u5As1P/3k4vlXNw8USH4lJ+rkurAOVqqN5mFlf2XAL9AkpfXyg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCRnLTunsWxdgZl9U3PhuS0fEOEZt7XrzEeh1g1Ac3NPAIgVgXaRsFxDZ4oFypm9auD8BSfPauGRBIU43GFaiLVCx4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45709,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiqgxdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoAnRAAglujgHe8Rg692lhvdos0IP1rL3G/VLI41yPByR7lp8zm58DX\r\n3d4ilyVw0zhlICSHubOsUAo/Esa3TIJyWPNQu8Az3cVp/X3FwRelFZngF/4x\r\n+b8NqyUeGq40U6aoyUltf5n710UL8DDKoGT2Vv7tcP0FaBFthpJep25I6fVl\r\n9faHqhx/DQ8iZwpznVXjIPJOxDUqp2TGdD3hQ8mxwTU85uDVLInCoo3tRIpi\r\ndrwsEE+WsD1VaddjVy3K13POjwKrm5e9/1VMmHVq8L8gwP9T8PuJhxN0VaHc\r\n/cCasND7kFxOXFCTAJw3hGA4igraEhIyYQpj73LV8hY9MCuguqT2XM7HTrfd\r\ndMTuDRsUNm30wU0jJCtR/92C8yMz3VL+qZfbdyOa8roBH+OLZhft5j11l0Dp\r\nzmewwu2/XtD3R+BXpxNj0hPx41MCxYmZDV2FwO0XS/xTL30aUukoaBPM7NLV\r\nsJGeceNEmjsqwd7zKXJc4n5S5MEDmoO4ZRwFQa6WawJLwjQDprgCHtVnX/T6\r\n1j9xK7HtvAKE9fauWmi7yJeg0WypWZ4GBZxa7kWUY13l1TfOs1ChnQpkfVWW\r\nuuiAZstCaj4NOm2gqy52K7T8Zr8GRZ2iWIVVq0NwJFqcm9q0lYQdF3pWgRhl\r\nMijrD77VluLPGUmgaMmp4Nmeri/1LWIUzHY=\r\n=uO2j\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"4.0.1-next.d6164808d3.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.0.1-next.d6164808d3.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "a65651949585c078223a0327aa281aa8aa5ff6b2",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.0.1-next.d6164808d3.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-5Cb4DNnjQlWJyXENrnEJ14bcdsm0oBjGiDBLLqaHoDtB660C52E5GZvhg3+nZILOybAvS+GKQDKVxoqhDSiZGQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICVJjLZkTzZXzxhJwhyoDk7QDzXnxFJuwjVMWSnU0MeWAiBvRdgaFbpCaSEG33JPo5AAQJ3HtzRw86CTlHtW4wSj1g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45889,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjBKA5ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpOvQ/+LaHwgnOfK4nqV7QO9SIwxbNo3/h9PnhyRe1WRvJQFXuLz4CQ\r\nS05yNVz+F5fFuXPWZfTC5fC0tp9LBycu2oMo+4W5ZGZBH8CWvGzMMpWhLYAE\r\nGAavxiSjiry2CWSxWojfZfmjyqwtK6HQLJlfWjiZTBklvsL0uUXZFG8PJUgb\r\nENnkvFNO+EuiYuXYSZ3gnStgLAdait/2EGXvzvw0+tvDt/IVa1Bn0th+cjrK\r\nBwMcHyBZahVy8uaXV4rR2m22My0hW5N2WtSjRsIyrbby/oM87sKQ6AvOfQg4\r\nFfZFY8qtkbPaVeKS2g0n2WvcJuGhK+KfdVAX0RUjqazJ4kGPqjT/6hvHUfi6\r\n04qZgzJ45jS0kchJ1S5Xb+bAME40mwQPm23pGhqizM7mk3pxkgcUUMZY+vPg\r\nrrORWsB4kYhiTRdrd4H+zpUyaPblQNDvLouThVt61/tlSGy8ZlnQJkWIQpEO\r\nNYQOo0BwXTqbrU8gQ8WpvorSsaavZhX9EpqDLMmWI627vxg5SLnounQyGbCL\r\nc0i1YI2iJBQJVAGat8QzRI4ZF75JSPEpGZUw2pwm1dF7DXuklqn7jUEcLZq9\r\nFGFNj9Feq+dvliBHLcUb4woKpjhFvB17wOKxdVMfE4RdbkKNivdCLjOR9cx3\r\n5ZS+kTdErr5fNo3tSpf0MNo7UKpxZKyT18c=\r\n=JbTU\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.0.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1fea56965581a3eb0a98cea87f73411f629ca12d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-AVbFAWjzzdLN+UUOa+fwgIejqg6Az03lihavdxRK2WEeEpd9N4SkaBUXtTiV8t9LAbDYnpLFx22mUvmD0/4+pw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAUPi76xNAlUuJry8dfXnqXPzGjKZ8DzTkeSUN37yFyoAiEAgnsCN/jyeSsatruvWg/v7K7hmnZUEc7vYe+gXh+TSbA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45864,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjBieMACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqBFxAAj/RY5tcwkbDhfPqFuwOO+epn5kPWQ25McYIPH4/wGHTChK8B\r\nS5yrirftZXAR70Ou9MVvscgJEj0t5kVUvsovq4s9flb2e/4Z+uXZbRtbbgDG\r\nQ6dqZ/ZwXgfXMbZB5hF/rB7ATiWT4mA+E8LVlcjRvBr5YNmYUzsmuxeePlRO\r\nzpliRWvd8YC+hjlznK1ZyeO2pleztEtLGuHbMAcoWIrUC23BBi8E/3w2MQlW\r\n037zITZrtOsmYozwgwu+JhRLgfUhezSJgZd0Y1d0Uuu9TzLPCDRcYSYVEcKQ\r\n16BCKdGy5l3fIzufbrKXxLCgdGPgpIwBqfRmooh+sf5lPQyujzamDHnWCUJe\r\nTJEvMSWdw3jOpLVwOTblZhEyVDimcae01kk/qAsa+DtW3NsRXJeKxCGYNq+K\r\nWsvJkV0DlMAq0Ztmd75OWlnWIri8iA6XOa2JmWdLYhUk+Iym/lYndkSaU6G6\r\nN/dmv1TSWMc8i32+U9OaNb1eKMu/waZBC64NHqzgiJAYl1p6W8+77ySyT7KG\r\nCQ8QimvVxsea1EySRIafyC/iQn+A4kpL+2hje09JwoNvNtmJ+g+Mmb55EphS\r\nGnfca02iCc9LoWpM5faHIIJqqrDXEL9GKJpm0qMCjGcXb4R9J+HRJk4G0cNH\r\nCij72pbH1AxENAzbMYjttWYwmz1lRQbA4Kc=\r\n=30Uw\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.1-next.957ca95e4c.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.0.1-next.957ca95e4c.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "fc12691d6e0b82dc645495559376c0a29229823e",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.0.1-next.957ca95e4c.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-zkxXkcw8zcKtS0cbJBvx9Ores+w3LSG9shccDXjxvPU3kc9depvg0RsHZjFHkA6WlU+ZM04XFjFoDcddJJIMZw==",
+				"signatures": [
+					{
+						"sig": "MEUCIG7rnHQLdRjP0+fS9BZMBAxBkgcyrraWsh6X3jUh21TLAiEA4Krz85Ce+JyuimKyaDRXsWqKCI0yi9lyiY3GTp7/cWM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45882,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjDNx/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmorQg/9HEOgJ98+WF/9ROgYtHo6wy8AYufoQ7E6IEgUslC/ocq+rpgE\r\n1kpfKP+fDrhGMu85SAJj3cj6SPztptRdjkCHQpq6ElidaF371PuAJRHZZqOF\r\n2Lyt5Np+wBNspCcT+vpMjfr587OWl4/q0RXBDg5VLLdZ2FWHqrRMRzGKabFN\r\nUNv7RLrKcchkyVHNNMYlMygSgWE8MuDrxv0qf2fvTPgwNl96amun5TKWVzzY\r\nbkLY8QGrq5/ghAZ7OHXe8N4Zmzo7jWayTGjhe9C+9maharHNGVNgOGYhKbTb\r\nHVxK1kdWknNKiaSIvsue7XwJpqwleY8jyn4jp/xodeqz5A4c2wYjyd+G9YFh\r\nnYzOrkonmEVCP4kmxnA/T2tNcIyQHvWbBgobGB+6hNP475vyAFhB/CnnT4qR\r\nLx28QWD46OKEpikGUqprjo8OFZQfMcDvnrRaAyo2U9vlvv8pJ1gwU7BDuLHk\r\nPcFGwuPNi6Di5sHDSqVKgCftk6znypNqCFDFJXO704JrjYBJ7vHC3S0jMo0k\r\nLOVBV49uSVoNx3tdbyOGUfKdUgY8nLWWoMpaa/QiEbO7unSNi4UW5B9lun+1\r\n9ZFb8TNH1XFUFLTaqKF+t0h+ltHsnMB5qCrep0PA5AjlTEE/FCBmmkGQwsmr\r\njUJ/LSTq/GvFeRu91+bdf/VlasrIxO71k34=\r\n=x/xD\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.0.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "fab0201fcfdbdccba8099ab45d4f6691f7166bb9",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-6fNG+wkgipoLlZDlwdyz60x5qrpc+mV73MvI7hD/+6YnASKxxDbJo39uGCslMy/SBgxmmzKWn/wHEFNo/TIcRw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFgfTQqtHlmdxKx1sJ9NX6EzQoG6m5JwHWNTNZZEcD1WAiAJ0APprkRL5ef1iHsqjipwMn41NQvxjcDVVddze+iFlA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45864,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjKbABACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqADRAApSRVpsj4qEHkmqCQOyorhfy+mME8IxsoeTPo8gJjTugH8LWg\r\n0fs6gObeJRE0OlCbUnLq9BI1fx5z1yovqi2L47wIFGxV1aO9W7t635km5r4a\r\n78H8cGZcqszjL3Kkr9RZQydkWEp1kwiVHLJ6dUg/kz9IGzrYb/ZwqV5h21Ra\r\nDPCziufuLA879O2EyNvAbZREezyFNsUN26k+VFbABiHDTtt/mhtVEqGbNhH6\r\ntUk9A2ywJBdm/lWAwqizdhjf+XgWRhQQ4ABCazOV14kWybCXZ5+z1S2HzNaD\r\nKmK0WyH3V3JvN3tFjfpnzhxeljACyP4nhehbdaP53xZ41nHblivWEH+T4gw8\r\nmpPNKKb336dtzT6SxxT12lvv0D4OlCzSHwPKxpK/n2CItVSo0wSMsjNgAg6f\r\nEPgPipyqKLJK9fmPMqgsXT7/slCgFLJMNkgeYj1RxDBCMj/AyTmCMbm3cRf/\r\nrYaEgxJbAHbsk5EqS1v2ivk5BZi+M+k5p1FELK8781cnls1QTIfewvzgxPph\r\n4ci4G6WR8PqT4I+zRvPvi/83tpyQk5yjwUiqOVArsqEJnyG8qLsJZTXY7k6J\r\nMrqA0zc/l0eC706gFNwYuohhIs6tTFAhE+wAy3lObiN4lQlQ8uodE2FUgqfH\r\nQWxFpJ/Pj28mSlgRPlzCoRDpnau9cANWnuw=\r\n=77sG\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.1.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.1.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "c2ce76ce61d4f73ffb34d1045fa3167a29fff36a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-q6MEKJ7AYv/bVWqrUAkfsvn/FVGtLmPzQi1BQdpBYLKMdJnzQElDMDyfA4+N1S2dsLCL01U8dwzUBUGRWLSg9w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCWqY8vxPLsz1FzBKEnwvTGlY1KaCsi4ZrldeLef8CkHwIgbDB4CquzpNa50WptLqmMnFg42Bkd41S19dBQlsyByzI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45887,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjK33XACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmopRw/+OxqsBftbWb+rsrubz8udgD3nnU0J8QFZ7pZnKFd0AITWa4r7\r\nBykqdDc6WZIXwuQTsoDRH8OWwyY8HkPZhMsG0etBR+WJfSxoQf+jNS9vzekj\r\nEEzESS4iC8E02Ut7thzT7yskYehQLiaPHNjf00jLKL9il5yUGc/zmQDVBjpZ\r\nk91xNoItGzFie4THKsWbApbKU+VY339Mo/Zof2xdoSK7PKAITRvRpLMPNf9j\r\nQkPMgfJs/ovjtNxSPT4E1bdLETaCjc/xvunosHXzk5K1mQfq2MUuha8Powmy\r\n2+kxy4psOH23EvLkb2X3Rz7pz/6zuhSjNRASBxzPzOpKsGG2Pm+o2hjd5w9v\r\n0YoAd2WdkpO9megir4OpIU6koUiBR8S5m12VmDxcvJvNrqFeSX4rRfrJ3Uml\r\n/yS1Lh65PKVQ88bAGuL8PF0rGouiu0MUGu4TO79pS5XjTZXj8K8hTAUo9jZJ\r\nwzExdeJuZv11ItMVsY+cexXVKCISqKCaImT/bttZV+L5kPV1do9eVfZIhJr4\r\nu4qkTjXze2shOHyy3QF/YnQ5PWKi9F0Eu3HSN2R6Jmb7H1e5ugLvUhdGVaDH\r\nq9TWs0Bp18Wae0/euQQxqQ+1b4UmXdoYisx1chYx4MqyN0renBH5qoR2md7D\r\n9nAQjW4ldtx6OnX2426WU9LoBbC7KH7JceM=\r\n=Qsza\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.1.1-next.4d3b314fd5.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.1.1-next.4d3b314fd5.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "8b6b0a5b322a39e024ed5bf45f2691bbb5a3f2ba",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.1.1-next.4d3b314fd5.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ZaVewQtcBK/DSY1jVFiGmvUEx42W/kfwA2ZlXB5FfVLNSq9RjTi3II/92vRK+8lOZcYMZn1I1dPXsFs/o6+tPw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCSWLocypkG6IXUuuxeisNn5IW+139ZdKBYI61RyXOaywIhAKsIAHkGK7RuBMobIoqt2YVukXPMvFL0Ar5ddJQolPiG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44747,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjMqi+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpF+A/+KbsA113cFrQbAUMeXQb+10Ot+bKA/W3btFf9SIChw+/8vgW9\r\nq0tsytVowJ2ZrGLlwi1jKqHIUO6gHsxuLj0hIWL1uDNLl0/BgMyuwdsuwp1V\r\nANK9rhMCFQ8i2wDlBo4AupwjcOv8EhS4u2y1XfXMnEG/lhzCwSKhfMXge/9h\r\nPEKdbudt3N/0cMHdf7p0Jjr41ExBLB2/jwIY5POOATsdu4mWwlrJ1467H5hV\r\neyDXRKPfTs5rczGHqkB5iscPNX31KjOuo9yRe5TDdXJt6Cyb2ub/Dza0i7Iy\r\n5q2fnrYdbOWjNg8GBEagMKAM3Fi8Dnus+WTg2kwU0KL0Wv7wqsQhl8QxKwHe\r\nnt47mPHAqV9POjin7bK+GW9HZ4sEURpb3afGv7Xe9sUbQd9dtsnNSZqqe+oY\r\ne32V2dAHdzRBTTNXWvFvmBgWp3g4wjjjvO1SIt5cpZqbRQ6nWb5bIf5E6oPz\r\njGkQpIG1ewk1qp25/wylL0wjveonvixH0okHU5wW9p3E5EUc0bPNs9AfompE\r\ngwu57CtOFR30ZYgSDbIF2cIUXS1W85OQFSnTeoWG/pLGg+7eg+CioAKzriwp\r\nR2kSllWc8hlmAngaqd9HlLBcVW0W0uB2POOml3ID4MUDPnlVthwdh539d2cB\r\nT9uPV/MD1V9mvS0gPBwPP35nf3yZqab6pGo=\r\n=Vhcw\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.2.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.2.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "8c3204883da3a01b60295f60a869467f7117b576",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.2.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-me0Xo4pQt74Z7nG0feleKWqy7yORvd2y6r9Fv1wf0+H3o7i7lkn61RLxro5rTVBvV/IYsosq0lHqhgk+3QhFkQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBY6PcHVl8uohA1D6BskKTH1b46cv09IH0+X9rWC91wFAiAa/sEPvnYWvDVeef7s1BOm1LCE5EobBdgfC0XSejm0lA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPTEpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoZ3w//dU1/04k+YmtMHSwmWLa58ERFBxefp7aEtppzzNlOfSavf1Pn\r\nUGhR7mY5OKRIv2PeYsGfHrKBmEq7PN+xrOmsbGxQSCBRql8i+cOrm8hUPVoD\r\nn6EdQO9YneK/Z+uzMj0dDjsSE3KhzuVBpUitR1hKBjE9FwIrh/O5HOUnOAUw\r\nnbp020pO1cXdu+GBu7vj1fNJDIGoeS1gD2iwcNCCuj6LXO/CgLAAD6hE35Qw\r\nZyeAil0sQ5XsKQm1QZ1B1kQ8pkUaOV9XZV8De3J40dwaQW8rIzKStKtc+tT8\r\nB0u0HgtACco5Mn12L2LL7fLhh5Ebk9/Ok4TSqGkAkng4zR1UMTayR2XrE8rd\r\n5SHq9MBXSDCjuC1Br69hjx/MAbv3bJaIlak7TqzN7i2kPkkg0q5dhwxbjd/I\r\nCs7zXt2CNOvszPD3VGL6eZ2G1+/BDfsM+u6pu2gHVysuU8uP98iVYX50mu+J\r\n8aM7ue/8JiKYBQ2ACwELOh6rRUwscpIQXHsTBAR/gYLUa3TYyRclmx/sXhsf\r\n27OhO+eb88nvL4JfPzVeHvmRXWxXe4skgxqWNYYWxBuJmWy9lHLsHfM0jBg7\r\nlD5IFjx12HXwM+B9pc84POSbKhCDdV+p9egEUSEOKdE713dgGg404u7TpBDf\r\nxCFTGyR+fg4Zz68LYRm3gCJcZh8+wE+rOQI=\r\n=TaBO\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.3.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.3.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "639909fdcfb52e32954a4808e5e68637324d0e66",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-7AnWnpItOqH5YEcFA3RgxeOlb96R8KDWDPAZjZ6TpsdOVjFynT8H3Buc4v127BHmxuxKGyd2vxPIQIzC9dLzOw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDSgh3MPBFyU4K1eWTveAS2QL1hdyDb0b7BJrHVWef+kwIhANqY4gODCUAlT8n77TBtaJ4Dcib5O20KIP7iGkeUuHAG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjUC3oACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoIDw/9F0mqvyLSZ46sA79TpHqUl+Xluwh8dFsP46uRmG65gB4MivhE\r\nJgVZD5ASwFUkUoIggRdgIMjZjEpQ/pcOG579Hv7iwYcR9+DiFZfB3tjX0HGe\r\n8zxSNGIyaCkpgR2tSlT+7QbetICn6exJ33M82rKwiYzBks8A+WMOAbF995QH\r\nLBEil6t8y3RzRFWqhlFIuq5DC1mqh7t3VF0F06z05inDIlnN7lB49dsXZqqZ\r\nJru/aBYeUNViil8/OenDEHYHrosTBmlhZf7hVvFa5XTVocgXgFJQTZOYTNT/\r\nk9HRi3WrCgg0pdFQ4kCsF8cieodAPimgZH7778OXu9SDzAFC7E17kxHYAhLc\r\nIqaX9fXM5YvW3RTNhFIjE2C2m5UUE1kkWzwRoUbZDkpAj8I0n+6gI0z4H0Ob\r\nRjG6qmRyZlJXUmEB6PBcm8n/4SfGApz96IKQlBrTM24/U/MZr9gvSczo5Iw6\r\n45XSDq/c379E7vBuR+Dy7ckZnYLvMpf9BISnOhgg5Nd3FW1bg+XXA0wSGljy\r\nUnoOCz5IARGYJmN2Yy5rfjENLjNPCxh2S++5FVU+HgVwk2/voSgkXuMzNlld\r\n98esa7tOUulcjpR/bAZkI4n2x2yYPFDZdU8/Q8mS6mwjSgwbkSEeUqTfJiHX\r\nkeATVQQic60+QJFXZhVLHURzDGhHD29xHgk=\r\n=HNAy\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.4.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.4.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "96e705f1e947336065540d7e08aa4db49151a43b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.4.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-4bePHGzOjGmJzuq81kSPSinsrKclMQEoaNqZFVzP0vOwvv9eTiBjsoFPQEu4jdIBb9A9wGOYmTK0TO10pV1KlQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpxeXyw6EU2R2RWY/7OMLIGDMHr1E752Ye1mV1dTMckAIhAPSJvL+GrNPr/NC+sNyEM/oRPA6SMjOGmGxflhoLM+Us",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjYo3UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmptVA/9FfzGHEQroLy7scrZnCo0V6heRVYQMBJXQG35zIpIUlXyYKxi\r\nIE7VliYDrZOhm0o2NTI400vOdPfNQRQ7oBYRr/3Sq0qUg+UH1N9ERlNEGXoI\r\nXrJEj3w0gi5knJBGrVxKbZELdqMcO4XFiBVRK0AVotrLFmiwiBuTsl1wp+wl\r\n3L8OC3bccb9nz0j4nJ/11O+NW4QsrFNObZmM2j4hnyi3Yt5Iox73/bP9Ed08\r\njwV2VDDsItJR3gkq81vO0hfjsm/uy0iKdqlrFQ5crTNfwpopbGLRcrl1HJLS\r\n3uNUtuw9lgeHaSZpeuLZLyDcJB8Y8BUaXff+nkg4s2z566bgdpAkCT25YOWt\r\njXVPRn5aEez54x4twval4Tt0XYgD87dDKfIpiWbokbxGz4LhFJmuYT6NVc1G\r\nqRLNkf0EvgMOzIxWRrRkR+FTFwrtpFwdTGm5EsduDQIvUeSJ4AYPg/n02e/h\r\n5irXxHv70d/FwhWC1CGq3fNVyQ3HHwd/VI4Tlq9XWTvmZDK+i3MwOrWuTLQh\r\n/2UOfuK0UbHb7rO3OK6M+Sa25QUFqG/7FDZ5hPKCmQ7egZV5qEkM0Tyck+K0\r\nSwvjb5tSGa4m7IRPsTM/uyvdEWj64G3ODzXm8ckhH0OwyAlN3bbDxVGhk+El\r\ng1sdPmqh9xA/aqGLSa513LxpmjlQHZBLzDg=\r\n=ASYy\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.5.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.5.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "6b1a8ac8875b41a800bfc8e78102f8ac85731c3c",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.5.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-/5TZUHgy4fh7L1aQJPQ8dKjaWBio41uiR4Y9aGH0oeg6pXdQlEOtbAXQtTAHeGyE1vJMYJUVHdRWdLocpGQWgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCZk8Wk+lPW3pLtjGXOlQ8x69rQP1RiD1OMt3pd3V4LKAIgZW6eAlwREFPj9IV3q5CiIFoyOfNaPOr4+njLI0Dbins=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjdKioACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmraKA//ZNWEEMeyauEW2cDQJtNVSQku8rsAR+B66x6v4qpV4W1yLV+D\r\n/hQ0tdP8Lm0lY8CCI3a66kiaYFy+KsfBJtslvWiM4vbOJTi9V53z3aDlkCIb\r\nwISIr1aPuHxBt24st/LVFNkU1r/sw6HO16hRpunK+l3w+t2CYY6xSV3LEAVb\r\n+48eao0zUpBlVDBlXN2ZL1iFGAh2LyX48E1cQ7tYMV+HFAZnBaBd4CdzNCPD\r\nwFFu97YuQnKaQEGs+WAj46d1/HRZHS/IJZE9GDqWLaj9KC3xKZ9Gka1tRG/U\r\nN2264iK5nmDhWlLSSX6ptCin9v1/Qv8DqZTW7x0/WlbIA3Ylyy8Zbv8gnM/y\r\nYcm9uv+SHDOCuqjwfmXfbel/MOqwE1jz5eqokW7BEDNMiHvMZEfz3c6kDNNj\r\nQ05Q1h6Y7LXu6vi/Fr/4yLjTZoV2ewLyUSzKzwb57eKIS6O83L3AGxlFkuub\r\niwAN07+rcOdeOBNeBT2EeBJTcNYWnMfyCiF6ryH5oET6K/8CGNUWrXXI0EyA\r\nAPk/wHgbFssOcktnuRT1e6kysG/YDBjEQQqdFbUNRWIZ+GsM8J+2FRGX7j2H\r\nWQqYZdtO0Eo4vGhgw0hsLGYR0zx0LAEXqP3djdh7hE6SVLM178HXRoGF+Hyn\r\n3MVbIugAQx69899+/s0ueYUL4JIBmaSwCXA=\r\n=2Xyt\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.6.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.6.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "b80d7e33f9117ddca855ac4606820b34aff9b9d6",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.6.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Ca20Qrn31jVZ+6IsrXqBJo81FqVI3LUE63tPYyICFQf6GX7giqTt4GKnHBUDNpbwbHiV6Pk+IlsveYundvCHqw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDj7ltTtEO13fiqRidHta8cPHTIGkrYMFUaogzWxEW90QIhAPJoLV/3nTERWNZRqxfghNuSFcG+TNe+hgzWwPtZ+Jlm",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjmgfZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoxRw/+Ppufl9QlyBr9jYgAfXVPBA2OilffhBSTNA6L44BJWRu2PULb\r\nZ8Si6h0CjY4Ru25C/NKqZZAgH2CqMtxCm43jcvTS0IgGBUUjNy85GEJomr/e\r\nSRnTchmfSn7u6aS4w8JTouBxN+BPOvjupFzbxTJw5+ZoyExD/1l6fq8Q3vPi\r\nxgp0SoFu8ICcyFAvXWtKbJGv1z/qeiVQj5jU9kUl3cRW4o1zcGcP220/xwoY\r\nFf/VjoaKUe9eX7dBM8YE6LH6yG1qRXpLrz/d1iYzB1++dzQwyO30AFShrVvg\r\nprNHlDp1T5Th6EbQvnxMPxgHuEORdpf0M6hxu/7myMaJbo7LD2qHeEXxwZei\r\ndQV/PYYnKZ0W2Uag3o48EDAQbaMiYKimMQUV2YaNjgacj7H/SfYQ/V+f+5t2\r\nkTaGX+Ww3Ek+ztkrbxHgf2PckZxQGRH+23auAl/rtSTTfac2k0Jp9CepaEn1\r\ne+ixqOtlNWdKo3VVEmgioOffyKbUl4NKZhvlM2VCeaGOZvTjrkeAV25FAxfq\r\npSYUMxsabOdP4mH/kZ77VkA/j2dEpEfyuswrWzVmA1Ya7Xl+N2LcXTD3NjHp\r\neWCvbv1j9ryrWlY+VR4mOqSqJihUuxVfq8d41JI+FSIzSg73Ev7hakqj3Abf\r\nIvjv4cI7AgELcDxIJprZEduYH+pkrzSVWPY=\r\n=M1+G\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.7.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.7.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "62a06c25d20702524bc66a937bedb6d6dd2fb7f6",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.7.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-I5STe1MCM3z6yV8QyAZPAXe3ahJADAJJsQOYhO/6FEyhToWSMHFqIKRg4qhRQjSvt2dkyL8gqg2cIcjwvVvrcQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAh6fe6wFaDWbENMvsyyj19wgzUQD3frHZ04lRCtZwAMAiEAjJeqOnLHDVCUjYy0QSV0TezCCRMoWyz1kpU/MvYSg84=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjstUFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr6wg//SF4LmY7X9qi96PbfOo8hykYnQ41SmaE4xgVuMYk+pj3MIUeS\r\nxySatMhA+qWpIx8KqdHhkfMdw9bR+YO5ICFzc+aJvLYIyKk2fhi6sE4kOCsd\r\n5E9viWAQr4RNnjlibvtjaWcNjOC7WZ4caGkz1ahaT1m73Le2LU4vkonwdTzZ\r\nIvjFsIQLn1+QfB7F27ZAdRKPnnZjHmFfzATMgxaRHTuesng5zx0YB0RdDPgY\r\n/hQqHHU2cXwe+XDrPgPvOAwj2/7ukq6u9thvDdIYPC5Zq1LOJbbbo5vWrzSR\r\nnFMf8WfS1ChaKrtQSezpbpB1zyzTS/Kv+wUu+TME697Z8Rvt8XvHbgib7YOk\r\nK0LBXd/EK6Sj7mP+ggWelrTG2VLbxbYHKd/OMAzJ1dsxUK/8kT4+sRPpT4ae\r\neJJGGyZWMR1B4CAvNiOX9JXWQmKI+U3ZFuq0PD50VWh2GSMPxU0ziGkakgNf\r\n57reCmwBfRb18f1E1GqHUX0ysydh8xK2Gz1xNdwHFYkGVXfGv/A29ecqac+Y\r\nzU1mlW7b3BlBRu5euR3mFPV+8egzg6kc0IxWfUDesnAsrjdD2uBYHBl/fByH\r\nvneMuhgGL3ouoFGVrbfFj4W0RU+MsbN3+V5ihlhuUheiVBKrZYECbKAaM79Y\r\nJfKFvn+gcXmobRGLaw9UC5m3KRakOBJG2So=\r\n=p/SV\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.8.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.8.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "c950968c4871068d67ac1e96c9d27942c7917a0b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.8.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ImbHDvAQhiizKcdqGT+vO9WVinWlMKbk3dTLaLITFFHsPjBwhBPf/DXQxA3+2NjcPEX10TpVoacuPmYrxUStNw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHFB0Bc0e2/jzgz4aC/urxaAM/gCWZ7oHE2A/PZKIqnCAiEA2GX4WjKfPhIO5NPhXjD3zzGV7WMi3E23d8z/HPmd+YA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjxsj5ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr6BA//YrhI48P6DZ6uqtVMfhmqRGB7bzMlni3TegL7dFi2Mze2tAe4\r\nsqqAsYmMjuZlPgBhh9+5xd6J0nWS+fcGUgNodI+GIDEcHE32egvGTQ4N6BYV\r\nvvFerXAtpQdoP8WAceGEI6vFcm0emn8eVXm93QiXwbS8ZYFBBBTk8JWHEIZ4\r\nZU2kJZMu08A1wG7g/YN4DGp2B2Z0yIl7M2//oZLRUdKhdUaX6LCCy3F8MeXD\r\nhsFLmdpD5Tr4mAeU647gSBhJ1HbcVDmNqEfNumWEJV+MCz07du6ve4/910oa\r\nmyRohzp9MgPSrqdaMEinZFBlkFPS6pHW/PcOTkERHWMJiK10eBP47qiMvfVg\r\nZDwnXCSYEWJPdVxS64NpfMQ2kafVbsDwtDeEcFotZ5Z286SOboBy2jg64Sc2\r\n3eLlJ1xdPzlebBnkSmq7UphUwpqqsukYBSc0xeuwQaxbq945A7UHPnN+ysCU\r\nAb+mggzVA/BbxUlR2DYlximIbrVbMIl62q1VMstmejpQkKSZbWeI+Mpm6/4r\r\nYxPMnQAGwwzeWNlcWykfYKWtrnyaOO0CM0iHPoMK34yDHuuqKdNUy500XKL0\r\nOzctJ1G27AKAR/BZTHjVBIoWORWZL5UOXvL6z1fUdIkIks4oF0G5DfmDQ2A2\r\nwbFNryRJdBHDSnH6GMD5eD4qY1VO2CoTfnw=\r\n=nNhA\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.9.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.9.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "41f0dfbb1ea9f391305531332edaa891e4962251",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.9.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ejG0lyO8UmMsCydNLfHM2mX6s1IoCtIJ0mHoQ/AKtzetr9PbJRIdQgpIA876zXW46wd0WJE3V+kjEZPDzeEvDA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDITxeHpvldVX2vkjMaWLBk8mjnzcrW+yIvuQNbFX0fsAIgKJR+yCA4IXgl9pO9TRGpR57OgF/M3B7b8isq+5w3zgo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj2kRoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpYYw/6A1q7da6SluszQGhejCmlUInMWF+e/xnnzURCiTo6F8Aw6WO+\r\nvc6NBd1qtoiRazWvOm7slTRNzBT7i6wqSe+at0iFSthYd8hQkrRV8AmqKOdZ\r\n1k3wOorFMCFpezDTj45U/g4a5BfT1BUOD/4RsBx73K69vg/D9v/An/JRMceO\r\n7p72BdoOEmXAzSs42gylgM7T7iHDIEi+6T9zK/MTbkWnLi9fnwdqUUY/ykDU\r\n+7V0uwL7rv0x6ZVtJdAL9W5CkwaMHs5ADLAv7Ww51He32JxAWrTdxBkiKq17\r\npAm8umz9GsuewNZCPPBkMpTua4Ku1xpMfkzCZ8rp5RKmH1Wig2qdQ1oAnGBJ\r\nQy1sKK+aAY+nVBEm4ATdNkzlRAvYvBWMQnWVRYiZppW5p52hqkHcmPY334gu\r\nPyvusmFXwLvv5p5juYwyOzWonmr9iVTN0IMiCrEP5TnL2Ni8QVEhozgbKC6L\r\nxGkkTFqql/MtSBTncYsRh9xb5UQbEz1g45D4n7vTEKgYQUlWm9D5EtfrjR1I\r\n0Dn3Hextg19rmi26cuCBMfRCgUy9WtT0/vEK5PX4p9DHnBx2CklKRZU4h1Zj\r\nltGJKj0SYg8OoUnWv/eBw6EnMpyvv94hFVU64cbppr2rRXGIOL83X/jU8s0H\r\nvHuttD4VAiIMfWhgD0hqNYQUNT4cwRPP2cs=\r\n=N+4n\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.9.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.9.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "70e17d632ba7cb3b62a4a85d50d5ef5cc9bec228",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.9.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-rZEGazkUgngMAQsbkcdxLX6JLly2gqq5iHS+4YWdeED3mpAj26mOXkbTRmbRnpGJe7J4JVtNmRSmagRnMxQBkg==",
+				"signatures": [
+					{
+						"sig": "MEQCIEwYAGwopJ9ErFS1sglsYVwP3c9kR3Ua5Cpyq/fr5QWRAiAB6p5WOBO3Y667B8J7f3A2r0coWj9LoBWcGevOziZjUQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj3O88ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrgWRAAjnC63YUmzNd73+9tMy7lhezejUS//ATq2tqaK45mh2dlt5LK\r\nXbBlDsZlxVUjWeCP6eqjH7XKkRl4S85I9dLkEDfPIyxaYtk/5CZ0ORc2HAKb\r\nix2aqljZV7YfjhKokYbJbfaRP27BomA+np0PJKohlo7rKKMQIDnhTHiD658H\r\nfpBIqWs4HuguIKumBkGw0857SS3u6CdY/8HXL8CYfB0HIgBdcXBLy8KvE5T0\r\n3dxxJKpOjBvTjZMTM2tqpDk0fMg8tfZa2Vpft2gr0iq1O27hFrI3GRHyoF5d\r\nOnTzpNhDGeH6K5Vef4EwX1GXI2iqaI16wWfeSg/wJYpQ1wj8wB/JZPvlSSB/\r\noQV9Mp0EkChfAM3Ma6QdYP3gknIGQHgDyU5PiQCg2r/dlnogSiUL7P8e1krT\r\nUPn4JtLK3W58TBkEVg7UzpRRSXG+3p4q8MmgqJBxo2/QSrjugL5zyzw1bt9x\r\n2ioCk9WbpZ9qYl3ZDKq9xbWGOGB1crYYH56bDA0mb7tWLB4avfuMDerDRSPO\r\n7FCEtYQhG6s9gOEzA/7Dlbcn5wW8vg/2ZkynVj6QBL+e2GWGFvNy0T4amrDg\r\nN/k5iNiHjkHgrXX+aIgCTwWqrO9TF/3NpJX0ExEIKAefwPTMINboBOMyevy6\r\nBv+ocgidhyvVQfyk2gw2G/zBTn6rLAvXwj0=\r\n=mYbF\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.10.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.10.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "9c05f629ae597efa76ea1b8bcb90c04a3993fea7",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.10.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-JEhn9v6rZJ4RVNC1g6W2KR4qd/VPwJ8hIoRIZnL0XxpCD7LTGiVm14rQPqlKZARqWlRknYn1Zt1pIr4XlVIPVg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDsnx4/KPD14gS1hQ5x0Xm2nVCKnH2keJOY3zOf7SeFpgIhAKFosYhDUi6zIUdHSkTgK23eAzvOAG7wi3v9sJlqOEDw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj7UMWACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmryRxAAlFoMGwZ8VUaUdrZAEZ+AJjKsZ78lWoVsxRmaZHlo4Aj5cyPC\r\nXv+pB1hnjwsIenQD/K2U9wjO+hG85AYqrqvTuW2m+oENPAsoODxyChxoTaN0\r\n68vMGRq+IAxGQaAn8C33qoTv6+slGByo2CdHFPPt/NL6zb+ro+J7CMxauwMd\r\nG6Tv7mVOdeHudHAzTto91t7fbTWz/UlU+/8yi7fBdz8B/1kGxR5BBw0q9KS9\r\n4ybjQ735InPAxgIHJ+/h44MCNC/SV3IWFBvMe44QuASyGptX8SCjyqG9PUJ6\r\n6ak3hwI7A1Xim3w7TEYzIk9yMhnW+iIEEG8+sAj1/lNy7jiYSP7Ulx5xBhkO\r\nBw06cAj9d45xcpJaqwxaUrHw6hCAvLfPOr/M0Qe8KbzHaso+aqIzRTNE7l0h\r\nErEXxHH1Ml+b/tS1Nbdf1Jxq8abga8EhUaW5werc1jVRHRhAnrMwQB6Cy+7t\r\n99t+HRDrJ9it5I/1Y3qGGTNwR3IkfugFclpas+j86KRAK9MckT918cYUiDvE\r\nfWtSx+KkzkDgy43Ybg98RvUt3meUfIkGqNBxM+YXZ9VNh98PkrhVI0DkeGGg\r\n93PGMgAzQ7LUyBgDnZg3FIIQMFyv4/VbTPq01ltBh5frjVm7nR0GIAQmDN7D\r\nQyGnmhGrggjquIIhQlqFu4BIwXaVbzP8Q+4=\r\n=AKax\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.11.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.11.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "f892c2d5027191a1371abd8a4ee254bf29dcbcc0",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.11.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-yOK+vnuL9vm5GFwKyQ4SnMfcNBPHN21HeSPEFA7bB+pLT4xwgvdN7CVEYfvoRZbtZna/fMJgBqhhdEKXjlxViw==",
+				"signatures": [
+					{
+						"sig": "MEUCIA/6i3u1kXpc6IfvibKAJhxfiW7R/bI1ir32iBUIjTuAAiEAtawx7C/IviNB3Z9qfXjnl9MSgG4EyhMqnXbhnzQfGO8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj/5F2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrhUQ//WI0X+Fr4orEbGuN+JeEPMclwfQONp6J+JG+mVJUz8rnDS1+K\r\nEfJaGSJ6VeUfeho21J0GMd4nzpaUGxZ1a3pDQNcNACWXxxd8W4pmgnxd2OGN\r\nrfxiJoFQ2Ziyp3WXZiRbPrnmlCwjOJszpJBQ4Zjo9LC027USpQ15CxwgKczh\r\nn8l163mJW27SMGOYSHhOmubnhggBnyB53oN1fh5fp0ktwCAouWVpJ6oUwN+U\r\njUQmYEmaVZ04TMqcm2mqhbYi86UunGL1r8jPIN/R9Dzvr3D7h2ZwU9VwSqA9\r\nTAT9/8+Xb3kMj+tkunpXWuZGua9616ifnI0zniUUskZaJEm7JbfWQGFzd0m/\r\nOQUHLDMfjJGHRFTyfBC2EOUL6+d9IophDsxiDmDnNMqUf3rU9VZ6cSuHJz4s\r\ne95oJvaxV0z6nzC9uVMCBu10wZIr+4uOodgZXqep/bo35fh0Tan8OqXgJeKs\r\nE0MVW15Jdey18jjo+V1SN4wTreaq+4Yt6zkGEoKJ7Q1n4S6MSPwJOHgT2gux\r\n0q1bV/aK0WpLo5gN0Mj512R8DqIwo3WascZn48DptQu6DjiL1fdj42ysu8ym\r\nYY+uBtlFAqv5Mb2iH11Vy0fmEZ+AXbKrYHpZtzBW1QkUFYJuY63nz/rdlBLN\r\n/D8xjAjBWnyVSryJ/MIyGftV66SlFL98XD4=\r\n=Qt/0\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.12.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.12.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "169873d6a20536965293e372b0986a062c736c1b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.12.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ttydaGiyXop9zJU4kw1hGQiGHgekRg96UR6vfpkTMMD1ceN4k6WipSgPLwYQVynTF1vq31hvjGm2DTwmbL14+A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDDYPSuV5uHI6Gc80do/zS1sXOKD1+7s4IILnQednohNAIhANaCRtFe2whdnBTziUwYABOn5u98Yx+mbT3A2kQ9Li7W",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkEgBqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq4zw/+PGFNXREWRfyCTM3mOzyyB4z1fceW/QqVSKRsa5XQRB+iek4j\r\n1AqrFCBSLWT7084YvBQafhkRBvkjikXJgMqIHbGWw3JQUvCgrMtL6rsHoo5c\r\ndKOXK6q1POkFH7+nPY4j3OmJ3dbyfuU8kCe/EUAwVLIZEsRH9pS/Fm2iu/by\r\nBWW1jgeTu+lnNTi1PZqGmSW8q8goJDWNU1FXUtIcF5Qc+X/wa4VnI0SboIja\r\nO0G8nbDCluPaTPKNDVfd3O90eSM71B/jkzAzv9IlJttrAoVrSK+9XBB6j0jC\r\nfRBLVlcDJMC2XeUHvIsTn295Qn0frKBiH9QMFaLe4TFcyXhkoZ+lKJ+fzM0/\r\nnqCHmBn4KPlrHoLytjc33h5rGanf16pa4eKnO2n2JczPnxx1DCev28NyWRk0\r\nvHZxvkxSmBBi3XASyv65IFjaUI2aahlgCIDcN3CQxDKAu1ORjde1gpUs0Ltg\r\nbjgRSbyxKo4R7kn8ScHYceQ5zCR3blZLVdhhY3rU9ujFndwYnUhYSUTSnY/5\r\nIAXgTGqD3ieOj6wuZupj2l+5PIcSMQ59bmZVVclc9QaJ/IuXFDKgw54df+VE\r\ntdCZ1gwnVOHmCQ+H8ndvWbKut77a4YVR/2T++u6IMKZx5dKkX1OTvaAGjYGY\r\nHe08gUnsj0kJFgKrVR6MUIilpmRANdEDxRU=\r\n=US97\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.13.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.13.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "dbb603eeebbe08736f6bd4aeddd05d23031aae6a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.13.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-IK8s2xbxLwWSD4COQICbTgbFziKc9Ed8fpWuxtQl3n+2xpyFIfWHvDEt5nGbotj96OEcxQ16h+aTqIcdon/fwQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD8/CKeI0DET+6GqIqn9moSPdmLAeTFyVA0JMwU792acgIhAJmJjwewqGBodkxxeAljGGfTBDKFg++QwUO5NKAnajcx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJHSSACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpbGxAAokpUbvd+oKalrWyJwJb/Lzp9bWEpjkcZFH1so6ED1kHorX94\r\n+lVvTLQGqmHrq6LCIiU2CklJ+qNZVKLHmF1nbd/rYY9nWvxmqg3FjY3NNifY\r\ntBeb1v807RH+FgXHHpABuHWQRNpigOEhz/Ynsgdaiqmc7G3mRRmKvnbMjPae\r\nVPKbnGhZphy6BwL3chKuulhUfeyreao9Ajte/ps3qYllckf31JhgRc07MVCF\r\n9nBlV73AvmXG4Uxpq+aSG4ItSCGxbnKNgnf68IFJ6VS3rH3TprULznNwhIqK\r\n6dWPetDPBzDCzge0n6dfXnS4H4xasOR1wn49TFCizXDS8jjg9avy7YXExN50\r\n9KZ/Y93QIgHC9pa4fujMkGfwFymEF5/GfZ9HMpRMOIfh54inWEysMkcxwxXF\r\n3zBTSaqjI9xTWd5CKKMuAViyZi7MNi+7zxIE+prtnjTUFeRBf3krhwCut6h4\r\nALqrlTl8/wC2zcCsblaABsyGLycENBG9z63nrs+fB0V/0MHmU8KP+t2uH+Ew\r\n9JKE/6Mf3m8mPPI78GQIEIRWnaV+mRV30BnZkwGl+VOZxx64O//4lwzdyCT/\r\nP0iUuKIXGcKgsdiQRMFWiAbho5oFmmwsygQJEpDU9MC7/2H6cHUAaeC1ubbN\r\n8dhnJjVvhgUv31TDdIfdNFjJPi1YZRnJ3xY=\r\n=0w+L\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.14.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.14.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "98ddabebc2911379bd970adfb433d58a58d0446d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.14.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-YvMi6E6j6ES1ZukcBQUgW0LC0DA7QRItFRSMwchbNa5SNEseBOH8aC3OGrAzm5agzYW9udY9APPD9YxGN+7QlA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCze5WWro0xxl9mqKSTz83qeg3QCNFwjYCbXc6HRfhDcQIhAMVr53FGUL9H/ep5kUXl1Xymg7ECutTC/j/8bUaPiRrw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkNuk9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoAVBAAjhTn3hTzoo+V7AWfrl77K7/7z4mI+xAXZ9rGND6mLfOXq52I\r\nbP1vn1NpIDG7y8Wm0ADchzCy7isu/yVUPyKjX+03iNXyhCe7AnXCEjxouwhA\r\nUfilraoiulqykbfqpljB6ep45ZdOw9wnYkXHS6dsPY96T3xpYeoTI074Nhij\r\nxFF/GUXniMK5bZ4OSQJ8ji3w6WsIXDBLjnkYrpe4I5Y8HOn1l9CmKaiyFUi9\r\nATYNXHHdak1895/c/l7I1RRBb2biQB9g06bocYUCYP59e9AINNuVGsenLrkA\r\n08w7Km8Ag+nXorBtN501jCOdK24xAbOtUjYOBqDlSqyC+oA8fW7xdgh5IKlc\r\n+hU3I8++VeYkANKZwEUO8944L6a+1L9YclfwDspmXk4yEc/g1jsQqNyurSOV\r\n+Y5/y6UABavojMvLcz2StIuD7K4ReOza9KGSROa0axlsoEKOB3b64yD+RBeZ\r\nv7eR4QWFBvvn0rNC9q+h3FiAJY+aZWLKb+4q6zWZHAc8M54R6SBAJsfB2u44\r\nhtaAkfgdDc7RlqlGMXdSsZ5vRk9k7ADZLbFBe0tmdH+zJCru0fiUEEWhI9Js\r\nyfOyVlX3JNQZY+wnKOSpcqc0dr8+PnviZmFD67m3GTqtSGeifeyXprLgHE3U\r\nxMsrKWE46cv5a50UfbdF2SzumTbnQp/HNGY=\r\n=JId/\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.15.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.15.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "7d9627c2650d099865d73362a5fc1ee1a12fa07d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.15.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-KahWIgSPjJq/Up/rtuop+5hGINp3DiapRwIVpiJklowUHs0zLOXOgHUxj7q5vXzOlFR4NZAQX9ENO3dV5lLJmA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGq+SxdAoFyl+trNOEBWynY6cK5hoicGX/HJ2h8yXZFGAiEA6xphoNcpHrYFMZk/G2eStnHXL1iRw4VEw3YRkYMyQVI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSRAnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmofhw/9EQSmn2PVbo2nn797kXJ3QEXMftiRd0JZHC3wDqnRd0o/MY6z\r\nFFUYxX5jVtUxfxF1DHKJDiaErVSWRW53uRZbnAPLnFKJi3OxdK2EEsiK+cVH\r\nAZ6kcZFnsv4GBRHyaYBiJlburAy4qaK3tC1Mo5FY5tW7qmyVgOFMjG0G95FB\r\nFM26qWeQAhL2/gPrrRuLD46qwd7Vthy/XJ0blLAehRePI3odu9rXNcPc+THo\r\nWfA8tMyAhkYi2Symwd4l4N3MPOVWGuFsYdTIiqPjylalM7xlQAQoQ0rD8JbO\r\nf1WGFUesj33NkJvtrBGyXaGrlCbJD+8kCMVApbEkidia9BKhOOIEmx9570JD\r\n6Eh3x2yi7AL1KjCDUyX69QyT809ayHI5r7lRAIBzV28uFpktcyFMSx1ZAHIa\r\n6IBE783UA4tLGQJwqJmfqsWtF2/6OOD7tQIBGkvr4Pom+Sstni8p9oablks3\r\nD1KSAsM0Z/aJfkX5nx0lbxhMbvh9wxOaS4psri/ovIFk42YsdqQlsdxtuBH4\r\n6Z9Nw91/xPOHh+6V0rInfhwcu4H/g90l9WNL9DDQbkOAE9Me/cJ7KBS5/foP\r\nDANFayoQLHOeoERAd2LWv63JSgq4oWpPBHmr05gnp1zXgTX5swMQKG1r1gR7\r\nFzq7GW0s/RLXSZkpVhgOhHgzRP+jWmblI2g=\r\n=soqs\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.16.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.16.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "ee0cffbaddb013093114f4f82822e6d9e751c5d3",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.16.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-yzVDtVwqlci23OIWd5n/bW86TuPJWaLQEDXyQXUa+4Qnn0ht7LkCMb4T2BDplwvA94rpK/YyCNJLVaC2yhrZCg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCs3almjsqbGk/a8A56j4s06vsfKMwZpSwLmtoLl9jErAIhAOxbcBAOyK7qjf8otPmAYeeyH5Zm+7hHLTs7Bj1gd2F/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.17.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.17.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "a648c148a956472848784c9d4e5cf4dca9bc5260",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.17.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-O6n9L5Ug7L2oeeqwAUFRZq1DlfI3mfNcAORbB/7KZ4PUNKFOcmJC/bsaSMAtt4AWENGmeGO7KL8QxVr744fVOg==",
+				"signatures": [
+					{
+						"sig": "MEUCIA6Iesb7YaCWXHB4yQRn7BURvJPwW9Ji48/OpGQFy1QSAiEAturU23c/OmoA9ZErDWKes/gxFXsvFDEbblGTXsWZitc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.18.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.18.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "3c22d95f043baad5c44f755516335e30fd8eb1f1",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.18.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-1TBe4pdDD8W9swQkWcGoMi+BdbwSr63JwhB0jvlOPpjSVobfn098UJpzuRms6xc+zB5xbI/HAkCSCcHH1QjGfg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQChLWBQOmfZnihj42KE/twFUzum5PUeo4th2FwX3LWtqQIhAPFq1YOfQHpev++pJVS7bNarbyAtmLOIopPvMC7qh+9h",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.19.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.19.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "8c9c0c61172053fab5a47d635f34d44845d38aa5",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.19.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-g2oMpFWL8AL+F9lZv2A2UDxsT5ai2qeIZ8STaFKV/9VbYRQSNmaunrf7CAJYbbWPZNRHucz7U7J1K7PzwSZ71w==",
+				"signatures": [
+					{
+						"sig": "MEUCIAH6yC45HBe54MuCCsVXqWKPiKtR80AgowbJqfKRBcyxAiEA+I1mdk//kxJWqMi4C74JBvr5WlFG9bCCGyOGTNVBIpk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.18.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.18.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "7c4347ea80bd2beb0851272c96b8e7cc16e9ea99",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.18.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-wp6C4xntj6ynIAdtiAvcZNKp+IpPsd3dkz7nlGKrUvCtmPaF2by6/FlgZwpX/HyIFsJ2wx1ac95Wd38vZzps/w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCThVotbIcYlXVwEJCZ0WOxL3+tLugqiyc8ElAUdXKuwwIgDc6T0ZCxN11dHWSIccawMfgrOu4RdQfKJfydbzretB4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.20.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.20.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "81e6808f80ce7486901ad031702b43121c9d44b0",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.20.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-vJAlUVFjyg+l+SiB8C5T1AWYsXDXZFpIITP5WfXAh4+6DG7R3JE+yUugHM3WLmPzCU57/mUfhyouq8blvsMk7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCFfUeameaDkX6Efm9z/zbdaHDGapl4PolMijkf3mGYEAIga4ZF2HAT9vT5hZC7lnUj3yEupWhFj4F6u6v+pnTR0rA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.21.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.21.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "60d46736d8583a76e023100ac5cbaa900ea16b9a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.21.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-mEnR5Zc8dYfNkyCb3NbVf+i6cWSrfIglRCyUzpryGUsyE/bMsrKeapZa1UbgwKpfLqgZNRbA2i7hKmurCVIPag==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCGxtXR2+RKLClJxjxMh4dX50wda+uZgqXBqgN81dxHZAIgfrZRxoI3+GhUqb2Lrhv+6LgR6LMC3r0l0dBuxeoep+Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.22.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.22.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "8866f5d1cfa9c0fb99423d0075f2270cce3fc0bf",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.22.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-eD2bI6ami6VFNIvAITXD65Hv+oLfZF6LhO78txyj9q+Q9l+XSpylBvqkyUWnTgw+H/jnT6kWCKrIabhm7fkbCQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7GoOYhs7F7vbrSTmfsnfTjucX20g8pO/gCekHEyKTngIgbelboV9gv0Wquu+EM/cWfZitHmXJmhqcmso3I4v3zgw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.23.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.23.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "af833f5b050969ad73c7f2444ebd63ae5e33e832",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.23.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-DeHoDuS+KKxfGaBWXxMJP4uKqrfGGRKMTBRchUPTvqBScPvgrr2IYDZIP6vp6Q9uUV5fnIUcniXLGIMuzsrcdw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD6/sK5o/yMcgZYriC1yGatrdz0Mds25qrpWKk+EB1McAIgG/5rBMQ8eXvqs75Mu2mdfWqC9rrqq435HyqII0OeYLc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.23.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.23.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "81241bdc428cfc94413d88b634e6ac1046989803",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.23.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-TW9lbCByYr6MgzcuWNsYcgNzjZWLKZh8t26+KXv4IvG/pANR+ity1QA8cwmYSMH/1p/mlsXvYq3t5HT/HRkbYg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDKMVQN4kR2p10GmIUZDBOo27KSCLGJ8k5oxkhWjL4moAIhANZbvkXLgdX5aFOG9SC0pJqzIft0RW19Km4lKCtsMDNB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.24.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.24.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "5a5036f5e45ee7a4c21b4a73831b269cb11e6a98",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.24.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-qtde+CeTWWnXsLsUSJddKZmOQnbEjqfUk8vUEHySHIDUNd785etG0i6m6YCudpJPKTbacNSZiJ5GVZvWArBUrw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGv87FawxYkn1PxaLCDu7FC4YWZqwQxi0SiNXBaYWKJxAiEA4i3puJxlQeyj3cETOdNCPEY9OlAzk/bSY/dCKKiiiQM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.24.1-next.5a1d1283.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.24.1-next.5a1d1283.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "d73ade395254c8268eb7f2412efb86c732df3e88",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.24.1-next.5a1d1283.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-yYuvj/fEsnUE/YJ5YmfePOoPxJIshgzcVAewqAosuN2fzZE8qNnmHv/pzM9wUwn60mJ2zqW40wOkAv3TO5xYvA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDD9/250dAN4qaAWgaHPM0sfdTaPAQjSDiHu3FQhxXvMQIhAIx/5Ig0736J9rAiyuJy2ZCwDauewUer83Z5p1+guIGT",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44746
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1e7596d8e50f59f11346c0bc88e1794597825cb3",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-wvCqt6Q8/GJBvtkWS4VFM+DzFcBk8ArAh7a6Tic3MGN4pJrpLpU3tSm+8t2oiDn6mbiDkJ5Ndq+ma6uqPrXs5g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDA4tvEaDgntbryAqzkPud2xx7MBDAdNIZze9asPMRUSgIgBGGF36NznZXKJh4j2iJuhlrlQKzQaSBNPu1QA2ALHiI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "6177943aa7b5a79fcf0738ff6d8ac3f5e8800191",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-qcQcPJ9LtJgX2tQDaSgXA8Z5JQQQbbeAnz1OkxuY0pSbO0XDQO7jGus1gt+7MeSKxC0ME3X/97KugFqaK+fdOA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDnATKrVhEnK89N5Hxv9O1OvaJGSJ9yQyDOAGRslAeToQIhAICkoBXJwKBWvUIUP0fUQrNcPu1hp4x5cGD7y0I7TQPF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.2",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1e67c8ac92b24849dafacc3aea30a48e06c286b6",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-NX89jqoSJDwlaoti29t7M7kvAOZogpC243TnILTu5IWAJLbnrFh2YaVrbXUKFgec8b87euk8fzZ+6cDaE4Qt1A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCmx7HuoRrBPXO0bVBI3wCHNww0YqWczA8PmPLTVHZHLwIhAIaQbR8KkD+MgiebTvB9ex6WTnNYzgNppRBu39XZz+eG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.3": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.3",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "8fe10d42f7a3d59644f29319e697bbebf465fd52",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.3.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-djJ8jALyIGoZInDD4TwEnPhVEJbjzc6kRipYctBKxRE3sOByeJuc0B8PAf0VxUYLssKfFHWnf3hGfRyLmZ10vA==",
+				"signatures": [
+					{
+						"sig": "MEQCIHKcmwy45dE9vE47NlcXX/ufqdRktyeZm0i6dEXDK0awAiBOs720+NI6Slf1Of/ILxahyLlTE2A4oLEHplQhM42j6g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.26.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.26.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "c4436e1ba0fcc4e29b551978c853ea9b7b09325b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.26.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-XZCTBqEmOlM87/6wkgtHhnHaj8cJPOY5avyjKtMDwoBbcXAmHUknbphZG7KEWIiVIilyxKyHnsTxjTplkqTtCQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCNxomFsQ5GVtK+2tf+Osxk65Gr9V6JZXO19rzM2jNDLQIhAKg9QOpjTeoXR/rb7YY5B2Ll2sktVLOs3ZEniL0WPGFw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.4": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.4",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "508d109df2b0ca992817527776d1417deb5bd535",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.4.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Mu/Ais8mqRqGJF8YcG3X2Qs7I5FlIA6sGSVBTJVMUpZE/TB09rDiqliFMA7npee6rBpv+U7XxmNQM+lkyQn8yA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD9cBGK6pvHuh97dn23mNHJbz7NQZEqvU1A0WHdfRGfVwIhALtZ/KHfn/qJG2uDZUrNZoihX+W2wZN20tHU/xD3G3cf",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.5": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.5",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1da769d39f3388d93b38bc7fa0662a0de8035826",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.5.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-8yGimJYa0BJA3wikpQpOYu9Vj+cGwJBIExHL6bsT/SE77sN1SRnWS5JGdIN7cEQHUKosX+K13wh52NahX93t6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIF79gO3oMkPNg2cdjPAeqFN40DNgK48DaMLoPps18XDyAiEA3sKgi9I9QeJvZI437KHP+ruE06YBDpPf3I9l1G2YhU8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.6": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.6",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "81de53c9d552350a513c0a4d0ea18e1f9a05d967",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.6.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-e/o/pKtcJUknwTuwQQc67bDHrZSSwxprpMh84nogOC78VynnJUBWUrNoPjFKZErl51u0RPC45rXq6ixtcZxXGw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGhVLbs5z0gu3KuxfnwTGTn1BzA+t+jlTDE5Bo0FDSkGAiAVcF2W6sVucJzyf5AnMLPuJ137o4rEghXCg6n0zQgNsw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.9.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.9.2",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "14113475a1a5b01c9e8e44973ae31dbe0bc5fe94",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.9.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-IeOHCOkicpn5tI0zKVrR+DJD8Srv0qNzEfciAqRKbQX629yZj4M2XDsaIsKBw5utNt0lR+U1OcKJ8iprUytXgg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCi95gsHMBAVnYj3zdFuXtvf4DzIOtLeUcYTMcW4V/HLgIhAMXYsGG47SaYfbj8nBqSYCN4nlsria8L4aWDRMZMf0f7",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44729
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.18.2": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.18.2",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "77e78b8e6c5b70548d3f547ab3f7f3483c495b28",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.18.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-cn5h4/cICWT7iadC5Feu3ikGdWlq6F1KNKXD//uZ/gDhDCG8uMtshNaNJZTxrBJDOHOuZE3a+c/BIA2nW/sttw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDY57N4qp2Mq8PFlzHZadFeMPJPmGxOm5/k3kHeRVrrUQIhALx9cFWiZEGF7KeA1bOUvBzjhWiob4AoKpMSrAcUJ5Di",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.7": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.7",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "0ecaff7ec4c7640bad6769d57e9cd73a774a2f71",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.7.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ESUjT5MkmVBy83NC4+pneIOP14k/0K2a/JqLYL1BGkcxzgjvzDMez+p/TDiZZcEgbqBDHS1Fcly0aYj9JD9DbQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCVUdOksJtQcSu9ZzIyDHTqksswsPm5JxOSOyi0QyoCHwIgCJz2FK9e0xBpc/3VUUPr2XJr6X3KAHZRoK50xV3s43M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.8": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.8",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "08b12efcfec1eb75946cd8456e388d834f947410",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.8.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-+LQ9k1jlB4B1sAjsR/F8xEUB6LZi1EGxvCpfHKGwvs9H2mC7hjLLHH5Z8VZdlxjazarNBIZlLlwbqaI4O/j3Wg==",
+				"signatures": [
+					{
+						"sig": "MEQCICSMRFp7Yzzw4FZJEeU/NN3n54dT+MjMQM7+5iVUyk5LAiAvwy+V0KrwcAT0JDB7Jvi0zdsVBn4lRJBvCrHQsNsrAg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.27.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.27.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "ce609d3b38d372ce468e2653931a538075853e7a",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.27.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-bq/lwaDn39MrSqlrQhXiMz6gRkqlFQAXzCbZ5Q1CL6NJ+/P5tiWRTTt/oHbC/rdItm1K4XVmscobG1Rhhyc6ZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAZj7C3cJ8sZWTLRh7U2p6l0vaPmURP+nA836kQnLl7QAiA3Ll+pko49CM85vSCgbPOgPqNZmgqEeN1qub0sM1eF9g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.9": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.9",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1e217dee761deddf92a183047c59d76a63b19980",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.9.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Yo5jVFxczAbo5+pW41Zy/Ll2SYUdSJ9CYjm9lHwKKKfeuj8ZHWZJk3KiNjBYIpmYzwdpx8URid5sDoTReb2imw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDM8k9Ykwuig+Rwl5rgQD4drbZ3iKrWLofydOXPdEEV7AIhAMycrqBwIm3ta5a9HDa1jo2+YLEhXUQOntdDGc9LjYJx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44730
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.10": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.10",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "89a7dd7c9eaf775469f9c754104f05c33dafa57c",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.10.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-eD5S3GdG95MpMnibiEuelTRFJFfHCmpY1HdPij32k5sD+sv63KY0FE3fMrdTYcWmLi4e24MVLpSr7/DVlZ10ug==",
+				"signatures": [
+					{
+						"sig": "MEQCIDc9MneJ0L8JZQO5snz9VBRhJR4XZ7Iyg3/gDhhYr0oGAiAlV+d1pBFvUEmOIolFJvNfhrOaymeZrFyQyrO9LpyJ0w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44731
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.27.1-next.f8d8eceb.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.27.1-next.f8d8eceb.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "2ec0b8471f09c115ed7ff8a1a29795bf9ca1c4cb",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.27.1-next.f8d8eceb.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-GApkQyh0/wvwIiWQFTNMHZrFX8CRnYnLyRDa3C5oeyK58BYM4zIFmFA9cECJa3AFikOSI33Yi/eOOTs+3FWQnQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCgXHZDTddE4RVAU19l413aJq0w37DwVHHV/hzCSFVXsgIgXkeCqYDUVouM23Z0QtRDccqodXzJ1nUq+spRHf5JN60=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44720
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.11": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.11",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "e67d4ac7bda07d07ed7a06318f7d960916214207",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.11.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-7GzKrZ83krOO2QEj53Uu0yHshxZh5uR18zd/NcCFcH/Zxe6SMYorYc9q4wnngP+S6DpyYizadXVjEn5m1b0I2Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcgi8D64GhctftXs6JR7cBa3XqlP4aWPfTfiqEDxbZbgIhAM4tC1bBXkOzOC5Bn1ZcIVd9GCX4WtLNptxL7XfWM4gS",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44731
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.28.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.28.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "735fb0d43ab5290d4e8aad563e35ee2c375ca6db",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.28.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-rLZgUIku7r0tI0Qxm8hLZq/0ecymtTSEL6MXesztqOMc155ZWpsTOBjOJgfiL3vaO3Hj1eZrgNKTkJbqhZNDvQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDMuUDWIKNDS5qie9gpUZ+yqitNa6Se/V0kMIbSlwoungIhAPVo2siWBP1Y5rmB65vzy6CmqAforVtEZo5GGHdxfbDn",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.12": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.12",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "08785976b6de8a28de11f0e9c4f123803a187e05",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.12.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-IeuD/JNeEhtv5s7AXpb14UMize0AP/v/+I/f3Hb9LaxRc9sBrkBpiR7vQ/TXS5z7UAjnBiHIL4HQ74I2FqiUbA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFrpHHo60SbQDX6BttFvIMquhjTi+NP5TL12CPSqfAE3AiEAufJ1mPUBsGy9ikzDW+oB+7ErMLnKvwJlrvQVcHisfVU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44731
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.25.13": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.25.13",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "c289f3ad925623ac03c63ff5915c98e671b3f5e4",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.25.13.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-aTcasO/FCPVLBRx3v0yzTgfle3cQa7RJnq/CAgPCW5is7dojFaE9SdvOqjLJy0eeBcHkDmuKtc+x26XzAPCoBA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCOZZhQdd0JXwC5Eh9De+25xqEMFuIS+dQZ6VcLpkP70QIhAK87MYNERrqofwmOmei2H3ftP918f7qiTsIKhNKIce7L",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44731
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.29.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.29.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "e3414708bc8273d322448e87801222e9b67bae07",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.29.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-VPAn1iVZae1sQ6QaiMKbp3AzFPbhBl6YQeDr3AKpj24GTiUmsho6WgxijzyhBEBX5xPHVCahhQ8mjiZ5Ql6FwA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDf5yHWq/AIrxvWyCBbvLVjnXkqI0xE6oTbH7GId+oYBAiBc0RbDq9AyNFU17AQ2kcUYtdMhrB5a7Ou0pJphRglyCA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.30.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.30.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "345ded26dff79900000c1bb7ca813cc4beadcdbb",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.30.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-UKkyFmEYk1UTO0ZPun6Kw5dNflTEDpDK/6RxAqxbVrsIWUVSkVahwBnqfS0v5LuvVU8y+5vJSR/WjlnKEmS3Sg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDRsvLQw9FfsDkXCBGFuVu9F3GBo+EyXTkAJykyPWQz2AIhALckLRTWGh9eKvx2JX8u8aYQaoAm3IldcHuh046mrkSH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.31.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.31.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "880abacdb29baa180a664cdf52ad12c41ddc3be3",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.31.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-WlHCRCLBft3bSqE7FLB09w1gHG6QUQ7WAQpSDdcn6wRuLX45ZeMeT6YDqUdJdlYPRBx6Ke9WzrmAT7PrGLZi1Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCww0KqsNYxmniJXkSmI/gknPngyh4NNiSAFHpmA7a/jgIhANpSDL+8Zc8U7srvOjbB87rKEC51A0ww827kmIRjMliu",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.31.1-next.79a6196f.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.31.1-next.79a6196f.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "0c490169ba7dcf3ab32f33d2c83a3ddcb2ea495d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.31.1-next.79a6196f.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-oAVLZwNCqaV7L+4tNUzo5Jy8rq9jRvOL3lxOCwPARIBD9yx5I54yB+imuoO3IOKivpVTXIWXlNFzDRYq8oVhyA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDJnxSWvdAWfdzr/tXwibW5ty2NADmge8j62CYbdyz52gIhAJtmWQUy24dNqt9Va9k3kj2PskFnWKvwpjbV8oGS4cxW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44720
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.32.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.32.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "4c7241e5cd417e3a55978923cd6a714cea5b7953",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.32.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ie6p5VpUxTNMPQrHdCYEPddTzmDeFTQjFi3qq17set9WbRAMaOZ8jqQhSxms0NJi8Xa6wZM9TR2ZABAlg+FTeA==",
+				"signatures": [
+					{
+						"sig": "MEMCHxx3sBHsN3gijxL0sM6pF9jUVFcYzZg6LJ37ak0QrUsCIFLPg4XJfNfmQcvQ/LygSAg+IXnlf4P7Ne+FfkgGhjjb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.33.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.33.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "594cd6f1c52a6766036374cd873afb75401ff182",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.33.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-CjzruFKWgzU/mO/nnQJ2l9UlzZQpqS60UC6l2vNdJ9oD2nKHR5Oou6kNic3QhWDVJrBf2JUiJJ0TC280bykXmA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCKQJExCapFscErjJ19fD5GO0POTs3QnEMCJYdUkNdZkQIgB0V/CgjKAjU0ZdX8BGp+QpBQzSKcPhev9NwxK8rVtP0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.34.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.34.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "ca14d5f8eea15e02a363d51cf31ad783c9378382",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.34.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-DOoUJKvfUc8rdiGqcZND5lauoY4B5+cCuuHLh9AztE1t2DlQJBy6DtP6t1bUZb7BYUWOoWgRflMLtOK3ZTf0cg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBX3i8RK8A+KP9En1NsOrbYPr0XU70AbG7UDDNyXch0iAiEAv52oBRW7+I4ICfRRwtIEPH5umLZO+AcWK7d3t5iCL4Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.34.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.34.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "c6f7fbb687a3998d6b15561b08959b567985c756",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.34.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-PUM+TQUfwKlV4P/CkqoJTYhTF3M6z3tItr6LcANxaZbj7Ru4vuiL1La3KsMrDfE9OQB5jxiQIiL9/k4eBRJS1Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCW/Og0J1ppUhx33kiCOMWLhKtc2zKSzwr26TBHgnaKoAIgALtSilnGjWPZH6AK8wch/GFkTXh7s7mSAWIPUlsbp8w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.35.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.35.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "b37c1a567427e8668457b8a64d67eed24636ee83",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.35.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-vPXtucxv4wvmV17OoCIQ7d8JeFIsN/FcCdDx0lJEukI3aF+zMKV9fr2MZjEi5n3Rgf8j8ekpgLdG2OGp2EWP3Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIEP2Yhtvw72mg94PgdpE1ODxWpM09+M4ah7LJE93VfZmAiAlRXsjmnVd2HSAFD9d6kH42J+Eit2G8wryKy+XZD+FKQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.36.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.36.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "24005180ee7ec1e86a1e2cee3c96c3e4cb3dfd2e",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.36.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-xgBy9HnA0xL5e0Ipku7Ga3QimrfwTQ3njnN79mT8wNcim2APIlyiWSG3GndTdPoSGdrxGPv2ZrpqBdKsiGzoWQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCRRe75u0O4byvjLSrBYEHdHnsxaSt27Hsb0nvt8ZuDpQIhAL0o2oe7VEfUEjkupRk0WB1X0CeydTT776Lc5CyM+/Cr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.37.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.37.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "b204f7c91133b74c44bb48ebe526e667e4421ada",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.37.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-R43DZrwXcH6aLbOgjirgZEdMyM5Nylkx7MH5ME21LqNjdUlGHZPsfeAqIfC83h41/vJTtuNPBR2ZT6GxvX53TQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCjL3iE0jZ5vLzyhOyS8idW2kXpGTB/7YgTW+dXTvKLOAIgF4RJcCX9ufRFV8mveR0GFts1hiu5IBHndVUQMH/CGy8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.38.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.38.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "a96842c1616fc73437d27e53ed9420aaeb521dc5",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.38.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Sry3PLM1zGFTmyiPc9y3DxfkDWVVuMbpfgS7cCNhkYtRrZJ92VtQFWVbVp0l48Qm20FOd7C4Le38N4/VRhrTdQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCL19bNuBjmav6K6CcDNrg/xpuMznbhwOJmP5wHANPBwgIhANsa2++PHM5PLVpFvbbKFsu1J1vlifTjevWzsodGz96+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.39.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.39.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "be82b0ed378b68a4a7df573aeaeca788e436bb48",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.39.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-yQySutPQq+Joa3ePzc9X8f5hZacmcn5e9KMiJYrXBUqj5VKl4RR8N3e+UOl1lWoB2NI/7bA9tW9TXJlDpHJX1w==",
+				"signatures": [
+					{
+						"sig": "MEUCIDRbw6nv/De+5GOTY2tjgBOJ0Cr2Pe+WbNCfoUPXhYYkAiEAyiE9LZ2P6MpmBEj2qMR/buSNFjY9bn/tcdI//+l26kw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.40.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.40.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "7177e9cccaccd0ea93879f108965280579a99a2d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.40.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-YMzsXuuPNZ2nxVPo+x3iGIoXJx0n2cFmGormWDLh4dT60rdqBgqSIJVynnbKOFxBDHMtCj7c4lBQfSmQpbUK4g==",
+				"signatures": [
+					{
+						"sig": "MEQCIGdWJAUDNPFeRwT0kvp3+skZMzEtfn+PAlyD0U6tl6RUAiBDx1zLLOSlbS0ImJeg5LbUFcH/jYldQV5PYP6JnNX4wg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.41.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "4.41.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "32b2034ed9b7cf5adeef3957e8a861ce316673d4",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-4.41.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-hYxj2Uobxk86ctlfaJou9v13XqXZ30yx4ZwRNu5cH5/LWXe2MIXBTPv7dUk6wqN/qFOjsFvP9jCB0NsW6MnkrA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGGT6juOSZzvfBq/bKP+F0SUG23VKpoae6dMW39UeCjwAiEA/4KfDeMEIFsC8CoeJw5cB0qt9X1WGDJYQFwvPdvjGpE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44704
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"5.0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.0.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "7013f079ed7e56d993801915875ffd2b50e95946",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.0.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ptiBztfQQiUuTiwVJC9lVK4e/urO6ZwQViX0KAkUqiToJqd07UsldULNJIbiTx2KYzigaMKk1a6qmuKKG8EtAQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCQLjrRQOKz8dxdKrLz/GZQ28DraEhO3a03jEjiOBGy3AIhAO3cw72zG5xoZFTEAgdVX6iv7wb6tgdgqsnIREkVe5a1",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.0.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.0.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "637eecf993e84af195bbd6750e10a07678012fa5",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.0.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-cClpjhJvK1IpAoP/eyLYswmyR93ITYxswHlYJm/TzworNFS6adG2ydzrV2+LpIlsN4rEy1oGJSfrmr3fdXBVoA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCISNHD9IJzdOKzG2PDpuDK3cCaatfOcP8YNkf0mlTZIAIhANJp5Cgv4PEbS/Cu6rjNJ9iIpGB3BvqEfXG6ScmX+vEC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.1.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.1.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "46977e6c28de1d332fc55d5971685ee17d82715f",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.1.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-vYPk6HM6yZFxOOaYEr7ajC/6cZpCEz7Wvqeh/XONsd8zJMd7aq5Q+Dmr8Hs0pHG3ZykL/6AJD5iF0zDkCVEnwg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHBLi++jsEYXBnYXiDQ+7saDdmozwio5CxAxTKYj1D71AiEA0T5nIXMX/HhseRvTWODO5EOO3KZ/qc6KEuur1cNWsbc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.2.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.2.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "29998805aa2123c762c3d6cddaca7deeb2959c50",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.2.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-DisbqJK5XWoyFVIfBoO3t3FavZgm9iaAGRBspi6cLBfNpg1NwT1ujBGH3FuSaWlrSuL6RWFewhtZvoKSQSirCw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD68vtTlTZTw+wKjIyYzaUroXg+3i+FVpnFfAWTx5jufQIgQ3BoFAg7yYomGxhP/uBpJMlCkbjx/5rIIHfXQGOyUDY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.3.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.3.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "39e9863ca03bb5913aebb8f09e85d45e8f79cdb1",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-40ywppY2nCVIIjT+zl35BO9bCeavpoutq1JHcZrYcu3VxYZ47PJMjsrMISZbrsQU3efZxNgvHhYZOHNFf9RkXg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCQL3J/50seV5nb0iDHLdsvG/9j15/LVSOgkmHrs+M7rQIgXdhrXpp7wNyYjwzY3z+j9kamiS9M8HpPmTixAR+bWFs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.4.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.4.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "f35f90fcc1d1d21b7d488f8f162c98d67ed4f892",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.4.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-JdtZjd/+O50jlcTEdd34X80UOFfTX9jCKgbp3Z3dalI6AY0zq290/ai0s5epxCponwxgU0Xv+EWqxKsesuXUHg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDdhCQlmJqa3RUmAhbdwrm/F2YHakggJUiZdbsgGXjebQIhAP6LppLjNRAa5zKYVrF/NX/E0U6RhPY9ibuYOhsfMZds",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.5.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.5.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "423424a47c312186aa4853f3d6fedc64c490c31f",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.5.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-AY4osLy+uapOTs+p44DRZXCl1OA7u+d68ZW5rxQwBIFdYYg6WKjh52B2UklM3Fiv8s6csME4Mh0Os1QoCz3zfw==",
+				"signatures": [
+					{
+						"sig": "MEUCICaQ/0Go5Ut2+rxV3mmvXje0sJLZnf1W1G3Uez8l1pQpAiEAi/2skbzH0aorx/uPD9f6ttGdJAobGmV9gWTFmOBRboA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.6.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.6.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "ef4b26bca63426b27c0b9bc06f08dbe926d7ffaf",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.6.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Adq/B1of1FBuoSKiN9Xd5BoR3Y1cPI+1uJlXhrTsx6vhqcEr8p5owjoJCEEXqxrQj1BLBqwDC3bV7shPKHtEAw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEa/iA3eI9IaKgoriTt6t8vykRfr8cenHMZa6deDWULrAiBjt9TLN4fD/HF6hjMk9MvrpxE1V4xZAmAiRfANzRpKIQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.7.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.7.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1b74394f8c298ad9db407f5449dbb93bfa21f249",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.7.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-dpp3Pi3gYMvNbWsitMsHErDOpuxy3+p36cdby1QHbbrhWSDDUuoUUdnagaV5PSOa0cGWkcY6mEAg9BfakSHxrw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD0MI6X3+ioDAp+8s69xs17Ez8WOs+k1j6QSvwIDxZkWQIgf0zezR218VYE+yQxd9Xzea4E3kT92gQllxWE9m9kMlk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.7.1-next.5368f64a9.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.7.1-next.5368f64a9.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "b697650ec0e9a46bb077da6f70a3855a42d6fed6",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.7.1-next.5368f64a9.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-GH86BG/JVCuPzSjvgNJWoG8PqonAOQcoEepCfpNsy66un48iEL1jRNqOMkdctGe1BCYxkGa0NdC4kxYrVkvkDA==",
+				"signatures": [
+					{
+						"sig": "MEQCIHhd37s8giDP7u0DhflohgFWryfpDd9nS1QXHHv7UPiGAiBUoP40ijRBMIncXEwkFDQbtvkjHhwJXjGZ/8b63kUiew==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44864
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.7.1-next.1f6eadc42.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.7.1-next.1f6eadc42.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "1a670ce60252c553492ba5e43aa4a9f9000d6832",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.7.1-next.1f6eadc42.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ycVOXLTLVc2ys3KX3lG04KhhthbO4eW5wtoeFRWNxypDvbN/y4H/idLJGS7zXvsjI5AOAX9J+VpqQz/tZyKk1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCeIacctPIRkYYdwmGDYrc6mS0JJbQzwVhBS8U+7h7l3AIgdI+Xwtmep2IqejCAeeuWiGDlU04Yc91x5NRMmoA87C8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44864
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.8.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.8.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "3c111694b9ac8b4788ce9ac176448f07ce6954f6",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.8.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-dzOYn6jKDppJzY4Z1B14sAijsUNdqOpLsVrfRt1g4lwycQxLBDYWufKipp4a8OMJD830YED7cXwLuA8ggkm+xA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAd8kPNQIr2R0gI112sWtceJpXHE0DhsdBg0jrCK1zCcAiEAwuRtjPWFAVxnIhJL+rErsyto1Ssk/MPZkV7dI1p7im0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.8.1": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.8.1",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "26ce35726c4f4933685ef03b334992446eaeaeab",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.8.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-ycNOTJv/57gQ4bDCyhMF9HV/kOvlJToxnZ0ZTB2OUneaEaEu/1ZvtNHsaHYDJJaIt7Cl8oLCPFI8EwxYuRti7A==",
+				"signatures": [
+					{
+						"sig": "MEQCICyEhhFlfgTcB+N9ABwP3fkRyVB+s9IUubQk/5IvnOHYAiBPf3Zn8JzE6WsvN30t12F58gtrDnWhuhGZRy/Ft7CpLQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.9.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.9.0",
+			"peerDependencies": {
+				"@babel/core": "^7.12.9"
+			},
+			"dist": {
+				"shasum": "0dead789c4f8da2a5e592a79788c25783897e89d",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.9.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-miAF4FmN3D6WwPoQHHhCP7vaGXufgu3GEvG3BYjP66d2p1LR0nIukxZDDnxwCizgZ2akYc6F+97C90Rkc+m5Bw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDVy622XLvOX3iZaJfWBAaAOr455zU2TvulMnyw3EIQFwIhAMrw/RBZpBERS9SxkmsUt/GNHoMCKSisRksIVEw/FuPE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44847
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.10.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.10.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"shasum": "d7c445eb1abc4742bd5a59f0bc6e7b460657537b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.10.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-X+r07VgY/FUbP2oqdQGmd740zZytgvyDwnHkBPpwkONgn8nc1dMw0OaJXoTN/z6D0/Ww9QC3/1BO8UCx1cJE9w==",
+				"signatures": [
+					{
+						"sig": "MEUCIBPX7fhMTaFfT+QsvBJTE3y9qS8LhiFc7M3XD4mZxWu+AiEA0Wc9a3vk0hx7CW08yO9lttOhE5tshJ04bj41ChxKS7Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44848
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.11.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.11.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"shasum": "69e49303893b4559ebcaa8c7dad1de4034cd6d61",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.11.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-UHTknUkSTT7tQSSKMzic93kByz/dRsCMtq43HdjV6ELXjI5wvWWzzRnKyZnVefAOYQNhJr28a3iXNZOwu0G+Ug==",
+				"signatures": [
+					{
+						"sig": "MEQCIGtMyQlyjl2mXpRcMAVKft2uRmG9PRSceObpTwN8msuUAiAK9XB6/4MvhoD+6NbUwvl5lxAMoVBdu8lUyeZMtH+RXg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44848
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.12.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.12.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"shasum": "10513e79d9ef2bd072924864684e85dac6fd1f9e",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.12.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-CrFpglgQemJbO8oHNARGSIg8RVLt45Z8bje1gTMVg3g5K3k24VyhfOPol3xYDr3bH/6HgmKVzc20i1M5rLsGBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIE06hztLRFwlSF3fNXHtUZNIUhjThdB/v0LnsR00iuqQAiEAooV79qm/6TQnd9rI9lSytWtB+nTAI0V+OPVnzv963dI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44848
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.12.1-next.082ed6819.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.12.1-next.082ed6819.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"shasum": "d1220339776920baf6b43e61e6102d1f9f903bb8",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.12.1-next.082ed6819.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-+X3RIuzRS3Ex0nX6dc7brIOXRxmhcKDQ9fJq7If6YUadGdKCVHyxrbgKmKru/AlW4mrmPk2KiVEFTH1+/eplfQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDWeyV6j28M7vSKOZOowzb46CXSyH2UysAiYttX4z98cAIgeHbXej+WEN86wPKmP6ukIl3StCtAlpeZYuZM9KKVqbc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44865
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.13.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.13.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"integrity": "sha512-AcnlcIB6ofD6UBtyBjyzcie+alR9V+vCW3970GxeJgaWhjKfRe2wySxYlZqIKml0f91AZRPlLR4UdhLouOlVYg==",
+				"shasum": "248d91fbaec6998844e0675c1e19cb4306c868e0",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.13.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 44848,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDBvvKrKUGWKvBssNJuNb+S5qB6p4moIvFsHkXlo7zoRgIhAJkguVPow/ypz7uqhOsBB4WeARZmdRSWfHkB/YGvzlt6"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18.12.0",
+				"npm": ">=8.19.2"
+			}
+		}
+	}
+}

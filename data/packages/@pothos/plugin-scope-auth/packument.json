@@ -1,0 +1,1656 @@
+{
+	"name": "@pothos/plugin-scope-auth",
+	"dist-tags": {
+		"preview": "0.0.0-preview-20220428090254",
+		"next": "4.0.0-next.1",
+		"latest": "4.1.1"
+	},
+	"versions": {
+		"3.0.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.0.0",
+			"devDependencies": {
+				"graphql": "16.2.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "^3.0.0",
+				"@pothos/test-utils": "^1.0.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "3ddb3da44a70725578ee7eaf82f215968a0b8e1c",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.0.0.tgz",
+				"fileCount": 91,
+				"integrity": "sha512-sza8ZjssMxZ/8SU+/MBvImTeh1NbJmQbO63BhVIOBAs+1G6z7ppx8yX/91IZzmFZ/GbhSBoHR8BFJ6JAAzhFRw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDwD0bzxPuTa55OGQq4D2XIhaFj4BLwolU09cPwffk7dgIgPdXkjyx86lYfAPFBwXy+O9g+mtxvBoxibgQo9hQuSFY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 253551,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh75tuCRA9TVsSAnZWagAAOmwP/RPIoXf/iIUgel3HgK7W\n5p7v4KKGIIkFlRty5dxUHJNmWglv3CIJoGhF0Upm64+VFp5aadQF9sFRZXyk\nz8evza6OtHCj/0W9lAgaINYLQfQLYXW3XQfFQp4xAZ7pDsFJ/ALMDmhlM01R\nblG36phZQe4EJDwfnG7npJaAQaXSHmtO1x/z03w3np2qVTjS0DO4Rrx37cYf\nJ/Cgdaddll+/zQB5Z8/8Dleli5ziK0nv8wHBfWSp6+Xe+/ebrZQccGeSLFC8\nfM7n9C6RPHJ7Zf5lqHlUro3YbraOfO1u1m93o43853f8aKolJkPgAZTjx2gb\nZ1if4YMr5LWcTsK9Y+phOrpISDi7ODE6S/cCEBhMLt/YqRecxrqQcQwJuijM\n7hV/SW8W7d17TtIVz4BaJ6uOwYl3JkYk1SFrKt4F/q5XKI4kVfMhAq65RCdX\nb4MMYpkwjvXXHkWVxFcU9/ExJsTNu6b3tUBIBF6QnE1ykO1PBJlMM2OAldqi\neNJQyRs6tmQO2cWW/myUEc1kuCAwTZy06mRUZ3QIhR4NgAp0L2ru1cXbBi1e\n096BIoVn71Vqn9s1/A7z4KDAN/BNNUcZ5YiCR9nfz4eouilLEF08Sh6KIF66\nO1bVvs6e+9DpmS5KIqd9OSFdjnEhQZ003uhPlgBQlFG3ZBFL1McvFXNPdwet\nRH33\r\n=RTfn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.0.1",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.1.2",
+				"@pothos/test-utils": "1.0.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "aefacb72d5411b3e96bc86397407f0d4377aa14b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.0.1.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-7zY8DRUv6ko/ClAzKGN75vu7NN9qhXptK+O2Kc9Nif8bAKJxJvx1PDu1dWR116lmVey8RQR+8CZcATQ46vVLtw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDFcNpbBSTGZECmSzIYbnUZKR3v9ZFkNc4k971DbB/hGQIhAN05oNbzNPZtbvYhQDK7L1lLptR7aWx4D9PTCEN4BbYg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 254587,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh/c/9CRA9TVsSAnZWagAABBYQAIY+0EN5CKU+UxQ61WhV\n+09izH8vMWQ8jYgh176Wgz7O1W+SKikbqXoMDqcBu8h6kqCymFsiIENJT/C6\nrSbs9WHivp155paKLrcsb0ITiJeaA2Nn6TplyDOnBETKeQZY9xpFElQwOTvY\nxxi+CN6a1iFvOazW+6mx51WS8ZresZ+YTliLL74eZyS4tzQA8Kpgik1nf5aw\nOLuO//wTDuHtqEZ0Mt/pyrA0Nbw5/kWZ0VPE0HhJTltlaF74n6juRdMuMmvA\ncedUipkc4vDVUqWFK1WgNLziB5rKwvE9TatovlSlHuPmD0r57/4OGfIL1JHL\njUpiezdy98fKJ6vNQGTVfn308SBuNmv4mJWhqvSM5W+5iTHMuGkl7r7yPOxD\nCKwWnH0dLiQCmsZgPlHc+OwCwko0eUTmXO13MKhwcVsrEN6Ro4VE+RM9y+uA\nHXlyNZjuVlGuGcJt1YzuRUzNt+0gifkdqa0VYVOsyB1Ff8/g/sfPI9UMK4ur\ncLrklPZq/WPz1hQA9lAlA9jT3OKtloJaLSJ/CFpLx7GF66Yx0CP6fXHtCr0c\nMpws17hsb326TBoP6Dhj5gUdURvk2Ur8g3EAJ5nCxpwzoOzRpst+Tt/BvMlb\njNGg27GiKuRNeNtPQY+u3IUe5zKSAaFr5iXqnM7/fzrUUhBFZx7dD7u686zD\n7hlh\r\n=IfcI\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.0.2",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.1.2",
+				"@pothos/test-utils": "1.0.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "f53bedbb1d2d485d3743e413975ec01a04c6dbf1",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.0.2.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-UWTWgi6Fom+xrXTwjkp3OXBB07tmu9EgiyysGr4+Qk65J8Z8+dlvP9zzgIYXS12W060aApV0wHaOkVjR/0BUBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDL0GKxHXK2vxHUKvZCwAqLxYziDVI297hU1tmnTitpUgIgJ1dZP1bERvF2lni2r/8pzPv4V2kvYELoJgZpKo1TKRg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 254892,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh/e+PCRA9TVsSAnZWagAAJDkQAJZAUn23BFjKeLe9/rF8\nGLVn3fqo5f3huXR8ZYx7nTw9IfbztjmpnIsIDE3EtesMdQU1E/gqGAkoH4ge\nF5OA19Yd734hFYbbcKNsKGYb9R8MzzthzdIQkkdI0gncRHl9H0ejx2mmQxPt\nWBMafZSCQs6DvNAnFWXfrPW20Vkzey7zLJiRQJsEHFI6UACCDNZoL5MOzd2g\nIJlZte7A2ZdoyAeF4lTqmig3mTX7yUum5kVSuONQi93IitxzAQIfoM+koVCP\nGiyn0xXvKFPtUnSeM22cA6k0/mh05qFLGhiDxNYRPU06kxbo7tnsYarVDvyn\ndODJ5NEkm0LGtMLiS9YMVTyNEpI+3D5JvKVdP+BWv4B9UMGkVPuhXCJXqFHI\nkpGgGy9vhsJ0XQNWGa9MJeS8KFXvHn79xdpIaRrygdnVSeshUURxBlrRXo/b\n0ESPa7bnEKJB1B5ZXpL4ew6XmgQpETDcDQRQflYgLtmO9/S3wncJTzv3t6HK\nrMNsphewsLp1KI6GJbXOqtDme8LhK03iWlqjIG4RSGfdLHprbknxuURnBvRr\nXPWoq4AsLuN2YEyjixFpRrIEkcrFEo9toVB1ggjcYQu3adFwR1aJrCHqGc3h\nV9VlCv93iJ3UplSZXJQcfkMSrJJhdhJVxCaYSJYWhB/WhBWl+EAoFiLVkovw\nn67o\r\n=nVHF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.1.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.1.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.1.2",
+				"@pothos/test-utils": "1.0.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "421cdec8a4df5e325ea995048b3d51053c45f1ed",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.1.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-9P0JXnvT5XsTcQstqv86Mh/Wy71CMfsp1e/DL2faYACYJ/sIz5PPSvIcRBiBneQ0VM6VGBs+31JG45yigpU/4Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIFDEw2Tkp4BIye1pP4oBjTRGW/sOT+K8gdU+S63+LkmgAiEAhuIGUVDo7JIWuyD/tTm7z5GYGWmN22gK04ESAiRHVJU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 282251,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBaJXCRA9TVsSAnZWagAAFSgP/3fHXlIrHOt3d/i5Z5rl\nogmJib6ljjjfOyggJVEGdQ6g/uO+IlwXYB2EEXlEpBDcSJ0TjOe9w6iBOt8P\nunKdEi7RpFEky0O+MKAbTxO6gER1wd+NAt+guKUtn/pqZIHgzFbKxcFBq3K5\nSLxSDTa9gTYnRDVLj3QhfSthC5A1jC9f9VPehGZukgZRHRKoKcYJxNg10Mtz\nWfzLUajXyt+A0tjDNH+j8lzjnN7hHHePFfNuz03TlTjg6ic7QqjAK1stc051\n/Bwrl/jkW8RjWbcOD+bQMJJ6Iwflk6BkkFINeAa2BQzYSsb9NlSzU5vd8YSv\nzy8mQ9MB8O+RwIL93Rt7Zjv5UNjVFs0LZp8BZp4QAnB5QTEMvNAFrQsuPdYi\nID/nMcWi9RbQvEzpO1uU1SEZImY0Aa3OrqKA+a6KCPyFZD2oZCHuokUCveZy\nhrwn1axX+UcemJFjQMProeyK6UE5G6Oj6SenHmx9ZMozqhx1HzHPALFFcL6V\nBMFISmx+j/F+2VNfF5JubVf2Rf/LiMppS6vwrKfoEkOn58DvGqSJkwiByuMw\nvtJlIAQ/9WlfsuLc5MkUp8qh8sWY1vQ8MdkHJAqtGGGlh1VZ9C7/XTeBLrCc\n19dzN3FpdaCodIPUhencm643+BNJjT0ytM9oe2NgxbVpmUOPpzByZYl3OAFf\nVvRg\r\n=+a/z\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.2.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.2.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.1.2",
+				"@pothos/test-utils": "1.0.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "d9855410173bfc053e8fae4dd98e1f5d4878c056",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.2.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-sCWMFu6ompuSUbwtr6aCKMclpc8U/Co1KynZprnBLX0UFjntTxPQdzU4G6XenPAtWUrbh1a/IiHF3IR1PZolow==",
+				"signatures": [
+					{
+						"sig": "MEQCIDAt0tFKsUk3c+SG6R4X8N5XnbpH7RM765vHD0t3Cge5AiBvb3OMZyvYlO5/b57d0IhALSN19zG/AvOAJKc1PwKuRA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 284137,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBhGaCRA9TVsSAnZWagAAXBwQAI3vFmuBrsWhQuD8BxEq\n9T4n9p9+UXkKsrm/k06QXGFUtbmIEHH09+1nSY7ioYdELYtX4WxP1olynE1z\nqxZnLlmkJkNF55r2W0ljuJHRva4Hgjj/vSZj+c0epfnaSoWooDUgEtDLg8jG\nN/fA3P8s2RBZQPA5h4iDP/uzQ8XLHQ4lRcnoP/f1rYkSaOwOAhlSYFJSdNn8\noWqfH9iwoXefnsHVoxWVpKkPPri5r3Ln6gYhBc8oV0Xwqu46LEYYnFxqXKoM\n4bMq2EaUO/VuWeVjx9mYGanvEz9q3XeGB0IYZE4SxGXjppyldXdmUDB5Tc4c\nSO5AJLqe3o7nPlYKeltRCGdfd8ESyKpvO+R3ag71KHPF5fi5E50czMvJAbFl\nikcSIr8rQgucEezvBqcG/lR6J9JMVDKlDTVdtv60plnTcLG7VMMdmw/tyeOM\nFueX1XCgx0BM7BkKXDeMV+GXD1ZqHWfpmS214G9icDovau6k5FGnoyrh5/4j\nPyRm/F8M9/M17L78dsvw5SWPCxlkVNsP8jdi6nlb3gdFrUM8VC2cjvUYTxND\n/D0rqYZuz9vIyHRbi7R11DMFGguUBt+9Oh0cp9I1duhxCPgvKvahywV9JqLr\nXhXddAYMAIuHU8C/YkMMKcomA21YhxqpnVqFN4Gt5HC05NQKDvsLo9ZAYurU\n+UnM\r\n=/n3D\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-preview-20220211212258": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "0.0.0-preview-20220211212258",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "0.0.0-preview-20220211212258",
+				"@pothos/test-utils": "1.0.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "4224cd61eb6dd9b6c512e7b51963b1be8b628844",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-0.0.0-preview-20220211212258.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-8bA4nGnOWA70y0/dNfgQAHXJmon+LSz/REtrG6qqmeu2OLE7NyugPRbdtT/2ENL0F9X0BIdLr8xf4Ct3iQ9y7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCDGx1s4yvV+dAdyait9eVF5aiIBUhKNfPdTRX2fRA3mgIgMrpQBq0eaiEBnu20kaNjHEs1CCQSvkbFkrEYXGq2wOI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 248655,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBtPSCRA9TVsSAnZWagAArNkP/0ZnLIGguYIkLjHvpSIB\nSQENmiMZqxnwvRF/g4qPi5AtLV8GSoXBGh+NhJmP9Ect+Ts4ubEGBIe9jz9z\nO2kD81mU7u4HGgykxc4wlzGdr1/IqGrwDvH2UF99xQSkEFNF0r7jSCcCbL1m\nKvKz1QN964wGvGSylRK3LHvI5bG4+v71PiJiBPlGIO7R4zy9r3brEFSBH8lA\nVchasvBWpCnuUjxCngEtVvBeWqRM3geO8o5Fq9KUsvW2Jfhd5fSqfGHRq/kJ\nYdKlw0wnolk9UORc1OV75bsd6ES2gsnzyUZwYRRFudM6zKypbPGlsSpemUqL\nFATNb07Mo26puillU0Z9F/YLW4G6qhzwAFL56Ftq/fFmK93x5JtebvwaujSz\nQUQj0oF6/geIipXcEEqap/ZXiKZsnvd6zp4990nVFOVOlO7sJzvSjj6Gw+J7\nF4YJpmVKO5CVJMmh0ulXX288FMUhfF7RghvnHaxXOvXSkHdIfz9uQeVV1A3u\nM7BIZYzVvPhF4JCa5NOdzzt7RFTrqYO4/tp23QI5Ld6NPoz+jv0oNedUYZlu\ngvl3w1/YiHGiMpFacxwyrmE+EmgYC/7sy6O02/KjdnwbB1wtoy1ca4Bcvud2\n8T4vZqOOOxOp8b5+IyzAxqbgLXhKktNgPSGiQIDPFRrmd0nCVQL3zKM9CajC\nY14f\r\n=7tJW\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-preview-20220211214221": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "0.0.0-preview-20220211214221",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "0.0.0-preview-20220211214221",
+				"@pothos/test-utils": "1.0.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "381a42a50c8a3fb15cb1538be802a5ac98b66f15",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-0.0.0-preview-20220211214221.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-5n07iEg4oKrSVofHJOv5Hxj17u8ZJRqEL0H+cCH5EcXqNMGAqvMTFY1bJ9hOimDO+2a2kC4UabV+OjARe1DHhQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCCXysOzjZm/GxoduKdETHYkYIjjd0YBaU5MlFRSxap8QIgbciHH/veUaGWiYC4FDZWHnhzlAI3GpV5zCQ9Qc8aZl0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 309742,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBthhCRA9TVsSAnZWagAAlQQP/1z5EeYpx/a6+KFvaL8x\n+1p/U/GZPnQuQHJ/YjjneKRJLppaLSowFB4H0es2KlkDAb1ej3QTUoKK4AST\nXME/ir/3rpkx74YyAJYeK5cB7k1gYdNRYay++07083oAwCIw56cHtsx38Hrj\nvXIny4+RRZdkcNhuLJtDqX7lHTkeGUqNwyyCL3qfeI+eG118rncA3VO33lhd\nFspDtOD3hvtJofoc04XqcA5CUZCdVsd/aAMBm5KlOzX1aukXrGDy5mIJGWBg\nXjSNjtFXc4eXWEpyrrDrxWm3Zi4/JpnuqaDeFWsAqCFjyNy9McABPpUCffHp\nldmlyecu5sLw/ZELRPlt3RjgJoAzdYMeR0rWj3aOCI4GVs7NGz/2GkFhKxJE\n6LBYYAcHDWUfcKLzkZeImd7uaNYswi7vOoaOyW7RAmLaZlysKDST6h+wnBJJ\nZFvMCglZC1+4mQ92YKZNacBP+fnhvRuYtVHEoXh7rq9kMFSPRSwdlvLGV6H6\nkhrFBSneDXvfqCJ83FNjaSdVD1PC3lcuQ+Kc3DZaYRTkPx3R/POUrimmuoAR\niYPW4UMQruY4pep+zPoKWEe6p22jCxHbED9pm7b4Px/7+Tw/3+wYPB3Fp3Cn\nENNN4Q2qpfOU9J97azLQt1zmprFLZozG2EzrFHc2VZVZN8DSmslUk0D41Vmw\nzhuy\r\n=7jbk\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.3.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.3.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.2.0",
+				"@pothos/test-utils": "1.0.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "0c1873275be86bb6660c3f9cf2cdc6919d9a0e4c",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.3.0.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-kGHyYirT6KEivbJoqEl2RkqBGHjwZE9rQFRrkchiN5X3ilrOxyAYI+d2BQ1Ka1Dbh6kKNLjr5gye5V4etI4g1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIGTDXY0vZQrlQrOkyYrK48gg34ROXkLQ5bulOI4MfcUHAiEAigNluH4iZET5HM+w0uaRXAbZAd5yYlpGVbbZPseJS6w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 318681,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiByI/CRA9TVsSAnZWagAA1nwP/izh43CK8HawUBrtd7zG\njw0NyXz5Bwang+wW+CgmsgQd2k9wQMiPUUMQKJLOxeQgo+45Ao2QktOUdnNU\nf2ZPEjL0fmvKP7HcWZgDet1Xbeaz3gVxJtKSsjDTa8eEqxKNh941W6VHpLbM\noztcBI0hCpFZM/ZP2b5D5X7kJaHzFa81d+FNMjGcapWRKP8sUXh0IrBQIATU\n9d1vFvJnEUCRnY/p92Hk6tVjKw9i2xTDorcwpoisbhVWTH/bmZQgMKFwsG0P\nPLJOZ3dqxrqP5OPuVKxvPatEanKPtqawkpy3E2RhbT2hOSmkCToV6BSrbFOc\n8wi8wIfqMJ+nnzGBacoH1kjnHKGSGFalp2/u2m9o3XoYTmH7aXEp5cVroNfI\nKIt/vsfyl3p9cjpojGmFcFVjoyk0t+apOJZEtyY0RL+uSYkWUCuO57SfgzFl\nJqnJGn4dPcPnOL6AJneBBkVOGIdFvGkK1BLaB4Uu+Lf2LrsGJ0XJYRYapRTB\nYpNuymUrdsjjpZTrcrgytHoha1Vx8gZEdKEbLTZpaYVpZXUbUmKH7jq7TAdf\nngEyfT0/u4FzlbLrUxUDrjaqLhbVEAfJlrU2E38OWFQGLTVxLdN2ejtkO+O+\nc7sTwrJ9sfBvA+BaGJPOZh3OmKhnYx8TCBdZTcL73zmuIViOReXmfpOsJg33\nLtVi\r\n=oz9X\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.3.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.3.1",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.3.1",
+				"@pothos/test-utils": "1.0.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "b6ed4df133b8a4b6048873167986c0c10638d424",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.3.1.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-kzdzNNekqD0DR8XDnzoihWwgTXb3S3fTGB85nGCAwq5+iVScwZmtzmCSBgV0c0EL6+CyyaaVNpY0xaQVltng2w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcMoH893gqChGNgmSN4ropNa0XCKo7RWSwX2PQE4FQqAIhAMhbQW1W/+wGZlkcjskW844dvyacmCr0vW8NqdadRnms",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 254567,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiDWkoCRA9TVsSAnZWagAAWY4QAJ2wQo3gAr+gBd9TWxND\n18oN3+pAkf988xtHthJ/1KOkdTDZhj8SyP6yIW4hkuZ2gGeQOUBhV2mABhwl\nvgAov4c5zxkp3xqG1U95sigNhPSKrxj5xxa4u827KXGkW3w5G4jzbGNg7J02\nBkFplBXSljSuYaf2DjlRA7M2K6MvomTDrjWo69vmAikbByusFV+AJT+J6LA8\nMqFWr5bCsQv+vVeLvQZCWCKct/Rn8THN4CzrAui1WUBxFZU93JAmKi7q10n5\nhOBFsyA9/oHhaas5itSN2sBDSMtt6es0U9kvS6YeymgawC1hes8C6yBc0LxT\nwmcK0MXvMdDsez1UZ0FAEBs6CdDhwkeMKe13axuBArTz+6ofDi3T43xUuCzC\nbPgo1TNteDq7xpYGg0O9rcWJlZjQ6x86P8gvCg7OZQscaUddB6dXNUvxuZBl\n2bsAbkYbQIcuSijyIBo5+Q3KBL8IldOYXSaZT07f43EhWhgMUrTjAMueXy9U\nzSzSf7v09VIJnPz1tSROyHlEh9RBqTakyJthEsM2RVM29Br+6z9uZRQqAwiZ\n7Dq4dhltMK5nF570TVODIZigl37332Fh8okvv7mBMK2Q/gYjszKPeWU9hDjJ\nSbeMmOTmfdkedQanb+qHI6PN567qLIueCDZJugph5L4uIF6bpKcq10mRBHJ4\nwYYH\r\n=DaxO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.4.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.4.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.3.1",
+				"@pothos/test-utils": "1.0.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "b489079ab76fabd6f37fce6a3434f1f16ce1604f",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.4.0.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-IYxEkzYnsBLHpK7BRquP1M0g6i6e8NLa02+Vd8xsjEDeg3wcQzGP6+muU6sDpxMtZ7gandcTI9goa9TmDMNRqA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGOzpMQbuTud97dY76zpV9QjAotAieLx/cOD1Tl96eI/AiEA1no9kMwwCYdMtwSQS2knRtuHvb7BtTNOIQb2IYu2wRY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 265373,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiDZaeCRA9TVsSAnZWagAAFLQP/Ragsb6kLWht41H2Nrlf\nidGYL1lZJgy37ifBrwCLILQZAIyii0yZVefOsW4zhWZ6O8U8upNmTdloNKin\n5tcK9vr7NaMPg1NOnKJY4tma5nbKkqklG6S943zP6nU0ud0Tn/ryF95XiiKL\nrNskmdT3NdlNttRgx6dI0ytdVaFATEyMwURJOfyMP3ZQinIsSq9PWdPgNUMd\nRaoJ2yJ0kBC6GBtidE9VwyGwiCszfm1m5CpaSFFXPxXSn1ZTDleURLO/4oYA\nzn4vuqATFgfc+qPZnsplzwyH8Sym/Yj0c8PtTs1qc31XjWIkPHS/3SPlOZU9\nGw69wJfZ+9bFiKzDfcQmuTOSUfWkY7fQcCBDsXtIsCh0EmAjx4j52kTzY9nk\nwgpj/7HeI/RGsd0uU/2FHHTaNUWtW3OWRvxea1AMY4WipXerSW5RI2isQOUv\n4rbDcDCsNp8WejG4BoRUkVGKqPWptBvT0EpVf0AvEepu6VM6ccZ6JggfdaVa\n87yBFEXEGTY2zHXaDPMBiL2OAnXwoKcuQ1D8syH0A2ConDQyYRFJJno4DUxq\ns7dkKKw8pNByYNYld6dj0R6YgU0s53qme9zLwCV6Da97feuqzMcfkou1Fzc1\nykAtC6aivxYYrXO+/ukq+L4yKmjokYmRM4YTjCEwrwslvGGMD4x2wbWUPayx\n+Sf8\r\n=fk/E\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.4.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.4.1",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.3.1",
+				"@pothos/test-utils": "1.0.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "2283e228cb6cf163956b2f914dcfc44c24e8fa55",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.4.1.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-z6RKPwQY0239rrLWs63zYLwFrpC817QP09/AFAKwRESLZKwGaOGZfv+XG1T3JJankR8FEAuRfMRM883+ZaawhA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCbcRy+v42SPII//rBJ1oUvwCBRVrbyHLaxUoDszp4snQIgKLGyzzhWUiQOvpVgSqTTWIFX4RIvuEBql/gigtM0IBE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 265476,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiDaC/CRA9TVsSAnZWagAA7UAP/2WTp8pOONlFbX2nB9DH\nCMAjGSOC+QYCQ90u/hTaEqbNto4P7UMiz344ZMFpK+P5JrUoG4VCnax7wOCE\ntmJqj5fU5BVvHZqa4N4jLIm2Vb9OeuZWgabU+2Qg5Xfl/Sd2EO594xsh7ReH\njnIV3OMFBDR+M7tUNuO7Mbp5WMK0PjI3M0dkOul/1zcx3GDNTcS0522KFAq3\nHI/UyPhK85pXwcLo1He0CD2Sc1Xbawac9Q0woA66wjwyU4MPBrikQqZVbapf\nFxhKVzWgqNQaeJEJcDi85sFZSh1Cy9I2qGoghl3LEyusnRDdaWOlQWYGG4JC\ny+0gm+cwNOHYiQp29UNH/dawf2f9A7LnOgSJ7ziyJbvI9CT9/CaNPPR2fX3k\nS4liEaXUq34U+MNR6E7aYqg7qa2E+H7Ro5om5II2YlG/LBf9tLdkpia5itBn\nk1dFBYr4HDiZEz5Shps/9Y39kRvXxVbkc/CFD4OxUfObtzs85jDJr5lEC1r0\nKKWl4g3DZNAjuehhUGdHr7T/I5uspxk/dYQO2DnddZ+Hvg6JV5LElcKJZwRt\ntlUYSfII6sNZhZ+odUF6h7tyt+sH3IQw3rhf6su/eHn7J5N4V75jffPkqLYx\n482vtuLPpJo5CMRfSBDpPZjsKLfQxbUCTWDCjwefCxmOwTptj6xdqMVxjNU/\n8h9X\r\n=JjRN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-preview-20220225212244": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "0.0.0-preview-20220225212244",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "0.0.0-preview-20220225212244",
+				"@pothos/test-utils": "1.0.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "e11d23b69aa9e8595227a785073435ab544869ba",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-0.0.0-preview-20220225212244.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-nSiH8ecE57SUD+8BLcclYIgx4gH7ZF8XbQ630nbeaAp7biOyCuEL4sJxOGzqkFkrd2YSIAPHSjY5n5OPm/mTgw==",
+				"signatures": [
+					{
+						"sig": "MEUCIF1dL29Scgffnlf2nhAQAaOAv/pLTQFh39uztQWcLJZdAiEA8Sfv14jVrVKPKcy32rN59KXHws+AOsuMIHwCMvQMbKk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 265470,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiGUjKACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpfiA//Rk2blZCnr2/Iy/RaoNepq/oi4pMF3aEaa4YODdSLBZOd4Ygm\r\nsep+W5PsTo2vWz5OFrlZcO3wI3IyHD1RzZUb06xEV4YPDurgpg3+ecIq27+4\r\n6EXQkhtwvgZYn1z9d7HXK88YclySKAbvTZdrgE5adnEPQibzhB9LMAUsaPkT\r\nbTCcRJ3ejG/LvJQxlu6qrg1W+8sxq2TQRD8c2DP8sQSGLz6P0R521zbUiuVf\r\nXFXVeSUGufNlVytTC3NHJONZoXAyg+lRVoOQccf0okd7jVCkfEKy1E7ui0KM\r\nvpJu1okto9Hjx21ONoZyQZNrRZ/cBGh3ZSnvxlhaIZtooVas7Vardc7G75OI\r\nrcVWqKRzw/EXnMqzSZJYr2zefEFkRW6F7EqwQwdoBDJZ9ZCMDFIUM9LToooh\r\ny4sN3Es3fHrb90rEL/7NcuqytrR0fjnvTiqmA//MTQzvVXbxKcNNgg/ESyz5\r\nOhdCj1cSFF3HE0Ecq+2IKvg0GmYdv7YCPBBXXJgaiCoUW/9f+Vr5+fRs83Zf\r\naH2TROOM8Y8mJYwZ8dfo+fSTWMwtskC46+dE+f1sqWLwavV+Wf291QLZjuTG\r\ntT9MFm6J+Ckyww9uAHYTKpxLlYHBLnj2kYe5Yk/9HvxZJqwki3fmANXl9dYh\r\nzJUA9gFPguHAlvsQuDX5twV464sc1GR2fiU=\r\n=aIwb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.4.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.4.2",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.3.3",
+				"@pothos/test-utils": "1.0.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "0d443dc4064fedce9cd448be6688d800a565b0af",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.4.2.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-HsOJN33ClFYCrb2U0SXCiG8gYYFTle5zTZegYKTUxuf0CzDTKDxzrFVt/3Ud0ou7xzp94h6IY3C+h+kHRyopnw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBqFzIO82ahSWV/4P5nHLn7yPXuvaV4HpRfe2BVA2yDIAiAZ388UusFLt+ZQ5r4Zo1W9AL5YT6owhIxL2Q96FeBNQg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 265401,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiHT8kACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoG6w//Tj5abkWzKjUek2k1+Ze1y4SAyk5I70fdlFlYf26XPeGiR/bH\r\nDA01Hcrji06R+Dqy0cYKneQxn6Cj93wbVrE7MfVholTC6xP70EEXp5wYZc1/\r\nTGxMgjNe57PssOSMM/Tfb+fFX6sJzBi9NyDNqi9uGJ7eVOkpvWDAhFV4TH90\r\nhpr0vu2YdEIFQIHYMv2mCDPDGEU3kGdE4sXMeC9466CutxwJJl50ckKTpAN/\r\nTKrLk+/GSgIHaI1LgSgeysclEkoms4yI0V70BU61XtCXHV37KtDACnI4cmze\r\nd2XQPmCTy0Yl8hGTJ9l0jFjj+7unoQJZcGZx6b1qv9ObhA6Xer8j3HCxjZok\r\nw94IEgXR9F0IZzVphrqwg2h6FcQxSRpp+DmtHtK+GA+7LRkV5vPDxlcWhrVt\r\nEsQkUpAWoi0gi3ltt2FPXzfDKHC6e6GggCBnCKN3iLClRqBBUqPT/HHBZjJU\r\nJ7uSqsJcg1rNVVmdv9/i8cVr0o1cjKU/Ei7Vou/UpjgrFV06srtJ52GhE4iy\r\nBahLVyPb3tV8yO6KFoWJCoMuZynyIM9ZWRbaugm3Ct0xz53qKU+QLvcc2y8a\r\nB78hLOW41XWzU39lQ97OKjcfgTat49D758MuzOSOIKnHDbBvQOr48U5u8epT\r\nAa+BlKDRhtCJvO07fj7+qqALbxiASLg4nbY=\r\n=FIZf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.5.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.5.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.5.0",
+				"@pothos/test-utils": "1.1.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0"
+			},
+			"dist": {
+				"shasum": "7e655e91723b435eba5e352455266c126a1c4ab4",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.5.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-aNe8QcZPwjwFDjr2e/HdZRvn62qb8ZpaZgDeyPYQyw3WzW54zKvIEhzg1KeMbuW9z3NkQWP2qtjtIpgu2GQ+Hg==",
+				"signatures": [
+					{
+						"sig": "MEUCIH/tHglkZmyjjJ6Z+jUKCDf96xqBD4iwPQkmoDF02Be7AiEA3OM0RzD4o7ivOydD+3jydCmb8/25LHQ+ymOJ+T6/odU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTQDuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpjIQ//WF7W7x0xNJrZIeRRQU8HQBQWTNaP2UVaI2gyZyKMS3OjlCUo\r\n5rpK6QG6QBqn5an3WwOBdvxxQNnzgiWBxUPJiHEx1lyzXgH3yeZcWsR6Fb2J\r\n5bZOFi+BlmxI23K+1+UUAxmyfOWxnsCSWG0/oqIl+ruYaQQ/TCyBoh1VSWfl\r\n96j7fiIW0kTsqSesHjGTcZ/qrJpI8YZBPtZFvh5gec+H1jFz4bl8YTJVRTBU\r\n4JeE7kLXNLrlQ3xBQUFNZJb/8NfI39mM9xLL+pzuzSTVvAdJbCflOWri6UxY\r\n00+e1x+MV8xvjB+4dso5DpZno7GuM24g8DJGtd06jYoejVd2laUxyGm3DYp3\r\n0Z93rLfRDX1gaGgPe/43Ywi05Ilv8JiZNXzuHbo3FOzLhnwPwv1NK+MYRzYL\r\n0JJ274mBZOPk9YlDwFz/J5xAZ9vsgfWNVIhfcQMSYicVMaGjci8uoFMCc4oT\r\n7IxTS2z4GdwxDwjQNmInMSz+ofDoT0QdD+4wccoiCMBP9oaqGwScS4HT1TPL\r\n8ue9OdWq9SqzQ9ZlSiHSFCYZrhMa09o0+7Y1xt0VjZGRO8nXeSmkCIdZirAL\r\njbsVjwf5lxVf4WhK/12Te1k4qjh9NBjVNZZ+FrqpfL2XsnHvVmoanefyc+tu\r\nGbGVqCc1dZR4zTmHdQOf04KooUTwAtuux+0=\r\n=qJxC\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.6.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.6.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.5.1",
+				"@pothos/test-utils": "1.1.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "7dd796c561b28d5ce07af1b9744722e94c837376",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.6.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-kYfbynMAq6UVESUrBp6cQ45kJ+/5+1o5nhClqblGNtjgB7t6jZBeDStPTyEFOq9B3rrc3M0avU8oeSz3luXUAw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDwU8dlSK+CGc0UZ2ABiY26GqS46Zjfpe4qXXgTB0JegwIgcI0tyIBP5P2HRNGwvykZcnHCm9t57awt7t2BG8ISE50=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397348,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiVh+JACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq5aw//T3gpot18ZTg5dO6YEYoPSVGrYp4DBaCypDUfIxU/Q3uFBTnJ\r\nG0vwtgIX5/46VO168s6e/WaemNXsBhoLcwcNkmf7QBoqFNzHCrjYi/MIWKM/\r\nQcXreEXjbgS1j8EzqjKoUJzON6YnA1o9GCT2vAcEZmN4JZkRdgVOD7n4IZG6\r\nVO4inLy0OIIKrhfharAE+eEefGLct6wl9QQEW3Aw2IeevJAGYMQEm6v4yaBm\r\nyGUrSXuWDTZ0hyQ+Bmc1tUFvNWJyiSZ+KOJSBtNcBlDK60hi0XDgk0DvX4Ez\r\nPtnux/ev9sUf4/GZPTPqQo4PewqTsyafBFqVahRjynP+TDBDvFdd9a8ZOBoo\r\nM4zNschEJnzJ/EAt9OINnsd0H+C2i8yEYH7HXnzCjYZzwuEadbkgmLEhltjw\r\nvpwPw59g3d65pzQ02NsSYlGyoqTrq7CB05zOVz4vB0uxqngP4U+q+CcymghW\r\na7Z/tHbAdZkNuRDM00zmfP+xruPhCrWbM40jz1FyvH88fPLPzvW+MVp0vQHo\r\nr/dnD/cMJuaSI1CLJcJvg65PpZXUinGTpkUlo3uHmnORmqCnY7bbPP1PqTfN\r\ntPyLrVcosIWK3GMyPKCE7SB/6tgcCreBmci00ja6937XGa0DANy/GrChzNf+\r\nU5vurekv9/cQh5HkAmjHngLiOSBc3Mz5n8I=\r\n=xdC9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.7.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.7.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.6.0",
+				"@pothos/test-utils": "1.1.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "77eb759b029fa505ac6d47c12805e975ac6ec40b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.7.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-UBPqcSaxzrTP9FpFQqegDWbIzXrSsIjAGU1PVpGmdpKuGMNJLxBkbn9JdAZtPYtC9PaMeY4a5rfL5qctRe7C1Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDAcNVufiR/SXMHwQx8sBCqnOMdAnWzB75LcOHcUA6phwIhAKY4DuOMe+ngGnvNhNOHEu00J8iOs4KyRdHWjNx/GluJ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 396823,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiVypdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmohWg//dqswS9RHbj0G1x2D9bLrVDFwHvi+hVnpLoN1jndAEchANGIY\r\nfW6RZj0PSuYaLvtnzoLfmzMnqYtdZ0dNKcS8Vn1vIAlI4csa303txgI2WNbq\r\nZxYPXJUwZSSh9wdmUc/z0SuIkjh6pqSSegMKrOgBOVPqkw0ewPrE38gGiL1b\r\neHjZDBJ/2VS4VAuij0ixuKnfnvLQhCKqTj7md6iw7w90rJ3dD+xcwud12gjj\r\nO/B+Zre3skT6pB+pFVQ27/BokHaUU+hOQ2sNLGs4/4dgSmO6/RBKB2P530eF\r\nlyUlhbp+G1ZbV61S68FWZWercuzd5IROC0ErOc45Qo7VrlJEw9cRq+YecNuo\r\niU7xj4EvoyI3ZuCC/Inuoh8Yo2cGNENIYOkuTvi6/KzkFMUc4ebfyy2jt63R\r\nOJUaWpWlH7rXROqNFWDnyWJB52px7XHbu8aqh4eLyBzKH9Ut1fR7rL00a6dC\r\nWJ6UHAp7IEqsSfYmz4mpGIw4/9glJ+eIjUrRGs7lQtjxCp2HGwDEvbR6+9V9\r\n+5b7sZfGSrAZW1w+btj28045oF9oQAOQ3nfuGhVvtjm3EQ66gToAav1Uz8WM\r\nEdUmz+TQz/0Dba4kQq3ShJi+iKSb44q4eUYUGv+F3bbWMRpg3h9edBpB1MRa\r\n2CC/TXJ85pU0aJuEVjH/iZrTFseakip6Yu8=\r\n=6WI0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.0-preview-20220428090254": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "0.0.0-preview-20220428090254",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.8.0",
+				"@pothos/test-utils": "1.1.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "73036e1da2cdf08edc5391540d7b703b2c4cb6c3",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-0.0.0-preview-20220428090254.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-F4+nN23EBXHEsqq3GBPIaQnebAFwYe42QGr/bX7cBIq2DJQLG7Z0k9W4CFfZuhE1nNSJ+0yWl2dOKRQXK65xmg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDlmNWJScDzOTo+z09stT6y28lO/Hd8pcO7fno+T5uIcgIgAPM8arUG2SZPEQOsmooqPry9dgp9maVOUl241TGKRyU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 329353,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJialhTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpo1g//ZUcaJuNV10qb2/g/J4G1Efwm19/w8AhfYol3JmJtwIpaKj08\r\nAt/igdmVhewCWsv4JoMyoGJpNPpcHyfZiyc4rKBryDs7k56YnFvJj/UWecvq\r\nd4FWVXT2gZW9g8qxYVcImYQvdvKlWQJ5NIUYyYzaEFG/VxlfUgL2Hw0GKsLp\r\nPnDTmKOuWIMZv2v3ioHxPV4mdSASdOgwJ1v+C4riG4cPFb+LzVp+1E8tJ4ys\r\nR8Y5IXTblOnwECnxCWO2ca5c60DXlozfBzg0kM2aANZm/MJkef5HCQkPFHFU\r\n7znx6rH66PbVAKM+agZcCrRnnJLv6zuNoB5VqzodxtnjH3w9EZUDh4e+Wnxg\r\nljCayQ41wTpUx/IOz2bRRGc70RuTfJrpkQTpgBt0JVkWAnE7wdQWUBVx+vd3\r\nQbjk7tSBb+V5P+pxi2D0meAYc2kUAE0upvHYL2E2RjkOQPzeM9vBX53q/T9+\r\nahY/V67gSSN4t8Ryi7W3uHRmM751x7VeqX1e1vMqc+IiAjDumiwnlkyUR5Wn\r\nJ1FbTByfs0Oq/f31lLEw1V18nIFMIDyexgHdfxYsc8pgZaE9BDwgSpBZSbdp\r\nDGnYOmfHD5kAt8vp+aMeCocZVTuX+HftqSRpmD0scngMoloD39XvNMiRPMu5\r\nDMdBsaAx77b913QOqzq08UNxi6/FSiuZlqQ=\r\n=rzFl\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.8.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.8.0",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.9.0",
+				"@pothos/test-utils": "1.1.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "fe86d3f7fe564304879657bea9bab9f5c89b546f",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.8.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-HbY9aMM8BraJ+mB3ThW5j1lHW9H7c4LO4I5Cz+nSmBCNHQAgIt70lQFq3k8Gbwl4d30xtjfTpKYB500sDAfu/w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDc/dvcrfgZOLPD2FI6N4LRTUYrqK5UdLn7Vlp+lavqqQIhAOhBZMGghH25+VjgX0PXOyQEgxpXpZ+aa6mXhZSUB08f",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397493,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJibFmsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp9Gw/9EOk3FLthtLpsHj09cqjG7nwHBjrAcAcY6OHx4Dbny3XDPnmH\r\noSMjN0Os9e0uHmkK2ya+WWHqS7RiE6iPFyKLCCaPSlgb5uFLJyeg1gtzFGnh\r\nc975r9D51ht52hy9gj8W6ao6Hz/Ylb9RWRaIczqx1QEaLL/EJY+vbXe6bezQ\r\n7Ad+tUDDmvC8NcLMck5KrNOg0bs0nCKTAqa+m9GWafPMOTRSqa17obSq5zVK\r\n4UsBaoSxrGsr6ewMXciHvrENfESRkCI5vaTE7OS8wImThuthjLNysuYeuJb2\r\nW7FFqQmlFHnL18GD+OWWsiknTmGmdMSd5dHYSJeWRM4Rpyc2Oxg0QPCFyc9S\r\nZ3OPcPOboBBEF1+ohOfFbxa6BK1ucynx0vAtPf215Y/Wy8KuMCT8Aeg4A5ef\r\nsi6+JPdqITsCTC76HT+w3n4n06/2xnKwFFt1e1V1pLNYsA4WCQ5/fFMzybgH\r\nfIGD44RHyx9X66t47IRPPPiBwB6xbTTnu7mtH3lZkzu60QadpOfAIjxnRnuX\r\n+PIdNQj6sutD38xwSORJeQe2HEO1HdF/2CK0VLD8PmGKGnhxOWj2SWCehnj9\r\nIcSjKyflZiufYszn7wcpumlszPUOht+9gX500UlMUcO/Gbo4NyrYYTCCeMyn\r\nSs6OKSNpg0SfuSGji3gzDFxBCWqtW9lzUPc=\r\n=Oodu\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.8.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.8.1",
+			"devDependencies": {
+				"graphql": "16.3.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.10.0",
+				"@pothos/test-utils": "1.1.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "331dcb21f3f0834eb4e10770d40783ba3f2242ae",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.8.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-Y9IIsV+FAyUeY8DxrizwXreYv6NWSBmjT33rtXx6CVOUDPeWMzff4WZGUZ+5txJO2UjU4wq54sKyML2WlNf7yA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDBV7GIG7nM1rKRzl9qaQnl7qBOntK4NnZqgYMQDqiEVQIhAKZbos5CTx7et0vqodqkCPw2Jn9pfsDLNiIQx+ANpd95",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397673,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJibOcSACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq7Dw//QcIcKhEBYp2wUlxRC0uP1Yx3NObJ8s0ILEY63c9o+KeVHPgU\r\nOZ0s/LdyuhEC5o3HP5tjm8sHmuGlJ6IwIU51YF418HFd7QFu9eTIlKmThwVp\r\nFfugiIKfVQh7CICH1Vc7crNHiyRkKFuxNWK200r18iAzbI8tAT2ITOCglDTt\r\nN9M+DH4+HxH2OMNW8Ve2oqeilVrhNqR7LryqrznMR7FQyP7yPu/GGI1p3CoS\r\nQDk30nGbFmJeNHILTe59NtdY9iTPNvkElhSrW3A9xGdKYFtUPLm9AYwuvkjm\r\n06hBxvlLHRh3N0ruZNHXPSQlIhTJQPSSi1hMLVEmH/shcPGrqzhNKTdIhIdY\r\nss9bbx9+zGFr11K6HuzAL+UyGYOyzPoeu+bKinuUNFYTxDOapbJ9CsTUBCYm\r\nuiJaVjDV9BZK1VKv5KuWI3IwHcDFKKMq/ReVhUP5W/s1s58pbM5U2feeWrVf\r\nSHAD3vDJcy50Bqj++ZK0NtSeQqqroH5IExT/NUsM3ltsalWC0sYunNnHCzB/\r\nH3LFEXAZi7wKXGHL2Fl2ssfanDia7sfovOBQ9fHV50BpLdRhQU7Z0kdHjO9C\r\nNguJShpeZ5uXRAh86wlh1MBZNRaushmhInYCuAyIadfoFXHFPTZJ+HjMrHEF\r\nunKgu2SoUr1+eunH5dj620qb/ZXRDrE9IxY=\r\n=qKS6\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.9.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.9.0",
+			"devDependencies": {
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.11.0",
+				"@pothos/test-utils": "1.2.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "918929572033e4057a98643d6525ca0be8eb2b1b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.9.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-U2YJmZLEpujdHgMAmN5pzKQEL6zQ0vSl6s4gcIGrNTHznwlt/D9tcEJqFzpiEFj//vFfxeVFdyVdvcRu/WOcEw==",
+				"signatures": [
+					{
+						"sig": "MEUCICbS26dNN8qvACZ8SHa1/OizbmRQWrax2sIIEKFgNqN7AiEAnBj/Ln4pN/msgFOz2I9c4jdPUDYDDo+jpJKOnQGruyM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 281228,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJievp6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoODw//Q32ReSL/0UngVfnC07wyv6kI5IIKJN/RaCNBz4fCVWSfa6c3\r\nvuW+7pCtIJmfQvvxhZ3u1hWMw781tZr7GTggNc8A50pFPC72yoqVxq4MQVBX\r\nRwIAXsWb9euXiV+c7cZHvR7xC7+0SmsnLwfF51yof/fVKKab9MuuvAWc7hLy\r\nAKkrGq9b9rznO+MmQKBwr6OJeLVRu9U2K5Ys558A3qM10M0l1O1ug6H3VmKu\r\nClZ244YQsyVRxkXwDHz99qbyfFWrFAaRM0AI25WRQDWymRzVx0g++v6//XdH\r\n6+XWyHdPqRcUSrh0asR4xHNV5YoONiA+4mjBfxooMbe9etP/Ar/BbMuvHc5A\r\nkKHa4maf2Giyw8eVSO/2l9X93jZSYDrqp6zQqb4pw6QrTgQLIdqWCSQgBVM4\r\npMav27jD4QXPfVQwUoEP7I8qz0cJfO1UK4hzG3DiWx7Lk8KGd2Ay5hff3hyj\r\nLPJHGGkKlwU/8FvOkHuJyYBHxuzx2Kr/4yt+zI1izBaTggHpbFuCDznUl5De\r\nWGDm2sWT4nKcHVjF5C3K7fqHUEsqsSlxjXc2LO7Tlp5PYUeAVrLNqrse4Ten\r\nbByPKkDUjHIknoRWvAJS5Jylwei1W2gtVVw2iIeRYnXYO+mYY/v8tmjv+RQl\r\n9BcRepbmJ+julcoaAGrd/HZAELExXsVpMV8=\r\n=Dx0/\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.9.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.9.1",
+			"devDependencies": {
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.11.1",
+				"@pothos/test-utils": "1.2.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "9c1a72b3c12a19556e6b2b1f4332e55ae66872c5",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.9.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-bGueurhtCQZiYjyJbW3kz74oRAOFAMcA1SOAFeDcQcgDKjIEncDiTeRh+5Ug8rXrIpT79pICwlpM7gKTE6cz+Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDzPyWgeOgFf38cntyqGfvW9yNcNfOt5w4FLQRJZ1zXFwIhALTj2cqOl9nKA8gH3KqRdq1SeAiZnhCDXP/v7q99wIMp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 280657,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJin/XLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqg4g/9GS66dIqzhugA4qukcboc4Oeyl50ohh+6xQh1/P1lDwTMF3Fb\r\n7/DQICKW3dWM6i7w6LNs3vWhO/gITD592/9A61YPw7cXhPHnB9gdPFsZIiD5\r\nqGrj2mRU5taOCvLczYxIb6FxPuhESvSCQbr1qsyYPxaW0Xe/PnyXGih+czGS\r\nJ6NR+Hyedk14vfBfLhhJjkAu2DN8Vuo9RzQZQg0M++gc+Pf4SM9+wqhJaTo9\r\ngh0vrESAT6n+7rgeWUR7bTlWz7T0X7RqSxIVtl34ZRUmrFScprc5v39IgQMQ\r\nVOsoee4fIoEEh79XudG16QnVi6hsWoxV2UxsGa4Gp/kGS6Di93am0R+WOlUm\r\nyy4YPMh6qz2G6dsKEDONiJbckp8dPMdtE9PgvTCreJX/z97gf/XBv7BcDMHq\r\n7rvcZrEhmEbQl4mG327OlHixaZgFHh4ySArbtfhYpeoABBSUcEarj/IgMHDr\r\nQkvSjoKHzdsEhImeBo7CvmUdbq5NMaRiSbthM4PDPlOM/wavxliNwyYwBezK\r\nfC5oOsgmQSSfV6/S4EPWIVZdkp163oBkBpfljzUPRU8NUpXMSnKYX1EatywD\r\nLKXMtYQxRLQgRfwfVAODt+XqVhNXewh8AWPfrLGUOjY3qUzSZXvh6syA4SJj\r\nZ52vYVCnf+/whsJCMZYgyobkgRjMzEwbrCw=\r\n=o4/6\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.10.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.10.0",
+			"devDependencies": {
+				"prisma": "^4.0.0",
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.12.1",
+				"@prisma/client": "^4.0.0",
+				"@pothos/test-utils": "1.2.3",
+				"@pothos/plugin-prisma": "3.13.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "1f6bf6194b3854ad15686ad54933cf91530d46f9",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.10.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-c67SWV3YmCMo0YRW+b8EwWdcBdQShyhXKBcs+oPl2GbEEv1exH05hR3ggW2nQ0KsWOWwdaqlNXlRJbhszh3kWQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCF0ICn17i8xbPTEIro5HnE7wfBcpZbEeqEwp6CEusLjQIgMS6B0IAnXC7xMsabB+SSrH6l5Yos9Blxq/BcaVlsxDM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 417605,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiu+lQACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqi5Q//e8aL40OO1ikPZfF0KWwZFCUpVHdjRnHhBJksVVPKI4+X4Znz\r\nSVY1WsI+8ECGRIg005frnHUIkwVo+Ns/9xkpC2S2+qYGJOngqcAuQDzZRYJj\r\n00z+5fHCjfxXlebB0KsKSMmOfVJ0OvsXkBG2ssb+GaQl6OqR1etnwz2/eFCd\r\n6O9rSD5PT1DhfE9q7PKKgw6y99J1Nbkc4PMgSyTU3A4qN564Av2I57mshhwq\r\n19dhD4qKQ9rUemhomIs3HbEp42FHBnGDJcajO/Kfq2sOrJQ5jVAXvhXvjdDI\r\nh99vWQP21itjq1SRoQ0rjE3LcYWvvT+n2c+8T26RbIFyyNXYCpvF4i6i18JS\r\nFikUrAKi6CueRsstyoxgQvQo3M7TaybbjQVeD3eojrsr8DHiT85LfUIxSxDJ\r\nAVzY4K9C2kmKeGmlsvjFsT7gZEn/nUr+l1JaYF3PSb8fAVE5OavCwRS0nqTO\r\n31x8pVWgOhOCTe520D9qxAhksC9pyxLmJxHtOLInh+YPcnPlBUERF3mdr+mC\r\nXuhrvrtGqrqU+TtdtJ8W7r0/ti+8UjgH8r+CJVrAhONmD/mJ2kgeh9rhmqqC\r\naRhy0bX8xpw1tWvkwbXetyz44mkKGbZmcRQwaH/6pFa3kwyt+HaXKxXqinZV\r\nWkOBqTr+W/f5ujOtvldc5jiMnJSWrg7jYWQ=\r\n=Bdjq\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.11.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.11.0",
+			"devDependencies": {
+				"prisma": "^4.1.0",
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.13.0",
+				"@prisma/client": "^4.1.0",
+				"@pothos/test-utils": "1.3.0",
+				"@pothos/plugin-prisma": "3.14.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "3d4678b5082c7a52e5edb39a922a914e0e510f94",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.11.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-ph1rRknoTKeFLVUhR9jGYg8XS6g++Nf/IKJAKENJzY3MPAo+RNR3U1m9nooJudcJ5Ace+Jmal5htHkZkeX6ddg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDO+9oQGz5nn33ylgovKeoun5ulIGQNJqAXwCXNTEeptAiEA/dgC2TOYH3UBCT8Yc7r3/9HICff21hMubLmZ1g4unFo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 418726,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi156WACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqGfQ/9Gt3wtTWRyFRbOwl6v3oXCFOzUEBt/RM5Goo6Q4mSK2GqIjm2\r\nnFC3FJfYIeRIS9wi5+TGeKBjoFd9WK21hndJ3KBsvzB5lAEJ/dljN7Q9+mde\r\nun5Nbgm4ryw8DxqCQlTlfSI0quOXo901E25MGyR1Puh9NcbFBeqSz/WbV+MT\r\nwBnx6NDrlu7+PMGnBraYwVtqwcVJ+TMDXRGNjWAwtFpK42X6fmARTTHKyDUv\r\nqeqZjGZq+D6Nse2ZOTDFmGOcyixKCdQXbwj/D2yjfDGzsQvx0BalNQSggzkX\r\nawHBHiFnb0NJa8GO5DlDwC37FEegHl4gyl5txFbAOLFxzfm3jJMMI1HaAvNx\r\ntHMfYTbh6gicXG/p1lL+X9dBadZ3h8yvUNezoG2DhxNDTfv/TLX1MJ/k+x+G\r\nNk5qtFcYDXIzYT1hxOjs9b+OLkJkKrzIg2E7XmJ9c8f/Y/Jkjz39lrkRQDTX\r\nNT+FSDkpsCECC+8TZxvVVMgg/ym31KlT2dspltFVPABQKVqed4LG978TWyx5\r\n9EBs2rKljoAdMdYBlhrlQObuQkkUbcg3mlIGAss+Ui+YNM1dCy92QyKsXNYS\r\nCv80NpGbZmJy2qt/n64R8+1xuR10y8pz0bdh6W4EtkwP+MWa42m06gNGKn/y\r\nZKtup2TdUxS48N6FaxFXjoLrKZR+JG/Xkg4=\r\n=Wlpd\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.11.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.11.1",
+			"devDependencies": {
+				"prisma": "^4.1.1",
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.13.0",
+				"@prisma/client": "^4.1.1",
+				"@pothos/test-utils": "1.3.0",
+				"@pothos/plugin-prisma": "3.21.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "66812659cead4cfa6e17f3f44b249be35ac619f4",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.11.1.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-qgcD7/cEUfP1CDKY/WXeX0adq/QALYHVlmia6ydVp+2ALPIc1Bqg7ncscPkxpyYOV7834GNIXELC4Sm3qwvjHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGl7b9vNpB+13uK3mlG9lWuWKLq0zOPS/BAR2HPvnR0sAiEA8MtYPXHcBHNUryQIzkyI0itWKRA5ttOKaG77TViyjVQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 418764,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi8a7YACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpgBA/+Lo1GrF7HniX3AGhk/0II29nW54/JaKZbLzww8DxBNqW4KL4B\r\nELLVMlZ2mufO3zndFDS4t8648IoWg+3IrAo47uc4NuS+pPJyDIENkDsToUW6\r\nHvKsF/wyAIbx3da/0uvzkMWt0ZCsQRfS1f0X/moS/Ksz/31QIO2+3J8KLYiE\r\n4Cl6rjvZIkciCajnyNN9Tq0UI0lmv6qlLUJTpDZ8eyYTo6zpIdkftarj3H1r\r\nqK9ZeWzGJo11K2Ir4vU9Ohh5DA6WtJK4PAxxgNHEQnpF5tJCQrJ9pQBuAIEc\r\nE+q1Nqoovqz98gDA2qSFN4pHjm8dASuy8cEZUY+RlFRfG3xOJUaZKtn9MKYz\r\nqiPwHjcVJnwtU+Fg5w+fHacBqGox7rIVDKUTtO25wLzOL/nqSyy3zfC5hhVg\r\nHbYq/+4UIf/trPaTCimrWGopuTNnlWAwma33HOmrpGEzWCUYgWSBNN44poV3\r\nzOha+MVuM0sVYKKU3Ew783QVwID04RXZ4szYzAJyJiEtWdvYr13qOkSz+anG\r\npxE/bsDcWGHRYH6whdo8Z8csw3oVAwoqYrpgs26wLeyARuHthBjhoVrJJmgk\r\ngJtTdlP+ykWH3rxdReJZbfSfpTChQGp1rbtAm6bVcgr0eUPMBn0iWbHB5Pnp\r\nb5svUvTjv2QPbX3twRjVmCxb/jWMuae4OQk=\r\n=6v75\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.11.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.11.2",
+			"devDependencies": {
+				"prisma": "^4.1.1",
+				"graphql": "16.5.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.13.0",
+				"@prisma/client": "^4.1.1",
+				"@pothos/test-utils": "1.3.0",
+				"@pothos/plugin-prisma": "3.21.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "fbf6a2d8d2ff5ac503164c717a7401fcb9e37032",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.11.2.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-DOhrh9OjB5tsdsjxtZpZjnHtCCiwl/rt57vIJAlENxLYTidCo2KzU76c8gHhvVwRVoJ4DkidGXmPUhK0NGX+Ww==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD5yLj1rNxkdROKXK7uYrEnzpcptE7SVkk5PTeNtMzZMwIhAI8MJuuyLJyf+Sw8RiMmQAHe33+9cPf8oW0W7AegPgkI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 418852,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi9CbDACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpDTw//TDHrFek+6z7X/2qmVJ3aM6ksxq3PQxkdtfkSl7IQn0Hnguy9\r\nJRMd1+7Hc3KYp7g0aknijmWHu1gpm5l5FJBlORaj5m0MEhKMk80988tWLB+6\r\nKfsT3RlmLHoPhYDZQvnH//uUReoRyT4FkPEnK10cund6wFJF4oTATowX9aEo\r\nSgGt3XdX7U9VWuPSAcHI5PCgtYK/+bM8tj+JTBN+9ABLrG+IHG6uFRj5RcWn\r\nnHlawHGM5hYNBlggN8zMSbabxVvKfdnpBKyQ8I+UXCG6ruZ1mWlcDZk9VJOa\r\n6WoBorTSpqipTS2123cnlHqSVCAKnBY4WuIxXZr2PJwR235003T84DqCG5nv\r\nBPdZ8yqGJBtjq3N6K3Xto3sDhM3TWU8K31Cyo+0XeJBOmVgJwq+QVs4pPhaQ\r\ncvSURYL41UrMW5MMKjPI9cCcWu8WAlFGG+wdF5hf0vjjLW4aHIxaLyCZnW36\r\nlhA7BuxqIviORBHg1+v84ikX/0axPaNRCKLIMKVQ1alKCH1aetk+siZ/LDQe\r\nl3t7ZiyNDOKE9GzXIhp1BB6ISVnDS0XqxsvngeHpdsetueOGRzRJ3bg2gH3N\r\nys4mSp7fnbthQGAOQpKjYqwayOgmU8MK5Ihv9DzPWMBt7jQ952e93DkKQzeG\r\n6gmIPezbUNj6onbjxpE5RTntAQrj1q22rZk=\r\n=kTDv\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.12.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.12.0",
+			"devDependencies": {
+				"prisma": "^4.3.1",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.19.1",
+				"@prisma/client": "^4.3.1",
+				"@pothos/test-utils": "1.3.0",
+				"@pothos/plugin-prisma": "3.31.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "3f274aa15d1586e669de93b355d49bf960563774",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.12.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-hAmdg+dYGDeZjOlDCC0y5Z2qZeJ9nmAfZLuBnmAEiepKLJ6iKYGGsKWrUvLOkVNaBcZ2ETBJdGxr+SMNf7CpCg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCB2roybt2CGKGUuSGL2/3fxUIMqSL8JX/iIouf75vKtQIhAMBVpMRaI2tevAfebBb0+NppYbAWtqSA0RERlPntIl4I",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 424545,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjEUTNACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqtIQ/8Cv3Dl2N8qeYlg5xHyK+9O4C5iGE6KdL1K0wn8pIhkRWrUsSG\r\nUMMmzTMhV+Lm0ItpRfshsIwBuCEAhuAVoY3ZALx9/rsswjONbsR7aB00yiNL\r\nG7NrC5FUgHg+RoO8q6Mrd9dkaDnOTdCAtAB2fanFQUieeftWdfZXIcQ73B94\r\nORNXAKKuIWEKhqEqNEJnm2HEHKizqdcZah+lzrk+At0z/tuprk86LVZT7lP0\r\ndRpTQb0u2axAQuBjjD+nd/KQlvQM/io1tETOjVz9JTX5dHZC5CCxlG6YCXJH\r\nAAYRqXWStjUdfYa5SxuNL6p6SQLBRJcZE2YqBNtX4Mdi3iGwvWR78Weis0Kr\r\nIUJ01Sngvkb4R13uSHnIUaaTym58rr9C68/2MPUxarFB/LEyZrNUYgDovnp3\r\nhxDuB+bA0AexMtAuw9QfSuED3vmZyCUbNDFfmGXsZavSxNkbNM3+AGW59z6g\r\nRgRgaizTD/oRWLihllwWEZk7Q3SCuFwICX4sMF8x4JiQrvT2ov4P1tdncZBQ\r\n57ryka0nQ9AxPOTInWdL8DTaQ7H/8S58HYS6L8rshLshgyQ4DQ1tAcenZP33\r\nkaEooq1eLc1SdlyrYZ0xZeHwJhrWkPqSQnKAZKvtXHVDPSxLyuhwxuF3px9J\r\nsCEe/LcFNMAbb4mgr1uFKq/rPIovLQXsBJk=\r\n=rt6P\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.13.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.13.0",
+			"devDependencies": {
+				"prisma": "^4.3.1",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.20.0",
+				"@prisma/client": "^4.3.1",
+				"@pothos/test-utils": "1.3.0",
+				"@pothos/plugin-prisma": "3.32.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "f9dd6959c19901b597fc89ffe7d817b2968c21ce",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.13.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-+8mBfOCzC8BPTKpD2rkgiMhDyHXCWvp6TY0orca0Ea+OpyQyTDAR9LStmuS2xnF7jmhtV0LSwmwHBlRMHCnoXA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCHYB3DAE7Cp69fg1tIbvbhltyjDxkFPlkRCS7xMwJSNwIhAMf9OS2DLlKobOilJgf/8h1BfQlaGGmsV+a+95WG5nrx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 424659,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjE6p7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUAg/+PvGAOxb92Jgd+5eBB3dbDdXCBldDtAoktDaNuAlvjDK2Bn+m\r\nD3l508jsghbdrN1NdSJ2olgiwURaECu+HV/ZOzlM38UYAfa3G54Wy9mFSDP+\r\nm/A9Ox8NB/7Ch/8sb+HUJhDo20PY/WPiGFROm6iORm/ENOJ6TawN24z3Nr4f\r\nIeUi+lRLDRt6J3Qog7ToVMNu2KAL73gYvyinlB+ru/oAMC8hqQS/2wJZejeL\r\nvwsl5C6Bwa17JkomhOis5CWPEe+Mxmbk0nBRtCvcllHTwKXcc/D3tMSShqQD\r\npTN50V7OQw8qz5pKNW7JuCXCgoaCazRbCRMZuB+veYPAeYhJd8PZISKeQMmr\r\nPEHHWDCgFGu03httVEjJBNj/CRAdWI/csfUjBGG0mepycUhR5Pfr6yYZiPbX\r\nCCMyWBu5kQODbjL9Rn+T3A0c4Lz+1qHnxLEo1DFA5LQuO4OX46IByEAUyzvx\r\nskJbYpZKv0EhOGbfEZHrbX5zCecQyZGCgR4W8V568xKyCVQFKkQS8i7qyb8l\r\n1Kf4SUDXfrmGSdk8I2/2u5NnJeo/Hxc4QME0WmU6B/0esq6L7nznnGMTDQSg\r\nwUidwje2bmb31Hn6/yxMMn0dtVU7fhi/I1T+zS/fexB5NcFZAVUYGwFAtmAr\r\nN80TN5RveXEJKdxPkgpDqn/AYLggfs3CxpE=\r\n=ht+M\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.13.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.13.1",
+			"devDependencies": {
+				"prisma": "^4.3.1",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.21.1",
+				"@prisma/client": "^4.3.1",
+				"@pothos/test-utils": "1.3.1",
+				"@pothos/plugin-relay": "3.27.1",
+				"@pothos/plugin-prisma": "3.34.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "7a3743d7824f968e1fb0051d55cc1fc868584d8f",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.13.1.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-6mn2w3O/O2VLU1XSGIH24dhzHlpMsDxtEwwKUIH6JG6cNaZ6h1wCMLJYAtOU6AeC9DjTAU2QnpedAAK98fvNzg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDdbcNX39HaYRPbpQey7MpLVRpsEW/WGzUHY4Dz8MzRHQIhANL4WvTOqL0ZsCFEUdWdS7YTgHC895WbotKB9K224Nlv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426895,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjMyu4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqdSg/+MYNB7OiFduV7N/BG9a8qN6ObUMUWoDVyb3H3O+TpkrNE2MRv\r\nI2xoBwPAftVjKHvvCRTEVMVWmBajDUs2iTDoCDCQ3RcJLDVCtqoDMfTLWzQv\r\nWcgRix3Tk0apQgLsMN5oxAAObIcFEn2UvC8l0IxhGaIkZucfyfQnOrIu/uz+\r\nYYG+gkKtxhdD/pbwmHE7gDHyurybHG0xjoRQzkhUEAlUsWgzAshGv81535tM\r\nQETjLNA8K9AoIbm9lbtpg1tF0Z0q6rtnkc6EtQL0cuJEXWxrdx+EhIhRYk/E\r\neZW6oBF01W1lu8c2bQ8v5/2DgSxkvMjxiuM94pget3SUMTWOidTVdV/bDFQ4\r\nn7eYY5kumROTioN18QC0LlXmgPiYDA49563xNrYtbej6Axd1Y2DITb8w5Yvm\r\nA2Bi+qcp3nuCW1u+eLw/8zNVa4VpW2+J+Tae1LozK9sqNM8uS3AkSC7c0/HE\r\nd6J72H8GCUxiII6bEK0FKfNTt1ui0fn58pNRCZ/bi75Cpx6JgWDLd6vt0YGv\r\nKqRH6jCxfYHP1bz4uo2RAVx9EqHpI6emqlVo79lnirzZ+k5xq0UZBatPfF3D\r\nP5U4jpTOWJB+soDvt3cSQmiodCRLuCGNk5CC/rb8zDDqGJ1OHSFWHLKAiddY\r\nROOJ55RIvmSBsWxgwR8P0DwCvwQsDYD/i6o=\r\n=Z4c9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.14.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.14.0",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.0",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.0",
+				"@pothos/plugin-relay": "3.28.0",
+				"@pothos/plugin-prisma": "3.35.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "68c2db444db3e6c121edaf6a816e98d5ecff6b9b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.14.0.tgz",
+				"fileCount": 93,
+				"integrity": "sha512-vVr2UY6U6Wq0GR6JPCkxUVYL26CRV5OnpuUMQo/j9SetOhBcPGuxDHI4hBpyjlxUuMRmOk6pYmGWkjbcosvrbA==",
+				"signatures": [
+					{
+						"sig": "MEQCIQDxiNZW04O4yKfmyi+47+oB2gGXhRtVVr/XpY6bwscL2QIfR8p1xZRtEf2zOoDy32CXbyTwPp+gnrBOwhTOTDn/Rw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 427156,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNNVhACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr2pA/9GJdjPttcsJ6PgO6ojfpk6k/+dvlQ3XZT94xaPpUWyADdLylt\r\nNJkTFsmKcKPPOYXZDb742uLxzXiftAvscKOzA8061vbgkZPs3I/OvZwP5+Yh\r\n7xOLveIrl3Bu2v4ywGOjTnFrUDYH4Gm6hiNMM8YGFQz8fV+q+Ig6a1WOylRy\r\nciiaZdSTfAmZ4ipf0HlB57m+WIddJ/+h8w8dKONZkX5NHh3OKkkRpKOIU9mR\r\nJ7gxjwQETzOys2J3DeF4WLTnRVZ7NN7YVWpJXi2tAt45rSzgPSz9x7Wjcnj/\r\nGMfwvoNga9+QJIhBZTwNb9AOdmAyfC0EE8kjHsSaTty+esw+aBFLQa8G+DG7\r\nrOLBLhPnfcLWmOdVmzN4TAnjEB6yYHmBFVED3KCrRGiyrbVthDqbuFjRy3QS\r\nWUwYIxaY0KgzdtNp9xTKXWnL0JKpEHhpuplxnhgH9BuY0drRp2lvaZJ3Ylwf\r\nSVX5LB+wauXbohdVI8UJJ0WR5G2hWcArOfk7uI/PYskVxiZv0+6Z2EEuRBbk\r\nakqyfh1YS8D12YDxDO6hL/lYdS0pB4rHjvTclTYd6VlVj1uxx3Qy6fZBYlV3\r\nZR35TSbcJq2UUaPSTXg/1TZKvAZk7Nth2cCaUMpcfTDMZdeQpqf+cza3jtXH\r\nDhjYOOHTM3k7XZElCleFWILpyfW12j966M8=\r\n=wZKB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.14.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.14.1",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.1",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.1",
+				"@pothos/plugin-relay": "3.28.1",
+				"@pothos/plugin-prisma": "3.35.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "8213788b325002615a7b5de2392ea2482b4a4d8d",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.14.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-rTff0Q6oGG6XMc5vDtcHjxpUN86U8KVZzmbaLqpzXNS8T3UObBPdWba+RQ4M4Jgy9KQbH1KNG4TaGJj+/CuYdw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZzV2Edqc/eqaEAwWE7ZFV8CvfyUd2OwlwQTXVn+ZbjgIgFHl7vQEDmXfpQDdP7RBihfYq1U6X454dmy65+Qmz1jI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 396827,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNdoBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp8PxAAhYGeIIH8UkyvMdzHTsC8ydDKuxKpHidTHje60Z/Bypu1Zz01\r\necsIIdDUotRRhD0Uk3buPfKiUcX8X6HaVi3o7rfSDjAo9VRF8d7J6mnftX4O\r\nheHSjpYQRzAv2iReQFlSN2f3k0jBLwS3NMZSj08R8RIrHyMlIg6wM5Ay7R/w\r\numoF9irQ0ft1FVlhMhIUFFacXTHQ8+GCG47ZfihdziUAaLwRg63x9CcTSGsM\r\n46wb2nZDxaEjqxkOXeg0FuXXW/bFxvBMaLqKuFjFtNfU1lHIW7iydP+8u5Cb\r\ncP95UcW/jJ1P4ilrYGx7l2oYpgoH/u7qKUaJcShN/9FNkFdgNqhNFw7mOF8p\r\nD/7k1TWXaja+jd9EgTx85VoBJZtCmBWKWMq2WivWNzhHbhTb0GvFd+dE4bBu\r\nvTX5DwJvQI7HirWVco0WOZVQwL8p+syTF8hH+maRiUm7EPtaa2QtqCppcNyL\r\n2id9DdPuShnFpTH6ty5LG+4TMzk7jHYOw+6zoByw0jVIA9/oEB9hYrEf1W4L\r\nZp7nt3LAga+E5WWs7inltUKhAZaEWdywEqZdVeyptswbDCv4FBf7ddqsl0J2\r\nQ+LiQM8tIrw85eCqhxvCb0+HTMGD6GXqCQfIGs9CfTz/RReJ+6xKe9eEU3Nf\r\ne+uoR2l0sQkrpum0AE4fKmvkwTW2nxNjOuE=\r\n=yEk3\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.14.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.14.2",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.2",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.1",
+				"@pothos/plugin-relay": "3.28.2",
+				"@pothos/plugin-prisma": "3.35.2"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "452ca09799e82dd9082a89b40b0a31ddf66c8677",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.14.2.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-5F1CIvJHspHvHxVBIGIqzwoRcgLI8uXxFe5SjBXxc/IiZXOiymSLYOpx2uWtGajjBXE1KwnIYf0R0sLT1Uw2/g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD/0dAr5/eocVcem7Za1v6fyGr/EgUhSpLLlAYK3w43kwIhAMzG9tC0lxggtygwgINx3wyU0tE5CyBsfljtpzCsDaeg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 396915,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNrrgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrlkg/9GDqF7kz11wirR27rUHKdOWmCgQngt7penlpI6GWLVyawMbQ3\r\nusnjCq+dIFA5cEYrTlszMGUYs6LJ6ZNg9Jz52yoQyHtl+Bp9I0hTfI1vGuXz\r\nlrKnwJmxIfDbDA6wqxa9hYPGBI6TbcLbYS8BLjrEI6kIvaoKdAti+7GEF3LD\r\nlADwwBGPoN+yKzkFQaZuziN6p5DzQ9Bo6nR7EwJYv9Flvoy9U1Ez6A4eazOl\r\nu3HXIkCYBiENJHyV1K9CbMvwmN+AVeaFtzMGEON3Ty6+cZxDfBjP5FEuCwKm\r\noyZ4G1BHqtTqIaiXDMOj3rvbLXpBG0jG97r0yKyGxyLg/Imyf7JIcIGuFJjl\r\nGiMn4TgQHqW/0oQhoFlv+6R76NkUPGbEWSNptC80+SEMH0zHWQsCJpHkFMrQ\r\nbXpo8yRUcYF1IVbbniGnoLx+sgpb1gu6/XKJpgw6nkfpg0QJ/WnrVgjFkCos\r\nsnbPd2buKfVMl31o7fdr7wxwXnwPKKj+8h4XUZrA0jIPo0rYzoTWuP/TQqDw\r\nOnujyeGPMrAs9hWO/v6pB1rM1ewu2g43Q1a9Kym23rWS6dNtT0lbTq+XwNYD\r\nPCLh/NNf7axSzaf51yiq7iZtEx2JhF7NC6IrgStk+1ONx9Eg82wOTO3wC8Qy\r\ndBlmCgTBKcAP5EqMlr0si7D/o3x5Mj0Irlg=\r\n=5E4l\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.14.3": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.14.3",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.4",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.2",
+				"@pothos/plugin-relay": "3.28.3",
+				"@pothos/plugin-prisma": "3.35.3"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "7a45142dbfde858ee688566246b2855b4b8bb75d",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.14.3.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-OSgTgs7VlQMUwGke9m6HpP6D7sAN7hEbu5Q0pTWqPcBoiHxvy6naYa8Fba1CaKaAYRFh6b3bC5hG4LHLQ/5rPA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDEWsZ8spTFLFC/E6LyLHWTfjDT741DZwK/S3MtyzbzfAIhAMvVo95+rF/xJ3n+y7mSDbQUHn0FfL7yZiOl6nr/e4BH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397110,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNtZVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr17Q//Stv5wOEf7bjXKoOwHMux8TduDZo5Wu4PBnhv0ZXOxJ3vzg20\r\n7t1wdBHMu7zRm6mu0SXqWwslc8taFNT6xiowiuU26P59HDPC0i1/G5OtNicd\r\nFDG7rY7cqPrEU3lbm/pxxeTzAkb5Ve7S+cX0KHzXQ7nGeRShpHM9bKMb2eXf\r\n45D8bTKoGWq/3eV3Qs4FxjJgNvit94j6LM/59spZXXaVto0cwlScU+G5ZNAn\r\ntL6LpH87aHwjb0ac5AcSBaO4LJWKu32dC9NFsd5tdCyn6Nk42ms4zPC3HJ3c\r\nugDBWGr+lcGQecb/CMQRGfsT4krjXk3UN0fB1t/0vmRi3DZNpmRFJFL6FeXF\r\nnEzaTqjk7wBgM4aAIlOCqM/dTkXkWXx3Zk6cNv1WF9yjjR4tc5Z7riGm3kWe\r\nXTPMpHEBO0jkA8fNxPTtyHFjk1GaVXsIQkxhoHrPSNFTfHU5MnObaA1B11ph\r\n9pLWBechZtUrFlwBkbROKtrKdM+w0xOp5x9MA66863KdLUOfO8Y42Gifor/q\r\nDkMrS8Lf+sEkh330jDxpWVuLBksnUoAQTwxHynXVzw8u48dD0FirnmkaitCy\r\n5rDtDGtXF6s5CjaQK/ntW0So+bb/DMnT6agT0OS0FtPCJa8LcRckjpVJKkXC\r\nlbDdoKAfaE0VWBuinSTXjwFhiQ+/IEVh5yY=\r\n=oseW\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.14.4": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.14.4",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.5",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.3",
+				"@pothos/plugin-relay": "3.28.4",
+				"@pothos/plugin-prisma": "3.35.4"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "709e449e11b86c6626166028460961543151c3af",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.14.4.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-nX6dr91J6gh0tSiiPA5knQ+9bkgvsH077BMhbSHZ8F7GhgH+NsdCW8TtJoIw7aAuxojbWuUl1bmr6pH9yQkjTg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCkkJAmaszivnP0nBdKBtzddl0A/77Z+jReatLxzCl9ygIgHONSi30aG0jzWpKzlrWA9rwOyidgAPLwmSXPN9uR7AI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 397198,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjNuLdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpxmw//Y1OR71uaDOW2lWNTFVeJ6T2ClY6gF8G0dMi8VoCsmIMYpJHM\r\nfH4gX4iG/yCa09x4W+5dBU9NWRJnx9NccVytIopIP1GAcsU4TQA/E6PUdDSH\r\nZtogZHKHyQPCCAoQa8Sook14o50VplQcoHnNg0D0JsQplvfBEar75TyTDG5h\r\n3c73lBQYfo6ngoKJagCIh/6yIOzYAJbos1kembAJfye1uFK73eKd7lVb2UJ5\r\n09sUNLLmczypGbi+khwP5yui7AEC0B04EZQmp5htXHocU/puXDcUzv+j7qQn\r\nWsrjGGanoxHuu3KHnVHwGmb4tbt2igHscpCCKpoVYO0T/3jAsZn3KbiZpYoI\r\nTWYeOKIZYW/pbVzIwAajCnvUpvuiYt4WA4pl1mQVN5/QybmrNtB36aIRmGfE\r\nxvvLkbF00849rdmLRxYBZR6gQ7EmRQAlIbY3kQsHYuOv7PjUZRID5lmzoseg\r\n7rBd2vJqhELBTVm6JLo/w3j01L+Ram8dwV5E6vvVHXGxoTNzcen5lMOHggEv\r\nyjTAzwD62Zn91h/yiYBIjx7wY8+ju3gM1BSNpZXnYx8i6XbHVBkiz5skw0Rv\r\nsV4inBlOCh2HKGK3vgE0+cYJ7+Wv1Ox0qgzqTBY2zvxlbIZdEHh67E1kqtw4\r\nBAWqZHOdrF9TF7P/cZbZWxEF9RSZV3rHWa4=\r\n=hLYZ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.15.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.15.0",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.6",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.4",
+				"@pothos/plugin-relay": "3.28.4",
+				"@pothos/plugin-prisma": "3.35.4"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "c7708aed97d894e8d02e72fe7670eddbff85886b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.15.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-KUAFE6VzqDx2NdSPqrhX6mRzinfkgKD/H7qc63Soyo7uiPVlNYG63cfRCAh96tO7ZRbeyCMqDqO2Oau7gxdszA==",
+				"signatures": [
+					{
+						"sig": "MEUCIHK8D2DJoX1o025UNA1f2X/XtnZILiwcY1F8m9GV3aLmAiEA7WclW1W4VQSlOSiQPac7BoIt6+da2Ks+iYOL9LLQU4o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 382148,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjSbJDACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoCpA/+Nw+iTajXdWxptkVeEYYwWmyQtEEhuZxpJTusfTGBLalPFBNX\r\n2wOtxJLAR/3AkhBsBHQ17vHb0RwKJskSrWPBn69SLIGUHhwwnRjgGCUWTus1\r\nLtoYJaQqbOYSvb86j300R/TE/EXVojob7dpllL//kFRBchIlAeJLuU6bPutT\r\n048xXlQSezM5thy50RnWlmmxw+Y1LP7vkNBbaK2KV6iJOuyqVh7fc+CPwTk3\r\nLw6gfE41CtmvsgPx5eev0hbxgL9cajMKU4fsXDiahaPdYTuEvWmhXAnzT/7j\r\n/KrvQL++d1R1O/W+vC6DEPVz1upw6cs7QQJF3XMZBJ2wKYQI5FhQq84vDj8c\r\n8W2GW+/nBQ9/R6A1aDv2L8DxoFcSdDxJ1N3Jq0RI0xiLRxRLQcaEYlslHpzB\r\njGCxeQKRkbsN7sOdjdbXuUqpjg+0w+UmE99o4jXZ+aGVI1/k6lf/ddliPDMg\r\nF2tE37C7kbNurY517Ar48eHTOZ68GCGR5fyy94IPyUYvcWQBKgfQcDVUEyVl\r\njgyfFcaxfPDgBu4KRAtwNzaHnho7txydyXOni3DwaeWOcq2rEaJX/74JPkdr\r\ngc5N2NMEnfIYvmkF1tYev/gxRMwyOCNul3xlsRfrzdEdBdBOI66Dbp8DncK9\r\nEUCKsjNYTNfbMvfvdmRFe/BO93GeZ1BFCa0=\r\n=jg+a\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.15.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.15.1",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.7",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.5",
+				"@pothos/plugin-relay": "3.28.5",
+				"@pothos/plugin-prisma": "3.35.5"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "e3d64315aeb20a3f6f82bcdb68396fb6d8d5859b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.15.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-+spFfthrNiMF4IesaWF0u8MPwjXW0NFZWPWDZVcEkDHUX8rQ5zd5B0+WvaQB9/skJO+fmmhN4gwyhnGxFpyBjw==",
+				"signatures": [
+					{
+						"sig": "MEUCIC8IkzL9d+cYkk3rJAJ3Tn133vHueqRBtYe4IcxqUmW2AiEAo4qz+svKwORo0menSUmv71CFsrcM7ktvdssPOc3Fa0E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 382259,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjUgP4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqI4g//VR9Hb2Tf9ULs882zJPkExB4AhvCkKH7NnLXFD48jsESRDi1o\r\nE0Yvj3rKjhZnPDQxGfqFu0ytFJ3jcVdmF0C1G01SoqhoGC/GjfcUO0AZBIkd\r\nWYv4n553ktojRqsChHS0KU0MjNAE5KH308LdcU4do83XVn+bqKvL5X9uHHjZ\r\nIpUFAk+MxUb0eLWiYhn8OVCCqQkAjpFvndNh/olOZaONW+0Sp75q0JEWUWz5\r\nhUNPAsMLhvqlZgCfVOw07N4sgBwjJhXhD8fxet9NQDgZN5YGjdeaR4i9NYzO\r\nEsBNUAEOgrLmhs7exNdbX4AEZkouotx4iCr/9F9RKIHk3RWkyc96zjogEp+v\r\n9BkU18zcPc5dqiRHLwuoAhPjlLvpoCJ6yzjRJgbe/vagFIPm8l0b6kW3JmVb\r\nEWenmo3n0Y7yWSRhAT+kHcGl/g4NJCFRpJ/UCSEtAxtQgFTBIlLfKgron9AA\r\n0am5M5YlKGHelKahlhakBT8AGGeTYfWiB47q189bS0Z+emdvYlvpWu+UKGeI\r\n58LGW03xMCx4BO8kq1VYeDv/wSDPcTiwz4c0RoukLRaLawUKhjTq3YRkVUPr\r\nf3tuJ3+DGRsXU98hF4ck65NKYzkRTAN9gaMYm6jK9wLxsUna41+z2gzJuJus\r\n4qSDA44yoDVPGKRV07rPkbwioTX8BolsSeY=\r\n=w+Pt\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.15.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.15.2",
+			"devDependencies": {
+				"prisma": "^4.4.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.8",
+				"@prisma/client": "^4.4.0",
+				"@pothos/test-utils": "1.4.6",
+				"@pothos/plugin-relay": "3.28.6",
+				"@pothos/plugin-prisma": "3.35.6"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "82e485244e418ecc2c707bfb3e528272e8b03748",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.15.2.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-IspxzET32XZDEYKbh5fB0awxbeLA3u3j3VYnkEIdBZZLC/mWfhxNEE0ZgE7ybXBcGIivcQyGGDuM7OAeJ0dikA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCHM6lGTO5MiCd4wdblwgETuzlpVhZRSZGFBoIodTXCFAIhALFUuUdJkc/REhLZsqD/mrNANOBwfY5J16hYpEwiI9ob",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 382341,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjUjoBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqO7RAAhf8mVsyhq9TmlDqLxZhdsOQXWEY71yHojeBNRRSO0dsr9NLE\r\n7vxtu6ZOh2AAJ7iXZoWWroXotsaYJclPneQpCovw37IdBw4SD579ajA1QZwa\r\nizNW7Ui3ERmLd8JGmpelsqaRBMqyFUANve5JX29oMDW/knhd21Q+QbejNWT1\r\nl0pJQdihGdhR9jMMGeLrccBhYaGOudeFK/fVb0EqxdbE404ttcC6+5XgPTwJ\r\nPqtzTu6uTrqc8T3InCaDkSpI+/qYvHiNbycyWpROzNGN7cxKVHCLbDEpyRhA\r\nbBnFb2IKJ2aW/cfkUYj1XxzikO1UsEr9VjdUuy+RHsrhcINa6wzAwVVMw+r2\r\n/IafOk3fleV1tuEgwMbjEfoMjnVllDr7El/TxWOCrkit/3hUnUMwd0bc2VFD\r\nHbmIl0SW8llvWoNfo+COX5/fnMYTbSvk8lBCjUVdxKmNJoww+YdvyLHUoGzM\r\npErkgAsxfcfjuW0AJqsHYdPDOCzTIqlpSy6X57T+SgwN5lboUgvRzZK+7DUq\r\niqCYscS0DnzhgEDuPEEaFwdgrixzqQM8l6sHTwD9SYwaiJpyd4dsRHEwd2ti\r\nGEHOC07dOFrlf97kGBCpuRB6Zj1Ovsx2BjFtAPzM/rzN+e3M6KDE80B7YyHK\r\n4u2MrcOQDB4H4w6/fRQTa2Sc0id2EJqx9Ek=\r\n=UuMM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.16.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.16.0",
+			"devDependencies": {
+				"prisma": "^4.5.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.22.9",
+				"@prisma/client": "^4.5.0",
+				"@pothos/test-utils": "1.4.7",
+				"@pothos/plugin-relay": "3.28.7",
+				"@pothos/plugin-prisma": "3.35.8"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "348913b319d456477526e7ad33f8d357b7a99965",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.16.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-VMIKjIrqQQirK7eTSeVcW7KY/ss+cE5kfjp58fhAiDtY8DXdBiRl2w6K4G/CaqZH8XuZ3HcuVvcahdkFHHw7cQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDpZMMvYYNsbp7CkMtda0tDiPJ4JjU93TX86YgPFKzTPAiEAl9nRtkiE6TwQtXWOBFjm8U8G2cm3Pp0QMRgvwNHBHvU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 392944,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjW2GGACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpW0A//cj0EAov89h4E9kzUib3+Ve53J8mvzn2vzmJ0OVmNG8rHSeDU\r\nWnEH6HL/BdQH2jDaKQpDdB54TS6HfIhEVfIJlmQZaXGfmrjIq/BRDy8cJSQG\r\nlwALB1yIj/XKxqs9tfWgcRbfdAfflpny0zA1hG9uyMd+deKKPotUQkw1M2No\r\n1N2edI4D6FUPjteiVNsyDMeF0NBxdSba16crANMITtambgCYzg17zXkn6Fea\r\nh6JMTkNiE9SuwWd0+iVmXfzxTJzbG2XJovhFuDmIr4qYw93rgmLD6aD/2e7i\r\nkqwcK8fKfntgBmHWEywEeofQC095DabqzRtV4L3A+hkUjt8y81jCKOmbnmgo\r\nird2/mVn/pWiev4Zy0U/TTjxeKahct+2QaTjNW9SxgiNt1HTj/tfFOHNZlwr\r\nCL7rgX6GlQKLqa2aBR9Ur9wgAy1TkMvmsC0eierRiJ46T/Sf2emPXWx/CY3b\r\n2UfFwEkZmo3WTi9C3MQYBMO69O0f3iulKmBAhkxhmNlfFUOkGIB3VL3Lsq7N\r\nhODC37MmFR4msqQvJ+J4kH7LPE2Mt/egE9e6dO33twH21c528EWpZ+eCS2Hn\r\nLpdtlThovT4akNZXzPybEFaPOCvlFPQc+033C/cd8y8/EhKRT62H40VuLqXS\r\ngYqghJ6dvFwurz+fUQT+G1owb10GmPFH+Q4=\r\n=/h7w\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.17.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.17.0",
+			"devDependencies": {
+				"prisma": "^4.7.1",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.24.0",
+				"@prisma/client": "^4.7.1",
+				"@pothos/test-utils": "1.4.7",
+				"@pothos/plugin-relay": "3.32.0",
+				"@pothos/plugin-prisma": "3.40.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "358bdf24ae25a00579a3aab42efdbb75f812907e",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.17.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-Ax0fSl2JzT1TpjCRX7LER+iMdZjrM7sI3h/C7mIArN1YKxfjsF7zMkiCtXhtW8vjxOjAD9JTz+6nQJkQ+PqDsA==",
+				"signatures": [
+					{
+						"sig": "MEQCIH0CF+IWnG6hrTt9AMOIwEM1rOKpBFvJiexgFwsHXuODAiB/CxSiQZm2ozlMFIF+uWx5iWMafN9mgmFIfdva6XgRMQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 411107,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjuNoKACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr0Dg//bkHudLnujYMOVB/HY6v5DARQOHH2/JOKf6aggj0V7vsqfASh\r\nk789FDO1tGDUr3l9N0OxX2m/tbWcR5E92gAmo+EjeG3rsQx7CxI7whhaqrn4\r\n5ok41P2iUW6dJ91wR8e5y0JKwYPHdbF0+3CmugZ7cc9B92cYUGjJkX4UBCnX\r\nW1ogs/WcpBxkZcEhBnHXBqoX3e2Hz0roPTJxerKqqYT5C3XLJLOkiyYIxAFd\r\niH01WNmTc4M+WL8eWBNqG/rmD/t8j++rg2SuKif++7Y6sB/2YMJLL3GJ8DMg\r\nNGc9qhyvaqna6F8SVdFKvoJykg1+3uYc986dXecLYsbf1XI6KvaENEVAXYQV\r\nuJ7EvwR1I4VCNpApce7tVYJxC+WB9hilssG3Xed21S2ZugSqYEpgqVCSqNOZ\r\nHEPM/OPrKD7+Rbn6XdOjgVzJxOcUPIYVaSXbHjAgkS0pVgm5HmhQj0tc6aQ0\r\nQfotDCV8uJKmDiaWIGXfXc5S3jvEdcXLxk9x+ex/MI/7+3/glcgIyXOMPZlk\r\nWS7jUWqBd5S2xk4XSH3r2ECbWsolXRa8P7f1urvdfQ9dYbi8w04TXjT0ox6s\r\naYSv95jrAFqoBWRzlNq/jy1wVo7+q0UNrXCPoj1NyJHyeK0AErg96h8Fu1/i\r\nBj4hDynJ2QTwfM0Kj9izLZkuQAXbk4wg6P0=\r\n=i6o5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.18.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.18.0",
+			"devDependencies": {
+				"prisma": "^4.9.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.25.0",
+				"@prisma/client": "^4.9.0",
+				"@pothos/test-utils": "1.4.7",
+				"@pothos/plugin-relay": "3.35.0",
+				"@pothos/plugin-prisma": "3.41.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "89b32a638b42515c999d861843aec19ccf4d8d0b",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.18.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-HIVjLyYY85Yea6lRMJoWE3BpVUIuOLXZ8Ux3y8SW0T+nSaf+GmAedP2khGwFETnOy3UCcEwNJmwccF+ldiifQw==",
+				"signatures": [
+					{
+						"sig": "MEQCID0QV9PH1rICcY9G3mpFKcN1EV1Sz9/0zDNf0JrMqMBiAiApFunD3FAootOJ6eynXnMsBxwtZA0YlEmtgPiU3LyW6w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 411926,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj4pSVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoKpw/9GLarsJxlA/YPKVH0fQQTUTS5aDyCYSQiN6hURHSiIJQTxO0y\r\nfmIQuKhyiXzfopYOWN0HAVTE0IFyvzKidvcXU7oYXZPeF/PPWwESm/qHp5oz\r\nNVF/OT2/phEK462EtqLcwyhRecTyaJpcxc9BbvDj3yu6Y6YrV1JzaKu0nQyv\r\nPYH38M9SeJFBVDX5lZh3EvHu/RsL3j567ydChdH3nlvq6DK3rfxNoSnytv4A\r\nQRCS3/P67Sw8ZxvhgcOd486XBstCJfrLSrJOPoYr3wVKanslExgPH9NgVk8a\r\nBpO5gGTLZpvReTkBpNSc2CO3va3Fr433Xi1fLri5Dr/6MBK1QU5ialJ/3/yY\r\ncWhRIHkaPAv9qQCV7ayL1xCNdNYO8ALOQPY6Vuh7WAD9YcYxLg3t0smj+ALu\r\n3pKU8VP1F2IBI5W39aANj0Gmsd8+yhA97zWnQ2IINmXxZc0PAWvY1n2Naaln\r\n78WmbCnn45uyvHvGYkZmdue3QTuoZ8qO9dxeweAVItliES1tVvvzPyUBOzZh\r\nWtgHmq8Bk9jbmh1biNhUJRyRQOUW1VuSVG46pRpwUuOjaIJENHY+7muhshJz\r\ntNq+WiwyU7d3lRq08ghJBVg18zZXgG53ZAo6YRud16bw3KsS/MU1JIUgisVv\r\n9gYt4nivJ8UATweUKXIDDNbmwM9nEfuFl+k=\r\n=gDxM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.19.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.19.0",
+			"devDependencies": {
+				"prisma": "^4.11.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.28.0",
+				"@prisma/client": "^4.11.0",
+				"@pothos/test-utils": "1.4.7",
+				"@pothos/plugin-relay": "3.39.0",
+				"@pothos/plugin-prisma": "3.46.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "805cce39507b69b90dc83e5d08ca95beec86e3de",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.19.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-1NjjUh3SrKbXmcZRmJ7NaAy1GZufGwOfO+Cn8zP/IrKzrGCKoyXa+3NfIOF2q6Z+wRKivnnnzT2/Hzin2K13Sg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBREOhR2BJYKktCi26vCzxDdeJE9dPvfL5ph4Vu1+PtQAiEA9UOO9AEFW+qhODKr1OJc0hvMArZfcXmDqIh/vX86VEg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 415100,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGdPXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpI0w/+KHyQisPh3v++q0kYmsiVLvj905z+9jbb8sxaC9NGBiBSG9Bq\r\nE4qBHNHuSLRMeSrXAFVppZPz6VUt2gY/ojU2x9vI8AT3ICnmiTEiPnfN2glo\r\ndggoHb9RiFQ3TQdGClWYIjcCwiNsmPC2qqEAOGNeX4Xor5udMKGJhydZ770F\r\nczT+pWS7z5MlZTOWD40/t68C3Qitp5fOtB/kKdEJn2YGI5gOuwH0yfSmarPh\r\nc6Zap3VxqChrtU0wVV8jCxrDDQcBp3lwO25SCqW0JgEP36pRc1ITCC6V55MH\r\nVEISazxnSd6a2N1gylDqjr/RdshpIoDLE8YQJiXPGt4En3AgA5LofFTrR8iw\r\nzCMd8KqIHMVDmPJbYTEntsIwKpFhTLVCJQ3qzvHcxcq+ew9Jwe5MC2UvLx5V\r\nnX5SnCD+uPGLDL5Yy9n9/SG/RVmf51Vmldk0afCdTJZxKR8TDLJPw8SQ/xuF\r\nXUryVQVlU4lXQpn1G+hKxJ2KcgAPYavDDJgY5EA5VD3p8t5MWW4UvUVChOma\r\nyX7pLkohA+igPGow1PPXGPTlQwRv89Hf7joH5y90EnvgK6yCWAmrpYL0CS6H\r\nPCSwiUMjXf8WcC5x2TCnYPLx/pt/KCpX+EFIvhs4DRKNkHx9ZC2QbPZOULBr\r\ndpPz3HgRZe1gfSjGyh45DID9cVsU8JifxIE=\r\n=X/8I\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.19.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.19.1",
+			"devDependencies": {
+				"prisma": "^4.11.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.30.0",
+				"@prisma/client": "^4.11.0",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.41.1",
+				"@pothos/plugin-prisma": "3.47.3"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "d81dcdfc421e46935d570c94fc1daee0906841cb",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.19.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-6PGM82PPpZCyBS2GQmH14VeiP+zwmX/VObWW0Kn6yom3WkRM6rZAAp6njLchMwEElX2nBfboAh5l2Sz9iteLvw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDp8nAzDnJ+ZEV4j9DXBJ0ZgMItpYnIW6srJxwM93enQAIhAMzWPXClHeVgYPB6m3ULLZk2GplKuyLZp9OcBM0q6z3T",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.19.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v0.2"
+					}
+				},
+				"unpackedSize": 415245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkT+DkACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrR7g//cH6zXrTWfNHtGKNYZJwUvxBhWL6YVk8SlIyaKmtr+AF82c/z\r\nuQZptG7J1NTw1qYLHpwSPBKYrG/bVocKLSDd3iOS6lIPvtgymPtR4pLyfgsh\r\nhZceGu85MXKJYb2CVOmR0TSGRzTm/sXanIK+7Z4f8FlIm1I2Of0dzgeWDd6/\r\n/AtOdSFCc7XhXBRZra0uJ/de3KFUTffW2DfukW367+8de3/fyI9FgyfABszR\r\n95ElthAXSjU3s1WEdNdrQIoDRwRlBN4akaFgjZ6xCmfiUTpM50VNVjvLAA4A\r\neomFBKkvyZ65d6Luz77QhWr/ssVaSCgGjnWKzyallsQ4tE3P/8aW4zCjmL5s\r\noYYwV2Bg501GaS2jcHrm7wupjmUdfbT8EJWOtitLFnM9WJ+BvJ6majVDZDPG\r\ne7tsIAXqgglLH9q445a9YE1atdmrUXm1HmM+uXCL3LM6P12ExVVVZc6ZiASb\r\n68aFEmevSXrffJxS+Aa4YNKj8K6KXKb9Vycn6D33wJxzLL4to/6Xh18VNxDC\r\nhMhERQE1O8y1msGhvmzzGZjcoQZSOjxTNXFRVF0k3bl/K8NkyquL6HM62+OY\r\nNLVI0s4nVQVwxVKHbPGIcDTy0QSi/P10u9Dsnig/mDh6U1mpy1TpByx1Z0+V\r\nznvgey8QEex0C4y+6ygCJ6yCyMXsfAiakAg=\r\n=WG4W\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.19.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.19.2",
+			"devDependencies": {
+				"prisma": "^4.14.0",
+				"graphql": "16.6.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.30.0",
+				"@prisma/client": "^4.14.0",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.43.0",
+				"@pothos/plugin-prisma": "3.51.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "3fd30aed0da03e70d6a72d90f77d5f9b5d52ce55",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.19.2.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-S+jz6sRt4LkRf3wYhq9/H4bu5OiMFoFub1HJRNgkdx9zzIQia20D+SXFlMcQluuOytVmaFXiz2gUYmY3hCQKQw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDVzwZFmNB3mL3PxifNStbEnKqJHGS7IYYVVNSkaxySLAIgPPJfcbJqKnB8GxjepH1gbxn6LZWOD5NdqXUUU/pcIDY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.19.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v0.2"
+					}
+				},
+				"unpackedSize": 415477
+			}
+		},
+		"3.20.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.20.0",
+			"devDependencies": {
+				"prisma": "^5.0.0",
+				"graphql": "16.7.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.31.0",
+				"@prisma/client": "^5.0.0",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.43.0",
+				"@pothos/plugin-prisma": "3.53.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "9c15db8d39f5a08a091688ebaa0793b3b7c5a3c8",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.20.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-yaAWScp6ob5uG9Ob8YMTTga8DECANx5HW9q/bz4r66RifO/ZNEr1szXl6WpuyhqhGdasvTpzoYakVrYgs8J8wQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDjm8eAfPfVSgmXRj9fW5bzYK2V5k5C9GZhVvuUfIX5ewIhAJKCCKxUFTNFCHgYkK80sKwjbuWUrRysFEt8LYPjhEPW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.20.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v0.2"
+					}
+				},
+				"unpackedSize": 416385
+			}
+		},
+		"3.21.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.21.0",
+			"devDependencies": {
+				"prisma": "^5.6.0",
+				"graphql": "16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.41.0",
+				"@prisma/client": "^5.6.0",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.46.0",
+				"@pothos/plugin-prisma": "3.64.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "0040296a945d009b2050c708f073d83bc2392d61",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.21.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-pC7wPVLcQXDrzKyBIX0qUFp03jEDRK5FRDIQwaFp9Qx5z/0q2XULfP3Bp0HxhTpUp+IlJXhQMO84tQoEmEEUYQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICfrWJkXWbcAF9mcQ/y0CJIUPW+3Vne1eJ4iO7kSnWn6AiB/uCrntx7E3KEjYz2dHs1RnH9+EH4GbFuvWHdGZ4SH/g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.21.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 417816
+			}
+		},
+		"3.21.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.21.1",
+			"devDependencies": {
+				"prisma": "^5.6.0",
+				"graphql": "16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.41.0",
+				"@prisma/client": "^5.6.0",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.46.0",
+				"@pothos/plugin-prisma": "3.64.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "5405166feeac280708af846e98d0e023019127d5",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.21.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-YWmiQz4NbtTkrWZ/uJIKEA8roa8ndQbb4UY1Eo+5ADJQ3BG0+f8oJgKqRAPmN1vYqMAjNf9neP0sC5sZBvf9Qg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDLfS1Fc3+rEHu5DtC01FvpWPbL7j1RNMpCoFrSLpoXvAiEAi9CIIGFCuOoLDVwbKFC5auSPlSJfYHmxkoDEayltNug=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.21.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 418221
+			}
+		},
+		"3.22.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.22.0",
+			"devDependencies": {
+				"prisma": "^5.12.1",
+				"graphql": "16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.41.1",
+				"@prisma/client": "^5.12.1",
+				"@pothos/test-utils": "1.4.8",
+				"@pothos/plugin-relay": "3.46.0",
+				"@pothos/plugin-prisma": "3.65.1"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "c31998250ec3c7f6d1edeb1db2dc916902cdb2bb",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.22.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-iT+JT0uIvoVGuQeQ2Q/y+wwP27SQH+1Hs8Uz5rrtGOblsKGW0cRcJYuXMi5+XJFXOY3CPNMnv6aroetxZkEcEQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEsgRUfmAi1+R3PewU57IP0NHQZGByRzzVPf9SGhM7s7AiEAoRdAm9ZPJ1CNsT48cOS5WUyUZMAt9YFx8bwk2Hbp2Ss=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.22.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 421459
+			}
+		},
+		"3.22.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "3.22.1",
+			"devDependencies": {
+				"prisma": "^5.13.0",
+				"graphql": "^16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "3.41.2",
+				"@prisma/client": "^5.13.0",
+				"@pothos/test-utils": "1.4.9",
+				"@pothos/plugin-relay": "3.46.1",
+				"@pothos/plugin-prisma": "3.65.3"
+			},
+			"peerDependencies": {
+				"graphql": ">=15.1.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "203b53353b295741d4760b9df35dd7683eeea134",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-3.22.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-mkfbiS6tSYXFrxY9U5mEqSzAWDB3YoqQLTE/D7J/QghbDbkfFSiwQwYHHl0tL1FO32l69RMCdZy3Kz7MBBZG8w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDI1uLkJvME9JGxAv8RIFkfZ6EIrZKX+r8btysNZmYm8gIgUbvxFDwCCoEyMQ0cMRkFLlQn3BDxJ2ewMwAS5n6V4X8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@3.22.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 421555
+			}
+		},
+		"4.0.0-next.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.0.0-next.0",
+			"devDependencies": {
+				"prisma": "^5.16.1",
+				"graphql": "^16.9.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "4.0.0-next.0",
+				"@prisma/client": "^5.16.1",
+				"@pothos/test-utils": "2.0.0-next.0",
+				"@pothos/plugin-relay": "4.0.0-next.0",
+				"@pothos/plugin-prisma": "4.0.0-next.0"
+			},
+			"peerDependencies": {
+				"graphql": "^16.8.1",
+				"@pothos/core": "4.0.0-next.0"
+			},
+			"dist": {
+				"shasum": "bded4c561f82ee6074ba42d15c13c52776c59c6e",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.0.0-next.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-WpXzO8qnJJUpfcutMmpoo23h/JHoFgMGl4vI3Dbk5jM+FQBxNaOvp02HQTTu9LMoudgiHkglltCb4zuNKzxM3Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCa2/kzwB0UNHLkooEx4gIhxAhms1NEcHMzcpuin4qcPgIhAK+GYJXouq2/ymrfXzjrJSfVyPJsdn/9C1hFS8OZ/B1D",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 424830
+			}
+		},
+		"4.0.0-next.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.0.0-next.1",
+			"devDependencies": {
+				"prisma": "^5.16.1",
+				"graphql": "^16.9.0",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "4.0.0-next.1",
+				"@prisma/client": "^5.16.1",
+				"@pothos/test-utils": "2.0.0-next.1",
+				"@pothos/plugin-relay": "4.0.0-next.1",
+				"@pothos/plugin-prisma": "4.0.0-next.4"
+			},
+			"peerDependencies": {
+				"graphql": "^16.8.1",
+				"@pothos/core": "4.0.0-next.1"
+			},
+			"dist": {
+				"shasum": "f0f6a44e1685b527dbe6da4679156b549fb4805e",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.0.0-next.1.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-zAtvvg0GTZciWyASLc4y6YBR3KgftjW2bKlsmA255Mx7bG4qaSRx70UXk/zKkk4gI4pV0Sd+hW7Zj/YAaT5XZQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD24eoXmcij+X25XYWKuZYdxKltPW2lTmp7eqAomCbDcQIgGJNR+WmZ6Ihgq17BeJe8usfnRYZNZa5V4a/pnVEwijc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 424937
+			}
+		},
+		"4.0.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.0.0",
+			"devDependencies": {
+				"prisma": "^5.16.2",
+				"graphql": "^16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "4.0.0",
+				"@prisma/client": "^5.16.2",
+				"@pothos/test-utils": "2.0.0",
+				"@pothos/plugin-relay": "4.0.0",
+				"@pothos/plugin-prisma": "4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "^16.8.1",
+				"@pothos/core": "4.0.0"
+			},
+			"dist": {
+				"shasum": "ffc3392a270285c6c259aab0fe1fb8f963bc7dcd",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.0.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-XzCpviqeN83ggSgCOKGIAehmRWlP23xdK2AAzkkm65RcKImuwrKWbn4BeXbpMhMrwCYANM3M622uyeLzI0GYUw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEznD+lk3U9L7eZhyd6J7oebuqXXb0dIcnYNoGvVHqg/AiAM01dAk/fHIUe5oB3FlIwH54G1FsLtZ8LeGOOnZI4i6g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@4.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 425123
+			}
+		},
+		"4.0.2": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.0.2",
+			"devDependencies": {
+				"prisma": "^5.16.2",
+				"graphql": "^16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "4.0.2",
+				"@prisma/client": "^5.16.2",
+				"@pothos/test-utils": "2.0.1",
+				"@pothos/plugin-relay": "4.0.2",
+				"@pothos/plugin-prisma": "4.0.3"
+			},
+			"peerDependencies": {
+				"graphql": ">=16.6.0",
+				"@pothos/core": "4.0.2"
+			},
+			"dist": {
+				"shasum": "caadec7095541219b32359f0f1b99377751cd5d8",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.0.2.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-gPn8G2gJfhzb+nhm43k9RVMtdz92u+ZzyYbLv0/FpPbA4c25hWvvYRLcj2jOkxI29PIzC056rWaMbqKZ1ajOfA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCm6NaP/32fuLU/7a52zxZ2FVNJfw7mt6QmECrscIaoUAIhAOyxWcy95HiTwrYKofYz9nskvnYcsXrpL00JdFxWDpWs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@4.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 425379
+			}
+		},
+		"4.1.0": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.1.0",
+			"devDependencies": {
+				"prisma": "^5.17.0",
+				"graphql": "^16.8.1",
+				"graphql-tag": "^2.12.6",
+				"@pothos/core": "4.1.0",
+				"@prisma/client": "^5.17.0",
+				"@pothos/test-utils": "2.1.0",
+				"@pothos/plugin-relay": "4.1.0",
+				"@pothos/plugin-prisma": "4.2.0"
+			},
+			"peerDependencies": {
+				"graphql": ">=16.6.0",
+				"@pothos/core": "*"
+			},
+			"dist": {
+				"shasum": "cf58e436eb5995f9ef6cef0f2a898a9d02aaf659",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.1.0.tgz",
+				"fileCount": 109,
+				"integrity": "sha512-xSMV7xHZAahGmtYEoibjBgJ7Y6v6GSALOt3ZS2lZMaPKuoPFf9uz4r8N0ecz2lopwHH1u88f7thN+kgurqUvtw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCTahtZmnz2d2VEg36z2rBEkIiN015RxmVPzzdNLS0TpAIhAOU0XPrcMMCFIg3OuhKSG2ncr4tZK2jOL2N7eN4UvIRi",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@4.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 425196
+			}
+		},
+		"4.1.1": {
+			"name": "@pothos/plugin-scope-auth",
+			"version": "4.1.1",
+			"devDependencies": {
+				"@prisma/client": "^5.19.1",
+				"graphql": ">=16.6.0",
+				"graphql-tag": "^2.12.6",
+				"prisma": "^5.19.1",
+				"@pothos/core": "4.3.0",
+				"@pothos/plugin-prisma": "4.3.1",
+				"@pothos/plugin-relay": "4.3.0",
+				"@pothos/test-utils": "2.1.0"
+			},
+			"peerDependencies": {
+				"@pothos/core": "*",
+				"graphql": ">=16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-qLeY5ZV794k+MXqteC4USfbiQKcHzFrJVq8A0ahHONlojrDfKSfWvNJu/j1vPpOBGkE2mcpX0KSF631bqbgotg==",
+				"shasum": "c8231a3552660c5775aedcaaf3afe2a0c9d907e9",
+				"tarball": "https://registry.npmjs.org/@pothos/plugin-scope-auth/-/plugin-scope-auth-4.1.1.tgz",
+				"fileCount": 109,
+				"unpackedSize": 425442,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@pothos%2fplugin-scope-auth@4.1.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDKCw90l8f+WHYjfSfdJVrBzyXVU1R4TXgaceMlCNsrGQIhAKqICaG3YHOxGAGXwBQf0KnypqHVdFf/+u16YRxWMNCy"
+					}
+				]
+			}
+		}
+	}
+}

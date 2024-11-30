@@ -1,0 +1,223 @@
+{
+	"name": "@csstools/postcss-scope-pseudo-class",
+	"dist-tags": {
+		"latest": "4.0.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "1.0.0",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.10"
+			},
+			"peerDependencies": {
+				"postcss": "^8.2"
+			},
+			"dist": {
+				"shasum": "822dcaa819cfbe586197af84fb3046ba997ea563",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-1.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-Pm2dhbyjJOiYnhkR6rdvvsHN+QvycDENhgWMQV4Ll1CCe3E5iQHN6aw8HYcTBgl4RyHo635XQLZqTXTO3omAng==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCAzye7De71qlOTuyOXWVzA/F866E/XhdEKlc3jxloyOAIgXFPDdGGxv4uYKmurS7niZ+hVi8c5sFXSx0CY7jQJX2I=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13324,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjZUAkACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrtjhAAiWcln/SdaaXEZiQpvfyr/oyy9TV8Sb6gSE7A/ka6NfTsQBcs\r\nnXiEgiNIdmD+XJlcoR/5mpt3hKP9jqsz19pxj8N/ceyiDfrVwjXfrtoZPqm+\r\nil9PQU6NhmAn7STY3DG4KEF8fT2FKpeU369PDX41BGlx8YHqX5o0i9JKJPd1\r\nKN4ul2RwBKr+mzPRduv182/r+ALkQ2gRCo5Stt9ljGn04ymXW5PhSO82xxYi\r\nFtECfISOQ/NXY//oGlng1ylpemgfh+1tSIQRbESmKsiqRmRXJpK5Wf6tN1ux\r\n2koxYh77va65qfB4Y+1SjBxLbgoVnQhHH9g+UAiMTtAGHeygdrXMD9Dt67aT\r\nRnJ8LlNXzjWF7TXHJti8sv5lgjPKHzxGepguUzUsHEk9mJwUC1R/m85XY4A/\r\nVX7i+el86vk2s/z5pp6GHCfUm36bI3Xn5In+KBAYS4btu2maB7gpR65QQfzH\r\nz879VNsz+ag9mWgJwxHQP7VztZPFFmYflbVr73IaxhCF+B2AqzDMXmp4CUJY\r\nkFEYGy9fLU4jN7HZrNAUBO5dspky3nqnO0Xyz9R975ZETAQR92XDXLx26Qfq\r\nnqsUSkxxdXn69HrCmW1+YhXi+Tv1Gk5dtvKzZ8Ym7v1O+IAGR85lWMVA65kC\r\nGmuOJtKlbT/n3fC/3wWmOwS6IiJb+i9RXlU=\r\n=A+b3\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": "^12 || ^14 || >=16"
+			}
+		},
+		"2.0.0": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "2.0.0",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.10"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "c0ffcda590a110e7b42c5fe67ca9db1cb8022d01",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-2.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-YvsluKH7w/R86BLDl9urwpMUc5PAdeRdrWj20AcHCmr9+2FdsIuWZxYWnof6kNdVYGpK1ox7lXXuCz06VBowPw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBX5fcW9fQbFfbhMDXwtN95zcI0cFeM2LjOacn4a1D6hAiBFEsWnTHaMY+lRWzQBpL11vMrrNBIlP7rPVroCsAFx3g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13467,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjz6H7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoy/xAAntzP3LICdu1QwY+325zzRGXe5f76nid5QWQHGdHVqCNWpIKo\r\nfF8apni57+zdxHvdNU8dzY4R5e0wRlwfk6JPu9icN0Gabx9T+ywFQecyNhn/\r\nAf1L5mElllQj4Phl0B8t2oKEeLs/FHjlW9kpwapuhS0QBbLHa/fJp40Y6qlr\r\n46f9CYrLJaiWsUMBoA9eBKu3gGcEs5VKFFstCFFWIRHrGauIqJiiBrp+8Dpr\r\nrErqtrVkvxyhb/efT6TxVBVPTmxlE1vk2DhiOAjHjJi9NRv38sKsl7RGwffw\r\nMtnUdiW7arCCCnkDhZiIxc++FxgtIkTjKb6AhYanNNvyYMDDIrHF92/LiHbY\r\no2JGkUfEIZVxhuGBCO7TNXtQUNSNpPvKvCbd1rlKYPOcMRLIN8DKbQv80Kyi\r\nmNO/dQCbk4cbZeMOXVUVAxhc2c+JhOMfT+b/w+HYPPLKYSronoB2ZvhDZL+k\r\nAIx639owFsWHeHEfJ+c+t6fjGr0SVqZweA0N9JFwTMm/B6gO+YErrYrOdcKQ\r\niN/4GH5gPkUIyf71HNtUKXFBvumYEjZ6kUI4vPVHVdPmz8QoNJk+Uq6XDkyl\r\n/oTzbX0ad3LVZcNuUrU5ya0r3hbwvodo0SRdZykvNXMwFi5J31DgmG7gOb8p\r\nm6nmyoy8xfmOYE8fIVonLBqLRYac6q4CjFo=\r\n=CAnp\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": "^14 || ^16 || >=18"
+			}
+		},
+		"2.0.1": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "2.0.1",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.10"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "3d16ee58c2834913c2e2e93ce4a752e287a92be2",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-2.0.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-wf2dcsqSQlBHc4HMMqdXdxDx4uYuqH+L08kKj+pmT+743C06STcUEu7ORFFEnqGWlOJ1kmA5BJ3pQU0EdMuA+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIDCYwhb6au7ns2QC5Jn/pJd3imJMzffJUVa1uweCc+/2AiEAiUkwTEO3BnbK9krlwzlr65rWZ8V1FPi2pDxvbsqlO10=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13579,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj1NWqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrRGA/8D7wZwqztHWXL03ld8NGtVOKvtRvPOKdREAX30sFtBPYwDUHe\r\nNpQWUwXHZbft5nNDI1BBE4n1OpOmxPdpWilsTbKqlUmfAy2d53ROr9yFbTok\r\n313X6eJnm61q9dAzdzEpRicOl3wlh5iG19R+0fcTFu7nZsOvusoY9w7ZWtQh\r\nxqZoj2hc7DF23GV86XEQ9yI3hu4WZrvJWYEFVo/h+PJQ2fnnbqu0PWnTb9RF\r\nVRsDIpqwcvpi1C+BpVstPMucV0UIelm8fdSRnM/SAio1MpH5X55ALk6/9u4Z\r\np0+/shk402UxWGdPKyqP4tEPkHtCvWxb/XDV4j60H9Rek5Ld8wzOPoSqXX++\r\n2QjrTcMzbmJj38KlxgYOXEAFA9mhrFnSgvWlhPdIbLw5xpfaDnf1/E4TlFVF\r\nP8h8CnaY1+HFKYiR3CjMTbgEM1Ru1BCZKQCZ5ro5+vnfi5b7QpZb2TKs7whd\r\nrbLF6Djyb2UZZaUNG2IE1lF6Ehzv4Al94+wTGDZC10npHm06OqffYaVKezT7\r\n2rCtwUr1jF+WX7eMml2vLlr1g7Us8dtqQ9+OYYgUJv4n2PoID67M69QHyy9U\r\nPxAMtbAqSCx50BOX00WXsN08iAD15ftI0NkeR1D+WsWnCnaNzqrg0LdnVuuN\r\n3vB+7EED4FTQ2EDhCTFbMzXBrkWFjK1+I9o=\r\n=fjIE\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": "^14 || ^16 || >=18"
+			}
+		},
+		"2.0.2": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "2.0.2",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.10"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "6325e1e3b321093c59b008ec670bb772e17f06fe",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-2.0.2.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-6Pvo4uexUCXt+Hz5iUtemQAcIuCYnL+ePs1khFR6/xPgC92aQLJ0zGHonWoewiBE+I++4gXK3pr+R1rlOFHe5w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCnOsi6UKwW2e58rLLGd84lDXTTEBO5G5TvdmurZJNa1QIhAMb+ZGfVa21D3GH49Lw/g85gzcmwyOQFl53XOb7lgB2B",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13791,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj5Tm/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqBgQ/7BMmZNv2ia1kwwS5s5URc8Zjvbz2YSwits8oSy+e/wvyQ0krg\r\nmRq4wqso776iN/IOcM6PQRAO6i07lN3uwObmJxbrsgkAYs38+Ee2aZMFtfpH\r\nPHmciqj5V0vBAVslgtIl2mU7BpmehzgVECNeV5UczFAb9YI151GfLSLLxi4y\r\n8qTbcPNLjKEQrnB97//mjnGBgNxGtcQzrfBgPoQ8B5lktycTwnWtqSEGKbOV\r\neSAQsWbfzLXq4eH7vN4vMZIWTIAjA/JHOCLE3QPnLJn4wQd36Fdqgz1/hctF\r\nA20oTY7pozf7Th9/vRvnECJae6YwtgTU+zfosCSYUXY3okxgM1RLjMWfm87E\r\nRZSEgn61LX7BInKNVAnsnRtz0jFSvts9/hj7FFDqAWkrQwvRJWdA5+XdFL2t\r\ng81p64myb0BlTI3xDM//Pw39dtiAd1c0WGp4yHO53OBdWC8o1p7JTl1anDqa\r\n4+gwWubPTCVsBK4/ECbx3vk2yRSUMIFnPFhH3OfjRNNgPuY8nan1NzgJZR1O\r\nCH86rBTxb4Dm4Zwwk7lzh/wL4bwPEjjSBqIau1ebcUesktOLSo0T3wNNa40E\r\nOem2sS3IgxUz1y3OO/oFv+PWNhz3oJzxGQnEsmPnEsOiomMYk1+6d63x2pAy\r\ngKcLpAzPThT3uHJzFDAePjnFttXHVTy4HlI=\r\n=URLg\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": "^14 || ^16 || >=18"
+			}
+		},
+		"3.0.0": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "3.0.0",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.13"
+			},
+			"devDependencies": {
+				"@csstools/postcss-tape": "*"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "23f32181b7de9a33e7c7c71f7620b78284955b82",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-3.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-GFNVsD97OuEcfHmcT0/DAZWAvTM/FFBDQndIOLawNc1Wq8YqpZwBdHa063Lq+Irk7azygTT+Iinyg3Lt76p7rg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFW5ZedFkAxBWnI2YkI19h4EXs3E7d0tPKaf2pgkBk4AAiA/514U6ELHHkB1K7fXcnYTPkYbupbolH2VVlsvnrq3/Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 7898
+			},
+			"engines": {
+				"node": "^14 || ^16 || >=18"
+			}
+		},
+		"3.0.1": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "3.0.1",
+			"dependencies": {
+				"postcss-selector-parser": "^6.0.13"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "c5454ea2fb3cf9beaf212d3a631a5c18cd4fbc14",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-3.0.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-3ZFonK2gfgqg29gUJ2w7xVw2wFJ1eNWVDONjbzGkm73gJHVCYK5fnCqlLr+N+KbEfv2XbWAO0AaOJCFB6Fer6A==",
+				"signatures": [
+					{
+						"sig": "MEQCIB75sFZeGgeLYd91Rl1Q/YyiAhaWAY+vrKZgKbMcKQIWAiB15Gf85CcS41qqMpkRWPLJDBL5B6Sv8Ub9YX/t7j5RVQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 7172
+			},
+			"engines": {
+				"node": "^14 || ^16 || >=18"
+			}
+		},
+		"4.0.0": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "4.0.0",
+			"dependencies": {
+				"postcss-selector-parser": "^6.1.0"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"shasum": "5b975e9e4f96ea8ae6cad4b9ab1be0baa49c61c9",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-4.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-+ZUOBtVMDcmHZcZqsP/jcNRriEILfWQflTI3tCTA+/RheXAg57VkFGyPDAilpQSqlCpxWLWG8VUFKFtZJPwuOg==",
+				"signatures": [
+					{
+						"sig": "MEUCIGING1J2+BOpjTAeB4JwG3XWnHoL3XynhRA7ej3IffITAiEA1v7rZzZjqqTdJD+JI/W6FA9SJC8hAlD8DJusiajT/i0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 6235
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"4.0.1": {
+			"name": "@csstools/postcss-scope-pseudo-class",
+			"version": "4.0.1",
+			"dependencies": {
+				"postcss-selector-parser": "^7.0.0"
+			},
+			"peerDependencies": {
+				"postcss": "^8.4"
+			},
+			"dist": {
+				"integrity": "sha512-IMi9FwtH6LMNuLea1bjVMQAsUhFxJnyLSgOp/cpv5hrzWmrUYU5fm0EguNDIIOHUqzXode8F/1qkC/tEo/qN8Q==",
+				"shasum": "9fe60e9d6d91d58fb5fc6c768a40f6e47e89a235",
+				"tarball": "https://registry.npmjs.org/@csstools/postcss-scope-pseudo-class/-/postcss-scope-pseudo-class-4.0.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 6232,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBah3H/IeNKlfbqrfHMhv3Knci4+GY5O2mCSt3YBakK/AiEAvyCCfCLvA0PtTvBSg+uHREzG/K3gYtPdkmLKaTxEnJU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		}
+	}
+}

@@ -1,0 +1,609 @@
+{
+	"name": "@bpmn-io/extract-process-variables",
+	"dist-tags": {
+		"latest": "1.0.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.1.0",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^4.4.0",
+				"eslint-plugin-bpmn-io": "^0.11.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x"
+			},
+			"dist": {
+				"shasum": "94e2a68be14100b4e4474d8cda3335c4f745b91f",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.1.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-FWUT0u8Z7KZ0ixqXXdWZWdcBSRQWI9YqTd6TIMDgWWF0yUHZKgkKCgd4k1yFQaZuX3TusiFowrn5PxIzdJL28g==",
+				"signatures": [
+					{
+						"sig": "MEUCIC+tCOWfFlogrGaMpEezOhwipSaL7ol3VSv4Zyxv2ZjoAiEA/4ge5YCuZjn7A3JC9PbM17uFqBMUHhnZUZvt4kTDVo4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22931,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfMQr0CRA9TVsSAnZWagAA/K8QAJacy1rLqsKckwDcmHSn\n2wA9wYMsAfL7Ko2tUa62KEGdN3M7gfV3zAH97glC0WshzgGvTSAeqe1uyYjV\nO3DWKgG+kAajiY5ckDtn+c1HUieUQ0Kk/euvKw22uWRZDMS3ErpRZIb88eUI\nu7J8MjM5vrMMxnFAd2GZNfywK2zi32G8XGjsSi7y42AY5fD99NKE8aH81kwH\n/6AUTYEPZ3xC3sxbKkbGguPAMYE59xO4DFRBBEmE/W8fPf3sMnw1xhlDKTTD\n377oAz9RZTZ0Q8jW3pVsjFaUQQteNum9GSHlwdUNwk2kitNKqwEnjFPsepfN\nRq7YWX4TRt8noGsD7uiyz+mNO4keEK4rzbivwgsIzfHoKjEs8MFOSN4EB7xE\nMWN8/Dy05vmIvjk/TLrjp20fkYBKXN/gNy9fcla8r4IxDufPwoOcOuPnTLIh\nlQCaz2AAH+ScW+oCyChpPmYq1Ps6tXY0k8zx41ppa6ybVSJJOEDpLb36Ju1L\nplR51DwsLJaTpYGOhUI5xEgPeZa2mTEPYAs7ju5EsqikgW70323Tgb5vsq46\nFA9v6DeDhSQMqPnC7O1hU9UhND2eEgPlXtrenqU/EP4B6eVGtYLfZiDBDh8p\nb5g+WqXHwVk/NVAvrK8oylFIrRLWBqJ3AcBwoNd0hCGmBrTUPNQWs2nEvW4x\nZSBw\r\n=q9JM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.2.0",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^4.4.0",
+				"eslint-plugin-bpmn-io": "^0.11.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x"
+			},
+			"dist": {
+				"shasum": "338718d49e1e5c562eb4f909795dadb026d88e44",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.2.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-rBQyy9AJnVDauG8Fa9QQLZV0dyh9zZQm8p0LgoUGoSdl+eMsQEk6V7Bei09Lv8HwHFyzPMcK5hsO4w2RzH0/0g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCf+iYDzg1wQrl0x+pfwtDnQuaCapTYGMYJV8NzNR3Z1gIhAMAY2j4qy7kJglvSXtkc2VwZE7GuT2dS7+nE1fgavlbf",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23187,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfMVRZCRA9TVsSAnZWagAAQAwP/0hZU9mkQ3B6aLXJTXe4\n3KS6G/gDmPc5XrsleiQXk4hGNUaaazrBWs9Dkg+xlfzTV1p7OOzKp1YdRmb3\nZ+guQHfUX8B51uJGKvjWV+3D8tAYpg1pq/r6owSn13uiFNKiVO8yp7yqEf/l\nQ93gkIviAJJFCvVfSLlXMLnSm4phAJguIZyuy61y4Iy7/gtsQjdR4ohvXcpa\n9xaDYPZF+NpGr/C39intlBySDb9Q8rB7PnBv9HCG/EBXHUXZCRMd73mxJPAf\nUKK6arNnSnMX8CRqiYWFgjTb5HxKJzCdYKvs32ia4ZvbA6rIhaSYPgJraQdS\n9pdlqedblrgJ7nXe8C3qWRt2+iXrZKBpU+8EVEXrxXv7NI4cZBND9cJliu98\nzOUfSKH4M9pfnfnMzXFARbSrCbYv7WnSgl4xvtw7k0mrySYtK7a3YuNYCPbI\nsu1i0R0I0ZCFW7KgfL1ACxi+du6MSXdKfSEsqnUd3bYHlRQtynU7o5D5/nwU\nAzECnyYrPdUXvVWJNzpWnElqSittMD32VOcTKLcYkxrJTGYQBkSFbknLoNLL\nFRtl7AJp9DBW+Wb/LuL8aRDfGJWipvzsktKImtaW+V0OVZrfNz9qAIChwY99\nl5p6LDB1DnZmcoqxtkBjWFJLT+1P4b47yAhUgFoUJw1czfLUtaSie2pE7lv+\nsxG5\r\n=RZGQ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.3.0",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^4.4.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x"
+			},
+			"dist": {
+				"shasum": "175f81114b44092cefa6e15b45427f22f865031f",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.3.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-cZMPBvVUXBn7++ZaOVQQGvhrMnFVcOP218yfYBKUv0EMYjo775ust/ZmfIgWd8llT4myXA6dPz12wcYXUBR1Bg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZwIPG+gFTjOEU7c5/NdYIeEmbqeScnJQ/nvAVkt1zAwIgNRAuzP7tHGYNNIT47H0J3No01zoxlCgZYBC8KgcqjvM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30432,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfRK+mCRA9TVsSAnZWagAAHLoP/iDrpJU2gnf4FMIb0uIO\nQyONOs+S2qmbsv6WxdUrYI1QdDXCNvkXxa18FSfcl+kwNm+pJg8zwHrwd87D\nXpupw9u7HmI9JLjkkxZjaeaC1NWzT45MuLi0tQdRsTTyTY4x8xmC6XEfTUF1\nNun15ntyCtehVUxfz42RHrlnqjZkJDgDzvzTn7MMQawK0CTaE+XTLh9dbdqz\nHzR426OSG05hxOniUPd/jXxdh7E5eejGgVJWop+2hxiU4FGwcoMEjL+aR+7k\naXQBJTcAVd/egzrBWkxbTWh4K1En32J80ndh9Shuxboa2MfdmLrMFDzMwqED\nWnNZfNRlWScXxD5H2izERAMyyKogsVaoV1QSoryAMzWNx3Q4284c9A2tSP3U\nw8b1XyZjW4NrI8q5Ax+9VzPVLYfXgy5Co2gZsUkPHRY/EcPgCEXvBsTh39mt\n5IjdHPO0jXQOnbZN88c5j20sCIeggmztI/SrScjX1ZajZtvXj2n+ZuEIWg2Z\nLe4G2IOFi6PpwMoCDsLeuUTNsBp3vZCg2+2tF4I3Uu1fPLgUFLeRgo4nqz8q\n4VS9FWenTXKU8jLCwmEQfVcyka4VvCt6h4CKuRSAZpg/lu799dpr2+YhLQpp\nplOI1c51NQSzmDznC66pkOOZMcyHLJ85bgBZaW7cwYfzUX+TLC3dUYQ2ozly\n7pu5\r\n=PAmh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.0",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^4.4.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x"
+			},
+			"dist": {
+				"shasum": "94513ec15a3928d657060d1c65c23fc3b8ec2dde",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-3TEqlMHiP9M0lQdmZI5ya5phQ94Lepmp1SdMJTq4ZNn9y2hv93bq/s02nPU5GS7bmXMv4WY4XV7WIj26iprVWg==",
+				"signatures": [
+					{
+						"sig": "MEUCIF6hUnCK+hC8j6eSJyjjPe5iK5Xm3XIxAw//5G5JQ8xYAiEAtVW4pm/h5u/fEK3lbiMvyqxSZfSta37MhGm3T4p8HfM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40712,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCUM3CRA9TVsSAnZWagAAK1UP/jMqGZMb498i7FVLVViq\n9dgzCsnb8CDI5DtxtopSSPtfTrlRx4qqHmsIEsih4Rl5TD3HG+Ibr4Swriyu\n7E3HRPu1PJpjUZXyrhN+NjOqhRpxONt6Xk2ou8WRqTqAqAwCVtvoL/QopZiK\nx4etf2Dqt9QnIQBZ8Qh3oCpdsF9/Flc9RB++ibYGO6BXwvTo6A+Wo3qrU7ub\nwiN5pCINdTqPKqgaLchNkin8XLhDEEy6SRyFa4tqPIpdQtifutCxMpo+P7Fn\nAlvpNOuxk50fm28vuZ1O65sCy/JonDrN/WqIVrGx8UC0nT66cUoOJ/er3isr\nAsUztvuNrUsLn8nvKRVFKAJ5UeIzjt11YnRg3RwpFPW5WVdtK1P5yJ7cYwIV\nVSeezLsCd1GIWHvZpLBF7JZrcEi8LXdtSuYb0PQNguP2gB8Rsbe3SfnieSTd\nZzk1NjqY7tPpLe6eRiAd3XzZWjkeIo42nR+y/AlFOYt/rP0cmGFjrmxskp1e\ni20LLKo9WVmiAm3BMLJtuKW2FoJRD6iwiFdtpf6IjawVR+/OHsd9GAIMpg1J\n2JARj3bLOdRgO5baAw43OjZ/0Fi2DvQEI3NTyc12V3weF1msLbjx5Tjw2HNF\nRAGZbfMhjXmqfq77v4zFo6iV3eeundMqtDP3AimBtzelNd58+bnrdS0KKI1O\n9sE2\r\n=Gz+V\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.1": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.1",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^4.4.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x"
+			},
+			"dist": {
+				"shasum": "ded9b3986c13442a7a2d556c11b9e9bfe34f5d49",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-qdeE257LarqHdtcfg974uiiFi9V6tFUB1BfVILENhHFN19hO0vq/jwRHRIEbKLrti0VqfHwWMvSbCFXTLnw6og==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAHp1VtOs5FS6NJ0OF0y8Lfc+agXuWq4lifZqjtebaWgIgEpF2oQy9USdxjk3hmEfzVTXMTl4loA4NZ1D/K8/iVw4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 40888,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgLOVuCRA9TVsSAnZWagAAhd4QAIQIe5QV3kbpzkq835rH\n5wecDNCzioMl+QPIgFCbeJalseG7JOq1BgVYqXGZa/LoPpYr7O1bpx0K/sUH\nkCjRMqPCapX3o4Yfo0KgTiXInNWwJH2I/RE/ustFlxsWj1FOWxW6b0x/YsDJ\n7ZyrOLzzggsnhtXWC0CfyrOc6PzRu9z46zitRQJg5Tki3V7C0CuM3hemi40M\nZDnfRltAyQqw79ZcPpfjojAHofyOjYyyMgat6yRDH3ARZR6a3rPuthB4bhbz\nvMMeK/7Abp/noiegBp3clzsUWyKqDHpWP5MkrpKNIiOx9Un0JPidQRCy5/ob\nEuWA9OIzhhu4lTnTa6Uc7+xXiF86RTkdnk/8dPj+XnGtx0LDN6sT8nQE1dIZ\nFODJx5zEJAMLOr5IIpdc+JAFcEaQ1c+BSlXlHkmQuPa4B6x2waM/n9+xAi62\npXjlmjUHEf0Hn2P75OuZUB65i0hPmKmSVol3I2hzL2XLUnWm1Y5fZYPqAcMj\n2FoLE41wfAeWo3/Tg2jHq+2j9jKMZ1tiONLf15exjH21CgfJh3zLYieGb9BC\naIIQzbwJSMT0NOwqPsCvVKc2r7ZeQrgJad5IFRZbnyU2gL0iSZlspUoLQAjT\n/RrmfgS5DTJE0EkbqvAHyXgjcUHWUoMi3ipWU0j7tOB9Ouyx2pccGoZQzPPy\nBjrb\r\n=PkH9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.2": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.2",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x | ^5.x"
+			},
+			"dist": {
+				"shasum": "82615a3a481f7e6e1134e58dbd6f6941bca1ef99",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.2.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-ezsX0zxE97QSDxNQVldo0T1jnMWhRqILXEiB/skFG+SXwPROq5oH0/ufCHdkVCNxWLOOCwmhuP1XTgSqtyEk3g==",
+				"signatures": [
+					{
+						"sig": "MEQCIGqbqNhHxMsUFjd5NggVWZaPWIDwbs0e/aDV7YXsUNVvAiBqATynFm9SvApRyq2ZBnD5IoRpnFSSbCeqcND7nhFEpA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41077,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgUcTcCRA9TVsSAnZWagAAESIP/1Huevh5wcNbEsik0x73\nr7p0XKOZr8oUws/MZM+0cYYbmgKvbR5DCOLwcxZkhVlvAcEq+fAL5ng/A7vj\nDfitk5rYAyRuQou2GaEp8lX7yNPYJ8OaHdmKda8cUNiUxoa0Q/hPzGnn89Sr\nizTqnAh74k3t9Mum5FoQEVkbUnPAWLaET5wPiKZmlkqY/8k5dMwbVlz/WmHH\n6erX/v5oB/YNyyplVMeYp5hGrNPU0FELDMdWAXsNBoRxjWxGlfv+O2SiJx4Z\nYunVjN6rtc/EcEIDc+CUlpAk76b6ZUmm2xZ//rIvoZj9Hq3vHC0fGPwd0wxh\nLY6RUbUtxgm/m92G+34MuLx2iakElVdYkMK6uVqWkqby10yJzy/2ONwBdd6l\nCu5d+VGXBu0S7NgeTHg9hup5uJVD4wsb7LkXpQUKv2+uKT7oNT1VfFP6HW1P\nI/jGgsdjSUAdBk2myxtqE1Bg2vVDgjJL6kilLbYT+Hgh7fxpABQw3ktSdyx5\n8tkRun6fx2AW6CsWKfoWN7Q668FaadcrbAF3auZl+p2p3s/fTtmsWo0MPS+E\nZbZRbPhrpIrc2opirfHgyqFUXTdsKYFcgUyXsBLOgnduhsRqEMB6EvUcCSDD\ntuqfQrmJhC99PCLHwPW//GiZaNlD/df064lly2tLRSoSavqtuHjzfRNVnkle\nSIyA\r\n=GwOR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.3": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.3",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x || ^5.x"
+			},
+			"dist": {
+				"shasum": "1c5d6c98ab9e011c787f531d1512dcc5badb11f7",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.3.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-CeCVAsrJS8/UXSUIsqjfZ3PQlqtxgomHtgZATXmTmoSWPGSHTyTLL9FvUbWHzOYomWfFbX2YBzHYTV1wYqM4uA==",
+				"signatures": [
+					{
+						"sig": "MEUCIG9jwlYqc4lNTaZbWN4ZzPJdk5At/4jkjHioNeG1246bAiEA99FLSwcg5W8RDAD6B/PZ/0gX05F5j2S2LN61s9rkeL0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41235,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgUcdtCRA9TVsSAnZWagAADrMP/0F39fdjOjFMXxurrfsr\neXfdI7yvemkd5UtfT9unb9R24qEvfjPu3505tdavbVfSJEnZx+NrJfVxEKNj\nVrGT2c90oCprKgN3BkEqBF035Pcct/HmogT3VXX1eEhNqbb4X9STJ9Gmknmm\nthZcdVC9YgLZisnPTDQQ9Yeq/JMN1Hyo6wVn/T6RnaAp1MlB2oj5cPAq7dwK\ndUX/xLDaFgekUgpbcMSa8Jn1pOP1P55UAcxfjx5WW6J3TaRUnpkv/7p9xC39\n/GIKQT4473oWzFGOTcT+2dgbdhC8Rp25Enc7/A/vfmb4qCB/oZPzXk0kXJ95\nJanStrXr6SQAZmsWmcht2q31kmbVqnkv6Cvb8apTn7tfqkj4sVtdSKS6pN+9\nloO7aLxjYfZI3XElj2NBpFQGaColvoRhvJdA7k9AQJV+AxpEhHRhTV1NN4As\nQ6dbmGPJZFObS1wjJH1x3v4NxvvG8mH/1NZFvP9IlNTRoc+PFmb2hAsy8LV5\nA9gd8jDCMOJ65EHxQE4st0yZEUKlasEAshQpzUYI7a/bhCTYBTbKDnmRL5HG\nBkwbp3M8q25ChT3W4taOTfAJHqR634XimXC5J4Qx4xA4KzeemMK6ldTBHHSl\nUxHzdHLx8yP6x4/rQ3JWeqZLqo1CiA1Xh1JjLFjKBAZqa+wqByil5nQ3ATwi\nEaXb\r\n=G3eJ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.4": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.4",
+			"dependencies": {
+				"min-dash": "^3.5.2"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.11.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"peerDependencies": {
+				"camunda-bpmn-moddle": "^4.x || ^5.x || ^6.x"
+			},
+			"dist": {
+				"shasum": "57f6908b2a74ebc182454ccb95cfd04470cc43a6",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.4.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-iStnEVSEtOlZoE3ADMImdwhOhxUjXFdwWsCmmJQlyWH5ISmdRvai0Cxuw0spQEYySgIwFsUB0h+ScOCdW6yEBQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDNp6HSsYcnwKubsxF9khmpSQMzPycl3bobRucIkwiucQIgBNHA8tUlldb4IcDDu2b2uNzBri/Ew7x34fysO8exruo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41325,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQEpCCRA9TVsSAnZWagAApeUP/A0ZVAfSoL7nYtriFT9l\nKzDvvlXxBM3uw4GGvlpYNog7mb5OI5TnIzUN3475/J83rUlzynR/HB3kRlk0\nZ1bnEIw4zBtkCkQ2tPSi7lezBigsm1/2fi1tY3OK9wAm+H+J3Xi0xBaAzXR0\nVkOITcj2EXwgpUQWXrdc3fFR4/1fdllEWN3TZrLGlrTP/0I1eIjMH35nA/00\nsnYTAy+cMxvojVHfQGLZzLTcueMfuSzHc6j3G1fgwW1jWnOQqVCpRBcktyw+\nePPG5+7IBlX+eJrFxzAZR/TOKCyJgoj+l+kltfvRgKQMLjTnAG2n/mxCmxHi\nEikSaNLZxuahhsjTR7xjta3nFvzH00zlfhKKGzy9AgPNqEkaNVxxknfmT7hX\n29OhVpJmm06HO3GRBHIvkvSDqpbvi85Ocq6uT7OvX9Sr32sKpCKUDK42TJeV\nP2TS87VUsGHzhRMuMbq1d+J3TsLVh9MswTid6sp6YT53VWeA2MCU5ietJKQI\nt6z/zyoflEBy3QfYbCAHkO+7fhzNe7wOiF1wiwKrpd1QlbxBCVg1TDcHLNpr\nA2vCVjlXaBZrfUoCCw+pMm9d0POJbEtO57fGZgn+SLhUtWWu6uQIwik4xzN/\nyh5VAGJAPIRCrQ4hieukURg38LdgNLMioVlOpz0uKkfYn8O5euV4kSuIN0xU\nq3BH\r\n=bMyc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.5": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.4.5",
+			"dependencies": {
+				"min-dash": "^3.8.1"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.12.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"dist": {
+				"shasum": "8ce1492308e24fedca817f276a4d445edb51188b",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.4.5.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-LtHx5b9xqS8avRLrq/uTlKhWzMeV3bWQKIdDic2bdo5n9roitX13GRb01u2S0hSsKDWEhXQtydFYN2b6G7bqfw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFGYMbDEPRB66sW/5WYK8dGrgjsRpS/964KMGaLTQcGbAiEAk+oJLBROqXZE1W0IHafQbWujdlDzi11Bz4cNRVpvFo0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41463,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQZjZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoPIg/+NKy6f48x1ebwYXcVgnyTpCiyKbtTX5jE+lGflN9+/Cl80lpm\r\noqv+suCBKiezJoT3HFZ0wmhK5lYZAYmQ7nZJV7C8RO/TOyWkmiaeWNgZ1gA0\r\nLv+yv1kjcbzDxICBRRHHlqdQ3L/H8Inf7gndMtCMIw+j+rvwN/BJJb3SXTFf\r\nqGWEibslhXRekXFuYvAgewqvGk1Rc252KuR6ZDXvwuawxJ6ygZWa/saeMdj0\r\nGvopH9L3UagqBNP86qNl+RrgW5HpjBPvgXKwkIyTFoNwoAzwef+SdzO8n7Mf\r\nSppBIdOYOZxeXjvNfk9eq89kqGSNxdx6+FOMOSX/Db3g9GKwXEzosa3ceXJ6\r\nv7Px6fDStA3WktFhUo8SOgY4Qzrs8Qj70nZVCPqQ0OEmmwrOxyA39k7O/RJP\r\n/6i6suT5Z5HrKMuR4aOHcNfoPe3IrZVkRy6Skt7a35oHfo17tgw1B4YINrvM\r\nzOAnF28o+W6uHFv+CiakMTGEZvZvsSAE/rCvZEmBS6qiQ3qIkHN9pAZFE/MG\r\ndnS5XwMl418di+bD1ORl0ARYsp34btwB2tYGKeSVvD9X+zXkyLqIrAeW+exP\r\nxFTEOh4GrXZZ4mk6qKQCE/edjcwIm75MwAcNvpFSno3HyjIJngVf36whp9y2\r\nFLI1L+k0Vio5Fqc8nFxE39fkZ4ZrhEZ/8ys=\r\n=wVLt\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.5.0",
+			"dependencies": {
+				"min-dash": "^3.8.1"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "0.12.1",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.12.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"dist": {
+				"shasum": "0e27c021b3d6006c1ea8cf3e676aae8f312539ff",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.5.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-QUkGalROspIF3JmL+7IKYgTj/f66RENniryo/Pl5VGS/4XKSsr+dgi+Y2lJ3el1e68i9w67FyQ7i5604vUAWPQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHjM+OSfq+8IlsrILpFEV9FYObsO9ZXloECnaxIBCJ4rAiBR13fsilfPkGFxSUXY0DiBedfjrWz3zBct2xxkh1S0Jw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75168,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi4SZ9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmocrA//edNf6WkO3rzOenSaoyWNOudoPCknbu5jM1tO6248oRQiqbwu\r\n9BY5PcV6SlGt7kc7OMYNBceZtheZzCB4uDSYWhPHgZqROFYRxdg4l9pLzqTX\r\natYm817EK87AR53T3lP3nPGacRK+FI6xKo7UcHr//Zgrw7HJKZXxlyrN0eNF\r\n4hh4x7+Gq6Tql9fRwkhd5sksFIYHLxDYic28UhJH6k3gMT4Z6ZpilOHZyuSW\r\nc6MhrBvCPaQAFAnVLIi5PrXcNIn8NPyaxaBX5bZs6YM5sT1QYZx8Yxmeh3Mf\r\n3Am0+DDcYwsMFQ3EAqqPhpK9pOm39RflihH0doBa5GEfUjrJaZBQJdYlhTDo\r\nVKA/XZ3sVpJ66eWOT0ClFU+d1X3m6vWgN7CdyiqkEYz0fMDOSffZQAJJEmbk\r\nf082paass4/YOammqO+IEwXP3E46P0jW/aPCNpgeps0O9f6k7Sr/e264VkTZ\r\nTx0C1bY0+RlaM/mIyt1S51HAmbxstpRXPtJVXXlf4pNeiSxIU7tsykIi3YdA\r\n2P7CuVtWXqnXs7o1I1ATKH0n+X4idC0s+cBzBcGt3E/Ne1lXeJdNuNwqjEPU\r\n9jNeAf2XEEfflYUN5gZ9hvK19kqaQE1h4WlCQSeQD3BRYAykxp01dVwPNCGy\r\naE7e2xfH1/1+5mIhVF1ygvVf6Wx0fM5bH80=\r\n=Csm6\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.1": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.5.1",
+			"dependencies": {
+				"min-dash": "^3.8.1"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^7.6.0",
+				"rollup": "^2.23.0",
+				"bpmn-moddle": "^7.0.3",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "0.12.1",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^5.0.0",
+				"eslint-plugin-bpmn-io": "^0.12.0",
+				"@rollup/plugin-commonjs": "^15.0.0",
+				"@rollup/plugin-node-resolve": "^9.0.0"
+			},
+			"dist": {
+				"shasum": "d7ea8ec067da59411549b865a152d67e379ff1df",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.5.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Kx0zknI9GRli1EDkgmkUV34cKYsqppsgbcnfrSaT2Tmh7CGXEo8b6UzuGFlZtCZt4488UxjP7UhdrONTt5Si/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIAEYrHS0QoI69qNzlczBVZPDMkH0qsobv9cBRm23/jrqAiEAhBmSTPcaT0vOroCdSIhYci3cTSoBSeGsFTQ4KI2O1mQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 107795,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi6kEcACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoO/g//Qz3za+bkYV1Mo3ttEc2J0dpP/tf3e+x87XdYADGou1dS4Tbk\r\nkS8jq8wP75tnoydYeXCG6Pq2npyEYfnzeAqfJzWWB4lSFlzk1sk5IeXHqtmn\r\n2659qFweSx70eRC6OTOpahsPH+IkLHx41eMdEr5+mLaW6iLb7sLohfV4NRoj\r\nxzvFfShjWkF/Rv7M3t/wFWYc/sebC1pvQde40up77f1N4wKfdkqUeTVt2UG2\r\nsDvHBStZSX5czDypvNB83/ORUUjD14uDT6DA7rbbmxQhAodMdO2d2AAHSs3A\r\n1mZZ8tvDRrXctQifwm6DljdViRxToxLm0Td+6CBJ4li2XHlGzlLnChW2mRft\r\nDeJiiww5MrjKxt/Uk5G8FjuEkgmujfzQU44XjToKTbeae9WpJ0u0JOmCHSxA\r\ngLuWDFfkTHmPReoyeahllwZ3NqsjmDjpf0sT1AdlvS0hKEwBTAe3Hm8TJKvk\r\nBHMiTl7L7LDDxnJf5q9e1Wz9Er8bb0FLCZZA17270Uvk77o2jjTmN0egvuFL\r\nhTkinpdGlGYCj5pan0B6NBxoGAD/AHlRhVgq8bgIP/ej4T59QLKnf5PbOhZ6\r\nUH9aN26iZDZm8AZ5IEC2YH1AoFxpWfqmEGTc6BknWmDuRh5Ar/Q6i9EIKHUd\r\nNCFg+E38mbwSOYutygUFs36pK78pXn8YDvk=\r\n=F46y\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.6.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.6.0",
+			"dependencies": {
+				"min-dash": "^4.0.0"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^8.24.0",
+				"rollup": "^2.79.1",
+				"bpmn-moddle": "^8.0.0",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "^0.15.0",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^7.0.1",
+				"eslint-plugin-bpmn-io": "^0.16.0",
+				"@rollup/plugin-commonjs": "^22.0.2",
+				"@rollup/plugin-node-resolve": "^14.1.0"
+			},
+			"dist": {
+				"shasum": "58391a4ae42fa7a9e3a50e3c2a4ae665847e1819",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.6.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-vq4jwGXDO11jwQgj9lvpVxVxjnRAz4C4TqPnhromcsllH5iRBrUNtBKgK0c/RWxiEGNTBhTYm19sP+LN1UcLWA==",
+				"signatures": [
+					{
+						"sig": "MEQCID1wU6Lvel515YZbhU78qJgtWVOiaD/CMzuu4z8hOsEdAiBALIhGz5dE0c/d/Ao1Qjk39akYA5ZlMsRVlvg1gbZPGg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 72590,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjOf4eACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqqqg//Y5X4oxo3nHhejL3M0y+GG+Ijv0UvAfWJv6or9cvO7Z8WHywY\r\nnBwBfkrINU13eRfclrZUkOMAOTA9C7PCmJgDFU4ot1RmmDAa/Ab6VP+f2Ney\r\n13DehOyhxJYEEi4cOAzgatbkTyjBD/gkfIzQ6ch6TAjEnJWDUR4t8Iku3p4B\r\navunMZaMRJbZX0ssICWMZr5bSfV8zZEmYQwuB3bHI2aY9MrvAieZno79BGCC\r\nAECjswYv4Ntjei9N0CPhoXEdU8RgpjgrkmJnuuTHsJraJrHTD37N/jpw6fX1\r\nh+P9mG5adU96tna9Ot0lO4ECniN5lCmpFgqib5L97XKiJ03EjEE8Iq5MVNRp\r\nxE4kvMCC6lbWs2fSWMqNiyc5WcIyiYVObeMGkMBznfejb1kV2DN9JYrvrX6a\r\nUnGW9xRvmzQoyWz0r/MPHfDeoZYY4kx8k2F5hZJbtlCwlZonFbywacYI+lpT\r\nLsBLZ/6eatVeSUYbeS5PR0dszYOJimO+c/0Ffam+G40dDEeQYzqOvqNxl7jf\r\nDhtmDpcJZbkwFo6tXaie8MYf3uys3jd+Yv/je8nXWw2w6PrcCwQxqLBAskrn\r\nA7zVPd0jFgn8o44YHIUTr+Mkxs5XH4vLPnib3dbIKDO0pseKGAQM5Wym+cUQ\r\n/mIYNKqJHMPJuto8/LRZdNEGrkfx+ZDxvVQ=\r\n=SzKf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.7.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.7.0",
+			"dependencies": {
+				"min-dash": "^4.0.0"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^8.24.0",
+				"rollup": "^2.79.1",
+				"bpmn-moddle": "^8.0.0",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "^0.15.0",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^7.0.1",
+				"eslint-plugin-bpmn-io": "^0.16.0",
+				"@rollup/plugin-commonjs": "^22.0.2",
+				"@rollup/plugin-node-resolve": "^14.1.0"
+			},
+			"dist": {
+				"shasum": "22b5ca5de43656c685dd3e585fa00ef342156f24",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.7.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-NJcL+l5I9OY9wPD9MTfU8Slbfo/5gWYgooE0nGDVAlj6q2q4ge5sW0u6U1CoXE7YGVvn5oDcdXrgukhOQs2XWg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDspk97LBsKx5fp0Z1TTWf1aLppHXxXOOSK9dZSHd0ihwIhANu6638IshxhCr+bxHYKJO6CJoj3JAX+s3U9D7LL1mCW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75231,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtBJiACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqHkw/+Onxs7wUD04f1YxkExoL5l5D6ZO1nlsAaXwNorF8EkHor8ZYZ\r\nZdsSuPIUjPqB+H3Mm+7FlSDhG7xpkPStm9S2wM0HH7emeqsiR/rOb4yJWfC0\r\np363iFgLYf1kIX/+ZLpWGw1ipGv4sNalT4Uo6HTTxf4/JZYyNiUV94Rkrbx0\r\n3V7XHHLzNzHvaG4oc3bx4qnLhmDrerIZVfrYWRD+TtNC8tpyelHvqcpv/aBK\r\nWfNmVFYnFfp2OFJsBAQymyu2WDWy8cnaAs9Kyo2+L5ssLO+dU3nGRAVIMyAA\r\n39kK7EG1PGzgNSlwbCkxnCnLXdIUeY1GBtvTfLYqO6TPd2K19k7p/Amlo8/E\r\nkEm1vflA4TjnVhcQzCmrFhG3/wWI3PtN7koYbFzY63wH8DGSWvQleRNoHn2Z\r\nulqnUE39gB+XL7H4z7xltzrjXLJQnbcwbSHWOVZ575Grh98xKFXRV6Rvm4DU\r\n7F1VZTag8W6uvMGxRhg0md3J37QW/JUQhDwvDlz7wXkInvO8vcqgPrqehGiW\r\np0y9s8qVLuUHF90fb7jclL1ywZYbYqa8RU5P10z8Wif2W3qoZeiTBXthRiK1\r\nN/PQT7+57jXfigAGCOnVRI58S5CD6yYuSJgeTIsTYbv46PD67eccYKY/Nejs\r\n5ERTm3VqlffQJo7PG4ACMjoBgz8t1vse+co=\r\n=fJbc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.8.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.8.0",
+			"dependencies": {
+				"min-dash": "^4.0.0"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^8.24.0",
+				"rollup": "^2.79.1",
+				"bpmn-moddle": "^8.0.0",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "^0.17.0",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^7.0.1",
+				"eslint-plugin-bpmn-io": "^0.16.0",
+				"@rollup/plugin-commonjs": "^22.0.2",
+				"@rollup/plugin-node-resolve": "^14.1.0"
+			},
+			"dist": {
+				"shasum": "484e29c7b2109b995e35c26c5ce72c2063358a48",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.8.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-yAS7ZYX+D56K+luC36u96eRMLb4VHcPUwTUqMZ/Z/Je2gou2DJLRbuBTHAB4jjKt4wFCHSG4B8Y+TrBciEYf4w==",
+				"signatures": [
+					{
+						"sig": "MEUCIARRHHknlQ6aUizuyMpxpOY88waM+3hFgNgghdV/RTCBAiEAkKQtVaJG/75Uoj0gRkrtLKzOlDW2tKChVwugx2C09xk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75747,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj23WoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpLrA/9GIhVvZ5tXLCmSw9lXNfSdYNRV9JmK+GuI1o5ClwlZyVbh1n7\r\nGUvKpNIGOfc8DJMynhNzEz+Z7I+RHMLJjUZyS47jumaODZcgYhniGZkU6EXZ\r\nO/Rzm24pSsCJzgriqmDrQzAqn8fqD12FQUuXQDsSxN7b3YLZvyYeXqRZmJkZ\r\nlQItv+wPlIvhderOdPmkBcp7pjWK7aGfjDHM0UuOV0liUWubyO31v+cR6B7W\r\nxjMuYWvEraiqRlCOnELzidIZ5xW9kIZBjYRfUizHJxbBSORH7r/LLcWCyAc2\r\niURV9ambBqz7YSglPpFZpWPx61zWAvJoSINChq/noxI/kOyeXmUqF8k33wFr\r\n98ikjUzwE1M+jubbrNyTwXF+uF0RMr+Ep7VnPIynVR/50Zv8+y9pEbXUw+2Z\r\nssv+WuhxEFQGWrshMmNP6ppLRTsvgtvYfm3y4P6c1VO6dVF6PITksWcMLqAd\r\nI2DS6OaA5M3DuEG/vL5BJbMe4dl4NSXqwPPP2sxZ4RfNn5AlTkxLjIHb1+OS\r\n+pRkvcGmhdMG7e7SD4TtwmgCluu+7ahio3Z9l7qRUFdXCGsDcJlfAJvPHdaV\r\ns3xzHldQUzxOJ8Vg3wWnqb8Jbz3JZdeINFIdttfSqJoWCy3xKN7SgSZMwxLK\r\ni0ng5nrv1pgiqBHG7REcvHPHwhjPJ8nbKK0=\r\n=inkF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.9.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "0.9.0",
+			"dependencies": {
+				"min-dash": "^4.0.0"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^8.24.0",
+				"rollup": "^2.79.1",
+				"bpmn-moddle": "^8.0.0",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "^0.17.0",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^7.0.1",
+				"eslint-plugin-bpmn-io": "^0.16.0",
+				"@rollup/plugin-commonjs": "^22.0.2",
+				"@rollup/plugin-node-resolve": "^14.1.0"
+			},
+			"dist": {
+				"shasum": "64e91586485aab43368f578745fb7ed4a6e37966",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-0.9.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-32h64pyToe8ss6+jAsRiFFpOTOm+QS+3vqRvzhRjkXbT8Qie7X/uYYrp980eBSgW/otAUrsMmlU10IBZ7dpfGQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHL59FZLcZaGBOjv7Jn3C5gubVvYjCBwvR0uwRO4i6g8AiBbF8/N3AqanWVrbiyTIq3+MD9jgbJrCLxrcwaSbY05FA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75867
+			}
+		},
+		"1.0.0": {
+			"name": "@bpmn-io/extract-process-variables",
+			"version": "1.0.0",
+			"dependencies": {
+				"min-dash": "^4.0.0"
+			},
+			"devDependencies": {
+				"esm": "^3.2.25",
+				"nyc": "^15.1.0",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.1",
+				"eslint": "^8.24.0",
+				"rollup": "^2.79.1",
+				"bpmn-moddle": "^8.0.0",
+				"npm-run-all": "^4.1.5",
+				"zeebe-bpmn-moddle": "^0.17.0",
+				"@rollup/plugin-json": "^4.1.0",
+				"camunda-bpmn-moddle": "^7.0.1",
+				"eslint-plugin-bpmn-io": "^0.16.0",
+				"@rollup/plugin-commonjs": "^22.0.2",
+				"@rollup/plugin-node-resolve": "^14.1.0"
+			},
+			"dist": {
+				"shasum": "77d179a808be1a2375855beef47d3064a8dac6c9",
+				"tarball": "https://registry.npmjs.org/@bpmn-io/extract-process-variables/-/extract-process-variables-1.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-4EpxKwsV1h1ttlFywo8Af+JBhGzmmv63C8x2Fu5traH8z/4VJbPa2AncIU2GFHj7LYeZlygEDYWPB0QRYoQWKg==",
+				"signatures": [
+					{
+						"sig": "MEUCIE+qTr5iVZjt2IysS5Hw9T5KV4CxWk3r6OaDwJIgk621AiEA8PO1iPgdQhPsRQ3tlBZKOCbuo2tGoZ62dKnzP/tcDko=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75867
+			}
+		}
+	}
+}

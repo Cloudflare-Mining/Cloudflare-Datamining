@@ -1,0 +1,107 @@
+{
+	"name": "deep-scope-analyser",
+	"dist-tags": {
+		"latest": "1.7.0"
+	},
+	"versions": {
+		"1.6.0": {
+			"name": "deep-scope-analyser",
+			"version": "1.6.0",
+			"dependencies": {
+				"esrecurse": "^4.2.1",
+				"estraverse": "^4.2.0"
+			},
+			"devDependencies": {
+				"@types/estree": "^0.0.39",
+				"@types/node": "^9.6.0",
+				"@types/ramda": "^0.25.24",
+				"acorn": "^5.5.3",
+				"chai": "^4.1.2",
+				"chai-jest-diff": "^1.0.2",
+				"mocha": "^5.1.1",
+				"tslint": "^5.10.0",
+				"typescript": "^2.7.2"
+			},
+			"dist": {
+				"shasum": "3010f6115a026654be4e9b81e7fd61e283179f0e",
+				"tarball": "https://registry.npmjs.org/deep-scope-analyser/-/deep-scope-analyser-1.6.0.tgz",
+				"integrity": "sha512-f1PMpb9p5j8TVrfsuVGCeQtGD2+2TuFrpzFOxbrs1sfqeAST93JoYjTE9Da0XpwQ2oH4fHpKUdmHtxNUjyJ5cQ==",
+				"fileCount": 65,
+				"unpackedSize": 186459,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbjon+CRA9TVsSAnZWagAAwOIP/RYhcCwZ13FqO3xz8QFZ\n7gJI09BVELWy9vgJpQxSqYlDtslBnTZcstp9pmtNGeIGSaGLZ4aIhuxF4DGq\nn80vzjBRyx4a7vnQM1yu9AoJ55FnhUuTCM8vVa/Qv/Ukn3UfYPR34LHohTSp\nFrTdpuOiVmdffL3kxlHqtdS2a8SPDaTw9STMVB1pNf9yz6jxBTKfKt7HS1Uw\nxzOTK1Iq1Lhb44i+Kt2nelIxEA3EZPrD/L2Q/aYa4OvsB9Yv0Hy1SNokVLJj\ntaFjsMcHkPGodl256DoFaNZDyieXCx/dewcOSCHWqUqDw4mTBOhqA4muYVYI\nCNVjwpRoeglcG/9GPZV03LS7+HxBp4f/3lpePb8E4CH4S3CZNqjUrK4aufbF\nyr+X/sBjaGc6FFVNSdq4kmzyS58gRJokBN7LJqFXsGyk+l+lOEI1Ydj8xKm0\nyaTPc1OedaYzyAzB1w2Tbi5kJQ3aAXp7oU2AX623inc5wSJ20AXAQYsSFXT4\ndYUiFA5o8jvs/oOTBF8WdsR4XcSWQZm3idJHgOfWg/qup3el4XvUIuSWYNjI\naEUCQil7VUghA4uMHj+wg1Ft3/9OKwD2+YjarcGfUZjy/kT2An3segsuEq+M\nQAoYOOIdjHmg2uCdxtlFjKL0kLyaNYjPo3nSSzdToKtZG9oAiDqDLmwOF2Uc\n2Dni\r\n=vqVj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDaEp0Kpk+uuxQTwATQq/+t43ScXiXDOPzEERYO1PB7MQIgCGRCTU6w6ajGfBmKz3wf7JL2iBTYv8to5N36BrOtm1o="
+					}
+				]
+			}
+		},
+		"1.6.1": {
+			"name": "deep-scope-analyser",
+			"version": "1.6.1",
+			"dependencies": {
+				"esrecurse": "^4.2.1",
+				"estraverse": "^4.2.0"
+			},
+			"devDependencies": {
+				"@types/estree": "^0.0.39",
+				"@types/node": "^9.6.0",
+				"@types/ramda": "^0.25.24",
+				"acorn": "^5.5.3",
+				"chai": "^4.1.2",
+				"chai-jest-diff": "^1.0.2",
+				"mocha": "^5.1.1",
+				"tslint": "^5.17.0",
+				"typescript": "^2.7.2"
+			},
+			"dist": {
+				"integrity": "sha512-t4wtDt0eKygcVwi+KE+eCAOAUciHRdJ9IqSkRJdni5O2v9IwFWibkSFYc6sWGotZerj9JolsC42QnVuf10lYqA==",
+				"shasum": "e523eacb0ed7853593a7782198606c83d70ac48e",
+				"tarball": "https://registry.npmjs.org/deep-scope-analyser/-/deep-scope-analyser-1.6.1.tgz",
+				"fileCount": 103,
+				"unpackedSize": 173403,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc+PgnCRA9TVsSAnZWagAAkfIQAKAxsmjCglO/opetF1N0\nzWSe562WZxgw7Le4YUnSZbOpu984QVciZyvPOl9tCOg5FKnmfW5yPI+eBLtT\nOk/Pp0hzCAVHUDkcDSTLvOvnjmFOG1UIm1cfnH4Qnb017YhjMpQRJ3M+j7Qa\nmv+kuRqgvadkD0znuIp+/aI3K4ZbV1tnJxha5/Ecd5j2m1D84RLu/eAht2q9\nkwqMlXpt2L8/JwbX5iVgmCLQIZoOtirQPU7m7aZ3U7rsDiQ3GB3atm1LAcg+\np8SnnGIaEuWaP4fn8WIs3v7ak3H+7NQBV3LY0L7zINsUI2KXbTfLehToCG+O\nCCV2HklrwJhEtaVNhlVLmi+oD4LHlcVD5toLzPslOLr0jr8qjkeZIojfBHUa\nOM5ie4HuRvgJDvRvx7C6sWCfMZJtnGqAjmkkVDUvNr1ee7/tf+qhkKUTDxt8\nHV2dzVKbVF6NaDzyIZVxVQU/Gb7y5hYw+ojYdjiHHxkq98fZ8mQlhiH50Gp+\nh5JMr8G3zk0AnoZz37MGo8LF0p/ubjy8wnghHiE1/+7Wv09Eqs1zkED0Ip6N\n1/0C4e3qWcHEEJ52hl4x9BWFLt0anHZu8Hdt+IjQXcly1t4j6tLcxNsfAyB2\nH3urxMx3UAeKGVo6vVYh2bJH/pMUQIQhRVRZ2seb094ndGTb+Wl9MVioWDxm\naU+0\r\n=juyd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBKEdb2WEQomgASfdC7DOPc+hmQlJ9X/9cuEEIZjaihQAiEAv1thK1nHIXJy3ISjCNKRh0OPOZuGNvtiQUHbdre56X8="
+					}
+				]
+			}
+		},
+		"1.7.0": {
+			"name": "deep-scope-analyser",
+			"version": "1.7.0",
+			"dependencies": {
+				"esrecurse": "^4.2.1",
+				"estraverse": "^4.2.0"
+			},
+			"devDependencies": {
+				"@types/estree": "^0.0.39",
+				"@types/node": "^9.6.0",
+				"@types/ramda": "^0.25.24",
+				"acorn": "^5.5.3",
+				"chai": "^4.1.2",
+				"chai-jest-diff": "^1.0.2",
+				"mocha": "^5.1.1",
+				"tslint": "^5.17.0",
+				"typescript": "^2.7.2"
+			},
+			"dist": {
+				"shasum": "23015b3a1d23181b1d9cebd25b783a7378ead8da",
+				"integrity": "sha512-rl5Dmt2IZkFpZo6XbEY1zG8st2Wpq8Pi/dV2gz8ZF6BDYt3fnor2JNxHwdO1WLo0k6JbmYp0x8MNy8kE4l1NtA==",
+				"tarball": "https://registry.npmjs.org/deep-scope-analyser/-/deep-scope-analyser-1.7.0.tgz",
+				"fileCount": 110,
+				"unpackedSize": 257016,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdPIXwCRA9TVsSAnZWagAA0Z4P/0JOOh4Ie1V9Qtn+7OtU\n/rFNraMC+c+2ezBSJRYUTxvPvxAPOG5eIbJkVGYqpGpW0Mjxbn3MFMO7cOIX\n7aEG3smNFWCDN4OegUKv4jMzs9sUX7MTHsj0FZBG+/aQ/TACiZMulgkGd/Q2\ncoiNKgxha6f/U6dguehbRlOL4ol3r9qFyWvYmWmcXA7za1S1xmKfnjGWucGR\nsM0iAGveJTUGw7JznO+tY+eN348T+2wNldueuD4nRIoIlvmQdNSu+y7PJSsB\nmQ0GtChrXRMGp2VawNCbKtzELQGGZjX03GsBHNeNu6rbE6bFx+fMfZQMfqSe\nunpFv52CnocolC5nxkLfoYnbN6WLls07o9QHEaCcyX+a+ANru0kxnrWjR1oW\nqqb21s6g0UNryCAIOnj/yKkc4eKARqeaOQM9tcZHGK1qZjwbavg98fv/Mdji\nOQqzX2f5nu+jUtoGZDxX+RZ2m8IKs5wW8fuRIJCDFr6nssDtmvdrtpXENBhQ\nc5Gkmm4NQepcXLeCZNrj3z0GwRPKnrhyu7jghnmQzBaowGyMYqMV3J04+CM7\nLw/KBtLMx+sKSuHKgq7VNIUnbv/pIxa8Xm6em1G0oty7ACtNynpEFwqQGkHa\nix653xhvZl3XlW76552LFBovqhXQfkL+V2faYIdxeGqUQBrH9ZPyf9hCQzeI\nZ1bx\r\n=zL4V\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBrIBDI3nLIfjuzOxXj9ee+XyammkJkZjOsg/6ltqzdXAiEA9glx0k/g4tMmKKgCvKw8d225yEEYgNP9DX9Rd/qyri0="
+					}
+				]
+			}
+		}
+	}
+}

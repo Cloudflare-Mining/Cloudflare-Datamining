@@ -1,0 +1,805 @@
+{
+	"name": "jotai-scope",
+	"dist-tags": {
+		"latest": "0.7.2"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "jotai-scope",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "cca7429de52c66893faf355e4147db7defb0b3f0",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-zP4WcliPTWJnCb95YB6QgSfrYhhuuwXAxsexYW2ICC2Y0HTs3/+yQ1bboQatbm3sIkEvxrdlKc77MRJXls9P1Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD1GDx/UIZ1a4FWK2HhNZ/P1C8tNj3IvlbWj5g7zKvLTwIgYDHK0xRkR9b/tV9XjNYUeR+MhsRcbaVHH35/O+RzQ1A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 50,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkP3VIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp1bw//c/6GOMePOcbaQmATDDupWTEnZPUgbi6a8g76lAQKuzh9RffV\r\nCX6uRqL8Vz8nBm+8sFQ4BhqxH641ROJ6sN93xv/yvlotuTowkqLhp0GtNMXU\r\nq1LlTTidg1TNLgfIPY9NcnklRbRHfoBGlWglA+JJVDQkhgiUct3VqhFx1a1O\r\nWeSdXvXp6zByiqkznemkDK172kttFKFRqQVkuvAb3MGULaQDXgTvQAJnO5HT\r\nuUik2BeSvewgQIcQJpgZV0bTo9sMNGfj+qOOh4X7cfGEYNIogpXE3TbZxV5R\r\nkGOqxCa/6LIiSRJjId0+wnD8Mx4i53EZqfvC0StQsO24u6t3/CTYPTgAd0IZ\r\nf5PfjOGS7xgPi4VcvqgwHWeZNgQGey59gcGY1OJOXbrpTHEQczO3dOZ1edOn\r\npDr/jxbE9RVxvSJnTOoaU1mDFzg47DJzIYRHTvdm2n3zWTsTANHuHm0BYvy8\r\nE8xXtvyrVzIdWVfQV5i0DmTc7sAb+XkS1by0Q8Ry6nmNSIckfKk5Yz3uR8mk\r\nTX1d9T5zDkg7NRh7kjzB0m3YQ86U/sCE3GUSzocKWOBKBKGb3WP7a9nyQVDA\r\nkPasB3BRevM+mJvXqgFSmVMePgz8mPUiXeMwMGWZiqbJnebjQ9Xv5AKPhMpR\r\n5hT4jLdv5vmIJA8rWYArsnAjDHA//8nAdbk=\r\n=rLSN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.0": {
+			"name": "jotai-scope",
+			"version": "0.1.0",
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"jotai": "^2.0.4",
+				"react": "^18.2.0",
+				"eslint": "^8.38.0",
+				"ts-jest": "^29.1.0",
+				"webpack": "^5.79.0",
+				"prettier": "^2.8.7",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.4.2",
+				"typescript": "^5.0.4",
+				"@types/jest": "^29.5.0",
+				"@types/node": "^18.15.11",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.0.1",
+				"@types/react": "^18.0.37",
+				"@types/react-dom": "^18.0.11",
+				"webpack-dev-server": "^4.13.3",
+				"eslint-plugin-react": "^7.32.2",
+				"html-webpack-plugin": "^5.5.1",
+				"@testing-library/dom": "^9.2.0",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.27.5",
+				"react-error-boundary": "^4.0.4",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"jest-environment-jsdom": "^29.5.0",
+				"@typescript-eslint/parser": "^5.59.0",
+				"@testing-library/user-event": "^14.4.3",
+				"@typescript-eslint/eslint-plugin": "^5.59.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=1.11.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "f579315fa26cae24b7774dcdec1ae8e4e62146cd",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.1.0.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-fCE46dj9KlB1JG9umrdwqAerrhyuKZ4Bplq7WF7iT+mcwmOXWLS8kR3tWHMVhjgNPqGFa7yLRiK7TAX2UWGE0g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDWp7LYEBQ4VVJWiRj1ydHbaSPEtAokKeAzM6LFSl3u8QIgcMdGTndz6g6jRO0+oeYKuF2WXbha0nsLA7JVtYV2Ghc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28970,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQSjTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrCdw//RnweN9webgtuRF4x6gqF9u+eaWbouQNEDRYLspDlBXo/Weux\r\nlRLyHnyp8xISjPkR4yaE8+CmnBw23qLUDkzACvrnXIcavRt0kz+sWczEuj0s\r\nO16cne/o99R7LFbiIiUd0KTPv3XINwOqsBfA3W8DxlaK461GUWrduIxe8Yud\r\nj0GcCPw84W+iib7Pmc1IEI+QoTTKe+E3zeRObKWeC1zeQUbnibOsCGzmfc6/\r\nZ5NDCrR6BrbizgB1WFvFXGdxEvxynohtlM2N48x78rJDDPhpwncqDrz/NHzF\r\nbcDj5+nWwEZWy19xoUMlUOUmDUmvQOGwQJoUONJGH0JCsdctLqjKyu8oaedM\r\nogJ2RDT+xBY6AreSdO8AWLmkJzrR9SMGp+LjefgPRJgEIjEqW0HP7zis9Dkc\r\nZNYYbQbXg680X95JZ38FzJQV2Y31JZzhi2OD9/6mBQbJcYdQJzWKkSBlawbM\r\nS5gU9ezECdbx6PaYzUIpWr5JQ7bYFKOKySR0DVWqasmZFz/mZlpkbMqyNIN4\r\nKHO3knbGJlM+x8kz0FwmEI0ISbiXigiA0W6D5C2LiTk6drOtcv+shlyAVFhN\r\ntlSp0rQfyIe8rmZTyJNQRn3ipMnCYmZSzKnIS2dwrsT0Ufiod6v+/oTXlvJ7\r\nPUf2xmyBZo7Bc5X4B95bPvNqw9sHBIVw5F4=\r\n=XKg5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.1": {
+			"name": "jotai-scope",
+			"version": "0.1.1",
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"jotai": "^2.0.4",
+				"react": "^18.2.0",
+				"eslint": "^8.38.0",
+				"ts-jest": "^29.1.0",
+				"webpack": "^5.79.0",
+				"prettier": "^2.8.7",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.4.2",
+				"typescript": "^5.0.4",
+				"@types/jest": "^29.5.0",
+				"@types/node": "^18.15.11",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.0.1",
+				"@types/react": "^18.0.37",
+				"@types/react-dom": "^18.0.11",
+				"webpack-dev-server": "^4.13.3",
+				"eslint-plugin-react": "^7.32.2",
+				"html-webpack-plugin": "^5.5.1",
+				"@testing-library/dom": "^9.2.0",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.27.5",
+				"react-error-boundary": "^4.0.4",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"jest-environment-jsdom": "^29.5.0",
+				"@typescript-eslint/parser": "^5.59.0",
+				"@testing-library/user-event": "^14.4.3",
+				"@typescript-eslint/eslint-plugin": "^5.59.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=1.11.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "59b1c4c11dedb1091b131396aa798e107f1d1d63",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.1.1.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-expsY+zKuQRpnfM6BW2Tng4zp8iDg2rjhpM7cPM5hMPFWvjeHu46HWo7j7O8S5pYZgoQZT1+PlwpZ7tigd01zg==",
+				"signatures": [
+					{
+						"sig": "MEQCIE/0uBMO8yvlcQdfwPQ53WrvmafeFCK0lSedU1+KjEY9AiB0yOMuY5/wkVQa06izt2IUuexYkAgV7QWEZKRdDGEBbg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25616,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQgFJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpnXRAAjZizYzsX2Uv5MhDH5Ya7lG4aBg1ZmrTE2SvTkxslF9gTjkSl\r\nfDrxjO3GWA00VKRyswzRdn2UbLGXBXCWDkq9dRyw08DaZOCdsDU25I9jmN21\r\ng++mqIxF47dXffHP/8vUAyLHTUKbKbIXTuFrnhHh0u8m6yv9qrg4BbPrDddv\r\nMDd+XIelpPhwzk42/USM3Varh7rrJI+07VtJEYY972/6qREuY6TdnJ/fnMcL\r\n/lb3gRyl32Esdfr6KPC73vzkXAywplRJpYtDuY6nOc/6rU3EhzML4Rl0chMp\r\nAvaQJDZhwdBsgLyFRCQ2dDz/qCWGMSRSL/W8F4gFPspFcPgI8CIOp0rBMeXD\r\nFj+sAw7rgjC+euFHmkOhJ6d7tFDUlC3EhyMAduDjsRoYmzDJXKSCBLKC5HS3\r\nT2LHZ0Swe/3lp4paGURFjZQGsS4pXhZRrrJo5lge9J1uexvKmLGT3Ikzl67c\r\nN4tdbOLrGAiVGYfdf9c+pN1nAAfHb7l+Iwow6dQa3dgIDSG6NY3qImIq3bgT\r\nAA6mjj9DjhqCKUExtuBc4c+7U4hC8e/yfOeeExA+y+NPf+S7ct3kuahFWLuh\r\nPti6tH+CytSKzkOxxzsMFKkESkDU9IsMADTo5D/zzRBFr/LNJJHzvgaBaAvR\r\njGGNHYMJw54vc5uJj/8IKxIOk3miy2/uJtA=\r\n=Q+yB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.0": {
+			"name": "jotai-scope",
+			"version": "0.2.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.4.3",
+				"react": "^18.2.0",
+				"eslint": "^8.50.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.88.2",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.4.4",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.5",
+				"@types/node": "^20.8.0",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.23",
+				"@types/react-dom": "^18.2.8",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.28.1",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.0",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.7.3",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.7.3"
+			},
+			"peerDependencies": {
+				"jotai": ">=1.11.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "1605cf1a45a43d7687a805806bb008b754e74064",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.2.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-Lb6pL0TmZYg5l2UWlhW3F+qRYGFccTSDhG2A+1WSweGd2Ojp1F8S0SAl5L3sDvg4HXcixuTxY3JKxjFpSs6/HQ==",
+				"signatures": [
+					{
+						"sig": "MEQCID8PDg6sFM6efRy+CXkCHcpCXA2JN8ZsTPmEGCgvE7VaAiBSVwYj7r7uDsP2ZDFB7v3kYqOX7eGQyGx+4iDhtPtfvQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44919
+			}
+		},
+		"0.3.0": {
+			"name": "jotai-scope",
+			"version": "0.3.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.5.0",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "030b4911be0e09ceb4b83c1c375571be095d789c",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.3.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-oeoiJggR+g9j42HRn9whzg3v0NKEXA964gLWRtZYcFXcithFEpQfI/2u3Q2rduYYY250r9L/4L9JHt4EL7DnbA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFXZIceWdmytD2AWIih2GL4CBrZJm3HlYcvZmDwLOO9jAiEAwEZ/7XnAZTOUywZlJn98rrbRrq7GWzjTC+q5cGPW6Qg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52603
+			}
+		},
+		"0.3.1": {
+			"name": "jotai-scope",
+			"version": "0.3.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.5.0",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "ddf95bbde182d3b031cc917c4cdb07cd7d9ab541",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.3.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-LPNiN8xVXhotjBbOWGA6rCokwJs+iZ4TSn1A3h60UgcoH3MPbQnbI1R1vjiIKh/6jXSse1SkUF7DWdRvBP+NmQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpC6cSPIKDn5bTEvs6jeFjHmPDNwQSmHlFox92UPlgnQIgDVWAZLxan3u4GfUgaANWWZeitQN7G57iyrNMZ0vEeZ0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 59115
+			}
+		},
+		"0.4.0": {
+			"name": "jotai-scope",
+			"version": "0.4.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.5.0",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "902715f496bffae46992655000f40ea7d1d4ca8e",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.4.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-33kQ6XTpltvRVAFYB6Yk4AxMoVcQLe41NMSAmJJqZvDY5Ysf0iMHrti7hevWeY3TVKjgJNcZnM1dFV01gttWcw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDii7yB1RGJpkMPBssGAK/kuuUBmSUZ6qlkx5S/gdVOeAiEA15JuyrXuSUbS3pQNwVybIOD3Q1pWPfvJUWTh8PdJzK8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52157
+			}
+		},
+		"0.4.1": {
+			"name": "jotai-scope",
+			"version": "0.4.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.5.0",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "fd9b52bdc698cd1e49f541aacffe4d5d3b7612d1",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.4.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-HGH3QdSmBo5XHtLrGE1Wc9cvZ9RbHyzOdIq2kS82PxoWPlh+UkJUmINOj9Z4/qIAYcwofnhOwF5H3h5QuM7uqw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC/ODSZrWKlaIW4PYOpCjoTlDBbd94aHQU1Vp7nb2NrFgIgKWPPtWq3BtLrtRU3Qu4Mp156Y4Riepxv4Lp/A1oJyOU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 58446
+			}
+		},
+		"0.5.0": {
+			"name": "jotai-scope",
+			"version": "0.5.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.6.3",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "6a5cfa20c21196197cd18175c8d9ddf1fe68ed22",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.5.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-fBTtLZWjIuDCbhoAcvM7bbtVDVokCMX50ojmFZnd8YqkBLlhSaQb3+YnmbK7OgpTdkiSJSq93K4xk7cuPL7UAA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFuFXXcH8VtrtrpJEkNN0PVIxz04H2tJLH08fqbH3x7EAiAhuKcw9yadoturgqJuaEC2Gi7KYafiqcCp2GarppNauQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 92701
+			}
+		},
+		"0.5.1": {
+			"name": "jotai-scope",
+			"version": "0.5.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.6.3",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "a0eee96435262ff195901c420ca55b411639d8ef",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.5.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-GKaqtCj1Hv36nyl63PVm+s5jo+hQqz+wAb81iqA8VuUXp5ot4eXGOZt4Hc66lFZMP0N/yEOISMlazprmDI6kFA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDhBUiAXZVlNRQNRXYIDFo+E3TI6McouSE3Pcmd/MYmnwIhAM5GYZsQ6cTRspw4cVKkBgxr5/wrhNPQaVwlUC5Tulym",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 92972
+			}
+		},
+		"0.5.2": {
+			"name": "jotai-scope",
+			"version": "0.5.2",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.6.3",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "4c605ffdbe2fb041e6c57b59e1616446d174b239",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.5.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-2G0QQwLOooEy0H5HIm2x9OjYUynvvwuoK6EFmZLkpxRXY/7Fc1Y1CfGHJ4UTZafJm1yLVE7SYWpRJhWtS7FaHA==",
+				"signatures": [
+					{
+						"sig": "MEQCIEFicwLQauVh1syyIfeaEKG4uYUn45KGp/+bbi8eXDIFAiBx4EPgIRs/kq2whaTPykarNx9psbSKZqmLeAAosgkk4A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 97132
+			}
+		},
+		"0.6.0": {
+			"name": "jotai-scope",
+			"version": "0.6.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "^2.6.3",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "db5c5fe7e3b47b06d34306fa1915dbbe9a19f8fb",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.6.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-jNf6vi+eCkciGE3Q4d5g1QmGSAmcX+jGcypnDxuVApPxaH1pNw1cjlnaImsVa1bjCe9F5kYwpTVjRWtC+oiRSA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCQdBrOpDkc/ahnh+TkthA5aOjBBS6xo1O4HZyhLsNLjQIgRpqkJMHkwjpRZrJURYdFd7rCnU+4g1oUJUDpcVSwmiw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 117055
+			}
+		},
+		"0.7.0": {
+			"name": "jotai-scope",
+			"version": "0.7.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "2.9.0",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.5.0",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "cfb2489b239cb73464c3e875470d27fe8e7b2504",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.7.0.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-xB4cKhY412vn+9cJrbzuLtsb6kWYUAzMTMDwJB+CIUGOnpQhLdM5zUjBnfIn9YhARZfDndMD4FQI3aPaLMzrLw==",
+				"signatures": [
+					{
+						"sig": "MEQCICN6KlIn9Y8JjRppY7gi88crTFEOlV2o7tlULsHXrjKAAiBqrGVrGHf0mGaK19aFmH1H4nR9XZYRAYlsEdEzF+9uAg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 133214
+			}
+		},
+		"0.7.1": {
+			"name": "jotai-scope",
+			"version": "0.7.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"jotai": "2.9.2",
+				"react": "^18.2.0",
+				"eslint": "^8.52.0",
+				"ts-jest": "^29.1.1",
+				"webpack": "^5.89.0",
+				"prettier": "^3.0.3",
+				"react-dom": "^18.2.0",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"webpack-cli": "^5.1.4",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"webpack-dev-server": "^4.15.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"@testing-library/dom": "^9.3.3",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-plugin-import": "^2.29.0",
+				"react-error-boundary": "^4.0.11",
+				"@testing-library/react": "^14.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"jest-environment-jsdom": "^29.7.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"eslint-import-resolver-typescript": "^3.6.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.9.2",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"shasum": "5f2ef65837bd1db754cfeac435daad4cdd9f77fd",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.7.1.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-oFz91+fHy6U5v2zwLlE4fQja38J56FoY6h4c8SJluNQGwggfSIr/gIG5rXTaDLE/9AuPfx5kWZS7HhAjlZRb1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDmuUBy0G4zQZxFiHMrTGgCBkHGvlJwsnkg+kL52VQ+FQIgEyu3YqjbLiYcKL6r/2y0vquidSLwzcrtj9HXEZGP0ec=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150235
+			}
+		},
+		"0.7.2": {
+			"name": "jotai-scope",
+			"version": "0.7.2",
+			"devDependencies": {
+				"@testing-library/dom": "^9.3.3",
+				"@testing-library/react": "^14.0.0",
+				"@testing-library/user-event": "^14.5.1",
+				"@types/jest": "^29.5.6",
+				"@types/node": "^20.8.7",
+				"@types/react": "^18.2.31",
+				"@types/react-dom": "^18.2.14",
+				"@typescript-eslint/eslint-plugin": "^6.8.0",
+				"@typescript-eslint/parser": "^6.8.0",
+				"eslint": "^8.52.0",
+				"eslint-config-airbnb": "^19.0.4",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-import": "^2.29.0",
+				"eslint-plugin-jsx-a11y": "^6.7.1",
+				"eslint-plugin-prettier": "^5.0.1",
+				"eslint-plugin-react": "^7.33.2",
+				"html-webpack-plugin": "^5.5.3",
+				"jest": "^29.7.0",
+				"jest-environment-jsdom": "^29.7.0",
+				"jotai": "2.9.2",
+				"microbundle": "^0.15.1",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.0.3",
+				"react": "^18.2.0",
+				"react-dom": "^18.2.0",
+				"react-error-boundary": "^4.0.11",
+				"ts-jest": "^29.1.1",
+				"ts-loader": "^9.5.0",
+				"typescript": "^5.2.2",
+				"webpack": "^5.89.0",
+				"webpack-cli": "^5.1.4",
+				"webpack-dev-server": "^4.15.1"
+			},
+			"peerDependencies": {
+				"jotai": ">=2.9.2",
+				"react": ">=17.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-Gwed97f3dDObrO43++2lRcgOqw4O2sdr4JCjP/7eHK1oPACDJ7xKHGScpJX9XaflU+KBHXF+VhwECnzcaQiShg==",
+				"shasum": "3e9ec5b743bd9f36b08b32cf5151786049bfcce7",
+				"tarball": "https://registry.npmjs.org/jotai-scope/-/jotai-scope-0.7.2.tgz",
+				"fileCount": 20,
+				"unpackedSize": 150398,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD+xcNaFvT4xzU7rwBqkkHyY5m/ciDPnwnTCVeh0C6erwIhANhR+n7r/bZfFLw1kG05V6yIiTO2oojJXnxnRd6zsYBq"
+					}
+				]
+			}
+		}
+	}
+}

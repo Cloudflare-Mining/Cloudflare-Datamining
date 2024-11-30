@@ -1,0 +1,1647 @@
+{
+	"name": "@hotwired/turbo",
+	"dist-tags": {
+		"latest": "8.0.12"
+	},
+	"versions": {
+		"7.0.0-beta.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.1",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "0111db8a80a7bb308c4cfdd2720112d06bf25c33",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.1.tgz",
+				"fileCount": 64,
+				"integrity": "sha512-V7hhELbDkYUGaHw/Yw4tu9pDUT1WE4t3A7tRs7Zh0Uwtk2vaJnmykNZ2uq20BnLjofufA1+MLJZ6AXJ3B/Il5A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCUxb0kcPpWDztp5ySMh9GTJNIb3uqMXAvMaM6nCGVKsQIgJH2ziWWiUiKoCtnYU8ufTvXr1IoB614PbwMoDyYwuWQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 904936,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf4hgHCRA9TVsSAnZWagAAYmQP/R6iP7A3ZgIlov7ICAEk\nU+D+fppyElcyCk1vVEwgt938A1YWWCBKaDwzi6W7tG417JujQiUOw1FjnINr\nss3OM9C9onVIFc0SYu0qdL0EVVRxQYcIwv0O53rWxmuB7WKbPVCR0aKqmZtg\nVFSeryPJDjfzKUI1stpUilk7Ew/Cdcd2/tzYvsfQBjUTx22ObN17qDDZzIpz\nipUwY6ndmHiarlVNqoZ+9o3F/axJYiAWRZRK/cniFcbkvynCYED33MhPl5lf\nlRQK6bxIA12MssCg+qnSmVB1ygjNAgERrA7f7g+z5HKrnyKPSCbxaJDikV8G\nsBIM4LxS5Ee3wVgImDEDt6N/g+7pV7xHtP+mAL2A1MvSITQOCQ0a3kuKAgth\nZXm8myoVouRUnE5+nnne8IzLQUWMhLpqdduB966jbb7CeZYFjhCjtmDEhmiT\nZBxYi7+5uRX9zdwXWS1Ak/ynoFTcKphQbpFgcaenjSkM3P3Fz+6S4M8JZ0E1\nWMoNJJ3UKHS6YN88MzAKRueakXIu7IxjPPp3MJEqG6cOvSppH5Se0E7QhHvj\nyrAXyXFgOQMRdWryDCqanc3I4SXJV62w99NYZifRtYr8awSnVAAPeOXZMBXJ\ntSCJ5Md/SBZN1O8wzj8B3H5xtaZt84D/LyeIwOcrUmGYJFqKi2RY2jGUwiJj\nupFp\r\n=aFfm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.2",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "0f20c1f5b67fe07472a5f1eda2e3f79146324512",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.2.tgz",
+				"fileCount": 64,
+				"integrity": "sha512-3YyWDaImtkU8MJ+//qV8nmV8KeFInN/nptqwJo1Bl5UjROmixPr3w9tPHyA499Mo1mBJOur8jiXVowbX6VWLUg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpsYlvvsFpHeVI/3ci9Thm9EPlQvIUZoefbVNcTWttfQIgcu2Sy5jpYufDq/fdhHeV2T3Wk+Gq1+y6ZYhI6PXjxEI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 911731,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf83g6CRA9TVsSAnZWagAAw8EQAJtuuj2VU60HEIhuJk1Y\ntJVTS9G7U6UIB3DDLwweQ3nEETBoiPFrn/B4DK31xsQP+/+AVhr2gsWLydet\nzBGfRLspjuEVMpElOXBRDLonQSHbHfDLOnks5z3hoZOG3xfm7R1QTwfulD/j\nIQGfFXtwQRoy5Jc+0RaSFs9J/SGvy66tUJlaCKK4/3UuNh2eUbESHIX866+3\nU7QCBuSN5gunxZ1Ihn+QGdDCf0QNUez6saikf6WYcYarc7w0aj0Xsi6Q+IFk\nYgv1E/Zc4CWCPK7UKTSjYKR/fH8+hKI8o1970tRyAs76UWywlzJcQzj4FHgB\n/KVEVftfXSP8NDwS9VNx2tVpkH8YSnB99SQnweWYaOiBGJJKsPRN2A+yLj7p\nx1y3TCe/l02PjRb1u+9scXoUKzK/hce+fE5OOR0+lfTZL9YweiP0/m8PZYjk\nFBf+m1b39B7K4AWEnAbfy947QqC+MET7AUgJ+lquB8JoEaDOHQMpEEQPSnqT\ny9jOmo0UsXaE89IetPwq3hwR2gG1dD0ggRq5VlTiSU7pvdNxwS8UUywnHPA4\nAX5OdUBUyRIvwg4iOa9UBx7RtIVXo88NWVhBfR2ymKxF6slw0wramKsOmfap\noP9qP0sCrn2BFrE7j/6hEiDpzODyPsCBOfAGDScCBW5lr4UiRkTziXxgtqVj\nXMJT\r\n=fEv5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.3": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.3",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "c3b5dea05fb246aa2bcf53b073675e97ddbc76d8",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.3.tgz",
+				"fileCount": 68,
+				"integrity": "sha512-lOyxOaZJBLxD8sGowjghkmCxuN4FcqYDciRI88DuzyXok35vK6nYewGSfZ4SOpb7McOJ5qVChEsUaBfmY+N8NA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAgdxiuL2gbx+9Lxe+aHmq2AuT8yGzZP8YPFOS/al6O/AiAv81DKo3NDF/fVdoGQXOSgbbxPNUY0UOAlKIyOY4cRlA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 951337,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf/fh2CRA9TVsSAnZWagAAKtsP+QEawqzzodqSclegNm2S\nXkgTOA+HLxL2g6vy+13SYEsOtkGLyb0AyVYnE5XEM+xboxgp2xurTETMVRKG\n00nDE3fsfJpVoezo/WWbpReKYVKoWDeTLab3uxU+m0APcYH9rCDbagmSvrl6\n+YzyyoIzqH3EaTP6JNK+Njr+DDe4WMuUfFfpcUMzZY85sPuNa3sByc1HP8tE\nPg6WdJDv9bK9xuFbeWMsSQ+QmhH6oxuII8GqhHj1KsHV8aLsUpLizamkSfUW\nFmszipWRC7Lojp/7y10kxLXRxCgeHP/XF6LTXeUCZihGeIOW1bZtYm58o+Ws\nPcfnqj19fUqIf0zUFgf/ZxpD2YQHjdholkj6k18NQ451kRHljpK6afzknHWv\n1pLcSfx+lQKzEUCm0iYOj+c6Nfs3kQru95e4Bdx+rdbS8V/wuCV971qhaHiy\nAe9ztjw30mGEzpnA/96KVFJZzM7j/79uivKOLFbq64NfxYY2CZmrJSP7TNTi\nJhPuUtAjwfOzWiMCcB0ZFvL7WxZxdzn32dL849bz9Zp+MiuZi18WlK48VWJP\ng7lYTCle4fZViqMziQlMkEZcIzzGEkJwflYLmwDecPijFPnUjUVyUhqyW/gB\nOL4DrXY32OmopHiLNksS5Nw/cND4zU6UtNyT9Oj3Vwp3PjHwy+iKpBwa68MS\nF50z\r\n=kXj+\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.4": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.4",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "be6d7014902d45121f56358d360e0810bad4c19e",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.4.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-koox7UeA2Na0tLBPesxNO3nk/gtezRxF33NHKbAx+zv5s2k1Xh/orB5xNr5dAckoUj3Pdpytnw41WH4QB1jYBg==",
+				"signatures": [
+					{
+						"sig": "MEQCIEU4wDUX6lZhyOn1tfvwQ3eftlTPPAAxJSNtd/tEEF7EAiA7X1fPRJHs0y23IBjg04XdZmZcIqZ5JQekZwKAjOpPWQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 975951,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgFJatCRA9TVsSAnZWagAAugkP/jFJwIMpw1r5JlLE/WTJ\nH3pspA3p663AIv1jtntvdqynKL9dshVppwPmhE85FjaWuHinccQi+Ji0Q417\nTl+WunvWPO9uZYFOo+3jsgEIIe2IGwTepnTaSrQns+HRdEayU6qU5hlh8uNj\n4w1YjLl7nOsrL26VXS0zH1bwWgcbgvLWqknlCOpGsu8P0NAx0bzxB0DyHqgT\nfFGkikwRbTBuhwG78Gs8b1RcYOLaHVjJUegF2SHq+s4+5kAnJhUHxEq4y8HF\n43PCey6MdMKWCwpTzWvLVJ+7+XQ2N98DP0MTE/qzEBP4jHnZNCHPbSY+P/PE\np1Jy1+bA5WpS1RopRHa+n43f+AsuyBVAREbSiA4Y7z5EmZOBAoAY1Gt7YdhN\nzjyU4ydgM7YQagUYYpK6H4JdP9pmipUj4SpW5V0lgmVSdIDUX/IKIbA/46jB\np+ebxvPbM7HKH8MeHOE9nPyyWV5PboUzGZnKoQSOWwl5Oc24mTUX0L4rRNDc\ni+BPhhpvignS/Q08NhByZn05dWraDL+/Y75E3w+RZ/bIKOGNMpqmMasgivZz\nI7W1Gby9pX3pwTTyNC5t4V49QpQyEA9M5mXgJBGDmjtoGy5KzZ42g6j8KOik\nkqv/JdGWZBd4Maa5QTI+b79j8htICTER+6HYrdfMxNPBIXHK7LgBLui0rG/f\ni+ln\r\n=aRbG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.5": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.5",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "3167e8e882b9075c5b3b2e2f32432cca2862c61c",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.5.tgz",
+				"fileCount": 75,
+				"integrity": "sha512-z10dI2U/StkMSmnfJUsyez6jrhnitgzjyw2CxE3LnAAzW/TBhvsMYKsVG7Xu337r3gh0r6UwIFWyvvtm3in6gg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDq12mkz0HMC3N6Tm724jrl25xODMJ+7ZGETP4LEhnaOAIgS4NQORa/SLQDQkxD0Za6VWmo9bxd9UHSdmn2ER2KPck=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1014366,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgdihHCRA9TVsSAnZWagAA3LQP/07xJFbeMugjND3pWqJ9\nSebcLjrtYqFKlL6ry8naonKF3597ID5kFVI2z4cjqJeIwkzUkx4Xl7pNnhN2\nVGLuD+p90SFJGBblWlWGYrvRQAZ4CBMumGrHR8WPNw1rq6jly/eTgWYBYiTF\nifERebAwmZpOeChB2NjRsicGq6E0b1vAWaWr4VljZfEPKZvGv9raygfyavp8\npYbXhLg1baAdbtsFb5XJP7FOL5Si2xhCCXdCLK40ruHGsBGeZmGSNjWFYUms\nt3TPDxFEtpDtXZjP3tWJcmzSiM9JyyhnqnXgVk4y23p39moosrQnNnctA2pj\nOQcdJhBXqblS0LMOVFp5UVL+/srCY1CDlhjg7ckPDcZqVxFNyuqJMtrvdoEr\n2dsQwSQ5qEPPK1jsOO5JqUb2x7E45x8vwMOUhOPF+nUrrjttddXKmj7rzmvN\nDOvzAvtfb0XzqkQS1VhJdpG3NqrQdMxIVEk3VSvCwgrKLwvv+1CoAm+vX/bu\n15RoaCR568ASKdJk7JtraIJVZKq90Ra5N7ur3z1UGSjmwE+wCo7PMHr0tAmB\nDiJumUKgPyIEvyat2jCFl/qwvK2eLLmGy9+rpnf5Z9NuBjr2g9UZ0OGePlkP\njO0HiyMkNQWiHcV2SgeyaCDi5nfVbc2h8rLnyWDQLB/XMwn44KuzO3ehliE5\njKJx\r\n=M4qx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.6": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.6",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "2a659db8b122a5fde1e2305ac53a3dd8ec91a55c",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.6.tgz",
+				"fileCount": 75,
+				"integrity": "sha512-1MTV4VKbqzbokevpi4zBioX6cRvLFcIT6hGu8r9Y3gVw4L+1SQZB1miZWZ7J9eo7UtxXGNNnVmz4sf6q2M7OtA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC86uEZSuMObRhV3xlxTTqYkcYgXSxPFJ9+ljcIGXdQhgIgcfONeF0htJQjeSOTnNl8043CJgcJi52bOh3XxOgdMKg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1031345,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgxMg6CRA9TVsSAnZWagAAUGwP/3iTbBMeFQ/Y9U+ZnVeQ\nHS2ecKi4pifGufwBoxfv0oWeGfrrYtGC2gsQQRPzUZjgvUc9j5Ymnjd2wMnC\nYZj34ZlWLrgOcD296aKXnRxr2r+Je2wI3WUsqu4fGm9rz8CW/b5/vCFhSoyq\njtL2HhJVII6BWZxl5mjEVT9LFNAu0ngi8vGwoX7hp/27RNCFDMjcPGm2hc1k\nnDJeJlI2qjsAdhDHgbAHGn5b+joh9YpaPsZ9PRKVEvZr69wIviLJBc8l4SNJ\n7jTVew7k3uuQp7qka8aH3dEm1jv4x2d8hJnRAcdhFZgkf1rVE1DiRb1hTd+Z\nezHzqkn7GKL89uy2ZCiaAnvfI9q3pIFNkThtcWhhgZnBFRHWy/rQc3dieWFU\nSV93d4zYar6f4pigEG6cottj9Kw9Epaccx8IlR+NOIqjLoTZJ6BieBAswu1g\nhsFy/fBiKsm5b/wacoMoQ68eI3zu7zqJcIYIyvzD9munlzTsaanZmdzHE92f\nBNukNB6It/k0hZGkALQ3haNtpza7puxEYq5cztzAkIDtA6ysTzndr/1+TMp2\n/FrRD9TI7uru36jIXN/k38juCdmGC/PwiuUNPG37yK/sWjkuzFH1AlqZOPx0\n7FuWvgQ8DO0a5SMFbYeYTBx/SGVpgMkxrBA+7p9PpAcLTvRJiQaCzh+9Ur96\noGZ6\r\n=gCuh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.7": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.7",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "0f519af4e63698a9fb44d2db9019cdb5ddd048db",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.7.tgz",
+				"fileCount": 75,
+				"integrity": "sha512-w4Oajhnqnz+b2rM325FjPnENVij1yWJy+q6bwSgmCvRG4715T7PoC6YwTPd4h6PVUGgy5WpqgDadzKdEV+qtLw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEvESKuReAIF8phrKGjzxSLW2zQV9PWAGuIlVL0J8UxWAiEAwB6GFU2iPOGZ29g8MqctNYGRbbAMAg3oZckfHkw8Yow=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1031941,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgxxdHCRA9TVsSAnZWagAA5DwP/1ktXO2yyFvtslJYmibY\npusj3/ooZ0tvGA6/Pupil7YLyeoUjZIxTZWNWm2tqNaAKA4nOrTutIeh+pYA\njwhNUBEkLN4FoNbeVTov+35ZXCm2VpGhchnJt0mCi/+jhuphJ+MTAq9jZx04\nlzuCyT8jXG02K+yoV/DVHK9F/0F+YAAzykMWyFkh4Qjj2rjvMM6nXzV5dCvN\nPr0xmE0Qsjra2/v0hFjjHlKJ/fC1rp1soeHV6FQZTYXtx6BVUwSdF/bvDsDu\nZJtIdRfA0XHXKIawiqlBickfnMyE1TBKVzGxgkSHko5ZEs20CznDv8+2FgGZ\n6TsbdS6ZUevqQMPYMn/eIBBm0HgTLe+1XuG+V6Jp8+RYUJ5PvVlXiLcFS1ei\njxZDcPbLgHDi6sA1G3rKFSWGKaab/LKbzHwFRV4EuCzDXSbMY5WvHnLpebMd\nmDxl7/oPMNVs/mSm8+qoTEchE7yNChSGA9PUZBU0Le3+EKa6TwM0kwfPiCs1\nO7QTzMNsMBIe2OQYW4PRG2gsa+PxI0kVvcaT7e0lBzFxlIkMNrv2bcrtHq6m\nJNafM2TPLwcJCzyU5m709bMJvwjQFXTi4NetQusPt8pX4kWVwaExyzlAkz3f\nM+OTdaYTt90VS9PDKdXmWfWZwkAbRMnG4lBuq74XyGM2EBQPTe4RivRmWMp6\nYn5q\r\n=By2a\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-beta.8": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-beta.8",
+			"devDependencies": {
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "133630eabbd3c26183efcfb6dea2db5dd172e8da",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-beta.8.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-3HfWoxtGGQOxaXo2bh2tvEBFAV4oSSIA/BFnMvIfY5D4HbEKYpPH2Q3Roa707/E9LtnIgyN/RibDY6dszCwPuw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpf3viU8uTisj6F1aZyntCLDEQp5SYnIb4ZhCflwDFsgIhAMH9nhp4Hzw5BDyhLdc/o3sGUQ1xK3O6ZarQ9nviMTER",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1054884,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg3PtOCRA9TVsSAnZWagAAB80P/AmsYn5lLoC8jhUOf/Qy\nzoEuaIlCYdq2b4wT7/xTu9AX02RhdtMLHcN6MVMBhyf9OZRXU2nI1Qi3jB1v\nnJyzbsybUdIzPY8GruoCV0pMQWR+w2RqWc44G5Ki0GLGcc7oQPSvuttlMonX\nWsXTWipKkuu4KfzhNOhb2rh3Llep3j6Qfn/Iz+c6idYtxjuRnQe1mBI18j6H\n7LenNPT6HtaPaKLHrVBDm1zeeGrS6yboFWcdhb58KbF+NIiFLWAOgRZAt9/P\nwIn6roiA31vfbU5UpviISrHP7P76hAOVF/+a7g6obkcW5TmK65Jv9aPbxQyV\n8OwXFH7fAA4fwc9VjGgMf3GmM8Ty558uGspkxTwffH/IqDpOHa1LW93mdad9\nJNVks3czbuHvruvR3RJcx2e+og1qlf/iCpJaqzn5ZDWFsCWQVTsdLqfgrFik\n6A2s9gI+vS+fRBp5JqoBKpuEbn7iPO1h9PXdtliD1tPjU7dD2ZpoyDVb4d91\nwT02VFH9unDyn/7zkEF3qO6rVo7ehUnDzY//RhhSHqp11nmw/Yd/TRT+OuxU\nIp7Qm3Wm7UEXt+fE2v7Xa1FZ1ADFDI6grLkBJpa3CdrFHwxaBbNPvcPYxdTA\nFGCLUwYc0UtZqB5KxH7Jjoi6Zw0Y1VxJF/1zzIgSV4akgMlcLnwR7P1H4Y/I\n161U\r\n=Z29Z\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-rc.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-rc.1",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "a5c1be86def1cc39b3011c935c5734b8632af5c3",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-rc.1.tgz",
+				"fileCount": 81,
+				"integrity": "sha512-niNA68ku4TZYbV3biwTPf1L5CidP50S2xfeb5rGQfodvPB9UAtkqKFFRIA0LL8y0DG4MGIZ/QFlbvlmFea5p4w==",
+				"signatures": [
+					{
+						"sig": "MEUCICMQD65kfthERBpu9m+HIqfY7KFh7IUJjRi/oEWYuqecAiEAkXZZtf/sulFPHhAhTa6WES800MNgHY5JBXdlXtkmLGM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1094810,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg+KWsCRA9TVsSAnZWagAAGa4P/1yKNUWa/mSe3/15/8cW\nnqhb2bARXu9A3veiADnTZhQiJAd4c4dN3OYSSAwnOr0xJsypM28LXeHGXLLq\nM/DO0Ten2c6sUuDalnsd++gUv3atNOpBWOg8Gc9MfvGRsAl4sX6dj0tU0OJE\niAcW2xc9Jl9/WBKA3+Lszqh0eQuDM6e43OZyHcktMBWQDxs322g4IJXhDoBj\nqDDpcW3fg0eGRkD1o0gEWoSCUMN3kh363ieBw036ozYSt7rEjHWHsacsYXHk\nrIZUapFu5in9IDHEetBlwVrY3jvT3d4aYaJ/DpjK0VlRqZI2vaWVlieSXlYv\nVT7yObbLJKcHCG1NdhvrcL2DyZUVDOXe/Xrk2ZNiOzdObz1rCK7zZ5mTv7Ap\nV+UdPgkcebWC/jZ1APNX6x9K+dnS44cjX8dbABbDEVKuqzaeKDpnCPpx15G3\nYQHM+IQl76zbes5tuinKTcNNUc+uzFt9/EpM+E+X0Ea6k6g9HuRTG5uL+X0z\ngQdd6dqX41n+yTrWL5mwmOMRhkKNjAQU5zk8SYdBnp458nqEV6wFT4V6M+Xl\nrr0/JlRYMiuQ4Et1JJEfYa4QlFRLMITaMjNvMIfuvvx0M8Lv/ivM1slR/kJ3\nc0Bteu/zKbL4roIvxLOEl9oas2X1ZKm4haP05tTHXzI1N79tHgj7+5Kb/S+w\nqlZp\r\n=k8Vc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-rc.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-rc.2",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "13acc4e9e8468cb3b04becc09c799b88d9302177",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-rc.2.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-6RZx6LBAU9+lytUXgY9E2OhBajYrXBltIVJiSMRpmyRhAjfzFFgud9LJTZ5nzU4rrVTGTUkphdtJy1ZAPfaS9Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIH5wMh3P2JdQhdXJ0wu6woDdjbl7dKX9K7+deh8b70PRAiEAuwThbGruWfqkXWuk67sWuD45H5DpbWfU6gl1NoGAIm4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1127743,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhJoZPCRA9TVsSAnZWagAA/OAQAJeL5eT0W+uzQEPOnV+X\ndPhxAVXFDnlnghbP1c0MfNBjJB0v+ZtL9fsAmhLYQa8Jehux9zs1P9Y2cmmX\nO8kIOJYwsc94fzC2wQx1zJMvlwBoGma32xu0ZfXmZ6dp25axseaP59+MhWxz\n5sFMtRLV6iSAS4jF9kA+sd2EdiPkAjEYphpJwrxwum9yrCO31nMLEWx65xES\nuLdHn4qSesL8DZMmxwOd6sO4cMYcSsPNdeZHdGsAS9xQy3vPNkXHRbcdyvUN\nuC4hHX4bKqRqxNfZznrc05W9XpTGq10ifcyXCpdRbh658q9v2rYi7Nb/k+OI\nbKz3wcTbgRZGAc2ura0OwKSiMnHUx2kXswvvMpghbAt3BtL5iQM7Rv1kdLCZ\nT7QishJVX1V/2SUq+fU2kzixLaFA/0FsR7U+86sm7grgiNzUrqUupxL3c4SD\n0wffvYTlAv/zXso08wvAzpapX4DLgFSq1OI1JhDAnArKtpZFYGFCU0pKvUcu\nKtIXSoDy8HHKiS/92JqffzX4k6Oqyr7hwvTiI4lAuY3Cgh+neBfDKEBcbR1b\nbpREhCVnB96bO+drU5cKFcdUkx3xAO/7IsMafL3JUhDvXxLRX1VJ01MXCec6\no9DMimVndYhqGtKVv0BhRm7XzOBxrppFSBrBaAI9L2Nv3hcraaK0DsI1HBFU\nP26q\r\n=kjQP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-rc.3": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-rc.3",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "f31289fc185e09524445471d1b46b59cac0f99cb",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-rc.3.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-Xiqtb2fvKcnkc/6cJNx8x2+KHswJeMmNLXPSc8jIE6sYAhnL8pDY2ewiV3x5JS/y+/yWhQSMMHONBwHt8ykYKQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCSOYFKMsib/qJlkDTWt1FOYc3KiKnIbToYImimCs6GDwIgCfMjvQ9JaPUIl2C4sfr+jNtVYLT++eSEPQVqlxpJAYM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 294741,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhLMa8CRA9TVsSAnZWagAA5sEP/1jEVBs+4cI1gB5T+Lv5\ninpz1L6dAZVsY5QT2UvRfLFbVddg14V2FSIM/AtKsQqNt8ktzsno9UO2rcm2\nf7YknkcKtRhdcVnSpvh1rnKQJn18OX9lZFXm2x50So6FVWirKOkwWr9N5Z/z\nG0h0l35KR0TWx6/S402lBOiy9RpBzITvCGn/VcXLs29AINvOuYZTN4J9ZElS\nHzGAi2iVG55yHch7PbYiirbkvWtiwfin6cBSpWmVjzOfbmjPQ2zt6tMPhrx/\n8aj/bPTMF/0E1p6IDG5EVOxiJd2fJ91eVCOot3I9cZ9Dy7AOlApM6W7R6q4p\n39DIwSKhiBrggwcl3l5W/W/n0K2DB0HetYebJ+a6mBCj0vOtBiVCyYkwnKML\nioi4cx4s44PMwNsJcVu2ChPH3oEwdE7I8cdjoLZ0u3lV28ac3mjdWj+cC/dL\nX0EIruvtn1dQ2BZi9uYJmxnVk1Fr1AIfz8KQCpLsGkB3T2eTjHVQSAw8k0Sr\n9QooOEoOy9wm2GFuUifgp9Hxe80/7dl9lnXRbQ5hvy5TkrH3Wo2M32LfrZCR\nlHFdpyQq/VKKbBQW0pO1WoJDJ3BkMDJtmPpG/pEj8V34wv+4+moJSYiUdyGO\n4KZRA/AhCF4wiBhiG0EvRIYAo5buDbILy04oUCNzv7NV/Q2v8JBc+0p5G8Je\nyji1\r\n=cuGE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-rc.4": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-rc.4",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "d3ab9555544534f5ec649613553e72ff6c7d7122",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-rc.4.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-4qx+6O6mUN+cSN+ZLGCOGc+2MxNrs7cFbmnWD6LIfiHAQyuNiIuB87Y5IAtOo8xj16fOBd2CdU1WRJya4Wkw0A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCR5CSpjkLUE441p4SJPz2h+6rBPKD7gbRZLWKmkguQCgIhANkcHOu2zR52+4sQT84qHgE6VttZs07CyAZHNYSM0OUb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1076085,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQfsYCRA9TVsSAnZWagAAAKEP/jz1bzzjRtXd5sJQu/Ro\n6mOp361Y1MOEHCDCfm1TDdKmiItfoPg7lXaWs8EWXtUCJkzqjIigI9AQqrfj\niG+QuyLOF7+IRk0mWWSZZNazr3cMBvdhE8wK6RKvA7MNtrS7KSpIYV2jpBLU\nvuTbuIQqS22xtKvPqSYO5SpTuxo/vde1RKBrgukGKKyjkhOyyXyKFqWeIvP8\neWSMGmh4CqSyUC4mBh8hzLUj9WiudpqKtQo7mZt8rz9pqTeP46kUjyPhCuzU\nfRwbpEc3iyn0gCx9cAYy67n+TPsTK4pCiCzunv6UEWBsmi5yklv3XodP5Oi5\nahEMN8kEqc0zk5apscuPwuuIUW6JrWsP9kgdW9uRkPKunZgG57wRtmTISJUZ\nZjvTy0+hH5M1KBN4WIdGYvJsT0VOg1quGmkXp2Au8G4X3kZXUUte8/YAqRrY\nuWvoh5qJVzZNN1ZtA+OXhrPxeiAt7/mYOvtVzfmBPH3iYoebTrq8Y+LPdaGt\nJ9VdZEvtTzNFCQEJI4qmLMn4clap5E6bQ42ORIBnIWT3FKvNw4y3d3SHjgpc\nOJNnopBFiEdwsgT0kPcndTP0JS+d4UXWpI4svY+rR20AEqlNjxknCSdP/s94\nFhDaFJ25TlcL0KgrBCLNfImJP3RaFRUHYhFmQepnZ6i7IKl2FADu6pGLEBjR\nhYqJ\r\n=wJBc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0-rc.5": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0-rc.5",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "a49f0a41e0f698f5da65c70e8b822d30f303e3b6",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0-rc.5.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-n/LBD8mIZhQ2pqxlEw0L7h2F8YuETppQWUOSE1lSWx2gXkhE+RlInZslsqcZoQzJ0sOAZeO6fLv+WwTrwQMSmg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCaK2344B2YbFHSGDldp2vp8c1A+fjm3CLMvqwBxKap7QIhAP221KxkhB2I+ZuajhxKbBb/Bv7uP4wjZ17c2skZbKjE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1076347
+			}
+		},
+		"7.0.0": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.0",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "8293ceec2a40fe4a214b65f7727c205c5d30f888",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.0.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-LQY/BiYJ/7zNvkQ8++lB+AFz5m2q0x2aXrzwXLGECIBgOUYdN+52WHC/hr9faW9nmUa2jW1o1c80U1jiEkC9Bw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7YBLjK0T7WCLNHGoT2HAvrVQSHBNAgNx3xrx/hPpx4gIhAJqhLW2zCznxzljjEsSBOp4fcNGICLAWReaGbeFzgGKM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1076332
+			}
+		},
+		"7.0.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.0.1",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "2a8c6ab2f24914d1d47f3a7a7779e2881e8c61a0",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.0.1.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-awqraytYXbHV2NT0WAOnDDDGJeHHnFtnztdXvRuIqgsStUtPKM8B9H7ISm77SwbHemEjxEOB8Ku4RfNbEEXsPQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC+qNgqE7/+XYPXbl3ivyFdNH+kFuaIXRddmZGwgeqRdQIgbq2FlLH+muRHDLtVdDfyEG2P5BL3NDOeS49b/NgXM9M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1077231
+			}
+		},
+		"7.1.0-rc.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.1.0-rc.1",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "7666bc695eeab6a1fcccc3a2638cc15bf72ead5c",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.1.0-rc.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-mN8De8H593VvMDHbQZ9SO6E+oVeBaiURPJsqHYcX+OK/ogKhpNW/hVccjqPDuSFkUXkBBhdXrp4RM8EmsGl75g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXj/FgnnWGulzbc/J1u6SiKNOH4gn0eiotSxPjH7EBlwIhAN48rlHYrzlpa1t2ucTq0WegkVebeuPi0HaxbKbXePFi",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 321962
+			}
+		},
+		"7.1.0-rc.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.1.0-rc.2",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "83078ca1c66f9a6bef601888c781cfe8f76d8907",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.1.0-rc.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-/mtN0sBNEgZ2SpbQ/fv3pKtC84ys+j+rJYgVhmVWAfXOqr+c/tgM6PZgi5BVeu4i9iSi2+7SKidioMq0jshg8A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDeBRhWOUJA4ld02wHxf0gEwJqYWrWgwCizoEQHFTZuOwIgMPlDvU9b7Qwe/ioyxvuBPYv4IJIYnUHIwX1EEdPfzGI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 323604,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhl7+9CRA9TVsSAnZWagAAKsUP/3U9Rf2Y8o3E0MWa/7q4\nCRSs7xhrOfoRERpOHA9jpfVxkq4/t3KKMaQiPTjfy+dBvbxeTTnYWOtnwagY\nCpipNE9Xw9BaaEgzJxh4JQxt3++4UVUjryZqERkG/FtYsrMgap6tk6Vrtepd\n3/e/upIMnmLUYZYT9IiwlsMdxoFAHqmoKWl8XNhX/TMjxdheHo4wGq6BVDQl\nqDlsLQh5t3X9qSLjkWBDw/QOiGE0AoPPYymz/uXnKX5B1nQGql0xcBfxnF5n\nhdxtr2NhPH8C4pejdaHi7k0RQUB38qEHFwtn/wlK9SHB50B6jTUp4aj3TJGt\nx/gSg5ZqlFdLxuionbHPwdvL0bO7EqR/FK2dteg9xbVuSDr8Z79nst3n/MGv\n77PxNFG/gbXsfpDup/e1hlwDdrXphAA9MsJsrIlFaLLtaZsGHPcKiDEtAztj\nVdCqzRlVPoHSaAyGxVe5/hFJSxu6xO74g47oz2dIJ7CEFrg19RZSdyAeY9bK\ncuShqpWYuAGuqBH0B17GQx+ZiMmcVr73ggZDUhZEOa7rnirXii7ddM1oj2iW\nmM0/Mifyf5TUOmxr089FRnKnsTCDnPMy8P3/cc/U6eBHUpYaNbOUP8zcC3nC\nGBip04L8dK3uX9FgzU/QWrxeCd2gcYcK+QmU1EvRAe5ZYbKPejo68O3O71vD\nwGI9\r\n=ZaAz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.1.0-rc.3": {
+			"name": "@hotwired/turbo",
+			"version": "7.1.0-rc.3",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "71aef3905a1095467746f8426ca657a80b434c43",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.1.0-rc.3.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-0/6m8LtLTujhYnhGU/oFJIM4cgNl0us+JZ+Is4b3RDS8/Kh63tucnoDfLqs+JeoiTAnIYJmxy0owYmOkEIVVNQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHD8bDm080HfvEGe3ldHZZFkD2Pt6L2eus7+Yz6wibaSAiARnNLbJZz978Xktrt3Mhu96LXX9jnvkdmq4+v0DkXvuQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 323905,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhm8cLCRA9TVsSAnZWagAAEzUP/jeVtigEFvGyxUTPqjKt\nRvFywBToRjCB0yEabjdggMRlnRdn10JeEPb/NvU9XGLMa3tz6kWjIJFlqxmI\neBgiHKqw9br9C2ASHrltnjDt+B+iUqK0Pw8O1V1Su08IydC8oWbnrLyV+7Yb\nMmKHxHTVxVSvVnsuOp4ZCp8QhsryLO2U4R0FD01kOavcYNw49fVchN0GuMO1\nXHAwT3f1FfDtfaAKD5gRHe4MhDbHC2vYEt0smU0XKBNRfErsp5dNjUF1RgZk\nz1RYg/8U6YB6/ffWu4Pzu6f0lt/3nqx908Ggc17PSxS3EUz7j374GZs8ucAm\n02p37M7pLjtlfJnR+JL3hteZ8pEsvm+hQybFKJ5cTaV56UbM9fBEv+dyR+AV\nmmo76TonM7w3d4o9cED0kHTGN1KyxVZxJPVt2NCbXIChY+K9bfXw6JeEB4oP\nBuYpXu6OC1c8h+mnf+5UUxFuieDSNYpYSsynx5IusqG32s7WM7yFsrrjnm5h\n9ujPjt7urn8tlZyKLJOAZJ6CxlWdsaLaSifgiBNTWW4xy0IJFFFFK+FXNsg3\nO/OHLdyRT3VKPYKmozR43DkaldDFMseRksMgzhnBY1WgAjGP8uQL+W7k0yCQ\nTD9zQLOM4CGimfWdlIT3v+QjmKX6FeiaFBOXqdRQ6M6IQB8sfQDqM7UW/Uum\nVjqC\r\n=RkDx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.1.0": {
+			"name": "@hotwired/turbo",
+			"version": "7.1.0",
+			"devDependencies": {
+				"arg": "^4.1.0",
+				"tslib": "^2.0.3",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"typescript": "^4.1.3",
+				"@types/multer": "^1.4.5",
+				"@rollup/plugin-typescript": "^6.0.0",
+				"@rollup/plugin-node-resolve": "9.0.0"
+			},
+			"dist": {
+				"shasum": "27e44e0e3dc5bd1d4bda0766d579cf5a14091cd7",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.1.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-Q8kGjqwPqER+CtpQudbH+3Zgs2X4zb6pBAlr6NsKTXadg45pAOvxI9i4QpuHbwSzR2+x87HUm+rot9F/Pe8rxA==",
+				"signatures": [
+					{
+						"sig": "MEUCIB8SUkisKxJ4AUJaFpyhpj/Nu5Q3abnA1amfdjJ4TIA/AiEAl5mao351jlOJOOvBLsdKza6EFbLXGR25XSsHToSgwG4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 324167,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhniqWCRA9TVsSAnZWagAAvuUP/iAYD7Etuutv1Jat6Q9m\nChgMpm4Z4zFOZ0pR9tDNQbYbckhnS/vMOK68C8yP3lTlBt3OBaP7lvRlOZjq\n77Rmazaft+GUNVREhdS41wHLAV01GRhRZFELHMxNa+gHOb/dfhUncoX2VA/5\ndQ+mojUk8nKEkbZDKZYdTLrsoqffT9oyt1wKRXhnxmtVBesKT4B6TIgbw2K3\nubKfTFjhotA9rz9GSnptUKSGwD5FheSlJC0ZZ8+2C3OqbHDdZeUdW/dGBlki\ni+AHxC140/KAwuoLoivwUSDDZn8ohD1Gx9H6SAJDethwJIUTQPJthpJeJRV0\niXgHld3tBXHwM0fEpnmuokKbF7YlGM4gX6a7TdhAz22XVz06oBR7tGnbolcX\niq2nlVhjaCpJRc4KaiYS5yUisaZrJABQqb+AJW+F8nstxDO6qGSeIC31pYRV\npg8HrA0PfHVtkRLhNvfAbrtlpbYuJtUC1Rb9ALqQhX7Pcuw1RYLrXxKLgtBC\ncBe1GsPy7ryxBEqVAj+klLGDx425N1jRG7FRJ280Q6Kc8W7bK7MXEZBlMFkI\npksYXvCc7Jgz+1SK8N46k7UjrdUf9iMv6lvLnfUVabWWevkQRYbNnNlZf2d+\n9p9LpvA0oW81CglNEWXqz5tRAoLxZz+BmooITL6vdSC4WlJ5I250TDc2BeQE\nJnzH\r\n=mYpb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.2.0-beta.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0-beta.1",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.0.3",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.6.3",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "8.3.1",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "14950e91f66b589ec529f3bdad8ae67634a41e21",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0-beta.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-MyKYxuShVV+i3Z313YtEr8bQkcwrP0tVQQreK1RfJRuljF/3p4/4DZkzhxG8MKHYXuYgtuSs8+MY+VSVGM3pyw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC7WASiKE2mHr3UzPv0/zZgVC45ATyzpgH5XM07YwzX3AIgYyAGi2qjoEi62jZvI172pO2vB2HN6oWMDlg7sHu4mSA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 334665,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi1eYZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr2Lg/+L6lFXofpC4Qh06l1+E4h7j+3tWODyrsb7GQy6AJR1/6iRKOb\r\nd9/N0P42tMOXt/DP+i/IegdVuJ/BTPh6xAnNeOErKG+QmTyb2tBw6/2jCLb5\r\nB5J+Oa32GYCciG1Lcz15YE9opxpwoZouC3WcnovU6+XkGHNWptK0yXgZOqHS\r\nYphxdAZmCf93sDdoSCFghfgXXvlcXgNn5r2/9Opqe6hP9qCtfEa6Mqbog54a\r\n5kXnUL/9VSe8Wjxhpod8I3CaG60zAFyqiA6oWph7d3jam21pEHmjY+90dj+i\r\nAJWth6zAVvyf+36+rO8l6T/hIoapDXGAGjVAjiq8Xi2i8wOjJvExuxXyeG2k\r\nE/ph7RclRgu29f9Uwa7U+T50Z3UW47IPtADLPIhRa40P/r4En+9f/6UDFbgR\r\nQqXZYTTNag99o2B+JFnqrw1GuN0uiMqE9tpsBrX1c4wVv4mf+3tdRRh1cBGH\r\nc7Tfjn0rPsZLPRT83y7/QkUz1xBKkHmSBOw9dAZctuZzKysmfmQnWN4cHLb0\r\nbvGEGxpnJfjnq2N41u8MYn9DBCu9IsAMw1TOq73JkXzc6YdNpn87xNjGJBtA\r\nPrKt26BSM9xiGHRGTElh8rpLU8GckqWGBj8hjAxsvefj3u2IdySNPGGxbN0o\r\ntq5QZXYLCwrpmQ3/HkBAoN/K2Z3uHI1CdMk=\r\n=ATC9\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.0-beta.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0-beta.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.0.3",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.6.3",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "8.3.1",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "b05364e34078bef511dcddf11f8058ffe560ae26",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0-beta.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-fXkSOAOupGpP8wqD21JGCyBWjE1kKgOcpC3U0mVN7mbxBT8TjsLslTCguPZFPB7aZdi3YKbIwjulGggeAXsdHg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCzT1/BRwwhg4XnxK03152JtgPA6KY2rVPGdkh+JPIe3QIhALKSm9kjEcg+9+lCqZdhUeMHg81bTZQmJwgXycJiZQIY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 343325,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi6vTJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrmjg//ZeGoiDnhIygx4BSl5blJpozN4euYam42UEG+NmNsCvloJbVI\r\nUJSokS0PDVTccfQnMrWyBRtzy0d3cid2/2Ojdt27pUm4uEypJ0s39paQEhDe\r\nDi96ZVw4SFH7NJNidBsswLOqfEWuGAvAxt1CPPk2tYY2beBXsCBTAqk7ct8S\r\n4MtZwwKfB9hDf2TNLMFxST1QF6456s7iaZkGDblalGVhbm/9xSdcWefnONR1\r\njYZlhPbOZTb80Y5qm19+QpNzBGx7QZv0E1bRnSBqt0OUl5S9z94zrd6GLHjc\r\nXfn1wC8591V4AJj9ikc3Mq2kxqLZSYe1r2ngWjd0Wn9BA+GPpDbWmAXyquJg\r\nA3MDVs0hBfKL+8pWgnomOeGbPQjbntRAM0s4C2UDQ5zMQa5CqT5wOWvNmhGo\r\nUe0TXmk6EcKBEPQCgh3iv9hrMJsCBl7hnug2E/NYe6cRqXAilRllnq7UGiS4\r\nu98Bw6Lh4YD5HUA4iK+6JTUJfKUBsD1y/DvAlDhMA/ADi3nTY06DbJHspngL\r\ndhit68bIdjeh7c0CttGKBaQyIDS9Z3DZeEJvLqw55Own4xyNBs5EZtsUg+5x\r\nKD2+Kr3lXADGiJtnKn2sxyyFHQncldOh1N3yXlogNLT/QawsBoSZnpsr+XON\r\njXggZeirgVQtRH+k9sh9LTVDOnHefTB268M=\r\n=PtH9\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.0-rc.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0-rc.1",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "a68eedb0e05e56aa001bd47abc5341b161086168",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0-rc.1.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-ba16MrRG8+FHOf8TAWUwSeFe9c4pUgTYpcTg2Dqp08DygALZ8Y+nExercce1hvO7dR9uSmb8U7sSZKTUddFU6w==",
+				"signatures": [
+					{
+						"sig": "MEQCIBGs53AGFDMuDnOPkKpid13UgINlHccXyn+gHQqGKiXLAiB7jeDDrHkp2/OWffud5NXX0ZGsWbRpfs4xMBaDzOlCtw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 354347,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjILMuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp8PA//T1j/YABqZZmrCxGfZenZ6SsBG/2GWiXo9kcCuNVnpCxpxGQq\r\nF/9In87qrFX3INnuOQKESjL2WRWG2uTMSGGbUDPPtEB+ljDIKkOH/XXsCTU0\r\nsuU9Somlhq2PUrraqWloZhUmzpDbxxI/YyAI0FK5BPkORoNeyN/tKqLD39c5\r\nJgHOWjrtAbmt+00kPjCWHQX+JGfOq7IquootRlBaVR4RIC+dlNBc/W9FKxNS\r\nVEVjIVlZlCSGA96eRttAKvaN7AV14KibcjS1YJ7DLY1vNTo6vD8Uimuw7l7t\r\nQeRvC/DwAGozcBBz6J5FlqNqpneEdlEG0AmVb3p2OhCAbyejDIR13VIWLTRT\r\nVyXOsiqv8StilWHFlq5IV0zcOuhweZSEMl7B6Ii/T2vXPdh9ecUEO8mVi2kG\r\nIejY5PlibiHcTGXcS5YHHV/58GEz5q3rdAzV0liBA57pyXkP96lqBN29GGaA\r\nM0dBDnGDX5tTmzAyO3upnE/PuVeoeis/lgfzXQNLmyZ6xr9Vv0nPXjB6Uoih\r\n0zLBXak7a3Rw+kyk0yuU0ttj3rtPN45ZAwVsIOL3qcY7MvlpcFt8Cu+nWULs\r\n30vk7I5C39xfHraY70RIG1lj8UuLb+czn+mGpeiJQ5/hocjXlbTMCFC2pFpi\r\nQHIrcAzkwA+6SnPWSYBcO6yU+YyGGte+WRM=\r\n=BFiE\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.0-rc.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0-rc.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "cc16d3ea50c80d9368b58eb0e7e1a5bffd45f476",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0-rc.2.tgz",
+				"fileCount": 82,
+				"integrity": "sha512-tGzPqBN7EDnLC1OH4k0PmJKOEEBn+1bpb0D2Oj0KMnnJYGFOaeeUgnyKdFgeT2X+rAAnfWlUcaoYCuOKJ2awAQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCxbgX5tVmB42gwHS++8jhWhyEYf4ojUOVJaFN7CAASbQIhAJCzlexMGkxd4+IA12a1VSIF0bTS0brpW2/GqnXszyHh",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 352695,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjIfowACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqt0A//TbYwEZWKYUgzaDR/7Rh9CGXxZFzrdQY5YP/4rN2Tp+9xAjYS\r\nPM7gQYMLu7cO9FyWYAqPB2UKeMW3AlEB3lSL3hO6/UkdmP+PGaWbdvSdCzrE\r\n5qBAH6gbkushZexzDjFbHhAc+yUlLYAFv6HNKyvkMpDSq9ma88FpaNwiNCs8\r\nCnlHkf0lWhkEGfGabnYKN4K+cAJCAb1BTY8y64ktCGt8ncUrG90CIcaLtZKu\r\nB1GqZP44PO/nr1Ds2G7dXG0dpMxT13yV2MnmBXtz+IIewFKJeUX20+3X2S6+\r\n/T9T8Mv5s/gJGNgZG0Gcu26udANKAw6dxsebk4Ajz9tRxpK1MoyujkcoD61Z\r\nyraO//2jy6rmwyJRaUZLrhM8Lm45QwXtEqJQbRacTCjeKeDYZWfSZARvJ+Nw\r\noZ2CDovlJ73F5h5a3Ty5BUDz4PEzuxoPz5oKUfDq8Y4eEHTAIQgO4z4vYcLN\r\nwDhj8PD4qjisRWUC418FvfP0yJQSkdwmpyTt656twQ0R9BFEsLdBzILxjQHO\r\nT8NJIiziCRKhwoFYkJLE3Cxx1TV92Xpep0apSJgep7FqZfMkqME+khSorhY8\r\nVfTKtoxmwWpRJkdKf0os3ZAR2h1Sbw1ppJl4baxDrCrSdDcgN8JZ7udgBPm4\r\nKI2bd9ZbEyFFn576obObX/uLuOy/EE3syBo=\r\n=fTp3\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.0-rc.3": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0-rc.3",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "80557590fc1b9c558f882503e26a516e5986f7ac",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0-rc.3.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-rvg7OY+sFbzDiE9PKGS9xPQbVZTskGEAVS0qumMgYR4E/xu7wpHVzF6S0uQV8LxWdVDYjmVmKRGr2SCuEum99Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDw6lgs9oz/QaUjELH4BW3fBePaPuk0F+xAuHIMQTFURgIgMuiDW+da2Upjimm0t8DUgOsQbAugaTbVMmMSXYILNvs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 351766,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjKGGdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqH3g/+Mrhwiqs9uHmej0aCwcRe4q1dwIHpi0fLSSX0IpEzDcaaa+Er\r\n+LxYRNKdxAnWt1fJHic329VOlA42KmP15z4hyFlJvNShZSkatJ+APKAxBPp4\r\nLQIjl/jgDT828aR3bDwep0NrJS/UfipcJJRo6YAMwBGmfGPDS9//ozSP9GmB\r\n1DIXCB9bMVHMJAc/fIoQGH2d+1Gm32vIQ84WosN99/y27MoTQKaxvYdYF+dW\r\nuY57jmeQuscBgTYm2ahXPzzJC4zCdQ38zZQbMybynnublV/s1fCYE7/x2eeS\r\n4b0jxxp0kZNMlv3h2XVPtljNX7+blPfQgN8ArHQYDRqcBjcEfAJPJVAK6P/O\r\n/+9WB3/GK72YBSdH2yA18lQyBgGbyt1uLNERJ3tGTeAXkkA7LRdqZ0ZlkPab\r\nFcdqWjZ6M19Vw+p1ONvmwIo4yoLUEcZMZ2InapER/+FHo8V0xho2oiaDBJVd\r\nPgcmTkV41YMQkSYXXxWtJZxvX/zZQUlkUaCiW2d8IQXhmFfo2znEnORMBvAu\r\n4Y6YdVdfnJB173Q/C2MCXZDN9ioDsJn5JY6oXpzQC/64B6b0gEZ2CD1rnD9K\r\n8jV39x8rhNU8xWC7d8jXSJMGNcI1Vgfhgt13/4o0zOrT+XiayeIF1EsJsBMg\r\nGUCv2NJZPHYuFV9VhvGUusjGXy+j6iwpyqs=\r\n=WFFj\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.0": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.0",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "4ff90d80fda17e69b04a12bbf0a42f09953504f6",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.0.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-CYr6N9NfqsjhmZx1xVQ8zYcDo4hTm7sTUpJydbNgMRyG+YfF/9ADIQQ2TtcBdkl2zi/12a3OTWX0UMzNZnAK9w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCLPEMtPlqwRJJwkPVFzhstAwWNkO3HVPaCtzliJeCaUgIgdv96anlk+svHYhksqYwwBQlJKgawL3LeUP6q+XfTRgk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 353536,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjLGsUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmql/g//XLqZi4kqn8hrY/XWC5iWnetauD9an9igYKgiJA4FNXasTktn\r\ntZay9N7bcXEZtNJ83NawfB76VHJ17GGZ0W1Pe+5PmMeMo+B02SFBL36yq4kY\r\nUJTqjJ2FECdg1+0EkUz1tdUq3aL6jamTuFhJO88QAUsLTXrl13tE1vXW+Aez\r\nM3Vi2Yo8mcHSeDbf/CVS+3JarBsrrDggpCRRRIoMyn3x1oNGkWuU+/xgFA5g\r\nh3bQslPjXJrLpIX6Dl4rjOPv11d+IGm1Nm5fWcVcdw5s7IlEOKkvLHKOQK5A\r\nui+JCkEUJRvDRNFzH8Yfmy5fCvsjMQxCXB56t6TnPy3pJQROMFFBHRVKHkNF\r\n+C/VUx4kCQY1EB4+uZOVQFcgB2yBS0wmRzL/YPMRpWYRE7NT7I6dvyu69HTY\r\ntjb3lKwSdY3iopAjTTFbzXWht6FFvaO5Q3X94Yh8d73JHfpvzD1o8fLAZXHa\r\nKJVElhb3YLWVEOsjtY1Oao2brPNkzsAh61TrqolKFFF2UaX2UDza+ntR0ooa\r\nKhU5YKJ4MCK6EorzqdwCrhVuGFwlUBgqCJV2UWold6NyMM6PhTIJkPxl+i34\r\n7tFlnkgEc/f30G8Pu5MkIuSfacs5zNb+U/syUJrdAqv0hyThbGjpRIzUIMgN\r\nM7HzkzyLIMRr4P0nMCPtU1wHZOzlEeTBR98=\r\n=AQ7H\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.1": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.1",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "a2130a77bafcf945106a1a2cffc6f33f41c84b2a",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.1.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-F3LwvcjH9FA4fi/obUAKbfZ8bVAocsZilEDthJMclAwtkCUDOdpW/Elkw3ZY0nhhgu/sk3OU5h39dIKq+4JfgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnixdjYJaxin2mJw3LA8BgZXdwHLKYDAVJTR6egjNbzgIgQIQKPo1eUiopMjt6XcnEgPjgkgQwQKfJfMHt42InWyA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 353536,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjRpsdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrfUA/8CHAH8VNrQq9nrhqFc4ke58ROwsKAk8wEtilsqa6pBD5d2zDX\r\nIcVK2kE9X5FujQ0G+ap2TQ+X4UlvsThZFESSLE17Q0aZehKBsk34RdtzEUkM\r\nd2r+a0u4yOTDvMQos/8dAyzpljUzuj64JTR91ttdrBwFyo7kwvhXD9GYlkFD\r\n5g4Q9ppX1a+YKJJwtc6LzDN9R5H3Drrw4jIgVDIz4qIuwwyyTQjxHR0lBy2Y\r\n7uUsEgCUfRPqZRM/h76b+rNZwLodAvaMsHZOJGZwbEldmJSdQx1i7iSX8+0X\r\nsJOk2UFV1MEwG1vieJN957W+oE1D+1h7uuJUi7KmSmVtrSVOcS2pIV3mN8n3\r\njfaC8A59gj/eazRxJuFcEPYbvhvWGlyLGGT34+M4kjlnNrbFUsWfi1khZxEj\r\nlUHdLVEkZpKA6pBB7veUg/Cq0gfwvTJfB+RSo0GYXH4+7VRgBru/JoSM93mv\r\nI4NVwKHrsSwHjWTtz6wSvw6ywxoyZge5Mg6aotGP4YOmeIy1mfTMYt3fFGk0\r\nCkgN9TmdBpxd2Hs4MpNZVhltBNXiGpqZL/Z4z5cAvGoJxDtzEQskdhZtuKPq\r\nj2mUR/mP7tlforjuzlCr3/uz0dFfnebqcdAXLw5Rl4RLm32qHSI0ep/3oqYl\r\nfm/0zNDfHvbJVPCh19PkYkGSclfntgrEOU0=\r\n=CGo+\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.2": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "69e1f4be7f468690fa31791099e2a837e88c9518",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.2.tgz",
+				"fileCount": 84,
+				"integrity": "sha512-YfTHwnur3tDFS/D5JYstU+09Z3bvCF6euqqXajHAks2lTSIDbLc8gMp8yLomD+cAC337h1wnv0oWduK6+6pUDw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEpGwuyNrWNZ+pnD2+vFPvUVkiREQDy/qSflKKdvhbo/AiEAohbBWDPfGDW8ks6DZ52ORW4P4NlSpAoovpGNO3aDkaw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357448,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjRpxpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr2KQ/5ACriG+Vs458vGDCNBCgsfIg5Xb/6YXTlR2NzoxJ3jfASOm7a\r\nXWp+RrUFONcMKGeip3U+oPFFGVfGVCrp+liQqrw6x4yoSIx2/eeOSSyx7ztX\r\nYkwWefxxBIRuf8nQZo3btTaYdMe+q9mo/bQGKZi6yB6fGKMu+nppPZqcNTUP\r\nFb7m4rtYQNCZd8aP8b4vOoqOsx1AFAHy75JMQNdhThVPp93//YEQT6g6UDos\r\nrUg99koaCFb5ZlQOXUJngTkjUwMtIu2IbRkdx7B0MiXLPBD3bFu4vVJuIfuo\r\n9u+nI/fsjmQgD5I7wewWYm0pALwVzQGENZnYahDAea0O+VZB1U3h0BD5p7l6\r\nJx/Dpeyt36IkMh5ry2Qk6lu0GGGesRM4IUi6HcAmPOTzIS4popSBRBRhsQUh\r\nA7asx/wpRc89G8h0jSArIwUe5WYq18+CHUm08OMFw2IcqQeFx/NfAMnfbU2M\r\nqA6BW7y3OdbI2GLqH+XHlxGiPSVo8mrj9JZoUwkZ1B0295vxf8LMSswzU8oL\r\njF+t71tC0P4JuzTPMCg+VYSPCQGFPjtCTyjT+phqwuchiZEkEBnBsXPIxThZ\r\nKU6vn5cHFwcO7UYnG8DNoHkUL1BijmPOuultteXi+kT++5euh48iY9vitahP\r\neHeFsoKXXQrp+Xeqrzn/7eVhjtYPGX129mk=\r\n=vwNs\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.3": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.3",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "cdf3eca22cbaa8bdca5200734de4d167c837cae9",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.3.tgz",
+				"fileCount": 84,
+				"integrity": "sha512-CTHIxVZeUmcpkStl25Ii6FzVLsbJyOl6IXd6lnT/vVnfbitaKRO9XtyiAvLP7pcaZkE6ia0LwqpHBsRoFQ3eFQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDmwgF+UuCKwxeRZbMCPIBAj+pQJvbpEXOWoJ3oBQYf3gIhAPsVjB8spPLwqmKeMwwtFMpt9kGLxLs4BbHJm6qmE6F3",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357448,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjUlD3ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpOLw//VUz+GfjWmS5Ih4s6mZW1GU92M/yl7XaLBi9ksCGoDmZrYNvC\r\nStRt70C12MIcOSMwdAGdL5GNZvgtqHcFuMc9LM8QaA5jqffTtza5zBahRNjb\r\n053Q3soI/aDJ2cJuyYomJTlDxA1VdxjLKePB4kcX58sJ75xZb9u+7KD+oaQ/\r\nXKUSIPK2aEK9z/zNMA/7zUxwg0lKmulLQ9+yh9Y5RKnKYb8bleKG3TLuKbd2\r\nGwCAO+Y1tBnUGMc09mRHI/wS3dukimrUmq2kKCtAMXK67la526RkbaAYBKzn\r\n4O6Sbo1CZHem4yPNs8jsHvRmDo1NnGNBr3F9W1ZawIMwMh8eTFYsnCDp+snB\r\nue9h+k+UAMv1M8gob0UY2xR1W8t4BnCX+c/6UguoZbGZDW0i3UqXK75TH6+i\r\nlfpe0LuIHmJFxEw9UEursjZh7F4sUhjAEm5AJdbEpSvvpSz5BCC72B+yWtud\r\nZHy1PpU/cYOX2Gz4Gol7p8Mzdx2nL0JiGtayDTDz0WY2Oj0ynTPqeLhM96aF\r\nRJc4vsDQnWxczdF2tCpBpeImdK+CDaDCSOxeDJFwhZHZ5uCZx+Rx0+plz84Q\r\nRVNLp0R80/XSWIzjG1R8yGh/tWIB0vHI9Fc/kQWjQvaUgNw4OFnSHG8kvuvM\r\nAVaKoCSLH71v/dA+q3weTISqD9hgjPZ3SEs=\r\n=z6nd\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.4": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.4",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.22.2",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "0d35541be32cfae3b4f78c6ab9138f5b21f28a21",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.4.tgz",
+				"fileCount": 84,
+				"integrity": "sha512-c3xlOroHp/cCZHDOuLp6uzQYEbvXBUVaal0puXoGJ9M8L/KHwZ3hQozD4dVeSN9msHWLxxtmPT1TlCN7gFhj4w==",
+				"signatures": [
+					{
+						"sig": "MEUCIA7yMd9wftes5yvrxptt7bJ1cpfb0IgWgvcW9hwaXKa2AiEA/xH/3ypWHQOOQF9bAM3AFoaKJ4hp6JCNHcPMMk9EHNo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 356923,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjUlLsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqZeA//aJmwbdlXNJTGfCQ0KmeUYgShfh4QMJDd7m6gmimNSfRjMrzS\r\ngZ6sVbH/DXsfgKWLszXTdSxVjPiVsS5OB+sKTTwWU+HUyjZNrHP2gIxprxhF\r\n6RqobAbcBKn90i5jfE4h8qE8rOyGu/NO5uqYTVHJcmnLL6b4UzLI2b+2GbDw\r\n0JRGUZdmZorVy6updlf7mfMJap42Zpc+5jNDbfK0bi+GvYnyEE5MpsTN9pJw\r\nJahjFH99inUjEx4j4oVvcRHmzYXuPfbM1rvRKkibVr82rM9gsB3/JwECyZn3\r\nyY4Oj7ea/6u0DlGh9+0ljpbrvuL0raHM4dne93/fHFDN1KtAPZSF2ACU0BH+\r\nRLCd0G2ouzEen23cWdST84mEVfsT1GuwLNCigErpY06oaAtjOV7XL+gDJW8C\r\njlhZu+VpX0BKk/9NqmoRNs/atX6nQWPu3tiy7egqaeZRQsPQQZzo1qA6LqkD\r\n/y7k2C86V2tPhj1Nfzg+T0bSoqLyu4j4d0n3XPX2YWC175+y6HD+wmjDblOu\r\nPGdBkIAu6+83f6H6EnvC0bh7hi2x4gWU4Ljo/wGxQ1HHXbK+3vrYwT6EBKil\r\nHjCE3zGJEu24jD0TmQ1YisuaAzQYVY9YIr8mW+akkZJKHnuooC2xBKaPTBLt\r\nK3AM9vxGmSlUrkxwTqyMs8UGMMo9o3/Atjc=\r\n=+6sn\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.2.5": {
+			"name": "@hotwired/turbo",
+			"version": "7.2.5",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.4.0",
+				"eslint": "^8.13.0",
+				"intern": "^4.9.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.8.2",
+				"@types/multer": "^1.4.5",
+				"@playwright/test": "^1.28.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@rollup/plugin-typescript": "^8.5.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.20.0"
+			},
+			"dist": {
+				"shasum": "2d9d6bde8a9549c3aea8970445ade16ffd56719a",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.2.5.tgz",
+				"fileCount": 84,
+				"integrity": "sha512-o5PByC/mWkmTe4pWnKrixhPECJUxIT/NHtxKqjq7n9Fj6JlNza1pgxdTCJVIq+PI0j95U+7mA3N4n4A/QYZtZQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFgLHXygCchm2VA9kc4ufDoncVVV7xYJDtPsAbcn5J1TAiBwDVf9dV2FdeVDvtt3TPYbWgqpDYLGSzIiZZrzNtfvyg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 361611,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj2TepACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpq+Q/+KB94H/xtU3J0DnCeTrqKoIW6iathd3HA3XHKdxaxVelDQzva\r\np+KV+5MyJtxX6wylx31gmSzyf9WT4L1BUzea1EwrywuA5zPoif4MFvgiCoMk\r\n4lngRAFmA/52Np9OSf9ZUHTwfj+mt+zicLUB0GSr6DNq040VJqRp0YlFPPot\r\n53e/85c1UIhZqusxZfmKWU6eDxlBdQuU7/P8hjdSTTiZOkyvf9sWmOJ6Sk4Y\r\nZP4yLwR0IYrztAr/PL9Ql4T9S1ykXRyZ8hPK1J+DWB2A/BK2Pe5r/2Z0GDxY\r\nOXfTJpab1akIoNxIEbVtbyaWf1UfeUoAnSjY/d5n7zp+5bSwco1rNFV+e2IT\r\na60tAt58J7Rs9qbB2qobIIAL3EU0gtOQAOvgNPDStIhy/L/wjrV5svXtoxbx\r\n9lUmhNE1DTMUGZhjXrp581zQ0ochIBknMKBEx6EB8YT2rm8aWdbwTBJj2bSO\r\nb0UHLCyGGtDQl+zVPYjTZRH1SwZxrAW2nlfcLy3s6s50gxxNpKKTUqh7JPW6\r\nDWOLfyP9zEiawIO43uVmlTdYvkfuE4wurL5K5YXdQfVxWiBIgQU/TgP92MLS\r\n3XCTX/cTQ4Sylz8iwc8ai56RKk/JXtVwOTIN0G/aNiynS8+2UPpyaAkLkw/l\r\nIUU9UT2DnHf2k1wxS/7EutgLt98BvpmQ/Xg=\r\n=DrQX\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"7.3.0": {
+			"name": "@hotwired/turbo",
+			"version": "7.3.0",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"tslib": "^2.5.0",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"ts-node": "^10.9.1",
+				"prettier": "2.6.2",
+				"typescript": "^4.9.5",
+				"body-parser": "^1.20.1",
+				"@types/multer": "^1.4.5",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-typescript": "^11.0.0",
+				"@typescript-eslint/parser": "^5.50.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0",
+				"@typescript-eslint/eslint-plugin": "^5.50.0"
+			},
+			"dist": {
+				"shasum": "2226000fff1aabda9fd9587474565c9929dbf15d",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-7.3.0.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-Dcu+NaSvHLT7EjrDrkEmH4qET2ZJZ5IcCWmNXxNQTBwlnE5tBZfN6WxZ842n5cHV52DH/AKNirbPBtcEXDLW4g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCon9xgS86/cH21X9ur+u5HwJZjrN+HjXW4sCjjA3huhwIhAIGM2mowSEOAyNEsLFWZNVS3w5Uy7xSogXajiDB9IlIn",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 364467,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj/4EJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqy+w//YSwFjUXt/f7qc3mFUt6RVY1k0XEfNQkqgGPjv8/2sDKBYa8Y\r\nOVwXgIAON1yj6Ex/7NGYSceuf3iIyaw37sb0m3wEf+E88oUr4Q+v4hcq2crn\r\nCHhPeqC3M5NcAsGwz46N4JEosUqZQ4eZEdMZxd/NxKwkZW0uuVUCActq5DVF\r\nCgHuoWuYjzgmtNK4bb/UYeZ1Dyi767be4AG4Eti8zoeg45IkXtYAV2kPTI1r\r\nmHkKfVE9SIW8tZM9CVzlXEA8qThsHeQxheuKm6ETEW40SC/AXXzZhwGMauss\r\ncEW2rKB9HhAAtBDX6ScxwFWc1izNyL3clpqJSvk24T6++s+vb11zxdmHvOJC\r\n+RKWqN9cvBVbzjNZBpr7K45hnXrmVTOohTok1WxTmTKoLiJ18VDHtH5jITrR\r\nrCL1o9FP3XzzjjnKDg6PtThEuGqN2jN5bfHp1oJAa1aQDiKQDYB3sSkRhsXo\r\nBAgMJiyoXOrMiqJHC5xvuxUJbK4Hx1KOnvqcbPJph6vz4mPm2XlR8VWzBP5s\r\nshaqQMlSrk0HWCFLVr0gdYGdIL+dunaMLebzEe4PZePvauItZwMP81ZfZMen\r\n4maYVnBqMlUk2fSQKBI7yA/HXvE3vZ8iEBhHflc+C8BvKAujvNoZq46l4/hc\r\nSNl35qQ+kPh7CdIexN5fc/6041nklZppV64=\r\n=HVSQ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-beta.1": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-beta.1",
+			"dependencies": {
+				"idiomorph": "git+https://github.com/basecamp/idiomorph.git#rollout-build"
+			},
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "35a7086c4c959445db059ea4a9b9af85cdafa616",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-beta.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-g66YmO/Oa+EThB3KkNDhrM9mFnNyRn6tqgwGiBHh4Vf+d3XjCznuWSG2o2e2cO/RlddVRtCwvBSMuG6sYQWX+g==",
+				"signatures": [
+					{
+						"sig": "MEUCIG+yrCxvkg/ReoLxp5sVv5RNL4ZlQCl5b8no8OAh9bUpAiEApTA+UnANgye1Az7O9zzvztrGjyrPQIAtZWLJJiZBJq8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 345943
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-beta.2": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-beta.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/basecamp/idiomorph.git#rollout-build",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "f9d01a0ca788ed5bf78a1746e06c3244af2b7535",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-beta.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Ewdz4m+rlBXiqU8hXC9qjrA6/gaYlwUWbab8M/+/PW3KEoZ36pqvLt4l7wEXELPk699bRXVFS08mt3icJ0idfg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDmEFuLizCsIDNSJLypNWy1oOOVymGCBzrBzTWm6vGInQIhAPXVNQX0Z3+ALd2ou9DsUB0N7z8wRN0eyT99dK6K45mu",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 351066
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-beta.3": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-beta.3",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "^0.3.0",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "df27e6901643bc4dda0e1474b398b8062dd4f520",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-beta.3.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-/jH2cEU6TQF13coMJl9GUSbrRO+CT8bF713sXqWpzOMdyh9PiOHNkgrT4lQIHxKE54g9mjKPoSIlXx0S2XwS2Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDf+C/Wqx1HFF91gN//IgqivPcwSKDf8APvgpqNlKpubAiEAySqbCcWAggewS1vcivUyKTmom4WIB0vyx/RWj57tCjo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 386245
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-beta.4": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-beta.4",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "^0.3.0",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "7f5b5df871a9faaa75d135439b26c6d224779a82",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-beta.4.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-TumUvbUCofb/Ep3BH0p0SIRiWxvKIY1BFQlVnwxAs896dnwkmWYAhNQtVihg32PrhoeYdyYQarsurROnp1r+CA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCpm1zKqeHo2kFWrpa2+WuyMXxy4E1dJy47a5+lZspqWgIhAP1s0eklLkgl7XM4jTk7zdOiJezf7RO5oymXJNgCeMG1",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 385339
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-rc.1": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-rc.1",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "12d69b7b945ab69e69db8547f1f19d7452b22006",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-rc.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-l1QiKzAMlXAi/71mMds4vfl/PUzeDPdb9xfUxqS8gypsOM/axXkARoFFUO2Q8FadA9H8dXBVIx/kJcXvInrRNA==",
+				"signatures": [
+					{
+						"sig": "MEQCIC09kE9B68stDSSOvFfQmG+JZrpMeriHh402Z9zLyg6vAiBNwQKWjG4xfwiZeQJ5h/vBzR3rgXKrHJIesa3hnCNxUw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388024
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-rc.2": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-rc.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "8877c10fd84b84d45fc3dae19c7857e799f0d2ca",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-rc.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-mDmBt7Ay9xBg9bAPjatF4I51/oLhhkLKalJkYvjstZ4acrpbFXl5ZNFtZ5LrUhwqxI4bFpbKv7aVE2+SQpwl/w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD9wJXAO3H3NsO7SCoZ0Ps2waZJBOlC4qylGhS5n3dNMQIhAO6Lc3REtkc3KzLNPKT8srpNHkDeGOJPl5TzCYYJfuQH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388110
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0-rc.3": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0-rc.3",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "42f8b05d27899f6a157a095253b88099f3db63b8",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0-rc.3.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-2DIgkmyf/ovSDl3An54MQpBYsAW8LMbyU9UockqzGfymoYEIrg7fImi/yXosrKzhNRcQaH1IAqBlZjmftM7mvQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDHLksvtmUOPB+aD3M/q36P0KLJYXPvFAiec9FynjKOCwIgbFAyeK46wpHTEHQvD5z1GrFvkrYNINAPNngBp7aORlc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388474
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.0": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.0",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "d34bdacf0cb0e542acbb9fa751f9c9584831454c",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-9jjazHwVMwnCRPhQJ2uDvE6GbcIX4IplxJA102/xpwVYyrBhrJa5lqiVrHEFb0ehnZ79O9Rca1E/lJqTeNRRsw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDH5OpGV+cTHxYEpAoRVZc81oEHfal+6JxRBV7Ql+qdkwIhANa7OoMG4YnvFYIaaNlwRFASDM5Gf+JprtC/wIAQWqMJ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388661
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.1": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.1",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "0f4be48f43e96237181b31879258498b9f0d15d6",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-6DdRoFV8p1qM2YxieZ0McSzFfdKHH85FQn3C8UpLDgyD1UDb3ERhUsXg65M6nPuZeHtBZLY4hUumMdaAP0N1+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIDVyAPyIjS5LGUkyBF9uwjtqf7Qv58d1dMMNmhYoYp6/AiEA3gCgovjrHl19mvIlyHwWCQJX+QFkA2yQzIjiVuzWZ0k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388657
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.2": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.2",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "c31cdadfe66b98983066a94073b26fc7e15835f0",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-3K6QZkwWfosAV8zuM5bY+kKF02jp1lMQGsWfSE6wXdZBRBP3ah+Vj26YNqYtkEomBwRWA0QKhZgyJP7xOQkVEg==",
+				"signatures": [
+					{
+						"sig": "MEQCICk62CtteHyzriOPmuERcZATKWYOo/mYGFUR+usUfBa/AiAxlmRDXWZXIYhnI4dIvD/zNyoWhvjyVMr8zUNdIeVcfQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 389483
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.3": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.3",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "338e07278f4b3c76921328d3c92dbc4831c209d0",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.3.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-qLgp7d6JaegKjMToTJahosrFxV3odfSbiekispQ3soOzE5jnU+iEMWlRvYRe/jvy5Q+JWoywtf9j3RD4ikVjIg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHNRJnoN2+YlB+vMFc8ONcuk5ijQh0Gd1hseLQnGSccFAiBIDGxNEZOFHuIhiZFw8ZpEQsnTAwrbDLi2HXRQYj9TFg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 389389
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.4": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.4",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "5c5361c06a37cdf10dcba4223f1afd0ca1c75091",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.4.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-mlZEFUZrJnpfj+g/XeCWWuokvQyN68WvM78JM+0jfSFc98wegm259vCbC1zSllcspRwbgXK31ibehCy5PA78/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIBr/pzZb1AHksVfr0jvK4dheTvw9e8nGIfYhi35TysyZAiEAwsNxFCdfyAkfy7sDDB+M7GkJVvGc4mGBUHN0xESaXCA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 388739
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.5": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.5",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "^1.28.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "abae6dad018a891e4286e87fa0959217e3866d5a",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.5.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-TdZDA7fxVQ2ZycygvpnzjGPmFq4sO/E2QVg+2em/sJ3YTSsIWVEis8HmWlumz+c9DjWcUkcCuB+muF08TInpAQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDychJhwI8gfleAsBYVigxy4b32wqJWtBdAUZb2nS/lSgIhANu+onUHTxZ95eXcdxWwp6aSB4I5zD44s+TZVD+laZ1G",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 389655
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.6": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.6",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "~1.30.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "d7c546f7700f18ebfe4d1b106e03c9ed1bb22887",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.6.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-mwZRfwcJ4yatUnW5tcCY9NDvo0kjuuLQF/y8pXigHhS+c/JY/ccNluVyuERR9Sraqx0qdpenkO3pNeSWz1mE3w==",
+				"signatures": [
+					{
+						"sig": "MEUCIH6jwGISkGtT6WAbzhGmTVJTFO7ExkhoY19CulOZNU4nAiEA7yVf13F1t7sBaHu3BfbaE42SNVg2qP02oFd6QEw2Usg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 395860
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.10": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.10",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "~1.30.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "d95569d259f0daad6e824ee1ada877ff94beb72b",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.10.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-xen1YhNQirAHlA8vr/444XsTNITC1Il2l/Vx4w8hAWPpI5nQO78mVHNsmFuayETodzPwh25ob2TgfCEV/Loiog==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDr0jlawFYMly7i8F3Jdh4/yd/eIfzvf52X06u2QF0n/wIhANnAfPtm3dv2K69jDgTBLyd2vjXD0EDz7fGOzdm8YP80",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 396027
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.11": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.11",
+			"devDependencies": {
+				"arg": "^5.0.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"body-parser": "^1.20.1",
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "~1.30.0",
+				"@web/test-runner": "^0.15.0",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/test-runner-playwright": "^0.9.0"
+			},
+			"dist": {
+				"shasum": "d18ec698d507493b98f7e4bfdb967ada52466ac1",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.11.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-gU1h7ZCFOOKhbA2D+ELMO7KU3Y9Xkoz4VWOK/zA37EsoRht3NJzU/19w/etx0O1qnhL+Rl8VCJ7sVsK1DVbJ3A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCFMyeccxQ59l01lsxNJWWBJDSmTCcwXwvBC2mpZjmPAAIgRiR7wD0ChrNEmuUGywuQg09wJt+Ex4eSBHy4GVcazRQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 396291
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		},
+		"8.0.12": {
+			"name": "@hotwired/turbo",
+			"version": "8.0.12",
+			"devDependencies": {
+				"@open-wc/testing": "^3.1.7",
+				"@playwright/test": "~1.30.0",
+				"@rollup/plugin-node-resolve": "13.1.3",
+				"@web/dev-server-esbuild": "^0.3.3",
+				"@web/test-runner": "^0.15.0",
+				"@web/test-runner-playwright": "^0.9.0",
+				"arg": "^5.0.1",
+				"body-parser": "^1.20.1",
+				"chai": "~4.3.4",
+				"eslint": "^8.13.0",
+				"express": "^4.18.2",
+				"idiomorph": "git+https://github.com/bigskysoftware/idiomorph.git",
+				"multer": "^1.4.2",
+				"rollup": "^2.35.1"
+			},
+			"dist": {
+				"integrity": "sha512-l3BiQRkD7qrnQv6ms6sqPLczvwbQpXt5iAVwjDvX0iumrz6yEonQkNAzNjeDX25/OJMFDTxpHjkJZHGpM9ikWw==",
+				"shasum": "50aa8345d7f62402680c6d2d9814660761837001",
+				"tarball": "https://registry.npmjs.org/@hotwired/turbo/-/turbo-8.0.12.tgz",
+				"fileCount": 4,
+				"unpackedSize": 396291,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCfauQnovjJW6xG9jDWEP/Ud9FUYSoPoB19tyvi2RJWjAIhAJInQet+J7JgOhl+ltfcU7onp9eIHw4yaPGHEoD5oJ7E"
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 14"
+			}
+		}
+	}
+}

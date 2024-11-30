@@ -1,0 +1,582 @@
+{
+	"name": "lifecycle-utils",
+	"dist-tags": {
+		"latest": "1.7.0"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "lifecycle-utils",
+			"version": "0.0.1",
+			"dist": {
+				"shasum": "4ee06913161dc9502afd7878f6eeab0534cd9192",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-0.0.1.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-HNPVdSsyTuq9yGJIaS9YkANcrdpjk1K4+SOYRyYswQTT35JvXqHwz0/K19s43qBuq2otJX+hnR7LBFvFkAGGPQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDv0qaZ5OVXZCteTfotUI9qr/R7kqqPpQgTyBZRqhgtBAIhAPEkC9VLQV+kiUgFQG2WXfLzOYHeCcfCYEuIZITpTtYC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 211
+			}
+		},
+		"1.1.0": {
+			"name": "lifecycle-utils",
+			"version": "1.1.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "cad26581e5f31a299d8582858281d858cfbae0e1",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.1.0.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-orHrF9s3HVCx/ZpE6eOPaWmoMigGaGdYxOiQ8ukm7+hcKcjty/IiTQ46I5Z0HZxaU0/paeGGOY/IC3qht6fcjw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDGGhMO7RJ+zIuA0q1nyVu8p/AAIFnlDO9WX8HBF251rQIgHgaSgVL+cufSZQC4JuTLWlNtm7sRI0M4XejQWrYpBAk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 65025
+			}
+		},
+		"1.1.1": {
+			"name": "lifecycle-utils",
+			"version": "1.1.1",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "dfbb252b1a9fd266be2182bf5092f02022444023",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.1.1.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-AMQcK7vaTnaR2BndGukj8I6SbCDw5EsA5VIWVDJQ2+ZgxsHUArPbE2MPHntzIO0grx6ls8uubh/KKFB2+7y0vw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFqZHxwGBUkqG6ME7jKSjuMdHZrGsaGMongOeTkLSDuvAiAMU26xWBYzmy+H4ZqiifYqziMFlZtSwYRIbkE5fCscug==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 65731
+			}
+		},
+		"1.1.2": {
+			"name": "lifecycle-utils",
+			"version": "1.1.2",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "d374618af4ef5afeaf62e337298de5d7f92ae179",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.1.2.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-mchFyLNVGff4VGIwTicxr0yfvFnOVsObLu/4rFG3L4SYufwkiXL7nlqco/+C8ZWMkogVr7slIP1pyOIzZ8xRZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBlr3JS3xgjgR0SZw+1T5FVIOAznOlD42dPeeLmqRbC4AiEAqX3qU7XkB/RGBYJPjOdhgYk2Wrn7o6j6QjnkO0T860M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 66880
+			}
+		},
+		"1.1.3": {
+			"name": "lifecycle-utils",
+			"version": "1.1.3",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "42c3e3fd6c50e23909dce189e04655adc1fdb36f",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.1.3.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-jTrF8P3FR8deiZyoPUxfH5W82lkbZ7bjSd/QmGfOCQPDdM0MWKD83KLU2QZdIsC0s7acAk2jA6P+ytbxkMz1rw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsZ8xDaWdLne+F1y2xJ7t5m6lt9zmcQ2YgV/54QOeyWgIgWpK/OjbHacKtVAsbTNRGvzzVgs2c5vkZoTpjTcrS/Ks=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 63840
+			}
+		},
+		"1.2.0": {
+			"name": "lifecycle-utils",
+			"version": "1.2.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "ee27648d6b57337e3f31676b886b8281c7a2bdfc",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.2.0.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-lCtWg/q8vbFcfnWLMN91musxS5q5mQZxrRQDvxvAa4NcnBgTvjMaH7sfC/S9y6zmlPkA6IrZyerzJTomaszCrg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDftTlay1wkdnI+1/17SXKJ72G4Ft9ILCmFIXBuqw14vAiEA5sR4A7fMSNvvBZDTmGBMOvIzgm6jGUPVobCg7GvaOX4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 65313
+			}
+		},
+		"1.2.1": {
+			"name": "lifecycle-utils",
+			"version": "1.2.1",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "aa0cc591eb9c0897bb4df0476760143ab57e01ae",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.2.1.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-i5N6KMV6Q94GMHRqlQ7hJGBvg2HOAiDbqx1hNdqQqEK55DV8xqrKQvOLlzrw7oRVm/BQJI1TtiddFGyMKZqf1g==",
+				"signatures": [
+					{
+						"sig": "MEQCIEIhQ5N9tuulEo9FrTjgc9K1XTKKN2DzllpiHAiYdIM6AiA+QgNcr1UsURlyd+CS1QIqBHE4n9hlvfmA0vdtZ4gS8g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 65612
+			}
+		},
+		"1.2.2": {
+			"name": "lifecycle-utils",
+			"version": "1.2.2",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "04f27e6f529f6363f24ff81dfdf599db91a16d97",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.2.2.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-3KMdFt0e5iG4SuynIzkn9hP9/2egwKB6Nxp7nyjXxZQNojYWvqVk/0AVV/FaXpMVzB/7dHVLGKoWVq+FoabbQw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDwfVI0f40mlW2wzfcykP54ezbk75A0Ry24+4DU6YoPlAiEAuGz27OKsNu8lUSXUTH41H1dkYLG4OS8zqqTXl/bORuQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69736
+			}
+		},
+		"1.3.0": {
+			"name": "lifecycle-utils",
+			"version": "1.3.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "4818175847e02bb72aa5be00089c7971cf929b6a",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.3.0.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-AZhkhKlWlKQjAfR9/VFXma0BrbdhxKTOtbGg26RfnXNRl79DBowqJBkE/bbLjCjKSpbMMH5QcojGa+3VWMLopw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDrPneHR2VhM+uS8lMSWhOitlI0iYQGrDWIxK6myvhyYAIgFOevoJqXapTRB4DV+zrJJqOjOpEtOwUB2NKvVOAhPlc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70282
+			}
+		},
+		"1.3.1": {
+			"name": "lifecycle-utils",
+			"version": "1.3.1",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "7dc4d4cfdd70a793f33a85a05ec5d6645817c6f3",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.3.1.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-Vo3cw99hNk95lG+dxmaA9kfpsYXW/0g9MwvnO0zpvfstiC0ds8fAIzCa9M+hVPnFF5dvx9oy4nlEbIFChdL7RA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGBiGUCSYkKRizwouGI2G4eu2u7Fcv24s2IQ2g2XrcETAiEA1+pjazYmCN/znBMtfgyc1zNDxF57KcA0kaAMevmHbVY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70282
+			}
+		},
+		"1.4.0": {
+			"name": "lifecycle-utils",
+			"version": "1.4.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "795b629d5a48ce9fdfa4ac53988c7128ff4b6c80",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.4.0.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-t2Fg6vKtUjPhhFFWFLeaJlQZrEzOo9bUPvSdKQK7hO/MM9Kfo2s1EoA5SfVtFKLA5yiO5myEq9DJ6qYlOypXUQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICtiBOtX20lkxv9W/1nI11Pq7f1p9PJUNMflKEJHLcjqAiEAysiGpsEsTlbk+YOLk/VTPHaZnJR35iKoZNICr9Saork=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70310
+			}
+		},
+		"1.4.1": {
+			"name": "lifecycle-utils",
+			"version": "1.4.1",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "b05314d2741ecdda5e7b24b8d41a94297771f2f0",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.4.1.tgz",
+				"fileCount": 30,
+				"integrity": "sha512-l8itA/+LnqlgMWM5AuSanjZk+S0+Ia9TldZPd9JHy4bCfrk1lUmNWKgt+xTuDqKy1sCI0dKZ7234R+wpVcBGUg==",
+				"signatures": [
+					{
+						"sig": "MEQCIF8IVDVywBEzx0NMpDE4gQWqvBiuh6KtbR5NNTwVO9G3AiApZmsSYNtPgZyenKQgz3T3q82KfKO00Tw0JxwxNzfJSg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 75087
+			}
+		},
+		"1.5.0": {
+			"name": "lifecycle-utils",
+			"version": "1.5.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "8b68e888f5442ca778d8f86f0861c77bb1b10f1d",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.5.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-K8StIc2Eiy9O3dOicEP/UCjly9wGScqFm26t3TRK2UjjMKzyWgNxX2u0lMqcZ2/lSLd4CoPhHCWgojheaiUkOw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCfs8s7BVhI2m2XeERx0J7GqUfAFdFB+NBAaGW5xm3D3gIgJxpPzBtHt3XgsZNTfiwDVLREO/Vvz5B6SL4apRMinAU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85491
+			}
+		},
+		"1.6.0": {
+			"name": "lifecycle-utils",
+			"version": "1.6.0",
+			"dependencies": {},
+			"devDependencies": {
+				"husky": "^8.0.3",
+				"tslib": "^2.6.1",
+				"eslint": "^8.46.0",
+				"rimraf": "^5.0.1",
+				"vitest": "^0.34.6",
+				"ts-node": "^10.9.1",
+				"typedoc": "^0.25.1",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.8.4",
+				"@commitlint/cli": "^17.7.1",
+				"semantic-release": "^21.0.7",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-import": "^2.28.0",
+				"@semantic-release/exec": "^6.0.3",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@typescript-eslint/eslint-plugin": "^6.3.0"
+			},
+			"dist": {
+				"shasum": "b7e5f5a92ab145b7223614459009c518d5395bde",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.6.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-v6YKAz0SbisGnFtcw1apVXIdoFSJ9+57PmTDkBSL2bL5JB5jTvxYunywS+cUzseDDBAwDRTHQsqoebBQPiurjg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFn7236PDNGl60ZAYwN9hUhnGQaFGh+w/EEFkyiodl+gAiEAs8htySRFds2kqvAHsY5yQuLqwiaHLHePRMVH6eGkx3s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85657
+			}
+		},
+		"1.7.0": {
+			"name": "lifecycle-utils",
+			"version": "1.7.0",
+			"dependencies": {},
+			"devDependencies": {
+				"@commitlint/cli": "^17.7.1",
+				"@commitlint/config-conventional": "^17.7.0",
+				"@semantic-release/exec": "^6.0.3",
+				"@types/node": "^20.8.4",
+				"@typescript-eslint/eslint-plugin": "^6.3.0",
+				"@typescript-eslint/parser": "^6.3.0",
+				"@vitest/coverage-v8": "^0.34.6",
+				"eslint": "^8.46.0",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-jsdoc": "^46.9.0",
+				"eslint-plugin-node": "github:giladgd/eslint-plugin-node#dev/giladgd/fixImportExtentionFixingInTypeScript",
+				"husky": "^8.0.3",
+				"rimraf": "^5.0.1",
+				"semantic-release": "^21.0.7",
+				"ts-node": "^10.9.1",
+				"tslib": "^2.6.1",
+				"typedoc": "^0.25.1",
+				"typedoc-plugin-mdn-links": "^3.1.0",
+				"typescript": "^5.1.6",
+				"vitest": "^0.34.6"
+			},
+			"dist": {
+				"integrity": "sha512-suNHxB8zsWrvsWxsmy9PsOcHuThRsCzvUhtGwxfvYAl8mbeWv7lt+wNT3q9KgILWmNe9zEVZ6PXo1gsvpYIdvw==",
+				"shasum": "bd36ed5260e9c40819bbfba47f502a43e6c5dab1",
+				"tarball": "https://registry.npmjs.org/lifecycle-utils/-/lifecycle-utils-1.7.0.tgz",
+				"fileCount": 39,
+				"unpackedSize": 92031,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC2i96Fnql4C3PR8S921XWj08f5DZFBlQthrhvvaT/98AIgIHLfBDi/uFRGppReJf9L9lW9G989aHtZdVDM3uuHNYs="
+					}
+				]
+			}
+		}
+	}
+}

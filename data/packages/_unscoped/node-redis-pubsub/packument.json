@@ -1,0 +1,582 @@
+{
+	"name": "node-redis-pubsub",
+	"dist-tags": {
+		"latest": "5.0.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.1.0",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "3bff37113e7d7ced363452250cad585abed8e0d9",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.1.0.tgz",
+				"integrity": "sha512-i45Z09d8nFnUTwJld8wqxjEH8ixDpKR6pi2MyyuhWDbAVh/mnrUiQWzpu7fd6JYJnJ5gpsQrTCyhr6No1HPtDg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDy7GxENn6dO/VWdmR/kgLjgpItxzEI8Wi1IbFj6cB0PQIhANZ3KpicSYqaOLAQoeSk+4We23HuAD4ZHSg/kpyNNi2X"
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.1.1": {
+			"name": "node-redis-pubsub",
+			"version": "0.1.1",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "1571edc170b2b80f397a0f4d98207efc5d851924",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.1.1.tgz",
+				"integrity": "sha512-p7cD7mT8iUQYqeFDEx8jZAFVOdzez6Xv0fQnPBldyonulrTtPen93aUwVVa5Nj4FyoUjokbJYZ0jF1bK5t/j2w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDNLf1E4YruJRjLpozb3pClPLS144oUbGH4zvyB3pvZpQIgGBgNWPy3FwM2/p7uZMve22OXTWuhn/1slv2x/wywwlM="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.2.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.2.0",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "ff99df3e8ae3442993d6820c9d68bfbaf4194a86",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.2.0.tgz",
+				"integrity": "sha512-6q8xr3BF3zH6fSTqxnaUz7Uisv69cqlPOw72KX+p+wU9ADmBVXXjdTIDeWAtWjJN/f2dSUSitmYWgCqfi8Ik6g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHOePt0no6x4PVI5UUu0A+oAnfZZZo376kjwF0BjDlVGAiEAyIaFW0TzmvOGExnaRDOELJjx4/wZXgqUi1oqZMbiqP8="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.2.1": {
+			"name": "node-redis-pubsub",
+			"version": "0.2.1",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "a96112355b78b292ab645be807ede84ce21ad6f3",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.2.1.tgz",
+				"integrity": "sha512-WTQBz3hvtphvYv6AGMWMBDmwoyuGopuDAum7lm4pj1TPW0O/+eNAKjYkc9z7OgYQ+Iu320SoHORwmm6rwIZ8Fw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDFVhHGOBkrw/pMqZ8+w6TjIVjAAfZXvu8gNpXS7Dj4WwIhAKoir5YlnKq/CbE/dhc3il1vBSwhHUKIAR1loXboNF+x"
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.3.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.3.0",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "921843885fca54656444cf7694475fdf373da346",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.3.0.tgz",
+				"integrity": "sha512-TZb6hJnMPPnX3h79wEIiArHL/vDt7/UHhb4LJLaeGDy9fgAhEHDKGiMm8nWXdxrkXPnXzui8CoJuCEhW80HEIg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCVdrgRf1iChDp2UpjfaA7FugRXY8nYO63hOisB+3QyMQIgXgzYkVKTu72Wi6EMljfHXdAV9QDN4bRJB3TsE3b+afU="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.4.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.4.0",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*"
+			},
+			"dist": {
+				"shasum": "74f0de209a169c04cea6115de43ecd532622b392",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.4.0.tgz",
+				"integrity": "sha512-AFOAXKDV0R4GfBymsAfV+A75YDrDqf4SzT1nsjINhFmnsM0QnS+qHJ+p11uTdp9Hdmx/lGUjoR9e16M+fJfATA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFcKqGwpiZbKksAUizbtVleNo4Yb6hJUZQu79UtNIsnzAiANblbLtQJvmb37wD8/+WtMB5b4oooxjcZI7CTm1/PSZA=="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.5.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.5.0",
+			"dependencies": {
+				"redis": "0.8.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "b035cba63e518061c685bda09fd5b5d201b26937",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.5.0.tgz",
+				"integrity": "sha512-UWscyB0DIysex98tUN65LYbBZhpAYzP7djyyE9wSQ6eUGT7a6QEtTA1xht0jy5H59sZSJZhbORwuUyj0EXRreA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGURoo8V9PdCX2gpcXz4/8uC4MA08H9AYM90boMLD7+jAiAYo5wzwaP0HPJln3fMyBE+iTuc65W7f+rTUMDoof1kPw=="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.6.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.6.0",
+			"dependencies": {
+				"redis": "0.12.1"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "fec8d481d30f5507b2784d9724ba89c266b3918b",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.6.0.tgz",
+				"integrity": "sha512-3FO3MRIczh/0gYGftF2jLKVuc31kPTvExrfGvwIThcnwHSNxTLwCr3NDnjYP3v1lgjgGyZo+a09nSn4rp7JMLg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD//2RUC+6FHQHbC//h/020aNlwQw2F5CU3wS/pmvPOyQIgVIn/VPdORp1sXz53ppqmwz/aAtImKOD8GKYBIbSe7LA="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.7.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.7.0",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "5de6f48b92672a9712d5046eb88af9ab8aa59334",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.7.0.tgz",
+				"integrity": "sha512-oXPpbkzvrZZ40sgKUndqJO2VzHA5ThzqFaqFN69AzeuKpS3ijpX8HWIKlJOjnxLlCbkHDybfgdYNGAJAlhXEfA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICA1EFh80yUfGKekMvLLWpgxErZkbVH6GosvTPq4FGZVAiEAw36XFf6SRF9F1MuM0AfPIE5Ez1zv8yPzX7+5MXZ47iw="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.8.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.8.0",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "26927192790914ad8187a15becbc547a60745905",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.8.0.tgz",
+				"integrity": "sha512-hw9a5mEycdg1UpwHvRNvYuWMMDvm0wMINHRiio/d3d/ilXgQrujM9S4m/kVcc4Rw2/YPbJDNc0ZyXHootbOcjA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAuci5AxQXHdfVxu4NRBEbWmofjGmJoRGanlBPDP0PhIAiB3lShnz4zpRJYjpY+OM5kQS0rv+lTdEazzS2TFOHBwqA=="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.8.1": {
+			"name": "node-redis-pubsub",
+			"version": "0.8.1",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "77c1b5f2ad89bbc0e9e1490cadd8f9449f5b33d4",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.8.1.tgz",
+				"integrity": "sha512-l0qn40wCafPV2eYIRGYqlA1eTD81qydLHr64KEqjpC/6OKTMV5hS6eH358ZAvGOa5cSbgnE4tRtGVhY3dM/Yig==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC8KLju7V0AXLfXryam2VRhKza0tm+Q5sTFZTKlmnhldAiEAyKaVPW+h2VGeuYsrndEZxMPLK+F7JNOYvApSSxbVkJU="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.8.2": {
+			"name": "node-redis-pubsub",
+			"version": "0.8.2",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "c0793cff213cc47909596530b19007aece4aa29c",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.8.2.tgz",
+				"integrity": "sha512-IMLp+OZWc2LZRqqnyiK/ivCOwKlQV7tZrOcRCImttrc2xPAp/AU1HP6AphpdjWZWzPZgiLmOthclsbuehfwrLA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHQqoyfYfFwQnXEsfM0T4LX52l3Nd9BYM5IFngbztHjsAiEAgeducv94cFNrx2dEYcgm78l0sguVSgb4uDj4My619Lw="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"0.9.0": {
+			"name": "node-redis-pubsub",
+			"version": "0.9.0",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "d04e2021a61ea16ac85fe87163f008c6e569dea9",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-0.9.0.tgz",
+				"integrity": "sha512-ZudNOyZqSz/CKzb4byuJrWK3IYa4RFbBnmJ+lUC7aEFUUBRBbsuvvHLarJt0JHQPliH0FZvtcBv0bACg38C2SA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDyy9Z+7fu+zOAuqMzQ7QRtR/mAbfe7s6QcA+cfKkW9YAIgdFyGCWCE7hCnzVozBXDFUWSGwbMn69b1AyQWrLaet1k="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"1.0.0": {
+			"name": "node-redis-pubsub",
+			"version": "1.0.0",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "fccd9796342d46256cb1f6474f39ae3269c3a62f",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-1.0.0.tgz",
+				"integrity": "sha512-t0+pBHJwEq9IjJTLi/sLhYIlxT2BaPqk+fL8cj+uHrU1jj3OPmtj8xR9OSehw8ktJjwtoOhS//ReFsck/5hgfQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID/E1W5fzHQQ8ve+AV2uMoeYKMRv3IyIbB0Im1nZ3BLRAiEA8ijBLhElv8uSGyG4wAktBSQpSwlS3jg1D6NFsQgKPtY="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"1.0.1": {
+			"name": "node-redis-pubsub",
+			"version": "1.0.1",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "2ef147ed92104f242c6ebcc597f15efc22f13ae7",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-1.0.1.tgz",
+				"integrity": "sha512-TpoJ9Qqx2UQdsXJoQVYKw+luNu3XXqUiTkC1wVQx0GsZ4uyChM5YJLg9S1HOGdy66LLOFRSOldd52/52Xf6Ydw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDrK03OztmkRxViewQF3ZmhYZtlfY+5D9652qH+DZO8gAiEAz7eMN3gE+/2c1wPHjTgwi6M9aA86AcpkI8/nKVrVRyQ="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"1.0.2": {
+			"name": "node-redis-pubsub",
+			"version": "1.0.2",
+			"dependencies": {
+				"redis": "2.4.x"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "dff9f3274418cc9d913e64c50588c68376ec8707",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-1.0.2.tgz",
+				"integrity": "sha512-uMDaCOr595KgMsQvg6VozA2oyPrW94WLyp9DplwGyNKKqa4Hxjn15B1URD9cb4XnDI2iUeIL7FxLzD7Gc6yRLQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBnWBTlTNj1lgaI0e++AUHpXsERgOZ6vnnyeAetdpBUVAiEA2dpstyaiBrCEcudWfyKrw382dcwex2QD60BSOZP/KZ4="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"1.0.3": {
+			"name": "node-redis-pubsub",
+			"version": "1.0.3",
+			"dependencies": {
+				"redis": "^2.7.1"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "9ed05055f978b5d0e4704c1a421534f551cf214b",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-1.0.3.tgz",
+				"integrity": "sha512-T04GCIOHlPNJFnums7fcukaIj686lzs9Gl8x85pleaV2IWPr4uPQwvqMTpdm+ksTk5mJnDhORiasvmnRTyBbQg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCJeDTSfMzs1Bo2QH7Qms892NCqG1J9/xiC6M1M0EUqmwIgdHaW9L0msTjKp+TE3MuIpOnWdgy6v6AiWWzNsCS9xVM="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"2.0.0": {
+			"name": "node-redis-pubsub",
+			"version": "2.0.0",
+			"dependencies": {
+				"redis": "^2.7.1"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "f01407085a8fde495696545c64dd1270dc2ce299",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-2.0.0.tgz",
+				"integrity": "sha512-qCjB2VQ8zaUphCToXL9bgpzFjJYG6pdxSj7v4uv3mrU3Ts8+1g2OEl+N6ltRonQ3Y305TTJKeeLVHKod3TRTYQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDLo3Ue95jUXNK3z5cZK3V5nsHn82JP1ehGwORXkLH1WwIhAIgrIoVT2G2x25xDFBNxfe+SqqiNvoQajbbEzZ/QtG8V"
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"3.0.0": {
+			"name": "node-redis-pubsub",
+			"version": "3.0.0",
+			"dependencies": {
+				"redis": "^2.7.1"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-T5ef9LJrj9CPaobVdJ0IC+iqQMuzYKLxzLv40qkHdPtq7bL85SgpOrlHAwwO7kV3fKboRYID178LzlF936Xe9Q==",
+				"shasum": "0465ac2f89068b54771742ba51d0263fcdbb16a6",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-3.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 14563,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbMPq8CRA9TVsSAnZWagAAM/MP/j5VkLMf7015hmWXvfhw\n4KZDU5B0jbkugY0YIb1vEEcyamzhY3s4RKw9s3/PfG5pnSDLmfY955OgoV80\nGf3AMS5Vc5D5KM4FSzXC7tcY7p4axgiVbxN0Xai74rTyOZauuXY+aRjSQOlG\nu7QqjqQI394MDlhTQ4UtDWhfcrMlgDGWhXHdHklCvfMpD8UB2TXeamXD5RTo\nEXZwMfcYxmjIfh3RKq0DMQcTnFSif+I45KH/RA85ECFMstwBfoNHcDO5z36Y\nnXjmZS1lpd0gsKBd3hfOAyFfcqD6JjuV+NvfGS/5qpOrP9bcq6th73mVPE41\nvnV9bjm7+RsLKyftzcN8ydV/eQk+L6mpfykHkwZ1oTH6Njf3BMu6E1nOMMxT\nK4iTEg+aXHfa4ltOnkGsRS7gWvJCQ3BItqdSFKU1r6s8Pc4B9R4hNMTvP/nU\nonShRRgjdkCs5TtIbHMNVy+Tsjbx2Wl1JV43C/nuFMYBoGh6IH9GoM5oljqX\nXW9NHtUpG4th6gxITGd/mpF5c5HQ2EVqvXx90823i8YoDQP/MDX/p1r+sc+3\noZ09FYNuKBvPDgXnFlLF3CnLbsPGBFQ71x+4gj6LSkwY024qNIf2E0PWHdwR\nig8PVrBjL4QQihxyxMKqUzrVSBMdf/JK6sQbU3T6wZ8/rVmfV0+bfpsaiIBz\nbGAR\r\n=vewe\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCR4LOODNHERUmAFwmfyeNYnDVltljBPXKxJj4Ae3RdIwIgRUpwmCfnpJzA9bsbZGmRRuU8b77Suhvfo+cSGqEeyZo="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"4.0.0": {
+			"name": "node-redis-pubsub",
+			"version": "4.0.0",
+			"dependencies": {
+				"redis": "^2.7.1"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-sAUOzisio/8UYCRbjPo6+u7aTpBmxSBjTJYwu49x9KruIQgi//wbEnvbqGSH5JWViP7HyQSMtkHUcZXH7qGsOQ==",
+				"shasum": "1d067ed22ce01cdc5e8cde3aaa826c46b65c9968",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-4.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 15222,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb2yXtCRA9TVsSAnZWagAAr1AQAJvcZftjn5LnqzycJTRq\n9iBbcQ2WQtyrUZj1Co+opayPfeKd3XffWWw4wGZ56BChdYEfH1PvsSyfj4pG\neQDSZ/Zsw9MLcC86R+dRd9CcWoB/Ndb1WekwZmn9ITR3BVpDNK1wlDkKbpNI\nMBdHHiU0kCbT1fJevSPWo/zvMq7qMqz3khC3NkiPgQptOvc2pa1PglutOI5s\naqCtOrbotv7c/k5CGzgy7scTzEKb/sAJUxus132M3pHnqtRoSpeGtb+PMCQW\nXFTN+SnAW50Q/goGzFkv5zgpFDXenp+M/INLsuRJnL7fOIYe16hjpZ4X4bj6\ny74CdOe7bZsWx00Xz9T7LKMVwRZrX4Fxcdvesue78LCC4Y43VXdHk1vdq7Th\nTDMcV1l6duujYnLCtq8ONzKmXpGBhUQ836oumilWJQsfNh1L7bwd0O99eKrx\nUjrftSEzi4DozqoL4GtePiGIJm0Su9fGTHEpPbqONyn2bb53lx2PaRXkvZ2j\nM9RGwtbIjTgaOjZzJ9cM2QboIIgKwVp3/3qrGqz8dmkwI88eMRYkpD6ZwlhR\nvyroq9UlD0RbWkn+z7evTb9D+u4UMWsSR7zx/N8rUBwMAZ52LTF8WwXNCAqf\npBB03NRW5rjFfcf3FaBXs0yD/E/LdqlEqlkMVdYZ6Ost20nW5hSq2nCb3no7\nsTH8\r\n=prGH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCWiSkM626Tofv83Q4o4ek+fTnxbbFeTBn3L1FLA0TpNAIhANWnEAersPeNQBZ/Yc0C0WkaSBKU+02ZhAdM66pQko4H"
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		},
+		"5.0.0": {
+			"name": "node-redis-pubsub",
+			"version": "5.0.0",
+			"dependencies": {
+				"redis": "^3.0.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "*",
+				"should": "*",
+				"sinon": "^1.14.1",
+				"sinon-chai": "^2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-SBDgfC2QwKLDYbUYNE/jDQxOU1Vg0NDf4fVNQZWnd/tXEhn/N1wY3SxaEXmHWPXhB2nqwZD5fH08SE2g07oMIA==",
+				"shasum": "565510a23230f4deec95f5c67eaecceb08d0d6e6",
+				"tarball": "https://registry.npmjs.org/node-redis-pubsub/-/node-redis-pubsub-5.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 14687,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf6Q8yCRA9TVsSAnZWagAAERoP/3s9NDC61FoeaQpDp+yJ\nrr5C3qfP+fNq6LRwG2Q2RyxOViE/BebRg5XWheHZm6vG9NnGT4AV4hXbx1Dt\ngqzM5sbIjRWB+xv7vCayW1PyLv0gbEalKo7jAWsjcZ2qdfT/WTDDQbevFJmh\nuJYRhQXFT3i8nMkH6SPW7xntjzA/DKPKGP1VhFZ16QGlUygdKmiNx8V+VQaj\nf3C0IWyKScBZp6/ahNAz9MCrukpZNJ4AqnkFi/Vn2EVckYYf91asTXida48T\nGu1UN2amstqfbixcq5qXFmv0NckJYarKyqHpq/GbpvYXBoC0M3YwqEsgumeX\nlApLnInfYZInT4UIMcmmJxjYxZp43gB/Gco3b4/Sb+tQGRapHKjg01knsOr2\nL47duoVUX0jujklSMGzw75fv1eoR/+BEGx2OGcM6zqzFZkEsdkgpSYWjhOxt\nLade9oj/e4wmIMye98QFtG8PmYCQ5R9+KyI/mhNSwsAmDiPUt8PisYz89/J8\nF3CBcPEgQYYZjFfKcDmqOMiyuJwPNs2JNFk2Wjt2Ewh2527GPFHnahjHmzWl\n2s+BVgZKmDyczR+whV/7LWhN3sLugZJNaTzgI8NLCegePRBEO1vQD0Fr96rn\nCPFalqPHcIPoznB0zl6d9HjOrIUNXoFTb61jeqdbnPiROmWGbqRBZmpgU7Jh\nW8dg\r\n=J9/h\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGfjOK+SIfEU5BYu5YGm1O1GTPE2JGZUYKc9B2ZwAepqAiBU3PorqsvhKKJL+vujBIgz8QbnAzWVfFX5oM7+67GpmQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": "*"
+			}
+		}
+	}
+}

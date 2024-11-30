@@ -1,0 +1,529 @@
+{
+	"name": "esotope-hammerhead",
+	"dist-tags": {
+		"latest": "0.6.8"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.1.0",
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-vOruOE2tIa6C6iDzz4A3bo8e2DQPEJY3ieTcMXykze8I9pL8Ae8/0XnVGfWImhuFMTpXdteBM/z7pCCeE/ygow==",
+				"shasum": "9d812a463753efe745846fc2a7ee7f0966eab37e",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.1.0.tgz",
+				"fileCount": 10,
+				"unpackedSize": 86647,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcP0FxCRA9TVsSAnZWagAADdgP/j1avOgStpp03eTyhr7H\n+ZIpYbvrBw4AzwyIVmA3t7nui4ArNM3BqMPucgRUZCNmqnW4NjWhcLK3+WYn\nhSU3BPTq/RFdNTvV7aSDpGrdeqtemSwDMwh7X4a0aQwkKLEmPQEnMDH8BUNI\nyXijd+gRQEjO+BJRKQUWvZTTSUKG4V9VRvkiinTlH8cF5GXJgYs2fmKfNJUd\nBYaxIlLr1Ye5i/3051u6Wp24YUYvxX+J4te+DwBHEbqAs4P7XWrq85/bFtL8\nvPDf2ObeIjMw9abaZ7Bpc67HMexirNxM+eRM3xwTCoqWJanEuGttonq1KSAN\nTIyWw7lCUK17H2Uq/Reof+xxWuO8nki6ssZUZ+3ag1u8MeDiswAisTCtcirI\nO8QAEJWUehLuMt+Li5A21vrQDfNLmGzCDoWgy+3dqSXcn+4ZeaSqK4zAsvVO\nY2oxkeWd1vQeDN9u+IU8zgHykLKS9YhARtscE6e7H+FLVUvWZF90X6DEDf89\n0V5JIcb0vU7QPT20Di4S+PXwj9D8gbe+egQ1hCgeXGyIn1x5n/5nnVXn+jjg\npsjwbZkLiZ35l7LUjrL8CTQvUwpbna7HuVH+lYzgNJoJXINCv6yK1Jc9pb/a\nQ9sPZj4ECpzZvXKBQRbvx8Zgiif6GH4xUCfTVW8tXQNcBZNez3oxd7X+T1LU\nOgGb\r\n=Mh0D\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDNwO48ClsAvDKigY01BuCTRi0piZoQpnSkXelCoCU2cgIgdpy6izvpAdpudM7QvmKexD963Xm4BCjxLw1NOw1ZaYM="
+					}
+				]
+			}
+		},
+		"0.2.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.2.0",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-oe6l4c5tUjPDPxA0lWPjTsULJtkzwmQceQ6BXpwutZ1JqgLXSatFCZYnY34fD5OnWZDkXa1N9XNm3VJDZ+AbGg==",
+				"shasum": "0748de6926f9fa9ede30270f9e3eb2e27708fa4c",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.2.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 85513,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcdq8ECRA9TVsSAnZWagAAdEYP/RLYZyphZgVKzakEYYmv\n7YlbLSEsKe0Tmyf2+SKksIjZYekGZ1PyU7odZCOIDY234jdRL34c1Jofcdrr\nUjNokufjbceediIHjupVok3V+o3RUGxK5qLcHlI5kwtgnBXhDVNGnsW1djqv\nfdE+yAGOp83CqdPizcGWIQUG8Rh40VYrbtIyfUOYvaAznhcfAKBAtCW96gqK\nOqE55oi9EjImN/+kQl6JSxWPt4vmszN+V3HHhxDjFsPUQMUd1z4JUfISl4J/\nSFEyxy9xKBIqCy+udZTndoYLPY/YEZe42yDK0yQVVINt1xpZCXIy+wzt+g0/\ntGZT7yxUMJZ04lkDB3SUhtdrSX1DqCx2rOaJVj/ISUTuPO5VELpQLkPG09rd\na/RqKPrzWsLEQMltNm4K2CYuPG+Rs0awPr7ZjvfHLSlbhBspQHZjzhBU242s\nLo35J4gkdxh3v8xa3llaWdAnVnRtKQFyd/xKej6IvQSBHO7rXc9PIRw6dEEx\nU4EVTM2M/E+D/Lu7h/ya6wfyl0EBi3W0866a/DNanqcmb78aXNuebbWW8T66\n9SbF2WcEznhkJuXw43KIt0E7SQdYetoTA2HoFr1G/Q5joC81Z9VdorjDxmU0\nZA5U9RlGasPjkih0SPe5fV2MWWH0Axa+d2fs3BlX0RcAchYUcmJoZpfdEsHh\nt9js\r\n=ob6f\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCm0b3Iek3q6uVLnrUz9dQ/B1R9h9qeDcZPFUqDRZtRUwIgfTZXVHtltBTU47o//bfuAPnUu53JQ1rqslFcDmgKkeM="
+					}
+				]
+			}
+		},
+		"0.2.1": {
+			"name": "esotope-hammerhead",
+			"version": "0.2.1",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-IicdvCt1BIFTIM4nbjxGp98whIakOYZ4lA0UaDXnXpJpB11jYBX11Uv3x2f5ncSlFmxyZRdrN5skH5wK4TCWFQ==",
+				"shasum": "c7afdb624d9125b07f0555dd88ae2dcffc70def6",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.2.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 85521,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcvuBaCRA9TVsSAnZWagAA7loP/R06n5SriyzCe2mT8fb3\n/BTYZYFA++SR1uI3JCmChSaESnfWOGEqO+gSejCLxBr0W0kOVSUTSKFpsTvr\na2FZHX1EwyBjfGHCIgA9QsFSrUWb4ujj50FRlgH8wfk4UyuVjEQaBQAPkR2o\nr866OhPcCz7VFAvD8U71uXjUriHbEKnLdJsMBn4SNMn0KFk84CRrKpE8i/TD\nip3UANauHM8bVwWA+AmBdHp4vSPuds9iJdcLc7i68IjylqIRMwATf53P/66o\n4SKSc2VnIQ86yLRGKTr/3KZRAIkLkvKh+HwwIwBs+6d8pyoqpEMxWnCleix/\n1XBKtQIn3jaK8ruFDvFKWkGmgxq4uF7X3+DIaz6XNHwGvXb7aaEDSXrybANl\nDUCxrBPPcFVUaKNHPpNoNs2thVv79GeykiykkaGkVGOnOeNljLVZBCDfkZ0j\nYLYsSoHcEikJuTwmoVjnZTKpwdoTQReBX3Hcf9m9OM0i5+Lta1gfj1sdo2NZ\nncb5OK2P3jhzpHwx3s77ZfY+orCUH7J9C9we7aXMTuOavbsmmjOeh1gsZoWL\njUMDMEUxBQNNosbw5D7rNaLZP8lKsZwNQk/H4nNABKaSewwCq/qqxkbbl2Ym\notmslakIPsvuERZHNaKh+7tQNAJmsoLsF8/tlY7XhuzhtwEGk1YjSxPSd9CW\nl1Hg\r\n=cMTh\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCe1FXyJjUBLnqiGICOHhZXreFZZvrL7Xg9zXQdpuyk2AIgF4qDzLhduEHuhoOadaMXeM+8RhDLxm4Ymz3hOQtPX2I="
+					}
+				]
+			}
+		},
+		"0.3.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.3.0",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-qI6ZlQaf4yBPZhHETT24vk93INsNj++mRKBHOpOtkx7F/N7UvuTD8neeTbcbRQUntGksvs8/v63uGfDCdgt5YQ==",
+				"shasum": "17f918ccec2454773a4a7ac940ded9fc4bd46dea",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.3.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 85708,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdLHHHCRA9TVsSAnZWagAAdqkQAJfNqmZxwCsMW1NwJK6t\nqkwqxEfylZkQkFGCSQOj6P1jkgy/kDB48bjRKNePI6/O6W6YCCbRbL32ZtjA\n8MB4GPlUcOSOxgx0jvJDfKHCB5kdR0Z7//pCOAHXXi4olomkRWbuXTczbPY3\n3uRLe7qfp0TELiRG0g9yBg4FCZ+82jjU3w9PCcQDuoO7u4IcUrNzleNStn0f\nbWvfobOdFzKLUajtqHr5MfI7rY2bAFqm4abEjVLhpxhvNXTEDioZJ5OFyAiV\nqj2np+Ztm8EisWPKF7A4buIzCkgrlJsHZs3ILNl2APHLMhLdJR0xcfmNYOdA\nbPXkCmQUeJXaejBVeVUseeQgN6Ddw7nxIL7ikpemk1eZpj/py4uKUBulvPLy\n4o4IKUx97unoAOHikGCrML7DiE8EthQFze50GU58Yf3d3hRPkWpjsFXVjj8H\nLm56231vlaycFufHJ0udGA1k7z3vqFV8FuL41kut5ahTJLvM37W2LEX+yCAC\n6RtFqXdxDS6s/OyzcfyLy0sXpsxm87YJP3ymYqee2BGddbbVA37hqhD6Zi+T\nckFvIl+JOP/XniubnfVQHnFiqWAc2oC8Bjr/mkgOyl/4Fprpr6TBaiXHYvlO\nfLttWuIWr1HG/aHOpSjmzmWfVSO+qina5wGUFzAoCnKQyoUw56cDcNMq2Ufl\nNWvO\r\n=mnf6\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAY43aBHvSFNWY+7P4LyyD20/f+fx587n89ll26YyeIIAiB+zX0xfiXsdRs3BZyiwWgJZvrCZlJUjUkpTazy5ib3Jg=="
+					}
+				]
+			}
+		},
+		"0.4.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.4.0",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-TAmc7OhAiWeovbzE9GGenU2vwuB9tzKHlW0hTH4rZsLmCNEKo8wIZ9qbEnw8nyXeNTjCmBYOYXUyaN+eZht7Tg==",
+				"shasum": "11e1760543ba2e197300d45d21985e85fb4aa490",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.4.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 85870,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdSc4dCRA9TVsSAnZWagAAJ74P/2BOMNnfOuPKlOI1hR04\nONaXKqZvjZaMOkN+6t6jH1vuA1PK8wdQ0WAmNyvFBHrkqgqFo+PbSYZIHt7c\nWGtNtdz4bygiNKmG/V/EfWjIkU33BZOW0uIDxrQNKJS7JBSgTTHM9Zq1Ryq/\npNHqyzSVVhV/omDY6OWePpE8T5JYa8Y+9McyAuF057ZJJcTQxljNsZ6NiLFF\nbtyLjikrHszqGjaAc7XqjDMfCIWbwVrJgoaqeKaQj1+SDjjgLVa7wmnFhE/z\ntXUISJXaTfajba60sKo/jpE6CpSz6d3Be0LBAJfGM8Ev3sYQArxANYEKqSHV\nVWU0zeDCz7JHyRhozemOzOG6R1UbaiWe2UmuTJy9CL4RtrCHFOsZqaq3o4CJ\neVB8aycaY8FmZDxCPLhXEGqf82EWLam1sbFKx6itPV2wawdnztyhbv1VhieA\nuFNABTEh1fWO65Yra7jFPqkFIKzfex9aT9yZCqZn2oO30cioOE7DNwuZ7LRB\nyHNRHOvl5BX/j+xkoii8f1PXKt63rUn/pyjiRVgRk4aCCVE/iXHbPEa2bdpF\nrNBMgkYvv+VZogeFd4XxFdqb/xAhLfSWpaFgpi68c/UTXf+h3Ujx6Sw9uFwd\nIrVDxtVWFiCtfDNkNIVqDS51KajZEr+V0ibZbDCE0l4CDa1f6LTW7HTsak//\nWSZg\r\n=24jl\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDazuoEoNjyQAJG905xZwKka3QDqe5UtmxMDXSs5+0jRQIgEU/OuKkSI9FngwP83IVN7x0tjd2bmEckeg8x6Ucd/tM="
+					}
+				]
+			}
+		},
+		"0.5.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.0",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-1J+QBTjall4dGiwi/QgWZdayqkrCBYHfvWuQ7GlSzQrYg4qvD+eUcmdorOPNd+e85Ia8vrzsx2hU05AEo1k7CA==",
+				"shasum": "2978dac73677206975c3b4bc68868e1172bef42e",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 86483,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdvCXrCRA9TVsSAnZWagAAl34P/1LjlXkOeXpQNCbXnj+j\n3VTCZHCBrfKPnykU3n7M2Q4bmz7X+6GZNvJC854FgaJd+lyvkTUF53e67clp\nkZ5EAqMSTzQcFuV+XHVTeQ4Zy3hBNAPEzVMiy9jqlkG8ngQjxikJgWll3Ad5\nxEdAvPGutchAZmAJKqtZWinV1EwQ2o7FN13e/qduhGXfStHEAJr0MEV3X926\nuWdGR39uzWanHZ24wkldQmP9pAKus/7w+b7DUK4XYcF0JFrQHey4VXECBLEy\nUk0iNkRs8+yTwOMqnamYuQsSMPqjlNEdHEmlvwOzKVAxaymX4XFKxdu9pFrs\nLrDGi0l8wzUcwbHSpiSNOXE8+2PhYTY2ElAxhAqq58OWNR4ejMJnrh7T8d1w\n3IU6oCflTtwFdat4onxc3T+SAuJ8oHVqln1IMX4BsfOSLXSXVsGwhetfc05z\nRhvIOxzEDNfnpYWzCIXBmJ2d9Aj0j60hRUZsdxkTglF9/VDp90jqVL4mtJEr\ndODhAyWtxYkh6AMopss/z/EfyfRSS80SFUCMUAjeao5ye9BANVEQxlsA+Yex\nbX577uK2+ZOTqpsJErBpOLSjNfH0thhhAC1HFzOvgIk5eMI+Z2CXQiuf0wyi\nSiTYXQw4gzxmSZ2PEmVch/hzbKZM8kjkkykQx7ng/h43MG+2E8YA3pVDdnCL\nduvg\r\n=JJTM\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC4jUXgjaNyBA0qKowceo04FbvnUpXRCJm1tDRASyBAPQIgEIc86I/77EhSuQD3pKHkOJIHCmUMOsxQcKnND1EB0/o="
+					}
+				]
+			}
+		},
+		"0.5.1": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.1",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-h3zWENn0KTJYZRj+Hl9lAVzp+KDSljtfkA2SdQC2H7aQWdTXBwTRb6y6a+jvapOQYF9fLJqslZYnIkfHZwTKDg==",
+				"shasum": "3e4646c337b346633d183ba85df2ff1887fb9257",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 86595,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdvCrZCRA9TVsSAnZWagAAXk4QAKUS4NULJX4ptTRlIg40\ntKtxgovqDrYyK9nctgM4R+a6V2453+EBeT2uoRorI+qe9NNf2F/yPHJPoTni\nRV1GnyOoun5KG0yFO399qeWgXnNW2w/RIrNj1fiT/nA2NauqZzfe3B0GiERy\nP1d6ijYDopiNtUN+K2GyO3Fq+f02BvMgQ+ZzV2cUv6/o84sRVn3jVLg+PF/l\nGw4sSgINvX6MOa+T7r+MJYN1cyzvn5L5gxFtjzAVdOo8SGh7+1x1BAFAEegs\nhBL6042gd0RkThiol6cmsafVqkyLwWWiXxavHihIMHZrgaC6+XBSJbr60BN/\nSJZei7svitDuz30OxwtBRFkPTXniyshQHfER7uSBuGazpRBiSgQCBFF9AcwC\n4iic3D3rJzc4RuLfDnFJ7I6xZi0cQhvCC1OXZMI6Ki1jtGxy1kk3CcDCoJKZ\n4Rf+K1L5vmo27DckaI81Z2niOE3ROfuL4cFuYWHEUrxuRbVREGGtEyXv4qUH\nrMrVfCp/IyPHMyYtgYXA6O2h2Tz5pRBzgIRG80dM4AtPRuaDmpcJundkzLa5\nu4o8T9Cy46gPRDB6MMbkCTyVq3MhNCncfnlrPLzA5p+7lzHgKnsky4pmhdRh\nsnIeZLY7fP/wXwVM4iZAE5ps8yF9AttL0GjZ9qSd4SJ6XjDY9QF4HV9QEikh\nnpBP\r\n=fHOr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEAXa8LxgzoV9YIDYhyup6IAJh4MEKYbgzOq4MTVt8TKAiEAsJ5rjsXNRosM+9e7jCJy+smlR8PvxPXs1ajlZ3N68PE="
+					}
+				]
+			}
+		},
+		"0.5.2": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.2",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-BvDi0wYlffdYFKc4ZJjRVWP1Noto4gCYxCcZd/UcMrlP1uxt+NLGv0PWVJOQamRlEvt5gkU19H1+8LjKyUXemA==",
+				"shasum": "f17ad55d8a9ab1153ed7075c81aa3d1eef4b1ebb",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 86595,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeX192CRA9TVsSAnZWagAAFcsP/2dZOn3MudHpHrxQ5y6W\nRSXv9K0WaFvL+8mUm6g1aoil16aRyDjYJJcgRvaujtr5qsFd5QILqTbkue59\nXTBNJK8nM8wz5x6EZIjnS80rSGWAB7/y6AhXk5I9lhudCqvM5kKVinLZCpAu\nNBPZ1HtRn8ZDXgnlYsywtQkvO6bX6HQl/0svRsXq0G2B1ozHZW4V2/cgPxe2\n2Exmfgpc9wgyAJjmJTJwUqiXX2Or62M+HbTM6odg51ElQYkrb5FmxYSqjGaA\nvukX29RkrlK5h8SIvhbGPatNx+ob8Jl1HivUhMZ15zSvayF2y6WAYMQghZf8\nOXlqH49EV3G7kBfjImRO0kHlfPhr0X+T4gmCDZmwYb6I/bFEUke/Wibbvo0W\nWZGhqjt9CjuFnqdGHyvypbLkhVAE1lg86yC3eEP1BstzTfSAyIRC8QE5Suag\n5e6vvzPcLvWjoSFobel7zbXDtxW6SfipOEt7ykbYMsJVoa1YWKhPjSCRbFGg\nTVUs/5dJsUjDBEm9m1zZMOg4wDG3CuUYFeLhbJwtCc+KoWjhwqfKdeTaTs46\nxCPY5MPn1+sslqgmyn0LKiNK9phowrd3edO95cpGegwtjbe+DiKZASMqQncp\nP8Ry4fW+YWwHVSTmjYZxMyzPYC7sUo2eBdYSfxVv1zTby3CE1Pe3iywAdB2f\nubNf\r\n=Ncst\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBjmAArBdWMK5veLD7Klzxbq8hT128iUU0Dh/62E9zOWAiEAhoNQbe0f1sBErYBGmDpzIyXKq2UJ6G53GjGSlDPFDXY="
+					}
+				]
+			}
+		},
+		"0.5.3": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.3",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-EMZvx+2MXsAZxqa+bOJZp+5qWzKZ6jx/tYung2dOalujGWW5WKb52UhXR8rb60XyW/WbmoVBjOB1WMPkaSjEzw==",
+				"shasum": "4423efd9ea71e56dfd293d9f9c9eeddb51992842",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 86726,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeX23bCRA9TVsSAnZWagAA4f8QAKUCFv7bjM16KTc666f6\nDDqde1S5H2ZbRlvhCP+fefuxZ6G+kacIeW4kHHLr+vmambuKLj+BnSIKjc60\nxJ8lwJZKaZwWiBkEMypPaLrf4/dE+Dbm4Oig0jF+x2Y8Wku4MQUuC2/IxbkL\nPuEbajmrhk/0qxZBv8oUv8vz9Ihjl0Wys3GlxnsGTr6QZlqqYJuvpQsALBfe\nnzsWDKAGJeEcuN0R0ES8Jt2G0GkZGtm+u1/hIGmcJxKwynVvj1+Df4LwhsD9\ncizMXkvi7vFEMNsq71+jmLgu20luCePaSuHGZopqFno6X0KlAWWNx5vVd2nV\ncoU2MsJHhYzgYCTBFmJ7Vdpk5uIBcorXcL4mmUb2ZgirXHP/1XE0XSvUka7z\n4f6WJB/steNdNck0DZ11o3OK+EueieQup5eYXZuZGAZN96uxRlVY9PYkd7ST\nVsLvpqmb1fpubIeVug3BIU2XqJPEn5joiNtKaUEb6jlU40cdh38Ta/l6wGea\nA8stkZM6lxj6rS2aEqBlIxeZoCrJAe2Ahd5fyQoFSih8ydEHGFRJmRHWiXw1\nsNaiH0CGqMW1WViNvK0IKdFwYG4EOyGLoZ4vUSzitIh7I8vLtDdyhT9ZB2n7\nFPku5Kpv5XwdJeRORWg+3DEs0mb/pw1kzSIleR2gm06Wd8iFAE/H1PKf+5L7\nSbGB\r\n=mQR3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEOf3O3FHOzXuwm/Ht4vfVSFBp/7+jCdv6NMNH27tFhFAiAVcBoeqb2xxzKRNGhudu3Xl6Te4AVKLkIvG1QBiBz/GA=="
+					}
+				]
+			}
+		},
+		"0.5.5": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.5",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-EuSYJDtF8gLMB24lzjHw2KotauPsVJybFrtGfQyMm48oC7sTkspA26DqcqcbnRl4GC6sPVKWEx+ex72eqopX9Q==",
+				"shasum": "dccae8ffe588238c3c3db9b78df45fe95add498a",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.5.tgz",
+				"fileCount": 5,
+				"unpackedSize": 87314,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe/faYCRA9TVsSAnZWagAAdBgP/RlrzXt6ytRf1EqK+Gh+\nILsPqt/LULeBV+Q4axeNYpaPf5iYIS+b8g6KU3OIkyIqGX2tNAuQQKn9THSe\nSeawJLrsA4Xp319uBaZwPrkZV2ZBLDwF44NDZthdFRzL+ZMXeU946Kob0R09\nM7J3AhUko3liiS/+ETSoa4iuBjWixyO8BcY9bQGcvBtEoArz6AHosYzca5Q0\nisdU9cyoSVxE1jUNiGTO6tWmrfA2/I7yCVGBxfcnkE5M3K7o9zVNVdBKe9nD\n5VMk3AOmC1yl+kVAeJTzRsMlVcAxpgLe3Re8QqOE22y8KkV0obLgsGq4v43+\nAXfutjsgrY2kZ4YgdIC5uhDrj+bpf52bav1+afOolUuhNJlexe3b4okkdmNM\nlexr9iHJQww2v/KNcE7BHQtYnXobB5cAeqAn/abfCq11KAEVkn7Jn5FJY48p\nv60QCRnIXgybj5XMfRtSgL2+5aIbIq6gG0M0DMBHhCiL1mhdynXjXdP2ea/W\nsbDDyEE6lMNWUrhTNYHfaEsFYZIvx6foh2Jw8Zdn4R3GUD1yudoePGq7mK+K\nakGQx+fruwFLFPNHdfZRGqVVLYRD4OL5i2+Csiwg5yi4ocXih3gSL3/KhuVS\nkB9b8PMm0aVFpyWSzW8ISlxaHhatPPCUcPJpwZpHGFky7cmwhso1qXjIzhqC\n3XSO\r\n=Sb6J\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDbY4jrSvG8BangifySDZd8FFOSCgrwc8lGhU4UEGTX+gIhAKH9J/D2+6Vk2fnQr1y4Dp6JsY7Pted8bg1mbfrylCpm"
+					}
+				]
+			}
+		},
+		"0.5.6": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.6",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-E5cJKuecAEt/psafJ8rBjAezBS5/5iqyzgzRPH2JWEhZYTRzkphX9c9djqpJj8Zcfv7PpqgNgXXbaqxgCIVsPw==",
+				"shasum": "f846638bc10adf068642decdf54b9a9ac856ccfb",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.6.tgz",
+				"fileCount": 5,
+				"unpackedSize": 87441,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfUPqeCRA9TVsSAnZWagAAJC4P/0jhaFWwxOUE1HUVFGze\nlYrRUSwcbSnMlpFrNcFLXVmq9QykxCYB6ChB2SRYyFdxWLr7+cqMVRaCjwX5\nER1KzFGGFkbLyHwFUEiuhGWNDbmmRQAHFL+djCl/P2LxGx8MNOajbPUOcntl\nLXHVdzK3dTmoDFQxSAOVVSyrYs+7IzmKYIxw6wwxsCHeABfEUFwtZlbA32j4\nwuMEXTizwaoS3V6VD2z+YyyQ1FzignxGySpIE7Wl32IPHEdS4psCU2i8CqSW\nyxIADYz/Kby3scVpxwi8aWB0WL7aHn9hd2D65PvifugcNAMjiJiunewSyT8b\nafNcim5f4zO95X3g94Z/gnpJnaz1DZpazDX/L0aBRkN4SG3DZPKUDZEu8jVl\noZ0rCQ0Wl37tcGQ+iBeN6Yuo9kVmILnPoVvlNDzk+VDO/0jP+KKwgJ89PrYq\nmEuSxM8sjOhcebnhCrKOY8/y9SNy2at77YArpcTAuhsTNQwCduSlNM2sXR5X\n9mOv2GUkH4rzs0FAh9Mck2Wl+PzaACSOzvaS0lt2oTE9ZMTCbVRLJkDIWvtu\nUnPPWiYQGUsGlv02UcyTydgDXkkyr7pv+8NqzNhGKVyKIQiL/RgIrBK9Cv6R\nEC2TI2ngcCbF4jGvZbfVwAReLIUkf9vUoxCKaaXQMF72AnniQMdyuStmLEan\nhD3i\r\n=I+ms\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCRDTp2BQC4w97AaTKPkFiPi8TOg+JJH2mPty08t8IQ8QIhAPBZa0yyDZYQkwmXABG+scyrKrnEztZiauK0rja6xxRq"
+					}
+				]
+			}
+		},
+		"0.5.7": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.7",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-5aDxLOFlwjwq4UH/aOGXZlSR0nyBJSTsSpdgcDs6DMjpcMxT+uaDRl1ZbQuIa57E5blHR5/Qt6X8EdXYCq10QA==",
+				"shasum": "a5895cd4a89f724debf9c5638a76e12fd1ae7f18",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.7.tgz",
+				"fileCount": 5,
+				"unpackedSize": 87441,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfvMOoCRA9TVsSAnZWagAA8IkP/RZfCNgT3AElPW9S/ZMi\nrvpPipjBLUVFYbzBCPIv6ZDJJHQXk/jfXbjREF/ekR1R8t1XGCjzhyCpmlnU\nuRNczoKjFgC1w1afXn8wHYl81p19+uTNobfj25WxQqKCm7+lxGWUmJ+2JOM8\nSMnE+2LZXuVoT2Dq9ZRWR8Bwyvln7bFz1E5QOZDdbzs2U/gUPomSoAwIedGq\nAzMRNf9DC5As3taNT/uXBtQNpXAvSMjaL7yv+te8n2YOJKWcZbd5eGfKMq3T\nUEgpcsuAwbTIT13aV1oHeCDce9BVUX3vJUufZNYzm5C4lldK8zAp+Jn95CM/\nG+quBkuZPFTEyoVselYwkeB5H5jS4mfHLm1yGwrX0UkFXdx9ToMueyj6c+Al\n8zb+cgkzN+tbOYdGJQ6bXvvBcLTw/tW78IL7WBx8AppLrJh8R9EIa/ygyaqP\nYedKRAbdDsEZZliz2y2A37uNxfzQcxQEejNM50eY9AqEOUmN6BDiF3aKSwuk\n1SriECJ8paJhQYjWDmUgEArzkzoOvEEv9n6t+OzIDfTvky7JKgHFTSU6WhOD\n/DQ4KD5SyFDOTaR5/EA0oYX842cZOuByHYhoT7KQcnXHR5eUOR5YjFiwRtXL\nyrNbaXmJMruAkLIM1hi7GxSiBLyIHDQEU30LK+Z+k/fcgzhAXzu1C7LN69uw\nFJ8I\r\n=ypJQ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDoN/4gSUmrK7W+T3EZ6WnQ3RwtC43/5X3aCSYd0NmJ9gIgZT+Edk8GqjJSlHX8fUAAw8Tf+QsAWhaYvlpeRVB8lHY="
+					}
+				]
+			}
+		},
+		"0.5.8": {
+			"name": "esotope-hammerhead",
+			"version": "0.5.8",
+			"dependencies": {
+				"@types/estree": "^0.0.39"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-nghD/3J4tcCNy9SfBirYDqGjfhK2i10MGM1COMq/PXgZjHKEwdiOt+vcvKoL6hD3QiGYCRKcLe0tWFuAsoJpzg==",
+				"shasum": "df6463860d3bb0367cc0925e69b6bb66ed8bff73",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.5.8.tgz",
+				"fileCount": 5,
+				"unpackedSize": 87528,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgGFPXCRA9TVsSAnZWagAAmqkP/1ltnoczkLKbVRzsqrxL\nf7D7BH9fBW/cxhE34/p9JyChlJ66I/xY12uXZ+meX1sgHVXcFP/PhCI7FVkP\nZh64krM45aftwjXK1FrBXGHXxton0l1xfSHQM6K4J+l7JZL7toaWiNVIqYgT\n7Ha+QVawOz4PsQyOHia2G59ghZ57i/X6u4HzG/3+kZ//4vEK0nj6yYpTY2lr\nIwXKNzNYmgUvjddCwR/+tPgK5aTaZBFZQgZq2eMdb4NTSbARm3hxuk6St5hP\nDeUrZjnZJEWclL8vsVv/LrOP3wopMO0i2WnYwP90VqfILzsvxCwGWjw3puX5\niKX2SZ7zg5KmPdB1R4AEHg/3NA8TdMnUXSUhaZ8rt7XzJmzbkgn7I4qvqPY7\n+0wNod8W2a/+MDxh5LHnuEP0d9QKOIzC3nWt6mBulG7cyfL88w8RFE58wTRp\ngbdLP1KKN00YcMBw7uH1X/RGzVvt0tdGayrbi/vQQjUQPSr/g2aMrLr+sZpE\nch0xVuTRrKU1c7SizuN9l7Wpak6BH9vteVRHTcA6HA0Hl419xu7uawSs+e3h\nj6sbRpZ2E5Xqyj1cYIA4x2Cz6dueJPk7h7VULzk0SBmzmUj9+W2bgehBUXRe\nVHi8XRDzMcehNbhqAYOkrJ/FtLE/8by68lNzNqUjc4JfSI1NXFsiKy8/OH3v\nIbxe\r\n=zqb1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCT1MZXgosem/qko1HYtwqt96KVA1AAy85ccPnvHuq2zQIgeb3k6ULpyuLk3m4G7YxQK099kjsTZO17XTLdbQK0u0Y="
+					}
+				]
+			}
+		},
+		"0.6.0": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.0",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-MU7HwjdrkqL7TlPBhHd0YVoNUGFRPDKGxsFzwBlIe3ekSZINLvnPjTb+nyzM4brRxK09r/d7q+UVZ0NtPl2IWg==",
+				"shasum": "3f4c93faaaefa5b5be20ad9c8a74b5c13fb79899",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 89082,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgSe7lCRA9TVsSAnZWagAAlpEP/0cLtlx/TvIZ7rp0xAay\ncPqXv0Fdzvz3vpg18xqIdaoRU/JxDmQ5Blkg6wzLpHzZy5H6TTjnxEa8h0Ni\nFYNmnQdhWkW5mYjcXKkCXsqssl1m5lwCXButQ/gGenAZ8x70NLp5+pgZq5BE\nTTzUQUFvgux1MdFbwSly6vQPOnsOieg5AKFboGpe/g8JVPlpFlcfRoQ14eL3\n/hs6QrUtGtFs++DItVjZebf88dO/kQp+pQVl9roMW/E+M1YXcqwrIyOys1VJ\na3WHQIUV1d+yCRALpvRM6Z1ngoa+95IgH0sw4VCvaGEpflqudWGZl9vbuEDK\nvz0gP0+QGaBCBbBuqrBrBxI+zZOA9bwCkPsh3jo2wTugxOy/dVVSIzG/BWpN\nU2y8cXlQpHmgfMy3wW7N0+pCINmPyzoSxh9+tZSKI3NpdS34csvjd//zqsGC\nbAYDW4r/zGuNfafxpItyS4ujLcm1FKQ4d4EYNmzv4SW/Xsl7uiuhsK6m1FSw\ngeIJfGO4gulsdWa9TpEUmqwAwhuDsaQm2Rpauw0EcWCwvUAAp1NI6lB+RVcQ\n+vjsdmsKxOPU3sW/pKRTwycSUEgREOt0q9m7OyfMhZPzUNDVIoaQgfZG91h3\nfJpdUX8aRg+NvZwjW+pPm8DBZ88v8X4Io91knCYu3sCVQ1HTawoxxQNcDKrr\nfBfS\r\n=cJco\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC/udcKLmE5kg0ZmrH/wnT9ybfoFvPNkfYDQe9K2QG9PwIhAJS7seuUV3nd6oTCFBroYvFqc0hhN6kn3apLe5ePApOt"
+					}
+				]
+			}
+		},
+		"0.6.1": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.1",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-RG4orJ1xy+zD6fTEKuDYaqCuL1ymYa1/Bp+j9c7b/u7B8yI6+Qgg8o4lT1EDAOG9eBzBtwtTWR0chqt3hr0hZw==",
+				"shasum": "3feca697baede6cc89ce387f1e0bfa246d6e256d",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 89051,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgSg2XCRA9TVsSAnZWagAA3+gP/ilu/RUrK9PpGoEtZdUc\n1u6IgunSkT9EXeTq1MLf9G9LFtw3XkOay+TM7+CGNa6pZgC3qnZ1SckkZYda\ncA0ROvU2YL3oBg5rHBLP7Wh8SZE/SCbad1lAyPqTU6ZEeKcOGSI0ZAu7IHMY\nmOtGmBrPD9i1BfIsxJ2XdAlbWHQNnm/WKzoH1ybT1/6RggEwRXowrPNdd2zx\n9K+ufsx8JoRE5Uo8qmF4Uixy4LaEZqCRqQkXC72ZseRLepOztAmu3wgtLysz\nvQ0qbrnKI2SJ48fSRfdJHt16DdSJB6hoK9vPzQyMPjX8s8nyVdoICJKJnQjx\nST1yxO4TG76E3bAj+VOWwIVWqIynuJPolCfuFD9QRfAFNBQRN2vu2RtXB6cQ\nHhJ9OmNDx/FOccPnuvRxJ3H7bJpctPWrpltvdEmYs2cSG8H6qq38dcqdMBcC\nhai6meOJaLwXuNWJiBhYvM28+OHH7ieuG7MVknWql2AlmCml9qxgmAU5gv3p\nhloXtodbSpvooJhUBu9VkxolrH6xOnKugkmt/K2s/9pj3h7CvKgdunhIaAn1\nMb3eWBL63QlPUHE6j6KWl5ID6+YLTB3HZRPoxh73O0RLqq+KRjHRLFnRj5ZO\nrMpttak1kwNP4Y6I7teCMAqYV/Nh6bLoZWi8uIEcdOYvxCf5shyYaCdiHDB0\npnfb\r\n=Ktv5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFL5R2KuHFaN+3CpITeu9z+ruX3jel+IFv+Kg3aoU/TnAiEAyMjRvTNY2IVMg6ZIrfmdHVAePNOziBQ0AqtmLxo2vQw="
+					}
+				]
+			}
+		},
+		"0.6.2": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.2",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-SJdxje3PBgYRnHKfoTdjB9Q32vHLiuJABSvTXVBHVpzTz+uIgpkrMcXD1Y0i2k1gplPNyJ62gA8k8/f08FvFsg==",
+				"shasum": "06d802eba949e9cac109a20cafeafc8cdeac3b32",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 89789,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAugAc/BIsP+tZMPXZO/3sBAbW6F6ydMQO7deMsVRjdaAiEAtieqzboemCOawZx2QOM/TBcubv6AUXqktDB4Dn+vnb0="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixouqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrV4g/9F72upNgWEl2plTbfSjdGSi/asFHcKTALpkJ46ppp9Gxu9UoL\r\nWWXzwMt//aMLnnIxuAnThchSD9ppqJtbC3jkhpF2ykdoF5pcPOGeU9N1SiM5\r\nR26K9B/ydSEv0HaHMXg6Gqsn7dqmrVX7hhfT1X+R6YoVcoKM2Lx0MxGSho03\r\n6b8c4Zyb8XUBSmFeLejbt+IB3M6/XG2kTWuC2wdyZmQ/q60fN9fHDJl98X+O\r\nVSJnOgr/S82dGxVgGEXLN3xP2GoDW5QqJ9wgqMu6u86SnelTkNEjVR7VeT0D\r\nMsGoLUB0kLAYCQ0cQboECYp8aP8vyioeQwYdTN46ZqXJa2v0GLBbZ4SwHyoC\r\noJmXy4hU1gLHY3UogH6M3DrGeoJg25G1fmk8DbIdqgqR6X75VEifgvhohXse\r\nuPPTqu7UsNM9uGGdjzv1+dQu4WYI++9ue+lXYJnhqzwYURqvvwuvajh4gtWF\r\n3jJ2BaTEMuUONYeRQBxi48VJKeKIQd9x0wy5099tjePI+bk/OEVc8Wysj2F3\r\nkYtEp+lRJRZVM06HKX5MrxgT0PZVpKmOmYCtvJGXqai/1tR+jp396RXQAEUU\r\nEsptXH+UKJy8Q3Z4Y2SvJHm5qVVSvZaxK9DqsSgezlUDHND91IOcWKEI/N5J\r\nnSFxemDDmyMOABqaFvVLO7T+tCBzr1G3Y6w=\r\n=akLA\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.6.3": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.3",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-Aq6gUznvm0xPtjpbZo9OSsRO1+m+NM0hjZOYufH3HDlJWeOZpBskR/vuP9/tiMaQFD3+ES5BQq5fAY1qOLKWUA==",
+				"shasum": "0cd6f7503c7fe285daf366ff7d42a338316d59ac",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 89796,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDTB0ADvTxsXMVIiCcRorpVuMakU+Re6AmnjqJVi2jOjwIgNW67dM1YezteZ7DniuDxx/AdgpmKPCnhssnbpOLIoFc="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtSxoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr8uxAAm+lRFQjcToQeVkzVMtRROmNEvuUV16tEnYBMkgqz+2aMyQ4j\r\nghhwEMUykGzIRML2OaHqABZ/Q8MpqJbHJuV6MJKwo+wyM7lynEVTWtD0u7dO\r\nqHBei8qa5PxdJC3vflkERXCLDoX4YqTBFWZHNP4kFZo3NF57Sad31oKjVuhR\r\nJcHf1GtXXnADWTLEFTywPbKRMll0jEMTOI5KabUjYVNfKPPleO/ry/1L+zEZ\r\nGBHGefs5Aq3x3AN0Nc7KbtQ3pKwTUrQ8dRuu78racpRX1eOYPjTWea7JjjuY\r\nqUIWG+8gDamkT8+BaG5tWp37qkU0+Ic/gNhPsB/yGSuFYF4YHBYw2EpyVCar\r\nTAHKQ9A5DYu3nqUKuZpH5hfTNo+vknWzCOmZdmsREBgnqM/gfIXuxxm9W3dp\r\nsWSwEjyroE3Xftm9Clz3MAHBmDwkVsPc91fd0W4iRPFA7la5hw8I5ZBDdpES\r\nwSiON0unkypKDXffkbRYDfgSO1YGg/pyKLrowKqGMqL2nGQIemfbx5XAGAv3\r\nrUEjpnirKjsIk1szOWDT8tB7UIQ2UZQUlwnTxk1Rut+L94qHeEP0xkTKoIoe\r\nS0KXfjTGwuccg7LgIQq1Vj2VPFOcHrQlKbTcxDFL2OZakZrNbA2MeQjAx06J\r\n72YX6XrMssk8JqUlHuEGWCvyXkoJpPC6PXI=\r\n=LTAP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.6.4": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.4",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-QY4HXqvjLSFGoGgHvm3H1QUMNcpwnUpGRBaVVFWE5uqbPQh9HSWcA1YD7KwwL/IrgerDwZn00z5dtYT9Ot/C/A==",
+				"shasum": "e3b8ae5fbe5954aafc5bf507b8399560500be8b0",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.4.tgz",
+				"fileCount": 5,
+				"unpackedSize": 90528,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDs0l988d/bXLAjpbIgry9rNK2a+63PQmVm+h1w8VP3pgIgOGW1+3mHo22WsjTsno5HulR/3LcI8iyPwcxKg4Ha9sg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkPpmVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrlSQ//VceKK+KC4oz5DR65QeVRbWZkrmLbWYnIHBXweZurUBnrBsr7\r\nGAMyf4e6BFDtV5Fg9APOBDD60Lv29xpk52nXHSUAS+0uPvtQDleIyip36wBo\r\n74Q221ZFonXzANWc1OvLLYI4wyKwUGG4lvNOiXLbnKk03imhoZU9DYb10W18\r\nizH5oBw4YZF0DuO5H+KaIwKFgLUhlBMGLl9zGzgXrRNMHU11COEgqnDHXaTD\r\n2q631w8nXcynkjGt4D41quowf52LiTiJQKdEL0rKOquok0/IqybFb71uwjR1\r\nmWk7KxhFvir4j9jYaaamTh51+vDZqiEexRf+1xrvYMriRif45zfPwEXsGWHl\r\nkas9c5++NmoGMAWGjpuTcrp6KHzUMXFmt0+uzFuGh92ccrS2UuPQgRK1w0PM\r\nEKiclr6jKfZxQrgkjAEbbbrGKaGPGUl8X5hF21HoA9vIww/mCvSkXmbidofi\r\nzpipEtVYpFjn9axbx+Vflm1a56U4ZBxbiSr9SreM8eRbCIn9RZS7JBeSf2mb\r\nREU8ua525GxccYTNjqV0BD5iO8JLhDpjFDyg7he1gf2Ky4wstULxC6AP0S2E\r\nleMzx4l/JM5zDXwrxZQOGkcHPfM5IoM5TvhaCsRBRpzFIK8ROi0E46mBLymH\r\nVOuKhpHVJp4zugQUaM3zFgHYaPU4x0XhygU=\r\n=Sp+G\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.6.5": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.5",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-vjncN4nG+RvsUNFC0idHNw1Xzse8GUWn15tr8In0Q4EBscnELTdpQVfsF/cRsMlvSbJdd0gUrW6gK5U+LTmVCg==",
+				"shasum": "1de536b22ab08044ee055f504053eca9335c3843",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.5.tgz",
+				"fileCount": 5,
+				"unpackedSize": 88105,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDyFRjuj1DiEvCZahCk3MIlc2LTkRGYcQRecLB+ynAG3AIhAKyFJ4aKnQpWBs5DmeJjm35SAovDKyzY9yly5RDm1eNT"
+					}
+				]
+			}
+		},
+		"0.6.6": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.6",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-pHTz6hKpCotF/VDMK6UlMo6A1Y8nQsYKuZPtNKWJSKWgvJvB35m91wqeSVz4TlkxTHyIfoeIwMiffdv7Z0JCRA==",
+				"shasum": "ef3c7b2b189864ed1646bcb04dd674747f2a612e",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.6.tgz",
+				"fileCount": 5,
+				"unpackedSize": 88210,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEo3UJwp9rENSbyubuUuccMYtn+8j/6GPdsoBswMdLaIAiATQZbrLrVwqPyzIDAoLEdoxInOu0aWgFop12N/9BBm5Q=="
+					}
+				]
+			}
+		},
+		"0.6.7": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.7",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-nejJRHWvdoymlWnAXJGm8qfaK1hQ7NiMnTQzMSHPUzBrY7Nogu8O0Q6/HcY8AvY58pkkq2loto7oDDZ0zXYQcg==",
+				"shasum": "0ef43e8bb3e14b7ddc51ac0f46f213fda88807a3",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.7.tgz",
+				"fileCount": 5,
+				"unpackedSize": 88262,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCHb4Tb6EWcas4EcWphAh37FIxLeUhqKLHaSVGE9JLq1wIgbakoO5eQMyocqnjuiH8GiiHNEXmvukNhir3gJEdNh9o="
+					}
+				]
+			}
+		},
+		"0.6.8": {
+			"name": "esotope-hammerhead",
+			"version": "0.6.8",
+			"dependencies": {
+				"@types/estree": "0.0.46"
+			},
+			"devDependencies": {
+				"publish-please": "^5.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-2Zhg0c6NfrNA4QT5s4+QG5WJQtq3Se7GonNwtNwfr7sVIo/7L8rirPfh9yyloEmDA7R0yPgD10teFxhf2vWyIw==",
+				"shasum": "98f3dbf533e859de8d54e5bab4a930214f505810",
+				"tarball": "https://registry.npmjs.org/esotope-hammerhead/-/esotope-hammerhead-0.6.8.tgz",
+				"fileCount": 5,
+				"unpackedSize": 88473,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEZGD6r3njot2yX3ktpHgcdZMG2UyFYQkwdl2cqo29zqAiEAo8+k3ztudDUYf6ORpZ/TRLKzgVi843H0gnOJDC8fwxU="
+					}
+				]
+			}
+		}
+	}
+}

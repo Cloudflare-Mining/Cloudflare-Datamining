@@ -1,0 +1,3552 @@
+{
+	"name": "@effect/vitest",
+	"dist-tags": {
+		"snapshot": "0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad",
+		"latest": "0.13.19"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@effect/vitest",
+			"version": "0.1.0",
+			"peerDependencies": {
+				"effect": "^2.4.10",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "66fd576c15e7e491de2f064ae1d90e60c6f2f242",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.1.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Arsxcs5JgdW3XqOmnfh5yT1BVDNXgheC0DATCuCUo+Ow8D4Czz6XA90x22DPEo/UAjG7/untfadx4sjZCxFfOQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDWrj1p8ou9FIBhOyPgjcBQq7QqUcyegjxaBchkJkawTwIhALdKYdoIfBeht8VnP4YNm1W03EHXf7ta2vLBbMesR/Xl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25040
+			}
+		},
+		"0.1.1": {
+			"name": "@effect/vitest",
+			"version": "0.1.1",
+			"peerDependencies": {
+				"effect": "^2.4.11",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "32c280c5a826ab908c421a6061a528cf9453e5c8",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.1.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-0MUWsus4ZQ6tdwwRaHK4ttK1csu/WwBR75gZ+v/gMW22N2Cs8OewaJDm9sV3egg2iGmWjaxry+BqSRWDC6TlKg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCMP7aVF88n9ej+ch7mJw7vGHNNzedaETHIrOZocaTC+AIhANoFlQWW84I4SUDLfdyD35KA7GFXOxOqLl4w5tI5xjpl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25023
+			}
+		},
+		"0.2.0": {
+			"name": "@effect/vitest",
+			"version": "0.2.0",
+			"peerDependencies": {
+				"effect": "^2.4.12",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "18fc42e638b557e7d1624683f788ff519ddce696",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-EHAhZ/QCkjNxOKlzfTAmStfcCqs5tQYW2DeXvC3cZAKMWgTHVR61G7vUxDpoqVMUlPHm6PuyVez+P6svfxHRWQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAEyccHlhEKpjYT1yXKqqTTh+5hjLGTTO3mN1R4nB/nHAiB1M26mDYdQKMrCFN92JToArMJYhixUeDH25n+Ndi+v1A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.1": {
+			"name": "@effect/vitest",
+			"version": "0.2.1",
+			"peerDependencies": {
+				"effect": "^2.4.13",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6248365ed9df5e7d80ccee99adc20f2125f5e5e6",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-5ookmXUZNhM5QuVMubyzUK2Q2uU26E1KxxU5jUd6fVlE8PZJPVUePE62scQI1v7/cNPBv7I8O48o7tFtO+eoug==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC90K5XCE6ofHU6MStjpvNZYE0NAHTU7Lo9Pm7BaOfqGwIhAKMAFCOlUK8+C13jnTlKmWjLocPH+lyJ22I63FWWijA2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.2": {
+			"name": "@effect/vitest",
+			"version": "0.2.2",
+			"peerDependencies": {
+				"effect": "^2.4.14",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6919ab478982ca9e45710e2dec10338ab8bf8604",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-J5kyvGDA++EtC5Ikwyg6sC9IJHFwpIPjTWTtAfajH1AjD/hkTAEwjuqSqmbACOzkNUyMTBa9CDfNpDnBNbk1hQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD15LIjo42FjXsnkidZ1PVwqeZ0lgwzmXAyM7PXq40SxQIhAMTTC7dnkEXdg0i9jMM1b3pVjQxZgfowPtXWmftyS5QM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.3": {
+			"name": "@effect/vitest",
+			"version": "0.2.3",
+			"peerDependencies": {
+				"effect": "^2.4.15",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6b1571ef8887f7e6c052c783f69bf79244a3ac40",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-PwR3xCojvJ4uIproSOz83DKhap3ixxtrUhvNXC3EaS3LS6kJ8rqocUksw0qlahKaYHqKRrKQ1vz2mEfGJRzsnA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD4+nQRurbjbxthdGRatTXPhlnRV7y5RbfFDuBuq392QwIgPBdB0je0USFTYD5LPYrign6qZXa8EcoiK8DZk0cxsdM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.4": {
+			"name": "@effect/vitest",
+			"version": "0.2.4",
+			"peerDependencies": {
+				"effect": "^2.4.16",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7b58df251048053fb50d50e3d69a1b8f9096ec25",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-SvR8v7IoeudzRyjzf3TCSHtS9TkgK2P5bi4ZYUl3qzwSvRWTH1d4nMQPEnh92nDcVUclp1OzYvPcOQit1n9H9g==",
+				"signatures": [
+					{
+						"sig": "MEQCIGobvls/Tme4qsL2Q7GulDpe3Iloy1naxZrRTWnco0LnAiBgn3JBcWfBHZLRIKTMGinzYEvR2Wik7dCAmhVDtiJs7g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.5": {
+			"name": "@effect/vitest",
+			"version": "0.2.5",
+			"peerDependencies": {
+				"effect": "^2.4.17",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "ca170ad5197145dd88dc35d0b01c7ee0e10b6f3f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7C2tKAG0Nzxs9nwgq6LEMroozJxCFjBgvYU2TphTUmbZfENuQCInNvL6FOFPmzNTcC5cK2TSN8cPI9jFw+1BvA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCEl18mtwgkXkFMUgzSLZbNcLTJ3/UqHt1ca48BuqsxVAIgOV4V1NgvKGfdHjZJrTMe3BfstO/zuLr4xG+qroEqn2w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.6": {
+			"name": "@effect/vitest",
+			"version": "0.2.6",
+			"peerDependencies": {
+				"effect": "^2.4.18",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "3c578531d893d1664f400d66ecae9f74930e8e34",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.6.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-u1vACeL4YidC8Uvs4+017HS5sv2W/+TQBCvl8mprFX1J15LDsmJMXUxukPMYy+5Iq2KBPWyEjV4d03FaFGRaUA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDR4bAmwZpeNuc8Lxd6dxvRnx63lcaWOqXEJGzNzBQhIgIhALnc8FCYfHrBNEz9c3q2unN5RONkDyK/UACAHtwd55iI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.2.7": {
+			"name": "@effect/vitest",
+			"version": "0.2.7",
+			"peerDependencies": {
+				"effect": "^2.4.19",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "bf3850fc57cbbff2318d35534a97022a9257185f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.2.7.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-bis/xkJhNynBvIslMYyIuz4MF79hkqfzNlyJ6MeeEfNuROCKlOXqUr2OanXOgzIuiJYd56LhP8aEouM9PkOo/g==",
+				"signatures": [
+					{
+						"sig": "MEUCIGBtQMq4wnIhHMfcsf5FkXqk2Bg1DPo9llvAQHFsHO8kAiEAucvvP6s2dRQNZLHOiHYA9qu1U81hjhw63UXpXjtdd8o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28525
+			}
+		},
+		"0.0.0-snapshot-0a6088b73485a0602ff216faac09f40877bc31d5": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-0a6088b73485a0602ff216faac09f40877bc31d5",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-0a6088b73485a0602ff216faac09f40877bc31d5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8b4a06fc4d24fb94024aa47f838c7e255e7fd000",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-0a6088b73485a0602ff216faac09f40877bc31d5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-lQ5lZBRzuLANr71SJCttju2Ztgmenu+QBDJkDiAxBRlTwEjieGyIPeLXKC6mpsT6FOrzHyoh75WlxT7vtepvRw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCVfUV0q7FBbTFgFTRFebM60iDD6Jlhqr3BmVl4oFGWwIgJsMl8SgBqqYhdMyanlmSBfYYK3r1BjtlYPDP0QILftA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28624
+			}
+		},
+		"0.0.0-snapshot-189d4cae80e186661241002ad9d729628096520f": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-189d4cae80e186661241002ad9d729628096520f",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-189d4cae80e186661241002ad9d729628096520f",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7d28a326b4ffbd4677ec0636c222988ef5ce74b7",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-189d4cae80e186661241002ad9d729628096520f.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-gAzK0BeMAoAzN0XAr03zYbcKP0Fhys5zR9P/sI7O2RO2C8Jm8Zk2GB08oiAYdVjIRZ4yCR7VPt8DdFixwyYsMQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDJ/b0X6tunxbANkdZdT3B16Uy0ruvD5bdHZuu347J16wIhAPMNs+WbCGJDNoiKNIGxb6MXZtn13d8914Lpe5vDZHJ2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28624
+			}
+		},
+		"0.0.0-snapshot-56483396d5b4f58594f0c6e48b6848b0e7373001": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-56483396d5b4f58594f0c6e48b6848b0e7373001",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-56483396d5b4f58594f0c6e48b6848b0e7373001",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "9aa0eec75fcdd123f9992c5c922c2fa2bf80ab68",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-56483396d5b4f58594f0c6e48b6848b0e7373001.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-rdsxkOr3HYPU1HQ2PvEkrnnIMzOIUrKqC41zn651+Mxbc8YFC3PkFhtPzLkkOGvVJ2ma3PJ60S9PAE1bgD4DqA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGPoNWJtYjIMIrfhqoe7/4YnzFul/hjzF1I760rFLjHuAiEAwCMc/cOWfb6+Htl+ZRwgoE1VhJrvPE+Cn0LxCY9vGtY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28624
+			}
+		},
+		"0.0.0-snapshot-78b767c2b1625186e17131761a0edbac25d21850": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-78b767c2b1625186e17131761a0edbac25d21850",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-78b767c2b1625186e17131761a0edbac25d21850",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "d16980d7affa2d5abfc8db28b4b9ef46066de870",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-78b767c2b1625186e17131761a0edbac25d21850.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-mD0BlcTrcsFeTHsm+WTVLw7qRqQdlaUu/17OAoRNSXPQjnTrnnB+MN3DI/L67/1ZxjttZQGst3g0lsTf5veBmA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCoWGMBthWNAlImaxE2Byd7zJYe/3Ru+oDyhyqllfRbdQIgRQymrOT2riFtUaX11A39+FjMD5gn2o/cd1CkJuHKIJg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28624
+			}
+		},
+		"0.3.0": {
+			"name": "@effect/vitest",
+			"version": "0.3.0",
+			"peerDependencies": {
+				"effect": "^3.0.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6eae40576936e178efb7de856f373d276af9c35e",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-UxD8Rv+nUlS4vywmqjwSJjeIkMG1xOYEAFLVR5kqWJPSSIFTVA6upzSRmwAILRObLu+l5xfJpeUr4yWevnuK6w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCoWpdkFGLQT0tBPMNVfgkXMCFWpTfzg2NM6jgzPHFSbwIgKAb80g3XR7NoHS7F2+1wjfcTh5+J7r7G97KqmatVMug=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28655
+			}
+		},
+		"0.0.0-snapshot-57e37f3292d7bdc631a323ced69567ce2d313edb": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-57e37f3292d7bdc631a323ced69567ce2d313edb",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-57e37f3292d7bdc631a323ced69567ce2d313edb",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "25e55a3900ca4470fe3eb7efbb4a15f3ea875e13",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-57e37f3292d7bdc631a323ced69567ce2d313edb.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-K7fIdWPFjcdw7HaZ1bnaU4jR7mO9KuBQbfuWfLZSCAQTHe9vEt7Fn7O/J0q0BbLTzs4lQEts9QE39sc0hOCqyg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHsTgPtGwKitSt/QBaGMgMlMutrrS8y6TlhLP2J3jscqAiARuola59Iilw0lmdzTM+wnT5TmIrVVC2a6JucsroRmUg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28755
+			}
+		},
+		"0.3.1": {
+			"name": "@effect/vitest",
+			"version": "0.3.1",
+			"peerDependencies": {
+				"effect": "^3.0.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "9b4c0678b196b5b2ab5e9cd232455f267f7e15fe",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-iUohS1Lorb3ffDjqPxqbi7tSE9zxihWmCVmFcVnYpmHeoRy1D+3ghb6e/Tp/sPNAkSh+CIORKUKUv7GsVgImNw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHJ17A6KifwcOW2anMJJauNMWmAxpOclylh9Qg3iZazUAiEA8De5u6HKFD/gwL8QHTNED0OAaD++SzwWln/Xl6WkjgU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28655
+			}
+		},
+		"0.3.2": {
+			"name": "@effect/vitest",
+			"version": "0.3.2",
+			"peerDependencies": {
+				"effect": "^3.0.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "9132d183dc582bb4a07ca5d689c3c31362528688",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-/DkMsPnu8Ek7+oPOVnJi2mnToU7wqD1HcOxHcfemipf3v/vArpyl7+8Nzk0YbLiY6tjpkB6eBXysq7XDmtmPZw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC+enCeLiSs6dD/NsvKBSb4M22IdDmsU3/QOJ3ah2Y/IwIhAIQNoXq3JCfqeXrK7Jfpq+B/vhlXDImkAFiotzcZ7ujC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.3": {
+			"name": "@effect/vitest",
+			"version": "0.3.3",
+			"peerDependencies": {
+				"effect": "^3.0.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7adf9599fb6737f2a580779aefac743c42b1111a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-1ESqlaaIDVHMqhIcyvGSZLPVEr8gAsYgF48abxa1cKboNCzL1CHcTM8mmBxLdf6TySxJvDbmwlrmB5WLi2UdtQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC/wYHv7RDl9rqfF2U9e9TJqnhpdME2WiMqp7ixC3/nHwIhANx3yaw1Was2DKPIpEE51rTRhrARPZHVylmJQlSVq7a5",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.4": {
+			"name": "@effect/vitest",
+			"version": "0.3.4",
+			"peerDependencies": {
+				"effect": "^3.0.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "1a08201d304ed7c5b45b4acf44ef07133ca20726",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-VBEEomRIVFilTDPR+bPEXIjzONDUpq9z8I3ih9rmzO0rnSw6/3u46lAHIoBX99KgpYVlOKedP+EsJsoLNKW9VA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDIoxSNqC8tQAOr+XmH3aRcOf/6UdaHG6Y+s6fnd3RhjgIhAPY6JVEklhvkYSdMDFUYwQGJqCmT6E/6PyPtem1DZcHE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.5": {
+			"name": "@effect/vitest",
+			"version": "0.3.5",
+			"peerDependencies": {
+				"effect": "^3.0.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "2677f8fa9c1fc5a4a51bba9a73b4e8929e5821fb",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-/hNa2dlvgTVfZhg0bh7B8o87mcOdB4U0mKUeEjSvR+00VCdv8RpG62A6iFGi9fqruGm3VrpZNzduN4UNCU3X7Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXt8n0oKn0iJslXG9CTiYzz/OaO92/w7oe8RHgNk05pwIhAKCVHw7aho8Rz3wwTcHTNumoC1n8DA87cNropbSyRlzj",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.6": {
+			"name": "@effect/vitest",
+			"version": "0.3.6",
+			"peerDependencies": {
+				"effect": "^3.0.6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8533d26d9a7b814f900bbfa58e09b66de9692452",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.6.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-phd7Md4ePc2s0VRAZQES+utkP+EjdqMIzUbVvibyhfHCLegpAFBEFR3ek4HZDHHX01Bwrpt5ZiQuJ1WhRVs9rQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDSnmUcweR59s7SIVjFcjMwmGiG/5E74yXRoOxY3iG2SAiEA7A5c+wJgfQYDaYyTHk+4wkdiFCkQ8czgsDaSclkp2rw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.7": {
+			"name": "@effect/vitest",
+			"version": "0.3.7",
+			"peerDependencies": {
+				"effect": "^3.0.7",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e742cf86fda9aa51eec4b2f8faf271726a1342ee",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.7.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-jeQYmedBCQ7TBs6V62jBcrfB7JOlSFpUP82P+2fdDtbp98UfgXM2aGUWs/v7gKAWNL5gJVLjp9es11fR/ojViA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDt9tF1d3z7BAK+tIfJgLh969qtmKIIzXBGSYk5706SowIgJ9lWj32V9+gYE77PwF9mfdtX0PaLl9g60KVv+U8zgoo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.8": {
+			"name": "@effect/vitest",
+			"version": "0.3.8",
+			"peerDependencies": {
+				"effect": "^3.0.8",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "61c7ed55ce8b79476d3c182f7dc15a7920072939",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.8.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-9bNINYuXDtFYyUNhsUqtS4U8nvVk0dyJZ9gmE3LGFxrrdVrctAXcMn4XHIqQCn40CJmMSXAPGlx/NsUEcARgiQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBbfaLV8S8jSNEICvCLZsK/1rH4B9z1bhLa2P6i1eOBbAiEA4aUuRu/B06XXzMx+oFWHJhsmk53vCupG0JfXrAR1M4U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.3.9": {
+			"name": "@effect/vitest",
+			"version": "0.3.9",
+			"peerDependencies": {
+				"effect": "^3.1.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "9335da12543a0fbdd6e426fe6c02fdc0dac6a260",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.3.9.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-r2kFekrWQ2voWJWpt/ceJaqhYMT32qnxIyb42hC6Uvh0DOHLg21h/dbuAubJaQ+EO6EAnPYU1TRLJwm6TpzfKQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDbbQT9TLh0SBNGt/Hr2di8xkLmoHiJUySZk5RG6DTW3QIgAshCjmAyST55blGFvsZ9BqB3t8mqPNQYHHV7FO367CU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.3.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28704
+			}
+		},
+		"0.4.0": {
+			"name": "@effect/vitest",
+			"version": "0.4.0",
+			"peerDependencies": {
+				"effect": "^3.1.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "4e07fbe812e2616e02a092ee9c1f3e217fcc4ff6",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-aRDgq2iQsLh7nUjls/BuLsr2ZRARgCKv4ceu4/XLsR58JRQlzXN6r5aKZTkgXmzRPBW0e05Aq3pbfns1qRiVrw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAPBjRZdm9RrsOAUoASH28Tmig+oCVmy7uQi1Sw9NA7rAiATXzLflFGx4tPpH+lLP8I85rALMirdVIZFVxbqWqoUOQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 31065
+			}
+		},
+		"0.4.1": {
+			"name": "@effect/vitest",
+			"version": "0.4.1",
+			"peerDependencies": {
+				"effect": "^3.1.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6da1927a0fe782fd3b40baf8a528f1bfb2959a4f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7BCSTGwGH+E7EngceHVBwTurE/uL2qNtwgr5oYqXsZd4kmWd1ilrZZOmFwWCwDjMmhDRYGqdWSc6Ha4qJ6LxKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5PAYjbM8XpHXppijLPvgvwX2v2zxBcMHAAQSMXzxqFgIgBr31cGKzuMw2Cb26FMQFve46t4PJHH9pNOX4DUTpIgE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 31065
+			}
+		},
+		"0.4.2": {
+			"name": "@effect/vitest",
+			"version": "0.4.2",
+			"peerDependencies": {
+				"effect": "^3.1.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8f70c23399bc71577d8fb51fb852ef680eeb3d46",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-m4mpBWuGGs72q/nY5Ovq8F2vw3Bfk2anlrhPZ6OZSpy8nhBhkaPb3vVW3zvvAg8QNIGOe2bUkl3bonsW6vVehg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDcMEhTH8MviTZR18z6D37LmxwYBGe/D7JmgigKTRCY3wIhAMk9XEtB8aP7gsgsa2DeGAJDk0+p9vhc0aaaCNF4ElfB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 31065
+			}
+		},
+		"0.4.3": {
+			"name": "@effect/vitest",
+			"version": "0.4.3",
+			"peerDependencies": {
+				"effect": "^3.1.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e9e5acb6fbecaa73b2b8bd5849496d6f5aa48fa5",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-PRpEwbTBGQC4hNV+/Jem9tcRqYG0xAdaqSRFoPB2XayxmcLkt+wDcQii9t1QxQqWUOlSadXwdPZusTX3iv/IrA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBoai+vr3+esrpV9Drz0AV5P0hUkcFQC+jEQzf42GqFGAiEAk/6c37LYmd6vz/t+77P/4dF3d4LtQwCqQL6ENiwh8sA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 32007
+			}
+		},
+		"0.4.4": {
+			"name": "@effect/vitest",
+			"version": "0.4.4",
+			"peerDependencies": {
+				"effect": "^3.1.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "1d78d04a1bc7313830c9146aad9c441ef365c90c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-pdt/UsZnIOaZX9Vwi7f6kVa8/DizFE2eGSK7gQaeH0ua8oK/tOFQ++QiRrP4SDJUrDzimEhE0jwsqbeB8V5IXQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCSjItCbCKU1X+eZ++LMWGBEn6CAmOYIpqKUCFb8GThjQIhAI9GDaKJgTBWepzph1hsyglSKizNjhPuJw+snsE8r+V7",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 32007
+			}
+		},
+		"0.0.0-snapshot-b4323ccacbf56b5c574bb69e7775d11cb8d2178a": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-b4323ccacbf56b5c574bb69e7775d11cb8d2178a",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-b4323ccacbf56b5c574bb69e7775d11cb8d2178a",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "d7a13a2d0e5bdd82b187a505e8b91db52a6c6180",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-b4323ccacbf56b5c574bb69e7775d11cb8d2178a.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-nn2bBUOW9pyYVmE94F2eje30ku+KlFH4LcWIBdKmpkYdVVt43EoqoegOVrd0w0nCNMkwQv8qsqDJ9kxaewReuw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGSLvoxdm2zSthor3P58KkoPmz9tEW+pQBpAS1MI0eCMAiA3fFfmRthbptFPTacWdkSik+j2hrFlHWpXsS7NfAaajw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-b4323ccacbf56b5c574bb69e7775d11cb8d2178a",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 33777
+			}
+		},
+		"0.4.5": {
+			"name": "@effect/vitest",
+			"version": "0.4.5",
+			"peerDependencies": {
+				"effect": "^3.1.6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e1d1b40471f88847306e89650c1ee2b6f7598bdf",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.4.5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Xlw2hwUDyVdVauKmYfq1GVbNjA/5nYT+6Nk73czj7/QIQN9oqxpOwwVLennQ+VAti25GJh/mj81FuoetjkNiTA==",
+				"signatures": [
+					{
+						"sig": "MEUCIF3ZFAIYQfupo5aGBW9NSWMF7mVr+8Cb6AkQgtBRqAAGAiEAtJulNOI/3lxiC/OvfaMknPwI20XkKvBf/HbhaJnuwU4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.4.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 32007
+			}
+		},
+		"0.5.0": {
+			"name": "@effect/vitest",
+			"version": "0.5.0",
+			"peerDependencies": {
+				"effect": "^3.2.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "d60b923728c38c4ecadf25c51578306a234a45cb",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-UNDfn0wPpXVnPUeoh5BVPDbr+Ss3d2E9D/vMNgyIn0UdlMoZENjFVm3pmjptSFwuD2lWT/5dq1SxSrJE8ln5iQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFq3frHnGleGH9COSeB+YDO/+pNtN7NuR+//JIiJV7X6AiB89hwAsLhtlGPseOlj2Z3snEcQuXkGobwVeYEzjYHyPg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.5.1": {
+			"name": "@effect/vitest",
+			"version": "0.5.1",
+			"peerDependencies": {
+				"effect": "^3.2.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "f6b5ae3c9c73d31e867d1c576adf40fdfc08df2a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-83Gey+hJ1+NfLs6iYmuVI0jFv27Ig2sjfDFPGpg6yF+1dhlPczl2cMy1+3j62NvolSEyPQv2wEWKBsMNKfNYdw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEWEFRLlg+pfk7evKuaB+97lnJUtRnOAqiOrTK+CsT2/AiBjTPYH6znVMVT9w5yLyH4GD7NIIy1vMVdWZ/B/cWw8iQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.5.2": {
+			"name": "@effect/vitest",
+			"version": "0.5.2",
+			"peerDependencies": {
+				"effect": "^3.2.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "0d1daaa15f7ef944cc9f190da838879f9a0d50d4",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-b+ONu8rAw3Jc7ddHYKB9gMpyt3iQWRFmLJ/D3ejLBOesr+Ma33w8GIdeIcZw6tcpj6siGMnmrHQUUQKFlW9QAQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIA7q4umgFn+3TOfmkTDUxZ40o6Wx8Eb5r4zMv8GTBPyrAiEA4k80AhSFS6GZrt4uwXOkwFTRvzw62uhOPZUHKwZ+cLE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.5.3": {
+			"name": "@effect/vitest",
+			"version": "0.5.3",
+			"peerDependencies": {
+				"effect": "^3.2.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6603b2f3963bb80c32dc616fe677da9e27f61989",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-zJYYh7/QfGWwR7Fdp1cnh/G4UGgtyegGnkF0zmiCtJFhSK90DoDA9a3W1mS8r8+9pBvopyxJ6mJtILHypyPaAQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDkucWjoCs4MvviQGTmJBDA96oQ2R0fYe+jvOOi+cRGvAiEAvf+u4CO2GeYs3mvChkcxKv3zJ513C87SC4QxYYTZ+FE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.0.0-snapshot-a451d9997e8c09bbbfb2025dcfec7f669464c9d8": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-a451d9997e8c09bbbfb2025dcfec7f669464c9d8",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-a451d9997e8c09bbbfb2025dcfec7f669464c9d8",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c7614992fdb0c43ade3d4513f5cb584916d615f5",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-a451d9997e8c09bbbfb2025dcfec7f669464c9d8.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-VbSS4fLmvuzipmHPHjzW4by1KsZGGMA69iE2EfBdNc5kcN3lLDadkP1rBjgv3ofv9QSD2EdHoy5FvrJ1Dvj9rQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBdE/djBMIdLYeduPoATLz6zltwWpl/q6VfCNk00E5SQIgNYrJWHZXzeRXCq9sfX+HBFBwZ3tG1eOiFiFKetUyPvU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-a451d9997e8c09bbbfb2025dcfec7f669464c9d8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34956
+			}
+		},
+		"0.5.4": {
+			"name": "@effect/vitest",
+			"version": "0.5.4",
+			"peerDependencies": {
+				"effect": "^3.2.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "05e187ad75f75fd2b69d8653ba54ee044549777a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Oa6Ju+p88lUR0/+sfFsoHjsAWOyVUA3rv7OTJyuYauiPoRwdf4ZSiGB5cUx1LlKb2ICOioNAzEkVkQGMNg8Wow==",
+				"signatures": [
+					{
+						"sig": "MEUCIDLjF57aPCDmkF+PKx0wW/QVC5zy3jzVlXzd1TdzIJZsAiEA+mo9SL16r0BPOx/OIiFV31OElY/lKA14cIx+8f/GaKY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.0.0-snapshot-a514ee721521f26f393f3a3b4e4eacedfad8e61d": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-a514ee721521f26f393f3a3b4e4eacedfad8e61d",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-a514ee721521f26f393f3a3b4e4eacedfad8e61d",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "3efbace75592dce5a797c015f5ee36b1f8b2afcd",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-a514ee721521f26f393f3a3b4e4eacedfad8e61d.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-b0cSALHPFxdT6Kr3Kpe2/EsxTZbRvw4xGyMXum1QCljzn5BtWbGIWmvH52/qD7rMoPksCnlljxyJXO+7T3iOjw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDkfBLZvADD0ztFJKAvHLQKCkZ4asb8UbkPuFRssHze2AiB40O1KutNBTiO0JvGTiDF1NefdUn1cjEnn1e7bnIOOtw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-a514ee721521f26f393f3a3b4e4eacedfad8e61d",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34956
+			}
+		},
+		"0.5.5": {
+			"name": "@effect/vitest",
+			"version": "0.5.5",
+			"peerDependencies": {
+				"effect": "^3.2.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7d88258b6d23e7466939daefaeb171c2823fc9d4",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-ilGC1cNKwydbUnzKKBoZfyNHoUQGMjyNwAmOZu6mPDvLS70ifDZmWVJtac8S6o2Eb/Lc6zYlx7VohiMyI6hzlw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDKVZQU0JcMpmBnxc5xPGcRh5tgqEsxpuBqcaiMATj7lAiA7d0vwKv05MHELIXsTlxFb2cJS4Tl7ae0AXbA7udNLwg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 34856
+			}
+		},
+		"0.0.0-snapshot-27f0443ffcce4f230f5d485826d1b79976d1307e": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-27f0443ffcce4f230f5d485826d1b79976d1307e",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-27f0443ffcce4f230f5d485826d1b79976d1307e",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8de9a059c79fd015548854e3708245df0129a335",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-27f0443ffcce4f230f5d485826d1b79976d1307e.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-AEwTfVUZAJo0rA/yeJte9mIPkPbYzBlJKCMGKDj9D6TsL8aFhBSlocQDpV0UeCkVz+w502QYybGNJ3w8asyDzw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFV3EUqEu9y/CRVWgqTMcUMm/Z93sOU7WpGSowp+df38AiEAuqiOL9l75uifJSPi/pBcecM4XgbTZs79Wncz8sriJLE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-27f0443ffcce4f230f5d485826d1b79976d1307e",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-e1ebaaa379fd8da009fc70115350394e6295b9d4": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-e1ebaaa379fd8da009fc70115350394e6295b9d4",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-e1ebaaa379fd8da009fc70115350394e6295b9d4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7a33911febf34ea851438b6cb0a1e10ea8017a26",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-e1ebaaa379fd8da009fc70115350394e6295b9d4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-tWR8AKAcsrIYdgtlbmlUtjMNEDMz3HUChk8iMuf/uTAZbj+5Py9RF6TtvSq3q+oQEScMyTROZcxenfG+1ObC5w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCqZuEbTFKcJ6fneCACZUEwP8aNU+odd2lS9P9T6+z1WAIgYRIZ2IoNACXId2gsEPze8sMXvA+y9FBwmC+W1bmxYDU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-e1ebaaa379fd8da009fc70115350394e6295b9d4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-79dc882eafd6ddb60780764e2f663a6087b52622": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-79dc882eafd6ddb60780764e2f663a6087b52622",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-79dc882eafd6ddb60780764e2f663a6087b52622",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7b7a16f8f05f0e3918371d95ddb7ab61f634ad97",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-79dc882eafd6ddb60780764e2f663a6087b52622.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-rBgnJhY6uVacDrpBdOhTVUVHVXa8kvHK4kuQUR4uDxRMLKG2yDt7VjLH7wgTjxcNr4Xdc5IKyECxOStkrz5ItQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCLLsOPwi1tPeg9UJAvEGZVgkydg/lHD0mzR6Bs7CL+tgIgEy3pet6y8MJytZv8Z4FbsKskPjofIadLqzovDEaa8hI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-79dc882eafd6ddb60780764e2f663a6087b52622",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-b823490622aaa8337bc7047aba37354de498625b": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-b823490622aaa8337bc7047aba37354de498625b",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-b823490622aaa8337bc7047aba37354de498625b",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7d1d3c3b3520c699595c5a5ac27d21a2cc71d186",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-b823490622aaa8337bc7047aba37354de498625b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-lkRjS+82WWmBUR4ew9WVudCe/Wj1tk086NqtM+Suw5RhdEX+jLoljfQMcprL9lk0Mm583DZ0JFZhNu7oRG/PmA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCFzUBqbPqnCUGGT68pztVxuErTnFaprCMvLskI3tOHXAIhANEQE2D5055bF989v0oxAAyFbZRxLp2DWFu0Ev10Q86U",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-b823490622aaa8337bc7047aba37354de498625b",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-0ce73bf1949f6aea574a226e867d6954c3d6d751": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-0ce73bf1949f6aea574a226e867d6954c3d6d751",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-0ce73bf1949f6aea574a226e867d6954c3d6d751",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "40e75b372976bb92831c93c4982a904bde091b0d",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-0ce73bf1949f6aea574a226e867d6954c3d6d751.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-bDiBprLbL4TI0JJB4Nc/rYUiOUNf0c3d0V2qk9HoFeEHIl11c17PdpEkEvYEpnJwCXb7KpUunzyJlzG0ozPS1A==",
+				"signatures": [
+					{
+						"sig": "MEQCIF7o9yIGFC34yyG2DwYLB4ejoJS0pqBd4DRkGERV6DgcAiArtmaXhKlqDk15inz+s79XZ9Ubf+Ui/E5U6BF30ytvRQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-0ce73bf1949f6aea574a226e867d6954c3d6d751",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.6": {
+			"name": "@effect/vitest",
+			"version": "0.5.6",
+			"peerDependencies": {
+				"effect": "^3.2.6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8d6671153096b35c1dbdfcfe71f8406fbe80b117",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.6.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-bgJLNX8oB2gQCj+Wwj2/05/Sr5wlw4FCpuBLyFC9l46jGBFIwrIIrfKo79vrImkNZQ1oMmmVB5QeHZ44orlhEQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCMqmF1LPkhP8u06wpS1g00OR2kL1VyIy4eO0ZbplcNUQIgVP7aTWLgZhj/DzmEDepUaoOqNjfB0NpjVQzixkIR1iU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39831
+			}
+		},
+		"0.5.7": {
+			"name": "@effect/vitest",
+			"version": "0.5.7",
+			"peerDependencies": {
+				"effect": "^3.2.7",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e544f5311de4a628a9e97a7566071df83242cb3a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.7.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-saYA1O3B/3rKC9FF6B76bn9gffknG1zqyTklrpWs/nK+F7JvCB4BYIzN8cDy5/aIBZlFcVkOmq9R7BKD9oVYDQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICvQq1JFUqypQdBRUCLGTmcpTBzQ+bkO0uPCWJbMVzK3AiEAvo9jXLqGreVx9asuQTwpd5YRk6kQCfgSPI6kWBWh+DQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39831
+			}
+		},
+		"0.5.8": {
+			"name": "@effect/vitest",
+			"version": "0.5.8",
+			"peerDependencies": {
+				"effect": "^3.2.8",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c4fe27315131973c61021acb53f3742207a0f3f0",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.8.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-rOxo5oajeRmANhSPgLOSa87xqQLWIgv9wT57oqpUUi6QI+gEJWbtMKhzwP109lIRX/uQMCBlR165VK+dvkWWXw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDu8VPjdELV8qukMjyFDEHKr8H2aVgrcmgqEzVoiYaVWAIhAIQJ5lyFPkFtsiv7SARtDUeYKcnUzaG/fmq9QCexl1dU",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39831
+			}
+		},
+		"0.0.0-snapshot-28c950c1f2b091132e985b78bbb8d0f72c86ce2f": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-28c950c1f2b091132e985b78bbb8d0f72c86ce2f",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-28c950c1f2b091132e985b78bbb8d0f72c86ce2f",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e6ba66e3f08590f83c4c7afdf9ceb979e420b896",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-28c950c1f2b091132e985b78bbb8d0f72c86ce2f.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-9x8Ps2G1HlnP4fFA8MScLK+6dwh+M7oM/S2gAvI6fYLTSwmlwLB3HkMhuzxFJ12zYJyBS+mfQ7w//BcPBtSIBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIECF0il7EBhtf5j1boMef2W+/Ed1054kO024ruX0XibIAiEA/ARE78IAlqddHPVUXWRCuI82vAoTq9ZIFQr1dQ52x3Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-28c950c1f2b091132e985b78bbb8d0f72c86ce2f",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-981d1fc733b034a10bf77fb06b1e8c764ba879a9": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-981d1fc733b034a10bf77fb06b1e8c764ba879a9",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-981d1fc733b034a10bf77fb06b1e8c764ba879a9",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "40427e4361d773f8486003d211744831dc436424",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-981d1fc733b034a10bf77fb06b1e8c764ba879a9.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-GdxZnwXMmOS/kBI+0au4d/5//BcNy7RYMxo6kE52CEVpklawp7fNG7GZQqOgyw8Va/iF99TTA/ZG5WXh78L7mQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDgM0CgpoFKzR8WQlt3EXulEsNTJ+WngCZozK5ETw4wjAIgIMl6Oo/TNNAFCUdVfbhKcY0CxXXX0YPNPFX2jx5Wgqg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-981d1fc733b034a10bf77fb06b1e8c764ba879a9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-a5ad9d748a9f2655de9c9dbe76597867a218e45b": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-a5ad9d748a9f2655de9c9dbe76597867a218e45b",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-a5ad9d748a9f2655de9c9dbe76597867a218e45b",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "0cb50219f7f47b100eda43a1f74747a20c269f84",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-a5ad9d748a9f2655de9c9dbe76597867a218e45b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-/b6YWKxZL1IsjzfBt3htBZyUU7YHUa9nuOusk9JKjZ8XJWvgcxkh7UoQd0LF6PcHAs+tklyg/dIhwxMfeFZ8/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDsEIG4NNpzcAvy8LrsAen2DQiSc4zMLgOgFp7BONtYnAiEAq76wCroJkTGSaoNWgD4K9uELYnCIqjxnnUQR1pic7E8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-a5ad9d748a9f2655de9c9dbe76597867a218e45b",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-0cec0372df0b954b85183fe71d8431e8486b383b": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-0cec0372df0b954b85183fe71d8431e8486b383b",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-0cec0372df0b954b85183fe71d8431e8486b383b",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "929d98dc053321c98e234494113d4f6ea67935fe",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-0cec0372df0b954b85183fe71d8431e8486b383b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-tOcd4S8Vyp/6xiEkex+4wBS/o9xxbpVBgHZD8T/NQyXofMzi8EVQK4P+i4yKCTgzNx0D6+g9OklSArHkZUshZg==",
+				"signatures": [
+					{
+						"sig": "MEQCICx3SOXo0tWajlF9QosmcgXhuBC/Tw2wE124w92JtblNAiAPxS+561Mde5fAPsCd6xKUhZJlge3nC66cReBbXV6R9g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-0cec0372df0b954b85183fe71d8431e8486b383b",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-e0f0eba005ab024d629f3728d81590db23057c74": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-e0f0eba005ab024d629f3728d81590db23057c74",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-e0f0eba005ab024d629f3728d81590db23057c74",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "630e3bedc2a0e9eba782e5d9ac395c0d3b4e6eac",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-e0f0eba005ab024d629f3728d81590db23057c74.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-SO0uOi5N8zjHqkyDu7kjRUSaRbqL0oCoplPDTESQct7lAz3BvpCIOdb/zmyre3hWSOeKjj/fcf3ZkuOfPu6K+A==",
+				"signatures": [
+					{
+						"sig": "MEUCIFZIupJnP2H5i9Us+T0pg5DSXT5YBEzpPaQBuspAMtkWAiEAw9k/xRIQTG4fbtNaI6bqPBRWjbll2t1PxTbHcuhJUsI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-e0f0eba005ab024d629f3728d81590db23057c74",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.9": {
+			"name": "@effect/vitest",
+			"version": "0.5.9",
+			"peerDependencies": {
+				"effect": "^3.2.9",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "1eabc020a712e3165fc778b02588b9c8dc704b97",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.9.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-ZEjGSPo3hVambZT3KmtPmg8eeBVAIerNMYoQb6u+OdIQVZ8oZeVycRtTwhCaDx5kMfz3JG65KM+lzjpzuBlHXg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDj8f01qMqhOaWP8gRcrPJpdLUB5kqbdICAp145F07fngIgXY8Ndn/RV7gvsV4WoZdwO6PDY41V3KxZ8xZa4gUQ+Zs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39831
+			}
+		},
+		"0.0.0-snapshot-d173a21c87b057e0151a0df4c89e7b7420ff7a99": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-d173a21c87b057e0151a0df4c89e7b7420ff7a99",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-d173a21c87b057e0151a0df4c89e7b7420ff7a99",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "25d41113913de0dc3e0bf59e56d232d24d6e7945",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-d173a21c87b057e0151a0df4c89e7b7420ff7a99.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-OC/WuTqmGGea8fbCWL75ZXFLjfWHdYfAkqp2RiuFVOeWnptUJTbfW3O6PkcpiWpeiHandvEJuXXMV5p+wqAXmg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFu/7Vzh3RB6T9MO5XPLs9W4MKyeUrfLvQ+EdvstbjV1AiB2WRGhAV/n2R7LVVR3ytrgmp47hpFEl/TNWTXnc95BPQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-d173a21c87b057e0151a0df4c89e7b7420ff7a99",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.10": {
+			"name": "@effect/vitest",
+			"version": "0.5.10",
+			"peerDependencies": {
+				"effect": "^3.3.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "4ee11ba2e47df48d0455858c4a520f31b0c6e515",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.10.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-JQMDm6JndAhG76gYdwtWUIaG2j/I2KKxcFYBYcl0mZKtxwaAs+9qloBICilUGP4+qzwBv0gsaNCTeFbXzrgpHQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDWRJq5tpm35wp5Wn87nmU1Pcnhvi2UaUriN+AaURYHKAiEAtN7DdZuMfap5arWnFB47DMKgDQ5zdD1f0UNUoWlQLjw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.0.0-snapshot-b4e2d6446fdc267f3c789d6c141284b2dac08851": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-b4e2d6446fdc267f3c789d6c141284b2dac08851",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-b4e2d6446fdc267f3c789d6c141284b2dac08851",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "12c91ff031908d493ab87121a59fcb1d9addc50a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-b4e2d6446fdc267f3c789d6c141284b2dac08851.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-8+amZRf8FDSSZK6p8sMvsZ267nTewsH+88wcsNlWP/JJocB06MDwsfhMzsCUNxQcoWVJBh4PMxMqWQBjASCQaQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDX66ZDFGPCvJ3wzl6N0e3mhcDXkM3iQunpLsPRaHpS4wIgbVYtMWi7CQLlEyRqXl0vEJACQLfhoeTyHOB55xPtqR4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-b4e2d6446fdc267f3c789d6c141284b2dac08851",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.0.0-snapshot-12726140ae2dad830fafff1edb8f3844ae9bae62": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-12726140ae2dad830fafff1edb8f3844ae9bae62",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-12726140ae2dad830fafff1edb8f3844ae9bae62",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "fe23bc41f182696415fbfcfa5b2ff883cd0569c3",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-12726140ae2dad830fafff1edb8f3844ae9bae62.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7ZesoOvEnyNvU0w/hu/jPvhamcQuKOtLQZAJtF3Uhp6HdYc1CXwx0QRc4ZDv9Tb+uviYzTtsE5HAKMZb4o1sHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAfgup8m5iHmkPHvfFYVc5imEhk/72Ph7Lt9McOs/BWoAiEA6WLgI78NMx8CvogpEIi68UTwDFBOmk5T1PE5qFFsrtg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-12726140ae2dad830fafff1edb8f3844ae9bae62",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.11": {
+			"name": "@effect/vitest",
+			"version": "0.5.11",
+			"peerDependencies": {
+				"effect": "^3.3.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "4a9bc65e75222171d965c0f4acebe4282e1095db",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.11.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-UdA9MZOEMEpumIOEnEPjH38yY/sJO2D7i7GGiRcVAsKnqpl/jZEB5Eizsnro+6F4c+ZN4PKevnuFhbYsIfhMWw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC5p1ZAq0x5a/sOm24RV4N5gsEqj48Z40bSYfFrM1i04wIhAPG/6Ay30IKszoYQp1LtnZgi1qRP1rj+IJKM6Yjkr+rL",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.11",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.0.0-snapshot-fcdba24de686805e60dc4b9fbccd460054faf46d": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-fcdba24de686805e60dc4b9fbccd460054faf46d",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-fcdba24de686805e60dc4b9fbccd460054faf46d",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "984bbd04ae3ccbd836c52650b3bac654c486355f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-fcdba24de686805e60dc4b9fbccd460054faf46d.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-dOX2BPBvaO0IvduQ0DGPXDyZ+WONpDLp7+PyBQAQT0dEQWrHP2jUTvl0w14SjAmLcWUMV+SxBZAIOEuWnW3yhA==",
+				"signatures": [
+					{
+						"sig": "MEQCIF3ntA9E1vPTurkk5V4NU5DmjBRYPsWji6fb3fmQ54d0AiAWAPkCyy+vj66knBfdTQQi01XyDIowm5cYOctB9cG85A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-fcdba24de686805e60dc4b9fbccd460054faf46d",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.12": {
+			"name": "@effect/vitest",
+			"version": "0.5.12",
+			"peerDependencies": {
+				"effect": "^3.3.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "835a3a18ab696b0682c3bdb9fb20e047c9ad7a5e",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.12.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-BWnvmR7DARH8FUm7vDWvAiKezqHM3Sg2uMXbSrCdgIwsz11MhikHHPjizlzfaGX+0rXfvEOjEhMZrNycqeQBNA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEoLCMsrVrEMYoNLY/Ic7gQWgOHbKD3q2bW55hpa4ECDAiEApbF8iXcT5oJE+pM1GBU2EvM/b5Zppxjbfi3F2ud4kcY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.12",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.0.0-snapshot-64d29bc90eef90891aa52242a56ea80a52c18645": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-64d29bc90eef90891aa52242a56ea80a52c18645",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-64d29bc90eef90891aa52242a56ea80a52c18645",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "78ce708f47aaeb1a98b56c1ce6b377c06d0a032c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-64d29bc90eef90891aa52242a56ea80a52c18645.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-SrNDM+r81EC1APB2LUoj91356bwr7b6Kqdcoulyy1HWMnEWkLema09GQ1BarSsYtLSdVi4ua8BIz3ayc9nZwwg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBibST21DKYMm1IDBtqTbRdsJHwBLDOZIbj6huk23x4NAiBn1sUYZ2MmsE0LCYs3PTDYbZP6uFElmpEGYS3mbgABDA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-64d29bc90eef90891aa52242a56ea80a52c18645",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.13": {
+			"name": "@effect/vitest",
+			"version": "0.5.13",
+			"peerDependencies": {
+				"effect": "^3.3.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c4001bcbdd8c89b162201c04029572ba4b5d85ef",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.13.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-JYZECqHmr2dWH8T4kXjFtKv0bF6GC+HsfaLXbmVnFsUVAUYr2UvkZ7yAkJe1WlC7oTO4grQ6yr3P0S3IUzpCfQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFIUOGKpPB25VdoUyIgyxbe79YE4zXcbsf5WNvNy02cwAiBAQz+2crSAUc50BplrDPNUoem6iRac+/8S4xzDNvXHCw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.13",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.5.14": {
+			"name": "@effect/vitest",
+			"version": "0.5.14",
+			"peerDependencies": {
+				"effect": "^3.3.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "9069f9edbbb3766a4701787004646b9e262fc3d6",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.14.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-8jgOdESLKlL9+/7E5f60QadLTwYCRS6H11UnhJO7GIhdRIxrv/sPWQ3a90Gscz4Jo0hqszF67rJJ5ODjueGxpw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDok379lGlQCcI1GyHnOuTGVxaIrfNoaD7+Zp+0h7MoKgIhANKANz0Q2f7DBQhj5IldqzB/e40IuDsp9VUjv52Z3NHY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.14",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.5.15": {
+			"name": "@effect/vitest",
+			"version": "0.5.15",
+			"peerDependencies": {
+				"effect": "^3.3.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c7170da3dc66594b69824d520fc464c7667f7256",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.15.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-dX3lvUd+OtLWCkwLGgxoMfhJI1NJCV72OgzRgCb9sdxS30OTJBq/Gv7FsJTwhE+iw7cr0TgQ6y/pyh1VRsSuEw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQFSat6Mb7+sZiPEhmHJHYZmP6d2GLN5j1hX6wEE8h0QIgMnnYgV57QCsJ3A9sAsAJ6UHQU0LS76Mo1T5uuscb5CE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.15",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.0.0-snapshot-d33d8b050b8e3c87dcde9587083e6c1cf733f72b": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-d33d8b050b8e3c87dcde9587083e6c1cf733f72b",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-d33d8b050b8e3c87dcde9587083e6c1cf733f72b",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "8f72de0fa9626a4eb3b99fb150381e7826d5834f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-d33d8b050b8e3c87dcde9587083e6c1cf733f72b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-MFek8+JBjeKfn/vdz/hOjOrz9pB1amQkSYUyX1Ga8EpZqMSq5HOg3fKsB9k0FeHwfsglOiKA0fu4zfDfZyoZtw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAK4EoZjAd0mWc8up8bGyONuFsyybxNJu0IurLm4xK8/AiEA3Xa/So1l5aLohCCYRQqYEPINJRw/EEsbPSeCxvXm3NY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-d33d8b050b8e3c87dcde9587083e6c1cf733f72b",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39931
+			}
+		},
+		"0.5.16": {
+			"name": "@effect/vitest",
+			"version": "0.5.16",
+			"peerDependencies": {
+				"effect": "^3.4.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "6b7c2a76ae544b52ad4c65e9eaac124e08af4f43",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.16.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-jCnScutZbqTQm4ELctPug4iOGXO+sd4LQXi1/KsQkTXVb/DvB3l5e1doI8a6YRcNBtFSCV8ZYXKu8fwNRkVrJA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDgqupRbM5aD/iFs6eJ6RiPCBc1pT2f9TfhwwWJtX5zwgIhANjUrjxa7R0kDkF2RcU5LIHuh8MGAPCmXOk8l6klKwwQ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.16",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.5.17": {
+			"name": "@effect/vitest",
+			"version": "0.5.17",
+			"peerDependencies": {
+				"effect": "^3.4.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "423837ebee470fc4b8b417f68e3030dcbc07213f",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.17.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-ODCIkJB5s3/Q058T3NolzBaFNyzkw43j+qAg4Mc2rnelN7sFB/DyIDmfNsQEWuXZcWRqpRMmQz08jyG5JmNA5A==",
+				"signatures": [
+					{
+						"sig": "MEUCIDbi78sWgI7qw2pr9384eBVfxnzIJM/IEYNVJtpBLfawAiEAh0we4NFVySGp5srGKt4HjoRyqe/sEZA2gtbFYxw8gQI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.17",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.5.18": {
+			"name": "@effect/vitest",
+			"version": "0.5.18",
+			"peerDependencies": {
+				"effect": "^3.4.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "2ecc9ae2497aaf432fd5ec769015d84a2d2ebb15",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.18.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-ovGZSjqfgPQWfgNydG4uvntfesQ6OqmMzQrzcVoXnSAAwdt/5qEYx5LoMzy41aHvOi4qc0l3V5K81miubjCbwA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFkdlCodius6vV/zfh+u6CHaU5/JHK2tDH75rOezNGKdAiEA1XzAFtxCS4Z9KFy7FAQeplpDy+DWYpkohb0OnMJW6+o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.18",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 39832
+			}
+		},
+		"0.5.19": {
+			"name": "@effect/vitest",
+			"version": "0.5.19",
+			"peerDependencies": {
+				"effect": "^3.4.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c103fca7562e3b6cb71677fb9707388e4dcd28ac",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.19.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-s8YTOt5un3Y3WBlrKzOzQeTu4CFjJ0c7BUVWSBFBpRNEvhKNUYzfBsLA4rzc5Zn2waaf8wDzw77GpZvuBWRhKQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHrCZoOsg78x8kuanozuUuPYoF/r8/NQVqTSJIXEyFHrAiEArdhy5BXDbyGkKJ6xIR42DxTIWfeZ/vW1Tbv1Z/On/kQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 40932
+			}
+		},
+		"0.5.20": {
+			"name": "@effect/vitest",
+			"version": "0.5.20",
+			"peerDependencies": {
+				"effect": "^3.4.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e4704283e0d7cbef1cb4dfa13437fc7f5829efb9",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.20.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-T1voJyI7qd3u9+3V3uBFmXc1OxppGVt8KJZ/+FQIU0O4fF22gWL/AHVsvQRjqqAAvLTPCE8+AqB7bMgljB7/Rg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDDzglTkMUs0KQYCt5s4E3nLlbeD6kksydNrBxnKzdp9AiAD97cyDJlXRhJf9QYRYXpEIWFzGQ6gZghLvVdEml2jNQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.20",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 40932
+			}
+		},
+		"0.5.21": {
+			"name": "@effect/vitest",
+			"version": "0.5.21",
+			"peerDependencies": {
+				"effect": "^3.4.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "31140433e00fa6658fb558c80d944e6019fd480c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.5.21.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Kgp/dINGvA807d2+PaG3vl7kaDtSAyzZCkTA+JmZhkPmmlqL7kDCL425cSygXfim/rUL0wMAjEohLmau51CTgw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFS/A55nWyCtHebBjn+tI8OEQuzv7AgUG6XXN2ajcfb+AiA1+kKf9omjREaDlkK4H9Pyf1aMH4aJGdOsjAc+jBjd5w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.5.21",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 40932
+			}
+		},
+		"0.6.0": {
+			"name": "@effect/vitest",
+			"version": "0.6.0",
+			"peerDependencies": {
+				"effect": "^3.4.6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "7f1afacee45f0314d9957dd2e866a2c978673249",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-rQDR1CoFeKnIhEOFSBiAh7lnKgP3rl4Q01q1rn32ldAgkUTGzAd6JDtqBlxzHn8cv8vfEpKeJrFrvV0BJylkcw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDG0eXe0dh4XESXeOpaheDQofAhL0vnca/idTgkEpS8pgIgGoQ6dhTgNLSCll2rU+Zy/ND7HCesCOSY0X32XZ8YC2o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44244
+			}
+		},
+		"0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c013223f41880a0a20d8387345cdab49de034a09",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-2Ud5hnj2dNQsfFfFw6i9hthhEzsfBgdGo2XC/1MquvtwjwDI+kYgAscbmVJVQRLGd9FLNi4aVNsi/VHbzc2eAQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDi7UEhH7CIripgoRZBZ28Eu5lBAIWuRrzCxevL8kzvFgIhAPLzxpBN0/Ww7BeQGgGSzEelBKTVReqQ/dkUplyQzgOf",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44344
+			}
+		},
+		"0.6.1": {
+			"name": "@effect/vitest",
+			"version": "0.6.1",
+			"peerDependencies": {
+				"effect": "^3.4.7",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "451e045ef55625a3fd06844dd5c42bdbef545d70",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-OZpjTu0cILCRGVohPudrQ4CcDRi8rb7XZyCmhMg62P2zmtySRl79CgwBtUAqPLWpGDYoy2GvaVuavaxV74R+iA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDr8i9Usux0Pe7sMo2Ojv3yoB71gQZdtV1PhekzFMrzlAIhALD/zEB2ksGxUY8avIc0oQAyEPZbQFCSKZtDpHXlxGRH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44244
+			}
+		},
+		"0.0.0-snapshot-6e9edd448c6d82afd40e9d971340ed91efdcfce7": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-6e9edd448c6d82afd40e9d971340ed91efdcfce7",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-6e9edd448c6d82afd40e9d971340ed91efdcfce7",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e9962fa5f2433fecf3baa62df319396ba84e7ea9",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-6e9edd448c6d82afd40e9d971340ed91efdcfce7.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-zm2mqRXWeUfND6P0pK3wsJxjFpwK0dcvWmzKVcfU2f9Fe7Fz19xtTDvnzIdoFfDeoXKHDvcj0Jnr6JbFc7Ammw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsIOL22Ckzf+yxMZQiDrhrlUHxE4i+E37D+Kc+KHl/FQIgcf2XUuEFS6fa4CLu/RRIWXBy7ca+/MWqn5BCLdn5Bv0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-6e9edd448c6d82afd40e9d971340ed91efdcfce7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44344
+			}
+		},
+		"0.6.2": {
+			"name": "@effect/vitest",
+			"version": "0.6.2",
+			"peerDependencies": {
+				"effect": "^3.4.8",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "ce8d16ce0f196d0c193dcbed6c20aadc2af8a0ca",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-klLszh4/dQhVOfw2JvjBIYRjQE710/x1ftwOZDm5tx9pNrCSUOay5Iebrcf1enKFJHVCT9wwv6vgYoHi/UM6gA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCELmFey5Ex5N6GNCUOe4z7w9flHRjwE5lCZa5exZ3fYAIhANmOxwe6vbEkJUnPMuAxMC7qLrqVMwnI2hlJjXGO1+bY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44244
+			}
+		},
+		"0.6.3": {
+			"name": "@effect/vitest",
+			"version": "0.6.3",
+			"peerDependencies": {
+				"effect": "^3.4.9",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "a2ec8d2b3eac7df86b7ed50eeaef94af14d59aaf",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-rpBbJY8hjscSBQZuPkJCJBNSA2PzdMUW52t1FeY+KotEFSVIaYDsEzkrwSH3bNMgapXL3g5rvFFNkpjzNNrwGg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDnxl40Nqk15dhAPOSQAnBCJ3SRkPQNZC9VxjDDWaa/uQIhAMpTSLXZjS77VvZAkg0Ilup0a7oEvlavMFKPUEKtD+p6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.4": {
+			"name": "@effect/vitest",
+			"version": "0.6.4",
+			"peerDependencies": {
+				"effect": "^3.5.0",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "a7319058526c0164c91ec4f14b0687be7dc995e2",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.4.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-5BIKNxOJOXOa3GGZSuLTMa3UJxhu/ncqLG2dmxT3l5rgimjUZc0Lp3o/UwAZxhicovynMI2KHWNYoV7i1cnbSg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDxF/dBbP3WXMQio4WtdhlIkvEnldWwoVbAyA7VshBP9AIhAMWZAUP11d3vlZ/J+8HCZcXdJZ8S0+7BfIsHVEK7JonS",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.5": {
+			"name": "@effect/vitest",
+			"version": "0.6.5",
+			"peerDependencies": {
+				"effect": "^3.5.1",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "63c31c93f14a8b505dea47a8d2e1d9e4a04c1327",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-lgDIy9KAkcol+6SS2MTx3hLRvy6ZdZ3W95fYGgC45mjBC1ejxCW6AAJy15JDJ6wQbMvZSZ0ZlUj8eTWXKaM4LA==",
+				"signatures": [
+					{
+						"sig": "MEUCICMCHpbkDC0vlZyvkK/XPqgil2AAqpmLzNMSUXyMywPqAiEApdj5/xClB3v1/5wDDa67ziPhyxWQQeomeTdEK45+3pA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.6": {
+			"name": "@effect/vitest",
+			"version": "0.6.6",
+			"peerDependencies": {
+				"effect": "^3.5.2",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "58f761c2dfaecdb10eb814ec91526d614f6d64fb",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.6.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-sXsG1S1e/JJOj3xo71/a6ASNuUT6XiPHbfrIb6Y13YdKfLtcSu3mQeas2S3t9SRgGgW4NJcZMRSvtNxP4xLMVg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6tEX/DL7cXYVBEym5DyOt4s7Rl5nVGFLtTRxlbs2FWQIgfCHr/BwYmTF2Ki0Mbc4swu2WgAorX49OPztmBrs9XK4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.7": {
+			"name": "@effect/vitest",
+			"version": "0.6.7",
+			"peerDependencies": {
+				"effect": "^3.5.3",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "630929678d499ba10e5545cb4a441c0167d50f1e",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.7.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-zBvZBHjn0W7FFn7fOzK79WPk41Mt4PjZUtjbJKVevvYZQBk2so2nWrgWeV2J098YZBjTyG6nWZiW7RfFfwV7cw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHxSfpvSsCtgpAc3F48FQ0xNN3MJ+RjKJbiNA0SzyH6+AiEAuRWQqa/HC0WTV0Ynk4uIKdUK+leW8l8B/yb4yvUi9+M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.0.0-snapshot-3877d62208e83aededdf0b98c4c49b814f4d7da6": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-3877d62208e83aededdf0b98c4c49b814f4d7da6",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-3877d62208e83aededdf0b98c4c49b814f4d7da6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "e6cd4dbdce6e4c3f2402d3cfbe7ff4de30a55ddc",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-3877d62208e83aededdf0b98c4c49b814f4d7da6.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-kVi1v0Z5yVzWKG3kK4kfm6GBEKbhIyllmcP+Hnw8GvVc3WHBN9CgwT2pDGMgkEkKD5WVuPOEPR8i/SMXdMpw8Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIFfkBcb9bS3WCNNUTG6PanlCvGKzVvcofyz8BQqFTOXVAiEArGAeYHJBQx72B7OAjJSkfrmZftoVUg05z1PU46CcjkI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-3877d62208e83aededdf0b98c4c49b814f4d7da6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43618
+			}
+		},
+		"0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad": {
+			"name": "@effect/vitest",
+			"version": "0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad",
+			"peerDependencies": {
+				"effect": "^0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "b83d3cc1946ead219462ffef51df87fba92ff4df",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-ENiW3Zkec9gEzRbbPAuB1m7/eSMl/fhohTNkYZNeltDYELcMbgWnr9MeriolfiB2SbGO6vkuJ2v6P7nZRZ6Guw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnacrNEsLIL6omS4eiQ8gm+mYrmvWofT/7cRlw6Q1ZpgIgYXGq4jPuVBxjDC2FVl/ty1KBaQH+e+RqEh6r3Yn8KaI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43618
+			}
+		},
+		"0.6.8": {
+			"name": "@effect/vitest",
+			"version": "0.6.8",
+			"peerDependencies": {
+				"effect": "^3.5.4",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "24d3ead8af5439f874dd884b360a47a7fc3c2a7c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.8.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-KKxWieUQUkPWfL3RAnVhvffhqRmpT+MVwHtDWh9NJyfn/bQ8zE5Sb7aiyIeYLDTVaRYltpanvvyeGpTs8Q9VMg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFbFkvzjUSriNCV2ya0i5Cd2hcKrvbTOguoulGErNNaqAiEAjpixQXJM+7/LJtlZr0jD7S4oWKBfMw5HaXgq5V06vt4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.9": {
+			"name": "@effect/vitest",
+			"version": "0.6.9",
+			"peerDependencies": {
+				"effect": "^3.5.5",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "c9ea14b21a77c12a82f01eb8a98f1b926cb4d167",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.9.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-sHn0z35GN5V11kipgJXSu45luMhtUOmoh/k2unPbfMrajf8ntvE6Qh1OTmy2HxF8HrLro/nkCLohhPaC2uEY4Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDk81RqfV90McZiNfkuAelcHVeTjzvyn4KRSpCIbZKIIwIhAKqoilOBcH7Ubvaep23TRWU+2fQUqxfBlDY+3DIaZITp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43518
+			}
+		},
+		"0.6.10": {
+			"name": "@effect/vitest",
+			"version": "0.6.10",
+			"peerDependencies": {
+				"effect": "^3.5.6",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "92bd466c7f95b4a49886e3545d71c60d14f034ff",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.10.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-MAX/09F79ANnaEZolyyE/ie5LFdDiSJcvwVQm04lFfGQET0J40AHwa+1pC+sv2nOeyJrAdfsM41W05Rpq6NDMA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGRlkw3EjgFlsoy0ADRiJhswVz4ry57jLZKoYk9rL0yqAiAke639FVuhWtzaXTvc+u/2lJSEZC4IEyXSq4FXlU8jtw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43519
+			}
+		},
+		"0.6.11": {
+			"name": "@effect/vitest",
+			"version": "0.6.11",
+			"peerDependencies": {
+				"effect": "^3.5.7",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "83be0100c512ec14a3f0b33ee00b27a15350da82",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.11.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-m1GOP46TedQWl5lgDS4h76T7RpvDisq1mhdSsVpkjvs25ewrlxrYwOk6r1pP3oGZd//IWjEFczjXDrgzvDjsQQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD20Mg6UeZeaEReoAMQLd0vlzKSWZWBwH1W8ygODJ/07gIgfFnkLe6RcAK37MmXvOCSN8+Elh2VNs0LC1Vy6cuyaC8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.11",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 43519
+			}
+		},
+		"0.6.12": {
+			"name": "@effect/vitest",
+			"version": "0.6.12",
+			"peerDependencies": {
+				"effect": "^3.5.8",
+				"vitest": "^1.4.0"
+			},
+			"dist": {
+				"shasum": "edf22f3b5b98ad5257c4b7b452b816b30dd5c914",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.6.12.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-sSrCOgbhP+94xd/hyxizMKepAF0jz5tkUiEnkl2CCyJndHYgi2TlMwdddtYcmQXZm2NuqsfyLCtFhJmVYsRpTw==",
+				"signatures": [
+					{
+						"sig": "MEUCIF+QWxw5qbqOG+jEirhqiK85imSwmW61aVVQoid9wyC7AiEApTNjgdlwlGdNYRKbSOcU7FeznSlmMk1EzoEjxGg9PkM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.6.12",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 44505
+			}
+		},
+		"0.7.0": {
+			"name": "@effect/vitest",
+			"version": "0.7.0",
+			"peerDependencies": {
+				"effect": "^3.5.9",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "8af20894a4925873c774b79f9bd9f106df40d207",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.7.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-LnnKk3EGef5BwU0EZL31y9kO6asKBi51Gitjrrzdj853lFqNDCxjrHe/XTDKVIrsPVfEdZGfbgBDsisn/K44ng==",
+				"signatures": [
+					{
+						"sig": "MEUCIHn+ELHQiiqo4Dd47DxtAD3cpDp6mZ2dCi49jO7+uSWZAiEA+j6myxro1QvG2i6tIOho8gv7NB0+8yqFRNvvNUCMRA8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.7.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 45444
+			}
+		},
+		"0.8.0": {
+			"name": "@effect/vitest",
+			"version": "0.8.0",
+			"peerDependencies": {
+				"effect": "^3.6.0",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "2067037776d5aabef12e62414ffe80f8e19ee773",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-rKJHZ5MpKCmxP6aNDvgmHR05yD8y/V9NKujNsz5lctoSzzGAAXft+JHswTMR3tly3oKQg+vtuuvgZkWox7KkKw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD2SROshTOQhULEE8RP8VLKl4lGJ16/nQCdR0GWGVueNgIhANLIfXIxwJj79Q0RrjQJ2sXFXEIq1NQN4C1fLofKgnVj",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 45444
+			}
+		},
+		"0.8.1": {
+			"name": "@effect/vitest",
+			"version": "0.8.1",
+			"peerDependencies": {
+				"effect": "^3.6.1",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "23554626fdb1f0e284c8cd3a0c5935d76b33748a",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-hiA/C8TwXmqUn3LHmRTc17IPRuoiyQHnq4J6H+IlAx0NcP48kYLvgX9bBBSWZPpagGceMeqZCU4Oe+L4peaWGA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDsJxowqVUTGmy+KZpj0bfPZgj5ni+G3lPE17C5LjCeyQIhAIWrSzT5U6RRQXSRSw1P989nyEtD2Q7sKTj8/9ei7gPy",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 45444
+			}
+		},
+		"0.8.2": {
+			"name": "@effect/vitest",
+			"version": "0.8.2",
+			"peerDependencies": {
+				"effect": "^3.6.1",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "3003480218b8438e9f162a0bef943c1eede0153e",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-58R8xPNieyb/slcCfViAt82dIPggxH0GoO2M2Th7raelThx3vTEIr0bt7T8hN4RNJTZCcSdKkX6ggLY7bPOHEQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoGINg+D/if4kLP8D0naXsekL2wheXS9/8AlAJwqcKigIhANh4Djcemc9Ta+YAQQAC2wOcOLrOxw63xAWjLs3iKGhH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48832
+			}
+		},
+		"0.8.3": {
+			"name": "@effect/vitest",
+			"version": "0.8.3",
+			"peerDependencies": {
+				"effect": "^3.6.2",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "96cae61b3c9839f29327f503aa3d935537b28981",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-BK3pncXjrz3VQCLpD2JQxh2YxVQant+vi3V3Jw25fo2cpqJU1r0cTqzCznTPfVbmr51am9rqLPspF5E7cHxTvw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDF+o00grZ3Jmk3vEqMaa7Gz7FWW7/ywE393g0tWfBnEwIhAMFrf/9Z8L2V8SSDJcW7lfN3iV0iQv9+ypgC3w1bOxJ6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48832
+			}
+		},
+		"0.8.4": {
+			"name": "@effect/vitest",
+			"version": "0.8.4",
+			"peerDependencies": {
+				"effect": "^3.6.3",
+				"vitest": "^2.0"
+			},
+			"dist": {
+				"shasum": "ea7cc671c545e13d7f966ed6a6c71549797b4bb0",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.4.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-UP3En8kmryRlXvl8uMWCA0GQS7/froQKEF1y6ZtcDY6qyE29Ko4rUyKYfmf81aWPSuEqkUtLdcvdlK5u0qxalg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDYS4LMLfbmqLFIqgVyi5TiHVqy5jJRfygO4elDnJut5AIhAKEaD7BVQQQjTsYpZ9ou0cJOu6OU5U7y2z4D95xcqkwX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48832
+			}
+		},
+		"0.8.5": {
+			"name": "@effect/vitest",
+			"version": "0.8.5",
+			"peerDependencies": {
+				"effect": "^3.6.4",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "83bba80b7acc632f260455512cf2fa135bfed313",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-IGb8KuY63YVanLWdmhWNhGkdVwNA4R4ouoRRWnPdBIjUFXQak6KXZIZJjKEuj7A2359uqVuCEcKoANS4st7W/w==",
+				"signatures": [
+					{
+						"sig": "MEUCIAJ9dlnJ8gOgsJStNFZLRka7bfUALrSSBGLL3aOi2l3PAiEA10wTB93Q055g7uJZXrFkPpGO4Y9Kv/VRtYzRrTGDsf8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.8.6": {
+			"name": "@effect/vitest",
+			"version": "0.8.6",
+			"peerDependencies": {
+				"effect": "^3.6.5",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "cd4dc12eb033d5516ff45a82b474f7a1c083a838",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.6.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-Alm/ZG8NSYUiWaHQwLhG/7CIoE9rXo57r4t9VPtzokKvXKidQhD1E4sN84uIcpq+DH6WpCXg6MjZoTrKbl2GFA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDyY3NTZv/caq/ufjMM03qTISN0xPN4WaUdtdnyHZxSJAIhANsOv7YePtDeou9R/Ysdt6emNhCo/v4aiwA+2cg3cWkM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.8.7": {
+			"name": "@effect/vitest",
+			"version": "0.8.7",
+			"peerDependencies": {
+				"effect": "^3.6.6",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "2df5fd1dc68abf1f5956625325923c885aaac479",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.7.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-qXhcxwFfOEQj36BjQzKu5TzqZ68bxPAUyOpyhYgKTTWu7vsST/hDUmx1Xot9LhhYP7Z3xrg/zYJufeFWore+/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDoNO9Xj7nykH20aFEp2DItipyEO+0IaP914P8DVyvuZgIgddDt47pIwusvNubtKbhUNGQfMn3Lrnb8o9AcanUlWVQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.8.8": {
+			"name": "@effect/vitest",
+			"version": "0.8.8",
+			"peerDependencies": {
+				"effect": "^3.6.7",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "79fd74567896afb2bac1470aad6d1bd5d0742562",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.8.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-xhhnMcl+l1Jm+z14YMjLDGAenXq3ZFfiwbAiQPAbRjalWc+XZ7FkXWY/N576oIKd4MM8rH25qXaBzB1cmzpQgg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD0RZkFAy+gO8MVgHo3jjirhl4Lgl2v7vRc5Kvo6WHOMQIhAMXt9n+lRXMQzYjzVJbNIVFW5CEUtFoBclvRylOPyJpv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.8.9": {
+			"name": "@effect/vitest",
+			"version": "0.8.9",
+			"peerDependencies": {
+				"effect": "^3.6.8",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "4288fd6545515714cf93daa0eb5cbd8d19729752",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.8.9.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-hfrbKQjO+Wl96LqfLKWCukPtaBwL9YXwYxW8hVNgqbUmEcC7HJbidigv07VQW7DJjDAJd80e5eglHrz3QSRIig==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCAQNGvsw9sTMm0ROkhBDafX5hZiQwNAEXBtz+bTaAFdgIhAN1HpoMCZqRfQ4WJQapMMo3RV5I+e9LPGRY5Ypj8rZi6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.8.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.9.0": {
+			"name": "@effect/vitest",
+			"version": "0.9.0",
+			"peerDependencies": {
+				"effect": "^3.7.0",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "22d6b211309a0726852eb96ce0947666d9b31bf5",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.9.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-gsoKs7Ydr2nP+LD+AcRFM4wQFt4x9kZoLM/cswHDZxfoJLQ74M6zatGE5npVlSBpK3YrVI4Zb8Zmt0ZsW9eBrQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEyN0e32xGsrHKXwst3ISF5FIFmnFDjQ8RBFvHWH4epMAiEAgQIxvU7pbWX+82R5/tvj3RhLcRg89zOQb+Um+teO/Gc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.9.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.9.1": {
+			"name": "@effect/vitest",
+			"version": "0.9.1",
+			"peerDependencies": {
+				"effect": "^3.7.1",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "c961d1a5e64de831d6f53a2a43d53331dd4555d7",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.9.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-m8KblgJd2uKT4ew6ImXyRytaOJItiS/BGLlBKeXwCNZEEdB2QLlHjIb06OF32y2jOb4kduHnGjhDjGXflvFvRQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcE0jwxO4HDKs4gbSvC0p6cCxg388riL2vLeAJBX7AVQIhAPpqqKP3A27n+/3I5NPfKvBc8SiofklXCXmVzraUjkOL",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.9.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.9.2": {
+			"name": "@effect/vitest",
+			"version": "0.9.2",
+			"peerDependencies": {
+				"effect": "^3.7.2",
+				"vitest": "^2.0.4"
+			},
+			"dist": {
+				"shasum": "71e78e92f344b6edfa91c7cdf8a7dc7f7b594111",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.9.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-bzoW6v2jIkl68jEIkTbfFJL8n85mldHvQjjHmMVrb2ym7jt4eBI9U4P/TLoBA/3pAXEGhGkovq1jqET3LBmvFw==",
+				"signatures": [
+					{
+						"sig": "MEQCICMnPeW2s5RsQgrgP7sxeMxuBGdycFAI5F9SCW5bm3KmAiAja8bbuXjuBxyeC28WoQVghbLX5Wii0C4CwrM3tlOLDQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.9.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.9.3": {
+			"name": "@effect/vitest",
+			"version": "0.9.3",
+			"peerDependencies": {
+				"effect": "^3.7.3",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "9228ce00893bf4690e0d704f2b4f083c7b737bc7",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.9.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-dQ+7xAydhh4CL+OM12ockxKW6WLUGp4D53UIfcyJBFTFw3zd+2UfP6F6W4Hd2YStCTdyY4Lju+8zFTRpKjZWAA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDArZLHGaPtUH2TkPLm3fLpSioBEC1VT67sGjK0U7vq9AIgCC4s9Gcjr2nwC9NXf1JYPn/2PTzqTSvFalFi0FooBC8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.9.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48864
+			}
+		},
+		"0.10.0": {
+			"name": "@effect/vitest",
+			"version": "0.10.0",
+			"peerDependencies": {
+				"effect": "^3.8.0",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "c59ba5e751574eee91be77071035fe3f12a9d180",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-mswjy6XtiC/hF+Q4aEWEgBgq+dVnhYxQOc2sTMNZ+mICyzOSeJvq/FJGtHGPOGPXeHCiOmOPQ0K94RVVewThSA==",
+				"signatures": [
+					{
+						"sig": "MEUCICGF7ck/MTZl7a43qX1lVBo+WVIyBcOedRhUfgQO+ak/AiEA0Lqb2psveiq3xk9T3gtBuOITqlPi12xhPAX35MRnzxw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48865
+			}
+		},
+		"0.10.1": {
+			"name": "@effect/vitest",
+			"version": "0.10.1",
+			"peerDependencies": {
+				"effect": "^3.8.1",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "6b16e9b14867ba3a95c23a55175280b8bcfe4a18",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-1gnKK9X8wC6D0TaQQ3cWqG8eQ1A+t0Lae2nnW7pv0Af4qdVXZswAs5+YR+LPS/DlIpUtCWE1oMEDizJrraDxPQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIC3FI16avG0kQu+JcJV6epQK5zTnECIt+MfT6PRd72gqAiEA0x10Ptmo+mgFMeIjxnd75r/l3m+QgyeDnnTNNkk/rPQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48865
+			}
+		},
+		"0.10.2": {
+			"name": "@effect/vitest",
+			"version": "0.10.2",
+			"peerDependencies": {
+				"effect": "^3.8.2",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "d3542d330dd53a42ba3a98749f091849d3ce7ecf",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-hK+ufARwzKJDJkZkRPQl4DzglREJxs14hpZf4cDCRWDo4l/nHm/Y7zuWNfe7DyQNLypzbNXKZqAmwjhwxsjniQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDX2qdu4bPHNqg5+E67vnSLInP4eVounIG5PB+fVbBOQQIgfQY31Tv0y89CD3VAfXH8/paqwZ+2BeC/ajpdUJW+zZc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48865
+			}
+		},
+		"0.10.3": {
+			"name": "@effect/vitest",
+			"version": "0.10.3",
+			"peerDependencies": {
+				"effect": "^3.8.3",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "ae2a04209be09fa14aa30ce8df3e8d556f9b8e23",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-o/7ayH+S+ssA9lY/A/Z4Ovx+4v7TMBe33JUc7iZnxS/2h9GskIeW19/Upg2IQz2j27ZEonL4fc0AC/R6dtKbFg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCedxM8to2aPCErlSdXwW/7oKQqK/eaPCmJosQvl6V3mgIhAK362ec8KqQRZopRwbpeKnj45YjYH3lnDjAopPsB+I7G",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48865
+			}
+		},
+		"0.10.4": {
+			"name": "@effect/vitest",
+			"version": "0.10.4",
+			"peerDependencies": {
+				"effect": "^3.8.4",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "68bac4d2dd6102e9dffb93c90ea76bf99cd4a7df",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.4.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-Ac2w4AR7aUJcf70yrdrupy6Y5KvIlFMDqQAJwqqv0vWgKcn1SXqsqMqHVU7Eursmo3/D6EfyLBgPr20s7UNkSw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFBRihCHCmk9pXOp0VElfuKoiWZI8KEr1L6jJ7uDmldFAiEA4DsMJPtIdxjPhgOl6jSnXwmtqB2vCw9Ad9aeHKOIwMc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 48865
+			}
+		},
+		"0.10.5": {
+			"name": "@effect/vitest",
+			"version": "0.10.5",
+			"peerDependencies": {
+				"effect": "^3.8.4",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "b3df8d4259f51bd659b2d24c9ec5c7fbcd8d6546",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-rIzYdFRwF/caf3pjbnsdtEjG0HfZSWH8jFsmkDVkQBkTPVYtk41PEMNQCdotK8Gynv7YKpI2fybjDO3LVBPk5A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDwiEpNCkec50N/0qRKm7z/FSvu87z4DOxTRFmkydyFswIgDBS2eKtSsVcyhSMeOCQ/OMZkcZkP8SNjDWedSKWC9Jk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 65763
+			}
+		},
+		"0.10.6": {
+			"name": "@effect/vitest",
+			"version": "0.10.6",
+			"peerDependencies": {
+				"effect": "^3.8.5",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "bca0b770a7579fc0627989828e77782d1b4a69ef",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.10.6.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-isCQVJzzgej+b3e/zUQZpJO1GwqHv+/W9Q6d+cMHBoZ6KOUReeF/2doQeF9KkEc5zWdfB4hINqSg9TrJ4Wnayw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBaLAsi3j4/aiwnCCEYE3k1g3bD3GSUQumkzdkC7NdnQAiA/P8llPu/ZaHNd5DMfZs/EIEZa3VouIy6kKPS92udw3g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.10.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 65763
+			}
+		},
+		"0.11.0": {
+			"name": "@effect/vitest",
+			"version": "0.11.0",
+			"peerDependencies": {
+				"effect": "^3.9.0",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "179b01472d309d4c1015c2a9005aefd5f443e488",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.11.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-2jQR9Ts56bGBdQQE04hYMyLs6cM6fSjNcqoGaQtvLZRLPbmoqRr/rCiDfIiMsTPT+uglOeNnd4guWoRi2Yia8A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDDS5mVEHL4Ib+h2ONbFxL9bNfCmLFUZCobzM2xA4Z/cgIhAO+ynAX/aTMynrfYLmEZZysUzbo6QMsvph8oYHq2tI4+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.11.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 65763
+			}
+		},
+		"0.11.1": {
+			"name": "@effect/vitest",
+			"version": "0.11.1",
+			"peerDependencies": {
+				"effect": "^3.9.1",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "7234c529389da209df50c9fe7f70818e63bd4f6c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.11.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-cc73y55JC0bOGUr8HsylN7WvfN0QdSoKVjxooP/DTW0cbtqpEgRkemzlE0XRDynpBE52csrPBNKgTZBhjCaNeg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDLbimGPITSiSlEuf093P7p5SIpa0VH1xateiEJIsplsAIhALDDmrgOMTBE22YGl44b5U390VqoONW/xu4LmndEXx2+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.11.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 65763
+			}
+		},
+		"0.12.0": {
+			"name": "@effect/vitest",
+			"version": "0.12.0",
+			"peerDependencies": {
+				"effect": "^3.9.1",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "25dd129a6ae3bf32c9623e2ac5128d49f331e3e2",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.12.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-YPoOO+gv8zi1/I74Gzbch9mFYnB7POupMTe72oS5QFvbrDDR1fSnFh5bjBHW2wwggvJgPgEDl4LiaxzJQYhyjA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDx4DOalyoWLaMuMRmWEFDZjTMDodPrbTsJVWk1709BKAIgcI0/kr4aFOKohUHK2w0gPIQK0sWPJGiMXo/tOw1lpN0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.12.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 68224
+			}
+		},
+		"0.12.1": {
+			"name": "@effect/vitest",
+			"version": "0.12.1",
+			"peerDependencies": {
+				"effect": "^3.9.2",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "0a5e1e38ea41ec8dd40dc0d5cf8f29c7f15616c1",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.12.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-dUzg1CVgro8aeAVYeCEEMQlnx60CXxbztxH9KDG6/oLRZ/YixHWNytA9PGsC9UPYSgHAahjsn446HgQAnCpX4Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCqOzYCH66CZxulysvokSAIuJVOguXIRtmQQct+6TMHgIgCaRddyZedQGvTlSHenLnQEXSxaavk8UzUM2K8aw5LgY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.12.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 68224
+			}
+		},
+		"0.13.0": {
+			"name": "@effect/vitest",
+			"version": "0.13.0",
+			"peerDependencies": {
+				"effect": "^3.10.0",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "c54049d9441db74dcba5fccc72dcdff82882268c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-OMB84SjszLM2MsdQ2aZL+ZEMKvv+Nv1P5OHv9rkv44v1rNSp5eNTSHjDDOgL3UyxlzinG0yauskt8MEIRJjinQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICqZqrwtKwp0sfpVNmM66kVZiYCTLOWw77QEEmtvGBWMAiB4RUMEiLe8z2j2dyjB2UMCSdqdMndY6GyH2NlrF21PaQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.1": {
+			"name": "@effect/vitest",
+			"version": "0.13.1",
+			"peerDependencies": {
+				"effect": "^3.10.1",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "e21ebc3a061e5ceb62ee73546f49ff3258e0827b",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-0Haoi17RqFKsz7MQMqaw9KmOqRkR8jbmKaVqYZeOtw2IgL8FbZHTBxNeVOF72wmXjlDphVSXGXnltn67ZuLAQg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHMQcA/2cS/7y3vbZ/LKe0Qny4o+LI6pLgLIoOVX+ik5AiA7D5MTfI7Ixw9jtoCU8+CBeke4XwbUU6NfNWVizOUZ9w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.2": {
+			"name": "@effect/vitest",
+			"version": "0.13.2",
+			"peerDependencies": {
+				"effect": "^3.10.2",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "ed262527d1bc112ec16eaaedb0562897eeef142d",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-xMVa6KTs1TgppQ4Uicwcieo1ZLCoN02LvQVobDxXfGzgv2CokJqRy8ydxdex1M79yM95tH/9DhMuOXvUKSffjw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcl9RXoeOWzljJcfKhQQXSYLUbSY0atUpUs6uXSwEX2wIhANB19FYubIpliCvRdo6qbvwMRD4OeAZN+m4XXgwYfDMO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.3": {
+			"name": "@effect/vitest",
+			"version": "0.13.3",
+			"peerDependencies": {
+				"effect": "^3.10.3",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "a31dd535bba8153f1b6df10ea5575aafbd24666d",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-WdWB0eN4092I6yIU7w97x/6dGJZkoF0IN2evUzNQ7bTrn9A3AogeIh/qRafcoBbEaMBS9kYj/dPO5mJHcX+FGw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGQyKYs9Nb11i6buxUOwYSXEVZSSTUj7mXZ0LkJ2UZutAiEA0WPO7PI0eYTazy2zzI5VLTAsIBnKrlO2bqMieqVJo/8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.4": {
+			"name": "@effect/vitest",
+			"version": "0.13.4",
+			"peerDependencies": {
+				"effect": "^3.10.4",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "093309fc67834e928d671baa5a13c7e96dfa680d",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.4.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-TVL0KKN3JJCobZG4dRbzvrq9TGFAQZ/a8O8rfvFqIJECXQhWs0Ov5jGSjyB3hfhZtsw8UE8hL6ikNd2i6b7xsA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEPKxhweByJq+917/8G3RaRUuo+s6/Adf0B79MNOaWCxAiEApQzYRYeYgdWhY94NDnwxmmtnvWCniYnjjp6nFNqObZA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.5": {
+			"name": "@effect/vitest",
+			"version": "0.13.5",
+			"peerDependencies": {
+				"effect": "^3.10.5",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "584faee32a60b2654a03a188c28519c46392c3fd",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-ZKVl5UXlOlLDi0uiVnAlAPojlT9wgEERB0YwWIbCapBrqgi9KhTdZ2ObAHtSgbvB3SaAxwqoRGFAjUIe/NeD7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDEl8BkoSPh6rbDZkakgPJSEYlmnXDZIz8Y86WNmhqpFgIgLfuzv8nSzw9HND9yxvphzXagP6vkxtUdWxV4PwoP1YQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.6": {
+			"name": "@effect/vitest",
+			"version": "0.13.6",
+			"peerDependencies": {
+				"effect": "^3.10.6",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "8d81c3a65a0b9ce377eebdae1f1a14a5194bf869",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.6.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-yb5UlqOHJILu7Hv5RKqtvmg1a6cw8b3SoFYnB3Cvw6BaUPLI2819mWn0f6vavqDFI9NO6tfPC68f7f97WSbX2A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDagM5FosRPlG41PXhlA5JV5m1885Rhd7bCNntTnca3mAIgRrTjC4fhgPP/9ca27m8hBf1cNNIqnDiHJflYuQnAg84=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.7": {
+			"name": "@effect/vitest",
+			"version": "0.13.7",
+			"peerDependencies": {
+				"effect": "^3.10.7",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "8f772798044e3c9acf551610ff3524391946a073",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.7.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-R6k5csg1AhIuGfGt9P2InSz19jMvzQcva5sSIxcGRGY/959noqKpdH5OVY5gu6pT/CiyQbsYnh8OXe/VqzMWFw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAMHo47yE3ADIl2zDDxl1qHIGLweILlLfKhlfMo4LnwlAiAQgBaTo20iHwAjnBGyPWBuPzj5JP5WUu8zicX1hoq6qg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.8": {
+			"name": "@effect/vitest",
+			"version": "0.13.8",
+			"peerDependencies": {
+				"effect": "^3.10.8",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "d13c830a4d2373383a285e2bc13a37860a568ce4",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.8.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-zRO3O/A5NHfmDdUd1RrijXjJFGzfBB4n0fp4i9Yjr5jLbOLgHAz+jlQYmoQUcx2RzRlBVsjBJSH7WMspYqmtqQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBSj743a2heCpRRGW0XZ/QimqEXYEHdMnnAQAlbhdsyCAiEAmvfPPsBAJvDeOYPvZOhMCaFkw8wJ4Hyu2n/4apGh+WU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.9": {
+			"name": "@effect/vitest",
+			"version": "0.13.9",
+			"peerDependencies": {
+				"effect": "^3.10.9",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "13e5429bcf534f4aca7561a68e47e27cd89a77d3",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.9.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-e/j4PasbiLSwN/KVRUGCfvtzBo+9y8cMyC16o9FxPOhsgWyf/E5+mMhsfA321+t9y9Dgqjw0iC6vBXJxbat76Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC3LJ4km0KewDcoRen5tsNjpEgbz9EITXU50Qf1nsthSwIgIBm0st0EKDBxQrgzpAK7tfet0L0Svp1BLh2wFS8LhpM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84682
+			}
+		},
+		"0.13.10": {
+			"name": "@effect/vitest",
+			"version": "0.13.10",
+			"peerDependencies": {
+				"effect": "^3.10.10",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "83e54b60c7e4248a8b8f9d7d5a18c7db029d4a32",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.10.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-ImTk0AM8JKc9RTV3ohY28KQc0RbH2ytp32iTBoGjSQtiu0FQHDXiXbfCHy2Zn35yZgD+oEdUxofw+9kuOhPcAQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDzMhnON1mtpU/+5wcJsocFtNsFvhlFU/NN+ubua3yYQwIhAPgYEdRNWAZisjIiREzkJg4Gz/Bnvn0k/OGX4SV9nXak",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.11": {
+			"name": "@effect/vitest",
+			"version": "0.13.11",
+			"peerDependencies": {
+				"effect": "^3.10.11",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "aa278cef7fc06090365efd02c53046fdd1adbe03",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.11.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-aP0dpnmjffGoRb2w1B9SwdR9FlNuz948xtL6uNCu0nr3cA8G0pBKsd579660FuLnGfJemignOxHca9T52TzeZA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD1EKJJrWxuAA2luSXrQXtt/RlqxtAHtPiEm92R6NEaMgIhAK/T7aD7shmglZBmiL0VfQ3jv33V+39nB5dgEB/U9Br8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.11",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.12": {
+			"name": "@effect/vitest",
+			"version": "0.13.12",
+			"peerDependencies": {
+				"effect": "^3.10.12",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "81f18fa3eae65f025f860a986d825fb26ffa7a0d",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.12.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-wO+feCCNuaJCDUDu0I/pcmSpvSeMmQNN1s22eRlCKDLZuofmZSgnPu1WD8C/5PRuQ2TUeLG3KOLbuXJ4c8d0Gg==",
+				"signatures": [
+					{
+						"sig": "MEQCIEbuicUVAczCzdzgMOKukr67n3UW0+kSh6Lv1UroqCTuAiBoK7Vql70bsreTPNKrD0M9B7g688bn39S7TbCXqvgwzA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.12",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.13": {
+			"name": "@effect/vitest",
+			"version": "0.13.13",
+			"peerDependencies": {
+				"effect": "^3.10.13",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "d78d235b586a60c2aca9730677f8bc8cd3e21b67",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.13.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-x3r5WYmGYLylZmHZ0XnborADHVCyQNNNTtflv2MBoL7bPLDSqBzv7zDgU0jDnyz40KN+gYo6DNQXmPedJaj1gg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQNiz3IqctqKIetzn11E+xhX869cKu5GzDebJON+uxwgIgdcwglZUhsUXBc0B2rvSA5gcTnGTakWUWtL1ERX7PEgg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.13",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.14": {
+			"name": "@effect/vitest",
+			"version": "0.13.14",
+			"peerDependencies": {
+				"effect": "^3.10.14",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "e620185283786f78c98340e34c7babae2064be23",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.14.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-nARkTGQOf3mNlR4DqRa4aU0Oo4u8NBSLDwEyfsI36N5P0aG3tmeVdRuWgfZdSYlip6UuBaisIQ1VKW3q0zUYrg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDCugTqOL+HBNLekIuMCk2+u6IPGdXGBRR3YfyI5Pp/RgIhAMj3u/y0bIPZgiiiW+HNBzZOG/2/alqV4kSmR/K9jQ+M",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.14",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.15": {
+			"name": "@effect/vitest",
+			"version": "0.13.15",
+			"peerDependencies": {
+				"effect": "^3.10.15",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "55c89305d36c65d4876805bd4ebbf28c45263135",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.15.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-vcXv8RscguOHh/IaZk5wnATPqfNu7my9NcDb80uBdwbuaLhkoogMZ+N6Q2+298MWiGs/5l/Ho6bmukexx2IvKQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCYbKC+d3WE8hTxw/ZA5MzfeoIKxIAWgzu+NFJzehILbAIhALgG6n8sI1N4RCbaq8iyWD05sDmVZm1PLLBHjnf1F7ZF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.15",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84684
+			}
+		},
+		"0.13.16": {
+			"name": "@effect/vitest",
+			"version": "0.13.16",
+			"peerDependencies": {
+				"effect": "^3.10.16",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "d6d557eb1e977302081889f50b204d9cc7c7b30c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.16.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-hZpSLj+FuV3R4dEyTNYQkkjZ9guP1XuNLcb/Xm0LV01vFpRN7EViQ/GTNa4wfyWyb66guQ41vwdDOKuDLLze7w==",
+				"signatures": [
+					{
+						"sig": "MEQCIG0qHe2nTzIIFu8ghQ0eDHi2Ko83npsiP2JWYCadyBfaAiBx6U4UM7ie0mSQQ+/00hkQM4WS6MO7jjDeO9/02krNxw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.16",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84689
+			}
+		},
+		"0.13.17": {
+			"name": "@effect/vitest",
+			"version": "0.13.17",
+			"peerDependencies": {
+				"effect": "^3.10.17",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "08b4bac2efe702fc6146cd086cbbb6d483b2ba0c",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.17.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-ZOwLBkp8d7CCvBECb9Ajgmx09ZIUxB00H9KhdlIhY26KpZhqqiOi4lFCzhCszTToPEFtldTkcJ0AVSU7p5x/ng==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDKB+U+pc4uxhflMhTtQzh59dnGOzUWjUa5Xf2V3KLVLQIhANWwp92R9uaEVDa1o1XTB8avtXfX4BRBj+Aw2c6drCCp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.17",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84689
+			}
+		},
+		"0.13.18": {
+			"name": "@effect/vitest",
+			"version": "0.13.18",
+			"peerDependencies": {
+				"effect": "^3.10.18",
+				"vitest": "^2.0.5"
+			},
+			"dist": {
+				"shasum": "4b58514ee139385d7639d990b411583a4daa8bdd",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.18.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-ijhw74QIBFyEbZDe+jrVNxeTkiwuGG8QUw+cRWioSoS4HkHPUqwDlDy/qFxGMzlGVJO/GWNYEZ5AhJm1RxwoPQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnJyDqjq090x7UAyKL0MImfWfp1MJK4gFq7RBPFtHLOAIgPA5iOVExSowJp92QsJ5e9lbobeVyzZJ4CFHua2wNShg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.18",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 84689
+			}
+		},
+		"0.13.19": {
+			"name": "@effect/vitest",
+			"version": "0.13.19",
+			"peerDependencies": {
+				"vitest": "^2.0.5",
+				"effect": "^3.10.19"
+			},
+			"dist": {
+				"integrity": "sha512-5Tixz44IuH+TgXk2WJFEXhdz2IlhrUfxdSagzqKr7qVERZceYvCYka2W+JCgf8pgajNX91fu24vjB0YjTFKNOQ==",
+				"shasum": "c5e925e586a8f3acb71a688545eae0dcc0663b51",
+				"tarball": "https://registry.npmjs.org/@effect/vitest/-/vitest-0.13.19.tgz",
+				"fileCount": 19,
+				"unpackedSize": 84689,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fvitest@0.13.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH5GmSnFt0sIkikNv8AsmzSRxTOpxUesde69kskG2lipAiAEOK55jfuAof21U8sh9PjPEj4Ab/M4eLfwlHFxKVoxGA=="
+					}
+				]
+			}
+		}
+	}
+}

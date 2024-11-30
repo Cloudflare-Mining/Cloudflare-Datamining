@@ -1,0 +1,820 @@
+{
+	"name": "commitiquette",
+	"dist-tags": {
+		"latest": "1.2.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "commitiquette",
+			"version": "1.0.0",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-BTxja8NDFx4g0sFCoEN3tJoP38H0QF+0aje6YY3mq2OESV+lUzdaOTNwhWHFWi8UlSSwQa1dMLZhsfQakNLQPw==",
+				"shasum": "fd7ba7613f19c6b4d10c4d5e788107e3447d11c0",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 32126,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRGTUCRA9TVsSAnZWagAAlwoP+wdWmeBK/aleFRle9gUQ\nBl1iJtRHXNu5fuh2NiZjzyML4MrFrFw+lkovxgb5g4fKC/nACL2c491LdQ3n\n4sxSwOnvnjErayZy/tS+J4vU+Ze1N36N7DKTxkY8YZNCTCLOdRmx3b/r0704\nGyJqK5NjPDseNc2TjU5XlRsGmno2gvIOsTD7GnFtvOPU8fn2d5Kk+jLA3PHQ\n875/Fa+5RNA1ZYZAwONCbpK2dSRSXE7G9UL9aRiUKchJSd+/xsuKGVd+jGPJ\njGWDEKXz524LY9Xom9avu08h+euteh2ohZVqH3rY/WZmbd2acPYWzDMnCYnA\nYq1JpCVnC07qJqbyvDfcoNF374svtBHPJ9b23lKSbquQTGGMYGU3kH379Vuz\n/b2Sg/t0lecyB0WHY3NqZtRARh6zw1tl08PlyOCSX31iikpcIJaGZYPq4IB5\nxcoeLtGw7BRmGv4r5X1s67BiOhFMicfx5lO4K2HAKlhi1SsIqrlwLvr1LtI4\ntRImoPXnOgdzL0qkH7OadLrgwsszsKFaSuaXdY8GsncPRjbPRLfOQOoR1ewa\nU9Bv76Qp+QB9AaGK6taL00ISYBDz71VKrKsmCIAunJ01ccTfmwOfeK4Du3jD\nA8UF9MQU/0aqfu2hGKn5cz0lQabroHcK4CowRuRAIztncsYXlqyvhrCJMzsb\n5/zC\r\n=GkLV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFSICST5yg/DKgJZPGeB3sip3+suAQg3qfU8G9LTbXf7AiBiWj2jN2og2V7gssDBIxPSVHFQSA6WB8g9sU2FC1ca4g=="
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "commitiquette",
+			"version": "1.0.1",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-FY53jLOmDrGtDkiw1HG4lBXixx3XRbRV4wU6zXFv5074Sbux+Ad36NFfBFQSf909ehWEhCDZ6sBJvBn9+86J0A==",
+				"shasum": "7b7b0110d76b0608324a215325921e81796b0a95",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 32163,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRHBwCRA9TVsSAnZWagAAPBsP/2ko37M3mOYlK7uaBj0d\nZQ6CNFLFxcggD27iY0roG2gzh2rwb8KUxs6rpKc9hV59jQigZzi09ZWXZUVm\nRA3d8Kqak2NASad5kuYBhuTwMPlafNQLP/F351kvAezPsXCY+HPl0Mmyx0pg\nUotOD5JuU3UnCAOx2piZRkyA/6nd3o0kmziypl/r5rBx0s/lQ6qu0nLO1zVa\nzoipq4XMB0+tAJnWZGksDO5kykB9sutwyhwUamqyOx0oEUdhILTaPzBV0twt\nEyeynDsPnZLUaZC8DNScv9R56Ly+ajz+P/fJKunBTYCajdtxVYKhh57QEuNK\nmbZyqXkcCOB8aEYsgRqhLEO1+76XVvVzhzV9IlT8hoWC3ipUx7Cwpgc/NlzE\npZoBeYj4NXUjCfqaCqsgPmzrSpU/HjlhOpfdyqiKv8cVSSEZY/y3LbwsgMeY\neqTad0yD94++7KhWGmg2HGNqRt5xYxqQZ2CHLR1zmPypeGob90fvsCLrIVWm\nON40AzP0nB/WGdyZVTnOiEFAMvFScRlNl9dHm/VzhaeW8EFnLwQh3lyNkwOP\nIhHeCv4dGu7YtItPxrsA3fjOajFBPRg97BFU/4as9TxlLVrqDpk1U8uzsyY4\nELxKygn034BWFTwZqMIqb0yqPXWKvWCaCIWdvuHFfm1L5LlPQzxD7H0KvfvR\n3GF3\r\n=J7Mg\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIQCcACeMbg9qjTZV4jsKrg2WRR5RTOn13NFv9Y4qlr6VXQIfWvHJ5aXH0z7K5MKt0TMMJVmUa7tvOFS9uNFyr8ACnA=="
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "commitiquette",
+			"version": "1.0.2",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-HVVLPatfbH9Nur0JevsfSUuOZhzQ3NvbnijQ3AGEcbKnwBTTHAmSdT3zYUU2Je+tPDvTDlHm1XDMAZKydtlwKQ==",
+				"shasum": "b5482252c641ba62a0e58b75c8a01fa76e8eb16a",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33066,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRUi9CRA9TVsSAnZWagAAfcUP/1XcLTKL0njmPdApGgJK\nzgDL9tXKAaAdqDpV5hKQtJ7xaiARg1lZWDgVGkccHVhmTJYG3ZpZx60YXyKb\n9fCm4wrlZxXFU++UIrf8aVNfVGxs8LWM0eJY/hn99krblUktktDmG6SkkQ+x\n4x1lCsySTyQwaoPmhygfY+LaTxp+5awFSqgcmTtjuO3CHd1bs1+a9pHgXtAi\nNysrDXmcfB3skWnU4TZ7SpZ+HtE5kOhCwPMWKeqEGkeAJpRif8ocM5F/tkuC\nCbJ3wfk0WuXSnnxN7goBTzVI2N1NuuD9jWnhnD+9My+//biKISnsEAMKrLrF\n93Gl3TEUvNeTltV+7km0ik6xEu+UlZ7y39Z0apbvTJfJPWfD3FUhZyR69AGG\nXDrLAFDJQQBGC4TpK5G9HmWxt9ePNaW7BIE9MRTn2vgA6VrFVdmh/3k8KA4m\nqNRy3Xt11K/7Y9c1GLVigBcb4HwRwOXZ7bHjFJVBlgP18SRg9GI7NF4rf3iH\n0pYSgDh1MSeV/NX/7iVxWSGyjli56RXxUNP0Pa084FQcrJhjsa1Gtgqb7nwK\nwfsMPLWcYgE6IOdz5uovQsUzrQzXyUfZk/0W13OFZSqrMBqC1/7d+qA9meE0\npY6MyZAoIdf76xLhyKKwHFO6JQ/NezX3/Vx4cCaif6x+At9hXqDKzLQqwZYZ\nFaw0\r\n=9fo2\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFbTNW9pTR01aolzywvGrZHH2G4gAURI50xjwRsOhGi3AiBPBBXqFpDrRmQcm11IeghgSmryIu3KzRkiRUCjkMMY7A=="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "commitiquette",
+			"version": "1.0.3",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-pbdxQyhA37xz6httYtrlruz+f7mYZ/sNrWEJOMU2RgmZEnnfqQsO/9Fos66HzEkixMsfeBon3ACgjZoR+ev6bA==",
+				"shasum": "754d97eb818baecc0c008e831c52ad7581051f0b",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.3.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJebo1PCRA9TVsSAnZWagAAfYsP/A3UmP3BoULZsLVxkClv\nOdwthcy8gzasWHWfRLwzyD51wj8xKgnogp3hl9WBZ7VL+wmgrzEjmM3l27os\nYBC1OrrDRfQ6NpkNNKvKCT+uGEUZvmxr6P62UYZS1m1gkSUgrEN25dRcrD8y\nqwA9AciQiFmq8PFolawjxIpQmYzPulH4BFhp6caQMUAcMrrWdli+Nyu8wj+i\ntihZ0CwFZ3803rD4S17oEVRbh0fVwXOIDCAviOYz4Nlxb39prAbsTxvWdr+A\nsWNYIY6qJNaAJ8RgkpZnBabZkpwQht/Nx5VKyZtiLTgXkh039tBcYYIj4YOT\nPP0JPkrOkiD/mZV+cOuXcMgT6t1ZmdzVD6xoM88bskohNiZWbN7urN5VUec/\nHGu6BxAMvZqDQqttU57oc95r9Y0TkSVkttetpwqgl/VlmB4CIi61AjThNIYk\n6jvY+f37ISaIPgWnoH44UVSCB7qlhDkwCS/kL22thJei293MhC136lTmDsZu\nvbe/bzE4xN98hOcBl6HniAa6W3PIc2LzSfv7EvZ0uIlW9vak04XETEnQkTXb\nOxmG5yTXAzJtoJ2QTVUV8Nkl4YctEJC1ih+h5yvWDCo2Ah/WuwqPuGHLoH1h\n2DkcFcRiNVVejN/xRjDP4O/eqqjAdloaT5V9yzD2tZe3gyAhCMNk+hA3+AhZ\npu1u\r\n=nSuo\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBqVSV3XBpFKKRNQMxKg/CnUDXNefufDmzvX/SOyZ49+AiEAmML3NOORGjzMVaM+gmhcU8QBRnwq/XXkGTaNsGLCItI="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "commitiquette",
+			"version": "1.0.4",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-/cdeH3/G+aqNjXop72AL3aiBbEnFLxhKuyA8R5uP7Ru9uwfL0R92tGQUyKavL1CIkRrrQSIcp89Xx2F9RvJpOg==",
+				"shasum": "b185e62744698608b611248d201f1c9b6b07cfb8",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.4.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejd1CCRA9TVsSAnZWagAAy28QAJg3nxZsaTVFP9k2FdRq\npnw5ONX0xaE0gERv1GX7fXGQ3cfk/BiQileAQdSAR3riEe698TYUIH8vS/lt\nG46MnZ2u0ViYLPnaiFReNDzRK2ZtpT3sXHUQTorGVcMsgvsxkW+jAFPNtHXC\nFjTW8JRUeiLLdFMFlNBU81NkH6wlvQUhtLIIk1OHsvieY/YGWbjPVK13dp2n\niaaZewjsE2w7WJqAVZ7bTs6LLkDc5dMTAlj/IhdyfP8ymJDHrtqLZhLDgQDn\njHkQm6uE7/w9VhsENx3ZvWIZO4EfNR17Cr74YwV9hfC5V9oknxNosPbK45Qe\nnBJqKQCXlkVvVo5+JTeiy4qS4X7GYc9CDOpVVoxlN8DAvhvclSbflS0oDQZX\nv04S3VpbA79BW0RblOGC3tsX3oqfw0tCke744MXGddvP+GHLN9cmL5/xQOcL\nzEr9JjPLWcXWkThut5S+/XyurAtwdPTuwB18WIUqMqKqyF/Pn4Ipgix5xfOc\nQPgzkBBbKIrjDQ3Ht5cKBmyrcmKNop274+aMwci2uzoE/hIu/nRMo948u8bj\n9GaJNrh//MN0Me4wVOaaQ4TYjKO0gF6PUZpP29n9X4cigSACd8tkqt7IzX7r\nHP5vMTGx7psAqjnfIHL9b4A1gFpiZlYiTYl6Lkmzc+Vrvt7vZx5pXOWskG5K\n46o9\r\n=1x24\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDEPmmFl0j2dlHEH1DD9SbW0h360yyhusW0BtbFOR0LuAIhANQdr9dEaSV4w8L3PWL5HTJVtoURQUoZ5IrbJAXJYemE"
+					}
+				]
+			}
+		},
+		"1.0.5": {
+			"name": "commitiquette",
+			"version": "1.0.5",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.3.4",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-b10PphxNhJjE6IZVx4On4QDGXEJ8alIbKQUzMMxr+8VSwCPLyNsBRfG6zN7t8w98FVhXuP5KWBwRduNa+5QU1Q==",
+				"shasum": "5e899a742e59275423d4652a21d110b14cd2b8e0",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.5.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfFz6qCRA9TVsSAnZWagAA3nAP/RA7CbumydVBefVJnK+Z\n3uf9qpi5nDPuuQs+V1/fjQcfZENdiYOJM+AfSGtrJVvAUvP46BpgcGa2uMZB\njbtkdT0eGTBGAe+Q+hDWLcQqjDl5xsUNDsuRGWxeTaDISI4YwfZS0Z64gMo3\nY1Ja7Yi6dpOMxdeYd42H50HM0Z3lkTTAUSvAAmcBHenZ8tzVbWksLJpQMSCv\nsezWaVzhUEJ0ddtE7y/sIRXy1boY2jBvhs62rS8AhDWIaUXN9qKTu9iSGpIX\n57vyCGSn5ETvIXq24uUxGTjb20OuzzkvQ20mAShkeQQ1bBDm4vgsui5wI5k4\n0X8OugL42+yDHcmCNeaHjDsavMW4yEOqpLttEftZSAIV7kv1i4eRIauAnOuB\nRfZi23HplKuMH1FYw622ojDb/m1Bfgmxwvr3/1Bx/NEusLoMnOsifXB+olqi\nvWf4pjTeFcHlv4mGgCsbbo49vpvAl/GshhFW4QISy8YsINSUv+TSb1ezzEjs\n4i9WUyXxGiugSS8EtrDI0zioDa95QfCaWjGc9KvGL6UDcW+Z1qU+gvCFxKX1\nDUIr4+FXI63u34LqcL3jUjcllRkkt5Em5OPao0pri8pjsl5zDLnGoxx3LLO9\n8kim2KnIJjq8mEeOlI4rbFIZwImG9a/x+DnJB6RVLgs43CQ1xbJQBu+BF7Ly\nD9MC\r\n=8SNs\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFsfziqWmEPt7OFhcUhP/CG1pi0KpuLfzBeTH6xsjalpAiBWK+CS0a/9Euj8ysr4mD5hShw1bZHgqk+r3m55/eHr8w=="
+					}
+				]
+			}
+		},
+		"1.0.6": {
+			"name": "commitiquette",
+			"version": "1.0.6",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^9.1.1",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-GjP5eaaY+72LiCnSRYxmxcOQsgtBp44k+sqPzd+mJcYwbbQqS7CNaWMNpFuewwURlqkTWIwSChsrndEmAgRQqA==",
+				"shasum": "3b227ddc5fe1e9b18f3bf4774801258849879c4b",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.6.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfMRTbCRA9TVsSAnZWagAAv6gQAJkhWgGrmR1acomgR6X3\n85jz/PT0pekE3FEZ/x95+O8wkrNsjUPv6vnemrklxLgAEQpceoc8STX0VHbC\nfA1UGl5rU4IqjUo8dsLiF39vvhh4DOrMEYagYG9UK81JcfC1mtZncQ692Jhw\n9OiIN001YBs5NYY8//QEv83tdx0Z1iPvVEdnmLaUW/IuYAz5P0F4MJEQCJdW\n4/2L7EpNhVvq29j5UfWpLYs2sivnQsjUz5ZavGKmJqCM9fq5LbtqtGCyqcM0\nhC31qtZa0TJC5FSKruGUEB/BbvPzIXOAyLXL+YNI/0sqtWZOYBuoeGw/SDB6\ngOpP8BepJrkVFfdZ28znnemtCr08bmCDrWn0XT5uuzKdWfeRJT5hOMkKQ/T5\nTo+pXdpE1TXjEXlnnoV4l8cvDKYhyaZztWg+BTw4TG2IAjT8fExz4gOLDvm/\nBmj7ormNkgjJTzy9UxMxTZBbKLEie0tS6U7l78gSSxeHnMnsGt6pFUYFyrdW\nGulcv/5FhHx/9TsYMByKBahuYyPv/MPge8RB7GdoBEOspizrj5mjFqXLI1d5\n6xUzqJ7O++gyal/tN/s2NzHkpCCug6Rpl3mKBoO0w5FBwQ2IYsBRvs6y0as0\nURADzJF+tIEWLK5DsqVK3WnsnSykK7ZHB/GWVmcy+KIRTmrBDXHsS2ImNoxT\nR1LX\r\n=jmD/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF8fxFSxRPc/SXfYUcMA1/nU9yPtRQ1EZf/qABDEFDVpAiEA12kG5uChCBYWScgDCAUiJBvKDvNTXhCBe7LDyeRrIRA="
+					}
+				]
+			}
+		},
+		"1.0.7": {
+			"name": "commitiquette",
+			"version": "1.0.7",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^9.1.1",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-YVt1TNMw7tk8w83Te7QyQXJMamwVa1ycHOcbWFKtwSQ72BSZKhRK3l37tkmcB9MuffKd8aa3l2UXSaz3/HzmUQ==",
+				"shasum": "5b71dd6965757e93c09d6a328c046f6e068a37f8",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.7.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33700,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfPR0bCRA9TVsSAnZWagAAYloP/AkTKZQY9WWeD9TIKHqx\n+1e0Ue6ZQMfpc81IM+q9CnaAs1CV8uPtG283Uox6vbL33KsAI2uq0wE5dKHT\nkMcg2EpWAAGkZp2pAdOH5R1P3YtnnuWuP0pqzPMVg6yH3jKRYYq27a1ej8mi\nAmoPgVS7hV1v1K93m6tFaZjxBWwDdkvTfrWIQPW3Y1UTCu1cWoFialWyB3cR\npjLIUdxuB63IFN8Do+yeEGeg0M2cF4ZN7N2MSVv20wB6ES9pxet1o3xXHnHV\n4uf7EcC/AokYPvIGxt3nBAhETT1IWaUR0RE4cgwXRpAlr8aVgOiB836VcE9A\nMVe/3jIAn/w+ONKUZtRvKwa9pFfdSL25pqvgNaxG+u0L2ZnRB2Pg6IuhQa1k\npm46LSlH1gUEcnvl+yoJQuiFLDQGLzjr/heDAnchOSzNCcWPOSoEVjz1Rw0A\nUICxu06R54Pa7OnNR7pEXlj/LcPGCTczWdWheQux0SeB/IXkX8FLHaCRIG7F\nnPH8EAjFNqm+tDQhYiOdb9tz4+oYgvZnvLm7NA382kzJBcLfK4RjVd1jNLVq\nYo5ZsP7sHhyMTnMq6t3KcNo34NkLPEnHq6InZdBqmijlpU0UGeGOWlIiHLOw\nXeN2oxaq4fUTicXVbC2jCw6p6FWSP5dqVPlfRKP7R5PkpOScTUQx2kGpovXx\nQCCR\r\n=u8o5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB01tuju0DDrsP+UhUN0EJJz1M6ZaO73+Qg/ZwljQ66sAiAS08/c/q8QIdQnMVZFjnTaFLmTaa4QUjKz6YhesjpaGg=="
+					}
+				]
+			}
+		},
+		"1.0.8": {
+			"name": "commitiquette",
+			"version": "1.0.8",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^9.1.1",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-c8x7uqASY8PczgdIdVHAnghM0RosfCDJjp1ZNrbIgPY1lCHiddOV0R4hOa+bIE02Se3teI0c7aXyB0EnYdFMPw==",
+				"shasum": "551f01c9e15bd5cbce895cd8fe44f9146308017c",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.8.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33700,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfY5FXCRA9TVsSAnZWagAAdlgP/1fbEZU7wpkMgx9/vXEe\nWrFvOY1rvsokqzy92TGY/yHIwS1QcSsrxFyg/cGtScl0UKXBvN6ZI881822o\n+T3sIOw6RWUnmlvVr3rwvOEcOJouOs77MVP8VmWq3/buYbUr0/ag6zghGEhz\nIkm2lquOw0wVGelgv/gZ8G7ga140d0mDEE6nyZAdyPZFHAeWSILVIZawkzxr\ncjbeMAmXJFncAsY2dNRjUsHTjFLlHMAkBcMiKMEkJ+HiDrQr5E040/n0Uxsd\nMeM6vxz3ScnguxLtohnPn/4FuZcLnyqhgvS6SLqK/FJc4L9h3o3NLQT5xDxI\nDn6swMVlyrENtzeDwEmjHsCZJTbffhr6CHkugSkhzmj0H+6qOPCdH70puxTE\nIQ4quHa6iozrrwYx6Yrk7nB/3LbaBulMpRSQTxDq95Xr2xyOjNxtVhRdZ0vv\niTIyYeDXrAn0xilCwY0pfM0P5UZLt86m2CGUIyHPLZqoHb2Vu3S2PsSkWrqq\nw8+VFUj+TP6WZ9BovEkXwV9x8cBoPq88Nj09jCiqCC2ryFe4q6yFzg6p/3zB\npYeHT/DStch2zz6FipwidOEotIlqnz/sItepX7248bWBh7ONABBx7nJAJ4Jl\nVWcVWRIRhyF0sNhsJnMTqE8TjKgxmBegsbj0xqDl3pi8XpZ1bX+XuWDVGS63\nK+y/\r\n=GUX3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC/UEWtdDoHihRgtPYemm4zivVvMkz3dBNkWH5kIRKQLAiEAwq5IT8r8HGjpa3l1qTiYzaTPVjdOtzPaBiOHKbvGHNc="
+					}
+				]
+			}
+		},
+		"1.0.9": {
+			"name": "commitiquette",
+			"version": "1.0.9",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^9.1.1",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^25.0.0",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-knw89oRkV8RjS9Am2kBCzCl/APC0xOnkiwlVMti72dMAfJefzzLo7GA/08ZuevvNhEzRG6legJxHAfsi+1xlCw==",
+				"shasum": "ddead47ac9e4b014c366503b47a1777d3c301f54",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.9.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33700,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf13xMCRA9TVsSAnZWagAAjDIP/1sFEe5GMApaeZQDF6a0\nylg3xIQKr3p3WAmOFKkf6Pda/QtwwP/kADNltxvyJXe3uSjB5bxEIMEUS0by\nVPEP5vTd78lWgahd2j0nFMcNDl8Im5Ka6kLQbuvXFIMHcbyqs9LMCfVpFdGy\nemmYfWyBGR455ULtQEqvLHSxrBsk5ikjD/iGZHKQDM3qCxivrB7RYtIuIrLX\nXK77PxlhmSaBWXIdQpOJltbMORrXHnRjY/+JG2PPIJ8o3ttc8VKUbb+DyO5r\no094rFMrVr5xyZQN813ifStNmzB41gZTpZKXKWfdjiPDelPAai1mkoP/Fx2m\nhN/OCCxVqwj8Bd7JtjmKk9Wpr5tnAdlcjw2+GcpM8p1jmMzagM9oCWPO9MVN\nR9k7NIPUdHPdid12VmlIwBJQ3577YkwOzpOzZpOIAbbv3Wg0I+evjBuIDUGh\npzQC2WESqc6qUjaTr4vcLxh5UjbNE0edhOCVzItiXq0KtdpZ5G7CttyS+bL4\nM4VuaiRIEGWzPngVqhMFysv/t8IB6aI4oIFsY8izZe6rtnSPt8QSuT/7j5X5\nPD+6rtNtynyUYK6yeNeSArWCUKUjweW8spN3OC7D9oLzw8qwhKB25iNE8Xh7\nbkiyshWlNSLcv4XXoq7wEjPG4JUZTxShd4VqIZoCtwxhsY0Ovf2DW/tx9lTo\noQRo\r\n=t2jF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBWfsimvTFho7nbTqPkYRn/v9YqFAJQLMAvcHyWDtHvYAiA0iEZJMhf5Vd6x4e8MA3lUdTbKK5+79/1LJF3bdQ14aQ=="
+					}
+				]
+			}
+		},
+		"1.0.10": {
+			"name": "commitiquette",
+			"version": "1.0.10",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^9.1.1",
+				"@commitlint/config-conventional": "^8.3.4",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^26.5.4",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-+2/MEnsyOX7ZK4/d8Pa38jn4CtqcQvtk1kzGjccAHks90Wd0ayhkvGLsZN5p8XELzet3dKEb8z6aIGc72stfhQ==",
+				"shasum": "8f7bf0b8649148abaae97c6d3d38143fbaa26375",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.10.tgz",
+				"fileCount": 15,
+				"unpackedSize": 33701,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgYaTaCRA9TVsSAnZWagAAcBkP/jGHleWT6jhbvEpxD2HS\n+6AaJSz9N3xknj51YPEh7fJcmo5UUs8tpZQx0okGgTCd/FiV52x/ekcV0qPe\n4LZhEEE4lxNlNRdSLj4LEr5Ylx5YrJAtSfY2qVqHVgAS+yRG2E0lllP2Sf6M\nF8kni32LI4mzFE4CzmuYEeCq/j2NHszaOQ41sQFBL/s2xZShboB9w76UN8Vq\nOQZ5iIR1xRyqTpuMmIr3EwlVbOCWDQLcl1TVeQ47QjIEZsE2cSUQMBntRY5b\nfwc+aqseWbjVo61VJc4Ex+Tu3ptbXGTp0TOqT+XKvBBNd1rflWfyBM+rtZZT\nwqIQQpwTHi5zKUwdwcQ751RK2PZZX5fuLYjbCb5++f5IzInMeZJEeqe08hwg\n+c2Cja89sOBq78K/vTlHVd9MIrX+NsLbuC3lkY7rpZY7cnFWfrmQrSgqV9DT\nl3j6WfjIplYt819/3vxIUVfqNDng0ge1NxbVTYlLTomFajzhMGZv3qOf3GXG\nG6tioQfX7WD9xjlsLwJ2OEGXvMf+5Vede26iRMm3jbH7l4X+c+MWU4mXTqm6\n0F/Si6IWnZ042TdowVfV/qPE25zE9D4XhdyNT2lM2zHPMv+C3QbkIhb8Kuns\nU9rF+AX1ihwhWoIXltwitZ5IvUdVNG5QkVrAlKpq64s9hBaBNr5fLU9OfPgW\nnC1a\r\n=REf+\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFGnyWJ91/hJDvlkH7Lk1XLK1VYd2ppn1yGr5sSgm09UAiEA77wNBTT25D14z4arXm5mq7UAybnBoGifiT/JAqI4P8w="
+					}
+				]
+			}
+		},
+		"1.0.11": {
+			"name": "commitiquette",
+			"version": "1.0.11",
+			"dependencies": {
+				"chalk": "^3.0.0",
+				"change-case": "^4.1.1",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^1.10.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^12.1.0",
+				"@commitlint/config-conventional": "^12.1.0",
+				"@commitlint/load": "^8.3.4",
+				"@types/commitlint__load": "^8.3.0",
+				"@types/inquirer": "^6.5.0",
+				"@types/jest": "^24.9.0",
+				"@typescript-eslint/eslint-plugin": "^2.17.0",
+				"@typescript-eslint/parser": "^2.17.0",
+				"cz-conventional-changelog": "^3.0.2",
+				"eslint": "^6.8.0",
+				"eslint-config-prettier": "^6.9.0",
+				"eslint-plugin-import": "^2.20.1",
+				"eslint-plugin-prettier": "^3.1.2",
+				"eslint-plugin-unicorn": "^16.0.0",
+				"husky": "^4.2.0",
+				"jest": "^25.1.0",
+				"lint-staged": "^10.0.2",
+				"prettier": "^1.19.1",
+				"ts-jest": "^26.5.4",
+				"typescript": "^3.7.4"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^8.3.5",
+				"commitizen": "4.0.3"
+			},
+			"dist": {
+				"integrity": "sha512-0CaUmouEed1vqRVIa7iATOq9+ebjEsEIwf5QU6rZF8aHNjt/jdLYqpSrtwkrEouctzOfjlOBN6bjdgTbB6nkGw==",
+				"shasum": "0b0175518c1e539e846eb06a40958a5de14055bb",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.0.11.tgz",
+				"fileCount": 15,
+				"unpackedSize": 34428,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgY2raCRA9TVsSAnZWagAAFqEP/1Td4h2PPmAm3MQ+YB3R\ndksNVB+bzEAuMUU3lXQ9dwHYHYYfk3CU4tCFKwNhQc/TdEY8owBzrFrpoIJC\nmD5K3ILrJY6STHRIC9V59KFl4b8RyD0wH1UQjX8anoghhEpj5bv8BDNYeDgJ\nitM3//cpnWGVFmOPyBqe5QV8lI5hcT1qXaOnBXSPWzmU2HEHnwOYdJK9iRWL\n/mvGsIVbd3nhTrzWLj7/oBvnz6hFRFTzaFxM6Di9E1p0kNXWDH/cciO6/eD7\njBg9ZShGVt4vqsQGN267/MP2Oz96ma1QOgJVsDSU1c53YMvHEUiak9yF11Zy\nH1WwpUkUaK93XHW6jLKIeW9FalwHoMhxa8eZL0tjfSzdaTVOlR9hVc/MbK8d\nA32CxsUJ3ITyKerp3HdxzQapmhn96w55aabbcEbm07+fG/c95GLjH2IBRheL\n4MJwI5rF7iXEugP5dUN089fYhB0udjU58e2b9PsDAKU6tUJRPS7wRTJcXLT7\nPKhmodVhFb/UGqVkuPwGhCZ7fA076+/kA5PyQMhN8qPvSUS2kEaHfQH9BuvM\nK0PVpJOjIlRFqmhpaiHfrPOHx7cCfnmguNpM3vAQMyunJkUwPxSmAQFD6NHe\n9ycPas3gzI8y8dV/wgkY7lP4yhz479lc6rY4Aby1bPUGQKgwY67P5R/6TiUB\nHbsd\r\n=xOjq\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDqJEyI9YKguf/x1b7BN7BI/gvdByi5DEW1x/NB31d76gIgVO8kdxJyI5D50YBKF3/qoy8FUsNuTA5ikksS8+kIEug="
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "commitiquette",
+			"version": "1.1.0",
+			"dependencies": {
+				"chalk": "^4.1.0",
+				"change-case": "^4.1.2",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^2.1.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^12.0.1",
+				"@commitlint/config-conventional": "^12.0.1",
+				"@commitlint/load": "^12.0.1",
+				"@commitlint/types": "^12.0.1",
+				"@types/inquirer": "^7.3.1",
+				"@types/jest": "^26.0.22",
+				"@typescript-eslint/eslint-plugin": "^4.20.0",
+				"@typescript-eslint/parser": "^4.20.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^7.23.0",
+				"eslint-config-prettier": "^8.1.0",
+				"eslint-plugin-import": "^2.22.1",
+				"eslint-plugin-prettier": "^3.3.1",
+				"eslint-plugin-unicorn": "^32.0.1",
+				"husky": "^6.0.0",
+				"jest": "^27.0.1",
+				"lint-staged": "^11.0.0",
+				"prettier": "^2.2.1",
+				"ts-jest": "^27.0.1",
+				"typescript": "^4.2.3"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": "^12.0.1",
+				"commitizen": "^4.2.4"
+			},
+			"dist": {
+				"integrity": "sha512-QW0W7vBVshreqAyFxBo6ViDtrYJkfyeniSOBEP1ESjmINR4RvCzcDns+HhWbVzUcjaDICDmlrkz6Sy4pniUzkw==",
+				"shasum": "2cc8ab19e56eadb773f31a842a5c73421af2d05e",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.1.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 36180,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgr+xkCRA9TVsSAnZWagAAqEsP/iERuyBQLMptvd9/N5c3\nXmnHtYzwpuqWgsb4yFlHKXMSops/cbSlgi14Amn/KtkUtuADIwtexxIn3dEI\nMcJ8sM1dGYeY+SOu3y5geCkK1dwnnj2oHrKB0EcKYphoowUOf19DCGmenajW\nWz+7gTBuJodpx55QpQ/Hy9CvIdyZ0NWysN6dAQyntCf2IangyG2GaxeSVCwQ\noIV3j15J7D/znnm/BHXmY+sObH4DZRr3RkVu95uozj24gLeKJD52zAQ1mFBc\n/5zW2uPMx8FBtB3dU/RCDZ3TRDga4b3Ix9JLArHFTqFY0HeuCFvYf69wuqJd\nOPjSsI4mCBbyRhEVwJ21zUEYhxq6ThOaIMkFZNObje8euZRRBRa/flQjxWzJ\nxwMdfcSxX7+bfsskxg6e3wkkv4vZ22buixtfw0pGZ6Y4nM3RptmPPaO8/a/Y\nvP9mQ2BJJ2HH8hhaPD3hOtAnbD0jQ5BktBpgLrZOGbB6PL4ovh3jzMNFCxn4\nQKDiJpfSFj6SRAw4QB9ghcfdoe1x4fiB3PVnHHXEkaPaIyQVWlyAff7Kau9r\ntmF28m24m4xpQYYf/4W4JdVYshu2kjo11jRipmfkXJ8LhinXfmekkDnePo7l\neSCojuoQ6p6HjmG11fM0CVD6fnQolCA/zdeSy30pZmRzpSo4XxgvXFso1jPG\nkhc3\r\n=JSVX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDk/1RhyNHODKQQlj1kkKJFpKvEVTTznI7vhUB11ZfN/wIgKsiyaRoSEwUFh/KA5f1xvN8PBo+JNvw1QQFYQScoPHw="
+					}
+				]
+			}
+		},
+		"1.1.1": {
+			"name": "commitiquette",
+			"version": "1.1.1",
+			"dependencies": {
+				"chalk": "^4.1.0",
+				"change-case": "^4.1.2",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^2.1.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^12.0.1",
+				"@commitlint/config-conventional": "^12.0.1",
+				"@commitlint/load": "^12.0.1",
+				"@commitlint/types": "^12.0.1",
+				"@types/inquirer": "^7.3.1",
+				"@types/jest": "^26.0.22",
+				"@typescript-eslint/eslint-plugin": "^4.20.0",
+				"@typescript-eslint/parser": "^4.20.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^7.23.0",
+				"eslint-config-prettier": "^8.1.0",
+				"eslint-plugin-import": "^2.22.1",
+				"eslint-plugin-prettier": "^3.3.1",
+				"eslint-plugin-unicorn": "^32.0.1",
+				"husky": "^6.0.0",
+				"jest": "^27.0.1",
+				"lint-staged": "^11.0.0",
+				"prettier": "^2.2.1",
+				"ts-jest": "^27.0.1",
+				"typescript": "^4.2.3"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": ">=12.0.1",
+				"commitizen": ">=4.2.4"
+			},
+			"dist": {
+				"integrity": "sha512-pG9KV20p3B8OaQ9bDtykL30mU6W6Ps9h9acMBMH4Qt+P+n92NZkSdcIarI1+tXAODs4KScrxkStLLxTFLSWYAQ==",
+				"shasum": "895dc418e0636bd5aea500c02fc638c384c16dc2",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.1.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 36182,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyHwaCRA9TVsSAnZWagAAmQgP/3Se14JCklA3sXZKDLXI\n42IOGXTil03N41J0ENkglsSI8LpdRvEw3Zk4ZDsszHKR+7QFVtQZD1AGGxX1\ny7vP65HYHVeohDtOxU92aFTOUV+YzMkyXAVKvGLIyHItR6EC6DgQYdE1XvTC\nnb8x7+ALln+O6rQ8vfTHsD7w6g50lx/vaU1AAYUU4IgjUl1WW/SorfvpM9nn\nJd8XhhQxuh5HxVu/2PLWsN0ss1ju0c5yZi3wpkvkNGeA6nf07d3BsAbwyfg6\nc1vDOhewUCepN3OxkhfQVhIkRO++D0qia9Ax0u7TWwYZLpAZx4UYMLCYT7DA\nccQOqUX+NDfQ/gsoOpb/NfGO7QXHQbb9EHvhfKML7XPQx5epBaiHhRWg1krb\n3mXdbvbrVhcFJVOpjG7tyn22J7dyvZTS3iI8KFmPlk4FpVKUci6Z+veQKgaQ\n9G4BGHEf9Mohv9IRmTs6BzGMAQnmE7Xna8WoDSu3M+sIz1Z9WxEZqrdNbFxP\nGGBWNwWlsCRdtCXd4eNWAvFASEUiPiY+nKPOeWRUh2SD8XdmvNb4JvFlwtfw\nlrqH3IWk8ybO2YaQaW2eCpICqvuSoEXBUZYz0wJX3Xrt0D2isnLIScWG4uX/\n1GF8osjcMHn/+LApKK9YZIOFOHXFF4ukgOkqe4acXcUiyi5flZTWq1A49zab\nsWQg\r\n=kqzU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIG3MVhwfdoM+yJYLxoMlFZ2tEiN3SHsLbg90GGJkT6QrAiEA1JW8N0lGmi08znk7MTGyP2GMRENL1hQ/LRuvqPLkYhs="
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "commitiquette",
+			"version": "1.2.0",
+			"dependencies": {
+				"chalk": "^4.1.0",
+				"change-case": "^4.1.2",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^2.1.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^13.1.0",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@commitlint/load": "^13.1.0",
+				"@commitlint/types": "^13.1.0",
+				"@types/inquirer": "^7.3.1",
+				"@types/jest": "^27.0.1",
+				"@typescript-eslint/eslint-plugin": "^4.20.0",
+				"@typescript-eslint/parser": "^4.20.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^7.23.0",
+				"eslint-config-prettier": "^8.1.0",
+				"eslint-plugin-import": "^2.22.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"eslint-plugin-unicorn": "^35.0.0",
+				"husky": "^7.0.2",
+				"jest": "^27.0.1",
+				"lint-staged": "^11.0.0",
+				"prettier": "^2.2.1",
+				"ts-jest": "^27.0.1",
+				"typescript": "^4.2.3"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": ">=12.0.1",
+				"commitizen": ">=4.2.4"
+			},
+			"dist": {
+				"integrity": "sha512-XgOtrBpVSrDSvomupqn++ngUPxP6WiseYEyhu40EHegfIi9ylf1X0/FdVeeVsLwz07YHM0qzJ8RZTxAuVPEfug==",
+				"shasum": "0511b571b84f5b5fdb8574f08a117bac07ca43e8",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.2.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 36960,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQydMCRA9TVsSAnZWagAAhKoP/1EkKt0BVhED2kHZshfM\nmpiiGmq2f5nkIzTOvuUHNYmujOLpm5IeP6rXY4c0EnqoFf0UhqZ+g7TrPhvH\nfuUdjfDI+cMjm5hJ0gVvoyRtAXMyt+8k6BkX/PMGY9Piz4/VwDYt++FGwQqy\np/kg+/y6PAP0Clk1NlIfFo3uhAByPwi5csgGrS98mpvIJGfrLlIDfd4DqPhF\nDOeLCAayARr1IwMyFa2lAoBA1tHl7sZNk835lgybVm3GF6PFRKefAFh2Pq1O\n7fpDgVS9iRuDVodtt119dsNjhBD28TlOFMeKmFEJI1R48Eh+M1QNOSJvLyae\nKchfY7t4O6HZuVD6eBGERg1hZ11hCUfs08wndKFqJEeiFm3JBuF8KwVm2FZ0\n3m23n9OKRb15YUaVaL+P+2ZNop84Bzb+MCy0yR3cDP2iuv+fFmX708vD6Zo/\nasnOeJr+k3KAs6lbM2rBNbDkJDD+qONPMP5cJ52t91TdcPstmXTB3VkfqHSS\nB/Mwx+nEUG4oROQlzdb+K2BM0HYsjD3588gfB4Y+/Xh0Dd4stRryZIZkPbCo\nbGvjY3DF59qThWqpQ7VhHJwvLknKe5ZecPp6f58HyFzIotDeiAepoA0Nvnhu\nVlnRPalo1mgW4tdNksnJyM+/Waor2hQIvyQAJwZSqPx5VWsgCd12ovjsckdA\nmhcQ\r\n=bd6C\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFU6+fIQAhNoOA9WxNEMK9IQLwyUoROFDvc77r9Yr9WVAiEA/CdzrePPvqYGN8tzjso0cWzI+DSc8TFNeOrAFdZeCCk="
+					}
+				]
+			}
+		},
+		"1.2.1": {
+			"name": "commitiquette",
+			"version": "1.2.1",
+			"dependencies": {
+				"chalk": "^4.1.0",
+				"change-case": "^4.1.2",
+				"conventional-commit-types": "^3.0.0",
+				"tslib": "^2.1.0",
+				"word-wrap": "^1.2.3"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^13.2.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@commitlint/load": "^13.1.0",
+				"@commitlint/types": "^13.1.0",
+				"@types/inquirer": "^7.3.1",
+				"@types/jest": "^27.0.1",
+				"@typescript-eslint/eslint-plugin": "^4.20.0",
+				"@typescript-eslint/parser": "^4.20.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^7.23.0",
+				"eslint-config-prettier": "^8.1.0",
+				"eslint-plugin-import": "^2.22.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"eslint-plugin-unicorn": "^35.0.0",
+				"husky": "^7.0.2",
+				"jest": "^27.0.1",
+				"lint-staged": "^11.0.0",
+				"prettier": "^2.2.1",
+				"ts-jest": "^27.0.1",
+				"typescript": "^4.2.3"
+			},
+			"peerDependencies": {
+				"@commitlint/cli": ">=12.0.1",
+				"commitizen": ">=4.2.4"
+			},
+			"dist": {
+				"integrity": "sha512-/rgn9sjboZa99/EFk3N29vnGkHoPmEfy/SyAlRgapbwbl5Eiht3xGk6+aThih8EhAKYTV2DyOoTiXE9ivOkTwQ==",
+				"shasum": "a98bf32ce316103a3a0a7391ba82369cdc6798e7",
+				"tarball": "https://registry.npmjs.org/commitiquette/-/commitiquette-1.2.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 36960,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHG9gbjKmBKhnBKwnRaLKMxvN+dpFPb6OYubJ47L4kMtAiEAzJ66nBMYRlSPdUIn7SMo1ZdLdAIO9Bb4ipaTp/sSwsw="
+					}
+				]
+			}
+		}
+	}
+}

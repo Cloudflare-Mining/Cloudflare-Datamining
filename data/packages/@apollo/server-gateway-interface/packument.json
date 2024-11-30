@@ -1,0 +1,295 @@
+{
+	"name": "@apollo/server-gateway-interface",
+	"dist-tags": {
+		"latest": "1.1.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.0",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0-alpha.1"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-SDHtDujeWHn10UEai22H+uHZz4XpXAP11AiGZd1Bzlxq+SgewPvwqpIpRKUongggCY4aZEjBIM/tSkwnqWZPcw==",
+				"shasum": "47e560129607d5ceb5b7fc50667238dffb2548f3",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 12807,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHcTHCTEWquWhAtmuURfwLl7F35a/0nHrRWfefRjLsnXAiEA9teQZ+TuXWNKU9M7UbTzcyOY6QVilrkg4mPxAwBUGwI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi8Y/CACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpDiw//ROI9biFow4/lc8UCT7tDSH4Cn0AEf6Yjs0fH6x63PaSsDFJR\r\nvFExMhY3Yfa0ke/BTmUxLFmIc1A838jymu8NxM4jEcBjhicfUGgQ4ZPTEoik\r\nPzADYfmQz9xPEj68/EoSjytQTX+V2RGL+5suLlr7f/kyH/SBk9+irw8fwz+E\r\nOUnALaMf/AeWxZmsUZNGOFzwbVWEUjpFerfOV9HQvRejzlebzD/OX4MbMLxO\r\nDPpDWYv5H7kGN+m8Fna26dFUkMMl+h+EoxKKn9qb6AGQUX9DEzn6X5a6E2zp\r\nGRGRv9vOrJEvZ4uTsCivr4gu2xOcx9W1cafrBK5892UdfcNOUkn4vGbLowEF\r\nh+GeYh0F5Wwlu9ZCmCSMHjPLCrcNOmTYzLwvS4bM4gWKbP2BAH8bRqg2r1ur\r\nq0cKfod+XxKr026/iL3ZESO4WcXS1kWfOBVQAoT7wsx5eht6/CdwREr10uFy\r\nRT+a5j0Qj4p7kKsJaYESVsD/R0qRXyGTbSk4IPpnrKHRbX/gM5JJAdI/iR0g\r\nu6lWP9Hk7AauVZTITXjcm33IhNyvvFGiLVThe/BYC9LA8jMQDrN+0/BBTH3s\r\nt4+re17I6liohd1j1W/JiaKoCsQdZ7s5eePpZpAKinDHrj1dV93AOMt53U77\r\nCzztgfxRyVOt4xiBh6Zue3hNdvRkB50rUR0=\r\n=Kra+\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14.0"
+			}
+		},
+		"1.0.1": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.1",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0-alpha.1"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-YZ+bwSJJIYrIe22NDhF+DA+T9S1PV/sv3Ywp30Ao1RhtlXX7lBSRbu+meZxE1FNkC3nkbj63sUAUEmWiHO/jhw==",
+				"shasum": "e8e1ad35de93eb7ed11591b67479c0817f1dd6e4",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 12807,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHdZZyEgRWCyQYVOzKggNqKTyPSQKt9jLBMM4RaD2vUBAiBo2ftKMyQI0QchL7w6/ODAr5QnKtMTj5KW89Ybc55EVQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi8sbsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqGlA//Tf2ySwOtV8L5hpeWnIqZ6iFXWDJkb2AgKWn3bonTHu7938A8\r\nJkN7ngr1TrCPvHzH01y/uQlYOeoTDzitqwt7dEdqRTqdPRIa52dCKyOtmM+A\r\nr3hmCL6kkAw/MH4YJl3AbYnfXtARmXqF8QGk6RfSunajNh8fyHsFkrsRmN8Q\r\nb2NN4evObOiJExkJZhZqInt6PDLmO/i43e8LRUyt8utNoBRcYmgCjLIHQR2M\r\nTnJ9/37l+mW6RL1TF1rZ1hAx6vO+dXs5R+n14XXR0uFRx4dI3cRHd4qpTEQg\r\nPz3hGOdSpQC+hLUBo1eD6ItaMTLryIQq+2kth7ro99mEr9CGglNslr2VuO0s\r\n7dxAVD5ftft6EJdgXx2gH2tZ+/1+3dZZV9m7UtiarTrgyCr1LYUcX7AdlTGx\r\nH2tYcKnKGir/6dLPzbBgAq/bsDdp1B2TxcG/zJ3Brbgnxjax+E7ZO0ccQ/Nb\r\nCnPwDO8VkO6YIcEF8s5QcBQTDjYxqaF7v+0gD7djakH2qiM8VIuhFm5BWAEF\r\n6eyWs+stzswsCKtZf6TOrs26BGtn99c71MXAuIEymB8gqc8xEsRF0fCL4H+H\r\n/gtEM/vc3AUUv812HrmEuhsHrnAt55RJATaW/st8sD7CBVBffTtaQmvgpB8l\r\nTSTyQGvOKU62iVQ9sNLSQGhpEOyz2DdYbdM=\r\n=uAjK\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12.0"
+			}
+		},
+		"1.0.2": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.2",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0-alpha.1"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-IDYTUwkS29upUg+nv32XAuJ8uNPQ+EixPSn5rrtYQMZlLLLDE+OrRtlETCHob85/TMp5xlGYyuojVQXfaDCpZA==",
+				"shasum": "f4fe3199b2f9859f68cae8f395b1f365da40169c",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13077,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD8wtOQQb0LuTH6aAqBC3C3Kh4kxAbkOvGUEXN8DjRzQwIgZ4WGpzt+fraAX2skVEYljNBmdfVj63GlhOgALcG2Ub0="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/oCAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo37Q//cQO7wsVd9lPSyaydlVJE2FtXNlbKDIvnD5877gghYqtpHpDq\r\n8sKerspVnLOA6NCJr+4R18dn4MAUb6cHAKn6fPEn42v7HFqD1pUtI/CXDEpU\r\nqzkAS+/r5veRCqGsYwiH/u+YdEqR+YT4ruZjECktC2VwnD1BvbzhB3JvwLqF\r\nWQQRtIyFpylOQXKf/1fHIDqWETSzYUHXXQenAXC5awtjzU9NgAufqykOA9jm\r\n4VvISlXgV4FBHrVikbK16aEsv+9GX2Gt2S7/zQqYGBCmtla1Ul8s1mCH9cwr\r\nlCLud35o3PWP7VNKkwZSnPBLgvxP/8lQG5Sj1PaoyHeBGlsgRqp9PozrkvBo\r\nDmO4mSycf05eHrMuNKAayF2pKBwZ3p3pEN87bkcDvBC1ex0ziRlXcyeUFt7z\r\np0hAZDzGk6l+9IrsbboJExu/V05+MfZNGNA4Fk3gW409RmMCvIDkdpJWhRe3\r\nDd629g4Y5d7UU8wxe/rmUgPPxCo1Ot8GUHunIZ1TFo7VBtV3eo+Wh3Z5fsVP\r\n8CdIASvM70PWHF89fzB/mdVuE1G8mm2uMQfqqi8mq5jrcTucIf2efQ92cemu\r\nnyiEVBOZsiFLZiq/h3WbYgYe3pmzMpgFsOEM7Ew7GLJnBpwP5XZ8F8251tAB\r\nfSTzUtdqc/khQvoT0niKTfDALH2WsbCxZeo=\r\n=xhCY\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12.0"
+			}
+		},
+		"1.0.3": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.3",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0-alpha.1"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-XYdxr73Ld6DzQ4/LsCOo4ElOyJVcgPDJUybv43htN9AN5ninto9mwLfo2Q8FVkRH5FMIe57EycsHnIyBu7wDPg==",
+				"shasum": "d33afd34eefbcc57153cd65aee3973443b81f204",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13270,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDevKxlu3Zl+RjLkYqjPKT8RKo3Vg+UWXWhXjNroVdz+wIgK4AJnGSnP2thARxxHMdEmh6yZdYnL0/FBjwpAqpAJfQ="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjBceEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo/vw//dCGheJRFtqU173gfyoZxwXhZJpo2pvotC/SXN+srcRJyTefs\r\n741bJVhZq6Q1bDZs6p7VPfNlo0wYBniiPDjqpdcGWPNOnEkxcgcpCqDwawQ8\r\nozUS4LwjJgmioJRGwbJXUsO2ectXW/WBuGaWxVHpB68XxHpIeug0JngWMxin\r\nCWZwQX+MZD7GMrwxSs9J/knjFze+MXcHwJ3jW0Zv/kpszgONJHI7KGkNk+gk\r\n3PNYowcHcDTc0/8Y72KSYIgo+KJwtqIo/H0QiUvDqVpJEG/lrgaJCP7SmWR/\r\nrlH5Y7+pevaTL+2loIutIgixIE6l4pDs82SCsw/SuZZvEO5Blo7hBhLHGGIm\r\nTOkYlpAAWRvK7WOCV0bq7qHOgKAUT4v8di++IcxpUMemaiYYIMY8zZJVkhkI\r\ngSqmHIb7RabM/Bom357lF7b5I/r6q9F4gnqud8YYqVzXC9XTsga/jhYsv8NK\r\nCjxxe7dhjew6qT1u7xlF9OSwemMD3c62wsfktkTnTaJoEbHYBd/6ilbuiZGn\r\nSXHOlzusUkh+0gv9+vWqihSGIlrEnPhqHwjuwl1KU2iTcC2O24kozD2UMlCg\r\nBhs4tjnf6IVzYrPmzsiAxP1RVsvZbSmW23HoKyi4RZCql3GDVPyWcqjpNC3k\r\nXC0Hsxk4p2fzAqmIntrvaS02P6oQ65MNEjI=\r\n=t+74\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12.0"
+			}
+		},
+		"1.0.4": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.4",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-zXbFjrpL0VXfYV8ecOWUKjbUmhgfUx9JzXCPZq/qg+ndwH3WhRFp7Pog45/OfkjPeBXTCeote1cxeDNDkQ2FVg==",
+				"shasum": "e92139ea90f03ce70e87487680428cced4f38f56",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.4.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13262,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDG0IwPeH4Nrip2avcHWnHJnPl8FUZqk3uoK4OK3hgA2AIhANVVG4GNGxbC4hy1MG/s+7Q63Rr4p9CgYA/3tUCayMnB"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjR0amACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoUJhAApEZx8+37XG1TzpCTFB/SeeHsziHiZvBz5imO1/Y7CK0AwGUC\r\nh5h7osKFU1kzJe1MekWspdsJiD1Htf0ospPlHFQd96CXgvOqYLbKGq8W+DGB\r\nXOPGxk08F+Ml8FENfI5okIV++tudY0Lvuo9eXnZrLXUv8ZHR6Vt/sHaUlzZR\r\naCQe3NpqkV2dAFqS5O5xfLCeMl2hhQsWNj3oOMUGHV1wgLVi42MZrf3eRTHp\r\nHl8S1R3sMoTMQR5Q+3Ko5qfwp7YvJDymmK3D4zre7V9OjPqMaTENAPgkprwu\r\nTD8NVC9XdLzArL831Pxaz3qeJDRpUU60PY4klUJlPHcch0Rdm8w32MGpYroG\r\nFmuD2o3p49+0GWJPQ3W0tqZqces90NLKLJmu4Yor0AgzysjzpAtmoqCL1A//\r\nwq6yx5T8g5J8cHxdHLagzd3rg/IAqCcCZ7u9Dt+xHFlWhROwqMNN9dGwUnka\r\n44sxHpC/J5QNKKKc7zl09jCU4d205ucLf6dp0xjiyn8OPvKlWBshSbC62gwH\r\nCEEmBfbQd0mdE2ElNAf4dv3PL80t765IiWfOhNHeHUcdinEgBq0LUJzMs2bx\r\nGTKsz8dInGr3zGCyZH7sYzuOLoz76DB52zdeG/L5R/qW9h7xt6Snmlw/SUOW\r\n+8oZ2CXf1vNEOWMYLbV9ZSe1BBtqlcyLZsk=\r\n=f2rL\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12.0"
+			}
+		},
+		"1.0.5": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.5",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^1.0.0",
+				"@apollo/utils.logger": "^1.0.0",
+				"@apollo/utils.keyvaluecache": "^1.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-sAu85MR82hdccGW08+QwXAGKRL3LpOnc0DNleTSDMkC9+Uv1f841HviKk8YaWYkXzbWIKzS7YDsNLYlHG8G+XQ==",
+				"shasum": "467bf9aa93eda0b4a2b819262698f8737c7298c4",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.5.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13540,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCTCBhfNf4Xpgna68IiA2q7Qht/aqRjmSm8ukZaqt4ItAIga1sram89G3uF88dbpG9eQKoiszhz23NcLiIkuChg4G8="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjZCtLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoKTQ//TES6vTM+7vTqWfIclnU160YSW23hhmeO6pn4tmMM7CaQKNJV\r\nKpvbfU2wwsxMliybO+rtGWTd7EyGnsP6XQlXLyvvdNH1HockDOYOeAJ0o8UG\r\nxhZ8sqECfIyrchSYZtYetDYX4JP2sxyr3o0+xz0OoqN6Rn/JSI5PdmMqwDi4\r\nboCOntYu/dc/UogR+4SRCHdqNqvuS1G5//3s0FFCG/UZLognEfWfYaGjYh/P\r\nYLEjl6RG/hCeBn7wJaPElHHX2cG/pv4yfSvtpn23rNE9UeEEvcKGCNHp9sWx\r\njx/H6zLyQbrnwPgAv2nYw9gzYx/CJ6QGNsUrBieyURvd9k2OPOBn+8oHzIh+\r\nQ3uyS3dMfacwTAVk5CrLoRvXlt+bObBHRDCy/tbySTt9m31t+GdSxeF/c+oZ\r\n2jJsNnZ8FmaWmoDmuxKRZ9n1LTuddHD7IzuAmXs8uR4vJ4TTurrv34J5vUkc\r\nDI18KsC9VcK867JLWJm/MmmywyxmWvasgl3Y5z7lOedWjjKIoKdsyxoz0bpu\r\nmok5Ihx3gTXPmsAc5nkwu9j4sOcUqyvhXfzPaIgvyn+xj7BNU5LV1DUHyIv+\r\n7jaSuLzBaVwu8QajP4FStBFyDwNsxDywyl37R31pG1QBxnd368aL2a5IpJAw\r\nYnJQS8w/kJIsuP9IsbQl9wWJA9aDUK1FPqA=\r\n=VliO\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12.0"
+			}
+		},
+		"1.0.6": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.6",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@apollo/utils.logger": "^2.0.0",
+				"@apollo/utils.keyvaluecache": "^2.0.0",
+				"@apollo/usage-reporting-protobuf": "^4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-7ebvJMBBzcppCHt0EpbfTjFbjUthpS/fkSiXMyi/kZ1ZkCmxW1jydG+iBmmSYtfYx9h9ZyI3kIBpzqHSHXR7IA==",
+				"shasum": "037641d4c10ed2d519afa8217814c79b9fdaec4c",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.6.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13479,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE8j/b/EjaBGhsxJYjNQcYANmY8gAsABGy1I4AoC64LNAiEAmjNGe+2lqkgEMY4qcoVsaT2QmdveA77L7TPKQLJhOnM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjfYQTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqt6Q//TCpXEJ1danMaaCwRF0MwXDNuVOCidMv+UelCcZBvNVHAxWV/\r\npR8mn5mmBIzL1xuxtMk20etfYmCXKB44aKDmjqTGVkxQJqLZThHzm4s2XRe7\r\nzhpCRlvvN2fZHQePz7DOsFmnqpYvPUOntMO+VEaTGE0oIFFVmBKyfDiverVy\r\nTGPiEm3o/EOhpPD74m+kDicObCdEJE5uv0nWxjkR/lSDo4xYX6yIulijrZYp\r\n8tIIR0JYfVvZLNcFNSmfKq03iEyKjE6nR3gfBr2TkMn+3SUxpgtZZjm8n/pF\r\n8M69/Cn/+xOcL44IhJhgowsj7kEvbWGEs6tzYg3Fn/hoAn/BblfeoTQLk6dH\r\nmXGnqYno30/XfdZoJDZBnhu7b5wLMYnyhhai8KVVdvS3gJZXmefJSelnhr4F\r\nid/y9AKaZV+trH0hYKmkFBYllEH//jr0dDp4KKXZE+gk9xTgTUcrOgADJ3M2\r\n+ioUK1Oj20btkLlx6fyX75ruZO+7r5ELVqAuvl5MmwrVwTTTBc0SsFWtVmRn\r\nt3F9zRWy2H3T/n4siQLPHufVLfM0WNelq5QN90SGbJHD/4gKcYeUc6fHLF8t\r\nTBP0QBpjOdeTQuMAFpI7MgPG+eCp/1dk03YL0jvHXDd94XwrRxfeDk3Psntq\r\nRUiUUSmuFNiVWFiMLb9OAk7D33Kj8lUjGa4=\r\n=+ajH\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.7": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.0.7",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@apollo/utils.logger": "^2.0.0",
+				"@apollo/utils.keyvaluecache": "^2.0.1",
+				"@apollo/usage-reporting-protobuf": "^4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-Eas36z851D0B0Hw8Ihpig2thHcoVAcFE7/I0+DAOaXr70r8kajPq5QHhngqFrlSTVl4AlJ7Yw1SGaWdvuSmDPQ==",
+				"shasum": "ea2391dd343430e453ab892665c783a2a35744bb",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.0.7.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13479,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDg14+IMiCMRdZiPJH2DpPV/3MpCq3CUd4mel7tcjfZEAiA9dwpeWUm/HzAT0n5EVSUnuLO3vpEcqKxugQFdGrS7oA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjfnHOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrF0xAAiDzg3AMdVko+kVVHcmtHwbKHOZO18zSJxtniFct8AGP6T624\r\n8F2rwmWlBaMWq47QmLJF1eWyXTWfZ9Cyky6iZQBen7tRv+9k2SvPd6s/fUo4\r\n6fgyN3DrlO828CAD21xTH/SjrfXalqsYVKy9BeccrYIBms6YhNrENyoZBOcO\r\nNhIegsp0Q2q+2hmLTzD+zVW9E30uXOqppYtOczeJuXAsGUX5BmqWgDx8G94s\r\nF0HmiUQ/BYE70SD5aZ/0VPg/bOKxf7YWgaDEQ3bcGWhB2C1mG0wEWaCi8+Fm\r\n6sCdnkcwrimbFXUsYjYd7idr1C+o9myIzFpYznoVpLlXFJHLztXe5tZuG31L\r\nSPj1MP33O3wTHLuHD9YR8ECAP/g3LxmrmZYssYVohDMP0QoiCycSEhIrRcbL\r\n31trP7T+N/GfR9hpOiW/nwehTV1yzty/JsnRd8xVLsERycu6zziAcXcMkgyT\r\neqHC4NILC9Jn2Cin+DcB255p6LAUmECVd/u8sHw0Oz5W/P6TtFqSkZsV9dN2\r\nlSVR9CFprOzG9fKlhe2TL1v8bZuhyvsvvyElgc5RGIVMji7JajqxOVZKKkuJ\r\nQrglNJg3EUE2nS3elDFBFONMGzaVfJ/DOmRvtch9uHh+Qla5PpofmVNsclMU\r\n2s3lZMWCRype65eNq5j9uL/wayfCTPC6Qkg=\r\n=eWqD\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.1.0",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@apollo/utils.logger": "^2.0.0",
+				"@apollo/utils.keyvaluecache": "^2.1.0",
+				"@apollo/usage-reporting-protobuf": "^4.0.0"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-0rhG++QtGfr4YhhIHgxZ9BdMFthaPY6LbhI9Au90osbfLMiZ7f8dmZsEX1mp7O1h8MJwCu6Dp0I/KcGbSvfUGA==",
+				"shasum": "592a6dfcf0359a15785ec62c1b6fa51ca761fe08",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.1.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13635,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDCKAqJR2ydvm58X0as+bDs/Y1rJvEgiiJmE63n4/2tjwIgQ2O40gQ2StO1rGfBOb6WMDFv6AlA4Zxn6W/RQ3m3kd0="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj0Z1UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqyFQ//RjjCdJFjMD2/29pyywnWDdfERsDHyx5AFm9WNa2ZZIQlLJCv\r\nRt4TUuWbMBzP7NdF+WqP7o0SgkCo6AUUDwctv42xoQi19Qodeo0MYGSaajAY\r\nq/OS06eFx8hCbfTBqoRWcBETsRDT9FYxhEKC4NNEYbNOY5NKAWAZpJKa1k2x\r\n/xd+RmNP6K6pxh+WXnqYMXCKHtzEwe9hhCvhAAuXLt5O6QeoyGvC1yrzTtFk\r\nb8VNw2O/XVJQDNmY/gADP+uNDudljmjRQx6LfEY3LqjwOKPYIMfesuctbmsA\r\n3xZHGQ6Xs8NVBpuMYxD4pngJIoCW31/MPrWyTPtkrMlu8SpfemHfO/4YQnQJ\r\nOwtjdB8bekJtR/crANNleyxfOg56zNqNZWhpTkdytlQAAJWvbQAiX6dcqd7H\r\nvwKYDPhmgnqcQSddeVx7nsCabECmzv8An1U7yFxDD8TOmKS3PHxnhuittbsF\r\nvtt68aZ9uHyzMXVUsRdhVAxbVPXPXRWrDNxLYTBMd7sbmxgjzd8dqlwjtk6l\r\nhloacyNbHHMaIehOYO2fhWbVA3MG9ucMCGJ8xHaDQsIfuhLZpDU5NNSl6xDp\r\ne1hYNLp8SneN2MQsu+8y59BFKPvqL30NhTitgERjSFzcfSkkEF05C4wnpWk1\r\nwQp1Fjjv1vPr65flxR/Z2e3nAzf0VY4EtGI=\r\n=4uq1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.1": {
+			"name": "@apollo/server-gateway-interface",
+			"version": "1.1.1",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@apollo/utils.logger": "^2.0.0",
+				"@apollo/utils.keyvaluecache": "^2.1.0",
+				"@apollo/usage-reporting-protobuf": "^4.1.1"
+			},
+			"peerDependencies": {
+				"graphql": "14.x || 15.x || 16.x"
+			},
+			"dist": {
+				"integrity": "sha512-pGwCl/po6+rxRmDMFgozKQo2pbsSwE91TpsDBAOgf74CRDPXHHtM88wbwjab0wMMZh95QfR45GGyDIdhY24bkQ==",
+				"shasum": "a79632aa921edefcd532589943f6b97c96fa4d3c",
+				"tarball": "https://registry.npmjs.org/@apollo/server-gateway-interface/-/server-gateway-interface-1.1.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 85525,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE8HrPB6xK0OZtATnD89zM4Sj9wjtKf8hs4Lw3HzfDZZAiEAg9iu6sJGZeHto/YNI04MHad0dx9sFHUfQvg7or5x7Qk="
+					}
+				]
+			}
+		}
+	}
+}

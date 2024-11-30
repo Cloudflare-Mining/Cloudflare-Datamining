@@ -1,0 +1,696 @@
+{
+	"name": "js-git",
+	"dist-tags": {
+		"latest": "0.7.8"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "js-git",
+			"version": "0.0.0",
+			"dependencies": {
+				"bops": "0.0.6"
+			},
+			"bin": {
+				"js-git": "clone.js"
+			},
+			"dist": {
+				"shasum": "0175a106f90bc36be297182bffd132e88b626018",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.0.0.tgz",
+				"integrity": "sha512-Ph4hlya0PNkGWrD0w1iW68UAVccT9Lhrf2U6qLDJw5LdHF8itvG+20tL0nNqpvV5W7YVH7xLHKxHz6IOvnErQA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBuLBDRlBn4TwC3oGbqXysiiM/koZvUMAd5lTKrqhfoWAiEAznqLiVx3YMR+JDEVQ/inhxos5nHc3vhQRlkXplMzlY4="
+					}
+				]
+			}
+		},
+		"0.2.0": {
+			"name": "js-git",
+			"version": "0.2.0",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7"
+			},
+			"devDependencies": {
+				"ssh2": "~0.2.11",
+				"gen-run": "~0.1.0",
+				"push-to-pull": "~0.1.0"
+			},
+			"dist": {
+				"shasum": "e87dd168db3ea9a2eea1adbd3fa2303aa7fe3ed8",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.0.tgz",
+				"integrity": "sha512-NHReojFntxOqhKTS/3uaAasbxjtbXLm0LwtQXGGs7IYgkdINxKRs6lmj+fxlnSf0h4rOr8ROehEK04x4NaoOYQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDUqrP+EJPBXktj2P2F9+zRy+aQb9ESfe4WmX7HGwnJzgIhAM9vZiQtn3AkCI5NT95tNtPpy39DqB6cEwvsuMM+aEXB"
+					}
+				]
+			}
+		},
+		"0.2.1": {
+			"name": "js-git",
+			"version": "0.2.1",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7",
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0"
+			},
+			"dist": {
+				"shasum": "17a04147fdbc6c541a38db3b608644527adcd60a",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.1.tgz",
+				"integrity": "sha512-EpG6C9Q0QizGf5DbeXuHMuw78D6+JABaQRPmhLcUQ7PIejlBKhBVPaTaaZmHLrko+II2Lsl7XFd5aAHwtu52Kg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICyxu8CEcVBEQfAfOb87FMA3GG4q8/ZVZI68mJAnn9G0AiEA19DMqtayA1Ts8HfWYBALAzlORaVRTWUImQADLqPdGrM="
+					}
+				]
+			}
+		},
+		"0.2.2": {
+			"name": "js-git",
+			"version": "0.2.2",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7",
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0"
+			},
+			"dist": {
+				"shasum": "6b50e219d72fdb0717fd71d43a2402a8da976b44",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.2.tgz",
+				"integrity": "sha512-pmIaKDBtKFhflRz8TDcHZHj6VYLxo0Dzo61W5nqbWFzc7uK1gD6mDm1wxe2+Be+rEaop31IYG5vZFMGC/xCmfA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH6DpOc0xnXPFk3f0nwoWfnm0CrAzrnIwDbOA860Do3lAiBzCcjFpyBJxf/loqEbI40oIktaCGdnw+CgDh45uTovXg=="
+					}
+				]
+			}
+		},
+		"0.2.3": {
+			"name": "js-git",
+			"version": "0.2.3",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7",
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0"
+			},
+			"dist": {
+				"shasum": "6abd49d8a00ebd4bd4b69fb958273cfdd7225543",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.3.tgz",
+				"integrity": "sha512-w0OOToQ6e9yIZURB37cWl/LuK7KvFhe/uJLf3JTohKN6rJcnW4aeenUp3kpZML25gOiiGvjyvQipsuoXhT+mig==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDjrgPE5PUhJ3Vp9vlj1Ma0CIoyoB0IxQmOcTbF44ZZIAiAXSXxJW319x10hb61PzsBT0jWF0FUvf7K5u9k4xvBadw=="
+					}
+				]
+			}
+		},
+		"0.2.4": {
+			"name": "js-git",
+			"version": "0.2.4",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7",
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "82e81a2c438dab32c6440bbd6858d5f36e14b60e",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.4.tgz",
+				"integrity": "sha512-UZeXrhaL471GjVhifAhybRwRlen3Yd5UN9pBq7FN+5vQQ9I77XlLBzkAQ31dfTHBGdPC2x+AA18rFv2riIc5Tw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBNcqCa77K2wd+pR1wk1gEmhW3oIf2ksdhSEjwuJ6F6+AiBgZP0OjiwIstIZuM++Ryce46gpAg6I5U693SA3vfZlsw=="
+					}
+				]
+			}
+		},
+		"0.2.5": {
+			"name": "js-git",
+			"version": "0.2.5",
+			"dependencies": {
+				"bops": "~0.0.6",
+				"git-apply-delta": "0.0.7",
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "5a90a6e2a7058c7ba17476b4c8487d4bd45a7716",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.2.5.tgz",
+				"integrity": "sha512-W1pTnsGgVcLBg47sbvIDG/KOJGw/0dCv2EkSX9HZNLHcif4Ll9e+02/cGYOjGHiaQ5p/vDhroSbC2FKCxRFj9A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCa82MEGOYrDHmfC8VGR9aBfgG0aHICMqFRIxHDriawGAIhANlzr0tnW2S09VBBymTHxUEB1cWW/1f1uXYN3DDZDmOi"
+					}
+				]
+			}
+		},
+		"0.3.0": {
+			"name": "js-git",
+			"version": "0.3.0",
+			"dependencies": {
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "a20377eeab39b41dbff998b14d84b778ff1a4c87",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.3.0.tgz",
+				"integrity": "sha512-6jIqgdDKubKf6tGsksxGomgEjEPaSblNYHbPRZ47LpY7/VWQv1vn7wiK8FPu5GQDyFtrQllGh7RHAoRETZs+AQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDnhDCvZ3m1NKmxj+jiFZ31URnI4Q3G/bLA3khWMUkNYgIhALiLmhtdUls4O1rcocNKb+6sYeyw+I5Zg6V5qqPIsoq5"
+					}
+				]
+			}
+		},
+		"0.3.1": {
+			"name": "js-git",
+			"version": "0.3.1",
+			"dependencies": {
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "f90b276bf5716f53d4cf911624eb9a674ecab6ee",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.3.1.tgz",
+				"integrity": "sha512-AZB2fSbyPOkA7NgIr2Ko+42+jhak7sYuLC7v4JArBWrk0Drww1aQeykmg9ObwLHm3aEYZNq3pmlaMMCK4pk8Iw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF7TzlCi/FJSAPi6ESrnKk1/PqNH+xDPvJpIji2aWzamAiAwvOlYPoq/oy2DlwFiLEMfkXURSxmY7P4Qm1wHz1abdA=="
+					}
+				]
+			}
+		},
+		"0.3.2": {
+			"name": "js-git",
+			"version": "0.3.2",
+			"dependencies": {
+				"push-to-pull": "~0.1.0"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "a739f70b745e56c49c978390191f6bb6c20d7b4b",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.3.2.tgz",
+				"integrity": "sha512-YSS8O+4VzD/zaP6umcUQZ29xezYS2eIJoFFZm+Yn5+qcLzHCUbQbLZnM+u72hhdkcJ5bYM5ME/3kjQnp5v6dwQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDIlslt2qfI5GBkMO7UX0sYCvJ0jMebeRFVoXMMpo58fwIhAOydAbRa2+13oFH8FzlEOOUUjl9pBWE5jIpDslVx2TN6"
+					}
+				]
+			}
+		},
+		"0.3.3": {
+			"name": "js-git",
+			"version": "0.3.3",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"varint": "0.0.3"
+			},
+			"devDependencies": {
+				"js-git-node-platform": "~0.2.0",
+				"gen-run": "~0.1.0",
+				"jshint": "~2.1.9"
+			},
+			"dist": {
+				"shasum": "a82f33e042f9ae98e179ca8c98219d8fe4ee5442",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.3.3.tgz",
+				"integrity": "sha512-YLhxIBHvHYYY4tm1WEWbvSVYjjhN4x/id/gyTTFUUfOYx4Jia4Y6IwZNpjbST9Q9XhjpNgH4eBbapSztZMUJ0A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC5/1GDiBXbmie4DnJc3kGgCb54O1Ot5fH/+lWStrw3WwIhAL5ftmxAB51btC+BtpCcOJgE8toOKJnTFw9xt/xenOCw"
+					}
+				]
+			}
+		},
+		"0.4.0": {
+			"name": "js-git",
+			"version": "0.4.0",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.1.0",
+				"git-node-platform": "~0.1.2",
+				"git-net": "~0.0.1",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "e43ae73723b0a9f3a3a50d3568264af992cb91d4",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.4.0.tgz",
+				"integrity": "sha512-SovYA7fwep++L7utFxevAacs5oiK8lzyOWzvP4E71+uTyVmFWjVg4p3cY8E7txZufoKaxMYpQyuuP4jaWegKdA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD2nAyT0hjBDQjGzQlK8bE2FBjiUnmBzpvB3R1mKKhr7QIhALTPZ+mz4WIZ6i4VmJi06ku+CBexkTwfwTMQq3bKHyXY"
+					}
+				]
+			}
+		},
+		"0.4.1": {
+			"name": "js-git",
+			"version": "0.4.1",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.1.1",
+				"git-net": "~0.0.2",
+				"git-node-platform": "~0.1.3",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "2a9151160ba36ac31f7091399b132c7beb6ce243",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.4.1.tgz",
+				"integrity": "sha512-CiLCbfSTu0ZATzcRwQ4o1XpX8qb0Z5NG34IjCGCv8XBBzBh3Sb0rzOkVy68MINXkoW5SiC01lnUD2xh0+FBprw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHIlVgWm5jEZwumjQiUykCwKYIzefPBNbQV1SbkBkcWtAiEAxCqIZD3EDz91AVMnzRjhqSZVcKnFKHExHQ+N570Nl6Q="
+					}
+				]
+			}
+		},
+		"0.4.2": {
+			"name": "js-git",
+			"version": "0.4.2",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.1.1",
+				"git-net": "~0.0.2",
+				"git-node-platform": "~0.1.3",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "ea534187323c7f74e5ef7c2aeb829fd0a66c2761",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.4.2.tgz",
+				"integrity": "sha512-syygot8KZ3QnLYKlEy1qywcbwkMOUDR42ncByf72uVy3gwLKJzrPXv7nYvcGsoOG6tZiBzV7itPlz3yQmn0i9A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICS+5SXNkAwXe5ZWXtp1TMuCs3PetQ1bT5D37rjnMZzgAiBnxoH/NceG3ptpdXJqlqFHj8ym1pS6Hh/rP52+vMYZ+w=="
+					}
+				]
+			}
+		},
+		"0.5.0": {
+			"name": "js-git",
+			"version": "0.5.0",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.1.1",
+				"git-net": "~0.0.3",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "c2d07218f7ca345dc8b323a3705f0d543c5e94fb",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.5.0.tgz",
+				"integrity": "sha512-0ato/411NMKRPiztITevv1Jfew+DQqFBHFqxCA+9sUOYO+s2dHrRHHFxmJeBpBvsFMN6dznRYaoMjSWGq/xNdQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICBb5xzetrxDDhqN+aj0Y53T8eJZySmsV3qksvN7eAokAiACQ8ihs9k8pCOeg5oFs8SwZESF068dCtzV+rgnw3S2Dg=="
+					}
+				]
+			}
+		},
+		"0.5.2": {
+			"name": "js-git",
+			"version": "0.5.2",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.1.1",
+				"git-net": "~0.0.3",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "2020075885d0c5ed4964f743a692a819b2439ee2",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.5.2.tgz",
+				"integrity": "sha512-upiES2RuYsuVeykrEWDOfH98iPuue7KS1uEr5cqyOG1/KImOj+TNcEd05YmP+Nq0GfahrSGQw57I0juf6yxl5g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDGU+r7gboBnFpUAaqQXl0LZ4rxdt/ChycYPTPiM6ygEwIgRtcLR1OTQBXxEuSmiXPQ+KQKLj1OmVCJRriPKm4j2OI="
+					}
+				]
+			}
+		},
+		"0.5.3": {
+			"name": "js-git",
+			"version": "0.5.3",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.2.0",
+				"git-net": "~0.0.4",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "48e5eec65ecd8ddb5c26a0270c22d910eb2de3a6",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.5.3.tgz",
+				"integrity": "sha512-hdAKW9cP7zOmbsld3SggsrCBFD2bn4D5eIpgg7/4iKEAQfiAYTS3XpKrZlUXUMeGKzJ/8MPWTn3gAbobubdNjA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDrGxn3szirqf0yn8eAb3z5Ird1laO/ZVMtyOJuC/F/wwIhAI/gqmm2VIcWIsGr66T4esM/yL52gaKIE+75/+up9YtU"
+					}
+				]
+			}
+		},
+		"0.5.4": {
+			"name": "js-git",
+			"version": "0.5.4",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"git-pack-codec": "~0.0.1"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.2.0",
+				"git-net": "~0.0.4",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "cee405ef03da9478ef5c7a5bcdd1fef36573f179",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.5.4.tgz",
+				"integrity": "sha512-12rbsSL5RiD/eDT4qpi87zaO63Thf1MXrMAWcNz+vHSnYmPsgaMA8s3vXKOAN0JYj5ueb44cZfX4Wg/SodSidw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC6hCA5OCvBjWEPpir+drPbgBsn3ua1p0T4xfr/TAeBVAiEAv41dMVBwksbAsdhBsZZcagwVVvYwTF4zKq17DaiNicA="
+					}
+				]
+			}
+		},
+		"0.6.0": {
+			"name": "js-git",
+			"version": "0.6.0",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"varint": "0.0.3",
+				"bops": "~0.1.0"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.2.0",
+				"git-net": "~0.0.4",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "a61598d4f4e9007123e70df894a0a10f721fd25b",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.6.0.tgz",
+				"integrity": "sha512-vkcM4bFqhkQWUJVg9ivXByEweQAOuypVgraM6KEdHNz04jyonJ2DTk6t7+uIH7b9m19jQGiGGGTeUe5utAe2BA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCfdxd2Yu0yCAadfyGg/Udd8Rh5NFqg9ye+7DqOHjfp7AIgR8yH76JPwgPJ0TVymYAlwVRKqlZC45QOE7wfPg39svM="
+					}
+				]
+			}
+		},
+		"0.6.1": {
+			"name": "js-git",
+			"version": "0.6.1",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"varint": "0.0.3",
+				"bops": "~0.1.0"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.2.0",
+				"git-net": "~0.0.4",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "1cb2814cae81aa204073fd5ed264d3dab009eb9a",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.6.1.tgz",
+				"integrity": "sha512-ngD5AWRzDm/uyKV3QylmF0TUAXelkjeuht3TbQxu05ODsH4M2Mj7WmbH/66tixGW/+f2j6nIObUQpyXVCsV3RA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD81IGcEfmM7HGcDAnxd2YF4HXXuJr56AEOp0lKY2EokQIhAMBnZvD7r16P+lN2aeatRwSygz+phpPQctFyVj0z8nBG"
+					}
+				]
+			}
+		},
+		"0.6.2": {
+			"name": "js-git",
+			"version": "0.6.2",
+			"dependencies": {
+				"push-to-pull": "~0.1.0",
+				"varint": "0.0.3",
+				"bops": "~0.1.0"
+			},
+			"devDependencies": {
+				"git-fs-db": "~0.2.0",
+				"git-net": "~0.0.4",
+				"git-node-platform": "~0.1.4",
+				"gen-run": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "66a2afaeae0317eaf2d10535d934e17d0ace61e6",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.6.2.tgz",
+				"integrity": "sha512-AgbvriG+NC6C49mJAgmInTcozDoq2pMeqLiOHKNkiNRLRg4XdycEo8TK4CHoeYTZZ62Nf5idf0bPVWJMwlF09w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFLQG5XvSRV9EWUEr3c4RaEJAXrCj7F4NGlYOVRP74VjAiAKK+g5QtFksCxieVe9SJaE6YumsuFDDLMBtwNNUKgjkA=="
+					}
+				]
+			}
+		},
+		"0.7.1": {
+			"name": "js-git",
+			"version": "0.7.1",
+			"dependencies": {
+				"bodec": "git://github.com/creationix/bodec.git",
+				"pathjoin": "git://github.com/creationix/pathjoin.git",
+				"git-sha1": "git://github.com/creationix/git-sha1.git",
+				"pako": "git://github.com/nodeca/pako.git",
+				"culvert": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "caf9a6863b877c3f575a270605b7d3d8bd1ed1c2",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.1.tgz",
+				"integrity": "sha512-Upajp/tTiy+6+kxnAYPhAJqg4qTialyApezc0GGtFJmurHdpOtU38VHZkt9BdmPGmKD+5UN/jwYcngJSiEkF9w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCh/a2BXaJ/sJ61dcg+r5Lxq5nCURU8XRLm5eTe1GxRLQIgfBkgvjRR9ZoF8qV920yiLnqc4XCFtgixfDZWLh5avaM="
+					}
+				]
+			}
+		},
+		"0.7.2": {
+			"name": "js-git",
+			"version": "0.7.2",
+			"dependencies": {
+				"bodec": "git://github.com/creationix/bodec.git",
+				"pathjoin": "git://github.com/creationix/pathjoin.git",
+				"git-sha1": "git://github.com/creationix/git-sha1.git",
+				"pako": "git://github.com/nodeca/pako.git",
+				"culvert": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "9baa554f8c3ee8c4d6fbf86d29d28c26876513ba",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.2.tgz",
+				"integrity": "sha512-Q3TR8PI02apRC1a1+jB34P8VM9OSGQheZqTUcgvnDrxT3iny2d1q6NCvdtlDGUuLZvDiX2Y6Fwvz5/yHVovHIA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFiNhg5lYjKbkREKC1jBQAnbBw3hlzYzllLpmbFMua1UAiABsspEBUcWkrantTrpO/ldNq42gHi5eKYuAiCtks3PHg=="
+					}
+				]
+			}
+		},
+		"0.7.3": {
+			"name": "js-git",
+			"version": "0.7.3",
+			"dependencies": {
+				"bodec": "git://github.com/creationix/bodec.git",
+				"pathjoin": "git://github.com/creationix/pathjoin.git",
+				"git-sha1": "git://github.com/creationix/git-sha1.git",
+				"pako": "git://github.com/nodeca/pako.git",
+				"culvert": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "c6bcebf01223e38cc713c37384df3149e10c7694",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.3.tgz",
+				"integrity": "sha512-GLTP8xb08h/aR9pe/2a3iHVuli1kMPnC9n9DHEEhSKfq/V+GqDwUEQj9w3Ec49qON7Tn0rpaAVG8lP0RoPAvvA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDoT7Sp12FmVaig8EDwdeuINpRGYOxmdXPYfAR4Th2xUwIhAJttDhIrVyqNJMryfkArB+8ZBCd9EsExiPYUbk0e7EOu"
+					}
+				]
+			}
+		},
+		"0.7.4": {
+			"name": "js-git",
+			"version": "0.7.4",
+			"dependencies": {
+				"bodec": "git://github.com/creationix/bodec.git",
+				"pathjoin": "git://github.com/creationix/pathjoin.git",
+				"git-sha1": "git://github.com/creationix/git-sha1.git",
+				"pako": "git://github.com/nodeca/pako.git",
+				"culvert": "~0.1.1"
+			},
+			"dist": {
+				"shasum": "6f4faff162b55c95c238147c2c71f32bcb8618f4",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.4.tgz",
+				"integrity": "sha512-zYnqKHPXYc2NUbBIPZaScJWavwwr0R4YtyQWNDJm2OOBZvWgqY4wRFDCRKbVWGnk/Fo/abIBSeIQwLlP8Ad+GA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDcwoDScsJ4KQr/GALZ9fSnwYD8EUycp1xtMUi+XAiDJAIhAIrmyn9pV6+eyKXMXVVfRpP9mSK9fvJyAYI62RGkWSvj"
+					}
+				]
+			}
+		},
+		"0.7.5": {
+			"name": "js-git",
+			"version": "0.7.5",
+			"dependencies": {
+				"bodec": "^0.1.0",
+				"culvert": "^0.1.2",
+				"git-sha1": "^0.1.2",
+				"pako": "^0.2.5",
+				"pathjoin": "git://github.com/creationix/pathjoin.git"
+			},
+			"dist": {
+				"shasum": "407936b296324a233c9f93b7f42179baca725228",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.5.tgz",
+				"integrity": "sha512-r/ccwdEuPOcvdIlzzzBHEalUUVo53K6VDQfeksE27pgklOZuwIdVxwHSkWhUJNTzqaTEPmpYKxVJ4ag3J8ByGA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHSmNrP+OhlLukGc6wr447/jv2Nwa73D8Td+Eu0b1CF7AiAzrdtk5eLhLhgPH31a4zdnfO30sRbQ+GrruAesJw2Kgw=="
+					}
+				]
+			}
+		},
+		"0.7.6": {
+			"name": "js-git",
+			"version": "0.7.6",
+			"dependencies": {
+				"bodec": "^0.1.0",
+				"culvert": "^0.1.2",
+				"git-sha1": "^0.1.2",
+				"pako": "^0.2.5",
+				"pathjoin": "git://github.com/creationix/pathjoin.git"
+			},
+			"dist": {
+				"shasum": "b3f83525de437289511eb3bba95a732beb330b89",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.6.tgz",
+				"integrity": "sha512-SMIW7iHBtypUEDvRzmjoNmjwmdJVah9sMdKsSwEX3Pdh1WzzSwOL8n3SGY/FZejw+vUdfx8KfAflr/gjnOEI1g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICxI1asK0YK4EXJ52752qWjLzwugjrE2RxkmmnLhqLxPAiEAxcS1qLeFVvXnSNqdi8we0sm8kHIoZR+dhQ+IPlRQAms="
+					}
+				]
+			}
+		},
+		"0.7.7": {
+			"name": "js-git",
+			"version": "0.7.7",
+			"dependencies": {
+				"bodec": "^0.1.0",
+				"culvert": "^0.1.2",
+				"git-sha1": "^0.1.2",
+				"pako": "^0.2.5"
+			},
+			"dist": {
+				"shasum": "c9085bfdf17ca9dc1d97936daddce5e55af3ced3",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.7.tgz",
+				"integrity": "sha512-T7unH/CkrYP08wasLfDj6adUuC0uLvdXwQp+DaBYt6260RpSHwL0aDzgoP7gC4WmJO+/LYTRladsopVu8P2tuQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHiywBi1m/YQPKv3FApWqN9PVYp1PHjnTqMqkgGJEB7MAiEA+rzxNpUyPnEnx/3hFUn1pcmHpggFW2YAr4KLxMa97Mw="
+					}
+				]
+			}
+		},
+		"0.7.8": {
+			"name": "js-git",
+			"version": "0.7.8",
+			"dependencies": {
+				"bodec": "^0.1.0",
+				"culvert": "^0.1.2",
+				"git-sha1": "^0.1.2",
+				"pako": "^0.2.5"
+			},
+			"dist": {
+				"shasum": "52fa655ab61877d6f1079efc6534b554f31e5444",
+				"tarball": "https://registry.npmjs.org/js-git/-/js-git-0.7.8.tgz",
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2wnqCRA9TVsSAnZWagAANz4QAJJy1oH/CRxztUawZCjT\nqeyeT8R1DQn8LnYBvmucY00FYtorONz1aS8EIx0ZjVeBs4SmvEgHCEH0Y2eQ\nPNaJeoRGYxYZ42VGxnVweCHdQAT0d0f0Re9p+hS2KpTIaqFa9DfZtviBfTlS\nLrbDc7WrTmGzp+ovlFppOqFSSFTD98YLtkyuq8uWRWeGFfoQFoVg9QQLv55S\nXRDumh7lfvtUIdIZ4jB24MiH6rt+wX3RLPzdmlm6EW3dcGhxi1+FcAUf2vYM\ndg8EWqo5F6ZUoEEw+k1TWaUHNx0U1xD5JAgOAeyIzrYJ6DmXjzw6cbz5jn4N\nSCxJbz39PLKgjdSeLZVl+0f80ygIbPzDIiD1Q6opqb4/xCfiqj8a8/XN1xtp\nKiQViIz6T2Kw1wervJg2PwYyt21UC4vXeTzVRZP1hJr/XJ/aTdyRdrxxs1jZ\nwIxOAr3/iwrHoq0h+NudCjA3Jxc6MA9NNw6vk9IxDS9RGYm9NozQC23TA1z+\nP8b38oOM6ULE+FVDUxytn98jgt9HosBG5skGWYULEKyDySYoQ3YCTua1f+1m\n+T4YBJt9tixapK2zBObkoPwwm+/1jfcDG22UQMAN1X68UA/m5Y64sMEmlj8K\nvrGcvm2iLMcIw9VcYprMC3LyKjNOG9lgRgsEFd/Bq89+zaNLfXGo24NITJo6\nV43l\r\n=CYUc\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-+E5ZH/HeRnoc/LW0AmAyhU+mNcWBzAKE+30+IDMLSLbbK+Tdt02AdkOKq9u15rlJsDEGFqtgckc8ZM59LhhiUA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCTGpcVeBmg7GJDlXCFEsyGah7R+EpXVs/JW/Mx5rlRxAIhALdeOLkDWtFE4086tmhOlIkp9kGUnIEKopqFfrA93MHw"
+					}
+				]
+			}
+		}
+	}
+}

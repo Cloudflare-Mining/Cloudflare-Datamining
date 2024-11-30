@@ -1,0 +1,1215 @@
+{
+	"name": "@react-pdf/textkit",
+	"dist-tags": {
+		"latest": "5.0.1"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@react-pdf/textkit",
+			"version": "0.1.0",
+			"dependencies": {
+				"hypher": "^0.2.4",
+				"pdfkit": "^0.8.0",
+				"fontkit": "^1.7.7",
+				"svgpath": "^2.2.0",
+				"linebreak": "^0.1.2",
+				"cubic2quad": "^1.1.0",
+				"iconv-lite": "^0.4.13",
+				"font-manager": "^0.2.2",
+				"lodash.clone": "^4.5.0",
+				"lodash.merge": "^4.6.1",
+				"grapheme-breaker": "^0.3.2",
+				"hyphenation.en-us": "^0.2.1",
+				"unicode-properties": "^1.1.0"
+			},
+			"devDependencies": {
+				"jest": "^22.4.2",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.2",
+				"prettier": "^1.11.1",
+				"babel-core": "^6.26.0",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^8.2.2",
+				"babel-preset-node6": "^11.0.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"babel-plugin-transform-class-properties": "^6.19.0",
+				"babel-plugin-transform-export-extensions": "^6.22.0"
+			},
+			"dist": {
+				"shasum": "e75f1c3fb9bf4aac8511d213a01172fe8d2c9b41",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.1.0.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-ADTU/uPAeFmDvUENbgtwn7m1hi3tmyQuZobHvXYRHLQLxaNq0VPg1j/NHzUhs4LbQoC7H2aUyiMSCHQJyHBE/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIEYHof7cFruFwZzMB1HmmVNhfG0ti9ipiMlD3pLY4ICWAiEAzA1gvIjFYWMmSEpXrRUDVEYkfbQOxtayBCXXVWtVLo8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 102992,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2fbXCRA9TVsSAnZWagAALU4P/i4G50FjVOxvQfdCszWc\nAYhZd+QiHvecvDdb3vwZdcjmfROnbu+oXfcuTfwYVVyzSxFo9sLK56xQcXsi\nQ+4m2xmuSJHGmXI+G3NL6MY7ipcBMnS5pL5DA5vRiTsI1oQiT+3NICUtahcz\nmrolsTMgfoBM/IPItPKkofBOMiFR2y4RUEdvrRGbq8YgXfS2Id8ByQ8J/fy/\n0V528peLuiU3U3J0eMy3s24/w9GJG8/GicJlWtax6ncv4B6uZZy83TV9Qubk\nFyUeLA58pV1+76tN2ENeDCizb184VeN/Tm34OxcEBYHGeARF/c7rUQGNvef4\nXEjoYXPp9cK18aCH3951z/kE8dfSAA3GuKbGbeXp4F9D7fLeIFmV91Qb0npg\nSM37+mWghJiLfaFYjebQV8ns/8m+LRodhrVfr4lVcqoII4GoZ04zvrFjEREI\nHP0/meDvfQos+wV+jjQWbbeXu3kl85M7yrrNFpWoYeMCM0WHIafSvwDng+oc\nGj3bJwo33ORbnhZwWI6N0tNQZCQKjc+Vr8vLnA3N+zUtpZuH4QTah4Bf+M/8\nre8X9At/FTdyD1hOvQI4w3dhL4gM8IRklaYP6NkvC7eTUGPK7JtU/F9kMXPp\nMq4wDMhG/cFCy6wSWk/5DO8R0kOM7p0BTKzTf3ASl54fLRpfM5f/toSQkxvp\n9gxD\r\n=GVsF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.1": {
+			"name": "@react-pdf/textkit",
+			"version": "0.1.1",
+			"dependencies": {
+				"hypher": "^0.2.4",
+				"pdfkit": "^0.8.0",
+				"fontkit": "^1.7.7",
+				"svgpath": "^2.2.0",
+				"linebreak": "^0.1.2",
+				"cubic2quad": "^1.1.0",
+				"iconv-lite": "^0.4.13",
+				"font-manager": "^0.2.2",
+				"lodash.clone": "^4.5.0",
+				"lodash.merge": "^4.6.1",
+				"grapheme-breaker": "^0.3.2",
+				"hyphenation.en-us": "^0.2.1",
+				"unicode-properties": "^1.1.0"
+			},
+			"devDependencies": {
+				"jest": "^22.4.2",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.2",
+				"prettier": "^1.11.1",
+				"babel-core": "^6.26.0",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^8.2.2",
+				"babel-preset-node6": "^11.0.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"babel-plugin-transform-class-properties": "^6.19.0",
+				"babel-plugin-transform-export-extensions": "^6.22.0"
+			},
+			"dist": {
+				"shasum": "f2965e26f29bb01ae8d4503aac867218f5d06bf2",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.1.1.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-INqmAwY7D8CdorfViTqcOQtCz3Owdw+os3I2OAlWC0csnxqOHlgBDrD0tMQdKIvHMiYFko6tFBBXf/E0gTK5Mw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDIjHPlOBpL5IIawVXb4tWwkYngo2X+aHCKFzFDsq47sAIgXzNPMaE9dDCrzxTEmpepYf5gUVgFDietgjPHhpCMXE0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 103039,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa35mQCRA9TVsSAnZWagAAevIP/0y6qR5FGw5Ip95I6u2G\nAKLoWKsuYDwcUy99HCAEvicy794kw+xundZoEwBa1amgSy6fn7WKiWA9/Ytv\n2ZSl5lqovHcdlX0YKOcyYHs4/91MdA2QH1mz7tQdabxvPt5fYsMwwX0zikw2\nAM2C9ah2OLNCHrD3OcP8hvIyYfmA0kC3IHCGCaDQHBsgpDCTyahFuEnKJltE\nzGLHumlhEtl8qus9O/U7wZvfYGk910NqkbFmxs/hZKqtHkE/qBtY4AKnkc6D\nMHCrSdGnQ7Ow+CsSILdwgbbo4TppnDf9J6PW1/oLWnZfHOeGYxMRIF1JK3Ci\nh/RTSFhtGXJ3ePSWRInZ+fUkUjJrvIOyWefIs7Hcno6vbtbE1XD8df/r7LCv\niWUKHmw8y3I+83nKjl+TBkJ2GlM/HnZfvbCn2viL3eYcQyl9KBrJlpIAz6oQ\nLzYUvvWprTbAboFdL/NhXEpOw2VZRCyeWHJ/umG06wEcKsPlcc5P+lH9E+ym\nc3UfRbwJd3+ocGqYrDtKOsDvwwBLoKqCReNWvrf+Lqkrr0E+TAWbfFoM3xnt\nO7SccLnNIxYsMJu3K1iv/qHJnbUf9EMXdvVhqutsFOhneG9LjfaMbKLd++W+\n2BEZWkb6k10YVDuXss5pA6iN6+j4vVIBdf2U9EI9PcKgq9JqjklV0fxm2xS2\nX1nf\r\n=aE6a\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.2": {
+			"name": "@react-pdf/textkit",
+			"version": "0.1.2",
+			"dependencies": {
+				"hypher": "^0.2.4",
+				"pdfkit": "^0.8.0",
+				"fontkit": "^1.7.7",
+				"svgpath": "^2.2.0",
+				"linebreak": "^0.1.2",
+				"cubic2quad": "^1.1.0",
+				"iconv-lite": "^0.4.13",
+				"font-manager": "^0.2.2",
+				"lodash.clone": "^4.5.0",
+				"lodash.merge": "^4.6.1",
+				"grapheme-breaker": "^0.3.2",
+				"hyphenation.en-us": "^0.2.1",
+				"unicode-properties": "^1.1.0"
+			},
+			"devDependencies": {
+				"jest": "^22.4.2",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.2",
+				"prettier": "^1.11.1",
+				"babel-core": "^6.26.0",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^8.2.2",
+				"babel-preset-node6": "^11.0.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"babel-plugin-transform-class-properties": "^6.19.0",
+				"babel-plugin-transform-export-extensions": "^6.22.0"
+			},
+			"dist": {
+				"shasum": "f0ed086fb52f51b034ddac1f8014cbb6a31dcb60",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.1.2.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-Ot/RttqmLQ3y6VgJv8zZ+3rqILA5E125WSmR3piIq2C9185eh3MKnaUv5S0u/c55NKZ7HcwRgWmPIkSqI69Z6A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDV5JjZua/EwsI6zfTvX+MalWCYSUMFZtIL4zNga+WB/gIgX4opCwcxRD2V57NNLqXPiXDjwvoEl1OeATlIWMZhDmw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 103287,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4Mp1CRA9TVsSAnZWagAAUcQP/3QO7b2Si07VGsKWCKRD\npKychx1Zu8q0KyZrINUIlgnLxuSt+exfvNd48cVoUCAneU20Klb8LyEiSTD5\nLP5kOghriDIv8tocc4FKR5ZmOXb510zbcc22xe4T3w1ZooQ7anrF9+2pMge7\npl32fo3EETcGP5GebHM23H2hRCMt6c06MoqO2KepH44W6uTp5XbBZqfAFj1o\nuKLhWa6yd58rAD52MNhUEPbFTRslsfYYAizSxE3hVjdTz4fjm1JVp71U3+gG\nv77rkeYiWp/WLJt7+qtMDLTGTVomlP+Rw6odRYmfLg16Q0GVE1zEqsW8Yr9x\nErE4XOwsbgTCQkwh1CNljTdPN4xRndfdWCbHfuIbbZcYPXMkDW3e82yHN6bF\n/AU07nTI8xNgh+BehaptGuxoLZMeiYQP1dk0JCbLDRne/2vOVP8q9vqm51md\nS+v+dwSzDHlA81SrU5o6Y2M/9wdXeevbxE5HcD+O2818q4tewXvIHxY67yYa\nXok32YFR1ATtZxYC2G5dmm8xH38kcu8PnKMM0z+GFUQG6d5hUW8bR5LBQhdf\n4eSari7WV4BwphIlUxhL7BZ7nR+j/OIf/B6/MrJJhvIBCUHZ4+xVbDNTVOvE\ni5U52QfG+FJqpTZ8YVhglJB05Wqx7AsPHfK8+XFbAYqVSJTJxxQd9r8JIp5I\nFFej\r\n=6Atv\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.0": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.0",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "f79f2f443361665feb15f562a00137018b0d1a66",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.0.tgz",
+				"fileCount": 173,
+				"integrity": "sha512-Pi4om4f+0uD4qn/omMMNV0LvztxLyEkWZIxNoUbz/rG5VgmvR8Fw2z4Zp4eFw36wz+rJJbWai0SvNTjeza4lFQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCv9Nycyr6/oO91LDJQh9CUfpCIawj57NNyfKhvlEUESQIhALsDnX27iG+V/tXG+9DcMsU3bZmBBsws+B/fqkxmocge",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175440,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcq2BBCRA9TVsSAnZWagAABD4P/ilYIXLK0ERrJ7VKpuT1\nsv5VWRuxSnFiwPNtWGhFczydzc6Ouol1oz0MSyWUSP2MTm7s6J2yFJ7I1RJx\njCuBIWf9N9KrW62cPy9tp3DAMp23L56Cdhwg+2fpQuq9l6DD0P0WGivczp8C\nqclvA4x9gd4mjrrVJQfTaFJXtH5cC6Ul/Ca/d1PGJJecnL9rCzn+OPfKzJhx\n1QsNqbGYofpBz8+tLdWvQqjQtyNWQuqu3+sR2/6ztY3PsSl8mOd0JRAGcmyx\nCbm+cjyPdWhY0/93L4pzSA/G8yaxy4eXmTd5U0EuiBHC/dp+HPs1S1V4ObwX\nvTtr3D7icrgG22H4zjVbyjHAozyGG9HKRx76fjFFoJaYMYSPDxJvQZ7nb1eN\nEJCLoHbKjL3a/j379EwTvCuly6yQ3fRyODs+Q1GSbtb/YywtR+jNIZVIsgEl\nl374ewAndZxAXG+30UdjNt9c7Y4aoS14AcQdT/gbBQzw/tnLwiTrrNLxbcl1\np8e3PK24u+4+DdJ+c0HpOG7xqO7WUHjUhCTmeTrGDA0X0Tg8OctQnU6sl1n9\nTW9guymM+tvy4FZQ0zOoqUw8gAz0aKAv/kBE5YLFhSwCXvh41wOwjCvv/ajF\nelXv4KCAadkqkoXZ3W1VwT8EfIUIGlVIg6K8LHIxSwFhUt6SJuLlDVKzBKBG\nCK1j\r\n=cRek\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.1": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.1",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "3b9ee207907592fa04e4cede87c64449550d1731",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.1.tgz",
+				"fileCount": 175,
+				"integrity": "sha512-T8zS8dRIrQ8HpKKGsFkYmNcXfAnsYpm6hjjFMYBZ/5URNugQPTfURNW2OpiV2Oi4OurZGBI+lXY68n1f4h7i7w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCddObEt75Z2enZfyk9EDfREKvZX3pV5PgTVynken2cBQIgQx9oiS0lKEDKCXip8Hc8kAUlwsMKH3l7MYMU3rI90wk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 174649,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcrLe4CRA9TVsSAnZWagAA4HIQAKPrkaAbSiavwIcXGhZu\n3FsWR6qSEYLnRLcGiGeGTsNGMA0zM66WWCvh5/0WQCkiHTOQEUc2FSVTfweL\nu7cyrGNSQe9xdg3LLp4tOiU19Uh/fzJePoVtgwdcVomP4JxQSrQlaTUW7aHq\nvJXhep84v5Qv/stbCrXEt2GcXqXxJGYZ0TiOVGhsdoO1Yo5hcxOtR/JzbEmp\njPBjXk6sUNxLWYgzSK3KgjAW+eVahxI7RcvD9qCNwwldGHRQ63QUwJ9+rRVF\nMuC+lLqpEI9nGH+dT2MbSYEie8IQetJeM3gd5T8zQmCrhq1DvZpK5JZAbbfF\n7y3uakiO08OU/bBQo2VfMe0Co+lwORGBPtvguUT78g3Xla7xoIdDoZKUE872\n2kdOx/b7MAkSrAkfrqTY0NQp7vtKzqtZVjfVCBEXiLQRPjQS1eezTvQr6B/Y\nWq6kAgJhsAeOk1fmpWLWr0BKNT9+nVkK1tnSD83spi3MRa6M+wwU0yoUBtF3\nYdbOiW6e2EIBh3orXL7L6tLQiBWozCX4Y6OdHqbotyxIB9SDIJLA43aMwz9m\nNPfNLzo1188bD8FH664JfJ+f84o40R2YfwQ1o3LYnxUJPC8pAPF8ZlmzJuRR\ncwnBuEFj1vgNs7WZFVMjvOPJcBTjGXv15FaH4frayWkYa3miENlF4BuHpmSx\nEMgc\r\n=gx89\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.2": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.2",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "5bf912b2ea2f6eed44fd0a7d2f84de48a6373b95",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.2.tgz",
+				"fileCount": 175,
+				"integrity": "sha512-ZEGcbowCXcScZ1HqufbVcrcjWKEEDF8x2WyM65TGHf3D28+ttY4AxU59g2M0KgwM8LO70vk69gzBKnwnj9bS0A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDrsEVidxXBWbaFWPvNMgNhNJut+qymUDmnMr3eplbAzwIhAJBpLUfjyH5zUIMRADkEl9tH/RTTdrCIlVwXM5+NykiF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 174848,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcsAetCRA9TVsSAnZWagAApNgP/1kK7gAfEM4SjY7if0x1\n0WmhTYl3oaJsJcUvrgJ9wa5GJgB9sEbaygGOKmlwLyeQ4po0gY+OHZ6OUZ8e\nuoWe83N9oYPbk9UGvFNX4KveyW/LIIz4CPj5hxBssxehCXeMaV6dKUS99Mxl\nkrYa5K8fWDG9eDC32rzIhbRdDB841adwcVy5l/BTOxTrXT3B1eB4SYvzcKtG\nwS+xQu/KSw/12LJM+ZN2duCpQIKKE20r3wndeCWmm6yp7gOhoQ0bi9qnpOuW\nXfkEuxsCcvQpTfNOKzPQbl0cHapRYXxCLX9v4l5mUglD7EzH9Uug972Bz7mw\n2+7gFxEetO6DSdnBtwwHwVnT3Xbsdwvs9N7HjkTrZKUZhHdmN/C3+/tweap8\nmU0kmC7P39uK0Yl4FH9Cz2q6obDPMzSwHFztPzfrFnYOgIflfTqRgkK/5dnX\n+GYUBeCgS8q1I7/cUahmK1KiTfa7ieEIevv3vVzf3Xuy0ig+2g1v7gUJ039i\n8+CMBSoTpiVgetNa8A8+JunddJgCDjEe3ZbdYNkH3MuQiBFyH9rRHyF7pCLw\noZFPzHoii+c5GTpmYsN8x9BbBjA98Ll1n6iAy/NImiDLNtgajACVtwJ5UdbQ\n5BNq7qIdQw2qGcZOHjdQkCeJ7UmGIkcihvaAh+U/UZdFRlesD3N9AlHAsGIO\neNw/\r\n=U3jQ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.3": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.3",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "de89a5c0a7389c147ef8e766c1d8ff6ec165e35c",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.3.tgz",
+				"fileCount": 175,
+				"integrity": "sha512-HtHoV2k0x5+Q92BwU5UTHUept0i34IhrSeoW21ctxe5B2CevocwYlRn1LPH01usua7fw8099ftEc+GNZFRkpqg==",
+				"signatures": [
+					{
+						"sig": "MEUCICFmJ7kaz92Mf8Ddba16uJTVjpcYRTvGoVXAjwJ4k7LBAiEA5QTIem4xRqAKlM0Ot1OaXkMo1/iIi4RMsKNHY+WKWOI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175654,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcs3OiCRA9TVsSAnZWagAAcjkQAJOk5aCe5c7FS+aarMRb\n07qpVeAeAtUGBStgDJsQr+LaNqTkJz3UTspiCdyY6nK4Xl+6qQqNLenbBIUp\n76hQOs4MUtOb+nE0yw81GeKpqqsDUyAjkMwc5dfsibRtN+tE3QsiYQAlQh2/\n4rrVQjIUAtHzBizrtVulZLvlyA1LeHd1y0fSuxJ/tJ9csa6DB30RflzGD0df\n+VYd99l93i4I/L2/hPek5tyP04/tv9ulIlgLymzo/45pJw6QNoTGmMe8dAIQ\nySVX7mb39z+4/hSyKnkP6dEcXmZXOAGyKJZUiD0ueBXk6eLLMPicR30USwIH\n9rOSBAPnwBdL7e+BZ5yFrPM8GBJN9kcfWNSWzPnM4TJBgr90e6zJKKESVROg\ncoo+t+WV1/Im4CsNvubm66SxDpSOWJagDrO5PVsTubiWwSIqm6RlJTJ0BpJA\nltoA0O18mbRGBbY9LqMvuVl7tW+1eM412k+CNl2g6wNInYzPS6E5X1wcMwhD\njLPrveUabHKKsGOnzRVCnv3DX1jdIx3lCRF9h8ZxttkIz9TisFGPtN1NDvLB\nxIRMrTqpZyOYcQ30aylzgrASYK/RCT57/imabQB0Rem/6KCJvkDLua0BxaxR\nymAoyOoqpezMW8EPK+MFJJV0gLW+BOQyVZj4guWr2M+uDVBRGKzHRyfqK6sa\n4AQ2\r\n=c4wK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.4": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.4",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "5615a8e4d06e07710f6ac6dca1fa896113e20e28",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.4.tgz",
+				"fileCount": 175,
+				"integrity": "sha512-NQ8MVdZIDyo+5CWNBtfXGdvvIYhrwXIjIFw9d2ATCSCoImHpYzz/ivzHer/mFxWN6xXrCYv77M56w5D18URCtw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCCuIyldXKvxtcboWhK83x6u1BL6qdaB/IRPEMBdQMNOQIgW6+nuJLO5XX4uyZlaMCP+/DHRdcYZiwpoO1NqIm+0do=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 176184,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcs4c4CRA9TVsSAnZWagAAR7sP/i0Ef/jOTKdVZpAq2Sib\n5xshY6lx+VaPA+Ja7/ayEzZ86i6UclmJf4UApxREd+ZgZxgRjCQeuXswzyxT\nV5uX+eDuckB4THo2y19sDKzvkG951jJXo1myQtrKv/vQdxSFOA8k9J4qD0dT\nAXraKBq7kBK4pORRr1PLjjAlqH1xE7VdHgzRUYcfbvNmIIuG35F/SVhfAr4y\n5+gKHRz6HnSuWHcJkQkjO9LN/tuWfyQJ2pVHMPNP9lcO5vTCgsM6Nv/d6RWU\nmkuvPoQyogocCfR03VKN8X97vKPgNyOkOYREJxDsz0zuu5z0s3tSLsYX9HyV\nFjtH0jkqgKfjGbSxPCA7ucb5JNJmgoivo2/uAhVZptilBNukvDhqCyZmgNjl\nAteMaHgmDfmQCPB6f3EV0eAG0vRaZxNEAhGH4F7PyM2/nSV8itL9FYCPIhP6\nZqdO6cnmno94OijHBt7Rxt0yTuFXH8VezjW3JGG2mrAJawzHFzvZs6RHLnP5\nD4uveeTqtA7xt5olaGXBa+2s4g9mtZjbMYL/e9pvpU2O8j5wJXxYxMG1HlNB\njrc9c9de8pFjik7hk/69cSm6kIP+QThYi5bdV0lwPzuGST27dYr/9TnRQwcV\nSP9Ck3wwVuITk9ASTgoXE3Jt+tAE9nNpnrS0GXVkbgQz5Kxly1NFGzb3txkw\niCBd\r\n=LxIM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.5": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.5",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "1c7c63591c2f975bf9853f16dfa54ff350e3c0a4",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.5.tgz",
+				"fileCount": 183,
+				"integrity": "sha512-+XZy8XQLDO2xVjWIChyeCBVT4SjyP1ybF84CrkaNl5qbZcsu71OlmlKAFkdIiig/1Wg0IURSweIQHRij8llFyw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBz5ov3MGTYFj7t6cyDjiqsT0WCJnG90PP5+Ms0IzIGAAiB+UgXUikOlIh5FwAMw7HgulvWescTNgcAU6coXbDUNlQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 179615,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcs5vGCRA9TVsSAnZWagAAZ9oQAJ9oIAsae0ipcW15xdam\nLrI5iIwOXltQWPfgL922KEqJGPZuOhE624+rH101L9EnLA2OXyFO4fW78pwP\nosFujz/VQ+l+MXij0RvwXdD8ou0pbqEv3pGSIF907Yz+6AbgBYDOmfw1mYFH\nEzbP2s9435rYy5rg2WvmC/rgZSj1nKpMaTbYshXJCIuDnY40kfejtyi5Gunq\ncNbg7DLAyZPgYcC76gUI9h/wWXiR2DQR3gassc6WXzvRVMJtv55Cbbj3UBor\niK27E0z157yFa168texpQrctgfw00diPUcOLpPAlqRPFgKaJVWQ8hKDmdGEL\n+BOKqc9cfK9QYqOk8JO3mXxRrHJMOoO5nQYp/l6EhSgSTupVFqTpuqHycPUV\nSBYfMzBR8aH2oQyA5QyfqZ1cmL5I3ij4SGy2Big7kmN85YA5QwNN9/M7Pi9J\nAnDV3TQ2agMt8HZJENS2gjtxERFqvec9CJTsMKWBsktKhjSx0rn1UDu9l09k\nZgq6TZJxK3+fb5dEhUQAyJbDUCkauYY38IRoHNGTusl3ysY4S/mYGl+HGXnB\n5ys4qNFQcB5XGqEyUM4QLpzM7PttxTNNmZOFYsgwD8rhm0XOaaCbwTJVITN2\nHhoiP47m+jwpuocy3ZWfaT2XuSPpZ2PXteILi3B4+70yq6TWOnMDigqcCCSo\nP/bB\r\n=z1Id\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.6": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.6",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "6619b960e8c5c61800c0e55bb5a0ccb85da2e5ed",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.6.tgz",
+				"fileCount": 183,
+				"integrity": "sha512-r3YqtxsbwmzpovN/SYD1X2AigPwtF6/2EQ0y5BFpri7boDOgX6gPp1rwCbzfxWT/n1BNHXHQNfuAm0IGxG4iqw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDJHAavCQ8C2jDJEm1XA4vwqGnVqp/lBesVDH+AbicNiwIgNCZ9YkH2rPvBhKHV3w/eah9KJCXBHeYc5W/eCJ+WgCM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 179629,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcs55mCRA9TVsSAnZWagAAYCQP+QGT6G29X0oZM+5Y3I+C\n/yVraKMmJx+yTc/cOjb5PgBn9aVcRCmWQbBAAIn4xIpBEREyXho0efLCbxFd\nriM+5W6oVq3ffKLDDrjf8SocTJQz1ub58Ej5MNDIwWub7PMLF0mITTh6SQxu\nt3d32/jsxvbJqLiWHKyqzPIOM4eaqodCEOooUvXmj04izCEtVpGtaXl0GAbl\nxInWbwdH2v6EPhPa8s35uzbz0RSYiNtO5PyhEwX7iZZuvrGPZGVTVHd7YJl6\nGxxUxBrvYg5hEVQQUFALcu4bGYcs4dYTcnR1xYeD8yP28U3GGsSrOcOclJjR\nlxIVpXV20UBeU5QKX1+nqKIjxi2PyK0gRh13Tuus+AcP4m5gDfQKZz1EQAx2\n4pgxLi24s4trYOGgv18jmzPGoRF2tCeEEwxMbTWuIEVmABMbd+IebZrGhygw\ncoGBujnDCItjMMGR8JDZYzJjFuyEE/+1YnL+Uu44IsW5Cs7PcVRSzy86hI0b\nPjDB6VPf+24wnZetfP5fRno/oo1gA50JyD0x4U/X/UxvHJUaa81yRyIg09xU\nzwqehrstOBuPFwbA9FoqC2mBakFMZ6CPKnypydAT3W66bIJKGSh9Wh7oXD1x\nrjuLvIl7EpJ2rI9JA4a/a9lzAwmyYyzo1EcKRf+k9feCJe3joOcjaHlXAyCm\nc4BO\r\n=a7Cn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.7": {
+			"name": "@react-pdf/textkit",
+			"version": "0.3.7",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.2.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "67bcc4d952ad1cd738b3cb38c8396219450f536b",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.3.7.tgz",
+				"fileCount": 183,
+				"integrity": "sha512-JyK06VofTG4/6Mxv9ugqGyKS/nnbg7MXXHmzeYLP+wwxZsgiatjybVBSXI+DW+++UeyUKLrCYQh2RaxliRm+NQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICwe0mpLDW1qc7G/X07yxbLrFjqNjd/qYE3S3ZiCi5BRAiEAkfP/EitytXi+CJrGydeE2an1JGqi0GR5/AKvBj0aBdw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 179698,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc1yDtCRA9TVsSAnZWagAANqsP/iOJUo+CEvx9mIpx00Em\nXzq1vCHt3HKylrro7ez+oHDZD+1YMPKYBLP4uSvdYW92dLvmhhWsLLJB0wIe\nOm0toNMHHjTM+UjzcuIR5214qaizH/mttwOtwwGGH3+kl82w3JjyvbNYUOzn\nh4drm6tMCgFJWSd2i+w4Z/PA7KI52TmsIAklEfCYrKZxefN5jBuxSKMNg6qD\n8y5kqr8w6tnvqiOODn6/nGcHyzK7L8y46U2qQSOkrvN+HjvhNG4uy7eVux0n\naobQgcfRJPBxvPo97Eb0rBYa7AOv5H0Wbq0xWodEhMx+unRHOcujPnfrTtQF\nkqx8JGNpaunN/Z0EF1VLk8OIA3tDiwd1+pqwPGseaTNGb+dPgm6wjcwqDri6\n66NCs6N3+MDMgsiPpNvX5TfSfhTJblEfSw3e2l+YCNPPEa2ZT3GyDht0Pe5R\nVoOQ/BTH3dBBafVDfCZ0cPnJT8NkcLxGtmeaWXzIgOQxyA2ufVkr2rdUa7kR\nsT81VOhVdMmH9JIFpbiDlUa4guo3fzVsWimITtaAoYK6p9TFxBlOLdRpHone\nmsElPHtppwfUrgUKQGuGlj60sTBF3OXiq3aPTM9PiaLZOu/FI5C3pX9YT4h6\nNvjfqpVwOzejWXvLU/XyPO0fRfL7e4v6eamdYj01TJRba2UPL30Q7agINLIO\nItBq\r\n=6Ee2\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.0": {
+			"name": "@react-pdf/textkit",
+			"version": "0.4.0",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"babel-runtime": "^6.26.0",
+				"@babel/runtime": "^7.4.3",
+				"unicode-properties": "^1.3.1"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"@react-pdf/pdfkit": "^1.2.0",
+				"@react-pdf/fontkit": "^1.13.0",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "084210de4a654045147dc483d3a3110bbc9dd8ce",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.4.0.tgz",
+				"fileCount": 143,
+				"integrity": "sha512-1TmKKR3oW1PfpQGbAE2YIAYAdN7KDspGoowUmkhS2chIsMeMIaQawT96sJgRef2gbBmgrNfBmyz2KgZDZvDlZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDSo0Fk0PuctXKLSYr2epJVU//sUnbXbODt8CpYkcGfXgIgHAPjhLQGqJK5pJMsntvyROTJRc0dgnDqnvBe+EgnihE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 159327,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfniIdCRA9TVsSAnZWagAAmXgP/RqE5EYeiI5+wRc9qbKM\nNw58pH9otkkKdpbfOZKSbhgMc7ux+UzSGrWoyToK3eE8vkghj/972Rc5+W2j\nN/XeYPBJQ6FrmWoBoM7MY8rQy/W7NrHcBO1ywM3HqdYCQwmTsZ36psJvWrum\neSp8LVO46JeAxUTEX4jJM3sBf0F+j16Q+wIkWFQgWIFpvhzgbDISjA8+J/hJ\nuq9EVwdG8X/G6EoF4MxYBpk5R55xEf20KbLNeQOqmBzQbgCetedyhKUtgjXz\nShHe7ihi4ZGMimWoRND17pN4R0V5cwSWGDVVr/v9jdTfeakvzCx8NEJphm6R\nTG4rtVmKVfOih7JLapSCfLBjXI+J2PwcIiYa2iLFsTajQxSXgn/72F8TGdOr\nHtpPciJ5ixnCj7HXdd5fb61rL8Xew1TNsEC52lWuedqiIiHaJrB1l+Jsr2uV\n0h71lbtgfeXETv5UZJYoz84jnnnLCY2atv53DIS8N2SSIK+70HJhoj06HbUC\njEl5qpFAa2Vznt8MWLOywA5kJtjtI4fa9gSqIaMi7sxtzzs3hn/DQgGqbpSr\nRCpZW9imNSnmRva262mVyiBBO0nRpKij6kbG/Hm2Y0MATmqZwWrdZvfUvd8t\nzCMj1W7cexteNydWd4P2L5qOjTOBVyWUFY0w4nI8vWkmSeR9o4J0RnS6Q6HZ\nao+p\r\n=KegR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.1": {
+			"name": "@react-pdf/textkit",
+			"version": "0.4.1",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"@babel/runtime": "^7.4.3",
+				"unicode-properties": "^1.3.1"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "9240773cd3e1d3cd86ffc2eb0bcc2dd3f51af376",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.4.1.tgz",
+				"fileCount": 143,
+				"integrity": "sha512-B8Z7qgFHm5tDB4yvFrFdPjETnVCaL+E63w9WbBObB0fRZHx051+DNCU+b6zlIyXYV+2OdPAkUAMPm+lkdBu5hw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDWJPxpfldJ2Rjy9J8rHYcMJ/tx5kd5fR0UOJKLyRIMuAiAr2IdKGEUINWm5PyNq0dy0SNmKvTyA0plvtK0MX9g0zA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 159223,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfnvrxCRA9TVsSAnZWagAACigP/RDVZkuvq4O8sbb9uFko\nyrfjXoxaDYwNtGH2zygRjsdjvAvqISRmlOqqBAsgAvITHBQhncfFoKVVc73c\n2iK+GNQIGUIWtxDh+xdrxapHSZeRYha2ZrJJAla1Fd6zMic3ezAP3kEMI8ng\nbTwAbti4gp88ZbuopSwteeULfTUZCp72GcsVdIvGNqsROoLKycKqIs1qcs8c\nlhFlTga4KVr+A7shRwFjcojKCqeNYivn3F3oaKLfgs35pK4t1tNxFyP/7qje\n1if0uG/QdJv3ynJAj9Pfz4yVnQ0MEyeOrh3cbyAHSjThipp2YE4LijchDRs0\nJW9VH+Gmez97i9H/VGgsW6uYxsxL5enjL43yGYi/BmtR/OyQ3cwq1uwhgSHe\nOz+9v1LOMlswp1TlR8XsFmP3X0XkoEamH7LX1B9Vf7++s4EofU7vTWtxrh+O\nfUDYzvq25F+pIA5WgJm8oKM31uARjMq8Vw0rnjsrG0ENkB+52zbmX8KwlfNm\n1MDa0l4lTGYYBnUlWkX3dosQlvUtabrwvk8MRMZFdTlJmVZOQssFMOUwEW9e\nxXqSDF8q4pVJGVt5eUm+dxmc8EadV9HmbjRz7oxk6ws/bIRl5w9uG+ADYu+i\ninHR313FI7a1CKuhofFLI9Pr2MYOflPXYhWh/pPkLbQFKnRl6FkwBvHnJy2u\nJTbc\r\n=ej7o\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.2": {
+			"name": "@react-pdf/textkit",
+			"version": "0.4.2",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.1.1",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "2.3.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "d86d4641baafe0cd2ee3c3b26dd14d2af7bced42",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.4.2.tgz",
+				"fileCount": 143,
+				"integrity": "sha512-zdJoec+7McpAIqe2A7ofJWxJYtd0DowwHxQPcGlkurVGlEnz+KI62J5ZRjT9mwhtsz4B6r8/ra6TBiNQZP4s+A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCLj3XtGcpbz7k1PCTNMWhuX/BmJxgvemPXZMEG89A1QQIgUFTWotfMjbtFxjiDehtid/CFplWhEG69Z0WOZYr7Ms4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 159470,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgaAMqCRA9TVsSAnZWagAAaxAP/3tJ6o8+7cd1rrtSGL9h\nEFESLvTx+fDA1rSeZGiKAFShUoRLCVa5j3CoU/Ziijq6HRDfSQL2qKcuQgkY\n33nCr+JxkmZoi4wAmEwjBtTfCxs2d7qytYK2IAG1dzboQV07TTUcyybIoZWK\nzPsXpI7TSszOptm7GzmZ3CfetOyRc2PEH+adxWeD4JXmS5rM1xdHB/ZmKmUK\neWAjjiBLoxCA0gTRkwa/j9zVIIG7sggyeQMLTPxDprBMa5KOwnROZ8E+bSKD\nQDZs59Ns/gm4OP5fnuwwiKCM0XgYUvp7RY7RyE42cVQA9ChKuYl4fCxYZcCf\nmVDMHQt0G4p3AE8rl0gEXjEr7A44JwXq7KkLewrZHPnQOWmuSmmWW6piwdSd\n1ymkYaEEUond5rM6nD6cEZIKlk2h87BmK7iIXVyEqzXrS5cIUU1PsxOk7f2m\nq3geSIPbRaiCEuMCggW+8z7DRsh27dw2XfKGV2/oCEkoOWAgmtvUQldioRaa\n3aojun9tdJ2SZ0rtWsDQvuk8E4V07MZthRCj4xuiS9u0kpTB5cJ7GWOeFjSc\nIITzgGpwQLEui4m8rjwv4pMxhG4iQHFsyg4iNNlCchh4jbCU+nrvyXvdWpJo\nBy9OgaIIZ7uqtu0lzmsTUc0LqPsISb1ve0fov7J9ER87Kb7VB7p14tjmvcoK\nJc5k\r\n=c0oP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.0": {
+			"name": "@react-pdf/textkit",
+			"version": "0.5.0",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "2.3.0"
+			},
+			"devDependencies": {
+				"jest": "^24.7.1",
+				"husky": "^0.14.3",
+				"eslint": "^4.18.2",
+				"rimraf": "^2.6.3",
+				"prettier": "^1.11.1",
+				"@babel/cli": "^7.2.3",
+				"babel-jest": "^24.1.0",
+				"@babel/core": "^7.3.3",
+				"@babel/node": "^7.2.2",
+				"lint-staged": "^7.0.0",
+				"babel-eslint": "^10.0.1",
+				"@babel/preset-env": "^7.3.1",
+				"eslint-plugin-jest": "^21.14.0",
+				"@babel/preset-react": "^7.0.0",
+				"eslint-plugin-import": "^2.9.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-config-airbnb-base": "^12.1.0",
+				"@babel/plugin-transform-runtime": "^7.4.3",
+				"babel-plugin-add-module-exports": "^1.0.0",
+				"@babel/plugin-proposal-class-properties": "^7.3.3"
+			},
+			"dist": {
+				"shasum": "2c86faa238898faa13374310c00e36491b262342",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-0.5.0.tgz",
+				"fileCount": 143,
+				"integrity": "sha512-2vbAYhO2M2Hz3uqdiNKv1mVN7uYjHx0emHe2+ZC2At6AqE6B1p9DIggV+37olV3CBQT2KGZFZHmqK2L1D39Ggg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCEtmshWH2EgL/fHKc6tMTCuhF8VfIrq7fYB373OPFXhgIgUNQ0Nauc9WBA9Q+M4LlPuRlnJvJUZGeWTrCSjiduDyo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 159515,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgbSzTCRA9TVsSAnZWagAAbsEQAJxTdfh+rDNRURD7mfFZ\nrzGk2r7cnwmfV2XkFUPaCV8SNmSEg2wgsYwcrVFcXQ1FtTQS6J4RwDTWt2N4\n75djHLeSJYcEEs0kzwAqG0X6/awoEVYdp4ARZpQoxqQ1Ih9qX2i5zZ+eOunU\nGMNnDYKp+KeDEhKYAKqKRewSM0vxXtdrQLLKIW9teUWRLLIHi5ds2SP50abu\n9mMQdemw5b/0Yupdal76sgHLnygNdIBL8MihJHjd3j+r75Y+Ng72jKZIbAuE\n3KL99NCZKc+u1Mh3DG3V8ZE7mQjp6pDdAIcnWd5HSmLjgji8U3ppw0Fm1ET5\nI92bQfWDA8czlMM79jS/9rZEU+9rCV7s3bec8jRauFMXl5XVhKQ5DYsmaQEL\ndUdraBJeYLvuWIfzeAKozX9l2i1jY1H3ePB3vqy6b1+lUDQ89Y2zU3sc7YMh\nuMUFtOh+b7AnUQOUl5sgwceVYRQxwLQYdsR555k6otkXZ/m04gIV6QrVLu03\ngqJvUrmgNcUUQrm6cj2PZb0EZ9mAZyQE/5koaUCDNBb9eer2zdmdTRgC/Cnd\nS1jIgnNULk++v6MYGWzlqkof9dZaSrBEHI8pT1+ECNNx8bjAv+jRjKxpWTHb\n7ziJw+ZmHqJooNxBSRbnMoF/7lI0/pwJHjmyb+HE8/Wu2DvXPyJriaO1o1Ct\ntsjx\r\n=6UBE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.0",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "2.3.0"
+			},
+			"dist": {
+				"shasum": "16f8b85f5fbeb61202ba75af9162ad36a1bf8f3a",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.0.tgz",
+				"fileCount": 127,
+				"integrity": "sha512-tN/XCbVdS0tx3Jnqwc9LJSwJUoMtMkRM2sleI1f9Br0PoMJwMlVnAmDKB9gYJh6yWboxW8TSsLz3udCeJPMfww==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCdpWSiEU91ERzzhaancL6d7ecoYrW20XUoVHh2kVXSAQIhAMqAdSnhSD2wqwGgEqQ1u7wuDOKEY0T/rSFNOYX3tGlg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 156645,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgcMCTCRA9TVsSAnZWagAAIWUP/3Q06BSOhIGDo2FW8DlC\nQIH+3CSbInX4+Jl8qh1NMKtKPbO/b6qlkggoUxIRNjuG6p86G5Dxr9vq/IaL\nZeZugRzmUNVUaUbduCCogEuQl/FT25s2H8vSp43BVcPMciB1h3vTq5LYig2A\nGqcPt5bMy1qsXOjPlSLZFAxCKCAMFpBmimqQ04RPbqqIy5Z2Xg3FalsN2QYq\nKqNrfedmUD4rPE0U4Pi3P/94rZEfOVwao5v4w05lV4Pp55CQvAjMRWk8VzV4\noz2nzz2GbcB8Oh71s8K9THHTCBCaMLN2NEp6UHJn6rn+NAQprmqRI9GW3Ts8\nQFE25lMogddlbWEdcPLKOCIkfesJCgm9akEGK1Kn+kh9ovuSLk+PyyaCBnqg\nKcL3Ad7CColEOX8FgvwI4N++3/9yCYtMQfy6j186RtWxcTvvEOH01ic/MOxd\nW1BK3tIf6JmZv5xhX6qe6UcroO1msMDayYbjFMtr6LAmdVAU0bCjYpS9wkna\neqyc2TacTcrLV+PiWUae5ZioiBUa/TXHwwrHpyLN+M0DCKkbvGYUOXhGXRrb\noCD1FE+j5RHHpOkNKxhiUrcJLklSufHUlHVI4p+LEY+5wGLmZc+iK97y+6KD\naxZ6e06h69xWQZH4CHSUvSijJJhp/+c7uFKFQhiecwuFdwCxPVkSTpxK9+9D\nXrug\r\n=CUou\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.1": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.1",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.0"
+			},
+			"dist": {
+				"shasum": "66cc2af5bff3ec8496393724b0389a18c683d94f",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.1.tgz",
+				"fileCount": 127,
+				"integrity": "sha512-GWfRH0Smk7ltzkV+n5ym0D/UVf+iw9LAaeXpPrk4+f/J4+9vf2jMdSaX8F5wvJaM5/p/FgPjU1UPjNavHf5dIA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDepL55xWX3gB2udi7Jjjwzc9pqEkfJUmWFzxIQDPAwswIgZRpTRnoA32O2OwuyHSdWKC585d9uRDrXI5zOoO6KEUo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 156646,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggPgyCRA9TVsSAnZWagAA5lYP/jvgKLjMDhuZSFrnzV/z\n3p2+dDdXLSTDnsGz2Y6Xdc+8pmkm2UbuEDV3tgSAW19rN6BWS9iROWgTeLhU\nTrL/GT0dZSFO2YTV6DN1GqGuYiyeeZUxsqod7LeW5QEbCk5jsY5bXyXfLit5\nFwnxBUsRCHMzaoq12TOGfty/kt0MDquiLhdS5QqWQK+QRADYZNN995ohZony\nfkFnSNyybpPXU73jpjiNbfEa8IGdImgJFg7S48ssQRSPMsD3B2pm4omaAGu/\ndzTJX7rQFaRiWRniG6xjNKbWx4hmBWxOxLgjsC2/hDT79tptAOwiBXJjmq7p\nAxO0MJgo9YvhA0DrAIy/Si/tO7qEmltXaoRZBo9ynA7GcttgkWxNeUEXh+s9\nRfsTKaTjJxOA01ysOAXoHuGKtjXo7IKzo5BTAgKowFSmOlSUEjHqJh9n2ybU\nflyhoqeqoAffUukUAVcd/3EumBbzAoaXXlJoQcIrizydsVsZzsdoLq10kEt0\n6DRmtDAmyltFcDadKikk8BFPyEO2vjmH7zxi6sNmH1jgCcONyesyHqINHZvH\nq6ghnL6uARhDRcws1ySmPIzS3f/dGxON4TKuJ6jliBNImgkcjhTP1CSgFsFs\n6qjn3bfmRvyXHSU870O1x29TsSNNRAwJPYpMPFESIpsRH41VdoJS7hAl2C78\nT48f\r\n=Z+O1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.2": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.2",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.1"
+			},
+			"dist": {
+				"shasum": "af6e04f3502736c9b4741e492074971bf5ee4075",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.2.tgz",
+				"fileCount": 144,
+				"integrity": "sha512-R+LSirn1fUoimsaIkWhDq1LzTfLc1Ur8U1MLdPMsQKGrK7SAF77E/CUH3vmobCfNHqFhThOvqBsITDfeORdFyw==",
+				"signatures": [
+					{
+						"sig": "MEUCIC9VlVk+GhvwWZA37gHBw9rKVWQmhKL/JXhsqQ2MYWv1AiEAr2jQzpaSGiKvXAxygcQtEZEFwyUjnzJrCHKQL6Cy95A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 155488,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJghjmECRA9TVsSAnZWagAAecAP/ix+Zx721wxQ4S4PHgid\nlUH4ZSC4Qs313BdjuOsbzDrJooch9O9j0PpB2RcufXrGbrYsdPRz5FK7KkWz\nQ0zaKZ2wfle9TNbaXNjIVB7MFrkxz6tIBGmH+q3gli0Ve1sn8D8LnCFp6LgV\nZ8dCCPh3bwUivrxXpmNhXiWvOtr9DxeDrGRF7zQAadXVM+BBMkc7uZDBer7T\n5x9mJDBpttopZL5d+SjHNH0lcY0iYdUVD9fcw7gKP/l2Jm1Gb3fraM+N71pA\nEiIAz06P6YE7cvevm8W8Jm2YkW83ddbR+E6jfhb9IhtiwsaBLtExShYIKHPa\nJFhk2/cks/8EhNVZoQjL10CIsysgy0pJ7b5HoLsTfqDJRXvi5q5Kxrnv2xJ9\ndFubpUKwIZvE2knnJ1tYkNK+7O3isMtm2pXVDvF7gNWaZw4EBFNUYxbMhBlg\n73bUhI9967Ax9zTa0hjYtu3Q4W/AdN2fQeDC0TgokI6ZYMlF+yNXEcc1FocU\nEMNH4wKLjF20p8ALZtTJkMYpSGKkrfr6mlUt71Cnfl9Mnj7NyIU/6t8ZIEre\n5k0jWAvLKVp3Dh7hyNdDJr+z/cMjO3FP1+f1aSOtKhHkNjTlERnkwvrw7yB/\nBVVouFJj5gWYN7Qb8wGBoLyus+NL/6WzS0QQxrYqh3fVmxH/xS+To9JTjAUK\n537C\r\n=TKDO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.3": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.3",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.1"
+			},
+			"dist": {
+				"shasum": "ef2a4b22c016ad4432139246f31aa5c99f7a421d",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.3.tgz",
+				"fileCount": 127,
+				"integrity": "sha512-Bi70OTBwPdqFDARkfsCAjxx4qjrRvieQQT597CAEJZvuTeqZ4vINEShNxwTHalDk89Vf3pgZoSvKSHPhBQ5DXw==",
+				"signatures": [
+					{
+						"sig": "MEQCIH4yfdXXpeksZAXLLfUvghQz+/V4yYnL05RSDRnq/0yoAiBNL0ZaQkRigY/MbG1+OpZzB1SzQcBVhyTJ++D6JHA/Cw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 155873,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgj4SwCRA9TVsSAnZWagAAVdUQAKQ4RblMItxSHizy/aa/\n90Yu91d4GQCSjYyCaR9+GdZbvUyPDl5dO3L2XINMLc2X0m8i8mU9eAf+Eoya\nazxKH3lHEzd+O7qL/9GftkvGElLjolf12VmOA6NU3K2HyWy8DTLMJNhm2L9H\nBPeEOO+fa8o/kI3ubu0uwdLmSo+p9SsgLqwpdc+ptVVre//FmcxdqIyC46BG\nOoIwho27WqlBAbG/LZfplI+S7Zj9pylfI+nHFPk6oCygbwDCsbAmRMtw9l3O\n8OBMTbK824gKQbiIAVSeL+S/ER6Ar6f5OvH9fdyiHa95gq9Jf1I36sSB4wJs\nwdUyD5WE4bWO6QCpmxuKwqvqt4G4VBOfNZl64utWzCrCQGaQgfWnLQ/c54y/\nWsFP/EgsIkCbqIdCn18HwvW/DTe/RJj2cN8+OlmnK/XMTTIUIvWSznRYNdFY\np5DFFtgKGMwXViRrCRB/mwyUonB6OnVzXRX0Q673+sG88c/UWWJpJhN4AY+s\nVZsW+f/q49ZAh0xGJcudi/jvgJf4YaQe3FZysi0tjIHkYnelODDKRVgGk2Ca\nnVl465uNlgagA9qQ2bO7Jj4XqzqwgM8N7S5yNqkE6AJsdSVfGvS9TTLWKx5r\nCWDBTnpH5KjazoDZlzWosl5YhPCSBceZuS6s/zd5l5/6pvIPOwQ7IwtB+i8z\nafZk\r\n=aDa8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.4": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.4",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.1"
+			},
+			"dist": {
+				"shasum": "9ce4bb08c65072ab50f30ab3f6ea0fff13ef6f7a",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.4.tgz",
+				"fileCount": 126,
+				"integrity": "sha512-JnpFBeun+M8livA1Z9Ed/UbxMWGQRO9cJOTjhwowuiPjJbkod4IKaDfNm45dPgYQE1AmjZyf7Luo6UaDFnpJxg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCAlZjoV4eNv6vqztaKxPVejYY0mLtQDUXWC1DQfhIpIQIgf6BfOu1EL84HQ0AN4Gs2JqUQQnNxwTxlo5krmaTZvWM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 149676,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgtuciCRA9TVsSAnZWagAAGrsQAJ9Ts9Sp8JhAzBzQOzFn\n0Gl2zthTtFizX2sItnLqpLyqHb3JduurBZuRvP8ipWJXrUfXYPDgSS5xqMu8\nCqP806NqRcozio+C65udoVvwBK/1aHRpErrv3kiqCAeh02TmlJX1OMDkLOz7\ntT8NbG0y3lKqvcnJOe5GwPuW63wip2x2Nd5IaifCL+3dSneetlo3ABGfeK2e\nPvfj5zACjVRoTn0XLZ+ob6RiaCzoQDDxwNhs7sFlBQrvb2bKixxcQp9YPNvw\noDt74i8p8vYC7bUKdtV3ODJvFOw1JzDJ6aDekkES8bvGA52n5yvD348r5nUt\n2tFu9j8nmFqsZ+/edDnSbNsrfWYSAiqvM9g03Pjt3SeYJZ1/0obcAnd95uvD\n7Gr4kb/tUNuzqp1HKKX2M5MmwM34kTYhl/d4tXGrIRgQGzV9BntcVf0H0HFU\nNNzuOx699zCZih5Si5J21Mo97kTM0x3IqbmWVGR1iScGI+ePyJYBlPeLm56t\npLcRIUQWjgC9pDqghl3bdAYoZKFj0R4LCwRhPRYA9Fhk/qtzCucKbsX5Lov/\njGygZy+nNsHK1Zdrk5VbH2cJJKmo/QncewSTIlkbxnEKBGnbQf5HV8Ag5/qP\nuJFnRoI5cK8RrXI9nGp2XiU7KU6Pii1RvQ5Ho2TvUHRDnda8Uu7UEQikmhcj\ncapU\r\n=p0YD\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.5": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.5",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.1"
+			},
+			"dist": {
+				"shasum": "8e6e746b79615b48b8acb21cb37b6fddbc36b093",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.5.tgz",
+				"fileCount": 126,
+				"integrity": "sha512-HWPoEzjULQ7LKTHIdINa6GJKf/30MFrH4pXBqP00+XIl/UvlEjfrmqgnYJLdfZt8JP8M7wAXX6I0DbEeJGuYJw==",
+				"signatures": [
+					{
+						"sig": "MEUCICj7aQgbNXNefR6izRgHUy+vlW1Pg0pCbOcAo9k2x+65AiEAnFJfQXYJpcJdAZXb2bN3OsdmRYoHNlJLLidSfrYBHyw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 149651,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgvAsdCRA9TVsSAnZWagAAWH8P/RTf0KunxdQLMjW2OdHq\nURQ1YMskeCS9kIBZHINOp9whx/PgyfZX7Mrs72CtULqOcVGLDeDqRBI2Vy6n\nAY9YjkpoQd9lKA26SDayLfxS/X1ZZDXvg+gKk3YmJefzuqCa0/Xwj29K/QcJ\nt2XWpUm4AlsY2KHUjrtfX4mVZVKnQpid5AzjLTzFEXIgii4OJA2eslHnASWx\nSyuu+EQpxgj6zdw1gGAFWSdFf1ZCBPFdCjY+xSSBFL+YLBpukKDrrtS8uNvU\nj3yxzPGW8CP/DmV4m4c/eMlIQuHVi/NtEdW1NhzL4Xqjn0SJHT9PMwNDVW+u\n/5CeeqZc+ro/EsdLQe7ed0f7EyMKJAjbOM2aTlZKmw5sVqIg8gCgX+u20emY\neqQAovSBvaIR2igVxANTDAhRivj+7r+I0aT25GkZGCuOwTUrRDMU0O2qZlKz\nOIUT+/OfeZQF+reBWxCmZo7J5N9xrq+BheUoBQDErs0Q+0ws7yr7ri7c4DRz\ntA5adpUF9tl1s/2hlAvDFscqHzKIeu2fnbZOIyiYoZMmACz0U+d+FSe0pweU\nbvHrgqiKN7pS2lwF3vdmTxmrdmxac1hZ8aQOWZaj6N8Vi9YuU8ou+AjaHJdq\nJ+kLqUFOPsHGvBD9uM6mX6XyOtceBS+PTqPNwx+qDIJe8VouANiD/T/o5e/i\n8NVa\r\n=65jH\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.6": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.6",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.1"
+			},
+			"dist": {
+				"shasum": "12fa9dfcef5da1f552dd92ac7983a029ce569e25",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.6.tgz",
+				"fileCount": 126,
+				"integrity": "sha512-B+pZpiAKPZ4shGv9/rRspZX6O9P6u1gfsXcGiS2/o9LAGIspoNuSE217Ir7oRKUqHtPdYslviY42AzvY4nes3g==",
+				"signatures": [
+					{
+						"sig": "MEUCIDrJi6gnVJwYGxDKj+Tf8TF7PrsIFpYsKsIloVJPkJ6nAiEAhfr8R34AFxFLvUO1T7+YqQb5lAPhUPIC2vuN63KF8Bk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150306,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhCAWwCRA9TVsSAnZWagAA79gP+wfMe4ZAzDvsYJtyhgCX\npkmNzd4TsxHFb5jOz8qdvyBzDQaqDoVWlnQLEbzqUFo1TD7i856dsLZGfuRd\n1S9bOCLZdIawyHHL7geA6myRVasyQOoV70sRKtNDakfLZc+ZMeAc+r23LLSX\nH37JvSAmB9S4B9pXjjRwVDjVGaHYdUbGcOP2mo554Z19Bir8vBTf/VhdQSE8\nSt6VHdICaV9fJvN1NzGIfBFUKor0XxKZKwhispp4fDogaMUpfr8EWbYbxYDu\nW1LJhLW9xqn5MD4rBRqbDqVxP3IksQazdIRRIZKAXJOqtRXnrKDpOKqHkaNg\n1r3xLE9Pt3JCBYutqxkQun61zi1nct0G70kcqQn39bKqYtGSp0slKRKsmgAL\nspHy+L5V8g4esKsnRDGQIGTMAFmJZWlkGTVw1JqAyjHS73BCVDgX+5r5CEpL\nIZF3JEqOWLLvqYFZ/CUkzWfnu4VcZkPL2gVHTa54SRCAXRE/973A98cRHSMK\nUaO9om2p5ppalyppIkfVOsJWDfZPZmlO6do1e6Os81P7C+zcNegqRgOtIz6a\nwmMwuaYogtc92ZIqk1rAaFwtu6VQyxZZRtEvwKxzSq3fZBEhfsDOVLnD/aps\nVqXX83Gdov5bQpYFGkgTtoTblogFoN3dM5AS15JB3G+qNmMa0i0Tuo5hUHSs\nD7rl\r\n=0KqL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.7": {
+			"name": "@react-pdf/textkit",
+			"version": "2.0.7",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.4.3",
+				"@react-pdf/unicode-properties": "^2.4.2"
+			},
+			"dist": {
+				"shasum": "1c5ffedfc2f04ca0989da3a7229b532eb4b32286",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.0.7.tgz",
+				"fileCount": 126,
+				"integrity": "sha512-ycJbNDY26Tn1dLpRwkZV/OyLn59wOaY3G8/fplQPlRnlj3lviBwCeYsODS6aPK4+TwXbHxruqL1ACEh4wV2XiA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEpu/GQSTorJwlOb80DRqOqmHsQxaLQwUWOEHdij2X80AiEA0QhPOtefTUiSjA3anZXhmrYXJkUTv9gZso4urIUCDyE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150441,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2YOECRA9TVsSAnZWagAAywUP/1RfsDrQNtUN9p6zitQh\ncFV8YgAduys2Um2nLIU38XmmUsIDYXrgsg8W22VUPG0k7k+VyULNYEIlC3kM\nSIZOHhBgW5Ctf6dosGIBzubSRB0qIsVfR8EVJxb/UuIDW1+yHD2uxisK0suB\njBBSFYhdsEgyARFVaMGolfyVqdMqbWhki9FyR7GXnufhu6hFOB5QZSxbM9ZA\ndY93m2dAJocI455sFxAvQts0tGjo+wGxKRvwGdR0O+6NXlF04sNCLlZbC+yH\nxOVRVa5Aac2pkLbNh9UW7WIUwjyc2vxz6nesix7eQK27dYjkkFL4rHNSfrod\nSKNpMZUpICHYoNp+enIvHcHBHrlK1Fbnyv1Np5zueQj8mjV4KlMIHjWtZriG\nJ4tVMlgbJyR3aZlnhP51xka3sj8cVSTvAxTh4ZV6E18sEH9YH7lW6RceoVam\nXMSYH3tR9jHe+EAH+uG2Pewc9gEo/l3yGc2aoIVJjSyji1i71NeDe6f+fiDv\nd1cARAsAH7eQXPt0rN1WR/KGTdR5zvRld73KIivm+tTgjxboC7oQc7rY2kOo\nIfu4UTeZHQlr1yfFJU1kJH48OuhTHQg9xpD4m0Ekqe8fzY3l9O1zGH4vo3K3\nGY1f/rm98xObPHpxzRESCt7vGomNU/fF2xmN0GAvG9LtmH9n8V1psBHJm2t6\nfik+\r\n=0nHz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.1.0": {
+			"name": "@react-pdf/textkit",
+			"version": "2.1.0",
+			"dependencies": {
+				"ramda": "^0.26.1",
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.16.4",
+				"@react-pdf/unicode-properties": "^2.5.0"
+			},
+			"dist": {
+				"shasum": "5ece2e09a1c5ac3c732e0e4af57373c2be588511",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-2.1.0.tgz",
+				"fileCount": 126,
+				"integrity": "sha512-caFluGk2aHgPjeGxqcYvH3rake/01K5zQfjQ7RVtjye5ZvlSgEFSuorRynwFPs92Vw7tA9TjvVnNc3GDsWghgQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFkL0R5+or/C4CGWWZ+m4cUfADli0y6CFgHiQY7VkVanAiEA3Ti/2n18AxTriwlTS6yqiVJDLUeaLCiHsZyCn9DdCzY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 149911,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4q7VCRA9TVsSAnZWagAAGrkP/jWqo6avweaX51OHuN9Q\nAybZ+VA6Rs6lEWVSRrgveT7QoGf0woh/0qgPRkZb2NUdQO1kjv7lSyVSoHal\nnMuNVnYR+k0/4lW4Ei/+fSqEhorg4gaS5ax8pgH9p2tub2zfvg61+JopyPjz\nWKy7DGqTyxK3RDMhgW6WeGAqBx2SLAI1qs08R0aIFXoUZj+OMBfyEhidDtnt\nVedX5b/auEugTveVG+OAwYY2xmbLq7PA5Q3DO/i11wuhFne2xPWyheGQiNcZ\n0eL6+nhGFzMLAozE5aqDtiJ5016HFkTb1cMiuxbZy53KI50Hvwxp2OIolLVT\n7ezFpHlZIpPqa+bqhBsp5JTQ5C5akMrkzKQUsEbYduwg0XAafsRST4HKyKfD\ncs8ovQm2y94e8touv7em8w1YjgUmVtvoOI7FErpk4NzvuA6ERLRICRUMLMnH\n6U7GxHP9ydyMBhXNNaB1D//Gxg+wP7kvFG75cc8z429RKRxTVo3ZYPO2z+NX\niWHcOBd1EnA7X7AhuWAgzAXxtPb4mSFxmhdLIizjelYkviUogKyaX5mHHvTm\nOUyq0ibfdZd83UzB2TtaoKaUWknrcqW85l4XPbY1mx0Url2hjib8J8s1DErs\n+LzHE7gsZNX3XkMNFi/7Lcwjg+khCoNcBaxgNIDufF0KdJqc/nMsVkL/+WMq\nMJY0\r\n=qAvP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.0": {
+			"name": "@react-pdf/textkit",
+			"version": "3.0.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.16.4",
+				"@react-pdf/fns": "1.0.0",
+				"@react-pdf/unicode-properties": "^2.6.0"
+			},
+			"dist": {
+				"shasum": "3dc9cef8c5f525522be919102bb2fc751ee64d61",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-3.0.0.tgz",
+				"fileCount": 101,
+				"integrity": "sha512-StCgtgZQE62+DhHo3AIBpGWXQOtVlGGWRxn9B8yuavWJvPEaw4SSxGK7PLdzuzDeR5M5K6LGRgAx8X3AEADtSQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDBNPOb4T8dPXlK3QgUE2bBTcN980jVNGiTVbu7taqUlgIhAIr0WGkovlApMkQh0V3X0Z5I8SeM/+Gsi23D9SFMdWt1",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 121761,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJilZf3ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpLxg/+JgVCXlUefwwje0Qnf+NWe0xMlgnzw66sKXFWkbzTbjhf+EOJ\r\n87ynJuqF1T8pjdOrv5VB13hgmQutLbnTeZBRC9qVch9xV/9LVbeQlCMPZ2oA\r\ndg8vO66aMrIKVY2Atkdw2lLkFR4hXNxNujgyi+vNs0qsNkNzEyePV6v4OhRR\r\nnKamZv51/5t2TmRfA4ruvSxhkyAzKsnGtTBQK0ghf6muVCcfD0T/1to7+Dkc\r\nfqS95Gu/AnINhY3inh8bmcuCdpHsKUHJ9WDtDOV6WoMcXjLCueBfNN9jrUi/\r\n1ezcdruYiqg16+3JfrPy29sKOg167oKxtH9pXG4USiKzfkKjiaGOB4s9WwwO\r\nYA1L9OW6o/LlnqXtTPmnVbpD0IQaPgb7EnELQj0i8dMYsVHhSbOQGiKLKvmD\r\nBTm6vxO7r01SsyJcMvtsi4lrgAI//4wNZbnR6krk6wGJ536ueKGXT7jVm1Mf\r\n+M6zTGKwDgAZ7ioq15e5JKQyxU3T5JIxAYAjgbL5AIUyf5S/Q1RCOTb6YjJy\r\nYFtQtqHwPC3fnySvB2w/bggiKbL5h2JumIaif7PWRVke+IqCm8nRzqs0/edg\r\njcN7ooseIhU92PMHwODKoUCaXDp26sumflSTF23Tb3smZqXPC8SrtpHvSBsY\r\n7RYUOEutPLo2/DdI1GSiXi9U1/Qe+Tky+M8=\r\n=o8+r\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.0": {
+			"name": "@react-pdf/textkit",
+			"version": "4.0.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.16.4",
+				"@react-pdf/fns": "1.0.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "ff146dc011b4895cdfa1de99ae12ec9e7335cec2",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-JI3A9R+Ua3oDZgfPABp81ftn1RmWY9+B0HdDZ19HFHGLBr9pVPyAP5xwD+Z0fHh/vAMtrvbEjcZtB1gqs80sGA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD1SJPgG4GJmhGkGqcdRE3vjXNkPKl6FC+HNVCDfRZ/BgIgODVj6rI0aAg2Y3KbHZE5PskvyM+XyhVU4J10mfLYfOs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175188,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiwQNIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr0/A//Wr90mzP3SOmQT+FPmu3GtZOCBgJipjll/oiSCuDipXG4RWfQ\r\nxgj5aHUkJSJ21foY2iWfYKKLO3s3+ogYSDaLofE7r4W43qhY06x806OpbvpM\r\nzVQ+z5rUnWGpBi+2h55WM5c1NQDGiwmIKm+/x+KoTmqcbRCgP92wK+OgW6Yp\r\n5GTsNeyhoVmHS9BCeYAzhYVLHUKNsnoeU5qe8VL5xuhRi1Y19jrU5DebmUmv\r\njyV7RrzoHR/yDAUzN/fjNP372qwbkaO0eHXrXMgdOFbjnD0rCpNS/+H8dL2R\r\n0wILCUqWEr92Qc1RFSIpN5rh0w4/YEjcjQddFDJNLbB44yAI+1v0nob1sncV\r\nOOsPyHWheGnFOZ+Rpcnn+XDjwHhrVFXMMS3lOxFNOjF2jgPV+RuyxiniJBaE\r\nxSuO/LV6e17VNoNnhopRFwNk1RZvCEpDsfUdubiUpvn2KQp4bOhHERX3E3Yc\r\nutY5nnDs3tMqLellFLF2L7RgYcWI8rgdjkrKOge0YMnedSXOeBmwDcIVn08a\r\nOGcad8LhOSmG9up9DW3A14b2a3pspBzWcJFOFuAqsmDfPZDfwOAFZMEpsSNR\r\n8as5SebEFXk1UrNMm41bQhZP6N1toGvfqYR7cHj1SF8QeZN3zF9pF5jkGS4c\r\ndd7AQdPI5jhAiZutzDpgLh1Fr26VDaiWhW0=\r\n=2kjh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.0": {
+			"name": "@react-pdf/textkit",
+			"version": "4.1.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.16.4",
+				"@react-pdf/fns": "2.0.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "f6cd198367a319e360881f6be839845f537640af",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-B6HxLKu0JLcbwT46P75CGmvEGBggPrsiyWrPzRh1rW2V7EzQFRagsZCZJCnASOGR4kZKV7x47kJp289KD4XH2Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC/O8Si3dml7rZZP8c1PfrwuqqfSFa37UxMty1JV1tu9gIgDUBfjgoSQPyAqxFZsEJFJ6hprgEBL/McdhqRXKcSpXs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175993,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjDW+3ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoqMQ/+Mzq8YB6vD5UwarmgMtbyLINaVG1HslxbN6j8iSRlPXs+W1b4\r\npShWXK8fHoJWs6Q/5kEKxilFwHTtMfXBrneylP/JEQOIEtXzhkJJSm5bRvg+\r\nJBk1Mi/7PVKAx2SxSgRu5uxSHCN/M/Y4NPXbbPC4EeB1koL3zeStA2D/ZWuW\r\nk0m++ojRoZ50XDFb+cv84Y6xHmJrR37r0maSL+j6qUjOJtp02Wv8BTm4DMth\r\n40mdeiyxGbYyeWZtsuqP+eEDdTKiBTxf/8DpKTQrzuepFivnoS71ADARef+7\r\nEUQFg+++58jxbg67m6Rv7W5oIHc2brmRFDMClU8mQilfhLioeVZnMYHVpHzU\r\n6QuTc8X6JnCmu+Lc4V5kldgGGzTTpd1Zg26ke6syW/3ORFaAJklSNUxy84J7\r\nejpq0HMzyl1FAtzvgqLtXSuAbEa+8pmZ57pxHepapwu6hXKIRDPYYtSTs0I9\r\nnprcC7dPJ0Zg3u7+ICMaum8KbkaJlRWFk2zUli5LW/nKydX9IkyR0VA6uN+J\r\nWHExHGtNOAMSNFbY+AcAypeLtW3DMAvx0xlmjWpglEunxCjv1S9smjX+LGPt\r\nS+eMyHNW7cHsxYxvuteOixD9LiBwVdxNPXBj/jMXApApAdH0vm1tMObk0j2P\r\neLGpZnJ+UYlSh1P5Sy3smSTNQR+JZBnzfV0=\r\n=NcvN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.1": {
+			"name": "@react-pdf/textkit",
+			"version": "4.1.1",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.0.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "9516a0ec46234079f7304df3be7bc7d4d8c49edb",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.1.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-oFPsO4GwpigvNaadvOcM+H4isUHslD7peK46JoOagsGurEGazEa5NqnzXYPIuvr2miMMDEe6m+mxN90ujmUO+A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDGr0MeI6/rVbNs8wQ3fxAWPvGFNCP35bbZ0gfLoNxzlwIhALVthyd2rkdpUyyV398OzvxElvaK7SX9oV3wsheunbs7",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 176042,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj92fiACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr6mQ/9EGz0+Wlihi+ADOIUyYyyx/nsttDqSOgL14jxGRjfvo0s9exe\r\nsyugjdiMnIMCZrWyGV5sl1Ms6Zjj26HyoPXmpF+6jW9JbRvHdE9c+IbZzzVP\r\nbZpyjytCLDD2kmoldpDMzVcnN4duzB898cy28YpOmVcbdI3isich9i3aYv2G\r\nyQmVWucsDjBMsdl4Q1snm7ITwM7zb2UYgK0xK1WALtYHsSkRF95kRCUC08y6\r\nYASR1BpDxNJbIjn3b+qTTyfSVWv2lG+reYpBn8r/QIWsdtS1Dtw0+Q4RokOO\r\nuvC+dqFjZJ8u3VCgb5KsScyKZXCHFplbE7bVG1eBx+B+RuSLPmQLU4rVOs9P\r\nYoBos2iUWJrnP4uUD8lOhEiqBCyqezPAYDerYjVWHzkexka4d2hEUcULMx8n\r\nOiawPv4NmAmJLtOrhUbcjUqtYDhyXLnvoYa9rGyMrIzKwyqJeUR6eGNWMu2Z\r\nEg2qZ4RQTKDv82S+mr+bGt7ChJr8CezhUSpJH5mp5L1pUBihXWlEQQMWi8KQ\r\nQ+du5COz24/tH+WqYf0MyAIfqCiCoR8tQron+FQD+UmiiBtUzd3zUbq3bM4g\r\n6BWJbh5umIEXv3PbKTXu6GxT6z4FjsrrcdTRrN3w3CKeD8XyISNYLVo7qkjR\r\nD6g31GIwAmV3/M9f0/O0zq9cOHW2XgiKMBU=\r\n=sPDx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.2.0": {
+			"name": "@react-pdf/textkit",
+			"version": "4.2.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.0.1",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "bd8299708ddb7a9b154706aa2516dd3666230cf1",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-R90pEOW6NdhUx4p99iROvKmwB06IRYdXMhh0QcmUeoPOLe64ZdMfs3LZliNUWgI5fCmq71J+nv868i/EakFPDg==",
+				"signatures": [
+					{
+						"sig": "MEQCIF4gq2omwSF1WnRDPO776P7gGM+EA/l0iYsticuKpm92AiBn449YRfR/O+20CBokUjS6HTxL+vFisRLDnulo9N4VHQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 177989,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkBwkRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoYiw/+OcVE6KnmXP8U5xyR0ETrIa2f/G3BEsvCx33ZQQYN4b/pt1MH\r\n7aHDXsWgFROUQJXRSmRQhKMzpIGnB6fxPo/jqD7E7yM8dTb5cOLbg33S0KTi\r\nfptJjyjCzGcwrnM/DLGHH+JCswllOLotsqqayGe4ZCFc5nlF0t2Xo/pRDSn6\r\nIOLYnzJAUfr0qUjq0PTqje28fVtabUo5bX9CzBoMjEebSQZJhiT20ZdsJdz3\r\nEpPvZsA8AkTa9CUvUcNzV9YdJPj0Jdg5LFqmbnBfVC0yFhFEGP1+Iuag2+2a\r\nih1PjiuoVoK+RIMqCFlDo9yWyzjQwp8gWdMLUoDZ70cv6vg4SjOV9dNB1v1s\r\n0C5ZkmeaUvkkShLurlG1oVYeqS0Lxy2ft7ewVkQbobjicnyvKfDxk7fIqV6B\r\nu0xi9L22739VikpXSHr1hEsO0t2h4iSmqNWB7FzJuardVINaCqD3Cu/j4H0b\r\nEk11ReZHXW2gODUTuWUExeDVh6xTYMFBa+esCTIfSBgc3L4+sS5+5t+oCg1W\r\nb2SDvbInfPE83ZvezlQM5CC1043D7kvHFlweg/2VGpbJlJR6ioL6zKAn2uLO\r\nFsyPCXnyerMhu6YY0fyX0FRtf8CdrSjEnBO01l+KO09Kc6dABypROmPKDQcr\r\n/oZ45j5tn5TtdEIU5QTaXZkPMww1SSXypO4=\r\n=Gfic\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.2.1": {
+			"name": "@react-pdf/textkit",
+			"version": "4.2.1",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.0.1",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "173ae93def88df1f5ed43a0e3eaabe43fe74b454",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.2.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-qUGN1/Ej4WnYTivXBImbgz8LTbxiT+taJtenC3fpOSyQOZnYHUXldW1C6RMmVTi8P4BckLepOiBxLUIzCd+HCQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCJCD3FfVsFZUzOqTptlPmdUFIxPg5Qrau07l8gY4O+CwIhAKHmIcuQ9igRdy+6QwP1nzfYfihkOAAmeQH3qigk0Pwu",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173678
+			}
+		},
+		"4.3.0": {
+			"name": "@react-pdf/textkit",
+			"version": "4.3.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.1.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "65502ffbb5a47d078140fea4421117470b053bc8",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-A0bbHFxLYOh2lEFKbtgefmxlJEVbCX5dRhaI5ORwgHJNpbFOCTQyowq3h9gWXO9sSWl5GQdTTYAO35wp4oS2NQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCr3cukCHi90XJMP6tiU3wQaKeH/R1jOHimQr4leZWASQIhANynRUZtsS46puGtkBTb5kj0ucVp8wQZR1MvncWEzjW/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173888
+			}
+		},
+		"4.4.0": {
+			"name": "@react-pdf/textkit",
+			"version": "4.4.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"bidi-js": "^1.0.2",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.2.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "9a57175c812c29181c936748eebf5173efe76914",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.4.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-P3teoRuF0p5cDFPMowD6OSqGFrw+e3wvvjVjajxoNnIqy1rO38lzANAcSHZBOCY8kGWUeKet/sBKOjpTx9j+HA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCsOiTLU6V5c/l2ECGI2A09/4JZhHZYPN/gVQnaRq3nHwIgCPMI8DmckA7UDaHV9ZoneY6wlh1QUhMM80Ie14mVQ4A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 202302
+			}
+		},
+		"4.4.1": {
+			"name": "@react-pdf/textkit",
+			"version": "4.4.1",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"bidi-js": "^1.0.2",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "2.2.1",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "b4e4181ea7d4269c54a1794d4022b55c5135f0e7",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-4.4.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Jl9wdTqIvJ5pX+vAGz0EOhP7ut5Two9H6CzTKo/YYPeD79cM2yTXF3JzTERBC28y7LR0Waq9D2LHQjI+b/EYUQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDD6oK4mwtQkH6d3yrm/KsJiP0nBvuFjT1Wro5gIYoMtAIgFmcuvd0NgdvY0kSQAgQPpZLLmBpCBcfQ3fpWM1/9pAY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 203316
+			}
+		},
+		"5.0.0": {
+			"name": "@react-pdf/textkit",
+			"version": "5.0.0",
+			"dependencies": {
+				"hyphen": "^1.6.4",
+				"bidi-js": "^1.0.2",
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "3.0.0",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"shasum": "b1e07db36c8427644b81723a8491380fdfd59b63",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-5.0.0.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-+K6zkF6lDXHIZZ9nNzplJ48IrjXNGQqVfO5v73AsutHbvx44E62t46EeoGLHsmjGeMG70TooSI1Mwq/7f/5tLw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCNWibinASseNTvZI4jJ9npU/UuNkbZ96R+e3loD3EApwIhAI6KI/wG/dZFPKdhyEUQ9ZF8Hh3EZ1G756tLJ+IHdH8D",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 96929
+			}
+		},
+		"5.0.1": {
+			"name": "@react-pdf/textkit",
+			"version": "5.0.1",
+			"dependencies": {
+				"@babel/runtime": "^7.20.13",
+				"@react-pdf/fns": "3.0.0",
+				"bidi-js": "^1.0.2",
+				"hyphen": "^1.6.4",
+				"unicode-properties": "^1.4.1"
+			},
+			"dist": {
+				"integrity": "sha512-4GdDiPA9l+If203hkh48slvRQmcmM3ecPLFTpXNMPrep/3retgvxUEXKMxI+xKclpw8tMzK/W6Z4hN9DgnxWMg==",
+				"shasum": "284e55ff016f46c8bf364aa1d7bcef772c913662",
+				"tarball": "https://registry.npmjs.org/@react-pdf/textkit/-/textkit-5.0.1.tgz",
+				"fileCount": 3,
+				"unpackedSize": 96907,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDvyv44PLIjbYxpRGyWT3Th23ytI6UmnWRjsTk25aYOAwIgfzlsUgbFoIPbH/r5Pwefluv5I7pPhicUc6nPheUtqNM="
+					}
+				]
+			}
+		}
+	}
+}

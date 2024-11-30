@@ -1,0 +1,1147 @@
+{
+	"name": "@lerna-lite/filter-packages",
+	"dist-tags": {
+		"next": "2.0.0-alpha.2",
+		"latest": "3.9.3"
+	},
+	"versions": {
+		"1.15.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.15.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.15.0"
+			},
+			"dist": {
+				"shasum": "77868198063d4c90af89bdb84b08c720f60e0b1c",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.15.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-R2ilxu5MMIOpYJlBolGgTSRAKVmUgotqt+Ep3huCrnLOus2xNZBWOnDxzXH/LKDL3fyWxNvo+wUiT3LXfrU3Vw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDddv/DWQdWXwngkgQkG2SURZdvTozBrzaHUnmdJw0KmAiEAvOTHlnfTH5cu6LpSx4/3/6XOZEf42Xeuukd0CQ5Jnk8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 19007,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj3qCpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrigBAAkZXNPXYJmzIWTpRRR2+ZiqilJpJxNpSMECU2MxdsRp3CfA04\r\n+bhP/2gRCJVPy12+H2xtl6BcS+QM6fjfghE4DB5f6gAX93NuxjuF2QIwvFSr\r\nlujEtttqZsZVChptS2nQCEsz6Z2J9vcW/GHqr4WjAkL0cMWlePZH98UBMnbo\r\nDD+rp1WVR5Q75aoZIauOJmrG8CHQ0+7JtLa6ntFAfQfBEniK4WegRCnTs7uh\r\npf/kOS/fiqRTKhBsM2VFmq2c8599kPRXn1CUH/Wvu4/B/dxKMWkUFBY7JCDu\r\nPIsBDIto4a3E87a+cIJ7Ufzs/kjsqXYntvO7sa639QE/x/GMbAQAVtCFAH6d\r\nw8O+JlaCusUQB9dWIoikibHIF88wWTtLjcAOXeEh4w68N2d5RrKzLiLheYUS\r\nnNtcUbAa48vVnnRCjxPh9sj+WgEQZ/uONMCrJQmIkG6YSk+ovQu8+6yrEhSJ\r\nbwIVhzCBLKR5JvXuTec0oD54a5S50zsJp6vqj5fi8JGBqe2jyOw28evjerZ+\r\nTA2U5S7Haya/Tk5Cx7V7Wcs/0aOy5qLZGoksm7BmmA8ztD/kW2fo3wXpSO4K\r\nQ+Pi4nhq19LKgq0xVmmw1oxqtDi0q7xn1LdSK9B8ptfI4lRz7ebWKHS4Hn/m\r\ny+X7QBoFCixqz/UFJXVWP6wWix/5hEfncRg=\r\n=XOxV\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"1.15.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.15.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.15.1"
+			},
+			"dist": {
+				"shasum": "266426ee8e5251405d141f05c78a50e6ad0326e6",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.15.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-3jsKGkCvoUOOdOxKdBpSQqR3bYWaq00jkziB+i8Vs3eY/6l6LZSScioc3+LGc1etqUvvgrVFzdddM+b0BpFcsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHbfV7y/yA9sE5F1/v1ZvMmHcZxVBWvBcfQ9vPed9Z3eAiEAubQsfdXh+2AAeZJRCbEpWUna94pQNKVYPWsuVBg0HsA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 19007,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj4y71ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrcPg/8D0pzOPGvH9Q05sGR/fSvRytEpRgiePjHQV70cMW7noG5HhQc\r\nBlfJzP+nKG1PEWL8MtaGsR6vyZFcBJ7p5QDONFj5sD9pP7FNp5yTr/isy4Te\r\nby0f/Tx3NXl+HMVGZtm/zPjIs0yH9gI6NYHS5fb3hbO/JB1ADxGe9M+UkJ+W\r\nPwwl145KH2BsjKHm5lkRM1ShU53TVomfnZwaUq7na9NJ9HuK4+0gJxFFJo7R\r\n6VO9CqeatSE5jWGhCtz4nJDzkPibnTOvBLl2pxpRpYHJQuz0M/Ml2/owWaIA\r\nraCci9ymhYyfCpCDnLEY3ZgwCjqe2sc8gSiYaqiQASY5R3YKzr7bdgjVO78O\r\neiWzJNdc/RaXBYT8PxLSwJc+3uf0UbDMstJzYfTC5fCQ1hQGJ9NG64OvplQk\r\nd2KOEwSQbCbiqseHK06frNpIYDagUQfOCKwoQv/ZlMQNRdpqvKIgNJvJo22k\r\nT2nILVWmrcnoqK0Xonaz+nq5bS9FW7d2N8kUerYIJcMcvWq2J9nvM7OHG7tZ\r\nManqkIWBsw1F0OYh+jLZJQyqXT2BKSRUeogFKf/mkl8Wlzm76qmILdt+Kh0H\r\nW+qryt9+rss0fSMJdEAvgNtE1IAvdysK3OIvLYfi/VnBMb0YSF2ETKTmGQiI\r\nu51LwlSpl6ulE1Oiz5zEMs+l8B9PQbNsUI4=\r\n=CWsJ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"1.16.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.16.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.16.0"
+			},
+			"dist": {
+				"shasum": "bd37ed857ccc4d5858f54b7017054cc40f62a613",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.16.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-yqS7cpHNR4ytX8NeMkEkDmtI12ruZQk2EHmm7ZTSSRRbn0XuoNnL9ai0J3a59AgPn5Te3CD7+UF5v0j5W+2WKg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDA4kY+7HHqgrEkII+vuMIz7JdfZGkAkgsPS1/jPQqYWAiBbPkVl+PoKKDV+MDsZ1KxLK/tRXpvyeXmLZYgyMSbK4w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 19007,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkAW60ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqFrQ/6AodQnHa77sjo8FRKxdYJxSvMqvL0xJbxndbtw9T4PiS1/8Sl\r\nR19tbaAZb+VB620qE9qfO3QOyJ0TUiIMpmKMkEDLZUV/LTRoPt+PzOoYP5yP\r\n6zFnjmjITtbVVpVGkDfM/FTMT9EDSL+/remy0H1pNDC1gvMmVGkERbZkpCGP\r\nVeubKQutfd+7VxcRk4E8y8JADClyPrYd+pboQW00i2WQq9n+gj/PosjXcToj\r\nPoj/vE1+wvlAbnsXN77hyyv4+sgDK8RIgEB/up3tIAuAD93IwbNDxhjDGniV\r\nAzXPc4QAdpmgZ8l2makmtU11wLt/OJHhn5232FotlMmvjglbRTHVr635+b0S\r\n8xCR1FBuwDFQUuHlnRDOxDNBlM+w5kaDr4mjB2gWq++WxGjJzrK0/QEQi5Vh\r\nplICVv56AifesOG0JETDXlW+hz4afgPYtcGkAinPBNDw/JFfR9i2pqvn3ieA\r\nYDF/7oyvD6xHY7goPnLYX3h1vyrVy7lQCKjrGZI9wWpIR1om5bzBY0Uo2pWv\r\npAsI0w91bew2u+NRyKUzDkIE3khuTRyvvNSg7NLcyoipZKjNApdS/TQdTifV\r\nIfXVYjuK+21aV3U1fxp8tv6w/Y/JJrCt/m1dr4cOkj9d+asVZKLx+0DmGzQd\r\nU69NVHY+NX7+4GxycHk+9C6htpO7B4x8px0=\r\n=9T0b\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"1.16.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.16.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.16.1"
+			},
+			"dist": {
+				"shasum": "9780999bd9bec84ffaed293165592a60be4f4e59",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.16.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-Oix+38GpNKwiOWxrZvCxZAe23/vFiRJab86HIYRwtLdaIgnJ2rUqIQ6vw9P+hmc8D5Wf9DgqFqbIvfQUFdwFyQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZhLjJYnwJDTjhN0qezdMuV1XfkjRudxtVPWqB6UhHQgIgVFgnnDxdV9ioftI+rH58wo2SHSheT5t/i7UGwQ8y1X8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 18356,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkC/30ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmprOQ/+J8Be0v99ILd8eeUDp8qlfz4LS7esDfjwieUiOWmhqaw804fJ\r\n1zgok2iHTR8C/rLfARlhu7ve9Csr0RKJSxheO5N/ncqHjY3e5b7jXQfWZzcP\r\nA0jBKmhcWqMyY4IVVP7uKZPV6iTkDvSoFAWlKG/jntXwwWyRPihH8PVCF3wc\r\n/Ai2x8hvPccGNrw0onoSDEuOU29OP5G6F58lED9Mk3h9kpTGyOp6PkRdxm6h\r\nGqRivb3LfV6iPxRWg3CGtM1WiNkkeOln83R6jutLVTr3dWhqtTcps9OpfHW6\r\n+Ra8z+zalgyxE2iOlZkN2qeR0L1E/AlHEEO5OHVeYZgGutJgni23tS2UB6PT\r\n3umFobFpgMs8SlKjYJf+yWXEPNLsBLQ91zLMMSKj1FHgn2FqHUL8SmvU0rv3\r\njiwY96MS86xlDhPPgsUF6BwrEWPmo5Tpfmnk6Zqgv92PyX6Zx9H0+f7Ky6Et\r\nYZaLcruiZCA1OYj6qZgGoamxtVOC1i3hOZ6aGG/i4cH6zF8HC0vss74JipZX\r\nqR9XlklEL/qArwuLMwwWgEk6i/31iu4RNclsSp0s2VlmJ93pokFi+Aqyqt2A\r\nN/KYh25r7PH4SVNPEwQugZOsd7b/T9iFJyQU6P5Njw0TG8vm6X+6Ki/PM4kz\r\nrIaWxa04gwDkniyi9zDtB3DWbldR7Rfv9Sg=\r\n=xvAM\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"1.16.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.16.2",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.16.2"
+			},
+			"dist": {
+				"shasum": "4776805f7c5ca28754757dca4b04f4a83a1b0e5b",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.16.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-zmeWQJnSGJQMXb3dnCOn5nl6KIF85cYPOjMX+30oa5o0S8CX4cIFFV/OnWIxK0GENRPAPp4eW1YvMEd0zG8xUQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDwzpQf4CBXors+DpRUYcDSRuhlxhnk+0brKm6i4v1qXAiAPzQYhb1s11081b6hDjfMl1cjrgIdVZn2p7lF/OiIRPg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 18190,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkD6+IACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoipg//SiWfJKgCgpqDKKecovdWv0G0CDnrV2rmniU39DvaOTbl9gKX\r\nT9cxx0RUlnnJscAMA0AEj/Nxw8DBr5akLgs+bH9pgx/O5ErQSXs9UBBjyhiD\r\ntzeE/jev9XB3/1e0pHNT7S8zLj+F62rAw1Z4NOpArcRJXqdwnlG43PnVo/tC\r\nYrT9HxGaKpPOwRUI0YzOxkPa0scmcsj6xoni/xQZV6cXLnfgNcj2KnKSuerW\r\nglrn17hFmVFjvVRzFDuptLt9ok7wX9CZM2C7IYwsTK+v2DtPUoyzkPFbWC7+\r\nRpld4iVuCWFDjCnczVtcfSdG59fpP0I3wVsTaFVp6kF8mTzSs6MaXtM8bTrD\r\nZRFZ/zN3eScrGNuAgArRKGMf5eQA0EupCJzGnSOg5hwUGMn3Cgj48SvhZJpy\r\nMuqKyUEVDa4nuXIiNAHDtOuDTulyyUG3nGipfJrnoTp8AUpC+8NtYV+LUd9f\r\nUYWjNBRkEz2eOa0xWTT+ZmU5L2h94lOcWGWWehT1LR9qef57uKnUMH10xJxk\r\nk169G9VuyUvZe9hyDJlL4oWPuMGoHQ0opISF8WgwqIX9qejS+wxa/8iC2fCU\r\ngaVhDx120onZQ8+gMDkf6A1BuiA88IsaeDRsaUQN/1tzgf5kgFlrGzkt88wr\r\nMeMRAtz/GCwzREm7VWRlaoMk3P4VozlJ/Ak=\r\n=WtsR\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"1.17.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "1.17.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^5.0.0",
+				"@lerna-lite/core": "1.17.0"
+			},
+			"dist": {
+				"shasum": "ee8d4009c25ac705909f8d39a9494d164c3005e3",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-1.17.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-lcF9iduACNnlbdPn3sl4N+k0vQKnOP3wY+5njoLlGu1tHlpa0PcG0X9kGgBLvLAva9bVwf4jmPU83Joekg/7yA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEDVOMPxyp3SE7kOT48qFAB3uQNGiteHAyleoviG73tqAiEA2cqt9sBWPXhzkyjlXSQwKDp04v8CfixN1JWhdos6Ok0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 18190,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkEmZ2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmodIw//bWvLN7ASXOyQ3bCzLXYHvjsZZcOnIi4mAa4Pvvs3Ru5E6+tp\r\nHkwoKnYO9Fy5ikBiwCF15/QZsEfLFMRoawVbh6EjK5QfvmCveQRhpp6QSsY+\r\nF2XkyIlj6q3nHtbqKAD7b9OeuaX/BiAGbpvklbfFBeTjjwTFrs+8sjTujXrn\r\nN6HJeiJcC5dyA2+aU/qUCxS0aG99j3cPJ82BEO+uTYmKvQpzT9mN08zxAgl9\r\nji27wu6f5FdJnInr8qYsHwm7StoeJZ5hLC5jM2hEW4PSHP1HtyVnVg2m+GJm\r\nhqzfVFHMG+EXPkdlXgTKA0kEZ1l8v8KjrlIvFGBrb+1/3XHde2cA/OO1419s\r\nPt2tgHuFGQG0aMsiVyoofbKEpWtGXTNgumbMHd78/HNQoGPn5RRKG0IZIbtU\r\nFZFwgkG+WsTk/CB20T+2tA/UJmbImHCHAWjGBO1MY99yEO4rR6J7h5eNUJ4x\r\nIJtTZ/Ta7A1apyeUbCGDzRXkB8P/qknijn9gFYpYGKP0kkN7zn44D9KTZxRb\r\nTGmIeo8E4KhGirtRMNbjoaxSgZ76mNO5zHshgPUSgn1erSuMpK9R+KcFv4Cl\r\ndUZHs0/sJ95oMGvZaqH5pNobviv6nZCHAjoD29DgfmRGAhc1pDcK71ZwMLuk\r\nkiBHS6QACbwDi+3FSbMb6fY9MJ0AGAUxM+M=\r\n=/E1P\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.0.0",
+				"node": ">=14.17.0"
+			}
+		},
+		"2.0.0-alpha.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.0.0-alpha.2",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.0.0-alpha.2"
+			},
+			"dist": {
+				"shasum": "7d9e947b5b3156d56299adf877df3719cc01695f",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.0.0-alpha.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-UpqOOdoTtBJ95vZ+Xxr/gnH8SV4BePhzurxkRYodRpUi7LR8DJAQ1DRbpAgminxahtaZPBO38RjofKl74cKC3g==",
+				"signatures": [
+					{
+						"sig": "MEQCIDNDhNY99ODP8RbHSd3VQYcYgwT9wzO5TBD1j+663DQdAiApZ0gHiMO6V/bqGrNwRGpf8uXeooiylWYa9wxjS0tOUA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 17554,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkL4i8ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoh5hAAmvjL5b6M6/kfukzYqCgAtYK9zY8kVDRMyaqN98usKxJgZSM5\r\nWUGZjuqZ6/+Qd0+Fywws+1jd6unA2JCc+62zFyxAWhbAbiqRlTmMD/bBUg1u\r\nq+bCQR/yEUsGg87iiAMk9rCGqZV4LvBClOeHb1lAOMsqxQUSKCoH4WdS+SXZ\r\nm7fov5y1/kEQbK11sE4JOoIJiaN3Rwq8AcJbU5asv+F7r53WJtXw2cUfQW72\r\nSL3ocqc/WXUVO5itRuye+7x9ped2Xu3+jO8Ue2eglbMUSLwGRjggNMHpKWwc\r\nYi22tny7HQepNHkni7ZxcwON+eCmYwB2JbOhvcQWNjY9R+cbyiAUrywgmrHh\r\nRZYXP7DpBI08Pw4euMc1q+uM9i5kJ/ORB7rMUlPLmikPU1J7uoEXLSJIGX9N\r\nKCbZ7zFSzT6BafNVvCNtgD70SaIBxO4N28cK1DygABAEoRTiuf40Us4JO/XO\r\n5/lgtsGClo25IgZ/ixJuWZr3lD+lj4rdwEG9Hs506D8Tb8Vtu4Crumq9d3DE\r\nxN/byqR1bTGFf3jPe7HfUBDz0um41JR+fBuCyvmR9NIcPFqIlj+iW5Yncdyg\r\nRixapjy/irEfFOCHdGQBn31zK/h/IpAy+oHrivaTbARdGYDc/bX+jFVLjAc3\r\nZI8Twl/ZBOcUFEyGCdpvUQq6vBgf9LPFDhw=\r\n=4+DK\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.0.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.0.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.0.0"
+			},
+			"dist": {
+				"shasum": "25234903f1487a3890a31bd03b769bc207e2072d",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.0.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-PBxDFD8ris8rV++eFWmkUCuhkdQELgToKe5x7AaVrL1ukLdSkkaRsHQFYv//n5b23mRjNljUWA37+p1kwWZqbA==",
+				"signatures": [
+					{
+						"sig": "MEQCIEMyxDALU2+xIM+FgAiAHxtLN95VFodN/J610yUbPMTrAiA6UpTZViu0VVCHP0oROnZ3bKmtDBTjVZLbLTK6DNtBUw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkOMbCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmra6g//RbxlQwgwgWbRBo9yane4LA7/GF9FhZmkGO/MTMT6tN23jx28\r\n4Qn+wmYI1cWlUhe1B8KioPdQjFq94dA8kmkwclaLwCFVvICHC7SOaWt23uxK\r\nwIX94SKnwjjLga3hfd95c74xlbSHhLM/VH8P1zCMnzvpqPV/DNGwJActmHse\r\nQDma/Yc4MLOdWRX8nEbxXowDCphWke+CehAZClPnxpIVkGY9LaYNpqmIDgx+\r\nIpRLQLiiEePlWqPgcT3QDQtnJ7iP2pJ0PJtDxfI/PPqA3GuryFmaEDHwCtcl\r\nIq/QOkSq8rjoyUhFRXEFN8nNouh7mCmky+to7O7MRvbKPAGxl1mUIymGwKn2\r\nyP5bVhGiiYH1q14cY1bjypVEfuf6Rm+e5As6krvduzc7fypCdvmwMkpwyrMC\r\nd3BXxu0TbopmT3VbxIe7/MHC3bJaQPpHDftslGCrvx2W6iJjei9VE3vKAaki\r\n8kRw46rwhM5+rIdTXlRrC6VuMuQbFtVY0wHAiUZdYx51i4rBbWmcfzuZFHGH\r\nM/XzuNJXAvHPeJ832/bmX+Ghpamxmdwirxwm0F6K0DTUmWIg3d1A0InEWZyz\r\nHPMqMUOURhURuILZ4cPcJ325jteZbkSkGV9bBDgDerCsw5dNCF8iDv7iww6B\r\nxb8BjAES45Bfg4kJa4UXmD8S6MWDIore7v0=\r\n=ckD0\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.1.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.1.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.1.0"
+			},
+			"dist": {
+				"shasum": "36ed36da67172797900cf049aa4a7ef2b9478d3b",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.1.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-EWeAVEhJtlqmx8WWhNjYKY5g9HpC7gXcbMXpmkIVrCncU9EYjT+UILC3PAzEcNu/XIxqgKN+ypE+wuRLl3Hgzg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDAF6Hns/CyVGrR0ivoAmbUGlBgHc0wGZ68Ijz/tQqKZgIhALHx7KHCA3UO8iPVqDERuQbfa8pjvyk7aLt+yF6vwz0J",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQfp1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq1Mg//ZV0HMK5ha6c4AhonDXS6GvJchlSzr1BbFGUDcnA8GvAuVPQy\r\n7ER60NRtb9+EoPvGxKMZRfM2FDlA0MWlGgoQTedDUg3ZLDmxuUpcqioW+KWM\r\nM5IYGnbeSoV1+e7l/iSCSQTLLzpYW9YJDLqpXXnds0u3jcfjlOCQgIQJHQhk\r\nPLxOwjl0b7S8k40YxHJO2oEPA91FaLjzyu8wPOeNIrVXQRmdjKTbg4gtitES\r\nkFKRcM0DnOExyT8h5Jo1pkGft6IDYuSgsnBbgX4H0yr05xr4zpIGVHVtu/AH\r\nF84IKS3la5yIkkpChW9gx38RXdjn8UzrDphosft3lURi7w3CybMOkgzoiWx6\r\nCSGoYKsRECkFSG9/fIvNf3Vd9UhNerlZBzFI82NRkLgpsKsEJHm7TyR5zErd\r\nGsmh1y7jHX7KDGP6lZ1gd2iPT0uIe5l+EincQShmn7tv2hTCHmfZ4sLoII1q\r\nCcXmK2RDVivYEbHGZf6VKHx1so3PWQ+/Bgeo7CebT0ghK68Sr5z47HPMSt6t\r\nd+aV6mFZFj4PbRtmwGaPdAeiRtGGgiLSeZAiUbM+qXq2n1IXMFdAKX2GqfEc\r\nCZIdibsGXxlGsyv1zNtdVNHMu6qVw2llhjrpsnxjInn+acxGzCaaWjSc2SB3\r\nhILzeUe9pp57gspbvwtLWCj+T9/7x+1Q7tg=\r\n=SAMa\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.2.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.2.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.2.0"
+			},
+			"dist": {
+				"shasum": "de64380c6f3aa77d7df62a69559c19c55afced88",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.2.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-FYUvitDk+S8HFnYWlDkWvzOpN+H3JWcsiRHjbT2ikvBsO3A0opCCVlAfwzXMfa4s51Qj+Hdpdc/gLT6AjppZZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAZgHT4VHic0w9KTkoCAyB0QuruGDs6thTRNQNJDwVRXAiB32mIdh+TfX7OhrU1FGBX5/fcHhKnNOFst3d0DWAOBsg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUZQbACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpaSRAAn1X1CftY2RjwSW46WHVWGqZCLlAzcNz1YsPNcOYfpELrvSKC\r\n1rix/k6FfeqrZRbHsOSS8RfdUw/mrDGJrAyE+LaqAPyx939c2o1Ng32bdF/G\r\n2faQQgfZLevKHfXfqWEtiwAVmZB9nWixvz7I4vWvGNLc8kTNxW2RD4118T8Q\r\nxbu4oX48Mzvq44bC/AVRpcWXltmHUGRjsHIlsgUnxax1IvWH3dTNj9I26+Eh\r\nWSp6n2WpS+rKOE7dYU0VnUua1021fE6ApXAAq27aDw55LnDHzoRk62SFfIU1\r\neIrtwRuWUOdAm99thlxYdnRyaGdury2YhYWgK4ibBRIzEd17XVsCjbYAC2m1\r\n3rgnf8pej4SvSr5wNhcKVxJvA+GosYE739mkLMcTe3jnR+lKT0GxyIr4Rfsy\r\nDoVpazqWS2JhisIACNvMTHcnNFtSr0y18E3CiJFUKukcXayLFDMIzvEAVPp+\r\nxZqkhkgCU5vSEl6h1uwCP1Dhek0vS8RjgFGQqXZuBmPWsAQkFuamkYbfpMf5\r\nMuOzifFB2uv760HZnRNVB+7TbzTTLlbKjoRyDZ9nk9EWyIx96DoBhyBoms+f\r\nLf9zMoh0/3rN/pFQ6grvh2x25hVistzQ1NSFmiZZLxXSezsBV1FdDyVlwpzX\r\nqVQrDoMmnWwqT0xDlmMpp07mPRABbxEgh9w=\r\n=R4A4\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.3.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.3.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.3.0"
+			},
+			"dist": {
+				"shasum": "9002e099c43566eaffe55a3bee72165fe9ebfa25",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.3.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-lti6gnwfncSamj2Y3c1JS9uPqm4tymw/RYHi2+x87mXINNU4Sw9aUl3XW4L5dYNGYLDrz63SIqN9sFLxkf9Mvg==",
+				"signatures": [
+					{
+						"sig": "MEUCIH1qiyoBFm0nqW6aJRIDcYezAbtR3j2TygixTFQwITl+AiEAqfGOpwXe2c7Oiq8vSebsCPN4TXfmtkytlPVGSarLUq8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVGCVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqgqRAAlkhRLE+11a9rsgDy1Ar6ugjhjl8K9EYwzSxhlBs2k48dJRZg\r\nJoXvVAm85Zqru0XGYVbKPMexP5oLAh6GHYnacOtlzWAIVe9Yicq2w5uKG6BQ\r\n4s9wiSHoYgcw9ISZjXS2sfZ5r3OU4eyz6Mrnip2kSzl2ztjA6Mpqt2tqarzp\r\npSHk7wd4kBwZQ6OgqXk5++NjWw1LfUUGMLGopz2Q/389Uc8Noarm9+Epuxip\r\n3ASvwp+AhqFJYIxVaX4kDqHAOb3LyjZui/Hu3ErKRYFTKXMSmfxXrb8Upl7O\r\nfUAsos1oMwXVbEdAEER4fQ02nM9E8V479P96ouanwRevP85jOnJE0bJxvGla\r\nVGBkKoIm/cGHSKNIcdkYt1AtjvZbOqyQMjcARgA9rjQTO5Z5+v0xNUssFhFs\r\nyGscOGTc5BWFbrF9dzu6zS3q8Lh62Pk59qIysuooZ27RQ/XzaChf+ktisE4D\r\nYVD7uAMqqRxBFDJa77LalG6BvumBBr8ZsoGeB/T0jkYhoeQmFTj5Yh2I7IQL\r\nHk2La4+/f7MXc6JiFvXZEK+mMDQoJpi+kj5brXzd9YD0FLKxj5R1K72AXvqQ\r\nwQFEdbLDhhAwfgQlSrbFri+xUy1fINoIfd8JfEkExkZdUR3GUtzaFXXEeDIE\r\n4dBsxthCtGJIOyJW0opKJRrA+3jq8JE+Yao=\r\n=bHT7\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.4.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.4.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.4.0"
+			},
+			"dist": {
+				"shasum": "2e84d876fe21644809346fb67ebdaf00a50aa188",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.4.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-3B7LNFyBKn2Kgc9nsiiTVdZQg/Id/d0SAf7o3q2IbhGq8cR92DUDNWzLBEyY3yhxF25o2dPsr9p4/5qhZnrKeQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFTHcxLa46CNCk226WpEcLWNXpGnQTdiJvU+DSWkq5vaAiB1Yh/+879ZMciW/XNVpnmav6iADfWFZk1cjoDlacDA1g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.4.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.4.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.4.1"
+			},
+			"dist": {
+				"shasum": "f9f55315cf45fcac6bc5691d5e5a4e0d05aa8767",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.4.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-8yKb/gVTpllbcKgS182CL/GiuiSmqINbjka4B8/fGryyzkaqWshfLbSiR2p+YMP0BlKz5qhoMPxt29u7ClhN0A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC5pP+ddY+vUImhT7giP2BE8U8I9oRAS/PP5VfRC8nojQIgLjmXLx7vnW0yfe2dVfeTX6DaYIQR88fnbVUBW4kc6Bw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.4.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.4.2",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.4.2"
+			},
+			"dist": {
+				"shasum": "39976a2d44e8496121406c7495072a877deb1058",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.4.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-JtII1OLCvcjMeXDyirLYKgmma4EPfQYZXDjAywWboX27Q4cWqo9J3aMQAz4PfA9qAcJT9SvOdGSXsA/lvM2L5Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpbM6QLS5WWD8HMcykEiow/OQHVpUY/bXT02bjG46UQAIgGRjP7KWa4BaOWF5KVtTL2yby5TBeWP/QkQTv3cpucuU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.5.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.5.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.5.0"
+			},
+			"dist": {
+				"shasum": "d7dea516242420ded266e6120303c8c770356a66",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.5.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-fmaeGlyZuCM9MJyk8e9yqhCZ7F+X3F49pnQReRrWM0mXxow/d6qN0tGsnNB3pgBRKiFtl8rAGWQmWNg3Iu9xTQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDBkQ/hRwKTsAlGkBi5Cs++hJCRofKZR2c9Cif3REoVXQIhAKKp3Nc0BJ6TSaGsStPP02sFc3M2RbW+C2IPx5AiQU31",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.5.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.5.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.5.1"
+			},
+			"dist": {
+				"shasum": "f42ce685c5a02bbc73976f2f356297af2b432ebb",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.5.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-fFxRCm5Oo6KJJ/Er1OCUp0y2AmFK52egi37GyiQt4iLuqNfE/V+trOIof1OWMmR4sggk92QYcj98D1JXrBbomA==",
+				"signatures": [
+					{
+						"sig": "MEQCIATexi7kLsneCrDgesQrpqWhaaB4UroCf1lA6lyCqi3gAiAo4+cMqvq7MF9s/R4tUEuQeQpVs6uy2tsTEFerdJ7QdA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.6.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.6.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.6.0"
+			},
+			"dist": {
+				"shasum": "f8b8e3bf2779b9d235915561c2992afbc054b831",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.6.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-K+KQ3yzzbGJ5Hhr7ij5SiFnWjs7Ns+dpaRjPlVbEnJZnkR2CTOG18fboQs241O5yPMO2EZYBVRL8EA2a9AUi8g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcu8GG96pCyaPaFpXJt1vVkj75TO+taTXD4+CbW1u/MwIhAO/GJf3VDKp+k1z4soov3LjrAcTONw5M5VDQfC+1fabv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 15293
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.7.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.7.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.7.0"
+			},
+			"dist": {
+				"shasum": "3067b7faafd430046509e0c15392b6469bba079e",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.7.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-wkRO78yfoKWmgnmXT3mqfAQy+/bVQZjKTP+fs8BLl1SxB8nOWSHN/kotCm4tZvYs9/R4PaRvTkTJpWlOFyVdCQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC6xINbN4LcbJUMOiCIDMSL1jpGtn14TRaaXqlxZ+2PkQIhAPfEPhmYdc7z36FJmqCF/NYT6Xtl7oBVnZOFzs9hCHi6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@2.7.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15070
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.7.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.7.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.7.1"
+			},
+			"dist": {
+				"shasum": "25cbc94c80cdbbe78e077a71e7bc6af049d34f45",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.7.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-nTFTA2ziwNMb0+fkqjVkd+dplqe9Dx9JW/l9R4GoZDjN6ycrG3qjUgGj+RkBuysWBqt4R5yB/8IEh/cms2qnqA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDIFZwad0OJ92uyxpFuCDsFLidH7NhmhzIZuMsOJ2crigIgQmezxl+OmvwhV4tKoZFo/akyI9PUXa8Vo39kffcxzuk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@2.7.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15162
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"2.7.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "2.7.2",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^6.0.0",
+				"@lerna-lite/core": "2.7.2"
+			},
+			"dist": {
+				"shasum": "1b0449c8e5d535a445078a1756afcefd35ae09a6",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-2.7.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-eCKCz8+7ZG5FxzHf+d1bNck/JIucjuma1fgTiYdlRpZoQWx9BtLJw4Ybd8hEcCKIMGXXJ//1WHoonwWXYeqcLQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDN5+KU+dpYcQJT6lZm1qE53za+RNUeIKli3rHg9gqNHwIhAKUBJOax6E3jhM+QcnqdHEHVkXMcefF6zq7/CuZLYh2R",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@2.7.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15162
+			},
+			"engines": {
+				"npm": ">=8.5.0",
+				"node": ">=16.15.0"
+			}
+		},
+		"3.0.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.0.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "6.0.0",
+				"@lerna-lite/core": "3.0.0"
+			},
+			"dist": {
+				"shasum": "047da9770a1fc2005d632a5ee17d87b4b725e8f7",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.0.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-E52/Mirj7MN+HQ+2ryFxGE5TuwVs0n7/xc44F3pgavE4RpNvXmioQ84I3u5wgWKKggOJYu9iHvsPG6jVN91cOA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCFqVzieqsnVg+u3NVkxMoyxosCjeVdmlsUCsIcLu4YFwIhAJbVp2xNdxxBEe1Rz9BIqyQKwhXJKTZJFMFQjGnqlq3h",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15320
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.1.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.1.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.1.0"
+			},
+			"dist": {
+				"shasum": "4c32f56269677c5ca28466a5e335b57e82ae8c61",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.1.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-TRNGBnqPmFKvvFPi1ssFueQ5FmSzYAuYcR+Nwi84+QkcmBjHAgLKPspQgTfvqGlhB1bPxbKu6NmmP+GKlVKaIQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIC8qeLhfcyXC7umMZ8wdZ5+27hXbSIrHhyf3TIMMrV5AAiAtMVrsOuWqDcZs4W0a6HuGzjpQghsBY7+9qilYtUwc8A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15321
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.2.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.2.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.2.0"
+			},
+			"dist": {
+				"shasum": "382d47001d954b23da0128bce0b89db3820bd25c",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.2.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-TYiFmVEqbY+yAMhQmrTXXRtBdJSRL/Ll521ti03kGJXbQt0qdF+6HQeYw9IbbNwKKsd6jYtIKAQLdUPhDZ7wmQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDk6FdISvHwMuXg1Tgc9D4O2Geq1Y/cdLl2eQjFHF6QIQIgGfVzw6pyH3TdiJ3CavfgLt2UnHvjX0HFO4zzyRPFb4g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15321
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.2.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.2.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.2.1"
+			},
+			"dist": {
+				"shasum": "e81963652e3e0951fb18c3ef4f1f186a009ef3d8",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.2.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-xxnLcenaU+DY2JmUEiMZ0I6hOdtgyFMmi5yLruMh5ZiEQLd7LzD0lU3BHD/xt4aS2ra2NzmOd01Jls4ROFDquQ==",
+				"signatures": [
+					{
+						"sig": "MEUCID9kxaWMeTfiP8ArXr2SkC/TW0WkMhl6jYwa+7xJNnYSAiEAoiRsA7WI+epvC1Op7YuTX9Mqh4XCPap33e7NMe2EXVw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.2.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15321
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.3.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.3.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.3.0"
+			},
+			"dist": {
+				"shasum": "d913113e7b8acf6678137de017ce59f0ca4aecf5",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.3.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-rybTGTEP9ud0IcFKJbnwGw6GSnTFltjA+hmk9KsCS5M48/Cu5GFDMgrIz0OPP7TcAqs/Qu/is1SoJMwLVo8+kg==",
+				"signatures": [
+					{
+						"sig": "MEUCICxVMzi5b7KA57Ht6kieyePtk1D1x6ikq5TYwaB/u/1VAiEAvrqLccMLQOZaWqS5JcLdEXT2hbfsLiC2Pq9/uUwEzq4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15321
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.3.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.3.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.3.1"
+			},
+			"dist": {
+				"shasum": "b1de879360c6999274fe7fd40bf83b2d8a85a872",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.3.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-YHK6TazjA2yJsWnsKuHbb8/pobLWjEwv4HaHUU3n9ZiRkfgckRPZV2MYQFfySnTaTJDqUHMVuSmnfaUugTr03w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCwVo4onzjNA3Y4hZZdXEjM+JPSYAor1knXkVNHs6Z9ewIhAImtzwTplGgK0jNUQ3uUoiTWPkPtII56OQ3z9PeEBHdO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.3.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15321
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.3.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.3.2",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.3.2"
+			},
+			"dist": {
+				"shasum": "8c0e9c73f3a7e86d52d5283cef2071d535f4775d",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.3.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-p5Izc1ZUPmSSVMRsO/fw1fn7NVnME3UKspTTxIMfLLR+Kjc8YIDqAfXR5zHX24v0AOBIHblqiUAML5XcmQVWMA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDtwPE0pQN6FoIPvlfqLjIVRiJSwcJ/neygz3H4jT4DfQIgQCg/t2niewss7dpxb7dPg+m+XzUBfKpGnnMDuOWsgPs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.3.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15232
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.3.3": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.3.3",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.3.3"
+			},
+			"dist": {
+				"shasum": "2fe170b4d278cdaeb8531e6c13c27dab4a345a1f",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.3.3.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-GBI9cSzfttOeUobO/qeIMH2lZBUL8BBVocV76O2aOi2+Bu4ETSf0ZfdaUuQYbaZFQN7UxL3JfsAVaN6z6wunIQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGS5feXH/TwdNQC+inB8mADsCFFc5JdmKgnSi2gI85iXAiEA9N7MBMlrN75oBb29kILW6yA8jcUKlPLls2uovOE/9No=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.3.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15232
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.4.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.4.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.4.0"
+			},
+			"dist": {
+				"shasum": "c47e35cc27afb4c718302e5eb421236852bfc26b",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.4.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-/oYcdZd7nuFUoAh4c6AMfkeKliL3KKR0bEazAOmG2WyWLXuZ1Jt+Thi7V5ZsyIp3bVzsUa6ZifdwITkks8FxSQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAnxeSNu4eWdSYEIa24+kc+cnY4h0ccsfAEQm7jqf9DnAiBEDWI/y9GGGI2P3T5ANJcYcjWFRD/2TS4iE2XzP5vgnw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15232
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.5.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.5.0",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.5.0"
+			},
+			"dist": {
+				"shasum": "98c2cde392eb32dd9c8530ddf394c5d625033639",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.5.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-HFI9eOvspa+5Q+62gP+IiB4q2BglyQSgIpKMAKMAcUNoRZH1OmvWwYZXF711hnIghem8vRxqmQo1uVvxKcM/aQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDdE6sY2Ja/m1lSy2JnMZLUfPxQ9D2OqB3kMCdycGJ86AiEAzllBuqZ5i8LT+UvQ7HpEbUAePq/Esc8gXxhYOylGgZE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.5.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15232
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.5.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.5.1",
+			"dependencies": {
+				"npmlog": "^7.0.1",
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.5.1"
+			},
+			"dist": {
+				"shasum": "223844af45deca5bf5edcc75bbd0d10bf82b1fee",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.5.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-sYRoLB1kAiXP5yz/qPDJvna2ue6LYYYDJTxY62b40mcXcpzXd9VvvR/ECOi+3Gpomfs0qcr5eTusBZj4qDM5LQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBk5HgR/3kutYZZjWc9xK89+KHIodc3YGJi8puLfFM6gAiEAhFy1dumTEZ30A1MnZiU4SInBnjaCQ01tS+OQhojHEew=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.5.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15232
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.6.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.6.0",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.6.0",
+				"@lerna-lite/npmlog": "^3.6.0"
+			},
+			"dist": {
+				"shasum": "932869746954374d4ea7516291be20b39da8958f",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.6.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-PfWz6KHZi4blO/FiEcUIeW60muonx/epnDCQHdWccLmA7SAajeRTKB+RvQw/YLkwn5M/te2N72h8rrvtt+RQBA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDiY2z5qG6qpw0+nT3XB0Csy/cZ2oGdfh61rMxopr3KeAIhAM8aXvkg379qcQvx5J7l5cpFt60OP1hY+mXrM1FEgJHk",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.6.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.7.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.7.0",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.7.0",
+				"@lerna-lite/npmlog": "^3.7.0"
+			},
+			"dist": {
+				"shasum": "84262aaf45782693ee6b6f75b299d65b82de117a",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.7.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-7qYXiHCrleANoZiEh+Y/43kryYtJ34O5o1pI6Pq9xqWtGDaH22oP4EufyCR5dpZaX8YFtNbHmVfPB1dG2gG/oA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCPP25GPoe+NK2NfKLE7QRts06Yssu3mTdYfrBy3HMEIQIgPKF64L0cv2YjeeC2ig0odkQMsa6vWMuB4UlCoe8KP9g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.7.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.7.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.7.1",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.7.1",
+				"@lerna-lite/npmlog": "^3.7.0"
+			},
+			"dist": {
+				"shasum": "85b014a24df6dcd6eb8f4cf5d10ebe9f5d452460",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.7.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-+gtkFHIBz0XvFjQ6TaSSE+ac56ZKtnzIpXAN88Blkqi2cSOgDgj1kKpryItXLnP9tjz8qr5X73o6bory93Hzqg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDJkqfBX3BOQNHaHTMF8QUuIE0t0g73im1/oHfQ8fq8GAiEAhHG5pm0rTP/Xdw3Ot0KfAzNO8f3/GkXOfu6p8FmISFs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.7.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.8.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.8.0",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.8.0",
+				"@lerna-lite/npmlog": "^3.8.0"
+			},
+			"dist": {
+				"shasum": "fb9c3af9595dd3bff51c6eefe71f7cd7781c1c47",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.8.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-08It2bnyYDCGgIu9yTBxLxJhRnd0Mr19I5ImjTeyh+FnF2RFKHj55Z97ngmMPK7ALtNLk6b1sIM9+kBqq2BcXA==",
+				"signatures": [
+					{
+						"sig": "MEQCICQsCNLO35t1GfU7vgCCVfxrLZ8lIWH32UZXydjf/gOBAiAttCDX2rZNp9psSlQFIP3zftP4cQytwtxOCvo4sAJtCg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.8.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.9.0": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.9.0",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.9.0",
+				"@lerna-lite/npmlog": "^3.8.0"
+			},
+			"dist": {
+				"shasum": "eff25faff75c569f83bc855819460024ceabd7f6",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.9.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-O8yKh7iElPUfhEDvLNUoCGCV9WWwvJNjxyNdoT5UWXryT5mQBEQUjDClfHDr8ebAehIIOKMTh7TCWC11fPqBQw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCpY7CPM3Ix0Juju4PLToiq90ohUV4AvL5JmmWKWYvYvQIgeGHNwJcEnxudMdsXvY43Mkj+g3PN66qwT1haNO66PFA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.9.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.9.1": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.9.1",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.9.1",
+				"@lerna-lite/npmlog": "^3.8.0"
+			},
+			"dist": {
+				"shasum": "68428e4e7d913ad630f34185a466e2ffb8e207ee",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.9.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-q43dm046Hotg5ITbfkvDLffrjhpGzFvVUAlhwTdC5vFti6wFKHvu4+0Uv1CJeIp1Wb1X88hyU4zaPWRJzaCkTA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCSLjMYiAzs2XJtRIjH0K1CSYEWyED7avBz33BzqPv9dAIgI9QtduzQdl9sahEBpcS+8md7grLymTs9NEQZIYAhdKI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.9.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.9.2": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.9.2",
+			"dependencies": {
+				"multimatch": "^7.0.0",
+				"@lerna-lite/core": "3.9.2",
+				"@lerna-lite/npmlog": "^3.8.0"
+			},
+			"dist": {
+				"shasum": "e2b3734f9b8b4dca389056d69560e62be51edff4",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.9.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-8ky2QMMqINU1Apb+lBEVnAzWyJF1x0l7r7EJRbyvAAmQhLQ9vLKi8rtdzXVt1dczWr/mYTWqUj6o+S+BqT8Csg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCyH1leCx2P/3nHublWAICkndTjUH9cgUFKyeoYEwas3wIgRVTZrJpsJBqF4aAq+Htk7Dn4SZbX5z3NdP9Xs0PxKUE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.9.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 15309
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		},
+		"3.9.3": {
+			"name": "@lerna-lite/filter-packages",
+			"version": "3.9.3",
+			"dependencies": {
+				"@lerna-lite/core": "3.9.3",
+				"@lerna-lite/npmlog": "3.9.3",
+				"multimatch": "^7.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-2k8Aw+gfjhrVSGRLLzkBQxUwFofMpV+MASfa1znKy2idqTyqDzSyXAHX1DH9X2Zf7U5AJnewUUa9JXXxKRHr4A==",
+				"shasum": "e31ede5a752004590b9e3b5542fe2406dfe537db",
+				"tarball": "https://registry.npmjs.org/@lerna-lite/filter-packages/-/filter-packages-3.9.3.tgz",
+				"fileCount": 15,
+				"unpackedSize": 15306,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@lerna-lite%2ffilter-packages@3.9.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCtoMEBcNSwjiMWwzK+G0YUPq1Lqrp5ul/sfs0jw1f41gIhAIN56yC+OJ/mKz5gPMhdxuLBXZQSmVrzTRTJEx8Bo4S4"
+					}
+				]
+			},
+			"engines": {
+				"node": "^18.0.0 || >=20.0.0"
+			}
+		}
+	}
+}

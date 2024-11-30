@@ -1,0 +1,1452 @@
+{
+	"name": "licensee",
+	"dist-tags": {
+		"latest": "11.1.1"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "licensee",
+			"version": "0.1.0",
+			"dependencies": {
+				"spdx": "0.4.0",
+				"docopt": "0.6.2",
+				"read-installed": "4.0.0"
+			},
+			"devDependencies": {
+				"tap": "1.0.2",
+				"jscs": "1.13.1",
+				"temp": "0.8.1",
+				"jshint": "2.7.0"
+			},
+			"bin": {
+				"licensee": "./bin/licensee"
+			},
+			"dist": {
+				"shasum": "7a23e91eb27cc1e3e38f958744c80ceff3904a8b",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-0.1.0.tgz",
+				"integrity": "sha512-v2rX49SkLskbm+laaRAzgYdYb9oHHW5S0cYFUTwTg5Rqs6VP3r5t0rBscKbwLlVYnxvTprjwHqltoLsU0nGihQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIH2EqicgMp9eeNotcLiGMb4iJUN4We0BjHaimRU8H3KwAiBhOZeFEHaYgr7pFtASU0DBPfnQtPyCQGGO7bnPwwu08w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.2.0": {
+			"name": "licensee",
+			"version": "0.2.0",
+			"dependencies": {
+				"spdx": "0.4.0",
+				"docopt": "0.6.2",
+				"cli-table": "^0.3.1",
+				"read-installed": "4.0.0"
+			},
+			"devDependencies": {
+				"tap": "1.0.2",
+				"jscs": "1.13.1",
+				"temp": "0.8.1",
+				"jshint": "2.7.0"
+			},
+			"bin": {
+				"licensee": "./bin/licensee"
+			},
+			"dist": {
+				"shasum": "4269a3634e1169e723741e68205063c6d08c9817",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-0.2.0.tgz",
+				"integrity": "sha512-p/lYeJRb+lMg03GI0D1ywjVVxk49ALOdJOiSOSfzllMejgDSPaNs7kx3sw7482g4jV/J435uRQS+eNRlh1bevw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFWWpkGWVCU24yB8Z6kL2WNNyAc0zZIGAn0rTKaSL/wOAiAMUCrHpFMMtwi0RCmWBj1Pxlmv1M9ku/yEro8ppMg2KA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.0": {
+			"name": "licensee",
+			"version": "1.0.0",
+			"dependencies": {
+				"tv4": "^1.2.7",
+				"semver": "^5.1.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "848a50b6ccab3bdc2357e2d634a2a6be53ce2f3c",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-1.0.0.tgz",
+				"integrity": "sha512-jTtmXesPLYZGrz/pVmts9bTeEfHAbIgWstX+qzrX7U0FMTf2Ka/CWSZSqikhP90gXHzWEjb43OBl5OTtgpZ6bQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEUbGqc5+wzm1IhOBah1o46Eenrmb4RXDVRzbcvCTDfHAiBUzfnox4zAS9ULoRcz12Eggw1SKTushLQbXQ4dkOTKBw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "licensee",
+			"version": "1.0.1",
+			"dependencies": {
+				"semver": "^5.1.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "4f3025fbba17a8e5927f272cc5a254ff6995a585",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-1.0.1.tgz",
+				"integrity": "sha512-dbHTpWpfYS1W83PfKy1WzOKSzj0wpIfQ20qzk5Im66/8Fr+heH93DXIiE/QfKa53wC5FYMVRUtQsuGAqDoyXEw==",
+				"signatures": [
+					{
+						"sig": "MEQCIB8SSQCnaIk3UasqDPVOtwSHGuIaoGCOCMEraPe23OM4AiARJY4smB6xSS//RVT5GknVSSZ6E3Cu+r6LS/VoCh9wAg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "licensee",
+			"version": "1.1.0",
+			"dependencies": {
+				"semver": "^5.1.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "a536fa6c14e902a63bc2b0703d3b47e51df54088",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-1.1.0.tgz",
+				"integrity": "sha512-g3ZHZ+ngQjQfGq13/KL7A6/rTt9vSfkobkzL9rwrItR8Eo1pWrpakDga8vHAWQAftVtd57Dd8++m19PvXmXO9g==",
+				"signatures": [
+					{
+						"sig": "MEQCIAIexsNyUIGNtoWBOth6jVqjeYtfpyjJQN2t3DU7Bp28AiABQrkJ1Eazt/mJYNVXF4ypAptE7SGn69sQEkayf9rB6w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "licensee",
+			"version": "2.0.0",
+			"dependencies": {
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2",
+				"standard": "^7.1.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "8513ad4db66f584a8f8ad551d9deca4abb183487",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-2.0.0.tgz",
+				"integrity": "sha512-9PqJwVP4s1n3m2kdvjN+S7r2dJRowOJXPyyq4BCJU/5vEV+1+WWZPHAzxbgKYoXIR0Uf00SXa9u5vBOlAi+tXw==",
+				"signatures": [
+					{
+						"sig": "MEQCICJzLR/dpCqueVB0eHrW1qqXnDp2QF/YfbF9wxDK7XwLAiAy+LoRTm/1rV6hhsVFTFoj0pkBUy1e0QLxWrA0bIo2EQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"2.0.1": {
+			"name": "licensee",
+			"version": "2.0.1",
+			"dependencies": {
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2",
+				"standard": "^7.1.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "acf04dbd64227a986502b51bad4117be5ad04459",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-2.0.1.tgz",
+				"integrity": "sha512-t84iMATBF8GYuyaasSNJRyA/3U4EUhyKbfwhj0a2TKlQtPSWlDg/drvQiK18mlhIF+ul6UpQsnz2FWmtGWsPxg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD+zntNmUtdl2ulZB0sdhyaMg5yAt1OtOsbN3hXgRyrXQIhALuEcYzCBGKHF9wFpe9E/SI1P6xJMMOdXClfLlQ/sHlF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"3.0.0": {
+			"name": "licensee",
+			"version": "3.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2",
+				"standard": "^7.1.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "0bf3d007e3beb3569e7ddbbed0c8867a3222184c",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-3.0.0.tgz",
+				"integrity": "sha512-fcLzGxSgu2uhKWsvDAPveF5spxq5/1X7LRRYSh0QLcyyz/rWsd3d17hycUPtcStOwndkkIFEkmaGEbYRmVC5sg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC6PMlTp/tJVQxNpv0wL4IEAXdjku79lmgzDT6Ea3/vHgIhAIE27XWy8z5DUQY5WqC4clQkkcgiVtdxierxw1JejyLz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.0.0": {
+			"name": "licensee",
+			"version": "4.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2",
+				"standard": "^7.1.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "21e3f1e6ca9978f3187cec373fab0e97741ee464",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.0.0.tgz",
+				"integrity": "sha512-kIsuurdhD5ElB1GdEg92uexZ+0XW1cpQFQTEhtWP5XCAf74WJaUJTYwhWVJ1AZnDigi6dNfNoCwo2VyR+hAMHA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDuNsQ2MKkGebHbO0UM9aYROSuHsuhA/4huUBODGDdEPgIhAJe0+tVHTlcKRNGQWFftudVwdrJMXtSrbAaExbKwxDw+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.0.1": {
+			"name": "licensee",
+			"version": "4.0.1",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^5.4.2",
+				"standard": "^7.1.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "83f740689fbcc49eb1ac12b85f03282f42193bc3",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.0.1.tgz",
+				"integrity": "sha512-gFOs/vVxnxdjGwZyq54+3GawRoaRx+GYKDCRIglCIW1oeC8MAAOSxYids1c271hq3RKC04hncDLETMPAO+9ttA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD9ok7nMj/iVFWd6V9yl8GN7PTIUG/B/dGmlvkyb4WKDQIhAJxCP8PBCWctapXVmI/2hKYTVk4eSl0R+oACrNn/BbzF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.1.0": {
+			"name": "licensee",
+			"version": "4.1.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "85c4624c8ee1e8fa0a52581fbe2af257318a9409",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.1.0.tgz",
+				"integrity": "sha512-OHagVhcVsAVqp3R2u5ST+W5rIzCvr1DF4eZxzodYb3LM8e28OB1zt61BTS7cWTnFabLVFBCKon2uYXmnHM8Ayg==",
+				"signatures": [
+					{
+						"sig": "MEQCIF+ZjG3jS+sJ5t+aR4WekHtWz2INBUXvdhm0CvSurj82AiBzDos/q9bVrs+9Ilp/4EJ/g3Kw2SJTrwFR63sfIibRbw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.2.0": {
+			"name": "licensee",
+			"version": "4.2.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "83aecc7f51831b887d76dd32e3590965e1239dad",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.2.0.tgz",
+				"integrity": "sha512-6d1kt0UvqKihw+ti874FUP6Schp1VTiqQHE80OaVG5NiivZ2thC9F57Vd4NZIussv+4t8Xs6mAdBFxZiT9yWDg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDV7vELvKjrAWiBnC6aPR1y2Pss5zx1RztmqRDyymG5rAIhAIXLeq88gfawhcRBOI/2SvCiqC3T4f3wLr5CF5g9cZtN",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.3.0": {
+			"name": "licensee",
+			"version": "4.3.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "75cb00272ec4f8991b2fc1dad9e8325a0c67053e",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.3.0.tgz",
+				"integrity": "sha512-9eChOEndNGLAtdAQN8w6QXyih6hT6G8MsM1KSH325Kr3B1wRqfZXiP+AjU21x2pTWjjm9MpGfUdftnrmggqLlQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDq36Rld8vRfMQv5FeyaZrIEe2f1A/0I/pCVlaqRthvBAiBYKgEYTzue6lUMtMIQfC/K+RaPV4jw+Xy3TFO5GwFuPQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.4.0": {
+			"name": "licensee",
+			"version": "4.4.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "5dcff4c6a0892b819fd01dc1be8837846b53e1d5",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.4.0.tgz",
+				"integrity": "sha512-2F4mKWlTL2VDIHFTDeDaJaXA5+pGRq7gjFurlSsLJ/Ybuf9HQ5x+vL0Ry38DmXlKjP1r++ITwiqrVOn062KeAg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC1dgG9/PJ1TkruK8Hhl7EswfT9FFcNwtn7jhRCGu22sgIge+ZsPfQXqKWn27ECxGmUDZESSnO+LrwTa3oh3JYabu4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.4.1": {
+			"name": "licensee",
+			"version": "4.4.1",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "04b7913fe64f544831b275416b8ba4bf63802b15",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.4.1.tgz",
+				"integrity": "sha512-YO7AGyqYItIEiboCVKVdt+/92YbjndwpAixTI/04qO7HrKPyLwpEn+opCnZ13mIwaPzmqs91YyTqpCt8XXcjcw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDptbwAKeFYDQfcvxeM6B0PU35fZw8Woj+wMOR9Yj5TZAiEA8jJTY5L1xT5M5BrsyHwuNi5taEMy/jpunVkzHEYbUDw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.5.0": {
+			"name": "licensee",
+			"version": "4.5.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"run-parallel": "^1.1.6",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^10.3.2",
+				"standard": "^10.0.2",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "3336a1691da04846e2909ddbc1c35672b8fac3fb",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.5.0.tgz",
+				"integrity": "sha512-IF9P3q/+ggQWQyVmB3t7Nx8C6IaJfOJMjcXg7yxgy+ufkFYI9DWNYWlLTbGqEAT17vqw3Fo31oADqd0Ew5Fupg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDUc3cgZT14zuO2kADfWISjJN1QMp7XBBKhfl+7frxEFAiEApsayNXOuZ8f9Op6OveEeOLyMNGasKfaso1cJ/vdqUjU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"4.5.1": {
+			"name": "licensee",
+			"version": "4.5.1",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.1.0",
+				"fs-access": "^1.0.0",
+				"run-parallel": "^1.1.6",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^0.1.3",
+				"read-package-tree": "^5.1.2",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^12.0.1",
+				"standard": "^11.0.1",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "0715ec6168a3e37a9b1eb3e087bef1495391a112",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-4.5.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-+b3cRabmF0jFyX51Xt6/n1dw3EB6NCDn3FL7eebgTl40KxBa4bDM+4eF8XFz7tvjvjoPHcqHdmYaLjohMkXIfA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFO6/SWl0zTEHEnVhqHJjEm++QLJb4r438hlkx+jCuzvAiBFkD/jX1/Gua1i75sKtFQt29t+7B867bEQ/EhUx9dDQg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27742,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbW2PNCRA9TVsSAnZWagAA91EP/RTqKZUIAce2AFqdV0yB\n0dnGhGWWX0wvEiDJbRKVhibuOs0uJP/Jq9ebEUqJdohXC9Fgl1GZvDWTPOs9\nO3RnLztazemmv0d9M4oA5CZ3qqerpW5dgIFo0woSyVm8SrglHEKqTpF4HSNz\nkxIjy1vGxNETaOn2BI5Tx7af2xAUsZnTnFsrV10VUV1zHRkE0DTokC/bM711\n5pkZgtiXbVEzXmGQD3rAE7JELFp8buBNaz1mq0O2OglgM/yvNlzBKaW0wtTS\nahdLg4C6A0vTSMg4r/fe5RkHYzGya5enQcfb+5N+2Mjq299aljO7fWOP83tx\nNmPKaJGJobXPQn9ATUV6+378w+7BSr2d3Ll+C2Tx8OM5TmXe3udHOcmSGc37\nn807fg1smi0uj8uTdEvr4DFgd7i71Mhmrlp0MUj3OBZTBTbI6rm0U6OMKhjl\npakyZHvQDUWHM4ccWED/TlW/qPaBqltMPqVkh9xJexdxA50ygQEa1TFcuHIx\nLGItHwf3nM9QIhsuTiA5TscVQSeQ/V1szC99RYlEu338dsr8CoxAUBK1QrjS\nRi7xoTrYYE8oUcfgs0VW8F1FqkwS1l/hmy6rH1CLlr1QCX4nhSslJwHOsBNJ\nOG49iJhwhz2JVMPWAhXDp5XVfd3jtdOxwhIEO5WH88tfv+A4kBE6r4ywowqe\nMzYO\r\n=At16\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.0": {
+			"name": "licensee",
+			"version": "5.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.5.0",
+				"fs-access": "^1.0.0",
+				"run-parallel": "^1.1.9",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^4.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-validate": "^1.0.1"
+			},
+			"devDependencies": {
+				"tap": "^12.0.1",
+				"standard": "^11.0.1",
+				"spawn-sync": "^1.0.15"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "3224b679a3ccb7d9a1979b7af8ecaade39c4dc86",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-5.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-g243BLsJYWWyNhwDEMewc2f6Ebyy1yiJmMDgO8MCQtLOXA8JO4O2/kbJ1QwwWdlmrwDgYECdl9CJBrKsr4ZezA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCsLEBIoocigab/Ws0E7ZQT1yOkxlLTHWI3ReATbU3QBQIgNwG7gQcYB4hMHs+RGN6biWTWOWe5S4nK2sIDmETpmbE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27742,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbW2iFCRA9TVsSAnZWagAAU2IP/RSgaIkarC0ltftnoexK\nCclthpYvMYgVQ3B9yCmDt2nZ741isQGaoBgBcPyqgP4I9kBV6w2uK6WEY1b3\n5tfUWvGGzcEK3XAxlxC4x3ZouJnTx0LUvIT25BJHSvN7zsNnyOpbGx23Fpax\n2i/73m6Rd3VP4AOdFIWVnwfatx6q+/DFIymlv3BqrIMghl6moJtSAOnsMS/x\nsQ1NRR0VNGFydgrZaIABtNSlzr29pJ8AXX2me38wRWhd4oBc2Z2boEFd5eGl\nlStDEKqnrmU6DY+CYunTf3xz03i4QJQEuiW1gzyg/Q+5zFzirFxo4xPxl3PD\nUtpQrRq8csKCm3FibCewC5a+Jy99Wis4HbjP5CEOROIh7JwiEltMCh8G1QHi\n3TbFDUyNZ7Zn18vQ4UkNDgQSoJhyF4KabiX/llUfc3llGu/SO4xSBVCbX0b/\nSZCBISYwl0Y8PrmBh+CYqmotgnBByUMYKz4EK9FGik5me3Cf8AvPq75zom2E\n++4mu3ESg/lmO9UcYHWAEEZxueHb5y5TrJOSGceHuOQxH5doCqQyJ/DfA5Ha\naS4VqnBzkYGsawlDD8h3bFE5Jtvx4/TAmyw1EYCOXnP/3sIHMo4xyQntHfu9\nMssCb/2zbDKx0ngJc+N+mMf+syFm1ABTTd1/H+sZIdyas0rPeOsUm/9r/AUf\nSA+8\r\n=o2rg\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.1.0": {
+			"name": "licensee",
+			"version": "5.1.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^4.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "7c167d16fab6f15525872e5ff9555edf3e403304",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-5.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-uEHsXOqcTADaC3ya9MloK3phM5tR/BO1lc//HYbHS1vF5c2wu8IkjXYkGhSzJej/qGFF7Z95V9nn7V5NPJKh0g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCALa89tpOgThkOZZu2DAt0bIgSK5B6S+p5xVN3pDU2uwIgJyvbH4SHHM5RipZt5laI0Ppj6B6fO8HBNqeLeSh4mDo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27743,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcZ0WyCRA9TVsSAnZWagAA3bEP/0aPEqQ74cpORrOUHx4t\nEj9qlJx9Gg8qZ3QFrtO54gVrb4nTkogHwNAH9aq3FOs+1Z9X4y5LaboGS5Hs\nCNeVjCc3c7pd+xPOTLpdnYtw5Wozxovco6aYyEfbfiyo0DOuhyWt2DlkrCFC\ncAwbAgFXc9uVPmRw2L5d+mkvc6TtMDPFHCwpSZdA+Ino9ercDb16rUI8ywgY\n9KxmqhCx3zTOMAO9QBwouSVk9w9p3e3fb0KetPZ0TatBBZHDZrlC0mPFohSG\nxL1DX/3T2yNeLHpUJETzyumlInfPPzh3pv9ZVhKKzM+GuZBJu5RUaUNsT4Wz\n+edd5vx086OKh2k0xzAThQvdkFhCMYxeXqUGaVpmVotr6oTle8U76qWmRHWL\nxuQ6FY+ARuueyFRJPgPnehNM47NT8KjJ4N3e9/QPgi9y7nPc8lu+UuzJlH1Y\nR9E5PQIxFabzYM+Qnoo9F5P85Z7fE/f0cCFau//GoEBRPaazK9JljkwRyByg\nON+QODTZhoLI87OaAEV8qx8K0cpsFClvwO0zUIvGyX+vDAUuoDtKw2nMurA5\n/Lw4P2R4O9FUUmxANJYhaJsJyxTWAcVXLoxwFgn8AfsSBlSKXSSd9wCP7Umx\nCMjdXdUamwaSSeMrKMWfyAhyRm6y04dTmBA0MUER/u6oMWqoxdeub/vPsd6b\n75ZA\r\n=ixrP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"6.0.0": {
+			"name": "licensee",
+			"version": "6.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^4.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"npm-license-corrections": "^1.0.0",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "f145b9c764cb98056147860c86d021f946c57701",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-6.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-9efES0bBj5vNLhPmhnR+u6ebJYXwKZQFtU+rZMyPIcz2D+xE3i4lQf5gzK2TFJHyemy09NfNbr/6VT787LQsqQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCgpjq62Ra2+t6KgnuPn/YlQqOfaDyr+ngScv6o7HZdrAIgCGf9jcYRP03ZHtI6Qyr+sJAhP4s4KRt04bZIjcuRafY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31360,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcZ6w9CRA9TVsSAnZWagAAPNQP/RgbiJ7GONSNhE1YUbej\npKhX9MivdRSDAWFJGc7mtgLQkCx8xUltmuaLAUK/MAfXGTfmI480zPpAQwEd\nxOahXuORxlcdOvuPiuyLqLit5NGoLYjGWrnxxkNmhzmaYOYCZg4DMBCLlJSc\nx3Bl5kTM6glH4+Zz1zUCCtLXe7lsxt+mnyoyqH9fGPbryuoON0VzNItAsFFT\nUqhuVHPJvDLubw21fIiXjjyCKDvyyAGV4s8G0oYD3f9t6mqn71ugAlYBxliz\nANTmZ25bnFI7GEg8dS2S1o0xpl5dnmteo3OfSwlGQXaP1QbA7skdyaJjmD1I\nXxrrfHJO/XksBoOkrQ9P0M1wnt4BfZ5X4YOeX8o7ztCq9wNPCLwqvgHQ6/KJ\nO/8o4eQwN4QGs1bQ3MEbWW0rZ2ZYz//TLnS9EckeI1vvDpDD0X+fMNYJPqqE\nVBO6KPl0BxO4AbiSe8hS8znEU2ZIv3ujQH4yiFwz3ifJnhH1HePy0NRZ5i1r\njexLkKIB7u3jhaPHiXChcb8v0k+yTCgXwxicMEa9AJRRtp9PNeS7+Ttu36ga\nJxN01x69/dRg980OctqeC7nsVLCRbqgbiXdP3HlZdvg05gBrKOxv2ZUnH/R2\ngfcgpDOBISh1+uJWI0TP1W090IzUobUoje6cSwYS4A/YkkforovWt6lpSXQt\ndf1+\r\n=G2PS\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"6.1.0": {
+			"name": "licensee",
+			"version": "6.1.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^4.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "8a24d776ea5975b784f2d2a9224075cb931be634",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-6.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-z0zTmZmHHXlbHMYYUQncutJ0u19SwaidkMdm4t37jvxuJL3HnxcESfzNfXRYnazi6VwGUUYheZcHw+U9mqYr7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIFYLMu6goIfCBHs2n4TajEJhA/FiqlAmU6nG2tS/kHAeAiEAwB3we5iJ15iYS8hmBgDkBl3CnzdmVpZCUPPiDnL5AF4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32266,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJca0fECRA9TVsSAnZWagAAREEQAImyHXhcxFOBtlwLiEXH\nd3dlJJp3xG86HN5m/RVNdQbHjkHVlZ0RWG+NBOajd6bIUxGkXV5pjyWwnMif\nuIyKyAZVOJ6gKR1LmAI3iNgmwNHqtsC7U9qGCtsLbN7A99au0qWqytRqeRSj\nEr9mhETGhNbMHU8PSUYPctqu4epj1EIvhfupvzTMGO+IOkGGU3MsEcKcd7f/\nvI9lbKByYgTr3ljAc3AGSfXkL5d8qLVc/ceixDT4nPULZvnXtoc8N7SvUKcJ\npJIEHH2V4jzJ06w1geYgGeFrMVIan9l5mcIWGsnBmvPrXYyKSQsNBNye2lnY\nLYxhvPtR+tAoAWBvc5gMC9+w9xCMBpn/6JR7tFZIlMKL+k6PpmT2t/zWSTbF\nswuUvVkcfO70ndwVnQFldYH8dPVaWKMKhgykcQQenSE/nwnqiQMiTxG1sEFg\n9bxDAGYuJDsV9cNeB4+AdCncwwyLOSHQvJ+gMePpB1OW5kENfzFdXE4cGNF2\nHE7Ez7jcoU5Fj9gpXCQh/PjI/TWIB9w6iHSiS2KeLLDFe2WwbUi29Cfum3zd\ngvL+bMnI7RXd0gE/DUjT71S7s9fT8FMuti+LEEIjRXJfG+XZV9pRQID6zLJ0\nYEE/QGhe/wqF/3jJN8ejweVsJN0gBEdu6aNuFRXqLu1wryqmDSaGTj5RmFRY\njeoE\r\n=Smxk\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"6.2.0": {
+			"name": "licensee",
+			"version": "6.2.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-satisfies": "^5.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "34a936430b7b5f05377d786c64bf5130b2d45b88",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-6.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Z1tvH/+WP2np0ziIqwYtavO0G7daNnacvJH2SDL8yZW9CvdqBjrmTIPEM2SQeo7wm9kXl3jZJ/v+xJtQBjgBmw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGUzk6g848uSAsYyyziAVIPQWiRVkb4UuryynoucgSMbAiEAhwvZW8eWXV0FQgsQgMk7wCVP1eyrm5MEPUKopn6FpBM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 33810,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJclTtVCRA9TVsSAnZWagAADoYP/jGKX+jzdhGCxxrNRFq/\nghrdlC4XQHRkkQY2G92enudFoUFhrqyu2b0GaHBkbyJPQXGvhYr29f6rWoKv\nX5wFtcFS1cyx3r/khxEEeOmnzBG7r6+LW5DVLjD1dt/Z5TTjVy6d1LhUE+iM\nbcDbVUep9P06HpDl1Ay/3j+E26RtJ6Vt3qh40FWTOBxseBV9StEv304YY3ND\nslpAApAMHflL9e2tc0/EtKRV8AAwzXYYjRrAMHwmqzFsArLS6zNqS9m8VBGK\nHuPIl4YmOvtk24vqZQeE3p9NnqIn/W8sUMxrUwk3MB3aUZHTl79pOeC+waa8\npBfpdr6ns/PO4kBWWX57Z3kpkVL/YWA4Pe6+MnQDK3r/gRAOUS9575iplVb/\n2ilLsvdIvVXMowCPAImzo0yChUYQ3l1YZ0YQ+S6f+Zu9tNGZa2NhAtPsQz24\nNaoBsWXyWbiTKtsg73EK5nU53PX2HJ2yFLEuXC0LE5FqwAGm08lk+srdNvY+\nHmA9QR/7gbfjmMn8q+qmOMgbp/QpBbooehKMLTjUn5db39LPNmSlUsYem/Dz\nvBT26wMBOx/AbZ9EBDahFZYn7O/Di4AjnjlubkCA2hIsNmdqpgiBli77esAy\nIgJULSK6yEwcwhfLVDbGacRRHZne6YYzWa3rxE7I63i1l5uWfG3VgYZxB4nV\n+n6Z\r\n=EV1W\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.0": {
+			"name": "licensee",
+			"version": "7.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "c432ee99ff0241e985642f973b75b37514594b74",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-7.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-rXhy5FRI37Xw5rjJ1vz0ArPnNs43fj6xU1pAzZXtBAhH8VFBc4lqroobTKEJZqcGurL/2GZsKBeEoHAxL7RFZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtdNo2of6jPeG8cS5sOoQR45m28IMuG7vWKGkcLMpuaAIgImZHlh/cx9TqOTpwtJJzdd4qoIC5Ivofi6vPaRSduuU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 34753,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcnGZhCRA9TVsSAnZWagAAkGcP/j89dvJxO0GuwgjOqy+y\nKTBqpClRTP52BjMgACjVbdlJvv13QEF+K8hYV85KtGuI6pIJLUtsOMVlaziF\n5COmS7pTjLclEIYWdfPqtU/8cJOD91Li0Yd6ZnFXmpBZyG5+VDmkBOv54CGo\n0GyE8x08Y0M8/windOhjDggt0Nn3gEHAl7pMSCwjqtDwuU448Mgawq2np1s3\nZ9GV3PaVROm7clI9TeI7jAObHr6PxR7FeksJplw6q5yeUURnJ0t4XkqEwPWX\n05JgAoNgs6/9/fEaIbKEIg3ePGDmkGtRdt1SMjTdZQsMHb5NuGRqCaB2U+PP\ny9D6hFeeu6nT5x0hLrWr2ESaygSAz6FfwNb+wtHOAB/l5ZH6B156qvyohuij\nih3M8Iz58ZoscOpaVMVk2zK/YWf7bpADfuo1nENI4t4hEgY0ZNu3i9qgoc/6\npEEhQBE922a9pTONdKCMm+xZpnCsqXk6spgOusj4OW8UZGiFhQ+HAbdZOqjl\nwEjnNhAf09PGlaMwHcgii7cHsb3GbcjiS4cJ2sHSergRJVc68SgfLiIQN9e+\n5594TRzteKL3VoN3z453upH/wY4sa4P5Ik+5fa5OgLFZgrmx8eQep8dZGpbe\n7y6Ihd0vtXndzA/dHpX2wfVqRzFjGnbEfflrPwQsqCCMDmUwOASAiING/+Mn\nDJPI\r\n=ASmh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.1": {
+			"name": "licensee",
+			"version": "7.0.1",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^5.6.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"standard": "^12.0.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "315fc2beded20b6f380029cf1c4f72e10e4e034a",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-7.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-iIF04YxU6i0oT/PTw0aTzIT5sVoSSfzNNR8aG4qiw9FmIU3VNDLpAu1T/zexRb/FePaKzWdvloTo7Ngn8XWExQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFvu+2GBKjHYU8rn4YdxtLwZIwrEKUYJs8pp0mt07TjRAiAG+Z/RgCOw5qUVNK9yeBJuPE6HlYtWiUj1NmqYUBeVng==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 34912,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcnZIeCRA9TVsSAnZWagAASQgP/3JsVdijNWZLOQq7vY2m\nWDHoclZ6JBnJ16LxKLyIw/GSNHYYoJNuEBJnRsVJvrbWsqhbkJ7465+FOi1A\n9D6pPQL6+JZ6fzxLtVpOizA/kiVRgEvSQbgKG+fY384ZNiRoikTH26NFI+Ys\n8Zmh/oWcNV975ZG/I2nn8uQ0js2Z85dq1FLiOhPu6jQqilwr80Elxeu0Zq2e\n6/r/eIfBBtxV9XtNaRb4ZWn+Iy9zkhhGnS7IAO7XlwKfwKlBT3G8hdylWRVQ\nuuuPvfEocu1hPsIzqAzM7jJj9Iev2sMI0p3sBtFq16fE4ztbCFDcc1VR3Mq0\nBSViq611pAv8tEla2Bm6C8qWFy5e/Js41/tfvJZegXW0shHqqhvz6Fdv0jqy\nPVGPoDUSLOGysOus4KEyZnSXvttUKeeykfzMlXi8XPUDMC4fahLNjCaT1TJc\nmq9uJqm8zwuh6D6T+onZ1knJRe4Ufj+wQAjvdkXNCO5B1bYUF8lhjEsqz1Cw\n/UT7oa5R5DIkkTnN11oneJHiONbMcAAiMEX2qhG7wG/x2ezQpNWDE0a8m5KC\n1TDDfZ1kPL+11jJT6BkBKs6+H0DQWgyoL+5Mv/BERoFQV57/wKVjEr86Arxv\nNEUlHyIcK4Wt1pT77creSdHD01OK98/xCThMTBsgG5wrsWTM8lD6CVzf8CTZ\ntgaB\r\n=V5/i\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.2": {
+			"name": "licensee",
+			"version": "7.0.2",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"semver": "^6.1.1",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "1a4e5dd3246bcf4d10ab69de70a571b1291837f5",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-7.0.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-U30RSe5DI7HfKGM2LNgt/5QP7QEk4leKcRTp/6PorHHDeAoFsZn7SGwR/MKgP3xdk6cTD+G3SBdYwQGcZ1zPfA==",
+				"signatures": [
+					{
+						"sig": "MEUCID/TmYP/I0Ztdw02ueOcJZngH6oK5ItPM4mSgGGsuxmmAiEAqui56um8idpbRrMfCZ4GGrfAFY0MrO3lVVou7gEUCXs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35057,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdElmnCRA9TVsSAnZWagAADj4QAJGgedgX56S6FKJ/iNAV\nYae7Mkgcfl6Rfnke0bFAhF4gXyZ8z9ErmeoVnuXDSL/gCJNwtjOGighayn1w\ntLsPrmaVF5ilbvuXqNWMSZjBp4B20IaLadAIfLptuM4a3nE6Wb9dmyXbrgO8\ndLggLextY6yuoyNjB+7fRUGeluB9O8OyjWHIa4YXBTakAYsHHpNTwXSwdtIm\n5DcEwrp1Q4bIGdqPzG1LszngmIEaIZzqxki+RC73aMoIDJvlxE8MzaCg3AtU\n/kJg0pngOUCKzR6oshxBw13frkmdESZlIyx2N6omHrtwKEOFPljkGNgTMZ/x\nipRtsp58y8Jx3qqfVr3DxFwBqakk+7xhugS3uV+XgiCwkz6llrDkDxNN76e0\nkpZda/5g4SP1YkWiONKMbCm+2MDMNwbhd4sHGJee7YxzlIgdB1CW0rCmoBl9\n9GFKtWsyVKcoce8gNfHqvTXXHYM+Vw5Kywm27BWJkXIqCwkeU8Z9/aYkCubf\nSpdo7adAt3c6nnIna9AHdytvoT0NdFcBfe1TioDmcKF5fdp9BnJFdNNmMSeQ\nPLL3nULY5Y0DZDiiap09m6YxFnNyaciNzcr21RBkGx38w/I3nHqS7yi4vIyy\no8Dc8DM0i8WtBICvyLlmyFwOeJDupX0/qu36rPwwSZkBSEkJ5frGrqYcKJkW\nodaB\r\n=5fsX\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"7.0.3": {
+			"name": "licensee",
+			"version": "7.0.3",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.1.1",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.2.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^11.0.0",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "44fc123bbcdfa302d904d0986ea8bcfaa2bc5b36",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-7.0.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Rdwk+y+nOzkTKz68Gj0OOIy7ISkw+JJzSpn37hfHOXT6swkGfnKEt9+jRolWIFONiIhwv+W5E8K/pnXBfWLewQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCjXvSXv9cypLtgk+cE/kxMmdVJ46+36tTyKMB5SJwzgIgEemC7zU4EK7pYn9yKNv5oirF7w6hU3BZ8F3t1MNtAZE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 34972,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdPxxhCRA9TVsSAnZWagAAlnUP/i6Nmte+xehrDDeEN2TY\ncp7vsIsyNQSUEWh2bKa+u4AGeBp3Dcixxd0hOkH3SwKzPCf+l1BrgJ70Ulsj\n/6GctbVtWEoTpcLI+8raihMJ8CQm77e5BgNOggZ+cVnw1X54Na68+RrXneKc\nkwBKPeDqN0GmHzl2JCYJ5DGI5A8FYp5QOoY+J0tYF/hFsSJbBNL1Gdf0poTR\np6myRUPZualTJ6L1dCN2smvjjA9qnfzM4mQKlKhNqlzgtenxbNn7wgj1/paD\nPKyQL0xHpkdK/CJrNDcozEDUGnXzkoQkbFGqg7aLOqR4RaHlGOVtSj229ucN\nFGf9ZngAqIiBICwsOlsGxoLZNF6KYmitUJpP6ItYhkx/AeYVAEcgXPgD0cdJ\nNXJXFn8ze9WROCpk+FPkNfqG0zI4VWSXCdvDMSWvCNKIPjOEh3jPSgqZ+4RJ\nR4VhyFi5YYSdmBbaeVOgcxeSRI1m0rYtDpLw13L62uUEwQ42qB3AfPVHDX26\nHOU+f8QAlyx4f7QSPqNWSfsQL0OiezRlqE48xYu8KABsrmyw7rgc9MX2nYaI\nc9FjAw/8IlVdhA0cwJvPeBU1XnqbCEOfli3LQb4iDVZkMeN0RvRlNpowVcEt\nWZEuTwMfD2M8Xm7BTwZi+yDL4E7GaT+fea0K4mKJtMgO2rwu9jB0/YmtRcP/\nzj7V\r\n=hid5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.0.0": {
+			"name": "licensee",
+			"version": "8.0.0",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "871c7efedd1c01e8aaacd5c8040c39d6b8bbae2f",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-8Hr5+ZjiQ2uBtMD/SUNPsl2K8/1alBnokOP+7ZAZJmcCd3FDvqOhBc94ROvO07/DqhQeBz2d3BALZhv+Ir535g==",
+				"signatures": [
+					{
+						"sig": "MEQCIAHjAUdwoRudVOlduRsv9ZuSC8lYJ98cxiv0A5YyujtYAiAstnDiOhwFo/7MdPOifTwbCgfOTWYB9D/D6MUwpwDAnw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35027,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd3WGfCRA9TVsSAnZWagAAm9sP/iAemrdNA+/bXhNhfq21\nIrkPlsezMweQHQVZYbW2wfvSLH+K4UBu1P9NnVMozYq0cRx3zHpTFjQ4Mzah\n5fN0tW0vR7IOktEBiRFvHtBFMVpiYaoZeAbxDoVq3l2GS1UOPpu1BQhe+VEi\nAcPyOJR4l+h52z5sQB1WqzdfHbI1PFurn7FtjHEfJinko3zFVnK2pfW9OOBd\nJ5qLvhpfa2h1VaA24FeTJXRuyYp7bIdn72Q/EVF/LGmjpurNL91d+Ded8tCh\n1qXfjSKbfw0DqEX7GQbJWQCudMN0fQbHp/7Q7B5NYcPFgAASdPrA6CuU8RK0\njnFaGvs6sLpl2KuGEXaLBE/xchPcoFIeOLDKqWb6vxEf1gXZuPiM8/GcSzc1\nQ9zkRISebfYWfXl36FSf6DE7Jy1cGfQgz0LraEibggfBTeuxaxJ009NagUZq\nIvRtPBMZJuBq/eHz49NaPql63f9ZBq61FDcrjtivPPp1TmXkSm7tHq5wnb3j\n1BEa0n3bUWoPFAJSJFHP5cg7w0K7aIeoU32RGrogPMZCQwhgxFPodPgLxhoY\ntmrqevapylnuzVsPuU029O+JsfGg+uGAbyPKnUQ0r75ybSwYA9vu8WpijDV0\n8ow9qt1hVg+JcYHX15K36W5SCspbQf96mDMU/d+Jnd7hjKKfK94wk50ZyMH4\n5sDj\r\n=p4VX\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.0.1": {
+			"name": "licensee",
+			"version": "8.0.1",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "./licensee"
+			},
+			"dist": {
+				"shasum": "6438b998814e9ba17a0c5122c06f5f2387ebb086",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-1hJm4ou9hAMZpfQttXtZcHUHp5Hb2XstpZGXt7tpJIqK5hRoOzQf2SKAJIQm5U7qZn6g0zrr7jmCB4gFiL64dg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFFVytjmGhBqu8ZQnGV7VJVvU8N77UiIDkaPCDfpA07cAiEAwYtBfj1tQc2WjzkGkLYjnvODyu2eOO7w+mLgbsKRXBM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35100,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd3c4FCRA9TVsSAnZWagAAjiQP/iJGsdBwvpA1cOBJOkTH\npFqZ4Zt5M4tgIamH80VUlohPguHD7tAu63CCtqWVu8ErjrrAU8BfbHVOVYQu\nqKCS3V1aJy+70wAS9JB7y1g8j+nutMxZsjsDKwqlQ5s+rCdtHM7TPaTOxvqa\nDBWUIqQ3KQA8yhUv/jTF3/qyzgwjclqMfR8xv1ZLUiHawH7k+SrQDJr15ako\n2qlT259gfbqhDhggKv1jdvgOyWhuuklNlHJ/M7lx8AebAQCEe4EVz2DwUhu1\n9jwSE+TjFmKHUVysQfvMeDreCj5s+rnkj0aHyA3S7vmlxysQNXzs2Tijo//A\nE69NQA+lJcYkw+BCMQm2/cMVKUo7B/aWv3Zmu/UvL9y0t9fJmHTNpZ4hPRlk\n9nN6Tp3mV3caWFrq1xpi2cC2RWiM6QRxpXXB0JHSTjwOebT1rmi5p6wOU65/\n86isXCBfIIhBj97oq5n+dX4rDI+mK0w1VxTYWGb/YKRgXrpgti4W/xw4ZAuK\nVn3FaQ0L4ka4a5yI+0apztqSeDPeEQoUVgJ0EZtOHhQ6woI0CBSDvnTnlDWx\nFd2sqXv6jag9RN2VJuQu9dck0TgwYpPCt+FIjcu7nCdLYPt6gI3KupfW4PBi\nMfKpKC0xASeaTGVgQAECnppYVrR03PZK3DunouQXXQ7Yip1yTNyQ5APNVxcf\nHYoa\r\n=4TSc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.0.2": {
+			"name": "licensee",
+			"version": "8.0.2",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "a55c329d80dcfdb14f65e6b456276b3fa6cde0eb",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.0.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-3Hp6eqwxNPjgh4krAh9lrP/f5lZyZFF76zBpdbpi5J75TUEwBCKQGt0fpczdCfPjr61ddjHUh5iu4z3Q82bsJg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD5jsOV5PCyBGloBfeMimttN4vGjNiG6FPu3bJe2LVelwIhAOjGjSS4veAFl1c3Kw8bdT6CIx00uZDhjuVndTodx82c",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35183,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeFMmtCRA9TVsSAnZWagAAJ5UP/jL++XWg4GuMdtab4/U/\nsziOfxtoPhh1JTnPCWpHymmyI6BX87m8zXjn7HC6JFssaqsDDUxnfrVAOFWY\nZB2vdu+X9d1XapVXeqKXMxpmj2sJJPdZF5MJDXNko/P8ezDwBUeFAcO06qia\nEsZTHeVRXr2RmhecyFw8taY+C0RsQTG40gwe3W29kD+wZaSx5J5cWWbPyXl7\n8kKmy0b2ZmLg3oiik6F3Q8te567e+xlZRVi4/sK7S+LEecGHIpFw5/SWTC+9\nxCcrjIQb7k7MVisHxXnNt5L4L50+pZMNAFI2VqV7UqE1NyGFfZtUIF7ZGyPI\nXhjT599iQKtmGfpo4VuSRP0rHKQclC63sthraSlHzhtYKLo9N1eZSoS8EdL8\nr+mvaUV3BhQDyyu8FtVvmLxzV81eeTF1Ow8+V2xNDP5A7kvLlJ4BdohTZEh2\nf1xiRFmq14YAcLsTY7yRUJxLyjuzInkNxVij2eT2LoHXa9uVysbHw7AKLzuK\nIGOHM6o0nSmg0gOBLTXl9wx4Ay0RbQg1mR+slwtgxu8FnHeR19vQiy6tuJEg\nBb9j0VoZMozZr54IukaA8gk0M6fjUgFbtxFyXLcydA9nETulX87aaznLe1W9\nhZ8S1fIc6YDc2+RdWgKLXu8Xk/yRRXuYX5eY98Je6hTSG+TzEONJGbQQFB7k\nirjK\r\n=fgDm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.0.3": {
+			"name": "licensee",
+			"version": "8.0.3",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "26bd9da01eacbf19d3b483a3e6e496f681d1d649",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.0.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-dpOFvmYgm2phJD8Nhe0Heor2xdb8iP689P9FTyDnHlO00SmkIqoisdQMt54OVjRwiaqOAd18MIqPqqw+G9QqxQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFrQ984xndUTmEElyPEAZ6VBGQpHsP3dqEjWVLW25Z7nAiBFh+cCXyg0J+cx4QQLObdlcH0ma1fOHNmpumIhX39UIA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35209,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJewFVcCRA9TVsSAnZWagAAQA8QAJozmIgm5TkmbjrXSrQb\nhDA3OlxBUJYHSIBNoGsmH9sHXngkn4dbFHX8//dBXq6kfC+42HWiS3ZVEKnm\n9oRlA1V91ptrPu06VtJnrXmsjVzhXJ0ud9rgKb7yR+MzIjPYhwF2GOIeEpC3\nq6CLxu0zRK0wHRnDoj/5ImxD1O5SGDVEjW/cbgcc1O14XMBGW5GNQmir/vuT\nUzFj6nZAYxZtB3SF8Sjw9cRdF2oZOOir1FE0XxS1l2YVHsz1OlQBmmM/1y99\nLqH8IHzAHGtKZJ2EoV5Q7U1BH26W2J69EL3zooHO0safN3lY7d7flqyJiE20\n7XLhkW6vH2nq9RR6JldDr1UVudrShUcVjyCMG7jG4isg+aZ1CvWK39E/O4iE\nJ2nEKwwbCYqQo5/gQNiPHXp+7TtX8PpiUkhQigbOc7EJZpYFo4aDK+UGcU7V\nPFcxgvoF+aR/xwtMhD+/g3eb0TLbc8mW4s212sHS9t5jEuI7JJw1DrwQMyBQ\nMzKN4CslRvCldBUX5iYCqKHnjQNhxxFZkS1pPHHy4Tjgpw1+cNL7kSnrdBne\nm0fUuE5ZUjHb+8Nl8ivbrK0dptddnpiHMUkZuqB4C7RKMGmgi2w20lpqBeVa\nWsQgFSXISHR5Na9L3AwPqY9jtNhJuPoHGBFvk1Be/a9NV/Z3wADZ0a4ByGFE\nVMIk\r\n=S0az\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.1.0": {
+			"name": "licensee",
+			"version": "8.1.0",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^1.0.2",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "cf30cf592d75ff42f6ecf0ad07b37525d6f7a8c1",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-rnXUmUuLzZrGfm3bfWNl71Emw/OJqwUyIrIRq5D06Ct9EbiFnZtiydA5ryf4FDPikdneJ0l1Q+g6TuMjpWGfrA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDGXU+zgqYQUnhobcEeLjDR38qJBHqu1rH9+O0z+GzcsgIgFS1DqbefuTAlo6mA3PyibNkG7w33wou2CPrbGmaa4z0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35351,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJewX3pCRA9TVsSAnZWagAADykQAIRhBcz/IthnXTpvIuol\n95zX0NWuRwhdTCbQT0FI8Qq+MckaaVZbpIJl2V1ivcqJ+NHIFTg6M3EVR2q0\n9F0jQ88Rf6O2cQa3iKFVyYMJlYhyc8tiSC9/ViG96irsMkHmf8sTlbT+5bN6\nChcgHfAVcIFVEryYgUy4N3wcZJ+B9ehHCfpb1FsS4RYXNl+Dh/+Jw+65wr9w\nq73OOslce265kvsYvExW6jg/R30KSDdAaRtkeJ/VKXG4D4QJHgQjK+iVgkmI\n+YCWUmGVvG22HTt66hS/7DifFP+wJgcH0Njrxnx3FtJd4nCtqNbXB6Kt416E\n1GEqHCjsRSWQ777Dn70ly1nwiPqyLWwTky2C27xbRElp40ccDa4qJsXAg9nW\n6AFvg8Ad2Qr23Dv6kRuylEwPkp+Pe0prqorYV/B8KBZZOdgncpQIkk0UrRA/\nAlYIWPWNSqX+xGDDYycXxNgn5APsao0WhfsqtCHkodtEEP7SsQ+2SikC9eCS\nY15Kj3b1qK7qLu7JCUVjGieYgOXv5QuuYFabymdsX7sBK+HoYG+d9KY+sJTL\ndiJl+RhGUcwGvcJQiqT9BhHYOxTetPR1RZfag/4Zo857v4AhK2QnvLhkCHkR\n4BwfXMw6WxRFxcBfE3lE/RjBwpiXrHS8n6VVIIOCqFsjfnmz7aKLOEnewR5/\nCwBb\r\n=xKxi\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"8.2.0": {
+			"name": "licensee",
+			"version": "8.2.0",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"run-parallel": "^1.1.9",
+				"@blueoak/list": "^2.0.0",
+				"simple-concat": "^1.0.0",
+				"spdx-whitelisted": "^1.0.0",
+				"read-package-tree": "^5.3.1",
+				"json-parse-errback": "^2.0.1",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "cb34843be5d22ba9e13775abdcc416879b227c45",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-8.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Z5fQ+qP85N38klGijH0bXiWVlKqLKDMqsckKL+VcA+ZQ/DJK5cpIpvryGHtREaQ3Ah5jrgtXN8mHfII7UtlsJg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDOKReTH8a7K8JVQ/g+cO80cIdyK1VIjECqNaT4kxt/kAiEAu7Ucwokhimg3ZCGODg+9pWR8o72f+krZm325sXa2/+I=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 35351,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgahLTCRA9TVsSAnZWagAAWloP/RKyLKNMZLlN8GUv20eG\nt9zB07lOtF0TZHXh9oCpf0JEodIQoQC8x8pF7FTHwykPgi9EdRo+t13q9lXY\nha9C8MhvC+lHrox5rcC685xi7Kei1rEUH1qPVHt5zH+3GoSdPiTfn/p7uauI\nHa2xR//GHvqk6bSFT/VWPDromysA+koUTb08B1y25IQQvCGp7xAPQ3MRzHDc\nzcwc0+bntUzTK2JvdZXptzafFw13C5yaoaN2nI5rN+cGyn/xYHKPCvEDXaST\naXl8dgqadGynRvdVAfScXQbNt4PAAFTzwNSzyxuHo4VmlkAQ5IP3wlkKUiZe\nBQomB2QGthTQfv20wU2QvuIhV/2Z4+dnuELnAaKn7bp5avtzps1aSLTBkcHd\nRAWhEgA6ti73IwyWJ6Ei2Y9iFNNiG9OZPV/705y+HmSw57tNJASPc0bSJPrg\nzWOgyUtpRowMBXCDtuj+jq4fhPwSbuc0QTicss9voQd+vfCpQXoET9bAidJ6\nSWtxvtIuH50Y5EoruUe9SjAw4LEYUe1ouBHT8SczHV0aOcy7SBDbXeYQvHsr\n76QMxDHofa8c9vWCBX+dXApaafhISU6cb3eREIA9rde1J3EhcWWpI/3zzh2a\nMdzJhzu0gOyxzsCn5y+yR5vr3JxxKnDEDppLwIuEPxP+MExCmshGbOxTfygg\nDR/Z\r\n=hJN5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"9.0.0-pre.1": {
+			"name": "licensee",
+			"version": "9.0.0-pre.1",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^6.3.0",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"@blueoak/list": "^9.0.0",
+				"@npmcli/arborist": "^5.6.0",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^14.5.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "e01ffc1577c3d1dd68b55ffa550081201cf264d0",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-9.0.0-pre.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-8baYQ9BZUMVMlCdj0F2UJepuU25c4izmtfYiKk8qZsAiWq1+yNic36B88YqS0qSanihZfNsUVUAUhzC9GfgtRA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDPKAXGugyVxSfgzNH+DIK593FMA93OShlwZNk0olyAZwIhAJoYv3qngQS7SIq+8h7YaeS53NHlKhKHy+Nl0dsZoKl/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31892,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjBlPpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrv9Q//QsaPPNIUrAzc1kRQE5Ns4Nzo8qvfxFhXXhk71XjNlV+Pek++\r\n+UrcsL2EOZy3gaS/SDwb6lbmWU7OSGLTtuHzCXRD5NBSG1JH5xqV6rgEyGHt\r\nYFEp3H6EIMSVb1Djwq4sfz35Jwl8SpJKjIaMLeaYXrEbtLi7AjHQOKgI4Ou0\r\nGU+IZ+knKxgcZYdit2Twv/HPgcoqHWhivRnWQBVZWi0C7DKI7a54pofY1XYO\r\nz5Z9EYnPh3FAmhouIfqYhR0I721KpkxsCx41emldB2LnURreK3tzzA0rpD/X\r\nQPxWvRLpHc0xsQrudkVF84suHPKxyw/ZdxI+IGaxMH1ySwn5H5JwmOO8KPC6\r\n6TtvGAmtCmfUl/6+6bXH2PZGdK0W/ahaKFtdZBqwwlxFoik6QUNMTQy0Kbuo\r\nVVOm2RYRZSS6IOz6QAIvZLok18FPP2CK4SxgBXfGRG8VJpgtyQn1TzQVzcQZ\r\nWmpYAui6nu0r+fWDHnPsonLN77QwzPO/IZkipOKRwgHerILgkAmb2H/eIB+P\r\nP46SuqCBtP3kwXQw8+E1no7xfJJI1W6bTQNyEDUgIGDFsz5kXoCdMkqrCOue\r\nd/2IaDTP1eDQnZztGaE0pI9xflqe/c9wf4Phg6enWeLOtgdcWN5vE8tr9g4G\r\nEzTQWgdYgN+0mxXWzgYqYeBxqVtTxLFUCeI=\r\n=mDEN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"9.0.0": {
+			"name": "licensee",
+			"version": "9.0.0",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^7.3.7",
+				"spdx-osi": "^3.0.0",
+				"fs-access": "^2.0.0",
+				"@blueoak/list": "^9.0.0",
+				"@npmcli/arborist": "^5.6.0",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^3.0.0",
+				"npm-license-corrections": "^1.0.0",
+				"correct-license-metadata": "^1.0.1",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"tap": "^16.3.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "8f4efc31143be09543420f684660f1bd6a62fb03",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-9.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-uxGxNAFvX3H4Mdfmm1klrpgKiXyoGhmZagWFusXUEJyY4g01r/e2czOSpu4QJ8G+f4UShCmgYRSv1viiE64Kng==",
+				"signatures": [
+					{
+						"sig": "MEQCIGLHbI0Q6LDKV/gaNdyYR5D5HY2uzwwUOaGM3jkYpWsiAiAtEfZdgpPpWEbCzd0ACq3WvUuUmLIIXRpdw7SJVHzqrA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31906,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjD693ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmppxA/+OKx5QKhpbvP12BkSMtAJ5fHnT7RYRDJ9ldNLnkbiVU5DATXx\r\nXbjNQgEONe69xa2BHnF5IMstLdgx5KiQz8kyJMVpODnV6qIK4W1RA2phoMWM\r\nCtf6JauiA44i5Jj43QNO0jvCzy04ozunSEsLKhSvzCpkbiQ2Tbauqd4Rv/zp\r\nhQRntmal+F5m+vX9OQbLZxPSDaK6gyETjFvzR6WyymlyCPxfXi9KjvKnAVok\r\nzwQJMTYQXSty01oToblM2AOR+Tg7KHwKeZ1LQi36IjnbDRIht0rfsDSf8Hy/\r\nqDlhaUYLKUKJVsny7grB1hmPLyk5Yql47Ep6y3uU5iad0+IIdIMcUsnL0nXt\r\n/1a0SoOAowLxyXKChi6bGS9QKcTgBoE5S3ZGaUIGrnrGK4w2u8Wpe/aakGl2\r\nLZvQXIN2Dw3afq4yW+GbcgY3EaZvbDq+LSO/RLKO+RzlBz+xOOzU52MI1+g3\r\nYMVh+HI14b706HZI2u3O88reFI29U5bE1amSGE8dUq9U1mNNC92I2LrLIJ6K\r\ne8UCZjWay90OMIQL8Zmeatj0FlFXoyHo1lqmEAn80nzg1Lhox1y3H/V9O/ey\r\nO3ZTCtj3Vm+d4H8U/lq9Bw/MdbtkEZLbEX3xQp25R+weXGnydE7QA8aBmhmY\r\nEAM8JhnS/a/AQY6IR4TqAoWYSfuQZhY7GjM=\r\n=ixL0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"10.0.0": {
+			"name": "licensee",
+			"version": "10.0.0",
+			"dependencies": {
+				"has": "^1.0.3",
+				"docopt": "^0.6.2",
+				"semver": "^7.3.8",
+				"spdx-osi": "^3.0.0",
+				"@blueoak/list": "^9.0.0",
+				"@npmcli/arborist": "^6.1.2",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^3.0.1",
+				"npm-license-corrections": "^1.6.2",
+				"correct-license-metadata": "^1.4.0",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"aud": "^2.0.1",
+				"tap": "^16.3.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.1",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "686102fd75b332e0943aa8b3517134e1559918b6",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-10.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-gvn5JHCNuchGGjjIm6FsK4qSOTtHkbUfo8YKW61hhEIk3osEf3fKlCH9ma0j+HaVESrOt0YUOmsi/wusKSnneQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICJ8imc654i3OCqAuDfXysUprWrUxPG/NxgUBxHh+wYQAiB580m+cssBiPZvy/3L3ivlkv9/ADmYPPiVM08bJxmSAg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32039,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjdm0TACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqPxA//e0K3CJFHdiMjReVsdUxR9KVVAndP5ewDQ0okhcSP8QSY0FFT\r\n49jbWZECnVkqixPvP2X3vbYtxZzD5V434Wr2P/UkfhdNQDN7TlafhvI1Etza\r\nt+ldErJhZRvYJgMnirTOoC7gs0btJqH3hnjW32VyM65x/AbzUBrTGVD5rOJO\r\nQmZefX/1ntmWlDwP8bLB57I2v3A73PuVDSwxn05rofnM/LctHtCcLRKC48W9\r\n+gUP35t4l8wA18lbIFXoPJe2NCFLiCR2Kto4E0eaVBijPHHDsYTxLbUAuea5\r\nm8WkaFCYmWJyn7586KKT6P0M6biMKrf76+o0bJ0YABpyr6qjaMncXZiWC/5U\r\nQvwa9GK0hAT35qIAiOR1x14dDJo8WJ92bx5333arZn1xb5FP+zj6ZExABVO6\r\nlFuo6alFGnUAwulMls1SZus6y5bw/+ZbCN6q07Kx7w3Y/ybwkqF+f3sgZKvj\r\nO9YfEbx6Kytdn3jDGClCQSjKCpHU0q3UGW6/jtQ0TBPdH1/m0kXj9T5pPOol\r\nDYdiuXSa2Uhl6hk3z5TbM0Mxz48Q/auiDKP5r+ZPDWrFEIdRn8luZxJMspvd\r\nEy/e+1CvyvxUFduvXBHxVaWwLVl9aGIeuPoJLaCTb/Txgjr8JpClvGG2tGyA\r\ntA1uMXptsCEAOOlR2tXo5e/m3Wq9TdkLMno=\r\n=X2K/\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">= 14.17"
+			}
+		},
+		"10.0.1": {
+			"name": "licensee",
+			"version": "10.0.1",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"hasown": "^2.0.0",
+				"semver": "^7.6.0",
+				"spdx-osi": "^3.0.0",
+				"@blueoak/list": "^9.0.0",
+				"@npmcli/arborist": "^6.5.0",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^3.0.1",
+				"npm-license-corrections": "^1.6.2",
+				"correct-license-metadata": "^1.4.0",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"aud": "^2.0.4",
+				"tap": "^16.3.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.4",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "f52a121d392179c959122d01f0362f30fef203de",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-10.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-0Y4/H7I+sJWUOxtMcvZ+i+IYUUkGSCC5qtccqr++BUilFCT/oPC5N2ok7BfZHglvsEjsrY1yBsz1Zfmhs88ULA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDzL4mMZP61nrTvhNJswUkLFHEALSJIU7VU2G8cWqF3+wIhAI4RMwWyuCe7upr1yzkROwEDd2hFEHDADQNrxFE9voVs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32338
+			},
+			"engines": {
+				"node": ">= 14.17"
+			}
+		},
+		"11.0.0": {
+			"name": "licensee",
+			"version": "11.0.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"hasown": "^2.0.0",
+				"semver": "^7.6.0",
+				"spdx-osi": "^3.0.0",
+				"@blueoak/list": "^15.0.0",
+				"@npmcli/arborist": "^6.5.0",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^4.0.0",
+				"npm-license-corrections": "^1.6.2",
+				"correct-license-metadata": "^1.4.0",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"aud": "^2.0.4",
+				"tap": "^16.3.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.4",
+				"ls-engines": "^0.9.3",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "76d35a34556fd0bd465045f8289eb0eb5caab35d",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-11.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-7SdEibpeYl6P8ng4h3qC8VhoW4KAJ22zu4OuTw5zy8lE1+o10HnTu6ZBSqtqWcs53Fnbn53+7HnbshrNXHdeZQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGnd1HtYNDYxf5wAVCKiGSfX8DnwW+Ehyc8V9Whl8fGYAiBAUAznUL98vL8pueE1hzMYrost3kR0J6htr3hFqEjjCA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32423
+			},
+			"engines": {
+				"node": "^18.12 || ^20.9 || >= 22.7"
+			}
+		},
+		"11.1.0": {
+			"name": "licensee",
+			"version": "11.1.0",
+			"dependencies": {
+				"docopt": "^0.6.2",
+				"hasown": "^2.0.0",
+				"semver": "^7.6.0",
+				"spdx-osi": "^3.0.0",
+				"@blueoak/list": "^15.0.0",
+				"@npmcli/arborist": "^6.5.0",
+				"spdx-whitelisted": "^1.0.0",
+				"spdx-expression-parse": "^4.0.0",
+				"npm-license-corrections": "^1.6.2",
+				"correct-license-metadata": "^1.4.0",
+				"spdx-expression-validate": "^2.0.0"
+			},
+			"devDependencies": {
+				"aud": "^2.0.4",
+				"tap": "^16.3.0",
+				"rimraf": "^3.0.2",
+				"standard": "^14.3.4",
+				"ls-engines": "^0.9.3",
+				"spawn-sync": "^2.0.0",
+				"run-parallel": "^1.2.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"shasum": "e12be40ac5f3f0e0a2649655760c84162af35475",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-11.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-aRpJYUWfEnfpFPFLlzh3echPwwpx2GkxEMCJwd1nAqGRfjdDJOQcOcs/luGtdOdIMqJRKY/MutqkXKZId6TKBg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpH6VAMtngO9L+qw3lRwR127YlbN2LGEZV0r9p5W+ecgIgRDOfXDSPN+A+HPPcifI/kN4FY8zUNTYK+GJrkSWLL0c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32503
+			},
+			"engines": {
+				"node": "^18.12 || ^20.9 || >= 22.7"
+			}
+		},
+		"11.1.1": {
+			"name": "licensee",
+			"version": "11.1.1",
+			"dependencies": {
+				"@blueoak/list": "^15.0.0",
+				"@npmcli/arborist": "^7.2.1",
+				"correct-license-metadata": "^1.4.0",
+				"docopt": "^0.6.2",
+				"hasown": "^2.0.0",
+				"npm-license-corrections": "^1.6.2",
+				"semver": "^7.6.0",
+				"spdx-expression-parse": "^4.0.0",
+				"spdx-expression-validate": "^2.0.0",
+				"spdx-osi": "^3.0.0",
+				"spdx-whitelisted": "^1.0.0"
+			},
+			"devDependencies": {
+				"aud": "^2.0.4",
+				"ls-engines": "^0.9.3",
+				"rimraf": "^3.0.2",
+				"run-parallel": "^1.2.0",
+				"spawn-sync": "^2.0.0",
+				"standard": "^14.3.4",
+				"tap": "^16.3.0"
+			},
+			"bin": {
+				"licensee": "licensee"
+			},
+			"dist": {
+				"integrity": "sha512-FpgdKKjvJULlBqYiKtrK7J4Oo7sQO1lHQTUOcxxE4IPQccx6c0tJWMgwVdG46+rPnLPSV7EWD6eWUtAjGO52Lg==",
+				"shasum": "fb98cc2a650dcbe6cf1a1daf509ce753cf5495c9",
+				"tarball": "https://registry.npmjs.org/licensee/-/licensee-11.1.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 32503,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDFXDkQDqAjNuX+OLKyVxcfSjcuiPxGBFlBRFx7ENwsugIhALJStdCS0KC1KnpuSbS1IWrJYAZq4Bbqbh61j2k0aMkH"
+					}
+				]
+			},
+			"engines": {
+				"node": "^18.12 || ^20.9 || >= 22.7"
+			}
+		}
+	}
+}

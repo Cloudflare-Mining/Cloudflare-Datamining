@@ -1,0 +1,1134 @@
+{
+	"name": "@slack/socket-mode",
+	"dist-tags": {
+		"feat-socket-mode": "0.1.0-socketModeBeta.2",
+		"next": "1.3.5-rc.1",
+		"2.0.0rc": "2.0.0-rc.2",
+		"latest": "2.0.2",
+		"2.0.3rc": "2.0.3-rc.1"
+	},
+	"versions": {
+		"0.1.0-socketModeBeta.1": {
+			"name": "@slack/socket-mode",
+			"version": "0.1.0-socketModeBeta.1",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=10.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^2.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^5.10.0",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^3.3.3333",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "46183c4149b091612956419cbd9422237c394b0f",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-0.1.0-socketModeBeta.1.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-SVsvQV8/0do/x5rIO0ObOIP6Lb//JDa9vwB9z/IcGxhUxczgblG3dAmN9Xu4DUIChBJbMg3MEhgl1uIv01gAtg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDnkkuWOoLpsX50Z7oFT3UiYIJhGXsned3lxTtcJxzGtwIgCcjOAsrkpd5h3czjdrVSMWUwhSdhSAwFAD2qFc2goLE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69620,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfYm4GCRA9TVsSAnZWagAADi0P/1ZrtB+DRSpVeCN6LSVQ\nm/meei367HWareACZIm0QjzXxQzFh2tqN6BcDaK5FMfu3k2v12naRTV69yFy\n7pMaFNXZmPRH47TFkGLCBAx1q/Xug94r4brIEsgCMP09Sd1zJJrQBvDn6guh\njdpBa9r1tf27LdghvngvP+iTKt0WEIYQS3zR8BSr2McF8+nQvSmszCH0nJXe\nJ7eiUzrLsR0kLm4kcDlSXlPHN0qv/az/u0y93sVh4eGgSSZS9lEvCQgZltDv\n9pJbpIABTPA8b6foNCBqXtXyU/Kt96NaVF2RsOyRUn3NFjMewMVaTOPuTze4\nzMZw2odBxYaVZkPFp2/eg3TEnIiUCPKqhpXWsNyfOAcJ6qm1FSDdHBkaI9gK\nuc65tr+fnFhu39Of9Jb88SRACc392/qoxAm9+drPEpaukLyLl/MYiElZCNs+\nOhmEktE/C5EjCp6V6Sq3zfgGRlnMZ52W1A+a0GkYJ5qanH/0qH3ayirgZcya\nWAMC/LhJw+FL7fYVXWyVXCMUTO8MsbI8EZEluUiYvjcHHG6iBR2wzlT3MPj+\nd8cbicDW4HHfU0ooi+li4RCb9mTbe4ykdFAysIMxhtZhvomg22JG7C1UDjlK\nZXgsWzNI4lHiu9V3296Yk+AaBHs1/pe834QGfz2OfFTZPH4LqgSpvcQ2dGlj\nvpsP\r\n=n2UV\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=10.0.0"
+			}
+		},
+		"0.1.0-socketModeBeta.2": {
+			"name": "@slack/socket-mode",
+			"version": "0.1.0-socketModeBeta.2",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^2.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^5.14.0",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^4.1.0",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "3bf8777de9b7046285ea1e5b41edf0f0b3e8bada",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-0.1.0-socketModeBeta.2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-VQwmhElKPQ99c/mN5CqymowUfGEt9udpyh0ohX9iWlE2ou88BVHbToR9KT2LcI+JRLp3BtLHJCBzDfNXy518hw==",
+				"signatures": [
+					{
+						"sig": "MEUCID6ckpQpDuqpLCISnVkailzoe9jZLlsBWq91YeFSnTn/AiEAm9qhc7bMSpRverZtWInFKlycbcaemqJtAfbdOt0hYOI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 68283,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf/QjSCRA9TVsSAnZWagAAKyAP/ikPjNXwTsOLx01B3lmp\n8l5F4bBkWnmxaCECpbQ+eRJp3Vs7o8jR3OH2bjAVgciq+oAqao3pc3fKojdS\nG5vd4zaqnQWFZddF6u7ZYVZXzcK33vQw4sl2UFA81dOo1UE8D8zYiTWm3la5\nzjWj/hjRhmloPugfv4tIMQSDarU2n/BRVm0C/m4gDkMjFQ75M/w5FKBvGxQb\n2aQG4azOgZgEjJtwa2WeGi5uIVcM5vm1K0K6YycQp9Fo+/PLgc6Z4e7gn3O9\nzYJjpYLK5iUCbFkayb7cISh6k/J0fnzBRuCfSq69GcrnNILX2QAmBPuTBLaw\naxU6cIhLB83usInh/N+wIItqizN+pwXx1RDfWGCh8ZvIsalfxc4iesJDpUH9\nnLsDrCXN2QyGcA6YLgz7WBjqAnd+hHSQ7r/k0wv46Lb4eBuJM1iqidNkvJWr\n5F4BhnbVEtFUKpyATP9azp6JGMardWrniZdLdKDiTVQmSLxGmI6RKITa2Vwe\nUp5R1w4qvNc7q3dD5yjY18S7jO/mwMDgy7Scng5XRMolyROjiCJ/EMyTbTsd\nuh8SNrmjnMPtrmCCeRf09uO3mNHi4pD4SsmFIB84NcZjK4trUfZDxQ0Rlyrt\nXe5s69WhAzGIITwccoeIN0XEzLaNVF+HLxqgnc9TqmkcWuxrpGCw7CxPaQ6p\nECu3\r\n=Pt8O\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.0.0": {
+			"name": "@slack/socket-mode",
+			"version": "1.0.0",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^2.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^5.14.0",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^4.1.0",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "b774e2e19b90b6a33f652afbd2cf2189eb7d497c",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.0.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-uDhFWljDsDjS1aME2gxzmbLvBBmPfOsEipI1+dPWEQdkcfGtM0Cg/TnqjbarHm58yNwAV6iS/RebJMC6CkeGEw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDc+RtMdbQf8ugv8ZC4mGMACjMmLx/OxOvC1nm5IByNMQIgX6QrDzXUccxJnCTCNaBUM3Rxc9VKRJlcwY5yuGLCdqQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 68266,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf/f7RCRA9TVsSAnZWagAAb78P/R8buecOKe8otLRdwSUN\nHlgJmAR1h6f6h5IwihUzavNcioJ+dpXx6uKAWAPKAxAZLP5k86g0FraDhqGJ\nDprw9mI25bqVeuJimHCpitTuIaAiH1440PJfogbSKDg2HL90r3ei1K6OddaC\nlIa94kobiSoYYavXcY5MGd4UIf5ul8mJbb2WiVC5fK4i41SSMZxvTGek+6r0\nbk0M5f8DbwcdH1Q+KZaqW9IAcZrZDxeE9Pkj2VYrUJC+dM1JMcAc+bYH8Lvu\npJuP4JQg414p3GWdcDgwSuNyjpGMVL9vBgYw6CfwwVy6Kth4sI+vm27zz/tt\nfT0tKE3bAVaoxUkjnWh0EyO0kiHad1rWyJv8N+fbN1j7z0iUeeay3otYifMH\nQC9MuzUjwUDZKnvtT2b8393nCK2bjGjGlujZCD5WRqcaD3QiiZ86eC50PyjN\n9kmRo1p5o+O8hRSybbu4DKSAUZzoEfUaAYoSWvTpRXErWinZmF6o9NRcms0B\nNCIgMNWkEwLL1Jg9C59cK9AI+OWZf21+AhW+JpBcLG6eSy6Ov0vfvifDqsAl\nmohchRfsDs1w/ys9gUOhOq+CZv94WU5xfmYjnHOiXIZSqvqizNARyP5dx7pn\nXmoYL/C56TOxjgelx498gGOIuXy0LSi9J4tCK/ymwJcOQz9S67eXmmhM1dDd\nfMMs\r\n=M6uB\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.0.1": {
+			"name": "@slack/socket-mode",
+			"version": "1.0.1",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.0.0",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^4.1.0",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "d8c0f0a07b16a596547bfd2703fb89e69c6bbd9b",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.0.1.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-LufRuGgTw/1bpQph8a+gwa5sSo7w32RxRbVwC0oGzjcw/uOyByBYgRF1BY+dyY2QwfZju5FbRk8KbaHBO+Tw0w==",
+				"signatures": [
+					{
+						"sig": "MEUCIEs1vHVJaomKsY40wft85h0wF2rcUWrDrgfL6RPLgmcaAiEApQW6Z1LEZdAC3azJHU9g9FG//aq8NvfU1g6uswt8u38=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 68162,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgEHMoCRA9TVsSAnZWagAAObsP/3zsJYZEj8xO6MNpt3ca\nNR7cLGnVt+uSDppshKhr61a+yvDq59YEFwcyRtPq7knmXeTbxLgw42SszT6x\nvoqexbg6aAEq9wr5/pjI0AkHCUPqoT1gwEZA8utPpiABxOBD54GvqpDPLH7d\nx/nLbnv2BlDdWpAVnGHqK4t6PdCeqOWp7+j4snkbFg4uTCp/CT95GD6n5T7l\ncLv6ZpHVenyKT2k9Z18htmuOYiHVtsWjKKc6Hv5J8WQjQzkKrMJUq4dCODop\ncYqpRw51M3rhsZR5FWqIe5iG98/r3HtE+7CzrAM/DX8gHI3t6OOHAMnhmWYe\nkct4I/P+jCssaRpqlwtOeKeA1+34UUd2rZQ36VCFeOjGnV+B//WmyotfKlEC\nlMn5r7XtA12rYM/BZ3SEJ1sWyYg+bG3VSaR4+J5C6gs4Vld7GjeVFKrrIBhX\nojuUxGcEBTM9KL33WC4Mijdu8JlhIkHPjnxFFOgqEKoLEA1taQOErFrT/Hdk\nzG7r2FcZTQY3o3vaJnz7slALe53BSJqPAGje8Wg4mp15NTtSVy33DR9w5IwP\nrBlde/Dr8HAAmZZCylfbhUMM7hceEAqXhbsckUibaYhjeMn1FiaRJc/qcplx\nVGa/AtXQw6ZV/fbZe7lAQSGhycQxBCq6eEloNvLLSJhwJi+Fwu6Jq6fJS0L6\njcxz\r\n=RGDQ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.0.2": {
+			"name": "@slack/socket-mode",
+			"version": "1.0.2",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.0.0",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^4.1.0",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "c805a627aa6528b888ad236872d082b40ba4247a",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.0.2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-Rk5FyfZrSXra5xi8u1ZhnzzqOMUcgCcIxTHP1CqnRPymrrC0j1QqzKh7uhQLw1L4Ah9PKs3ObiJe3rXQJtAd6g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC+pKrRXafKU6jrjt47/kVg4PpS3L0TrbkTTyDD2gcM1wIhAN2qDzPPTh8WV4kU0HNYuBD3LxNrHHRhD7FkMCfUTDtl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 68181,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgR8/xCRA9TVsSAnZWagAA4zUP/2UXD9c7xTPYu/5nqG18\nqluG5L4OvLy8PR25D22fWpgSPM4673EcpRQ6BG1CX/w3OilX5K3ktY5paITs\nuo8jpLkUrzxjHelbY8vMBnzqaQXPRDsrIddhwaMvs5guaRSVzKqOeva5WUov\nxnbOBBtYCPrRoAX0fVFCLE2CREHAzDV6RagvzjjnmTXOFFDFbxQ2F4iPYnxv\nneP00+Wf/FQ71/fq3NQz/9pND+Yf+NSAFL12Khz6RxZscwqjKSkU8OlN799C\nmRKc6egzcJ6maoj/bpcvB9imwvivN61QoSQVRPwmGaBqEN3nUMtsYf+Xu6ZB\nFsD5/+SN3WgjYh4z4cO0nyUDPFTQcLXzgFwBIDzXke5SOcVq2T2MM7m9EeWQ\naCeJC+ZIjP9tqB8Q1XEINZ+IjtsshbYn5L6RlWoCkkhjxKPzhdViU4NcRJQM\nlW82QwlREgSB/3c0UwjuIwzquQoZDrD9xzr1rHYyxkrMUzgKO3DTRqx8tSn7\nB4FJZ03k349iGeZMCQsHzxHuDHVL6yChspnNY1X6mXp25Z1QcrQ551Y/BQHK\nLuolrHvl0bHNh5G9O+T4tisJklIgXHQGzhqitYHHjKdXRKRZ3G4S30ozuR4L\n6YbAqLTyC8LbFqqEvN+EKBYsD0fCDcNTYMb3XD9aprhdq58V4b/GpFw0sdym\n5oBg\r\n=Y3CZ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.1.0": {
+			"name": "@slack/socket-mode",
+			"version": "1.1.0",
+			"dependencies": {
+				"ws": "^7.3.1",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.2.5",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"shx": "^0.3.2",
+				"tslint": "^5.13.1",
+				"typescript": "^4.1.0",
+				"tslint-config-airbnb": "^5.11.1"
+			},
+			"dist": {
+				"shasum": "f91ff24a0cf35cb7fb8e411e65fa96553a1c1efc",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.1.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-Nncad6yRjt23+qXlyKedyihsCvg0oQrJ5SMZN0HeAKxWPI5jHrUtH2q0R+spRqiRpP7YSy6F+na72v8Etz3nog==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC2j3c2aRmf4vq043MRYGmmSph4QPPg4bK7gtKZvp69AQIgBvsaWnD+WaeSeNQvKfiYPXd1MrcVkcGN6nAlDcQQ47E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67871,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJguJGZCRA9TVsSAnZWagAA1X8P/34sTyz8KK6TqP7bsRkp\ntVWQmiC/HTUmF4+By8M+HTx/30fpCob9PgVUyxNsOE14cG9b1qo5TLSLjYBM\nRRd1N8F/d4QdJAk9ofGh4B9f7N6+QNYNkEI9WjYEUr2I26xB5dNAMijWx6RU\nYfe2qXOiNCMMtwQYZUGKfa+aVKMWiUl8DQO2MKcrxOvTUt3uGnVqj4SHHy7g\nn7oIdizXrfDVQ+UV0UTzruBwhE6Re5UQWLFTA2udvupBzZHVviwUnCGE4ZLa\ngQ6L7UNtFbvaeZDcRrkU9HF2lM3wllwOkD/KB8xeDQ0dOLMr4DVf4dFlaCbU\naL2ZTcglaX0wxSztBgW3jv3tRww/zEWTTqbCz78mGhP+R20C34dhUFt7Vye9\n+ANH8+tkcczXsd8IluTD2h83eYYdgZn+yLNuBySRDGrkZfZ6MkRsD0JmtqNc\nNIWETddJbldJSfCdyKLXf9WFr5lN2AJapTI582DNqd/xyZqKldbQFIqj79d2\n2Z+xE4rWlNCKHVzBothf/g8Fn/ocQYUkDDNOFeltNcr+OeqQm07SHzXPjR7m\nIad6+ZezWOcFyIPQlySTPWa06e3xmD4ypgICF9o7FWHakep1qwxkZ2EbWSK6\nrPYQ9noeUJLWpRbZFF7GdZNArhbBa2xxbO2C5hyC6ka+aAbP98jFz+0R29IB\nSEut\r\n=3Z2B\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.2.0": {
+			"name": "@slack/socket-mode",
+			"version": "1.2.0",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "1a64fa3b5e864e7495391e142ad56ff0a80193c8",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.2.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-k+WAeMoeiivome/cfscyAHfVFL8/mPhz3p6NIz/LA9vJ1nv2cEPow/wLqzWM73xqlHARCxQWh3gqLqCPHvhXbg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC9oVxLd+3o2X3MypFnEVl4R6nEOainABDc/6b5rCC2DwIhAKizCgRp4PnIyVdgc/XU9y6z2KPy4ZUoSHKQATmoHdz8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 68875
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.0-rc.0": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.0-rc.0",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "d8b8592f01372ffceff84fcad4415828e24cddfc",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.0-rc.0.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-FcxxcdEVLF3G97u4yOQA8MAvxAZ+8AYVe8Nzgw0Mmcr+2Fm5cPDpz9eOo41OYhmpQBzZyroBMO1gtJ4NhaR12A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpt/sCkvF8kMrAruFAnsUl7fUJ6ncAZmtcjCBaZOPvvQIhAM+Yu0ALp5QwBh/hrIzVwvdAPo3uhFoYLQIm3BMy6ix6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 80760,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiWPTSACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrk/hAAnOXWCQI2bDyJ17tq/r+eZXsG3X/0LNfJ/FGLzK+pPnVYIANZ\r\ntKb5w3xBaZ72AvY5jUEBjYQbV6xUEwl0POpp3QafZ9Z8Pe/47OW2Kd4xCQqC\r\nLIDF2bb/g2/FuGAH+Wy9bBqF5Ym0cZ1EyzxeL80764LVgR5aWoyRuAyHuQy0\r\n3EimAHuOPj7UQfF0/USKszCxuESfMFoS2yrJ9vamDiQNBshOR2Dqphvj0H17\r\n5vdcgznqdFAnTZSHyjr9wAHlvH5K5kOYM0NFLK7mXgqolUpxPSSovXwytWxF\r\nYNPRLCVk/+gPGpqHSxDqqW4Biwbirv20+F+MFr/bpMxH+KjobWrvmCjiia7D\r\n03khawXT1Q/wuNOYgiLgjafEEAVLT5YH26CuNof/EQGWhnd52UrQxuU/bEqs\r\nFIUlhLiNusarvFXdrxJi+ToOoMDxxi5Km8ajSoJOxejlQnCJgbfOyW3hDcfR\r\nrms/HKpJPzlTeilSRjEwuLWuu6T7UWBweyCOBwQx9F3KfRu3HTM5ZxZSQMlu\r\nxjVuBmU7CMPjKg/nONuTNorNvXG8aJBIOnk03ujr9gBA7dgQf795tM295Giz\r\nXI0O8R2RE3UOq/SlIrlRHgww4tDEJDBbdfKxCYSW6Qu42t1dBD32KrXJ/SAa\r\nnogQkDNkhn2oD/EfT/rYXrSehm0HdBa9Bbw=\r\n=EG9O\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.0-rc.1": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.0-rc.1",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "f804e3be449737da3ad5b3ce80410d528ad91e22",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.0-rc.1.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-49SqrI/BcpQ//ZkOLopfDCcwffvyeh4zdarWNB70e6eR2HVpWcW0vxmXJcSIRQ7p0X4GgGgA8E8gVOK2oGipwA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFSqEFKMoKoboP/EoKPd8euUrmvZYs1zFspHfFFcqzokAiBx0MDJgOVKJngwzTXcc97hD9ktuxKgt9zd2DBkTKnRpA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 83076,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiWrc7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp1xhAAnBRfgiEeosGpV6cbS1l4AdNF8fqM21lvUhf60G7bBTL3rWWJ\r\nx68tbMsFm7lQqF6GGolJzS8IFimF4EY2+3BPHWbB/ZKvdpLZPCttn/NoGUUE\r\naZjjJtptuVSxrXYpoXN2uZ781z/oPIxVu8IKlbxVpK3dkcBDhKxYaVWBODUe\r\njDmckOa2UtAA2YZbPxbJ5ggPWhrIO3x0h+VrTbkkC4n12m6j+b5rTV59t07w\r\nPhpPc8vqgW9jT3Ds40vMWInc5p96f7e4qMZTB8S/eNLcLdiwsqp51K5jPPRp\r\nVLAQCrAsvo0E+8Sya1KCYf/FGMjET4qBGuIk/jIrkYaYm8StwfLHbjLzVjab\r\njhSOh1l4lreG2MfW76jqe8IAlbhvUtnNdBXhntG+4db12uoo6+9TQbyJGjyl\r\niFUSqipxnuMHLAbqcJKk1OiZZQ/vwQ8v7QAt0CBS3C8IcCS8D8ALQ5huUM4V\r\nC0VOFlIqCXIWipi8wqeTiQ4sVFffRyTP6FY1ULnb2+8ruKSaKDnpUA/JC8Xi\r\neTw3GD2jgi4QI5wy10SdD9eiVPe403cPCEXgx+xv2PvHYUQilhsXIK97T94v\r\nVZvKk8P0Dz3XiJA0c5RGez5qIMsNz4MN0U/DxWDHX+/pmTIPaD6MRZ/AvQ8j\r\nP/KOL+GbcsMipE2SCQD3tqVNndtccnkDu+I=\r\n=gFjc\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.0": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.0",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "f250934883d6425d106d68a7317aeedc70d86e14",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.0.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-VPqvcYgamRoZQp0cAQrZ/AmnJHJDjmRe8UCIYeqv5MKVtOMUobSh+ySoQA6Jumtf4ZI0h3ivKsiAGRZH+x+C1g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC84YCh+RVdwmi/aIwoOZyiXKutgX/bq1Y9+FmxzgYeiQIhALJkra5X1TE3vxWzl2ib/7v1AwrK8nRQTE92vGhk4hSk",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiccDiACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrE+A/+IU32DB20BGkFRYJ/V5L7jZnzyvcrfFwL229Q30GppNGy77WZ\r\nZJl/jVtyOWJ/oWuxP41wfsB44Km6mUFmKvw+9HiS1BBi9WrOplPAxgRpwyH5\r\nXTFBV9bLkIMz5nf3PShG8jr7MYgCVkLz96z+VrnuO6bvnctdMEkUOqLHL9oK\r\nNCzrjeclHtC426RS0BuHAwk58if6812c/HwhtfCzhO/4ZLyRshS43Fxv5VjW\r\neE5WGxBn1VXuLe++z7urq8QXtXDFC/Q0fyxpnUTA3LlVqnZyzHKbpqpljXZI\r\nxqB92V8vC/XSA4io+ygRU6Uca8UiWFpdmnyLMQ00V/7n2A1f0cmLsalZn2JB\r\n6aRNnbFbcPJQk4SSD14qbSwqywOoACgl2fMF5KGMx3lWdaF9ugUEyHhW7iks\r\nZGW+xK2vig5ntTpHEhrHH5T4f5Hpb5Tb3WTV9beLfzXqMKlgtIKLcdqRRUpv\r\nMblH79uIRyt4UxasLxFGs2qB7eCWmyeseCbCLXimvZ2kkHgC5pqi4RYm8Tsu\r\nRd4PyWqVbazbnHZGV4DZWSUUr5fnzpUrYFShMOdM+1W98Z6F2cq95Et5C6Jp\r\nHGPjEAUTErpU0X51h5pirFpH/eKRZQ+nk+zop2gkCmTzFTAfWzzdHYCKsHEq\r\nJV30HHi+0FI2uCQKiLjxoqU6WTNUEh9D5l8=\r\n=GY+u\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.1": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.1",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "d83326aa2e068c83e2d03a898060e3054786721f",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.1.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-jAHj4CXZFxCq/pzGYD4ynvZ9udhJxJm26TTfmo/Ed7UiiYqDa3CwhE3jvOUwls4bn6s65QOsiLWIVhGU+L9FIw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD9LF1JtszKwROEj5bNShoa6wYh+bZct/1OamJi6RXXiAIgD9CkAa1+U+h5bY5JLsQqDME+wLCze7soaM8+KWjdxFo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84603,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiqBFOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUqg/8DdGKEi+y53mDgQRuJLINtUoE8SzqXPychkGmTcSymhgLxBV2\r\nKKZgNyOXc5YTvPzf1tPb3YJ+SjQpAYZct+R8bD/EkHBA854fXdxvclITUj8g\r\nYLnEchuE5YCcMmZAJcRY6rMWJG/XWg8FAKqFYQlBt6T7ZMAaQlS5zsxIjQhP\r\n99OTEeDHgASpC1K0DAVvdJFPKe/x1a39UqlDSaEYD19D/ssnAeR4hfd9m4FE\r\nS2/KJ91VDFp3NRBrcB/UMnMnocWEbCL7zYZp0bRZOD6fJ8LxHJ5u3dIB3k+U\r\nkYIRP2NOSLfGQ1calXM59KHGV9ywdsR+Olzn/4/dfpKeJqWmnseLreBz0Gtv\r\nIzBszEogZ3FmDDl+MIOpfiHcN+CNryMH1Dw6dri/IKoeebe/80tC2xOa53o+\r\nlx9ILVc94NA72yw0RBLwN0rRf9ZRhzDqYuuN7wTYbuXS5Jp/jvUZM0V5CLlO\r\nH2DrKMVocWvwp58KOrkqTWHX6dfxN8iYUEcdv5uYpjOIUa4B2dqJYaFmZ1nQ\r\n3UeiuKrIJQsHaQQWgvfl3+Lq7NavJgnAeiToksyuMxQbttHXHlJoEftg0T/r\r\ntMfFxJ7MsHYSncz1aILD3IHEUr6Sjh2hIBWJrJltFebbH9DGeIekoIjBvAPb\r\nnvpsacn1EIYdUwyA0KF/TmHHdiVFYqrCu8I=\r\n=wg5T\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.2": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.2",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.2.3",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "b3c4db146779cb63ec240a10de722deadd907305",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.2.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-6LiwYE6k4DNbnctZZSLfERiOzWngAvXogxQEYzUkxeZgh2GC6EdmRq6OEbZXOBe71/K66YVx05VfR7B4b1ScTQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCffs0RsajG6WmtlVwf9/+vH1CBPWeHOh4l3De1l0glGQIgWN17RfEoB+WmgbT+Gm0mn6OU6TxpVfewJXt8jrOV0BY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84822,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjWAuxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrrdhAAgNjpLYIcBLQ7B8RyoXu2nqzOYHbZ2Ccuc9F2bZ9KXMmpEv69\r\nkYNc3yhorLwqWxVJM5Kto6UisVE8ZN5Q/QhQ65mAJQW+k2V0dJH8a9vEPaag\r\nK0myXFviHvdpZvAfD74vFannQ/7ZtCzkesLTEUaEu/9wmsuYZfQzjlocwtuf\r\nMSN6yxJxtrbbLREbAcxTzEUeZqfBhxi7E/zk/uM2I0kCCDg2ykOtwbKbNRpX\r\nxN2cguc0YvFndFsiCwSL2Ms8wc/VoR8+JBZz8hc9KSmoIICIc5JoOP/+8frn\r\ntxi5fJfLqNWU5t1sVqk//dQfSlUsBy1yxFjmupoBOAChudXDlIXJU3VBe3PV\r\niXYoCQsJfUfbLGGWY/rnG80jbEo8qSBFT5uPgkKtACWUHnEhZ30Ho7S7RlYo\r\nvlKDrxtsE5iWY+bmxglC0IEBzzYcoaAL97St4NvpOBawxflvtnsV0azCxNWU\r\nxm/6l8fRg4xfjEh4NfrtSeMol/1pCvCtke1ipXVX9i0n+GuICfhAHpYAzy0u\r\n2EGQPjS+FE+oOAIbhdzwINrHuAsOA2dqGWZutfq7pyE0E00E3SngXBImMEz9\r\nKTVJ4kEsE2EaRs6d8JAZ3jjNxJGoI84TVcov/d9wkGeOd71hqjfyB/b4J7Jt\r\nvfia6XRPsyQUgOa4vYs0lfI9Mqx+VBQgzmg=\r\n=Kvsh\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.3": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.3",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.11.2",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "8eb669653d5fd4ab3014e966cc5c83134fbd8835",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.3.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-vN3zG4woRtf2Ut6rZgRW6G/Oe56uLMlnz39I08Q7DOvVfB+1MmDbNv0PNOiFgujdKXJR+bXF41/F/VvryXcqlw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGjtflsYiW9FyzV+iSc3g3BcntY/qRNdL/Tvof4WuWxiAiAfQD0loL8xuM4RxFj1wpS5pnvl0EMzXOtGuoi2cKfg/Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85018
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.4": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.4",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"p-queue": "^2.4.2",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"p-cancelable": "^1.1.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^3.1.0",
+				"@slack/web-api": "^6.11.2",
+				"@types/p-queue": "^2.3.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "0bf3ccccda1dab851a456ede3b068a182fd4b476",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.4.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-CBH5hrLgdSRUoEztKSgLk7wKLkZHXovFUNMTIRDBK6+w5tQNBFmiDL9Iovj3sJTu1lwRRdQKKzeMx/oyuoOf1A==",
+				"signatures": [
+					{
+						"sig": "MEQCIBeXE/JyJ0tGJHQfJ3NI/9nwAnlOZQKF8ADpPPE9xHQuAiARlqgzwbNCD92av8FZ2oT6yh3QJrPNc4MJTea9PCo5XA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85659
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"1.3.5-rc.1": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.5-rc.1",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^6.11.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "f37ff4e32aadddbfcec61551858f3268c8ddc854",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.5-rc.1.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-zekEDqRwVCvwthCxjwu73C9RmzsovLcOcoL4HwlhWhyjK4p8/vIfhSDkDDUmt0tVg6JcX2dx19HJjBKHad9eJA==",
+				"signatures": [
+					{
+						"sig": "MEQCIG9On+HbKeWmAM9rXweRyVF1uc7vRPx5Lgryst2mQaqlAiAz6L7fRXEXqDhOovKsStGGOCb18rSVIyWMCjnGajHvLg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85149
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"2.0.0-rc.1": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.0-rc.1",
+			"dependencies": {
+				"ws": "^8",
+				"finity": "^0.5.4",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
+				"@slack/logger": "^4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.0.1"
+			},
+			"devDependencies": {
+				"nyc": "^15",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^17",
+				"eslint": "^8",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"typescript": "5.3.3",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"eslint-plugin-node": "^11",
+				"source-map-support": "^0.5.21",
+				"eslint-plugin-jsdoc": "^48",
+				"eslint-plugin-import": "^2",
+				"@typescript-eslint/parser": "^6",
+				"eslint-config-airbnb-base": "^15",
+				"eslint-plugin-import-newlines": "^1.3.4",
+				"eslint-config-airbnb-typescript": "^17",
+				"@typescript-eslint/eslint-plugin": "^6"
+			},
+			"dist": {
+				"shasum": "3ba78c3853616495c814c7cd974d28b655778ebd",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.0-rc.1.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-GAOHrZboWYPU294CWNRF6itQgCkOlBp2+2SSs6nN0jMKsvVvppHdxvah45VaY2IljShSWqHdSrBSD+iCsMuu5w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDs6j+Fq1LJkpxOOrce5mC0adNXgISuTwG4eKKjhf9shgIgc05PSEBbdmCT1/wToixXdzGfXhr7jPksQEZtHBCvpzE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84313
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"2.0.0-rc.2": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.0-rc.2",
+			"dependencies": {
+				"ws": "^8",
+				"finity": "^0.5.4",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
+				"@slack/logger": "^4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.0.1"
+			},
+			"devDependencies": {
+				"nyc": "^15",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^17",
+				"eslint": "^8",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"typescript": "5.3.3",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"eslint-plugin-node": "^11",
+				"source-map-support": "^0.5.21",
+				"eslint-plugin-jsdoc": "^48",
+				"eslint-plugin-import": "^2",
+				"@typescript-eslint/parser": "^6",
+				"eslint-config-airbnb-base": "^15",
+				"eslint-plugin-import-newlines": "^1.3.4",
+				"eslint-config-airbnb-typescript": "^17",
+				"@typescript-eslint/eslint-plugin": "^6"
+			},
+			"dist": {
+				"shasum": "11217f912711bcd572737377cc0028fe10900203",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.0-rc.2.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-VKUHXObuYBo2YmR4Wh+Ec/IllfOPkjyWMqn9rMHOs+8koat/s4+IvEHuG5TJw6TVbHSuFuoOXaFuXo+/XId3fQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtWf3SQyo1sgMdV02VZEzafk8iZOEPHc6E4wfp6e8T2AIgcXuea9l4iBr6exF/VZ9qb08Nc5Bt7m4/ggkfT752y5U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84329
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"1.3.5": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.5",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^6.11.2"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "d2596281404c46ec23d612d0940135c2bad25f3f",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.5.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-m2J2hVCIxEvBinkNINNmizDZWBa6D9taFD930aknEDi+2DtzFSMhmxci/VeN7DJVUe+ovLl3lPlvLK9p4hd5CQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICk0JZF+1sxHEkoYtBNKuQpAiBFPrlwq6Os7n06JeXZ8AiBU7gm2q2A0yBzroJvxRYJKtXF9STK0QmBrhU7kZeuOAA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85144
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"2.0.0": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.0",
+			"dependencies": {
+				"ws": "^8",
+				"finity": "^0.5.4",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
+				"@slack/logger": "^4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.0.1"
+			},
+			"devDependencies": {
+				"nyc": "^15",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^17",
+				"eslint": "^8",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"typescript": "5.3.3",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"eslint-plugin-node": "^11",
+				"source-map-support": "^0.5.21",
+				"eslint-plugin-jsdoc": "^48",
+				"eslint-plugin-import": "^2",
+				"@typescript-eslint/parser": "^6",
+				"eslint-config-airbnb-base": "^15",
+				"eslint-plugin-import-newlines": "^1.3.4",
+				"eslint-config-airbnb-typescript": "^17",
+				"@typescript-eslint/eslint-plugin": "^6"
+			},
+			"dist": {
+				"shasum": "231cd1ac4da1029c769913707962f4bea263db37",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.0.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-bcTAtJmLof2fu8LIcMVwUGD0XJ93x09tXCiYYUyEBkmmRbe8a1ze62aQkRWXmkM3bFFmNAVkPR55EGwFzQFu8g==",
+				"signatures": [
+					{
+						"sig": "MEUCIAD3PRTB8YuaN4YcuapPY5PjONAyHqXk2dfy85ZSCZWIAiEA4p1wDoSzCyrs8Xzm1nSvg9SrmmapukV4NECoWzEKSDU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84559
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"2.0.1": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.1",
+			"dependencies": {
+				"ws": "^8",
+				"finity": "^0.5.4",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
+				"@slack/logger": "^4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.3.4"
+			},
+			"devDependencies": {
+				"c8": "^9.1.0",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^17",
+				"eslint": "^8",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"typescript": "5.3.3",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"eslint-plugin-node": "^11",
+				"source-map-support": "^0.5.21",
+				"eslint-plugin-jsdoc": "^48",
+				"eslint-plugin-import": "^2",
+				"@typescript-eslint/parser": "^6",
+				"eslint-config-airbnb-base": "^15",
+				"eslint-plugin-import-newlines": "^1.3.4",
+				"eslint-config-airbnb-typescript": "^17",
+				"@typescript-eslint/eslint-plugin": "^6"
+			},
+			"dist": {
+				"shasum": "47585f101b0b7a3e7585e4fc6f9e7ddf1fbcaca2",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.1.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-Sno1Pw+SJ7eY9kLqeuarV0xQWwksILHPS/Fjcs5nxDQuvZS/u72Te9IEhJTZKY1gNuHXo+vfavFXNzDRWC1ivQ==",
+				"signatures": [
+					{
+						"sig": "MEMCH3Hdzp//GSyqinvJ9ngwrpgZwmMaS0hkvNGH1yPJDmcCIA3CDCLfva5busRRBVV49uN0vBKmtiFgK79I1w8Y9MJU",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84671
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"1.3.6": {
+			"name": "@slack/socket-mode",
+			"version": "1.3.6",
+			"dependencies": {
+				"ws": "^7.5.3",
+				"finity": "^0.5.4",
+				"@types/ws": "^7.4.7",
+				"@types/node": ">=12.0.0",
+				"@slack/logger": "^3.0.0",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^6.12.1"
+			},
+			"devDependencies": {
+				"nyc": "^14.1.1",
+				"shx": "^0.3.2",
+				"chai": "^4.2.0",
+				"mocha": "^9.1.0",
+				"sinon": "^7.3.2",
+				"eslint": "^7.32.0",
+				"ts-node": "^8.2.0",
+				"typescript": "^4.1.0",
+				"@types/chai": "^4.1.7",
+				"@types/mocha": "^5.2.6",
+				"eslint-plugin-node": "^11.1.0",
+				"source-map-support": "^0.5.12",
+				"eslint-plugin-jsdoc": "^30.6.1",
+				"eslint-plugin-import": "^2.22.1",
+				"@typescript-eslint/parser": "^4.4.0",
+				"eslint-config-airbnb-base": "^14.2.1",
+				"eslint-config-airbnb-typescript": "^12.3.1",
+				"@typescript-eslint/eslint-plugin": "^4.4.1"
+			},
+			"dist": {
+				"shasum": "ce0b34908c787aaf92e1a41165ac8be882b3019d",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-1.3.6.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-G+im7OP7jVqHhiNSdHgv2VVrnN5U7KY845/5EZimZkrD4ZmtV0P3BiWkgeJhPtdLuM7C7i6+M6h6Bh+S4OOalA==",
+				"signatures": [
+					{
+						"sig": "MEUCIA9ULJihoaBkSDN5sAEYr/udAcTkohpRLR/hpyyfnE+VAiEA6HkUtlJFPmKfz6sJ7m3dT1ZkvMJ3LJCVckYNjhVQ2Lg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85144
+			},
+			"engines": {
+				"npm": ">=6.12.0",
+				"node": ">=12.13.0"
+			}
+		},
+		"2.0.2": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.2",
+			"dependencies": {
+				"ws": "^8",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
+				"@slack/logger": "^4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.3.4"
+			},
+			"devDependencies": {
+				"c8": "^10.1.2",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^19",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"typescript": "5.5.4",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"@biomejs/biome": "^1.8.3",
+				"source-map-support": "^0.5.21",
+				"@tsconfig/recommended": "^1.0.7"
+			},
+			"dist": {
+				"shasum": "82d2a70deb4869d473100e133a14b548f6631078",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.2.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-WSLBnGY9eE19jx6QLIP78oFpxNVU74soDIP0dupi35MFY6WfLBAikbuy4Y/rR4v9eJ7MNnd5/BdQNETgv32F8Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCqRJrd/EXkl1wv28vXNIlVKPLlOtsbGsrQfsvt3wVjIAIhAMJSOFh4skunXWQDOCEZTRXTB+vA/2MpvuuS9+k2XY4X",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85702
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"2.0.3-rc.1": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.3-rc.1",
+			"dependencies": {
+				"@slack/logger": "^4",
+				"@slack/web-api": "^7.3.4",
+				"@types/node": ">=18",
+				"@types/ws": "^8",
+				"eventemitter3": "^5",
+				"ws": "^8"
+			},
+			"devDependencies": {
+				"@biomejs/biome": "^1.8.3",
+				"@tsconfig/recommended": "^1.0.7",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/proxyquire": "^1.3.31",
+				"@types/sinon": "^17",
+				"c8": "^10.1.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"nodemon": "^3.1.0",
+				"proxyquire": "^2.1.3",
+				"shx": "^0.3.2",
+				"sinon": "^19",
+				"source-map-support": "^0.5.21",
+				"ts-node": "^10",
+				"typescript": "5.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-gCmk95nxPewjmgD0UyTAbllYGheB0E0JDVl71EGksFWlnlDqETm3BZk72SMfn8Rt1B6R7nFAUWmo7X2toRNCAw==",
+				"shasum": "24162400cb3b2dfc506c09cb275960ce145bbbbb",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.3-rc.1.tgz",
+				"fileCount": 32,
+				"unpackedSize": 86196,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHJ2DJmCZi3Bt8lmSM/i1qw8ELnWMlb627/6S5rBAPSuAiAornULNmN/Yim58WTf7t1d3FERE58PuMVU+/rpLra8LQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 18",
+				"npm": ">= 8.6.0"
+			}
+		}
+	}
+}

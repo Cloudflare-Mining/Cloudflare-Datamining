@@ -1,0 +1,158 @@
+{
+	"name": "@k88/module-scope-plugin",
+	"dist-tags": {
+		"latest": "1.1.0"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@k88/module-scope-plugin",
+			"version": "1.0.0",
+			"dependencies": {
+				"chalk": "^4.0.0",
+				"os": "^0.1.1",
+				"path": "^0.12.7"
+			},
+			"devDependencies": {
+				"eslint": "^6.8.0",
+				"eslint-config-twilio-ts": "^1.22.0",
+				"husky": "^4.2.3",
+				"ts-node": "^8.8.2",
+				"typescript": "^3.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-aM5vwWYzOnt38FpgsN1MuDNrPRObfNlkGOvo2koH5taNX0d+eWILQYAfTfKhG8/dScOlbiCsiLk404rdhOfmeA==",
+				"shasum": "c59878e3771bfd2111a75c99d144fb058c301f80",
+				"tarball": "https://registry.npmjs.org/@k88/module-scope-plugin/-/module-scope-plugin-1.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 9225,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejMtfCRA9TVsSAnZWagAAGjwP/1IHOy9NMJkKuc+PvNGF\nu7U7F27iVaB49xRrAothsTASRfNfXhEhc7lEEsIxU952B7si7u4mM4P+iQMz\n8cwmjilVhoGt9djaYeJ1tHKXmdn1gunI2yorhj8kf9uY7YPC54DfW3es/pbk\ne+7c8PvZpHspxmyZZKpbCJN3FOv1rlU34QyjGN5SY9nswFRKqNRR5DL59mPO\n8BtyUS5ONpU9a0GdUTnRZmaXlLNY67xpk2t3gxdca3BYiDFWgBOQTVRh3KgO\n34mYXNDFyGWO3egDGeqT/8iEliCQ/EahhDJkWT7KSeF7ETDKkpMh1+ad7k0O\nuw6wOE+ioXswnw7k1crn2vq/a/0HOHSQ8uUSEMygp+sWlSHCX+O0ZfbjRCve\no6saqa1i+95CNCCsrWuWD+uf1ylgA3ARWCXCLot/MPonwPh7WMkcEnqVqFxE\nbO1ZUbldfr5eo8CFBn/lcrBbUk9fYdHSzLiTXYzovuEuYkGXC7uhMcKqwHvH\n0Q/oapCKtVz9i0BJ98ka4hQg42vBGtjVo6kK+wEcV+IxHNT/VdboNQmoNNCE\n9C/56T2CQEeF9JDleFHRDNdm+JKXv/vu4oEtq3izQbFeWskV/AmxFFiZ8I8H\nCGC5ySErVJefpheznWS1BMc8GKk1jObCcVU60Av/os4mXTXFnhJ1gb2KsZRh\nVL9h\r\n=Tv1T\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIArq54eOgx9hA57N4XMue28l8OjH/UH44rpPDO36MyQ7AiEAgZhtX2OEfOwi5IKU6g7XdXKYbuqrXYo28mwlzGntkK0="
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "@k88/module-scope-plugin",
+			"version": "1.0.1",
+			"dependencies": {
+				"chalk": "^4.0.0",
+				"os": "^0.1.1",
+				"path": "^0.12.7"
+			},
+			"devDependencies": {
+				"eslint": "^6.8.0",
+				"eslint-config-twilio-ts": "^1.22.0",
+				"husky": "^4.2.3",
+				"ts-node": "^8.8.2",
+				"typescript": "^3.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-w21ZF80QAa+OF7FlgIMT7uMzP628phGdEIFefaNStEf9umpqpxexH3ZgKB2aSIWTYIYW3lkGbODsOT1q5Q4suA==",
+				"shasum": "aed8da84e771638e758ae7985aeb83bf86c015af",
+				"tarball": "https://registry.npmjs.org/@k88/module-scope-plugin/-/module-scope-plugin-1.0.1.tgz",
+				"fileCount": 3,
+				"unpackedSize": 4000,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejMutCRA9TVsSAnZWagAAgTgP/jEmRt2N85xIIEcRV8KG\nwgrZ3Jh8PPyTdRxncVOxZwnGbjhA1IMzEQdiUMZdphkmsIZo9MAGXH2xpGCY\n5s8maPnAtXeCcV9pL3fRs56Cgt46QbtMDNeD3i97TUss2mn20MSAFZn7n1wn\nfXk7mhlGyWa7pwioyCG9DoVekavvnCIe2hUf5GMp/+ouKrNyYI8JRKy7/Mrk\nvYmXlR40eWC0NOPrSITWNyH+0ATmK7NBgusu5SkmYfSIlsYfW/Jlsc5XD5HR\nT6FUVk316/KLx0XJj804A5lYsxY6HfeUEi9tKqt9iAtdRaq8k+NxBhdskCQl\nR0U+Zo2bi7Qjat6SIv6gv6n/MRmraAcsK6X/UPWlN1PeUt3qfF8xKrev8pK8\n7ZF672zj3pgasgzkkl/V60S6JZWdPDNcFeggfTsonw/OO2icw4dKUbAOmZvK\nrhHZ59YqsoZyqZNiXrHwczmEqftgPLt+c94bfEhCgxabJzH3J+DxABQGuC6x\nQPlfU2ZSFS4kCXMC123HFOJ6/4/LyaeecLx53ZAFm8X+zk4N9zN0eLWViLEN\nY8qrkmZZI2ytG7bmmVp1rAkzao1GkGBgJXdlKQQuWcgLARbz6nEYsjIbpvND\nPFf/7EPYgsrFU/vXMf+jwYLXTETo4lyNFMThs154G8c7B3pqt458e+cucNI+\nBkc3\r\n=iecU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCepqLgZLTI+z7UL8wttJtKJ9XIbhXP+qxZZNVWYSVMhAIhAIE8/sf/mxQuKLVU6U6mqSrd7x46eUL24vNAgBUgqo7I"
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "@k88/module-scope-plugin",
+			"version": "1.0.2",
+			"dependencies": {
+				"chalk": "^4.0.0",
+				"os": "^0.1.1",
+				"path": "^0.12.7"
+			},
+			"devDependencies": {
+				"eslint": "^6.8.0",
+				"eslint-config-twilio-ts": "^1.22.0",
+				"husky": "^4.2.3",
+				"ts-node": "^8.8.2",
+				"typescript": "^3.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-NJfGaR2Kq6NKBK9y/m8K1qe1eyPJ7rJYtVNPaFd+K3snQBTknCaBapeVG9UxTx4ic31RbljESMVIOnrPtsHBrA==",
+				"shasum": "c13da697c1678d8f3b27e8d3d04bf301f03a413b",
+				"tarball": "https://registry.npmjs.org/@k88/module-scope-plugin/-/module-scope-plugin-1.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 9221,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejMwYCRA9TVsSAnZWagAAAJkP/idgNlaqxIqnjmsD/mZ6\nNj1m3Z21t7wDil32wsZ38HikSwdZGcLTXbYrXHg3zYdbB5gm9sLFT7LRGZKy\ng1ryzC5crOTfQFvAp/BdnIkDTq39qTW93083YpsSXunHSjqINexQvJxqDqu2\nv/fMgoPeibXdmsehmHUzfv0F3ahkZy9QnWXcQckY3PbNzNvGyvCe9G+cOLez\nA25f+hbzfbtw5FnLj/xTCBMMw47j/hkdTojIYe3+WCvQuWx4WcTZRa5OWZGa\nKh/Frg+JPvz46BQ2iDzijF1uerCuCc/0crdRIJJpsnr65dTTqt5iK3SBOhlX\nG5rQnMslMzyDKOtjB2k18N82QAG1NLRJnxVsiS7a3u2Tn0timBKkvJ9rxGzy\naP4JiArALpPuG1Y+87UzB7yUXj2hnziS1NhvoDQivQV44fEDBG4IK4XUWd+h\nepC+wqBMsfTem1Ss8rJ2T/0pkKfcq0RF4Y+e98uSm71MQWjQ/MGoZzycGlcD\nkLKVJaeRlXvCGVWwk+LQNS+LflHC4pUgPbiWdOeKmegq9g6k3jNJU2pgu9oG\n2igW94GtRPUluxGNhL9LLvQW9lRBUqdOrrKDA0aU28KnvE5V+ynsw3u35Gnf\nBRSdjAbnPx8M3HGeYDLa/XNrO7SMS6FmI6QogcalBDm9QbAgD4glYKKHdANW\nPjxe\r\n=Qg2Q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC1/+YlmvG5+vQ8uT5jrNLOtrmH71GgwKfbAwxDj68/fAIhALMDK13z5ZkfkixCV5W4K919Mj4I+Ze6/FWk4jcwopb6"
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "@k88/module-scope-plugin",
+			"version": "1.0.3",
+			"dependencies": {
+				"chalk": "^4.1.0",
+				"os": "^0.1.1",
+				"path": "^0.12.7"
+			},
+			"devDependencies": {
+				"eslint": "^7.5.0",
+				"eslint-config-twilio-ts": "^1.28.0",
+				"husky": "^4.2.5",
+				"ts-node": "^8.10.2",
+				"typescript": "^3.9.7"
+			},
+			"dist": {
+				"integrity": "sha512-GseC2V8k45lE80tkL+mdRS1zlcjJjmtqqJUCjMoezCmmS7i+RbVnhV1AtzyJvVf5TYA6T4gRtBn5ndjRl63SPw==",
+				"shasum": "c8208d997b3df91aa9f4d435182941b616b8f435",
+				"tarball": "https://registry.npmjs.org/@k88/module-scope-plugin/-/module-scope-plugin-1.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 9236,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfFR7eCRA9TVsSAnZWagAAJecP/3CuOzK4YnoZvM/OLbiI\nKVIvppd6k7Vo2BFA1mAUg+x48ajwTZIChQnee9qrei/iLXPIpDFy1NWvauhk\n4AYupcxy6BAI9SOLOJNswVISd/t7l/uuVWz9oIThVVzPdSSeR1eF6gK2CsHI\nNI2HWBFy5+HxTYM4THmpLY2lBbnzvBPsrlfmXTNWZgay1RGxO8QB9N2PubsI\nGdQCrbvzghNp7Uqk0hWyj2qFTO2tU8LGmpqE2JCBELtrwFrk8gB+b7JqN8Ve\nZfUC3nD0aNw15EYAsCdmII4mxy8kOT6NiGOM+5vLCNlXKnHGqAQutHCM4a9Q\nVmHSToqfUydoFC8RX+GaFmFB+72/xF3bOGnRWwRc3nepJiXxJFamchPVcxTw\nPR4/+DRK6s3K26HlMomaupz7D6WoHEEiUXzFO/FxAWLURo8PThSBh+UVv3qj\ngwRlIND0OP5bh6aelczrtlol4cJbUPVHYubvZE2WThg02sgGaczxKGIXd/D3\neloKOXa3TMY+fb3nzO+R81Q2lpWPLIMNIpVL0Gqm5y50+v94wCBAGASMeEVW\nyh8Xu15vcKpklLnPGv0qqP3xt1bX6+vMVSszQxgzIfAe6+bxzxa3rZRD0Uox\nyJTfUtgNcdp2qQCrQTyzJtIjW3YBtWBLvDozCab3g0jheuAWSlU04lJ9o5ud\nOi09\r\n=mIa4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC+GRi/jTp5g1/wmOVvroJS8rmr4kdWhlMTNSKqefy4SQIhAK4jzaBNVBHrRzoIVg3MU8uBwKrc63E52/LuHISUV3W9"
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "@k88/module-scope-plugin",
+			"version": "1.1.0",
+			"dependencies": {
+				"chalk": "^4.1.2",
+				"os": "^0.1.2",
+				"path": "^0.12.7"
+			},
+			"devDependencies": {
+				"eslint": "^7.32.0",
+				"eslint-config-twilio-ts": "^1.35.1",
+				"husky": "^7.0.1",
+				"ts-node": "^8.10.2",
+				"typescript": "^4.3.5"
+			},
+			"dist": {
+				"integrity": "sha512-0E43j12UTJ4FqgP8INKpZ7oYWksJ1jxHDTvRGVRcrFVr5Psw0InWBY31MzjMSJAPuJqa9I0wJIPaER6prIYlVA==",
+				"shasum": "bc06671d71edafe014823f4b8bbd5af689ddd20e",
+				"tarball": "https://registry.npmjs.org/@k88/module-scope-plugin/-/module-scope-plugin-1.1.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 9269,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhFVbqCRA9TVsSAnZWagAAxFwP/ixwo+d7JNXLB1YoGLoT\nHJV6ivKsamgWicLj4p3NPjxtDMVYgk0ZD2XOWyL7qCNgc8h2Si9GED3/zM5/\nmEXwhfZl8omffDfyFieR00/fad45tqKYoeymduv8ooftbO/jU4szDvrZkkZq\nQjfg0m70/u11t/J8AQEYGrAUwsVThrwyX/9gqp+zIYxJdNI/N9Xi5Fr44bh4\nmjhZ56+1LTh6hwCFRLerIatc+Il5XMTfmh6wEBW/bhtvYNU3o0jsmr12Ee5a\noOL+9+F/dhg4jHuyMvXoqdd764OpKCWFQIit4CV6/hkW/44gRVQtNhwBigbc\nFBTeCIBOMgUk+2e/0xT7qzYzuTIddC3aGDsdBLIJkjnL0Kq6yovNNavinG0H\ni5hBZCjTgTUY7R6NR4SeNoYgiEdzqL9Q4rTD3Q9DJiJS02ETgp6s1GUw14pC\nb55M1+1DogwgeeEUweYXLpRJHCVPlo4jQfRBwr8reWSW93CFdUC8CfroBNcb\nfbicQctRjDiUJuynEK0ohKFIrrW/aGgyHESEtTI48xMDSc9PQw5dppp+BNhU\nh7moJKPHdaI2WG6xcLuDgshz7SjQ2w3W9KV9GSb5tsRNhDfi2Yrz6siA9Nox\nhHGG/NLfIgpxUneDgtpvL/VRhMaRxHnrDXqOdOVunqJFu38YA2OufjsZl/+r\nV9T9\r\n=kd0Z\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDAXyD2ripNc67uUj7Wyda/SMnuevACW5wPD9dIPAHwdAIgcGk7dsBaqZLuhSFhaLU3vhYHvYcV42N3Cy3lW8WwgtE="
+					}
+				]
+			}
+		}
+	}
+}

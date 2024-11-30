@@ -1,0 +1,2853 @@
+{
+	"name": "gql2ts",
+	"dist-tags": {
+		"latest": "1.10.1",
+		"canary": "1.9.0-alpha.5ddac749",
+		"next": "2.0.0-3"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "gql2ts",
+			"version": "0.0.1",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "1277a3ed6f464ede9050deb0d48f95a088023d76",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.0.1.tgz",
+				"integrity": "sha512-H2Oqo2aL6vzQ7sBziHQBl+yS5Htz3uc9brTRLMxap28jLDEF82EXrvv2xtBGcXT5CSADwG5FCcVYW+sERNCoQg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHoB6S/mpizEy9kHXRGjw1UhqvrcipJZiEMjfsmqZkHNAiEA1rl+byp4CKYEHRFTiOOaTzAcRF4S/EqnUFqpt7K32TU="
+					}
+				]
+			}
+		},
+		"0.0.2": {
+			"name": "gql2ts",
+			"version": "0.0.2",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "b12c95b2913ab0a14b0109bc26ba88d385ba11d9",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.0.2.tgz",
+				"integrity": "sha512-yKEd3LuyesAJ4uO3Fg2fk6eU/diLtLnUnwF/sNGcj14ehG+Ndp4Z6ZVoW5J4j4YVQNGNPpLFdM9MTbIue7He5A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE8pNjvKlqVnLc95vzeVBhIgoDZQyi9m06htHYJs1qCCAiEArzExLLrJoHSTKmpZsDF37B+/gKTNzv4epVmPGnXlzsQ="
+					}
+				]
+			}
+		},
+		"0.0.3": {
+			"name": "gql2ts",
+			"version": "0.0.3",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "9e61b2a1b42514e4ffe61711ab1b6c4ad0235f51",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.0.3.tgz",
+				"integrity": "sha512-hjHhDEcSfOlg2bCgwCzRGVTntOwCNTc8DxHMiCBlyhAsVvfnxqFHvaNfDtEyfJHKLTwEJiaLj0p/R2DlB6xcrg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGXrN8fbCnqNdbKskxybE+CtoSnRlpMveASxW300wymtAiBO/4kfmoTm4xfumfyu/z3g9uMszHfZfP6hG/4MU9UiHw=="
+					}
+				]
+			}
+		},
+		"0.0.4": {
+			"name": "gql2ts",
+			"version": "0.0.4",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "86021793ba83511ea1bceb4a7fc1197b28253fda",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.0.4.tgz",
+				"integrity": "sha512-a4azf0Awf94KKVPgfGzFKFc+OYpikDW4lY4dXNGflqM3euFLN7XN5u4ZomIdhq/+qVGxImCGZtReoFSM4Rq/aA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBTM7D5bTa6SBd64jj2G9IsoXx+sNYN3tQYyAqcPKc9EAiBcjjl4mG2QMGT03kLc/VWnNRVp+NOWJCEGSPZHpe8JrQ=="
+					}
+				]
+			}
+		},
+		"0.0.5": {
+			"name": "gql2ts",
+			"version": "0.0.5",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "9a9bd0fc64f00df6c9651ce8fe9243b4d2173960",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.0.5.tgz",
+				"integrity": "sha512-lzppG1O8haAVCPByuTZjKR1dXQn5VSinrsuYiGXtM6nM3GRcvUQJ9th8zOKUDwGhtXmElmtnFdydUIUzse+t5w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCM6G4Jp1nUKZHtEs+bM4KNW4tJmtWm6S6wAqmWfI2hHQIgDJqEyDX0w6A8fs4tdY0VySaK8/jesAsxxXeusqg0Tw8="
+					}
+				]
+			}
+		},
+		"0.1.0": {
+			"name": "gql2ts",
+			"version": "0.1.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"chai": "^3.5.0",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "c73930caea2eda669f5c7287fb66d90bbcde3ae5",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.1.0.tgz",
+				"integrity": "sha512-D8L9GonALLtFFhnlXoDCRFKaI71r0sg53BExvBKYZ3ajEoi3zLos3pbiAwBvlnPhT56mKAnt7ANMxzbjkXjJOA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAa/L6A7DVjsgZfVaoDyGkrYqKC9PE42S9Mt9qurfT1BAiBX9Egx2dsPaPjF9hzS+37ujsvZLp8/cY1COeM0d0UShA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.2.0": {
+			"name": "gql2ts",
+			"version": "0.2.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "d7aa7099372bdfbce440c5a4bc9616793e8f476f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.2.0.tgz",
+				"integrity": "sha512-TDR/sqKSQj3d5nuiMzdkms1Y/VltryT1Z1CslbgW/4NvUzZ65bBmpcHGcNeAA2GieCt4I23m5BU/IbTQyCAsKA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDSjjurjTFBNtFtA8fMMQrYwSfKjr0fu8VND18kaBcF8wIhAJu9hkuK5TCcp4p+7L1vy+v6PHQESXj+Sqf4wUnIeiPN"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.2.1": {
+			"name": "gql2ts",
+			"version": "0.2.1",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "3740c723ae8c8c4b0383bfdb5525633881759e47",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.2.1.tgz",
+				"integrity": "sha512-YMW2uINNcDYEHFgBosCgrY1zIiNjGKYqFXMEfbC0B23iOPsI2ta+tPymdv6R2YyvlMFXWRHiavOnYlOn2otcqg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDwrsKw+k3EYHxToaqSr5JclDw3Qt925FasYWS0+mhYPgIhAJsyupkotNiLFUo4dNYqPR7C9iiPSuj/aaI7kVHSPeiX"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.3.0": {
+			"name": "gql2ts",
+			"version": "0.3.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^2.4.5"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "c5778aa4c8eb0e5c4d61cce33864b45182df5313",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.3.0.tgz",
+				"integrity": "sha512-64hXj2imJ/81RDnRT5lEzM7iPl3wo2GWl6xbJHUCvYCLI3DdkZlrmjBKVYLRRLfy9cS7OyhfURqhxx81HgXwHA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHxdLm/weO+1JeCb4HTnaE3OGPdGVrJprzI2tGBTieYcAiEA8TRNzN3qkerp7ciaZrrgplda3VrKipCUOLhYb5NtUcU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.3.1": {
+			"name": "gql2ts",
+			"version": "0.3.1",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^3.1.2"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "211055744194d7b6037a9c937a63a6c4a26f59da",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.3.1.tgz",
+				"integrity": "sha512-X89a1XyHaHNt4kQ5KSMUGkyk49W+UkqPC9vIPPR1EuZd4qI+QkqgnikVl3fujhFGbxbqqzwWiWFR+gZwY0VjuA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCdFsQ6HuIBqrS8DGW6MphzfCjbY92Ls3jWCFmW8+ybSQIhAO+TISrFrci9Y5WAP/QHYCItA1MhvAyTkt4czn2Cj65X"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.4.0": {
+			"name": "gql2ts",
+			"version": "0.4.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^3.1.2"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "4a8d72e09b7d7413ea39356d4a60930adbd8d3a1",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.4.0.tgz",
+				"integrity": "sha512-xbIWHNUKqGf5fv687CsO1H3ANZAUxFHQwNi28DNnqOyIJnQCWwwWKHgFwT7Tbn7jj7JRZxiS4QxeiqHUVJt/Og==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDsK9hLXmFpdTsBpdUgpODU/Ro09HC8OD0QDFM7fXWruwIgO03nz4lUcbWCUSW4F1NAlPV3qPWWJae/48D2xYomIKY="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.5.0": {
+			"name": "gql2ts",
+			"version": "0.5.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.7.2",
+				"mocha": "^3.2.0"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "ee29ff50a22fff29e909d551b576e75e81d6e37c",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.5.0.tgz",
+				"integrity": "sha512-whEIOKaFCqwUCHODwzUBUUzy3xhEgcJhMz//TnLnpc9ZThvXEqE3F6OBS9/F5sZaAsWG8wJA3eqoJu6gqXe3OQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD3FFkFFi5XzCy8snvTPoxXG5otnkDiCRT8VWy8dNMXzAIgAR8sl7HiIfWOVf2PKOIB2iaStXGF2WtsWT20t9up3sQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.5.1": {
+			"name": "gql2ts",
+			"version": "0.5.1",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.8.2",
+				"mocha": "^3.2.0"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "3da422d7c61de0b105bb8978856a97c2499c67d6",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.5.1.tgz",
+				"integrity": "sha512-xA+DRNM6kZbrTW6gqyhAvHQ/tJ/mTiW67wKdF7RVMolFahD7f9HrYlLAzu1TRRC9oNddaDTxovHcLzkdROCLEA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC86ftijVyPSGTdDgb61TuDY6kvpyM2ObdLSnWj32MYCAIgJle6+L+sB38G1BoV79fBiy/LSk7wYnZWgsL3nT7G2oM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.6.0": {
+			"name": "gql2ts",
+			"version": "0.6.0",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.8.2",
+				"mocha": "^3.2.0"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "84a8600c09ec2c67981f4709e13953887b7cc953",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.6.0.tgz",
+				"integrity": "sha512-rZ6ZVSpTbwS3+D2y7ml1+TPT9Q44jdmDZzGwVV+RiZE08LlHibygV7sg9+PMlFtOy4lekxZdzuJr7yiRBq5+hA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDGqmy7cbab2iYL2o8PgHRVOe5UqqO2vIXs9kEQUfhAvwIgLf4+i4epImYwaMzppC6HmB4VcQKMhWOP1ff/s/dk1cQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.6.1": {
+			"name": "gql2ts",
+			"version": "0.6.1",
+			"dependencies": {
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@types/graphql": "^0.7.1",
+				"@types/node": "^6.0.45",
+				"chai": "^3.5.0",
+				"graphql": "^0.8.2",
+				"mocha": "^3.2.0"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "9d5ca768b99fd9e52c0df079a8a391edecbadce4",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.6.1.tgz",
+				"integrity": "sha512-8xGyy7yJhbYTeKjQC6p91jIZ7umcSpfqLkR1d+D2MGqremryA17+9biYOQs1f1ZlRcVAg9lVPN8Vexd8kZp7pQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD1KQoy+iIWZ5pOEufWL+VnZI6AOTJmMrQFU6IQgMnRHQIhAJvPkDM9DKKxNhwUq6BVJCm2ebtL3YEGp0GfOs+GXExK"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=4.0.0"
+			}
+		},
+		"0.6.0-alpha.93b48d62": {
+			"name": "gql2ts",
+			"version": "0.6.0-alpha.93b48d62",
+			"dependencies": {
+				"@gql2ts/from-query": "^0.6.0-alpha.93b48d62",
+				"@gql2ts/from-schema": "^0.6.0-alpha.93b48d62",
+				"@gql2ts/util": "^0.6.0-alpha.93b48d62",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^0.6.0-alpha.93b48d62",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "c4183774db98bf224d7dd77735a655438ae02e80",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.6.0-alpha.93b48d62.tgz",
+				"integrity": "sha512-FOyC7eZBxevkXl37gWmlkQrYBFszTrmkntZFDrjwe0QkcP98EXib8brxzKgE9XhuWEdi6Yck8ujeCxF8xH4s0A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG4T4V+qkuAnwGCFxXNqRkKNQCMrzZG4I3txXN5/IEwJAiAfmwC5GKRgsxeyhL/Pa1Qq6keSCLhiiX6oYtfiLEuliA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"0.6.0-alpha.52a568e6": {
+			"name": "gql2ts",
+			"version": "0.6.0-alpha.52a568e6",
+			"dependencies": {
+				"@gql2ts/from-query": "^0.6.0-alpha.52a568e6",
+				"@gql2ts/from-schema": "^0.6.0-alpha.52a568e6",
+				"@gql2ts/util": "^0.6.0-alpha.52a568e6",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^0.6.0-alpha.52a568e6",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "f4823fed940644bfea45755cf33d5f72af61818d",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.6.0-alpha.52a568e6.tgz",
+				"integrity": "sha512-gsV+j7smQh4E5FsgvoxrQ0WQCou7pQwtHXMh0mdcX3NaF6VEWWUxAQLI/DKnHmQlK6NTrVHCEXJE8aWHvBL0pA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCvbeP4hlaByM3/xOC6WsNWdi/WLLQ6qiRjafpUFtP24AIhAIKtSZwpe+hYanFTk7uEFFBKcMOWRCxeKux+qhU5CLfw"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"0.6.0-alpha.cca3df5d": {
+			"name": "gql2ts",
+			"version": "0.6.0-alpha.cca3df5d",
+			"dependencies": {
+				"@gql2ts/from-query": "^0.6.0-alpha.cca3df5d",
+				"@gql2ts/from-schema": "^0.6.0-alpha.cca3df5d",
+				"@gql2ts/util": "^0.6.0-alpha.cca3df5d",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^0.6.0-alpha.cca3df5d",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./index.js"
+			},
+			"dist": {
+				"shasum": "a02ebaff7411428c59c16add556f35176910892f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-0.6.0-alpha.cca3df5d.tgz",
+				"integrity": "sha512-joXckUyuFzMxVcbs6qXxhK9grb9hOXAZe7oq6SGE/PiI+I4AvrW7jKfdwul+oiY3B6kFeLSjMtNCBLfs8c+y5Q==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCXtN3DEHCS+ZK5Yfx452AlnccKValR94UKnWuBPQD+5wIhAK9puBaV1MNsx5f/83qRh6YFf0hbnSocoq3LVK6lEctd"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.2": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.2",
+				"@gql2ts/from-schema": "^1.0.0-alpha.2",
+				"@gql2ts/util": "^1.0.0-alpha.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "dde2987d8a77b40e7da7a2dd912355bcf4e71199",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.2.tgz",
+				"integrity": "sha512-Gxc3ATuvcVYIGsfRQNB6c9iBXKXzVCI4rvaIe2JHklDvGLbA2aXAclZWoVoymnHfSvnbjLEE9H8iD+HzZNziew==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF3Od0c3fFblbNS07DwvwgFat/g4HKGs1PUOzkInG0biAiA5zbgngSyuprhT5w0Tg9PKl/4MyUlR661aWznQYpbWDw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.3": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.3",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.3",
+				"@gql2ts/from-schema": "^1.0.0-alpha.3",
+				"@gql2ts/util": "^1.0.0-alpha.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "42f8d415fe27ad119b2639350f7580b0185873d7",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.3.tgz",
+				"integrity": "sha512-cp90Xo0Q3YEnoG3ch/CnCIT2QlhpWBpB45og59aSECCrWTNzG7xn01aZ85kMh72ju2zfi+vkMbAnIBvv1BFoHA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCfjKWHWG1Pu+fNJfQbX8aLYtY3OckbNXgf+Yl0fFqCgwIgB6PHGOBub+89PEyox68vb0fmFWYK+MktES/U29jz3lM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.4": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.4",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.4",
+				"@gql2ts/from-schema": "^1.0.0-alpha.3",
+				"@gql2ts/util": "^1.0.0-alpha.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "fbe28f96c2b3e95622dd3dde8b1bb7d4f8e5d593",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.4.tgz",
+				"integrity": "sha512-YwhvYraBV5KPeb77F2qzzrbg0GdLjT2HC7FCet3e8D6oioHIT2CFOnctxGShkCELQzc2mf5ftK36flRZFcSI/Q==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDF1IxYOUq5U9W8ilzst19nsZwl8Tn2fIE8HnJjZauYLAiBDRse4fcfkWX/mLpeHewDmMfIYJK9gf/GpJfUnJNJpCw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.5": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.5",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.5",
+				"@gql2ts/from-schema": "^1.0.0-alpha.3",
+				"@gql2ts/util": "^1.0.0-alpha.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "a131d16756269f7a44fb0cad4c2e49ddb6abb90e",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.5.tgz",
+				"integrity": "sha512-XDkg7nWhljAb78N+LQcxmonMKMPh9wat7fMwc5cs4XmQ9lS4B+h1HVvJHJqSdnUKVFbdS/DiVRRwzEPUvocMjw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGg9nRE/nGC1GaJaVLGtEt5+pEaLX8Vd3wReHnUa5FBWAiA2Sz2A+BkZyShI9caP8JNbhtDod4QieYKWma2bat4Eqg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.6": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.6",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.5",
+				"@gql2ts/from-schema": "^1.0.0-alpha.3",
+				"@gql2ts/util": "^1.0.0-alpha.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "7b339a0db6f38ba6c285bd3b66c777337f7880c3",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.6.tgz",
+				"integrity": "sha512-p5l/H9tsstzUSg6x6MUY05p9f4AoD7ypQ85olWi/Gwz9Fs7WYwBKe7/nez9LLyCM2H84eCJt4dLLYLYPvGLMzg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF3UQCnPK8HHZXfs52ECYqSoo5SLJ0WEPZr7Jr94fZdsAiAlzMVAHSzDOuivsStBGUfTtF0smGfL/JTLYGfLk5AUWg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0-alpha.7": {
+			"name": "gql2ts",
+			"version": "1.0.0-alpha.7",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0-alpha.7",
+				"@gql2ts/from-schema": "^1.0.0-alpha.7",
+				"@gql2ts/util": "^1.0.0-alpha.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0-alpha.7",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "15f9999e06b017cdc0fa1c5aa5f2f5c3c27b1ebe",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0-alpha.7.tgz",
+				"integrity": "sha512-9TpIKXrlTrbE+eOTcujBLdE4ZgUFcCAuhHyAW7C7eT42/1x7dVfsZSFMH/nF5DfosbvJWccVw1TdLBp32RgLAg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDyOuFVn5w3HzAyBy1Bsf8B9bKUqBJwf4xkF7kMgN+/oAIhAMoWiJb8cZ0sEBvxy+Z/bZXXY8jQkiXxcR22isCxtiVU"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.0": {
+			"name": "gql2ts",
+			"version": "1.0.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0",
+				"@gql2ts/from-schema": "^1.0.0",
+				"@gql2ts/util": "^1.0.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "b6b18e9babfa2b7844e034266a02a7c59d14d12d",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.0.tgz",
+				"integrity": "sha512-w+PK2HQ6hV/3gS+jExmjYN7nc/L0nYkAfl1yXCMZ4GMHF4udvq1EI+BiMWqUZx2ajQ1uL7t2tacq7Q8vJiim0w==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICSB/ZrtXHSNnm3u6addfqcx841MFnrGl8mhz+/fAIkPAiEA6MdZiteJ4dvcaaWVkef2o1BvGRfrt+PWYcXZJibBSrk="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.1": {
+			"name": "gql2ts",
+			"version": "1.0.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0",
+				"@gql2ts/from-schema": "^1.0.1",
+				"@gql2ts/util": "^1.0.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "dff825ebd64e4eb8a4564baebb02a903f9392894",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.1.tgz",
+				"integrity": "sha512-Ns9TGLw5Mn1+3zxfqGn1MZlcnCq2xFSl4cWsUmltEeZ27RrF+P/Y3oIcQy/vAEQjjA34cXVi1vl8zSI+kchHtg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCqadzoRhBPtGan6oykI67QRiVN8j5P2f9jT4xpZfa6XwIhAMx08rAdAkcaroQDSOnS/oFQHZeP37lpCA/uSwY+IjCo"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.2": {
+			"name": "gql2ts",
+			"version": "1.0.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0",
+				"@gql2ts/from-schema": "^1.0.2",
+				"@gql2ts/util": "^1.0.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "53c2af1b2fc62cbd3e11e425ea5400c5c41e4532",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.2.tgz",
+				"integrity": "sha512-h8nBvNxky29oLJmJrqC3wRaNAEaB5CP/nhieXo+HnKYGJqgAhY3JWZHVqS/LirUgxk4WMZ8eQNuvx78WvaWNFw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBmL0jopXTPrr4G8WPDsXNb78x9PXWiRvcZuyybSm1aBAiAeB3s25fHFZtkpYOAIaNXHYxc2zkT4BkrrkrDnqdVFig=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.2-alpha.50a85222": {
+			"name": "gql2ts",
+			"version": "1.0.2-alpha.50a85222",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.2-alpha.50a85222",
+				"@gql2ts/from-schema": "^1.0.2-alpha.50a85222",
+				"@gql2ts/util": "^1.0.2-alpha.50a85222",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.2-alpha.50a85222",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "90c20e8ab44d72b8ad330806046a20f2f2f59742",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.2-alpha.50a85222.tgz",
+				"integrity": "sha512-Bxp82an1KkI2rBVMJy8AJMuiI/Rz73cG/eVwvojUobzKQ//MFUviyVnDGFDczDfOXHHVQr+sH2oY1RazO8kbQA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHNcwyOOtU1pkLzSkbJBsWHDzrGHdHwDEJ5yoE4UWAlQAiBwD1koyivZlksAwQlsNgYmY1J3OODwQVkZK6YTlaQvPw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.0.3": {
+			"name": "gql2ts",
+			"version": "1.0.3",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.3",
+				"@gql2ts/from-schema": "^1.0.3",
+				"@gql2ts/util": "^1.0.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "948a10608c0e91be00b656237d445ef6549c1f5e",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.0.3.tgz",
+				"integrity": "sha512-mKmY0RlgQXgRPeokKtQIEdCg+Ie3brpjWzV7htGUgq3sut0yQvEi3nvkDyjwneiZIZqfHeXDoGspFIG1C3kNZQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFD6HX5QYKH5SO9X0cYKusPln6yHjpMcC11lkyfuiLUeAiEAj6ZiXAl17xsSx17ADjbwqlrZYwEbyG8c7Dwuvn37dyU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.1.0": {
+			"name": "gql2ts",
+			"version": "1.1.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.0.0",
+				"@gql2ts/from-schema": "^1.1.0",
+				"@gql2ts/util": "^1.0.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.0.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "69c0a24e8fc1bd05c92698a772aa141334195fe1",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.1.0.tgz",
+				"integrity": "sha512-81Pg8PKo0NPvwbHYyKkGn1EuSPhllcLfGzVbI4DvFiSbY4UVjygNJVW2ZUolojZ/FpIGyqJVBqAdmsbRcZUSDw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCbA8lcwtM5FN9/wDb4Kn4df935FKESgS6xSqa+o56YPgIgZIcinKYhnkDdyI5SXZ4VZH4NTK/aq0HfjWlz3CuxZmU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.1.1": {
+			"name": "gql2ts",
+			"version": "1.1.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.1.1",
+				"@gql2ts/from-schema": "^1.1.1",
+				"@gql2ts/util": "^1.1.1",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.1.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "bb83ea0591579703ac8f6fc9621c99d9de0f6cb2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.1.1.tgz",
+				"integrity": "sha512-hcXx5zeRjK74wlZ1JdNPYDU+roh1wieUFTQEcjcpmZy2nVXFlyiywkYQ9DdvXJhYMu0SNXc9C+tRHnkTXe0TZA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCIBmi4f1zeIo4PqnN7pgYfp1fYX8MX2Ly2IiatQZmNHwIgBZY3oUF6rOZMoucKrqyOSlAn25HzZIrFEw9q5AJFxH0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.1.2": {
+			"name": "gql2ts",
+			"version": "1.1.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.1.2",
+				"@gql2ts/from-schema": "^1.1.2",
+				"@gql2ts/util": "^1.1.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.1.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "1e10b21c5ef9311d06ee47d6dd28f3585a2e9026",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.1.2.tgz",
+				"integrity": "sha512-GUxR4Auz25nV033ANafeK1aOXq06gSJoNvBD1UtDKEHFrkJmaI427jEno+hAm0OhVVwiLdfzmOuTtvU01R1rBg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDa/h6fJ6PJ7F8XOHQ28LhQboDe2//w/JmTJt9dGb35QAIgYfSALzL3Uc0j2enB9WKHU3Qtwvodprow0S98/w6gdzI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.1.3": {
+			"name": "gql2ts",
+			"version": "1.1.3",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.1.2",
+				"@gql2ts/from-schema": "^1.1.3",
+				"@gql2ts/util": "^1.1.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.1.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "02f6ed5e6977dddf52ffa8fb59ffa1344cc174fe",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.1.3.tgz",
+				"integrity": "sha512-SNuDfa/g3TyE+imnpPC4F02Ew5d1IYyg3mTwi2y8do69h+RC+mgTOH1e0qCis/tjwu0RdPGEuGe41rGBQRx+BQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDmfB2tVYghG9MITJDLWzuOZY11eviyYsP2YdX3S3WTfAiEAqR/HzEkcoXmu+AFs4qMAVMlwDsSErnmmxNC6svyKPks="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.2.0": {
+			"name": "gql2ts",
+			"version": "1.2.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.1.2",
+				"@gql2ts/from-schema": "^1.2.0",
+				"@gql2ts/util": "^1.1.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.1.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "16699973ce50ddecd1b4245ef573b8ad04a1ce9c",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.2.0.tgz",
+				"integrity": "sha512-kiwSQyXib+ej5Gclj8Ii2QrsQxwhZABMZwSt3B8SUKoefdzw3v/w4s/CDhPQwx2+sDCRkFVMPV0SuquJyHWYOg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCCqWZiiNkE5VsfGPWm/6bSwGEDIxVdqytJ8JziG/K+uQIhAIlJc8A9Z20g8iGegnEd1MPnYt12O90CIPcHMeY9bSb7"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.2.1": {
+			"name": "gql2ts",
+			"version": "1.2.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.2.1",
+				"@gql2ts/from-schema": "^1.2.1",
+				"@gql2ts/util": "^1.2.1",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.2.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "b5afa7f56fd0e83c6381a673399ee95c358f19e2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.2.1.tgz",
+				"integrity": "sha512-Ky674xJqdQW3BT3O9exv4nybPdhLA4ANnCA2uh2gmB6pLi+zs2YKm0zb+2ibsjL2oOn6cUccEVIKgYpO4qPa3g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDfNZ081fByk0p5vDodAt/iBWx7AepsQksfNCGUIQuk+gIgAzX1JDlTdWMNTYlZ7SJDr1L/NkBnSpAxsluNJrt1Nq0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.2.2": {
+			"name": "gql2ts",
+			"version": "1.2.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.2.2",
+				"@gql2ts/from-schema": "^1.2.2",
+				"@gql2ts/util": "^1.2.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.2.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "14a53c492d38a62c21109fce20a51a7a089d6af5",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.2.2.tgz",
+				"integrity": "sha512-IiRq6h9GwZ6LbMpVPp9c5QQydlB9Dee1s0Edbkpexrqz0AgDi/sfXpuitbZorKWM7cTbEUIlBGSmj+Gs1X9G0g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAdjCgTgAubRuppeldGdzKtWlwdZyuImE+7/mpFxhRj5AiEAoeUNSTnWf/gOj4Ss9wF2hg4ypuIEkHb2oZXrbLn5V8k="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.3.0-alpha.c9e04a1e": {
+			"name": "gql2ts",
+			"version": "1.3.0-alpha.c9e04a1e",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.3.0-alpha.c9e04a1e",
+				"@gql2ts/from-schema": "^1.3.0-alpha.c9e04a1e",
+				"@gql2ts/util": "^1.3.0-alpha.c9e04a1e",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.3.0-alpha.c9e04a1e",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "fd20e8ffe2298d64498ba55392d0c1dd2b0e11ce",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.3.0-alpha.c9e04a1e.tgz",
+				"integrity": "sha512-KPdtrhBItqsmah0E+kPwnqzACQCjEu5RFLLFoHO5sI1wEGKXGgABTPf915kzsx3mX17DXjT0XPcNNFsILMc3jg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAS5A6SzDtUlzZxbCu0mT69du9uOouHaCCkPI9roku31AiATSJ31E4LZPL6KE5YHHCD75FoJogj/aRtPwS8/NAeTFQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.3.0": {
+			"name": "gql2ts",
+			"version": "1.3.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.3.0",
+				"@gql2ts/from-schema": "^1.3.0",
+				"@gql2ts/util": "^1.3.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.3.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"shasum": "15d879a1b52e7e67cf4dc2985665fa3d6e1fad10",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.3.0.tgz",
+				"integrity": "sha512-U1RFGlZ7xQDnNqpz5YJMc91/x7hdfn5Xyxz5jqkiFNA9Gi8QqPKTSw6MDfz6jsW2aeZACnnswBWtDICYJsF2NA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEGd4o/mpzwvfg5Jol0pWTSW2nFOz+OJ7Ab8z1jKxEsYAiEA51c/tp08MeVqo8uTBndoDGB0jc/umNQsOpv6LaILLiI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.0-alpha.753be938": {
+			"name": "gql2ts",
+			"version": "1.4.0-alpha.753be938",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.0-alpha.753be938",
+				"@gql2ts/from-schema": "^1.4.0-alpha.753be938",
+				"@gql2ts/util": "^1.4.0-alpha.753be938",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.4.0-alpha.753be938",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-EaORcWeY95GF9IU3W86zOigeZO6vSnl4l1Ps/Zp+1Xb+lydXikRrc8cR3tiYQSdVO9dJQQgDn0Ej/S5//9jkUw==",
+				"shasum": "323d9d7914eef3e6cfdba3ab43653a65901adc62",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.0-alpha.753be938.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH8P2JAgte4xoOxe4y8bU54sD6n8EoJTawKoLsmi2bXBAiEAke1Us0nwHMkUniHRJcjfs8a/2kqRJGWMvtSmusEFSQo="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.0-alpha.3a5400ae": {
+			"name": "gql2ts",
+			"version": "1.4.0-alpha.3a5400ae",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.0-alpha.3a5400ae",
+				"@gql2ts/from-schema": "^1.4.0-alpha.3a5400ae",
+				"@gql2ts/util": "^1.4.0-alpha.3a5400ae",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.4.0-alpha.3a5400ae",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-7W4E43GfjvQkzNqMlrgaBHvNupTLyUQLIqQiVgKNj5mzuScDKAJXho36u6glinnA//Yf6uWnfPUo0gY8Qxw4uQ==",
+				"shasum": "87dee1c39d2a1def27afa92f19e0752d40dc44fe",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.0-alpha.3a5400ae.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGOKidnWR/JC6Ls3iYr7JrEBw3Ogw+qWXLpZVNY0pCIrAiEAwNJ+dUNquY4qoST7desmguMzTIjZmBtwmqVQxAmJvLA="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.0": {
+			"name": "gql2ts",
+			"version": "1.4.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.3.0",
+				"@gql2ts/from-schema": "^1.4.0",
+				"@gql2ts/util": "^1.3.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.3.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-XY2pLJ9MS+b+syoSJF6uOJEJ0oJKb0cnfD8qtTmRsMEQ7yG35bFWgMvmYvTtvslV5OxFw+BV/PSm5Elm4/9bgg==",
+				"shasum": "2c0bc7d022c953e9b2e3f2152264920a83f6b4f5",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.0.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDrT1DpCKdwsiUS1WV14XkPsE1asYwEfobvELM/tp7wfgIgeYIRDPv4oRgtKnrKOGmTld4bVMXWZhFb6GvIwPojqnU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.1": {
+			"name": "gql2ts",
+			"version": "1.4.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.1",
+				"@gql2ts/from-schema": "^1.4.1",
+				"@gql2ts/util": "^1.3.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.3.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-yalMHUCWYosG8EhixXD2bUyG4kNbylVKxl0OvclNKDBGQXLMJ1W1eVnWfO0fHjZnPCYO7b0gfxms5RDQnf04zg==",
+				"shasum": "3782dba31eb77447ddc93008628d912bb1175710",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.1.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGPItHVhKvZ59Z3//z78n7U5IrBExClwoZGyROM3jYtcAiBxnF3J5K5ss6arzJ1hjDKcmNm/krrwRRcKlt2AXANRcA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.2": {
+			"name": "gql2ts",
+			"version": "1.4.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.2",
+				"@gql2ts/from-schema": "^1.4.2",
+				"@gql2ts/util": "^1.4.2",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.4.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-w5YLsZjpTf4/qXX4SwQNXUJc6xSKFjWUd3z+whYDfPnA0yWnmtxXJKvJWo5QgzInbdu30aRBhgL/KuSQPpM4pA==",
+				"shasum": "c6f3adc1b52e7045e28a62c1f1566181bc30cf4f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7929,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAe81h5b4/Dw8r7M2AXEs3jvBWl3oM3T+pedpt7GC9XMAiAOgnKjGLWpwldCc5oWZmQzp0paKQ528ODX/0LysZJ7kg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.3": {
+			"name": "gql2ts",
+			"version": "1.4.3",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.3",
+				"@gql2ts/from-schema": "^1.4.3",
+				"@gql2ts/util": "^1.4.3",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.4.3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Gef6X3vvuMll1zIGi2MPwj4FKfw+yIUP/tjRQZoCw7drVsuFc1NtDuHg3yHa5QDToy40w/fWCElfgYCWxbDOpg==",
+				"shasum": "f9bc2dbec94aff4ed556222707121eb58e04faee",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7929,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICzE9AAy8QZkVGGX+AEJJwDucDvU1yaUzVPqZq88Fc29AiBeh+mG9ScLpsl25DAmCaWAuSFjEA1MJm0NoHfDx++8lQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.cec79414": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.cec79414",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.cec79414",
+				"@gql2ts/from-schema": "^1.5.0-alpha.cec79414",
+				"@gql2ts/util": "^1.5.0-alpha.cec79414",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.cec79414",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-jWqOZBFnrJ49zvXrDWkJUmJGqbD4UedhAgaZgr60PUf0w51jevRvp0UlJx3fH+/zD6KqZTYU0OBnldxihPf5uQ==",
+				"shasum": "c7b5f87b5bec8d949012b5d53efd1788faf0889d",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.cec79414.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8004,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC3Vk2LzKH5c7N9p43+9YgJmtvenswAlTAUY3qnVGmdlAIhALBOc/sZyGhf3qogTkE0eEZgcJDbC7l1g1fJ7A8BQXDc"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.c53bbd6a": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.c53bbd6a",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.c53bbd6a",
+				"@gql2ts/from-schema": "^1.5.0-alpha.c53bbd6a",
+				"@gql2ts/util": "^1.5.0-alpha.c53bbd6a",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.c53bbd6a",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-h0RhmvG+o1D6VD9oWn3iQLmYh0KzWi7LFxkQTbTnHIUpeVdWFGH7S6Ii+yk8AFlYGoO0N+qSX2txGtmN2RgfkA==",
+				"shasum": "2e277adfddf5f55f6d261024830ac3d498eec609",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.c53bbd6a.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8004,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID/2ndQ/1cG3S2hvlAXrpHYAhwVt9AMU9wF24EdIdXIhAiEA8wygPjlK/FJHTEt5Kz/trauukPwHC8djC+24h/y0OEw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.371bfa01": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.371bfa01",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.371bfa01",
+				"@gql2ts/from-schema": "^1.5.0-alpha.371bfa01",
+				"@gql2ts/util": "^1.5.0-alpha.371bfa01",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.371bfa01",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-VEJR9dRguLz84AB5fmwO4/PkKvIctvkbYwSDM39ikO5pzwKEj0HxLcAuKwJXg5DOcwCUVW1DhxaoKHcrMF/MOA==",
+				"shasum": "416b7a5a7eb523e0effb1fb5f9172248ce19f028",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.371bfa01.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8004,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBtcb71kl73kPkA0ZyfqBgaAcj5NdQXw01mvPZkoO7azAiAQPsZSxuo6+dvxJAxXc0BDCnhbta0FxbrXrygPsO9+oA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.90415fad": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.90415fad",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.90415fad",
+				"@gql2ts/from-schema": "^1.5.0-alpha.90415fad",
+				"@gql2ts/util": "^1.5.0-alpha.90415fad",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.90415fad",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-El+HE7YRWEr6pbcu2xDuvyC4ZIPjFf2IXMhTC+Uwm5Z54J4DZjs+NSucWSSfFh10VeLDLjRJ/LTWrLV1ITT+PA==",
+				"shasum": "9cf37ca13812dd08502ba0872e2bfa16e7356ea0",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.90415fad.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8015,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHoGIKw55CXd+IqOo/aX1TPKR4jxNBq17dX/EgkHzrmYAiBZ+xTZT/k4I8D52iAq2EFwPCebkHVGNQkrrdMYEag7Pg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.4a17a22c": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.4a17a22c",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.4a17a22c",
+				"@gql2ts/from-schema": "^1.5.0-alpha.4a17a22c",
+				"@gql2ts/util": "^1.5.0-alpha.4a17a22c",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.4a17a22c",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-NYPUOLW2vXCcgVyu5PL7LwaHXRJneD17fk5lNl6GnAPBQERv8Pe6lNpiWutbhxouytqHTj4nkf2kTAfA4RBT9w==",
+				"shasum": "10931304a716ad9df75f03514e956cf1527b54c3",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.4a17a22c.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8015,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB5/erPTYPwx2eDAF3aO1/dSYd7CaH24lbCn+gk1lUFeAiA0qraPz5DzmzqbaYP9r3QCW6M2tOiFsdS6aJHS05/GGQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0-alpha.51c55d43": {
+			"name": "gql2ts",
+			"version": "1.5.0-alpha.51c55d43",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0-alpha.51c55d43",
+				"@gql2ts/from-schema": "^1.5.0-alpha.51c55d43",
+				"@gql2ts/util": "^1.5.0-alpha.51c55d43",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0-alpha.51c55d43",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-QVLePajCPyVEEUXy808/VD9SvjeEEnQMt6MxD9CxAtaCHsHnJwG8l8BEwd1ITD2tvQny3DIBNRq7SZFDgqU+Qw==",
+				"shasum": "3adec8119fd5209659535bd1ecd602558d92c0b2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0-alpha.51c55d43.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8015,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDtAmy8RZSLFnbXArsf5GbIk4IVfA8Wn060nnX6aKcoKQIhAOJC7dtCgod7bGRXPQ/i2fWAQhhl4e3vzXyy1Ssh/6WO"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.4.4": {
+			"name": "gql2ts",
+			"version": "1.4.4",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.4.4",
+				"@gql2ts/from-schema": "^1.4.4",
+				"@gql2ts/util": "^1.4.4",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.4.4",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-/Odba/wL0plpFQs9U5qyVe50mlNSxcBilFlD8fGoocPu8nrCdRJghU2pBHQCHqLlAOBM/C9TVeylNTT50jH/5Q==",
+				"shasum": "171eb4ad8db6389bf6ee0f4c57761251d36bef64",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.4.4.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7940,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCGpI3p1Bzl419wJWNDiWR0HwzXpMVvO5LEoBsoQ4VM4gIgT9zRNwBDRaBqFhtn1gP8sEx6PxyqkHD76JIwEKsII4k="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.0": {
+			"name": "gql2ts",
+			"version": "1.5.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.0",
+				"@gql2ts/from-schema": "^1.5.0",
+				"@gql2ts/util": "^1.5.0",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-HwpUoTaa4/vBNOM6BSeqJ7PGETXAadNBBRVQI076roB7XmEHKTzQ1B4yAYQAv4okBssuXfIUGvdaT6hFlvPklg==",
+				"shasum": "3954cc5dd25615118263d951fac6d484dde9f74e",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7940,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICmuENFsc9HOXZBQY8YKBmBtfS76Pj5puBDFcNyzHNbZAiAHv0HGIZRK9TwGmyCAr02I9lwE030mls7IJRHajsSfeg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.1": {
+			"name": "gql2ts",
+			"version": "1.5.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.1",
+				"@gql2ts/from-schema": "^1.5.1",
+				"@gql2ts/util": "^1.5.1",
+				"commander": "^2.9.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-jXaaoW8HfiwcgKUf+8VZ+pou2AZYyIDnGGgHdCd08ZUdGBaNd5LOog2enS+akxs7zfNVMzHIhLN6lk/C5w5NYg==",
+				"shasum": "b141c6a68dc0a2e9178c99f4541920cfec42254d",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7940,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFcZc/daiWOE4XJG5P+Xuj3mqsrhaZbxm1rJOnYimp1KAiBUiq8nrOeQ8vcYIGRsOehN6sfXb4j0ugE8ejdVoAheNg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.5.2": {
+			"name": "gql2ts",
+			"version": "1.5.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.5.1",
+				"@gql2ts/from-schema": "^1.5.1",
+				"@gql2ts/util": "^1.5.1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.5.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-3j7ymQRmkXHYXj3eufR5PMGLct+lVn8yCyqcXgscGCO76+DXM/jJosh77SALNfnh4UzGiGoPxMdEC/f0+Ndx4Q==",
+				"shasum": "71a70d733d69dbf590d91bdfb3fea94f83e67f61",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.5.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG/fA1XoOrN6ngshi2u7t/Mdx+jxHj4KRK5gDfiCeEC8AiBXlIOISIf0KaF5ilcHm7bnGuD5CXQp24gRC4hjhoeuTg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.6.0-0": {
+			"name": "gql2ts",
+			"version": "1.6.0-0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.6.0-0",
+				"@gql2ts/from-schema": "^1.6.0-0",
+				"@gql2ts/util": "^1.6.0-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.6.0-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-wakGaGt5oO5NQr3u0g5sX/accpxG8mMR1Msp6QGxnof0S4KQ4STErw3sejUmN4wwGZIvplnfhGOxMVYgew1Adw==",
+				"shasum": "86d82c4fe700fba14300297b9a37f6c1b7b296eb",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.6.0-0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDH22UIHV7WLI/hW8B+oM07frETo48BdGVcHNJSqrD/KAiABZNAnb/3PuX/R/H8CLrWObp8dbDoBFe9TCLOe306oAw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.6.0-1": {
+			"name": "gql2ts",
+			"version": "1.6.0-1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.6.0-1",
+				"@gql2ts/from-schema": "^1.6.0-1",
+				"@gql2ts/util": "^1.6.0-1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.6.0-1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-tOHTmd8ua+ctrv1SFAdiCMskc2+tVRrgDq5sm0uxwkDe6o8OF5jroAjRgHnhApBAMvLDlUSETujzyJofeB7psA==",
+				"shasum": "97097d3a5dbec4875dbcf94b53d19a8a09f53772",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.6.0-1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHB5xXDZwjthydN9dFaSQwlzgn1lVuwhmMHyt2OCV9EFAiEAsJhcGeCjcX3wXseei/j3K5m7/szry8CzQcPhrhB86Lg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.6.0-2": {
+			"name": "gql2ts",
+			"version": "1.6.0-2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.6.0-2",
+				"@gql2ts/from-schema": "^1.6.0-2",
+				"@gql2ts/util": "^1.6.0-2",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.6.0-2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-RdzAcikCgFgUPtEGHU/GYN9T7aG2BEeVdNMEbgXRPPlZ2x8rMpuTcLH7qTUUpMzx0X8Z53hgiTmAA/Ey0/kT+w==",
+				"shasum": "ce13465f6b1f20bbad43d94e8f4f7a51a553db0d",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.6.0-2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDGlZxsB0AqlUQVoE/Q+U3OFhu9f5U6zi71wl1dxU45oAiAUSxaQem6dRbadVlFPcRr/8+X3muo5eptnOYhopZCcJA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.6.0": {
+			"name": "gql2ts",
+			"version": "1.6.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.6.0",
+				"@gql2ts/from-schema": "^1.6.0",
+				"@gql2ts/util": "^1.6.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.6.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-SlhE/BQgF+VxEhzopUUYZ0bVQUSuZ2mw8niBs3EICYUHyGFqR3i52BFuQpkw7jbtLu+lFLPgrqYYys1HRWcf4w==",
+				"shasum": "6751d8a86d6488084851549bf950393ca56bfcf5",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBTcis+5R55eECha8SPFqpADgufXbcBOxOpBFS6p5lsyAiA7NhVEku0cUXMrdzGUz4JwdCfU3CDVqVtq0vmAY4LYVA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.0-alpha.b2b26790": {
+			"name": "gql2ts",
+			"version": "1.7.0-alpha.b2b26790",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.0-alpha.b2b26790",
+				"@gql2ts/from-schema": "^1.7.0-alpha.b2b26790",
+				"@gql2ts/util": "^1.7.0-alpha.b2b26790",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.0-alpha.b2b26790",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-uGzs24Vf4MWy12lkX5X4iOrSTQc2Cg6ZlHpKvrfUMp9MqEmpggL2gD1XNY536goC9JGVrNyVHK4sEoxCPdQrNQ==",
+				"shasum": "36dfac95a948e4cd8723feb3b42d74c87dcb4832",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.0-alpha.b2b26790.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8048,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCuxxUgMa6UYdcIZdGBLLCHmFyvjFyrvAfQNXhqqn9mTAIhAIlLJ4mrg1r4Ywmu/nxWHlhxS17/p9V7lxb6S1YAvjd+"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.0": {
+			"name": "gql2ts",
+			"version": "1.7.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.0",
+				"@gql2ts/from-schema": "^1.7.0",
+				"@gql2ts/util": "^1.7.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-A9fKvomUS6FD/ODo/JEBu/q5zHqGLUfiwuUsD3XmTfNQjtiLVBBDrqpm0UyFx/DwN6qnjUzqEeSO7EdUtDOBWQ==",
+				"shasum": "df70ffd74fe2e2c2f8d7cc7794b30a3dac011472",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDF/gXvSgs+3aWYZ7MXvqZAL8aJj/HQ7fdMtw5HAPO1kwIhAJtWAzW4Av4mFN7qU6WiT5zwcatmqdPDhnNY3AwgIOkA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.1": {
+			"name": "gql2ts",
+			"version": "1.7.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.0",
+				"@gql2ts/from-schema": "^1.7.1",
+				"@gql2ts/util": "^1.7.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Dm5gau3M6prIZOUgLb9jzUqUL+R96xTfDXmMCMqdXtcsyzeMB5cOvA4VhLolDF/bMlA6gStBu7+3rUrfN/+sDw==",
+				"shasum": "5894fab2d6de41020cfdb82ba71b0bfed6372ed1",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCzqyP7rLG9Jq2VVpINC4SVLYB6bFafnT6ReU+Rh8QTlQIhAJxOZoHOkH5Rc+IqIdAPnAJ9DtNulBmz+dFsu+KcG6VB"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.2-0": {
+			"name": "gql2ts",
+			"version": "1.7.2-0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.2-0",
+				"@gql2ts/from-schema": "^1.7.2-0",
+				"@gql2ts/util": "^1.7.2-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.2-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-J8VI+ejcF4deZzGmc/blzRjy7ob2q9G6p1eZO56eyiF67v0M2JhDFiP0VQJ3gPcudcNF4HCcMa/sZCfozAFpNA==",
+				"shasum": "df5b208dd47b8bfe1dd7a46f93fc02673e201af3",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.2-0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF67HPL6OTE8pBZWKUMhFFQHOuiCH+m6+XiHuuoxiZExAiEApXPYA65qU7H9/EKsXE/JPF3EGyF3kgCMCQqvq4Tf8qA="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.2-1": {
+			"name": "gql2ts",
+			"version": "1.7.2-1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.2-1",
+				"@gql2ts/from-schema": "^1.7.2-1",
+				"@gql2ts/util": "^1.7.2-1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.2-1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-1OGem0Ux7RyhPi9HR7ezcmo3tQvDdbpFRLqDAAjtm4TZFUTBbAcjqZZc3JidlBIDBL3htb96nhSTY9UvNHVeBQ==",
+				"shasum": "0e49e57f208dc1a27dd41c89782d36ad88fdb77f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.2-1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDE5YCZwfoO8l/9n7EocGhpx0+djTtnMQJOuNf/TeoQAQIhAOCyFYY9aIzEje2kw0oyenRELcZfrh6INDalxNcTppE2"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.2-y.0": {
+			"name": "gql2ts",
+			"version": "1.7.2-y.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.2-y.0",
+				"@gql2ts/from-schema": "^1.7.2-y.0",
+				"@gql2ts/util": "^1.7.2-y.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.2-y.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Pa9APPYH2xDu3t1eFQvIR/n7TEOlEkBb+FUlUJmICKtKm3mKKA2YqbsdpHm2CzL9TfU9eMWJYrdM7dTFVDe0wQ==",
+				"shasum": "21fab57cc611dc2c91449ab2e479635eee622a14",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.2-y.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7993,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDOD/uWPWJcMspyHwAxKCj09RRmJxGs2t44PhzX+yGfFwIgTTLII0zxInxr4ZGpoKXp/4aySkdG2UgLCyUV0uduOc8="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.2-4": {
+			"name": "gql2ts",
+			"version": "1.7.2-4",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.2-4",
+				"@gql2ts/from-schema": "^1.7.2-4",
+				"@gql2ts/util": "^1.7.2-4",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.2-4",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-VwWBO446n0oxiEHu0CTRqSwgL2JxCVqs77KzwS9VCdMMFALQLyLYzE5dW85dEGtUPgHKEZp68SAceM2E1TixWA==",
+				"shasum": "d662bdcdc88332560505da84cd228d18bcb4e1b2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.2-4.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHYigULGU6Jyr2PHRTTaUiJPSSkS9uvKCGCNuh2B+1R0AiBf/7QYdDXuvWeAYJfPD7cU7IdJc9RXEMdZjqTP2JnvJw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.7.2": {
+			"name": "gql2ts",
+			"version": "1.7.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.7.2",
+				"@gql2ts/from-schema": "^1.7.2",
+				"@gql2ts/util": "^1.7.2",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.7.2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-iHs1/kdvnIhslHzzsYfKEMDFcwFnN6YK/E1mpQWLz2hZy7Y/NdeeE4N+qtlvgDEir/CpS8ZV8qgKkBJapslyIA==",
+				"shasum": "2707f38aa3cce64d552fceb30baecb28a799c4f2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.7.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGeJ+2jUwpExA0OP/YAwPCxhmP252SMJ7LKP3GYB7zrmAiEA84L762WofEtsj/yQrcnEqecbLz19nBGTdrJ8Vx8xIlg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.8.0-alpha.8bb7d8dc": {
+			"name": "gql2ts",
+			"version": "1.8.0-alpha.8bb7d8dc",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.8.0-alpha.8bb7d8dc",
+				"@gql2ts/from-schema": "^1.8.0-alpha.8bb7d8dc",
+				"@gql2ts/util": "^1.8.0-alpha.8bb7d8dc",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.8.0-alpha.8bb7d8dc",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-1mB+VTEc6PVmsMyPTC2NEIJbXQzreGi+Zzv6V6Jb36Qoz9jSuuxvvUxC04umGxuRsUSn2j+DS4Y3pFmUn24v9A==",
+				"shasum": "9684c37b2ea10017b149fb638a288524f4181b85",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.8.0-alpha.8bb7d8dc.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8048,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDRrlcdj8CyNsh7tI8VdTTOw9woeA+l7sQpSsFuKahe7QIgGCUU9KQIEqeQPazGhCHGX2yNszSK+czqoc0SnFlraNY="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.8.0": {
+			"name": "gql2ts",
+			"version": "1.8.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.8.0",
+				"@gql2ts/from-schema": "^1.8.0",
+				"@gql2ts/util": "^1.8.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.8.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-F9Q5IIADosANMVAYSFR0awNqawRpzT2UA7nUZj8292SIK6LX8EDdQUSsLdGtvMm5DCZc2WGSIvxT+ptj3Ws5Mg==",
+				"shasum": "45af71a4aa5db0caa20fcb3b10b3c46bdacf321e",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.8.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa51mLCRA9TVsSAnZWagAAGGEP/2J219Yq/TvNHy3RvlMZ\n861BCOeCODCw1XjVXkuh846A1XVY9g6ThvHlqW7CAv3/d/qh/EbDTri+N48A\nHsVrAL2+jj5mvZU/d1kHW/HAuH1ckYJMSix3LHwUFhC3046ScY42aC0YBLP8\n/s5xTgGejiX/MEdKqIRAA2XXhRycgQ56wc5kDqFAaH9tKReGYlHl5Uya4vtM\nmRxmDBHaqMRaS7ewMakpcKgvBxylD+/G3xYdyZg1vbLBM48v0MoXYg/+4X55\nbEiOO1HlUtK3lpGkqppflw+6r8zbBlqqqJY83YMzaNyqabJMkpE4VpPnsfV+\n/qk7LZ+sgPwPZaRgbdkFoD21dsON9zdH9VNOmRm3P6ZX4UtDa5YmB/eiBVKU\nyja6l/Tci4WrRFNMLCk3Rl41iMpFRorGfxSH4gN2xs/rVsPHkZ9+bGzTnzTJ\nvNk+YWCjEOKJPNUCtXIq1JERvpaZ07w/Jg1Qm5+FQlBprCCA7hT2tkgsfiIh\n4fkjmgsknYVeWrtccb09uUd8W6k6ogZZiVqvvt2gsZ1omy8phPFx5jcScaKC\nbNdNjiUe9f/r6OZcOxg+E4LtEHaCvG5rwa4owVD845rjTYTW/DspccPm5GWY\nt6556nUUONthClWqux169yQOTRdGr2gD+iSuTspT+7sXTNnBbDoZS5ejguiS\nTQTk\r\n=a3Sc\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBXGxPr9i7PyS8FRp+R5QmplbRI98wwbtvSCzfcklmDYAiBwLRV6fWaY+vjQD2ogSUY6dfga8iruyxXJSPZPHrJ9Lg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.9.0-alpha.5ddac749": {
+			"name": "gql2ts",
+			"version": "1.9.0-alpha.5ddac749",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.9.0-alpha.5ddac749",
+				"@gql2ts/from-schema": "^1.9.0-alpha.5ddac749",
+				"@gql2ts/util": "^1.9.0-alpha.5ddac749",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.9.0-alpha.5ddac749",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Nqijddp1MHVV9Jx2p5MMvW7q80ke40pKuziB7KPTP+uPjAL8wqA6+Nrcjw8U6Uw67LNR8mfe0JTkpjE+9NHQ1A==",
+				"shasum": "bc84c30a61f957b6bd498fe4c3c5fb9629430f78",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.9.0-alpha.5ddac749.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8048,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbGCrVCRA9TVsSAnZWagAA/5UP+gND5FrOcDR8ORmbBoVl\n1jWY/ciEc8i67/r0KNQ64TQi4cnQxIu4Ajxjdlzg6J4i95Z2Ofu3RRuTr/Z6\nq4HxN40eGMRivU/wT2RUyVsrEpL3pkBZv7gBSu/tc6tZL4IwKX6wsUFRLmGf\nCyByWCeC0w5FRG8Hcilp6RdLx/Htn5M9t8btWNaW5Yfzat8OqnBTtsK0KI9G\nQrOZCZhvuTIMdPII6yl2XS9rgwZ5/+A29nUNNFrAiACJ48VOyLpj5aeh+z1a\nWsTFl7fedgQkegbZ0Ado9u8O96HsPyuXD6jQJ0sWYxeTYS9oawIaWTxFGZ/x\nURW405Mb/g0ZrG4lYylaY10NHAeVkoKOSdCfHQ8mGfeMuq1l4nQDGMvIYH5h\ntbgI6RT4ijAAqgmWSsMpjVzE/tHRIsnPGJZz6nRFPUpdA+bhOK5kyqPkyz5S\nK8Shc8XvIMKUHQUDIiyexJejpy9DSvuBd4/3v1vrWB90XsjOPNHJAbDYhEga\nISJdngwwJEQAqPHI7OW6/G8rU6N+xqU7F+buDcnR6nAUjQVEq05TYdFEQnyS\nMdXSaDgP7GI5Va59nQMaGlBNyaWo0Xq+CF3LgDdtaAdOeCEIwIA9zvRUHMpl\nx9LDAzSBBFIVC6m7/wBa0VFWxhm1LTGIRtryGD+0ALa0EAy7lB27yCtY/LiC\nCi67\r\n=OhBv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD/vF/lvHHnSFxy6oyqaOm5w23QnK2FKJ9ZjZtd+gMU9wIhAIEm8UI0dDX4j6ez4WqWKT/7wU6iXssxt8CGX9YaYKEe"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.8.1": {
+			"name": "gql2ts",
+			"version": "1.8.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.8.1",
+				"@gql2ts/from-schema": "^1.8.1",
+				"@gql2ts/util": "^1.8.1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.8.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-gsLFP+dy0PKXan3jpkxPhSzxWT/sZvMT8sYBQzFrcGUsa0Ad+X/zH4KIuHRRVga43PvrjxT5OUyj0QrDGcOP6g==",
+				"shasum": "b8b37ebaed399eb00c0dbdf9ada11a526e389bc2",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.8.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbVd0eCRA9TVsSAnZWagAAMOoP/34/GWoUAiBRRhbrvWIC\nDGG2Jd0NIEoSx5GBVZIodkZLNGnnchz5aFu4CYrSVrIr4vie+zf8DBZssrJ3\nHZ+yM7xVhRTtbB+2pzb9H/1p68MAlj+Ii77KSGbeErtlJMxMqrokQCDsThd8\nHmtjBdHDUUe455cgIi5Efj1FZnBpmsU9GOKN+lk0MGsIxRoDf/oZwPkb0kjD\nhUfej90FooBGG99zhHupqpARvA0Fz7c48iu+H3Zp+OSuu1ijA4TVjpQtJSfa\nfRDsuNt+C/HKA1cKh7lrUAAF1zia57C+xH87ew6ZDWMpYgWoilH+Q+oRzTn+\nLccPEKY+awSfUFalYULTHBu9mXfI9wT+mzrpvCo0sApto54ktY42qqG7+XDR\nmMlcvVvZqqMe8se0C2aSlzDux5iZmlEniS7WJihkse4SmoWzBJFLzdaKln7/\nOAoQ1I3IMmi4K80KYgnTWUL+fByYISM1ZPEQILu5ZmRMWoooVZ/siIGXFvEy\nsg3dJwD1R2bPkak5vCV8ki9mG1nUaEZF3n5ItwSc9RzFf+J9KBhzBI2ZRnFa\nMCVYQ+oBgiUB5LA7v1vLfIdTyf0zj9rOTxcrn9FgQs76Utn+WN8P2NrDqIwK\nda+cuaR+P3I9EFQUaXq36tDPG3+z3CzDqI9VR/5NeBsYlyKb9m9Lo7CUNI9F\nk3v6\r\n=OX52\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAvPMBjhCHlbB2ZyWPpl4KzjcCXBDf+p9dfjeYO0KCIuAiBlDwwrPy31de/qmAKve1+RvJ5iexkw0xi2k4bhZLTIwg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.8.2-0": {
+			"name": "gql2ts",
+			"version": "1.8.2-0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.8.2-0",
+				"@gql2ts/from-schema": "^1.8.2-0",
+				"@gql2ts/util": "^1.8.1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.8.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-V2WK8ZaaTlgnGNjT6+CSS/2KDGpw3INjKjuYuCQuT00Fiojj823d2O5ljMyOI3RHTtw8fNXTxZBCV+9Kd9pHDg==",
+				"shasum": "f0770de69a21a593dddab09580f4f67b3853d815",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.8.2-0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7979,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbYfvdCRA9TVsSAnZWagAAqRAP/juoeQ0nv9lx4vlmhl0j\njZ4IXUpllWZddelMH3bshaah8IDSVLJo/6WJ1dsBL0N+zs8YHxwPN4CHBl4p\n5g3YwN9W8cg31oQQHXJLQYnGG/cafl91oNeUya5ETmqYoeg6fuVd8+IXyTMW\n3vAmMCcyafQwQW1mBAYguksLkPCjETPxK1+cSQl2QNizSUPw/qfkJL6QShXD\nl5V7lkd1maHJpCfZhOUepgjSVKJKag7iM+Xx/nB9Vh9uzP/2wpDtJeRNmk+X\nJ433KluKgY/xzHvjnwsFEezrg6WpII+H3jE3IqIhYNQVsqsuAMLrY/Uz3VT2\nWIidvkkOF/Ja7dUBJlyTFHRvI6yO+3X6HSnd9e49qImz8v5kPynbv2iWxjX1\n7DKApEv3rqNg4trXXgcfN/gAZgiRR1y2e8Cxw1Nka3uv7xMF7uyM/o1CEgf9\n4RA3Ccvy3D/GV/bGEoAWaE4tpagmSVPZcty61OkDjT4WpteI44nO2TQUj4gK\nMiKIZHMXrMdh95CJ3HsWlftwlLkELnN3PcoCXtzkQNKedd/CMDtaeU4iuUR3\nptWH6gz05pAHyMKMb87bDZWEXVjCODW6khNaBPtcEu8jlT0IhN+5HQl+KQ1O\n8vxGcvGMmQ4vKcXWnGS6o8xsLhHzK4XPncyhENwqCFtAc41Kg+JZgFsSRZLq\nRvYz\r\n=OKLZ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDL7KrTf/A0pmaaYX/dMgy+jy8pmr6/fsHuEz8LZmozZAiAmlqldMKEkql+50hUQJeGPDx3eTqd/08S4ZllvuT20DA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.8.2": {
+			"name": "gql2ts",
+			"version": "1.8.2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.8.2",
+				"@gql2ts/from-schema": "^1.8.2",
+				"@gql2ts/util": "^1.8.1",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.8.1",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-lFEQjxxQnWZm7nFPzIZ/LhmU/CCqx1XTrqERhZLoOGkfYZoRUo3wU/6XgMMp1wHUhea1UW469mHwzMHq3pcdug==",
+				"shasum": "7246edef40711db25bf35aad5def66b083a17090",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.8.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7973,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbYlACCRA9TVsSAnZWagAAgIsQAJZrLeHb3kGNKPBFcaEk\ntvk5iKT6CTIUHpUeXkeJR5GCRRTB2Ikjj87op/LuvGYfhPj2pQXwzc9EzoCN\nwA2dfcQ3TpZgDeNTYHDyDMdWMhBvqvU+q36HAYmp7uXkYLUtM0d0wIc62ZVP\nKOvXBqntJ4gHIMEjQKWlYWd5hlhw4CbqmljYZLOoMPeS9g8RMuplTbI2YZ52\nUv1ICAUm5O2/v3nVZcl0qH4ogP+USOxfqv85RfqPQAXAlP6eu4ebmBw79Qg/\nB7oMuC6PYKTPAaBqoY0NwG93+39GJYKtN0FrEOlNiT6OMIs3ZwJ+PGZf6Pl4\n5q/skZvqNplkVM3l2BbN3iNJTtz/M1P4z36i1K/AENSlOP8yw/uNzDXalq1R\nnDxzOcoEfsHXKrK+0ZQT+vNjHko+aGiCdPxeaXO6vDP5Jjwe8r2+vH/LlmRf\nlHxk3BHemMS+t7yhDNACkhfHJ1UJmwANurw+Dbsg4BgmEE4obYlfcLttjGN2\nCbksDas5ZNCiebEnCZZtJKoSbsm3CvBseGUdxMkvsX69pGgKSmoIvKizsXSU\nTWpTREm8vE3bg4Nz1J1DZQeHl9PL4UnU/4WFnImfGcYYR3hldZm0URYXvqQ6\nK/ohq5Qd0W4Wki4/vm85WC8oAxrV8c96emz1tZ2hScqcOFi92shu1VvIR+YD\nXqzq\r\n=606N\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFSVDf4vZTit9KxcrRLYcfRPaVtTugEJYk1KvtJUb2C/AiEAs2NBHn+0vKr6sQ/WuSbRCtk0fTXJ/pg0pxFNowDiXkM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.9.0-alpha.ad6013c2": {
+			"name": "gql2ts",
+			"version": "1.9.0-alpha.ad6013c2",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.9.0-alpha.ad6013c2",
+				"@gql2ts/from-schema": "^1.9.0-alpha.ad6013c2",
+				"@gql2ts/util": "^1.9.0-alpha.ad6013c2",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <1.0.0"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.9.0-alpha.ad6013c2",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-yCLHka9HoPwmCFENo+WzjcBk8AHBDlraZfRMqK2xJDRQdZ94zApO7ZqTYmcyo2/49LL3A71pknvmatz8jpmDqQ==",
+				"shasum": "31224b7fda56521e5161a5aa421594fbbff36170",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.9.0-alpha.ad6013c2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8048,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbd0EHCRA9TVsSAnZWagAAVrcP+QFD6Qu9lVBXNqhof49q\n2C/GSKn/IGQ03LtNK/CSczPR2OhO142a3oqCE6wHNyVLnS5fjOaoDGwr+epE\nQaLedUDczwd0/XWDf+h2NpK1WJrV5tYtlZaprCW52FFayFNRcQtNjkBKm6NF\nJGu3qEplxwE+vNvTc+3b461zufjWgp7L1Sjh6Niyiixcb7yrued0NWHmTWWa\nJPY0rWjoXFYOX1+oe0WdsG8tfeczamITl9c6gSv0NTkRoIsSlDwEQ4pCJaPp\nv8JO81HWVZs4K6tE0N1eeAP3X6MdNQDzfqF2ul3HWs9aHvV34INVd2xuoN+V\nw8ot/Yw115NMVDvwOkcdicVDNVL31JvkuJDTGaXq/wK2PUPIUid/QQ2lhe4g\nxN86su2gQTsvg+oFZjqVp97PtCauJbSHLFZAI+aKJry81mAppoYV7ismuRgl\nnIGmyoVF5MRtTySD7PZWGQ281bGfZfc/WW9WNDwO7jyAtF/LkIpvMTtZT7hT\nl49mfA1nTKCbXJE6Cwlh19gbBCn2zaOeMbpNh5d/zIQUhlHsH3e2vKM12/KN\nrY6PCkbY+NFdo000nWxP2IQK900msbYn//eEsXgMfSsLsSsRBPY+v9krISVA\n6bbJt9WzmR6sGvE68ltvN6FFwgQYZWeOSJPkJBKye32U+/9GrzqgqtZAZVAb\n0mhN\r\n=rbmF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDHWCtWUmfLp85xslSgqjZFtwzDupLWZNyxxJAqw+y5ogIge6+vHSdPgCGPLwz6u+nB/JT7ks0foUzcZeuwYUhAIxs="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.9.0": {
+			"name": "gql2ts",
+			"version": "1.9.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.9.0",
+				"@gql2ts/from-schema": "^1.9.0",
+				"@gql2ts/util": "^1.9.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.9.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-2ogiL6LjUWUZ5hvRCjZu13N8D1wxX0fuHs/psbJfbk5DM3bnUWAWcVi7v+wSkWIiukqJGUw6B+jkFGk7OtWKIQ==",
+				"shasum": "3da7063972cbad77a53395ae73e50a7751e9c070",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.9.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7970,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJblo1VCRA9TVsSAnZWagAAa0wP/jPQMfmf+pEZLY42OWYd\nIA+0hCPWSN9nv5fnYhb1M6jW9ZUYYQLEYATxUQZtlKdoYdlhDNd7Gfpvwulu\nPOqzNLy/arib0WQxx9phalBMGwoGKWNQUyDZsFpHWNYJ69qtmCzVQ440o2XS\neXgDSiuIjF5GOzdS84/P7WC9/NE/efxlKchDib2f+JZAGGpODpMsWGbXbW9r\nKw7mzdC7LSTun3OkrnXyN8Htjt8cYfUSYuG1U2ZmAwOb4wePitB5aJSK+rYX\nL8ctZTFkrkqWRgYswjx11uWmUAhgkaHTMkPloUnO64AW2XFXl1/Fi2/WHBem\nU6r4cW3pTqFl2VtOsaStj0TFSAe8E7kKMrlMT7S7mxyo3mK3Vypg9VyczIxq\nemLknN3FASKdyiAWi6ckBVyUhqNJKlMlKxZrqs16GYhnm7rjeV7HroHmHnep\nAGvJnTpzqYd5KKxUvRDQGRCIJq7SqXzYXvn8kNFJAsZ/WCURGqsROHEHIHzX\nscCmBxPbQwk1fjUxbktBBBhYY2fPQzOq+hj8ExjfolzrTgtS/QoTgjYCDFVU\nCYxqkRU8c6T0GaKHyqdbNhkQqRJw5WJ0Xq+ywkLbMithJ3yq+u4Lrruj7E6n\nNdXaTdvdtQ1Bg6SsNC8Hz3nwh/xIkfcujQKvz00E1y1rETlRYFH9JKU3QLCQ\nGZ1m\r\n=iqVd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGBy7qXJXgw88fkAZtLuKGt19PvSowVI1278aKCwwVNJAiEAy9bij4r3kUUwhxzhlgV11yX7v19HQdHoWrO/QTuYxLc="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.10.0": {
+			"name": "gql2ts",
+			"version": "1.10.0",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.9.0",
+				"@gql2ts/from-schema": "^1.10.0",
+				"@gql2ts/util": "^1.9.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.9.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-WcVEpFnHy3++COfsK/lBGAU5NoihIZaHbv4kmktbC1/WvmEpYaiILrz4Ue7Fy0YW71BPBL7pMebYlwDdoNHdow==",
+				"shasum": "2bdc88e8180de73cfb1a4325ee14faa43e28ee64",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.10.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7972,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbqO1/CRA9TVsSAnZWagAAAJ0P/3tkXI+MMBaV2xGtyISd\nz4mpwP1PlOChbUVDLOnm7Ah1FzGmTf39yBfhBzcaMQi0oz8J8Oc2l96VvXO4\nED4YtGXlHYUWUEVcNNZuk8GZVPrXoYUxYBpC+dUXo+nfUiK+QJ+ns65REaxp\njbsxO6Yp1aUk3JEYrYEPdY56QuGZEnEx7pra5M+HicWI4GLr8TPzo2rxuzuK\nx3ntyLYwdYpQDGyzPh9gbSXZ4JVGWj6ivxz5oV13c1SFd11dOw5NBHEfrWGR\nbJ2aSIBN1fN6GbI5WLYQv12eTWd4GXs3KqH9y65wC9kTsLd6i16Tv3vZECPK\nYY6Uodvdtjb3y/3y5tt88sz2rLqbsCzJKzJFE0haNQ7HcHfK7DNX3ch+b1pb\nMH0fDRpoex7oDOYXUAEwjzzA0TlyNwGkBkny19MKavIRfSPLlMRnY3GUA120\n8pyd+efkXKw8uH8cXeiUDxt0ML/l/tccQRhbFsc85YwD+m8qZIBLVz+8KOJ1\ne+pkb/WPhEvmQNMFa5jJueFunveqX6cI2zQcnFCwwq7Qcb5MaudnEhbwiivs\nOVwrpCPoA5A+oxvLtZmTYt3QKtMtOx6EoTmWoMueC8lEKJ2GaPcXH9+KlCVk\nusqqA347RINuT5rS+m5v9oI/cvwpm6ViGFhpNKLJER0APWdHASvnOBusdcv/\nMCfA\r\n=51hU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBV4lwgjxVbq2AUrkyzBxFaDvanHiviY/QykCntJjfGwAiAlbjSgtCfqPGznECg+YiptXpmy9lcfceLj1XATJTKEXg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.10.1": {
+			"name": "gql2ts",
+			"version": "1.10.1",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.9.0",
+				"@gql2ts/from-schema": "^1.10.1",
+				"@gql2ts/util": "^1.9.0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.9.0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Kwa1Db1e3qGediBi1A5wX98UBKmvUklsQgfLwk7J8bj9RQ4AkAwTToFvUmKhflKTZndAtQbdOJWwm5cmgXsLYA==",
+				"shasum": "aae1a1312744f7c9b36abf78437413ea317f6a71",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.10.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7972,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbqpJzCRA9TVsSAnZWagAAr7gP/idfe304IQHYOFyHIpaW\n1Amrl/Ag8wDPccAOn44KtiMd8Skf38v8H5Z1aKI7uPZr2HuxsQT+nYQYwWtn\n/EMu4qz+X23e7IexteF1sWp0dBvkP7ZWm55pj1VkRM4KU1hdDpgGowsDDGqy\nLCMRLtFL5eg3CS/slwBAg2xY7R+p4pZCH7JxMUo2KpCO7uuuMQ50VVH1l61I\nLEA7Apvnb0orkalchryYaf09SNvFrjeYPiiWmMWwRMK3zezk/1xlImT6Q4Ku\n9M38ooUeFZZB8dvlCij2yFQHe4zE32iRiqDKlh3lYiNKDcSsJ+GTljTR+qhV\nc2zAo9ryBAvvi+uGTwTH5EKbSd0U6KgXfQ2w/hdDP3olfT13bYPHnfSBlnmg\nrZ8C6miiQtFGdEUp8ZvVoKcVMHfKC+X/FaDJ++4VxL08snHOxOnXu6SzwGxf\n8MWEIB3IVht3eZxgccz7ThQQ8koErpvQSzcFmFG5RYuZee2TdNOYHUDIplkn\n2oq2uVk6RtecSqaOlE77lxWcQSO987elEr1Duwmtbpj5a1CdGtpoFtB+oyDg\nZ/UikP6GsH6F+rl3+b8f9dArUDy7cxgxd4S6GKuTLKS6VKSGogLYCxiP1Bol\n+hBGOZdGSalneZLR+51N9ehSS+sAEi/V4JL+h/L24i71I1/P9whltgdKGN0D\n+p9o\r\n=TvWS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC1YoJ458j0ANxpEnGfKbtfq4Kgz40EvX7Fbj9Y6bf/TQIgVE6pNpHtgtx59nEVT0f9Ga9QJuqbq1BMNJq8V4EuV8o="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.12ee5e9b": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.12ee5e9b",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.12ee5e9b",
+				"@gql2ts/from-schema": "^1.11.0-alpha.12ee5e9b",
+				"@gql2ts/util": "^1.11.0-alpha.12ee5e9b",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.12ee5e9b",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-ALqdMgGLxh0yqlYX6DuYen/0gy10ML8BKg+WuIC8DcTqEEGA2+kT33EEOxLpkg9nssLZxFoSyJ9HXmwGEEM8Vw==",
+				"shasum": "a512d129203e8dc35f1ee2c4b5565e8ef85b09c1",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.12ee5e9b.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxN6xCRA9TVsSAnZWagAANkcP/09F3xghSHaMvtiW30eX\n6EjFnX++SzhoVbUbRCQ9AJx9rbuu0jeZcXt4TEnu9VDRAucAg0p6Ml60ZGWT\n76aoYiWSpTKO751fPbSS5sbOKFi1a9gBXzkI8b7X/mwDLfrrmLec0jTCiWOK\nuQe932LO0wotlkbfRZ9lhbst1+gLxkSpHuNPsruS0Ah/G5d3RI7ls7YG9KX8\nKA2esLgLrMzPzMOBdWHmTkRtp7j6t06eLChKwpOQU2Y3XsVkxa9n8uonqGly\nIqmfjAN6p0OgxhhAb2Aq9QurMbnTkQvza9wjYwpbEnnmN7eRBLa8xJPsVZsX\nw4XBGD2BXAJcNXB2hr2VHLb4qiL17/hNmnSRGT5pZY1MTwNuaCVnqSDqROzc\nV5Dyqsph6LzjcBWFdSqaPLJ4WPbuP60zhn1v3eVAMvS2hkTje+I0WBe41Mq1\nrRR+3K+PLGqdBsZQwciijnbt040mYEpGG5Vo4uXmC9wNsrY5FJMFnYdjEULL\nZdMRrXNctJFrhRpKnyV3TaXkB1448Eb+EkASRlBDk3rpuU8yAUhQs6oYkFcL\nGIVtPKC0egQ2OUHPevBpRJpZ/LXpSxan/tsGVXagzENvIXsJq2ZJHoldymUt\nIIDC1xaoSYQuUjRofpmtJc2xmets8YaoZg8anMQFPCI0p5/aJa/AOU+ZBiFo\nhOCs\r\n=tvJD\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEIfmeZdH8XP5K9sNRq7TJoE9RoeH6+XU204JkAOasXxAiAaLeveNokfvGUnBzRGbsTvg1CnyjP80HLa4VBtt8f7dA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.8b444a63": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.8b444a63",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.8b444a63",
+				"@gql2ts/from-schema": "^1.11.0-alpha.8b444a63",
+				"@gql2ts/util": "^1.11.0-alpha.8b444a63",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.8b444a63",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Ln4DNwV1Ks5kUCnDhinM6txR+gHOP2XBxM8K56rn6rvBxeKmmj8haVnNuTPaznOU7FLuuZDt/X+awFcRwe2kpg==",
+				"shasum": "74b8a34747b3187a38588ec6a15f14efaf40587f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.8b444a63.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxN70CRA9TVsSAnZWagAA4oAP/3QdwylUyEUquKYgX3UJ\nN2jyVw5ORBnJUlOY7FaAXSWXSHSar77zYMiKmm12xgtzmlBmSCNR5DCDa6IW\nvoKipoqBOYaEEIPYpbGmNWVI8Md6L/8LeVtmNPWP5UbhIu4+Y6mauZwGUPGO\n4uaLrLJd43giZmfZYSc8tJ8mhjUKS5n/I1MvTsNzShIrs4pSvucPOgQsHsrp\nT653qF5+w7xmXcABQYklxhT9G9OnYUuitucr9/beL5TMVGjNU21aWrz+UL0j\nurfZM6E5J0hCYahcLeijwxG49jAHJSHHsSpYpG5FApy65peRaTCRuj5noP1c\nWSex9R/Rct9+5iig344BCejLBlDFVkp5Uxrznao6tRK4KmSKecWRhyfCeSxc\nDKNftmHdlWraJTW5XgH1ykb+UsqAYbcNWVe8zWx8Mlv1y1pILhmTKfdFCzAN\nO9yhexPTTcCKHitQHD9Pif0OAffa2zyF9dWKvxXmaJo5MK9bYEXp6qncbRn3\nh9Rd66RRvzK9OHbt/LVFjIHiY7DcXphZV3dweQ2YkFoMtzwa09/QWPy4pI13\nslsfmnSULfJpMz52h8WT3QCKfPbJtc8yKi8XDPIqKTFIgkBfbC0IlXKDc+Yn\nm8spm6ZHw/cYgk35ACEErVfL6poDDiS/R6iONocyYaKQwJxtzyUJXGECzSAQ\n22Ws\r\n=WF5c\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID9XtPCRhfYdfe5gL61D0ANhp2Ccim7ZG46d7SmStFmyAiEAzCPvURuSVFcNNFkBaKJ1PcO7DwHTF1zC5tHxR0BOHG8="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.79abe854": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.79abe854",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.79abe854",
+				"@gql2ts/from-schema": "^1.11.0-alpha.79abe854",
+				"@gql2ts/util": "^1.11.0-alpha.79abe854",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.79abe854",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-hTpluYxEQJMpqp4dtxS5n6+2dA29oghIDGalFFOiOmk1KuJmSwBTjPUX9WjE9aEwVRODn6LDaXBW64NHQzttow==",
+				"shasum": "e266cff9ed43102d9d477089dc4e5f9aa0edce9b",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.79abe854.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxOGFCRA9TVsSAnZWagAAoV0P/jp1TD7PKMJsmqxpZSY2\nR9FsGEOTH2JfCF93wID4LkbWE3SbCeWJjRdyY80dk6cpoRMWV+bxIHSVw3m9\n8g37krvRGc5aT6JE4WuI6MFulL4GAzh9svH8UqjireULdQCxo//mzWx0ueiP\n9WRy5xZQVFhl7t3pgHMSat5VMtnV/ZfuUxJ49MKSIJ5XPxP+MP5f07FlYllO\nEZL9RJOYOlg3nsJn5lfW+SNcCJ1kyM5MGaCwZhP2mzk0T08RygZcV0yU/7wY\n65PIzvFM8vQ2i/x0LhZk2ZW+SE5IJvzAsX4if5LoX9hQgVt7reS4SwHN5BZG\nbL2qHh3ELOsaqDNiCNWmJ+MdPsiFsBmZ91vFly72M3B6vBT+LUDHl5mrSIpm\nOZMwpcwJ7E42VFqB9GVSWlhN6nqrlLcN74hssc4CiHXXYN1N7xSjvwwbh+C8\n6gXhS6jKMv083mAH6rNiyiC0atsJooL439cZJgQKXvot4Eoax3UTSB5tRQKg\ndp0mnKGcA6Ij00gRHmGULiYMDnjebzGUBZEcdL8B59pabQX4BH+NiSb9CmtM\nscDwfmG+yXBzhfsoHr4yckHGPiHKS//CXxm/RaoN5WFyaMT9J46aiiD8Fvcs\nHrtbRIR6YokyHuH61yHSueiKP8K8VOQYXoe9DEr7V3PkDx48DsEtx6s+7141\nvRPD\r\n=QiW7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDUc/JY8lFsNXmnVK4+0Y0cRu4JgP3Xn09bs+g0Npj6GgIhAJX389wUL3qZ/0MhUEXHCDEKZfFkxQqNv0I31GMVyAZJ"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.aea052fd": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.aea052fd",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.aea052fd",
+				"@gql2ts/from-schema": "^1.11.0-alpha.aea052fd",
+				"@gql2ts/util": "^1.11.0-alpha.aea052fd",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.aea052fd",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-DwyV8XuMUCIkctLlsw4m2De9iRnLNyIZygxRRoQikyCQUrfv8PCqB9Fe0W63pO1fpjVc7X2ouX74ZY/BIrTjyw==",
+				"shasum": "4605ecd38feae598f52b4594a8523979cfb87608",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.aea052fd.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxhcdCRA9TVsSAnZWagAASzgP/RT85h62YNeaMhAot2oX\nyo/EmV22tG+tfv+SK5NFtmleoryXryOwMCmraBI0FYX27FZTe56UE70eLszn\n42J9NZNOXiN5VScn0xuHB0kEWvffgF/sFUmlpjxF03DEyRUEsl9XQSD2Yzn7\ncTXcpjqjVc6+8RJyu9kXY05bU2KwmIP2tAsOYdBkA3k13cmXP7q0/AqDfGNp\nmCnsh8MzX+/yPA6EXh/V1Sm5y8QHl03y8kXdDm0tO5M8eQJsArk5mZPpjRC7\nvo5B/fh9IdtRccWEns37FhhJCp1x0Dsu2FGuvq2vruW0Q3NdBivl1NzsbPom\nuohytxtVpre4qPsaIW0wqFT7wB9Q+MY7gdqhKWfAsKlEj9YNEzDbML8Wrr9J\n7Aaa57y4YmUejxovGXfWdnrVCBq+MYfr8almCkcQe2K9vrXLO+m05AAjtRU2\nsBkMT05WzA1jp0R8ABv/aZD18RwDYtXmTEL/bY5ILhxBf6sLcXzr+NSSrRtc\ni7fbmlcVkgaiSLMmgnr42rDJMbwkUHSjkjWwE4qReNp8J6YxJJa+fsmq0MZH\nHhwV1c7AecU+fX/Tl7Z0KkRAalvSUSjxFIoirf2kAe3igwlPRdWglUsayD+E\nrfXSC45iaCqFcR1Clo1ThX7V4svKH6BaZqT63MSL+XhtOibzvm0bJUGszR5h\n85sn\r\n=C9kj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCoPnOpGNOv9Xvdwtzv8dEpSadcLLR9cJZfwGGDf7TL6wIgUXfim0s/BUrz9nJKyLECmAf0eSNWRLR+47ygzHXAFPc="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.905b1daf": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.905b1daf",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.905b1daf",
+				"@gql2ts/from-schema": "^1.11.0-alpha.905b1daf",
+				"@gql2ts/util": "^1.11.0-alpha.905b1daf",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.905b1daf",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-tGam/tmjFPe5ePI0tf7PbZVjBe5AEdYslbg8iJN1n07EKh9S4cMGuqq/n9TN573GGVUltWdN+WbtvN9dVDfxpg==",
+				"shasum": "23353cc750ee1415e48b01e961dc1a842b83c9c9",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.905b1daf.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxiy2CRA9TVsSAnZWagAAcqcP/1NcwigN+RtbVeI/K4Mq\nj4DJXwedj75HKhf0hbutBZAB1sBRATF1WbSjezklXCMjxmczXSemI6ZFgfCI\nD4KkdL/btnvWucUIspxkSpba6pjarUEON9j9k+cRSUvHxvp1ZvEZ04xLzFke\nSTaCKzHuZMCJknugnpyPE6s47URDKg8FR8RCnWQtPMZr/uhVSVWlpSpjzBGQ\nvjC/VdpRCniNDYZJAMA+yaUYJ/vnNuyx6aaKPjOMkZYNbYIAb/2zc/+lb2ib\n8K/0Rw2qDWw4G5V1dmQRZT3XcZ3yZT8GPTBxQYX0l5dwFGW+aR4JtZgmgjoh\nJXaudGtghxGOb+sKBhCQXQ0DHE+BB2e9qwe1hMDQTauVeQQXETCdhmJ051jv\nRO+P259kKcChyj2K8X+0b1yNfTkR3f1+OTHSNhX5fRpeJWekxZpwsWZVjADx\njWtCBAgBrw5y+RTP7cOoG2036bPHus+TMaMnH+cvrtKjk/BK2YWimx+8zp5q\nsp8Td0TnQsWPLTJrHtvMAIGMVJ1Ce1cHy+AY32mWsY5h4yPiM8h4vdUvk0Mk\nXNqAyxa7is5QZwxMVo5yUhldrjD0KDfFcdVhcm9bvv56m3UOfnGOyJwmpgnG\nriPBPCA0ZOj2DtjfPmWwC4MuWUASr9ipyM5pBJsLVNW58gqTVDd6LgfEQDhb\noyhG\r\n=gJMy\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC4K67ghoIRZMaDByGY8Cw4Ri5fvqcfjN39jTGecMT40QIgAu86ytKG2quB4HlCEXmgrP/U/F1XtLN+ApRoymmC78s="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.b353a569": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.b353a569",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.b353a569",
+				"@gql2ts/from-schema": "^1.11.0-alpha.b353a569",
+				"@gql2ts/util": "^1.11.0-alpha.b353a569",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.b353a569",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-8ORc8Ec3nJLPBOxpJoiVjErkmUMUA35wR63dqCodStrCB/lFsCvY0jvQBb1OAeTAmwPnr9Bfn7gOAtARByHRdA==",
+				"shasum": "88760fe1ca4e1a637ab652a7c9d5313c86ab174b",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.b353a569.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbxkjsCRA9TVsSAnZWagAAIawP/iAVo8PE0eVMhvmOI+qc\no5bjpDl1cL8eIbl9XMnjHRjBpOt6pqCReTp8EaxsfOsz9U1exDoip9G1dYbD\n4GQcaeD3VN8XpteYm2SjmcT6ud19q9sK3Ryo3unSi/EIo5OaT0fAfkpkAFTS\niKlyEkHkfvShqpGwA/ebYkeJCuPXnHZ/h0kECc3QtFqKuC3sQaKVXLR9wIeJ\no05H19QLLbVaPz9Ru/54ao/sJUgLFKDQLLHblDnwtaRWHPNNUi1oic0RwOt7\niSPfj36C2lcwSw7JoQ6kMVxn1bka4mtb27gV7pP83N04AQiEFiun5xABYAHd\n8hn4UwWj0ak/lpFxunFY9FBW/Ny5qOwxTzgsZc4P/9gMaMAeVh6rIMYH4vvN\nlTJyYL1b0mySxlO6+b7l/dx3CwS3g1EOQ4xPNL5AGZV8y8sJ8I3amUTowPoD\na01h76rua1YQaJ2xKpl2LwGSVR6weP0wjtWpYuh/lijAjxbSOty3c2aI/zqS\nYpLSXyqP8qw6jtEBFZ/kVOPvv9ihcbOcT16/BsSlSF9oy1armEF3UysFOo9g\nHZinHkASO+fYkmBb60j6LJF4b4jng++6iyo8uiUXTqtwCY9fQA9jewftrNpW\n8kjWq1oUfnMWpdXGnk5t7W24WQ2VdCX2GmM5hXREGqMcLmmQBoqJ4bQsNDwV\nfsaI\r\n=YnkD\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCAMEbGwqqMDX6AsS5gxeC2OR65z4OSDnZa4saD1KcL+AIgC/0g9c9Do4M8wJcVj/I0dMaGcOrwBdOWPueZUXckBmg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.4807d000": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.4807d000",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.4807d000",
+				"@gql2ts/from-schema": "^1.11.0-alpha.4807d000",
+				"@gql2ts/util": "^1.11.0-alpha.4807d000",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.4807d000",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-DGuKn7bSiIMyqwoh+qNhd/OvlCbs7y0JyYu8tQqh59kZt8n1Or+Ed1EymnOrxOHlmf/i3iJUTSSXBmo0gl8CMg==",
+				"shasum": "72bb174ed90a64b2f295164be66811a44ca078bb",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.4807d000.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7866,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbx45rCRA9TVsSAnZWagAAYB4P/janiwVEyIVJeQGOktoU\n8UzNBV2HhPqueZj6XetB38in1s8MQmkpIMA4GLwxbWTApoxdbJzVewABVfxw\nVQG+2qTKyJIh6EZQV+KxixqZ6uMEt6LfoUkyZ2pQwAFz6PcRHDCj+TYkvDwm\nt0b+/dpgOdXcN0LteJRxGU9ylUxWPJL2nUVYVXHCdP1/C2NNexj4i3Nsz6S2\n27AafpyFr+onbVaUom0qmfzPBdkU/jQKepeh6GkWbyGroCh30d740tyiCl/K\n2hD/F5Zow7pOvc6laacJvnt9PT8/DhOw8g24o5TL4TgQV3mQVaHkvXA1UeLT\n8g6WCyxD9I1ec5aaNNGUZJEhkO0E1+oGkxYBl8426lDbgx96S+zz7Ys0Syjb\nETY2GL9iCDtRXZVnQUiuMa+tH4QqYu/CWNJyzubcfVbTrl9dqsfG3/iyRgT2\n9jesz60g2gtDk72B6ZKF14eBp6xnD1VJnsoN7o1F5CvJ0TvVMpdYPj3bvXFd\n0GPHUZm/YNPJAsp/bX9c3lTRPWEuq59cRtjUwtIXtWN/LCcYVP0v84qtuE70\nV1DX8q8ojlZbr8dITG1IVkCXLOCo7gQkUc+cAFsI06dS9jqdUcd1xbP+0Kgr\nXnn+4fodu/DRctXkgjw+24Qju3aGaFbMv2B9nlcpzjbN1kqLH307Wxh3X0BJ\n5OFy\r\n=p0t9\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD5FGlMf/E94K4acZeX+Hm122sCq6cRrr0gubjXCKtqoQIgccWaBpfRxAOn50s0wCuVSWWxxKBAigocRf1FB/Fj39U="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"1.11.0-alpha.95b0b3b3": {
+			"name": "gql2ts",
+			"version": "1.11.0-alpha.95b0b3b3",
+			"dependencies": {
+				"@gql2ts/from-query": "^1.11.0-alpha.95b0b3b3",
+				"@gql2ts/from-schema": "^1.11.0-alpha.95b0b3b3",
+				"@gql2ts/util": "^1.11.0-alpha.95b0b3b3",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^1.11.0-alpha.95b0b3b3",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-hxCWvlWPPWjtIfjzHV/m+ludF6EgI/kA1ettawsiadzfZllaxOoW5253MJFy+WlL3VlAGjiqfuFaOvwGX8lLLw==",
+				"shasum": "98000b9fa1679e316adcc8ca58d2363984c25432",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-1.11.0-alpha.95b0b3b3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7866,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbx4+zCRA9TVsSAnZWagAAe38QAIqtcCaZcyJKNNOQ3aLs\nctfQi+Sz3wrnZGKKjAe8jboWD37GhI6HhoS1qAgvxmlXX4PE/DYJaGyWCMyP\n2VRbm0Uf3SeCLjTEndlVLM3ynKwN8WEsSfKR46hT02vnQ/yK0CCnUO9awIYr\nFGgYBcFWT5JWgsQkZBARYNkiqwJcS5SaJkuo+OVV+NKvvFBinHk/ND2A0X7y\nfar9ppifjW+1vuuYEUH3jdHH9QaW3vyC9Ubl8l7+hcRUT3svJO1fzKoUgHXA\n6uHZhwqUfoD0qSM2UQ40jghhK/tdbKIS49Io+GQmIgQuUGq5aHj+3bDgLAx2\ni+zW9+LwjfVXqXLkrAfoC2KgREBlG+pZ7nQOFyCksTrWxM3QlCFcpbcMrTKh\nOOj4dTXwVmTPByhbKs+Zln/MNlI2F5DX8NIgT2k44pDbES5Y0IoBR8apWvWk\nfr+kWUxtgiU3BGwCTL6jjH7Nxbtho848KtNsMzQZ7f1pwv+yU3mx63c7oA+r\nZzn4P1K1Pd3B9YEJSzMLuh05D1Jx2qZ9Z5j9XoDVM4AdJ4vCQDxhBuw6rlGG\nVD/3TF0BC7hfLmr6+tgwD+ZXMK6FuCqSN0gHz1H09as5kNt4d31N3zfLHepK\nzGh7S08v2k1jEb1m1LaHDyQ4PRW1bgzL+nmLNNvmfugdfUeS7DtWorcTzRRO\nKXdW\r\n=yfyn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCl2dor9BZ5pmkiZP8SMbaseUmUN4TvNun6CqWlve7y3gIhANMweR9OPhBcn0R7IBTkncQppSBBK+eeURsNp2TEFFmq"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"2.0.0-0": {
+			"name": "gql2ts",
+			"version": "2.0.0-0",
+			"dependencies": {
+				"@gql2ts/from-query": "^2.0.0-0",
+				"@gql2ts/from-schema": "^2.0.0-0",
+				"@gql2ts/util": "^2.0.0-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^2.0.0-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-XeQcG/vtsyIoFBPM8VR/Xyx7HD4rqAYwiMThh0/2PeFpJ4OKTmFZVL7nZAvee8G1zZfRA0IWVnfUYv5RK/wSDA==",
+				"shasum": "455c17b0223e3abac14285792134fc4e4f11a8a3",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-2.0.0-0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7796,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbx5AQCRA9TVsSAnZWagAAHAAP+wZVTEuIdgtgHLVvjuh/\nU7gGqrPqAtEgiBcyidv7KPtPmM4fXFMIw3HNvoBSUzcKsy79ph2wbUPWTV2C\nP+zEFYdgg7YUngVrHcTDhUuOFWFAnEUT7u11RqKvOZ0dw23MoQrUR3VfNbqn\nsLiKLkHAcMPJR3YVrAkNEyAnERjS6VzncwTHoQTpnPiM4GaWkj5HR47nZX4l\nxHxlLadMeDsbR9NHEymTrQVkpX8ZHNm8PSAX/xYYw7QYwlQeS4NmatpwGIpQ\nKyke+T5xjhXe3oVsMXVKdRlzJQs3Doxp9xKX3VNwO7SuC9xxQtfcBKolAVZA\nvawNZkj5tdyQzBhzCWPMtVnfzsnM+bY6l1RFOB+KkbBLx1QE/tKhvncxFHaX\nijDwInLDudZlyZ+gGy6u2hLKGzp9rLe843H1KsjTE+noFqf8VhBf6wj2bkhl\n19EpWoVdOXXlt5ujpju8OjgFtyaB2r1W0k/tSIkpSbbPgYjQI3ngMifauMxE\nSsGp8pnhiHkDTdnB47OO8L3IeIMzNO37hAPi5oeoXacqEl6L9uNy5sX5cqh8\nmMznAGsfU1dSnJc3EbZYlL98lO8j2W/2lbsvnP+aP5zwKKsbD1PZmW5VfpQc\nsWaA+Lh6Umn64ZKdEZFChZJ0V+DB6B9HVDEgYhJkKGJHD/TG7SNdTbnjbF6w\n3kk4\r\n=Hy/A\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCEAAlvvA7XEkpL6Q46kOvjpBciCVbswTflswvmlNSSJwIgR9PXVoxJy1UrVab84eCt4JYnd3kOP4MyPt5xhuyIdcw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"2.0.0-1": {
+			"name": "gql2ts",
+			"version": "2.0.0-1",
+			"dependencies": {
+				"@gql2ts/from-query": "^2.0.0-1",
+				"@gql2ts/from-schema": "^2.0.0-0",
+				"@gql2ts/util": "^2.0.0-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^2.0.0-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Ls1ph7ZuxTVrPBnu49mfDnIrmYF8to9TPd2bwo33J/tbCo0nTntlAhXJAc9gK/ktJqa+APxImiL7L6Z9V+qRcw==",
+				"shasum": "f94699ddc6be831ecc6018f0f3cc6b744a05050f",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-2.0.0-1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7796,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbx5dmCRA9TVsSAnZWagAAiqIP/iAVMPznNKdZy866jiv/\niuyxn3P2lHe6IBB+K2ZiHstu+OIoSNfBMCNosWMBDI/YyL8GwmdmKkNliOCq\n4IrnuUTrn88OjmuMD9LMx9n1W+YDmC9rKnBYN/rPqHte/sO2qZGcirV301Iv\ny63kwfwj7xtRuoFiHCrA8Y0/jgpfZEonB5UYwDhZGHOISkNgdbY5C+HoPhYi\nrJWXNYbG8cSEZwybppwbmZtcLy/Zgul0NaVHMBXsHwy4fREHhEJvJqTbyTee\niSTQzbxslrGEl8Wb8b2aa0M8RerC+JiNxXtVMrnLAoNa11NgYTORWOXNtHgn\nfqGaKyx4Ybw69QpeJaaqmBAbXP3HMJbVK4UZAV6G6pf3tc8HT4uwJgFiazwH\nqvwHFLIdzDyqtbsFZ53d93+OUcR7dOvVUSZPjQT1l4OZJLI1Mr4K7s7Tep1B\nsDBT5P4dt3E0eY8wdeUPnyzo8kbix8NMrtdgVksJ6Vbye8aKhsTnTWhJlYpX\nS1wUT1VVfnf1PMeCoBo4N4T9lZmkCfeEYYaQEiesIyTQJXxKXVKIvJ/Nk0F8\nHQ81BdtmquBsDcvFgNSsovnnthipD1UOQ+6sbKNcd1IIU4GG5D099tUQ14m1\nhayaSiDfcGQ58SYknI1JReSL99rfmqbWv8hZvuRDucXHGDGG5wWDlMU2atlm\nZFsr\r\n=QM/i\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDTcHzlL/w+lzP6uic2qvBp/RFW5IadiBbnxkjZh6ykAQIgTbC0Y8fOTI1f2omINstMIMAIRdAXRw5jRHkah3wwdHU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"2.0.0-2": {
+			"name": "gql2ts",
+			"version": "2.0.0-2",
+			"dependencies": {
+				"@gql2ts/from-query": "^2.0.0-2",
+				"@gql2ts/from-schema": "^2.0.0-0",
+				"@gql2ts/util": "^2.0.0-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^2.0.0-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-QNpSw+xS9AXXn2TrRerloIqvJX4d/0gdoYHrmuSJrcKFR52mwvdsp5gBfNF4wBCuWsYhWQ0iSgfKpQ6/LSncXQ==",
+				"shasum": "b08fc43b0fd3753c30e9bc60aed25682ddfd3197",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-2.0.0-2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7796,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbx5fNCRA9TVsSAnZWagAAoKUP/2f7VXqDpAsjiZLEZrVK\nPDtDIzgdHaZE1yOB4mRpMjFGwxskI0L4NnUia3q+F+kLc3v1aEIDt7+k0SXA\nETFpGjpve0km6VX2wKU6J2X0nekvSUtf0iLz20hRiUotstm7VkZ2GlxBNb9o\n/6zBCgxuPve5Y6ZQYWL8RigO1akzROQ9qiWWKy8ttbjaOhAiiunK9/YC3N8k\nZbIHUYMYr5FBC//6QCA8lfxfQakUeNHfClt8vC5h5fc35xzMWAY07Kd2CpkA\n5OW20yg8//j/QERbje8aTCLbdJPD0kTP252KDitTzelirtMwjULe+qTsd7gL\nlCwFN/xhqWjRIT0oIya7KZ5jUMzVk1kwnvKPAhVx23b1WPdTwKoFsqtcrH9L\nB6sPvr5aVxgeurm+Z3NqiL16jzre9rTEN2BBDRCrYx2Xj1f3rCoh6bSgIKgT\nlvNBKEdVDledB1+WKOSJvNex+1RObqHk4Pw8VY36Dkg3+ScQHidUu1n34No2\nLF4V+8qqHFHLHJyDe9ZD/QiVsd3DlbfY2ZtCN5xL2G3lzi4JR9RSUvsU56Oe\nXUVJLRF0P5TmFSUVDpPWtFyPPHfiZRVOx9zNLEaJqT9A5nEzjSTruWRLW2nx\nLDCfEmdhwpZIvbP4c9mLRvDXp695IZUM95/7jvPoJvzpcj2yfH16pH+c6vLS\n3ly7\r\n=LSSi\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICWTcB0XL5gbR63OwMuvkJWhR/OAalb+oCgHh6cSS2nTAiEApXPXwil1HPY5RoB2PsfKHS61BHOCIjaF0C1MGHNGALA="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		},
+		"2.0.0-3": {
+			"name": "gql2ts",
+			"version": "2.0.0-3",
+			"dependencies": {
+				"@gql2ts/from-query": "^2.0.0-3",
+				"@gql2ts/from-schema": "^2.0.0-0",
+				"@gql2ts/util": "^2.0.0-0",
+				"commander": "^2.9.0",
+				"graphql": ">= 0.10 <15"
+			},
+			"devDependencies": {
+				"@gql2ts/types": "^2.0.0-0",
+				"@types/commander": "^2.3.31"
+			},
+			"bin": {
+				"gql2ts": "./dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-fUcgVgkMYDKTwFULp00r6KA/ZFQ2H5hf2lMIXxZ3BEuODiNPhGn2v5B7jNI7PJUfcEP3v3rn01AECwo5mWZdYg==",
+				"shasum": "3929e1aa4930311b41660785276007392bde86cf",
+				"tarball": "https://registry.npmjs.org/gql2ts/-/gql2ts-2.0.0-3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 7796,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb/xDhCRA9TVsSAnZWagAAGdUP/ieVcX0iS8MBh+I6pW7m\nZJqktXNt1kOEyhUaJ96pqpt/tRx1uVCXNtJGXKPcRYeNBqolEGjZnDFMgFIe\n+a3FNnmsFhuataaJke/JskzTL0MO5psGfQgezHclDDqc9Ns1Nj5Km+v1j5S6\n63FXTCXtnJSy3NdyxpyeEC+qjkedU/Eq3lqutMbQc1yn7ddFnqEZu7I5r8LT\n4m/CCup+ljBLuleqP/3nvRBwchHXkg1xseWFOmxG3XO8cLbwxmFNb/ay3w26\neFLLfZ5BHwbtPh9QCBs25ZoOzonH+2JuhXk/HVVQVMCOYtiaBHk2WOaL6oAe\n3WkYDN0NYd628UUtyXMiTi+LI1n/xBSJP9/adyPexLu7krqEn/oQrTQ4BTuc\nCulvkcprAsMWFnWihsyqeuH9mZ5rb13JbCfcQNSI4TU7+JcH372VWHA9bqbI\nZR4OTm5Ms7+gbIo7Mage+G5wd6l/GaF51Mz8DbRLr3vm9qSqZXm9y+GpaB71\ngFAUDLo78XpulhRM3iqTB1g5F9WZRvqQEnGUxGFU/R4m7b0puOS7c0QoYfst\nDb8l4F/JBJXPBYpW/VSkzTDZRhpLiok9RpTT37Ya0gDB7tiFqvfjVQsvvRTp\nztWT9ik550I0ZlQhyBd2H5G8qTvHgleBBZ0t1yARr4t7JkSzGB59Y/fJD8aq\ntGrn\r\n=cqRW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGiBNkL1TA1vCNuSTeGQkPBL6g/Vb5OJ8SPYRCZ9uwDvAiEAhktDwChRe5YP15PC59vvvwI29LTT+TlFsxWqRmGWuMw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=6.0.0"
+			}
+		}
+	}
+}
