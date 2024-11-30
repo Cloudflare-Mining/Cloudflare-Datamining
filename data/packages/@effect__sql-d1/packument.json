@@ -2,7 +2,7 @@
 	"name": "@effect/sql-d1",
 	"dist-tags": {
 		"snapshot": "0.0.0-snapshot-6ebc752baf28354006ca2a0ae783a5bccf5de9ad",
-		"latest": "0.18.12"
+		"latest": "0.19.0"
 	},
 	"versions": {
 		"0.0.0-snapshot-5fe45984d8022d8f8001e1057a5bacdd3e510676": {
@@ -3053,18 +3053,50 @@
 				"@opentelemetry/semantic-conventions": "^1.24.1"
 			},
 			"peerDependencies": {
-				"@effect/platform": "^0.69.28",
+				"effect": "^3.10.19",
 				"@effect/sql": "^0.20.12",
-				"effect": "^3.10.19"
+				"@effect/platform": "^0.69.28"
 			},
 			"dist": {
-				"integrity": "sha512-S2wHHnkkonYzDCw1a7IpJkjgpYFJLpRwVgbIp8ZmDHove1wflWtiydcoY7wyBuxR20T3cQsRZwdl6oDqnpDQcg==",
 				"shasum": "c70550cfc191ea663c9f97f6768faa38ac9987b9",
 				"tarball": "https://registry.npmjs.org/@effect/sql-d1/-/sql-d1-0.18.12.tgz",
 				"fileCount": 19,
-				"unpackedSize": 36526,
+				"integrity": "sha512-S2wHHnkkonYzDCw1a7IpJkjgpYFJLpRwVgbIp8ZmDHove1wflWtiydcoY7wyBuxR20T3cQsRZwdl6oDqnpDQcg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC6Lpy6o8Bi6l3XWKH6HeOIhwMJt/8TpMVr3qqGLEfLGAIhAJkq0UpV4nV3+1p/b+N79xkxfD+F/XkwtxG8+HkoBaai",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fsql-d1@0.18.12",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36526
+			}
+		},
+		"0.19.0": {
+			"name": "@effect/sql-d1",
+			"version": "0.19.0",
+			"dependencies": {
+				"@cloudflare/workers-types": "^4.20240806.0",
+				"@opentelemetry/semantic-conventions": "^1.24.1"
+			},
+			"peerDependencies": {
+				"@effect/platform": "^0.69.29",
+				"@effect/sql": "^0.21.0",
+				"effect": "^3.10.19"
+			},
+			"dist": {
+				"integrity": "sha512-Z47cznWl3jmEycVosvRBLhuZWG9dmQWoxEHdaPZLBFh7+OIN8HDIYW2FSUPYNULOQozLiw8bD2jW2KJxGEgARw==",
+				"shasum": "da66dbee7b80e0177553aa0c8a348ce8d3751912",
+				"tarball": "https://registry.npmjs.org/@effect/sql-d1/-/sql-d1-0.19.0.tgz",
+				"fileCount": 19,
+				"unpackedSize": 37386,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@effect%2fsql-d1@0.19.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -3072,7 +3104,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQC6Lpy6o8Bi6l3XWKH6HeOIhwMJt/8TpMVr3qqGLEfLGAIhAJkq0UpV4nV3+1p/b+N79xkxfD+F/XkwtxG8+HkoBaai"
+						"sig": "MEUCICUYh0nSJ/5/CDjw6EWgNDeM2DoKDMV9GUycq9gJnRJaAiEA4jExZ16NIk7mvDhfPvZdYCqC5SLkmXRqIpZwNS6A8DU="
 					}
 				]
 			}
