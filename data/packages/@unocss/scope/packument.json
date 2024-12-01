@@ -1,7 +1,7 @@
 {
 	"name": "@unocss/scope",
 	"dist-tags": {
-		"latest": "0.65.0-beta.2"
+		"latest": "0.65.0-beta.3"
 	},
 	"versions": {
 		"0.1.0-beta.2": {
@@ -7180,13 +7180,36 @@
 			"name": "@unocss/scope",
 			"version": "0.65.0-beta.2",
 			"dist": {
-				"integrity": "sha512-27eIQwnCXi13SwVBQq57rOuots4FM1KJM5tVhpcKinv+IFi/VWaWez/2o8BCGEenawuracKiW8xudCB9/p33og==",
 				"shasum": "f8786018b5e6205802ab7ca7a7b91721c0db9111",
 				"tarball": "https://registry.npmjs.org/@unocss/scope/-/scope-0.65.0-beta.2.tgz",
 				"fileCount": 7,
-				"unpackedSize": 2384,
+				"integrity": "sha512-27eIQwnCXi13SwVBQq57rOuots4FM1KJM5tVhpcKinv+IFi/VWaWez/2o8BCGEenawuracKiW8xudCB9/p33og==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDinWGnXqBfyEopCU2UkEV87LeIdJi14EOi8O0LJMKkLwIhAJBpi2o9j7mzv0bGNyhaiDxNW6yiFDGDe8fAUuqmrOfn",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@unocss%2fscope@0.65.0-beta.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2384
+			}
+		},
+		"0.65.0-beta.3": {
+			"name": "@unocss/scope",
+			"version": "0.65.0-beta.3",
+			"dist": {
+				"integrity": "sha512-PwYoXLecPn2rWwrznWIJAOZRImKQlPLA2HtLRfsIGoKneUTfkCvOP61QjHVQN9+VVVMLNn7kQ6m54c581gc/Dw==",
+				"shasum": "68cc9a3cf9d59febda1f70708f887f2e07af90a5",
+				"tarball": "https://registry.npmjs.org/@unocss/scope/-/scope-0.65.0-beta.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2384,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@unocss%2fscope@0.65.0-beta.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -7194,7 +7217,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDinWGnXqBfyEopCU2UkEV87LeIdJi14EOi8O0LJMKkLwIhAJBpi2o9j7mzv0bGNyhaiDxNW6yiFDGDe8fAUuqmrOfn"
+						"sig": "MEUCIF1v956IT2foIa5otVViGfAs3eaH5idbMSILKbTn+Q+nAiEAowYY8LNAY/lJYTF8SLonImPrapx81GE0uvaClS1+pYA="
 					}
 				]
 			}
