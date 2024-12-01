@@ -1,7 +1,7 @@
 {
 	"name": "globals",
 	"dist-tags": {
-		"latest": "15.12.0"
+		"latest": "15.13.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -2961,6 +2961,40 @@
 			"name": "globals",
 			"version": "15.12.0",
 			"devDependencies": {
+				"xo": "^0.59.3",
+				"ava": "^6.1.3",
+				"tsd": "^0.31.2",
+				"execa": "^9.4.0",
+				"cheerio": "^1.0.0-rc.12",
+				"outdent": "^0.8.0",
+				"shelljs": "^0.8.5",
+				"get-port": "^7.1.0",
+				"puppeteer": "^23.4.1",
+				"type-fest": "^4.26.1",
+				"npm-run-all2": "^6.2.3",
+				"eslint-plugin-jest": "^28.8.3"
+			},
+			"dist": {
+				"shasum": "1811872883ad8f41055b61457a130221297de5b5",
+				"tarball": "https://registry.npmjs.org/globals/-/globals-15.12.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-1+gLErljJFhbOVyaetcwJiJ4+eLe45S2E7P5UiZ9xGfeq3ATQf5DOv9G7MH3gGbKQLkzmNh2DxfZwLdw+j6oTQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICLoV1+FLo9Uo5ts7CnRGYeWhfwnEAqLAzOpaDFds7H/AiBTGV8YpMyF1EIqkoog2EEntWBTMuAp8MN+/F/WMY1ytw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175742
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"15.13.0": {
+			"name": "globals",
+			"version": "15.13.0",
+			"devDependencies": {
 				"ava": "^6.1.3",
 				"cheerio": "^1.0.0-rc.12",
 				"eslint-plugin-jest": "^28.8.3",
@@ -2975,15 +3009,15 @@
 				"xo": "^0.59.3"
 			},
 			"dist": {
-				"integrity": "sha512-1+gLErljJFhbOVyaetcwJiJ4+eLe45S2E7P5UiZ9xGfeq3ATQf5DOv9G7MH3gGbKQLkzmNh2DxfZwLdw+j6oTQ==",
-				"shasum": "1811872883ad8f41055b61457a130221297de5b5",
-				"tarball": "https://registry.npmjs.org/globals/-/globals-15.12.0.tgz",
+				"integrity": "sha512-49TewVEz0UxZjr1WYYsWpPrhyC/B/pA8Bq0fUmet2n+eR7yn0IvNzNaoBwnK6mdkzcN+se7Ez9zUgULTz2QH4g==",
+				"shasum": "bbec719d69aafef188ecd67954aae76a696010fc",
+				"tarball": "https://registry.npmjs.org/globals/-/globals-15.13.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 175742,
+				"unpackedSize": 176196,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICLoV1+FLo9Uo5ts7CnRGYeWhfwnEAqLAzOpaDFds7H/AiBTGV8YpMyF1EIqkoog2EEntWBTMuAp8MN+/F/WMY1ytw=="
+						"sig": "MEYCIQDWch8vKwTgHcPF3QhUCovjoZIeqeFGmv4BA7Y4O8tFVgIhAKLO9EOTByq5V6NsgmslajGDyDhseNR8KQEuI7rbD7VL"
 					}
 				]
 			},
