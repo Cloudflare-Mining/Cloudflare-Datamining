@@ -1,7 +1,7 @@
 {
 	"name": "@autorest/openapi-to-typespec",
 	"dist-tags": {
-		"latest": "0.10.3",
+		"latest": "0.10.4",
 		"next": "0.10.4-dev.2"
 	},
 	"versions": {
@@ -2752,6 +2752,71 @@
 			"name": "@autorest/openapi-to-typespec",
 			"version": "0.10.4-dev.2",
 			"dependencies": {
+				"lodash": "~4.17.20",
+				"prettier": "~3.1.0",
+				"pluralize": "^8.0.0",
+				"@typespec/http": "^0.62.0",
+				"@typespec/rest": "^0.62.0",
+				"change-case-all": "~2.1.0",
+				"@typespec/openapi": "^0.62.0",
+				"@typespec/compiler": "^0.62.0",
+				"@typespec/openapi3": "^0.62.0",
+				"@autorest/codemodel": "~4.20.0",
+				"@azure-tools/codegen": "~2.10.0",
+				"@typespec/versioning": "^0.62.0",
+				"@autorest/extension-base": "~3.6.0",
+				"@azure-tools/typespec-autorest": "^0.48.0",
+				"@azure-tools/typespec-azure-core": "^0.48.0",
+				"@typespec/prettier-plugin-typespec": "^0.62.0",
+				"@azure-tools/typespec-azure-resource-manager": "^0.48.0"
+			},
+			"devDependencies": {
+				"chalk": "^4.1.0",
+				"eslint": "^8.28.0",
+				"rimraf": "^5.0.5",
+				"ts-node": "^10.9.1",
+				"webpack": "~5.89.0",
+				"autorest": "~3.7.1",
+				"fs-extra": "^10.1.0",
+				"ts-loader": "~9.5.1",
+				"typescript": "~5.2.2",
+				"@types/node": "~20.9.0",
+				"webpack-cli": "~5.1.4",
+				"@types/lodash": "~4.14.168",
+				"@types/webpack": "~5.28.5",
+				"@types/fs-extra": "^9.0.13",
+				"@types/prettier": "^2.7.0",
+				"@types/pluralize": "^0.0.30",
+				"eslint-plugin-jest": "~27.6.0",
+				"eslint-plugin-node": "~11.1.0",
+				"@azure-tools/openapi": "~3.6.0",
+				"eslint-plugin-import": "~2.29.0",
+				"eslint-plugin-unicorn": "~49.0.0",
+				"eslint-plugin-prettier": "~5.0.1",
+				"@typescript-eslint/parser": "^6.11.0",
+				"@azure-tools/typespec-autorest": "^0.48.0",
+				"@typescript-eslint/eslint-plugin": "^6.11.0",
+				"@azure-tools/typespec-azure-rulesets": "^0.48.0",
+				"@azure-tools/typespec-client-generator-core": "^0.48.0"
+			},
+			"dist": {
+				"shasum": "e7a094617a4b1f739df897c2e657c5973f857654",
+				"tarball": "https://registry.npmjs.org/@autorest/openapi-to-typespec/-/openapi-to-typespec-0.10.4-dev.2.tgz",
+				"fileCount": 298,
+				"integrity": "sha512-S0FHjW2aWMoLQdp/m24VPQcdfEp5lKIe2cNJUwCqG34gEupJSuO2CoHbgqplxgxIDIdTFtVMT+Kv28qxzinupQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFHDA0Ha8PAIxDQNwass6AQw5FhRf2kleHOx0mj5gEfwAiBDmwbFBVEBQ/S+elm3BGPNM63hQTJ+suWHYjBOmyUO5A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 709558
+			}
+		},
+		"0.10.4": {
+			"name": "@autorest/openapi-to-typespec",
+			"version": "0.10.4",
+			"dependencies": {
 				"@azure-tools/codegen": "~2.10.0",
 				"@autorest/extension-base": "~3.6.0",
 				"@autorest/codemodel": "~4.20.0",
@@ -2800,15 +2865,15 @@
 				"@azure-tools/openapi": "~3.6.0"
 			},
 			"dist": {
-				"integrity": "sha512-S0FHjW2aWMoLQdp/m24VPQcdfEp5lKIe2cNJUwCqG34gEupJSuO2CoHbgqplxgxIDIdTFtVMT+Kv28qxzinupQ==",
-				"shasum": "e7a094617a4b1f739df897c2e657c5973f857654",
-				"tarball": "https://registry.npmjs.org/@autorest/openapi-to-typespec/-/openapi-to-typespec-0.10.4-dev.2.tgz",
+				"integrity": "sha512-FvT448S4DCmGNgDEdGp9kL8bJE6m9QiLgw1N8YGuEmDCYoliC0RB1NQaFhOt9tTAZ3GGDKpZdqeYw/3l1mVIJA==",
+				"shasum": "0984e1778acd118ed22a30e51dc0d73919b28402",
+				"tarball": "https://registry.npmjs.org/@autorest/openapi-to-typespec/-/openapi-to-typespec-0.10.4.tgz",
 				"fileCount": 298,
-				"unpackedSize": 709558,
+				"unpackedSize": 709552,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFHDA0Ha8PAIxDQNwass6AQw5FhRf2kleHOx0mj5gEfwAiBDmwbFBVEBQ/S+elm3BGPNM63hQTJ+suWHYjBOmyUO5A=="
+						"sig": "MEUCIQCb1PmJZM2cn1gyVS1icm+b/afTTUgvB4Xnr9ExqGIL6gIgD+IcD0Xe+CHBliOwsEhO67CluwIBq20FKt43C2XljMw="
 					}
 				]
 			}
