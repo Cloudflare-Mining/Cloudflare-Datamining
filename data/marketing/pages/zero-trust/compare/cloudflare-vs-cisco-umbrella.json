@@ -29,8 +29,8 @@
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": null,
-					"arAR": null
+					"plPL": "No Page for Locale",
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "zero-trust/compare/cloudflare-vs-cisco-umbrella",
 				"topNavOptions": "custom",
@@ -2741,9 +2741,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cisco Umbrella vs. Cloudflare One",
 						"titleSize": null,
-						"subtitle": "Choose Cloudflare over Cisco Umbrella for DNS filtering and Zero Trust",
+						"subtitle": "Replace Umbrella with Cloudflare One for DNS filtering and accelerate your journey to Zero Trust SSE",
 						"subtitleSize": null,
-						"copy": "Start with Cloudflare Gateway today for DNS filtering optimized for security, speed, and simplicity of administration. Protect against ransomware, phishing, and shadow IT threats.\n\nLonger term, accelerate your Zero Trust journey by consolidating threat protection, data controls, and identity-based application access under Cloudflare Zero Trust's unified management experience. \n\nNo more switching between different Cisco interfaces or worrying about how Cisco will integrate disparate services on the backend.\n",
+						"copy": "Stop relying on costly, complex, and fragmented Cisco security and switch to Cloudflare for DNS filtering.\n\nSimplify operations day-to-day and your architecture long-term by unifying security across web, SaaS, and private apps on one platform and global network.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Talk to an expert",
@@ -2772,7 +2772,7 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -2784,20 +2784,20 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/659UTStnstHymxDOQeX9yq/c60bda06de1caee60bf86dbdab4c59f3/cloudflare-dns-filtering-spot-illustration.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mDM7hgW5olTGEAAVMYfcC/97825a7396456eb8d553e992b6b884f0/BDES-6774-CISCO-Zscaler-Comparison-Page_CISCO.svg"
 							},
-							"description": "Illustration of a DNS Firewall"
+							"description": null
 						},
 						"imageAssetFile": null
 					},
 					{
 						"contentfulId": "1Mj3m8cniZbyqG7K5eGNvJ",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "With Umbrella, your organization is probably paying for capabilities that you don't really need. Cloudflare Gateway delivers the same rigorous security, high speed, and simple management that you expect from cloud-native DNS filtering solutions like Cisco Umbrella. Plus, we make it easy to adapt your approach over time to accomodate new users, new devices, and new threats.",
-						"title": "It's time to reevaluate your Cisco Umbrella subscription.",
-						"subtitle": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "THE CLOUDFLARE DIFFERENCE",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -2808,32 +2808,23 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4K2r2IJAQZIQSYviSd6D3p",
-								"title": "Block ransomware, malware, phishing, and other harmful Internet destinations.",
+								"title": "Simple management",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare ingests best-in-class lists of risky domains and generates proprietary threat intelligence on hundreds of billions of recursive DNS queries per day.\n\nWith this global visibility, we excel at identifying and applying policies to 'new' and 'newly seen' domains.\n",
+								"description": "Multiple deployment modes with and without a device client to get started with DNS filtering across office and remote users.\n\nExtend security with one unified control plane and one policy manager across composable SSE services built from the ground up.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
-										},
-										"description": null
+								"removeCardBorder": true,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5paQtlqwq0QU55JSFoDVb5/9c08042383aff5d97a9d6d13266f5632/optimization-gear__1_.png"
 									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+									"description": null
 								},
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
