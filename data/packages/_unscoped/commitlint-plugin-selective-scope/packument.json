@@ -1,0 +1,88 @@
+{
+	"name": "commitlint-plugin-selective-scope",
+	"dist-tags": {
+		"latest": "1.0.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "commitlint-plugin-selective-scope",
+			"version": "1.0.0",
+			"devDependencies": {
+				"@commitlint/cli": "^13.2.0",
+				"@commitlint/config-conventional": "^13.2.0",
+				"@commitlint/cz-commitlint": "^13.2.0",
+				"@semantic-release/changelog": "^6.0.0",
+				"@semantic-release/git": "^10.0.0",
+				"commitizen": "^4.2.4",
+				"coveralls": "^3.1.1",
+				"eslint": "^7.32.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-config-standard": "^16.0.3",
+				"eslint-nibble": "^7.0.0",
+				"eslint-plugin-import": "^2.24.2",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"eslint-plugin-promise": "^5.1.0",
+				"husky": "^7.0.2",
+				"jest": "^27.2.4",
+				"lint-staged": "^11.1.2",
+				"prettier": "^2.4.1",
+				"semantic-release": "^18.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-uw1qDHZIP65qY3su+kF1EjO0Dwn3/j80YM/mUvIpXUenwLvZOOaVZG33y9lnJ84DZhcB/j33CmcH3qnqsRmPVg==",
+				"shasum": "3dabaa389521cea603c6cabe994fb24b7768348d",
+				"tarball": "https://registry.npmjs.org/commitlint-plugin-selective-scope/-/commitlint-plugin-selective-scope-1.0.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 9979,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2miiCRA9TVsSAnZWagAA3d0QAJD/ksaGI+r//2OD6JJR\nRNMgIzSNf0K5T6ixRHr6j0DTwRCnDit73TcgV89CYD+NuPDaqOSianh+JoWE\n7XMkE1l7ATniiSUb4w+NaW+Pg4uDsSIDtuacrgAAuM8JZtDWss2DhxLfTK8p\nUS+GIrk7i5qmYj/f6CPSg1a0pc9LdHyoEOG1cfG1mSD/E64VaDL+b5Q74HBQ\nROHhvXdYXF3O6XGgTALKffBAvdZj+4RbRUz+Vh3mjAgtuFmUJQmhJumNXf24\n/Z2DurHT6jjm3P6+8KaF5y71YlwRpcoZSsb1r1q1FCwWvHjVnW7YxG4Lhvlr\nGezLJFcvipRVy4TzG91WJyqlWjj0LptqL1HtZo8vs13LtKNPeYFpfz9ioYyD\njFn9BoChl7hDmX/3cVfoWSK+8xqpqoZqdPsK8TJyLWP0QsRx/f49woujTXW8\nKeovYGXQdSB+lNXfswm/VUooGQ405ese+N00WueprY52YED33CawjjNUBzkf\nQxDdgQs4P8RQjonRT45UQXW0r9cvuPhGeWddWs3JMSN95bqUuAPLLN4sk637\nOLhj4noQU2ERL0tJctCfFK8fkTDXb5HOTZ4jdx0CLuGOZ9u/tcn8AhagoVKa\ncBRX0ecSQEc2yglng7tgcezsrnVUzWENR/XO8M3ZiCwY6xF1h5Irfj8K4jrN\nxW8b\r\n=bqix\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCmDawPwka1TBlrLaVe6lfP+QavxzZG/DJkzMjhaReafwIhAOxIBOAyOPCWhuHYD/ZCxFrftluD6kBFsrNw/OdX+hIP"
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "commitlint-plugin-selective-scope",
+			"version": "1.0.1",
+			"devDependencies": {
+				"@commitlint/cli": "^13.2.0",
+				"@commitlint/config-conventional": "^13.2.0",
+				"@commitlint/cz-commitlint": "^13.2.0",
+				"@semantic-release/changelog": "^6.0.0",
+				"@semantic-release/git": "^10.0.0",
+				"commitizen": "^4.2.4",
+				"coveralls": "^3.1.1",
+				"eslint": "^7.32.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-config-standard": "^16.0.3",
+				"eslint-nibble": "^7.0.0",
+				"eslint-plugin-import": "^2.24.2",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"eslint-plugin-promise": "^5.1.0",
+				"husky": "^7.0.2",
+				"jest": "^27.2.4",
+				"lint-staged": "^11.1.2",
+				"prettier": "^2.4.1",
+				"semantic-release": "^18.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-GG9NpByCO9mUkIVg7mEdCgrZ6pTn990xC1SdLRm5R8VEaXN6m4TFExDgAUJtaiFeJ1InQHH1/OXMFbzJPwHoEw==",
+				"shasum": "ed94f2060cd39d6f888f2c752c2fd53bec3e7b67",
+				"tarball": "https://registry.npmjs.org/commitlint-plugin-selective-scope/-/commitlint-plugin-selective-scope-1.0.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 13433,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICvUpdRQXOOKYC2kzClbBCXneXrfm/Ij5XYScKi94SZQAiArEZTuKptKMxcpzao1yPxe04pRh8s6f8d8S82h8MVWeA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjpNmPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpNMg/6A0sBPo+5X8PNErvl9QfErBbkJ2iZLO6bQZHpSFHgLsgcyJiD\r\nzkhM5CTlkMHfaUjMlJgxKKDTb8MN5xpnd3XUIaM7WyqGUKeBs55jLz+qPYUu\r\nBmFT7iPQL5teGLIwBZeK1wkFVm5JVLu7aHNFTrXY/cDaOu2JMhFgZkuNTpav\r\nyiaKghzwdAIhcN+xlEEueDUIUqojxzI/14O3YE5e29wdhd4elzBXANN9ij4N\r\ndsPQRqRG4wYAuPcwznUandElt94jh/rtHByu81HxBZM4I1Jm+zGxnH2rp45G\r\nl8vLpQKXPevj3e0JFxT6VNW34l+2NH5bUZBSGhWwNfWkV2HQlTqZapQjnH02\r\nmm6sAb4PNazrZK9gmD4Daqj2G45gmdsIEklbBYaiOua3MTqWcj1rIdDknyJL\r\n6Uw5vgTarleYEYdmBhZGCwOjbi0kI1IT1oYLqBB8UdO+yAt/3bj9QUD2cyqY\r\nkKmKHTptQUDCeTZJd+BjiTH3d/uEd4XNmU4aTCAH/NVPOxZh4Guuc0owZpDr\r\nPzzDOzn/hWBbCzaR6PP69bQI48Ty8g9uWkKNdpRDsbsYBb9TU+YT7U3F93m0\r\n/IteRtPf+8U9GZC2YmTL8F9lwepnS6pxC0sZB9sTFG9UnWevlkTsVMoWCFAz\r\nPzt18JAEHy4BdvebWqIURPbS21sQkk3vprw=\r\n=xF1j\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}
