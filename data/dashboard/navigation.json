@@ -178,6 +178,11 @@
 					"title": "navigation.account.magic.network_monitoring",
 					"url": "/network-monitoring",
 					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.dashboards",
+					"url": "/dashboards",
+					"hasPermission": null
 				}
 			]
 		},
@@ -899,6 +904,12 @@
 					"labels": [
 						"beta"
 					],
+					"navigationType": "global-settings",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.zone.analytics.dashboards",
+					"url": "/analytics/dashboards",
 					"navigationType": "global-settings",
 					"hasPermission": null
 				}

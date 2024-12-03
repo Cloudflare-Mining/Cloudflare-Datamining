@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: z => (0, e.z1)(C.Mr)(z) && (0, j.z7)(z) && !!(0, j.z$)(z).length
+		hasPermission: z => (0, e.z1)(y.Mr)(z) && (0, w.z7)(z) && !!(0, w.z$)(z).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -137,6 +137,10 @@ const navigation = {
 			title: "navigation.account.magic.network_monitoring",
 			url: "/network-monitoring",
 			hasPermission: z => (0, a.iY)(z) && (!!(0, r.Le)(z, "account_analytics", "magic_network_monitoring") || !!(0, l.$f)(z, "rulesets.magic_transit_allowed"))
+		}, {
+			title: "navigation.account.dashboards",
+			url: "/dashboards",
+			hasPermission: z => !!(0, e.z1)("custom-dashboards")(z)
 		}]
 	}, {
 		title: "navigation.account.security_center",
@@ -423,7 +427,7 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: z => {
-				const W = (0, y.tJ)(z);
+				const W = (0, C.tJ)(z);
 				return !(0, h.ky)(W, [A.uD.EnterpriseTrial])
 			}
 		}]
@@ -705,6 +709,11 @@ const navigation = {
 			labels: ["beta"],
 			navigationType: "global-settings",
 			hasPermission: z => !!(0, T.V)(z)
+		}, {
+			title: "navigation.zone.analytics.dashboards",
+			url: "/analytics/dashboards",
+			navigationType: "global-settings",
+			hasPermission: z => !!(0, e.z1)("custom-dashboards")(z)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -771,9 +780,9 @@ const navigation = {
 			const W = (0, u.nA)(z);
 			if ((0, l.yD)(z) || !(0, a.wB)(z, "zone_settings", "spectrum.app") || !W) return !1;
 			const F = !!((0, E.l8)(z) || (0, u.DQ)(z)),
-				J = !!(0, u.ZB)(z, "spectrum", "enabled"),
+				H = !!(0, u.ZB)(z, "spectrum", "enabled"),
 				te = !!(0, u.Ns)(W);
-			return J || F || !te
+			return H || F || !te
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -889,7 +898,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: w.x
+			tabs: j.x
 		}]
 	}, {
 		title: "navigation.zone.caching",

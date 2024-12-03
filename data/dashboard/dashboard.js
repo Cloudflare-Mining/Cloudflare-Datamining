@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "34bd25de-592e-5fbb-8de5-73fe330c50e3")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b0a1cfdb-57f6-5bd2-b945-716113ceb16b")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1014,10 +1014,10 @@
 					t.g.build = In({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "178e3035c757d0c399db2f862fae6972cfb25d54",
-						dashVersion: "29415004",
+						commit: "aeb2e67c0b7e30016492915b9668107d92e644fc",
+						dashVersion: "29435815",
 						env: "production",
-						builtAt: 1733158300751,
+						builtAt: 1733224808076,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11161,6 +11161,9 @@
 					jschallenge_failed: "firewall.analytics.actions.labels.jschallenge_failed",
 					jschallenge_bypassed: "firewall.analytics.actions.labels.jschallenge_bypassed",
 					managed_challenge: "firewall.analytics.actions.labels.managed_challenge",
+					managed_challenge_interactive_solved: "firewall.analytics.actions.labels.managed_challenge_interactive_solved",
+					managed_challenge_non_interactive_solved: "firewall.analytics.actions.labels.managed_challenge_non_interactive_solved",
+					managed_challenge_bypassed: "firewall.analytics.actions.labels.managed_challenge_bypassed",
 					skip: "firewall.analytics.actions.labels.skip",
 					force_connection_close: "firewall.analytics.actions.labels.force_connection_close"
 				},
@@ -16212,4 +16215,4 @@
 	}
 ]);
 
-//# debugId=34bd25de-592e-5fbb-8de5-73fe330c50e3
+//# debugId=b0a1cfdb-57f6-5bd2-b945-716113ceb16b
