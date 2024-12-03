@@ -1,0 +1,359 @@
+{
+	"name": "@davidzemon/passport-okta-oauth",
+	"dist-tags": {
+		"latest": "0.0.5"
+	},
+	"versions": {
+		"0.0.3": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.3",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-wuuasDyY2VVUUiz7NWpF31LjoXSRnBf1N/VM8fOfbrtIe3GxgMzkwmx2h2jTImBbeMigrVLwd9ts5bXfjA+q8g==",
+				"shasum": "d2d557cbc0387e86e7a8a892779b354b8911f641",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2180522,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEHGWpFG9SF0LfdFToipgEBZhl9vYaOF7aZE46DNWz9LAiEA99d/iwKqifVY5gY7IMbKHTlKGMBPDDbnqx3iLWqlsq8="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJivLXQACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpE8g/+Lj01kIBUUCYBiW0ZdasNvimF7HtKyCm79z1LmyCzZE5QOxLy\r\ntEswSn530muZBxchpD32h5wOClXgto8w+tkuElnao535Cp0qbBSs5G2VjYqY\r\nh50XAbnc8Sv+RtPqUsT/asJFSfk4Z7e4leqzzcLpkdRvb8uG9jZ8gi3g1h+1\r\nWPQHPpWrlqe99CZAYh7PddLm+eYrmDZy2MtISlkwt3RQEOmscatDr3uibYZ1\r\nF/kfc33Z9bMOVbfnyyciJeDLF+bcAMk/3O6CJonVOrRg91iiin4+DhZQJyk9\r\n85lcd3AC5nFDyxIGUsioptRYx3NxjGUl1ZgTFQJfss0l9ykOSU/KCd2iptvC\r\nd/hcK/TgigyfA8Z/e6R2rqQsVjafeDFjn2MppXDvgOnBwdRpaV/6Zr2yzBpS\r\nfqefI17dU1plVV/l9CcT/dW1aZV9JN+Xg30nhlijVk49CzGo0CPNyasKITPs\r\nOJwEFmMhHRxIozOzDDdDmzGKOtPgeeeMAFXO1ug042/n97c4nAyTTuyfhz75\r\n1KrePyDcQ6Jd8sgzzfdML/hvwtCbUIETKsjxmxh56VxJYWeBRGHatWD1yf2G\r\njcBBr3HgGNbZnh4+zYqr3BBIIIC5yrDFlA+DOLmhx1G1E5u20Zj0g5Tamxur\r\n7Rpvckun2JyWDUoBNhLrygBcTMu+/YpQUGQ=\r\n=VCv9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-1": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-1",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1"
+			},
+			"dist": {
+				"integrity": "sha512-D6nTLFlchVGfGvxEGhlT5w328PEC+v350hLtr/gIfvEmoo6E5Sqhf5FYp9sQrxEBBKGuMW+YmCWXlm2kpWYiXg==",
+				"shasum": "9bdc4e7d77159fd25ea24d55e76f0f12be1e9f2e",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2182044,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHuHRqsgaIlhsoOtMFoksDEu316KDx5ISlJxVV7QgO05AiEA6RH9Rx8Gyu8qKGyQBj9rGlKQn/pV1Dfc5WmFF/DP8rM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJivMASACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoIMQ/+PTNLIATAK7ooCin8NbL6sI1LbIIZqbpL4Vpd07dwqDLt1bXA\r\nozK0dzgKFTQjF1F72B8sBE4DmTmc0NiX3XD5eJFEp48k41LUq8stJerrlOTx\r\n3IpATZlXi/CSJHVI32lg9F/i8vzVEhuJRZAqvuWkNP/S/jVav2MWn0k09+ZY\r\nYm4QeT6TuPYkQuJUi3irdjzCkNWHWQ4Wrrzr06yKGrZ5StR7U5sdYNZ5PnE7\r\n3esiauUk2Q+u2+uHAdLlHojDhAFChTxcMbGiC+CbTFyTuaAIr93mmge+o1Ni\r\nCVCOB97qwfRZHLDiB1RFH2koyATyRA5pPc8wA8VJTglp9jvJlKhyc4v9zuVS\r\nFlRP1fXaLx6mgKqmmrzRJVvc6R4JNQtHPrwBDTEnpmBLysNaTAjm/jhZfAct\r\nDAGIga1rY6U4AHg2NDMbr/Ay6heHTbOBvK1/VQdSeuayQlAVNQtUoDisw67E\r\nvNNbSdH2XmTHN/JILHBjiTf3Aj/mUALItmOdKS+X6/ar5FARaG1p4HGuRVDl\r\nh2JRlPI5MvzBQWROJiYWMClnMmhl+dDYkro/rhng9HTj1sbL5jmdPdrglLxE\r\ny8mDjkJ0XEuakza+qN3aYrCa7sRAYb/HNeoi1KlMzAjxofWADpyA4Ggh8vvR\r\nuQR5V+ni0UsBxyYwYsdPy0Xb509vZHEpHIs=\r\n=3r7G\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-2": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-2",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1"
+			},
+			"dist": {
+				"integrity": "sha512-RYyDc1w12LbpTfnTzxmVfyyvkVYYPHoH4TIUAozv27TY1VgY/QEpla2G7fidXDFlu/6itsK0s678s2idd2jhhg==",
+				"shasum": "67155fa1f591a30e65bb8b1c8a1433280ec515e2",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2182042,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDHlS22CZrZR7+piHH5s2junMASeHnH2sBwlkMcz9dbfQIgSAFkJ/AatMXDDN7oyYS341h0a2TZDldmzk2Rnnu5bn8="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJivbOWACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrxORAAnhWu4JDyuO5TeFEfn9a8SUdNAgd4YDrNf3QGH5Uk4uTbVe+z\r\nQVssOnuREOy1AwbO/9ZiD08g7U8ZvUdRCY5FHethvG2rBgdDBWsCAAoc+6ti\r\nLF+YF5g8CKTtjhbhR60UhdCKYQbi8Cs1UFGUYnpnZq5NPxZHEzzybxtXP+IP\r\nCfDt7AwE1crPOGspUhr0ONuVo1IYYr/w0lAK5HdpFURay5OzOKuZrz/vCBRY\r\nwkNqZvUxYXw2i2iV4e/kMWknjJk6e6VwiUc8bYU4+KuJpMAX8hpDAhbooVG0\r\nS8NpjqhcHhOUh5r2QCpRBuLdFCUJn1UWJTkT67fcHqE5VPrdT2tXNA0e28ch\r\nMxx1JZ0j4QJIH9iYqPOAnDxcd77xHLfawN+CDENBg0/MgNiDubApYPxJPx9Y\r\nFyYlXEGgBpCT1GpKT1XVmV4IBcekgbMvJ8oDf8Y7WpAqNxjslXuED2f+Q5d/\r\nJwWDjyC4xs7AfjnZDEiQ0PFwUTcGe50EMaOlFbn4RCzkOWzRawKZz14YNHzx\r\noR5Ofy6lr4GfhfYzCGOFnL9W1SCMA5C8PNznlllHNFZxwWJQeZaSFy30VSbz\r\nCert2J1IRjW7Yu5IFd5XpTZM+b1Ihe18CG/ousEox6J8gtOsB07Rw1rRWyz6\r\nF9oJSGrotEGXvc5JFYQgRepUfVHazVrgF5U=\r\n=hQ4z\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-3": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-3",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-XOfrIT8R1fi3rYbhRXKdfAaiq7YeLRFL2iLl2nJz4HQX5noMOOy1rSTEFrcw4DWxr9cgleE9/IV7VCLeVfXSWw==",
+				"shasum": "ab8dd14a50c000cbfe3bceb49a1bee32a7943d83",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-3.tgz",
+				"fileCount": 12,
+				"unpackedSize": 2184961,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBPA1mLLcPkCG9DVBK9V0RBvnFe4dCcUVdZX7WVWsApXAiEAivkSP7yJOFNWjfgXiTC6PNOpW9YoIr04ugoct2nbyL0="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixa5mACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp/lA//ciYKp5oVA+ITEQUEQxLjK5FWAgMNcCtARrvOgFL55q0kwdmt\r\n+g7qgTcXlsdCCfT7qGpfcmbtNg1xWrYGHapT+lWIN+6IUGkKhOhAfim5gwNw\r\nuAtyjCwqkKD6j8YMC0/Vqyb+xizLbkS2LILXR45VWrFveNQzJlKden0OL9bK\r\n9LhSx//cWyuWnbqR5hwHYJi9rWRd4RSgoYBvEcmByjYDOW0a2McznEX5J+fk\r\nc/K/qMkcWrFVGjLTH2wTb5AEtRvXY/W/hHh5++/jYsYUZgx6L0QC7oBpBKrs\r\nkoZTF3Ej1tF0XH5Ldws3mS3ODm5z+UnYddD5PTY9uXr7/ahO30OWftqgDi6H\r\ntoiFL0vMsTC3I/tAta6dBbQsbXyvy17yU/3KrUwY9F2sMAs7I7PP1VamM5Pl\r\nBcuac2ky2f3JStJXe+M4eHvm6jAAsFWCxhnCYpO1BNRIIwlU7Q/xpKigUuhH\r\nNuKhOIc2XxUfvZJgN/EkOsbpTINDkcs51BhJYObA5SIctV1dvItSWoPfWP9a\r\n8cd2HfFVcFXnLEt5w96nJbrkQgQZGmCG3JTgC2qkj1vUIg5txQ8udxv4/5vY\r\nBOs8MW1qsWlu79H1Hx59dXzQgucLCOzP7SkJHdb5GQaPyzvlW/Oh4WE8IIn/\r\n8yLRsm3UVxwtvtdUyXxTgWA+RHoKD7btads=\r\n=d8DR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-4": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-4",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-gbApzz2nmvMi+REjqykxkmx1u3ds5XGvpKsaAtalGAR2CmbubxmgYUYU1Uc4WSVgrO8U/PZ/Tx46uePsKtwEVQ==",
+				"shasum": "b6d7c63d423a206bbdff4858cd427dc93d4cf280",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-4.tgz",
+				"fileCount": 12,
+				"unpackedSize": 2186290,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDxVeJeVxYBlV8/o2V5zY2fiLrkitrDgFWUkamHzIAIGAIgFHoj+oSivsEArvu5hHuYcPiHfky4yFDWkRdSyc96Crg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixbF4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqwZw/+KiuD4ghalFmSBZ2+KNs8dkjfJDZrx/1V0ucWDJdz3rquBddA\r\nlBPmX46LvCDPJLOnweW/fh16xh2lKLn2UaSznAYIl8PsrigVqGlQa6Mc78hy\r\nYjwlLi3qJiuE63Je5HuJ/3z8ylq5292dY3fYDTnJNYBG5Kqsq/cvjvVMp7nh\r\n9pX0AsYlOXIT8XTg3hTj18flGpCjVzhscR+mBIitjEJ7xMBC1GaQwCWksWFg\r\nQ8NB1guVVHrDWjzlw+SRshVgsV1S7R4WQPrDwEaowqSgDH2Yki9AjUhkuPxS\r\nyc6mLxVMASIhWcSF1tUwR3o3EVmVIDgjrCuv5kmIdix5Im0Q4NrwHKzhuS7V\r\nHbRYWxn6SzeCWh8gct4E/fXNHFEAfYRMH+R9CzDdmZWloKfRIWjTaied8qtN\r\n7I7T7RF2CjYxKTPwJPThMoa2wick4loP7SUX9Oqq8mKFfGYs+5yO4RL2h1So\r\nHZIK+4XSMNK/H533CbdR4v+jciAKjac8J49uTc9BLff0RsECK3EBMdYdokda\r\nt/FXIz1KguZNK/q02gXKxPtilCnbB0ERCW15agEidSRirBfPWLtTDKQ4iJjy\r\n4AOComzaID5egpRE5D9WwmsQsYZzBmW4fg5Rj2KcU1kOpQtHvzrMOPrz8KLJ\r\nAkgMecKkYj0+ohmn6XfWC9TF50nD8nZrnqw=\r\n=lDku\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-5": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-5",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-B6NuN+UuxIQebY43NVFmoUDOFTW8Hxm63gCUMs/8It7kutJoIhryfTxmro0nMC1LLzGtGWrl0QCQlirnwElT9Q==",
+				"shasum": "4541d99dcef51be4383760625946849933734a76",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-5.tgz",
+				"fileCount": 12,
+				"unpackedSize": 2187079,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAEwD3djE+paVIONL1n1xDT7ezHECuueMbH43NIQBmX2AiA+v4+UrhFy9LMIKuY7i4agNC0iEKGc5XjMqiR+F2L3pQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixbJpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrErQ/9EV1HtodENP1r5ahBMh+xMylSdYjDd6OUjy33FtXkWTJVKO99\r\nMzjTuSnmDL8h5oESpollRly1LtaBoA3wbil4+dqaGriySICyz2X2IR9KouTd\r\nrtRyaIVS06ZWFBHHpoWna+Or1zCaJzcQGGJKFAVwzGJKtyDdncz+QsnFtKh3\r\nZLhKI4B5s+hAeKiGIMRWhYfwVFubWsuwFFx6Uhxlj2sDMlxFcCN4mpuQeVW8\r\nb0jmZg9a8hU+ZQ5pDt48VdXh6QH3/n3qX/Fmfd4IVMAriACINgQFotWxJJL+\r\nz1PeRdzu6duzLUqAdl+5V0gqST7MrWJQuwRjLtg+NBskyqI8+Ka+WN3JPPWa\r\nb1T/HzzTJKUpE6LZI+uk5Ysw1G2KewIABad547xcIFNJmk5H7BbN9yOhPlhH\r\neGMkiz1qy8cPK5cmtfEB9oGt55iiaO5PZT13ASlTZRpL0U/BNoyaMhKGHRrJ\r\n72nY06bu2Fa76r9XX60vZl9qCrTYZUxRwjrLx5+mPZOVoUxckqhm+loiQqq+\r\njVCrKXWDHFF3FPNqh67dC6bors3rZWBnRGkLiZ5XhS/y6wbvtF67p1qyv6RD\r\nzGREJX0P2wGws+lw5BU/CNnmSGwX0pr4lm0MCb+OO0g2bbWLHM1Xi48WQ07k\r\nDGN3/lbIuICUGmICdJvKjDbZRvNjku0CiaM=\r\n=dzoa\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-6": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-6",
+			"dependencies": {
+				"passport-oauth": "^1.0.0",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-dYG5x2uXvawDGLUNmyrujub7wlHjN07MYtpdCsShZU5aRGFa/3JStHbgBWg90RgLbXrxJtoaKWPHYOQREyCu5A==",
+				"shasum": "f8189fca5afd953e0cb41bc74b504ef9659aa3ac",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-6.tgz",
+				"fileCount": 12,
+				"unpackedSize": 2187525,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD/9+knmg//RKLu94Qe+/o/Rbw+8PC1HvwvBa0jZ2XMwgIhAIJON7h96VbJ8MhuovQNj8jC/N8AzvE5PlkbaQSl44Zk"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixbNaACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq/YQ//a0CWAlZeiZxSuQ0OGzbZ8LaZrbFX4nydg30XpWihUcOv7JWL\r\n4RNEI1/t8CR9TysFjg2ELriXr7sIHvjgarUoYH2VHHkFcHwCS8Xp1WeDB8wE\r\ncX1aiDNXG0wx8HlG04oaC/2iNGmzoI4VKGmAzpN2oADpwRxD72OvXCVGJtwA\r\na80AzhGR9ycC29JEQmTE249CrbifvK2pv3eKXsbVZPsj/WenybghhvEvCqbe\r\ngMoMl30fMMcEwhgvFCXu78BQWK+iSdnxSAvX8205jOWn/peLeXGbJmjxEQmP\r\n5dLPih2Aps11IRbfjLv6PXv0XcLfHdqRSLtZxgkvtR2BIHLJnNYkYpX5VQnV\r\nwxRn+fNftNYjWlZILj/0RWIBL/UBRi2xkhhZbdRWqNfipKg5JoosO+teGj1f\r\nTOhD4M4vlSfUmOPdLjGy/gkqbvElUuqmCPa9uBR/aU+JoLEZs3Z26oKUz1nf\r\nCyKbsjzEGvx+gqNnhh+l2OZvdJm1jk0y8wEb57RtfxdetYaVDyfESvQ0NHg+\r\nzimJxeagzbPjgcYKimB5wXoH3wvQONi4ha0etVabvEUjmpWMAw3UXnYd4pMx\r\n3pWWbih2QLHZLbH7IxkoqYRBA8DsisbxhJnjazCo5ikgdDKDkYTsoSzoX2Py\r\nmLe0M9Zid6JY7btTY1dK85KTIXVMhEBz7ok=\r\n=/0t7\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-7": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-7",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-JoscsrY528I1vslh9QKY0zYkj2+OlCJy8uI1p6nGLAgRkzHu7hFhTUKNEgN6LJtPUyxa0SjZypoxAjG2MYhEYQ==",
+				"shasum": "84682feffdb0f290da469143b4d966363c567bcb",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-7.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194164,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDLxmJjyLO7BfsOuVCwlicHbsPkClK6lo/vPabo+gl+SgIgAthuwk9esNv+8ddQuq6vfW9pi2j+fzKHrQHxfuyKWA8="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixb1XACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqtoQ//Q6oIL5/s4rw0GqOwqEbO4L4/6BA3OSJNompq6gxvbPOembIc\r\n3b2kXzgIPdzbd1Ap4Ym5hQzoHemkJFBfnBAJXSSe0kPWgo4/Cci+WX0JvrJo\r\nctSjdDC9Bak5zVIjtPDOYVbdbqCgeEGL2sGDFvPEim4ZWD45au5TB+3slLkC\r\nNQRWRoU2UPsvt+QrIS71t0rsNPPmM/nq1dOxsVZwJHNNqjg+zbwiEhXdGLFF\r\nfxXUBVQXsXb6khkJoeyHBR9tkJ7dPG0gN5ThJcv/gSWIQ6yDQ+mTkGLdKlAv\r\nQR2tsrga+HMRmpy1SItz1D6fbVo+4ZboRkf9h+PSthcaRXPFtEXVAkkxgzIy\r\njEZLdyJMmjCEaJJTPSHIVKvoKLbeFPp8W6HRNBeirr/ea+fKsQhInWZztcqe\r\nZ2RTq3L3LxRK+68mgIphMsLSgQB8YpE2/9OfQFVQv8TdlRYMIsufdcf/YlgL\r\nFWPp4xdhBP4RdBt0wIbl62VhwWa4NY08qkG5MtdsFHq533JFmMTy9ZUgFV3b\r\neeQK4yAphcNH6S1DVxD7PI5Tzb+AgtIVjZ3mSS9Gs18CPdKxtQ2hNdJHeqE2\r\nXMwpT6Fx3ItGiibt+bJ4oRNYkQMGm3taKBv9Tbf/N8Px0G4HiETBXK530lDZ\r\neFu9GFd33/qciYELgYE2SyQU2jiB9EHE9cs=\r\n=9D0I\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-8": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-8",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-VjJQQOPFj6ZP6jOHsJTFKaHhqBSPoDjwzRfS15OwtbTBveMswTPfN4v7epjiRTrwGFHFjU4yLXeZh57tBuuoUA==",
+				"shasum": "67bb5c13277a844be7b0a2e28a12e7cb57a0b8fc",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-8.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194364,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCoFJ5nuz3Ri5H1mLEtyxqW4/+kbzkOKKXKpnNIUV6pMQIgBDNn2HckstkLOXnX4k4zjCK8lLTs7MJ6LNnR7Evg1BY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixb4LACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqLzA/7Bh7qBhrlujGFtOUNB9vDkkLjXHC4nFfgZyhblc83SHaJAQm6\r\n7D0AUR1Daic8SHgjenczsVPXzRz1DrPqbC4OtrpresG9frgiTPTA6ba5Usqy\r\nmfr9a79Sb/CQZEOOIqO+0JyiTee5RFBnpwuvoGYIM78b4Imi+2uiKve9ljAm\r\n4tTPYM/GeftkkH1LFtuHuaYngAG7CwZHHOymOk0JrnPN31BTqAUHoQKcu8gZ\r\nLWgvjp2GHVyc0xOV4/lPw4ajXQtH9so+H0Aiv2muhXojLcWdcGiMFWtTHd/S\r\nAsxrB+tnnPi7z06dF2X3c6qyRtSgG1tdllWNNx/hVfx14UdsM0nALOTJw15e\r\n2uj8+zJpXRA9+585ycFGj8aXDN3GyUBJxHEVB/m3rzmp7fatKmAx1sTRXKIU\r\nq1OzO7bfZKrF6opfu0q5ywYDw6v0MJ3Ilsxg0YrEpBlyrzYLCY5ikOeigglS\r\n0l5SQypwp/1JsDxQ51FrRWHW5J0Ie+pvoJ39vhfuMpbQhpkuG5WFDpwea5ai\r\nm62/7bAOH8RwWfXGyB1AGFC/1Yl1HFZzgHElSY39wK6htbLbW85MspL05e+r\r\nChVzhKWh6za0JZm8bqjS43Oy5yrHfY5doijmo6ZPPOlzzwdBD//2NLvtiAfQ\r\nuX2d6t9sNapeozTCeGR/37MnURqW1gtNDqk=\r\n=szuy\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4-9": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4-9",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-LteFQqWoYIxxPPbI8ue3o9XvIjelVqogCd2ngsVxZO/sTQeiRlFE1Vyq9UGfTJgdiHXeWWob4glaeYVr0g1CjQ==",
+				"shasum": "cabc84604fa6304b5ea8d19555102c9f7f31205e",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4-9.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194352,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEpxd3/YYxYbe01xNUcOPU4q4PtvpZd+thr84h1gdK5HAiEA5T22a2aI8vlT6dweQ7s83EQHkyxFP8One5aT30l5lnc="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixcACACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpgJA/9FYMgdn4+6UKVAmoaAapa/nLMJTQ8woXQVGy+ERsff9JLqCrC\r\nz6IGJKWkf3i0agpquJ9QhBCxtdrqxfv788Gq04u1iQioh23h8gqpTCrObUXo\r\nu6CnGVlm6iwscSwhLjLjbjLLPKrBusVydNCWnUrIS9q9FLRjSG388aB7WRQv\r\nDcDoGugAvnNokG0t8ySsCz2A48XavwUG1qfekpNN9KzmX1ur/M3nXpz7YCja\r\n772SftQi0PrfR5nZgy0pe17IFylkI1/PBke2YtGy8XzmAceUi4rLUJe1nHHY\r\ne3DYun31kMCN3bWQG3E5+AqemaKhvdQoanX7pBKQjb8F9vzHx/aRth+W0pAJ\r\nkyKWNF9yZ4G2eS1/IDUWh51yc3G7fgegHWCWajYT9qJCqIHPWVyDravVy25y\r\nwd/JsRliS2N2CZTZ+GtcVQXyDeD9V3QlXQLti5tZVZWZfT0GXktT74sKeh25\r\nyJMLk4SasNxm4oxndtl6g8CR+1ERPKp4OXJaO1lGWH5JX++szY2kNu8ObEOI\r\n+exu8ydlzoHnUinTRlVPDDfVJnwoja7qgzLWn3JKH4MoHIoQO+VujLJe3Ywe\r\nqiQ7qyiNfEwtEF0Rc1n8coLJvMjT9YcJ1P5CgOqtzEQUm0d92U1yJ1e2cyfu\r\n+wPvijmDKOF+ECMwfkrPHasCsdXEqT+Miuw=\r\n=RQG1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.4": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.4",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-LYGDtnYnmAvBDpSfdjzq0Ip6VJRlt3vRPECGrJDT6CQHNlt34UpeqQDvDSPPplSUmZkxJcS+mQk++l4Kqxkzaw==",
+				"shasum": "25cfdb8f4abee1038449d4c62ada9566b286b55d",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.4.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194350,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAbTYo0s495LNC7m8viFAzZpb9/2zsP1Z0XwGGAj2vjJAiAyyHJvDGzqadGbVtm9Fv0zjmmq8r/fnBi7Qw3Sw+lsLQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixcEdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo3RA//f8ygcp5V9tcgrqKDfSxkH7AMKe/TbaaPJ39+05YP9rC5cqRn\r\n45kQjmTlz2pTe9m6ak/ylQteiIVqzxk12jQV/3Zb4pU+GEhDva2uYwmykpRm\r\nt+ScCVqYxYG6426j/J2dSj3yirvpU0aZj2XKaI4ERB3Q68opYHfqBRBbE1SV\r\nvunh9650r0vABMiuVsYDlPCdDNxrL+lrux/idc0D2xmDm0kn0PCd5zqoz6nK\r\nrwDRclJ6ZtxqVhLbCrfyBvHXbozWk/n+gz4BEypIMBiChVqhK+tToTCSE9lC\r\nTJMtVY+mG6oUUuRKUlRk0+TdLSWBDtcBM+KVYwa7AgNqOj+IFQuGuFhOL1a7\r\nZY7KMkCOnHkvQLKjI1XOcoo/A4Z027wGwzgevRwrtijQXYtLkYbR4go1m+63\r\n7mawAIQG/KfM582NrtmFvKoduJ676Wa+Hc0MWHY/UGhHU+vM9HQ1sYbADsA6\r\nFU8jp8fHEkzibD7bmn4EfDRF6otCLsD83dBEs+zmw4CBhawduWaBQEJfQ5Mq\r\nEnRU8TSBYuJf2mXD6zhlQ3B/TrsHrSVyRedx9IYls5yuELi4CsUBsEMMM4XB\r\nOFWaAb11ardMSNZ1sHkztLjK+xRfJwc27+3lGIYa9SSiXdBQ9WlauQdpFuho\r\nkErc5exzzXrUcy+07yL24zMhH7eT0X2tj+4=\r\n=PBSp\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.5-0": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.5-0",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-E9RE+RrgOewxyYcvrZB/g9zdsyuBqh1WheCtfEqNPRadgCGKE80FybMYp5SC4/Lxz7OXt80UHWDnWRmvZpNqTQ==",
+				"shasum": "f8eee3165bfb8f203aeb67b56df7cda2e4c3999a",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.5-0.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194352,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDdB8WuVGQjXbMi6b0UpHiQ5qtQ7A9r0mlwX9YUBbsrqwIgXszeQBNdIj0NcXgOo46vjvUy+dl67kM2z9PFUPAcsAc="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixcFFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrMUQ//ZIICtIsiAzVYlo4CoGMZRyinQWMgQOADUS0AMU7+3LKGJtuC\r\nNGBRH9hs9e6DVVpZweqaretoFUen1y1T30A5RB0EzQGR4R+iigl3QwQejyWO\r\nmDLALmD+rJLVMa7VQYHYk+wf8dlggXyCtSgEiRWTbB+LE0VUaFK32LWM+6Wb\r\nyABRlqgzu7yuBrdOp7U4UlSqWoj2RM85hmgNNBnAqL7jTV7/8i1ri6pPxqbr\r\nQwfOh5Ea+Vw07IH8bA9M3lkpMkedBVe7y5NwkTgxQRkG9CTfiiWa2Ywb2R3b\r\niJKNZz7Q3VtaMqme3jmR4DElEr5AELvPtasrQOhyvxcP+LSIs37LkY+mGJ2j\r\ngzU1MgNxkQolWHq4KJ4pOf0Ki1cqZJmNJRbqCToKV/n36RqvlMeezW/Yl8Ah\r\nTDxBP7k/P3yN1NqSBXO/R5gluIQAqf0cfBeZPsNFmqyboE/mpkiuIKuBwVkm\r\n0Svflo8KGQQpdOubvzMgD+kcIY/aaFXB5mju21iLIHGRjRB7eq0+aO9uTC/i\r\nbPU419Yt1lClYjG4gKuQ7xQQf3udl6Vuzo06xL5AvNEAHcx4D/xgLv5O1Hr+\r\no2KxfZU0ID1KJDJXDf960jYWbPEiL5TqHg7+g8bPAqhOEKCwPnh0A0QPfOks\r\nDG2mUEghdtlODTg1M8916qWy9J4fxQK6P4k=\r\n=7K+f\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.5": {
+			"name": "@davidzemon/passport-okta-oauth",
+			"version": "0.0.5",
+			"dependencies": {
+				"@types/passport-oauth2": "^1.4.11",
+				"passport-oauth2": "^1.6.1",
+				"pkginfo": "^0.4.1",
+				"uid2": "^1.0.0"
+			},
+			"devDependencies": {
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-eaC2Ve2MIoqR7dLKgpHxhVKRcfgJCes0Fozxm5SefZh/zqLNb8tGIou+dj0EbylksLmB+nVlhr8p8qwjA9n2sA==",
+				"shasum": "905d14521f4e8b422f4074c1f7fe1cbe0c88e44b",
+				"tarball": "https://registry.npmjs.org/@davidzemon/passport-okta-oauth/-/passport-okta-oauth-0.0.5.tgz",
+				"fileCount": 14,
+				"unpackedSize": 2194366,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAX3QVool/p5Pw8AoZ1Zoq6AULo6u4TsO27GdA2/iouUAiAJ3lo9WKw3iBC0cCetuxOfzvdpKjzUs0nFNHUNtpfSyg=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixfIBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqdFA/9EmwxkYmWkvR9nKIyhvenp3zzUs3nq+aVpk9acEDOIMzesXm9\r\nOMFaixGZtegg1ruVBkgOokXpREr/ArXnWCRkUsqEIvJmXXbG8+cqRGqb73fl\r\nXdPwF/POejDcdDGIN+up7EiB//E5468Y+KDhVzXeQ7MU48pVRXhuLDCg/rro\r\nkmFI9QDbhYInXYWqI5n9Itn/7iAHx9QeY4FTnq6BfSb2O/1Iw+rheibPgm4w\r\nrEtHlEDhOftGONYdcRzdMDCale20bBeoUInmqQnPaQvWtylm57hlWc61ScWg\r\n4K4oeWLB+C6yXVtanOfpefLtHSMkA37mkeYvLhWHwzibXBhQvlPuJBbNzjWB\r\nzekQNbDupPYD/Z7w92Zi+i8dA+axWKqkxpFT92in9qfHeSx3o/cNVhhioPo5\r\nVpLj2Up3LjJk/B56/PnLvTZ+wo4ahFiilpOo2Aj2e4N+7doUFRZs8BxHasd9\r\njzOe5GZg4N7kYb5GxkFVetvIu7IRc0GUGgANxcJ+6k5EP+p38eegq7vmhUt/\r\n8HVJpQFzIhe5v56JtAEu3PYk5w44tOME+0Y2EQ/i8ff/G3yRRsr5qqyB8p+z\r\nWHzOJkVGOiuYGXaRsnic4TxL6JyN1+oLRkoEkOdNDyP4XREGgQsBe0AkmlIq\r\n0UZRusWazts0ROCoe+zlQ8zpaPEYccGyCPQ=\r\n=E4zB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}
