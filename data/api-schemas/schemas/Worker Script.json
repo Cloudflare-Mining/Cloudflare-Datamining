@@ -4804,6 +4804,12 @@
 																],
 																"example": "404-page",
 																"type": "string"
+															},
+															"serve_directly": {
+																"default": true,
+																"description": "When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.",
+																"example": true,
+																"type": "boolean"
 															}
 														},
 														"type": "object"
