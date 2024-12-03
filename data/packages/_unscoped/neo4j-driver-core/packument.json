@@ -1,0 +1,2024 @@
+{
+	"name": "neo4j-driver-core",
+	"dist-tags": {
+		"next": "5.4.0-alpha01",
+		"undefined": "3.8.0",
+		"latest": "5.27.0"
+	},
+	"versions": {
+		"4.3.0-rc02": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.0-rc02",
+			"devDependencies": {
+				"jest": "^26.6.3",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^26.5.1",
+				"ts-node": "^9.1.1",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.20",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "145b595f307db703adbde6521708e0555fedc2f6",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.0-rc02.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-rt7myj7N6TZ+q1Y4eCyx+kHf43XKXDigjgeMcg1lT6upmvDUhiS2QsEUXR3LwvhInKxSXSyDRHBP6CVEDcvl+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD1Z+vg0e6X6O2MZVHl/AWnoOjMqF+IpQhp7DYaS/IplwIgGhihfxuMx9LvAemIoyP/zzrIqX4d8gSWOipBmrcQ6xE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 399803,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgpR4GCRA9TVsSAnZWagAAS0QP/j2G+L8yDnOx+2e81fk/\nk7LEopzDbGf3MPedIIkTuGsBKB44URvqzu7MD9ExOYPUgr+5VrMOYPnLItoN\ni54GSTpVOJ62vRGpFKP+nIPJkEYINbm4tzb9LZV4SUg34AU/mL57ZyHnfM25\nhqKe9d+9Pcz3scgsIdY9PZFcsXKBvCjkoSGIvZFq9HR0eUSXDC9uzjWc6Pzr\nkpJN/AQFHY4NWDvW7T22tPDBwavfN3fZfgqk0+qZxeywFSGtaQKhGWvJPG2z\nmNGYiwIhYcnzMcpS5/hMKt2K5LfhNobL1QGSoVxWjT2W/9dPAfYT2C8qahss\nfxv0ezVg6n8/6K/dOEWOfoBid4CSjZpzzJ6Yh/H411awKD+LceyxFRlcfxr4\non2WUvmlA7WH7ymESVE0FN0ewopiP+t40wjQrbi64E6am3onF9W+NPKqWGAm\nIRoFoPMZtH4/73P/J6IjsKccCO1bN4huxdAtzBDgwhTTcksWuvE1KuJZOGvU\nQ6TgtEAN52fZKk0GcXHc/qe8EDY+Yy9WunFarmXH+IwGboSNu4mCmxupMmn5\n++RkD3gnSpBerBYWCCIo7srbBD/c+ZhEJ6f4UWdOGbnRsI4R9NU8YpkWyKvW\nUeOcl0VwFB3/Io4wKtB1QRBMmZC9pml5eL7QCJ/2zSP9piKdy0xbkSvsSBNd\nnVZm\r\n=tq7N\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.0-rc03": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.0-rc03",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "8f2f770178f1e0fed5881edc053da4a2049b49da",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.0-rc03.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-60hJ3EHSwddNmv5bwaK2D9aqD2jfnybqCiiRyW7RWyYlNlT7Zfscz2djHf07Fzo4ghoipYkr4aUOn7bwazZlxQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQClhJrPhrl+GJ9/3aqd3oRSBn6DBiBiKaOb9IpOS31xoQIhAIETIhNtr+g/fKKiwUEODNUE4X95T6Yf1vb1svVAUnJl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 399824,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgr2z0CRA9TVsSAnZWagAA/DkP/j1eiZJKf/oMFU9o4bnn\nVfIyNjZdTVNADQSeJL6ykReUKfT5QHDnyKpKbfubQGpz2Cvlb789CwYtMBgH\nzON70nnXCXx0qHsPn7QfwDXDA2e3ZPEEUwQV1CvliwB7hu+SMP3JtAOighoV\nfBBOlw/aLOp/HxmT8/pbEhaUHHqQi/bFoiXGsrNokj5W9KVwCaTLHSxZcmuh\nSMcGm0G1L7+3oRK6okN9MJUsrkZMoZsNwItDfg2tnQUt1qXQO1XKlCCOdfGp\nGS116HGgGniYcoYKw1mlfFsYxi5ubZ6BcHDd2yaJyVj7xkRotCKIKXq7cHSu\nIqSYh1wS8be+lDJ0Xpo50YMBdkCeAQx236hLVZ8snyzhSQ72T8wQB45C0QwQ\n268XjAiMRdOMnrd8xHKeP/nBLQ0wWVI6MUchRShnWOrrSVxZvAWB2EVMvgt7\n40/wIOql6TL1NEHb3L/7rFH/tkDCjBflTpJgopbCxdQsypkhIXp2wrg1EI8m\nNPqm8Qq1KD34zp4T1zWjAJHoXuajAtJE3ewfTfEvHYTVARnA6AACW83ee98b\nyD8KlnwNwU1BNcV4ZmUsuOe7Zo44UHUUq4bI1f8LNZ9WNVM4emCHcbCwLf+0\nCtSY80yTyU76xiww/GRtLvkJzCpvDBdxalocqX/9kFamMAHlfj39rsHJuUUr\n/WDu\r\n=HSSr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.0": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.0",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "a6d33f604dec7cf3b200bb14c1ac42292b3ab488",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.0.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-XJULrmfeTtDKonchufDqTpf5qQ93RI5vbyOxZ/S4VospfKGeWsl6KmwXvp3fY1nCKWTny/Ekm4hw1vod2XyZEA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD3RmpYxN+vmtZ/tR2gwx/JBAdgDxg+mJBFgMrDaMQUpgIgBmyP73aRNjwxiZnVONTzqcS6iHtpUyuJRFQkjvQRqJ4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 399819,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgr3TECRA9TVsSAnZWagAAzMoP/20NokOjT25Emdxg1Azu\n4WwtFPS4raSvcuje5bQfD+7EFxZx6P2qNRsSHEUV+dS3SlLUUGhNW9Uap3zl\nQ0cp/bmOTBVytU/E5DjoI8MhExxodJY+N2fi+KbXFbRi5jv6BhnG+eGz5eyz\nP9mvfjZmr8jcclVa9eLFS72KF3UjAoTTzPuFMe/T2f9z8egJUYi6sbqXXYoc\n6U1Nd034ZJ57yI3/xWiOdpiT7dtv5WrBCy/qG4Pxuslyz/NTTAXhmi249B1b\nZmyiOD1akodeohGbscpEWJFt2HJGc984SD4sqk5uhcRyJyrHaKMmtQ1PC1EC\ndhOPYj4ghjhXVpktMqLbG9yDabSqXvyksqjmBpuZkoY/Dl8MfgzdHc3d1pIo\nD89KQgmTNzkkBs4lJ46rfPO0eygoP/WewQH8nNg4U3jK4jHPoOkhD27hPghp\ngxJGmOeH5nLgLTfDPlBN9Q7RbgR+2oa/SdjesaJub8z8QnK7EzstgGeTfFNX\nWeXjowzYpysliwPcCVZVUsxj1mbUrg3WYzJzafX/mkifpSImMxvVmEYKNgsN\nYTVuCM5Ao5jjDauP+lrfq05C2pJIhhW6SlvdL5+ZP5D61acLCZKIdRFAtIl6\n7zVlw1386qv1G+xDqcBrRayGsQuN5GybHCMOq56XirhqIx038vtZ+WDWvM2r\nmU6W\r\n=4Qek\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.1": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.1",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5d92ae3f9ee48e3af2b4a085503368b15a195a98",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.1.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-FV194GxpPvgNpettGUMit6hxbMOkBR42j1K6xwfLvm25XYaZJMJzE0ezqS0Vp0G6etUqhUQChh7WYLdTMIztpQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDuwv7Kwpcy0aSoJ+k4mufDx+1jvF6AiBMucGujDqMLqwIgEf7prHq97qSdN5a9h7LDoSW7ZH9R3Cpdb58WKzyJaJU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 399819,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgxymSCRA9TVsSAnZWagAArZAQAJ4AcHXlLYo1TZzZ9CbM\nFAnpMcaYPmcKK9GA6FTEW2OTjTLwVbmj+pY5gpKZjbD50tSd5fNHrHh/LiyO\nJDTHKCWkil/c9teewMSODLZSEOMLoVzaejYyaBqkZ6dgEQ/aZQTTATLDMJ7m\nuroJ6k9MjZaDfxeZQmkYwOiSthBgjNcF3U3j72ikzCFjhqibcQ+NkCgnQq9S\n6ef5WsQbm9Gw6/EmjLt4SBdoNcEC1AXpqT58uXHvYy/qx+DU5b5i4Yitryza\nM+8MadCD6HUQl1tyXwyqsJ8dhGkX5dlXXLscU3r9bPoF8+RNXxLmAaWPDMRf\nHMNIpIWifZJovt5PxBMDDUZPAtPNC7A7EFjUDWTGZS4O8Dbne4wQAJiN2HGE\n4Kh0FM86owygVQhMPcPYibpDwJQldp2iUI/EYAEG5miulXHcwJ2NMJqnPsln\nlAiDIgJnRwO8hBQhAE83msWbDn1yL0YhPvpaLNDX3a5J3+79CyhGdyP3DqcZ\n1NSui0EebO9bquv9bnkyF7puGfSzs4Ox/CPt4dzY89cCZASHIlvluBvX+Qci\n6zalhKzp5wr5pS6r5Qy6uvey2EK+6MJ98jT5BeHnKkWMBvppPaSUAi9g8GPK\n5ZpGzgP4NL46grhGvzDXkNaQFq8XXbxUp0IAVWOWPWP6MvfvCmsWatOuErsP\nO/Wj\r\n=EdRg\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.2": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.2",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "18cdbf43a63b324914a56d1fec54acd41b1a01f3",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.2.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-RFQAnIz/osp63msghEU1yNKZJOpyu99Ch/DU15o+RvdYTgvReewWXoThadnCzqfcuCrNqAq2lMC3SxDO284aSw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHyP35oO4ekJLk/RwZpfhhofPA8Wdp9GN6xIh1cHmfPWAiBaEFlN3PZ/wCJ6LwGgVS59mHaMY5BcGo+2TSNBddaY0Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 400006,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhA9plCRA9TVsSAnZWagAAzLYP/3xUA4zX9LFU6R05hbAf\nEc8NxQkLXbXlHXF6YjTFapjvctEYkJ5we9rSAg8XXa7nzaXj3mOV6nV2FpRE\nykRqns3m9e2IeqeQ2/8RjEhm/RkFsY9lqOyLKyx1mXWGsKTiGCGdj7urcqL+\nqoVy6UqnUtWUOaqyzGc/JFdF6DL5YBn7g1+P3u8PmAdialaM2wiZBQ299cP6\ncazkr3dBMlIEaMdtBdA4B5TS0Y1S+XgRKnqrvtaj4e9naHOcMiE+Y6U+vUgs\nCeHGv9oYLczpEGuzV15EpMMrMaRiIcO8jEUSuf0QqrhRjvlcnRP3x5ToqyN3\nY1/iqVqo15Qcl1H1GCDtA4Bq6avM6EHOfmpQOuYJPxr0v6BhlZ25h6mo6YcX\ni2iwveE+Yhzfkc8quVNYgSOpcL/Y3yc3vMmUsPiHjuuQEOIxibtUD1G8BEsd\nsCihedPczHJg1Z5v1ehppXWCImd/aJ1pQN3o20UU1SEbeG2rqDz5uTLz98aH\nBTGsKmOpKneeaoStHmzVzpdrLz8FH/BSf9da+k8ypo6ks51/W4UFMdqiQXEc\nIe3y8m41Av3g9k5GC/kGgMA4euMzvSzrbjwXdIXsJMDGYKL7DY2Y8Ix6QRcq\nYd+gCtl7Ydg7TP0QvpcpQElw4yZ1SToYYVoDELN0iPWNXevvVFu6zWJMVVGV\niJ9A\r\n=PScf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.3": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.3",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "600081d2d1e7dfa79ba624aafceb74c8419d947d",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.3.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-n0ltGzACnKTta/d1CGhqgcjYaWwlTIgUU0nwRRd3OZZifXcW030ICqNtwqn2t7WFmDE5iVmD2yQwo4JIvitV5g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoyDtHjZSD8eHPPFPf0qiLLCovmszrF6B/TsUeHVlppAIhAIu0QG4LWV3W3foAPHJMd1tDP4RN5dhx4Bgs54JMTPId",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 400006,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhG5byCRA9TVsSAnZWagAA2xAQAISGeOFOXscLiXzZWBC6\nX6Z8rwT9URWdhs4uN/fJFZnrDrV6kkadHK5jlhyGBNoyUWOnlpajBh4F3/to\nhR98ZnRG0SI7VWH7nARaUdBhFsawdPFPdvgKKdcrnELNCTAWnqydshO/YjZS\nhE7jIqzVgRQAzqSiLxgDclKQbP/aVEYdkp05/0woSzU+nYzhnfJ5w3wTNazt\nHl/TdSSl3cYHLLPxZReJ6vxaqJv9HrWyJakkjSBLU+LD/KRuxHFjzvLFuQ7M\niaynEKKULB+mvy3ssOuXBJ4hfwsjxkp3OwjeIHLGoedoWDpM5ZxjBtjxCjVT\n8DpEB8QrDIwk3S5YDendq4ML1S4w5SICxtIldFOJ86gyBcbkJFFdaLpZh8mP\ns4Llu+FJE/t/LAJdkEXHrz6r+gA08nw4fAqFe3ZPWBpNyQMlbHfp7T4V/VFw\n9t84f7alxQf+umX66ZnIqOqCTJmHkmzcqA8tJ0Sh02gX6EqRy4rtU+aJp0mG\nMEArnK2Nn7W1x5XxNr3VuWb1+euNXmPfFRzSnpv0XyCVvSvTq5Rpn8tJCCJA\nMVWmB2/UWKE7gdEnw8Ame8j0FlfS63jiI1Q0CeIdMFadvmsy0KCBO8r7ZINt\noMnHjlh5RxTo2T0CJRef6tfDeNcP55Xzp+4Rk8Wa6LziZApEHtGUGV+YWJsW\nVBcV\r\n=GNnW\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.3.4": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.4",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b445a4fbf94dce8441075099bd6ac3133c1cf5ee",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.4.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-3tn3j6IRUNlpXeehZ9Xv7dLTZPB4a7APaoJ+xhQyMmYQO3ujDM4RFHc0pZcG+GokmaltT5pUCIPTDYx6ODdhcA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAmsY8ryPaBWob/fvwAGABf+uTKs8y0RvEOMQcabK+p+AiAe408oRp4pv7baldNdq2RF5htWqnrdFuwrql+mCtQhcQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 400800
+			}
+		},
+		"4.4.0-alpha01": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.0-alpha01",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "355cdcc3470def99204b717bad79dc18556f7080",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.0-alpha01.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-IJHcdvFFUVDZamRKOiKO1mz3C31FqzwjAR682Jt4q3jstcXAhBRImF0fbzKFCFz3j18JkQOOu5ZybGyTBdv/wA==",
+				"signatures": [
+					{
+						"sig": "MEUCICXdxGX70ZsmS5i94nEpVOY5zmVcAJCv3G0sZ35qb8GpAiEAlCmgaSzcK4oB1CYo06akcEdCEhOQjhkYh6gofvfVaAk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 425666
+			}
+		},
+		"4.4.0-beta01": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.0-beta01",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f3963665e2b0aaad1564e61f671424893d1eb27c",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.0-beta01.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-CSzPgoSCAz3o//9y8uPBkDIrWmlILuoXQmYxKK89bkcnSTWNdM9i+eIbBrR92rDDu9iCaMFEum16wzw2ggmcCg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDFaRGbf32nrIYPgew7aJHCc7moi583s9KsyZU55dzLHwIgW7XSyZs5gRpcluikbEz36n47scd4MWQxeAEyn5kCChI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426200
+			}
+		},
+		"4.4.0-beta02": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.0-beta02",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "ba6f2ae92a7fd4bfaa38765000bfd768945d0839",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.0-beta02.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-YYb6ke+8Y8g96Gozeknkbsle34O4h5W9CLOMfybPmG4zVh1lbBHjGKHiKN/LSsUVt5+JjvbBlhADg7OHyGxk+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZdGMFYEQtwYpOFUCpRgRcmVk5tzWCpEHzgM7lZ0wLUgIgX51ebrJVoDJYIHvpqCBDlacx1leGt6sfSYKkOuKttdg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426200
+			}
+		},
+		"4.3.5": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.5",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "cda48d95aebf477106c2d60ec9f82f45b8118a91",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.5.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-K7qAc73ewjKc2iwe764Bq+Rm/IkDhEbo3D57EOTu5pXuZS+EOUU5avKIIncfniop9Xcle/hODx6dtiyasUPvOw==",
+				"signatures": [
+					{
+						"sig": "MEUCIA1T+qk6fFTLK6hOFeJY9WggPWY2KdvXUwTROXaTAD6XAiEAioOgp2M+s4rPFGoSbobnKVirLztPgsnZ3S2vaMP84DM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 400800
+			}
+		},
+		"4.3.6": {
+			"name": "neo4j-driver-core",
+			"version": "4.3.6",
+			"devDependencies": {
+				"jest": "^27.0.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.0",
+				"ts-node": "^10.0.0",
+				"typescript": "^4.1.3",
+				"@types/jest": "^26.0.23",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "1f7e39bc417ddca4a0c8cef7b8298ae6a8256ddb",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.3.6.tgz",
+				"fileCount": 73,
+				"integrity": "sha512-a91NLV7razRA7g0sOQEaGPZGTuPmCo07wFV9Ed1s4IPe4+QgWPjzOrAuOjECka8FtTGZvJGdUTEWaNWbcqzR6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDbX0doKT4UA37erWdekvEBKIoPNw6SjXAN595Cfr2UgAIgExH8RG8G71NiJ/hdvecStV9R8KqunEJUF1LBusy30Ic=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 400923
+			}
+		},
+		"4.4.0": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.0",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b9d3a6ca53f2aa8705b387e3e0660742e7c57efa",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.0.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-Ft4g1jJXXnnXemdCMETUG/e6iY7yfGwH0n0aaUVkgr8yovEXTBEz98rFct4nso3zyqPVKVN8FeCYDA37vmT8Jw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7yBt5zYsrS1MqU78Pm/K1ymoP8cDG0UHmahEX+DKUpgIhANvo33Qp80veTqOuPnOEvB6s+qfmbTWNDw/X5c0wjklE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426488
+			}
+		},
+		"4.4.1": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.1",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "3fa20f3107012282bbe7d13b12b7b244f890bf7a",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.1.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-iG89B+joj0a6fo8U3WRg9AiyLUfyU/R9s4J2o5ug3uMtfGEfwQ6jzLUkiwElkEeF14OaqIj7iXCBU4cFIU/6Gw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCYV522OMC+2ON8QvSDDVKTcV3iU6Fpg553QAxS8J009QIgQ61Mk12qpf5+nrIotih26rUjbstoiyA/N74X9w3NXY4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426488,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhnRaJCRA9TVsSAnZWagAArOkP/RVDbP9Zuc3TG74piG+a\nIZWjWWkLCiVfKX97zQA1H6m5q5n9pPDhOBV+dYvk2RlYEWHu8bjUC2+JUYUF\nxwk9dh6YXnQ4tDMDTggpapNDUDm7swhOaY6QlurFKT3M9YNbRNRT+SrsuJW0\nmSE95kNsxCBBoQpnufSbv8WF5HiB1+JafCo8SrFwdwnYOZUMpeyv1spMW+Tq\noLgV3r9U0tc3UpyFRd2t+92TYFsKkem3pP3guEyVCM/Zw/32HFaES336aAzS\n6/EHl9PqmEEGapd6NYj0cCd2klST6rmF5SmdoKcAEJyxgICYQ6kLGf+CX4dg\nMh+/0OLlrGt2+cabTkEc6jTKgxYUSkhRekWHGbJ0SprdBR8HH/qYhY0NbEgA\njZGdQJwGmjQKXxLl2MseqRvGWZ4fKsyehVNEWmCVFnIe/ndkQYDsXBwZo0s4\nzsTfWjcgLXmWwyqRrwCHNiao17qO2ZecQbSY8cLeFwTWhgVDuVXx0w4iEuGS\nENn7vXda1kgueu9PdSVoNfR6UjwrpQhC6fp362Z12VUrdGg88el31E0CAcEC\nK/UR2FU9lUbkmBWQ5vAWqIBnrKaflaYooplyJY0wgIzixK0EOMBKtSUqjSVF\nvgBIdtYiGkir2jt81l7q0y9n3RMXaSA3XV3XunjmiJGTQFgc5mHIzoTJv859\ntdIy\r\n=2PVQ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.2": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.2",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "ad697ddba76228d06865f2a725b29fd203c110a5",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.2.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-SSHJh+xmaBirnGFlkaiLqAanUfAm9TaQO2c3YOvFvn9KDIHxBQvXC5pXGYiIj1dlObluRdYnFA3YXHZFa5j4ZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAWIE4rZNYekexLMe/1SXTK+CJ7jjRlKBoJ29hdf0ABrAiAeuw6nBrgVXmihlsF+WsljNFXnStrC2MPTEFhcHixPsA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 426630,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh+QwGCRA9TVsSAnZWagAARSQP/R9CJx4L8a2ulkP8jGPP\n9byBzvfIMfJRm2Ts0rHyXx7/TQd6obR2Ls8AE9BwjPJHGN0cUjcV4y6CMOhD\nO2F+wuXGwty+xuw29XSUJ8y6jqQLLdu66maIiJSFhxyCm5Pw0Tza4q9I/qr1\ntk/dYpjjb8wVeq/S3MypAXqEWGmogP9IZ0SJTYTFGpE7WwN9Z84S8vv9BfV0\nf5wDEk72NM+YeyWtXphSJh0ilzEaZ5g3eCbvz6MDzAlYHGYYNQllJOWC0VwL\nJ7I8rC+HQdDGewh+sK8mkQHFkeqIqYIxH6bQuZFl7ZJR3xEZaZuRidQ5j7pS\ntFIEQxOzKwQf0CAq29CSk5u60KtDcadKwQmGyp/0y1vDkIln+wecazEA3kgA\n5zTDRWXwZhg4CHrrUvtUBfKuupmJKJ5a4Cn2tEAWQdQN7u3GKpDgY5heawHt\ncc/Q8bSHevcxE4MwV4fD+BNvyAZLV60D3sCSSDM2KtPA9HV5wcVjxN9GMOck\n6eR3fspweaQ8eAAEVp4iGLL3NOtNu+VR8k6abCb6GLZT6yReBb0QzVrSMncs\nyrBPiGpEF4dttE4/4plQdK13hWiSeKgwpaSWcno7pLui1aG0pUV5G4RPLiw+\nmXy1N3psh7spXNypAsk8VdXSSruKu4GoY8/mdcZYKf/U9llbKpmJZKi0ycDk\nTzJG\r\n=I2xg\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.3": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.3",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "25c7037a6ca5ce754d1a563e64d7a8e23b313713",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.3.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-0GgTAzVC1vXF5t/ZkEBvoKp0dFBUCKL7i+IWfqUYDcX8+jqtGe4XQnfrW79XwMkqv1KwrPSXv6OIe/x5EUDDKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCux0gy3Tjoq4UIMNPJGWYdKpfQFds+t7pZKOrIDsZb5gIgFHXhW3bXYcaK6xKDevxepP6KkBpRhCZtw0NGaOTzS20=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 430738,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiFLY1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmog2Q/7Bo//+E91cduXFB84P9kqDKC7VelIkWcpFB6DOsj8+QZG4PrC\r\n8p/Y4z7oCg0m3ZEvV8YJ+zBGfypMbg9Q1e/c/xWklpiyvynDfGJgPNd+ONpt\r\nfZ+U8JHcLra2Qgn+WfHIEY3wadLZFD+gjWUhDPmIdInqAxQaNA+JBLlQhluI\r\nS+P55YFPvbb3QURS01t97iqzGajZmq/DYfut666ZQ/IYGiEa+O5gQVO9QgmM\r\nyUScbymZQXmXpa+b4+xrkeqCjKQL7X6Q+GYqV8C/SVf4JgaL9+VkH2iCJ1Hz\r\nm4A1Oaz8kfZzWUDX8GeFiLMXqSubgNlr1HHLkOKq07QNNrujGrzgxURbSVi2\r\ne6mT1BGyh3B7hG38NP703JGdp34ilyrlGZgc+auJhte8I5s9U5SDeBnA7mxy\r\nJMCE66nRrt3MzZ5P6F7o4gZBFiIzuxtHKlqjL4oNxix/H1l5gAtlC/MCnbaN\r\noLfVenv1g0CGSqxQQ9jsKp8neW9tqUlShmTSwAVcNnuu9ql2VP6CWiyVWHC/\r\nK5ii4VToTMkJKx1vzTnlP09QSnFnWPEDCRDqWGmBfhOK8i2jp9BmrD9+eHJD\r\n3X5YNjcpBwUHkKKWiZQi8UZl+xFdmvHRYaXDp3jNt92c5HsTra8hselzEEmj\r\nZ9/aXoDJQk1vgbx1CtxE2fuQBUzg7+Hn/oY=\r\n=aGmm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.0-alpha01": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.0-alpha01",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6fdb3537c08d3c49623d51a28088b844031b0df9",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.0-alpha01.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-6CLe6ydv0bqlh28IdKlw+8bVCawhmfwE8B3AW/hRuln4ASa/G8q10pzZE1+lZcOaK5GceHftnLsBnwaNy9CyVw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGWiWrdCdB38rS5tpY/Gu4jcA5Qo9Ad54f8KMTsmP5NAAiA/717f+hrufc6vRYG71YMMkvUYQIO3H9aAv7NCZ7VnGQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 469330,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiINMLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmraXBAAirDeYlEu2o8v5MBk5BKzMPNWtGGmEQbSTvUzqQmmQj31zDhV\r\nyOm21mz/RGHrrG1V2EUUm3L5zv+wUB8db9Vvtfi+pZ+bbb+UT4BtlxnAPl1e\r\naSo4FMiy+JN2AlgILbMhKhD/yP1a4MvmOPIoil7AZelA5cJD17ln5DKop2c0\r\nP5jl8eQ7LFpcqr3yEn65eV1z+jQiuWmq1weOFWcgFW2F63q7lJlNqzzrvjvo\r\na+FoZ2PW6ffxauelMHjzdxeaqQPmrn5TeguWV4PElrpWDlyAGWxRN3Hh2o3M\r\n4fALDtlY21ZymEZ+Cxkji359TWZY9wxSlVvd0oVO0Upx8tFK+1ZEt1Eww+Eo\r\nDQhWbaQg7BsoClCf7g1JYuFKi7hI6E8G++iXqvyL1peTtkqvQvoZZJ5/kQdh\r\ncVi9b3zfpw2CxEWP8iK8q+Y2IAnBDVsGEhyMnzr9w/2AfCBLArg8U+yjKrtt\r\nKX8n2Bvjs0oHhaoas+R48I9Gy9KXMSlZhMAyi/d5KePOHZmsecPL3bxcZD4v\r\nR3Z9YCBiRLpnXPWMj5s4lUGU02mHJu4KgkN0LsU8F3U4mjykSbCyho70Ss+3\r\ni6+NmHPI234loYH3DVTmigqwAPtbf7kC/1lWElhJQqmVTw6r6SYMxI6tvf+p\r\n3fPzbUjD5lAhI6x3EWCGv5XC2j3zKtdy6eo=\r\n=MFpz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.4": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.4",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "987a8e3c1682fd41c3f55bc1d7ee132a1f85e837",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.4.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-rOMZwWS5vlSbA00V8+92/+VN/KdSFmGT8hGbhd4BFxuPU74u4sLk/PoVyPIdk+ZGuCN7Hg/oQ913/GfTgRjGeA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAhwFejOSVsg1rT+oZGJIJRwHJC8j7cw0OZ4xO8ltDwFAiBTuDSWz1xtQY5IuvJitco1FLkrybndIGx707hdBCo45Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 430434,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiMxUzACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpB2Q//c4knjZ9w9NTSjegjcnCPucgnyE4t84uadcasRUWrU0N6qY9j\r\noA3iALtEsz6/7RJTF+6lsOWfG9ZbZ3uBqM40VKHWBhGXxyJkyse2Lpwwk5Hb\r\n1M0NmG7i6XtThwDLjE6cEhmOqsUguWiP8W63wOQMS5Jz5YfBL4yw4Rr9MjvE\r\nMsPhPcAZVQPTqapKE6IloP6xdnfwxyKHPUnwEjUfbivszqnppjBJMrto2VV3\r\n4+qHr+7wjYrDGEdQtv5bPdOvk8LO/YllTlDglpStZjUl94Q8ALEVWiIPUxUY\r\n91x12hRXLr0FrhDqGK/N6xlaujWClRA6aLVNrZdBBimpr3ScfpitV5yt2WC6\r\nqq9qtukvjgZSC4w4NxCfxSSxC5ulAd9XnlL4CBY8gHLlGJqJyHis7kmCxel9\r\nRJ+tDvww5tguagchmLTiy15Q7P7l8NzTLAGOVUlWzTOg3mYX1CoYQ6Vz+8q9\r\nmgJti0cbgiLh0VDEFp1JbwY5tuRW3TQmoqB6p4u4x8bYR2920x0Hmb3W5dIX\r\nPTx07MfVzOZnNCvNG+keBiD22pff4IaCZlOtpk9kykxVaJUnzJgRSc21tWDm\r\nN2L+WBMsP81lUzBK45HsQUTZyUUjuieIHnV0GbrKv13xJ3sCJKgj18jHMQNG\r\nb/e/ANuTaSHSudsrzqmkt22HBFxj/h8mo2U=\r\n=hj72\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.5": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.5",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5b1e1c7fb9cc0cd323ca33639f1ae8bacfabb949",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.5.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-gG22aP7pSDtrP6+fVODd0X6oufRl05M0Z5Q5DT9KSXYJxVCB1rlRiIjORX6rX2M0n2tX5n8XZjeh+io7mhDRsQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGKNvBtOCzDc/Bu49RLOKl9tRUEWLmXT0B7fEvuUE+kdAiAlLkEnN3+fnXQptS+7Grg5lhhVwxG2Ax1T/scb1lrOsQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 430434,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiPIN4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrjyQ//a7Jjq8Or0Q4byls3NTOxjKxruqUsLop8o63CV0jtScLcHceL\r\nir+coymkccfvEgki7A4u/P+m6b41FggrhaOzPXRcfFQqQUmI6Mo6CFsj8zcI\r\noDTuX9pInwyxwtLvAkAERTWVi4D8iRa/0pZ+kX1ezjb9VysT323iK4w2ctjC\r\ngnhihLK1fhzFHUfosH35yF9ibfr2ZHX2rYGf/1pHk4Z8xhdgjY//j43Eutjc\r\nAjEy2/HdRlXiT0wTvZQo2pc1j3QLjnKgxrZVvgat3DSCXcVZouAEYAZTuoVS\r\nBJe9DqNmmYjsd3OZmseORoXcrLgf4S3lhnd6azBBoBGAYZrO/CpVOhY2RZXh\r\nU9rSNChUZfiTjDSiEU7qy9bJEzYl6EhgMqK0Rn1Iv0N8d3309cZyctzM7UPc\r\n7D4NSbn08na9kTLi5su7x+6kPEWRQMQ5Ji5kgQ8St4dOCeulGGP6jFCKS9j9\r\nV92ZdnzWBBSlQDFIWVNS0Rqd+a5S9WS+9mM/jrweyCYDVMfrajZbQ02ZDxCH\r\nUKCdTxsUdW026ppx6JHz2E2B5G1V+UI6Ihu+dXtY4nCsdKMri+guJSUeOyiQ\r\ndO4+54pDmrrkcThggNq/hvCnAfpptdx9KUfhg+NieQi+zBWOF6l6Wm5ST7EC\r\nW4J3JIUiElqX+mH6K3RoCswzMtQHHU5kmog=\r\n=Zq5T\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.6": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.6",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "cd82e024c84a76ae3604691d237867756fc3be27",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.6.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-8Pc5lLeWwrxjrEGyJm8QASfguKK90i4YxB4Unz1FWV1z3xRq2xFtLhNl6PSa5Kx1VtKS5dhiwHlJArBJJEQjZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDC52N/gRkyMsNX1ptDK6SJCIPis1KLV+Z0BCVLuME1eQIgJ94stIKWs0zbBKVBMGcbZaEnA/mlWhJiM5dpVAHAqIE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 430434,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJip0BgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqMRw//X2NP4IsosP+7uwqbQNhu6j13agKQpGtHcbe9frWDsElMv3yP\r\nBaguJZ8A+appEGjKIZDwOcViyUq4/a7nsRW30D2E0kdOnXoKyOZszH3ZK4e2\r\nvIwfgxjqLxZro2SOV29GETETjM2AJpoUwrvB6qpKQRowMYmb9qG6UbxBMSlj\r\ndUZhqpiqzdkEO20Jr33GA7u1lcKlzu0RLWucH+ao6iyeFO7KzQ/yTlkolNSG\r\nQYZt3NXZrPI3hoYFo/h5/1s0OzAXtKni+KmwMHnT4MafXmep9hN2tYzy2KsP\r\nUJ+rGBjt4VNMZiQzJtjRTVDvsPr8NCZtTRF9PpyZt0zjG02Vj47dcyFLttE/\r\nU/+Qc5Wq3AL0WAF5K982oOKGT+YaICUZoqrrdzy/unJ7nLKhucnJ4t/FM4/3\r\nIGzfFrVRr19+ekBRck9VrYXfuylTgnSe9EiMjIipvk7fBXlJg83sLFFcKVGp\r\nEIPYPqGuGJIfYTeROM+1fDP+5SL9LGx3CDVFgFuQztS1wL065WZu0m7YJ+nx\r\nBRV0jFomo1uJmFGv9SVR6E4OD+Pj5fe/9JRX/AJPmLhLMOsuYkeKTKweOwDF\r\n3EpNUSUZh2vGbVp4hwdZu50SOAtDmDupFGGl/Wi/8SEn/10fYI+bdC4dd6RJ\r\noQCLA9K2N3Oc0EUhz8dNoAZmIUVMSXbo+go=\r\n=i+Hj\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.7": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.7",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "d2475e107b3fea2b9d1c36b0c273da5c5a291c37",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.7.tgz",
+				"fileCount": 76,
+				"integrity": "sha512-NhvVuQYgG7eO/vXxRaoJfkWUNkjvIpmCIS9UWU9Bbhb4V+wCOyX/MVOXqD0Yizhs4eyIkD7x90OXb79q+vi+oA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCD7mgt2f/aGZPuqe4PNsc1ycqFrLU6o+jkuphvi7pIJwIhAKLeRtzcNIuYBYnnw5+TTU6QIKK5h0xlQ1sMcoo1DY3G",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 431908,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi38TxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoUlw//RiG4MMJjDzb1+xEnSt+BfQY4J0FB9kV4Q7jmIvJy6V2K+P2L\r\nAZdvKjfj8DMO5l910/c3HlO5ZCYx2QlZpVqpbmkpbCMMgLbYTkc5AuVCUeHX\r\nVoThemMbur126sg/cXbTJ8Py/JCuclqxy7ycdQzImaOLlvQgONA+7oyjClG6\r\n5aeOGbO3fSD2lQ2cTXXl8rqnBIt/qoYrWyouOzp+8YM0A0gDtRhK24M24egx\r\n7X7WEq90fDwP/E72azbSPaAVGxhIPzRRi/q9pkh6kUwqnZw6uFFHMVRFRpOd\r\nxBiJj/EEcexeM5Up/ZjldVOfD4CLzjadXm7hssUOsnzj4vyNvpWxEdtFzrnh\r\nsyMhkdhOFeUr2PxYLWny7YB0SVJSplfiTuNL0p5VSG4G8GETUCtu46b2Y8Ef\r\n9cgAHx0NhbQRJgZXanCHq1tsbaUpTeDyqXyhN1Q6RykT3UaSekXDo5qHFlXs\r\niZpgnseKGhz/HfLhtowYW8FXWSBys0R7ZYTgNEJtvD31z1duuSyZ0U9hrmcv\r\nHGQC5ePkDNi0PlC9tNSGQb0+cA7WPi/s+97uyH63+78CDTNp8+pQkV7/Xtkk\r\nR9ETn05MkEuvWMRON0/RqInEtmRLxVmTUhWobh1aG4CnxCRkJVfJzeYc0/uV\r\no56O+Gg7rzKEv+4PwJGye2v59oDrCNeqxI8=\r\n=8Psp\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.0-alpha02": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.0-alpha02",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f38c3b0c0362f4f2876fbb893ee79ddef297a219",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.0-alpha02.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-HCpSJke2muCJgLhEv6lSaOuYBhXOPmvoX6QLsyP9QkOwEEEmaF1hJxAxX51bCt7qJf68LVzJnYdq88zrMG4kFg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCIQ8cx0MAWrKdzmRuJPQjvYDKQTnBNhUJrQnAvTRHyRAIgWQjBOkSwTfmFrYu4O/hJtdKqWGLHz2aekezqykakKDU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 538455,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjFbWJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqHIQ//YbVCtOeqbUtDP0oewNqrFSkkPFu73Wi65CCnJYf7rPszRXLb\r\nxss+VtdSUzfU4PXAAf/irk8Q1ACCREjKZ3MpFkox25DRGflmmMVyTLOiWI3Q\r\nzQrkjJN7S9Z4Ih10aNbVZNZUrkYJCkvaq1GzT4/4QqbHcQTwKkvvZF/h3tY+\r\nGbOwE9xhzVefW/1CbPdcdpOlL3wTXIorrH7mjscDAKYbDIbkdzjM6Q7PU9fn\r\nxDF+P7T7/QNrJxZjA7791q1ANlWLMh/D9msVayY4uC0/f2SDl46GNQGu9eC4\r\n90lwtAOuEvE2F9pI/KJkfgNVQb5hpLE8Y+KdlHka9GciEcB8wuY4hqtmbEFt\r\n5tUwj1fSOKmUFrSvLV/9DyOe7+EDkdqpdwbxxSwX7HxR3rVOEboFb6RWmJ8e\r\ngPr3fVcUruGGQsVJdfSH9wz6aPzxYatzRN0EwLlRvKFbn47fELASMUmfBbCT\r\nBVjvzTlZfvCz4iSiTA671fw+0St8Ul2A05fDN0a5rtr5Iiq0dPFBXgf/eMiw\r\nwI7QipsktgPyuiCcAQyIWItjhgT9nBQSSmHaSyCf/Bd24ZHk2+z7SZ9CYN0V\r\nM9NZeY/dnpfdOA4W0sJkdZF/vtxnf5fTZ4l0NBS25VQ+aj5uhEpsNfj0tQm5\r\ne7hrIsd2kvdnR5Z7KOoS7TWBUuz0CKi+Dd0=\r\n=u9cK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.8": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.8",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "340d114bb3798ec40847bcad79ca5e5858051955",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.8.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-OLyZ+n3w305FyBJhci4dYVi8emm1z9frRxIAPlWdI1amjG1GK2bCifTd+cAK5br4Aq7oddkqevXVmIOcMrylnw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBeMlnDQwuTx5BnxAElrM4aNc2+NGlENkKMi6ryUrb+aAiEA2aGZ1Js3qvudgUPDBdSKWoN3vAP2iVPiiM8GIEcVKtw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 437184,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGFTIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr/qQ/7BiW21l46Nra1ca24YB9NrK8CD/cWdtWzuchARjd7Dq/Ihx5Z\r\nASBKj6TWrpz7s2sYoTp3eNChoyEQeeF+yrsk52p1oP64qIVSDiaJ0YHndGK+\r\n0lp+reh4VZrlPC0jOt+5fVMyX3WsDl7dZtbIj31CXXhhR2VKP9uakBx4imbi\r\n64okw/FQXj7+Y6BCdciCB/WVWmrJXlZUBQ/f/7c75T1/ECfo0pYKfJli5vhQ\r\nWpsv1OtucFTlKFnoGEhbPWlS0fT7PvaZ2j+t4xCh0urkoK3cpYQqNvr5FV/I\r\nhn7RgeLkVLECw1B8Qg5ZmjKsvlVIfCq3ondp3/R45wZBMJH9oPX7jelwhSyd\r\nknG8a7SquoCIJ0VB/c4AcyBGsIDSe9HPdRAMKtJZM14VmXTjFozlzkhnwS7S\r\nhpfJ8t7mrINitk9/MTtz8OwMxUItjvek0qzki64ryZDLqeq221ZN6d8PcN5t\r\nQfuK/++APxUGecXkiNNOGx3nYmd2alov5ZUDfGdRZ8hubg4VlJ12IdZTGPPL\r\npFNGVqjsOWP7gcjx4/72PvPu5QcwFv8Ozxoqf3GK/Yp83y5cFKpFQ7n4Cy8/\r\no/Hyik0NHVlB4rPFqqy/sWyu/kZDNRO5Q/kFRrnsDccdsjwvnqDhAPEMpww0\r\nr4OwPnicic1HWHfCGWZ/PfIDwFgHjuvJRJY=\r\n=Vetf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.0-beta01": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.0-beta01",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "234867c14c47badc6bd216c8b0c667a8c082d7d5",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.0-beta01.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-spJVCsQ87yPYgym04CNMd1QVV/Tx0mU3eEH/Oy5zTw6cIjrwa/4twfCNAe/L0PnbpWWgS/EsQq4kTvrfzJ9cqw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCdKc9PEr6Cy6/umcdLDXDv99/VxA12emJoS5oCWZnIYAIgekVIEt/F20wNiyHtfxXRdwPWeiB4BrtZL5+nqR5Khtg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 541677,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGGANACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmortRAAjkuDsgFTxiuZSDuJd6uPUQMOgMuhWwNUpko6Vre07WvujMVw\r\naP7Zjv/OTmHXAfOC4weMYh1Uz1r/LchmqRLxK8eofM2V9AIUPtDjeCmJ97PZ\r\nUWOX6KMLIDoVrdguXq32V4op5E+Bxg+MvnrvSfhzFSdeV6MpDVXgpI4TBndv\r\nf+f7WOb7fL6s95p6Jg9c2K59aY9svpvXNeE8yyLN9gxFmq5RVhSerR2TJuzB\r\nENmjrHiAVdeV5oeeqeJZtrsdYHut8Vv3iQ0ZD3KqUZUoYzoPEe/0n64SkM2M\r\nUNHHXgm2kTR2eoL//0svPZcidAQg/Dc7ySMy/RI5kRPDUkcXQSUIA3liUKQP\r\nkhEUcXuoQaCzyuKE+aY281ITWP4boHYeD0f9ZAFsu62rkThhJHJGSPO3ySIR\r\ngb2H6t4I6Mncxa5a4RlckdXON/b9SOk8ows+HqQPD4w9gDLxXRppt8JNKTjW\r\nVWzZYaxmFUcubo0X96NASXiKcmWU0BNEnAICfSLmaFsPCWGOBbZnvOO4aAkw\r\numn+r9Hh6RHyL9jHIxQFbWX4IQYNJhTqO8op/4hMqdfIdpTcWwITNNr/F2em\r\nwUflZ2AtG6OirCmomV56sswWHzmRX2AwS87IKX4ZbGo+YUCRlllGxSHzoPhx\r\n0PhKodKcyU4+QfRTOYMx5U+LjFlebWW1JnA=\r\n=yX5Z\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e17173674a6b1d63b6023ad876af1127f8d25e5c",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.0.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-NPFSw4mXAUVEfEnUXp3/9weUMTC1B98H1fSKCZC12O6O0l8YnDnKC5+gKNFrDjW/1LCvpqbU9TLRT5XvKK64Eg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDQaAEXzYeI5oEs2bFGpXOmnAVF1nvktUJh2KdG2MRksgIhAIoUaImOrY7c10R8PeZUyO/hI5F0+a8enD0C2b+Hurhg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 541670,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGcQuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpMfg/+OAGHeEe+EVizd+jkGjCsCS3P+gY9YK/FzlasmKZRTfs47zje\r\nP/GSUJduTPWNiIneor3HmQ6txKWc0TwFn4FPF6x88V1Y2S2jaH6QyesHEWxk\r\nb/MEXsshFIKMsjDt3YveG8BrruET9mv6Z9N6P1w7DmQ0vcidYes1OwKDIwWH\r\n3Y1itliINr+/AOBpiqQNBVK+NKEDoO+AaQRUyE0+jMVdzkB35PZgCUy3ACQt\r\nfRMpLomtz5/rSgUAiIOnq/yZENbzCJ9xA9Q1TeWQ5FLZNbT6KslFT0Wl1TU9\r\ngpCwB9xjqKksFciNgyqlyRoEjcQVgeVLehqCBhGf6lEHE7NDv7qreSsZAhVU\r\nxkCln6RgD6srIgRjHJZVsP+vu6cqRE3DI/CLb33yGJBBgB595Vh8ia8xQ/+L\r\nPXi+PjnPUqwy4eVWiKErvryGke9kzE5tEa6ro9akFAZYGP1u+6Z89MiA6hqY\r\nBcRF9zCpBxYyrdLS5VjWf3MGUQhBYgnFMaRF/K4xaroYymNC6e4wCZxMoLHV\r\neXClxugS2HIdg0h6mV7zs4AAFYsc7tr1gBfanHyLWGPvK/9LrpzxEBi41UAt\r\npG7GWDRk9NfaLf0AYSZEpzUM0iOJ/xtm4UXsKxmWkFzwaDL3RubjLSwuOFRt\r\nbAKLyjRLLa2LmWypg53bd7c2B0t9SntGnFU=\r\n=6cuz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.9": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.9",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "a473068bfad8d4e34d3a06c137cfb528cd3a0485",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.9.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-vCKkfurYT06QbR7dSMKLLaHEqE3Nw0FWR4VCcX/n3Xs1BPi4dcudHOCT9lJM9q9egJRjJ2Kuo3MiXji5AeEMbA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGRNFUuzwQCs9FzE39Ar9Lrf+xgDrctIXKRH3BAQR/eDAiBW7sZNCTHZPQi1YB77jEtQlHgKWlr3pd4mlCJ9ozrjQA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 437184,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjIFMEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoFUg//RIF+0gjVd6olCZ6y5J03TPYJSIxLg7tmIs8kR0ascMdR+oGC\r\nTuQvMPhs+VpbnJcm4AMA/2nycJMt147bAO8HCClGVk3Kwv+/8FTMnNvfm3N9\r\n7Ph2/85NpDox5zYGQqyfIsaloZ98Otmg3mGWJGxvEDbLXc49HU5/ucwX/Ips\r\nFWcJlSXVl12S66A9+2PH4CuHxFz8h8WGSXI8cBqiVmIys4tbdjHJwJZggr+O\r\nAocepvAogQ6GDjszd6pbdnNh6ySFzX3ygjMl9pc3u1qnUhEvKQWEK3skkKqa\r\ngLqaSwNzKHbC5DDKb7HuNOWlKf8nbTI4DU9xvKgO5TTMF8QEafOLdxykTCez\r\nEwRJEmpDHEOBe8EMJ1fCsAXfxn83S81+Hc2D3M+GpI2MFNv7UvjmP4SVb3m7\r\n8vGRku9zCK1zQXyxrLIToPG60C47qQU1SKu4TnDpMq8THcYoqaCmCz2Vlzb6\r\nlaxJ7iMgxBP3o6qydGCU/P3U4FEpVUFo+VtTbt29lfcD+VezclWStLdVYVtO\r\nARh7PwDeTerXix2jqkojx+Ixz8TlnI5NSfXzd3Kz1LGIbHphAw7w/Rm0zoD3\r\ng/5PSNIe7Xe/3187E5ZjByaXXevPB9GDrXm03JyweJ9sZLD+wNpgLaHAiW5W\r\ntqbmG3R5zBmYpItelizm6Az0dJ4H6cvFAd4=\r\n=MaY0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "a0d26cddeb75e6bb0f53b69183aefe6d85055da4",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-ZwwINcTAHB1pgtamHKAkazfxHOZgv1dCvGCNSYh4ap+8AOoExKIU3jh4N++fdHvaN/TV0zYB6EshNCizs4WkCw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBHU2vbUhrt8/bI7gGvZwJ0jVJ3RHVwIFmRgz6YdAAHEAiA0WzFKc+N2qVdRj2m+JlIn2sZqe0z68PmVDX0U1VDgOA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 541086,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjIGG0ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqPHxAAnngE2e+ypBXVo9D1d3OYVCj/YfHzzL0CXcTj2P5L1OrvzAG9\r\nU7plW4dvGFUDbHtB0Lyzgsc9EyD0VBjsVCc6xyFeXy7kr+PSP+px8X+CHMo9\r\nZPPjH5pJ6tBFhL3vxsPMEmi3ySzN2Gl5Q1cwoeMJskq5ejnk8cBq0Uz0AYCM\r\nEe6KZ8/kMtWRbbR3/l81239XDhfStlrsw2ATKYwjE8GAMv0zlrE+NGYBOoS5\r\nh01cGdpDLywNOVzwiTaHU2igdNI14U/xsX/8flHv+TrCQ+oCWLnZGb/frZ8R\r\nmqe0vJSGDmDivKbKzO8Ag1mH/HDubmVKM8mZXRxCZuItNnLCDrsqSR5xYQJs\r\ngUfs8wPf4nbCDUVnRC/1BDy1YAzGmJvn1ZLuy+Mvf+I0FMxv5F9daIh8y7y0\r\nHRO7Ix3Z3mrWHkkvpqNI1yjLxAFjQKsIdtSNqcj3WzSvhk0OFZrlLfC61hOn\r\nG+1/YnqjQg0tOCvze6IIT2BIVi+HP/0fVnK9a/MakNb3gVcSWpY0V41dGLk3\r\nU1Aq2vffGLCi84Voi+dP56agGgcOdVmeErmZRzNG9J1qR5mFLj1rCgOYOniH\r\nwvRc5sSpz/dfMNLsZ5Y4QAFzSguNMM1piOFqLJcGXd0AKslSQ+In4VTLYY8R\r\njUFe/S5j/lpY6zR+4plyIHrNXiFXbDn2byQ=\r\n=GDSl\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.4.10": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.10",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6f4c1ccc1199f864b149bdcef5e50e45ff95c29e",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.10.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-MBHxQSfqnvctgbHIhvY9CitHoFgSVR4rpx6rLX9VP/daGU5U7YZ2BrKHxuWpIxteHafUqmBFmk0frbx8tYGELA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDeq7BXQMiqF+7qymehcTDRwnp00mfUQbrG4dpzD6GStAiEAkUrIwr3G0+tIQQb/VzhMne7ujMDgqPoQgbmK000yNek=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 439205,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPqJFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqV4BAAi4bkKlNslWpO9yWkyi0FrsMalJV1UpaixfREXIEB6hnNjSbv\r\nzSwNc4xJbglGhAKBwd5jzZTVKd8IvnN7yrnGXISLDXHQUiErwaigqH3g6Gcy\r\nnG8gisz+KGGINQTVyhYKYalFh/TqWwdPwQeMB5e5LGG+5CSnnG2UVHx+aBM4\r\n5hlufEt//s8lWjryPU/1NIoJgE3H+l0E5t/oYpFEgE1fM7UJnUy76a4Wm5i+\r\nypx93zgwufHzNKXmp5Rry9K7ajDyUGZfF30nRa307x+J79mA01BsLVqQFWhP\r\nedFBof91Ub4W4CwpyP5ddv4NIjM8EtCEMygOMwZNLg/Px/JGut3RY6taus2F\r\nP/D7cFisN3SFzB/GYfT272RsIfEWmQJrKB9XoHi7JXeC1yINv2qPgMCWv8P1\r\nLYs+K8lX6lr1uBifcK0nHneEuNM4yZqP6wsfAeXGT/MKCkKUbyeAZbM/y18L\r\nXpVMyHKYGow+xGsAs3LmTeE3pOdo+itk6lHC09kM1nvwhyBJLu9KfPUxTG8K\r\n557Ir/fQQy+dx0X9JtXjme8xFV/CA/z4DG5rMCulk09oDNcBm5D43LDyCO9C\r\nn8QrfyZxtuf16tPYBB0HxxjFbav65xqVy+zoJ19/B2R6tqBXGz32OIArmylY\r\nI0XQyDQbF+I+PO4/UTL+KkTj7WaWMz9CbvQ=\r\n=2dQn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.1.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.1.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f0b1490b43139a766b2e9febe99dc0305e950ee3",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.1.0.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-T9w2h3KCPrONq7SeIyTYeOxrHIqqtBWfb0IXnDA1/jP0LosMtq0y79SQssm3gl34jbE4yHdSVxVbGX64CqXbtg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpRNF81eRqk9gNwfE4v3NPwySfNCGi+r3RjhS/1dNPiQIgSmE9c0js+bT8SVjrKhxC2EUQwBvPzClBbxBtaHbnLKE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 542998,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPsFyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqCSw/8CBkma5337YaDNAy8cuoXTO27easzh6Fe7Qiyd+4rN08yobQx\r\nc7KTtedoEBmEfROshuiwzy01+NGnFrcIHuLuL0EfT47H24VUUwrSMJpfLXJe\r\nSF1g8NQxuIiQsCM415M888DUDQLblhvjsK1ulV0wya4l1sU/6/90Vrd1MlJ4\r\nQ/yBkYRb6ZyyJxb2JHG9yGlFBsJu12y9URMoDuUcWfHBguFw3wphqXoF52Ps\r\nZMUBUjH62OSN+re4s1/jl0ph5QXaEqJDYvDxMDXxWSVK6jptEcB6yf/3sm+8\r\nb5B46xEb6eGlR6Q8/D3qKd3H3bMPpWwp/3WWzma0HtljrlSjene5gNGoc3nj\r\niqCPfIProGCC2zliGC24eXZt8UYnavu2yjsB0tkJ1PbdPL/tUwgUyHBZtnrL\r\nmT6M55uMYYqYyLLZFYCXxhMTPIv5lDSA2bQhFicD32dAJL5OGbFzWkJruJZE\r\ny+axiFbmATPAccDH3RiVDdHzvXPshY46Zol0E+PHudzmH8FeIs1d2pDeLgB6\r\ndocTO70VFLrk9xpjE2piWxyHYAh1hFjvkCyVw+ju74IK/p9/Mtu2IWQkuo7l\r\nEo7LXprx/O8PArVczXtcmFI0dwe0qrYZEO4GNSUIdby7UggABHY6hyAkg6eB\r\nL/3gfyrKU7DwbqHx9ZPF0yhxGYqUlkPIC3U=\r\n=CZTW\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.2.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.2.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b465bea6580196f43945265b75961978de17e39e",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.2.0.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-USdA9u+V0VM7y4UwH4nrofBaROwp73iKx1hC6TNWQRKF5o7biDUt6Wc1x3+oO4YN4lCSC5JzB/tHlG4f1cYxsg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFgCcQ3GqUwnEhBGX+WE1WqWkfN/WUnt9oxo8aPg7RRaAiEAs5YexVR2grKLUZJ4y39nsBiZMGrMUHUcfke8e8xK6I8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 543513,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjW6t2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrhBA//Yb8UMfapBgipg1Ba+Dzf8vODNvRbZeIA3RfyXLhuUZIMfla7\r\ncUn0/op15PsNXwSKA7whMHO1fu61EdvCLSO4jwQX30P4bF/kcj2ipsmR5GPn\r\nu2uLspby0/XgnspIXHaYFvfxW6hlyu1LKBzryZaAMaMgdwdHuEQjYM/Gp7+K\r\nZb00t6NIeCx6LdN15wz3QYEKyzpxQ6ypFcrGCJbLmaH082Xy//Wi/CnQxkbh\r\nH9cnJkJOsvwcFonQQGDM3LVd73ZSouJWmodn73jxJPo31n1vlrQQC00htlSO\r\nZyJJmaqGAa8c1GmuaUsErkcdQd2YHyJs9IVFeKj6lgwBjBvbfM8DqCoe7dMz\r\n+3GRC81IpRyo2r/QWCHlqHOLGjcIiF/idqoQLeVlFvMTZL4sgXdqOJEtriAa\r\nZwCcljx02vrwUI0z+RTtl0HrRrkd8eIDjPD0eYladQ9SxhvB/IAkqwh0Ksya\r\nZplQtZ4NrVbWfPhW0aEDz0qsYnTcyyDi8qb+SjQfdFn08d2zsUkkfx8dV1WB\r\n5AQ0IbCHe7+YmJ/hVdPHGKe7+YwQPn2MkZfk9jvHF/1rLNQWyp8C4VqR9aMQ\r\nDlQOzmof0dZf408QtsJ9Q9E3usqaOCiuURWcjQh/NzHih6IAAOypqw3hioGZ\r\nl1EOiheFMADhweJjNyya5rM9k6qRCt1VzOc=\r\n=T2/s\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.3.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.3.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "c3bf55a5d36565ea76bab7673e0c579af4387011",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.3.0.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-MGxHCU0Pt13ElxYZkObWoxZ8O5y0Guf/R3rcogDUktG6cp69rc+lWxZAR7HbsL+gc8NrdJlIxR7dIud7B3bhAA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCXCHm5WDoeTIjZojnF5jw1wBZCXmoUskoYswrm4vVqiQIgOWdoqfdX4tBmhq7WgiSwTYzPbRMae0aTXCoQc49VHyw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 538546,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjgQP9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpQSQ//c3NvMoFYRNVWaQMgnhpsz35/MTA0j1Vzr+7sErTltYnJkb5o\r\nzJ3RqWd6B/ixxmQwy4PshRx3S/FMH/GgpQOpa5rO2wND3tHHvuw0mGHeQCxX\r\nCplWY+erUqWs+2wxHMqPB4vrPzOq05SbhDvFfh2mqG9tNxMwbmXDXfFaGO8/\r\nl5GcNG3eQxJvAOHfp/Ijm6qUkN8q8O5fRXVg2zxZ2cMCrXNJTUUSZH1AsFFR\r\nWWUwuHSW4dE5PmDNMvP3RnVzxnQDSIIqMWkO0D+K+2i0ugXFRjUK7rBCTdit\r\nz2v0+92CkvvCDNI3iw3YnhSg1iW+OI3RYeDrfLOs+OhNTiYNZY7ZBdWHnKm/\r\nzQbpZMfmi94k04xEFPYVGZtCo3K7gtg8oUd6I+iVl+iZk3uYCdU6df7yhYAb\r\nc76jQ/o/Yv4YlYvqxWdQoxWtXCvmt7+BvMHYq6MuQwPCFRDV3DLR+FkKn+Os\r\ntxtJa2SqS1F3TPjC9kyondpvusS5gawH994p7gA/Lz8KPBXkp4HVeQVji3BP\r\nP7KYLTpHWLgF2mIujQZMAtB9VtO1hlDxzTCbCQiRkmb7VZVwh2ndRhzv/NaJ\r\noaVIZPkPedZgGER7y8nsjxy1sst0sdHH73KK6dfIWSpUksIEO0NOAIJreVB0\r\nTq+NLdjGwgkLf4jOMWsA6NnMiZ2CpKRZBo8=\r\n=/cpf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.4.0-alpha01": {
+			"name": "neo4j-driver-core",
+			"version": "3.4.0-alpha01",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "bf5830c165ee7d62365ef0952fc4030d691a54f5",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-3.4.0-alpha01.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-74MS6/jUkdpGFFlPF/TKebyL6dswpCMebTZR5NLinD6Fl233JGj60EV2H324w5uJajGg2H50tfbw5MlEWNkcgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDkrroDTogPmOq5ZSlDpA5wcvl0dMfe70GC8iNEF8xhyAiEAmahMrMe6+rZR3iVxkQXKjVODRDrMHBIsr9zzE5/ZUM4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 539295,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjqwBRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpX/g//fKIYLsONTfQlGUWeRyUk5UbyWISBqxMqiNDww3R0AKPyAGEh\r\nW9E5HATlLTPMg1/WjefOwVb66JHw6xAr3KmoxZI2FGSXb0g0ub+88l/SFbEV\r\nfCBXc9fBjwMDgab18KkDkA2weD0VD6e2qH0Qj147f/aVPyneMBvm57fgsOEl\r\n+gSJRtsvLDgJvcid0W7hAb1YNvTjU8Txi5rgUY0tzsmFFqIAijFj6/29OFdw\r\nXLiBkZc5LZmPzpVnjAh6i2xUVKihFLFqPP8npOdOWyWxtMuw9bB2eXHhrHiz\r\nOwxZ1r+rvdPhSVGs3oOoEyJAe1FIB/MvNCAgpMmKhb2py68OV+YF+NTDaSn/\r\nmNwKVaejDGjnLsbxVUoO5mkGsgQUjlALMZ43r/WKUNLpjrNkvlE7q27trtKX\r\nJa2TT63VrZIr6KkdbsJoAWvYRel/8KvIGcuV2GROVE/k3MmUY4f/GiSDnkvU\r\nJ8P+4KM3MUwaX5r4pzjej2Zby6yvoHAemg5jJm2uVBhsOvR9V/bFyT6jPpIZ\r\nZqZcEz1BbzHmy0dBKjSrIG06wE0zRf6pX8M/XDyGJNHHGNgiTmYbUKMi/UvM\r\nkUsnLetBbk4lmeglABrfutjgUrwpRgWNj2GP92jo23or2HuT2pSdosk7YIPC\r\nX6c8jZoLAjYavQlt7JKx0IOPpkIp9Fp3u3U=\r\n=ZEKV\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.4.0-alpha01": {
+			"name": "neo4j-driver-core",
+			"version": "5.4.0-alpha01",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "3a4a9a7f2ec8b03d69223f6786c877b55c3d496e",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.4.0-alpha01.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-jTHPMrQfHAd+Zla+00Gvag7Q2cqpCzyhEy8SLXem4dPY1URj3YlnfdqML9xp2BioFToDZ/gfMTjpeZbN63tB7g==",
+				"signatures": [
+					{
+						"sig": "MEUCIC7UUSFn7lZgT/JYgFwNSQz8J9MPRaYbYtSHP4cnE4r9AiEArhOz/pCi/ZOwGN1av8CyQ11XZFWucF6ILdlDVcEYfhs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 539295,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjqwPyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqfvQ/+O4vtNxeES3aPY/OTafXImrbyjv7NsKxKyUY1yE5mRAQwo0dx\r\nYBBwKBqmnG7U9VyIblhx5ajz8woxfOrm63AqT/BxL2pbwd/HI7x3RrYaGBQa\r\nU8PC66xIh7Svg+oTKin2a62O8zAvuZ5Q4tAobV5/GezZEKPcJZpmT27GziTZ\r\nU1M2iEdHfaeN7C5Gx+IiRb6vU5ug/t0T+fRmsnF1qcnaQBi7PrZtDPEbEgZ2\r\nqjiZTF0Z30MldcyHUYzWt6Esk7hzj2Y/KNnoUzadElOgbMoVz08Er5Q7CCvm\r\nF3X/3LZu0CsvFNGy5Lfo62ok5LxQ4R37SzgwgmvFFmqXExXKFCI1vSpUbV/E\r\nenoIt6z/gxBdwkUhFaD7vUWWhdfs0MFjY34dGpaWXgG2yZ/zn5/LMH672mr8\r\nkbpkdECuhBWxZyZPsH9Mr4ByXWLtCiDBjv6tIH1fJgzMqcw+LPMllEXIY0yN\r\nR4WGF5o9Zn/2M2RCTpd5IfzggEso7OtiHMB9OZIId39zIxpq0n0hAlJOq50u\r\nEYuf4SBUQB08tGgbvHhgmeWX4Rx/w54FiWOf4sLcGQ6KumLYMvaIs4Nhapfc\r\nsLwzwfwgPaARDOlFtPGUAOgN/TPiEaScJOvUjXs/Gz9/qac7mlNbMnW9bOSr\r\nTSCvCxDQ+FgAUFPWNbnh2rYAOwMp2PbbQx8=\r\n=9d7/\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.4.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.4.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "cf740648b5597ee4226eafc7ba0ed44d3fa85adc",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.4.0.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-3IWuhiQG2EU8SidgNwaBPeiH9EzS7frNODUCEM3VLhogoX3cO57T+hxA4qEDJrVIAzUfY+600K7zZFYEunhCag==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDuMlW9nku3lSdscRJAkmf8wXz1zgnSHv/WZPcEZXVMKQIgNZf+zRKRGh2HEdZ2TcH3lhpuMPGdLmlPqQxVCrOxDq4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 540135,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJju+DJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqVPQ/9Ht8xncZW4SI6pdJsKTky/Tu8CFDgQpQ+FCDtN9T0OEBvB4WS\r\nst3cYWa5AdLhG/yrgK/HPgvyAIBuiNz8YWWoRavSOvu8TRwOa+YKhQf472C+\r\nkJ8HIpRqf+jH7Z/TxYucSG7Rm9t/slJI1RBgo4YCKIZN5zabq9S+0RSIOsT7\r\ncaRrkS+Yo9KPnEyL81rK2+Lg3Zi+rEVhbf4sTkcmANsp1F1LGv0qoTHRlRir\r\npej9YY91HQV9CUb3ny5cG+pmGn42zBuFK1z2qTjxdSfKJafYyptCcGZt7NPD\r\nM3LHOjJJa4Fg5mrIyNeP+BILSd7JAR9EAK+FDYgVJGvWNdNRuhAd8jBTFij0\r\nVZtZ1G0OzGKEFHOkPH5hnCmpR0EsmfT9H3Tuo7Aycfy8gUiK7UT6UEd0MKD7\r\nYSwPHpT7kIGG1/E6V8clgfs0NK53kSJpltJ5bXPEf1bn71SQWlrEm4BM9/IO\r\nGjjm+YOxZqo5gxzG7arSawj83GGvForBeiWo60Sy2C4E3xnHlmMBUVCl/Kyj\r\nB4ogirMeXghj6SKumW9H/jGho1xWF+bWpaahFr/ro7WH4PxOBueWVkiXRzhL\r\nqLlxfQSU/JKQpwQGub9QoiQysjXnhEohzXhhfIAW9T7IjqW0Eh138GEjTIHe\r\nV4lx2Iyl36xa1borcQjsJF8zygQJOU1X1hQ=\r\n=i6yi\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.5.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.5.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "65e97f8c28742e33ba31e78000bbfae7b1b87ce4",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.5.0.tgz",
+				"fileCount": 86,
+				"integrity": "sha512-SXuzSxKAvGzb2drvk0T4I54D0hlIVLMdUUMnxqshjt/nLhIpXIry4++0g5jKkg3SVf+gzvD8buOIMAElWLAjoQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDAP9Gqvy3XoNOlf1SS1KJihh8Xc4rNpo8EHybkI354vQIhAK8ljFZUhJyqsw3noBeO4ILpTggIfZd2Gq0G6Zpjm+vr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 583762,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj07GUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmodJQ//cOGLSAWozBX8SfIuIm27djI0KwvkVMZdiqZCKpR1MXOF17Q1\r\nBrfAzcwS1pO9KOLD42UkCwnXUdmQAePN8RHv7Ru4t/Q5eLZM2iP0A2Nt7K9c\r\np61EV9ofME9GvyPaP2k1mjyw+eJ8ojxrjHW/amGslvBnisxk8ykHWBHh+ikN\r\na+yiQBWc/Wq5GAQcek/vJ5ToOgD6ilsZJnYn4Z+idK9tN5SxNK76kYTeUi6I\r\n4CvA9ZyH/pN6QxyCEAfCHFiAtTGc4PH9QTVOgWrudeqVVjSP/e4ZNa34LrDb\r\nzVZ5NDLYMELKvuxuIivknn1OfyXvwfTg6dUFnkpo1M02EvfbMwH0dJzhrNhb\r\nYrgHitoy6pY1HEzSfiHpY88ZRWMxkrXiBCiWwqSmbR4Gvj00Dp3V5XAapVoL\r\nE8pUj+S19EZUfUj8tOpXR6W3RfqHStKNVqyg+Mk/qT26SwiY5+W9Ui4bvUrl\r\nC5OImQeN/k9U9i2WNkzeDy19zHGzOGws8WGAR7zUiKvPC8LRBFKj+nwtaHRL\r\nS5ZKdutx2Vv+OmzjQ8IMqyRyBOV3jqkKQpFBT9HcqwA4oXY0c8UOef58Xi5w\r\nNLmUlvsd57AkcE0/nJtHcs6I2ug4jzNDm4okz0Tj4e6CvvCqaEI03VuzycLh\r\nj0JsKBhYdiNV2tgRfWe6u8PNMr+sg8z2Y58=\r\n=oy2L\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.6.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.6.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "57ad6da42c4dc62f481d781ae50c85c12448b693",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.6.0.tgz",
+				"fileCount": 86,
+				"integrity": "sha512-9K6p2+QFmRxKoQKlFF1OX1+RlYRRTmxZBo/B0QH8ZxKFHZD0D8e/d9FNwVPI5wUguDxTV4ViHJtpD/g6mMNcJw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDeOhqPhqdkLjVY66un7WIAySfuLe6OsSmGG7/MTqpRggIgLT5iLTNdw9YBlJPlJgPNMZzcQC/67lPtxVqhURfDMrU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 584091,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj+NN4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrMAA//Sl5uklXwx8I7NK6xM5LW6yGasdJRuzeLSYYMOb/xRkQYS3UH\r\nrFvh490scCinPp6Mgqh9ftfoRquw8uMbdrzGnd2dTUFXCkk6fVKiwRXrFuo5\r\nwJDSxb3GC/aKwgJSsasylokOwpABIA/d9gyIs7mVi87SUyMcM9rRMD+K01Xj\r\nuUSP0/EZu+8qNbCBeQSv/QdoYVDNS9MgYlSilOMbvSDhRWCoPLOmKIoT9MpC\r\nw2nRr3Dvt6w5HFRLeP+FOi3t0hpbcHdeKm4SPgKOyxHp32LesJ3hrXygJQUp\r\n5Yh2lupR9IlI1F5i10bxKSp8opoViFAOpPsacVBZXDKtGMPx/PPy8vCFGhDR\r\nB+BfqaqovvMuENlUyX+Q3SOHdtUt/+Nj9tNWsGslVkRL1RjftlJLeJaHFyRA\r\nPTXvnfywt8dwO9CMe7wG+EZPA09QPwEDVI9O7xd8isF+E/vd1/vovctoaqJ3\r\nf3QhcdCyOedFkgb72pPV9LlGpFKwI9XGRJXKaYQbbnsAgeWDg6KtfPulTdis\r\nvuRt4BDA8VeavlD/ji3CRUoj7z4T045YSbjSik1NDuT/TWkWE6rKAx56zqjt\r\nj8Q4PfMwtIrOdZt54KWnV2dbG57JID7/JhAxsOae+lKCWHS0BCFRwZyUExBf\r\n2IIPe+b0TEpOsIvD7ciQ3vKItyTYHLZZjsw=\r\n=fGdM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.7.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.7.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "482931e2c5c66fe792982a07fddb14e43f02a8e8",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.7.0.tgz",
+				"fileCount": 88,
+				"integrity": "sha512-q/mP1oDtt562+8uSMZZJJ8k8MNGeghTegzmmDCo9v4LDxuq+wkaKQ3tHm92o1xemuko+uyqlX8lU/844rX3T4A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCBVoLeHqZPfGGtTp2KlHbNWt7BJh3rDYGN0Q43ViWmawIhAIfb6qoqKZp8mQ7NQEQCyGuGuI44sMZRMCLY2aqOCkIp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 602454,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkKpYVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoQeg/9FtwRK+VUgtzU5ClFPBsv9ZKMdln8qHqI5fitWjbxD8dbYwpR\r\nx33X3jBkrwVTHcnBeGjR2m/fu0pNxvCU1AQA1BinkHaFWOJhBQonKyl4SnLo\r\nnt4VqQnsEM7SCuX0pLgRrpDzZw9i2TFe28GFDlt0pL/NmHb8X9/uB4LNeoVJ\r\nxatWb950yhqkoi2eJxwfKUVdIKVPt/JHNydkUP8hDUllHdy16RHkR9DWTqaB\r\nTfA9kmMqWxPEUnvAfxELhGaZI0oiGk7fgVDd+BdrYDfdm/HxIn5Zz2lVEuGB\r\nh1vd8Jp2xH+2lv8b4Z1AcKX2nCx1VHzUFdneuut1nRu9i7Jg7KXOaqmfilv3\r\nEafMpsQX3qZHJxoMPoyDeMFbw3BROiwlwgFxqsRe+JMLFQVovFCDS2RaEyoW\r\nTOJYQ/URF1zwrn1ofTho/2sgyII+F3Foc80J3Y+g9Su9K0OfFeiBquJTeAjn\r\nB7DhcKim7wdYLrQ+nWQ8LFnGYBHUcF0F8E6NiKiUhvbnJp9mfC5FHE2luiBp\r\n++ugSsg4aXwfVIB2KA4uSs19xLcQ8ST4YKCcqT1T1v4w5oOacz4IsbOrEWU4\r\neAo6rnTtJy2rYQgaPwfb/K9g6ReWO/slCV6uQ6DiPv/FB/Lprdu7IkfzgDBT\r\ngSw5cE3u/Ib4uTwWyklfWJ7Sbr6ymUYKsjk=\r\n=Cz0F\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.8.0": {
+			"name": "neo4j-driver-core",
+			"version": "3.8.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f79a724c0a8342efc671edaaa956d2b5134b8ceb",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-3.8.0.tgz",
+				"fileCount": 90,
+				"integrity": "sha512-azTSgGjBPI1iWa040dhlW1/zAutq3H9iUkG/cz+03DeycCRWKFnniFU/mHaVzDe4HSjnQ7E0siQ0dru3GUbblA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD/39pgbsE1N3R5ZecHlo4mowe3AoHqwCsRyUdp//kPZAIhAP7QMnCtvpBZZflvl8uP+k26PeOjOp3gPvk+tQCyyxMO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 626528,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkS+RlACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpQyw//cCkLjbUjfY7wAsaUebm6FCJrta348NMaYeaRhtdSG4keu9lj\r\nxtFvBRMALE9aUNkzYAbj08Zk3B7HImQoHQF7ZQjqGsvXpTMartT1BbWRuZ8L\r\n2oLgOmecE2Bz98DQrkZdcOsNzTVmK5z59ee8ZmNhh8S866BtG7qDXJIcnjl0\r\nP8SZjw6hp/Rf/RN+5bv4z1+zL/4NtuJTcIDD06W1N/5a/uj8K8mOKyoQsMOh\r\n1gqJFbN1kH3iYHhYczm0g3uBdL6jP6FQutSoHjxHnHKUlkDj51GSIaPaUSd8\r\nDXER7+Cucix/NFP/jrdrhodqc4TfvgmWi1RzVcbFc1X4FqBA4yPJ3QvubOq3\r\n+80KACjUMF5py6PYmicwSdevNQ+eimQlSUeDDZvSZhv0tzz25Xi/xn86PsqK\r\nVP66R8QTuZH2qzYjBpkk/xmzztdq/5pm+Abwjn+w9kgMeeH5qo+J8xgtFhDi\r\n482D2BeQCOH0TbqsXpSKir7VhzS33+NOYkh5zwGJ1r1dS4Ntj/yeZWYP1Us5\r\nJs+PID2Aaia1u4aVmh4Yte5G72p5dGIM7CekqGxm7YeiWP84O3DuxZipuL1z\r\nWejL0r3WU9b/1KCJAr58jMwE4aSyzHstHhoOCBXjCbmXgifzL1KdbcyzX/Nv\r\natjFMvKKsYjLT43bAAaaMLnHpwthC6Kur4E=\r\n=txxO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.8.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.8.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f56e165a5a622d8d31cebae6eb7bc124fc4d5f7e",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.8.0.tgz",
+				"fileCount": 90,
+				"integrity": "sha512-EZnCrkKVRmirDuI/k+wkZ4YPq8PFI3bQswOWMveSruxSkYqFDsj0lGgA0EWAEuiF/xRp/GqIDs966BuNDYC1qQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCpoNESqeyHTpgo/5JrgUlf/0sZcc0n4CfBEKLiG3OH4QIhAK81yie2xzdMjJzGHpl/SNbpB7ypi2Oa7J90XRd9bXXV",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 626528,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUMfHACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrgkxAAh2UbK/6my7VjLkxIZL50pQt8pHtxTwCcEkY2ZYvsXD6CUmoc\r\nX5KUBcn6NMonE/syi8r1mNPdRtjyzAH+5Q4x7tOYdELDPz3zHxyaW2fy5fZj\r\nJQUiwoOGcsdmLjGo7r+AY1w03z4A8jXLpEn/xMVRqMeF1vbBS9EFvwcrW8ac\r\nBiRDYzysO3qUnm0dvEPpupvICXDajDBIlA8LsMX7L5HvFRjGJEbZ6jh5uoyO\r\n/f9X/Gy+3cmc060v/sEopASmbjUnZToLeoZZQ2p0Ur/s47t9yLo8EkdR0XPh\r\na/+nligO02PFFXCWhEKPwwTmyxsrsCdZCYxyENzmGvBFwPoNa+IKgKo6VZOD\r\n80X6Kend1GSnsDRoD3ctbXlRIP14mA1G5JshuEEaDFIaZgeKQCqtOs2en4O9\r\n43VWolC8LUW5NUcQc5t8cOgG59W0gLxh7C35E9B+TRUpzbwBzS4BSpgIVfYV\r\n804SqjHt689CWm36ZTy3BFdueeT9M6UE0sILgxfblEm4ni4vQ9AIZCm3bXc7\r\nuEDSI7X9HZUPEhgFpdxKxyFk7oPJwTGqChC63ccrIB8KW+2rWDucmppGr0R4\r\nOlsa2Pr+UaDE0RdafEEllIgum1d4+6McXQwLLMUb3H+EYWWk/N1YYJEoqnu1\r\nLw6WZWaIhvednBlBP5DHj0IbVZOODLEn+G0=\r\n=sSYn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"5.0.2": {
+			"name": "neo4j-driver-core",
+			"version": "5.0.2",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b34fd6f3664f04bb1b6e32ec019d8030b7dcd439",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.0.2.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-HANDHXimhuKr62mrscIqAdM9A1Ds/wzohBR6k44D9if5qMBWEqS7CpdHAua4K/CMz7Yq6qxCyYFJbPQv9+Ub5g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDzo1Vmmqb+l9KEL/lx2YmBvyJAAEIOymqRyUhzOzNdNwIhAPvDV/7EBA12oDbcX85vjI74MmG7muF1cj6HwI8Eechi",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 541086
+			}
+		},
+		"5.1.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.1.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "b1a172c83d4b841f1bc92867ebe2c4d8b7d5bda9",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.1.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-JgV4v7IdGbyy8Zi0486Zmm0RYsriLdiBOw6DN3ad6J8fLf6V4U5LB7JLnDfcohL5jzSSuKb1XYdPGYn7DR6GhA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDmI9dJhOcTJzRfcspSw0J/Z2rQwLumoy+VfJnoOYNyawIgSoVfdP6iUK9mrTa2D7Ek+OPKZSBYfxMXN7eWsD6my3Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 542998
+			}
+		},
+		"5.2.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.2.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "35097867620c36d767b2f57ae27faeb5660bdb5d",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.2.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-QmUyzofFYWfIhNXtvHxDC8K4W/9UrP8GJgLhlftH0Ex8MHXivNeWHJTWAE5NJeZxQPN5W6Zlik78PQAHN2g0QA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCmfQotPn3IvJHqMBlXajTDMlyEJe+rSHfac7ylwYjWYAIgfVRJVsYJYzZgV2B9u6TABsHc9EQosNxH3+8xU7dpIuI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 543513
+			}
+		},
+		"5.3.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.3.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.6.3",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "658c1756ffdbc0256e4fbf9969f572ea6c46ca26",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.3.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-wGhZOM9TzoO71TCtwB7qYHF19kJ6XttCtQbeXHxclVHPXD5XPYJ24FUvkjpAHFZYrQC4L+44VqbFWhMETRfoSw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCJ6XyX8jHwlxm0nXCxWgiGCbRpTvGfZc9al2XMAj1CzQIgJntufwWmoNxJ616Zb9KdplP8piVPJcdnbNOKig+njcs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 538546
+			}
+		},
+		"5.4.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.4.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "76a70bd45769f574eda665caf3229d1e4d4efb65",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.4.1.tgz",
+				"fileCount": 80,
+				"integrity": "sha512-Na4heVg/IV6c48fd2nI4t94svbl6XF9LzDPXR8JyqZcVeuCEE3nCKthfrkw/TENlqBRQDDA8VTQSG60gmCZYSA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCnul8Qwh0/9t1xDwvX/t/T8wklZq2Y2lUlEaZoxnAVuwIhALLwFN/Aq4jVrb7lThmIn+CyoZ9/cJwlYmtQDLz6hzjw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 540135
+			}
+		},
+		"5.5.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.5.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "2c5e7c5038e7aeee697f0acd7229ebed9a47f084",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.5.1.tgz",
+				"fileCount": 86,
+				"integrity": "sha512-OmARJ7kw11IKa69z4sO2CsgS/9z+QwvzPekSRxXqc8H9FskIB7tYLeBhV5MkuZJ07l5WfnJ/fGdAwaAi4qNwtA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFsBm8eOMZEUJWGZXvswUYE+S58JSuMuRt6FwPYvmkZEAiBBm9XozVIsT8+zg8pGmrGv2ugjBMnSB8lUqmDU/6HlQA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 583762
+			}
+		},
+		"5.6.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.6.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.4",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e1f6fec3c8d2afb62d162adb2ea6e8b8144c7f2a",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.6.1.tgz",
+				"fileCount": 86,
+				"integrity": "sha512-E/0uvfUjdAWKksY4W929BLurGGWiK4ntgcKU7suxIE4bkOYEv/dbGyS1sDEZXIm4VS88d4gDG7f3QKKc3wYeZA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCGQCfCqPdhdvouzNWWjSUn5iBjRA3KhW9Tz7Dt+TwxtAIgX3I1jo3R8mLnJOYAF8eZPrnS2NWQAH2mIv3qVzUHyoA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 584091
+			}
+		},
+		"5.7.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.7.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "23d8fbef7a4bd70fbaa5751415afa46c2439e93d",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.7.1.tgz",
+				"fileCount": 88,
+				"integrity": "sha512-3yQXGwDNTw5kMtaeSltCMUsrw4Typ4+iOZBsFSeGxA5SALStK8kNcEnJGUuExLmuzNlw6qV1K2QfEPUgaARvEg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDa2FU7g2+b/HZ0N3+icqNUj5ET85Vdy3FNvLezOfHimwIgCu8w7+hGnGCWimMT9nCxe4igeMCcgxns3XHlGutz23o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 602454
+			}
+		},
+		"5.8.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.8.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "25301e088924474eb4c32a56ac95f75269202201",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.8.1.tgz",
+				"fileCount": 90,
+				"integrity": "sha512-bikefWmPF1RYjyKWzK/Sgyr7Q+T3U3h+Q4fFs0P3lptTQvP8wY5xQ/l5xZjO2HiENch/5MX/TwghOfXGm7Yz7w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCmjRvkJkDRG7I4h6r6XWVIxyL1ZIjBWNnLWVL4p2LVIQIhAJ9853WJvHscB5jfNkvaANM9oZhZLwtNQjBZi/ER63yt",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 626528
+			}
+		},
+		"5.9.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.9.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e44b93573a65f20c247c484eb6be7a90eb4da037",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.9.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-Xebn4ug2jNZRQTF8TCbTYHjYnsbAW4uyEn+PBYfJolcx/8fGszWlIDl8lK9Y4hKRVLKhF6gKl5c1LvwuEBTplg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBjY6+QZNCzASoyuDteO8uQRliDyeAmIUmP78oQcVmRpAiAKe9cdSP6OG3SBK8BwzNtyYPL6b7smxAZfG6fo6t/LeQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 640094
+			}
+		},
+		"5.9.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.9.1",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "4c1d424eb771af8c61d5a59e0949b80d74cb2f93",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.9.1.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-swn3C7/XLGWEthUNW4+OzOsal/94lamUklY2wb5PpKsO1r+MVT8C9yhMfjXTYoczF2equfDbZ4HD7zT2zpEvuw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDTMpOhH78rhtRNL/MSWYGbkN80RBf5tb61NX87JTGj3AiAiLJRd74rMlCIshbV5Prd7vGH5LViMNbC5rbjzb9+6GQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 651627
+			}
+		},
+		"4.4.11": {
+			"name": "neo4j-driver-core",
+			"version": "4.4.11",
+			"devDependencies": {
+				"jest": "^27.3.1",
+				"esdoc": "^1.0.4",
+				"ts-jest": "^27.0.7",
+				"ts-node": "^10.3.0",
+				"fast-check": "^3.1.3",
+				"typescript": "^4.4.4",
+				"@types/jest": "^26.0.24",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "62ea7152cc3e0f861c01789ef0cc2b2585de9431",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-4.4.11.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-7+7Ue9RNsg5TAwkPvl4/st2ZdktN3qH8A/MYmJkZ6Ait8MuXP8ppTvZ3ugPxbrSOJEwvZYpKqV+FNZ17mOSfcQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDfhaJVD08EOnvE89KrEduLHJMrVf+B1f9teDAuoA4TlQIhAJPDHOl5B504EvlWlWkQL/kW+lB5WCtZUiUIpy7YkjIg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 439205
+			}
+		},
+		"5.9.2": {
+			"name": "neo4j-driver-core",
+			"version": "5.9.2",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.5.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "354a2a4cb967c3202acb4e7a2d2335d3d609cb3b",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.9.2.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-z8ZsEEH8e86RsbFUbIrz+YOU/38D316C1b6OqSOoT93IhSzRNQNnrI0pKYKUDKPvI8Ud9acmhQvtIlisZ1gQkA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCa7tG2u11SE+7luA8l5FA8S7X4y8zzxZz1vcVtk7p0LgIhAOP2Mju7Druw3UsV6GTMqcVYGzaps4PAH0ly8cHW/3lG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 651627
+			}
+		},
+		"5.10.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.10.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.10.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "f1003cf65f14bc85379b7480ad391ee78e7239b2",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.10.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-Wf50GRvEqG2R0PWMJg3tF7YxILJb4QjYgpoC7g/2OCjmQQUuSy+wj65aUlV66XB4I9J07FElGWy6Xrm/rDyA5A==",
+				"signatures": [
+					{
+						"sig": "MEQCIDFXEeqJUGAlhguGrGb/cHAyca09OikusCr8NSIE/rZjAiA0EHN/Wi9XfgglumrqZzJTHnIh292+Y8Swo0N6xWph8g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 651661
+			}
+		},
+		"5.11.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.11.0",
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^27.1.4",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.10.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^27.4.1",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "0252ed596fd33df3c704125b59ccbb7c09524d23",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.11.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-HIZrX1wIkwb1BlXtDk0thbyzYrlDKQK9PuzcgeKF9/fTORxr5K39kdIiwVi3gkoGOcFCSoBu+fTnlnav1BcgRg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDq6MpXAwmMQc5sCfEiVV+FiJ6oIlQF12eCFPkTN6CGrwIgDqSo/nwPAcLBU2rpZxMIEtORrRqzLVcYViPEK5M//s8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 652977
+			}
+		},
+		"5.12.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.12.0",
+			"devDependencies": {
+				"jest": "^29.6.2",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.10.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.3",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "1f8616da7e945921574811368a68f5d2501bfd35",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.12.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-xBRi5oezysDUvtvBiIgBchzumkDZxvR9ol9sUtA9PBgVENeSmPH3CncitY8S979CFELS6wH7kydcjPLB4QMOzA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCAedlpUddLsLIis0jSUNx2+JK1XqDDEMZHvJnFFQLofAIhALZ7ipL9zXl4E02X2u9dbFe7hCbY/hUP0KTuYK7IDZcs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 657066
+			}
+		},
+		"5.13.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.13.0",
+			"devDependencies": {
+				"jest": "^29.6.2",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.10.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.3",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6a6ec3f02cf1e795fb2a43dacf4e1d28207cd010",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.13.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-IOqCeKWMSeYmZ8YwgoUNMRm63bTeQsw1b0v4AtjV7u87N2Jj89m5o+LRbaSIE0M8ruCW8PGOQ9I0PsmYYkhywQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC2e3pSIwwEjJ6Vz6Anx5WMEJzxbCM0TTrwozJVZxFsdAIgdUjOUHS9fGgIYdFXt77ntT9YLHjLtHAq16K4jhm723g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 662504
+			}
+		},
+		"5.14.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.14.0",
+			"devDependencies": {
+				"jest": "^29.6.2",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.10.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.3",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "bdebcb1271a3fa4c521f482e272367020cb73981",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.14.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-IpO2BOazTF2QLGE7kYjwbicBxGdsu/JkDhdSmsziBcqEiRb9TBXRILhvlxiC00p1QyqMi7iVmJtIsbROqi5e/w==",
+				"signatures": [
+					{
+						"sig": "MEUCIER3+f28TCbJG0xiKWDr5qj9e1RV92SZOetPTHQbeCaJAiEAsSRTSjikr+0L75COraytpbG+xwiJ0D7rAb8N6oziHPI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 662861
+			}
+		},
+		"5.15.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.15.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "62cafa9ecd4f62b4ec70e73d9052381b357f3e20",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.15.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-nsnuz9oZPVVavbllcwNORFQFhJ2yMk6hEp7RBlkRIBasPKip+PiU0pfMIcfoGMgjWIhz/beajtESWoAr7USPBw==",
+				"signatures": [
+					{
+						"sig": "MEMCIDVX1zKhOVXqPnyHKCosKF+rwCZB6cvv02c4aUcR3FaLAh8UCpghv3eejOvmWnx5zFB/aXtCGRqw6dKOIr9UfEDe",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 661435
+			}
+		},
+		"5.16.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.16.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5abd3d8e202068af2cbbbd3e432565e6b1dc7c89",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.16.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-Fbxy8V9TQCyDIYDxYXISU19XRGOBsAX4zheAu19Pcq2SV1lOMd9ITNUhQCAOWCKI+BLAen5cAPAGywGOXMJ8iQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCTZsUu29PkvBj2COb4eTcHQipx39TFMmu2f7V698VmVAIgPT7a5Abd5dmXboSN5nxpI4JQ8K0BaSbzGgabFJ6nweE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 663644
+			}
+		},
+		"5.17.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.17.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "0111a2de713a24b93ece9387480bd48cf9c4eb77",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.17.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-SP1B8D4C5zl5OYZvlPJmXvoqLTigqyPWv6mMD+Wjdn6k1vM3CYwO2FD4KPzBKKGTY61YNC9syw1qZpfpm5xPuQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEvb2Lce6Cv5iTiAiIzofUfcIYOXT0Od1wXRBU4KJLJNAiEAsuW4qL1IHPDv95Gdsn0YqU8eMTnG9N6va0BpHUCfnyM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 664102
+			}
+		},
+		"5.18.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.18.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "e62314f1f4bdf456ee00aae269469d5a3dbf59b5",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.18.0.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-naq5zT5tYazh81CO28L5YrcL/Wy4NoppqawkE5zyfFFVEs3bhmGn7G170FL0Fs8h7Dab1aZ5hlOBwlXXVWSDng==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDL9eCwgh8HHLCazm2FWgkEpeGguqWVvscjpmBrfAMPZwIhAMwsWbcWQaoJm5MA3mLxNbo38NPpLZ5UKqiVEqpcV7xx",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 664940
+			}
+		},
+		"5.19.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.19.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "56169b64d66823c22072e017bd931cb230eea8d5",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.19.0.tgz",
+				"fileCount": 102,
+				"integrity": "sha512-GpSoNelRiAhOUE/lYSG9j5SW7uYUsSOFG++MjeOC4aCDFwK8NBGPUr+I98nj6g6CBo1CDHAzd8zbyEkWaFGdbg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFH0RldqloT8khNLns1FV8f3TGrEGgnm19AWMvF/EAzIAiEAyAHeZIy8C9SYDuYVmEJPV6by8Iud3Lfqy3Cnufiml9g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 687475
+			}
+		},
+		"5.20.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.20.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5bacdabf17249dc730c5ab2f7c3e7769dedc194f",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.20.0.tgz",
+				"fileCount": 102,
+				"integrity": "sha512-TJx4MyKPGw+ocev8mo+3MPI4tt7KirHPM/c3Oa6X8s4jvCKucoslld5MoBYRfBXeqqVZL4FfWoFP1pOn9U0HuQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC5GTGqSBU6+ktC3n42HzqiytVfkEHvitM3rUkVcUfWKwIgCyKINLva0ka1wpZGiEMvfNGDeMuf95vloxvMgWTSWRk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 687475
+			}
+		},
+		"5.21.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.21.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "5eed82306f3115ab6f5eb3131f1b0a8f9af8f8e0",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.21.0.tgz",
+				"fileCount": 102,
+				"integrity": "sha512-YhbaKcDZU3JIzxNH+GIPhsPVvGaLoRhAkqJrgWPhviqOmMON/OggLmnH/x1bms5zvAJMG/7m9BBxC/J8Z3Lkgg==",
+				"signatures": [
+					{
+						"sig": "MEUCIB00SfRtkV4GjMbaz0Xu50tS/48l6dZgjGt/1HdSmFP0AiEA4/ptnHeyg+0DcAycHLgOBvOfmRN9YK2otIxR/c/6nGQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688003
+			}
+		},
+		"5.22.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.22.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "abd9237556fa534a82c72341095c9dcef804259a",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.22.0.tgz",
+				"fileCount": 104,
+				"integrity": "sha512-tta/zBfbjm24uGgumckYgVxqnTDenPNo2BQwy+eOD7H2tn9oP3U/OikzOvQuRzfRkRtag0ynrTjXw0JsAXZJkw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGsZkFUSCgtaSN+QJGfCT2GMaKKvJ9ED7RiRlCrhBAOwAiEAnIIBhRH+Y+vpBpNMcM4dpWCUFGuaK5sbA1kWBMxDwy8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 727800
+			}
+		},
+		"5.23.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.23.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "8de25804c50a35cdbc7370de4a833ba63fe8453d",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.23.0.tgz",
+				"fileCount": 104,
+				"integrity": "sha512-kypv0cym8vB9t36MRKSt/mtNZuvCACg6S47yJMDjJx5XSWx69QbBaLNvoa/2//7NPCCj0Fn0i5HCKqBkcBRa2Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIAz3DrJ1WaSnzH9dWmg+tYBzCDwhC9v75lZc7L42OUAXAiEAsdlQG19lGAeaOui1dNx9GXyLWEctaWXhrTOd73TEKLc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 727963
+			}
+		},
+		"5.24.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.24.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "08df2b6560cac980073822978207b83ff89dd904",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.24.0.tgz",
+				"fileCount": 110,
+				"integrity": "sha512-X/UdHo0Cwk1aCQPTzSxkleuXAwJ7Es0/1goi3ckrFU/h+Va9QUkPGub07ohG9tXBi4wMhQFbtFn/yKLFlVwTlg==",
+				"signatures": [
+					{
+						"sig": "MEUCIARjNywdO4F4Eud2Jb/11KANSPRd0ZWap2QEyxLiC3suAiEAtZ9RT2Rj1i4moCYRdCgCCxuo55M2xTaB2Krvyndh7Tk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 776082
+			}
+		},
+		"5.24.1": {
+			"name": "neo4j-driver-core",
+			"version": "5.24.1",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "1d3d360adbb3724d42a8d72bb1f4e240daeac718",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.24.1.tgz",
+				"fileCount": 110,
+				"integrity": "sha512-nPPAXnEypaE4HloM2x8GggF5YT7e+LpcEuyYt7ELuax25/SH7ZtdkemnH0voAVfqBwQXSWP9CFpPFznDOU6T5A==",
+				"signatures": [
+					{
+						"sig": "MEQCIErXIprcGb0cpWkuu8Erb/ZtD/1V5sbGwEqF4VoT9eMIAiASrq/AfXDaNVvuh087zLm9ahEcBqcgGt+m9CihIY/i5g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 776914
+			}
+		},
+		"5.25.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.25.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "723db9f5fa7a85816478a406e6e21738819fe4cf",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.25.0.tgz",
+				"fileCount": 110,
+				"integrity": "sha512-fdPAKlhtosNJw8eDrDZ+Krpgl9Yqe/dTUTVdU7Ud83E3QHl3ILp8n/uN7zyixf5sPI+11t/bqH4Z6vtANwYqPw==",
+				"signatures": [
+					{
+						"sig": "MEUCICAOCysA/Dg1E0YNa68RA6mIUbjEZhiZulWPhKhpvuvZAiEAiYaDuaI7ydiifkoSndvnQMVZC8DRyUKIgyWWbWY7BvE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 776821
+			}
+		},
+		"5.26.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.26.0",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"esdoc": "^1.1.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"fast-check": "^3.14.0",
+				"source-map": "0.7.4",
+				"typescript": "^4.9.5",
+				"@types/jest": "^29.5.10",
+				"esdoc-standard-plugin": "^1.0.0",
+				"esdoc-importpath-plugin": "^1.0.2"
+			},
+			"dist": {
+				"shasum": "6ac836dc944941e11f06ba7dabf1b50b6335ac41",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.26.0.tgz",
+				"fileCount": 112,
+				"integrity": "sha512-S3nHbqGuKPktWkRGenfx8Dt4MuqqrrUQjo4COhRj9r9P6WOjd0jzF/wyZb8H44pW5Qx/gmqn9B3If+7gfiaRmw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDGtuibsjYmsQTGuSXQGHHaKaoyGkcbWZ879A3nBGd6xgIhAIgOZ44mmzsYwA2YeCsrKAgqoVRYMZ+cZUrO0iRq7QPW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 787959
+			}
+		},
+		"5.27.0": {
+			"name": "neo4j-driver-core",
+			"version": "5.27.0",
+			"devDependencies": {
+				"@types/jest": "^29.5.10",
+				"esdoc": "^1.1.0",
+				"esdoc-importpath-plugin": "^1.0.2",
+				"esdoc-standard-plugin": "^1.0.0",
+				"fast-check": "^3.14.0",
+				"jest": "^29.7.0",
+				"source-map": "0.7.4",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.5"
+			},
+			"dist": {
+				"integrity": "sha512-TXZLNjtLrySRyBPBiRkQ/Ewmt4PQG0rm/Q2ZPNPqxbq1S0UVd53PQ2N6jxKiWlkrlPfrVRd2DyE8M7X9MDXxZw==",
+				"shasum": "c22c9dd3d4a460c47892b981b8c4d9f10a7f3d31",
+				"tarball": "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.27.0.tgz",
+				"fileCount": 112,
+				"unpackedSize": 788538,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAREOdYyDL2ydl36wbDWqv447CHv/9cqvPeSlAdkFck6AiEAhFNi8Tgn14yRIxboXj8ekOoCtTJkFuRGrxZoleXuqdE="
+					}
+				]
+			}
+		}
+	}
+}
