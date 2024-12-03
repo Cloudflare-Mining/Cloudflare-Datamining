@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-09-14T17:23:04.303Z",
-					"updatedAt": "2024-11-22T19:06:09.928Z"
+					"updatedAt": "2024-12-03T22:13:56.888Z"
 				},
 				"contentfulId": "2FkSAxbFbU4CXlQWSuSfez",
 				"contentTypeId": "page",
@@ -2625,12 +2625,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
-					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SSE & SASE",
@@ -2751,9 +2745,9 @@
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
-						"buttonText2": null,
+						"buttonText2": "Read comparison brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://cfl.re/cisco-umbrella-comparison",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -2784,7 +2778,7 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mDM7hgW5olTGEAAVMYfcC/97825a7396456eb8d553e992b6b884f0/BDES-6774-CISCO-Zscaler-Comparison-Page_CISCO.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mDM7hgW5olTGEAAVMYfcC/046d2158f53cac23f3cb96f17e699989/BDES-6774-CISCO-Comparison-Page_CISCO.png"
 							},
 							"description": null
 						},
@@ -2839,7 +2833,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare's DNS filtering is built on one of the world's [fastest and most reliable](https://www.dnsperf.com/#!dns-resolvers) DNS resolvers (1.1.1.1.) for a seamless UX. \n\nWith %{DataCenterCount}+ network locations in %{CountryCount}+ countries, protections are close to end users wherever they are. \n",
+								"description": "Cloudflare's DNS filtering is built on one of the world's [fastest and most reliable](https://www.dnsperf.com/#!dns-resolvers) DNS resolvers (1.1.1.1.) for a seamless UX. \n\nWith %{DataCenterCount}+ network locations in %{CountryCount}+ countries, protections are enforced close to end users wherever they are. \n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2866,7 +2860,7 @@
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Visibility across %{DNSQueriesPerDay} DNS queries resolved per day powers our own AI/ML-backed threat hunting models. In particular, we excel in identifying [risky new and newly seen domains](https://blog.cloudflare.com/threat-detection-machine-learning-models/).  \n\nFor deeper customizability, [bring your own external threat feeds](https://developers.cloudflare.com/security-center/indicator-feeds/).",
+								"description": "Visibility across ~%{DNSQueriesPerDay} trillion DNS queries resolved per day powers our own AI/ML-backed threat hunting models. In particular, we excel in identifying [risky new and newly seen domains](https://blog.cloudflare.com/threat-detection-machine-learning-models/).  \n\nFor deeper customizability, [bring your own external threat feeds](https://developers.cloudflare.com/security-center/indicator-feeds/).",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2889,15 +2883,30 @@
 						]
 					},
 					{
-						"contentfulId": "2Ybfoglg1dBtPL9iqPqjiE",
-						"title": "Built on Cloudflare's network",
-						"copy": "All of Cloudflare's Zero Trust services are purpose-built on our own developer platform. This not only delivers a consistent user experience, but also enables us to innovate more rapidly. \n\nBy contrast, partial integrations between Cisco services – often bought through acquisitions – can create unexpected frictions. Your admins will be juggling multiple standalone [SWG](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) and [ZTNA](https://www.cloudflare.com/learning/access-management/what-is-ztna/) solutions and will weave an overly complex web of inconsistent policies over time. ",
-						"toggleText": "Home-built – Cloudflare",
-						"button": [],
+						"contentfulId": "4ZdDOhYv1OEvDC7CBb6f1P",
+						"title": "Best-of-breed for DNS filtering",
+						"copy": "Layer protections for office and remote users with controls you are familiar with from Cisco Umbrella. Achieve quick time-to-value, whether you prefer to 'set and forget' or to customize.\n\n- Block domains and IPs by security, content, and application categories \n- Encrypt all DNS requests over HTTPS (DoH) or over TLS (DoT) \n- Route DNS queries to custom resolvers for granular controls\n- Via our API, automate with Terraform or manage parent-child accounts",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5mE21NL3J24eOtmC4pDsqa",
+								"elementName": "Cisco Umbrella - Product brief button",
+								"standardText": null,
+								"text": "Read product brief",
+								"url": "https://cfl.re/cisco-umbrella-comparison",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
-						"subheadline": "Natively-integrated edge services keeps you moving fast towards Zero Trust",
+						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
@@ -2914,73 +2923,371 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "124313fc-49dc-579e-a532-f66c3407deb1",
+							"id": "0859d700-6834-500e-919a-384b2b0e9be5",
 							"altText": null,
-							"title": "Cloudflare's home-built Zero Trust services",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6U0yzMRnsLD6TQbwB7V0Nz/4f2e9bff2646f9ccc95241369a6a2bb8/Aquire_Stitch_CF_643x438.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LlQ2K4MA1iS4zk4uWyrtW/75b8220225ca70d875d2f7174878f3e7/BDES-6774-CISCO-Comparison-Page_740x420.svg"
 								},
-								"description": "Illustration of Earth in a cube"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Advancing Zero Trust",
+						"sectionTitle": "HOW IT WORKS: DNS FILTERING",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
+						"imagePosition": true,
+						"imageSize": "medium",
 						"imageTextAlignment": null,
-						"togglesTo": [
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "4UaSqfIrvmmdLrQn6nfszR",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "Common use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
-								"contentfulId": "8BObldmyAaoRoXegrju2I",
-								"title": "Built on Cloudflare's network",
-								"copy": "All of Cloudflare's Zero Trust services are purpose-built on our own developer platform. This not only delivers a consistent user experience, but also enables us to innovate more rapidly. \n\nBy contrast, partial integrations between Cisco services – often bought through acquisitions – can create unexpected frictions. Your admins will be juggling multiple standalone SWG and ZTNA solutions and will weave an overly complex web of inconsistent policies over time. ",
-								"toggleText": "Stitched together – Cisco",
-								"button": [],
+								"contentTypeId": "feature",
+								"contentfulId": "Mv8nbou8LjTFfdGR2UFIf",
+								"title": "Block Internet threats",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Prevent remote and office users from browsing to destinations with malware, ransomware, phishing, C2 & botnet, DNS tunneling, and other threats.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"link": [],
-								"subheadline": "Natively-integrated edge services keeps you moving fast towards Zero Trust",
-								"button1Text": null,
-								"button1Url": null,
-								"button1Color": null,
-								"button2Text": null,
-								"button2Url": null,
-								"button2Color": null,
-								"streamOptions": [
-									"controls"
-								],
-								"streamCaptions": "en",
-								"streamVideoId": null,
-								"streamThumbnails": null,
-								"streamPoster": null,
-								"streamPosterAssetFile": null,
-								"image": null,
-								"imageAssetFile": {
-									"id": "df0ef436-a259-5a6b-ba70-6d1ab46622c6",
-									"altText": null,
-									"title": "[ZT PMM] Cisco's 'acquire and stitch' approach",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "33d7be39-e735-5720-b9b5-adb3e706d3a0",
+									"altText": "Filtering",
+									"title": "Filtering",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ccMTsNXYmUctRi1D2L2sw/45e0d27c1f82ee97a0276006dabea004/Aquire_Stitch_Cisco_643x438.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yN31lNkrnW8tWlBe5AtYd/015bcf1db5f5566031dc1f34eb248137/filtering.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7MPaUVnkSGwo090SjbhRVD",
+								"title": "Support compliance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Meet legal requirements and standards for rigorous security from authorities like NIST and CISA in the US and the European Commission and ISO abroad.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "a213978d-3ecf-5d39-ad6b-51defd17e6de",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wEFtnTWLMWPESQaOVZXl8/232c51514653fe7631a4d9f6c7e5c379/Vector.png"
 										},
 										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"featureList": []
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "xDqd4QffGgA3xXFavHn1T",
+								"title": "Enforce acceptable use policy",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Block unwanted content to enforce your AUP and filter browsing on guest WiFi networks across retail, hospitality, and other physical locations.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0e945287-2318-5dea-8432-bfd6b9e8d077",
+									"altText": "Performance validator blue",
+									"title": "Performance validator blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yOU66g9c1Dj3PX55DGzHb/4ad68e1191cbd9cc51ea47a99d976595/performance-validator.svg"
+										},
+										"description": "performance validator"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "3GVRf031aSABM3GxZONtxo",
+						"title": "Accelerate security modernization",
+						"copy": "With Cisco, progressing towards a security service edge (SSE) approach requires expanding from Umbrella to Cisco Secure Access, a separate platform running on a separate architecture.\n\nStreamline your journey with Cloudflare's unified approach:\n\n- One policy manager across all SSE use cases\n- One network and control plane for global consistency.\n- All services are 100% cloud-native and built from the ground up on our network — not acquired and stitched together.\n- All services available across all %{DataCenterCount}+ network locations\n",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "6jzg6aC6Xz9xNunOBTk5E5",
+								"elementName": "SASE journey - button",
+								"standardText": null,
+								"text": "Learn more",
+								"url": "/zero-trust/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "83670648-6ed3-57d8-8db8-a040db687213",
+							"altText": "Cloudflare One Marketecture diagram",
+							"title": "CF1 Marketecture Q4 2023 - Full Image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/QiDags0X1Qn72yA9oiKUp/28780dc6b505a01682254baddfe2a746/CF1_Marketecture_PNG.png"
+								},
+								"description": "Cloudflare One Marketecture diagram"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS: Zero Trust / SSE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "kiuUcLsg4wDMLkB54lnfo",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Customers",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7gNGFuxisS1Dji9kE3WpV2",
+								"title": "Department of Homeland Security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare and AFS were chosen by DHS to create a joint solution helping the federal government defend against cyberattacks",
+								"learnMoreUrl": "https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "3cc4f2ce-e2ed-56f8-99bb-f99c7a6d19e5",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n7vEFuya3BWQaLxOoCcjn/928d9557f93f9f823413b5a8578d4148/flag.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3n2E2p0Gmf5GY9RmyoYSS",
+								"title": "Bouvet",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Bouvet uses Cloudflare to protect their online infrastructure and give employees secure work-from-home access to company resources",
+								"learnMoreUrl": "/case-studies/bouvet/",
+								"learnMoreText": "Read case study",
+								"displayBorder": true,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "91389b97-aff0-528a-aec5-e00088bbba04",
+									"altText": "Bouvet icon logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cPQVf6NSVgSIeQsiGxfQF/2c363f9ab507f953f367c524f5b76f2c/bouvet_logo__1_.png"
+										},
+										"description": "Bouvet icon logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ZuDjvMleblNgyhbUyWRid",
+								"title": "Department of Seine-et-Marne",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare Gateway ensures security for a wide variety of applications used by the Department of Seine-et-Marne's WiFi network",
+								"learnMoreUrl": "/case-studies/department-of-seine-et-marne/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/hA5TPi3RskM13dhBQl6f1/7f232638e07525c55f2fdd9849622c74/DCC_1.png"
+									},
+									"description": ""
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7sW0MVJb5BkuJysZRD6phq",
+								"title": "Korzinka",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stopping bots and mitigating phishing attempts — retailer Korzinka reduces exposure to cyber security risks with Cloudflare",
+								"learnMoreUrl": "/case-studies/korzinka/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "01f71d38-d081-5137-a805-8f4f4fc701ed",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gp9bHuL18iJw8EIEtJJvk/b4dff9295d5bf78eacb100789a8818be/add_horiz_logoblock_1__1_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -3054,6 +3361,1532 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4BMT3lf6pjSU92Layg6mG6",
+						"htmlContent": "<h3 style=\"font-size: 40px; line-height: 54px; margin-bottom: 16px;\">\n  <strong>Compare capabilities</strong>\n</h3>\n<div style=\"font-style: italic;\">Based on publicly available information as of December 3, 2024</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "3iSO7o5hD7J8DbGn2Tm0kl",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": false,
+						"htmlId": null,
+						"filterLabel": null,
+						"showInModal": null,
+						"title": null,
+						"modalButtonText": null,
+						"mobileMode": "Tabbed",
+						"sectionPadding": null,
+						"showMonthlyVsAnnualToggle": false,
+						"priceToggleDescription": null,
+						"plans": [
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "5ifZMvQGEAFEQM7AVsgUK7",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Cloudflare One - Plan Element",
+									"name": "Cloudflare One",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "fTyhnaqNIsIli121bwAA6",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Cisco Umbrella - Plan Element",
+									"name": "Cisco Umbrella",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							}
+						],
+						"planFeatures": [
+							{
+								"contentfulId": "1SkDgwLoPdTfVmVRrSq7X7",
+								"contentTypeId": "planElementFeatures",
+								"name": "Billions of recursive DNS queries per day to inform threat intelligence",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "46xQsltl1x1tsOzfz6QFh5",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "52vx5bpYSrfmjagknmLRk2",
+										"value": true,
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "7i3dxaD86MeI7Qdx466ISj",
+								"contentTypeId": "planElementFeatures",
+								"name": "Block domain requests and IP responses by security risks and content categories",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "frJPGH8ty0GgWZ6IKQOXE",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "29t9nSXxjpVC4AOKDDIdul",
+										"value": true,
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "4CILTusgXoFXkTVvi6Rcqn",
+								"contentTypeId": "planElementFeatures",
+								"name": "Automation via Terraform",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4KlJPbXYCzEx8DLpfb37Y7",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1PXqJvBzZBkOtc48TwlqvP",
+										"value": false,
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "4Z8QP6z46rQPC1lnPytAq5",
+								"contentTypeId": "planElementFeatures",
+								"name": "Anycast network footprint",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "2yvKxWZdMoKpRTAaSDwfY4",
+										"textValue": "330+ cities in 120+ countries",
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "28g7jo3j28btpOXywiSOxT",
+										"textValue": "45 cities in 25 countries",
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "5lEYjsbH9Fj2veJvsygktD",
+								"contentTypeId": "planElementFeatures",
+								"name": "SWG with integrated CASB, DLP, & RBI",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2zC52otTGloDIjW7tA9027",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6HyXigHG536EOUontGUkQT",
+										"value": true,
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "6c0wRRweA4l3bgKvRSgV3O",
+								"contentTypeId": "planElementFeatures",
+								"name": "Full suite of SSE services (including ZTNA)",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "3q8kRQOWiW3IwfWDv8TQc8",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "724JGTM2mdrwHvALO9foES",
+										"textValue": "Available with Cisco Secure Access",
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "2yN29D0ktjWy5UKVKyqsS",
+								"contentTypeId": "planElementFeatures",
+								"name": "Unified management interface and platform for DNS filtering and SSE",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1KqiXqXEy5LIFjz1S6r4OY",
+										"value": true,
+										"plan": {
+											"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cloudflare One - Plan Element",
+											"name": "Cloudflare One",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6svhIjItrEDC4oFWmkUshg",
+										"value": false,
+										"plan": {
+											"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Cisco Umbrella - Plan Element",
+											"name": "Cisco Umbrella",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							}
+						],
+						"planFeaturesGroup": []
+					},
+					{
+						"contentfulId": "4a1t1PRmh7vTtpe98MG4ss",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": true,
+						"htmlId": null,
+						"filterLabel": null,
+						"showInModal": true,
+						"title": null,
+						"modalButtonText": "Compare all",
+						"mobileMode": "Tabbed",
+						"sectionPadding": null,
+						"showMonthlyVsAnnualToggle": false,
+						"priceToggleDescription": null,
+						"plans": [
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "5ifZMvQGEAFEQM7AVsgUK7",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Cloudflare One - Plan Element",
+									"name": "Cloudflare One",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "fTyhnaqNIsIli121bwAA6",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Cisco Umbrella - Plan Element",
+									"name": "Cisco Umbrella",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							}
+						],
+						"planFeatures": [],
+						"planFeaturesGroup": [
+							{
+								"contentfulId": "6B8j7KmlqKrYKvqWGQfRY2",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "DNS filtering: Threat protection",
+								"features": [
+									{
+										"contentfulId": "1SkDgwLoPdTfVmVRrSq7X7",
+										"contentTypeId": "planElementFeatures",
+										"name": "Billions of recursive DNS queries per day to inform threat intelligence",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "46xQsltl1x1tsOzfz6QFh5",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "52vx5bpYSrfmjagknmLRk2",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "7i3dxaD86MeI7Qdx466ISj",
+										"contentTypeId": "planElementFeatures",
+										"name": "Block domain requests and IP responses by security risks and content categories",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "frJPGH8ty0GgWZ6IKQOXE",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "29t9nSXxjpVC4AOKDDIdul",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2hcEXBXWwtV2eeW3yrxnSd",
+										"contentTypeId": "planElementFeatures",
+										"name": "Enable SafeSearch",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1vEq82NG9hvH68t7oSpPSC",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2b6EdTt9yjehh5K8ASfELz",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "QaUefH2w6Qgtyy9Rv2Y7X",
+										"contentTypeId": "planElementFeatures",
+										"name": "Custom threat indicator feeds",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3DnMZdzdQQvfCGVCgQkZxA",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1Dk154ZqwYcz691VL09R8J",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6yBId4SXM0iYOtZBWOg6xU",
+										"contentTypeId": "planElementFeatures",
+										"name": "File inspection",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "eo4y2annbDH3lC0zKkLVN",
+												"textValue": "All the time in all plans",
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6UutGXnJz9amhmQ2CPjDP0",
+												"textValue": "Depends on plan",
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "3HqrYKEknODCXIFTQKPniE",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "DNS filtering: Policy management",
+								"features": [
+									{
+										"contentfulId": "5j7xv9mGXRMKFdV73HacXX",
+										"contentTypeId": "planElementFeatures",
+										"name": "Custom block pages and bypass options",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6w7hudVPPnHsY4hEckEQpd",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1DOeTVnBHbKKJfiBa0AaBF",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4A1JNtc4U53YYZniJrU33Z",
+										"contentTypeId": "planElementFeatures",
+										"name": "Parent-child configuration",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "upF1EpFwHtL9wNSSoofHq",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5BZiMPMsH2V9eCl5CthzWP",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "7bxsVC1BuZbL6HfUxeeKpN",
+										"contentTypeId": "planElementFeatures",
+										"name": "User attribution and policy creation by identity provider for DNS filtering only",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3evz0GOQw2juo8W15Z7SdO",
+												"textValue": "All of the below supported across all Cloudflare One plans: Corporate SSOs (Microsoft Active Directory and Azure AD, Google Workspace, Okta, PingIdentity; and more);  Social identities (Github, LinkedIn, and more);  Open Source (OIDC, SAML 2.0)",
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5obC2IBaHqe3hMrd029qVs",
+												"textValue": "Microsoft Active Directory and Azure AD, Okta, or manual import with Cisco Umbrella DNS plans.  Additional IDPs supported with Cisco Umbrella SIG plans.",
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "3OlAh92zXi9hfbumaM2g50",
+										"contentTypeId": "planElementFeatures",
+										"name": "Dedicated / reserved IPs",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2lzadeNMPFz68Ej53Cc1ya",
+												"textValue": "Available as add-on",
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5eook9WUSKiEAE9k1MwWPx",
+												"textValue": "Available as add-on",
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4GiOoeMo5mPPFdZg9rSBBC",
+										"contentTypeId": "planElementFeatures",
+										"name": "DNS override",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2i3r2p59iV4Z2O4cOBJVW6",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5pPcNMNKxdXWSBt22kwkfp",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4CILTusgXoFXkTVvi6Rcqn",
+										"contentTypeId": "planElementFeatures",
+										"name": "Automation via Terraform",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4KlJPbXYCzEx8DLpfb37Y7",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1PXqJvBzZBkOtc48TwlqvP",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2VHh8LJJDnYk264LZ4N80",
+										"contentTypeId": "planElementFeatures",
+										"name": "Virtual appliance  (for local on-prem DNS servers)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3R7xsJfPt3fMxWznoP6sI5",
+												"value": false,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3cWH9gaQVZRu39q43ZI7En",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "75DjAXgcCJ2rEjwZD2OFwX",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Network scale",
+								"features": [
+									{
+										"contentfulId": "4Z8QP6z46rQPC1lnPytAq5",
+										"contentTypeId": "planElementFeatures",
+										"name": "Anycast network footprint",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2yvKxWZdMoKpRTAaSDwfY4",
+												"textValue": "330+ cities in 120+ countries",
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "28g7jo3j28btpOXywiSOxT",
+												"textValue": "45 cities in 25 countries",
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "lOdAsCCH8htrfHnZfTN0T",
+										"contentTypeId": "planElementFeatures",
+										"name": "All services running in network locations",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6OmM0OBhSq3Y48gZl3WLe8",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1G9BEq1wenFw7eb5LJvvE0",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6WatukSoe4pdTtP8VI15Oz",
+										"contentTypeId": "planElementFeatures",
+										"name": "Traffic acceleration via a private backbone",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5Flt7lVtI03Ybtm6DJ3pH8",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6apWtDrJCCjKkkT4b6ic49",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "3tDKW6h87E2ClK0jzVlPXK",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "SSE / SASE platform",
+								"features": [
+									{
+										"contentfulId": "5lEYjsbH9Fj2veJvsygktD",
+										"contentTypeId": "planElementFeatures",
+										"name": "SWG with integrated CASB, DLP, & RBI",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2zC52otTGloDIjW7tA9027",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6HyXigHG536EOUontGUkQT",
+												"value": true,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6c0wRRweA4l3bgKvRSgV3O",
+										"contentTypeId": "planElementFeatures",
+										"name": "Full suite of SSE services (including ZTNA)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3q8kRQOWiW3IwfWDv8TQc8",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "724JGTM2mdrwHvALO9foES",
+												"textValue": "Available with Cisco Secure Access",
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2yN29D0ktjWy5UKVKyqsS",
+										"contentTypeId": "planElementFeatures",
+										"name": "Unified management interface and platform for DNS filtering and SSE",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1KqiXqXEy5LIFjz1S6r4OY",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6svhIjItrEDC4oFWmkUshg",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "75NnFcRcQzEiyorOl8tUk6",
+										"contentTypeId": "planElementFeatures",
+										"name": "One API for all services",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "7k0frXPeud6aaTpGNYeceh",
+												"value": true,
+												"plan": {
+													"contentfulId": "44KODHTK2PpytlftvPmBGJ",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cloudflare One - Plan Element",
+													"name": "Cloudflare One",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4lrkSK2lMj721OaGucOaLB",
+												"value": false,
+												"plan": {
+													"contentfulId": "3MSn8PGLkmhAXr5ep7c5Kt",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Cisco Umbrella - Plan Element",
+													"name": "Cisco Umbrella",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7zd1pEyYejsCJfp8dgyK0E",
+						"htmlContent": "<style>\n  .container .sticky .dn .orange0.f4 {\n    font-size: 32px;\n  } \n</style>",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
