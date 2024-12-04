@@ -816,6 +816,7 @@
 	"bots.card.help": "**What does this feature do?**\n\n If you have enabled Bot Fight Mode, Cloudflare may issue computationally expensive challenges in response to some requests. These challenges may discourage bot operators from accessing your site.\n\n**Does this feature use JavaScript?**\n\nYes, Bot Fight Mode may use lightweight JavaScript to detect bots. This process is asynchronous, invisible to the client, and CSP-compliant. No personally-identifiable information is gathered. Cloudflare will fingerprint the client device (determining browser type, GPU, and more) to improve the efficacy of Bot Fight Mode. [Learn more about JavaScript detections](https://developers.cloudflare.com/bots/reference/javascript-detections).\n\n**What else should I know?**\n\n Bot Fight Mode may challenge/block API or mobile application traffic.",
 	"bots.super_bot_fight_mode.description": "Super Bot Fight Mode identifies traffic that may be automated. For each request, Cloudflare characterizes a request as automated, likely automated, and likely human. This can be used to isolate bot requests.",
 	"bots.plan_change_toast.message": "<0>Disable settings</0> from previous plan to prevent/avoid unexpected blockage or challenges",
+	"bots.plan_change_toast.message.success": "Successfully disabled stale Bot settings",
 	"bots.tab.title": "Bots",
 	"bots.page.description": "Identify and mitigate automated traffic to protect your domain from bad bots.",
 	"bots.page.documentation_label": "Bots documentation",

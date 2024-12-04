@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: S => !(0, m.n3)() && !(0, e.z1)("oauth-access-management")(S)
+		hasPermission: S => !(0, f.n3)() && !(0, e.z1)("oauth-access-management")(S)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -159,7 +159,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.security_center.security_events",
 			url: "/security-center/events",
-			labels: ["beta"],
 			hasPermission: S => (0, o.iY)(S) && (0, c.en)(S)
 		}, {
 			title: "navigation.account.security_center.infrastructure",
@@ -172,7 +171,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
-			labels: ["beta"],
 			hasPermission: S => (0, o.iY)(S) && (0, c.jD)(S)
 		}, {
 			title: "navigation.account.security_center.brand_protection",
@@ -674,7 +672,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: S => {
 				const H = (0, d.nA)(S);
-				return H ? !!(!(0, l.yD)(S) && !!(0, d.ZB)(S, "origin_reachability_dash", "dash_view") && (0, d.tU)(H, "enterprise") && !!(0, p.Ek)(S, "httpRequestsAdaptiveGroups")) : !1
+				return H ? !!(!(0, l.yD)(S) && !!(0, d.ZB)(S, "origin_reachability_dash", "dash_view") && (0, d.tU)(H, "enterprise") && !!(0, m.Ek)(S, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -682,7 +680,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: S => {
 				const H = (0, d.nA)(S);
-				return H ? !!(!(0, l.yD)(S) && !!(0, d.ZB)(S, "edge_reachability_dash", "dash_view") && (0, d.tU)(H, "enterprise") && !!(0, p.Ek)(S, "nelReportsAdaptiveGroups")) : !1
+				return H ? !!(!(0, l.yD)(S) && !!(0, d.ZB)(S, "edge_reachability_dash", "dash_view") && (0, d.tU)(H, "enterprise") && !!(0, m.Ek)(S, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -839,13 +837,13 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: f.gn,
+			tabs: p.gn,
 			hasPermission: S => (0, o.$n)(S, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: f.mt,
+			tabs: p.mt,
 			hasPermission: S => (0, o.$n)(S, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -860,10 +858,9 @@ const navigation = {
 		}, {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
-			labels: ["new"],
 			navigationType: "version",
 			hasPermission: S => (0, Q.R0)(S),
-			tabs: f.Dw
+			tabs: p.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -1043,7 +1040,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: S => !(0, l.yD)(S) && !!(0, p.Ek)(S, "healthCheckEventsAdaptiveGroups")
+			hasPermission: S => !(0, l.yD)(S) && !!(0, m.Ek)(S, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
