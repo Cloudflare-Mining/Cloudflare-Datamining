@@ -1,0 +1,526 @@
+{
+	"name": "taskcluster-lib-scopes",
+	"dist-tags": {
+		"latest": "11.0.0"
+	},
+	"versions": {
+		"0.8.6": {
+			"name": "taskcluster-lib-scopes",
+			"version": "0.8.6",
+			"dependencies": {},
+			"devDependencies": {
+				"mocha": "2.0.1"
+			},
+			"dist": {
+				"shasum": "708137f95f30846fdf562497888a01925e42db40",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-0.8.6.tgz",
+				"integrity": "sha512-1x4oUgt/6E9xkhFrEK9WBVsK5mOPkIbSyo2k4/bEVBNB34DN3h6gRms4MWRoShzBlGON2eqLN8/cljW7DYDBfA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCKno9HiYFLU15EujqbbG1ZO5tcnzrgm1C8oYPGpm6uygIge6rk98BXHzYvKqxIMaDeh1a8YVv0OuR+GjIgWV1sbJ4="
+					}
+				]
+			}
+		},
+		"0.8.7": {
+			"name": "taskcluster-lib-scopes",
+			"version": "0.8.7",
+			"dependencies": {},
+			"devDependencies": {
+				"mocha": "2.0.1"
+			},
+			"dist": {
+				"shasum": "1b1f2957967ef6973a407a31f7bb3df9c4cf1781",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-0.8.7.tgz",
+				"integrity": "sha512-5qejyhX/yqEpHTBwj3EAyz48rqwEgY8yaUIwN8n+0VwD0/AVInslMYmHE+Iq6jxFbvMiR7Mv3StQZD/LXoIs2A==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCoAed98Sw9Tinfrcfqh+dAcqRAt9DgHz7SD4wzYik0hwIhALYeZl+33PyjJ3to9nnjHescmmSgK05PPPjE8KxJUHiD"
+					}
+				]
+			}
+		},
+		"0.8.8": {
+			"name": "taskcluster-lib-scopes",
+			"version": "0.8.8",
+			"dependencies": {
+				"babel-runtime": "^5.8.25"
+			},
+			"devDependencies": {
+				"babel-compile": "0.0.3",
+				"mocha": "2.0.1",
+				"taskcluster-lib-rules": "^1.0.5"
+			},
+			"dist": {
+				"shasum": "6c67f1b719b6aaa00138de499083fc7e12009bdd",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-0.8.8.tgz",
+				"integrity": "sha512-D/XuTjEMXLY3P9qk4oGOTFZr9lXLIbH5Pf3HhqGUwne9Hehq+5BRtMmEown9tZQ+cTZs5TQ4iw5in9lJwNVo8Q==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCJkPhi2naLfi76QQBHur5g2PevFEz16qiZnF4fkNnDWgIgHsPNloCKypM/COSyACv05w+3Sm+yAup2OqCy2eMeJGc="
+					}
+				]
+			}
+		},
+		"1.0.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.0.0",
+			"dependencies": {
+				"babel-runtime": "^5.8.25"
+			},
+			"devDependencies": {
+				"babel-compile": "^0.1.0",
+				"mocha": "^2.0.1",
+				"taskcluster-lib-rules": "^1.0.5"
+			},
+			"dist": {
+				"shasum": "4f2cd4c2d59ccf15e150ac37eddc75a593b46cc5",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.0.0.tgz",
+				"integrity": "sha512-rG9m1lrmTl7Roo9RLvcKxPKxd5Ci841GqvI3UP3v821lJffQrEZkcjcr6lJNagtjXJJYpCDXHi9Z1acXiPNecQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF+1aNwPYIxy8HARLtrmwMSjVFN9JhS+CIUxXJTPf631AiAyZVY4odgt3vYGjzk947YwgaEmZS6hiVoVCQUdZ617OQ=="
+					}
+				]
+			}
+		},
+		"1.1.5": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.1.5",
+			"dependencies": {
+				"babel-runtime": "^6.0.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-eslint": "^6.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^3.17.1",
+				"eslint-config-taskcluster": "^2.0.0",
+				"eslint-plugin-taskcluster": "^1.0.0",
+				"mocha": "2.5.3",
+				"mocha-eslint": "^2.0.1"
+			},
+			"dist": {
+				"shasum": "7261676bc759a3bd91124be84d976f021f240074",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.1.5.tgz",
+				"integrity": "sha512-l41+Je/+sMhLvgjnWg+rJHB2aEtxE99ylyn+liIXAF+EHgVEA1Ei8t5xgYWIaF86AmBX71Bm4yzJVw0+/m0Scw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC5wYWROukH8iyGHjo5JLxDhIqi5SP0G09aDoxszQOntwIhAKIZBEWzNA3w7up4M190qtS2CrpGrXEMUjc/ezZq30W6"
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.2.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "c3409a34e6627b90a09be3b48c139ee58dabff3b",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.2.0.tgz",
+				"integrity": "sha512-0uWDXb3a2sEiDEP3beLNbWdEl/68lUsnQkT5kL+396WFmseW2xX/RHDBSjErHpMvGg8yJTfoJ1uHcc+TMmKalA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHpDuUBfIEOHwWFPDPgwDu3XZ4oy1vyQ/a70Zke9JeruAiACxCO4c9Z1jq9r3/1OMA+0YKeUnB6Yww2N0l5TMN/DIg=="
+					}
+				]
+			}
+		},
+		"1.3.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.3.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "551f19b2225541303070c97932fc749e1ef371d9",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.3.0.tgz",
+				"integrity": "sha512-uv8dVD6e/1e5clClhyFjdPTTcZBVDdCHWcK9vRRXELJyFLDAP+yEjlvAww6aKfufRkZV7PRISpt7I5gIETEQzg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBq/XzqywzPj+IJ63DlLeHTBqApY6tPvkOJ+U7EkRSkgAiBvBnCyrGRzgzXVRF1q3hXsPLeqL7TKrMZdO9weiKFBBA=="
+					}
+				]
+			}
+		},
+		"1.4.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.4.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "5d37124df68aa3f27f12843570628721c1a2466f",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.4.0.tgz",
+				"integrity": "sha512-tXwUuwrH0PH9wvCt3d7ER/mTqc5jTyQ3KInIHYKeEkw9HYXTRNb+iiqnCALJwYEMo+6zpUHj0knCKaQsGaYb8g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDyeBZk/ZFZhHTiuYXx3hB9l2WIdr34DkSzcVDU397vGgIhAPIpquH8o4/HFqVThUaqFHL/d3rbdWoZhCmnK8oLU6qT"
+					}
+				]
+			}
+		},
+		"1.5.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.5.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "c7df2ef1bb92d6f00bc319da6dc12949e0f3359c",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.5.0.tgz",
+				"integrity": "sha512-WQrNmVE2ygaq+V81osPwprJj8YymkGAfpVDpHMKqzXLNlL2RfiZXsyXwm3IaffAr8Wfc8bDzXwBt7g/beDZdCg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIE/5MK0wbcmbq+TXv7hz/0QeON5jCgSvQWinLY1SgGXhAiBYqQV5/X5RcgaSnUVTAGppxXIG4TXi7lJvpW4VgPrYnw=="
+					}
+				]
+			}
+		},
+		"1.6.4": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.6.4",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-iV3SfJG9vALRObNnTHiYIpf5XfhFHtUHMGoxiRIgUWyhcQ97Gtzf2ImRZ9//SdLpw6Us0MN3NQU8PtuyJrhZ0Q==",
+				"shasum": "fb641c31f1a4ef56870eec8f069e7c50a4d56a64",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.6.4.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDuVn1LeU1wfC6BNfv3z7Dz2HreaGrREt7AJu6gGXjlbQIgdB7TX0gFhsdpVnfy4p7FasGn2PDx8nTs1l7FrU8ovPA="
+					}
+				]
+			}
+		},
+		"1.6.5": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.6.5",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "6184ae5b78f26a434ef279164d1fb198afd65d94",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.6.5.tgz",
+				"integrity": "sha512-f2PkQbUSEr9Vz5CA/fdLCe/VNV2ItqNc8X5CkWP8lpy07Kv3msjM72XAvOV5kpmYZRbkxbEMujZesjXSunPVYQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDgdWZrRUm2RSh+43wawX54RobB8sOTYzjD8MhY2dfVygIhAM2SNCVYumNT7CwsJ5ZDbRy0H3SmJaRPIoDx0KtiIhh/"
+					}
+				]
+			}
+		},
+		"1.6.6": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.6.6",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "79a8ba038bee29a19cc164e5ab9c0878bcff80b1",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.6.6.tgz",
+				"integrity": "sha512-0f70rFRLzjtjzsfRRdzxDiZbMRb+Lmjt4ccEXdtPD1Yw92RoxOwMCt3RrWI0bN52ChadAB1vtRwRRctg1iuWSQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC8sXhnVxQo9EosF/TdrV+OLWqtwADm+thkWAkm63LZOAiEAgYG0gjtEUFPfknn5TnNddzxu5kzTQENhH1V+Cck1bEI="
+					}
+				]
+			}
+		},
+		"1.7.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.7.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-0xNGL0Wb0VT6Hmz73P47GXGoXsVQEasGZg99+R70v60e7yQ8PiVcQZoQric2QKLFkGhGJSREMvXeW/S5Es74Fg==",
+				"shasum": "e7104cb1b03acd05094dadfa15c7c732428c6afd",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.7.0.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCDHu3b4gF+49BxMDiLEYed0EH3VWfXOSznlLYithafUgIgWSZJKM/nibsmzXUyLSdejgwqROFIT+QGFx6OYpQh+AQ="
+					}
+				]
+			}
+		},
+		"1.8.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.8.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "a3dadd33ea1d52b8fac2673076d6e4ccb885fb02",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.8.0.tgz",
+				"integrity": "sha512-4zc0ofyu73sgAwxKDKhoaB/pmI3XkFt60QpCnxF/gxVqv+zNCKAZelHk4J6wcftLzPjc8JIwiVt5WSsa0dY0MA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAV0dz1NB7S7eAaXlCSrrvUZfomGA+2i9wsqGSXuLx5+AiEAn4r1U9QRQiBFWO3UXrydSh1TquVfvOOTjufTB2D757w="
+					}
+				]
+			}
+		},
+		"1.8.1": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.8.1",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "e85162a0435a2fd187cdbf8f5c25a96271127be7",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.8.1.tgz",
+				"integrity": "sha512-DBjJq9BODYSGUCe6jX6Gk5Ip9vvRKJ5VPqMC5DkPiM2WCoT1ESgZHOvVn3OQIgOg/IzNnlSoldbBwTLjHUZXFQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCLbYdEoNOhH8C/AAKPTMK3PFjQM2zWp72K9CvUsu6f5wIhAKT7dxDMLA7V2OxIZfn0Naf7ArDRAk+JOtmhF0Dtz9Hk"
+					}
+				]
+			}
+		},
+		"1.9.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "1.9.0",
+			"dependencies": {
+				"babel-runtime": "^6.26.0"
+			},
+			"devDependencies": {
+				"babel-compile": "^2.0.0",
+				"babel-preset-taskcluster": "^3.0.0",
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1",
+				"mocha-eslint": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "c8d6113d386d432b96eb73cfb182a335c5f49a90",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-1.9.0.tgz",
+				"integrity": "sha512-bIWy6L5YcDTVoZnXSIpM54rYlDTWpe717jtsEftUX0JwG4iGHb5wtspblXhM8XgEqsGY9bX1iTK8X7OEAE1dsg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDY3WH7UxuJuHM2IGS9yY5v4c5DIJfKiX3pE8rDYm59/AiBZPJuRAyKOxj8aZydtz9LHCpd6CJUM1ZkwhfPGt6pOmw=="
+					}
+				]
+			}
+		},
+		"10.0.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "10.0.0",
+			"devDependencies": {
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1"
+			},
+			"dist": {
+				"shasum": "2b90666b8e5127a1d367b726de84c7829b57efef",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-10.0.0.tgz",
+				"fileCount": 10,
+				"unpackedSize": 18690,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa/uhACRA9TVsSAnZWagAA4mkP/jaZLgO+Gq3e53eFQARq\nRnlUNb6yrz9uheknfeOP4AkzngW8KN3/xSB0Un8wXx30ANLDD+Le2x71KkCN\nKMRKJz6BcTAVdyoVML4T33oeLOQZV7XFfO9gpvODQfsNf48eAdmXJyGZPvUa\nFlP9Pb/BK7F3C74P6hiBOSAcd7oEFdMQtY4oGwt5aKlgCQPSmeiZtbZG6v6e\n9H7L/AejIYfcIUF5WoGoradbrCyi7EEX7ZaT93bhSXcdtu1o8lW9JeYJkoBY\nh6sBiWo4sPEj+I140fEHbtAE9dCdZHtbH04ZjdNtRwL+IxuLXJT2tYLsjZO0\nyHDyizFHq+6j5jwAs413+4ab1ZdNt93ImRKQrWeO64tnYnKlEiNIlLb//TZp\njnLUX6WgR/WhBKpLE/Gf1usGVYwzsf5AW9GyqHc6XllOP7qHlfveXPAzlnQM\njUhD80/b8KsbWf8ulPvsZ/F61yU4xqj8llEd+tUNGh++WqSt76cEI4yg0kQ6\nBIwSFZFJI9IPzVIl4eZQ1zO3HLeAlVaP8RIWfUg8ObOsMNsGHXM31dfvkFzP\njvtWKi6LeSjVkRzz7Ec5P1Mx2CLaUbJDIXVxDPn6gXiTXIPWgXuFaqVjH5xa\nKZM0q4Gl2rdJDOlnE/xyqjG6OvrqQNEW2+O9cOcnXW23GwY4Nh9FfgcJj7HG\nWbZI\r\n=Uy4P\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-d9fKL7gLZDLAEImIunetKlUBzgW0fP+559q9zyVhAqxIxWFu5vMqh5taLHN8WS7DDSxdz+nnIV7OrpqXnHRcUw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCvkgBghofcZPgPIF31eDIFFm7Q1CZ8JOdgOVOEzxpZ9QIgV89HKTAc6CSz6UV/1MA3mu5A90zl4mBDgE0+58ObR+A="
+					}
+				]
+			},
+			"engines": {
+				"node": "^8.0.0"
+			}
+		},
+		"10.0.1": {
+			"name": "taskcluster-lib-scopes",
+			"version": "10.0.1",
+			"devDependencies": {
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-EmOVQSZ/AgCtCDsGRT6igXP0TCwxdQh6c47/tvy6VrTnEG9GxsJA80qtDlJmEhK62vk7ZSKDezwTjNx27IBCvw==",
+				"shasum": "f3921b2b86e7c09581b045b9b880a4c35fd243e0",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-10.0.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 18645,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbYIQsCRA9TVsSAnZWagAApg4P/1EXeXNP2H9CFTMKwFhA\nROMTICUhCb0RlnKt6MWlYPd/fSKvaLspSitjtizmMx0OUYryqEVwP8oo7SIq\n0qiG0Y10UlgLUQRX7fuWR1AL2ueI06FvSeihCEgLRd5NDWFEVWkCtMN9SKvL\n0UzXsu1qCI3Rkv/svaDVRNe6S96cM/SAK9IAySrgMbMBPPTC8cvsrs86GYLc\nXuaqfLj/XugrfbYzqqJyXgkBTyZ81j8RzRj178oGGFaBPNRstG5L1dJyZwY9\nUdaatJWo7ukCEX0Pwj8XufIsJrbSSVg5r+9Pw5bAqLV5W6wSM26TOi326wXf\nqKpi93YkPi9oKbE2aF8f6lAs1OZ/rkr6yRdFi8O4Dv6CNtlelfZDpcOfwqvW\nk11YO6SX9p9xvEKsf8NbtfTZzIh2J2i5+U1WziJy2el5wZFm/RumzclWYX3Z\nKrA6W/+P69Pfap9YxjCdbJyD8S5IYFmswYag0T+Fb3J8rmK0rmPp7eexnGBn\nnGdUL6Wf+WTFKnGDPJZ05swVffDEGD/Ff3/uec8j4ndhcZYOkYamBGikQ5os\nK017Osi49Ki+HIBTXZtcQDRwBi8IrUdi+/C9kosjMbcWcz20EHM3CPh1NGxP\nQwjFNGACvoV451PF27dtEiI2K1w5uBFDrqhudzQRDQPDAlX+yc77Bs9qXqeE\nRugQ\r\n=jCNd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFqbcB8x6VoEmR1luzBG8ui6pcY8MfAf+/fZ8r90No7vAiB2vEu5wHtL0UV3jMFNztoz4Wx3p9laGVEPUTJPco9t3A=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=8.0.0"
+			}
+		},
+		"10.0.2": {
+			"name": "taskcluster-lib-scopes",
+			"version": "10.0.2",
+			"devDependencies": {
+				"eslint": "^4.10.0",
+				"eslint-config-taskcluster": "^3.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "4.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-imeywPQva/St/uykCxTq7QrP0Hlte3mSpV917kvdVqunrsHs0k3E90kdi9KdGyDRzncVeKbCjTZjyaDf7VndVg==",
+				"shasum": "ec7df9c13ba187dfb9836623fe53e9290fa6770b",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-10.0.2.tgz",
+				"fileCount": 9,
+				"unpackedSize": 28382,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcYhdSCRA9TVsSAnZWagAAPv8P/22Omdg0wKszeUK8SuRH\nJaSd/PBoTVShOxVr0LQQGoaQ04XaXaprVIb0yCd56zeysXdhGgifc6YiRlal\n2d46J7EltLJfjTL+4aSFDUbNYreRzKV6mYxOqZjTRYQFR58ZIU2D4/tDJUrt\nIK4RrVg8kjl+H/M/1VA7jxmMPxEbvsV7qA8p/5vkAXqS5FGykhjuJCx51NjG\nU3MZGC6WuRCBC8PTcrZY9iXkv9orDeYopeETrDqWN8XzcvrAeEFct4qDhfsa\nrbFmCLm2hFNwahJ8BKhSj0cFxzLp3CQucwmhogFWEIHkDgvwOYoSWtk9RgmI\naPkmd6yCF2/o/b6c2WGUDrvi0irkw2o764qh6uvCL/efypgTs/S7KKzq3agh\nLRHm9ywNOP+a8UtVp42fvt1PHRggU3XKAqCjGt/LJhk2qps+VNuOWinkthli\nzQ8vkJzt16GXDrosPAsxRtCZD3K1y7/rpYObacqwWEIWyl5Gg+utibN73A0M\nZzTNErMI24U71STgPn0sxSZytkM+WkpSflmae3irASEwprO534Szyr/4xCMv\nwxb1EN1tAluXjN/9yIs2YVpqJY+IUO65y1kdNFGCFeRQxupnmZ2eKMWzJDmq\nb2N0CUEUOuAshFV4cmGdqwo0VWeVS2dNAd/sW47Sp69/6My3PWCs6AqNkY0Z\nMqvX\r\n=UM5Z\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD5hhSKqywHxd6datJ1SkTM7porLNzMbOgF5VL+YPHjjgIhAJUC73wLVJU0+qXQ1M7ec2bU5xVHfmwKN7qZWJxvsTOk"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=8.0.0"
+			}
+		},
+		"11.0.0": {
+			"name": "taskcluster-lib-scopes",
+			"version": "11.0.0",
+			"dependencies": {
+				"fast-json-stable-stringify": "^2.1.0"
+			},
+			"devDependencies": {
+				"eslint": "^6.8.0",
+				"eslint-config-taskcluster": "^4.0.0",
+				"lodash": "^4.17.4",
+				"mocha": "7.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-C1tPcPjAycCA2i9+DGf1FX8qXiBkEzdJqKY6A0JeeOHnEjNgnhvxEtMkRuZj5hV2OScxsp8j05Mnp3vkLfga0Q==",
+				"shasum": "cc7d04bacfa859bbdd120394a8a1fba422e22a91",
+				"tarball": "https://registry.npmjs.org/taskcluster-lib-scopes/-/taskcluster-lib-scopes-11.0.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 37640,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh284iCRA9TVsSAnZWagAArtIP/2SazxamjOfUBeAAl0SY\n0INga2sk06p0vQbv4goEfzjClog6rqfR1HwQXicNfoGC3ch3R/mjZbo9trUx\n0UeKJeub5v0Zoy5nCBWXEWBlkCihygxS+VO62O1a/8WBVHsI768TReuSy1Ze\nAeseE8ZMTwZq2aMoSJpSzAaJiUhAfc8Xl3LMv+H+5XAq1CklY8dojulwpea1\njyFTY0CmSKhU/8dC8GU0TXOmryU8L1OLI5LlTupdK+qN/Qg+Xdy0b13ADUbN\nSHDz3HICn635LPAT35yS05FL1IlU4Yp9cUxx5oZ3JFpkV5sewA11vN/tzY84\njpWYj+htjoqcfHw1QOX6zdVvmE1zuOXR9qAoSyRuz3BfnG8EtriQOUaszfPr\nlD3BWjPSCfG6jB/p+s+Wv2MmbY2UJuoKaAy9YLvT9t29WIVKom0y0r1LG8R6\nvuSsGhK/AEKwkSlDRaTJ/y1MEi3qA+kc28UwuwcagN9rYPTE03WMtDj4LE0Z\n3LE79+nZwbWKERJVIh9HQ7pTY5zTLy4QkDw0F3B4tKisiO/2+nCLQX55K3kr\nUTTEMK+cp+GmWNyFAqrpHs6ww6TGdMv2Tzc+PMhaWjq+PjgsMkhjTqOIq6PH\n5luM/37QJouibNGf8m9XMOYJhq0Q9KlHOP5WPBp9VVHa4VhkD/aJuyboJ0+a\nZUhK\r\n=+7sk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHxCCioXvpm7E4yH1r1udlwdpTCub4icPwEGyxcVZGT8AiBq+/uTLYsVduDIOO792G7HlcgZGzc07Ocd6NRhlRxqvQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=8.0.0"
+			}
+		}
+	}
+}
