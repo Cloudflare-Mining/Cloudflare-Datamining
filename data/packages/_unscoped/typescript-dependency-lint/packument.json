@@ -1,0 +1,213 @@
+{
+	"name": "typescript-dependency-lint",
+	"dist-tags": {
+		"latest": "1.2.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "typescript-dependency-lint",
+			"version": "1.0.0",
+			"dependencies": {
+				"commander": "^5.0.0",
+				"glob": "^7.1.6",
+				"ow": "^0.17.0",
+				"tsconfig-paths": "^3.9.0"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.1.0",
+				"@commitlint/config-conventional": "^8.1.0",
+				"@types/node": "^12.7.2",
+				"husky": "^3.0.4",
+				"jblew-tslint-config": "^1.1.0",
+				"semantic-release": "^15.13.21",
+				"ts-node": "8.8.2",
+				"tslint": "6.1.1",
+				"typescript": "3.8.3"
+			},
+			"bin": {
+				"typescript-dependency-lint": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-T+J6I8tCKubkp5ilQhr/SPqOoRUqFMmRYLK4b8U3Aomh/FXB7e840OCJHkqH8Rxm8ZJlvdDTbak8TG/QPgCGhA==",
+				"shasum": "2c8279d4c32465de2109bdcab885bf4128ed235c",
+				"tarball": "https://registry.npmjs.org/typescript-dependency-lint/-/typescript-dependency-lint-1.0.0.tgz",
+				"fileCount": 39,
+				"unpackedSize": 61880,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJel2cYCRA9TVsSAnZWagAAQ2oQAKKHVR29OGAZBx6kDmbO\nDlJPjCE3HQXfJMJYASG2IrbpJ6l7ryX6qlvEyYe14605d0ykdydm5e+L4Q4V\npu8Efc8E4AeRWORqsYfmscqbWYDFNx7jhZgm5HSBN0rik3nwzW0OlVDj7xvx\nmDnwrv2Uo3WBUEnWSl4tybltZPle+W9dv7SkAJimwr6gEZeAhK+bqZUI5bIw\nvlPIRR5ZPR8XFLMgdlFk8h1TQEAW8iz4rKRlMAOIFY/emx0zB4aEzBa5UMfr\nYsm4V6ajbm1XQ7muz3+uxw15vXDEnrIYobwSmAgJTaueeA0KCTiAohl8P9OZ\nKX5aiW+v2wj7Fu57rTKdA3EI2+SXlomZNCXSRShFOne4arYHh3zUKCVm+RS/\nGJs2eU5jJPsxfjz6KDbzfDKnMPqMcsed57qpVS/Bje14F7K2D9IS4N43lzp3\n+Fr/Z88fLI0Hy8TR8it7fT1BXNHvIuF1SqeTA+zj9L0RVWo1jYVxvr/mx+3U\n7gXw9xQnCBBHqHke63DWrsOOt+Z3HHKdY+QLCaMyJatseLmwf0aQKoPXGkUF\n7B53MhOygMt9dDsR8mTulZ1f7DhaOXu0OfcEEE2FFt/xOgy3WVVPxVFgmDMJ\nJAfuvOk+nc45yRHzHKVvMQOZbxn8QAX7tSCZwl8VQOVcwI+xBIolcNYVmvLs\nrH7w\r\n=YPoV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHuWw62eDKFNSfK5g1npGb1/qmFDNmp0llS8pMSZ4ZLoAiEA8vm3WQJNPlDX9kUtxtjf1F2oWcHwVUXljgFBpVs7C0w="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.0.1": {
+			"name": "typescript-dependency-lint",
+			"version": "1.0.1",
+			"dependencies": {
+				"commander": "^5.0.0",
+				"glob": "^7.1.6",
+				"ow": "^0.17.0",
+				"tsconfig-paths": "^3.9.0"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.1.0",
+				"@commitlint/config-conventional": "^8.1.0",
+				"@types/node": "^12.7.2",
+				"husky": "^3.0.4",
+				"jblew-tslint-config": "^1.1.0",
+				"semantic-release": "^15.13.21",
+				"ts-node": "8.8.2",
+				"tslint": "6.1.1",
+				"typescript": "3.8.3"
+			},
+			"bin": {
+				"typescript-dependency-lint": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-zbtsQPMYGxSJW5F6Hnj4YzGcAtruMu17AQDBOlobM17PLFmSZy8kpTO2/Vb0aQGzoJMDeCT5chv8IVkFQgq4fQ==",
+				"shasum": "fe31860311edee5075c0afa419d4957cae4f558f",
+				"tarball": "https://registry.npmjs.org/typescript-dependency-lint/-/typescript-dependency-lint-1.0.1.tgz",
+				"fileCount": 39,
+				"unpackedSize": 61449,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJel2jBCRA9TVsSAnZWagAA2OEP/jEDYpyObswHy4xnbQUJ\nZmypB5DPD/lhDcXsA6ydNYCooEfUoZ1O5Xus/jMxJBWB0s8Rne6kUjdKy4lh\nIqGCcdCVZc6q8GWFg0qD7Ti7P2gPeRz05UtGmuYry+1bUD4ron97HzROlWIF\nJiYcxQYhLrbv9ACkTboQgPE3umw7H6BwqDtZG8JhaTXc5TDWczTIlRXvue8q\nm9Rrl4sdZdLPwY19MyjVxkhgf5XNSxD8GnsseZ9HVoX6gzTyOK0uAb+uAsQc\nxPj0oKE9/4X00yPifC6Rqc6UZWB6X/mSP1ybshJ5TG7vST0Dl8LpErSCamt5\nUbLv2KaW8F05yEA1zLa51e1FOFFZrQYxHH5/Rn4R2v74aXcGfazXgq5av6uU\n5drCflspehe8g4sBZEaVv3+wPefyKN8MNmnnc+jjWbI4m5K5d6aSEf3H7AXy\np+5OLCDMjAYm7CLKwKnkYYuhVxC61tYLMFuqZvaXvQpasYDpJ0y66ve0wEi4\n7z5firFZ/7hs+kcb5rNJJiC70gAbYr3x/moTsgTWpVWvc8RcbtXE7y+b1kSh\nkSGl8r+nkPd7K1qYZpdA2fj2xPptE8mt27XJQqcVpDZqFfZEo+sdd42my62C\nNxIx0W8aMOA6qCjqlT6OwIZcie4rbJASTGHBNM6JtHfLm/BluTtfI/srgpwN\n6Akk\r\n=H9Uj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDNwIWsL1nTS1Rqb4jBX8gLkcJNUuC1f0zBai+SWMkBywIhAI0Fbasgx+2Drwx8wS4vHRYJzMS5Yp+hZPnGCeAxN8+s"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.1.0": {
+			"name": "typescript-dependency-lint",
+			"version": "1.1.0",
+			"dependencies": {
+				"commander": "^5.0.0",
+				"glob": "^7.1.6",
+				"ow": "^0.17.0",
+				"tsconfig-paths": "^3.9.0"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.1.0",
+				"@commitlint/config-conventional": "^8.1.0",
+				"@types/node": "^12.7.2",
+				"husky": "^3.0.4",
+				"jblew-tslint-config": "^1.1.0",
+				"semantic-release": "^15.13.21",
+				"ts-node": "8.8.2",
+				"tslint": "6.1.1",
+				"typescript": "3.8.3"
+			},
+			"bin": {
+				"typescript-dependency-lint": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-ZIaqpWe/kDItxIGF423KLv730Ow12qmJz1wxev4Zp/ypYRGYQ7YMZt1KrqAoyY/pxWrzqjkIanlTik0DTG4mZw==",
+				"shasum": "7f662b6302c6ea2a7b6c1fce66286357a285ea3c",
+				"tarball": "https://registry.npmjs.org/typescript-dependency-lint/-/typescript-dependency-lint-1.1.0.tgz",
+				"fileCount": 42,
+				"unpackedSize": 61896,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJel2oxCRA9TVsSAnZWagAA3IwQAJEEyCByCwEIjpAfB1TI\n+A7GQyyGm/p2E32xhL6kL9OI8h5vuu62dMLxROfNnL2w3Ksu94axif2olwhT\nmli5Vgi6l65u6KzowZ+aDH9yUARJZ6hDZBQZuwLJ57alzfRVVo4xpBhtusMA\n39WG1eV7+FioFoVcWap1LSXD5zWactuz2gclTLKX8Xl1m/cGCTzxckOHOjdp\n98/B8CeQd9qNtIFORu+iv9FJ57Hj/VgEIxPkjXdoK/AxZRwEOSGztyepdJDK\n0aizlCyfDHy2oRpR2MWap0YOLgY7CX0zUHaWqq54n/9tAKlc4GVrmx0EgW29\nLTxtsWM+mY4YGyGNUmgJ1VylytnZbklGqKuN4XvIqTEVecWNl55HYPjfyDNE\n8NZSHg5nKm0k2PFT6Vp7u2Yv3as0ZCIaSfAHQ0iTAPgtm5ZF9/iTuyhu1XH9\nFbQDKo7heTPafPGIsLJvP54maHBpFGz+4HTMPwnwCNN87L4JEvJFRi+KyvrU\nHIuEJnXo1tEqlxT/zAaQaxIzLi+o5Rzb+C0Vuvk+N3jSyigrCS24lXsqZ3C+\nZKcVvq9Hhk3rcd9hzJCnDKsAE7jf18u9A2xmq1zEaQlbm0h62SRFcP8Phm4o\nACIopVkmRkp3rFmm5FcfaxdyxRDQtyBWlMGbnSqGedxOvZwlqSBb2/mjgCA/\n7AWN\r\n=/h1j\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDho4bQqfpXuEExewXQhFPmJlkcvBMC5yGkybzvw4uQtwIhAMwlgZyZ0Tz+1b5n7skZ8OaOYnwEeafG7xbiSK+S9uAs"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.2.0": {
+			"name": "typescript-dependency-lint",
+			"version": "1.2.0",
+			"dependencies": {
+				"commander": "^5.0.0",
+				"glob": "^7.1.6",
+				"ow": "^0.17.0",
+				"tsconfig-paths": "^3.9.0"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.1.0",
+				"@commitlint/config-conventional": "^8.1.0",
+				"@types/node": "^12.7.2",
+				"husky": "^3.0.4",
+				"jblew-tslint-config": "^1.1.0",
+				"semantic-release": "^15.13.21",
+				"ts-node": "8.8.2",
+				"tslint": "6.1.1",
+				"typescript": "3.8.3"
+			},
+			"bin": {
+				"typescript-dependency-lint": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-/01Uh2Oyr0vZo74gk3/3ky7rTgf/yQV+Z40gxBF0L3o/m8r/9D5R/RukGOIO/CciRpUpEBk5FB66bReOQoNETQ==",
+				"shasum": "159668bcef127ba6b9abbe27ce28401ac58cffaa",
+				"tarball": "https://registry.npmjs.org/typescript-dependency-lint/-/typescript-dependency-lint-1.2.0.tgz",
+				"fileCount": 42,
+				"unpackedSize": 61946,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJel2zICRA9TVsSAnZWagAAuI8P/R33V8nA9wi3YGeuEN3O\nkGFhl2eyGJ8/7ZCvT7txShmPUWfUMs8tQMUnKVYXSGl7LpeCFHpZoUJfHIVa\nxZKwMv5PXsedcPWiasAy9LCi/8uLlcT+G8iWHqCcRVqinNmOzLG95RT3a+Za\nQ1iWGYBp3WLtnokQEvvAoayi9IIqQatkvbTGgVBUuGycTz/rnKCoF6KZlHpg\n9xDD14LqNeD9KUM7QJhLE2LJPBEhmfp07CuYKStTK/NbXORY2tT/RfI+SQeq\nVifKLpxk10U8vcfxNnaoXEU7+u0of51RzHLOF0cs1rQoObSVwv/ZtiIUjVa6\ne2cysQkQDD1G7tiq6HIAnPifilACqA0JJxyYH/NAugAQtiquHqTVERTQI/OP\nBm1Ty4K/gBW3mgh/lisb99aOTUm5nLIKLDXoe/EBQ9zTrNWwAmWNF7gGb87Y\nF0Sizlq7mr+5rpPkZBQqmvAAP7OvbKALh2uZT+KtvuCDlfU2fI+GW12Esdpz\n90ZqdqifzVpQx6Ok7I+qolJmyR3UT2vYZrR8dWGOl7tE1XUHeUCEsHWy+xWV\n+Tvb7vPfYzZIhaOn9Gy/xA+lNdr5SB643qAUYe/yUw938VOQ19F6aWzr2qS/\ntMJnle0FfAp1sVN0+a007xWjgzixYSe/5TY5G12luO/IxtQGLDWYbV5Td6T2\nWBID\r\n=dwk7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDx0RJ41L1NOXPLuCIQY+8Ij1L+ieAR1AgmkSsnxRlaJwIhAMBfzVwufYh2D+hp3+fupxc8bj+KgamgzrVWNVDGsi8g"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.2.1": {
+			"name": "typescript-dependency-lint",
+			"version": "1.2.1",
+			"dependencies": {
+				"commander": "^5.0.0",
+				"glob": "^7.1.6",
+				"ow": "^0.17.0",
+				"tsconfig-paths": "^3.9.0"
+			},
+			"devDependencies": {
+				"@commitlint/cli": "^8.1.0",
+				"@commitlint/config-conventional": "^8.1.0",
+				"@types/node": "^12.7.2",
+				"husky": "^3.0.4",
+				"jblew-tslint-config": "^1.1.0",
+				"semantic-release": "^15.13.21",
+				"ts-node": "8.8.2",
+				"tslint": "6.1.1",
+				"typescript": "3.8.3"
+			},
+			"bin": {
+				"typescript-dependency-lint": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-LPCi4IDs42sK4ovcqrZtSwY1YtdEFPwwqx17pKqp0nziILII2rMS4lyF1sdyHbhRPpV2ZB33Kcdcx1eG/+EGgQ==",
+				"shasum": "c1341d30d9a1b5864752b1a5a045741364f319ff",
+				"tarball": "https://registry.npmjs.org/typescript-dependency-lint/-/typescript-dependency-lint-1.2.1.tgz",
+				"fileCount": 42,
+				"unpackedSize": 62107,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJepXl+CRA9TVsSAnZWagAAMQIP+gNxPAqziTPmoYG6SKII\nqUnN0dAZCd9LUSVfCLNHz4T+APs7tBlc3FdU6nS0nmJn2meX6Kh5cvRcWrtc\n6/NglOP47v1O6uhh4tSAKVXkFaRh03APfohQBbg5P48S940ygGoljQNn+fiN\nDE/7BCQomU6MtuoMspLz26tT1JykLC9WOXkqGehc0Nb3FbfAiZ7PFe3+lNLe\nBwMPQu2NgD/64EOHLl6gX+onzxf2M/P9bCCbKf97QQTQq8Q5oM9+WmhWE90a\nZ+cR6kOMPO42FtWW2zCeGvzG3dpoLOOuWKTjKrRNXEOlUHThh+nWE4feidvB\nA2bSbLQUGvk4FB82zwt0/k5Do1eMWgsUqDYI1ClWUWrZLq7AJXT931IDXfRF\nTs6QCvr1zSuigNlXQ/atEUJgwUr9tAJ8qWbWP/1N4dwoN7OezcIowRHY+ZJI\nrWzcsbb0EGgzI/r2iqZDlSmm5DLCtTfcO9+47CRREJo47tJC3z04CTOCnSAY\nOCFb2oUpzg+rdfMhCFL6btyEfv5tJQKJQlriLYl3Iw+MXxb5OBW3nukPHYE8\nqKkPomy/o57jAERZUnr+E1GghQ4Q/Q0ER64SliY9BNibR0hxobIw9dpLeQJL\nOLtH8D2LO1R4190eDwAEQAX8Lx/3ujXQuItvKXjdWdrJp1iU2zo6ehkbLXCx\nSSKQ\r\n=mIpj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEQU/dujgOa/0KUzfF/OF/zFHUi5mCkOaXNc3IuKJM9VAiBKSYovR8T9CWkHq6mJ1YSf4ooFftPU7EjGkOoIqw1XyA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		}
+	}
+}
