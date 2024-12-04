@@ -334,6 +334,7 @@
 	"AccountAiGatewayRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"cached": "Was the response served from cache?: 1 = cache hit, 0 = cache misss",
+		"cost": "Cost per request",
 		"date": "The date when trigger was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
@@ -344,6 +345,7 @@
 		"model": "Which models was the request sent to",
 		"provider": "Which provider was the request sent to",
 		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
+		"statusCode": "HTTP Status Code of provider response",
 		"tokensIn": "Number of tokens in the request",
 		"tokensOut": "Number of tokens in the response"
 	},
@@ -355,8 +357,11 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"cachedRequests": "Sum of cached requests",
 		"cachedTokensIn": "Sum of cached tokens in",
 		"cachedTokensOut": "Sum of cached tokens out",
+		"cost": "Total cost\"",
+		"erroredRequests": "Sum of errored requests",
 		"uncachedTokensIn": "Sum of uncached tokens in",
 		"uncachedTokensOut": "Sum of uncached tokens out"
 	},
@@ -5560,10 +5565,12 @@
 	},
 	"ZoneEmailRoutingAdaptive": {
 		"__description": "Beta. Raw email routing logs with adaptive sampling",
+		"arc": "ARC check status of the source email",
 		"datetime": "The date and time the source email was received",
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
 		"errorDetail": "Detailed error message (if any)",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
 		"from": "The sender email address of the source email",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"messageId": "The Message-ID header of the source email (if present)",
@@ -5585,6 +5592,7 @@
 	},
 	"ZoneEmailRoutingAdaptiveGroupsDimensions": {
 		"__description": "",
+		"arc": "ARC check status of the source email",
 		"date": "The date the source email was received",
 		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
@@ -5592,6 +5600,7 @@
 		"datetimeMinute": "The date and time the source email was received truncated to the minute",
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"ruleMatched": "The UUID of the routing rule matched by the source email",
 		"sampleInterval": "ABR sample interval",
