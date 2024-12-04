@@ -737,7 +737,7 @@
 				}
 			},
 			{
-				"description": "Start time for connection period in RFC3339 (ISO 8601) format.",
+				"description": "Start time for connection period in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -747,7 +747,7 @@
 				}
 			},
 			{
-				"description": "End time for connection period in RFC3339 (ISO 8601) format.",
+				"description": "End time for connection period in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "to",
 				"required": true,
@@ -3411,7 +3411,7 @@
 				}
 			},
 			{
-				"description": "Start time for aggregate metrics in ISO format",
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -3421,7 +3421,7 @@
 				}
 			},
 			{
-				"description": "End time for aggregate metrics in ISO format",
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "to",
 				"required": true,
@@ -6288,7 +6288,7 @@
 				}
 			},
 			{
-				"description": "Start time for aggregate metrics in ISO format",
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -6298,7 +6298,7 @@
 				}
 			},
 			{
-				"description": "End time for aggregate metrics in ISO format",
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format",
 				"in": "query",
 				"name": "to",
 				"required": true,

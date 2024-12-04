@@ -136,6 +136,157 @@
 			"Infrastructure Access Targets"
 		]
 	},
+	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
+		"description": "Removes one or more targets.",
+		"operationId": "infra-targets-delete-batch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"target_ids": {
+								"items": {
+									"description": "Target identifier",
+									"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+									"format": "uuid",
+									"maxLength": 36,
+									"title": "target_id",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"target_ids"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"description": "Successfully deleted the targets"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to delete the targets"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete targets",
+		"tags": [
+			"Infrastructure Access Targets"
+		]
+	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-list",
 		"parameters": [
@@ -377,7 +528,7 @@
 																		"type": "string"
 																	},
 																	"virtual_network_id": {
-																		"description": "Private virtual network identifier for the target",
+																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string"
@@ -394,7 +545,7 @@
 																		"type": "string"
 																	},
 																	"virtual_network_id": {
-																		"description": "Private virtual network identifier for the target",
+																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string"
@@ -675,7 +826,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -692,7 +843,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -870,7 +1021,7 @@
 												"type": "string"
 											},
 											"virtual_network_id": {
-												"description": "Private virtual network identifier for the target",
+												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string"
@@ -887,7 +1038,7 @@
 												"type": "string"
 											},
 											"virtual_network_id": {
-												"description": "Private virtual network identifier for the target",
+												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string"
@@ -1015,7 +1166,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -1032,7 +1183,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -1226,7 +1377,7 @@
 												"type": "string"
 											},
 											"virtual_network_id": {
-												"description": "Private virtual network identifier for the target",
+												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string"
@@ -1243,7 +1394,7 @@
 												"type": "string"
 											},
 											"virtual_network_id": {
-												"description": "Private virtual network identifier for the target",
+												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string"
@@ -1371,7 +1522,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -1388,7 +1539,7 @@
 																	"type": "string"
 																},
 																"virtual_network_id": {
-																	"description": "Private virtual network identifier for the target",
+																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string"
@@ -1524,6 +1675,279 @@
 			}
 		],
 		"summary": "Update target",
+		"tags": [
+			"Infrastructure Access Targets"
+		]
+	},
+	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
+		"description": "Adds one or more targets.",
+		"operationId": "infra-targets-put-batch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"hostname": {
+									"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
+									"example": "infra-access-target",
+									"type": "string"
+								},
+								"ip": {
+									"description": "The IPv4/IPv6 address that identifies where to reach a target",
+									"properties": {
+										"ipv4": {
+											"description": "The target's IPv4 address",
+											"properties": {
+												"ip_addr": {
+													"description": "IP address of the target",
+													"example": "187.26.29.249",
+													"type": "string"
+												},
+												"virtual_network_id": {
+													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"ipv6": {
+											"description": "The target's IPv6 address",
+											"properties": {
+												"ip_addr": {
+													"description": "IP address of the target",
+													"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+													"type": "string"
+												},
+												"virtual_network_id": {
+													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							},
+							"required": [
+								"hostname",
+								"ip"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"created_at": {
+										"description": "Date and time at which the target was created",
+										"example": "2019-08-24T14:15:22Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"hostname": {
+										"description": "A non-unique field that refers to a target",
+										"example": "infra-access-target",
+										"type": "string"
+									},
+									"id": {
+										"description": "Target identifier",
+										"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+										"format": "uuid",
+										"maxLength": 36,
+										"title": "target_id",
+										"type": "string"
+									},
+									"ip": {
+										"description": "The IPv4/IPv6 address that identifies where to reach a target",
+										"properties": {
+											"ipv4": {
+												"description": "The target's IPv4 address",
+												"properties": {
+													"ip_addr": {
+														"description": "IP address of the target",
+														"example": "187.26.29.249",
+														"type": "string"
+													},
+													"virtual_network_id": {
+														"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+														"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+														"format": "uuid",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"ipv6": {
+												"description": "The target's IPv6 address",
+												"properties": {
+													"ip_addr": {
+														"description": "IP address of the target",
+														"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+														"type": "string"
+													},
+													"virtual_network_id": {
+														"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+														"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+														"format": "uuid",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"modified_at": {
+										"description": "Date and time at which the target was modified",
+										"example": "2019-08-24T14:15:22Z",
+										"format": "date-time",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"hostname",
+									"ip",
+									"created_at",
+									"modified_at"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Successfully created the targets"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to create the targets"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create new targets",
 		"tags": [
 			"Infrastructure Access Targets"
 		]

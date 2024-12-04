@@ -3741,6 +3741,7 @@
 					"schema": {
 						"example": {
 							"domain": "prefix.example-domain.com",
+							"enabled": true,
 							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd"
 						},
 						"properties": {
@@ -3769,7 +3770,8 @@
 						},
 						"required": [
 							"domain",
-							"zoneId"
+							"zoneId",
+							"enabled"
 						],
 						"type": "object"
 					}
