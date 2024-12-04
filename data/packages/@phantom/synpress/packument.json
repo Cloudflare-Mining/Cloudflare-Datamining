@@ -1,0 +1,4836 @@
+{
+	"name": "@phantom/synpress",
+	"dist-tags": {
+		"latest": "4.0.0-alpha.54"
+	},
+	"versions": {
+		"3.0.5": {
+			"name": "@phantom/synpress",
+			"version": "3.0.5",
+			"dependencies": {
+				"axios": "^1.3.2",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.0.2",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.5.1",
+				"download": "^8.0.0",
+				"prettier": "^2.8.3",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.30.0",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^45.0.2",
+				"start-server-and-test": "^1.15.3",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^13.4.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.6.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.2.3",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.0",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.6.0",
+				"npm-check-updates": "^16.6.3",
+				"@metamask/test-dapp": "^5.3.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "f8aca942bd9454cfafcc9bb467c71173d8f8211a",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.0.5.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-RtZlRegAjaSWP2KLxOyaeE96RkVxtD6ZeYA5xjrNThkk41MgujIoBkbThJsa5nv5rDAhD57nzpcDBGUHiA1n6A==",
+				"signatures": [
+					{
+						"sig": "MEUCICgW/HiCYkfDDpvUEqFpw1NGY2YTHPY3ICRO+Sbswj4nAiEAgJbxrlDoHO5hknnAZc+FMSCHo3gvIh0V/RwOsHMW/vk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 420897,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj/73aACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqKiQ//UKe/0IKoU3h2eWC4d/Nu2zEolku2M0yeSD1/DgW+of+TF0at\r\naRpZAn3F09/f+rnurjZqI36W8IURPlq4MpSwnBgqQEWzHVJYhctLIec4zQjA\r\nds+GWWQVQugp8R6O/djpcuSndNF3Z115E9cvnIiPYRHd6aJ3RlAl1bOCxG+m\r\n3ik6GKZsxHS4EbjLULTi2xSth7drVDM4lcMDGrvz7tv3oyRT5VqflkeXwAIs\r\nX2WJ+tbt0vZePblXIKHcdepfdUyAKVQxDJCuysP0lcGCsFUkX9ge4Pidmpp3\r\npxxSoCe4sYYxjaiP0FZ1mdKByJ//rKRuvNtge85ER0rINJG8UDqVE/pRH5oQ\r\niPRaInB/ncQbPZabcgk7CrClbcUSHMhm3VZA16vkY1Nb8R982rP0vuWs2MY4\r\nt2vZLlm7LMy9G9FMSIuWBTxpAT26hMFr/DP53MezPdRyLPJ3ITVfjyAacRvO\r\nqG9o7R4GM8xdbg+YTNbjd5PKYT5vwofyEeRG9SM+e7v249kggfkSYMZOZ7Bu\r\nOlhMepUvxcvJrjZEWVyqjszeNfcF2GKju7YkOtxWbWiFdvENqt3TQSobnZFo\r\ncW8+MHo1O+31CldSebJiChHUKPN41uFpd3l+hLEbDaINCYk5Ri72F1SCRObU\r\nQRxRV9qoMFFdf4LI6t3qw/fmabB2OXYVsh0=\r\n=hAu7\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"3.0.6": {
+			"name": "@phantom/synpress",
+			"version": "3.0.6",
+			"dependencies": {
+				"axios": "^1.3.2",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.0.2",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.5.1",
+				"download": "^8.0.0",
+				"prettier": "^2.8.3",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.30.0",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^45.0.2",
+				"start-server-and-test": "^1.15.3",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^13.4.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.6.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.2.3",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.0",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.6.0",
+				"npm-check-updates": "^16.6.3",
+				"@metamask/test-dapp": "^5.3.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "e3f80342a1efaa00ba56c7d4f40ffe4c873f11ff",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.0.6.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-yOvR179ICMnFH2o7p1Tn4HRyht6+QNSNX6aWTuBKtFwG89VGeCkrOtwwbYqpuaTTlMlF9i3FjwM661QG9CmMHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGDF5T4x6gPLyRy4cOMTJOYGRVfOtrGxCU3v0ae16b1bAiEAzPwfPY9S1d6HH/0Aa+NVeUy57NvNdlS2JQVY3Y2SrUc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 420981,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGD7wACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrBDg/+PWyMsIfxmH/EwhQQQwi5XRLjx5OCCMNzWOrFpKbqnjm2zPpH\r\nY6oOxtcIs4r4wpMJWZk5euUQhxxlWiq6Fz14NETcOgqOU1cdzL5ibD2isyIY\r\nvSEK7HrznHUWNMjqUYkrY5Mai7sMX7ZXGttwz97Cp0CvcjE1fR7ysLvzKDRa\r\nahuIbSBJB+dvkc6rJvoTAPQ0yUMZ33R69xBHtCJSDK39G54FTjUhNvXuCL4b\r\n8TuZOxwm3ZGrY8mtrcRosI/le45dNSLBj7V6q22Fn60I3904YzXzJllbOVrt\r\n9ov8jzF4jPp0OVaMdti1Dx5+M2H3M42Zb0SOUuBXSmXRSD9WvCRc3OrH0U+t\r\ncQWtRA0nzCxaRHRjCU5kfdUov7w2IcgZrdoGRUaFkp/Op8HNjb4VSUSqXdev\r\n7iykBZkDEvGIBvjmyJ1WZnaHCPbcPIRHGe2P94KTNuAt2GjbASaplGV5HNeu\r\nqRwj/6SJcEJQaNjwFjS2mVJum7wzlp2xka0DWqCZCTZDpTIKmUIMVrYW7gUv\r\n0/NhU3C7k30FZ+C5swYG09mUP45AYskhQcrCoYQcKleWjHJzyoWKONnM4OoC\r\ndSI/jiElURTYbKL56OcotigfWLv6bAxjcfxilItNUme6FT8vh8TWKJMBtS5b\r\n6XWo9lGKtGo1CoJovtq2FxBAKe8ygGwBGWg=\r\n=fRpP\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"3.0.6-rc.0": {
+			"name": "@phantom/synpress",
+			"version": "3.0.6-rc.0",
+			"dependencies": {
+				"axios": "^1.3.2",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.0.2",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.5.1",
+				"download": "^8.0.0",
+				"prettier": "^2.8.3",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.30.0",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^45.0.2",
+				"start-server-and-test": "^1.15.3",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^13.4.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.6.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.2.3",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.0",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.6.0",
+				"npm-check-updates": "^16.6.3",
+				"@metamask/test-dapp": "^5.3.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "559b7f39844113193263170cf5599295c235c3a6",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.0.6-rc.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-vcJt8CfsFVEhaD7Zv59N8UPYldL94LtezVZVCc8ftw1s49NdzOosUrAepz/F6doNzTv4hrVG3LtI3E7brH0z6A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD4OYphefsxNa8ssSCZt/nCk3gUinbsY9ty8z+mbQVNQwIhAINl8LexfrO1GXSkLGqkxW08ifrUDqNNPj5yzAskvzmP",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 420986,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGEjIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqDHQ//YyqFH5+tuZJ3jFKi/M9p335zUc6tmhGnPZjvib3N7Lk4ITFx\r\natnELWwiECcvHBQxbeeZTWif09WTli7jDnOKJxitqZ5Ok5tX8QB82DIQvfPK\r\nY05gQ+3j5xawzozEEONkTwJoSWzyARN2Nnh9KNSG+ju7SBiDNOKytGD9Ly0w\r\nIyummAxetL4Bjx41OYUWP7OzKwk1vuYOWUvCQyaWxgQYl2Zjahm2f3U1Lz4F\r\nmTzwO6Wyc6Q/Vt6akKrF0wK6plJDOqZIwZUsYpakozf2c7+c2a+dXD7VKI6w\r\nYtZD0Zotez8aV782lNWLBIaBMMJxrFSd082loIu+J69vpGgtVXoavbTZ/28L\r\nzJBPTvkehTHrzvNRT8UGef5UIGihHb8sPfxFloRgM+dKVn4rgXAKRAhxsJ7U\r\nF8G7fcE0QLXwCt0WzMYWQ0eD4hXa7b68eEL0VdZ2oBlgIDcyzqK+24gGnFfo\r\nytbNyHsVHRTBYcSwAtXjmW0WOf6Yxmd1tYW5XgKb4hP2W1eGwM3aCTMx510p\r\nHLw9iC2xvZ2/oWfi8p3MSZ7++Vw3203uBIJYR/HD2VK4DKI6gst/AhLMw6YK\r\nBeYV8p/F/m4GKpqEHdzWLSM+nsPNovOteXrhcVuIDK0q14lrIoWchWxjz+Tp\r\nxoDo5akw+ktFGQ2SIAXG8xjBEdMn+P6bUoY=\r\n=2upy\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"3.0.6-rc.1": {
+			"name": "@phantom/synpress",
+			"version": "3.0.6-rc.1",
+			"dependencies": {
+				"axios": "^1.3.2",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.0.2",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.5.1",
+				"download": "^8.0.0",
+				"prettier": "^2.8.3",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.30.0",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^45.0.2",
+				"start-server-and-test": "^1.15.3",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^13.4.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.6.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.2.3",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.0",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.6.0",
+				"npm-check-updates": "^16.6.3",
+				"@metamask/test-dapp": "^5.3.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "f704c897c9c9d8671aeedd46d0ffd912cd5d2778",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.0.6-rc.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-nVKOGNSglAeUwS9r5kJW9TYYtmWMrarIGr1JoUphEAJp0LX9V2sTnQwUV0774ZUMQwWnpOgjo0xdtFamYbETSA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCmRHs1n6thdTSn1NmybSm98r/rsacvDW0RS7DEbHeDOAIgNf5oBGcvVtZL3PphBpwHk1vYnPHqmVShfx+qzuXYToQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 420956,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGFjEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqvwRAAkfs15fBsKR7WZZKsdy2cRBTKmGshovMpILtmnUjlU25zrrzE\r\n+Uxzlv8nCK8GSbO2Ozjc3XAQ0HZRbRdct+5QvKrddyflYr07L8EUPqITTcT8\r\nWQzISiOHmDwwPL6It1e+lafmdus2zlUj4Z4yhDOEtkFHohpr0E2quCGCroDC\r\niN2G3NEQ+sPcu+OAl0p6wnLHvmjlv9fwbVSDCj/Iw4b8cx5g96aPxaOavKFk\r\nd0G+QoAD074tqMWOD1gAsmLS6D6H83zxf5097OQSLwCL8xq/xKDXUNc59UVj\r\nJSO5I0erKoyukeJXFfHKGDFNVswRzDdsniqACPtCaGeo2fybolnbZaCiMoc+\r\njnrbV3tumngxw20RUB0GphssApey3/eiUdKw7N7DDZ/f3nMtNUFN+OuHI+Cf\r\nNHTwkBIc2ieOjyQP9tESEyHoacn+HI2UjHih/TFhLTcyo227yTyRcwRHxc4A\r\nMbhrkH3YItu7s4TSeox8/0iU2Y9p6MD24auXsPlaMG2WNZo0kCn8ubac0JoX\r\nE+4mcwCamVZl9c4e5ctngeyGzY73YsYf/5aYxUJSzdG+/zTqTDz0oj2ptMyy\r\np2GTViGO3ufv31w4xAacPHTs8wgRc05dzjkAQ9ifWvhp75YRJuYhS+vumsd+\r\nfif3S6Xs53fh8LoPUT/8Z90cI1coPfW9STQ=\r\n=qQv6\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"3.6.0-rc.0": {
+			"name": "@phantom/synpress",
+			"version": "3.6.0-rc.0",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "c55c2f199a732ea68c1c17df8d4d3bd3aca68f1d",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.6.0-rc.0.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-MyIv7S6XGkhYkKFJhg3qvMLpyaaus9SNGa4OpFzjiupXmdYsizgrWEOAfKy4kemeGClMjwCnOJB3+p3FIRZ0ag==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC4vF/MdkkqOc30mkD1JwnFnxNqi62z6zYSbelZlF9TVwIgdw+WPNeUQg3Hab8tU5ltDQCZOqoSR0Q5cyMjXSwHunk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 261986,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGX8UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqOWw/8C7yEJ3TB507uuA3jdIzqBmXm+FTu3gUaz+e6ml7jXMGwYL4s\r\nfL1p91QUSkq595Sy3xR2Uf4zblTLxSl6Vv0arz+nT81yuOuaNBbLfzg1TzF+\r\npqCgoRldPwrT7ccourf1g7IgAyMjWGERmBsyAsS9uhT+6pFMff/+ZywduvpF\r\n+DETx/k8YIN//LPP5wI5fpdkcwS+/nbUuFxSYCQDrM/HwJoGdCWtupD3N48t\r\nCzMo3vF58xz9eSsQFWLmYZ4Cb1goiwtHMuP6bxoAOvGUXEWOYoEQgj2NIOfw\r\n46xMB0oLfkqUnMBtrHKW3MXNBE73v5a/jW1e1rqFvvq62o3e4GkVziBG1g20\r\nFApg38vvCLSeAbq472RiqIlsf1ofExLyqnrThf3fDi7STo22iX8jGY3QvhY9\r\n9CaU5XDIH13+DrItkzcOQ4Z2rm23N46OKn8ae810bPkHzcmbA2UZi2XNDlZu\r\nbtykBpn/4qhuEERUZ/717852NvQHk4ym22CHRJN7vevzDbkwG5YwFufyFIan\r\njs4187bEnLAe+YB2Z61t+4BQ0M4pSCh5f8zl3fazy+tQDwqlZIR+cQydFW3o\r\nx1YkMsE2RdaCxrXI1QWIL/pyQNvGMsvjIc6M/h8R/dYw16uIa6ZM5mHPDblF\r\n8rAqcB2D4H1AfDfIy1oSLPFRX32kiY9KKsE=\r\n=BpXd\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"3.6.0-rc.1": {
+			"name": "@phantom/synpress",
+			"version": "3.6.0-rc.1",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "518671835928ad72d79e2b15ba79bde0e2b0b023",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-3.6.0-rc.1.tgz",
+				"fileCount": 92,
+				"integrity": "sha512-ZWmNjmsw6/YgJS8UI9TqJe2o0anIM3QrE9ZcD1Iog32DpzguJfvbWraF/ANlV61yUYxpgGxjj1Av9+cQtnINsg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBAmjt1Sm7TWyVY2i7ORV4wym5XZY4S3r6iWqoeLWcDVAiBjZ/+g1twZ17qUJ2TmJQ7EYE70EzYF6zwOWUMTnAQJ5A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 261209,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGYkAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmonkQ//VL1Ftnecu7NJFgDdK45dm5R8gSFlyQcp/Bl8WrIOIeD/tURU\r\nRQaxbX4Ufk4/av7l/1dYcbMEAPkBkfy49rVOR1T380zeumE03HXyVc+7oJ64\r\n9mN97R+KppdmsY9ZpyhhBQ+XUBxpuzSaEeL531e25zyu3fK8Fvy+oW+6/w5H\r\nDLlZzPX982n0JohNaVibZVhchM9E3/c/PSSNAhTf9uJrqfmcIulXMkyFgprC\r\npJhXlkkIesIPlxOvU4wybWNaPg/Kqb6GBxUR1ITAJrYAkZGgNGFmFDeKKdLI\r\nDhCU+9lBs1ztUKqPmDxuv7jLFufIHnovefbAl8StzwBPne+e1h41BLusxarU\r\ntU4nTIzXRk8YzJbMyF6M7tU4f0B85EKiQ99EjpVjRpFYgo9xJo24gX9DqWvg\r\nHxs0K3GVOriGtfvKh1phNovokgLiBcPfoRBXbel5aY4KlDj4wk/m5MmRMlZV\r\nJH7vY7EbevvHo8vzcu67bN9wnikmRxSWSfOxp5ELcSDNXK2auToZ8YD2LB9i\r\nNzscDEn8wB4gD1+VYtIehtnyyCMmN/TcSIE7XJvNRlemhz0fpo4CQ7mJ3GBd\r\ny8icz0IJ9MTEnE0z/uMxxnbYRoyKmIvxTxjW3vSdNcwTk2jSYNSe0RHKmviF\r\nV/uKMfW02XN4F6ohFwoAwiCKl7WP2bh6Dag=\r\n=EBQg\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.0": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.0",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "a475df31c874a65017ac46183ee150bd7af9ddcb",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.0.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-7cUJ7/u9wzfALFFOKNTUYENbkhi5h5167n4X+4S08s8Xwhm8aQ3hQ9EIJaawg3JR8QJrEOmqq6HQ9isSP3vxOQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAdxiPCsVkvbjFfV1ytDW+9qgw013CRXrBjM36pQ83gMAiEA9NSRiIwd2iU86baavooVrUnhJy2Hs1JU1Q416uqVpu8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271264,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkHC6bACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrOKxAAhHBe7kXnA7jggwhW2tulw+wZ95dKqVtuvE8mCCdvUifw8MS8\r\nwfq2AVPjRzapuogHEnWCx96XFn32rBICZ2dm9aoL/wAFNdUf6497mfgAvhfI\r\n+fl/pjYhEh6VUm4qO0hIlvrSAjlX/PoEMXbJ/PbuniIArCeCtnjcjlfHXbvk\r\nvDMVIPJJgKNRQsINf7DbsCMoxyw0bnq1hxOYYwq/jl5U5/TtIriZY0KYJPSN\r\n3KYI7TciSdYzERWDFOXb5xBSQXqbuUYGu2dpdP+PQkRj0f6FlHxSFTJ7Oa/F\r\nzn13CwmMTxAsZ6kh/LTLgDpl+vqe2PXVWlzevVN0gjBkQGGv8fzvZBxWiXGx\r\nsDVAuMR/lAMHEHmFhhGDIseZO+pkSFJa5ATMtklOIp80KvQRk/9bPGC5sIfr\r\nCXFmeBHwKO46FQziutax9MwW8ybuXEKbH45rZlkpU3vVG6QtRT+rxQ2aOnNT\r\njVFfkCpgnuT2r35B7se5akIZBpx7JgU+ACXAg7+mrwopKl2jNJF//gqY9ifG\r\nHKW4ZpTzMSP7OECXdDIY3MnGSj3dzcVw0cqtpsLqVouPg0x9/nn9ub7PcJwY\r\n8PzqVShrFlY+Yt12CrSbLoM+dK5FbRm48u1amh8UvpbbHBNAQZHOfnsxroj3\r\nNi6RE72+4wkfewCWzrqolg33qWTPd2vDjaM=\r\n=nFwr\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.1": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.1",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "122539c78cbe6a308c91c89c45e6bbd6806364ed",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.1.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-6fcWBxPJP4Y+FIWUN2aA3V+Aqh2tmAWQGOrhkxbEb7ays9yuFiC/3KZBPcjObHBXZNnZde3wNONtxM0i5HkAXQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIA6dlOGPhITmwQ38JA69+rvjc6r1skvrqcis4JYmODETAiBTuyi3XKEuO12ko7vEbpuNA5QDX7yvaB3zMpNf34yEHQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271422,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkHEVgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpS1w/+J9EGszn6DfUbahn1nqYuFmblmkTqJ1AtfipxhKU542kPySFO\r\nxvR2FgrcpFvs4F6gpDIg7HuMaYKhTheFpmVBvOykcfXGr9HPTx0kXVBvrKnI\r\ngmMdzxAaC1UUd10f/owJYDskqWkfPMZPJs9PtuHwKgd1ab0svicOYuZzDR42\r\nJeMwIRYMD5v4EDctjUfClf54pBg3Kq2/EMxPkRVg+p59yZYKj4gZaSjk+Y50\r\ntk5aJrYFfX1s54R0Woqw6fGwmli26RWOSOE250HWjspwqRml3+5ThcaXBJXS\r\nEPheRl3I8unHzFWYo7MlR0LMx25KKxWHy1gkbbhV9YW4wcgzUS1b+sUuHiM0\r\n9/WnGjiUjIRkp22zAfeI86JOyFMg+UEoxtvBIqeN1y4blzWdGPDGEcjavsVO\r\ndYp/hRYA+jKZbnuZ0bXQJerQHiZJjEf7oPMAhJ7tU42bzt5j1OMRKg8eoL77\r\nXTQigwrPzr2kpPYQ0K3DzYX3LCf09T4LBeV+mW+wKu0Wehxlk6tg6v+ges3B\r\n731vzP20gM7QRDnNubw9SJdrfKvOZiaOL0kP0bzEWiVHz97UMfE2vgiMKHen\r\n/mXkx2+XQp/NetjmOhq9x66hiacUIk9VACPWWExNLjjTMz71extDl7m4i9ZJ\r\nN9sBKxrSnOE6ILd/3djhoLd1wTCliNxM9to=\r\n=1N/5\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.2": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.2",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "778b3fabdaf2864526febc2b2d5c6990fb4b44ba",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.2.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-vNuP2TDVEcMYBltRqdKxmkefm89h7F8/1NWzw3ioZPNDgFwIxrE2fJjd598XoFDtp3XZUrqltDr5xKPrER+pCw==",
+				"signatures": [
+					{
+						"sig": "MEQCIA0aqEvWl1H/JtoO+ZsNaa9Oem3jyEc0LHAms0xRi+w5AiAxoX18dFsQgb5yXg7mvRVzU28Np6iJjpfFRLFmeeorsA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271422,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkHGl6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmptVg/+PVtr11XMqjPge2znqWaXTuxvDNOeCihLRMn70S/7fK+qTEFE\r\nvKsL5f5P4WW66yAOp+Lj4yyX3BQ1+EwwEhbawIuIzETeou3HdUfi1E+eVWEA\r\nwRZVb8moo+6ARxDpT+ncBSIlIsQyQWkNskEecijKwloQyVJjKgzlhP42N159\r\nu6Q8zCoS+KIRaP7RJUr6cabtjEDwtgWSGA9aLDXm3TqMI8XM7dI/W08v3hg7\r\n1Hx3iTdOMppvzJuJR57NaZ/36ZNrxzXDk3uttGJXHdIyW6HUPjCyk/p4kthC\r\nwk0G+V4fT5smbOVEQyNNE0J8x8CtQKap+G8O4wb51AXB8cAwG+xWZy0Cbjmo\r\npwBGk3mNPq34WZt9nOZjsuNNc9k/+bT0KHR3myf8ae3gElSr3pP7KUVDB60w\r\n7ZsNHVgeH7HdU2eDryHnjypnmyq9ScWJtRiAf9KbScP+gnxwq7hxFZnQK8IY\r\na1lIwK9L/7+xwwwkGaftTuoNIqPASLS387YlwdUzl/IRYh9L7kiYb7QBBcgK\r\nHAp0rM9naP1iBNzBfniy1OvO1t94cdNA2ffGvkGmThym/F3yW25bH2dvj86I\r\nahINdJTS1bUuWe4hEinkHupnOVUoOEJsFZD0HL07ABa2/dUYdSVHqfmlSSTy\r\nmigjbbKPCjgFGNjNT9QU3Gd0dtk1kkNmNhg=\r\n=iU85\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.3": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.3",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "2803d5b7fbd01b6535b1d30369fb910978e67e6c",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.3.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-wg7r/5DwucRI/+3pvsqD1F/1IyN+d7cRK0GwgWTLrl1vMTTrgY27o5tYSNrqHGQ3EgOeLCXgDklyHWaH/mUzsw==",
+				"signatures": [
+					{
+						"sig": "MEQCIG+2uauCVqZ/1e/obiVLDonl6MxWoBMFJSCOQOGKTBfzAiBaobaFUeu09qpaab+boizU37TSwbVx5JzeeiqLGkhamg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271813,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkIofrACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqX6g//agx5b4sbpc82fK3mYIubWTZMtb4/nYlsuJmk1GsYIsmWmQEt\r\nWAurtG2u4HVdA8sTiXNfN5ff0Kcp+Wv24bCRxAVqGjMvJaDfl+Ovij+HT+2x\r\nDQHsET64dbxwO3fLt8ckXzlnFKoqIdOcdR9g5/YfkUJU1V5NFOvQKWp8K//E\r\nMxD4yNyuPxU1cguyk9BpxXESMeg1nzz2CeVW5a79SpKOYh4gbidPAui3ltgp\r\nQq0LieCFvrDSYH4FHstP+6/ACc0TFVeObuhBo+xZ2efpTkrEEBpvX4wPwilb\r\ncrS22rYvvjmocafM66aaRmMsRNDHo2jpoDSxZQ1033LMpO4Omsyu0mvNGYdy\r\nP7A1lihCBtb7v2glje5gxuN6K6VSvchDs23qWZvEVsdNVw4LJRiJrFT4nL1F\r\ns1sPuGkslXNeAlH1hsq+WwJ7Or+XjTnVGDiSnI7+IpzUuCuFgAUELw1wGFBZ\r\ne0vAuO0fOY/keLw20zjfduejxdTYWa3HoEUQIl82FpErbD62t/BKZd8ztsq8\r\nV3iuJpln/oyISipcDSYluXEzqK67K3uPQFnU05whP/nMj5XJen8naAOw6MZY\r\npOn0WIUOCx2UIVzccZXT49xgQJrVW6RxMr0sJKNAfdCCc3VpS+wkTA5RYFi0\r\nVsS7iSrIscRb6dqHYy3zF4vMr66xvwKdARE=\r\n=Xcp2\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.4": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.4",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "2d1e23b30cce229860733eb9dd7744d226196d65",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.4.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-1aTUwqjCE89x2hjnnCoIr+XY3Ra/8ieRkPClE20qFq+y8uOjTrPhTcJx7zwCYe0oia2dKV3mbIAGJ9gxckdADw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDZ1KYISNMi6fDBbypOTC6hjjXPrwQYCLKyBNXycEUU2AIhAPMjN1XfpPVMxDTQt/c3jAGC9C7obGdjrPB8xVP/yhdI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271766,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkIootACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp2cg//Z0uZzqqEz2vS9/8JJitG/bPYu/xIT787tOgis2WRi28CLTRF\r\nS0kY+XGFhGO1ItY90GepmbYCQNGKsKc4czsMrUjJCDowbT6YW29uK1qAQdqZ\r\nIrRSjjye2k5qmEmXh9jsFbXmAhgMZu8K1D5cxhioFmhYkIX9xfM/cuJ91wyx\r\nS5qEw5F/x3FOb5l/PvEimR5LL1lyvVg0PmDofBsOM+CxhNc3PdWtyXDxkNrJ\r\nbbQnoKKnriVSW7jeGa4BdKbTnJHz1GyJT0605xHMxj9iER33K43s1GPO9bAG\r\nhbOtvDtSfJvdlj1uUg+wyjLSonzYQHNeB1xQ6YlZYD50BZQ3568OAsM/gokz\r\nljxvZk5LMbOYprU46pv/i0a7ZFWtfAs2cTHnP2D8VU3XcUWizCskiCFDeUZm\r\nnKZzkkTYZ9/BHY5ap2ueKtmDjURJ05lILJJlvWRmiYW64mFpMDBVjFFjcQFY\r\nzJo6GjT5XQFC6vSdzOsxpdO04HB4s4WtX1B5TAPfIgRxmBCUdO1kCJ46xhot\r\nE3z9s5/NGTrXRV/KdZUW/nF3ORzF9EOrCSGEGlHmNlgPI4POIUYuOku68cFR\r\nB76pthpvFEcYunZsvAXgQ5aDobUrYQbN8Tr+aW1UMR6YulSixgLXowJQsOWD\r\nftjlwQi+OZLFKPkHPcOFsZdBHKosShwPQ9Q=\r\n=ekzc\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.5": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.5",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "6907b5ccb5ef934cc806221be380818ba1fcf754",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.5.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-uAkr7+EFpq8rLKZ/Zat9Azonfr0oVg+pDHBiUM5xhAX4DKjvtYGvoiDVUi2ZlJkWuwz+GZw0tSJG+PtG5duXxA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGksEKEKKMm9LM8Daz26sR+ZSHlIUynk/hRqwzMn735gAiBLhN0eN5TpwCTmrm8gEp+DhZOcHaMx0fDp2zJcpdS7+A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271862,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkIwHjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrB/A//R835QT6hjyvU1xpjeHYb+Qfi5ZgrVQdoHj7s4byiW94PBzO6\r\nu6o0p762J1XRVAad1S5g5bsRP34wEygBMEsfoXQnAr8WmG2FbcS0ZAPR+SYv\r\nFMnbg9Xn0e3knM6GErfDPLzYJrqP4qzDJajbhmXrY57AMSlLMFen385E88A2\r\nTrCKxY9nWEL/8aB3lxcxmM2CuEbOYiWb5b71zghJy7V5a6lMGJn6OhgAlcGp\r\nP0ZwhPXspUozaKOT2O4RLpTzwYDAJ1E1R1JYwPT0cI6oPCCrJgQwgix+pXEI\r\nb40XiR050HPAuaB+ev0XLuPvoWD3jKiHiNi4wOFUUmggpbK0zWK9Tx43BM+P\r\na9NVBFu1l0nDcHUa92BCfQte0uhXZL+YcEpHavXQi7GfvLL74d3O8MPsQZET\r\nRbWeFueqQb0GDiNME6zVimXjkZd9nonjVO20Xjkbjz1mOgHSclr1Wq/XRehj\r\nsbvKzlxtLEHNlSJrKuLs96bYJLq1MXp/q3foWwXDcYVQJuoamvlrCo1LGmGj\r\nznq9kF8Eo/6XLfscEl5RQzXRvkz6LfhQL+y6zQrL3WpEGINV1GZjuCC2aAma\r\ndmPCAw/meeNAONCu4XUa9r+wU2sWGbAT7pQEPggKp8ULsbphJdq6PbzGGrIs\r\nrHoj1b/BDagc+c3odDt0UfB4tCuopJ0sRKI=\r\n=KFoG\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.6": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.6",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "f4e954b6064e8a1c329234bfd4b4b9f659e3cee3",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.6.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-B33fX4Vd4aK7nFbTlf0NmBS/erqGtAutgvbRGJdcTYu80FiRiAbBYdSrSrhQ96qAKTtc3HfyL8vfZxXZLzJ72A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7G2F/+qYZElOJDgGumpmQIElvCePh7fZlZTAD6ZydRAIhAK9ZEBDzWuD8ui18FVPDzCCV8r2bM84QWYLZI4/j6E51",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 271957,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJCy6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrScQ//QVvkhELDxCCqu9lH39Z82bcv0nbFw8Nq1SoGJ87lV5S+YrUT\r\n+yTMpinLcBMMwui7SMLiUSiqOQLgXwy7L/A620SkxdhWggwBkLhxCLY9EVVt\r\nYwfJQFhZMy0yI+9KyU1FeHMVFh/i1bFEE9OLKMS+MBMtVWVD8f0BqZkAm0vV\r\n7LtQpkbW82fMsjia+BdemzTKpFisZNFtRDtmwSTVScBXS789knHclvJmvJH9\r\na74xGCabL35Cwz2J675U6hhLSYuTtW8Ss93z192lQo7O00fibsouSTVavDY3\r\n1KUC+2N9G+ylNRVahQoPY3WXPWSs833X1moHHIs7loMJIPuZSmlQqmsrB+aC\r\nSV2A5sVbKyiOP+fU9Eba7BtBr+ty1TVoBuVaFN960EgDKvCKEBsN5AoQz5I3\r\nI1JBMRZPSNRcJggdy/HhyFTuVK/0oG/KO5YqemXcJqUXkhpM9oqMRxRv9sus\r\nKZjUAeDfa9GNouuEVep/okALdXN9zHHhexlv/3+tF9UouHZ+s4gAp+14E+yp\r\nsl15rfvU/vXCSs1U7mS/D6HzcYYLi7FznB/liibOp1ZwpP9B6G6v+oEOxVkj\r\njNratVkJkSJkVblQZTXTMQFsZxZlLKuJ5GWEezehg960KfQiLG799gfRzG7p\r\nCODYnu+ywIKWYGVMFwR71TNWrZb3/r/9EaA=\r\n=ix9X\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.7": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.7",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "e1a20fdbd0399e171b937849c0a6ba2f1d603572",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.7.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-4TGhIUIk4a1JZVf2qVZuQ2yPaTLuRzhAXp4DTsJrGfr877NCNiSV9pX8ZL8xp1SvreTELMc12m3bB1+gVr02lg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBrGS5f1HuiSZU/mPM0Vs5Rg5DlPEWEgb3uvuiwzsysAAiEApnM7UaCrAKRy370igyCscHNz9uDTUglKNNJXSeWdaSQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 272735,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkKo1eACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqdYg/+KFBMgQlTfmhgSyT8yao4K/awKlxMpnWesB4E0qgLM0fCiaLZ\r\nvoYAMq6WZv0s8gDme+3YzpXgEN7FRBo33Mov0dSdiV9TCL5Rom4NLXijyn4k\r\nlZm4pTEHt+Ubn5KCguVqiz2ntZgygJiMyf0V1jDhmG0uSEA84b1H3TKx0GGP\r\nw1gb5gnCJK2F5dXP3jNbM+sptjibdu85qUIG5gO8CKcYmApDNQr/c2qvlaUo\r\nYWlN07OlpHzmaXKecYEg37kOZ1HRW66eLNU3HCPOLacpSV6ddRkaltL60uvh\r\n8xispZFB2DAn494okYMza/G010b7n8Nm7ymzkRHXGNIO6iAeOtL0V4oDj+0m\r\n9M0CduEGBk56pdbt+6nDuUYNrq60EtITMNZNjBLmDEuldf479WfybRgPFtMR\r\nlLtXCPMYeF13spL3vM5QtjbM06TY+9rgHGEyVSyBETSTjgTSgHRloAjZSbn4\r\n5FTXNdV29fJAjsTOeNAgCX65IkLsLIxoID/0oZq4Zs7X98yQ63PeULT9x1rQ\r\n3d1OHs2PaYC/1l0zOpo0Sti+NrMQKbqTY/L5GiK3YvnDHQoJF6xeSZf28gd9\r\nWWGGoUeOHP0oxkOCt/jh0soAgJz3MilJqN2UrrQCg0pM2xxVhKdtOncmUZgj\r\nDMzCZg8ryaSNka/ZzP8cMDY3Jt3QejlpbK8=\r\n=Kbly\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.8": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.8",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "84f253cbb09419e38c2566a0f415dbd96393da28",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.8.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-5i47MNm+TtjOnin857JNT87PeLReo7kgxFiO0mfV68YIMhE5BigGajkBcvtHdHa2lq3v7rawxAjJV2RA78PZww==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCMw6KyF+hUmi0+Bq/hTwoACvUm3mfvQuoVq8Lb4FhrYQIhAIOQz8LF+1dX0Ee9y0VTzjxeHJygo/+wlWe82WqeOLvc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 273464,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkOR3fACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrIiQ//T4gboUwOnB9W1d7BHxvYLU+83rw8Its8H5RV92WQOg/m2wGA\r\nPjSJXZ/XseHiythIvrq7cgzLwDiXJxkbtIbZEnSg8IYWTEir9zUnOU2cysRF\r\nyLEbFyfZLcNk6zm4uzjrqeAcBSokKyUhuQcJApj2FwoFeA05M5vklKIlywNv\r\nqEJhVAZZQo/loMcNlhsN3xbhzH2nNjSZ4+oz/Erj/4C38zzp3EZMjF84c0mu\r\nwy8A8/o6IgUTKFNUqdJkQFRu/3Nedtx25TuaXC3qQPlaRG9PqxzxeHQBdZA0\r\nODz/VneIFHNdDhk+On9wWwR2Zxtq/I/9RMAijHFecfIpAX9Y+NUoDu4QNsQD\r\n+QXUL4rsYaawdOBRxX+cREzFAdftRuAWMxow1qYJrAsd5rela2Su9t2gSAZI\r\nYRW+JWpGl4IxsOiU7QMB4++4yilfZXQoa2whFp3JMD4JHeKVV6YficA7EKiS\r\nyaKQHhVOcSrdACObK8iArTeQoFIQiUsUfM/IGcIzjwHIYj7/zn6m6QOnfHpS\r\nMZ4yjD6wmmLzFLs2QBCO27qEI0KDbgDBTKJ/RqLE9kQQ7YwYGxT3pnGqkjDi\r\nBSEts2eX1OJ/QS5atAieozLhqaOGgMXiJCgA+etiHi3FaPidnsqRZ9/L28F4\r\nw0f5Qqz7Bjzh7kVcw9PVVuwdir8yTQPfCws=\r\n=I8I4\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.9": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.9",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "7cce6345b92ab2aa50beb8835a3baaf024207d6a",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.9.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-/jZQaG3mCwHJ0q3FhV5/NrCv7KdvxHhB5bikAQKXwugrBM/BBBsZHuEX94DIpmwqyXvDqrLaT6e1ReIYIkFZsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCl6wc/wTwG3qQqqe3JIFifrbY+3omQlVvjrKMCenUJ8gIgQoBxKmhZfdxDT8xhDfbiCptF9KZ/mpMNOm8jr4DGCn4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 275855,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQEJoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrJXQ/+M6IIOznNO+/5Wh7M4/Iot7wiV4IyoYITqbKRgdnrkjDbv81N\r\nDxH1afhL3kzkELrXNpNqEuYQCr1puHiTFJs5zu4BhmQp+YMA6f6jCFTcl8xQ\r\nLLSFH08ojHclklkEezkpE7o99gmc+lZiUgTUPx0wlwYQ7zIf5ASshTo5a2Wj\r\nLT0wg0an8amftA7WKkq/QnZNb9WVq2Ye9Hskdfy6ntrjQRrZPZkVM7ahSxi2\r\njkeUx/Z6KCJVxhvS4OPts89paE6EhPLkRk1krNKTcnvbNycoDAmATCOHAP6N\r\nSA4Fq6fxcK8HkJK9hCw5OIFK86KxTiWo4x4RfVats0eo7srt8+4Gc3RtLcaE\r\nNdbyPG03He61P7dTn0yiXSDxIkcWtlcxTbJ0mPRCQ8E/+cXEHrJQ/Iv40Mja\r\nDQ5LTN6lo+wRXJPqgB2eMpPB5xNN+h26+aDJEoMpyiKbb9YW/0Bbj5vuvTz+\r\n9DbYDZ6fJeac5rx9KZnWaWD52bQAlGuDShEAgy+5Q1fYKqNbR3rdR2hkrJdV\r\nkpSg+3pCNDyxLf9Z49Xv4w88FAEG73hObCISy/VzvmUVqAhTrRb8oQohICQo\r\nEhMpo6rbHaWKI3ciPFAN/+L68cmd3+aWvoFFMhMrRV5S26xdLSnDr6ZUNahg\r\nMVfZFBAmeLkQh/7fX3/XieVyubocww2lAMs=\r\n=wKbQ\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.10": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.10",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "beb1f9166f4795ebdec8ddf320f319dfd109fc21",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.10.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-H2bE4lV8WowPSchlgNK/YY8b6tOzS0Tq+1dxh7mW2PJsV8sHTJ3oNTP6K8/bG9kwP/KCaTCQEGFf3K4mQLL0vw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGxE2JbEF79YAlQa8oH2tY+b9NTSGMUApH9pQwirdlgMAiEA70SS1Uijr6kldn30vZ2a1kxiJqtcm+TU2rdlOb0Yo68=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 276143,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQlZTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmorARAAntz9/iLqoJJuu6ypOzuc6pN4WlxDPuQWbknrqFe2saa+hQNp\r\nkOjfprbLj0YwJqS3+Fxt/Pbk6L8mIjaf0GmOOCj2tPr8X8wsFsPUD5p5Vbne\r\nycMQEM2j5SCe3TCmiBVXXTsVjH+OeUiPUOUXSVhXSpIbj1Qd2OBXPZFMv8VV\r\nxHrZ3fcI+7ZuqDtymoiLUiPT/A9yaoCjhFeorK1doqO6sVdz/vQ5p8+JgIbb\r\new7Rrw/l/zlyd3OQwMmpfqFph9Bx1D5Yc4YC/Jda/qWOh7bIqEszVHIL9VUQ\r\n5E5lkObKs10OoOH2ZZnMUQInd89tDDRUdxhk29W+syDjQbBGssOUwafpadgy\r\nx4/qNLctEQLDp7/FcUcxSWvHeVGiA1aBsUscQ2dnIZ58riJfJyv3sjl4bKma\r\nWp6R8R/2p3nIIiuF2flEc/s0g4sNZHRG5nbAtxMPMx3l00XcDhVP9JDuK4qQ\r\nf8ZJQlfBhipHPgP2H5O8XC86ONBVHKH6Lh7xDWSS+s8ftnzZpAeVHasPmWza\r\nLWSaG5TThS35M6fdzS8MtQsbjSglYkR5uX3DWF+Ybz7TxqIZo/AycyntSFJs\r\np8+92QeZqIB2zTQeLjaJVMN1dZ6T+8y/F9zSTyRwEBU9CdFWRMEpl0r2+k6H\r\n/67B24Ql0UuzMnCDXJOOS9tr7Odqie+JqbA=\r\n=K3vf\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.11": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.11",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "5cbfc64ecf18771f051170e357eee60011487ffa",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.11.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-9gw2O7tto2UoGm3U5QkP9ivtDbqwQnvpVgUB0NkAcXeWxijh5o9tm4BCF4Qr/P2aV7vp9ORDvElLvkTL4iDzRA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDcoBruyjFFdEFC+9qn6pw9YJXCLh+5tiuViJDzKI0H2gIhAPCFq5KSovZpVDyO2yNkXLvGO+Zm7C1tTXCnVkPPimPG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 276611,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQmJmACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpUfg//TszmdX4fELf6DTJwGg5zP01+rxpCXcBvRuZVG67d9E3QSlYU\r\n0j+YewszwWk0tjF0YFfNtiKi0IBvnlMBCQk9+nR7fjq2TZxrLhT7iVB14GON\r\nW8k1zSIdDlzb0MK44rV4jF/v9qH4zkvx81wBjC6MY26ktSlSkH+9GtZC1vqs\r\nid4oEuPNddSWtg+BFBl3Rr0tiZghXmaLsOB0r87vgFEUitGy7GZj9dkFRSR9\r\njIiSJR++vQidi+Jg6BsAyDX2l4wiE/VVZTjpztgvRqklurQRrRMFcTwDmxHK\r\nCix4MLqDmcBxYd1CvSKLhR8z9J/wIJlQ0SLGvJnreXXbkULQ6faLbYrabc+O\r\nGBkstjSbpT1j9eZgqhyx8SvnsOa15Pon37jamDO7Wiaequ14exodcxGeF06U\r\nuTDh/hH34CNLemGzM1KFHWLq3AKL4z5D9v+9dn6ppeY+v/CSVVOCtNRpeNb/\r\nn3KuaSzPxCSZZ1bK0oh1yXf1i9KgccFhwDLtF/A4+qaFlTgVy90Y1yDjwof4\r\nAbuANigMbMO7T453Uo15R0GuoHGfYqaup8UjcThmVtc3LAR2Bw8Vl8ZQa9Pp\r\nrXYg1OeSTtuwrur1E7UBxpGgWCky2fOXATkqushXj58AV0+jQjOAbulLzhkX\r\nRVzh77isdwaXBzbesNi5/VNB1KM5zjNUrqA=\r\n=Rg/L\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.12": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.12",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "d3bc5872e1a9d2398b7c4604c544fc1008b06464",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.12.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-4yORydSSlenYwEdJyj/kZj7YRSdOnlIT3pwOmFltMNEUst2apOAg89nUbDo6PAvccxPLsEl7jKO7fsR+QDGwOQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICtHco+U2Kt/f9u79zYMnVQGrYIHCNSG8e/X3gHlTXQhAiEAtGf8PZTwnYPzYBGOiWMu81RcgLBHjPXiMxSs/rtIQT0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 276613,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQmXfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp3Vg//c2cn1isjEk++7klHiwAjK26qYST9U6vslLLAzMiG9E638zx9\r\n4UemicI+JXl6FALky70S4myKnWz0TWYjjMKwpSsfUJX9HXZUtFJ8y2000zw0\r\nj/tpfOPo20P067R1Be8R+v2c5NE2rKtVcaO0uIb+v6Mwdqhc2OYDENmDsSoZ\r\nkrRcmPtlAoz5KcwUMlBMjxAmJvCgAiMx0PnPoAVpm7PHYaILWLMjFaiqeu8e\r\nNV2fg5Zpk53bCyaGFzHA/84EUTrh9yzAx0TGJWDwQsoXPfTVbn03W6G3GMVd\r\nGJ85gRZ2+mlHMDPElg3bcdw/WyZwQ4OU1JWhiGvff3y07SssD6oxoCEd+R5q\r\nmKdoAt8q5SaRpuSZIRw67W2AE/9bGLxka2vPehRFaHc4SWYONhMZO+IhzmOy\r\npKSmaSjSwhkmuBANNdNIsg8If1oBSCYWB8ZrFOmoRpWtFfZeuNx5BX5dYlrn\r\nY4AEqnR5C9nZTrvY/SbtGV0TRxQdmdGFt2P61Pu+hvOje3GC59novZNlOnJH\r\nMDia6iH63nM77SlwulTs4tHChoQkcQkqkvhJ341rzjvtGr6G+Zaij0tT4raf\r\nwJ4nOBPMDA8oT4xlH3QNyPiL7xoZBpOUKnDBIz4T8wUD/qpt4PiBwHIHyJt+\r\nQRjtkGoLQ5SXjxqEJWmPOIEaepMuymjk830=\r\n=4yl8\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.13": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.13",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "9c8a9709fa9e36a77ebbfeb3128561eb56cce8e0",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.13.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-hU1SaBusai0RNIGDw/tYuP+2bb4OCZZ5w2TVVD+wR7lr7+TRLInwM5E+eGL5Ya/ppfSwaAul3bQYXS76uFUCbA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCh4mDCA8dLcJTbEvxYhRO45J8m3UiSm3MpvMf8J54fuQIgVsAIO3cKZeaKGpGTdbPIVAuRgBKdzjTdsEiXihE56SI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 275550,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkR5mCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoRig/9EkvltoDIkl5QfR4eRq/uXRQVs+fgCAOv57PCemoMsv33N6eO\r\nDIuMRMfmkc2452THlnQ7KbqwebC0y7i+5wOQk9oMoqP6U3P299IjoNmX0TPs\r\npNpdZZlVJMKxtxFKsjB8KUUkgqiY+gCSf69Mo93KN5NcG6+zb9Y8U+Fb4tjv\r\nFzcYaTG6/h1qTEvsuCJ7fP40rRWYcGmyBnOfWAL/wpb1c1JlBj5tf+6w8j62\r\nyrsVLfhgs/Vk+yXnxvGJu78HSIHxx/N5gV/iaLURNPBsacQSn+x6uizsYx5u\r\nzGdeDXJjOGOGiaAZbj3MS3q4iybi3K1MtK1xmJW2HeecXKu+oybPp+M5LOzJ\r\ntzrplautR0b6G6GmK8erawRzEgjHqsUiYd2AZB7XeAkErJcNpWSR1Sf+9MkH\r\nt3rJQCfuZ8pRvt+NJd95bECULcJOGmZRhEdcPTm2VNw3TSieKtObjrPeIzTw\r\n1xavYPTklwUcs3t1X9/dzZgr/BLvuFWpVCssUvg2MP48cyPqCZZ9EkJoV+mB\r\n/feuPzGuYP/o+du+VNnmb9gD7eMus8RAuxw62cnXduxtuHQezJxjJgCVxpbs\r\nT3V8tMwEs71b6yYJWBNZcxYRYwdiVi6KOuoVIrsnGJn8BIqrsJKE+ChCmJkk\r\n3Qz8klVQ6DsB1DqLNzcLlbFhAVe0RP/PPLY=\r\n=y2ax\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.14": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.14",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "5659ce152a689606b29ea4e39e89e48c5217cdd6",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.14.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-f2/hwcKYx54jMPwF58FpmgpFU4sj6TqZhNB+P8r+Cc0+YRsI2oducab7v7B6RwCPf53mtuBruUM5hRNs7yYpAA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCrIp2O4/wNAydu+ujLmMvr9Kz+5bNV5CvkyNH0f8TDdgIhANGV0RadspIKSom+6wkLW3NeBOrIm2RWlVfgsxwnDZ38",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 275551,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkR7OrACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoCaQ//d5/4dUDJ4/Ba7nk7HTpv5ZQVWXlzReu4XBFMTAAUmAebOGpa\r\nu+ENLaHeHqA+a85EFHFt4jH/pA3kNT8p8cGWHdE+Xo9TReRBzOTAoBPcg9cW\r\nV6k+ixdAoS5e/wwHWT3qrG6wgQh1y865Onk3Uv2EkzaoCbBZFmf4Dx2r3Lol\r\nWe7xcwBpgTkshx12jtgdBjWhO6a3d3Na0Q/1ywvMSpSEFA1SBm3gN7UNr2I5\r\nsM8zRmt9m7yD6RBMJUTuHZq3sMzEj2h2ZIQRgMf1OTvKZxJJXZAFkSM046Cs\r\nqSQnJsitZMvHbcouXatMBx9XKjaZ4f2kN66qBoWUt3WaTgWJfWfCCtQ5KjSf\r\nRvXJjzDnBTc8uCmO8meOH5CVNzILp4CxfndHwQhhPz8iV3lQx+5a133opWn5\r\nFFrcycsqGJTzWfGE1H20uI4aCsqEF83xwwhqc/aGKn33acVX7YNEwrfRtcim\r\nDgYF6/EUG+RWkRarkQSNf+kABr1zG8Id0SIBmRvxA/acL5eHiSfVAZM11+PZ\r\nrRWxl3qzG78IsLXCk3oJkO2GcnHkVpYSgAWqBYsb/AVmfHhoYm6aao2Uc9kl\r\nWMk8lDvcLlA/4Z9djdGxcX/kpyWWR/E0Llq0IM2sTumPk/Jh03RikF0FatjI\r\nAio+buGKpzASa+d6LHMyIsxW2/nPGRXOSO0=\r\n=OExP\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.15": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.15",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "721c11082a658c667da6a9c2b99d65695d095cd4",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.15.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-zJreotzMvQGJuMvjutBWq0ms9ghjjBAJGsxP73tO37+6VzPavGpUYgcH/6374qPnB7R45F4kBLqtze0uD7DV2Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD0SPtAsqEwdsAyIOx1adOK5oUSrbJaPXI1ZDgkVePHkwIhAI6C4BqGQEEcRd9EaNwoH7QnmvsilY35/z/6ZMYdb2Ad",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 277942,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkR8f1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUlRAAlznUKCIt6pKPUkh7cFgzymsAp3P9ym+czt2v6frzl1OoTxt6\r\ny5YCJkRr0GcTCAdLtjm1zm79VXHP9q0Gfhcw9exWmSx4wUKucnkIpwY0k2XM\r\nPfEUvZpWau9IRpOmSdhIOgkTQdWeQtoU47rKb7hc+Ur5BnCH8azLmozcemUH\r\nW17d6M+erqF5djsCuf6Ac1V5FeN7kJGMDHeGCvUO6BdDVyINyLUMeOeeXCAh\r\nnrIDhk8fYSXo9LZmEwqP36kS+Fzr30TrSGhr4EjrOrrYHF2pyokhHrnGkxC9\r\nXXnq0QN29g5BDgFVjbcCuPwUoKIkpSWVEpT1zM/EXtRroT0spDKIAunlAS09\r\n764AxQPhHUeJ1mZXYkBU9wi71/IVjchFTawArEjC87tVlCvnM3y0ZKDs54hK\r\nx448T2U3koFLGrh+RuJLDGv2pnRiVZPWJoMAT1XMGsYRBU3rqtZbN40DLt66\r\nTbrcRN7T5y4/e61CwyEq/sKEfsQ+ZTyiZuFlQS3+Vfu0kzcBItNASrnY1fpJ\r\nwTNi3i2OtyiDsdUjW7D/+kFfDB4dguQO4DhHdjFWZTGrzWg8fbk6mh2+EJvc\r\niL7kq+UOe1uJN7jpc3WZwBWjS/NWBTARj+xsJltYgHuBHEwEbfb0Y1YL5x/2\r\nZoUmgB0xAyZAoCHvG+8hZVMRkMIgkzG1wrk=\r\n=7Gfw\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.16": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.16",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "68e8fc24127a73706581f1bcb6f43c0896339d0d",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.16.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-/br94iBMaSHG6xIuzCCG1g6JNpQ7YCdpZI3Wm7ZO0l2KTHCQeug6zEplQBaiRIROlJW2JoIQvzxYkXtXxTSd/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCSU5UQoVr1+VMGfWhG1O0RSIEz5bFky1Lj6vWKWSgS/gIgfgDG36o09ZxE1KUnrW8/0/tRL3Tc2pHFlfLD0ajOqgs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 278328,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSTXvACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpL7Q/+K2AKh/It02uF7tZfjZ3Clm22cyl1cFj7kKUwlHCzUlBcFTl2\r\nzVbWu6xu8Xs7I1XTi9HlOh5PAFlL0u7H0MvxxkRFvuuqzq+PHiSDuheVu+mk\r\nYnsemoyZebNqyMLlzMOSxTCElMp9SpB5kdNKT7/mbug7Q1OVK54xgZ9jIw6O\r\ndJ2bLXpzneEOIL7TDHYV0yqv7YkpgPogXI3Ldo57g1ffW6G1DO0n7Htppq5t\r\nUJdGOP4/MK8hAYVDueGeMnGCL3aM4fPbRHI90cuZG14JnerQChyQ1PIcc2Jl\r\nL0yxIMAdurMD9XMaSMa7EuStbu4Wca8x87m89lB/GSiTnhMFZwIQ24V8PYoa\r\njD9jw28yDXwga8Az28R0VZ9U2jda0O2rrD4baqfqPwNlgLX46NyxT13kQd1s\r\nEXfKEfzMyI1a0KTSt1d3UDEiOJoybduhc3GoqdBfxz91KIqVXlc0hf4Vetx1\r\n4RHrxkgUSv46XuoHr/PKk0JI2wBtd8f57f5crCW6J/9L1bbvMLIkU4g0kcUG\r\nHGrD8JOg0Ql2O2/cn2lG81RCqClsJt6SywkPX+5TEk/i/FVLHJANbCCLc1A4\r\n8ju3+ABx595hETiBh9MC/vn8EU4sf34dtHnVauOsCfWbl/Kvam9gbwWMPIEv\r\n5rBoUd5eBijZyB6CaOHIyv+kQZCBDMyEu4s=\r\n=HNO6\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.17": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.17",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "ae1b18ea0467d4507e8c52b402f93a0a508f670c",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.17.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-bb18FbxwYYiBXw9zjoevCK984ab7dxfcnCugXjpxcTWul3yT1S3kPON8spaUlq/2Q00s7i5PyyPcnyurKVMrfQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDps2f6lhFg8Rx9Qv0YujSXD3Uh1VWkdowAUvif3eamTwIhAI3kB4kYzW7Z34lpC1fINdzL2A1nYFvI8iGx3JwgLB0X",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 278232,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSly9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpn4g//S9C0pMaZTN1Ajkv7czKIpNCm9C405sByTR5lBgcHJNkOEWE0\r\nDtO87FWnkfRAy05ui2SEGxJ2FBSKrruQWJBpgmdjmnY9Iagnf8pG8j2+Pxxr\r\nE1UcE9lNm4DsqJNSekouHSxMOttLExlIIFEsmLpqtMgxIDFbYr9O6EQ/cxOl\r\ncnNUr+ezrqojK8nKRKWKhOadOcOLuPDbQXjihmzln1s1bQdRYru/Xdz3+ZlM\r\nYFMFKvB6ph/tB28kBHSDx1zNPuXFob6a8yjqncNayyyQdhFfWVdLMHsz7z1V\r\n40L07HkFEBgDHqUnwt+/eAKdzYPkTrf+k/XaZukGUabuY/37Z3zQnkBIkBz9\r\nMd5V8qWFfk2amTJqa7IZLtHAc/Q9ruoqQ3LTaP48z6AsW2mrH30tR5vS/jwo\r\nl+hiox83C9iyaddfXzKEW6Q7fuKvvdTHv06EYYOG2UEB6AyJquE93v5bvY7f\r\nukO/IWtYXsal0lgIQtHJ7LnJImO+Bof6YUbmNd/zn8Cocs4tA6R5W8XU+K8C\r\nPLj37KsoiWhTCIIleXC9trD7f3GHRl8Sc/JWkzkWmrlq5tE8D5u2L8Za1dIo\r\nyk1b7LImq1kLlp3VGLXuyNeOuYhIKoqoZXeBjBVhugwQ345MIL7lb9URDaUK\r\nLgBEjKNR82DDbGKEtofjE4qXw6/3LFa+sVA=\r\n=a/Ts\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.18": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.18",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "d381bd633b920bc3782052874d6aab2464a5028b",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.18.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-NJwpJyUOsDSJoXkT0fpWuv9dwFqKD+mkspVtrxyiBC/+D7Sw6Rcu7Qi93mgGchUeMLQK0Yp58Nl8mQ3nCedOQQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICcK4g2/T8Y3ZcS2fTV0CxUQYM+Zg+kEqYFtyLkrxQwJAiEAxPsi2jkVjTHG0oc5oGNlMl4YTKRLHz9vsiuY8Ljn9yw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 278155,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkS6I9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoUPA//cC2v45eiapabtYXy58drL6sKkw/EiUFCJxUO4u8tu7AeWCMM\r\ngXfYUaIERWgzBw8XEIUkTRJ7+4st4GgkfWc6LXUFCFAa5a379HyX+brmrvp+\r\ni+gEExI2H70YDrKbNgDUYj/edG9pNcrhPsmrnzk+YP/3Avt/eAoyxHSyh6ay\r\nS/ikbKdl7X3Fe/mCH8vSs3d1BNhe9IMkICNXI8Y78BM18Rrxpvk24WrJTKto\r\nNB0U0+7d/89nPu6m9oykwHWxXXdJzKYDmwsI4nYcs5cjltQqB/T24/pcaFfZ\r\nBdb+a0Q6ZPhL0cnOdAvkoeJWbUJ3WpSxqPVXsce0s3FCD93hOqOB+KXPXJ8n\r\n7pLaZsI7zX0mNqvPlZ6tj4leGsVSWPQ0kgKqriiPwQ4/EB0cUZYnOzKALJYa\r\nNfr3hZ5lAgPLPo7jPrvEsQHIRfjwkOgGg9xCcI1K1IxQaZCwb8VX+kCsPpv8\r\ndIOAOJ0DK5Ixg3kodyCXaLUutDoo6GjFzCENt51g5em9GHbUhsRRhUCWIkiW\r\ny7+TVxI5NAx0OGRy17F4MeAFiMJGqcy4mPEmWWqd4VEurLKYZJgo2CSROd/E\r\nT3rrnnmR02r8AGDjXfvnnhVWyR23h0lD+a4IV675fufn3idSkdlO544vX/fQ\r\nGHtQsr9yV4xEY+4R/s/aalSRKUk6PPWZWfk=\r\n=2l7T\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.19": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.19",
+			"dependencies": {
+				"axios": "^1.3.4",
+				"debug": "^4.3.4",
+				"serve": "^14.2.0",
+				"dotenv": "^16.0.3",
+				"eslint": "^7.32.0",
+				"ethers": "^6.1.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.7.0",
+				"download": "^8.0.0",
+				"prettier": "^2.8.4",
+				"commander": "^10.0.0",
+				"node-fetch": "^2.6.1",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"synthetix-js": "^2.74.1",
+				"etherscan-api": "^10.3.0",
+				"@synthetixio/js": "^2.41.0",
+				"@playwright/test": "^1.31.2",
+				"cypress-wait-until": "^1.7.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"eslint-plugin-import": "^2.27.5",
+				"babel-plugin-istanbul": "^6.1.1",
+				"eslint-plugin-cypress": "^2.12.1",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"@cypress/code-coverage": "^3.10.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"eslint-config-prettier": "^8.7.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"@testing-library/cypress": "^9.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"@cypress/webpack-dev-server": "^3.3.0",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"release-it": "^15.8.0",
+				"@trunkio/launcher": "^1.2.3",
+				"npm-check-updates": "^16.7.12",
+				"@metamask/test-dapp": "^5.6.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "879524fd7166d1a8659cd0f5d81800afb268d8c2",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.19.tgz",
+				"fileCount": 94,
+				"integrity": "sha512-/ugCLnv+6djOhzPiRAPrsJtafOz9KBZZmcjoLnZz0NQgGX06MaSCaDKoy1QxYiG73sRBCFKCbHrTsYXDbXqrug==",
+				"signatures": [
+					{
+						"sig": "MEUCIA7qpbJFJVwQ+89zs1enIM8vjktu1nDXgrwmsyhee7SBAiEAinBPmv0Q2vzAqWMqzagovKBeB1xS9DhucKduJg/LeWM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 275983
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.20": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.20",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"unzip-crx-3": "^0.2.0",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "5f4841d621c0ea84b010d54a0e611633ecf0a02a",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.20.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-o0Q3d0pIOAJ+/rgljQqKv/I9ublSMeY9Mc6strUOwL4467g2QlY/qFWNYDvJpXQ143onRM3j/mvzCLcTqr7yyw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDHcMPyNXLPt+ey5KvVeaPzHb4JpjhXXLJNQuNC1HDh8AIhALdFnoYG5NWVI3lzHa2oYk8eI8mt88cfXiPoUzVmLfbL",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 658267
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.21": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.21",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "c0fc75fe6b1129061081df98fda330115f04173d",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.21.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-Egluxlu0Vgm0QbYcWdmRZ5s7eMngCm+xd9f5aUN6jaHF5PaxKoBNACDstpXgbzW5zHyBQrR1k3A/hHyTJrR2Ew==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDk71SARl03TZ+UXOyfZU/vzKaPf6obdSCk3WpE994cFAIhALzweZjlHcYKU3j9vSdG8E/JtDYhtagLV3dzCne9+4Zn",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 659880
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.22": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.22",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "2c50b38a0fc3eb33db57ef096879250d6d7fd723",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.22.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-vslKm/yIOAhFbiictTvIEzbfmd8t/CaGlvgchgAWVsCX7rCXqHBTbeVYGiDu6a75cW0zdM1M/KT6uHDgyS7GpA==",
+				"signatures": [
+					{
+						"sig": "MEUCIHGoSWJr6YCVFIxO+IgMb0GNAmKoxn7//ZDjUMIklj+uAiEAzlD2oyWxOyyV6zegWTrV71b9LmXOn+FK3wxH6v8yHfs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 659839
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.23": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.23",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "2e01c804375b80d1afd2b8f65f0ec6821a990cbe",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.23.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-kFt0/uQqJEiZ4GfiihCvL1DWdbdUrT/yIEzg4jE7Y7mInIO4xH2k/MlRBFFgDQtVWoIuCntOGryEj8pcb5ckuA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXlEdOem7ouk4HAUG+fSF+e7iO56SU88fhWs7WiU8udQIhAOqOR6Zi+BgLWWYJm8uLR4OrmTlARrgWpwzFqiy6xSZo",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660056
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.24": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.24",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "135031fc4f0a3ecaf9eae4f519f0a28f85d281c9",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.24.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-qKtrx9Onl9WBybD52UV4i9X2dBUm/JWx8Oqo6hmg4JHGSRgGg0iyzMT0fZ2z60X+PCSE1Ab0CCivZpQ5VyHowA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCoBr2gkkC4k+OnigREaMralgrC0Dj2hoNSrtl1bC0GwQIgHnKq//DJMo3AxsvEPMtS7SJ1p5V8Uf7CW65zlrd/Tw0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660056
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.25": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.25",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "d881f48c315e4a05a64fee7beca4f509d67d7fce",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.25.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-VHZ8tviI4ld8toZS7h6PGragWKqzjLpjRkOeoffnmlxbJmiv39CiR02swe1Myg7x2XqJV0Wlts3EYO8ZRQLPow==",
+				"signatures": [
+					{
+						"sig": "MEUCIH+/7N0eK7pTXum+URcQHUBHwoheTD1v/yOKlIQz1CEHAiEAvTK14yYrOXdWm19j1MmXkn9tSHkrzgyQrmPwm/7Ecug=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660148
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.26": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.26",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "98d820dab18a3de0751a534238590b532ad4eb5c",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.26.tgz",
+				"fileCount": 88,
+				"integrity": "sha512-F3skkJp6xDPsqDY0n3LLRMHXQs/VKBVAeUg0+hJzTWQnOul2bg1r81L4nioLMLF7qiaGnfr9EOApXTzkQadNiQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD5MDRZRTj9GTtD7mKdhwT4gj71qoCS56tQobZJ5/l6MgIhAKBdqP912L8+TgrZ/JVZ2eCNQU2tL8XVyvetMjq5hSLm",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660546
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.27": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.27",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "63d76c65fab0ba42341246d558ab0ebdfab191e6",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.27.tgz",
+				"fileCount": 88,
+				"integrity": "sha512-3rIzhb8+L0hm/cY7ItsRAJyC5MDmXVaVA7JpuPSGq7BCAbVdBb2p2MfFlie175vaqz6SxC/PUJQUS8hDyDLknQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDUI3rm6V/r9UStDCPGamnYg2IXxooJ135+Iz2irsgthwIgY9HnPE3gvrm65gXoobrK8Da9xcDYNd1sSG5Jt5YPajo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660622
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.28": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.28",
+			"dependencies": {
+				"viem": "^0.3.17",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.0.3",
+				"ethers": "^6.3.0",
+				"bytes32": "^0.0.3",
+				"cypress": "^12.11.0",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^6.1.2",
+				"commander": "^10.0.1",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.5",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.33.0",
+				"cypress-wait-until": "^1.7.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.10.4",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.4.1",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.9.4-canary.7",
+				"eslint": "^8.39.0",
+				"prettier": "^2.8.8",
+				"release-it": "^15.10.2",
+				"npm-check-updates": "^16.10.9",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^6.1.0",
+				"eslint-config-turbo": "^1.9.3",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-cypress": "^2.13.3",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^46.0.0",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-config-standard": "^17.0.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^5.10.3",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "329fbf38259f779add986412686cfd8cdc5734a7",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.28.tgz",
+				"fileCount": 88,
+				"integrity": "sha512-7Zpw27OX/ZNjP6vt76DYZVdrR2R44XeEQ6AZS7jgSkMoq/NIQM6NM6gx1oYo0RBe+2C2B+zOpAsV6NdGxfmE4A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDwVntemaYRuAa1k3aPnU/qltS0fVuzXPEl+UR9BQsGDAIgagL1DYeNh4LjVamDMZuKmUjwu7ic3psMTnOHvRITfd4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 660348
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.29": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.29",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "8aea237d745ab954b2f2e6b69dfa7b00f418601b",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.29.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-ojf02s0MXXFzR1+zyf38zd4GjHTGqbTs5x0sDK6qp0Da99Qph8z3G1nTtRre0yg2/tNE/3igr/gYd4fWgvHVrg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsA3JFOJ2thEm2CfCBaJeUBwxlTbcUR4ajx4vv59nmNgIgT+pFB1KMMZ/29mXMzc4Et+wqMI70lmD/sBRsNIIAPzI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688327
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.30": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.30",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "99dd0d6f29cbd75cf462478798a534ac7344bbcd",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.30.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-UHTyI+1GpwgeCLUL2g7GVO6kiX6Y8f22/cmxzCn9yBWaxmqksnq8hk9fZBlTl1fRCk0toK9TkRUNHMUHZra0wg==",
+				"signatures": [
+					{
+						"sig": "MEQCIG1J7wO4KhL4SLC0j2iaobyVpHKLO18OJlGyQ+LKFKNuAiBVOQG8kpDfg/ZYf1jSCkUxjzSCNqr6u3c6ItsmPVtZtw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 687852
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.31": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.31",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "3d8668f650623a7e06ff45bf6eb932680873a418",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.31.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-Dmtyeeu6wvP9tGguJC4UufSQc3cim/MX5uPKqTIdGOPUCcu3y8sBS0Swf9ScZw+VZnqRq0XxQkBAGceynpBfig==",
+				"signatures": [
+					{
+						"sig": "MEUCIBqMejL3DcWRV4/L4MoZw987uSpYZTeVKeoQI98+M7UVAiEArbPXWkwMpL2Lr4D47pR8qX+J4UbP9WySScC46mTemOM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688349
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.32": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.32",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "a19c13d07ac17b8c93f680200e9ac64e2fb8b352",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.32.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-J8CSUKw1tkm+VxoZcZKcGqqIMKg3IieRsRGB2Va+ZMGnkxD6ndtkhMxJJkUPH2uWt2oaRmvTyb/Lj+1Vi+TY7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDHLhujalx0wLA50l6rAzEHY6KfH/DxfskTtN6rMHGixwIgF8Mv8ocyGeBzN5jWwuSn550iedIx/TBZq+8m7Gwia2c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688431
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.33": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.33",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "3713e0c10bf1f0031b61709248f3bd40a0453c8a",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.33.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-/dIIxYCdvyIMr4yH9Qb01XgA9/2c/aUpanwVVX+Pb+uH71lDgiEC0Sa6l4ev9YXhFqNiTCbUDgHQUUK7gp/Neg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDnNfmHRrFpEC/+SiWautA2ThdoAwiZhKhoEpLlakDS0AiEAsntDJLs72MzAmI1FzGTnE4NnCBGw4t5eX6697Gr7v8M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688792
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.34": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.34",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "a9cce6072e6a46b4bd20d7ca18be3a37942a7415",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.34.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-dwYGeAhFuXFINZRUfEz+ZfGGbFOQxXlXYQT2eBoY0v9tSHdUj3yEwq0x+xFLouvGxWO5P9N+zfpldx+/U+qU2Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIGFvoGVAXVg9Khkll+4Z+2nijzDH7QFvLQ3oN5FQ/k+hAiBFs8LE8suzLLbF0eu6Cji88r0sev9kTEFh84SkV+3dKg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 689373
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.35": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.35",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "c882c3ab5db570de1415f0a06d2646c2ab9c9ccc",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.35.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-mkFnXv/dh0Vw/1cfCe0yd1OzI3Oeo4SKQI3aTo59yEDUjEtKXMpnafK8DM/+ct8apCUuSg9JNQciDqrAV3wWEA==",
+				"signatures": [
+					{
+						"sig": "MEUCICC6hlaI3cSb7CjOIScd/mFODndlijm71P9T7ZU/3exOAiEAnIXMAU7lO8S977tyKfDju0HNOedKagOmkQ+5btKHtzo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 688988
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.36": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.36",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.37.0",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "0b5a9b306eb130dc7a378de951ebd4c29885b0bf",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.36.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-qtjQRRzHf8ohxiW5v8UC0EzUmsVUnrIHOxhFaWuEVgb1f8auDcU+NXk+DXxRXKgAbZ/C8tIPCtoIavaTPTg09g==",
+				"signatures": [
+					{
+						"sig": "MEUCID90E/CBgegY9oL5Msw1kb6NfR4W+RszmuhmGdWSU3UXAiEAn+CddNbKBkOm0McBz8cOArxiNEDYNm7JkMTqssbqe2U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722398
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.37": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.37",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "34f09a16c6f5e05b8f4ba233dc56e2229591e1a3",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.37.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-UHnRLx2Wg9SZgixL+SbAqIVpySedA+bLAQ5vW8Dt7yDA+7KFX0yWmB4zlWuwqicz0esxE8Gosw9WcozFtOWBYw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEJIjPSwJrpHqQQgTDgix/7+wdQ4jZBmPUt0mDd/tyPIAiBRGWUcP1mjqgLVOJDn+DMOF6cEYE9ZuiRrlqTMDfN++g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722398
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.38": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.38",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "b63c7e209f7658dfe62e0e60052993acf9cfd4d0",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.38.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-1gJ0W9wlPzTQcc+BRr3IYYco5+7jWoWPocjz5IqqRiE119OtJM+aa0U1vKBLqy26s7rPe2pC/gJ+S31vhuvOKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDxm2jWzWRZabpXKEzvtrKHDwemM/YEDCLZFncgQni8kAIgGHCQuvrQYhnJVJzLf+zIQSaXox3M+fqKHzepSXXqPuU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722843
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.39": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.39",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "4a137210f3732b62628a2e6fa347d972ac7f8070",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.39.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-4t43HsTdoiPTb5ez35ORrEo4PQBibgEFtZG2WYh9HUkzd8fui1R5O9b8o8OvMQQEcvVMoQsboomefXyHQ9O8vQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAp9xwa2pTyd6HYb1NaQjV6LpPS+8aEfV26e7VF6rjP+AiEAtg5oHy6LMHa93Oa8hLHZFbNv4T8yyNsOOtFbQZWrTo8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722886
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.40": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.40",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "02db7cc8964d8a0af76e98b0eb6b2fe2816e2a93",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.40.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-U5R2h1ao7+hPAMJeSvqOWsrPQ5puY6/ekrsep8CR+i+64xsCoYx0VAYPZgh648cNZyNSFfU12NSW88s2ia46Ng==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDISxCOeh8yZxW0rffYfJEVQb+TeYyetzoY/W7Y4rHPlgIgcvsIGW/1FL/i4QkzhGJK6c/4qqzguvSUZ9tf76GdHak=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722991
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.41": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.41",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "2f53a82151e9f012e0e6badaecde6f9b08d7eb58",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.41.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-Ee3vT7kWh0AwvWb7fd8fRlo9oAs/9MAo7W7rhn+szfIsErk5n4iKj7gmB1ZQOZrEYxFufNgFyLiMiyO6kh/wQQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAUGZgmJe1FGMjhXk0+i17rg8Hufx6qEqrfMcBZuzLPLAiEAvWAt7aT6+w7aNthnt0Nl+qypg0Tuex+ABIQh8/THNOU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 722888
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.42": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.42",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "0f61904df746d1ff43f1114c58fb2441350fd5d6",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.42.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-vvfdwKUOFVxo8FsCphE0NQZ+q0Lwjmk4PYV1++VUUdD1E0L6/dJFOl7F20dcJjX9UEEgZPDVsjJvm1Wdph8Qrw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDRabYQXDJJeNltKoFaFrjoSsGIGPPVRpo4vTpNVJYn1gIgQmbi02Igv/M45kX4knrz5GOGYoWZhaRd79d+F9SrHUY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723080
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.43": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.43",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "3d1f2b5355658ebb4c9b0f457d7e034dc541f6d5",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.43.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-uMB9coadCZQqg3Iqky8YcItt5uZ0Z3Okqg63eSwSSaDbueSMT0EnBe+bXu68efvmRHdgG4fBdFTczrzR54ToVw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCAlTBa+BPd3LT8llZjW1be8RQ+v55GF9SpnsrrcsMf3wIgC2lHqu8+fkd7TlFgXZH87sKzInzK5kvWwF36m4yUaj0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723237
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.44": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.44",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "a5b478a84187b24f6c06ebb0c25b5dae97930f09",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.44.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-FKhHYnogqpqqkm8VpMFZvxC5yh2Nyp8ARyjqPhGwoea/l7fVFGYwYNHrTCHy7a62N3Y0ZRv4tgCVl6OPZDEbBA==",
+				"signatures": [
+					{
+						"sig": "MEQCICUAdqHxhsm2EFsEuqoclL6I/0QlFkRVZwijJYLeY7l8AiBRVhj97+TbZCXFbxzrtv1pBKMcdYxZ6H8w/frIhMCqig==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723238
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.45": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.45",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "7e5f2d85b4e0137cac3fe2f0a01c0857d1528d55",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.45.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-sLE2C7y9zZKKdD657g/C+8BbNPjY8s3zCMany/Xc8eRJ8LIV2yVvT3gRWw7Epq/1Iy6c1E61s6Cg8FuozSiEYw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAFJiU+6yP9N7D/qbMk5tNaTFX3A16RdxdOFk9mKTnP7AiAXb/T+2BrP+EcEtuEZcdQmkSCycH9npK2moCP0oTZleg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723037
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.46": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.46",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "e6a5268828a87be3bb1a9c6362db90b1611a7df7",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.46.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-Bfcv66Xiv6nFBnJt5Z0ArQWb7TJMpGtEB0mg6joWVdlu3XbrBYn4/ytRmEIa8SiJ43JaoM+dchHrnCEK+kOZrQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQChnR+8z+4pUKNKSeqyOOl5aZjOU5nIl+L/A12baipWOQIhAIV3xi6OHUdsYnqUW77iW8ltrMjYFfDeu1U4sw1HAASs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723032
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.47": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.47",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": {
+				"synpress": "synpress.js"
+			},
+			"dist": {
+				"shasum": "214eb53ac1f626bf7fcc1fb89bc478380e2b0583",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.47.tgz",
+				"fileCount": 95,
+				"integrity": "sha512-ukKNCxn0+pNBEewgCxd8gdlvIAyQ0PseH3LoVOkGFMwDqYwPhjTO9AC4whVylAa8qd0qXmXi4MHORLYxRa2dsQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICgBvhlAXSaGVjfUC6rVQQ2anbRICzIrdozbtnmkInROAiEArjtZjaEbSd7mJN8+lEPYKt1P8JaCYgmpGFxhwCb5/Fk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 723025
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.48": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.48",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "^16.3.1",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "4ccdc9816569314b8c512a8b995300f858e1688c",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.48.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-+jJv3KVNwMV1cEEcJjL2Yrq1uMZKE0gjrSbqPujn+fEMhJxQoaH53ovngDLe6NmRD3zhl+O3tqCt8orcwxtLMQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEv+ohN8VIf2mna5VGVHlTGBir7+YfTaz4qI4haG9OvUAiEAtxFkJuRRwcsrgxvebokkzHhsSUcJIRnSdsVL8gkh7yc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 667692
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.49": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.49",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "3be7d228116f820e1b26f628d71a9200d673b176",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.49.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-HHSpCsDIP6BP7QYaioGDRBOg2T4VHfRyARkoIDXJgImOcv5jnKyuPXOWxRjILDw3S4sv2KTX9vxc1Av4QCQx6A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC1v9t0WKElxY+gedbpg74qtcSb9znGI4FZKr3MnVbiNQIgCtxWBF6d5ZbOiuaG5MHr9oi23fjBXpV52X1Spd+n/HQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 667875
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.50": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.50",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "5263ee31391d431b54ccf36ec061db066491b2a9",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.50.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-XNGuCNjj6UQ8Y0HjGZLWCASGcruqUunKJkcipMc14p1bJNAI/Q4U79VOBCs8niRxXUN2J5J5vyECCI0MYpfHXQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGUv93OccorEE+2hbM34rgc6eSez2cV81pftMBESj5b1AiEAsZCRnFtElOAH0gjxtgf8MyfA9mWMnpr6zdWEZHvPWbU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 668206
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.51": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.51",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "dfab36f5bcc2f7388be8699ad04d6e864876a216",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.51.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-yuoNeehez9PUVnB0sztb54QHh0aldf4U4FcdndT+N+Msiy9x/Je5B78X0Cqo/cUxkycsdlVc5acuRSj7SfMwnQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDfFekONG+LX8qEBc3uBmnFqyIctaaVkFdCy0S0pdLNrAIhAJarmy6ZC96EPBK1RpEdXZ4E98+8PN54auTAxhT95K0P",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 667912
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.52": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.52",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "f26de89455647b288423229564e0f7262f3c74a2",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.52.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-2XCoDWrS/pNXkV+mvyc/fEaX05i+RtLPXv3DPkheBndbJDyRMZ+tqTj4C08o/ou0aNuBLrMiDWyHMyjWqilCEw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGfJGymHae95aJzOQSIqHivO+Asru/ayQv46qiouHMfNAiAGaPldCC1isC43MbL+LGjDl8m/bJydQDggeRiu0mhmVw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 668023
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.53": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.53",
+			"dependencies": {
+				"viem": "^1.6.0",
+				"axios": "^1.4.0",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"ethers": "^6.7.1",
+				"bytes32": "^0.0.3",
+				"cypress": "12.17.3",
+				"wait-on": "^7.0.1",
+				"download": "^8.0.0",
+				"get-port": "^7.0.0",
+				"commander": "^11.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"@viem/anvil": "^0.0.6",
+				"find-config": "^1.0.0",
+				"unzip-crx-3": "^0.2.0",
+				"app-root-path": "^3.1.0",
+				"etherscan-api": "^10.3.0",
+				"@playwright/test": "^1.45.2",
+				"cypress-wait-until": "^2.0.1",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"babel-plugin-istanbul": "^6.1.1",
+				"@cypress/code-coverage": "^3.11.0",
+				"@testing-library/react": "^14.0.0",
+				"dotenv-parse-variables": "^2.0.0",
+				"@testing-library/cypress": "^9.0.0",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@types/testing-library__cypress": "^5.0.9",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0"
+			},
+			"devDependencies": {
+				"serve": "^14.2.0",
+				"turbo": "^1.10.12",
+				"eslint": "^8.47.0",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"npm-check-updates": "^16.12.2",
+				"eslint-plugin-node": "^11.1.0",
+				"@metamask/test-dapp": "^7.0.1",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"start-server-and-test": "^2.0.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "e13745b37a8586bbd07fc6990d79e594980b9245",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.53.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-lethfYkNRFlqwID2ELIbqkG3i00Q/ip6f74XX4qu1DwYa4aPWTAmXxtWlCKTpfiPc/U1kY/hIS0fggd1uywPeg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCGKoRCfvfhpK36pjwuVBL3QYIBw1qSOdAa++4RbuCdgIgBwOJmoySF7XnwdoAU+j/c8Z1Ne0CV31qDxcPKwPG8iY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 667927
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"4.0.0-alpha.54": {
+			"name": "@phantom/synpress",
+			"version": "4.0.0-alpha.54",
+			"dependencies": {
+				"@cypress/code-coverage": "^3.11.0",
+				"@cypress/webpack-dev-server": "^3.5.2",
+				"@drptbl/gremlins.js": "^2.2.1",
+				"@foundry-rs/easy-foundryup": "^0.1.3",
+				"@playwright/test": "^1.45.2",
+				"@testing-library/cypress": "^9.0.0",
+				"@testing-library/react": "^14.0.0",
+				"@types/testing-library__cypress": "^5.0.9",
+				"@viem/anvil": "^0.0.6",
+				"app-root-path": "^3.1.0",
+				"axios": "^1.4.0",
+				"babel-plugin-istanbul": "^6.1.1",
+				"babel-plugin-react-generate-property": "^1.1.2",
+				"babel-plugin-react-remove-properties": "^0.3.0",
+				"babel-plugin-transform-react-qa-classes": "^1.6.0",
+				"babel-plugin-transform-react-styled-components-qa": "^2.1.0",
+				"bytes32": "^0.0.3",
+				"commander": "^11.0.0",
+				"cypress": "12.17.3",
+				"cypress-wait-until": "^2.0.1",
+				"debug": "^4.3.4",
+				"dotenv": "16.4.5",
+				"dotenv-parse-variables": "^2.0.0",
+				"download": "^8.0.0",
+				"ethers": "^6.7.1",
+				"etherscan-api": "^10.3.0",
+				"find-config": "^1.0.0",
+				"get-port": "^7.0.0",
+				"node-fetch": "^2.6.1",
+				"underscore": "^1.13.6",
+				"unzip-crx-3": "^0.2.0",
+				"viem": "^1.6.0",
+				"wait-on": "^7.0.1"
+			},
+			"devDependencies": {
+				"@metamask/test-dapp": "^7.0.1",
+				"@microsoft/eslint-formatter-sarif": "^3.0.0",
+				"eslint": "^8.47.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-config-turbo": "^1.10.12",
+				"eslint-plugin-chai-friendly": "^0.7.2",
+				"eslint-plugin-cypress": "^2.14.0",
+				"eslint-plugin-import": "^2.28.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^5.0.0",
+				"eslint-plugin-promise": "^6.1.1",
+				"eslint-plugin-standard": "^4.1.0",
+				"eslint-plugin-testing-library": "^6.0.0",
+				"eslint-plugin-ui-testing": "^2.0.1",
+				"eslint-plugin-unicorn": "^48.0.1",
+				"npm-check-updates": "^16.12.2",
+				"prettier": "^3.0.2",
+				"release-it": "^16.1.5",
+				"serve": "^14.2.0",
+				"start-server-and-test": "^2.0.0",
+				"turbo": "^1.10.12"
+			},
+			"bin": "synpress.js",
+			"dist": {
+				"shasum": "4eae5651085fa4c03f12909111790cf8da80ca90",
+				"integrity": "sha512-6blYGcyPW7ZXdeow9wvgoFFq4ko5goiqfcD4Is4GqQaWmu0pv6GBZLYs9qosTXVpJNoofOA4LMxQdHFLhjQPLQ==",
+				"tarball": "https://registry.npmjs.org/@phantom/synpress/-/synpress-4.0.0-alpha.54.tgz",
+				"fileCount": 62,
+				"unpackedSize": 668497,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDNj44uLH2mW3FNjtPYFYRELNPfO3Y0sl7n+AIk7RGSGQIgQ7z0VJoV9rlsfKFj4AR+fN+PaVW5c9HZjso/mt/Rb3s="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		}
+	}
+}
