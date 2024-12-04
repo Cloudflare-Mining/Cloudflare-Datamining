@@ -14,7 +14,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
 	<li>Bachelor’s degree in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development, with a strong focus on TypeScript (or JavaScript) programming language;</li>
+	<li>Proven experience in software development (+3 years), with a strong focus on TypeScript (or JavaScript) programming language;</li>
 	<li>Solid understanding of systems engineering principles and practices;</li>
 	<li>Strong problem-solving skills and attention to detail;</li>
 	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
@@ -28,6 +28,7 @@
 	<li>Experience with WebAssembly, Rust or Go;</li>
 	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc) and V8 isolates;</li>
 	<li>Experience building high performance distributed systems;</li>
+	<li>Knowledge of SQL;</li>
 	<li>Previous experience working in an Agile environment;</li>
 	<li>Contributions to large open source projects.</li>
 </ul>
