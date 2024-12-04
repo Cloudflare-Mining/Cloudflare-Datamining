@@ -4,7 +4,7 @@
 		"prealpha": "0.0.1-alpha.1",
 		"alpha": "0.0.1-alpha.7",
 		"latest": "0.0.1-beta.9",
-		"beta": "0.0.1-beta.11"
+		"beta": "0.0.1-beta.12"
 	},
 	"versions": {
 		"0.0.1-0.0": {
@@ -1023,6 +1023,45 @@
 			"name": "graphile-config",
 			"version": "0.0.1-beta.11",
 			"dependencies": {
+				"chalk": "^4.1.2",
+				"debug": "^4.3.4",
+				"tslib": "^2.6.2",
+				"yargs": "^17.7.2",
+				"semver": "^7.5.4",
+				"interpret": "^3.1.1",
+				"@types/node": "^20.5.7",
+				"@types/semver": "^7.5.1",
+				"@types/interpret": "^1.1.1"
+			},
+			"devDependencies": {
+				"chai": "^4.3.8",
+				"mocha": "^10.2.0",
+				"ts-node": "^10.9.1",
+				"typescript": "^5.2.2",
+				"@types/debug": "^4.1.8",
+				"@types/mocha": "^10.0.1"
+			},
+			"dist": {
+				"shasum": "4bd2ffd1fee6834f2e5dedc64016e7a3a9eda151",
+				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.11.tgz",
+				"fileCount": 44,
+				"integrity": "sha512-+2QLPpihQQvSYd6sSXcDrwHMMSygUrK41qWhak7u3vsXj2AGwVwl+kVvlBwuoovaoUPDsGF8zy5IevTAMgzg5Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCiu+7t7B5Z+izUOgWpMpBtptsTbIMZrh9DuTS+3nl+DQIhAKcRdj+F2oGiuqOMr1P9bxb+E3W5hymeZ0b1hhL8RWK+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 88768
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"0.0.1-beta.12": {
+			"name": "graphile-config",
+			"version": "0.0.1-beta.12",
+			"dependencies": {
 				"@types/interpret": "^1.1.1",
 				"@types/node": "^20.5.7",
 				"@types/semver": "^7.5.1",
@@ -1042,15 +1081,15 @@
 				"typescript": "^5.2.2"
 			},
 			"dist": {
-				"integrity": "sha512-+2QLPpihQQvSYd6sSXcDrwHMMSygUrK41qWhak7u3vsXj2AGwVwl+kVvlBwuoovaoUPDsGF8zy5IevTAMgzg5Q==",
-				"shasum": "4bd2ffd1fee6834f2e5dedc64016e7a3a9eda151",
-				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.11.tgz",
+				"integrity": "sha512-th7C2fM29dhra5gCmykWUJQMCAzA6C5W+dF8DZa0BWLImmHnSUK+AO4qPCR6bZKR5JKTW2onZweqP4ZHVLPQFw==",
+				"shasum": "e31e12077366f3cbe55708ec20452e5027177627",
+				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.12.tgz",
 				"fileCount": 44,
-				"unpackedSize": 88768,
+				"unpackedSize": 94467,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCiu+7t7B5Z+izUOgWpMpBtptsTbIMZrh9DuTS+3nl+DQIhAKcRdj+F2oGiuqOMr1P9bxb+E3W5hymeZ0b1hhL8RWK+"
+						"sig": "MEUCIHPlrtkB/YXUlqnu3oiUK5DRwAjM9OgfNYRhnQIDcoN4AiEA+CXSg4HCP/f2IUxmxe9n2qxVzzl9CsdteYpGlEcxrug="
 					}
 				]
 			},
