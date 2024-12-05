@@ -79,6 +79,11 @@
 	"magic.interconnects.cni.details.cniProperties": "CNI properties",
 	"magic.interconnects.cni.details.loading": "Loading...",
 	"magic.interconnects.cni.details.noDetails": "No CNI details available.",
+	"magic.interconnects.cni.details.bgpDetails": "BGP route details",
+	"magic.interconnects.cni.details.bgp.cfAccountAsn": "Cloudflare account ASN",
+	"magic.interconnects.cni.details.bgp.customerAsn": "Customer device ASN",
+	"magic.interconnects.cni.details.bgp.md5Key": "MD5 key",
+	"magic.interconnects.cni.details.bgp.advertisedPrefixes": "Advertised prefix list",
 	"magic.interconnects.cni.direct.create": "+ Create a direct CNI",
 	"magic.interconnects.cni.learn": "Learn More",
 	"magic.interconnects.cni.status.down": "Down",
@@ -296,9 +301,6 @@
 	"magic.add_another_prefix": "Add another prefix",
 	"magic.restore_default_values": "Restore default values",
 	"magic.save_changes": "Save changes",
-	"magic.account.address_space.configuration.title": "Your address space",
-	"magic.account.address_space.configuration.description": "When route propagation is on for a cloud on-ramp, Cloudflare will install the below CIDR prefixes to your cloud network route tables to direct traffic to Magic WAN. To learn how to install default routes to direct all traffic from your VPC to Magic WAN, click <0>here</0>.",
-	"magic.account.address_space.configuration.documentation": "Magic WAN address space documentation",
 	"magic.cidr_prefixes": "CIDR prefixes",
 	"magic.firewall.rate_limit.rules.title": "Rate limiting rules",
 	"magic.firewall.rate_limit.max": "You have reached the %{total} rule maximum.",
@@ -317,5 +319,6 @@
 	"magic.firewall.rate_limit.rules.edit_page.bits_or_packets": "Packets or Bits",
 	"magic.firewall.rate_limit.rules.edit_page.bits": "Bits",
 	"magic.firewall.rate_limit.rules.edit_page.packets": "Packets",
-	"magic.firewall.rate_limit.rules.edit_page.value": "Value"
+	"magic.firewall.rate_limit.rules.edit_page.value": "Value",
+	"magic.firewall.rate_limit.rules.edit_page.toast": "Rate limiting applies to each colo and is not aggregated. To set different limits for each colo, create separate rules."
 }
