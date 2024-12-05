@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "2.4.0"
+		"latest": "2.4.1"
 	},
 	"versions": {
 		"2.0.0": {
@@ -460,6 +460,45 @@
 			"name": "chanfana",
 			"version": "2.4.0",
 			"dependencies": {
+				"zod": "^3.23.8",
+				"js-yaml": "^4.1.0",
+				"openapi3-ts": "^4.4.0",
+				"@asteasolutions/zod-to-openapi": "^7.2.0"
+			},
+			"devDependencies": {
+				"hono": "4.6.12",
+				"tsup": "8.3.5",
+				"husky": "9.1.7",
+				"vitest": "2.1.6",
+				"wrangler": "3.91.0",
+				"typescript": "5.7.2",
+				"@types/node": "22.10.1",
+				"itty-router": "5.0.18",
+				"@biomejs/biome": "1.9.4",
+				"@types/js-yaml": "^4.0.9",
+				"vitest-openapi": "^1.0.3",
+				"@cloudflare/workers-types": "4.20241127.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@cloudflare/vitest-pool-workers": "^0.5.26"
+			},
+			"dist": {
+				"shasum": "83bcecdacaf3126ffa18fb1d5fa34259d08eef6d",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.4.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-yyMZrDPrl68Ip8K+QbGk8x3kl3GrTa1LrxF2Iq5XjM9g2RmyG5BaznVhL38fgQrY9wMETX3N6zI3PgdkUfKJLQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIH88bJHRWkJicBoT7Lr6M7T5+l1Z2ufLkTSx4GiZJY6kAiEA6wzI2QjIMmie8JvLIbzQNdBa9dJZk0iijT4QdL8UlqE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 168155
+			}
+		},
+		"2.4.1": {
+			"name": "chanfana",
+			"version": "2.4.1",
+			"dependencies": {
 				"@asteasolutions/zod-to-openapi": "^7.2.0",
 				"js-yaml": "^4.1.0",
 				"openapi3-ts": "^4.4.0",
@@ -482,15 +521,15 @@
 				"wrangler": "3.91.0"
 			},
 			"dist": {
-				"integrity": "sha512-yyMZrDPrl68Ip8K+QbGk8x3kl3GrTa1LrxF2Iq5XjM9g2RmyG5BaznVhL38fgQrY9wMETX3N6zI3PgdkUfKJLQ==",
-				"shasum": "83bcecdacaf3126ffa18fb1d5fa34259d08eef6d",
-				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.4.0.tgz",
+				"integrity": "sha512-xF+pxqu5a6apdggukjCeDZJlb+4s0hy7iUmkY5pJtzds+1TrYka4QYd6sqenVq7kB91FHtyjQ09or1vS3RUBVQ==",
+				"shasum": "a80d1f318899f7545bc3e5da789bc4f154e93b30",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.4.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 168155,
+				"unpackedSize": 166906,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIH88bJHRWkJicBoT7Lr6M7T5+l1Z2ufLkTSx4GiZJY6kAiEA6wzI2QjIMmie8JvLIbzQNdBa9dJZk0iijT4QdL8UlqE="
+						"sig": "MEQCIB6F09QFNAAjioxJUjFSTC89i/Ya3nM1LKjKCCTEIh1HAiA5audmWyPX3vNyttdXhTRZidPYbYYcwqMh8zi+QYjRTg=="
 					}
 				]
 			}
