@@ -12,8 +12,8 @@
 		"wp-6.5": "4.34.1",
 		"wp-6.6": "5.0.1",
 		"wp-6.7": "5.8.1",
-		"latest": "5.13.0",
-		"next": "5.12.1-next.082ed6819.0"
+		"next": "5.13.1-next.cd6172eb0.0",
+		"latest": "5.13.0"
 	},
 	"versions": {
 		"1.0.0-alpha.2": {
@@ -3048,15 +3048,39 @@
 				"@babel/core": "^7.25.7"
 			},
 			"dist": {
-				"integrity": "sha512-AcnlcIB6ofD6UBtyBjyzcie+alR9V+vCW3970GxeJgaWhjKfRe2wySxYlZqIKml0f91AZRPlLR4UdhLouOlVYg==",
 				"shasum": "248d91fbaec6998844e0675c1e19cb4306c868e0",
 				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.13.0.tgz",
 				"fileCount": 4,
-				"unpackedSize": 44848,
+				"integrity": "sha512-AcnlcIB6ofD6UBtyBjyzcie+alR9V+vCW3970GxeJgaWhjKfRe2wySxYlZqIKml0f91AZRPlLR4UdhLouOlVYg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDBvvKrKUGWKvBssNJuNb+S5qB6p4moIvFsHkXlo7zoRgIhAJkguVPow/ypz7uqhOsBB4WeARZmdRSWfHkB/YGvzlt6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44848
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.13.1-next.cd6172eb0.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.13.1-next.cd6172eb0.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"integrity": "sha512-Tvv5q4nNzkSTOUOQKPh4CGIfcwpL4RP5TfMWzMXmTzONwbyNrrPdIqETOLYCE6mGwdSGDu/Ftv0hNtQekOgTbw==",
+				"shasum": "8f61566d5c3119ce060a032e69fcba36fb8aeed3",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.13.1-next.cd6172eb0.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 44865,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDBvvKrKUGWKvBssNJuNb+S5qB6p4moIvFsHkXlo7zoRgIhAJkguVPow/ypz7uqhOsBB4WeARZmdRSWfHkB/YGvzlt6"
+						"sig": "MEQCIHgBMpqeJ5YjNQlXi9/xWwfARfMFK2G5iO/FpUMDj2MYAiASV4yFhIPbR1sRMeVg6FqD011AcNR4hjKQcqw16TQnGQ=="
 					}
 				]
 			},
