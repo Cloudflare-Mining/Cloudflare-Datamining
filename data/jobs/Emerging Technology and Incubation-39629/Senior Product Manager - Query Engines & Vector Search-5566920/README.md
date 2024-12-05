@@ -5,33 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon, Portugal</strong></p>
-<p><strong>Job Summary and Mission</strong></p>
-<p>We are seeking a highly skilled and motivated accounting specialist to help support the Statutory Team. The Statutory Accountant will be responsible for preparing journal entries to support timely financial statements close and ensuring all activity recorded in line with Local GAAP. Assisting in the preparation of annual statutory filings, including core financial statements, supporting schedules and footnote disclosures. This position will also support the monthly general ledger closing process, as well as any other support that is necessary within the Finance Department.&nbsp;</p>
-<p><strong>Responsibilities and essential job functions include but are not limited to the following:</strong></p>
+<p><strong>Available Locations</strong>: Austin, San Francisco, NYC, London.</p>
+<h3><strong>About The Role</strong></h3>
+<h3>You’ll be responsible for building new products that enable our customers to query, analyze, and search over the data they store in our Developer Platform.&nbsp;</h3>
+<p>This role will be focused on shipping and rapidly iterating on next-generation distributed query engines, enabling customers to make the most of the structured and/or table data they already store in R2, and providing a platform for other product teams (such as <a href="https://blog.cloudflare.com/data-anywhere-events-pipelines-durable-execution-workflows/">Pipelines</a>) to tightly integrate against.</p>
+<p>This includes growing <a href="https://developers.cloudflare.com/vectorize/">Vectorize</a> (our distributed vector search database), working closely with <a href="https://developers.cloudflare.com/r2/">R2</a> (our object storage) team, and ensuring what we build ties deeply into our compute platform: <a href="https://developers.cloudflare.com/workers/">Workers</a>.</p>
+<h3><strong>What You'll Do</strong></h3>
 <ul>
-	<li>Assists in the preparation of monthly financial reports and GL postings</li>
-	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances</li>
-	<li>Prepares reconciliations between US GAAP and Local GAAP&nbsp;</li>
-	<li>Participate in the interim and annual audits for the Company</li>
-	<li>Provides support to all areas of the Accounting Department as needed</li>
-	<li>Performs other analysis and special projects as assigned</li>
+	<li>Drive the strategy, roadmap &amp; ship products that expand Cloudflare’s data platform and how customers operate on the data they store on us.</li>
+	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product features</li>
+	<li>Talk to developers (probably the most important)! You'll need to be crafty and develop a playbook to find the right users to talk to. This might include diving into our BI tools to find specific cohorts that are worth talking to, engaging on our developer discord, or heading straight to Twitter or Hacker News to engage and build relationships with the community.</li>
+	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; Developer Relations, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
+	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
+	<li>Delve into market research to drive new investment opportunities in the database and data space.</li>
+</ul>
+<h3><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></h3>
+<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.</p>
+<ul>
+	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
+	<li>Demonstrated experience with (any of) OLAP or HTAP databases, vector search and querying, and/or familiarity with modern structured table &amp; data formats such as Iceberg and Delta Lake. You should have a burning desire to become a domain expert in each of these areas as quickly as possible.</li>
+	<li>A focus on the developer: you'll be working directly, and often be a part of the customer's team in helping them get their initial implementation off the ground</li>
+	<li>BS/MS in a technology field</li>
+	<li>Professional product management experience (3-4 years), previous founder experience or demonstrated experience on an engineering team shipping user-facing products.</li>
+	<li>Strong technical abilities. You should be intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions' impact on the product, but can also step back and take a 30k foot view.</li>
+	<li>A desire to sweat the details and ship great end-to-end developer experiences. APIs, UIs, docs: all of these are part of the product.</li>
+	<li>Experience using developer tools: you should have a favorite text editor, be familiar with composing CLI tools, and be the first user of the products you’re shipping.</li>
+	<li>Scripting/programming experience (JavaScript/TypeScript, Rust, Go, etc.) and/or experience with SQL dialects.</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Qualifications/Required Knowledge</strong></p>
-<ul>
-	<li>Minimum 5 years of relevant experience</li>
-	<li>Mix of Statutory Accounts preparation and audit experience</li>
-	<li>Ability to manage multiple priorities to meet established time lines</li>
-	<li>Must possess excellent computer skills and have the ability to work with the accounting software package</li>
-	<li>Excel skills including working knowledge of pivot tables, VLOOKUP’s, formulas, etc.</li>
-	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
-	<li>Ability to work independently</li>
-	<li>Degree in Accounting</li>
-	<li>Strong problem-solving skills, ability to develop, organize and complete large-scale projects, passion for continuous process improvements</li>
-	<li>Strong technical skills including proficiency in NetSuite</li>
-	<li>Decision-making, problem-solving, and analytical skills</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
