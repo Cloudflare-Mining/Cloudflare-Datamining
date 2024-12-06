@@ -5,36 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available</strong><strong> Locations: Hybrid Locations San Francisco, CA and or Austin, TX, London, UK. Must be willing to relocate</strong></span></p>
-<p><strong>What You'll Do:&nbsp;</strong></p>
-<p>Join Cloudflare's Self-Serve team as a Product Advocate, helping customers on the Developer Platform scale up their product adoption and identify new use cases to help them grow. This customer-facing position involves working directly with Self-Serve customers to enhance adoption, focus on retention, and escalate their engagement to the point of needing a contractual commitment. As a quota-carrying representative, you'll collaborate closely with the Self Serve, Product, Product Marketing, Developer Relations, and GTM teams to strategically expand our developer business. The ideal candidate should be a proactive, customer-oriented individual with a track record in customer-facing roles, adept at problem-solving and thriving in a fast-paced setting.</p>
-<p><strong>Responsibilities:</strong></p>
+<h4>Available: Austin, TX, San Francisco , CA or Washington, DC</h4>
+<h4><strong>What you'll do</strong></h4>
+<p>We are looking for an exceptionally talented, energetic and friendly Senior Commercial Counsel to join our legal team based in Austin, TX, San Francisco, CA or Washington, DC.&nbsp; As a senior member of the commercial legal team, you will be responsible for reviewing, drafting, revising, negotiating and advising on a broad range of complex commercial transactions. This is a mid-senior to senior level legal position that is perfect for a highly qualified lawyer looking for an opportunity in a rapidly scaling company and who is open to growth. A typical day in this role involves working closely with our sales, partnership, finance, privacy, security, sales operations, and special projects teams to review contracts, draft new contract language, and advise on policies to maximize the company’s contracting function. You may also find yourself working on a number of other legal issues as needed to support business initiatives. The ideal candidate is a strong negotiator who is equally versed in day-to-day legal matters and strategic business thinking.&nbsp;&nbsp;</p>
+<p>The above list is representative and additional responsibilities may be assigned, as required to support Cloudflare’s Legal team in our agile and dynamic environment.</p>
+<p><strong>Requirements: &nbsp; &nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Serve as a GTM expert in our Developer Platform, especially in Storage Products (e.g. R2, D1, KV, Durable Objects), Application and Compute (e.g. Pages and Workers), Media (e.g. Images and Stream), and AI (e.g. Workers AI, Vectorize, AI Gateway).</li>
-	<li>Identify and determine ideal use cases for current and future developer customers, Expand customer consumption and spend over time, and minimize churn through high touch account coverage.</li>
-	<li>Run targeted campaigns both jointly with developer marketing teams and on a more ad hoc basis to increase usage and promote new product adoption.</li>
-	<li>Collaborate with Developer Advocacy and Marketing to convert top of the funnel developer awareness into customer engagement through targeted outreach and support marketing efforts including events, webinars, and customer case studies.</li>
-	<li>Enhance the customer experience for Startup Program participants, acting as their main GTM contact from onboarding to program completion.</li>
-	<li>Collaborate with Account Executives to support Developer Pay-As-You-Go Customers, selling the way the customer intends to buy, either by helping customers grow with Self-Serve adoption, or work with Account Executives on developer opportunities when customers require a contract commitment.</li>
-	<li>Regularly provide insights and updates on customer trends and stories to the broader Developer GTM Team.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Minimum of 5+ years of Cloud Sales experience, preferably with a focus on developer-centric selling.</li>
-	<li>Independent, self-motivated professional with excellent time management.</li>
-	<li>Excellent verbal and written communication skills.</li>
-	<li>Ability to multi-task and adjust priorities to meet deadlines.</li>
-	<li>Proficient building models in Excel/Google Sheets and working knowledge of SQL.</li>
-	<li>Prior experience with Salesforce CRM, Tableau, Big Query, BoostUp is a plus.</li>
-	<li>Strong analytical capabilities with ability to handle and interpret large data sets.</li>
-	<li>Proven ability to nurture and grow customer relationships over a long-term horizon.</li>
+	<li>JD degree with strong academic credentials.</li>
+	<li>Admitted to practice law and in good standing or otherwise authorized to practice law in the state in which the position is located.</li>
+	<li>5+ years relevant experience.</li>
+	<li>Experience with drafting, reviewing, and negotiating complex commercial contracts.</li>
+	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.&nbsp;</li>
+	<li>Detail oriented and technically-adept.</li>
+	<li>Excellent organizational skills, with the ability to manage multiple matters for multiple teams.</li>
+	<li>The ability to work in a team, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $165,000 - $201,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $171,000 - $209,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $180,000 - $220,000.</span></li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $187,000 - $229,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $206,000 - $252,000</li>
+	<li>For Bay Area based hires: Estimated annual salary of $215,00 - $263,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
