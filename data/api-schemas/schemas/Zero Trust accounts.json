@@ -950,7 +950,7 @@
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																	"properties": {
 																		"id": {
-																			"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		}
@@ -1299,7 +1299,7 @@
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																			"properties": {
 																				"id": {
-																					"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				}
@@ -2646,7 +2646,7 @@
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 										"properties": {
 											"id": {
-												"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 												"type": "string"
 											}
@@ -2972,7 +2972,7 @@
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																	"properties": {
 																		"id": {
-																			"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		}
@@ -3321,7 +3321,7 @@
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																			"properties": {
 																				"id": {
-																					"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				}
@@ -4468,7 +4468,7 @@
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 										"properties": {
 											"id": {
-												"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+												"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 												"type": "string"
 											}
@@ -4794,7 +4794,7 @@
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																	"properties": {
 																		"id": {
-																			"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																			"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		}
@@ -5143,7 +5143,7 @@
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
 																			"properties": {
 																				"id": {
-																					"description": "UUID of certificate to be used for interception. Certificate must be active on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
+																					"description": "UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				}

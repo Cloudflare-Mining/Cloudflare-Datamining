@@ -432,7 +432,6 @@
 															"override",
 															"l4_override",
 															"egress",
-															"audit_ssh",
 															"resolve",
 															"quarantine"
 														],
@@ -474,6 +473,11 @@
 																"example": 10,
 																"minimum": 5,
 																"type": "integer"
+															},
+															"expired": {
+																"description": "Whether the policy has expired.",
+																"example": false,
+																"type": "boolean"
 															},
 															"expires_at": {
 																"allOf": [
@@ -1044,7 +1048,6 @@
 																	"override",
 																	"l4_override",
 																	"egress",
-																	"audit_ssh",
 																	"resolve",
 																	"quarantine"
 																],
@@ -1086,6 +1089,11 @@
 																		"example": 10,
 																		"minimum": 5,
 																		"type": "integer"
+																	},
+																	"expired": {
+																		"description": "Whether the policy has expired.",
+																		"example": false,
+																		"type": "boolean"
 																	},
 																	"expires_at": {
 																		"allOf": [
@@ -1748,7 +1756,6 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh",
 														"resolve",
 														"quarantine"
 													],
@@ -1790,6 +1797,11 @@
 															"example": 10,
 															"minimum": 5,
 															"type": "integer"
+														},
+														"expired": {
+															"description": "Whether the policy has expired.",
+															"example": false,
+															"type": "boolean"
 														},
 														"expires_at": {
 															"allOf": [
@@ -2328,7 +2340,6 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh",
 																"resolve",
 																"quarantine"
 															],
@@ -2370,6 +2381,11 @@
 																	"example": 10,
 																	"minimum": 5,
 																	"type": "integer"
+																},
+																"expired": {
+																	"description": "Whether the policy has expired.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -2949,7 +2965,6 @@
 									"override",
 									"l4_override",
 									"egress",
-									"audit_ssh",
 									"resolve",
 									"quarantine"
 								],
@@ -2979,6 +2994,11 @@
 										"example": 10,
 										"minimum": 5,
 										"type": "integer"
+									},
+									"expired": {
+										"description": "Whether the policy has expired.",
+										"example": false,
+										"type": "boolean"
 									},
 									"expires_at": {
 										"allOf": [
@@ -3504,7 +3524,6 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh",
 														"resolve",
 														"quarantine"
 													],
@@ -3546,6 +3565,11 @@
 															"example": 10,
 															"minimum": 5,
 															"type": "integer"
+														},
+														"expired": {
+															"description": "Whether the policy has expired.",
+															"example": false,
+															"type": "boolean"
 														},
 														"expires_at": {
 															"allOf": [
@@ -4084,7 +4108,6 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh",
 																"resolve",
 																"quarantine"
 															],
@@ -4126,6 +4149,11 @@
 																	"example": 10,
 																	"minimum": 5,
 																	"type": "integer"
+																},
+																"expired": {
+																	"description": "Whether the policy has expired.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -4786,7 +4814,6 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh",
 														"resolve",
 														"quarantine"
 													],
@@ -4828,6 +4855,11 @@
 															"example": 10,
 															"minimum": 5,
 															"type": "integer"
+														},
+														"expired": {
+															"description": "Whether the policy has expired.",
+															"example": false,
+															"type": "boolean"
 														},
 														"expires_at": {
 															"allOf": [
@@ -5366,7 +5398,6 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh",
 																"resolve",
 																"quarantine"
 															],
@@ -5408,6 +5439,11 @@
 																	"example": 10,
 																	"minimum": 5,
 																	"type": "integer"
+																},
+																"expired": {
+																	"description": "Whether the policy has expired.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"expires_at": {
 																	"allOf": [
@@ -5998,7 +6034,6 @@
 									"override",
 									"l4_override",
 									"egress",
-									"audit_ssh",
 									"resolve",
 									"quarantine"
 								],
@@ -6028,6 +6063,11 @@
 										"example": 10,
 										"minimum": 5,
 										"type": "integer"
+									},
+									"expired": {
+										"description": "Whether the policy has expired.",
+										"example": false,
+										"type": "boolean"
 									},
 									"expires_at": {
 										"allOf": [
@@ -6553,7 +6593,6 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh",
 														"resolve",
 														"quarantine"
 													],
@@ -6595,6 +6634,11 @@
 															"example": 10,
 															"minimum": 5,
 															"type": "integer"
+														},
+														"expired": {
+															"description": "Whether the policy has expired.",
+															"example": false,
+															"type": "boolean"
 														},
 														"expires_at": {
 															"allOf": [
@@ -7133,7 +7177,6 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh",
 																"resolve",
 																"quarantine"
 															],
@@ -7175,6 +7218,11 @@
 																	"example": 10,
 																	"minimum": 5,
 																	"type": "integer"
+																},
+																"expired": {
+																	"description": "Whether the policy has expired.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"expires_at": {
 																	"allOf": [
