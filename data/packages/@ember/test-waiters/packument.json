@@ -1,7 +1,7 @@
 {
 	"name": "@ember/test-waiters",
 	"dist-tags": {
-		"latest": "3.1.0"
+		"latest": "4.0.0"
 	},
 	"versions": {
 		"2.2.0": {
@@ -1035,6 +1035,61 @@
 			},
 			"engines": {
 				"node": "10.* || 12.* || >= 14.*"
+			}
+		},
+		"4.0.0": {
+			"name": "@ember/test-waiters",
+			"version": "4.0.0",
+			"dependencies": {
+				"@embroider/addon-shim": "^1.9.0",
+				"@embroider/macros": "^1.16.9"
+			},
+			"devDependencies": {
+				"@babel/plugin-transform-typescript": "^7.25.9",
+				"@embroider/addon-dev": "^7.0.0",
+				"@eslint/js": "^9.16.0",
+				"@rollup/plugin-babel": "^6.0.4",
+				"@tsconfig/ember": "^3.0.8",
+				"@types/rsvp": "^4.0.9",
+				"@typescript-eslint/eslint-plugin": "^8.17.0",
+				"@typescript-eslint/parser": "^8.17.0",
+				"decorator-transforms": "^2.3.0",
+				"ember-source": "~5.3.0",
+				"eslint": "^9.16.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-plugin-ember": "^12.3.3",
+				"eslint-plugin-n": "^17.14.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^5.2.1",
+				"execa": "^9.5.1",
+				"fix-bad-declaration-output": "^1.1.4",
+				"globals": "^15.13.0",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.4.1",
+				"qunit": "^2.22.0",
+				"rollup": "^4.28.0",
+				"rollup-plugin-copy": "^3.5.0",
+				"typescript": "~5.7.2",
+				"typescript-eslint": "^8.17.0"
+			},
+			"dist": {
+				"integrity": "sha512-anqtvTCQvQh8VlHcKPJC0Fxz3aMmc7L+mZLOqvoH7+k86TUikZ/CxhytgMvgLk0x53fqOPEL1uykl2C9Ez65OA==",
+				"shasum": "3f8665e27216a9d126a54ef4d2bc0d77d6cd275c",
+				"tarball": "https://registry.npmjs.org/@ember/test-waiters/-/test-waiters-4.0.0.tgz",
+				"fileCount": 31,
+				"unpackedSize": 88940,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@ember%2ftest-waiters@4.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEyNKzp2VaapJ4ilERuu2SBm74bpa86Uw8Fle6Jc8sekAiEA6UNqPg16MsXmfGepj2hVF7LwM4qn7hKxliNk9rCD39A="
+					}
+				]
 			}
 		}
 	}

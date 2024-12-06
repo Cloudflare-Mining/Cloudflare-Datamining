@@ -2,7 +2,7 @@
 	"name": "@azure-tools/typespec-client-generator-core",
 	"dist-tags": {
 		"latest": "0.48.4",
-		"next": "0.49.0-dev.10"
+		"next": "0.49.0-dev.11"
 	},
 	"versions": {
 		"0.27.0": {
@@ -17892,6 +17892,59 @@
 			"name": "@azure-tools/typespec-client-generator-core",
 			"version": "0.49.0-dev.10",
 			"dependencies": {
+				"yaml": "~2.5.1",
+				"pluralize": "^8.0.0",
+				"change-case": "~5.4.4"
+			},
+			"devDependencies": {
+				"c8": "^10.1.2",
+				"rimraf": "~6.0.1",
+				"vitest": "^2.1.2",
+				"@vitest/ui": "^2.1.2",
+				"typescript": "~5.6.3",
+				"@types/node": "~22.7.5",
+				"@typespec/xml": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/http": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/rest": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/tspd": "~0.46.0",
+				"@types/pluralize": "^0.0.33",
+				"@typespec/openapi": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/compiler": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@vitest/coverage-v8": "^2.1.2",
+				"@typespec/library-linter": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@azure-tools/typespec-azure-core": "~0.48.0 || >=0.49.0-dev <0.49.0",
+				"@typespec/prettier-plugin-typespec": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@azure-tools/typespec-azure-resource-manager": "~0.48.0 || >=0.49.0-dev <0.49.0"
+			},
+			"peerDependencies": {
+				"@typespec/http": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/rest": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/openapi": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/compiler": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@typespec/versioning": "~0.62.0 || >=0.63.0-dev <0.63.0",
+				"@azure-tools/typespec-azure-core": "~0.48.0 || >=0.49.0-dev <0.49.0"
+			},
+			"dist": {
+				"shasum": "30b403e23ef8b9e7a0ccc4bc9e906174a1291077",
+				"tarball": "https://registry.npmjs.org/@azure-tools/typespec-client-generator-core/-/typespec-client-generator-core-0.49.0-dev.10.tgz",
+				"fileCount": 78,
+				"integrity": "sha512-vo2+JTuLLUFsx8svjAm6/KPAqJXfrtxWyXtADdbzgD+PtVfHs2AgmyR+1LgPbaPYzc8hK0Bx8J9G+NewChqUqA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDiHw27ACaDtVwbE/oyvDzus28cOEKcxsdfx49raQ7e2AIhAIRPFeFSI1rwoZPKJeRtbw36eIpN5THLEuHfIq5Jf8PG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 604463
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		},
+		"0.49.0-dev.11": {
+			"name": "@azure-tools/typespec-client-generator-core",
+			"version": "0.49.0-dev.11",
+			"dependencies": {
 				"change-case": "~5.4.4",
 				"pluralize": "^8.0.0",
 				"yaml": "~2.5.1"
@@ -17899,7 +17952,7 @@
 			"devDependencies": {
 				"@azure-tools/typespec-azure-core": "~0.48.0 || >=0.49.0-dev <0.49.0",
 				"@azure-tools/typespec-azure-resource-manager": "~0.48.0 || >=0.49.0-dev <0.49.0",
-				"@types/node": "~22.7.5",
+				"@types/node": "~22.7.9",
 				"@types/pluralize": "^0.0.33",
 				"@typespec/compiler": "~0.62.0 || >=0.63.0-dev <0.63.0",
 				"@typespec/http": "~0.62.0 || >=0.63.0-dev <0.63.0",
@@ -17908,12 +17961,12 @@
 				"@typespec/prettier-plugin-typespec": "~0.62.0 || >=0.63.0-dev <0.63.0",
 				"@typespec/rest": "~0.62.0 || >=0.63.0-dev <0.63.0",
 				"@typespec/xml": "~0.62.0 || >=0.63.0-dev <0.63.0",
-				"@vitest/coverage-v8": "^2.1.2",
+				"@vitest/coverage-v8": "^2.1.5",
 				"@vitest/ui": "^2.1.2",
 				"c8": "^10.1.2",
 				"rimraf": "~6.0.1",
 				"typescript": "~5.6.3",
-				"vitest": "^2.1.2",
+				"vitest": "^2.1.5",
 				"@typespec/tspd": "~0.46.0"
 			},
 			"peerDependencies": {
@@ -17925,15 +17978,15 @@
 				"@typespec/versioning": "~0.62.0 || >=0.63.0-dev <0.63.0"
 			},
 			"dist": {
-				"integrity": "sha512-vo2+JTuLLUFsx8svjAm6/KPAqJXfrtxWyXtADdbzgD+PtVfHs2AgmyR+1LgPbaPYzc8hK0Bx8J9G+NewChqUqA==",
-				"shasum": "30b403e23ef8b9e7a0ccc4bc9e906174a1291077",
-				"tarball": "https://registry.npmjs.org/@azure-tools/typespec-client-generator-core/-/typespec-client-generator-core-0.49.0-dev.10.tgz",
+				"integrity": "sha512-g+rtiFNWCXovWPIQnwD+50ZyllGeHrKyO1OvU9rzpIN+uMbKEZ3mYtL8SbhJh9ISJbXLQetoi6BdkWtTLzpFtQ==",
+				"shasum": "d2e3d14eb23ad667de2e739c8c48ce894c76eeb8",
+				"tarball": "https://registry.npmjs.org/@azure-tools/typespec-client-generator-core/-/typespec-client-generator-core-0.49.0-dev.11.tgz",
 				"fileCount": 78,
 				"unpackedSize": 604463,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDiHw27ACaDtVwbE/oyvDzus28cOEKcxsdfx49raQ7e2AIhAIRPFeFSI1rwoZPKJeRtbw36eIpN5THLEuHfIq5Jf8PG"
+						"sig": "MEUCIDJBMfXWMyfg0mU/b6Kp8K5JFh/ijUZDiI0TaZHQLtBNAiEAmQ0N+3ioQiBk7WfOOQSce0cMYtbJQmq5YfSsHixuEwM="
 					}
 				]
 			},

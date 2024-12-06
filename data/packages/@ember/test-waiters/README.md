@@ -46,8 +46,10 @@ This addon implements the design specified in [RFC 581](https://github.com/ember
 
 ## Compatibility
 
-- Ember.js v2.18 or above
-- Ember CLI v2.13 or above
+- `ember-auto-import` or embroider 
+- `ember-source` v4 or above
+- `@ember/test-helpers` v3 or above
+- `ember-qunit` v7 or above
 
 ## Installation
 
