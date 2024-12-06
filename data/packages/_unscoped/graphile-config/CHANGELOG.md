@@ -1,5 +1,60 @@
 # graphile-config
 
+## 0.0.1-beta.12
+
+### Patch Changes
+
+- [#2240](https://github.com/graphile/crystal/pull/2240)
+  [`d13b76f0f`](https://github.com/graphile/crystal/commit/d13b76f0fef2a58466ecb44880af62d25910e83e)
+  Thanks [@benjie](https://github.com/benjie)! - Adds
+  `MiddlewareHandlers<TActivities>` type to help with adding middleware to
+  configs
+
+- [#2253](https://github.com/graphile/crystal/pull/2253)
+  [`b167bd849`](https://github.com/graphile/crystal/commit/b167bd8499be5866b71bac6594d55bd768fda1d0)
+  Thanks [@benjie](https://github.com/benjie)! - 🚨 `{}` is no longer a valid
+  `GraphileConfig.ResolvedPreset`; use `resolvePreset({})`
+
+  Also: adds `resolvePreset(preset)` and deprecates `resolvePresets(presets)`.
+
+- [#2250](https://github.com/graphile/crystal/pull/2250)
+  [`6a13ecbd4`](https://github.com/graphile/crystal/commit/6a13ecbd45534c39c846c1d8bc58242108426dd1)
+  Thanks [@benjie](https://github.com/benjie)! - Add support for 'preset.lib'
+  which can be used to store global module references to help avoid the dual
+  package hazard.
+
+## 0.0.1-beta.11
+
+### Patch Changes
+
+- [#2224](https://github.com/graphile/crystal/pull/2224)
+  [`5626c7d36`](https://github.com/graphile/crystal/commit/5626c7d3649285e11fe9857dfa319d2883d027eb)
+  Thanks [@benjie](https://github.com/benjie)! - Remove requirement that plugins
+  have a version.
+
+## 0.0.1-beta.10
+
+### Patch Changes
+
+- [#2188](https://github.com/graphile/crystal/pull/2188)
+  [`cc0941731`](https://github.com/graphile/crystal/commit/cc0941731a1679bc04ce7b7fd4254009bb5f1f62)
+  Thanks [@benjie](https://github.com/benjie)! - Overhaul the way in which
+  `graphile-config` presets work such that including a preset at two different
+  layers shouldn't result in unexpected behavior.
+
+- [#2155](https://github.com/graphile/crystal/pull/2155)
+  [`8b472cd51`](https://github.com/graphile/crystal/commit/8b472cd51cd66d8227f9f2722d09c0a774792b0f)
+  Thanks [@benjie](https://github.com/benjie)! - `disablePlugins` now supports
+  TypeScript auto-completion of known plugin names. Other names are still
+  accepted without error, so this is just a minor DX improvement rather than
+  type safety.
+
+- [#2160](https://github.com/graphile/crystal/pull/2160)
+  [`9cd9bb522`](https://github.com/graphile/crystal/commit/9cd9bb5222a9f0398ee4b8bfa4f741b6de2a2192)
+  Thanks [@benjie](https://github.com/benjie)! - Add support for lists of hook
+  objects, so that the same hook can be applied multiple times in the same
+  plugin but with different priorities.
+
 ## 0.0.1-beta.9
 
 ### Patch Changes

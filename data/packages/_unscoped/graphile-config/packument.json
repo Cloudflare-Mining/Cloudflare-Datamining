@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"prealpha": "0.0.1-alpha.1",
 		"alpha": "0.0.1-alpha.7",
-		"latest": "0.0.1-beta.9",
+		"latest": "0.0.1-beta.12",
 		"beta": "0.0.1-beta.12"
 	},
 	"versions": {
@@ -1062,36 +1062,36 @@
 			"name": "graphile-config",
 			"version": "0.0.1-beta.12",
 			"dependencies": {
-				"@types/interpret": "^1.1.1",
-				"@types/node": "^20.5.7",
-				"@types/semver": "^7.5.1",
 				"chalk": "^4.1.2",
 				"debug": "^4.3.4",
-				"interpret": "^3.1.1",
-				"semver": "^7.5.4",
 				"tslib": "^2.6.2",
-				"yargs": "^17.7.2"
+				"yargs": "^17.7.2",
+				"semver": "^7.5.4",
+				"interpret": "^3.1.1",
+				"@types/node": "^20.5.7",
+				"@types/semver": "^7.5.1",
+				"@types/interpret": "^1.1.1"
 			},
 			"devDependencies": {
-				"@types/debug": "^4.1.8",
-				"@types/mocha": "^10.0.1",
 				"chai": "^4.3.8",
 				"mocha": "^10.2.0",
 				"ts-node": "^10.9.1",
-				"typescript": "^5.2.2"
+				"typescript": "^5.2.2",
+				"@types/debug": "^4.1.8",
+				"@types/mocha": "^10.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-th7C2fM29dhra5gCmykWUJQMCAzA6C5W+dF8DZa0BWLImmHnSUK+AO4qPCR6bZKR5JKTW2onZweqP4ZHVLPQFw==",
 				"shasum": "e31e12077366f3cbe55708ec20452e5027177627",
 				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.12.tgz",
 				"fileCount": 44,
-				"unpackedSize": 94467,
+				"integrity": "sha512-th7C2fM29dhra5gCmykWUJQMCAzA6C5W+dF8DZa0BWLImmHnSUK+AO4qPCR6bZKR5JKTW2onZweqP4ZHVLPQFw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHPlrtkB/YXUlqnu3oiUK5DRwAjM9OgfNYRhnQIDcoN4AiEA+CXSg4HCP/f2IUxmxe9n2qxVzzl9CsdteYpGlEcxrug="
+						"sig": "MEUCIHPlrtkB/YXUlqnu3oiUK5DRwAjM9OgfNYRhnQIDcoN4AiEA+CXSg4HCP/f2IUxmxe9n2qxVzzl9CsdteYpGlEcxrug=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 94467
 			},
 			"engines": {
 				"node": ">=16"
