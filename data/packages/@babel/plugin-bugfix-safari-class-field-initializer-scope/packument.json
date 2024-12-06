@@ -1,8 +1,8 @@
 {
 	"name": "@babel/plugin-bugfix-safari-class-field-initializer-scope",
 	"dist-tags": {
-		"next": "8.0.0-alpha.13",
-		"latest": "7.25.9"
+		"latest": "7.25.9",
+		"next": "8.0.0-alpha.14"
 	},
 	"versions": {
 		"7.25.0": {
@@ -137,22 +137,53 @@
 			},
 			"devDependencies": {
 				"@babel/core": "^8.0.0-alpha.13",
-				"@babel/helper-plugin-test-runner": "^8.0.0-alpha.13",
-				"@babel/traverse": "^8.0.0-alpha.13"
+				"@babel/traverse": "^8.0.0-alpha.13",
+				"@babel/helper-plugin-test-runner": "^8.0.0-alpha.13"
 			},
 			"peerDependencies": {
 				"@babel/core": "^8.0.0-alpha.13"
 			},
 			"dist": {
 				"shasum": "d7aec1d4ad5edcdc15f7ef3da1f93120ea77d52e",
-				"integrity": "sha512-DQ/z0UhoCJbBFeqOZRya9j7LxNzQW1FtMZtnMOcpxJMW2hawlsEYbOtvsfn0jqoajKfOtl46slU6wdGScectzg==",
 				"tarball": "https://registry.npmjs.org/@babel/plugin-bugfix-safari-class-field-initializer-scope/-/plugin-bugfix-safari-class-field-initializer-scope-8.0.0-alpha.13.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-DQ/z0UhoCJbBFeqOZRya9j7LxNzQW1FtMZtnMOcpxJMW2hawlsEYbOtvsfn0jqoajKfOtl46slU6wdGScectzg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDtkDxtccAg/OZJOeAWET9xOUJTID7ojxnuRGFWJ6GUJwIhAM76xY87Bviwu3Vtq+Sdo+muLbk0R9fGi2NVc8mU8Pku",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10982
+			},
+			"engines": {
+				"node": "^18.20.0 || ^20.17.0 || >=22.8.0"
+			}
+		},
+		"8.0.0-alpha.14": {
+			"name": "@babel/plugin-bugfix-safari-class-field-initializer-scope",
+			"version": "8.0.0-alpha.14",
+			"dependencies": {
+				"@babel/helper-plugin-utils": "^8.0.0-alpha.14"
+			},
+			"devDependencies": {
+				"@babel/core": "^8.0.0-alpha.14",
+				"@babel/helper-plugin-test-runner": "^8.0.0-alpha.14",
+				"@babel/traverse": "^8.0.0-alpha.14"
+			},
+			"peerDependencies": {
+				"@babel/core": "^8.0.0-alpha.14"
+			},
+			"dist": {
+				"shasum": "f6b7620d2a11a5a52f268f54f74dc550f1286a1f",
+				"integrity": "sha512-VE2AKyeOsYIOeqNfb8mjsjgRmliABXlEFuoEKeeaJCzJ6vI0iaw4ZCpxy+JoEL6Yb9jT39Dw5Swf6se9grrQ4w==",
+				"tarball": "https://registry.npmjs.org/@babel/plugin-bugfix-safari-class-field-initializer-scope/-/plugin-bugfix-safari-class-field-initializer-scope-8.0.0-alpha.14.tgz",
 				"fileCount": 6,
 				"unpackedSize": 10982,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDtkDxtccAg/OZJOeAWET9xOUJTID7ojxnuRGFWJ6GUJwIhAM76xY87Bviwu3Vtq+Sdo+muLbk0R9fGi2NVc8mU8Pku"
+						"sig": "MEUCIBe7DU7qqXkODxZNpfkJQuyJ5J0UwbmBGhnpkGjTBbKHAiEAhnOccWlrEYtDJlcI1xOqqGsUbleQ8qJQBCjnylJYVoM="
 					}
 				]
 			},
