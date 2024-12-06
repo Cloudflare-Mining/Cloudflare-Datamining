@@ -859,7 +859,7 @@ const navigation = {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			navigationType: "version",
-			hasPermission: S => (0, Q.R0)(S),
+			hasPermission: S => (0, W.R0)(S),
 			tabs: u.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
