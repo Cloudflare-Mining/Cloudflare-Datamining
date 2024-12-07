@@ -80,6 +80,13 @@
 						"htmlId": null,
 						"menuItems": [
 							{
+								"contentfulId": "5uHGwlaPzSJRqKqKja0FxK",
+								"linkText": "Plan Features",
+								"page": null,
+								"url": "/plans/enterprise/#ent-plan-features ",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "2DtoDb3P1ciCT1D7oHSTjl",
 								"linkText": "Case Studies",
 								"page": null,
@@ -92,8 +99,83 @@
 								"page": null,
 								"url": "#testimonials",
 								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7B62Qahb9ROxaUvCGMfmtm",
+								"linkText": "Schedule a Demo",
+								"page": null,
+								"url": "#ent-demo-form",
+								"subMenuItems": []
 							}
 						]
+					},
+					{
+						"contentfulId": "6vaK8OXX64NtBqVmO3Ej2e",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Enterprise-grade performance, security, and developer services",
+						"titleSize": "medium",
+						"subtitle": "Reclaim control of complex compute, storage and application environments.",
+						"subtitleSize": null,
+						"copy": "Cloudflare's connectivity cloud delivers analyst-approved, enterprise-grade security and connectivity services, including SASE/SSE, web application delivery, and agile development.",
+						"buttonColor": "blue",
+						"buttonColor2": "blue-outline",
+						"buttonText1": "Request a demo",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#ent-demo-form",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": true,
+						"streamVideoId": "5efe5eca1517ad1a2f9ff3e75cc9cf5a",
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "none",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": {
+							"id": "6ee07066-5da9-5f44-bd57-7e60531c26fb",
+							"altText": "Customer Video Poster",
+							"title": "Customer Video Poster",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VNqqi9kSYAg6fvauMBWfN/74304a4d74ef5361b506104b93703c47/customervideo_logos.png"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VNqqi9kSYAg6fvauMBWfN/74304a4d74ef5361b506104b93703c47/customervideo_logos.png"
+							},
+							"description": null
+						},
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": "/plans/enterprise/#ent-plan-features",
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": "left medium",
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
@@ -459,6 +541,38 @@
 						"togglesTo": []
 					},
 					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3EgvZs6KfiMlRjO3Z01udK",
+						"title": "See enterprise features",
+						"titleSize": "large",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": "Upgrade Today",
+							"contentTypeId": "button",
+							"contentfulId": "1dJ7Bf7USoPN3PkpzhLWSd",
+							"elementName": "Enterprise - Talk to an Expert (on page anchor to form)",
+							"standardText": null,
+							"text": "Request demo",
+							"url": "#ent-demo-form",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "3EWAS007l9hIruofl7rrbS",
 						"quote": "Cloudflare simplifies performance and security. Thanks to Cloudflare, we can focus on growing our product and expanding into new markets with confidence, knowing that our platform is fast, reliable, and secure.",
@@ -703,50 +817,6 @@
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5QUophD2UecEG2jA6H4zpe",
-								"title": "API security",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "APIs make the world go around. That is why we make our massive global network your API gateway. With API discovery, integrated API management and analytics, and layered API defenses, Cloudflare ensures APIs drive business success like never before.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3GBe2kzkJzleIrGmCG1RBE",
-								"title": "Zero Trust identity-based security controls close to users",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare One, is a Zero Trust network-as-a-service platform that dynamically connects users to enterprise resources, with identity-based security controls delivered close to users, wherever they are.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": null,
 								"icon": null,
