@@ -12,8 +12,8 @@
 		"wp-6.5": "4.34.1",
 		"wp-6.6": "5.0.1",
 		"wp-6.7": "5.8.1",
-		"next": "5.13.1-next.cd6172eb0.0",
-		"latest": "5.13.0"
+		"latest": "5.13.0",
+		"next": "5.13.1-next.a9f418477.0"
 	},
 	"versions": {
 		"1.0.0-alpha.2": {
@@ -3072,15 +3072,39 @@
 				"@babel/core": "^7.25.7"
 			},
 			"dist": {
-				"integrity": "sha512-Tvv5q4nNzkSTOUOQKPh4CGIfcwpL4RP5TfMWzMXmTzONwbyNrrPdIqETOLYCE6mGwdSGDu/Ftv0hNtQekOgTbw==",
 				"shasum": "8f61566d5c3119ce060a032e69fcba36fb8aeed3",
 				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.13.1-next.cd6172eb0.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Tvv5q4nNzkSTOUOQKPh4CGIfcwpL4RP5TfMWzMXmTzONwbyNrrPdIqETOLYCE6mGwdSGDu/Ftv0hNtQekOgTbw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHgBMpqeJ5YjNQlXi9/xWwfARfMFK2G5iO/FpUMDj2MYAiASV4yFhIPbR1sRMeVg6FqD011AcNR4hjKQcqw16TQnGQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44865
+			},
+			"engines": {
+				"npm": ">=8.19.2",
+				"node": ">=18.12.0"
+			}
+		},
+		"5.13.1-next.a9f418477.0": {
+			"name": "@wordpress/babel-plugin-import-jsx-pragma",
+			"version": "5.13.1-next.a9f418477.0",
+			"peerDependencies": {
+				"@babel/core": "^7.25.7"
+			},
+			"dist": {
+				"integrity": "sha512-9IkJJRGr+ob/yBJMxNZfnyuQ5edgExevEM2fRjC43LdXKU1YNQqHC7g4EIj8KRvxh+GzQrHHjNCDBd2erCWAAg==",
+				"shasum": "8b7fddf672ca92cc6d02165ffc2222f23e643a2b",
+				"tarball": "https://registry.npmjs.org/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-5.13.1-next.a9f418477.0.tgz",
 				"fileCount": 4,
 				"unpackedSize": 44865,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHgBMpqeJ5YjNQlXi9/xWwfARfMFK2G5iO/FpUMDj2MYAiASV4yFhIPbR1sRMeVg6FqD011AcNR4hjKQcqw16TQnGQ=="
+						"sig": "MEUCIQDBGp26zqqLhrJlp1MV6IuDHpxeS+pjVJM6iY/KLYXJhQIgYIXXu9n7XOGrz+H4hzuyE0Q3rKiZPtwYCwJIImfn1nc="
 					}
 				]
 			},
