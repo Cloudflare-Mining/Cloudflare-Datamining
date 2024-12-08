@@ -1,7 +1,7 @@
 {
 	"name": "@sumor/logger",
 	"dist-tags": {
-		"latest": "1.2.9"
+		"latest": "1.2.10"
 	},
 	"versions": {
 		"1.0.0": {
@@ -434,6 +434,43 @@
 				"@sumor/i18n": "^1.0.1"
 			},
 			"devDependencies": {
+				"jest": "^29.7.0",
+				"axios": "^1.6.8",
+				"husky": "^9.0.11",
+				"eslint": "^8.57.0",
+				"prettier": "^3.2.5",
+				"@sumor/error": "^1.0.4",
+				"@jest/globals": "^29.7.0",
+				"jest-html-reporter": "^3.10.2",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-standard": "^17.1.0",
+				"eslint-plugin-prettier": "^5.1.3"
+			},
+			"dist": {
+				"shasum": "f529088f3468558de69520f65bf50023530feb1f",
+				"tarball": "https://registry.npmjs.org/@sumor/logger/-/logger-1.2.9.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-DqSkScUytHxYjxac03ZU3IlBgN1Px33JJK7qhqMOtaTJezM7U4ejzeXNLrhqgE5gEe+aCPfzVtywNSoIKmGZJA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAR1y2a/iRxDHxwnchii7PbZMtS9mLFdS+whmnEbpRpTAiAH6zWE62ZLDp/wu4I2TgPXxD6nmid1iq/PGVV0ju6QSw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14940
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"1.2.10": {
+			"name": "@sumor/logger",
+			"version": "1.2.10",
+			"dependencies": {
+				"chalk": "^5.3.0",
+				"@sumor/i18n": "^1.0.1"
+			},
+			"devDependencies": {
 				"@sumor/error": "^1.0.4",
 				"@jest/globals": "^29.7.0",
 				"axios": "^1.6.8",
@@ -447,15 +484,15 @@
 				"prettier": "^3.2.5"
 			},
 			"dist": {
-				"integrity": "sha512-DqSkScUytHxYjxac03ZU3IlBgN1Px33JJK7qhqMOtaTJezM7U4ejzeXNLrhqgE5gEe+aCPfzVtywNSoIKmGZJA==",
-				"shasum": "f529088f3468558de69520f65bf50023530feb1f",
-				"tarball": "https://registry.npmjs.org/@sumor/logger/-/logger-1.2.9.tgz",
+				"integrity": "sha512-kSFRVGu2wVzv89qlh2N844SqwJ1cd6KkmXTFly7zETPJbR1TJYaPCpNogtU8ivdEpcnfAJNF7VEp43AZaG/zbQ==",
+				"shasum": "9611bee2ee927a37990c0f03c9d0f25ac32bbc09",
+				"tarball": "https://registry.npmjs.org/@sumor/logger/-/logger-1.2.10.tgz",
 				"fileCount": 15,
-				"unpackedSize": 14940,
+				"unpackedSize": 14941,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIAR1y2a/iRxDHxwnchii7PbZMtS9mLFdS+whmnEbpRpTAiAH6zWE62ZLDp/wu4I2TgPXxD6nmid1iq/PGVV0ju6QSw=="
+						"sig": "MEYCIQDS4XHb3gJOBLGxsPy5T+aELpd807s4ozbXgDydku5RzgIhAMosQU4aYLzi+kTTj5s1jD06DoF8FwHKk6CbneMlQcDX"
 					}
 				]
 			},
