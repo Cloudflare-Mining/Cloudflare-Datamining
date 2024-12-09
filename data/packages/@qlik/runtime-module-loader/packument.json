@@ -1,7 +1,7 @@
 {
 	"name": "@qlik/runtime-module-loader",
 	"dist-tags": {
-		"latest": "1.0.14"
+		"latest": "1.0.15"
 	},
 	"versions": {
 		"0.0.2": {
@@ -1490,6 +1490,40 @@
 				"@qlik/embed-runtime": "^1.2.3"
 			},
 			"devDependencies": {
+				"tsup": "^8.3.0",
+				"eslint": "^8.57.0",
+				"rimraf": "^6.0.1",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.9",
+				"@qlik/tsconfig": "^0.2.7",
+				"@qlik/eslint-config": "^0.8.1",
+				"@qlik/prettier-config": "^0.4.18"
+			},
+			"dist": {
+				"shasum": "1c9dd854f653042f5e5805c7cce868c8e5a812e3",
+				"tarball": "https://registry.npmjs.org/@qlik/runtime-module-loader/-/runtime-module-loader-1.0.14.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-++fzUoHPVNEk2K+p5XjNlw2OIiL2bBgA7WJPi1HccOTZbT/V+JhtHEj61ybCe+cbg8VxWiAU52YoPwH3ZpWOyg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDI9xrqDaT4atmPlo+2I9AoCExe0GybPhVDIZ6DWm3fmgIhAMeWixnSRp4uDwqkFYGoYyrp+Pp8gU2cHsu3W3SVe+at",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 12954
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"1.0.15": {
+			"name": "@qlik/runtime-module-loader",
+			"version": "1.0.15",
+			"dependencies": {
+				"@qlik/embed-runtime": "^1.2.4"
+			},
+			"devDependencies": {
 				"@qlik/eslint-config": "^0.8.1",
 				"@qlik/prettier-config": "^0.4.18",
 				"@qlik/tsconfig": "^0.2.7",
@@ -1501,15 +1535,15 @@
 				"typescript": "^5.6.3"
 			},
 			"dist": {
-				"integrity": "sha512-++fzUoHPVNEk2K+p5XjNlw2OIiL2bBgA7WJPi1HccOTZbT/V+JhtHEj61ybCe+cbg8VxWiAU52YoPwH3ZpWOyg==",
-				"shasum": "1c9dd854f653042f5e5805c7cce868c8e5a812e3",
-				"tarball": "https://registry.npmjs.org/@qlik/runtime-module-loader/-/runtime-module-loader-1.0.14.tgz",
+				"integrity": "sha512-Y/9wmgYt2BpxCdID72XUFD7J3CfyhTSCZw9UVVneVxFXlFJlQQKSzvV9Cx1YICmWdoWo/Brz92CRyI52qMOFfA==",
+				"shasum": "3c372a9f70ee635779690d10e5d1867ac3411bf1",
+				"tarball": "https://registry.npmjs.org/@qlik/runtime-module-loader/-/runtime-module-loader-1.0.15.tgz",
 				"fileCount": 6,
-				"unpackedSize": 12954,
+				"unpackedSize": 13048,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDI9xrqDaT4atmPlo+2I9AoCExe0GybPhVDIZ6DWm3fmgIhAMeWixnSRp4uDwqkFYGoYyrp+Pp8gU2cHsu3W3SVe+at"
+						"sig": "MEUCIHknBzhs6mWbQMJh9ytNtWn15hDWxE8ggBQBQioXs2QEAiEA8CrA69tJ+zlsyx1GPGyAVZYjnGXT/0BGxJ5xOP420/4="
 					}
 				]
 			},

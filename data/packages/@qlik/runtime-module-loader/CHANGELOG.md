@@ -1,5 +1,12 @@
 # @qlik/runtime-module-loader
 
+## 1.0.15
+
+### Patch Changes
+
+- Updated dependencies [c32da18]
+  - @qlik/embed-runtime@1.2.4
+
 ## 1.0.14
 
 ### Patch Changes
