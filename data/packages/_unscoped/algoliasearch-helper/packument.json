@@ -4,7 +4,7 @@
 		"beta": "2.0.0-rc5",
 		"legacy": "2.28.1",
 		"canary": "0.0.0-43cd936",
-		"latest": "3.22.5"
+		"latest": "3.22.6"
 	},
 	"versions": {
 		"1.0.0": {
@@ -9780,6 +9780,45 @@
 				"@algolia/events": "^4.0.1"
 			},
 			"devDependencies": {
+				"pug": "2.0.3",
+				"exorcist": "1.0.1",
+				"uglify-js": "2.8.29",
+				"browserify": "14.5.0",
+				"handlebars": "4.1.0",
+				"metalsmith": "2.5.1",
+				"@metalsmith/sass": "1.4.0",
+				"pretty-bytes-cli": "2.0.0",
+				"jsdoc-to-markdown": "8.0.0",
+				"metalsmith-layouts": "1.8.1",
+				"metalsmith-in-place": "1.4.4",
+				"metalsmith-markdown": "1.3.0",
+				"metalsmith-metallic": "1.0.0",
+				"jest-watch-typeahead": "0.3.0"
+			},
+			"peerDependencies": {
+				"algoliasearch": ">= 3.1 < 6"
+			},
+			"dist": {
+				"shasum": "2fcc26814e10a121a2c2526a1b05c754061c56c0",
+				"tarball": "https://registry.npmjs.org/algoliasearch-helper/-/algoliasearch-helper-3.22.5.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-lWvhdnc+aKOKx8jyA3bsdEgHzm/sglC4cYdMG4xSQyRiPLJVJtH/IVYZG3Hp6PkTEhQqhyVYkeP9z2IlcHJsWw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAV3GiCywQdTRaXJUibGeFb0CqWnx4saet8TciyufoPwAiEA0ma4tAlkM79o2hq95to3SbSbYuWBzyWJCWP21pnNWjY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1105817
+			}
+		},
+		"3.22.6": {
+			"name": "algoliasearch-helper",
+			"version": "3.22.6",
+			"dependencies": {
+				"@algolia/events": "^4.0.1"
+			},
+			"devDependencies": {
 				"@metalsmith/sass": "1.4.0",
 				"browserify": "14.5.0",
 				"exorcist": "1.0.1",
@@ -9799,15 +9838,15 @@
 				"algoliasearch": ">= 3.1 < 6"
 			},
 			"dist": {
-				"integrity": "sha512-lWvhdnc+aKOKx8jyA3bsdEgHzm/sglC4cYdMG4xSQyRiPLJVJtH/IVYZG3Hp6PkTEhQqhyVYkeP9z2IlcHJsWw==",
-				"shasum": "2fcc26814e10a121a2c2526a1b05c754061c56c0",
-				"tarball": "https://registry.npmjs.org/algoliasearch-helper/-/algoliasearch-helper-3.22.5.tgz",
+				"integrity": "sha512-F2gSb43QHyvZmvH/2hxIjbk/uFdO2MguQYTFP7J+RowMW1csjIODMobEnpLI8nbLQuzZnGZdIxl5Bpy1k9+CFQ==",
+				"shasum": "6a31c67d277a32f3f7ae1b8a6e57ca73f1e1a0b0",
+				"tarball": "https://registry.npmjs.org/algoliasearch-helper/-/algoliasearch-helper-3.22.6.tgz",
 				"fileCount": 37,
-				"unpackedSize": 1105817,
+				"unpackedSize": 1106558,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAV3GiCywQdTRaXJUibGeFb0CqWnx4saet8TciyufoPwAiEA0ma4tAlkM79o2hq95to3SbSbYuWBzyWJCWP21pnNWjY="
+						"sig": "MEUCICUGNrH2Fj93gQtdurqw0kTO+ub1qPefIWJXe5GzXXNHAiEAgNFVLnrzhNEFWSUxXVh7KEX/p2fNnMvHuYKJtxjaD98="
 					}
 				]
 			}

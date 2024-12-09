@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.10.0",
-		"beta": "0.0.0-5449fe54b"
+		"beta": "0.0.0-a29a41ca6"
 	},
 	"versions": {
 		"0.1.0": {
@@ -17422,6 +17422,80 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-5449fe54b",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241205.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "a082ea35949fa1f1a5e0ae486ccc48823eb3eb71",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-5449fe54b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-3YyFKXSQIV5CVLzo2nl2CcCij7xnpT9bdcykTB5R+tWex+493Sv+FYzMARvCezv2RlscSMV8NrbJJjAH6Vnikg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHrFZZOZqy7n/1XesVpRL02h5F4s6vdXQfoR8WXCOLAaAiEA5wSgxBBg9r1qail2vMofMadL5C5+DSC5wyCqDnJgMN0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044546
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-90fa58b5b": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-90fa58b5b",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241205.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "a3a72eca47a83db24a0ee211205d2c40b6bc6680",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-90fa58b5b.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7EtSSx2uKYzlqS5eLhn7MT4CZmsvu/lJubwdpSlv3Ka6poxz2SSdNzGTkLGZ5Ze3zGpCwPruRtW4bdzd8Vqo6g==",
+				"signatures": [
+					{
+						"sig": "MEUCIBnDqSuu+Kl5bqFLJunfTJSyKqnabDuA6Aq8TsR8pic0AiEAgQ1OyoXPfHR9zyKv8L+azEn3LB/q9ba1PQ01NRBbTF8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044546
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-a29a41ca6": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-a29a41ca6",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -17435,19 +17509,19 @@
 				"toucan-js": "^3.3.1",
 				"typescript": "~5.6.3",
 				"vitest": "~2.1.8",
-				"@cloudflare/workers-tsconfig": "0.0.0",
-				"@cloudflare/eslint-config-worker": "1.1.0"
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-3YyFKXSQIV5CVLzo2nl2CcCij7xnpT9bdcykTB5R+tWex+493Sv+FYzMARvCezv2RlscSMV8NrbJJjAH6Vnikg==",
-				"shasum": "a082ea35949fa1f1a5e0ae486ccc48823eb3eb71",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-5449fe54b.tgz",
+				"integrity": "sha512-2l8MQhlnVh2I1A88rwDlUq+8igooLKus5CTG+lYFISjV5yiOOp59sgPrWkuEMT9VDDXOy/jHXGqtevKFp/pYMQ==",
+				"shasum": "a4a0df727d87b6e55af51dad915301eae6dcf68f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-a29a41ca6.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1044546,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHrFZZOZqy7n/1XesVpRL02h5F4s6vdXQfoR8WXCOLAaAiEA5wSgxBBg9r1qail2vMofMadL5C5+DSC5wyCqDnJgMN0="
+						"sig": "MEQCIDDa017QJ0zwHKC3h1f7BMLCWNysMxgYGiU4anzrst+eAiBlAU7bjGQ8pmoI94P5i6o64xegoOplxKgUicWPySuNJA=="
 					}
 				]
 			},
