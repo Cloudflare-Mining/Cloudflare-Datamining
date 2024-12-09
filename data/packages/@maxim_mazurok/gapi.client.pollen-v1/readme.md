@@ -1,14 +1,14 @@
-# TypeScript typings for Air Quality API v1
+# TypeScript typings for Pollen API v1
 
-The Air Quality API.
-For detailed description please check [documentation](https://developers.google.com/maps/documentation/air-quality).
+The Pollen API.
+For detailed description please check [documentation](https://developers.google.com/maps/documentation/pollen).
 
 ## Installing
 
-Install typings for Air Quality API:
+Install typings for Pollen API:
 
 ```
-npm install @types/gapi.client.airquality-v1 --save-dev
+npm install @types/gapi.client.pollen-v1 --save-dev
 ```
 
 ## Usage
@@ -26,19 +26,19 @@ Then load api client wrapper:
 
 ```typescript
 gapi.client.load(
-  'https://airquality.googleapis.com/$discovery/rest?version=v1',
+  'https://pollen.googleapis.com/$discovery/rest?version=v1',
   () => {
     // now we can use:
-    // gapi.client.airquality
+    // gapi.client.pollen
   }
 );
 ```
 
 ```typescript
 // Deprecated, use discovery document URL, see https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md#----gapiclientloadname----version----callback--
-gapi.client.load('airquality', 'v1', () => {
+gapi.client.load('pollen', 'v1', () => {
   // now we can use:
-  // gapi.client.airquality
+  // gapi.client.pollen
 });
 ```
 
@@ -66,21 +66,11 @@ gapi.auth.authorize(
 );
 ```
 
-After that you can use Air Quality API resources: <!-- TODO: make this work for multiple namespaces -->
+After that you can use Pollen API resources: <!-- TODO: make this work for multiple namespaces -->
 
 ```typescript
 /*
-The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories.
+Returns up to 5 days of daily pollen information in more than 65 countries, up to 1km resolution.
 */
-await gapi.client.airquality.currentConditions.lookup({});
-
-/*
-Returns air quality forecast for a specific location for a given time range.
-*/
-await gapi.client.airquality.forecast.lookup({});
-
-/*
-Returns air quality history for a specific location for a given time range.
-*/
-await gapi.client.airquality.history.lookup({});
+await gapi.client.pollen.forecast.lookup({});
 ```
