@@ -1,7 +1,7 @@
 {
 	"name": "trix",
 	"dist-tags": {
-		"latest": "2.1.9"
+		"latest": "1.3.4"
 	},
 	"versions": {
 		"0.9.0": {
@@ -1688,6 +1688,31 @@
 					}
 				],
 				"unpackedSize": 525595
+			}
+		},
+		"1.3.4": {
+			"name": "trix",
+			"version": "1.3.4",
+			"dependencies": {
+				"dompurify": "^3.2.3"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.17.8",
+				"@babel/preset-env": "^7.26.0",
+				"svgo": "^0.6.1"
+			},
+			"dist": {
+				"integrity": "sha512-SI2arlq6qky+G63jDOHWfSy7/Wtmf+GVOflWvkhf6bbjtkRvP1RQxGaRWmk876OgckZgh3fD2GFPJKwPHl2PLg==",
+				"shasum": "5049dbf8115ba9a8e8def39fae84d047f69b19ab",
+				"tarball": "https://registry.npmjs.org/trix/-/trix-1.3.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 526463,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC/cEmI0/jOlHRAHBeQcFwevoWBD8sfaKVSuQm3gahyeQIhAKQ6GeOX86kIK72zWBRnOlw2VFJ5yd1lY1rBz5/SM4XJ"
+					}
+				]
 			}
 		}
 	}
