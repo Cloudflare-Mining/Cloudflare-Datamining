@@ -1,0 +1,104 @@
+{
+	"name": "@appolo/events",
+	"dist-tags": {
+		"latest": "8.0.2"
+	},
+	"versions": {
+		"8.0.0": {
+			"name": "@appolo/events",
+			"version": "8.0.0",
+			"dependencies": {},
+			"devDependencies": {
+				"tslib": "^2.0.1",
+				"@types/chai": "^4.2.12",
+				"@types/mocha": "^8.0.3",
+				"@types/node": "^14.6.2",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.3",
+				"typescript": "^4.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-zcPBFI7tJgTa/gQKfEodv9TMZGUXER7VrmNQvAwGk+olX64gnHm0IkR1/RntpOMpdNqg0QgB7SryfXR6DPKCaA==",
+				"shasum": "645d9671a30991d31a87f4cc3f1be35f5a559418",
+				"tarball": "https://registry.npmjs.org/@appolo/events/-/events-8.0.0.tgz",
+				"fileCount": 29,
+				"unpackedSize": 58483,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfTmrPCRA9TVsSAnZWagAA7dUP+gONOvB/goC6FtATv3En\nGDn7F5Bk1oz04BWILhNLYx7ugBhKuVF0JeZsCg7/ipemLQ08wHuA4rddZDy0\nOmMPlOUhmQ06iCRSHLoXtQ5tnImajXS4W4qXxIjGhmrqHmiCqwk6ydDety8S\nJ/aGZzEudBnaZTYcF+w6sB8CDSAb/DD8f+2F5waJ0RZdcXEGtFFtd+28fsHn\ndwXhIM2Q3mJv1pKjPWTjoEL9O/N+HjY/rm8dMzBnGKZVe1bUjcWLZHy7F2/4\ngQYMxvQiTaaRrhpbAX/NuziVihhsg90ZGCJRqxX6yL8xa0HG4muh0WV20/vZ\nAb6K1uAgLczdCFBO1MPwmULLOPZEtHWsBf//7pKDCXNk6P5CLITKTiXJR7wJ\nsikW2yAhJpspT0L7CLytg2QxE9ovrX7QzbZB4QF0exnGOG6hFve+p15qor+A\neey5owr9aihhpgtHAsDiRjqaAXcwe1B0ami2Eo6C5HILiTuZbw2ZeKqB6bmw\n+KdmDm4EkJXf1oWEirRrfypbti3r92AejQ5lJtYb1eBWR+/FvUrigCbVuzMV\ned9ogCo1nmtsD/1/sTrw4cPILnLtuvtL3tHXYqdefWd++0RJtntTkjA9ETbj\nU7ZWymEeY7ui/upfwry0tIjGpjGNMsWtlz8Ee3yZrdGNFFpQxZ67eq54NmOq\n9kgN\r\n=Mkxh\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDwDPwXo7sKwCYSYyHxy6WakinLwSkESEzx+LR/GAGhTwIhAKkHrtl2AfDL9fKX6srduxqQmwTw4YGCnqDcYdjjsJw3"
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 8.4.x",
+				"npm": ">= 5.3.x"
+			}
+		},
+		"8.0.1": {
+			"name": "@appolo/events",
+			"version": "8.0.1",
+			"dependencies": {},
+			"devDependencies": {
+				"tslib": "^2.0.1",
+				"@types/chai": "^4.2.12",
+				"@types/mocha": "^8.0.3",
+				"@types/node": "^14.6.2",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.3",
+				"typescript": "^4.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-ABBZMV0uNaejjN6XYTt/B2t2+ObUTkq0vWwVEui/31pnA9BC2qvvuc7ATJtcKF1HAzHcwo98+MXRT/mcJlimKw==",
+				"shasum": "e8cf412bb4f4a2147728e71048ed0e267ca0ec91",
+				"tarball": "https://registry.npmjs.org/@appolo/events/-/events-8.0.1.tgz",
+				"fileCount": 29,
+				"unpackedSize": 58475,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfdeDGCRA9TVsSAnZWagAANPkP/1pacaQi96ss+fnqXf1y\nwBRWFzMAg0dcBs4fwhDdK2/DoQoyuKsOXo+lgtk8x/AZWnoV2rW8LCKjWbuu\nFFDWxllaFzcVoWHp9ZpruaDqcssxM4XhfFaLpavx2gmROf/aKOloS4IvYb2U\nqtrEUmnib1qHWZ4/oF9MybGv90+Z2osFVd328vl0X0DT+DYiOgD24coWyJsS\n8MWz3UB8I2QyIIzMGZxR3AOe6SRiSxConOjUjeRIig0sj1g5rY0B+64kcnqN\n0rtfRXUve76P3H+rTKWRZ9ZwwtjdJEZxkKqgd61qa6rgkn2eVDmooCHDcwnQ\n7ZlOqSk0/uilknowCvRlCVMfmKiqfeC5fjtTZV31UZXRQNu58DVbY5jV67kv\nVFaN/WaMzxptfVpSzVScjb6p0pcyF+n9ioTZbgTnFZSKQJq5egAlUlQuD6wi\n1Fxgp4UBrHs806b3fH305jib+I4FByy93Ibi/z5HyMHablhEKav8GeS9zzio\nUiTTGzcop7+hs4LxJOk0YkQju2BOAvFP5EtY7J2o6BBIJW8npdWn8sAaoz+F\nujL8lEyfgNWxEd3oMt2v89v0pjG0hD/H+Rwoz1UegfIH46x5DHIGJVBeqFfZ\n4lHG0ngaBYW1iJ22+ZsNrcu49AHT8wkWX4rKgb8HDdkkdwm5Sjy9WwTeLEHm\nqzsX\r\n=Fhni\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCC98Yx7vCArAblUmdGVPPoxG9/L2Q8vyFjLHnJOvd9gQIgURS47rb+ZKrMhrGcYqyuX6gQkEThNWQikGDnCLbD29I="
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 12.x.x",
+				"npm": ">= 6.x.x"
+			}
+		},
+		"8.0.2": {
+			"name": "@appolo/events",
+			"version": "8.0.2",
+			"dependencies": {},
+			"devDependencies": {
+				"tslib": "^2.0.1",
+				"@types/chai": "^4.2.12",
+				"@types/mocha": "^8.0.3",
+				"@types/node": "^14.6.2",
+				"chai": "^4.2.0",
+				"mocha": "^8.1.3",
+				"typescript": "^4.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-i4IbvmFic+U9P/TFneABC0nlZrhbjlr0PgJkKaXjziG8H+3929rf2mFcyY6acjZ+NPBrf9NFDFdX/22Gp6Iyow==",
+				"shasum": "2dc7e6d422f8347c4aa728895bf641e1a89521c1",
+				"tarball": "https://registry.npmjs.org/@appolo/events/-/events-8.0.2.tgz",
+				"fileCount": 50,
+				"unpackedSize": 67443,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfnooqCRA9TVsSAnZWagAA5MUP+wUdbT01iOol67miRV9Y\ndiJ74Ereuhn1NtEOvFU54wT3u5DHis5Aok7GpE0mrXt63PxzC0ajI/+14/TS\nt02Cu3HFFBvl/CwuzgszOyda9YFxR5QectQDYf7n3bzD4xum/VOqAVbmOhC1\nB6KIgd3SrK9BiNSb7jIPOgqagj0L5H0bhClXni2oYqh9X+G8blq8257Tuq5w\njy1KVwtALwsHpLV8HuG5v/RLg63HiDiGr09/vHswG7ZYSTBa78v22i+CYZbB\ntqgbkpjTBwO/aLH6WjHyA1ziYkoCVv4hArzrvvV3qfnIJ0ig9SQG8yGrBJeu\nbp6EOUPidvllU9nMBbTZGyyDJ4lJF/GCeBW+MkuRwkUId1TipN0n5H09A6p0\n561A8OzNoeP0kK0qW6rylnHn1mj/kBkVqGRnwhkE3mCO7Ij/VD2ViVBurEhp\nuD3pnTee/ahEDRZ9jtyeZexVpdxKmxWl8MrsR/b0gHv5ka6k+omPx1E93VWE\nNbMPfOi/0JYvaF5fgG1A3QUM0YcMyiZmq2btMbaiIy6pdQMuiolrq4Cf+XyS\nIeIcK0NtEl0gfE6YoFaRPMjYRWLvil1gutgnXbL0EbrcRkNyOOSPflG58j42\nuhJ48O6ShxA3pV6WZAgbacOBwfgIcXn1XCUsgd8IHgAvf8IH+n/t6SQGjcdl\nEtDL\r\n=OWRC\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDzsHJvb/PRSQtAK6QcXVQlvQ2iM61ioTl4ylhZi0PFUAIhAO5tqMr//mYUUm6xrYjCSkMLgsPCsYQidV/LcrPdhrw+"
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 12.x.x",
+				"npm": ">= 6.x.x"
+			}
+		}
+	}
+}

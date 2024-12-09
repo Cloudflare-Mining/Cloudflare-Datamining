@@ -4,8 +4,8 @@
 		"test": "1.0.0-beta.2",
 		"main": "1.0.0-alpha.181",
 		"experimental": "1.0.0-experimental.183",
-		"latest": "1.13.0",
-		"canary": "1.9.1-canary.64"
+		"canary": "1.9.1-canary.64",
+		"latest": "1.13.1"
 	},
 	"versions": {
 		"1.0.0-beta.1": {
@@ -29960,6 +29960,85 @@
 			"name": "@powerhousedao/design-system",
 			"version": "1.13.0",
 			"dependencies": {
+				"zod": "^3.23.8",
+				"clsx": "^2.1.1",
+				"cmdk": "^1.0.4",
+				"viem": "^2.16.1",
+				"wagmi": "^2.12.17",
+				"mathjs": "^13.1.1",
+				"date-fns": "^4.1.0",
+				"change-case": "^5.4.4",
+				"date-fns-tz": "^3.2.0",
+				"usehooks-ts": "^3.1.0",
+				"react-select": "^5.8.0",
+				"document-model": "2.10.0",
+				"react-toastify": "^10.0.4",
+				"tailwind-merge": "^2.5.2",
+				"natural-orderby": "^4.0.0",
+				"react-hook-form": "^7.53.0",
+				"react-number-format": "^5.4.2",
+				"tailwindcss-animate": "^1.0.7",
+				"@radix-ui/react-slot": "^1.1.0",
+				"@radix-ui/react-tabs": "^1.1.1",
+				"@tanstack/react-query": "^5.49.2",
+				"@powerhousedao/scalars": "1.12.0",
+				"@radix-ui/react-dialog": "^1.0.5",
+				"@radix-ui/react-switch": "^1.1.1",
+				"@internationalized/date": "^3.5.6",
+				"@radix-ui/react-popover": "^1.1.2",
+				"@radix-ui/react-tooltip": "^1.1.2",
+				"@tanstack/react-virtual": "^3.8.1",
+				"@radix-ui/react-checkbox": "^1.1.2",
+				"class-variance-authority": "^0.7.0",
+				"@radix-ui/react-separator": "^1.1.0",
+				"@radix-ui/react-radio-group": "^1.2.1",
+				"react-multi-select-component": "^4.3.4",
+				"@radix-ui/react-dropdown-menu": "^2.1.2",
+				"@radix-ui/react-visually-hidden": "^1.1.0"
+			},
+			"devDependencies": {
+				"jsdom": "^24.0.0",
+				"react": "^18.3.1",
+				"camelcase": "^8.0.0",
+				"cross-env": "^7.0.3",
+				"react-dom": "^18.3.1",
+				"@types/jest": "^29.5.14",
+				"@types/react": "^18.3.12",
+				"autoprefixer": "^10.4.20",
+				"@prettier/sync": "^0.5.2",
+				"fast-xml-parser": "^4.3.4",
+				"@types/react-dom": "^18.3.1",
+				"@hookform/devtools": "^4.3.1",
+				"@testing-library/dom": "^10.4.0",
+				"@powerhousedao/config": "1.1.0",
+				"@testing-library/react": "^16.0.1",
+				"rollup-plugin-visualizer": "^5.12.0",
+				"@testing-library/jest-dom": "^6.6.3",
+				"@total-typescript/ts-reset": "^0.6.1",
+				"@testing-library/user-event": "^14.5.2"
+			},
+			"peerDependencies": {
+				"react": "^18.3.1",
+				"react-dom": "^18.3.1"
+			},
+			"dist": {
+				"shasum": "c85b44774a717d301d647c0f7ee45e714d855ff4",
+				"tarball": "https://registry.npmjs.org/@powerhousedao/design-system/-/design-system-1.13.0.tgz",
+				"fileCount": 1612,
+				"integrity": "sha512-sQTPBpjfk6KYS/rzl3wLUdtmsz0skb0i3cLqkg8QQIGxxfow86MUeoJJb6NgVhb8TSSvuFBIZ7D6gTRKy/360Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIEwigV3/cgEOLSBl/OYLVwEM/frd4migNH1PZpwiUmSjAiEAuC+5OPJhy1G+Q2MmcZlKONur677ODLSV+3z+dLNnAdc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2033855
+			}
+		},
+		"1.13.1": {
+			"name": "@powerhousedao/design-system",
+			"version": "1.13.1",
+			"dependencies": {
 				"@internationalized/date": "^3.5.6",
 				"@radix-ui/react-dialog": "^1.0.5",
 				"@radix-ui/react-dropdown-menu": "^2.1.2",
@@ -29993,8 +30072,8 @@
 				"@radix-ui/react-switch": "^1.1.1",
 				"class-variance-authority": "^0.7.0",
 				"cmdk": "^1.0.4",
-				"@powerhousedao/scalars": "1.12.0",
-				"document-model": "2.10.0"
+				"document-model": "2.10.0",
+				"@powerhousedao/scalars": "1.12.0"
 			},
 			"devDependencies": {
 				"@hookform/devtools": "^4.3.1",
@@ -30015,22 +30094,22 @@
 				"react": "^18.3.1",
 				"react-dom": "^18.3.1",
 				"rollup-plugin-visualizer": "^5.12.0",
-				"@powerhousedao/config": "1.1.0"
+				"@powerhousedao/config": "1.1.1"
 			},
 			"peerDependencies": {
 				"react": "^18.3.1",
 				"react-dom": "^18.3.1"
 			},
 			"dist": {
-				"integrity": "sha512-sQTPBpjfk6KYS/rzl3wLUdtmsz0skb0i3cLqkg8QQIGxxfow86MUeoJJb6NgVhb8TSSvuFBIZ7D6gTRKy/360Q==",
-				"shasum": "c85b44774a717d301d647c0f7ee45e714d855ff4",
-				"tarball": "https://registry.npmjs.org/@powerhousedao/design-system/-/design-system-1.13.0.tgz",
+				"integrity": "sha512-/GapM/mibD/nMCkZAtjvLNWe95v9AR/DCs2jVspGJNWAPDvR2PaXTuJwsiz+1DyjjorlgaHRMEcIwXm2Zrk4EA==",
+				"shasum": "79ee4f7ea20b5b645b517b974f978ffdbd5b6945",
+				"tarball": "https://registry.npmjs.org/@powerhousedao/design-system/-/design-system-1.13.1.tgz",
 				"fileCount": 1612,
 				"unpackedSize": 2033855,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEwigV3/cgEOLSBl/OYLVwEM/frd4migNH1PZpwiUmSjAiEAuC+5OPJhy1G+Q2MmcZlKONur677ODLSV+3z+dLNnAdc="
+						"sig": "MEUCIQD5yt/ZWQAkhNumoGBF3bWgvL8SUesaIFtvOTYGS5XWzAIgPxUX/GJNY+AW05kEg5bVqG1suEp1wUUKCxDAb9YU4gI="
 					}
 				]
 			}
