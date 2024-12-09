@@ -677,6 +677,42 @@
 			"caseStudies": {
 				"nodes": [
 					{
+						"id": "5a7e31d5-4720-5ae9-92f2-aab37de0b93c",
+						"contentfulId": "4hs12SnbjTID47t6KWgoaf",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y9ngWgmpOfpiNtOyYdGrU/55c75df2f4c528e989c823c0e7e5a6ad/SORACOM_Logo.png"
+							},
+							"description": "Soracom logo"
+						},
+						"nameUrlSlug": "soracom",
+						"shortDescription": "IoT connectivity provider Soracom improves the stability and performance of their dashboard service while increasing development efficiency.",
+						"longDescription": "## Soracom delivers responsive IoT dashboard experiences and enhances development efficiency with Cloudflare\n\nSoracom is dedicated to democratizing the Internet of Things (IoT), making it possible for anyone to turn IoT ideas into reality. Offering multi-carrier cellular connectivity, the company enables organizations to connect and manage IoT devices and machine-to-machine (M2M) sensors, at scale, all over the world. Currently more than 6 million devices are connected through Soracom worldwide. \n\nThough headquartered in Japan, the company also has locations in the United States and United Kingdom, with a global team of 150 employees. The engineering team responsible for developing new services works as one cohesive unit, seamlessly collaborating across multiple time zones. Together, these engineers continuously enhance the Soracom platform and support a wide variety of services, including services that provide private connections to cloud environments, inline data processing, secure device provisioning, remote device access, and more.\n\n### [Facing the challenge of providing a stable IoT dashboard service]\n\nSoracom gives customers an easy way to visualize data collected from IoT devices through Soracom Lagoon — a customizable dashboard service. Lagoon also includes an alert feature that notifies users when data traffic exceeds certain thresholds. Traffic spikes are not uncommon: IoT systems and businesses can experience explosive growth in the number of clients after a commercial launch. \n\nSoracom had to make sure the company's own cloud-based infrastructure could handle the sudden increases in data traffic that trigger customer alerts. \"Soracom Lagoon uses a multi-tenant architecture, so we needed to ensure that a sudden spike in access from one account wouldn't impact the whole service,\" says Christian Inkster, principal software engineer at Soracom. \"Specifically, we had to find a way to cache responses for POST requests — which usually aren't cached — in a distributed manner.\"\n\nAs Soracom worked to maintain reliable dashboard experiences, the company also wanted to accelerate delivery of new features and services by streamlining software development. Soracom provides developers with access to subdomains within a development environment. But developers often had to wait for those subdomains to be allocated. \"Managing fine-grained control over the development environment took time, and that led to significant waits during simultaneous testing,\" says Inkster. \"We needed a way to improve the efficiency of providing secure access to resources.\"\n\n### [Delivering reliable, responsive dashboard experiences with Cloudflare]\n\nTo help ensure that Soracom could deliver a reliable dashboard, even when requests surged, the company searched for a serverless edge computing service that could cache responses for POST requests. \"The only platform that met our technical needs was Cloudflare Workers,\" says Inkster. \"With Workers, we have reduced the load on the origin server while enabling real-time processing of large amounts of data for dashboards.\"\n\nThis caching approach has enabled Soracom to provide the stability required for the dashboard service. \"Before the Cloudflare Worker POST cache implementation, a development server could be overwhelmed far too easily by concurrent requests for the feature to be viable,\" says Inkster. \"Now this is a part of the application we never have to worry about.\"\n\nDynamic routing plays a key role in maintaining stability. \"Dynamic routing to different instances allows us to easily split our service into two parts: one serving the web side of things and another handling scheduled tasks,\" says Inkster. \"Prior to the implementation of dynamic routing, instances would become unresponsive every few days. Since the implementation, instances are rock solid.\"\n\nThe Cloudflare platform has also helped Soracom dramatically enhance the speed and scale of processing. \"Complex POST requests that used to take over 10 seconds to complete are now returned in milliseconds with Cloudflare,\" says Inkster. \"No matter how many requests there are, we only need to access the origin server once a minute. That gives us high cost efficiency and scalability.\"\n\n### [Safeguarding applications from cyber attacks]\n\nThe Soracom team is capitalizing on key security capabilities from Cloudflare to protect applications from a variety of threats. \"Cloudflare automatically provides WAF and DDoS protection, which helps us maintain both security and flexibility,\" says Motokatsu Matsui, CTO of Soracom in Japan. \"As a result, we're delivering stable, high-speed, and secure dashboards to Soracom customers.\"\n\n### [Enhancing development efficiency and security]\n\nIn the past, the whole developer team shared a single staging environment, which slowed workflows. \"If someone was conducting testing, other developers would have to wait a day for the environment to be available,\" says Matsui. \n\nWith Cloudflare, the Soracom team has accelerated workflows by enabling developers to work in parallel. \"Thanks to Cloudflare, we've been able to easily issue subdomains through the Cloudflare Registrar and grant immediate access to developers,\" says Matsui. \"This has significantly reduced wait times for developers and greatly improved our development efficiency. Development is at least two or three times faster.\"\n\nCloudflare Workers also helps Soracom keep development and staging secure. \"With Workers, we were able to incorporate our own authentication mechanism, making it easy for us to grant cookie-based access to the development environment,\" says Matsui. \"This approach simplified the process of making a public URL accessible as a development environment while maintaining high security.\"\n\n### [Envisioning the future with Cloudflare]\n\nGiven the positive results with the Cloudflare Workers platform and security services, the Soracom team has begun investigating additional capabilities from Cloudflare. For example, the team is exploring Cloudflare Durable Objects, which helps organizations build high-performing stateful applications. \n\nIn the meantime, the company continues to benefit from Cloudflare capabilities in bringing new services to market. The release of Soracom Flux provides a perfect example. \"Soracom Flux is a low-code IoT application builder. With help from Cloudflare, we can use edge computing to perform initial processing of the massive amounts of data generated by IoT devices,\" explains Matsui. \"We can achieve cost efficiency and speed, making it a valuable solution for our customers.\"\n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2024-12-03",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Manufacturing"
+						],
+						"regionNew52520": [
+							"Asia-Pacific"
+						],
+						"primaryUseCases": [
+							"Accelerate digital properties",
+							"Deliver rich media experiences",
+							"Deploy custom code at the Edge",
+							"Secure websites & applications",
+							"Secure workforce applications, devices and networks"
+						],
+						"product": [
+							"Workers",
+							"WAF",
+							"DDoS Protection",
+							"Argo Smart Routing"
+						]
+					},
+					{
 						"id": "32fb1ab3-0cc6-5c5e-b9f8-b082c6745a25",
 						"contentfulId": "NcTR30jsCAbg63XFkcLUy",
 						"logo": {
