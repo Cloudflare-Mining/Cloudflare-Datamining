@@ -1,0 +1,1989 @@
+{
+	"name": "@smithy/core",
+	"dist-tags": {
+		"latest": "2.5.5"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@smithy/core",
+			"version": "1.0.0",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.5.0",
+				"@smithy/protocol-http": "^3.0.9",
+				"@smithy/middleware-retry": "^2.0.20",
+				"@smithy/middleware-serde": "^2.0.13",
+				"@smithy/middleware-endpoint": "^2.2.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "af744548cc2acbe81d3450790cb35e3ced08df32",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.0.tgz",
+				"fileCount": 63,
+				"integrity": "sha512-bJy/gY4UhWqQrG2iK+vX7is+eD8knu3NbHpIttloDRqL0Sdtww0N4CasRWeM6EsYgCtxvYX9u7SWwMZr1PWZNg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCVgXZj95wq6ROXzffxk+rKBfOkI6kA1ENlkECwgs8j3gIgFxKcFKCUyNkMREktQqp6dYuZBdoD16dN/WNM2nPpP7o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53178
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.0.1": {
+			"name": "@smithy/core",
+			"version": "1.0.1",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.5.0",
+				"@smithy/protocol-http": "^3.0.9",
+				"@smithy/middleware-retry": "^2.0.20",
+				"@smithy/middleware-serde": "^2.0.13",
+				"@smithy/middleware-endpoint": "^2.2.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "0a61df9a6b85eb38a4d514815cb5029c22a2042f",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.1.tgz",
+				"fileCount": 63,
+				"integrity": "sha512-3uiozhpvGGdMgOuT3uR1JsGT/eOCx88iL06/lxV57u1crtJqCaHW13QaeDfBvA0DuQZeOE0ClKXKWIRQo1mirg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHqOo0PRL3GPfV4sifI022pm9R6ei6NoAqixY7M3FwJ/AiEAhPCNNwxlGQuJTUjdc+c6PmLM19q4Ei3n+R9+Y1sDTjw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53196
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.0.2": {
+			"name": "@smithy/core",
+			"version": "1.0.2",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.6.0",
+				"@smithy/protocol-http": "^3.0.10",
+				"@smithy/middleware-retry": "^2.0.21",
+				"@smithy/middleware-serde": "^2.0.14",
+				"@smithy/middleware-endpoint": "^2.2.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "8d709d0227726088f06c8e704297a641b3d03eec",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.2.tgz",
+				"fileCount": 71,
+				"integrity": "sha512-IhQliUDw26EYIQzEw+jsIf5uFRKP1uZsHY6DtTfFLtePTrZlUFxu4gneH2VAHG5uCKt/DGDHGu7KBjs7Fw7tBg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCbJZNRh3xFiTzUW7UfyMIz0wI0ICIpKFzYxji0KLl2rgIhAPLjawKimR2QfS56+HaP7Dl7TyqMpeKyeUqG4shubw1H",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 56058
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.0.3": {
+			"name": "@smithy/core",
+			"version": "1.0.3",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/middleware-retry": "^2.0.22",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.2"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "aa2cff2e9a580ceba336ba81319c316ec9269b42",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.3.tgz",
+				"fileCount": 71,
+				"integrity": "sha512-pWGw4GEF5KMmgIvCfwvndxfGkowmr2tiVL+hiSIzW+noNxRcIw68q61msR7icqdUGa9FcfxnDv0ddxo962M8Wg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDPFwmceopW3O0j16Maqbc81gCQqNe45cFg62ps8Gp9mAiByuxuC0O7cz9U/7yVVzKT41/AccUJAGR1qL2zbKLsEyg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 56068
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.0.4": {
+			"name": "@smithy/core",
+			"version": "1.0.4",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/middleware-retry": "^2.0.23",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.2"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "9392360c19f4b2b8bd2f4285ecd4963cfc4a8011",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.4.tgz",
+				"fileCount": 71,
+				"integrity": "sha512-H5SG3va6U+4O+V4+X40kgbBOVXVfJje1HtzVTBkXxkAHXptIdha65CUOQxQt4ajBsf4hcmLqbFIPYOdbyUofHA==",
+				"signatures": [
+					{
+						"sig": "MEQCIEE5OPft5O1uZdaZ+I9+BYG9wqsHsBsKEJK5zBI+aW85AiBUCiqZAzrBbSjY9F1g08JDKvjrv8M+FYgVxJoSpuAqpQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 56068
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.0.5": {
+			"name": "@smithy/core",
+			"version": "1.0.5",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/middleware-retry": "^2.0.24",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "579229021cca94f996e2fb29734db2a7e11d064f",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.0.5.tgz",
+				"fileCount": 71,
+				"integrity": "sha512-OwDyOxFGeNOCLfln99+acQUEQ9KYaI/oZbljTZkJsFsBti/gDjq0O6FHFOxosF4i+IsCnBfXyl6u3RxuHUbCWw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEHGhc9eMxHAblWFxEvn1Amm9UxT4DQppPz1AFcXIhqhAiEAur9ea/6fkJjcwGsDEkDDKW7LD8+Ues64BLu8Xiso3/U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 56068
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.1.0": {
+			"name": "@smithy/core",
+			"version": "1.1.0",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/smithy-client": "^2.1.18",
+				"@smithy/middleware-retry": "^2.0.24",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "80e419842cfcaf93040b2cc546f1d12731555479",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.1.0.tgz",
+				"fileCount": 75,
+				"integrity": "sha512-k1zaT5S4K0bG67Q5TmPZ6PdWNQBTMQErChuDvTi+NTx21kKDt+/4YRidsK6nDbHizN6fn1bafUxrougZdKrpxA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCFiF1ADuGDK75owRLVPBbupKgnY1YWkWVjdRZsQ393jwIgYlghUCZFw8tAfFFnPwAO/UiPucQ9RphTvMQnI6AbrQw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 63113
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.2.0": {
+			"name": "@smithy/core",
+			"version": "1.2.0",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/smithy-client": "^2.1.18",
+				"@smithy/util-middleware": "^2.0.8",
+				"@smithy/middleware-retry": "^2.0.24",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "36286de5460905708221313b8b1faebf185761e6",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.2.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-l8R89X7+hlt2FEFg+OrNq29LP3h9DfGPmO6ObwT9IXWHD6V7ycpj5u2rVQyIis26ovrgOYakl6nfgmPMm8m1IQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoyyJIZRlq8n97TYQrU5leL1Rt0L23e4KneJv8jUCgwAIhALTLCWj3O9827nBV40XzYJ5lsBDphmyWVh2oY1IRe/Vc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67143
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.2.1": {
+			"name": "@smithy/core",
+			"version": "1.2.1",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.7.0",
+				"@smithy/protocol-http": "^3.0.11",
+				"@smithy/smithy-client": "^2.2.0",
+				"@smithy/util-middleware": "^2.0.8",
+				"@smithy/middleware-retry": "^2.0.25",
+				"@smithy/middleware-serde": "^2.0.15",
+				"@smithy/middleware-endpoint": "^2.2.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "2ee9b9894f3b2ce5eac4010ea1a85874b446f203",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.2.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-f6cwmMuHo7RIw/c184NBd2rGeGvGIX6p55HSrG5jfR3qkNYo80PHRfhzkJMq1+mv1ZjI5p8NhenWMMkIRJR4tw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDp3p2K5DRQBVyPN0Na+EU5k6HhdR1Qzg0OF3mPbxA9ewIgb2zofSmvraCGG15NmEcGmItV1y3kKm3OfzljNDtzJiE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67142
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.2.2": {
+			"name": "@smithy/core",
+			"version": "1.2.2",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.8.0",
+				"@smithy/protocol-http": "^3.0.12",
+				"@smithy/smithy-client": "^2.2.1",
+				"@smithy/util-middleware": "^2.0.9",
+				"@smithy/middleware-retry": "^2.0.26",
+				"@smithy/middleware-serde": "^2.0.16",
+				"@smithy/middleware-endpoint": "^2.3.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "9e10d6055f2a05c2c677737b9b0c4f7507a80c75",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.2.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-uLjrskLT+mWb0emTR5QaiAIxVEU7ndpptDaVDrTwwhD+RjvHhjIiGQ3YL5jKk1a5VSDQUA2RGkXvJ6XKRcz6Dg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCrMdw0d3RrbwFzo/0iYIPZMjoXhb5FrJydbTjAlZDLxQIhAOF3jmKVK3vfYn1KK4IFCHawwJIGOK9ff1aTpFi6q8IJ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67142
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.0": {
+			"name": "@smithy/core",
+			"version": "1.3.0",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.9.0",
+				"@smithy/protocol-http": "^3.1.0",
+				"@smithy/smithy-client": "^2.3.0",
+				"@smithy/util-middleware": "^2.1.0",
+				"@smithy/middleware-retry": "^2.1.0",
+				"@smithy/middleware-serde": "^2.1.0",
+				"@smithy/middleware-endpoint": "^2.4.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "7b1bb4984d18290acd80b97dc99e9a915585eb9f",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-XoU9eiICwhxZIyAdugijyD/YqsumDQ3FgGyFSJibO60qoUkdfMGSjnIvrTemjFBdnDsj4B26F/ZRxSR3PUJbJQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHxO2Nk6G8CbfhSDJ/Tlfpci3yZ3BWOuvVbnODX9mVaoAiBpMr6sNVKT6P6wDkiAQ0kstGyg+5twmrWXRxnWn0JMGQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67096
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.1": {
+			"name": "@smithy/core",
+			"version": "1.3.1",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.9.1",
+				"@smithy/protocol-http": "^3.1.1",
+				"@smithy/smithy-client": "^2.3.1",
+				"@smithy/util-middleware": "^2.1.1",
+				"@smithy/middleware-retry": "^2.1.1",
+				"@smithy/middleware-serde": "^2.1.1",
+				"@smithy/middleware-endpoint": "^2.4.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "ecedc564e68453b02c20db9e8435d59005c066d8",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-tf+NIu9FkOh312b6M9G4D68is4Xr7qptzaZGZUREELF8ysE1yLKphqt7nsomjKZVwW7WE5pDDex9idowNGRQ/Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCdHuUtASiFV9M2o/YK6h5dmM1kUinExR//8r0tDdRRDQIhAM6bbaowHZrR9jGbP9kynN12vAMli0MhILDM5/HCeixl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67098
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.2": {
+			"name": "@smithy/core",
+			"version": "1.3.2",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.9.1",
+				"@smithy/protocol-http": "^3.1.1",
+				"@smithy/smithy-client": "^2.3.1",
+				"@smithy/util-middleware": "^2.1.1",
+				"@smithy/middleware-retry": "^2.1.1",
+				"@smithy/middleware-serde": "^2.1.1",
+				"@smithy/middleware-endpoint": "^2.4.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "e11f3860b69ec0bdbd31e6afaa54963c02dc7f8e",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-tYDmTp0f2TZVE18jAOH1PnmkngLQ+dOGUlMd1u67s87ieueNeyqhja6z/Z4MxhybEiXKOWFOmGjfTZWFxljwJw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFPvwpPvml3az+VsEM/8771eo6GgAmEEaLSFKKj7Vc+UAiEA8TnbP+98etAXHok9wtGEunsNYnugg16wOINCRk2BwKQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67710
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.3": {
+			"name": "@smithy/core",
+			"version": "1.3.3",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.10.0",
+				"@smithy/protocol-http": "^3.2.0",
+				"@smithy/smithy-client": "^2.4.0",
+				"@smithy/util-middleware": "^2.1.2",
+				"@smithy/middleware-retry": "^2.1.2",
+				"@smithy/middleware-serde": "^2.1.2",
+				"@smithy/middleware-endpoint": "^2.4.2"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "383da328c514fb916041380196df6fc190a5a996",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.3.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-8cT/swERvU1EUMuJF914+psSeVy4+NcNhbRe1WEKN1yIMPE5+Tq5EaPq1HWjKCodcdBIyU9ViTjd62XnebXMHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIG7Z/RD5fFiHYFAIVTGgYcBgpGOSJ87/cst6iWZlqMP/AiEAyKbb72REdXts2Pn5DeEgTV2VZwHOBdohdly/G4a5UpY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.4": {
+			"name": "@smithy/core",
+			"version": "1.3.4",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.10.1",
+				"@smithy/protocol-http": "^3.2.1",
+				"@smithy/smithy-client": "^2.4.1",
+				"@smithy/util-middleware": "^2.1.3",
+				"@smithy/middleware-retry": "^2.1.3",
+				"@smithy/middleware-serde": "^2.1.3",
+				"@smithy/middleware-endpoint": "^2.4.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "40370036e59b8ae9c9fca5faefac5b175d8501e1",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.4.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-A466yS5wzrtL02L5x+XiAu4W77VYsof3pimGoBPgWVyaRf4sE3JvM7TV0htkIywVzRuSd9vIlDkfhgvrW8NhmA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCRY2l7T1M7G9rjRlYfnPmmu+Ixbz+KXfJkW56nvwV2dgIgN9MeWqVTJ0LgChkMAfJqDmXRDRVGhDv9ZzpzMCbwmJ4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.5": {
+			"name": "@smithy/core",
+			"version": "1.3.5",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.10.1",
+				"@smithy/protocol-http": "^3.2.1",
+				"@smithy/smithy-client": "^2.4.2",
+				"@smithy/util-middleware": "^2.1.3",
+				"@smithy/middleware-retry": "^2.1.4",
+				"@smithy/middleware-serde": "^2.1.3",
+				"@smithy/middleware-endpoint": "^2.4.4"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "7523da67b49e165e09ee8019601bea410bf92c38",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.5.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-Rrc+e2Jj6Gu7Xbn0jvrzZlSiP2CZocIOfZ9aNUA82+1sa6GBnxqL9+iZ9EKHeD9aqD1nU8EK4+oN2EiFpSv7Yw==",
+				"signatures": [
+					{
+						"sig": "MEUCID19mzR6830oQ7mbo1aW7IzdO2Bj6gKKmV7mKhCpWK4IAiEA15pWN0+Z/BVemzyafukhL4x1+70t5TNAR+9HG+P2FIk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.6": {
+			"name": "@smithy/core",
+			"version": "1.3.6",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.11.0",
+				"@smithy/protocol-http": "^3.2.2",
+				"@smithy/smithy-client": "^2.4.3",
+				"@smithy/util-middleware": "^2.1.4",
+				"@smithy/middleware-retry": "^2.1.5",
+				"@smithy/middleware-serde": "^2.2.0",
+				"@smithy/middleware-endpoint": "^2.4.5"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "60f52758b149427de2c8522c6a2009fd552cf807",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.6.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-7VoVzi+4X/X1FwWR1hlBdJlV1hVrL4VWSCzyVOgyZ/WO/V1WEtqWb0qIuz5KTH8xw2qRQ7uT9rSAX/TckZQchQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7LyV4D+/xqluIjEusIFvZEe7Ah5IdoDpQ+KSICh+bcAIhAKTbvr3cZTTpnC5RfeWj+F7D3pLIXti8JKS3gO5SKXVM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.7": {
+			"name": "@smithy/core",
+			"version": "1.3.7",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.11.0",
+				"@smithy/protocol-http": "^3.2.2",
+				"@smithy/smithy-client": "^2.4.4",
+				"@smithy/util-middleware": "^2.1.4",
+				"@smithy/middleware-retry": "^2.1.6",
+				"@smithy/middleware-serde": "^2.2.1",
+				"@smithy/middleware-endpoint": "^2.4.6"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "85728b09b184e1e8934cedb208e674e496f5db0d",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.7.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-zHrrstOO78g+/rOJoHi4j3mGUBtsljRhcKNzloWPv1XIwgcFUi+F1YFKr2qPQ3z7Ls5dNc4L2SPrVarNFIQqog==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCk1beyX5kywTxOoSRrkvuPlzyheUU7tpaNzbQRea/TmQIhANB18ZwxhVVmG+tjIDjXXUscUkebrxQvCNsfb9zICth9",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.3.8": {
+			"name": "@smithy/core",
+			"version": "1.3.8",
+			"dependencies": {
+				"tslib": "^2.5.0",
+				"@smithy/types": "^2.11.0",
+				"@smithy/protocol-http": "^3.2.2",
+				"@smithy/smithy-client": "^2.4.5",
+				"@smithy/util-middleware": "^2.1.4",
+				"@smithy/middleware-retry": "^2.1.7",
+				"@smithy/middleware-serde": "^2.2.1",
+				"@smithy/middleware-endpoint": "^2.4.6"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "91e432bf78fe79ef80b0314e4dec12de92b7b561",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.3.8.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-6cFhQ9ChU7MxvOXJn6nuUSONacpNsGHWhfueROQuM/0vibDdZA9FWEdNbVkuVuc+BFI5BnaX3ltERUlpUirpIA==",
+				"signatures": [
+					{
+						"sig": "MEQCIE08XckLiVLK3as2apTtWnaFHLXRKUcrJaT2uf2wR0vgAiAcSaL4M3CDEdN42KbxTubo/KoAUlx8IDe1qf7Is0AwLw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.4.0": {
+			"name": "@smithy/core",
+			"version": "1.4.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^2.12.0",
+				"@smithy/protocol-http": "^3.3.0",
+				"@smithy/smithy-client": "^2.5.0",
+				"@smithy/util-middleware": "^2.2.0",
+				"@smithy/middleware-retry": "^2.2.0",
+				"@smithy/middleware-serde": "^2.3.0",
+				"@smithy/middleware-endpoint": "^2.5.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "5f9f86b681b9cbf23904041dad6f0531efe8375e",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.4.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-uu9ZDI95Uij4qk+L6kyFjdk11zqBkcJ3Lv0sc6jZrqHvLyr0+oeekD3CnqMafBn/5PRI6uv6ulW3kNLRBUHeVw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCFvELEI+4Ul3D5tQQmInye1Y6K6ScKG8SN8ZMGk2nW6AIgUU/z7b3A7RdHZjYh91NEp5FD57fn+ib9TfW7Sp9R78Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.4.1": {
+			"name": "@smithy/core",
+			"version": "1.4.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^2.12.0",
+				"@smithy/protocol-http": "^3.3.0",
+				"@smithy/smithy-client": "^2.5.0",
+				"@smithy/util-middleware": "^2.2.0",
+				"@smithy/middleware-retry": "^2.3.0",
+				"@smithy/middleware-serde": "^2.3.0",
+				"@smithy/middleware-endpoint": "^2.5.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "42d1413ccade7c9a5418d739df68f5f6a039a7c0",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.4.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-jCnbEQHvTOUQXxXOS110FIMc83dCXUlrqiG/q0QzUSYhglDj9bJVPFjXmxc6qUfARe0mEb8h9LeVoh7FUYHuUg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDdq35mujVHoaWQzNFy/NyyDGhZ7/rElTKVvnRcD1onSAIhAPZWP21hjPJGM6KgmqywNmN0eZQ2SdZRkMBU+HSPdGt/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"1.4.2": {
+			"name": "@smithy/core",
+			"version": "1.4.2",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^2.12.0",
+				"@smithy/protocol-http": "^3.3.0",
+				"@smithy/smithy-client": "^2.5.1",
+				"@smithy/util-middleware": "^2.2.0",
+				"@smithy/middleware-retry": "^2.3.1",
+				"@smithy/middleware-serde": "^2.3.0",
+				"@smithy/middleware-endpoint": "^2.5.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "1c3ed886d403041ce5bd2d816448420c57baa19c",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-1.4.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-2fek3I0KZHWJlRLvRTqxTEri+qV0GRHrJIoLFuBMZB4EMg4WgeBGfF0X6abnrNYpq55KJ6R4D6x4f0vLnhzinA==",
+				"signatures": [
+					{
+						"sig": "MEUCID0radgoF4atfPEUfT5htyEuGkpxDmb8ldUJylPgsQipAiEAm5kZ1Duqrr7HDJN4dadqg5yZo0rImL/Zr8ZBmuwJz70=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67711
+			},
+			"engines": {
+				"node": ">=14.0.0"
+			}
+		},
+		"2.0.0": {
+			"name": "@smithy/core",
+			"version": "2.0.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.0.0",
+				"@smithy/protocol-http": "^4.0.0",
+				"@smithy/smithy-client": "^3.0.0",
+				"@smithy/util-middleware": "^3.0.0",
+				"@smithy/middleware-retry": "^3.0.0",
+				"@smithy/middleware-serde": "^3.0.0",
+				"@smithy/middleware-endpoint": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "221c8407d185bd28d3bd6d8f2fefdfe240fa2ccf",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.0.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-y1VuiOpU8nL0KlL0pvYpOddKGK+8xpD4Jvg9NN42Bl6gHWAr46LpAzWi4I78WxcFIMN1vw1+RUVOlcqR/vfs5g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDOtNO2lO3di8F3GOZKn6jeqtPXtB0hFwrF5lHIqUPBQAIhAOD6vrv1Rplm6UHgB7cW9NdM25Prm3WHNGhXDq75a7uG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67704
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.0.1": {
+			"name": "@smithy/core",
+			"version": "2.0.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.0.0",
+				"@smithy/protocol-http": "^4.0.0",
+				"@smithy/smithy-client": "^3.0.1",
+				"@smithy/util-middleware": "^3.0.0",
+				"@smithy/middleware-retry": "^3.0.1",
+				"@smithy/middleware-serde": "^3.0.0",
+				"@smithy/middleware-endpoint": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "8a7ac8faa0227912ce260bc3f976a5e254323920",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.0.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-rcMkjvwxH/bER+oZUPR0yTA0ELD6m3A+d92+CFkdF6HJFCBB1bXo7P5pm21L66XwTN01B6bUhSCQ7cymWRD8zg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCW0AJuX9u+D3MFqABW3y5Ud01k2vZvhsEP4zFl+U2szAIgQKcWZykPW70EUAfyOGcESZpRPtdTTPA9GkXfMDyCoH0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67704
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.1.0": {
+			"name": "@smithy/core",
+			"version": "2.1.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.0.0",
+				"@smithy/protocol-http": "^4.0.0",
+				"@smithy/smithy-client": "^3.1.0",
+				"@smithy/util-middleware": "^3.0.0",
+				"@smithy/middleware-retry": "^3.0.2",
+				"@smithy/middleware-serde": "^3.0.0",
+				"@smithy/middleware-endpoint": "^3.0.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "53e2ecd5e4bca9792c9742e1191592ce68028e1a",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.1.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-S3Q66njTGNlXLpjgpGJtyhclUgfYkkgAwK74zd+aI+lfoJYDvmWEMIASSiq1YjDMj6hsGrML+nqHSiWqI2dStw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCejTpx5IJwrAL7kiibysBi/tR41BFuu97LwucYIWCC1gIgJdeWpOpC6CkrHMxw6XZAwegqEhvS5BqeXPVCqdM7ua4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70341
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.1.1": {
+			"name": "@smithy/core",
+			"version": "2.1.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.0.0",
+				"@smithy/protocol-http": "^4.0.0",
+				"@smithy/smithy-client": "^3.1.1",
+				"@smithy/util-middleware": "^3.0.0",
+				"@smithy/middleware-retry": "^3.0.3",
+				"@smithy/middleware-serde": "^3.0.0",
+				"@smithy/middleware-endpoint": "^3.0.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "c5e50785f9f61cad85fbefafa402b1a87eff095a",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.1.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-0vbIwwUcg0FMhTVJgMhbsRSAFL0rwduy/OQz7Xq1pJXJOyaGv+PGjj1iGawRlzBUPA5BkJv7S6q+YU2U8gk/WA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDhG9a/aQoO+qhTu6g4ChS/75A4zgU3HT2qoQZ5i/hl6AIgIhWodNtewFlazkZFzSVYvYJMnOd9mni16ClHfvvbHcs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70341
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.0": {
+			"name": "@smithy/core",
+			"version": "2.2.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.0.0",
+				"@smithy/protocol-http": "^4.0.0",
+				"@smithy/smithy-client": "^3.1.1",
+				"@smithy/util-middleware": "^3.0.0",
+				"@smithy/middleware-retry": "^3.0.3",
+				"@smithy/middleware-serde": "^3.0.0",
+				"@smithy/middleware-endpoint": "^3.0.1"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "f1b0837b7afa5507a9693c1e93da6ca9808022c1",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-ygLZSSKgt9bR8HAxR9mK+U5obvAJBr6zlQuhN5soYWx/amjDoQN4dTkydTypgKe6rIbUjTILyLU+W5XFwXr4kg==",
+				"signatures": [
+					{
+						"sig": "MEUCIA7P8lfnF3/gRmMyLLKT+VkBAtqTZ+4mivtXY2p54IgAAiEA8yIlsScmnzoLllbx3/CgRYjd3eHqhEVUbSk/KCAvUnM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70413
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.1": {
+			"name": "@smithy/core",
+			"version": "2.2.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.1.0",
+				"@smithy/protocol-http": "^4.0.1",
+				"@smithy/smithy-client": "^3.1.2",
+				"@smithy/util-middleware": "^3.0.1",
+				"@smithy/middleware-retry": "^3.0.4",
+				"@smithy/middleware-serde": "^3.0.1",
+				"@smithy/middleware-endpoint": "^3.0.2"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "92ed71eb96ef16d5ac8b23dbdf913bcb225ab875",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-R8Pzrr2v2oGUoj4CTZtKPr87lVtBsz7IUBGhSwS1kc6Cj0yPwNdYbkzhFsxhoDE9+BPl09VN/6rFsW9GJzWnBA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDsQMXPZXldEU59HO/76mXIZ/L3iznSxfHfWmXZr59dRwIhAJIDwpK2wtekvbv5JW5oz1ekgnQWCIqpUsFdCdBWzNG8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70413
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.2": {
+			"name": "@smithy/core",
+			"version": "2.2.2",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.1.0",
+				"@smithy/protocol-http": "^4.0.1",
+				"@smithy/smithy-client": "^3.1.3",
+				"@smithy/util-middleware": "^3.0.1",
+				"@smithy/middleware-retry": "^3.0.5",
+				"@smithy/middleware-serde": "^3.0.1",
+				"@smithy/middleware-endpoint": "^3.0.2"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "34ac1264c9ec64a45d6d15f9f255da331548e8e5",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-bxZr4ZTqS6hMSQGYdcsfFQTFU0MO2xKLbkqZMSRDM+ruQ0nY00lFJUeLhXe7fqohSEd1y5wKu1Ap0bVJPzpmHg==",
+				"signatures": [
+					{
+						"sig": "MEUCIF3ZLIF5UtUkznlNEKMhhEVOL6QtWjtD8SMmeBCE1Yc7AiEAiouCNTZlJXUisQS1safIPKnr6RmkP4aOy9Kdh2rDp0A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70413
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.3": {
+			"name": "@smithy/core",
+			"version": "2.2.3",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.2.0",
+				"@smithy/protocol-http": "^4.0.2",
+				"@smithy/smithy-client": "^3.1.4",
+				"@smithy/util-middleware": "^3.0.2",
+				"@smithy/middleware-retry": "^3.0.6",
+				"@smithy/middleware-serde": "^3.0.2",
+				"@smithy/middleware-endpoint": "^3.0.3"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "dc6ba7d338a1b35752be274cdaf6fcbcfdb44a70",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.3.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-SpyLOL2vgE6sUYM6nQfu82OirCPkCDKctyG3aMgjMlDPTJpUlmlNH0ttu9ZWwzEjrzzr8uABmPjJTRI7gk1HFQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEqLUgi1dBNCrOwzgF++TqSr2SbkVWpnjFi8KfHcdP5DAiEArlZ/pul/f9H67zZDVMmbQt2BGbXXTDHEkwIb0KdugXs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70440
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.4": {
+			"name": "@smithy/core",
+			"version": "2.2.4",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.0.3",
+				"@smithy/smithy-client": "^3.1.5",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.7",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.0.4"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "a83d62fc685ff95ad3133d55d7e365a51526a436",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.4.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-qdY3LpMOUyLM/gfjjMQZui+UTNS7kBRDWlvyIhVOql5dn2J3isk9qUTBtQ1CbDH8MTugHis1zu3h4rH+Qmmh4g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCgUpij4ly6ehxXX2houCVoG3eHjmYwq95JG+QtMdnlcwIhAN3aoIVpoZm2qBRlG8YQpxflRgj70uyq3RpLFLlgxI/r",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70440
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.5": {
+			"name": "@smithy/core",
+			"version": "2.2.5",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.0.3",
+				"@smithy/smithy-client": "^3.1.6",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.8",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.0.4"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "2324b13a5ba4d3365fde248049c608860d7cce69",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.5.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-0kqyj93/Aa30TEXnnWRBetN8fDGjFF+u8cdIiMI8YS6CrUF2dLTavRfHKfWh5cL5d6s2ZNyEnLjBitdcKmkETQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIH5RWLnUAeokXPpHGdqWI+/itdNrH5dtPFcMZetlo5VzAiEA8/XkuBzWVfWS/5Da1McU1f4MNPX2tBT6NnA7SuLO9v0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70440
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.6": {
+			"name": "@smithy/core",
+			"version": "2.2.6",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.0.3",
+				"@smithy/smithy-client": "^3.1.7",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.9",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.0.5"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "05e3482079fff7522077e0f3ce2ee6cc507f461c",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.6.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-tBbVIv/ui7/lLTKayYJJvi8JLVL2SwOQTbNFEOrvzSE3ktByvsa1erwBOnAMo8N5Vu30g7lN4lLStrU75oDGuw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD28aew4gAdYoWD452ixDvbElEnfFo9v2ext0CStNglDAIhAIVNm40UQEGoOIrlo9BV9y9kf9jSfMepvZEDeQUaeoND",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70440
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.7": {
+			"name": "@smithy/core",
+			"version": "2.2.7",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.0.4",
+				"@smithy/smithy-client": "^3.1.8",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.10",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.0.5"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "a49fdc8cc221bd6c9cc458719e2cf2e2212c8dde",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.7.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-Wwd9QWKaYdR+n/oIqJbuwSr9lHuv7sa1e3Zu4wIToZl0sS7xapTYYqQtXP1hKKtIWz0jl8AhvOfNwkfT5jjV0w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpw4X8mMpnYIHm81NbSc0M7yGoaUms6/rJ0vloLUgQFQIgPPQmJNCq3WjABre3c1RK3uGd0UGiWdZCWkX64FbUwgw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70441
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.2.8": {
+			"name": "@smithy/core",
+			"version": "2.2.8",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.0.4",
+				"@smithy/smithy-client": "^3.1.9",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.11",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.0.5"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "d1edc47584497c58aec741b0a2814cdc1db7b72c",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.2.8.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-1Y0XX0Ucyg0LWTfTVLWpmvSRtFRniykUl3dQ0os1sTd03mKDudR6mVyX+2ak1phwPXx2aEWMAAdW52JNi0mc3A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQClfB2ZhPAT7NCvA++oZgd2wkAqtxcvSIvXfcDam5wu1QIgZAFb2MKPrLXxdvu2f0/XOja2JP6DjQVqnRRtSor6ymk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70441
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.3.0": {
+			"name": "@smithy/core",
+			"version": "2.3.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.1.0",
+				"@smithy/smithy-client": "^3.1.10",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.12",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.1.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "305da2d99f9239e6e6737d55fd073b38edad89ed",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.3.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-tvSwf+PF5uurExeJsl+sSNn4bPsYShL86fJ/wcj63cioJ0IF131BxC5QxX8qkIISk7Pr7g2+UJH9ib4cCafvqw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCh5ZB/IcUjPCbEJkc6YbTiplvzzgKtgODN+TZUi3BHrAIgDcqXd/yUAX4LR0qUlxqGGVfKUHyUjAOBCiGBYS4A6NM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70636
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.3.1": {
+			"name": "@smithy/core",
+			"version": "2.3.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.1.0",
+				"@smithy/smithy-client": "^3.1.11",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.13",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.1.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "99cb8eda23009fd7df736c82072dafcf4eb4ff5d",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.3.1.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-BC7VMXx/1BCmRPCVzzn4HGWAtsrb7/0758EtwOGFJQrlSwJBEjCcDLNZLFoL/68JexYa2s+KmgL/UfmXdG6v1w==",
+				"signatures": [
+					{
+						"sig": "MEUCICUrTQ1AMoq9MzxJHXvoDJjrhbsCcwo9hjBrXdI5pEh6AiEAyhMZQ0hDZm0FEtafVPFwqGTM3XNSqmY8yAYuuxgMuGU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70636
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.3.2": {
+			"name": "@smithy/core",
+			"version": "2.3.2",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/protocol-http": "^4.1.0",
+				"@smithy/smithy-client": "^3.1.12",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.14",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.1.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "4a1e3da41d2a3a494cbc6bd1fc6eeb26b2e27184",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.3.2.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-in5wwt6chDBcUv1Lw1+QzZxN9fBffi+qOixfb65yK4sDuKG7zAUO9HAFqmVzsZM3N+3tTyvZjtnDXePpvp007Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIAiJ99J0XVvFjO4+gL8PxBfi9oG4PpgTrFWpac6BNpimAiAdE81mI5WjFu7JGpVzZs3jRog0igAyNQdYEcBV1ZcSuQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70636
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.0": {
+			"name": "@smithy/core",
+			"version": "2.4.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.3.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.0",
+				"@smithy/smithy-client": "^3.2.0",
+				"@smithy/util-middleware": "^3.0.3",
+				"@smithy/middleware-retry": "^3.0.15",
+				"@smithy/middleware-serde": "^3.0.3",
+				"@smithy/middleware-endpoint": "^3.1.0",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "56e917b6ab2dffeba681a05395c40a757d681147",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.0.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-cHXq+FneIF/KJbt4q4pjN186+Jf4ZB0ZOqEaZMBhT79srEyGDDBV31NqBRBjazz8ppQ1bJbDJMY9ba5wKFV36w==",
+				"signatures": [
+					{
+						"sig": "MEUCIF1AqqkF47lcjBaKguY3G4UOTZL35MnHxvB5PH5kfe5gAiEAmC5yGkZIoPa4RI+INDT0zdiQ3ueV/GrW3KpfMJzKd3M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.1": {
+			"name": "@smithy/core",
+			"version": "2.4.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.1",
+				"@smithy/smithy-client": "^3.3.0",
+				"@smithy/util-middleware": "^3.0.4",
+				"@smithy/middleware-retry": "^3.0.16",
+				"@smithy/middleware-serde": "^3.0.4",
+				"@smithy/middleware-endpoint": "^3.1.1",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "6694d79ba6e4a185a0baa731ba6584420291521e",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.1.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-7cts7/Oni7aCHebHGiBeWoz5z+vmH+Vx2Z/UW3XtXMslcxI3PEwBZxNinepwZjixS3n12fPc247PHWmjU7ndsQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHYVq/G9ac6eSUUYZuPAdHxrJLVjwucizzggw13ApRWDAiBmz+7brKDwcNbmbZXs9H16yKM+3G27tmV5ROn7EEVeyg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.2": {
+			"name": "@smithy/core",
+			"version": "2.4.2",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.1",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.2",
+				"@smithy/smithy-client": "^3.3.1",
+				"@smithy/util-middleware": "^3.0.5",
+				"@smithy/middleware-retry": "^3.0.17",
+				"@smithy/middleware-serde": "^3.0.5",
+				"@smithy/middleware-endpoint": "^3.1.2",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "b1f708def3d20ef763a1a552c00e93e60a1c2cdf",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.2.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-/+KSeo2DMYnkep9/qYNyLMZ/44ETq0Q2aG2MOkh6zNi48GYZsDNxJl6HxVXrIbAVyzDEcQi39KKcOrICGWXENw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDdeXiRheGWElvE27o4qaO3mjBdm5r2KlimY7939l2PgAiEAnYaaUK5Huv6VSNpBxNKdmLX8QuT3qQTTRvKpKCvoxy0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.3": {
+			"name": "@smithy/core",
+			"version": "2.4.3",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.2",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.3",
+				"@smithy/smithy-client": "^3.3.2",
+				"@smithy/util-middleware": "^3.0.6",
+				"@smithy/middleware-retry": "^3.0.18",
+				"@smithy/middleware-serde": "^3.0.6",
+				"@smithy/middleware-endpoint": "^3.1.3",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "18344c2ff63f748f625ebc5171755816f3043849",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.3.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-4LTusLqFMRVQUfC3RNuTg6IzYTeJNpydRdTKq7J5wdEyIRQSu3rGIa3s80mgG2hhe6WOZl9IqTSo1pgbn6EHhA==",
+				"signatures": [
+					{
+						"sig": "MEUCIFZ1pzaLT9eVNeK3oJsVcQBDQJgkM7UY5vRRoHUvHHrIAiEA8XY63P/i1VgVpVE9wbERO1mrp6sA+2Nimr+r1gNXkwg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.4": {
+			"name": "@smithy/core",
+			"version": "2.4.4",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.2",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.3",
+				"@smithy/smithy-client": "^3.3.3",
+				"@smithy/util-middleware": "^3.0.6",
+				"@smithy/middleware-retry": "^3.0.19",
+				"@smithy/middleware-serde": "^3.0.6",
+				"@smithy/middleware-endpoint": "^3.1.3",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "fad2e7c9a702fd701ba2811814b8b4be9f467acd",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.4.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-Vco+Q8Xela6tpBOvYHClkeei9z1+uChBClvv3XIJUstEjbpgbSZAvTlw3TEk3wIeEeLQwYgkZjCWfAQfnYQtIQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCfRa4HinUmNxzM5MlX6wRZExD+cLU0rHyiNi9P+IeWlgIgP+stf9caobm+JqGGeGxhDG8CqXmyIYTID52P4mYb3fM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.5": {
+			"name": "@smithy/core",
+			"version": "2.4.5",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.2",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.3",
+				"@smithy/smithy-client": "^3.3.4",
+				"@smithy/util-middleware": "^3.0.6",
+				"@smithy/middleware-retry": "^3.0.20",
+				"@smithy/middleware-serde": "^3.0.6",
+				"@smithy/middleware-endpoint": "^3.1.3",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "08fb680154f240c16012d3ad27e0027a3a5bfdad",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.5.tgz",
+				"fileCount": 99,
+				"integrity": "sha512-Z0qlPXgZ0pouYgnu/cZTEYeRAvniiKZmVl4wIbZHX/nEMHkMDV9ao6KFArsU9KndE0TuhL149xcRx45wfw1YCA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCLBkZ/Z65yPRsZycuN0g4Fvbpau2VTpZ0eSuhKuydPhwIhAKXSzDR4rHMmV6Chbj+7/uVCm+ohDG0xZxVAem8uz+3J",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126046
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.6": {
+			"name": "@smithy/core",
+			"version": "2.4.6",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.4.2",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.3",
+				"@smithy/smithy-client": "^3.3.5",
+				"@smithy/util-middleware": "^3.0.6",
+				"@smithy/middleware-retry": "^3.0.21",
+				"@smithy/middleware-serde": "^3.0.6",
+				"@smithy/middleware-endpoint": "^3.1.3",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "d367a047a88aceee22eda5a598db00a7e5c50e72",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.6.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-6lQQp99hnyuNNIzeTYSzCUXJHwvvFLY7hfdFGSJM95tjRDJGfzWYFRBXPaM9766LiiTsQ561KErtbufzUFSYUg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDKnKE0R+ii6MAK2MWrjH13PF27dXTl8YU3CXoobpQTGwIhAOTugpgpNyRTMHCcoNkUJuAynpYH/5w89HJm+SQtiwUQ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126295
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.7": {
+			"name": "@smithy/core",
+			"version": "2.4.7",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.5.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.4",
+				"@smithy/smithy-client": "^3.3.6",
+				"@smithy/util-middleware": "^3.0.7",
+				"@smithy/middleware-retry": "^3.0.22",
+				"@smithy/middleware-serde": "^3.0.7",
+				"@smithy/middleware-endpoint": "^3.1.4",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "c4dc9ab3ba5f4b36addf967ca5fce036ce3b767d",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.7.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-goqMjX+IoVEnHZjYuzu8xwoZjoteMiLXsPHuXPBkWsGwu0o9c3nTjqkUlP1Ez/V8E501aOU7CJ3INk8mQcW2gw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCDEyR+xMR+lRei8zkNo4bPo1EMFwfFNiIdydM5aCz5tAIgZE/Ilk+sBpMYkuHX9T/WHPQPFRY4YefkS8tu5BfX8sU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126295
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.4.8": {
+			"name": "@smithy/core",
+			"version": "2.4.8",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.5.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/protocol-http": "^4.1.4",
+				"@smithy/smithy-client": "^3.4.0",
+				"@smithy/util-middleware": "^3.0.7",
+				"@smithy/middleware-retry": "^3.0.23",
+				"@smithy/middleware-serde": "^3.0.7",
+				"@smithy/middleware-endpoint": "^3.1.4",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "397ac17dfa8ad658b77f96f19484f0eeaf22d397",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.4.8.tgz",
+				"fileCount": 100,
+				"integrity": "sha512-x4qWk7p/a4dcf7Vxb2MODIf4OIcqNbK182WxRvZ/3oKPrf/6Fdic5sSElhO1UtXpWKBazWfqg0ZEK9xN1DsuHA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDi3Wqqx9vLpmV04DoNQtUtNYwmD/dZ8hjuWw0jqTpPAAIhAIfEHn3xymYAz34tuPbsLJ2f/oecK7nTwC7E2f4/qb6d",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126295
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.0": {
+			"name": "@smithy/core",
+			"version": "2.5.0",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.6.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/util-stream": "^3.2.0",
+				"@smithy/protocol-http": "^4.1.5",
+				"@smithy/util-middleware": "^3.0.8",
+				"@smithy/middleware-serde": "^3.0.8",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "f1988f4194c3c8877bed29b07b93c8756dcacc1e",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.0.tgz",
+				"fileCount": 122,
+				"integrity": "sha512-Cw4ADpwrOHW2D+Yj7v2QJc65WbYA+Up4B6iVr0tp8aLhy5WGZZWOBWRNW4atZT8z4FmNrMEh/FbUWNp5kmZ4eQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC8Y8lED0NtIjdPzZjScTa9FN5EnaHLWajyuPRacVgAXwIhAOhT/8rfY7KNfbCe9+bMDmIhM9yYWGpM1SGGN7U22E91",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 135303
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.1": {
+			"name": "@smithy/core",
+			"version": "2.5.1",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.6.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/util-stream": "^3.2.1",
+				"@smithy/protocol-http": "^4.1.5",
+				"@smithy/util-middleware": "^3.0.8",
+				"@smithy/middleware-serde": "^3.0.8",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "7f635b76778afca845bcb401d36f22fa37712f15",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.1.tgz",
+				"fileCount": 122,
+				"integrity": "sha512-DujtuDA7BGEKExJ05W5OdxCoyekcKT3Rhg1ZGeiUWaz2BJIWXjZmsG/DIP4W48GHno7AQwRsaCb8NcBgH3QZpg==",
+				"signatures": [
+					{
+						"sig": "MEUCIGJ47zgQQAuMTRC+2ug1HfVig1p8HYrGYehtidcpCRXMAiEA+EVrmWYiFTsi4ofXC+OlAiX4JdbPscfPB+WWRd9ozr4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 135303
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.2": {
+			"name": "@smithy/core",
+			"version": "2.5.2",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.7.0",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/util-stream": "^3.3.0",
+				"@smithy/protocol-http": "^4.1.6",
+				"@smithy/util-middleware": "^3.0.9",
+				"@smithy/middleware-serde": "^3.0.9",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "019f82399ff424a1e5e5a6aac45354966e1bd4ad",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.2.tgz",
+				"fileCount": 122,
+				"integrity": "sha512-xlE0pZ9SaZvzbaUHbvycIq2lUYQqi8sQekRcoJEFqnyKjRUbf7kMSvAZsatGdvZdbJCUmAPG6dIrC5/etrA9nA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEU0qF/bzZbc6UJOc/j3jMEQLZMm8vXFLsx7evgy1PWaAiEAwp6ICR4dd74HY7M4G1qyW4agxtcPshbL8I+5DiJedVk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 135298
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.3": {
+			"name": "@smithy/core",
+			"version": "2.5.3",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.7.1",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/util-stream": "^3.3.1",
+				"@smithy/protocol-http": "^4.1.7",
+				"@smithy/util-middleware": "^3.0.10",
+				"@smithy/middleware-serde": "^3.0.10",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "1d5723f676b0d6ec08c515272f0ac03aa59fac72",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.3.tgz",
+				"fileCount": 122,
+				"integrity": "sha512-96uW8maifUSmehaeW7uydWn7wBc98NEeNI3zN8vqakGpyCQgzyJaA64Z4FCOUmAdCJkhppd/7SZ798Fo4Xx37g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCWazicAf8UaUx4W6Xh9NYBQmXgEoZV2Sk3i2YstJARgQIhAO4C50XC4dB818mJPkkhzofNgNbj0sFZ6IrzMqsffykf",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 135300
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.4": {
+			"name": "@smithy/core",
+			"version": "2.5.4",
+			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/types": "^3.7.1",
+				"@smithy/util-utf8": "^3.0.0",
+				"@smithy/util-stream": "^3.3.1",
+				"@smithy/protocol-http": "^4.1.7",
+				"@smithy/util-middleware": "^3.0.10",
+				"@smithy/middleware-serde": "^3.0.10",
+				"@smithy/util-body-length-browser": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23",
+				"@types/node": "^16.18.96",
+				"json-bigint": "^1.0.0",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1"
+			},
+			"dist": {
+				"shasum": "b9eb9c3a8f47d550dcdea19cc95434e66e5556cf",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.4.tgz",
+				"fileCount": 122,
+				"integrity": "sha512-iFh2Ymn2sCziBRLPuOOxRPkuCx/2gBdXtBGuCUFLUe6bWYjKnhHyIPqGeNkLZ5Aco/5GjebRTBFiWID3sDbrKw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC2QyBlLbsVJFZqI6Yk29ZiQIkLXWrzhJ9+S4aXX+qMqAIhAPcHsJYuLxxpGf8DsOkAr40igC/6O3P09AxvFETJ5vEw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 138079
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"2.5.5": {
+			"name": "@smithy/core",
+			"version": "2.5.5",
+			"dependencies": {
+				"@smithy/middleware-serde": "^3.0.11",
+				"@smithy/protocol-http": "^4.1.8",
+				"@smithy/types": "^3.7.2",
+				"@smithy/util-body-length-browser": "^3.0.0",
+				"@smithy/util-middleware": "^3.0.11",
+				"@smithy/util-stream": "^3.3.2",
+				"@smithy/util-utf8": "^3.0.0",
+				"tslib": "^2.6.2"
+			},
+			"devDependencies": {
+				"@types/node": "^16.18.96",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"json-bigint": "^1.0.0",
+				"rimraf": "3.0.2",
+				"typedoc": "0.23.23"
+			},
+			"dist": {
+				"integrity": "sha512-G8G/sDDhXA7o0bOvkc7bgai6POuSld/+XhNnWAbpQTpLv2OZPvyqQ58tLPPlz0bSNsXktldDDREIv1LczFeNEw==",
+				"shasum": "c75b15caee9e58c800db3e6b99e9e373532d394a",
+				"tarball": "https://registry.npmjs.org/@smithy/core/-/core-2.5.5.tgz",
+				"fileCount": 122,
+				"unpackedSize": 138079,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICnqsg4W5M5x4bmSkuesEzDxdSshPFetw0V6fo6BmMy4AiBBE7Xx7V3lEQSoNOWME/bJ1LUrYkFpxbYB4L9mHCxxuQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		}
+	}
+}
