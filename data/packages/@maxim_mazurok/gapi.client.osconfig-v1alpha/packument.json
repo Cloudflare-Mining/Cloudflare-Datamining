@@ -1,0 +1,2494 @@
+{
+	"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+	"dist-tags": {
+		"latest": "0.0.20241208"
+	},
+	"versions": {
+		"0.0.20220725": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20220725",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "95d7212d270209868cfd5df6b3ea81a17fc2e5e7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20220725.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-m09S0rNkD/hxX2Lm9lrKfc4vMDAsA5l3WcyB5fsBdmcQS7mD27GOsIfcDIwW/+vRxB+Cd5tv/CeMN2de1qp2zQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEaEinCVZEOqSPQi1d6scZEy5Zs1LXsPFvkPj6IAAZQrAiAwn6FKAdDOOm09Rj0YjDtvYkLcW9mLKM12D0kzRtVseA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125418,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi+FykACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoniQ//QKbhKnwA76ye2YufrgOmt3I7cJfh/zTBs2PQhlSVJuktBMOy\r\nSYDqkoC7bIfV7UUyIJ19aa2UVNq8TV+o8tVKwRk+VcCafpQUtH4udMHNtoGC\r\nlXNjW0fP2nKhCvwvV5UZbEG+x+iTofJ0k2kzlUFFVwiJ5sp75zRnhsHJlWu+\r\nTV5bquKhkwY2rqENNig2m7ZqMEQwB8tqi7d7VD2nfUVgE7WB1ruUqQxrPvjl\r\nXtpayAqyl2EWNvbnvm1GPl1hp9DI4NH4AZ0h+BfvGLIPCNnUMGkCO67ySuvv\r\nwms1EXnWC07WuqJpcOt1buEVDLSB9+a1YNxAI6ErHtaPvYfBKL23Jl0mGzxe\r\nUb86B0w6GgTeDaAQnljt/s6VVSEVd+SNGZVoJUJmsx5abebarlkNKprke1Uz\r\nwR5OQMvZtQFRRy5Nc78cAG+ibcPsEhM6AyQ/c/cUfDhkP9wdk0WN7SU57L0y\r\n2Cj4N7/9uFcBpLfYUNnwuWUbk00RvDeHEnRbOlTekBhzavH7J/qEyCIxf8zg\r\nm4kdrKHzGE2vkE6vt63iTt0vvi8Ea//0l9EAfAssfvCekojYHSxP5d9EsxWz\r\ngK8YFdFnL4wagWyJcf5QF2mMfwwnd66j7oAS00vy8g7OlVJuP2gQEJUiUnpd\r\nn79fLOm8m5Oxi6hUTldkell0nrIQO5OVaMQ=\r\n=xGL9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20220730": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20220730",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "c5a64afb8848e4e21f70cebb418a582c4a6f4a4b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20220730.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-7FUVVF/h4iYDtfW+xHNAZwMiTR4VvrxkWso1nLQ2qLbHG/YQuzX98Qi4rlFAlLDgwND8g0wbIx1zci/wsbwRsQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICSdggVOBZyvsZJuBsNzI1i5C1wh6ZOSoQaZEIrGLyevAiAq8ij3MZuo4I3oo4Zw2mu+x1tZtSlM6fgT5/mMnX5ecg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125418,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi+5D1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrz+A/9HnefQrp8kJC+XRbNbQqWeGfk3wynP5C6zqbNs15eN72OToQE\r\nLbQb5XVad9A7vV1CDeHkAQ8joTDxxgcg9b1v1ELCzowj6Qb8wsfUF6k8jEG0\r\nX3H0nsI8RWSL7zjWt7AAZicBNYSJJrqAdnDCg/sY//UMXQHTFBYnboMSO4hX\r\nkRFr8Lvo7qibMlNKRExMrz8d4QMwtWlq6/b5wwbZ8j/HpzrWnGSZCJmKBelO\r\nv6MpOTGDwLlix4S9/LEFe2rLUWM4/c3XluKEfV0yiSfN/LRkOS+t+zYisIlN\r\nO4+NPkmi0mErQx5BgTnxR97jxZRpVUoWe/gx2MPEIAULAFqdjn6HweGW3QVo\r\nTqYcoLTaN5ArGuH9nYOv0IXpO1OeV8cHNH09fcCL9yMknHSPYsjV3w2AT10Q\r\nJWGHx1Vqv8CkExvcZUOWDRO8t+Ty+tcYWFa8ZYTYdzNYUFJkbkAMlX47VDBO\r\npQHbd7zsKgz9ux+TeJ551+lP3Q49RyYa3OFPOwG6vZpwy++ECAHYitzfZgnw\r\n41je9PiWD3rB65RJ1/yDlbVN5uiV6vXzVq/WMchVWklC9RB5U6r6Pot31LU3\r\nKtnD/QvpkjAR3qqD6r9bKduW/PmUMs/wsOFJdJUXRt3Hnuw5TvxPuqvMH3JB\r\nNyMqOqgiwkHQEOfASkiRlI8vE/ySwt5AjY8=\r\n=AaPJ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20220829": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20220829",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "bad9646264e1fe6cde6233752e13aaa48df61b9e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20220829.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-CBv6sNTwNBHWD8+9b3A4JNiSHIMfdwL7IHPfzSAi5KHAe0WgcCIqW3/gxkaPdgG4miEAyTl6XZDuXG5XcocTqw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEYoyOg5UWlaLdlQBdskXfvIO0rIuy31DPYWKYx7rcGhAiEAjfKbVNPt0lrEcuohJC+S4IwfFnhqvSFlO2tyhZCVgE8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125418,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGARXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrBpQ/+NAQyZy7kEGsMIXqxQZDAkOLpSNsLrtey7Wbf41dsmCfw7288\r\n5f7b5EJZDA0T2XvB/mVlxUiUX7MuEF2hEHkAZN8yL/XFvqoYqjBvhESMQB5P\r\nvtySg3sZu2Zwozj8qJX9Cs7mM59+3aW2ai2xDQ8p2PM6QpYQC9M4Aqy3SGWW\r\nM3HAIPg2iu0bAo6zEI9G0Xcbe5xemIxVnDlketGQznbJJ3p5e5YmZ55Wv0fW\r\n23wXQpm71TqJ9BAunMS4grUJ5BrDx25bSiN/KjweIDHjL+3LxsU4Kb4mjwlA\r\nK2DanyScKpS+Xg1n+o5ywB5ye1E0fswO8QMfhmIujUDkzrqtNe/Xcw8KkNZs\r\nKJpZKepcy5miJwE4VC3soJOFJkSucu/6nkKmh7OTqywJpIbYy0C2tEYEGpR3\r\nT2PxK0vGYDZm/VYbprCs6l9cuBrtbVYhRHt8EpQO60ALaiaGuL+JCIZdnOwQ\r\nUVls4MDBe0k6SXEcjqHkWDhxvWMZJsBOLbhcznFRsgr9y6kCIj2kxoxLUDUn\r\ndQcMLZG4CX3yTkxdJop57CYGzRoorpj23tTfEvAalOt8ckUA0qcS/PQABaTL\r\nmqbrDDwTOYalApBVDy+8kbz7JJqbZh6IVhMdcBChobcsjw/sXIiM1+w9ipIu\r\nMq82INBlj/dmcc3bAT01QVgVFSHcGAxIU3s=\r\n=XkU3\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20220904": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20220904",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "871e925e07728b7cbe06618a4b37c4f9182e4b76",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20220904.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-eOLk6QDoo2tJy2l9hBoUiAJkLyFZNQTVC3HD0O1k8CWoAtVi+Ew7siAtfV8trEhj+yC2Os+X39xKW3xyHfMS5Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD6muBwNv37LKnoWHj2L6NYOXpTgeKTLbmHQProYWi5yQIhAJpzMOKc1ibRUslws2mKWjM8Vl043JEunFJQ2A5sYQUd",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125418,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjIEEjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo6fg//R71GmjC95ruQrwMQfgOmhiIJ9P2uRoBl+c+IzrTX9/uLYEKr\r\nLYtgH9290vc0pK8/CVD/wwOqwxcaJF/TeMl2bGQPVns8K0F1YxA4AYpC5ze9\r\nUWgqL3XiajNibeJwo71tnaRruFg8lKHiS2adWFhbK7FqHKgCF9hk0exkC8LZ\r\nLjYR3niLDkHWqr6EG9fII51RLCwz61tjdg2kz118Bxxx2GlcIyuekGzm+QTx\r\nxHIH0dgs57LK000aUoJ390+25dOCKctauJpynbk9FSX1uckHd4m1k1KpJPyA\r\nJ5ouHPn8cpLgvhRBVXAhiF8ncdlf3yWXx5r2yBexlF18IZ/rxUtcunZafhtj\r\ncJ9yzbSi3rnIXodO2Uo6bRi8A62sTs2x9b/y70WgLUuAbQC5bzUtpZfMBrBx\r\n+IZ2sry6/XozcAtyoqT1YN/yg91fMFVfBegZx4hJJBRifLUVHhSp74RJYs32\r\nF6OzhTUzyQXJo111CAFj5fS2XROVoP2m1xY3kqdD+mm50JDbkRGiFpvBVNgX\r\ne4+MssadFo5CBXMVZEvYfkqdlf8g9WRSJHQ+AeImOzgxfBSKpPBVMKEd2Nt8\r\n57putOcuDGiGP3sm57DgMPwBlaGaw2snf9fycAG29QHOrtCKWSetgiL7ALpx\r\ncMjscuwFGV4yKhDokD5gbYvLdKvklo3vDZU=\r\n=vVz1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20220923": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20220923",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "aa793fc4ccae9986c2279d004faac99a1677d53e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20220923.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-hILy4S8FDKeUOnOv3ekKI/K3NVgjvG/ufBl8MVYZ7hAgmy9QcIHePqPTaGppo8ktTghFEQUTtAvas1ajbtm8/g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCWBKj5QLXpYf7lEwrcEA8v/WV2YaHhczo7AO38eROW0QIhAIhkX4b8/auXEh7B8ZgLTpMzcCQyAXR8v1ZCsCwhrbuT",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjM7KwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrfIRAAkKAieB1pwN9ka4xGIOezueUPHxzHiXm1VuJUCnve3FFqRWDq\r\nzU+UR4wkko91ixAyll9+gx6C1zETqLZKwdeq6XdIGz2p8ltYhpYtSFl+05JT\r\nRWqMM+S+N9M+8LwiTi98HLy6I263CyzEbSyyvguH0MPTK/Ph40tgGuqRDD/c\r\n7iHl9L9GAXcSM8uifEyIAbUZqm15LHdKN/edBPWDUMp72r2GNAnGcywU14ZN\r\nemIL6O6jaVmupIXiT0BVi2q4TfGn2jTzpqwgAb24KdB5BWsS6hkfNp+NGhwJ\r\nGD2+SIj10N6GwdAbL2Xt2iMlGsKsmkWf7dd980Sf91nyZohC1kgmdT7bb7/T\r\n55EOR5FpSVr45XI2yWobzV++cuDh+cCW84XLdGAtCyqgdeltSWri5iVnwi3p\r\nM53Co/PoAbNB+yZWJiNQ5HxOLxBqYtF1jGC07rKDbVCL4c3jEOa+MPmmnXMV\r\nIXWx8x3woeRGwChiVibK6mgpn+YjedxxvZ5vCt0wlWR0HqEfW3DXoq++HIaM\r\nJWO7IV0wWyTuDoDAgPnA1+XSkx91rMqTKaj5T8UjFB5/n6STYDZx2Iug5po/\r\n5ExdFwn4vsudilPsDhE37qU3WjmetxseBEUaidDSl4ZqeZEZu1raF/itU6Xq\r\nvbzDWFSyaMVCkBscXsSrhJLfr6K7cLEljLo=\r\n=J6ok\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221014": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221014",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "d126cbda36a22894e695a44dd03ca48f09248332",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221014.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-GhWMEQTeb2uUiWZR3UzcJoZnEfgm/c9KRVfn+9W395isCz6DecJZXcNVCcBRB66BiegeyjfN/FtG5nJAD3pBZw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCy4/UMiO9uYsREIHqFX+AqlBalUQdctJnR0gPftSX/FQIgaFXzGUIesgzjgM+FGRrM1BUQGDXSQuggH37352pydao=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjTv+VACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoR4RAAmVcgAU2RXFdaCZ72VspfyVBXxJhdHupqIYAgWxdI4X8XJStI\r\n2PObCs0Jh1JTV3x/ry6OOlV6Ic0hgGPKxt4DCFCjZ04rftTIjAQCSipgFJ7I\r\nyuDqkl0b3sJkxXukQ5CNi9pmcHyChdBZDSHhh9gamAn85EhPA+ZaUa64kgou\r\naHo9BhsxHBStGW03pirHJcHysGbKwqJuRZTIHDBM7hfLYgdGwu+2f71YrXy8\r\nvwmzjanf5FohbQxh9MwXPGJM5063WAPBcNX+kFTd9HViBtIDPTLH1OPG0zQA\r\npaAvro8rGz1/LvGM+5qJ3lElK9jiGUjaoowsYLPeT1ULPkPfuGJrPoMaHFoi\r\nVNxxjmid3DOD9iZABxPk2LzraYgV/KBZyK9FfYtURGqe76vXAw5seueC23Lp\r\nQglZK6IUs55YDisX3R0XwO497vl4w4V/F+2Y2U0TVwCeHH7aANXpgoUJYeah\r\n/7+cfhq1svyneNvY/eLCg0iaXkl2gCiWTFOzV6W1SX9vn/81qvN1GQrD7lzn\r\n6EKGgOt4V2Q50B2YF/PtzY7XTmXCMp361pOGhkc72ymyOPKpSBpZTIF1v62c\r\ns0r4MBzjTCGXI05etmWJtUq9nD4njZvqTDIV5H5uyoamsi8uY3yT70zBjhj3\r\n/J1R9WIFdaXuEkrNy9bnp/xuOVDYV3gAo+Y=\r\n=9H77\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221028": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221028",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "d28928a24d8972d43ee16c62b4a21721c3f1f1f0",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221028.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-RenCH6nVdyo+8uF9e7AX9stz6yXBr4lFOUB3MJVLjcbQyxMvSpnBMNru74z2DR+rAWoI8vrUPizq34Ntad352A==",
+				"signatures": [
+					{
+						"sig": "MEQCIHGCM9xodedu9elHsV/OnMVk6F1nJznDWJZi/D6slQayAiAouiKGUBIZOG2ensiJjJv/s7D9ZhFAtpjgksQBlhKhNA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjYaxMACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrXAg//Rls/6rt4r8Yv1htx7qjq57LysXBdK7vZxnloh22EhMWyYinj\r\n0ZI6U8TaNV8cuCgqiEGlnoAGMVFln7HJA8JyELU6XYkWw7KWJXkP83CSZfg8\r\ng/76VLS9ec4y5EmURulvHodCbw0l8mTc7MY0+EMDmtZDxeExvkSWVyonJoW9\r\no7kpEPXwe5ppyC0EGeECKmStj7JITgJw8w90EJ2WvMpdhA34IF4NKbJo7KZk\r\nAM0oNLqSZZ6/sSw/TapX9uAjSjS2vy/RRdDnoNOmqMz1v5KlEncwyKMivbVE\r\n989Wh76vCSwSVK5mF8v9c0W53QHTzR1HEfHW/7LGTe50SDWTuAuoihVDWEGV\r\nEuzXBmXynWTSN7orj+J0xFev2tn6Wi3GahfQdhdn9mpI0B9viQzzPXLag8JP\r\nw6ywj1Ct2CBC+mXD5tUuCg+RqRW6z7O03gCTSwaUB5wJYNU+5rN7EoCN68HW\r\n9v0i7CFIjdt9p+9vTQn2GH20Wc3zIRBlVXwsQElnoNvaLMOCeQaflAuOcQSe\r\nyxsrV72cc1aHzLgbOzbhDOH1Y8nd6Di/e0GM1pNscr4xeNx5Z3+RxSYzZfhE\r\nFAzEmxy37dKRSxbrJy31SXrjwEZ3fMGfEmvICQaOtZEKVWIjLSSF8FbRLC06\r\nJebWmXElYeHRdlH+JSRpC/BQT4vNMSwemT4=\r\n=ueNe\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221104": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221104",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "f2d5966d7e86b86467a4049aad160028cf8e9a3c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221104.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-J/ir8lg7JFpg4bhTmLjRv2eVibHjbboJ+HD0VyQp7wpTFDwmP2whcpXldR4GrLcoye4r81Jrm4PDkg6JA2v5kg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD8ON9knKwez2+3MyCYk6YoUVHoB3pvBjoUBv/0LIJMrQIgChH/Ppvj37m4gJbFxea462UwkRunWiceAse2dchDBEY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjatgBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqIlg//QXsiYzatn2eoP4jfjoEgBYRVMPiOqZ2aHHs5nf4Ev/DJ49Z7\r\nRa32usGzMZ+viJ4aNt9SIAq5j4xd2mfOtgyynazSBeR9cl6U5mARxndUWXQW\r\nQsp0GS8kWSz1a91SMIWaIDDX7YIO8I3gPjioXLXNA/BF7R9ocwt5cEcTKz4J\r\ncBS5xGuKy2WWFL0N0lx8yOREWnMHufGS4ViMy2we2lUw9I9BEeeskGHNkMcO\r\naK2Py+ulh1tzFrim1JkjXZ1dQ5U2EZmjVPXZkZuEYZHLOBS2mmlxp4gq0PrJ\r\nEluLbdN0Hh4qX4JFIx1PYRlyVW0C7VExfHjQgirZi3ZZk/YLfTyPZiu7ojLD\r\nAG6iienvI0Xjm6chJ+tq5qyhxAeeEHeo4JGwJnMs7itsH6Rqz5u61qodR9Zz\r\nZP0hFWeDAop8UncjSczIjiZcsB0LqIo8ohD/m/aZJOovDbE4t9PCBerc54cI\r\nm4VEJKII1bfuStFZd3z4nQR98wsZRNSl41EVePEkY4Vr6LzfEYGsatIiC2Ik\r\noybYOhGMk6mVmluLYhVpCPysT2QG39X4I0dc+J7hB4ydyJp7zXOHzp5BHVZS\r\nUnXTqflshPJyUxtDzs3h1au3gPWBT/4OhRl0M0N0lpzvZ3PxNH2g363SeJeU\r\n/RmwmEVdy24tdsDupwTCouUPkJ7lkloMDAg=\r\n=pMSG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221111": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221111",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "7ede9cb56a7ffff894b3dc96efebcea7495d7894",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221111.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-gBOM8DvHi96gWdRrfmgYA6v8jrqzMq62XkAZfpiMdLIdTk4dK0cj4mBQ0DBusQfPjfivXIBWIaWLxrJn1Rhtaw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDKRc1HcDCTLXr1lQKvDFZspkZP3/2xsxImEkBRQh8ItAiEA7u3qGy0TJH1fFP1nm6Gj72s5dMcBRvrgzJV/LVr4qtQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjc6HRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmosMA//fogUBoHWUpSktC62/wUvsDeFKKp7uwJL1rppDkglnRZXK8Z5\r\nzDuUVXQuM69inVW4djiSB8vhtv6Uq4l0THCgtzTjC598j+1QyibVzc3xfFoc\r\n0PchNscwMNy0+38YieSih/xmiDba2/ZsmYaohIL++4yptQaDZ894y2qvfiTP\r\nv9c1tOnDTJLxFfkrpuHYsk9L4TNSUPLk8s8JP3lWVfV01oUK68tItjnBF+UX\r\n8TLY+yy7uOKgDDev7ppvifTsLc2JS7zbE21CMmvzacdsw3GNOgI7/QBe+L4z\r\nYXtrN4qIrsQCYqtGXQNqIlU0H1KhMiGERme9rVaLnHsmaW8kXYYedWuN47Vi\r\n3ibHObYmAm3Oh55D3F/92LDIDowFN36Yo+lDu1+rWxZZjjxlFcdlH3FW4aXs\r\nCZZJ612B68WC5UIFV8VwMeO+Z69GENI02bJeFtVvjbrYoqfIHn9sa1IFDQ+W\r\n0p/aENrspw/9Z/v1tR4a7uD/E0nZovISBVkq6KXFJnHJBjpwkyarVKVHOK7B\r\ngExSIdsRUG9XkTv2eBJDmfm4+nXWKMFd0fk9fBotxF4hlDdV5DP7WArvqEl5\r\n8lZFW61Hviykv/deraiQ9vSVuhsHzVIl/8F+ZfezEVyvdUrCRP5r91jXX27b\r\nDsRcgSsinQTRm5w8tyUSdvE+Kpd3I4x2t9s=\r\n=vURe\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221118": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221118",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "5fe84fa8048cc4313303686ab5dfcd3392f91ef8",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221118.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-2Tkn+P0x963CBcXtJWu1jPo7nxa8rBvqrlr3jJG8KK3+WI5JoX5bJkM32UzASIHvdd2gzMH1JqNtgxM7BLNdmg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDlk7LG8MPaRjnC7lMN7EwLKCSOHd1mjQMqy6eTz+cGugIhAPv/V0atUWXALARFZWmukKqbIx4r0CJ5u9bIzUHY3nXI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhYr4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpS2g//aJJaX4IOmA4iupjLN71fu5jOd10VTGnB6YuYv/9HDWtjligF\r\nozUYKPyFgS3w/nwxxqpXVS0OWRH8vaIRe9TU7Y0it5V50BIuc3Os9OPNYfPx\r\n+cqujaMjAtPGVG2LBgh6MEOXU/eurL1EySpjCnxnIdMHwTB0RwBDb7TbKUnf\r\n9JGFlVb6o580Lz6nKDzZMiVikXehhudDRcTo9lE8Ub6vPq6I9FO7Y48heI3i\r\nXWL8MccuMBy/6ktbI2dGPY1kEQQC7wXKIwQ828liFNGwWq0/4HYEq2tuzzc0\r\nfU3C5mjWarEA7um2yUXeiVcOgnv2+eLsIyTF+RK1CWHedrwnXab3v3V+E3yp\r\no+r1dKBQ7Eo3zBIpC6FRmTp6TdZ0IV0lSGXQirJwgFfGyZzAj+X213A4kkQU\r\nL/g5F+/fnJ6AkroVQhXNn20+z8z/0bWZd+aKbozCGYy4UB+9/mUPDjbq2Bsq\r\nMzq9BD3Y1woK0dFN/WwlUarcIeRcCYMdYiiEqEmyWfKHkYmCDXYLGotQUsxs\r\nVQC0kr7gybcQ2GotXF/kI3gDWSbtC1i2PbUZI8D3OLVnfqV6lmpQsuHSnMog\r\nfz0MDC/x23n4fIqXEBHDk/sQ86EwccPcoGOldEsd/iFk4lpJI1ZLOS7L75fl\r\nUXLaW47R1p4s4aedhPuUXmQiNvArUMGDae0=\r\n=qvub\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221205": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221205",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "8e557c3e03c97798e93096b616cda9f9a4882ab1",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221205.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-rW7bjtpMKOjJiwv/S4dsZLF+TO9zjXkj28p21/oKYISLFOnZTaPvDI64pYyckSR4NIX9hWNUxzZp2TA4wu3uBg==",
+				"signatures": [
+					{
+						"sig": "MEQCIADlErXB5amrxLm+Ys5rrj3dy37mofuANSyKcuqVUm15AiAm5ulKM+ptDjYt01dIEN+gHACbMf+usZ6ErMgd872SQA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjj4qvACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoWUA/+ObTGUAYRJin4mGYPMlSoGepXulTE/hDw5PA7POu5Mx9UgB16\r\nHGizkXGO6+4IL8v9nwlUD0sRA42lnN3glD4E8uSJSJB50YmeqAmKeoDoF3pf\r\nqEPkbPOuKBo1Utf9beJY/leKYJBSWI2I1kKkcFB1aAYr0xFgSdSF/T3LYhtP\r\nvi9sUDFth7G8dUKTg8vU2qTGQ4wfNX8qRo1UOxxEu8P9A3SNin/7m7DrU1P2\r\njD8+IvpX5eVkaN3U7N6wMcmWYfcu189SeR8UcTLCGPuHg6S/lHjOuaMBVKNp\r\nZDQOjfS1BmFbqqDbGOwvHqXhdjWvGQV01R3QTP000iRKAjzezOR6ep9hQg4V\r\ntpXGAa77KxIhS2AfTQtvURL8j0gkrMTFVHjeH8vrU4E7pyFPdjzEyOfwz6Nw\r\n966cxr4Q1izdqkvrTjeb7AfX0mI50AQLOMnYmLB/RAM4lrfqH24B0JwOvos5\r\nsijHee98wvj/P87eiGw7CrXe16qLYCnCTqTPYOpswikOg3VMQHHMCSIVz+Lt\r\nY5MMeNKogByYc5+MAfZ29LKkoyUZlkhMadIT3uAXenaCAFzIpqQyfV0Q1Lzs\r\nCdm31NOrY+BAaOvOjB72kFnnbb2gq1D3WWaQCYAZWatwb7YFNZqdetxkJ15W\r\noKAUI+BdWkfqWqXNxRpsFBS6JChTLWao8LU=\r\n=TsKe\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221212": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221212",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "148b7f21981ea5ef18bba3ebfc7bfae5eadd182f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221212.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-GcPaI+eeMiA9qt2efZSL7DcVkjmGbgyMOw65N+NEn8QsW8renFIOfVPiKuilSEeB+lFoESn2ZqzFbfeHDzNt8A==",
+				"signatures": [
+					{
+						"sig": "MEUCICZLvLGIXo+vIUoGo0HHtyJ12ZWFjYw6C7nkUhql86PzAiEA7ulPdA4v7zbjaiKO68RpJOU7FiywRkTBz4u1B+/MIoQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125391,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjmDibACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp5rQ/9Hmlo/gCpM+fVrjSEWZUovwg21oUcdh/CypP0saBzfYjOZgRe\r\n/6PJ/MwTErnXEFph5U3/BcTSrsISk921a2nTCXj/O79ju67FADslJldqGuE8\r\nIofTucbqFiuzNMHibgDfMnQ1YB/eikEnixh2h+jD1JPgHPz3fkru+Kbqe081\r\n+s030O/a5yy+1S8N1L/uiBZq0UENvsLp6WQH/KKG9L2QLTuU2PJmqZXdect+\r\npjw34ba6h3y6uFeWJJ+QrYAqaJXdJ1QPWUL1uj6yIuSFEFq/4a+kjR1/njNH\r\n8QwD5MN4ICeNbRJH8MjuOFp7GiK2j13RjexyxkzsyJdRzeiVWpcgwiIynnlt\r\nTUgVYuAn/DD9cO+oaVIFk7oWta56UjimXAgxmPGsS+jKZ6O8rTr05IHyFp3/\r\ntiaRNpnFnYMU4VahZe9cHJtj9aWyVQ8ma6DaWwM+D6lQExe4n0ijQuW647Vt\r\nfSLRFhjn2beasyOgGG8y05JQiBJubfaGApJqEyxvvpGcbQw0uoi9IVrGthuo\r\nhGIk+4gjz6k686TibI0DARIEP9KKyy9Tyrf5ywJxEjsSUQhQKR6A2Xy7/YzU\r\nHz3IdiJ2EFYFSyoOw5VM+DRicLB4UJsbDm6QeZHok7dyuH5WOxvfm520LwM8\r\nHZce8lLKu6Cwn928YpySzdGebqwBt9qDSNA=\r\n=Ms1K\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20221218": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20221218",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "a01e4ca17f6a28afed0982174bd1bfbb53532913",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20221218.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-gfG0LLCfyCVeslyWZZSwxao/fU+fyexmSO0ZCL99Y71fzAPcZnkFs26EaZiMvr4EzGrMPc12RdLERbmFhc3ULQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIB8cJrXxnJD9iXIuu/21KaEq79aS+FjF0f0fAWzpM7O1AiEA3zo54lfHH3dqtnxSKUD4etPL/ALzaGzJcTmGcnquC3w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjpAHwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrr+RAAl8k2AxsPrDVa54W28jwj5gRnHqT1b4neOcaLPu0flqfOC2Dx\r\ns9jBaQ3WnuOTqmEgmi+xLQhWwQhJ/+YLrzBeS1Y397gavnc85VQt/lFzBUgI\r\nVGDss/cLnTHNLw5c5iZNY8z6XQ3RJDouqGFdfC/hK1rWNFgreB8GsNBvtXUJ\r\nqtPtOYPBSSYA7BecyLfZ7WJSw64fgKw293CBoJqgDaDm0bEMUxVpt342vbxd\r\nRMzS1OCzrtAPhXWg7bOtt7NhFBrnqQIgw9ywemklcDUGAj0fhaOAIz9i8VBL\r\nikqkUK1J8nUj0mJdtQy1LSu2c+SMgymS3sSeu973Ech+Mb4RaMB0RJQJof5C\r\nDsvCifwqjYW1STDRFQnDzvchUDsw7u+ueygy5d1n//J1Lp/CF9P2BQnpEe0B\r\nHuQIpSDPXSVedqW97vFl/GsYEuYzNMQEnTEcHKRbD1lQG91Isvj2x/tlTq6R\r\n8kd9FcoVNbP7myHSu6WZYwDjjXPNG0I6qSXYR1LoYgLRcObXT/C24AMiJyAW\r\nbmWdK2U+auMmedvA5dWDRBTN1Hn++POuWSy3laa9fniNM6tkmP4LxVurLSva\r\nxj54o4c33C1AfmVZNAbBxIx8OoLYJu4LPbJtX3BvmxJVshcPwfDW8YI0XBUz\r\nFFxz6wG+sQ/LuvMexl65b237T6kQqzADkw0=\r\n=Yaeq\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230109": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230109",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "d44cac1a9e9e4e7b8e0c6a2588bfce9990213907",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230109.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-siAGlr5lfksvikQb41kxwOwcSDaFOTyLjE48+Wmq8/AM2SudFpuMDsP4YXz/uYRySnuK5SO1TdRsCDkOvFjPEQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCwbNi6wfZUV7GxQqojamNCDVxFQKPstRrdGHSs5wCrBgIhALHCgGr31p3xrXY31Bk2hjXLN+eog+4He5v245tY/WZJ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjvdefACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrXmg//fiQe/gD465I0Nf2D2Ug2onlroS8spax4HsIQdF/WTBiU4IyZ\r\nhT6irpVGAgVBso17kCzUWe4ZwVn5fYQu+HTQNLc3efvHhvq9UteWwJMz+23U\r\nrqSwCLFvIADUohZyuCgdIOtSB+33k9ngYFAcst8plES2901uk7z8bDuawb9q\r\niy0XLq6p4K4jZlfqshFAaFj2xP4HMSfoSl78F9wTIZOHxgpymVTIOdwffKep\r\n1NNPPuQWO1Oo874bBz5e91FZl9aNiukl7Nuybsv2jowWK7tDRoKXopbt6RCv\r\n2UOjszknYiGKru9uxkdM+nsY86t339/4YM81RbUjr/qnb8XyHZAVjP8lfcDX\r\nqwzWKZOJYNduR1jSm1nZKkmIjT8XqBiaRsXxIs1m8mkGHhS4r9MFoehkNnAl\r\nNBl59SFJQcFUzp/tJ3uPUkWFBaRe7jHhYmwVyWBkx3TdxzFlg9LbC12ZdxEy\r\nbFCXaEIruQYIx4xYIWR9kj84jS9FvGfrFJ6FDkRG3fBVjqlSX/pYxBrSKv2c\r\nfeHXZtzfiUixFiC50TEBwW7fowVi1qO/54lFOMfI//UYKpFibTy4tV5xq86W\r\nBIyMHVKXsVylORYXpVw7CWZjSQFYOmqGf3IiFe7k59KHaYDWKVVequwxVvHF\r\ntbLBAXxuXF1/JBXLRQ711zOmLYHnf/pP4gU=\r\n=+YwN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230115": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230115",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "8784d74bcfad0e804fc386564fdf07d8afa3be29",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230115.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-dhysNlxY1PQrNHDRHmbunEG87Cajq/9bRL5E4OO9m+eFIwi5ZBpBPu4Py8bVqiQhF67gsS73Grj2ji8ZiMiJLg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFu2heE4QhsIIAZ2IZ/6lFQvZozFllgu+ogLC8jEn4/tAiAxf2SFcG4jm+KQDdiVACzSjliGARJ5YEX/j69dxoOAqA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjxxIwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr5/Q//dlhJe4MsYbNMDvITrDM2TJQ0QH7iNnRULtX+qdCdrei1OOFN\r\nIeMDWX6ZhH1qU4XzUiOB6gFlcz1gpy+4b+PO8rO8QwaDDKCgpO23rD6dPmjM\r\n2lAGGO6yj4PbW37qQLxq4pONiv9tpXufRWp393oL5RWWPOG8Bfkt9eJn/DnP\r\nUrOTOifnrTWxcBD4QqAp6y5qWaeDpKmghJdIRYie3qlHKKshY7LlUjySMQk4\r\nmL149rD7+jIdxB8J9ODWwDFWGMIVoZFIf1JQsWqMurL5jDD8kAdM0bHQpgAz\r\noilo+wFmVkQ8PigcW9mu0kIbO3KQBqwLA4vqP+998zHMbSfRb40dEnzcTYmk\r\nqtXbomxpXLzpw9I3jSARYbSi+Vx0aF5D2J6B6plSB+AH0xHXeuqBBl+76EAH\r\nyTcGzIeKqgJYocii9tzr8PajyzL4/kP9uBCreJ8WuD4I5D+XJDzDnTwNsj5P\r\nXQOitfThg1MvhEUUpEUxAWcecVCnWafLfER93uTR1K42QU+cdM0V4hLaKAKf\r\nt0t+iTK/uJamvq6cIEw8iv4opc2VVqQpUvDkNT4+PeLeC+tV9VPrAJxtlADM\r\n7XSECMRx+VE733BIm1qh2i7wHCZhm1QEy519SWl7pYrEAoLvJo+SHeuasF05\r\nOzZAFtbsUtQ2ePkFSQ769TRq3w8bvax9MPs=\r\n=tpzm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230121": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230121",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "790cbae9cac95ebf9ade720e0d2e53cd04663603",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230121.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-fLVGs1HMK3cEJ4r3TnUjWBG2ZewWwYiPkzMKSYwVin8UhLwlcUeEfO9MZlga2Pe/lgXbGGIYPi3tdnPIdTamjQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCn9cXsH9KFTRrUbrdtjd1LgfGTVWParV2MuSvJsjtb5wIhAPM7mMeC9V7QBcywhf8TTQwtfIQMVSxDJLcwGvMsf8P2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj0C+gACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr7Kg/7B+PWh8LhdvPKFBRexKHbV8SJTs7e+nj3FpEqMhtCmIQip2To\r\nSiBqcxcnInmFm0SsilWkWiy1e1LFj18N9TF4S+WacQtcsjB1c5Xz47PhKL2y\r\nNoQl8YrUQx1s4zMqn68k+5dGgRogx75UO0rUKPRGUEpF/JCsFBl22ArYRPV1\r\npHcFkZL1HatiY0LtmNy4cf8peyv9Q/ABOInwc5rBPXWc0F50fjsV9kTxA92l\r\nDE/prCkwHoXdQquarnys3dg/8AhXRqP7xVr6ETc9yM1jcJMguV8ubqt+1FPr\r\nu90ZI+HAsYA1HJxz92PNpiLy4UY9mKnT5IihBToRtgj5CMwntsosleVNNSvJ\r\nwKe2B5Y+7zUfUlqncdY54DVbGUCcJtUO9LVzosKdzWHize8q+/gP22QmBP/3\r\nGd/3oDsW3AIn2yQ/DUSYcaSe+908bJqZ2vUElNlC6mYEhpMhTtcPfQpehpHV\r\nleTy4+vmyb+dgwZSb03fL8nJCL+Ftcfq2g+qNQlXxKUq5FrFOkt0c76SedaJ\r\nrf3+wTLzduZ5sjqlKv5yy/w/nKHMOapNsHzrTlGNr7pJi0qj+/CcI3IxfXBT\r\ngdsEEFzY1+UfDkVzVyeomm1TTI5PiCxxHGxSZfhCXoYbRLunIvp+QMguKfZU\r\n2KU3QPyTgqMpkmPhYvFOsFpM1tC3vGU9VTE=\r\n=YKCb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230129": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230129",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "fd5ddc50b681525196e1becaa76e07173d27fda4",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230129.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-lIFA6mn4WlCxRnUOKngwwht2qjbJWRM679GJe+eWzZmsAZm/Q2kBnDm+b4dQ7tsh1h3R4FkL25nyH0akQeihiQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBxtoK9bY5kUAkL8jn7TRlLHzIvWaLzbg+XK4SKuqxC9AiEAkelExh0bmgaKjbTnhlVJNZLEhHvFIXBn16MqvezuiFE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj2JjZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUlg/5AE9ipIdz7MFKUCnaM/o0jICYihXZh1erTSX9BUo5GniULDf7\r\nbWbatzP+UKoZF+Oawf8gSUyOP7nd2zKq8WlFy9QAHYmu67iG+lZzUetr3VUR\r\nYnc5FY1u/5gLaw3rImlbnQhcx7mm0NBBhK4ffxO22wQoRq4bN9anJaCM3Bx8\r\nZVOtzD+FqYD2BFCB+75LPtm6IKFwBgQMf3HbcMbLZErrQCy+vzBGFrXuArud\r\n55SYVzErEjXtlb45DWrL0CJ5GZF/ev7a8IyaHtAzYxGp0GKvlXhGoDpMm3HY\r\nwxEEYJ5W9S7Y4At6UrE7poamGLIfF/LLhEkUiB5rujp0JhvkqagZZ5mo21OH\r\n8df1rzNVLA652Nu3Fo6X4oRnrIM+lvC2e2lVuZRVhAkwzlFPSzLMy0F1j6ZZ\r\nhO0uJiW3kQPm+H5RY5v1AUB0ApCwApQ8C3ph7XTSjCXJR/sQgTKgy1vX4SBY\r\n2IkrH1oTiy6oH3aplmTlOlDEzpP0P7/rXzxKn87R55WKZmVjYHKrff26DZd6\r\n1dbrmPPAc9DFTEK4yzoBtQcQf+eAq6y9iafuvv/RNUdtmB2HEN4K+guRT5vV\r\nCdDsELBiceu3ZKQk+uJ1Fac2OsdJIobxrWCSzZyexqRCO7swfNV6zuymJ+IP\r\nT8jEvUamlh0MB72hySURl/KTOJfUalKFCjc=\r\n=MWaJ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230206": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230206",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "7363efd35dd65a51b54e5ddae44325385fc6dd57",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230206.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-TC68pru0w0inFPbZVblXXhT8d6ZFch8vNpzR7URUnpX/NAHmjFSEFLh3/5pmC4dafBs3VBhVTLg2PMKXbWTdpQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICA1voHIP9Q9LjMgRPrU/3R1te6VC4dnPadiU2qRfe4hAiEA2r4ZiI7k1VNoKejUI8x5M3cyfhSlaYeVMX9p7XIUU9g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj4zHfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp8Lw/+PRBuotjSxAMSmek8T3BqWnuH+T06sNXPjfOp0DYki0IEgSDz\r\nWE6TPtzRAaDHhkdrGXydopLJISek9zTypEQ6N0VoG4/wKVVQhYIWuRwdHYnY\r\nBbBGCAhrFTz++Y61Uuber8bObk3tFdXdnCouvec6byXLM66Fgqs7QfFz45Kj\r\np1M4a79gsjUxIemC161UHEzdqOHCnK9Ef+xMVbxFLllahY3rl2Y0PMjgkhBb\r\n1m2qaQAPs3mZb3Yk+Qab4ywplZmjkTUcHVXqgdYYI6IbP3mVch3dH8pX/KE+\r\nW1JqdPbbs9bISundunAOXsxReJS7CCZp6AChnX8EopaimHXcICSN0psMD6Wn\r\npJ51rjqwJIxtCNKp7zr5R1Y5G9J9jo2IABgh/+LGauidgOOqneClNW0t8E8D\r\n7TauOpYSXV0ZI91sAVB9z8EyevAWimkJ2xzyhHjWwJD8zvnK0Tk+6438davb\r\nZVJ65SZDkSEDiRapABStYkMlX1KWPITY0PeHIDQqhWycutQracuGIDz1NhY3\r\ndHwWzlcnSErb2TPQujXjKCR6PPa8FMIx1/FihRFiI/DYqmSF3Z+RxdpVKxhU\r\nXzaVMRs+h2d9o55eeWGZos1g7ovPtdUPwJ7OIBj2hIeJ2TTfTwXfPjKyq5bO\r\n/5NhTPpez3mS8h+2lltt0HPxaW+zBolTlgA=\r\n=1Nyz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230212": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230212",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "687dfa1a24b903ec7baea9d6b61ff8c083cf1052",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230212.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-K0wrJuZDrCSYbI1IIwO9grGvuOhAn/0cwpucMaYYd6Gmy3t3On4ELJRGqA8Prk6wPaEaen6FIUb2SNgvPZkIcg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCeDdItG8nXs2DNE8gvWSwg3lSxNrBW5h1PQnfABhwvpQIhAINnPH2l3Y9OzizbeA1F1uMF/xgaUiNUwhag/o8xs8Jb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj6o4XACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpf8hAAnrJj09DXbCzi/DVbSOpXFGkvrWtBgOJIXK+o5J7ajqT++1ZX\r\nTfcUmUC9p4UipH3Cbc3paau/+/8POAjOI4Zvi764awpKId5nsPbu8A7iqIv1\r\n7jIozPBnTlJSOxtwdwth38gn/u3OoYScmYMQcElf9llRNuarVhAFREzKBhpi\r\nVEXT+TcEv2P4Ft2a19fGrqfmG/Y6MHelDlGrj1Gs1JrRGZhMgvqCBt5jbQkc\r\nGfW+qT2R2DJhgK33Vhc/Zy8f+Wi3xvTL2z/skit2Rh0zSd0vifkwhwj+EhPY\r\nHtAeDUoDnPcAFVm9emEIV0+c3DSxWs8eVji7y/Mf/yn2DNX3XKE3UmGgul0/\r\ntCX4XGCz1TPMmEm/oV+z3eH2b17E82WbyD3jRT/vA/6mjAbisDs/P8G1b86B\r\npu9ChiYCig8X23dL7iK3rveCI/9FOQw9NJPX5OTL+uI/znReSM+oELoosIOZ\r\nV18NPmLHTNFgZO6LRi+DlnDWrMW9LGDLbqVNgZYaKc9kq+XpTPf+bViSokJH\r\nOxDtWfb4pzmq906lmIE/Lwn2pnbNorfuQcE8YJstgu6souXS0lgQkf+A6Mp3\r\ny3dzBKGvJM1Ya9GEe4Jvi/aqoX8i1Uf6ehrpeia4N6HJjWlItoGhuFKeUBS5\r\n1POgOnQTQdFlgNUQ1HNf1dOm0W+vwBOkVd4=\r\n=sdCP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230219": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230219",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "01c6153ece232778c511eca3048b3d9b17cb4759",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230219.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-20KcGttLk0vvJ7pUsnYJtcPgHn+uCgqNNTDcIaigljwEGwb3dwJ3bIGoh2Mw8GeojzDJyTTwDGLX2oKbmLHsDA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCWsVsnCc0EMGrK4s9UewFAIgaIuEmwb3Hj4I37foPhXQIgAr47KYSc2O3K7nc8CeWzsAxVxSxK0sYFUAwo//69EQc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj9d/UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp3HQ//TMIuPgECAT2SXBVLfyn1E3b9V8ql9WBF4O4CFmFjuLaiEEps\r\nmwjK1r17GDvosqJwhqIiuDOs+gDiB47R757vps7btF6QtRYCHfaJxl/CZTdv\r\nsZSYKjVigsVmKRfPmDztqU/wpaSa4YqUA/AOGSXMGkR4J7e3VSNWSoC5u6aM\r\nw6skN5gUK0i8TMflOm4AjgL/93Rhc8MXCGdoxQNpF1nqV+XGweAZO7o24q9F\r\ntZOKkXFaSpHw1ThX3H739Xw/2YKHTrrAFJ1a+SDQ3WugZeTLxEfIvv7fHQVs\r\nddT3Z+JPWWTjiyDHnl+RfG4OH0d9/CyG7vVSsziw2b2MG1RiNuZkuSn9ymOG\r\nMriwclquzrvx3UE6L5kYiQ7mluGO+/yoVyc921fDdc7ve/l/cFkGp7jx9R5y\r\nOIsUd4Ok0Zw8h3OSxpfJCdGPM5gCdkFlbKrejHr22qQKNrl69iR7XVJya99h\r\nv8NaBojDgr5n4VJTClyAG1za8FGVQX293ydR1EJspSy8FAhOckQneyvHq+0f\r\n9MQ3G+124Lyu87MPiIkOUITAdz5xBxboBaPtFKzcPHAoeuQKMCke890xX26B\r\nDDOSfYWJV5deb1ETujd/w1QxSFM0DoDi0gQJQhQDmm6pVUvPkLqrg7vCYkXR\r\n8MV+gz+lFdWX/vP5aCIsd9qubwvKHxFyRek=\r\n=PQZ4\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230227": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230227",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "e17e40eadf0e6b82444e9258de85d0b5400ddb37",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230227.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-bnZHm5iSSF4cxwg3QEHS4Qb4N/JrS17K2DBpngVbipP6JliOZ/PBqTfVCvsGus0X6y5xhu8ykXSrOSjjHfdiDg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCyWi5dQZApArv1ZM2aVB9WF+M/OP/8g8sGBPDX9aJGcQIgPDgdarVR7dtvf1KAN+fqJ1vF7JCgP2ugzJsg7PglJ6s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj/Z9tACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrEtg/8CP3kCgWq1wpvB4tyUcBIbhm8q7jYh3f6Cr+wnVcG9hg6i42U\r\nwexKonuPS4ea2VSPwhvQACW4CaLZInWQZj1HWp3Qq8V3GC6UMl+9tMXcyuN4\r\nX5Z6Z2L1wMU8RGQT7LfZ4pkYt0IIDLu109+eWYrneBUDcjA9DvNtpo8CZbtD\r\neEfR0h23OmRTgTF9BCLJXTmWsIQ6WgqESE3Q8clUY6pA6mTFSqHg4kVCcQ4c\r\n7Fafmf4IdZMPRYifaPHE9lVuasy4JNo4aBuM/5Rja0VQGu7wktxN3SsK1YC2\r\ngEDtM6nRtfrQ3oPLwPw/5ZJhG8VmlKzLtZAAzS8rvG93cwJMFbZxXFaMG/Lg\r\nCGbmyq6k8ZpRk0yDt0E3stDkUc6sO0nvVHve706zZ1BMT5RLaxLPDpmTadGS\r\nXYo80gljczVaVeCqZIlCVT5f/4vYIS03KnGcTztcckwh9rJgrafT7aGi2+y3\r\nVOuviij1D9WxiySM36LvqYEOjacCRL/C0fTphJJjNRXoUd6rN1ZhEUMP7dLS\r\nmL/vPOyoX4f15gB4js7uft7T5yOUrP3t51v/6jBWHCecr82eizFLjBpsXgvq\r\nyhOx6/h0swxAmekbX7mvUFzsDLNuRLmh/EUyHjnZ5mzaZXwOHwJt1iCS45lg\r\nin3VuO5eexHu/rXYjypIfpMF/lkBOniJ2/A=\r\n=/rJl\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230312": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230312",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "e478c5612958bde8b1d6c59f53a05d9f3206831b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230312.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-U9LZ2iMQMUato9AiEc32MszseK73EpQvxxcZLclsHOqAlZEYcs0s0Y4qKzyglGcQw+1JwUR5D+iEvaDoNi04EA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCys99P2IWu6Ai2mROMayi9uztDO4ZpO+myn2sVFmYnRgIgaBlq7EwKeFMy1euMgl2SwwjpRjDaLmKM1/UkDN/2IdE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkEG3tACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrEjw//RCJScVXVCjjhslkIuH8kgJMLRdPHdzS1aoD5ADO6vMMacrVI\r\nEBxDyI4iCy7Tjxmc7cPBAxcpQdl171Frxhr9PJqvWOUbrUUBB5iSdkSzGVKn\r\nOSK2d0vmLdU5wRhpI4ocyaiKJqjNioU/AGLqy2nnOPgPZtly+mL6s2j+SmKz\r\n6oWCx2aL+2m6ux9BfGKj0gOuZAG46U5S4iwDLwzmpDLjJU0HsubbHMtmjeeb\r\nubRbehcjQhwONSTR9W6dY1ovrvK6u+wqFlRZJCSe8a34BxQc0bK6QK4kvBH3\r\nOjaTK+kF7rQN76rBkPLBwcb06qBgtNpDBy5++Kjgk+d3YUZtRibPw076QdUE\r\nYmB7eWkJTp3Yr0WR/s4JfZ1VkzZr1iq+QX6R0Wfdv/nqQW9WsWNjvumSOoiF\r\nH4m7CIUKa2Q6n8Vo5QsFwuUgPg9kRAGyNcRwQKqn/Ku02iZ1I8sk9mqz/CnQ\r\nljSBEbxegCo6xKyna9duWhyY9FxuuvAiggkAgxGgeaFEyl6L+O4cjQskBRrE\r\n/cMMtpO96/PKz21gD655PyK6s2KQNgFvadkFO/KERj3SjrKNntvJqD6putvI\r\neVK8nNqBAYXo6A/XWZd0F5WC3wKIhyR6ThpKNZ6/T+a+w5PMmbg1ifeTHjDZ\r\n/zGfaA/M0J0nULkbH1adU42tPlIfPFTNUIQ=\r\n=MqI6\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230321": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230321",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "895882e7707cb590db15c9662ce5834d2317545f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230321.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-WDTM4YLs5IYiqYjIfGRcILxfEwPQlU1goHN5yJH7g3mPlu1/8+5HBScsmTEHWoVvpxBRcAqD60PqWWTwNZbtzw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC+QHi7Ou8WJGNNYq6ZoG82Jgn+wFqm87LFyax1qdORDwIhALn9uUs6xDqGINKWha9+D0I8AuhhMgDFyKhtwkXNLX+m",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGfdYACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmongA//RO5UtEHURADEo4I/D8oU8cgvvth+yfJ7ityvoo4dr807xHg2\r\nzoPFzJpDylR31LQdHDmOsibK0huLO32WVBkCpKCZySbL8BCMJOEaa7joC4n9\r\n9sEbqyLhNOEvqZapGTA00dcv35seXTwo3orc9N3v3LSHGAUj+FGF837Emstf\r\nO7C0fi84ExZseAy8rv1D5kDPVghoklkblOjF78ZhxqrmtaIJ4Nk7YetKcgsd\r\ntH7k/lTMyrw8sA/pJn7hIqomgzuHE1REhMViv5J8optU0KPzI2ozwwurOJtx\r\nuoIZyW7HN3SdpleEwRkzWJ/V5JIKyD9qRMkQJkM24qCwe/bBPH5L+WxDg33z\r\nYtjFbN+38X6zcBBOWGuwQ+nTKRuP/9TPbXeSvSmCTtQuuy1UVyh09CLExfAs\r\nF2Sfs4+1LeIAq+msL7LqyaUfbPcS5UdoOl7dfWFfZklXpKcIEHGXgusqUO+m\r\nj1JhEQ0VXfAO7C/gkoRo1xPaOxsNFvuHSg94t1YQN+iozncfMOtXtz/tKghO\r\nQUG+hdnS2+ZnMWrjnbpZubYBb5wBgWu1j7rcaU8DWVxpmPud/h9VOkNx2U+F\r\nNKjszJ1eAdDXcpnavpvLUec94X5JJTiPW2zBdHFvsKZ4FDbTS6RvUmU72R7y\r\nupFZH33x+IE/2R1maVjqRVkdM4dV+uWy1bk=\r\n=rlVM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230326": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230326",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "f83676c613f67a234c194ce640fea6e43a26d16d",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230326.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-NisFLrMJGffpnWTjopMucg+T6cFgm2Syf/Pwehg5SVRfCjn5iiNyYLLe2YyoP+f4j4bUFFbHCG4i9xLHcNjVEQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDItbegSR4VTefGR8+WtJsJIqxwtieKxz3+XbdqovM5pAiAHJztdk7OP4k5RYarCbDRDwwjofJalpu/EAc5ko55Dbw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkIokXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoaDA/+LVEIGZahCrVvvh7zu3hTnpP5XwRX4FFecmORauvS+4lWVYKX\r\ncoORVrYwE/2Nzaxfo4pbKBl2q0tQd3Ql1ugS9Y30m468e3jGg3epmK9k1pxd\r\nBGDFWN4X8YfapYAZtOr/T2ISTWiKOqeWTecXcZ1zBdvgT+NlRRaVeXIWs31+\r\nZ/dZSwtRxmerafLA9ikuHHO2MHhcPyP0SQWwae0YDzJIDhUFe5+4vUrBoRIz\r\nNdKRQ0owiBr/X+DNb+Kv7ky4RIa1sJiKrWYRpgDDgevDMMptcXStwbmdQoRn\r\nvyhQpyhll5OMjKKtxtrfqUYIm9ZFwczQkRPpwmiYSnM9LM3SmhssXkEV4IJ6\r\nzTdDklqiLuXqIdPrKv+9J0THVGJdW9n/cwmhBUUYSMowtSMvtQykNaAhRclh\r\nNJBqs3T+MCe4YiObiCg4MExBbPN/SynNL3Hmqf86VxzJ1R91XOdKxK7B3LS2\r\ne2oeB99qv6g29iRihOxI9y+vu+4AzT6TQXY6//ruf6FISb3bP64+Mg6tGqAy\r\nYBiTKGCdTAvVzPuFGoirOz8tUK7HoIUhNttVFQoONRIzZ5C0Zj3Cy/7YNc3z\r\niw64wmLyPMC9P4bxynPnkUZMADrjbQRA+GtTpfAlf5ASusWEqVVGZhP+gxzG\r\n6d3+W1cge5L3P2v/lL897CXVy80LCwwtnQQ=\r\n=MjG8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230402": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230402",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "f5ac7f93be1a41257266d5e1c479e91116fe974c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230402.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-FN9n7+xOVR491Opvg6yd3PpUCgyRIr+Teen8uvyvBWLQL2EIfDp8G8JILx/3Mv2W3/uTqUm5Wu2uPURA+kgZfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCzX040NIH2HunClyViDPCpflS/ramPdJqCKRHWl9FSyQIgA5bYMRVz/tw8hUkbvjw2AxWdd1tzyU/kRsfi9NdpYvY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkLUxyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq5PBAAmrJTCt8H7tVZkTLzDJa2e1yoCZLPumAExb0wNjZwOM9Xe8xN\r\nTRIEtJ53oivQC5ozx8gZqdQ+3u96f7SyCwcp3cwQobO5gJ1+7CI+1O8EWtrY\r\ncPXQImaWRb/Ei2O7hNcZvg5v9teFBFYsSWMtlB+FQA7l19gdt1ll6+0qNw4/\r\n4Y46kQeumnMsSQ34vc6WmnCla4jvMOHEs5gQta7Gg1NY+LlS3sM8iYiNlGAR\r\nco+XP7J5gXMgNtpLD5isvebTmgKYbJWn8g3OpbedxMKYNdH4MO/Ux2g6Cb28\r\nH2NANez7xviwU+IOXOPAokcAgRJx2EbGVBkNvIF8RbM+sCJTUoJj9KHHK4bq\r\nAv/GEQS521ZutClySrBmloc2HMgUkjOy5jr2mAdmWYTkhRpr2WYg4EqqM4lq\r\n6OTgIBWXnJKYqzfzAa8rex1EOjE13J69EfIBNn8gsjtEDbwQSVb03pAJMyA0\r\njs3VpFcWydcrayckkrogRy0vOLcrAxWO2qxdjtFRWqdgimQBNx60r+VIBgQX\r\nuAGT0ZKk8xEufmOHLFzKmvU0Q81YEVeN9UzW7WTIgHq57x7FNr+nfa2mlwAG\r\nTWgW2p+iL/UeCJwYmcQM9/okW31jrFJFuGYJUBpfahIT6QqtQQAbmu03uxwN\r\no/q9Ll7gLuWp8vi7of7KQ+IKunbNSz0Eeos=\r\n=IMOG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230409": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230409",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "96cccf4f3738cfe4c9de0b5fe0b1ac6838e9bcbe",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230409.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-16RawRWTONlrIWKDobhThuJftiFmdaqbfPPHLiSEqLbsQf5RizQ36CZ/9r5lPeT6VVOBqzb4shppXkrJcq7ztg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFS6Gx/MAmjDHKoKKx7du8qwkVSsg/Qv24HTGtSfC/vkAiBLGBolXJGQbPjrGWchWJieRbgPQs5ri2MZTBwuaDdEBA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkNr0+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr5yhAAje8X5xZ07Ch3GUzQ21vzHiKAoLJSeeJClSW05LvFDhl03lwM\r\nGlqRLrkDuB++AmyJ2uAxFb45ztbf+7a0EOg6A6hOpDZ9RVdFLNsE0Ejs2CIg\r\nDwyTtdcJJycbAnnTPn8xTMBlWRl9VYfigsfQVCe/T8ScEksvYCWpxnBIY4Qr\r\nlx7Sc9uIx6mMMAA+fw0mN39eRjS33+Fe+88JCYN7h+tlJD7cRgY4u5IsiCbv\r\nlBFQL301K5J3nsYKlA0hut4s+ZuXhgl6RIqtv1xpaD1KEWR2bYSbl+buBN+Q\r\nA2r7CuYLoq9msb8HCUmS8lz68Hv84d5ML94YVHT2MFV2JTAg/uFRh95Vv02M\r\n40wdTIcfb7nCANWdfROrRwb7bHxUNhfOzX+8md90CWEAsSsua5e1cmgPaleB\r\nGUqg8aqlknlxzLkXtEQLxu9TF00f2KQkgRlxw96bIQ9RhIYa/qbNE5th3BrR\r\nAhGnn1ik2TOxxKWmMY3peT5gm4hxnjufIyoqP4b/nkOn7psWGlV6XAcG/KPM\r\n+tNPs5tDMVLZrM8e/+3Ax3GO7m9P5qofKIIJD+gkjiNEAthCv8f+B0RYM2DC\r\ny/qqMPEVEvqZQKfq3MqoBOSS+WnEHQvC06lSd28W1h6PqGcwt6E85VfWWmZw\r\nugeS2ALzt9otfB5JZWum9Mt48WHo8K+RzrM=\r\n=U7z0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230416": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230416",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "b69856899bc9ea9e05727450d2a2edb69972575a",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230416.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-34D9IZ88Cps9OtmWder7jVQaQy9ODtbXih2LzLwyH+LLZZa0Igl7YV2kFkdrSLXAUDcf4qVPf0whRO3p7773Eg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDTsOJ1ovmQnJQXSFe4L9Rbuip6uH2c1u6dZUr+89Y0JwIhAJDbE44pj3abMpevwuo67lqkRz15wx1+6GHeUlRx19BW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkPhqoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo4cg//fL2bDq7o17udq0PqBali5oPzKXCdY7aeJd2vJ6ya+CggXJwF\r\nTUFE3mGJu4qEb5hD0mGqBTEYubcx0tyibJlJYqU2t9QOfyLladMAa/mEj0qN\r\n2D5NsKQfocL/FlYyJJvBatgsUlWtWKwBvuNoJrrUtt/SmGM8pTej3vMxnXj6\r\nzxGA+vxtyODpdqbyHga8T+lj7i0fdjYIzRAHHWUHRG2WkCO/oSZdKOah4Lqm\r\n1lV7Bc3TezrBE7QjUbyMAQi4MKO9BcLht6wx5f7j0EbzWgI940wfp4cycCdu\r\nm77KSnxAnLCFwOhev4KuSDWIOEmbl2sGdwTCochG6lmTiJf7umGdyNXawi3+\r\nkioH1ygiFNWavTYw3XFogjuYEd44LZXFzhCtsJbO+uMKjrAG50Bsmw9ZqU1R\r\ndOi7FybNx4LvxozrgQDJAsHIIuxqiB6PltqLr1nu34I2yggGHe5Whg9mbmvy\r\ncscUsGuKAkndwlowSKpkD5ejgCY8/RIPyD4WAhwTn3/J6YEdewBVGyVQj9xE\r\nx85dE+iqK+T3AzNoBgHMYvaMeHnprQar/m2Nzckx3WV+zIg5OLk+3hW0JIU/\r\npULnZ6lUCnxWVtWMLadBJK829vzZTcbrofxC3jaAbMPrRckkzgNs0OUoYuMV\r\nv+F4ofU2Xbefk16/KDQ8noAQ7QyQmHHxjFs=\r\n=J8hO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230424": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230424",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "dff935f23389afbe4ae52fbe2c149ce53d44df97",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230424.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-kiezEPri5RHJMH6RLprMCZ6W74CQVW+akmn3YrzvuSigPqg5swQZZwytJ5flqTSs32oPCwef9TyLaFZNeiOcaw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCF1kICZ5qccFgIClOWboz2NCdzOkSfzaOSePJkO+w0KgIhANH4SixbxBF7UVn4/snp2DK251zlGcaT5jFt6KEAqVhv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 125371,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkR34xACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrYIw/+ORdGdeZqtouJES+ZgjvtLs72SD14WnH7UdECFiXgaAvAyyFf\r\nsjeSVG+eU97JuwD6J2VhtZ/+Mu3giPDAa9SRhayopWEDrIgF2HmMAiR0Cidt\r\nHSvztCagSzQcVuqmFEyjBRI8VhczKSkv1pcgZFEsGfDGygEszyl2QGDWIrv3\r\na2SPc6JMcgiPuHiBmKdYeUPmcNDJZ4J+4HCfDLucjvr+UIlC9KGlxPeeMO7Y\r\nFKKGuPXwHs39HN74NV0xf8xuNEtUiGmVxvLdTkZnjOF8q/fDHVqCWrt9k3Vj\r\npn6kYUCcnvXMRGE0LGo6O56RWVAYn+fjvQZcfOO12F5WxdTUd39PghTZgkV3\r\nKwJyAsVFXCW7EQbPzdOGjIalR2SvC3lhyKgRDMZXCuLcXTJvdpQhbdvrm4tq\r\naUSJ6ubvQ6eI1hK2uSS3qyC1Hp5dXnJopgqzScTOiDxhbngqZq9UjfsokL4c\r\nYsQNOu4JCBep4KY9hrM1XwYftlkQwKCqduW2080vLLxhF6Pwh4VcbES5ol2B\r\nLzoyB0TCM1mgSdG25bM4Qw1Of38NKYFZXXQPE/AX8jS4VBHkD8G30iq5AfgJ\r\nE8OGv1qe7NmP2riGxaYDz33eZ1cBv91o7zroOpWyv5y1t2uhoVguR4gRWzne\r\ny0DDAX7ltWDyouIl+wJQWA/b7AXcIxvNEBs=\r\n=MKlZ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230429": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230429",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "554ec28501845332ccb8dfc929f5d86ec88eafa8",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230429.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-93CAKdMs1du7ca9+gFB3hACAQyMc419+DK20Qy9CZckThB+26iycep8dhd1z3FiqMj62N0aeJZBQpJl3uFq08w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCkfaq2Txg69Hbo1u3GW7jGbmNyHusP6GCv/XxneIHGRgIgVtihBCRItmo5fbNU43nRuYa9M/qorgOxyUZ5mlNUjbk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUhlhACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqD0Q/8CKQSgz2pm8jGV5EWdgLhoNqHPuQpro+tB1jidVQRamfBy0aB\r\noCzAFAWXMtvJtloIRuOF8Rqu4E4XS07b82Eu3OQoJvVPStdLttcYjG5yIDb6\r\nWD/0OsnfEOaUjW1jBygYcX4EcQxYzEHA78XrjqJaESKXZx8GW5uBPDtpOydf\r\nXOlyZ/DNaqtwO7tpXcqZ+pppDVpjmxnK4GjyDxJTZhEXXUXiyQ1fV3nJwzdy\r\nFt/A6q14QlP5axse352bLlBEYnth1Wq30ToxTzOfPIfd45dD622P04jeLGiK\r\nC+MzVbXaxBJy7pAqE0gUI+nYR7mPGpvKV1O2uInueky4dwq1L2kmZnGD8g9d\r\nGhqN6Oo3AW4HthE8Qqb7pxEOWOyk5EhF13xW+uXCDTGgOU/sUiUYrrzIr/UZ\r\nDwR6Pkieqf5eLHKqb9WaM/ZDO24uJ1jXHO85TAypwQDhumSROz5gHVldFBDR\r\n1K17EVzixeKrOYZZR1J2EyloctrlqdyMbiXxfP58uROAYM5FQdw2HXj7FW39\r\nghkcMyspk40qYMhql003hSI3uaI32Z9Czke2974bs9De4EZiXiJONzqgPDYT\r\nkIVhV89279xKea370P1lQExFETMpZRxPn+LflN8RlgmHmiNzJaJrbDClSxnI\r\nWtnfohEEe7/38qN/PPKp8P7AkjQ7U7YTTBc=\r\n=+Tn4\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.20230507": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230507",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "d4b3c3993993f5a4f72ed96c4fcc1bcf286759db",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230507.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-dwscIeFcmrPlCBgYwgm4X/ehdxMb0u/Wz1Al+iY39ZmewVBHo3l0iITF0K9wsVH9Pa3jXPqhCX7YQ812ykwqBQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpye9UUPCuit29nHja4iQMTGogFCqwdkDSrCviiF+AFQIhANi96udYXkKhD67s4dt4pUkjRMBrYqzvEDmaIkRJSJ8r",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230515": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230515",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "9fc07988e2fb028799df7550ae4132ec8cc54091",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230515.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-WCLJ3XbpAI3aGGh2GpUGMqDd1DHi5CEdewCOVv54jKyb4eRNxZCU1KXH78Dn+f+W2YgVH+MoG6as+gCX0OPhMw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnU2HaLxj/1L33m2FNXL8IA/mlHFz+t2yBXYeBx7/SjwIgK2paC5JFY19WvS9UldNXGl0R0ta72eWceZJ/xgIyjHE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230521": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230521",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "b2dc07b4960396662f959dda7d86f9bdac317cf2",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230521.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-nwSryuXdL0+0+wF4gpqR5uKjZkYFFpwgPwgM0nv7j2jW939Odc6MnuakAY4dmb6LFw4D8zhD4R+n33xTs2kLgg==",
+				"signatures": [
+					{
+						"sig": "MEQCIF+dcwixNlzcGIfw7GxGFiblZwFzrKjx//DWSf6rmxFVAiBq7fZDsdeNvobmt0TGWeEWzsH02vsY8oE6czFVZdmthw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230529": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230529",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "0266183e7ab32f7998c65853ce813d8d40a8f629",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230529.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-69/mylaM1yFSNAUdMXMWVrUgYhSeRuPgkxCCAOEzwsgRKJFDL22Rhs5U0GgNaRE7JuDtNo4gzXyUurzwQpv+8Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDFpweOYqMbxkvdiaM/lp/ggYxhNZ8d+9l2UCVtXRS8vAiEA6belXGEDZUrMX4gRT8PhQvSFWeny2PsTBDYCc8lzwig=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230603": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230603",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "193e074fa7b4b554c21003f4c9096e23872e0ce7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230603.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-7CMdsZD4I7gCIF2Znycw32bzs5pQ23QudvZA0w83+u7ekm4jSjLLCcsL3JnEtpPWuhJGwiVac4d5QUxbl2ThRQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGEs0cbhn7Nj9Ol5o9fihnGKwdAOa4CG/k7Lx6RQH2J2AiEA0IugMBm/3NCXEebT9IyhaBwSC0CivLktjdlj3AROnlc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230612": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230612",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "e6e83c93ad9beb74e586fbab2e11f3feea132294",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230612.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-dmvu3bDH+Nh2gbTryoqnNk5ZsaKWBfV5vnjTA+OSKFtTLFi4QUyaX8a05hmOb8D4REbZUxNqUNv7GaJEXAxKFA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDYqc1c54PENTiOfNoFqNPYVSTwkWSm1Mg2nRgsq1JZpgIgITived2UxJ6r1SMU+hP+c40Tpb+XKEHfCCc54E/ep/k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134703
+			}
+		},
+		"0.0.20230618": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230618",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "597d17fd814566e481103666fd833615a8b30e4c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230618.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-0SwNrCPoxnJB65VNQAg/54kFD9cGLmzzQKb+lVY3J5gKeHBO/dlA8WdbrSQChzVIluGIuJr+WnZ/dFo2q43j4w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC7as6CoXVS+ZNCbd4CURebJF58TbJj4wRoMtES7HeO9gIgbKifvNXDNNoVHHQLuPk1G7nFo46aWl6zDm6kKpr8iII=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230625": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230625",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "2bfff26ec80ac235a4101c6b8f691aa0e6f2f92f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230625.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-UM8252MBWgyaB4iShaXMjQbS9Qvtp7dao+//DKlVcxpnDMrAfOGqmHJWCXy+T5T9+DvDJIbiMUJhdDL26mLs8Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCTzVGxClb6/wt6Vd2W9UXy6NaNYwHW91srla8bag/rGwIgbB9x3PIz9SXPjfiqh/7eB8vZImRgIB8Kk+ZWgFjyG84=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230703": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230703",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "e60328608b55fbf7b79d0ec7fd549ebd88a3684b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230703.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-4pOZYG0+0ksxIavUzNZBFG7jDbc2nvHJKKO1dqsQK3U1mNljmf4lv4Hl73yNww2fpBCWLCUo+tj2AbxX6idLJQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCYva3SYAK3zZd2+puHwrQ+vvI2jCtwE3PxDmDp1FvSfgIgRSLzIktkyGKzFw3PdjcC+dkQW6byf8IVfiFEJ/xUwHU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230708": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230708",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "c0de9ace535a9697cede8a4d827cf8ce6bc3fe6a",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230708.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-8x3clDuWVBamXLzC12FRPyodAG3dy5z8qAQk9xFFBhu/FbmFSNO3EZLWZRwO0NTXRJ4DBqz6iswROB0L/L1Zjg==",
+				"signatures": [
+					{
+						"sig": "MEUCIB9dpr+CZijjlPp50L9MBroljCvVaI4I34zunfbC1mllAiEAt/U9N/cuYrmMda+Ce2EusXWiVEkFMLv8HWxtfR3epiw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230716": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230716",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "2af9c52b163e1ed2d1a98a66153701a66bfe5805",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230716.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-Eln16nYhCoURNnQMjYwINUox7PyNDgaXCPlVKXAV7yTX0JqsNuy4mzeeET62pOXwKmt+6Q3jiSB6oG+hbaZFBw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCkT2VOYAUXQ/0qYPUvkzt0ks2I07BjyNvrHZbObzbOZQIhAIYpxXQETGX0Ik4DILj9lXAYV203KqAv7s4Sb7sW3M9a",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230724": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230724",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "dc04103a6312c7c4b78ccd6f1c114b136a9f65c4",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230724.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-xri3KEJzjMYggrntGIQB6LNrN3QqBCsXa6Ttw4ofDJAct2MFSZkeDwPd6fIhqILD28+N7KU5408lvLhXbDHOKw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCPLCKV0HYXkUVyL03ux1QZLXJbZjfsKvsRPnHl/dT4vAIgIjjhnfA3XkickqkAIUDgxge35gONN5pw1lM7XZYmSa0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230729": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230729",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery": "*"
+			},
+			"dist": {
+				"shasum": "d2b0738c3a296b685646ea30caf9506eef50c599",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230729.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-XTK0sup04kxa9Oh+sqBiSls6p0JzHGx5n7WzbpJmcInc00+hJZPTPMHTu5G8cjkeTCmPSUFDDwx2xfo+vG6tBQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICTwQlzaUdcQTo7A9G0HCS4XU56U9MgwSkxkRllkMQNeAiBqJGzeL8Ew5oM48dn5a1Y7Zi64u/EJwJQ6gGhEcodHfw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134699
+			}
+		},
+		"0.0.20230806": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230806",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "242815e395631be62b2e66862574dbac26e8419c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230806.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-JS3HeDQKHTgGHFB/93lnrxSPT2y5VN8AU+9I8qO7hwSNhyPc3+/jJdqzm+elVYJdaePXOw3ElMBlFwePi+qHrg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDhUUAFJgLGjW21s+KtBnfqOMCir16D+1N37c6hl4vPyAIgcLk2OAtruHZkyrN/X2BOR49g1e9HRqsspxwf2EiZmgY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230813": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230813",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "463f5a5b35230ae78a42a4ece17eed03cab2a359",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230813.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-rzZkUifUwO+XEzj/aYBht7GbadrWWjxlt4jpphtaUOVsmVdLovBe0mXE+KCayVwgpxHHz+zbhWNzWa+vfOpEqA==",
+				"signatures": [
+					{
+						"sig": "MEUCIG/cxa8mGqYQ+1wXs3SOm+GqBJYrgcAz60tGriDi7+pGAiEAkyuAEozc7ZooV/D/JE60xauyr9rMgAU+VHnbkOm/qXg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230820": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230820",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "92da76d320812df877f46bafcb60309d110a717f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230820.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-+sLNCnTTvI8v4op+jxkn5X6lv2N3SRLQ74nd4Kb3Fvzt4ru5nytJOQ76Iv3V84a5BqQWcZJqzlS3RADpF2Nq1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDb9gSZstQpFQZEJndZLvMRcmfBPyz+DaxoSIF7jCm8HAIgbBhb5+aXb581VFTWsXTnkX4UD632qT6XNrnDFT15mbE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230827": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230827",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "72142289acb96b99f7f9b603c5bfedac903d949d",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230827.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-nU575UWFHjIXjQ6kkDNuC7nwHgPOFXgaSNYEs2gea0uMKSRxkgKsX1xEqBKbpXMzecBuVD5BXAW6Jg9WIErSvg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEO8WX9LsZM1lMl8R78BReW0RXuuXRAPSzZ+HiEfLFffAiEA9MaESD0ba0j4tup77+yQYcqJuupviqZSsAt/6KJ1Ei8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230903": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230903",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "a102efa877a62d72157d77bcd1686a1293217cb8",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230903.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-uIoxeZaK6K78vntjZI21kZYJYGshLrwX32uIuK1U11Xfglu1RLh0XBj7nIuEBF2zmlyw1Tj7mL2pvfKn5q4R7A==",
+				"signatures": [
+					{
+						"sig": "MEUCICiuZPuWmMLbRypjXzdlfr5Y+pvIK2rEhkFxrqBMxnCBAiEA0TzVycTJZs4Hfiu6iii2FCuPbyoXHQqrDCjzwWUsJs4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230910": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230910",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "4f6bc715eaca1c8e3ca4737959dd0ad195640843",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230910.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-LUVCviirQr5TnsN0/AO9G/Y1ud1AeW1L0Xor6/jpyZG54NOA2Uu06ppVTdsbL2XFVe5DtfBaTDeBLL1rRZWDhg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC69irxC8KVpmMhVBmPY3JMtVpwUXBS3ZpvQM03Bu6bXQIgdZv7WTjTprh9QY6HBlMB+PHC1//7JZDcqsgZgQy67oo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230917": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230917",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "f2b33c7fe420ebaa72f562eb0f5a11a8b0a0956e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230917.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-JXIWEmTWMv1PBXGM9kErZBqWuaePHoo0Gld84vNIDb/PoiA1jwt6EqgiPXIGB24nRu1HVJsiOSgmuk0OB2zD6g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDsoEiTbIlmu39bcod871lRv0QP1A5dEcakqUUvn2vwtwIhANzKkhP80fNLAa0tFt2X4FNzLTH4BW4xsrFTOhOPMk4N",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20230924": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20230924",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "4450d91f1f105a842aeba83cd9a380f6950ec589",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20230924.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-xOtF+4znBnnjhEfqyI8dEKUJX5tRTiKNdndKggjuSVtJwQk5yZCcmIhXYumWKV4pA+BNoiqk4La+vHR37ZsMHQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBcI3h7dxOeZS7pbcTtUguTrgcbxiZ2dP7rUy3b24fpUAiBHpMbGu0RV3XbUDbUtrIXvtaDjboM69Tm0eMEECziPCA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231001": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231001",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "6bcfe1a3552b57ea830eda596b30ac5b6b191fc7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231001.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-UA8Cn2Hf7dkqr8pjcgCoBGuUE/qkTkgDLAhIkhpXNCOmwwDpXkHQHmfI6qbWd/K7ckWqBPwi4rrv5J05sOVeug==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCd1KxgqueQAyCHmnUpBJNJLbZfYr1Wjo2eShJPanBtLQIhAOEnrM4OSOUmLadBfCHZunAVsEj8WfwHcEXmJWvsq4va",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231008": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231008",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "f973d9aa5452dcb563a5c3bc74d8ce48333fb941",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231008.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-YgTNN0OzukQJbxlKM7ydBsJYdHgCQKRRRHFJKessTfLaEmqoL2iYtupclMQPLClZ68D4wRHfeHOIEYSE78o2DQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBs77/qcSAFYHPH1ed0CvQopXm+qMmRebfwxIHoISmBXAiEA0Ble3nRpuYBm3B6JOW8tWo1K9JU77tGVJaJ9JVZ7XYU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231015": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231015",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "3660af0e016623beea8c8caa69dcd59536b172e7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231015.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-rHKmkIfEGKxlWOIpDfhOOXpY8w8TUoLh/FJF22FTE5ua7GzmMpBJwC1Atrpg9JinC/Td0qlhuP8SE2Esp2COqA==",
+				"signatures": [
+					{
+						"sig": "MEQCIBnpI+EQC4jaX9Ye/UI2PHk2nQoNghv+bEDs00ULx6o7AiA4KkHKJbXx/Mzfxx+p1uSvZh87yJE44fESrR7UlKICfg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231022": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231022",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "8c6f69502bcb4ea4f82e8367545b588c73740c3e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231022.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-JQxeA7SUEQE7KaEbBXURHtjc/f6RCcIlhJE5yxAYDYzCFjpNkIi/l7FHatipZWMZlm00JgsZdIPPR03IxxeKMA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCsnVQK8QFnGkoakKUXaf/6/TpWhe1Ah0mBnRs1n+23pAIgGe0Z/Rw+XK1jegDVhFZKsxSqcIZtHQdLoiQivSNs6gw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231029": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231029",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "58a11637cd8f484f7ccb8fc7cbccba12aa28c7d3",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231029.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-jpUY2NgNQth+6ww+X3YUy4gxSrvgtiUJ/JR3o648hWeYOUYagbhvFggh2r6i99E2RtjulKyqCMQ47ZVX+bs8ZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAt/q94VmjyFs4rlU6ijRInc2qXTdOpiz7JZG2JefhsWAiAuqAZ4MGkwodjl60VX1v/8ZH0GVoIutPIzZ0uMltRD5g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231105": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231105",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "5d53325095ea1a8ab9a45e7d3e9dfe6fd77d6b00",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231105.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-ztugco8UtQly8B8JVJAnpWyqVKrMro4HWynMc7s01vlP7m9Xl8tbK/e7B0rBF6NocCsDo107xVOe7qa0cFm7Eg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCfSpCABlub//j99irefpDtx5FN8d6HKjcFbZkDsDJBKAIhANlKRah9I8LkG0AAdci5wmUKDzZBgoJFctxDEeBOJtWu",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231113": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231113",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "f5d3377867d485e14dfd56990383d2b048e98df4",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231113.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-KGusCbc7MfqTCmeHHY58AEBpE6zYpVdil5W3rLgDRTxlANFF2zMfiA2ezmWqOpgmZDoOL6KK9q5dR6QrsSEr7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDGeVnvVMM1kTvBPiReuKsWyZwqYKAKu07sZoFU5/YlwQIgfDSzDPOdDJJWPZ/EhkNUK0AAAmpsRWZqnbCT/e4IuQE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231120": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231120",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "38767fc3281adc173b1e612aa455a96f42cff054",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231120.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-2tbUhDqJZ4MQglUAb/k/2qu2zKCBtXy/3vwCPM6WvqRHuN3p8wDIoURG9xbu8TN0JiWigfm1rKjAm7vKLgyuzw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDLN9A6V9fu+WTgXM7Hwb7PHbscED1l2nq4Z8FjG+8BVAIhAMhuPdCab8VNlHWYzXkY4Pj+0s4SJhKdyWDOmMT/mHzB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231124": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231124",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "91d25dd41e63146a4ae6b837083635d5949de19e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231124.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-yCgRb/OW1gC4me21UAxe10Hz5XceJR1e7ptOWAuDmLaYOc5wzDTS5OCYPBTfyenLtI02zZBm8d65v2KvXe9isg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEc31KBr0MI3N9VbqAKwQ4XKLql85qmbVxsJWIAJt72mAiEAorVZqsoBWQghpPJlHd2ldM3JG7uj9num+4b6i+85ZiU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134695
+			}
+		},
+		"0.0.20231204": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231204",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "2d24b44637ada350b7c016e159ed46456e6081cb",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231204.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-DQajH2IZG7M9esjpcG0CEuNpRCSpRtKvz8chrhZU5zeIAkr4Z7ysA2xdzxCMypKuyBbEjO8mS1C6D6swR3R3yw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDnto9jsGg/4t5m9rNAUynfeeL77n8tlJFxdgBHlQYajAIgCZohc4ITaGdHNxf5Rpr6R+qeA7fTK3G8bVWMXd/6w5w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20231210": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231210",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "0b8a34d7fdca3b5d81983b864234e8ed529a0cf1",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231210.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-P41YrPZKCmqP9EntOGmSnIXML69I0E7bbZPMcZKs3MyQlBiGvVNl4XOz6r78/cyvQuPTLP84hAGo3vWvFMOH6A==",
+				"signatures": [
+					{
+						"sig": "MEUCIBQ6yaNsFoHuLTDPPBs2Kh3vMDFcBNAznR1rWsZdOZ3SAiEAvsLxrngDqCIeot7Zr56QAnCi45uK66xlncBFWub85EA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20231217": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20231217",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "85757da834693a40d45137cfbaf6701a2077a7bc",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20231217.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-9NZZYdMRR5/oxgZJ3BIGD6i4n5Y5mMbsUvsNXtmpykRDc/vP1v1GFKaMqi6IlHSNfbK8bJCXNU2LuAz3WBiEXQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICb73u2pgwKlffMo+Oilvh9uJT4UGiFKeD6UK5j1ZJZHAiAuMz0a9Rv9f78p+Ugm3m7NB9vPGSl/6U+PQxF3c2NHmQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240107": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240107",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "2bebf7895369e30ae678f62b4048fd52a02a508e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240107.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-vIq4OnMenEMsfT0BXFDaKMjRL/KtkIkA++oh+UFWgmlqcNfve1LEX4sGMSQbMKOnT6loSKLSU8aci4xpBLav1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIAoVlQ4Uy9t+E4Yp9nNs0wWmohB5h7ytCvgDhC6ziKVUAiEAww0RcnHGTIDoIO8JAg9NOCT8HSmZiqlNnmqcgcCjv4M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240116": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240116",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "a12f0b195e3957115630183c88dcfca3492bfbfd",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240116.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-ukLwi6BbWgUkirN3u0EmFiPQsMFUs9zCmj0zcZPOOtSeqvpOCbQ5r4CMYThe15tux6Sa7/21PLxq5jpt+SGzxg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDYaeY9qp00PRV0D7HZxNgz+u6lyYslLDnF5hluRqM0GAIhAOEIb0Ukt8+JPo78it1LFGm+WJ7dlVX9jIlhMJiwQE+T",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240121": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240121",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "505a1e63c729056f7311aa99c2e67c0b771e5ab7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240121.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-ucd+FGLJdSANUdkyziZb7EHXxBrDl/sWic/qRkZRbFibo+C2FK0Putj76OrY0HRwcMarOkjqItC2fehUZ+E6nQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCl9nIQ/RkBaxkaBWVokzE5jxbbokHk8Oa5hQ4CR6tzewIhAIOumVGttoZzi6jhFBBdVNyh9W99JQS1VhQTMgLCk0tX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240129": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240129",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "eff66d930efaf1926d5fe22dca086010fe1f172e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240129.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-70SDpzM+gCAdNVmAnzvj+eCWCn9pw1/VmKJMSrewixSKYKw6n6h7kQVqYf8NRCW4ukD6bLorf2yHBgtJ5KsL2A==",
+				"signatures": [
+					{
+						"sig": "MEQCICZYRRjo+yFTSf67LkwdfPu9sHNCAK2dKcrEvrt4LzSVAiBl87Aqw/srFOH/kqGpbqwwrhs/Ua4cLo3lJRhgCubMsw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240204": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240204",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "b4087bff40e8c77326e7c958966a6953236f739c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240204.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-WEN/gqFNVd/NSIwYdcBhbKZK0++yC3q11dxh1UrVvK5S8a3Bbge2g1EMokcoPgFn5R7j6kgVC/wJ5O3oYJRKWg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD0ZMAv/2ISMQTXtvkn8BXidyWpurbcPriPftfdqOnyiwIgWJds2hSvzo0ys5gP8rG7ohWublviocmm5mNAWlVQ8Oo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240211": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240211",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "2da739e08fe010ab4d3d84a5d5f7a82636477e78",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240211.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-hJtBMZLyR5yMqbvgB8xPjxXb9m5Zb/9ep9Rx0s+82qSkPy2T7V/0fn37dj0IIa69mqJ4ZBerJTMv7122YZ8WFg==",
+				"signatures": [
+					{
+						"sig": "MEQCIAogNFUxNPr7EMjoOU5TPjER2EaO7zeBti9s85wg3ApIAiBbohQVtI1d3HXCraycpbj/77Uo9fmjKJck/6cnuDR2dg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240218": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240218",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "91b441ed35e4e4bc4cb85a1ddf53e930d840bc87",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240218.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-8hg+FQ6Oxe8J5mkR1FHFL9sos5FOS1jXpOs4lYQs0GcbRB62+wtYovZKOVN9FhCGwOUZipcEeXmhC31OVFXs1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDPPXVVxydAoe96IM5pCYL2OB4ob+q+vjmO48Ry8sw6AgIgXPo3c0pXSZuX/ULPAbLlnQ7+YCdzqcm75pHegwQhHZI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240225": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240225",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "34943c8e7abc38e85b73649c56cf8d8e5d91a821",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240225.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-zA2YBy6HhRuOiOnDlcgED29MvXSQ8+W01Lhgu207BxGMm+EgVn4Lm/vQ4tqLH0d2HnGgVXPC5R4t0NI1jw12rw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGLWJxXJdwpyWwFaKpsRYDNrTfUzXK9tZ0PsAxcmVhztAiBBeW17kVniWvEC3tfsXP567exUdJgFYfpRZ8R+Tr7I4Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240304": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240304",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "20af017051ef4842edce2af4c5a1f3514507c5bd",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240304.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-ry4Nk6vktjf3nT9jdhBbivmNT/9Z1H8L1AgKAIlBMFb0NCmqAxOqWfdE5kHju5k87F9SRIC4Ij+Ip/AZnDLQaA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD3G6r+L3ZQeHNzD+69ekJkbiG+evNeR/K/sqB/n8t/0QIhAPSnBk1Z0PrFEKbIw+KPJG7bJzD93Dvd6AVXHJ2nlvhs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240310": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240310",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "d2d040eaf045273503c8ce175056db175e26af17",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240310.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-7fcnmSbE9oG3MFACrjzTbfWhw5me6/tIVjilnJr06/o62ioIgDfezBQNyeS3tHhdOnbrRy+zyyXvNHM9bguQlQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEShZPJjXGfKYPzY5ia6SDcZpwdu99wZOPQLG0XS6N4sAiEAiX62WA+yS7has1OjAtvhIZD+Qm932VPsU8IXsdbdQmQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240314": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240314",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "c69df598974cab8835ceb39e84f0261fc5d0e1d5",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240314.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-RRxKYYe9AhmxXkCmDz8u6jstATsoUqxraa/oWtFqhoRyOWtn9jwaC9GK4ePGKh8IB73XteAbVPpKcooS6JsBwg==",
+				"signatures": [
+					{
+						"sig": "MEQCIA1OZcxEQGWHiVPS6hPbZ935QpdZd+bZaXI42xkpNrbqAiAJUGNFD0l+nnETViFhlCiHqpOS30Q3Py1+8S1TDjiNjQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240317": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240317",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "fe37cb0cd108dce127369ca0ff03162a242eb139",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240317.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-gkzG2Sy/Ht9YZif8bQ+m9OGcH1g82y2mszTaaqsak/G9CZBW+URLagcjdWb9v2fROYh+qlOUTkbyfO6Fn0RX6g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCeS37gQ6xE9AfUVOXn+hNING+0n0f+fzDmxkfYjGrgngIhALqlE8T4CicVCwHoyX+6jzSlCrcrujv2geHS0dxE5Xcz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240324": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240324",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "bcaf8be3ccc6d204e136b4bbebfa408bcc26b124",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240324.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-FBKc5P02nY6rrnXlkSmqJNihlqBFgpMmHfIsUUTe37yUnEd5RBT2ol7x8p8wMFOgCxK4UYEWyGsE+MvuPqQTBA==",
+				"signatures": [
+					{
+						"sig": "MEUCID+RZDsh/K19txUbB/ogRQq3McEROtw6J4ya14SJcLVxAiEAsCerI9nAt7MtWPI7i3GulaWL0xwicZwCy3g6WwPkNpM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240331": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240331",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "2190ff3027c7c43c53eaa1302b91780667cb97a2",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240331.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-iTYcUPyK+hoG7frXMCXLwDkejfSuwO35kIUd9RIbxlSXIR9b+CKRJnRC9nRM/M+L4SSSVovT3tO8KiRD9irU2A==",
+				"signatures": [
+					{
+						"sig": "MEQCIFHpLcykLLPIy9o4U5Y9od2IFx/wp61ZqkoXjVoqpGAxAiAxFI4v9wAciwrySFXyzuD4WwDFud2lfiePonQiLV8Uwg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240407": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240407",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "94c5d0300de94c0081c4008ac0e7c70e05b3868a",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240407.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-IaxDeQTnSfULgdApVAlJqMRjW7ZOLjP9OrjD1U55VU5vEtSXkBJjlb3Off+lXhg7WEEMCotw0TFTcEzBDzZr1g==",
+				"signatures": [
+					{
+						"sig": "MEQCIHtFNHHrf1/fnjK4njquKQY4+TUK+W5pXlKfhZ0ucVrfAiAKw+uEc1WYQ483Sllod8i5MjRSMZJcbmTyM7blktU29g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240415": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240415",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "205421a6173b87264c950d77adcb706b4f67795d",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240415.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-6rimvmlljl1ZEXedVZPpJas1o71o3CVyNG4bpcj1GlWDqgFKe3CbHeTJMoXGRPmJoXri8SH4Vl/iI9DKgL86ng==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDCUtH2WnXxwnWJ2AtK4wB7zd79YgR79ULCQV3AmTcdjQIhALF06rIu+6KnQYNn/+Y8jlxpijh0I4DELS12esIRZwDR",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240422": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240422",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "bc11a7465603c8edcb39cc52ab450c5e4b7ea71b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240422.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-TQ6mlIkMS6pHZijYk/zfwvp/R3aaL+8QU8WmpEPOKeEfoiuASA2bSo/Dp9hfwBWuQw75fNn0umHtfFF/eIFvjg==",
+				"signatures": [
+					{
+						"sig": "MEQCIA7AN9BEx+CZ7gfYcC/pqZJsSqLczthnV4KPneKbQ2F9AiBIJdiid5z28H6EQIIX4sh9Pyo72k9JACa1+YUueDhjnw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240429": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240429",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "b6cd851072e20da28508a9f69c53913487397629",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240429.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-4/oUoLCoCAjiuXMgQ51Egb2N9pCVZUGTYtPQTeaTRVK9b0gI7Wr9+lB2dbSHsiyTp2gtjaYPN7fopA7uRvctOw==",
+				"signatures": [
+					{
+						"sig": "MEQCIH6JkcISiXFgwUdPLNFIUwBS+hXXdYiiS6jZhBaMYcVfAiACk9IrYiZ0JlrWG/ZIcRm8B4wyiB/0zEt7nPlPOCRVrg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240505": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240505",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "e2d184d23b352642e9d4f21b3ae69c464dae6aa5",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240505.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-0J6y5h76quB7y7Jt/AFKfXrilo/H5lC9oHze4SygWS2fZ3R2MNGPccm1XQuwR66usSjpg4oprJLNxyZLBVohdQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAf+9qbg10mg/YANx39KILXO7iebpEjAIqatge0uFZGnAiEA7dJilkmf+jhp9fgcesUIh5dDSFCmoWBRIccyZz/PcI8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 82345
+			}
+		},
+		"0.0.20240512": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240512",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "62eae43b5e4643f420d29642197c0ed25813f8c1",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240512.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-sewItoQvudhaUh0MfpxytPd4m410mtD/IcQqv48oyFTaLZTvMaYiBpFCiPuK6Kj77AX0RmOsHnORjsrlpSPSAg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD+C5rWFXb9xs6IKetAntvCf8NzdmFcyK4/2lNUDwGLGQIgMxMvJ177170PuX5eJa+E/nSbVrqSV2DcCwgBkeYcodE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 83862
+			}
+		},
+		"0.0.20240519": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240519",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "3696736ba8cff6a450b7ed6600baf6f4070431fe",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240519.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-oe4+yevEpVsGIhML/1TV/6F9sCyURguNXaCP2jqgh2MPlsPlnmdsqwVbLeMxInxdBwTVEChHjYf4nRcrw8puzQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDm8KqeH3FCwRYXJKqVlWd6qjwo5PJ1cgcyxMeGt7CBVAIhAJzBenFbfsxjvjlatwRVEyc4mBUKdPnXNqnIsbVm5sD8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 83862
+			}
+		},
+		"0.0.20240526": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240526",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "03538b89cbce1549b4c04d48cd562f58e91c8f9c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240526.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-tWDhAQG8JDBk0AAn6zNukBfoxB9Y2FlKyTNAlwa6o/ixH2NCTzPGf35Pe8OnUzR2IxKQByv03Vg9xcRcpiG4ew==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDlI0a/GamhY6CM6sHoXGZSIK12e9jZpBk4mAjOQ/wxcQIgOtCaSi66RoTpbePuVVaLyW4ubstX2BE5TwxSrVLt79s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 83862
+			}
+		},
+		"0.0.20240602": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240602",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "ebd3eb38bc76edb270e33cab3c4438733bd06c91",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240602.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-P/Rl6gTNphWXQy+pghxTwJ8Qnlbe+PzZTOWFWaAeQKDYyUsMFcFMQOZMpsiGhB/mUwdSYmnlmBJKiHLFR5zlng==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCWtDmdND/fES0ebrWWB1EXcNokcVtm6JdtS5jZpSbJsAIgXU4Faerrcu3M9FJzEGjFVPWvze/Ba+Swwhr3g8KPGr0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240610": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240610",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "7174da51666c8a0ea34df4dbe6bfffb1b541a0b6",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240610.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-VvPJX9bOx8iaZK6l4nXSoWyzZ/hMLgKgNBSxIKAS4R2e8DNV+W7eOaarSgWw3HJ3hI3pGU57ad7dpzcEEtjLWA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDxiB08pOGj4ITMJC4qqs+0SP9a01g9Rs3o//zYcMJSUwIgAj652+atEVXgCieO7Mdh6hhHgVP7i/MgGboTG2LFTiM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240617": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240617",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "e21642614d9f75c682f4d156f275e253d7cc29ba",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240617.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-0FmmXgR5iqmKlxjkvtVpSH5Nm+e4xVN0xmGF68KnnzL6raiAUYnwN/Jo+PQRtsFLmm/cJ67FsZ5t6GmkpP8FSg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCOstoOsRSAh0h/dGtZesphALBSk/8pTsU+kC0l/4xZxQIgD9LRjRKkg8ips5i5A1jsrG3Tc2dM4kTfAKBAeRldC9Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240623": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240623",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "9757ed50c746fd1790731d61b379141a734ab06f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240623.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-H5EOLZg04VlvoMjNBI11LtemMXmTvwXZfbgEeW3CW02JAL15jXOaIVdA8+rBE+paIg8YsRknMb72SXUKGUUGlA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDEjSEn5Fu9spy1GGS/t3cOoMOKfwc4kq7XvBaGkm5S+wIhANWRAOipFI/obCHbxAryaH7kgKjGcKuhj9qAp6LPNKOr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240630": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240630",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "be88448048bf85061dbbded3a580e077c27ccd2f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240630.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-G2G3mmm9flbFAXUzUC+m9dLu8BEla0iHg1rrvBJIsw7pPfTukxI83S3F5FSahw4hh+BLOLdZerTveE8n3RgSKA==",
+				"signatures": [
+					{
+						"sig": "MEUCICEhyn7CVpsEILnyn+3fJGlBQHBA5ne3X8DhAmvarfc4AiEAtb1nv3F7JxxXz9AEyRZ1/6a/WcjiXprbkIGe3AHf0X8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240708": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240708",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "feecd24586d3be206a9c353b800e7b44b5472713",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240708.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-w4xP2dKw1F/V2ts2UBQnd6BtKT7ksO8pvYiQ5wLQEoqd2rSYA9LOeOtJEIF8pjT0LTyArJcoilZDLkVwmGFtNg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDuj40llIKFuAXOjDAxa822SyaWQPgR+gjToYW6W6HgigIhAK+wA4hJ3xpX+Ttyb3WDSwUeONt2hjooLxWlUECAFrOr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240715": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240715",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "ef871160e2c4322d4b23afd7058b24a8f4d8754b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240715.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-NczHH2foUyyBMha/GaBS5e5cSCGoCSeK9QEHVHEmLGkSl2tmTxj6vn/keq2n5JSdhprSOwiLW4n1QUoCn1z2WQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDiIP9gCnBTA3htBeu/F5ms3+4X/76imBzmYZmf/EPtRgIgEQU2Ff85k2WcqG0GRV9XjvrkBD21+KuHoWI2lle8cPA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240721": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240721",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "2567e7993113f00e0429770382a828a61b11e37a",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240721.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-VJ10dL44BE1pL2zRr+ltvG011t1VUhX9RDEknEbrTptuM6olj2DmdUx3wuixfYDqS5AZSbQf5qOFcMIIklOgZw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFViMM7gjbupx9cOp7G41VGCiwIWiBX7hQRdUqHMeYBVAiEAyhzDEB/9EJHBV28BbdQqtdHc0JMMJKhBhSQBawk7zhs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240728": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240728",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "b8ce07ac9d475719127cd7b760372dfb580d37c5",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240728.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-z+uz0AxxJfl9cGq6/j5SvBnGVEba60kZ//7dXo719mvu5SaR/cI9mc95Ihnm11ndrCoGtkoYwiNfiU/z28VJlQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC9DUVeaOfLpbrR6zSO3loT1VwnSHUGkq0xItuhHBgkxQIhAKgVjZM7SxtZgrCmkndR3AKlfXSStzVfipH5dW805UlO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240804": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240804",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "6363022f05c3c2ec8515e7b17eea46d6d6293ddd",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240804.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-XpYv3+knUU96AtomFO40iQcb1AFdrEjlFjgrKWiLG3FYfYMF6DijkiknKX6c8y0anoF19hlJhByak/4QjOZRvg==",
+				"signatures": [
+					{
+						"sig": "MEUCIAgMrE0F8NnFmILEnc1UU/TvsMzpwJKSPdM5YgqSh/yEAiEA1GeAYhfB1B+mPKYPFFKarkOyiFHQqtGDm6dMyrJWKV8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240812": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240812",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "86e20f14a547427d2f2748d5104315a17e3f97cc",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240812.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-7Dmd9TNbRsAamm/di/IfozxomJimQkKrH6CwH1hLfWXukZ2rCKpJa0WHpSUHuFKegmabibxf6alyF0xgkqJsKg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDFNunXZLyAh8wNOd+BiLGBjdQg1AmJkyHgmOHekXcUhQIhAN9dDUMXJ5xrN5dI8aQhFVQdsCbCDKa7Km9yIYj531Ly",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240819": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240819",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "4f792b4a56bc9eb9a4e5a3a4580b5b4b0127d82c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240819.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-OF5yy7bQtlL0eosApZ6Ts46No3xldraqk+0iMkl/Tl2klp0CtOE0iw2aNV65Fss1izFfj+MIk6VaskXGAatkQQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICPtJaj3AbCU9YK1vhgloT0exVPGkMI+1wWv0EMZ2ITHAiEAmVay8lLhiUrLx10EknaawMb/2DtuPTHX+wI18PxS5V0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240825": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240825",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "3942abf85e2c7a486021515fbb7d0918f4a1a413",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240825.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-A2OvdTOaNVeeDtqJj+eCL4f6jZYlm6VR5BrHR+yq4H4EL/EaPxDviSSicdJc0LV+1ztHIfnQPtLkQVsGbvYgkg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHhQiOuTaLOmbDN9fBm8XQ+PR5o53CQkcMH3wmUdaugCAiEAuP3omOwKV4BxnH8aMi0yjQkyKAuUoqAe8/v+0yYwkEU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240901": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240901",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "8e1cd35add83e0871052deb2906d7e4e4553f87c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240901.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-9nZZ76lU/9tK4iya9yrJ47uYSzIlIIVHXXF5wjyI0HGGc4dbpc7A9ozK0fn71TI4w8tx7cFvBcmKAg+OobJQXw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDenLHXnrgoc+h5yy3C/E98nL80wH6oIFLsfgEyy1A2OAiEAmft8BsbDOpQeMNnDMk0+fK+lqIxXPUxbl1Fq9S8Y9uo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240908": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240908",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "7ad9aa9459033486cce165643d57bd2854e7e25d",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240908.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-wSXfuJtiyHx1A1pTu4ZRNk9oPRfexmS2ZkSnwxobrap6zEkZN449E21beREDSVFNR8e8UFsbSxr2o3heXwcn0A==",
+				"signatures": [
+					{
+						"sig": "MEQCIDh0OHxV8yWSVgsrF1pPeygdzmowj2axHJ0rCGCBqvHDAiBxcrJVpaIFAYeh6lNkFOYKeQfVYPpZja25p1G/bHOFYw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240916": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240916",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "97eabae4ae8bae27fecc3bc55190edae3104c747",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240916.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-bPiN1jbgMZ05ZUBpxlW9z2KLHZAhgedONVcelWkv9YJc9B9JUUlH25OjikY17MZxgoFcN/aFefzamJ00G86PdA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7McD237JwPW6iieOa8accmSVxdSLRhiz6HVnwf4tSdwIhANMpX7oe39RhGEC2hvQFbevMYtzg66EW6tXVSELYOdP8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240920": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240920",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "b30d630872d5cba2102499a88e029141d7ba32af",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240920.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-ZHDlFC2hp9I48Y8nbjNtbQs3VFniNYHNWXhlBZU9RMbaxxhglhD5oaSNlZE9QKUZ2kDcJ4ic6pDJEPrCxUuScA==",
+				"signatures": [
+					{
+						"sig": "MEUCID3i8C22+ITiklkZHXevBc1wAHJTg9mC86BRLPhWkH2rAiEA2c/lva1m88T6lr2h4JEPBUCOm9L0JR+CKBQj25r+CGM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240922": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240922",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "3ee0e0e83364be7b8db4d3ff0629eb84f207a6a7",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240922.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-i1XIzwN6S3zg8vpUP66QyaFV6QjFodqW6d3X4COabboTCBC9ojfLSShrHLK6jbaj6eRnAPF2/ujlNhAmDD+s1A==",
+				"signatures": [
+					{
+						"sig": "MEUCICv14Hx/wTGivKGjQ0iQ7RNfO2vG+1uTDRbmksmbGl/1AiEA4MLsQK8VvQVSkHCgta8pABMwVnXwvGqowBJB4TYIU2Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240927": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240927",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "b32de4583c0f97156835ae6476f295e4fe0283ce",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240927.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-22cRztNQb3Zg35SL41191RKoxNQmzvotyNrfV6V964zd9RFeH7Skvll2TGzMGdk6vxvYxg4HRtcYdsk1mhbI8w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCLKtmehfVtRqdd3uw9S2OrkVsyQyIP9E+5NY5zzsIHzAIhAKVXF6lLnRFSgI8utmRUWpiLUGPEjHD3ombTAlIq/tRE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20240930": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20240930",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "a5619ee2ca2e4a6ce618cda828a423f93b263766",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20240930.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-aQ5p3TSFNRlnBNw7le0MUHDbnJPT9Max0vnZdaOSn7oobob7YR4SVQjOYsjxTUpAEYHE/tjg4wplwO26NcLDxw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZ36sPa9XGzAilPt6o8XKbLDeIQQK2coeKA8JH7j4bOwIgN/0hnSZPtOW3+ABHR7aO2pM2skGj9eJsgZLjdxlWAlQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20241002": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241002",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "775d7cc88bee9282c6be3780093ce95408bdc6b5",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241002.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-YxAwCv/MWE1behBV4bwNv+xCHgvyM6QIwIKDNYd9sJIyurJ7NhZSo3WPGpccdUXTA+k9ybdxxZCyzFvsGEGk9Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIG7u+zJUWFmh6RwvYqdpVz6awWA4NIc10sORTpMthPGdAiEApnVK7DyKKm6i5dY0PRmfFL+h+vPWNMfoAPsaKEqiMKY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20241006": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241006",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "3cad4273ae9a1fd6f6582520c0eee137ea1bc374",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241006.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-HBf26jjp7PvmNzC/0e34x2+IjgJ0nlS5Gxacczkg3C7xy5iklP6eiUV0GfBn0u3DbJwhi9kYk8VXOvzqLt/MbQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHWyAYazbP29Jnm6TSNniGQBI0xg35TF8ZdSEHcRh0LNAiEAk93CEgfxH+Uwz7Lg5VoSAhcYcjzc91gzMneDHBdWWtI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20241014": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241014",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "aa90e96e327f5b371bda925c53f86467010d6671",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241014.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-IX/6PXgsa2zUO7CkPhH1nynH3jVfCVDMeBpHmjMNdmw1X9/qq7PajkRhl2g64XH55ltlgqElaksi1Y2VBVP86w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDRKu3xCeiO3HVGFX3zmsB2k0AAKcVOLeE9kMl2i6gLnQIhAI9ydF5B0hLRLRhIKGqWfPK+kB74Ps6o4RLbRzpguXoa",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84181
+			}
+		},
+		"0.0.20241021": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241021",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "d6f9067cac3d3daba86f0e8a526fc6383c3d5e8f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241021.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-fPZMGRjyiyBGYGRQjK8QMBYBMN2dJkExWnDYMh9icXrEV+PWcfX2d2o/wm9RHiU/sEwW39aSf/59WHxsr6pIsg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBeIXRQJ9h8dUhdFITBBl4PzQ+ujaUSxBjyq5/fKpAmiAiEA79IFjZ80NnmKxbihn4pTCk3QjIAA6g2R+zjLoXq10oM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85113
+			}
+		},
+		"0.0.20241028": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241028",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "28e4e52e3e76464132f8182bd477a5c5a22bd20b",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241028.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-jwCSOS+5O4BKo4axyP/zsNgyT5UOugaCpvWJEttrjk1R6dITdyKFYuiN+UjXHTkUwMQLrmompYaOrr81/HVKtg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCwTKIpTjQA1ReJAoyopDRqwNXFxg0JrhEfkdvA1SUT2QIhAKY3PMa6qUYhf9KPRtcP0eVoTGpRnfP1TN+Fe6lG+iUV",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85113
+			}
+		},
+		"0.0.20241103": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241103",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "541fe5c2702e102a2f9d20209f7e2c33580fad4e",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241103.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-IEzTd8sT70ciGm1UmZb93mR578Wag4ApkQDeqQQhpyDzwQaOyuIRsjWnJOf0wRclgxkdcJgs6mamhfFLG9wSIw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDLfm9v4S6NIMhHZQaKbHPScrK5tpeotxRKe4GpsonaiAiB7d5d6g4xFVx6vLUYy09QZ2S+ytBwxS1Znwtxbv7rQdw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85113
+			}
+		},
+		"0.0.20241104": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241104",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "c330c23d9c70386afa6923cb452a98f23c2ff25f",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241104.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-6L1lzfojN/T16i0Xgjcsv4v096cOxNa8BHFfSCXWxEqmJ0OzthJhIJ6w9Nfg6QrJxKHr+iCaRkFoMn0chVv+Ow==",
+				"signatures": [
+					{
+						"sig": "MEUCICh/sDvzFhNLndsTx9lgsIKc2kQNANDviURutwEjOxXHAiEA84uUtZnqEslcLUAql8U9uM4UJix4YyaiP5NqCCMINsw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85113
+			}
+		},
+		"0.0.20241108": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241108",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "9b170dfadfaa5280d5fe7e1fb99de460fb1f0885",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241108.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-/2stTlX9I1sMIPD3Zf7uaU/VelJM3aH/IZzIN9xRbq8PcRi4GoXqnFU3qlsP4DqZ9MWAtupE+TNhqG1afUHcbw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5PGld+TMM87eaIBwapj7uSirdYmILxXropd9rEuLGpgIgZfn3Ixk6/TkX4VX7mzMqIWKKt03sVgPU1WT80BTe1tw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85113
+			}
+		},
+		"0.0.20241117": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241117",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "983e1015141cff0f9bf9366702eb0dcbae5be918",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241117.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-f7XORdiy3IewOCtkMviq2eLu6N+iK2bT1ZVl2vdSbkFEmlhWKN3leZPQycmzH7MmFgzD8g6SwhLVFbtbD50Maw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD1TotAWSSvl4WLTwtrRKR1+9GZ/MVG2luFSNyN6OE00wIhAJKEaaivmPQBA/hEvYIWK3+aq+PJJownOXUuQ8Cy5M3w",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85115
+			}
+		},
+		"0.0.20241124": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241124",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "06f560274b06a9e78f0e3f6808578ba3e7c35445",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241124.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-hvbtKb1JFt7I95cW/+N7N82aqyLa1gJ1sP/6LbnYKUKmvjQC1efx5bCJ7SX0mU2W3JhJbl9iUfSb5HP56EF89A==",
+				"signatures": [
+					{
+						"sig": "MEQCIC3xj8TPrz1SztOzf80wn/AQGnHGcgdNUbLZurr8GyZNAiBHN5GO+d8E5GmLbeIhntW+znrYSKdAyPnN86iE3UfLcQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85115
+			}
+		},
+		"0.0.20241126": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241126",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "158c1ab3beba467bf810ea63fb6fd5fdf6a9f81c",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241126.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-tzfg32PIaPxfGimhgrU+3Ts2+ChCVHu08mcabToWEpsH9PIK0SeqgL4Oj+pM2EAn/hYEnIKxpKp6JDQR90yJiw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHW6ptJB8KnaBYzA61xnHaSUquQAfsbOrCpXv/PEsIwDAiEAraid7utchr9AN1X/EO8wmKVfYYxlj2KNDH7s2SSRYXw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85115
+			}
+		},
+		"0.0.20241201": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241201",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"shasum": "75b6a1d84fbe1b4cb4276f7a3d3ae88e4dbb5306",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241201.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-lzVzqhZeyJy1PXLZVwDIxQDm4BZGYn9Akq0FlrNgDzpPjpdaDYcp1xr2sPjlkpnz/ZfF1CFjG3Ym/nQO3tx3Og==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnOnm0DzpNzLB1ZfNAecaksI/V1z0TJtjzUHCeSyOqWQIgZ3MTsBPIT9x02DP8DjCqHAPjV7uZ2MFefdAngJ1ni+A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 85115
+			}
+		},
+		"0.0.20241208": {
+			"name": "@maxim_mazurok/gapi.client.osconfig-v1alpha",
+			"version": "0.0.20241208",
+			"dependencies": {
+				"@types/gapi.client": "*",
+				"@types/gapi.client.discovery-v1": "*"
+			},
+			"dist": {
+				"integrity": "sha512-lzVhcQXWpTeymercS6kjdI1NGsAs7F1+qvgAmKtR0rF3y7ckwKb/XF6JinezFpvRKZnCejvsjG9MhckRYTnWQw==",
+				"shasum": "14f5a85e9f155551cc0c44eb96afb5a1ebd140c3",
+				"tarball": "https://registry.npmjs.org/@maxim_mazurok/gapi.client.osconfig-v1alpha/-/gapi.client.osconfig-v1alpha-0.0.20241208.tgz",
+				"fileCount": 3,
+				"unpackedSize": 85115,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDg9aG7AosAaoXf4+3fPSqmqeOjlMzhShyifhjyia8GEAiBxwqOzMzWvxUs0Xf4mRkjvUEHW0p2ksE8/w9H8MfTlng=="
+					}
+				]
+			}
+		}
+	}
+}
