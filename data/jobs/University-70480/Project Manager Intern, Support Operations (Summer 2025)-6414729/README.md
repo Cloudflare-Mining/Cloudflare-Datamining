@@ -32,6 +32,8 @@
 	<li>Excellent scheduling and meeting coordination skills</li>
 	<li>Experience with business requirements and acceptance criteria a plus</li>
 	<li>Experience with Data Analytics tools (Tableau, Google Studio) a plus</li>
+	<li>Ability to commit to a 12 week summer internship.</li>
+	<li>In office 3 days a week in Austin, TX.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
