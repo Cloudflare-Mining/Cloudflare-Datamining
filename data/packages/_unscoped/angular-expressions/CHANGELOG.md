@@ -1,3 +1,15 @@
+### 1.4.3
+
+Disallow access to prototype chain (CVE-2024-54152) when using compile with locals (two arguments in the called function) :
+
+```js
+compile("__proto__")({}, {});
+```
+
+=> This now returns undefined, previously it would give you the `__proto__` instance which would allow Remote Code Execution.
+
+Thanks to [@JorianWoltjer](https://github.com/JorianWoltjer) who found the vulnerability and reported it.
+
 ### 1.4.2
 
 Make `handleThis` the default if you use the `Lexer` and `Parser` directly, and you don't use `.compile`.

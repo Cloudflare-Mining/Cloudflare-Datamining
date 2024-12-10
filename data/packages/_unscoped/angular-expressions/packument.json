@@ -1,7 +1,7 @@
 {
 	"name": "angular-expressions",
 	"dist-tags": {
-		"latest": "1.4.2"
+		"latest": "1.4.3"
 	},
 	"versions": {
 		"0.1.0": {
@@ -615,6 +615,36 @@
 			"name": "angular-expressions",
 			"version": "1.4.2",
 			"devDependencies": {
+				"tsd": "^0.31.2",
+				"chai": "^4.3.7",
+				"mocha": "^10.7.3",
+				"eslint": "^9.11.1",
+				"globals": "^15.9.0",
+				"webpack": "^5.94.0",
+				"es-check": "^7.2.1",
+				"prettier": "^3.3.3",
+				"webpack-cli": "^5.1.4",
+				"webpack-dev-server": "^5.1.0",
+				"@arethetypeswrong/cli": "^0.16.4"
+			},
+			"dist": {
+				"shasum": "8a3111596d48a8ef3d2d2ea809d476a4be7b77b6",
+				"tarball": "https://registry.npmjs.org/angular-expressions/-/angular-expressions-1.4.2.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-7aWNquD2ETS/dD/4+o5/RnAMFt6/6FsxkwjWdEjFHcoqW+PACycOYRkzDOqC31VK07corXho7vOPipp/P5lyRA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBOmuGFiNt2PJphTX4ihxujUgbOGGEqynHEXzgd2W8sMAiEAy9H20kLfaOFmaCGHhxcOoRURiRnZSvWJlX2i8+XzHPk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 121250
+			}
+		},
+		"1.4.3": {
+			"name": "angular-expressions",
+			"version": "1.4.3",
+			"devDependencies": {
 				"@arethetypeswrong/cli": "^0.16.4",
 				"chai": "^4.3.7",
 				"es-check": "^7.2.1",
@@ -628,15 +658,15 @@
 				"webpack-dev-server": "^5.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-7aWNquD2ETS/dD/4+o5/RnAMFt6/6FsxkwjWdEjFHcoqW+PACycOYRkzDOqC31VK07corXho7vOPipp/P5lyRA==",
-				"shasum": "8a3111596d48a8ef3d2d2ea809d476a4be7b77b6",
-				"tarball": "https://registry.npmjs.org/angular-expressions/-/angular-expressions-1.4.2.tgz",
+				"integrity": "sha512-r7j+dqOuHy0OYiR5AazDixU/Us3TDN2FfuxGX4Dq6d61Y2MhBQHMdUNBfkkLPjDqVm2Is394h31gC3bcBwy9zw==",
+				"shasum": "24fb9e8e9e0278885dd0f7e28512ac88a74037f6",
+				"tarball": "https://registry.npmjs.org/angular-expressions/-/angular-expressions-1.4.3.tgz",
 				"fileCount": 14,
-				"unpackedSize": 121250,
+				"unpackedSize": 125144,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBOmuGFiNt2PJphTX4ihxujUgbOGGEqynHEXzgd2W8sMAiEAy9H20kLfaOFmaCGHhxcOoRURiRnZSvWJlX2i8+XzHPk="
+						"sig": "MEYCIQD8Y2UYyzm0X2ucCnCY6lnJWl6Kz1SSD9bfSJjvEbBfjQIhAI8W42GAtuqBBc7676l4qQWFbWbtO9xQgTizt6FT3qcU"
 					}
 				]
 			}
