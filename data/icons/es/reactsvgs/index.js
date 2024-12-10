@@ -22,11 +22,11 @@ import CaretDownStroke from './CaretDownStroke';
 import CaretDown from './CaretDown';
 import CaretLeftStroke from './CaretLeftStroke';
 import CaretLeft from './CaretLeft';
+import CaretReorder2 from './CaretReorder2';
 import CaretRightStroke from './CaretRightStroke';
 import CaretRight from './CaretRight';
 import CaretUpStroke from './CaretUpStroke';
 import CaretUp from './CaretUp';
-import Caret from './Caret';
 import CaseStudy from './CaseStudy';
 import Certificate from './Certificate';
 import Chart from './Chart';
@@ -209,11 +209,11 @@ export default {
   'caret-down': CaretDown,
   'caret-left-stroke': CaretLeftStroke,
   'caret-left': CaretLeft,
+  'caret-reorder2': CaretReorder2,
   'caret-right-stroke': CaretRightStroke,
   'caret-right': CaretRight,
   'caret-up-stroke': CaretUpStroke,
   'caret-up': CaretUp,
-  caret: Caret,
   'case-study': CaseStudy,
   certificate: Certificate,
   chart: Chart,

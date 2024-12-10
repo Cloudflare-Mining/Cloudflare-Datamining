@@ -61,3 +61,8 @@ export var ThumbsDown = () => /*#__PURE__*/React.createElement(React.Fragment, n
   size: 36
 }));
 ThumbsDown.decorators = [withStyleProvider];
+export var CaretReorder2 = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+  type: "caret-reorder2",
+  size: 36
+}));
+CaretReorder2.decorators = [withStyleProvider];

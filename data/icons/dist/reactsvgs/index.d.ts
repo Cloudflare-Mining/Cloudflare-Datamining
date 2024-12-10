@@ -24,11 +24,11 @@ declare const _default: {
     'caret-down': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-left-stroke': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-left': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'caret-reorder2': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-right-stroke': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-up-stroke': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    caret: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'case-study': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     certificate: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
