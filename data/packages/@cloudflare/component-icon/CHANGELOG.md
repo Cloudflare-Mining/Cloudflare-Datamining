@@ -1,5 +1,12 @@
 # Change Log
 
+## 12.22.0
+
+### Minor Changes
+
+- b9ffe8da7c: Fix: Rename Caret to CaretReorder2
+  Fix: Sync icons with design repo
+
 ## 12.21.3
 
 ### Patch Changes
