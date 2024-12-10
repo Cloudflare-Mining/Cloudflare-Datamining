@@ -4,7 +4,7 @@
 		"feat-socket-mode": "0.1.0-socketModeBeta.2",
 		"next": "1.3.5-rc.1",
 		"2.0.0rc": "2.0.0-rc.2",
-		"latest": "2.0.2",
+		"latest": "2.0.3",
 		"2.0.3rc": "2.0.3-rc.1"
 	},
 	"versions": {
@@ -1087,8 +1087,55 @@
 			"name": "@slack/socket-mode",
 			"version": "2.0.3-rc.1",
 			"dependencies": {
+				"ws": "^8",
+				"@types/ws": "^8",
+				"@types/node": ">=18",
 				"@slack/logger": "^4",
-				"@slack/web-api": "^7.3.4",
+				"eventemitter3": "^5",
+				"@slack/web-api": "^7.3.4"
+			},
+			"devDependencies": {
+				"c8": "^10.1.2",
+				"shx": "^0.3.2",
+				"chai": "^4",
+				"mocha": "^10",
+				"sinon": "^19",
+				"nodemon": "^3.1.0",
+				"ts-node": "^10",
+				"proxyquire": "^2.1.3",
+				"typescript": "5.5.4",
+				"@types/chai": "^4",
+				"@types/mocha": "^10",
+				"@types/sinon": "^17",
+				"@biomejs/biome": "^1.8.3",
+				"@types/proxyquire": "^1.3.31",
+				"source-map-support": "^0.5.21",
+				"@tsconfig/recommended": "^1.0.7"
+			},
+			"dist": {
+				"shasum": "24162400cb3b2dfc506c09cb275960ce145bbbbb",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.3-rc.1.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-gCmk95nxPewjmgD0UyTAbllYGheB0E0JDVl71EGksFWlnlDqETm3BZk72SMfn8Rt1B6R7nFAUWmo7X2toRNCAw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHJ2DJmCZi3Bt8lmSM/i1qw8ELnWMlb627/6S5rBAPSuAiAornULNmN/Yim58WTf7t1d3FERE58PuMVU+/rpLra8LQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 86196
+			},
+			"engines": {
+				"npm": ">= 8.6.0",
+				"node": ">= 18"
+			}
+		},
+		"2.0.3": {
+			"name": "@slack/socket-mode",
+			"version": "2.0.3",
+			"dependencies": {
+				"@slack/logger": "^4",
+				"@slack/web-api": "^7.8.0",
 				"@types/node": ">=18",
 				"@types/ws": "^8",
 				"eventemitter3": "^5",
@@ -1103,25 +1150,25 @@
 				"@types/sinon": "^17",
 				"c8": "^10.1.2",
 				"chai": "^4",
-				"mocha": "^10",
+				"mocha": "^11",
 				"nodemon": "^3.1.0",
 				"proxyquire": "^2.1.3",
 				"shx": "^0.3.2",
 				"sinon": "^19",
 				"source-map-support": "^0.5.21",
 				"ts-node": "^10",
-				"typescript": "5.5.4"
+				"typescript": "5.7.2"
 			},
 			"dist": {
-				"integrity": "sha512-gCmk95nxPewjmgD0UyTAbllYGheB0E0JDVl71EGksFWlnlDqETm3BZk72SMfn8Rt1B6R7nFAUWmo7X2toRNCAw==",
-				"shasum": "24162400cb3b2dfc506c09cb275960ce145bbbbb",
-				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.3-rc.1.tgz",
+				"integrity": "sha512-aY1AhQd3HAgxLYC2Mz47dXtW6asjyYp8bJ24MWalg+qFWPaXj8VBYi+5w3rfGqBW5IxlIhs3vJTEQtIBrqQf5A==",
+				"shasum": "67a646e72afb5a6d355f02824226982af41a1ad3",
+				"tarball": "https://registry.npmjs.org/@slack/socket-mode/-/socket-mode-2.0.3.tgz",
 				"fileCount": 32,
-				"unpackedSize": 86196,
+				"unpackedSize": 86966,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHJ2DJmCZi3Bt8lmSM/i1qw8ELnWMlb627/6S5rBAPSuAiAornULNmN/Yim58WTf7t1d3FERE58PuMVU+/rpLra8LQ=="
+						"sig": "MEUCIFgS5AQcj2nKUzw3J8NHkjYgc41peCNqSB4GyVqCJsotAiEA4tn0wSavZ3U8MhpwA/8CeCa7vj7gKAU6nYl69OTIIoM="
 					}
 				]
 			},
