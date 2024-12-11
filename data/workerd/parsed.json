@@ -2775,6 +2775,31 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/frankenvalue.capnp:Frankenvalue",
+			"fields": [
+				{
+					"name": "emptyObject",
+					"annotations": {}
+				},
+				{
+					"name": "json",
+					"annotations": {}
+				},
+				{
+					"name": "v8Serialized",
+					"annotations": {}
+				},
+				{
+					"name": "properties",
+					"annotations": {}
+				},
+				{
+					"name": "name",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/script-version.capnp:ScriptVersion",
 			"fields": [
 				{
@@ -3647,6 +3672,10 @@
 				{
 					"name": "entrypoint",
 					"annotations": {}
+				},
+				{
+					"name": "props",
+					"annotations": {}
 				}
 			]
 		},
@@ -3880,6 +3909,19 @@
 			"fields": [
 				{
 					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "json",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator.props",
+			"fields": [
+				{
+					"name": "empty",
 					"annotations": {}
 				},
 				{
@@ -4686,6 +4728,7 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.pythonSnapshotRelease",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.impliedByAfterDate",
 		"workerd/src/workerd/io/features.capnp",
+		"workerd/src/workerd/io/frankenvalue.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/io/script-version.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
