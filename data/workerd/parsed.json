@@ -2830,6 +2830,40 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/trace.capnp:TagValue",
+			"fields": [
+				{
+					"name": "string",
+					"annotations": {}
+				},
+				{
+					"name": "bool",
+					"annotations": {}
+				},
+				{
+					"name": "int64",
+					"annotations": {}
+				},
+				{
+					"name": "float64",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:Tag",
+			"fields": [
+				{
+					"name": "key",
+					"annotations": {}
+				},
+				{
+					"name": "value",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/jsg/modules.capnp:Module",
 			"fields": [
 				{
@@ -4731,6 +4765,7 @@
 		"workerd/src/workerd/io/frankenvalue.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/io/script-version.capnp",
+		"workerd/src/workerd/io/trace.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
