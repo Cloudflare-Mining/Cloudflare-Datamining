@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Job Locations: Austin, TX, San Francisco, CA</h4>
+<h4>Available Job Locations: Austin, TX, Dallas, TX, Houston, TX, San Antonio, TX San Francisco, CA</h4>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key business risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
 <p>We are seeking a highly motivated, strategic, and solution-focused candidate to lead and manage Cloudflare’s operational audit plan to evaluate the effectiveness of risk management, control, and governance processes. The ideal candidate will bring a deep understanding of risk management, business and operations, and best-in-class audit practices. This role will report to the Senior Director, Internal Audit.</p>
