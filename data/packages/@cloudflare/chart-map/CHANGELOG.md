@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.0
+
+### Major Changes
+
+- 2370717ebf: expose renderWorldCopies to avoid duplications of the map
+
 ## 8.3.9
 
 ### Patch Changes

@@ -3,8 +3,8 @@
 	"dist-tags": {
 		"prealpha": "0.0.1-alpha.1",
 		"alpha": "0.0.1-alpha.7",
-		"beta": "0.0.1-beta.13",
-		"latest": "0.0.1-beta.12"
+		"latest": "0.0.1-beta.12",
+		"beta": "0.0.1-beta.14"
 	},
 	"versions": {
 		"0.0.1-0.0": {
@@ -1101,6 +1101,45 @@
 			"name": "graphile-config",
 			"version": "0.0.1-beta.13",
 			"dependencies": {
+				"chalk": "^4.1.2",
+				"debug": "^4.3.4",
+				"tslib": "^2.6.2",
+				"yargs": "^17.7.2",
+				"semver": "^7.5.4",
+				"interpret": "^3.1.1",
+				"@types/node": "^20.5.7",
+				"@types/semver": "^7.5.1",
+				"@types/interpret": "^1.1.1"
+			},
+			"devDependencies": {
+				"chai": "^4.3.8",
+				"mocha": "^10.2.0",
+				"ts-node": "^10.9.1",
+				"typescript": "^5.2.2",
+				"@types/debug": "^4.1.8",
+				"@types/mocha": "^10.0.1"
+			},
+			"dist": {
+				"shasum": "262aab61a9e8a987b61f105012c438c0ccd901d2",
+				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.13.tgz",
+				"fileCount": 44,
+				"integrity": "sha512-qMmPnqpK+wbLlnuBtYkXN1gmQa8yM2eAkUOG651CxubByhswqTPj1wbrkzO3RSMun8Upn0D5wXFnVA8TPla9Vg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCzi1lrY2NEG33lyAn43ietgCMyTPl8kfDIEDoTlyLyLAIgfenYrHl6++q1rnzSSkH1KGRPOGSM5it7yo5NBEaPciU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 94825
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"0.0.1-beta.14": {
+			"name": "graphile-config",
+			"version": "0.0.1-beta.14",
+			"dependencies": {
 				"@types/interpret": "^1.1.1",
 				"@types/node": "^20.5.7",
 				"@types/semver": "^7.5.1",
@@ -1120,15 +1159,15 @@
 				"typescript": "^5.2.2"
 			},
 			"dist": {
-				"integrity": "sha512-qMmPnqpK+wbLlnuBtYkXN1gmQa8yM2eAkUOG651CxubByhswqTPj1wbrkzO3RSMun8Upn0D5wXFnVA8TPla9Vg==",
-				"shasum": "262aab61a9e8a987b61f105012c438c0ccd901d2",
-				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.13.tgz",
+				"integrity": "sha512-3FlhyRKz4LvIbY4AXn4EI8DSTdSYsg0WRfX6U9QeytGta9aiefF1QqSiC1ocXUlNJUMBfm28dy0eL669ljYRwg==",
+				"shasum": "6238ad5960ccc20b19718726da7c3b1a6c48d831",
+				"tarball": "https://registry.npmjs.org/graphile-config/-/graphile-config-0.0.1-beta.14.tgz",
 				"fileCount": 44,
-				"unpackedSize": 94825,
+				"unpackedSize": 95106,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCzi1lrY2NEG33lyAn43ietgCMyTPl8kfDIEDoTlyLyLAIgfenYrHl6++q1rnzSSkH1KGRPOGSM5it7yo5NBEaPciU="
+						"sig": "MEQCIG0LnpRD/nNHYHv9KMFg/tyafRD52DRaoUjAyS5Jucx7AiARFNgA7SCYKek8m3kRbPei/bEWC5w+4kC0OYSXCEMmgA=="
 					}
 				]
 			},
