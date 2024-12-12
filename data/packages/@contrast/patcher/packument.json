@@ -1,7 +1,7 @@
 {
 	"name": "@contrast/patcher",
 	"dist-tags": {
-		"latest": "1.14.0"
+		"latest": "1.15.0"
 	},
 	"versions": {
 		"1.0.0": {
@@ -572,15 +572,39 @@
 				"@contrast/logger": "1.15.0"
 			},
 			"dist": {
-				"integrity": "sha512-CeR2z1U8Bg7LBynG5aOT/ihFXryLHqgnxdgbMsR7OBHyTaWIbfMGcDm/08GsZuSfmrddxI4SjZKlhyDXrlHaqQ==",
 				"shasum": "7ce32197c0d50d3b36feccffedc710f245cfb9fe",
 				"tarball": "https://registry.npmjs.org/@contrast/patcher/-/patcher-1.14.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-CeR2z1U8Bg7LBynG5aOT/ihFXryLHqgnxdgbMsR7OBHyTaWIbfMGcDm/08GsZuSfmrddxI4SjZKlhyDXrlHaqQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDjRiVaE4X2v21zU5g7oBlcqU9HQL4B6/zTLBzvO3Z89wIgMUt+6ehNrb4xdduzW5AdtKUyZUiP/zDPdlNi72nXkZ0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 47780
+			},
+			"engines": {
+				"npm": ">=6.13.7 <7 || >= 8.3.1",
+				"node": ">= 16.9.1"
+			}
+		},
+		"1.15.0": {
+			"name": "@contrast/patcher",
+			"version": "1.15.0",
+			"dependencies": {
+				"@contrast/logger": "1.16.0"
+			},
+			"dist": {
+				"integrity": "sha512-5Psig0rB4JBhd8EG3DLwy7v5cdNshKWmxzlbjmkkFF1XZdW1KzNvCOvxa2IypEH3gdGgymlPr1H9rZ8L7ID6ng==",
+				"shasum": "701e81aa942d319a62b620cbe450ed152e2eb9ab",
+				"tarball": "https://registry.npmjs.org/@contrast/patcher/-/patcher-1.15.0.tgz",
 				"fileCount": 7,
 				"unpackedSize": 47780,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDjRiVaE4X2v21zU5g7oBlcqU9HQL4B6/zTLBzvO3Z89wIgMUt+6ehNrb4xdduzW5AdtKUyZUiP/zDPdlNi72nXkZ0="
+						"sig": "MEUCIQCjDjmmteIV9TAwiecMVGBnLRRO0N/J1oBk5elP6bk9EgIgXkguC4Zj+wJkXzcZqGTg3byxHxw6UMq5f3aaISOPuFg="
 					}
 				]
 			},
