@@ -3205,25 +3205,25 @@
 							},
 							{
 								"locale": "en-US",
-								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Activate phishing-resistant MFA",
-								"contentfulId": "7p1mUrCiDU7SKW0A2Tj4s4",
+								"entryTitle": "Solution Hub: Protect against multi-channel phishing with Cloudflare",
+								"contentfulId": "60yJCOn5zxLmFCGJHuWZYJ",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "50941ffa-683f-5912-b7d6-cec34396d66b",
-									"altText": "Security fingerprint - round icon",
-									"title": null,
+									"id": "158f1bce-78b5-54b0-85bd-d4ce21639e08",
+									"altText": "Phishing round icon",
+									"title": "Phishing round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d9YS1q1jNlztaSzKvzPa/a0045f053d7bc766f64618dcb753e3a9/security-fingerprint-privacy.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GcXnnHsj1aM7m8Ftuvwxg/8fd8b8c959170ee95225027b15d3bc5d/phishing-round-fill.svg"
 										},
-										"description": "Security fingerprint - round icon"
+										"description": "Phishing round icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Activate phishing-resistant MFA",
+								"title": "Protect against multi-channel phishing",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -3242,7 +3242,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Thwart phishing and the most dangerous threat vectors with FIDO2-compliant MFA and Zero Trust, utilizing:",
+													"value": "Layered protection beyond the inbox—secure email, SMS, and collaboration apps with Cloudflare, utilizing: ",
 													"marks": [],
 													"content": null
 												}
@@ -3281,7 +3281,39 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare Access",
+																	"value": "Cloudflare Email Security",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Zero Trust",
 																	"marks": [],
 																	"content": null
 																}
@@ -3321,11 +3353,11 @@
 									"buttonAssetFile": null,
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
-									"contentfulId": "2O2WPZvQeALIMNzHJWAenu",
-									"elementName": "Solution Hub: Secure Work-from-Anywhere - Activate phishing-resistant MFA",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "/products/zero-trust/phishing-resistant-mfa/",
+									"contentfulId": "6rVrgS8qDkaTkZlvLwH49E",
+									"elementName": "Protect against multi-channel phishing with Cloudflare - CTA",
+									"standardText": null,
+									"text": "Learn more ",
+									"url": "https://www.cloudflare.com/zero-trust/solutions/multi-channel-phishing/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
@@ -3777,6 +3809,135 @@
 									"standardText": null,
 									"text": "Learn more",
 									"url": "/zero-trust/solutions/data-protection",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Activate phishing-resistant MFA",
+								"contentfulId": "7p1mUrCiDU7SKW0A2Tj4s4",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "50941ffa-683f-5912-b7d6-cec34396d66b",
+									"altText": "Security fingerprint - round icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d9YS1q1jNlztaSzKvzPa/a0045f053d7bc766f64618dcb753e3a9/security-fingerprint-privacy.png"
+										},
+										"description": "Security fingerprint - round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Activate phishing-resistant MFA",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Thwart phishing and the most dangerous threat vectors with FIDO2-compliant MFA and Zero Trust, utilizing:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Access",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2O2WPZvQeALIMNzHJWAenu",
+									"elementName": "Solution Hub: Secure Work-from-Anywhere - Activate phishing-resistant MFA",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "/products/zero-trust/phishing-resistant-mfa/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
