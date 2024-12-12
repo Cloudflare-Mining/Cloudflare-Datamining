@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/commands": {
+	"GET /accounts/{account_id}/dex/commands": {
 		"description": "Retrieves a paginated list of commands issued to devices under the specified account, optionally filtered by time range, device, or other parameters",
 		"operationId": "get-commands",
 		"parameters": [
@@ -360,7 +360,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/commands/{command_id}/downloads/{filename}": {
+	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
 		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
 		"operationId": "get-commands-command-id-downloads-filename",
 		"parameters": [
@@ -575,7 +575,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/commands/quota": {
+	"GET /accounts/{account_id}/dex/commands/quota": {
 		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
 		"operationId": "get-commands-quota",
 		"parameters": [
@@ -840,7 +840,7 @@
 			]
 		}
 	},
-	"POST /accounts/{account_id}/commands": {
+	"POST /accounts/{account_id}/dex/commands": {
 		"description": "Initiate commands for up to 10 devices per account",
 		"operationId": "post-commands",
 		"parameters": [

@@ -1,0 +1,630 @@
+{
+	"POST /accounts/{account_id}/v1/abuse-reports/{report_type}": {
+		"operationId": "SubmitAbuseReport",
+		"parameters": [
+			{
+				"description": "The account ID of the submitter.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "The report type to be submitted",
+				"in": "path",
+				"name": "report_type",
+				"required": true,
+				"schema": {
+					"description": "The abuse report type",
+					"enum": [
+						"abuse_dmca",
+						"abuse_trademark",
+						"abuse_general",
+						"abuse_phishing",
+						"abuse_children",
+						"abuse_threat",
+						"abuse_registrar_whois",
+						"abuse_ncsei"
+					],
+					"example": "abuse_general",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"act": {
+								"description": "The abuse report type",
+								"enum": [
+									"abuse_dmca",
+									"abuse_trademark",
+									"abuse_general",
+									"abuse_phishing",
+									"abuse_children",
+									"abuse_threat",
+									"abuse_registrar_whois",
+									"abuse_ncsei"
+								],
+								"example": "abuse_general",
+								"type": "string"
+							},
+							"address1": {
+								"description": "Text not exceeding 100 characters",
+								"maxLength": 100,
+								"minLength": 1,
+								"type": "string"
+							},
+							"agent_name": {
+								"description": "The name of the copyright holder. Text not exceeding 60 characters.",
+								"maxLength": 60,
+								"minLength": 1,
+								"type": "string"
+							},
+							"agree": {
+								"description": "Can be 0 or 1",
+								"enum": [
+									0,
+									1
+								],
+								"type": "integer"
+							},
+							"city": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"comments": {
+								"description": "Any additional comments about the infringement not exceeding 2000 characters",
+								"maxLength": 2000,
+								"minLength": 1,
+								"type": "string"
+							},
+							"company": {
+								"description": "Text not exceeding 100 characters",
+								"maxLength": 100,
+								"minLength": 1,
+								"type": "string"
+							},
+							"country": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"destination_ips": {
+								"description": "A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique",
+								"type": "string"
+							},
+							"email": {
+								"description": "A valid email of the abuse reporter",
+								"type": "string"
+							},
+							"email2": {
+								"description": "Should match the value provided in `email`",
+								"type": "string"
+							},
+							"host_notification": {
+								"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+								"enum": [
+									"send",
+									"send-anon",
+									"none"
+								],
+								"type": "string"
+							},
+							"justification": {
+								"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters",
+								"maxLength": 5000,
+								"minLength": 1,
+								"type": "string"
+							},
+							"name": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"ncmec_notification": {
+								"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+								"enum": [
+									"send",
+									"send-anon",
+									"none"
+								],
+								"type": "string"
+							},
+							"ncsei_subject_representation": {
+								"description": "If the submitter is the target of NCSEI in the URLs of the abuse report",
+								"type": "boolean"
+							},
+							"original_work": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"owner_notification": {
+								"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+								"enum": [
+									"send",
+									"send-anon",
+									"none"
+								],
+								"type": "string"
+							},
+							"ports_protocols": {
+								"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
+								"type": "string"
+							},
+							"signature": {
+								"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
+								"type": "string"
+							},
+							"source_ips": {
+								"description": "A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique",
+								"type": "string"
+							},
+							"state": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"tele": {
+								"description": "Text not exceeding 20 characters",
+								"maxLength": 20,
+								"minLength": 1,
+								"type": "string"
+							},
+							"title": {
+								"description": "Text not exceeding 255 characters",
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"trademark_number": {
+								"description": "Text not exceeding 1000 characters",
+								"maxLength": 1000,
+								"minLength": 1,
+								"type": "string"
+							},
+							"trademark_office": {
+								"description": "Text not exceeding 1000 characters",
+								"maxLength": 1000,
+								"minLength": 1,
+								"type": "string"
+							},
+							"trademark_symbol": {
+								"description": "Text not exceeding 1000 characters",
+								"maxLength": 1000,
+								"minLength": 1,
+								"type": "string"
+							},
+							"urls": {
+								"description": "A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique",
+								"type": "string"
+							}
+						},
+						"required": [
+							"act",
+							"email",
+							"email2",
+							"host_notification",
+							"owner_notification",
+							"ncmec_notification",
+							"urls"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"abuse_rand": {
+									"description": "The identifier for the submitted abuse report.",
+									"type": "string"
+								},
+								"request": {
+									"properties": {
+										"act": {
+											"description": "The abuse report type",
+											"enum": [
+												"abuse_dmca",
+												"abuse_trademark",
+												"abuse_general",
+												"abuse_phishing",
+												"abuse_children",
+												"abuse_threat",
+												"abuse_registrar_whois",
+												"abuse_ncsei"
+											],
+											"example": "abuse_general",
+											"type": "string"
+										}
+									},
+									"required": [
+										"act"
+									],
+									"type": "object"
+								},
+								"result": {
+									"description": "The result should be 'success' for successful response",
+									"type": "string"
+								}
+							},
+							"required": [
+								"request",
+								"result",
+								"abuse_rand"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Report submitted successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error_code": {
+									"oneOf": [
+										{
+											"description": "Report has invalid type",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Invalid Port and Protocol passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Comment maximum length of 2000 characters exceeded",
+											"type": "string"
+										},
+										{
+											"description": "Provided email was invalid",
+											"type": "string"
+										},
+										{
+											"description": "Invalid IP passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Missing a required field",
+											"type": "string"
+										},
+										{
+											"description": "Invalid URL (http://example.com/) Invalid URL Scheme (http or https) Missing hostname in url Missing a required field Could not determine encoding of field\n",
+											"type": "string"
+										},
+										{
+											"description": "Failed while reading from database Failed while writing to the database This service error will trigger an alert for Cloudflare engineers to investigate the cause resolve it.\n",
+											"type": "string"
+										},
+										{
+											"description": "You have already submitted this URL in the last 7 days",
+											"type": "string"
+										},
+										{
+											"description": "Provided emails did not match",
+											"type": "string"
+										},
+										{
+											"description": "Failed to send confirmation email",
+											"type": "string"
+										},
+										{
+											"description": "Failed to translate email",
+											"type": "string"
+										},
+										{
+											"description": "Invalid value for notification preference",
+											"type": "string"
+										},
+										{
+											"description": "Please pick one party to notify about this report",
+											"type": "string"
+										},
+										{
+											"description": "Must acknowledge that you are bound by 512(f), that you have a good faith belief about the material, and that you have the authority to act",
+											"type": "string"
+										},
+										{
+											"description": "Original Work section must be between 1 and 2000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Signature must match your name",
+											"type": "string"
+										},
+										{
+											"description": "Report has the wrong type",
+											"type": "string"
+										},
+										{
+											"description": "An unexpected error occurred",
+											"type": "string"
+										},
+										{
+											"description": "A URL contains a domain that is not active on Cloudflare",
+											"type": "string"
+										},
+										{
+											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
+											"type": "string"
+										}
+									],
+									"type": "string"
+								},
+								"msg": {
+									"description": "The error message for the error",
+									"type": "string"
+								},
+								"request": {
+									"properties": {
+										"act": {
+											"description": "The abuse report type",
+											"enum": [
+												"abuse_dmca",
+												"abuse_trademark",
+												"abuse_general",
+												"abuse_phishing",
+												"abuse_children",
+												"abuse_threat",
+												"abuse_registrar_whois",
+												"abuse_ncsei"
+											],
+											"example": "abuse_general",
+											"type": "string"
+										}
+									},
+									"required": [
+										"act"
+									],
+									"type": "object"
+								},
+								"result": {
+									"description": "The result should be 'error' for successful response",
+									"type": "string"
+								}
+							},
+							"required": [
+								"request",
+								"result",
+								"msg",
+								"error_code"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Report submitted with an error"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error_code": {
+									"oneOf": [
+										{
+											"description": "Report has invalid type",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Invalid Port and Protocol passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Comment maximum length of 2000 characters exceeded",
+											"type": "string"
+										},
+										{
+											"description": "Provided email was invalid",
+											"type": "string"
+										},
+										{
+											"description": "Invalid IP passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Missing a required field",
+											"type": "string"
+										},
+										{
+											"description": "Invalid URL (http://example.com/) Invalid URL Scheme (http or https) Missing hostname in url Missing a required field Could not determine encoding of field\n",
+											"type": "string"
+										},
+										{
+											"description": "Failed while reading from database Failed while writing to the database This service error will trigger an alert for Cloudflare engineers to investigate the cause resolve it.\n",
+											"type": "string"
+										},
+										{
+											"description": "You have already submitted this URL in the last 7 days",
+											"type": "string"
+										},
+										{
+											"description": "Provided emails did not match",
+											"type": "string"
+										},
+										{
+											"description": "Failed to send confirmation email",
+											"type": "string"
+										},
+										{
+											"description": "Failed to translate email",
+											"type": "string"
+										},
+										{
+											"description": "Invalid value for notification preference",
+											"type": "string"
+										},
+										{
+											"description": "Please pick one party to notify about this report",
+											"type": "string"
+										},
+										{
+											"description": "Must acknowledge that you are bound by 512(f), that you have a good faith belief about the material, and that you have the authority to act",
+											"type": "string"
+										},
+										{
+											"description": "Original Work section must be between 1 and 2000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Signature must match your name",
+											"type": "string"
+										},
+										{
+											"description": "Report has the wrong type",
+											"type": "string"
+										},
+										{
+											"description": "An unexpected error occurred",
+											"type": "string"
+										},
+										{
+											"description": "A URL contains a domain that is not active on Cloudflare",
+											"type": "string"
+										},
+										{
+											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
+											"type": "string"
+										}
+									],
+									"type": "string"
+								},
+								"msg": {
+									"description": "The error message for the error",
+									"type": "string"
+								},
+								"request": {
+									"properties": {
+										"act": {
+											"description": "The abuse report type",
+											"enum": [
+												"abuse_dmca",
+												"abuse_trademark",
+												"abuse_general",
+												"abuse_phishing",
+												"abuse_children",
+												"abuse_threat",
+												"abuse_registrar_whois",
+												"abuse_ncsei"
+											],
+											"example": "abuse_general",
+											"type": "string"
+										}
+									},
+									"required": [
+										"act"
+									],
+									"type": "object"
+								},
+								"result": {
+									"description": "The result should be 'error' for successful response",
+									"type": "string"
+								}
+							},
+							"required": [
+								"request",
+								"result",
+								"msg",
+								"error_code"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Report submitted with an error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Submit the Abuse Report of a particular type",
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		]
+	}
+}

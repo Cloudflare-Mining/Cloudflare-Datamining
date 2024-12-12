@@ -2493,7 +2493,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Updates a configured Zero Trust list.",
+		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload.",
 		"operationId": "zero-trust-lists-update-zero-trust-list",
 		"parameters": [
 			{
@@ -2526,6 +2526,31 @@
 								"description": "The description of the list.",
 								"example": "The serial numbers for administrators",
 								"type": "string"
+							},
+							"items": {
+								"description": "The items in the list.",
+								"items": {
+									"properties": {
+										"created_at": {
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"description": {
+											"description": "The description of the list item, if present",
+											"example": "Austin office IP",
+											"minimum": 0,
+											"type": "string"
+										},
+										"value": {
+											"description": "The value of the item in a list.",
+											"example": "8GE8721REF",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
 							},
 							"name": {
 								"description": "The name of the list.",

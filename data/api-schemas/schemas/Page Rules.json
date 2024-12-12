@@ -549,7 +549,7 @@
 																		"id": {
 																			"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 																			"enum": [
-																				"cache_key"
+																				"cache_key_fields"
 																			],
 																			"type": "string"
 																		},
@@ -732,7 +732,7 @@
 																			"type": "object"
 																		}
 																	},
-																	"title": "Cache Key",
+																	"title": "Custom Cache Key",
 																	"type": "object",
 																	"x-stainless-skip": [
 																		"terraform"
@@ -784,6 +784,49 @@
 																		}
 																	},
 																	"title": "Cache on Cookie",
+																	"type": "object",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+																			"enum": [
+																				"cache_ttl_by_status"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"additionalProperties": {
+																				"anyOf": [
+																					{
+																						"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																						"enum": [
+																							"no-cache",
+																							"no-store"
+																						],
+																						"example": "no-cache",
+																						"type": "string"
+																					},
+																					{
+																						"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																						"example": 86400,
+																						"type": "integer"
+																					}
+																				]
+																			},
+																			"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+																			"example": {
+																				"200-299": 86400,
+																				"300-499": "no-cache",
+																				"500-599": "no-store"
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"title": "Cache TTL by Status Code",
 																	"type": "object",
 																	"x-stainless-skip": [
 																		"terraform"
@@ -1877,7 +1920,7 @@
 																	"id": {
 																		"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 																		"enum": [
-																			"cache_key"
+																			"cache_key_fields"
 																		],
 																		"type": "string"
 																	},
@@ -2060,7 +2103,7 @@
 																		"type": "object"
 																	}
 																},
-																"title": "Cache Key",
+																"title": "Custom Cache Key",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -2112,6 +2155,49 @@
 																	}
 																},
 																"title": "Cache on Cookie",
+																"type": "object",
+																"x-stainless-skip": [
+																	"terraform"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+																		"enum": [
+																			"cache_ttl_by_status"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																					"enum": [
+																						"no-cache",
+																						"no-store"
+																					],
+																					"example": "no-cache",
+																					"type": "string"
+																				},
+																				{
+																					"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																					"example": 86400,
+																					"type": "integer"
+																				}
+																			]
+																		},
+																		"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+																		"example": {
+																			"200-299": 86400,
+																			"300-499": "no-cache",
+																			"500-599": "no-store"
+																		},
+																		"type": "object"
+																	}
+																},
+																"title": "Cache TTL by Status Code",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -3133,7 +3219,7 @@
 												"id": {
 													"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 													"enum": [
-														"cache_key"
+														"cache_key_fields"
 													],
 													"type": "string"
 												},
@@ -3316,7 +3402,7 @@
 													"type": "object"
 												}
 											},
-											"title": "Cache Key",
+											"title": "Custom Cache Key",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -3368,6 +3454,49 @@
 												}
 											},
 											"title": "Cache on Cookie",
+											"type": "object",
+											"x-stainless-skip": [
+												"terraform"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+													"enum": [
+														"cache_ttl_by_status"
+													],
+													"type": "string"
+												},
+												"value": {
+													"additionalProperties": {
+														"anyOf": [
+															{
+																"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																"enum": [
+																	"no-cache",
+																	"no-store"
+																],
+																"example": "no-cache",
+																"type": "string"
+															},
+															{
+																"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																"example": 86400,
+																"type": "integer"
+															}
+														]
+													},
+													"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+													"example": {
+														"200-299": 86400,
+														"300-499": "no-cache",
+														"500-599": "no-store"
+													},
+													"type": "object"
+												}
+											},
+											"title": "Cache TTL by Status Code",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -4291,7 +4420,7 @@
 																	"id": {
 																		"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 																		"enum": [
-																			"cache_key"
+																			"cache_key_fields"
 																		],
 																		"type": "string"
 																	},
@@ -4474,7 +4603,7 @@
 																		"type": "object"
 																	}
 																},
-																"title": "Cache Key",
+																"title": "Custom Cache Key",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -4526,6 +4655,49 @@
 																	}
 																},
 																"title": "Cache on Cookie",
+																"type": "object",
+																"x-stainless-skip": [
+																	"terraform"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+																		"enum": [
+																			"cache_ttl_by_status"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																					"enum": [
+																						"no-cache",
+																						"no-store"
+																					],
+																					"example": "no-cache",
+																					"type": "string"
+																				},
+																				{
+																					"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																					"example": 86400,
+																					"type": "integer"
+																				}
+																			]
+																		},
+																		"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+																		"example": {
+																			"200-299": 86400,
+																			"300-499": "no-cache",
+																			"500-599": "no-store"
+																		},
+																		"type": "object"
+																	}
+																},
+																"title": "Cache TTL by Status Code",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -5535,7 +5707,7 @@
 												"id": {
 													"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 													"enum": [
-														"cache_key"
+														"cache_key_fields"
 													],
 													"type": "string"
 												},
@@ -5718,7 +5890,7 @@
 													"type": "object"
 												}
 											},
-											"title": "Cache Key",
+											"title": "Custom Cache Key",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -5770,6 +5942,49 @@
 												}
 											},
 											"title": "Cache on Cookie",
+											"type": "object",
+											"x-stainless-skip": [
+												"terraform"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+													"enum": [
+														"cache_ttl_by_status"
+													],
+													"type": "string"
+												},
+												"value": {
+													"additionalProperties": {
+														"anyOf": [
+															{
+																"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																"enum": [
+																	"no-cache",
+																	"no-store"
+																],
+																"example": "no-cache",
+																"type": "string"
+															},
+															{
+																"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																"example": 86400,
+																"type": "integer"
+															}
+														]
+													},
+													"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+													"example": {
+														"200-299": 86400,
+														"300-499": "no-cache",
+														"500-599": "no-store"
+													},
+													"type": "object"
+												}
+											},
+											"title": "Cache TTL by Status Code",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -6697,7 +6912,7 @@
 																	"id": {
 																		"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 																		"enum": [
-																			"cache_key"
+																			"cache_key_fields"
 																		],
 																		"type": "string"
 																	},
@@ -6880,7 +7095,7 @@
 																		"type": "object"
 																	}
 																},
-																"title": "Cache Key",
+																"title": "Custom Cache Key",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -6932,6 +7147,49 @@
 																	}
 																},
 																"title": "Cache on Cookie",
+																"type": "object",
+																"x-stainless-skip": [
+																	"terraform"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+																		"enum": [
+																			"cache_ttl_by_status"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																					"enum": [
+																						"no-cache",
+																						"no-store"
+																					],
+																					"example": "no-cache",
+																					"type": "string"
+																				},
+																				{
+																					"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																					"example": 86400,
+																					"type": "integer"
+																				}
+																			]
+																		},
+																		"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+																		"example": {
+																			"200-299": 86400,
+																			"300-499": "no-cache",
+																			"500-599": "no-store"
+																		},
+																		"type": "object"
+																	}
+																},
+																"title": "Cache TTL by Status Code",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -7953,7 +8211,7 @@
 												"id": {
 													"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 													"enum": [
-														"cache_key"
+														"cache_key_fields"
 													],
 													"type": "string"
 												},
@@ -8136,7 +8394,7 @@
 													"type": "object"
 												}
 											},
-											"title": "Cache Key",
+											"title": "Custom Cache Key",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -8188,6 +8446,49 @@
 												}
 											},
 											"title": "Cache on Cookie",
+											"type": "object",
+											"x-stainless-skip": [
+												"terraform"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+													"enum": [
+														"cache_ttl_by_status"
+													],
+													"type": "string"
+												},
+												"value": {
+													"additionalProperties": {
+														"anyOf": [
+															{
+																"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																"enum": [
+																	"no-cache",
+																	"no-store"
+																],
+																"example": "no-cache",
+																"type": "string"
+															},
+															{
+																"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																"example": 86400,
+																"type": "integer"
+															}
+														]
+													},
+													"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+													"example": {
+														"200-299": 86400,
+														"300-499": "no-cache",
+														"500-599": "no-store"
+													},
+													"type": "object"
+												}
+											},
+											"title": "Cache TTL by Status Code",
 											"type": "object",
 											"x-stainless-skip": [
 												"terraform"
@@ -9115,7 +9416,7 @@
 																	"id": {
 																		"description": "Control specifically what variables to include when deciding which\nresources to cache. This allows customers to determine what to cache\nbased on something other than just the URL.\n",
 																		"enum": [
-																			"cache_key"
+																			"cache_key_fields"
 																		],
 																		"type": "string"
 																	},
@@ -9298,7 +9599,7 @@
 																		"type": "object"
 																	}
 																},
-																"title": "Cache Key",
+																"title": "Custom Cache Key",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"
@@ -9350,6 +9651,49 @@
 																	}
 																},
 																"title": "Cache on Cookie",
+																"type": "object",
+																"x-stainless-skip": [
+																	"terraform"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Enterprise customers can set cache time-to-live (TTL) based on the\nresponse status from the origin web server. Cache TTL refers to the\nduration of a resource in the Cloudflare network before being\nmarked as stale or discarded from cache. Status codes are returned\nby a resource's origin. Setting cache TTL based on response status\noverrides the default cache behavior (standard caching) for static\nfiles and overrides cache instructions sent by the origin web\nserver. To cache non-static assets, set a Cache Level of Cache\nEverything using a Page Rule. Setting no-store Cache-Control or a\nlow TTL (using `max-age`/`s-maxage`) increases requests to origin\nweb servers and decreases performance.\n",
+																		"enum": [
+																			"cache_ttl_by_status"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"description": "`no-store` (equivalent to -1), `no-cache` (equivalent to 0)\n",
+																					"enum": [
+																						"no-cache",
+																						"no-store"
+																					],
+																					"example": "no-cache",
+																					"type": "string"
+																				},
+																				{
+																					"description": "An integer value that defines the duration an asset is valid in\nseconds.\n",
+																					"example": 86400,
+																					"type": "integer"
+																				}
+																			]
+																		},
+																		"description": "A JSON object containing status codes and their corresponding TTLs.\nEach key-value pair in the cache TTL by status cache rule has the\nfollowing syntax\n- `status_code`: An integer value such as 200 or 500. status_code\n  matches the exact status code from the origin web server. Valid\n  status codes are between 100-999.\n- `status_code_range`: Integer values for from and to.\n  status_code_range matches any status code from the origin web\n  server within the specified range.\n- `value`: An integer value that defines the duration an asset is\n  valid in seconds or one of the following strings: no-store\n  (equivalent to -1), no-cache (equivalent to 0).\n",
+																		"example": {
+																			"200-299": 86400,
+																			"300-499": "no-cache",
+																			"500-599": "no-store"
+																		},
+																		"type": "object"
+																	}
+																},
+																"title": "Cache TTL by Status Code",
 																"type": "object",
 																"x-stainless-skip": [
 																	"terraform"

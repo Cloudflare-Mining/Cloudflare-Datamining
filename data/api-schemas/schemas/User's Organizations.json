@@ -1,5 +1,6 @@
 {
 	"DELETE /user/organizations/{organization_id}": {
+		"deprecated": true,
 		"description": "Removes association to an organization.",
 		"operationId": "user'-s-organizations-leave-organization",
 		"parameters": [
@@ -144,6 +145,12 @@
 		"tags": [
 			"User's Organizations"
 		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -152,6 +159,7 @@
 		}
 	},
 	"GET /user/organizations": {
+		"deprecated": true,
 		"description": "Lists organizations the user is associated with.",
 		"operationId": "user'-s-organizations-list-organizations",
 		"parameters": [
@@ -508,6 +516,12 @@
 		"tags": [
 			"User's Organizations"
 		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -516,6 +530,7 @@
 		}
 	},
 	"GET /user/organizations/{organization_id}": {
+		"deprecated": true,
 		"description": "Gets a specific organization the user is associated with.",
 		"operationId": "user'-s-organizations-organization-details",
 		"parameters": [
@@ -719,6 +734,12 @@
 		"tags": [
 			"User's Organizations"
 		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

@@ -379,7 +379,7 @@
 												"properties": {
 													"condition": {
 														"properties": {
-															"request.ip": {
+															"request_ip": {
 																"description": "Client IP restrictions.",
 																"example": {
 																	"in": [
@@ -549,18 +549,13 @@
 																	"type": "array"
 																},
 																"resources": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
 																		"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 																		"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-																	},
-																	"properties": {
-																		"resource": {
-																			"type": "string"
-																		},
-																		"scope": {
-																			"type": "string"
-																		}
 																	},
 																	"type": "object"
 																}
@@ -808,7 +803,7 @@
 											"properties": {
 												"condition": {
 													"properties": {
-														"request.ip": {
+														"request_ip": {
 															"description": "Client IP restrictions.",
 															"example": {
 																"in": [
@@ -978,18 +973,13 @@
 																"type": "array"
 															},
 															"resources": {
+																"additionalProperties": {
+																	"type": "string"
+																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-																},
-																"properties": {
-																	"resource": {
-																		"type": "string"
-																	},
-																	"scope": {
-																		"type": "string"
-																	}
 																},
 																"type": "object"
 															}
@@ -1670,7 +1660,7 @@
 						"properties": {
 							"condition": {
 								"properties": {
-									"request.ip": {
+									"request_ip": {
 										"description": "Client IP restrictions.",
 										"example": {
 											"in": [
@@ -1812,18 +1802,13 @@
 											"type": "array"
 										},
 										"resources": {
+											"additionalProperties": {
+												"type": "string"
+											},
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
 												"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 												"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-											},
-											"properties": {
-												"resource": {
-													"type": "string"
-												},
-												"scope": {
-													"type": "string"
-												}
 											},
 											"type": "object"
 										}
@@ -1929,7 +1914,7 @@
 													"properties": {
 														"condition": {
 															"properties": {
-																"request.ip": {
+																"request_ip": {
 																	"description": "Client IP restrictions.",
 																	"example": {
 																		"in": [
@@ -2099,18 +2084,13 @@
 																		"type": "array"
 																	},
 																	"resources": {
+																		"additionalProperties": {
+																			"type": "string"
+																		},
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
 																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 																			"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-																		},
-																		"properties": {
-																			"resource": {
-																				"type": "string"
-																			},
-																			"scope": {
-																				"type": "string"
-																			}
 																		},
 																		"type": "object"
 																	}
@@ -2304,7 +2284,7 @@
 								"properties": {
 									"condition": {
 										"properties": {
-											"request.ip": {
+											"request_ip": {
 												"description": "Client IP restrictions.",
 												"example": {
 													"in": [
@@ -2474,18 +2454,13 @@
 													"type": "array"
 												},
 												"resources": {
+													"additionalProperties": {
+														"type": "string"
+													},
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
 														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 														"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-													},
-													"properties": {
-														"resource": {
-															"type": "string"
-														},
-														"scope": {
-															"type": "string"
-														}
 													},
 													"type": "object"
 												}
@@ -2608,7 +2583,7 @@
 											"properties": {
 												"condition": {
 													"properties": {
-														"request.ip": {
+														"request_ip": {
 															"description": "Client IP restrictions.",
 															"example": {
 																"in": [
@@ -2778,18 +2753,13 @@
 																"type": "array"
 															},
 															"resources": {
+																"additionalProperties": {
+																	"type": "string"
+																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
 																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-																},
-																"properties": {
-																	"resource": {
-																		"type": "string"
-																	},
-																	"scope": {
-																		"type": "string"
-																	}
 																},
 																"type": "object"
 															}
