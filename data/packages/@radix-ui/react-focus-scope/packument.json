@@ -1,7 +1,7 @@
 {
 	"name": "@radix-ui/react-focus-scope",
 	"dist-tags": {
-		"next": "1.1.0-rc.7",
+		"next": "1.1.1-rc.1",
 		"latest": "1.1.0"
 	},
 	"versions": {
@@ -4782,6 +4782,34 @@
 					}
 				],
 				"unpackedSize": 60341
+			}
+		},
+		"1.1.1-rc.1": {
+			"name": "@radix-ui/react-focus-scope",
+			"version": "1.1.1-rc.1",
+			"dependencies": {
+				"@radix-ui/react-compose-refs": "1.1.1-rc.1",
+				"@radix-ui/react-primitive": "2.0.1-rc.1",
+				"@radix-ui/react-use-callback-ref": "1.1.0"
+			},
+			"peerDependencies": {
+				"@types/react": "*",
+				"@types/react-dom": "*",
+				"react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+			},
+			"dist": {
+				"shasum": "c7a4986bd173aeaf7c66f3451c20d0ccffd2b421",
+				"integrity": "sha512-D1P9+y2asMGfvi4QCctE3vBaqp+OtB2242rGT8DeyPygjGUnCnqXEAcWqAESDtEBkJtUnT5ZZH67XYJr1vRXgg==",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 60384,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC1NqC++ZoZjJF8r4nQAtd5GpMBIHSMpLOL3MKGuN2gqQIgAtupYRyhy4noE2b1OYYzrDW72Ah8PjzBsfxO82A1+xo="
+					}
+				]
 			}
 		}
 	}
