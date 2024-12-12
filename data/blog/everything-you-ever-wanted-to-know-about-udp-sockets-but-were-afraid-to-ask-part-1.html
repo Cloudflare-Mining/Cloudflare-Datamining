@@ -148,20 +148,64 @@ ESTAB     0         0                    [::1]:44592              [::1]:1234    
 		</a>
 	</div>
 	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique.</p>
-	<p>Socket type</p>
-	<p>Created with</p>
-	<p>Appropriate syscalls</p>
-	<p>established</p>
-	<p>connect()</p>
-	<p>recv()/send()</p>
-	<p>established</p>
-	<p>bind() + connect()</p>
-	<p>recvfrom()/send(), watch out for the race after bind(), verify source of the packet</p>
-	<p>unconnected</p>
-	<p>bind(specific IP)</p>
-	<p>recvfrom()/sendto()</p>
-	<p>unconnected</p>
-	<p>bind(wildcard)</p>
-	<p>recvmsg()/sendmsg() with IP_PKTINFO CMSG</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Socket type</b></p>
+				</td>
+				<td>
+					<p><b>Created with</b></p>
+				</td>
+				<td>
+					<p><b>Appropriate syscalls</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>established</p>
+				</td>
+				<td>
+					<p>connect()</p>
+				</td>
+				<td>
+					<p>recv()/send()</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>established</p>
+				</td>
+				<td>
+					<p>bind() + connect()</p>
+				</td>
+				<td>
+					<p>recvfrom()/send(), watch out for the race after bind(), verify source of the packet</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>unconnected</p>
+				</td>
+				<td>
+					<p>bind(specific IP)</p>
+				</td>
+				<td>
+					<p>recvfrom()/sendto()</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>unconnected</p>
+				</td>
+				<td>
+					<p>bind(wildcard)</p>
+				</td>
+				<td>
+					<p>recvmsg()/sendmsg() with IP_PKTINFO CMSG</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Stay tuned, in future blog posts we might go even deeper into the curious world of production UDP servers.</p>
 </div>
