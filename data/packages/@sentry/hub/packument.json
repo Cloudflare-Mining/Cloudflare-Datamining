@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "7.80.2-alpha.1",
 		"latest": "7.114.0",
-		"v7": "7.120.1"
+		"v7": "7.120.2"
 	},
 	"versions": {
 		"0.5.4": {
@@ -13177,15 +13177,40 @@
 				"@sentry/utils": "7.120.1"
 			},
 			"dist": {
-				"integrity": "sha512-3cOlVphLVrDqHQV+2Rid4H8QD/YYKF0feA7aKSefCx/2lv1me1XryeYWmj5fbMLcBIjFp/CTqDcZWbxhIgxr9Q==",
 				"shasum": "4ea62b2a7e33227de5c536e4a15a12041e7a2fad",
 				"tarball": "https://registry.npmjs.org/@sentry/hub/-/hub-7.120.1.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-3cOlVphLVrDqHQV+2Rid4H8QD/YYKF0feA7aKSefCx/2lv1me1XryeYWmj5fbMLcBIjFp/CTqDcZWbxhIgxr9Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQClEggcV5HtFygFhNCAT6w9pYVN7yPfDJUL8K90oEW6SAIgQ0YuZ/BaoOYWcDzdLmG+tqq7dM9HZMcfGE6o8ieUa9g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39932
+			},
+			"engines": {
+				"node": ">=8"
+			}
+		},
+		"7.120.2": {
+			"name": "@sentry/hub",
+			"version": "7.120.2",
+			"dependencies": {
+				"@sentry/core": "7.120.2",
+				"@sentry/types": "7.120.2",
+				"@sentry/utils": "7.120.2"
+			},
+			"dist": {
+				"integrity": "sha512-Zhb7ZvV2OEdYXs1HcTVxOT/+d9uOQECPcoUDX1cjztNtMuALsAIPr2pQWsEcPnOpuK5RAziCsc/PnDFdirPfeg==",
+				"shasum": "606eb69e835102e0451b38be56d3590ed7ead12d",
+				"tarball": "https://registry.npmjs.org/@sentry/hub/-/hub-7.120.2.tgz",
 				"fileCount": 10,
 				"unpackedSize": 39932,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQClEggcV5HtFygFhNCAT6w9pYVN7yPfDJUL8K90oEW6SAIgQ0YuZ/BaoOYWcDzdLmG+tqq7dM9HZMcfGE6o8ieUa9g="
+						"sig": "MEQCIAZ5+BXC572NlWOdzmwJI7NabUFmC6ksPldnZYzA64A6AiAGB3PtGjJgKYpyIWmKSRYHBsc9eR26qrKNHlRc9h89/A=="
 					}
 				]
 			},
