@@ -1,0 +1,3473 @@
+{
+	"name": "@microsoft.azure/openapi-validator",
+	"dist-tags": {
+		"preview": "1.0.0",
+		"latest": "2.2.3",
+		"beta": "2.2.2-beta.2024-06-06-20-10-30"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "02846e82ae563621c949220be2fe550b894ca3f2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.0.tgz",
+				"integrity": "sha512-hXJHePUZYWEOxY4ssNIS30Wsa44eonpUpfbNVYSy6SzvQbzhAADZ5eEbLGYV2fXQG4kOIB7MtYrZJs7oFpqZbw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAbdDDz5cjxY8ebaE82f4TJFIIXMg8ZGArlQ1bnVu0WrAiAgYdk0OQXVsKjx84OhRS8fyIV8ONc/KA7t2n9pB2Z5Xw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "e5925f93cf5e022da45ba2319d42c4dcb839feb2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.1.tgz",
+				"integrity": "sha512-KXMVbZcPWPi9K0YQvpqx/V/y//8BWWCFFV9fe8nn/VQKV0Bak783krAiW6roEA6TydIezacOOVrIuoXnxEE2Ww==",
+				"signatures": [
+					{
+						"sig": "MEMCIDz9tnbcl2oC/yJ5myxoc4FEEKu3iqISd4HXLeVIzr02Ah84DBs7sCjyp5aHeKPp+jxTc8KNjsEo199nRf2TcCw/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.1-preview": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.1-preview",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "ea2f09a4e6c9a59ce7017bf80ab752f58f219450",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.1-preview.tgz",
+				"integrity": "sha512-dl0esAP+C2jEvaoPCaWmzWD/wGSwIm7HsAYVNmdtw2Jp3DQ35ncx5LZreowwse0yMUiHwfKn5VjiRPVhlyxzaQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDQEnxYfUwSsssjkgsZIf39S2UdDHyBtWrMYxWNHjURpAIhAOwG7O7/AhQ24RDIn51ky40LzZIUGbdloKP/1cQAzsAb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.2-preview": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.2-preview",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "1809fc94e0a581e084f0eede4a7bf8ef811d992c",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.2-preview.tgz",
+				"integrity": "sha512-1VnEyLyUFfGI4CGIkAbKrq84sS+oijBlQ72oOz/0QGroqUyx971wqnGylUV4QFgYVM91hdJOtkc1tZjX2GVrSA==",
+				"signatures": [
+					{
+						"sig": "MEQCIEV8jzHoyNlf30S+iCN7OT3Z6EeUEXPbcfWA0p0ZpEP2AiBGPsMy4ElaN7jftGPfLWMC0ZSb+XXHKegtedwsG3H05Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.3-preview": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.3-preview",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "8aed6d120c05ea291a98e6797eb2594bba703cf5",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.3-preview.tgz",
+				"integrity": "sha512-5qXzlKlBs6wz1xL2SBKHFuYsClPLFRfZHthhEEvxtL8K1JVsiFeIHQ6HZ28BtzOnaQW47wIytXh+83P97EO/gg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHbRPglDrjltcyBEwcXE7+Gsfk4kyJr7iXxJwX0ZAPKcAiEAnsZ9sN3Th85JjkJIhPknRzwS+qh2mqWGKxKCQN4I4MU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.4-preview": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.4-preview",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "a9ca0be83eed8dd6376105508454aa1e4c352d68",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.4-preview.tgz",
+				"integrity": "sha512-kb2PYMWMlPaB/T7kOjoUYXhi9DGKk9r/wsmI+jZIZ6nh318KpOOQUJvciVmUNcFD79TmJZio+7PUFjq0jDSvqw==",
+				"signatures": [
+					{
+						"sig": "MEQCIF779/NAeiujCWUB0lXJzfixHhIMSt+bIh5nyMNR15ncAiAfz7qVjnPEKfkKiaWwOD2xv2ZkyAWI89QVYjrnUXxfIg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"0.1.5-preview": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "0.1.5-preview",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "ee071a24c3ddd597444ef09144b5485ebeabac83",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-0.1.5-preview.tgz",
+				"integrity": "sha512-xZM+BJJg2FShRaDKKC14S3Fy/rKmx24AhZ74uS/uA7aZv4jOLN4qleIQKp+HtvK7fKtqeYKjqa6sREgN2mKbQA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC/Db3huGLMkRuCi8CGw4ZLKCS7WvzY9wylZ/tOSW8nSwIhAJjfarYufQ3sFGOqSb0lDYRamnvnzFdwGkPRkPgz37MC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.0.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "cb74c1ed1c45c03255ed11f440c06f0e3a8454ae",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.0.0.tgz",
+				"integrity": "sha512-AmBJTS/xhUcpFwLFsw0HUPMdeWNIV1gxikVaytlG72Rn2GvCHqCj/kr48BzYkXAp7W3gdyRKlQYGA4LLGBCNxA==",
+				"signatures": [
+					{
+						"sig": "MEUCIACJhXJNj2blbp0e7yXQl32kHEQRHLiRm7lfZKPVnVb0AiEA3aFZsmFSmtERTVT/Tqnlrb29ctM0BLtRLTJpQ3EW1CU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.0.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "41f12e30e43f5961fc496531f7e17ae94dd2e19a",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.0.1.tgz",
+				"integrity": "sha512-2BFYsyGoBx70KXtYKc6dkv2+nGCHZgltRF4koaBUe6QAGWscaKk1VsVJP/PNl5p1onUbHqWSwYSTMvgB83RX6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIHR1sCUbv1HKOPRcCOz9QgiV5KcXSmXEMZMHSWgA1JJzAiEAjLCBy4bmE2rjZWSBRPJ45UtzMG3O+XlAZVnlUz2FqUY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.0.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "352190e6dbb4a1d16587b39e589b9615d6e4aaaf",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.0.2.tgz",
+				"integrity": "sha512-toHgZ2Q8jyWSgWzVN1nReO/J6Wnf/qz1u8rzo1LNoBhHGE5lvZg3urmxZU1jWFwzTHQSBfFNL/dXD78fbzPOgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIHDVBxv77W7vTQYdgskeoNYn5NUPJWLk3BAr5+KZlun4AiEA8nfdWO8Qq+tZl9AhzbzNkQ4WA4iu285qRebY77taqA4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.0.3",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "86b5fdda11abd57bd76f7e2b75ade09f2ca46f1e",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.0.3.tgz",
+				"fileCount": 38,
+				"integrity": "sha512-6DR2FcNJL3TLvPPTZyDUDbZTBvIUI1jtwI9XVJPTO//WPWzMgiRUQVrsvXjb68GADlTM3xonl6p4sjZKRZNweQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIC/k3qDMgrexWiVoYkgQNjZhoqIvqrHhJp+HV71gDHHGAiAjoSE3ZFTF5WLORe5qQAvJuhmbe6So3q4fzesqhF6bFw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70075,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6jM7CRA9TVsSAnZWagAADusQAI5n4PqDyK3K3YZupPrG\nbTbtTJsoh1A83l6NaKsyq2KMdQ5+6GOgNAMxarYw2s66MOUohGeZHbuEigIo\n6bnNq8KsBluNVHuaJwzxWtA8sqN3CzGD/uOsucC9ejdtfMvYDQm7/U1RDHUJ\nrLCOPJEmn4UQBujW2nzZXpJGwS0VliQ69ovbBVmGtsn0YSmJ50iHTznYAujn\nnDY0DKFFPxKmZpjsPWpS2qZnYyUxV4eWtuyFK2nHaOl5t+3fg2caIvufqRfZ\nd9LyyEXasbKdYwKScCTrrlyKGbJyUSPRa/mcP+ZhoitdhyXPb3DB4Tlnbml8\nEp/MpFsB9lCQ0CNLKVNhrkP89qshaf7w8JxhVg6cjWaafg9+NbwMuYq7eDgT\nUBJZoy/xT/QvzKEbzdg3nurxgttuL0HPCMhXXg4ne4ToTmR3zuoBNih89dQJ\n/0EhZMjy+7qqOxoDO1WOJ5vImS6jJOZ9VNIE/sxDYhIvepSN3eKsMEFT8LCi\nQsyxJ9AVoxe6ulP+NdK6Ks4v37ywlNvNoitoE/RLUjvvHK+R2+rr/awyRhkp\nE+uL0DT68/IQB1Ys0KjDKkXpeDdTur7tES6ezEfjX+iuzl+z5FpN6gh14MZe\n1Lwu78OEcJVUqGZH7fc3iBpSsHah7RU+sAerw4N+mhazMkVFE2IVzu8LkHP6\nUBXc\r\n=p0Ou\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.4": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.0.4",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "0393bebc041aea17273e4dedee48da6586fbc4d1",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.0.4.tgz",
+				"fileCount": 44,
+				"integrity": "sha512-i+WpWn4bS7NGWZujZoAN8QmXJsB6tBzpP+GC4ug0enVsB0xPFggchmGZv5dyesMCM+3Key1Zay9h/DVBlxd9lA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDFPspWrXW5Oa9TcUGwFrQ5UJFjcjjUsKu4r34Y0BdekAiEA3zjy2MB0uAkpv8bbZrA/iBMNxY034wWxrwfuMNTEDtE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 83404,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa89vWCRA9TVsSAnZWagAASKsP/Aw/TKr/m0ruoPnJKCuG\nWTz+cww42EyJrf0YZFHirqQCuIA9EagrozDD1H8tZ+L9sITX6FrulBNQLpHl\nMInbgFdM4b2x/sYSQa3EMRzGVm52fHw/JA2h562Ld5EMZpvc18R3GVKjaTv4\n7wDQmBIfgl6Z8Qgw5GYR1ich6mCf8MHmvPId57TV+mSdhSdXRdd0fD/M9zix\nWOaGpO/Qcj9NvzJ2caHTxK/1gpHYdGGlM2r5NByJgeVqELKoFC6x261wrS9M\nrB4rT8+py7ym8SfqFi3cXaUjjmBwLUw584yj48G0mAJQJf20/NIyJvMxwm1B\njwf4X1aQ7AOw5tupboNW1/LAvWmwNNeUEkD4GM9jx6jof5H2BKs0Ly0aPzXz\n5xv2XmATyy3PXPDhvwdvj/me3SsKbUTCdPKzxmnZwYuRN7aOyBPYiDJj7Gvi\nbTG3sg6MYja0Jetyl+qn3m1KOh23v5iVNR0qc4WKCnhnP0OXzmbsVujBUkzI\n64ecRK02Pu1gPuxOOxq/3R3oCNjJQhonE9j136PZlE7TDCHyU+TZPQ7Q9fVX\nDBIi8fcbacOXvoztNcJo/6ML6Sbt4GpSB96eE625EbqGU1MMb1zM1HtE+Vrl\nDa3HVp0V2WaCuoJl1Vhgzkf9SEaPiW0Il2g7xR44x0NM+CSpnvO6dc46nyj1\nM5Kg\r\n=0pbh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.1.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "ea7484c0c6343eaacf5627d50c0b849f86cf05fc",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.1.0.tgz",
+				"fileCount": 63,
+				"integrity": "sha512-QRLUKq1/ZiuCKY/3mxxADAz2EBEfu5QFklufj7/oXN72zTwjIVWAWlIoUeY47MWNrPTJ9+O6kBsThHWzQle3nA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCwge6+M5IScLL5c1jD3ciqxdjaCwoIHn//Rg4axm5znQIgT5Zji/4XNmv+NnUY7S5Vez1hBaNHMjNHGd1thsf7Wes=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 133878,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJecuAKCRA9TVsSAnZWagAA5t0P/2c94L2SFweEXpYY9oGY\nMtXiMosvUbkztO7M8snbUxOp0/y/lvJjP/lQFKXs+hhjHCoOstA9IONMIrf2\nxz6VxA27bThv3nBVkbhjsIwlVsNd/YpsDZVR1WWlwsxzebEr/tPPU9uIOx3q\nIm5kpTQf4lO/b7M3equr1iyx/1LN7qdit9u0K0l+96r0c4ZS1TO0TiMJreuN\n8M624RTL3lB2wmzpA8Hl3B3j8x2XW6uVnxmPMRX2k2/4xJljLm1Yz5Twnfrt\neDB3VtavgKyFSXVsRoywmIF5DY/m1wwdlOuezy9lC4f86E3HmgMmNxUlcQn7\nc5XgWKND7xL9sAXQmyWasQWG8qnAI7ZDxScE0MoZicIVhDuOeMIZTznvtfAc\nmc4AO36/cwcTLz05yBGluvYkk1gz5eugo0FY4JhYeEQ5LyNTy+/FXHnnL9yu\n7QjNMETcmijzf1ujb50BmgStgYOFiewsfrknZeUdqu5oZrYQtBwHOXFRc2Tj\nlQMdcC3+RV1BDrtc1akGEXQ/Xz6fg8x22WuUl3dWfWeT3ChR0A9E/2XrbQ+Q\nb32dQj6IOwodBYPGNKDMoHsWJNR4aqrcsKX+qyYb5Ex3sW/empPA5Ov41xir\nTNnH81K0ltQ4RsKFtwo1pys8zg9a9YdDtrGrKgHghtfJsi929DM/OD0N09aL\nL38A\r\n=5tI9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.1.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "2.3.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "2ea3149c97b3d1df87199b381888041be2a4c03d",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.1.1.tgz",
+				"fileCount": 63,
+				"integrity": "sha512-KV91osR0d6KemUzmUUkI2DddyNGXVPG8r05YlduQapEQg56d8NTNbEsF9FfHqDwoEMBMw9lP9t1ToWmN6d3oww==",
+				"signatures": [
+					{
+						"sig": "MEQCIDzm2wlxKhLShbrisAOrdXmABI3uCSaVsC78SgDxQbhUAiAVaL+DtgEBii4OgZYQf7ZX5mjP08i1gtMeJ1J7SrgAMA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 133784,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJegXJkCRA9TVsSAnZWagAAHFcP/AuE0U4WDVcO8GTTG7eO\n7gpASWxI+uvlzK03Zh3lRGAlQhhGpIxBhD2W1cQawu8MRKLiUp2ZBNSeMJF6\n46GkJgyEZQcZNIpXQh9NB06wJIgsq6BC7/im1l9pyrG9eJajk543A1FPki4a\n2L3m8SBaVLX7kjNyfkeDXYJARc95HwjNrXd7umYW67C7mquhHTYyMk6oE4Gd\nJpY2OwHuyg8nO7iGyR5zbqhaz6BSYbC7wyIE7av1sEGgGdEkuexBBHtJw2uK\nIERfhGvvoZAoe4WxaBIK84KJWMf2u5nqWHrKoQUJGGVCxT5uJd5K+0Xf6FPz\n+iyklnmtZKIKIy6SMIiemzJLblpa7QA1cN+AoP8c+QlXbpL0CRDKKa1WZbFI\n8+L2BQgcZ9nKHt7ISwLJZThiABFR2X7zeef+rn2xISuP4IgOgG7Vx9keG8b2\ncn2v7+yd7KUmJkOiUnM3h7lD7ekmw163z2axufl36NvUSUjeaQLD40A98CGf\nMIF7ae6LxVEZk97hWs5b/SiY2sTulUxC8RaDDB4Xym+lIvZIO2DMMPZKNS2t\nyR9j5ITAF5VyGSFJW6ciojv61GFp/lEAyXoE60ndfoRd8KIjnIYa92U0XKOW\nN2/mlvPPPyYXY5g8TIqCCsbGbzGOXlbhg05IMufwsAqOH3CsJ7nrzL6oefBP\nXAhs\r\n=vCz1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.2.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"json-refs": "^0.3.1",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^8.0.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "3.5.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "d7a0b7e94c367d46def63271fce20f3c61d25c27",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.2.0.tgz",
+				"fileCount": 79,
+				"integrity": "sha512-0SjLfZqRA2UY2r3xD2qAZkbGfHL/e9vzDe9PWG5KJdtM8o/ee1J1Gftji6MzyxH13oLghaFrrsJqw2WXDfxVuw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFYbV18Vom/3PUi6Cqc2s7TmRNhdTvsCKvrwSTQtOxiZAiEAmwcanVd+tPqiICxdCfAAkvE9T33XuxgMXRS4mmMHg1o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 179953,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJepo6mCRA9TVsSAnZWagAAKPsQAKGKkwVpM+VZAcJlAWdy\nupknr3IV7YpuMUUNaJtUjVZSs8WsWTABnhgdB49EE21clceie1rGthPj6JO5\nF7zlFXxp9JWFSpp1ZWggMubdAQSjjzuWv/hSDVBXzCoPFJvIDVAoJHLcdpxn\nkP+5FcvAfbCR7B/SIozGo1/qOu0jvR62HCrH5Hg9lKLd60F2arhD6qhyOtRS\naommPPdmC4ugn3/rMkWrMx4cfRhVytNXZMVO99/Iac62Q9Xkfxd5LUZYgyri\nrqxiI4mvwS1n1JHfZWzp2RDyAVma7Q48sD9tfsIVy7fLk4ZxAo4mE2HMvJV6\nShVmmdZpP20krLCTZ4puM9rVOEU+kyySqJQw6LNTlSYJQ7u48S41f0yJLpJ3\nBqdSp7jdqCLX+MMGNcUzdMS/b8nHUJQzLhY0BjbFQUbxRcM5Ko/DvX8mtHNZ\no8b/iwZpfS4njjqKYiVZvnPd5euMr/6tkARkFN4lrvxHc4YKC/HFy1Z297Wd\ngxyQbNgMrktRgcttDCPpfBrAV2DjaRpY45WQrYnp28OxOXM3QZDano32liCR\nCl2Ek2s00RMdZLzCWbQGVlZeeDUIXWf26r9NDbdJZuPaSoclXby0nLqt4MLw\nOLhMBFCN01gxLdbLJhLJZFDSF3oM5h3/BDToAcWxBHlRw46QpfsjhOg/4vFr\njt0y\r\n=cYRY\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.3.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.8.4",
+				"jsonpath": "^0.2.11",
+				"json-refs": "^0.3.1",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^8.0.0"
+			},
+			"devDependencies": {
+				"gulp": "3.9.1",
+				"mocha": "3.2.0",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.3.2",
+				"gulp-mocha": "4.3.1",
+				"typescript": "3.5.3",
+				"@types/node": "^7.0.18",
+				"@types/js-yaml": "^3.5.30",
+				"@types/jsonpath": "^0.1.29",
+				"gulp-dotnet-cli": "0.4.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "d656305d9f322e51880dd6c05c5da83ad9476b89",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.3.0.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-furhFS99ItkETaT6Y3XQ0s3BN1hu4NiHSrzptom7URLNjub054m+1bS4fjEE96IVECP09B76Nbjfyup5reLVqA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCkSkc+WEQvjPiXHvHB3ob1sfj9ATZG7ay1DI+AZE9yfgIhAOBjHW+4VKjG5G63wgjPTjSbO2Pqdymoz1sRfv/nTaD+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 234445,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe0GpHCRA9TVsSAnZWagAA36MP/A56eb6CIYa4pT078lU0\nxO561yrqbw4UCPVHw3B99A6c5Q6jYrFtMVcWux0tm4zhBiSDNugRAb3OTWcv\neUKaN8Sv73j8BEuO6QVKdZyATe9xkqZPSrS0HnZj2u3xRASX8YM63FT17c4j\n0MeBMIrNSEpkawYV1OeGxOauqRvhRKaA0z5UKdXPVD+/nVE82iwr85RlA9vy\nqpTXPzyXUczW7F5xvnXPc8FsCU7X5l8/s/XICtDQPksXIx2LIlOlErNwt7UD\n7pGVurg8L4LX/m4E9we1fvxfDhexg8LwaSbYGU+W4WdYkcq8T+YSEZM0SIPN\n+9cZkYB/F+/T86Bo2GSt3uWlbEZ6mxs7aHUmbxjP1+iV6CuvZIOn01RBtQkw\nAjz3SQdgNc81Qfgdz3AGFhVHOnEnGPUTXGmZTJgGnJKyO/A1cncj9iZGyvOu\nTACcXT0Nr8akKQqPdr0w+KXFrgXjD6nG6WmQdSylcULnhNTM/2HvMFMGJ0+s\n4G+mPDqql0Z3QYpR+aWqIB8DX1xALEHidkQgwmhUkybtOvC60UnEi97/5vNR\nh3XiCjX3uPrm5gpfbkgG37G1becvZpL/bN9P5Ib09bktOLB6x0EU//hIYOrz\n4L/C6gQOrSCxoZYEIgpCBBTocip5jL/wyMYPAi/DkyAXnGCY9C7NUAmva72I\na7n+\r\n=slhy\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.3.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.5.3",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "9ab4c6cabaf3ef529ea26c1197957f8570192e59",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.3.1.tgz",
+				"fileCount": 96,
+				"integrity": "sha512-rq8emXZRFJ3CvzPsOvGAOm+7YlLEPw3ppQl+Kjd161vrJ4nRD6ixVGxuIv5fMQeXpRFxiAgglHY1dvAm+2WxNw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEUkW4E8uq/2QnJJF4a7niDvT8nYhdSSAyse41f6SxoNAiAOCtDEjA8f2C5ne3bbnMwCW1rifaD+3p21jpy4oY0R2g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 240509,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfH/JLCRA9TVsSAnZWagAAkh0P/3N6s10CB4Uyh/OXj1U9\nwIy4vfnnrpmnCB5fplaulX5b8LP4kObN9NCRCbOUQvKPe6eeX8CmNcgM7ixU\nNvaiw5veN7Q0brQxOc4oWOiSHMollMs0UsoTK2Z4RENQjitawyyDxwpMc2Tc\nVVeYP+uBnfj3CWWK3JdJ/UzqmaQg4mcSpE8/hHbmojsgoIChCOmO4BtwXOmN\nK4wvlSLLdLYE5Iett2AOGsCl0dvHogtnbMUCyC2zGQf+bnFYqr1GCImuk/q7\nc72vpl1GmPmmHTg2ZoT5pMQ7Xu9ryEEy73NyIzw5tRYiOkNWwLYBauHoZP9w\nJGap0GD/fKA1Bk3VYV9U5x+HpEChConjPIe9pleGisORNQ6dkxaaG5B++cs9\nk899ITHjSkUKFw/RCoVHSP3qBWlgQN0RDQHkY9bS8QJSFOtmPq65h8gxK8gR\nCWcRf3PCTRsNCpgkfqjVQD1VlvOucY98mt7VlBaZ5zPycyOlE+ERLLweePg1\nJFN71hBhCDuCUfevKPM8mRxL0/80LJ2dLuFZ0VOYA7uIoZfaP44NG+NNABTB\ni4GaB2piFxmKNbh2fobAwf5A++pjhRIptyGj0/ZqGKB2hwAeqo3XyObY+2V2\nbkftVPWPANw+YUFAjJNKCCxb/kVXzVhVj5gKUyeLGEaWz77llQUg4l193Nau\nMnaX\r\n=9vCC\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.3.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.5.3",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "1.0.22"
+			},
+			"dist": {
+				"shasum": "ccf47d65b7d2d662c13dd6dce6ef3cdedac4086a",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.3.2.tgz",
+				"fileCount": 97,
+				"integrity": "sha512-FSxxmJaUChfHhiDmtLqsDqcHEAbTBWUv1O30X+7nKOyZpt9R9Xk8ZF2iUgfQ8tyQCkGuJGvzipGVnD9+2WCREA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC+RnfnP//eykSO/749AFH7mRaQJ9TQOMofFLTKY+iY2gIgQbWxOa2yrlEls04ypIOEVPqJiThLqx7rIzjCHjqoTGI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 251551,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfIpW3CRA9TVsSAnZWagAAM9sQAIPdSqNTtTd5FekeYnGg\nBHbAmi/pZ67Vs42bCemxH7p7ALE+Hqm3O0ftnfxWLNnjqVcjF/ZSQseM3yko\n/bDvtQsjeJTPAOnk3YVPgEJtGr9YDfWLQl0bB0c6fAWhpReBmGdGZVoNJrIK\nVhzded+haEZj9Ks47QpfDPfwkEnOrIgneNiUDc8Z6YBJnVQh/qu5/AELGoLK\n4EsxD8T0WK/Hu1b/jeoTfpN0CcM33NAiUColNKvnf3tAYd7OjYzkGTGYEDqm\nw2JeXIfNUzSHtfkQso/C7v0xZAb+Flfa+lV9YqPpm0qEJawEME6GC7hDFEzM\n4z87vUgI2CLRKlXSSw/7iwE31x3d8p9SJY70EDsJw0E4raX/K5xAqAbxhvPm\n0tDQ0jI9uB+/T45RhciTMcWubmRuUROB/kQ1g6R5m5H/i3WYbEAxJ1PnyNLr\nM4w2qLz1cnE0plknTpAlP43pOl15LN8PRV1TIva0S/HUta69xG939nIChJCu\nDHwMyMZ5+zvNHefDcjku5H2stJ3KOxuTMUYY5Z/i2Lt/N8R5IO7GmoULebqX\nJ9bKMFsOVhh02hY4IYGhge7CzqjumsIenjAzfbFgI21g1zFw1sPKGufsAokU\n35TeURgqmje6s5gDzxupqjy9sQkFo2z9yNukrDFmCoj5H0381L7dfKx0u2ey\nVGIw\r\n=i55h\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.4.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.4.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "c2ac54b78fd9783ca5882f3676929b12291970cd",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.4.0.tgz",
+				"fileCount": 167,
+				"integrity": "sha512-6zGcI5KAlqZmg6HHotQ3HfzAh81LOxkfq3bmjL2BshUhkHCtelo3SVqZ0R7ugEjDWWB0go2F/ot2bFCxgIN9cQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIG604cR/MJjjyLgKPB19XKInN2/0Ipzf0cdF3+gV+cIqAiAKHK6fu3IUiNCRqh71Gl3uYzLfab96Hu8kJuZDraeLkA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2451852,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfKhQKCRA9TVsSAnZWagAAWWEP+waWGZsBQNwImzkFKU3l\n6jCnaNTeDHn117Hccj4QYw7NaHEQJgGpXnnIc5Vj9X/5OLJY2GNyN4EMr1Qf\nrhC5ygCyQP8A2IMYdFbXbB7L6lUoS0vzFLSN6zAsDF/z4r8NwYmYTovdWbnC\nHJxyGL4uCPBc8vnB6Dsox4eyv8COv7urjdaCU3R0GchfX6jFT0js0uYfcSG5\nYtqHQ04KwVyLgMQF7lAvAUucaos7yobCOGx5VJiks58Ye+sca1Pom2vwEVhj\nbMIm6ts0HLA9EUMMDwMpydcx/8P+9B/E8+b7gAWdwU/OcY7XcPABTXGvqa2r\nR0ErDgYRcZpiAeqwhonNNg1GozlZk4EKVhWai2L+JbaVOCdpVItJ82wmzZNc\nWtm5FaFch8EYgO9234SAXHXB/vZS3EmWlFCR0ckNv8KKy/o/zL+uxGhxEett\n7MkaIfAQcQPQ7OrYrTcdOskL7jetyYdWPFIZJ6E7ERm5k2taUiCmJTrztkPa\nHpb4FddVADhjZeEafSDH/GKKH+E7ON3d6p0dWZFq7y9TNgoMUaEVoe+HNzyW\nH60RzciC3E/y8NNfJc6ZZ1IlC29ExPRxx/eYUEA/DNz4dQ3Nvk31/QwkpJeb\nocDvdCRCUFDXxghTBISSg+xwZThXMHrREgelDj1wesWIzCaoHxjyx3d4ace/\n+NYI\r\n=Hgn7\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.4.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.4.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "ad635c4df4a6c6106b06ee89d408891da370b1f9",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.4.1.tgz",
+				"fileCount": 174,
+				"integrity": "sha512-tLeKc9/RYHhCsZACyd/zsFKdAUfBko5u96tcHzCRzvjk//yGZ7X+TeWDrhxgFP/a2aZJZgRr6q3mTxt2qtfTrQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAVA+g+sJIqVxquAd1IsuWaFPY4wp45FANAku0irmhtaAiBCF0ugWqcERzHHIVNQZxUBXI9DvJIPTdFq3Decf/3FfA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2470465,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfSKK4CRA9TVsSAnZWagAAE4UQAJoxSa5L3c1vkC+CHCsE\n/P93V7+21NZn4NQos/AJnHx3h9MKhZZJExA3CqjPKE6nTXWO6gAMhdA91pN8\nnpvMwUXJQgc2eMOTQi4OJFzHKARNWhTuPUodFKJOfn7KS3g1PT52MPR5buLs\nVV5l+7Rh34/dvrwVzz4cXNiibSJ/xStN8xcW6jMFIVeap12e1WuwicupLbpo\npqYE3qBZ0+8gtw6FNtqZ3/MpRDK3q3cAt1W8YQe/2wCdT9YK+ow2yEpwNVYp\ndvfyc30Sg+XRd9TfpTjaSLEawYpAKfvpYj9MOxFVi7aU+xUdzgO7JKqysETJ\nq7OIl0CpiGS6qShTJ7SULXrMJI2wZE7fQLsUr9oT5hAISZ2CSf3PNziT75pj\nEtPKEkOzbJgZpITpcvOd2blC1wgtUVyxzHnEKbNrXbwyKXO7IgurPh9RrcEX\n0FpX4xDY8M/ToUzWrJzL10MMCrobywkRzUiw19tucCtymBeNMm9PWKFxm7IU\nT4BpcNcE5OSw2pp+FgvCfBRqMZ5HpW1+nd/ggRL10DBkqIx63XTQ/d1UgiCk\nqQPEaALiTPA6oO0MQU4RjjJ/YVIx8bPxTQZ/LanUj8BMnpQnWQwG7tAz8XHc\n5+QkBb/RcyHMwENnWxX8dJ2XWwZfiV2wHX/lW3q/zNRx6q6cSh6sgN8R4JVN\ne39u\r\n=EMAH\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.5.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.5.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "09fb45207718e4e967f8e2ee0ad2833916d230b2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.5.0.tgz",
+				"fileCount": 178,
+				"integrity": "sha512-KYXdd1eB5I35/nhXVbms84bxesv+jURzhQYad/rpjFiKmGNC5RfLodJuiQzD6NEBS6TK+xqHV9DwIUmOrn4Z1Q==",
+				"signatures": [
+					{
+						"sig": "MEUCICGJcIdMwUtkEpJki22DEBLqwzdi97ODXhLx57vAbLYwAiEA5M+LhDGz/O1YACjMpBxoaLg9DjmTyxtgz6Za/VG9vGE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2478862,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfhAP9CRA9TVsSAnZWagAA0iEP/j1wbc5Cm87zBNI96u9q\nWRhMPWc8AfWyb7tBJzzQDNl+zDuByfLATtWBl4wmO2sFobPb/M5QUVUlJEy+\n+OSXPeU5T0l7f21EU1bfYsLBkLNZnNr5jmJ25HOuChyhtJ/YgfNbiBkaOO1W\nGsBempkGsUIPqTslz5UArfQ8kiOaKodoBjUDE5bEFjuRMCmgjRtmw9vLkMwq\n/pqaaaMbt69cdaHI/rj6yz94vvNbDZraCS1eomucMNpHmNvxTKEUkM2vSteZ\nrb5U3nT0OSiwn8HNSiGsZRrM3so6BgDBENHAa9JGR5EfCLRCpj3fy/msOMUz\n17uujyN8DnHYS1tmKhIlda6I5CVIHmW5mS5jDUaj358q97WT7gD1xCrI4SRi\n9o5kewOI90ZLlSPMSDJj453a+kyyhpIIm6+f8mDsTOlleX8L7RC98g3lRXSh\n0YCmi3agA7hKYwxnL3w2dbiMYSsdKMgz3deiDsQQVJFHeKY+doGSf/tUfJZq\nCsYLygRi9jlzqNJRKjl5PvzEvg2BS14dRb+dO2wAGWUUxx00K/MPsaDD2cqg\nNhF5cR+ZVb9dtKKTuOOqIn6K870uLLvpxzmz4MCbpbRB4+WzdPVL/mxnrfr6\nAn9M8dO+dJ5/p6g0U4ywWNM3yOqRmtaUusCqF9Sa6OjR6yr1Iy2a5yOE8m4+\nfH2Z\r\n=Vmmu\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.6.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.6.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "e1847624426d1b50d64be864b9560640a9b0f4e0",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.6.0.tgz",
+				"fileCount": 206,
+				"integrity": "sha512-CyFYUb155iUEzkO8EkOqT0pyOCh+HPDjS1pz/mOh63EyupJ9IPjujyRoasuVaXIbSa7/HBIVQuTW8I+viNfEQQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHyRS87AbfpEHh51cSEoNVuJgfa6QM5+2BuUgKX0wqhFAiA8h7twivVk/xpiL5iPVpBEtIvMr4lhwh/YI0PLqSvClg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2561414,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfxehUCRA9TVsSAnZWagAAMi4QAKJ5GfCxVFsxcCeYdP8S\n+txPknKOYUQYdC2CTGjN2lQInFY8PbSte7fpybHo0AUljB+wqA9XZH/Gajd0\n2mNOxginQ+qdFH3J1UQFeQT52mCupE3ih1MLfsJqxir9o4ZkPQ22QqOSYnSO\nIjMj6JlFZ5D3RTIijHDSVwhuDcAMdnWBl9i+VhF0JY3pF0YvTvbXt8VoGItk\nldCU3orZGvzJvhxU8jMGqHaKCw+1o41UjW1nGX0BvAAdwkOCBl2p5VkAQI5k\njpQyByDKRXt6eqJOcmNUiAtwPKxW8PCVhnN+Pg8PM0FOM5Lp/cuqRCOse8yR\nGanpxaNxeD5iCu0sS7t+WzT9FBG2H5/2+Nvzm52FuirAFqJZFw4bE62H/sJ7\nN4F47H9ZeXqMIZZ3R8EhknlxHUpAxX4tFmcBSUg+HSpLMNtpR1mipbXD+LHb\n4sZHaipCq67dtkoXNJAJWgirbw8aaaFJBhwEEpN/JkYcbhjjYAjPcOMoOlZi\n7Kag1M1unRHreIEkf051+Jzv+S62sZ1riaVs6EjjOBxr54wyZ3o4S/PMkvTE\nAc08CjGKbAbovfd+btPepgwJesYfHwgU6QKwdScS6rgz7jtKJt24tWiz8ZFV\nbqjpfLvri4VGP8V0yj4cve2N9S6XVHhhyVUt0xYAI+r/63jSzzo2YsHeLkEO\nV2Qr\r\n=qAWu\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.7.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.7.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "bf526f4e789422f3c74c9baa1ade57dc59c96a07",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.7.0.tgz",
+				"fileCount": 212,
+				"integrity": "sha512-i3lKJlNwO6/j/NLWyTNT4tl6hGE74lBWO6+XsAVrSTkliazkhDbt3x7i+kupbn0t+dFeiX3s9CK01+Dk0+MHUg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCJ5DtZyHU+f2DqFzzcuZAiHDn8dh3PPZ9OB2MtjI5V3AIhANND9RiI2/37O3uuXey1smxg+bq/pE+nvSuFfasHLUtz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2585536,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgBR/rCRA9TVsSAnZWagAAlCoP/A+jtS0PI5H94D3AXmfy\nVtuleSycSK/3A+225wBzVhuWp6XzShvPTo0GGGo8W4KVutDlLj4g4BPbC6OU\n6u9aILgozZ7JHO3wFkuDyN/FLNOzt7SpX9YeeQqnP9H+zS5GZXSSKNE2bndX\nOapsHhm7mAEdWmeOp5b6SLLwRDcdbW8WIMrIJYWw3WewaWoKUQQ1D5XWx2Sw\njtpEbJO5aK3m05xOiKQVGVliTjRpMhLTbGBwBmbkZG7ze9u218fAvVhM+sle\nRaLwNi2MEWSOtkNIQ9ysmqLHY3OL+J+0IFi6Ci9d4NKnIx5psfqrGtNvGn2x\nvQfrp0B8NcFzfS8yIwqUmpiwaQPhUtcUTOzbsdaF3W3aSjm3UMA8Dy2CH+TY\nQfO3U378TxwTRYcr0vmbJQgdr2yLsC4V8afExuwVZnp557OsO8gHmLmaGeUT\ntYT8HSgv7RXmoiVg+yNhCrRHZR0/PZM9Gp5nytAcfCWmEd7oLvVcEh2FxrxQ\nx8Nkk/kLVGyIex/bBKM0pc7KDZ6l5jehLwPpeV688JO13dSu4JoPlj7LHkdu\nSyZAoZduwrIe1Q6cG0BT1FITzFTT6FGT3qMl28Yp1g6GsgIPUKXbu4/hWlIA\nAxAlxZmHGQ26HV23K9enQbe7j4wuUMpPytpAHX3VeuwVHe8ht33xl4neDCN1\nwOt+\r\n=8FaT\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.8.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.8.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "411883209179acbb31b48c239681d4e358f31462",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.8.0.tgz",
+				"fileCount": 212,
+				"integrity": "sha512-UXjfZTMgLTCFNBs7l42Em9lR3vLIL+Tp8wYgBDlHIK9MHF3NKFUGLeBI48CWQWhs6HSgqtdKbxIZtBOevRB6Ng==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCWmMphouFTLMjubt9eFOIWvDXmg/FE299Cwcm+gHGVvQIgfZNr/M2FqNTSp5EsxDC7UUzXV3g/C9Lr54AuFMNVSfM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2587706,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgGPWUCRA9TVsSAnZWagAAXqgP/RXJ96GzqUvzuaUbN5s2\nE4CxuzOMOvflIx4igT9RtsKhw14d0fOxk1brIoHcikHRePrrzZQc6QqqZUJI\nR3BrPGJVu9tMkk3VrxxJc92BZYWb8aC1E/wyage/gKF3MwHbDN6PHV2t/yFF\nCIJYT0AZuFTYCu90L9CVGOAZ51qSSbghO/2bFwi9XXJ9sSaNJr81wqTHWLxs\nf0qTd2FZFgn9q0y6L5+4/GgoniJ7W3QWdcJvW2ylvQzdf9flV2RxvTxGlKtG\nXQ76eMtoFoO/LnMI1d2HhMTf51s4FEyG3/LX5TLkiDzeJivnajfsbdTK59O2\n2smAdCOsVmftZBCuuCpomYdUBf95FlbuTvhXeNS8zXu+l0XgY173em+exoMz\nS28aM4dAanUm14I+fnrrimiibv3Fy1qpLWICPqm6MftjNwkSisEMM9/GHzuL\n9nx6aC5s8soH0t8k1HB6baIno35gELp+QjBuSr8jc7IbaiEwFD67exUZdKFm\n5kXaZsDvxUPtquUnh2pSOnqHE8IemxUjzGlNd59WbhdfjylMU/sRQ9r+iwia\n7Bd/zt2xSGiF/V/ngb4UDbV5Lm7dIZYGlzJWiQTD/Ds0v4yrr02b/54MEgCl\nfT68fs2bFNGZW7mNtLU58vH6OuG0qMEruT/5z7qwuIpFvidF363BUYPMZ1ww\nq8H4\r\n=mXAG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.9.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.9.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "b2aee9c3ebe3279a1cbc337d76327e260ee631ef",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.9.0.tgz",
+				"fileCount": 235,
+				"integrity": "sha512-NfKkc/7CEt+VvaDABCSiicRfEvBS0zGA1d9mxUhfs7BUJTTOgN/C2HEjePuBYCsx9MEtujQ3SQuc9l9bwr01xQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEQWK/LsLr7dCjUBp0aPTRCXezXJq1eU/CCYIF+48wToAiEAjJnJiiLkPGhRk8C845ANIoXIw3teqaYZMEPQAs3k/qA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2686561,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgR0H2CRA9TVsSAnZWagAAG8cP/RgPIJXbpBJaiUgMJrLT\n+DXSK0P+hwi8gD75Ude5daPHs4KW+G8BkNiaIkFA3zcM1ndjgW1jnrEPvOS/\np7GDx+r75e+6Ndku3dQx6NScO16XeRat8eEhTnOUGzaG5o7BtLdk59lt+M/v\npQz8sJJlYbUlhJbPANeUiGLclqLsCwrxrDoYcj3Mr+5Go8dR4CxFl+Rta11x\nsw3+06nb8F9ilpzvORxs/v4PH+n2IiZ8UZ0igWslHImAl19OfGMP6vBxa6cV\nOaf4gk8ouPwRSpR6IZbeJyi7ALEGCSIRXk5sJmudAXE38ArpgnTzlePgKqGq\ngTOsERwuGU5foCtZLIDj0SHgOynQr2cy728wE8qxjQmTljFsGNoLsWghe77j\nszZeiHEit5RogA71uG7l/uO+hwjFNMspnKIqBJktCGY3iE7eQws1FPBF1pft\nwKJ995/azAFGk6e4GH5+3c3tKlrnuk4adhj6+5HUPWckrVqaB446PGYQKQQq\nCq+z2z1g5Hw3LiBtIZCHpoizqYJOKqKZ7uAaq98mawzatasOs7wX+VhSaNWf\ninfN4tdq/N7THz/VMjy1xKD5cP1OGYspqinjlhxqFIKImYB3S3Rkbm3SD787\nmNAeVfjUcZPEh2uwSsof4bdwC3JT1HwkWH6G9LInRIonU6JfDvn1O2xWhaK5\naOZX\r\n=Nrye\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.9.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.9.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "329b320c01ea406f6746da9e5e498c738e9db136",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.9.2.tgz",
+				"fileCount": 235,
+				"integrity": "sha512-JXqGxwkSQK+cRp/MEbMi5auktmjnOKfmaun9PM+E3tBNvYFXK3jqYi3YIp8+PmwVQlbwOzlhXwHOcOHg/5MPZA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDeLKqO9YDhTUiP8ddr0lTpQrg+cBC/7m1EOQ7ZF2JSxgIhAInGM37TqJAfPA1NZs/VKuBNc43P19V3CqoMQgkEk+dv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2687812,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgbCOeCRA9TVsSAnZWagAALasP/jWUJq2kGYD4QnhP3U8z\nSnlMxwNS+PS9COrqYHU/Bi1j3M85reJSqoDj9B8927jH8CSv6p++Et5WNcxx\n07qDmgUuPpPI2ycW3siyBv8b9VLUCJSswnBknUG6bugpq89iMq0hBzYrka4x\nYbwJ/A2CqdLkSfJOk254ID4QWiR8iy3blm7IoJ00FOEyW9s/Rw1EMNpZo29o\nuVk7wb54LuyVL0lgfC0Pc4G74AEP/bTPH368qpQZ9Z+CyKbVHGCAzSVnB9LE\nET1jvexObCrSZd5qNsT3D4h4gGO8+iiMtx18KzjrDTa02VuImse/THc5q5OQ\n3Hupz4wJ13i0gWDH74wtVCf3J1RAjeAdzEgumQKcBrBMw2dsxynvOQ/jOXbA\nOWJS4KaAnoCCklYO2X9pu6vZM7vpbjtgEpPMBl39ouEQF4HBVGL0Tk5kYnLR\nk3GA+fEjBZX0KEDm7O2XkpRdT8pZnkDCTCQ78hFoLDzLeinz2jesig8GC4L3\nKnzvrSjSRnklt7EkiHL93H2WVTFukkvvvSUGKbXXVncNrV4TWE1tXW07BUNo\nSIfN3ifJqsJg8/EK4RJ1fwAZsqQLL6HKpo29vcOYzapGpMtp1EDaNUHlAkVC\n01sjgWpijpEhEN2reEQaPg9iB0LiVFuYqf1nT+QKjtF97eJyqBcR+SRyTbbI\nCF+5\r\n=t16v\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.10.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.10.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "c9334fffb255d7f8f9b5bd92b5dcc0ba85eea8d9",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.10.0.tgz",
+				"fileCount": 239,
+				"integrity": "sha512-R1kIhxlYQRFLvXwIN/sQ+yYQkJNF51n83tHPXVsOQ6+eSaoShdR0Bmy07FR1zoqY5Y2fO2SRKqhMW60SymiSPg==",
+				"signatures": [
+					{
+						"sig": "MEUCIC8G+rJena1VPnMYYtTJDrypA4FCXaOv9FUSpwqv91v4AiEA3p2TtL9+E3bZxze9PzotSHAf1rOPFHkt97lTbhvUOR8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2699433,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgtKn9CRA9TVsSAnZWagAADYMP/jSaX7C896f73MZ/MmHI\nmJY0WkBjWrFzrfWKlR8AqF/3pwP4t+j2e+b4Aj5HeUQScs1/GeQob3JFqQ7v\nyL88chgQMbBJ7cOfFAnf9xyDHrZbMGqdvhwTB17H24JIXcReEI7ELi7dq5gH\nTwIkUj8FOqJwgDNjae+Styf0xJsY9bZS5FVx4QQy0CbzGdUKh7nKHSJYAvn6\nXv74ytjYfWIXbeu+9HXtrscgD1U5i8igZaYJQ3Ux+PJAdctFKwvqOuz19O4f\nyOUPOtzHrdw1/m+N19dTvE66VbGDpl0x+O42GGkYeJSCSy4YmDVJfX+ThkQc\nzPW4xP/8tgKnOtwKtJHqcR4nQDUX9zXQbaUJqIx2/YBil9rL8o1UXbpz4PrE\n6J16eE7cSSzlATz42A6wii82GqL/ZO+gC0muQOgxSsnoRfh56NjmdABBWFby\nh9HFac/zPNDaKbneyE6c1paQm0Sbnrk8y5pMf7M9BFrwh69tDvqZSLhCozpR\nNaSKZUyDeSod1QAI0B9PjQBj8RrS3S8IvJFFzGZ3u+OPBKwj1x83oCApxCIr\nQDUR9LuqA/0dnSFzaLda7owfAGWc3YBFFcbO+IvVY+A5VYgOQle0HUe+p/uS\njPuagXUUDb0GQbsSasHmbj7Io982KDl/63vI9bMOhdGMcxS3aw+9W2avV+5Y\nEqm9\r\n=L7dD\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.10.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.10.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "46f6f36e9716acf53b6becd5ab2ed19436c71680",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.10.1.tgz",
+				"fileCount": 239,
+				"integrity": "sha512-9hPhuCPN/Kh3S6WApboXC6+RoJNxstPHWbTDnVUuMw6SAwPpe1ujduCLjoJCAvnErRg6wv3y5HidvrZPTWN2JQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDMNIxHBdxJ7neq7WbGp6Mqbcn5f32SheyY1TcUbT9B6AIgOy1UQjZTWyW+ehjv8s2KvcCovpJvHUyb6ZydcLldA3s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2699516,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhB16QCRA9TVsSAnZWagAAGocP/2jwqWPAKM9pf1tfxBmz\nSmJfBFXa4YaSstVQ+jf0NYm10VK1WJeU2WeRh6OVkgyzPnS+4eyK7ApkQIeh\nhYAmM7y5qj3YxDYFm7DdPsmUiKaIvNWt/ZELk7akfqZz6Vk7qcIwBX7u2Y7K\nbO42igXHFtOJwmrbdyXYkvadSwtOAAzkHRu9wMCNTat+jHrrLEMzsa/iIJAN\nqE/nfwtf4p7Fh041HE1ckTBKHcoCHE1A+ENybNbR/A9d5Ol4XRPMQo+TzOmC\nu/d4GA4F2c/9UrAbA7mrCePxZSack2XARZo8r/r8EcxQ9bZejZ8SycGnFOOm\n1VMi91wuBrSLq9JInuQIQXFV9z2+fNk8PhxrP5XibLgQ+Pk1XRY3NYfvUdOw\n2+UCxLi7aeU/Jx/spdcTib87/ebmM44juFrZ4fydDXtQRRcQaajCvpGm1Q78\n6YVLpossx4kBUuzNIhg04upwev8spoVifKDWrP9LzXDpitoH0vZpXi/TO6WB\n+XdEhGYNBfuF7fTPJnMu0KJsE8G7ocB6DsCue/Avou2OG+uQsG/S/5E5un4y\n3X9iuwBmkoE9eThN0MsWDtASVq21AYTedMzUqrDmxMZaxs3jGzXAAowTjj5x\neSTNrN0V3seWuk71jylXlNoQORWZblwKvfc9h7oqXm4lZJQpzqGQo7m0VIyw\n302f\r\n=8g11\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.10.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.10.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "5cddf8a45804091441d79ba89daeb05d1ff11a7f",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.10.2.tgz",
+				"fileCount": 239,
+				"integrity": "sha512-VlQ3Qf5HPvFICxZlJqdLLvmaaWVPx/ePdAVev/9cv+xKmPCbIg6x78/qRPLSplOUa62j0nYCxdyyDCeX6WjXfA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCuOZQ044DtN7WK9qz0g6H5Q++6zMmTLe7uhxEj34YYpQIhAI2h9Gp+ORaUGWgtMd6SXYwv7Vro3Vi71994RVedIAr2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2699767
+			}
+		},
+		"1.11.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.11.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "15558cdcdb6d7734697316737fb3156b2540dae1",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.11.0.tgz",
+				"fileCount": 251,
+				"integrity": "sha512-vgtKcQl6YwoJaizekna8rW1i/jcgKuASH3xcnux9b2PewdbmKZqTwvyfI/ylap0lXi68B6fOBD8Yl2yugATeQA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD9qrdZ0yLv0q/zhc3lAdIJdQsanMPic1P6I3CJmjujdgIgOzz6XFMjLy7RiMmdj8cyd0Ch1akrQ3uhJubrXmhhoMU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2730842,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhpGvPCRA9TVsSAnZWagAAkC0QAIsdPRxAiUlKvo4J9yuQ\nKR8pxmjOyM+nFiLw7CFTMt23HMC/hrtwftaytqkAggTbHbxAvBGEBqpexKBu\n5GuqQmJ70lOME9QxArYGTERskX5njDuMDfGpUtNl8P0okvvMSqXxV+u8L2+9\ninvDczpy8RCyhKRZWJl5EJv5gAxdY5DBQJuj4UMshacGGXyjFM4TJmREbuLb\nbYwQ6gm5dHsHIjFMgIwJOCZCGHKiRkWCE815/NspmL8xqvmHR5qv5Pm7Iuz2\nhoRu0k/8nmdJ36mnGi5vc7iRmqciICWMuDlLNmQ63L7aPp2+00prxYktTduZ\nj6ukvrNCdF+RRP6n3VwJOpxP/e9w20+rqbkJDQvjH0YIYfZroUi24BesKx+a\nxM76NrYcbaUFMU6E3Ro3vlh1zC+KKORaKOW1Qh779/guvyOvy1kaiuDZCsE5\ngl2GPcCp6Jk8ugT5sEngncjuGDue9jAn+Dy4+DvWbNUxsY/5nXWurXq9e7E1\nuEQViSK+3mU8B/zltzQiRl+5Rj2CSqZI4gKEusRMq0/bwS52fTZzNVLp2XYX\nHLxyOre1EV9TYzmTpei0YDEa7+jK1A6JGQuD+Cv3DgGI42e/UHOqMhBvs2Zc\n0i4Kc5dEs3IVz8OpOjgDxpkVMhXjehobMIOZCOK5cY1QkhzmdlxwpZn0IH6A\n+alk\r\n=VmxG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.12.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.12.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "6a24a6d19182a65e8da8cd11b7980441640e9193",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.12.1.tgz",
+				"fileCount": 259,
+				"integrity": "sha512-PX+COaDiRbEVWbz/fyjVsvtRgj1r9N0rt3IY6g6EreaifO5eG3g7uIwwdfxfZa7rcMhzPvZjC53ttYSU8nqSfw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCvfQYMGOcwYC//phTDeUE2h16IuTnCC+EJ3zbEijGgGQIgdb9QRwQ60jHgDyRp6RsPpSueHO9s1Qi6/D7/TuX+YEs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2744758,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhvAbXCRA9TVsSAnZWagAAXUEP/0YhXVtzygAIBX9ATjpX\nziFBLpLv1cs38q8QJnpD9DhscC5+AxQ2hYTeAOXLiiiTnsRpy/KbKue3D0mo\nKHnDfugjLc0sRAPtAlmdVuFEBmnzZRGGH1iLTB6zt/C4e3L1uxxMIcibb+XP\nSDGbDb5yF6z48WvJfGu5jze8PM4t4mt7EfG+2l/qTrSGGzQKgWi2dk9zXicb\nYfoneCwz6r20BeVfMyDm+HgiV3OXJ52rtyc+nzi31VnnA9crBZD9/Es2dmZT\n4ooEfX/8prlKO5zXBqXe8gFxLUkgBwL7OVuN1M/2THOJlvDsFSjtrFP1Qw8e\n1UHcJkxc4oZiKzfzTXF51j97aSgoWfJAp0gHe+NXUq2YLKiXtjH7c+B7CtVq\nHIZ+nK8CLeNKGWV7LZ87hIiAHKWFTBsqe0JI0f/70EN+XsS90yHF1hu6uC3z\n3AVMm2OT69KuOSp7v64fTNgllvAWLQJnGdxPdhJKh37reNbYx8VAH+EXh0cP\nBjZJ1Xt0F9PCAFp4UcfqROaxANqvAsCyCa4H8eSn7Z3EaQMxHN9js2BBW61q\nh7T7Tm5iIFiu+ZB09RPJ52A1EK5GNi9pILj1rn0cWh8Sv1A3IqMcYPLb0oF3\nRzo/2cLlT0xFSfamte66cIuIu5Ito/fqLkibwgBT04IMMisbFA7EUzYjralB\nuSsk\r\n=o3zx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.12.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.12.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "ff187e842e0b731780601647bb21a9b5c3fa2a01",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.12.2.tgz",
+				"fileCount": 259,
+				"integrity": "sha512-usDtORO6zlm9la8zQG3+lXSDthwEkkydu04+12YCvY0m0HTMY4y+Y/6qXxVyoT08t/Gq7hVAZXRoabdgEE8Auw==",
+				"signatures": [
+					{
+						"sig": "MEUCIG0B8vH1XsKoyzyMCEAiwK/fihJ7p7/qfdR+hC3DjwVBAiEA+EyWyhvldg/5ZE2PFpk7l/qzk73ABNoKVdCSs7f/mb8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2744786,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQrNqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrBvxAAlJPOMsOAlxHdq4p1n2bp2gJ8jkQsPoaculQjGyIKNz12lQs+\r\nJhrKcCOfJkaope2hlvA3/2R8no813DjoGJhT2W7v5xYVCLll+a8p9sXDnqgy\r\nm0kxql7273w1B9a0bFX0DvKNO8ax02p5vCHyUHZEneAPD6KKJ9PN0tQBbdiq\r\nENGuXHyMqwZynPjo07rXrSTZLqznhrhZXJvH3npGwPJ+7YSSh7FcWq0cOPev\r\npn8osQctDDMQkdwY3TCwDd8XS4UDZTG2o0pwLeEjA0Vdsv8gU6TtG4e2q02f\r\nJ6aH/YxjGQOI0kyImnmv1RfhskwBa8uoT5ALN9wrwzdTpgxACQ00ocegaA56\r\nFPY91mxsltv84N4a5lVPeC39YqClU9xzz+e36PyslAiUkxgH/JeRhiqi+YrO\r\no/yLRXidjvu344E9XWPR//yReJpluQoYpmkQ3FSX5Ep3l0fkx1JwwQUeCfzS\r\ntlwf/d/bPHKgawOX3LmPk3Ej27WsHB2JdIRfRioFS30lDl6dOVV17OpH5vZT\r\n+N2Gj1eI8YKL5ef7UNzMgE+eI57sPuxiPWQspXnDfUau/AfWRhK7/p4GsAQk\r\ny3rYaQFz/sj27dQ0/5Eoru8H6z9yuPH2Y6V+pe/6g7gd7Er+rDnCO849jeBU\r\nmgv85KGnrC0kaml/j6K6EDNj4BZd4JeEM0g=\r\n=aNQf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.12.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.12.3",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "48a50ef634998166b75e0437d490a4f4af019043",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.12.3.tgz",
+				"fileCount": 259,
+				"integrity": "sha512-PehgcH6N5D0RL3S3P6i2P7oYhhYtTWVTI1DsRJndtb2mOZaxS3vvFBgCsnC6KSM9uPTWk5O7FJ0bVYeZFv8YoQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCv8q9Spm6gOi657aNbPAJdK6OgP1b54M7LxAIeS/L9fQIhAPutCAdims9uoG/dfCbGz8DaqjzMRS9Pend7YaLYeqJP",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2744832,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTVWDACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpOORAAhzJYwoUPqGI6dDizjLBMkRGvuEA7jLsSo6qv86En2+m1RTfW\r\nEZc8oWhnzGoDCgoGDuHHSMEgNrCkpTBnuHjTgoceSbnkkdVr2Henv6ubfOQh\r\nCN9uArC9wvmduaGmsnS4BUeu21h0GjZGs41g096o8iFrJH0wP84BghabUUmX\r\noj85syfiswLcudpJEKF2jdciMkNatJ+JYny371Bs8FRBmw2khujewhi/3ep1\r\nB4vFD3Z/DetTysneWUVrMMYi5ilnIMyW7kMGBnFG6pjl4wZH79hqwxKnoR41\r\n3OZo1REVME3HIJoJzlxcK4SzchN5qVzz9edbdCvKJCcHTHa08EgVGyHNFKNl\r\nsrDWj16qI4EmA3thd1vRVK7Yv90I4L+1pMRJfcYjurMHyw6XDNkThp2moft4\r\n6sS1KIcna36rH95atlfGtV07v5zuNGZ90LQamTNbXjNHRMlfwIUz2r0s1eI9\r\nCb4wqeNFs38uZwxpLvKU1Aw+eDbYR9fynX7yqMlAVS0KdUh5Zq26ua7KBf5N\r\nd11YwxbVeMhUB0HKc88BG3B5R2sDIO6ADsI5IJqctN5t3VjMFtqXgll7aZTe\r\nMIZ+OpO8UdIqH7pNj7Vdv1KBCFyjnKOOIkzo4mHwhqLqSWTSyJgPeOPBSz+q\r\nIt28ve2CcsqUa27PyT2TgPQ6T8/hF/CIopk=\r\n=yolr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.13.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "1.13.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.0.2",
+				"json-refs": "^3.0.15",
+				"vscode-jsonrpc": "^3.2.0",
+				"string.prototype.matchall": "^4.0.2",
+				"@apidevtools/json-schema-ref-parser": "^9.0.1"
+			},
+			"devDependencies": {
+				"gulp": "4.0.2",
+				"mocha": "^7.0.1",
+				"gulp-run": "1.7.1",
+				"gulp-clean": "0.4.0",
+				"gulp-mocha": "7.0.2",
+				"typescript": "3.7.5",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"gulp-dotnet-cli": "1.1.0",
+				"mocha-typescript": "~1.0.22"
+			},
+			"dist": {
+				"shasum": "bd5cb274cc36321d8d3c06bb995d47a66e603429",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-1.13.0.tgz",
+				"fileCount": 259,
+				"integrity": "sha512-WQJBgLP7G9br+jz6hfNHUT+EMgZnY3u8lPyZiGZMdLrIbA0t7DzVU5xOq3rDnOdjc4Z4OuQYiJPdxXRoaEO6yg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDsHOkwX+xYhgV3xpUESDmaZKgRP6NHD8cjKC/sy1GnSAiBYaREUXNRqme0V3m4oK9zEmfJV3h3VCDbOgmQKueIhbA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2744836,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJieK+KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoahQ//a8GggmA4QX38jUwZoK4q0KHENxQIOTuQL1d79sHUMj3eWanP\r\nEOFlOD6b90UJ40kNmGoIsb78qqv60gHirwGTnpyoqdH0HIwVpEoa5NRJGJ4y\r\ntODZuOoyOhlMW8JCh9OFa7YkbRFoMqiANns3gkjIkWYlAcR7vOaN6eDomsNK\r\n1fmucVwNcINkhZ5p1eJ13x6ERlkF9/cXsFebru1CDlwJXNrTie3xy+9pLLuR\r\ncj9N9rIcPttAF9LDMcQDHbASl1bDIYSmWqHiCWmiqvjOUagSHltrFg+R61+K\r\noSk8dzv5FMW8+Y6C7FYbNGQ7jWrojng5mSZ95/fVXy/9g+7QkmfpPH93bcrn\r\nAe1GCTD4HRTB4BKA7Znlob4jfXHatj5EWtpltjhTPNx16UNJrpOyonWybg6E\r\nPAbjpQVnShpTGWR+GZXBGi3YeURioisBRfbFZoDCjrwMo1syswKjdfxcGJRO\r\nGjJ83Pjv1d0LC3moIntqShv524WNxjdzx6H9cUvn1RGa4YrgeVKtwlmNE3Ty\r\n4UA5tSdt15diZL9wqYj3qHNjc3Jrp+Z0oKIARWtjaxF0yLhrEuw6SvbYvRx3\r\nJL5ee5N0wdJNQrKcIWnUfW8qB1YFUrUq3CrwimsR3jcom0nxnsSEoiIIeQxc\r\nO+XsptsKelQgCmtw0ht+j1nRWgba6EES3fo=\r\n=XbLK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0-beta.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.0-beta.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "12.3.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "^1.0.0-beta.1",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.0.0-beta.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "3cc409da52e9a3fa8727a594ca750b047986d033",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.0-beta.2.tgz",
+				"fileCount": 23,
+				"integrity": "sha512-HEtgd6QizVyRsniqKPRgCK2TNc8bq5SIhbyVqXcElajqvb0NmiNBQxtA+BXITt922JeeN7+BjP/+TAe2OwalpQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBTcoIcA1PPYnAKxe+PNmqEZ4RuTUdH8BHp1owi17HZMAiEAgEpAPeLv0fcFydKqmw3SFxlJywv0gwTEN3gITv5O6jU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 119220,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixTCyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqQ5w/+LsfrLbNtHuGQ3XNDWWYCgDiGX222rtUJXP5dQGyy8pQ4Sbv9\r\ncf1VUtwd6RKPlXZ8K/RuRmb0x1+WCMrw6mLqLMhhVbEIhjnc/shvBAIDmJpo\r\n+QohCIiyH7NG209NMXMs4JD6lk8yPC9206h/KYi/8KZNo2CGHek8fqqjJF+c\r\noQshE3mmON3StWByJbaSeydGRRiq1OH9RxeAeMKP5aU3RnFfSsKj8y9MHTPr\r\nzMH/s9EGAmlAbY20spUuucfZ/BjS0XufZP/WPaMfOZ+RuRadwM6bG+9G3CUD\r\np5TD7VtYnsxDrxsxoZLSAgj39U4JJAxcJxc372np1aD5TzI+pijcOueKiDRX\r\n/alnKdO+02r8wmW7XM/g7C24yQ5tQRK4tqi2STKrI3qJMKhIIiz7OkQBF2Ke\r\nYDIFZRWoxpPQZTYDCxYD5+K9Pv0l9oueks9eLtNDaHXaEwV0wQzVrR9pMKoW\r\nvdDjVIbDTRt3P0WTWgz0Hg0dj+xhqwEBa7+5ODAe7HYyXRnsHViq0ZGfl9X1\r\nfQXqTI2vfmwQZ1XkfH1Q4FpGCXhxaf72gSTkFhVHSlI55o7v1G5ANLMhtayJ\r\nx6GzfLLZTMO1KOkbiwJcGPxgkptx6qUXIB3FaBTg/K1r1/c53Y/Vu9B0mZD+\r\nNMo8IpbKdbaTZi/XCUEMi1Z37m7sGUfuTAg=\r\n=DKE2\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0-beta.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.0-beta.3",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "^1.0.0-beta.2",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.0.0-beta.2"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "9ef0ba7bee3fa0eabf56f99f4387ed5f90c39d29",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.0-beta.3.tgz",
+				"fileCount": 23,
+				"integrity": "sha512-8A0jNvOh2POrkcDT8WKfJg7wXQYXDStK8c6aQDV1cpgkmqLKD8+IfaBXmlY/ZoV6CoNzUn/MzW8viNkWMH4ESg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsiAtMGlEaudOgXL4cCZZN0K6M7G46pfCRaHgQxZB36QIgR+BE13+uIgJ6HGMYyX9Z29llCPD1sfIH8dJZTuxx6pw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 119348,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi+ghCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqg+g/+P2KX2dXaPA2nDvY1QLIQNr3UGiOv4b4X2DFCjT/9TNma2zl7\r\n5ntAPMFWtN15BJkmzD6safKtwvEytcn5IvdEy8nZ5UgwU6ksTLJV/9diLpIv\r\nWdz0FGM/ZBvbVIkKOEP4OrFGuLwpHreU17q/Wnmc3fA/r4VNiML/CLwRHWw2\r\nlUp9Lplke7RESqUbaoKcXMRDdOCV1x8r5VnhO6BisZ6LwftJ37EiUAEmXLp7\r\nUiQfOsxvLtXTnBDFZyGkyKSniuHfmmfJJ1t2O2TRI+NUq3+/bhT4r+FdNcAF\r\nV8tqp9Kv2YZlc4fGO2Rjxtz+7tVzgBN02tMM5Kc3c6LBsaDqD7TuCbqZDINn\r\nP5V0bIR3fTQuMoFOXS+eEx+thRH30AL9x+AWEG7jrck7XNpLuRZs57zmS9kb\r\nx45RG3aLQPjN8RIaxmFSGFXp6oBlN7XFoj0qyUcz8ZOPE1tF/TNTrvjgNVHP\r\nY8cGLzI6c2x/eeXrjwwsOIFxjcbND7DKGd7jLTrz+vIPLknqiWvvKG41BwWi\r\ndy2ewoEspM+JkObW57ZRi6rYi8imjjVTq0CmLeJuPREZWgTT3WkVwbk9Y8CK\r\nJDCA2wrajq3KcoP8q3MZALZ5HAAl+hc0AuPwafmsEdZwuN7vvkS0FJIMbF0S\r\n9fQOabFI9NVslnFCxMPhOYcQsF4WHLwzqjY=\r\n=PApE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.0.0"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "32360d75815bf5b97e7d801c6146a91fc34dee05",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.0.tgz",
+				"fileCount": 23,
+				"integrity": "sha512-8XkHtOXn664e9zq5msNXgjurc6Q0iVgQ8+KsXJAUyFhSn+VgEhNp6OyoM+enCoCdl5VB/r66HzVs8ZF46NzMhA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAsbMuhhG42yDSWYzJZCvUKSO3dD2uUT7vYSLdS4ep4wAiA95eHw5fzEKsClUzzE0S2GVTSTYX1KPPdCznhERfYlww==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 119327,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjaKXBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrrdxAAlWKEaDATVjubak4bPMopghlKooORG0s0Qm8ji6y/OgECAT1Y\r\nDz1o3MJM0/qPWJPJveMRwVINJTCHbJ8MAmqHW5dIjwQ3lt79h+HROTXmfAZL\r\nVIcD1ANS6TWqQjCsNhEPOoTQwPge9//P2mPKMk9qvO0zYCDWyjdTCCajKXGD\r\nXRUQPVYxbIyvTtF0ltudANaEu3DefGIuN0cTRixIAciL8EAB71ogCUiHYxhZ\r\nK6Wtz2bf9+rIUztoThr/ZxnE7Vb1s+Rk1+7KAiBi6kcY/qZlTWZLHZCiV1VF\r\n5xnEe3S3mz8bOo9wCDmLTH7yY0e8/ZtzC+AEut0u0NIsNnfPr6Io4c72CWaK\r\nFpeuRjm3YcwPFy2td7bZNnvF3vEqRwVfDjPjFY+YUOzfExyqZcHvLceMHYi/\r\nCXKuQYnZFa8jKIgoWK5JRZFqrkgjxT/rAEA3GwVfOf5GUTQmzzqR7BoTI3zI\r\n+ZCtk1LRAcsD7aNWs+HYMF8Q4aRGj0gQBjeps81JluQ2IlgwW8iL4p0pFtLe\r\n5JuMsu+JSwhkXWgdwlhqkCgwgIuK+PXTYpuxtAWrW/pmPOeA0zwVzP6CSTQI\r\nz4qsWuHwb2Bo0+8GNjWBfC3ytx2/0990vP5C6jGXLo8TkManH9P7nsVRUSdn\r\nkE5+zNGtISoGxLAz16wqmapdHbBlCWHvMhk=\r\n=XyRn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.2-beta.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.2-beta.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "b348a720c44772fc136e85a6a6043e0bcaf75b81",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.2-beta.1.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-2AzJaf8/gLrqZax0PnlITSL1vUJUAf+R8zeRAI83xIiyQB0JNy2RLz/3JtFi/u66eXy73WM7PmkTepZMXSM1lQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIC1XOoVpvhkSClIn6fDagvH+zklr9lc9RP1ol9N9LWooAiEAxz2LpANcgZUiTYKw8fu/HsvljclYiUFVtT38kDSsMOQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 120260,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjotq0ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqDtA/9E+t0SWqQEStAMJzC7ccnfB2B+1yDzy/Qn+Ra8ZwseigLYgUS\r\nsNGmv/qx4WQIp4fTsencFFQVdzfh9v8j94WcuffKC7Ut5eBpGchG2tX9HRnE\r\nhxWMBaZmdQaY1mReV63kRTf2+HgiZJh2BB3Ml3hVdPcPbT0kE5sApYSQ4J/b\r\n+4NKIWiOwv7hDK8OMuQguBV5N9pDAnZ6omMawsTgMHvKI7X/w1cM1vDRfPxH\r\nyMFH6jlgK0n4iD6kRnmbCvmkHLNvbtdbp4H/MLvR/A93cDOiF3w24mv5hfF8\r\naqK8ubm5bLdpJx+Vr/t0j/rYlW59wqCHGxXGy6bFpPNl4QnLVjmqucZAsnuD\r\noZt8YYSb+nrAtv9db6D7CDRQae7x9WSv+RW3rOj8Js76vqqXrdqYNGMBHH0y\r\nz22PbIwyCiskR9ZSlbkRnAkaxwFKF2+rv2PvGa1f3GLwmcO8HTeL5vyU/bTO\r\nMzl4SNhNi90EWz5Z/ZRfWvqO4nUDGvId4drKa15GJa7AUaSJ/Kuxmw7GwGX5\r\n0F4yUH7BW66tvOJblX0NaQNjtvVSU1sv7Hu4Fk/DW7sbShhuGJ49FggXNS9/\r\nPqHlhqwBfdkEAt2YwAyLaKdmvh6pgLwRqRqKPXWfKHrRUDcgZbRWel7pP1w3\r\ngZ17kAdvyE7GqhEdVWHY3ewKWeJL1eL5c6Q=\r\n=fNwh\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "1.0.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "80fb22cc39e94fb5a6300cc2dfa0fe952349c621",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.1.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-G+AU2V7AHQotNo++PoUxYbrI8GEqDMRh3FB80ppG7ZTXzzh8jcCMGYtUUGXTwN4Q6VdBmLUXXnzhIxG717Ozyw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCxg0SL6ZGz6B02k/nQyUgHUqO3Z/5k+sJ3VqYflkfgnAIgO9rwdAJ1+cNVgQKQHgsQ46C8P1en4ykzog6EGeL9Aj8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 120230,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUDk0ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmplLw/+OpV6k6EusZfuCDhQ5OP7c6zR/qnJoaqN9tePsQPqiyvKLwmz\r\nMYT+UkzsTyeLhc4gtr+K5E60xdYXEDNqXUHeXVStEmH+p2vJBbx3x7Zgiizs\r\nVxKztfNGekXls/WqocikLpCmeugvI3pPZx91zdvo3w+QAKJywuVn1HEZwIps\r\nh+odGChu4vSJwyIA54gfieQcbn5JIdfggoRlx4PqIDg+8HGxtowIeXPNK6PG\r\n4OmwFBtC89fpwHV3kALhuvGjlWJqMpMPrqlMXKAFsNsL0q2tzH8FL5RsvcVz\r\nHWKw5JZMMq07jsdX3LrtviLdFmnzvQHUw0rcyd2BzOhJX/kCvDDKsNGZVP9W\r\nnQLjXCSpHFCxkAfYcigdO5a8vQYM6KxMAPw/3407Bb+Isc7nowmo+218qSQ1\r\ng90RYcUGUvXkTlPLdYdSgu58Jxi/DkzwLmegGRqqZl7ZjOXS+KKn5EfSiYRp\r\nIumkbdi4ceVI4rMPUGrMTU70SD7jrDTcMb158a3RhamfbYuFE9jvc9PLYSK8\r\nvMxcSqg7fCkUyMz36mhD7RoBx6s9oUy4qUrtWDK5mFx1eFMHePBtE/5NQpXP\r\n2pmQFiLYEExstDAV0O4pMB02Q77E2c7EAfj9Ozc0sjkJLimuqoVBuXD017N0\r\nCXKaFKz8rLOB+X+yr4vI5WF0b56OKYOGvHY=\r\n=N/+G\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.2-beta.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.0.2-beta.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "a1ef425402ceac138131976b392a02a78d46cd46",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.0.2-beta.2.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-NPCrIFc1cAKkjxpg6w7z+7+nSv37h7XxuLS1pMQATmb9v3QciEK0C4MTmrrxSILIUNBNz7xMURNAx7BErhuKrQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCG9V7s7XizxL2eArXmJY3dBzKswC9ZFXoA1JaoO9lW4wIgcbR2ysxDc6OCJ4IEcr7LHmJ98xC4OVHz+DKFLeLsBJ0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 120260,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUWzPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqw7xAAomlWoEcVqB1xiRx9khmSkzhNRXXy7EYQ77V+aN61u7hkBN1l\r\nHMkoHhkMF9qlL+txpNXZHMT8+PlP8z7Tx0m7FCMJ7lpS+7aI0EBSLSgZqRPa\r\nqrKBMj9bqmmLjCGsCY/xlHIfK6eWZ+oGxYWqMa9xhEjs8Mf32vi6PXup2OWB\r\nzJ0pY24zbtDnP87ZiY28e82ZEsYEgcehw7asOstBdzAXK8EO0IPA1GFWk1OF\r\n2w1KDypu4LNIG7aoxi0ie4GoQS+vscTmIQuqqwTHzgUM+4GFyJA2tHCCkMDx\r\n4nAVuTWfzQv7hdDxjcBCi0QYzFSPA+mMavpP2EMmJy/OMD3BFBO2FwOIUZFS\r\nLJ44oVRg6vffpJvZq+TlZCLK1Et8rec2hchIU3fr6fVGNPoASNktgD5r3OfB\r\n0IfXBuGnXeE+tDefKEP90Ychgj4MiaZJBfrfu0mzUj+OD5UA1f0QccbH4GFK\r\n7Y80wV/eGhe1YaCJjQYE8FLImoxfPCTsw7ClKQgJwaCoiAvkLRE3PpN6W179\r\nyyC1fbsVnbRhXUqkgkmBZvijWCJUNOeItNKsGlIMimcFPF87BCOmykJVsQ1N\r\nv2rnIQ5wqo0JtcpSPbvJVS6WTUO8htFY/8TT5Vaxe1zQ9FQpWujbw1oAY6mR\r\njvYAUc9hi6bUjISj/RuTO8QXxqVQQUK0au8=\r\n=n+tF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.2.0-beta.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.3",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "c155309a1bdc00c59ddad2505a40f53cd926c3f6",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.3.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-s2i+SIBLNu3efOZ2+EO7rd9W0oyN0xX5I0Co2RcijhfrUvE934F98RnMFVRK79z46xmK7ZyU470LaLhN5SPtSw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAMF1Qu1Gdufs1wHSa8oZK2cFIlZFGXxDJqbDzWHIGcYAiEAggcvgGC61oOIgIkjgkhj1LYpGEwSnc5LuCrI3mlgdCg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 120414,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVA+4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrKZw/9EQ4VChUubMCZEHjcl35UdWimYOXrSYNfEwTL7OZBgcvieDdD\r\nYDAQPf3JfFWkHXfT9X+V4L62cAqx2teXuaTGtlgvkdDyjEVtnAKFzWvYkwni\r\nNny7zj9ayE/7yxSry6F08murNUu11xS2oz2op51aUguRsHMgCK0vEL2tJF0z\r\nQY/lnKSpAcR8mL6KP+zqwBXH9Ep7PEt/csbZ7WW7FUt8PnUimjDr10uwk76o\r\ne4gmGTd7zXIAnmHHkMxTitR39X/W2sTxyh5haYUnRhM64s8wdWL9NS8SwMmt\r\njzvvPbdis8bkELhWBqWmVemclHnsLUAzd9B249f7VPGR4gqF+ogLAkN/dB/w\r\npQbAJ7YHAIi+9R+F8TMnS70GauILmuQiO2k0OrqpYx2Lgl1CNkLJFcE+/eba\r\nE5AQtbRDbBo5lNTkTEgvW4us/kvsFMl3SyPV74h5c2U6BKuue0NY9rKod+9F\r\nw7c1IaWsCnNkG3D8qcKb9EbBdl9eGiyGxkPvR0FIBLRmpIi6vdBMlw8Oclji\r\n3OtSv2UdRTyXh8gaqmdtpiFoGIO5t8DOx1wWRa6FAWterQdxEhFb0jghmrfv\r\n8UY8GAqOlzXlQ97vx0fpsViFZ6IRQJwQwT0OFVWJpfbyk7OKlRNC+t4FS2jb\r\ntUauLRGVvJvDl2oRcwzEt3dUQWUaHkF2FC0=\r\n=Tub2\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.1.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "1.1.0"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "926e117316e98dc4d008fa8032d9259ddc9e57ac",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-mNwYm1Fq+MQdOmsoqK76a0TnprFXNKYpiamZ7e0KGMrQlP7fikrEN0K7aLMCt9t/rhy4iYkQjFbTvFs/tZVAnA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGGfTVkx++JNiYlqXH4ItPF+dMyXdbUv87KTkd46hOs6AiEA9Pbz1s8d6KB29ptaQBSu6RDcRsfNsi13WTWvAvYfpS4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 120385,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVBBDACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqNYg//WeiWxD7X6svDRzSvN42gisQd2i64IOvifi/TPXolixndTI9E\r\niklbKbjlh5yCKnrHbn7fYTjfceXi5vX9upISJkcei2rCFg3ktZXXlR98z16I\r\nQhejhfoyUNvu6DdWGtH33popJo12Qt0vz7dKnYdfW9Ntxu37k6UQfUrtvZXs\r\ngf9WFpzGYKNuxBznJk+TM+vs7p+3VoSWg4UaXWx8ZCRW/KAeS3OKMRZWxjvQ\r\ns2Og+st5Gj6m/+r1CSfjk7IV31riTzlh/gz0qqCfaNlhxTYviiTWVKLL/BR9\r\niXS/PdjTVyYmb/8rgVzF570Pt62w2pweIfN8FgWwgb1pSYqiLijsgVgwh1CO\r\n3smVI/CI3/Rr/0GqBhfKHnlAP/sWDMVaVilEcqGd8ftLJz1+I3tE7zwSu4nB\r\ngHSK0UyYhjSHrMQVMsYQv3P09Tm2WwxiX0XJpbA0JUokTZ5xRa+45MHcN4es\r\nmLWC8X7FfJc6OzqbP+KgYt0sIJW1WspEizd+EUrbT7YJGJ7kO8c5uSspLdeH\r\nvGV789lB41eYSi2TtJDzDAkeFO82PIa+yYNo1ZMGoTgg7MHILgZCtioZlKWp\r\n14Kl9/6BuIRRd5+wlBDAoQ6qGNYfOBCaA5n1BOaa9Yyhy+Edr5d24AZAobi/\r\n8ZsR5Rdv8FsIAvDrUyJg7kBHMW2Eev2+8i4=\r\n=vwfj\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.2.0-beta.4": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.4",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "122f31de486e811bfd6f6d15b14c136f0d88fcf2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.4.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-jHtCJvi9Tg0hXVX7Qh0MP+w6bGM6mrhZft40g9+3oNkuJCpiDQhc2hIQ3DYlPItD2zwiObR7zqt0jXC/sSkdfw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCwx+/80NQC/iT2X19u0ceQfUHoFEUzBWLlvitCOE6KrwIgeUV2AlQPTY/bR5uu2Zw720jgLDvC/uk/FRo1OYd0uPQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126552
+			}
+		},
+		"2.1.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "067295b362b24c6bb7773d30adfdda7cf06fcdb3",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.1.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-spaUtl2mdD5jLAcbrid1/To3QywhiYmpH+H0aina31t+fedv5nM+36Veah+IFoIikYo9lopto/9SGcy+pSPM/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDATGmNlMXN2CgodNnUMWxWPLKrx2NI/ddzxPOozQf+/gIgLycb08FZq/XdBv6NvyuxkOSr5y0sTMa2u7X1Xplwsiw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126522
+			}
+		},
+		"2.2.0-beta.5": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.5",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "94d0e2662e07544f63a6340010b8f98c76b90661",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.5.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-kcueOlex4tikaX17YKB5HzVY1eVgCjl4x6cPQH+I2TB3BhFxZh6742ejp+qVC1MaSbTnKX3yw/7m0/BhFaWoAg==",
+				"signatures": [
+					{
+						"sig": "MEUCICqxAcvmvscR6HZdFBYwSr1Lq0Omr9FKQWpK9trEM7eRAiEAklO3DcEw7HLYVF1W3Z6swYnsFjWHBd34AIZ180DpEOA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126440
+			}
+		},
+		"2.1.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.2",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "622b2524733495fdbf47fe76148fe47f3dfbad44",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.2.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-0y+k47qYQo9bNdEhp2xXvnkdLORWeXDeCfnBCipWdCgNZDcqezNSPTqptIQqknKW2Pw55o1Gw3iVw4oswsIF5Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIB52A+BgSt1rldihViMIBcfUQaOE/f+bLfw8dPufWztFAiAekLDdVpminK/lT+HnWnJoXpXBuaHGqE/jxWyZsgkHvQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126412
+			}
+		},
+		"2.1.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.3",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "af089f4b8a29e285fb9ee585c1c1e052ac83a2f4",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.3.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-OER32dw7yG0cDdNZdAfo56hfQ4ODgdYifI9rsjlPhfWZXLM6kLmp4FGIwyfpAIDfqSj3hjyWDCj0Kp7UmFEheQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCgZUNfPHiZY2SAmBafx4S7pUNUMIXDZGWBPoc6Y+HSnwIgREI/21u2QSSzFD8CFzURMBG0zheFBDFbW+IJHQyyzjM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 131309
+			}
+		},
+		"2.2.0-beta.6": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.6",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "7cd47988e0bc2f7de31a524c6ac19acb1804b7c7",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.6.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-pnEvxNOv14wnHWcs6hbYPZusZII3iIu/G2Gxh7Luoc/S4kwCax7vn4lEDZgYYtICaVw6MgUpEAjAn4fjIE9wdA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC2+840MEH3dd33oDPvUBvAQk9B7KG39PnTaHXzFNVRogIhALLoNhKXijzFys85laRPnNzaQQpOrUrzIOGluUKjSDwc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 131337
+			}
+		},
+		"2.2.0-beta.7": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.7",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "1fe91ba0bf4db5995a492d4b7536ca1ecea11715",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.7.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-3k9XW+aBNfmZRVSpvxkZiwFynxiecASqt4wbzUk/7pvgdOVwvc9bQKggiZ+qurnRQylm8P5riQcTzTxgjnp6Tg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFfvLCdq365ob1HHGmMV/XUHOgStWfW41Row65Hz6RJOAiAKmRtXXkD6Ljg511J6B76+DEFWHCN2R9VdvYrQZ8nx4w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134956
+			}
+		},
+		"2.1.4": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.4",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "fcef292c87f8a322a8cd41c9edb4fd659525668e",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.4.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-scZrav23uiYkz/MSmz7fj1HUBtDV86GJEVaDbEKqam/yvp1tz/iPstQGPds5oFDjihkRg1BfpsDG8ekVcPy23Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIFIEKUoN0LFgIcmWeOwQjSXkm7bVgKqXJ6CMXB45Jh0ZAiEA1x5kKB6dyng95mqRuJf9GYUoLDoJ60BUGCIPfp7eDKQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 134928
+			}
+		},
+		"2.2.0-beta.8": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.8",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "f77aaf5d40f739e3b2b65bbf50688e81e7bfed72",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.8.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-NdLhxosmBGyoGmP/FyZHy6abEJZY03WsVBfhzSblbX7TtAYJImE4JFRkkAvxaaCPtNl5yuEGCxYwa41QxO8Byw==",
+				"signatures": [
+					{
+						"sig": "MEUCIElvT+vdDKVOlxiVR6N3FKgI9jLdISZxdp6WmA1E6K+9AiEA2GRuJbh3bTF/YvTEDJLVuSCa8D9D/WDQ3drjNYguDb0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 136712
+			}
+		},
+		"2.1.5": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.5",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "f4d8d97cb95467ae9ae6739c7eca418f84354dbf",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.5.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-C3sHWw6XjgnNHR2DW9g5q5bztV7Fzxc1fR0bWCS9lpxM+ZuV26CJWdOQgdrM6ULibNqhy+SmnjgncYLn8Erbww==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDTJQsu/JOqSh1CZUVk+USQ5Om0c7hOiNQfQfjDmZYXxgIgF6quyQO4DfYng+RPw/tLyVIE/wZfH1cHSzbl11h8jH8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 136684
+			}
+		},
+		"2.2.0-beta.9": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.9",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "21e5f8cced75aa1e53c25e917b42b6234361bd36",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.9.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-UA+2hioQ0/CPd8aNIIjIdnplcK82A7gZmHGqwZF70/SDrxJuBAT409yldPG/jPxc7Nvndc5dvmwyB/9L+bAoCQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIERm2Zca73VLVv0obnTdYE8u/T+vpsznUXnXH51Fk+2hAiEArPUAY3V2ft8Q/1b7NKfUq9jWupcrD0riy6gK9g+fLiw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 137935
+			}
+		},
+		"2.1.6": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.6",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "349e3ef4bee93b4ab750e8a65c80482dded7ff59",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.6.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-GfqiGOCN8bLKBckUlNm2s8SUdgRURbgbVB7zNnVRt9oQ+wD4WkxB6O/enu1nZtB3SsKw5pvanCLftPPt/jgZkA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCXjt0kObRv5mBPbARmy4hYIJMN52abJwAun+dAvFjpBQIgRl938qs49JI+nY3TiyV+arIFq0ZEkJJHZZ65zQhegQs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 137907
+			}
+		},
+		"2.1.8-beta.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.8-beta.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "9e7c1b001fc40efc5a5f92d22d65e2fc81718f6a",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.8-beta.1.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-ioi6zjYmg9H4V+kVmoRqRyDQsczVykhantrwkSeMf6KZ7gRcfU6zALOBpEvX7SvVlYoM7wNE5L8rUWdPbJ1APA==",
+				"signatures": [
+					{
+						"sig": "MEUCIEE5iTE4ByF7uhiD2ZO0EROTHxGsodMig/nNJDXjeHkWAiEAoMuJoUQPl6taqOP4DOuuFgAqs5KzI6T+xcJit4XI4zc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 140025
+			}
+		},
+		"2.1.7": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.7",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^1.1.1"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "ca8c3d1ef31a824e9eeb63569ac91fca878b4dd2",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.7.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-WGiD0hlHwcMgZCWHiH6/7VIQ4z45CkcaiMUQjHWmGunePkm6OYYVetX+EAH1kwfyvv5021pHehzPxOm9aRK8UQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDsZutmSa6G/cM78MUDxc/SCwGIx86SsJHSWL2wcCgnsAiEA34+tUZF/wV33wr2IuRsPj2M45t4Y6VEmH2cqWbYfOmE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 139997
+			}
+		},
+		"2.1.7-beta.2024-02-23-01-24-50": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.1.7-beta.2024-02-23-01-24-50",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "d01638795c01d2f750f3bdd72fe969516e5eaaf8",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.1.7-beta.2024-02-23-01-24-50.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-1UGbmelPVWY5XV0mynKCn/k+lG171wQB93RC+8Kga3YHJECIFI9YU2mPrVnWg8N5xYB+eieW8xq5WREzNOcH7w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDWJ3W39N/DBwohGHTT46JobHOp0LpBD5ojtVmwuULvJwIgO2gW9UvOW20Ndl2M4+Muob0Y8YeTDgYnam1kxlPRsD0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 140043
+			}
+		},
+		"2.3.0-beta.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.3.0-beta.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "3dc429407280da40de8235c1f3b6d167b8062c35",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.3.0-beta.1.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-lxotRLSU/nKYWrTkirQ0vy/mzFVsEYKPuf99vQgpbxxXO8hj+CGhd7qhVqyt9ZLNSO213WFG4PFVPzAAaPYQvA==",
+				"signatures": [
+					{
+						"sig": "MEUCIH1Kj2UhzRK1ehmTp1/Wtx7EjDAB1IpSJJ4KWarI4aJ2AiEAlFCVQHjo0trDPFiXU5/TUBYd0yEQKbEKElSx5u/HIzs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 148012
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"2.2.0": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^2.0.0"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "a7d4a564d5d71a0cfcf37897184dd29c68760564",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-axbCuVTjNzQ9iE36bQFLV5regbw1moQ9mpdg7KH5BtXtIYVQA7FCsOrgV/dreB0E17XqVknLjmCOAZjfEXqqjA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGT0cCmB4BbFyUrfxXK+W9uafuecxQFLiYZyc4PEanPWAiBsewSDPW9gcDO14BDrDlu7Exwfb25zfRdrOkinesZAYA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 147984
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"2.2.0-beta.2024-04-03-19-34-38": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.0-beta.2024-04-03-19-34-38",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "3.1.3",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "2a0c88e83135fe9ccd4c39cd17b90d908b64b6c5",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.0-beta.2024-04-03-19-34-38.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-/BJdKHzoDI9v1OyY3EBwy4CuWRGqEu0QPf4A05WHVBOKv67wuEs66JJo+HWWyj+mf2XbTChxsxVMTFGwOp1Pvg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDoRIU0ON6aZikjf4eiOlmVsebCFGP1JYsA5+BA0/oogwIgEaueVj9XGTxpQpTZqt1AtuZLkpkKt+kTg9Y1L/DQ2uE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 148030
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"2.2.1-beta.2024-04-29-04-05-35": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.1-beta.2024-04-29-04-05-35",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "dfb1630ffcf0dc17effb0601eb22924021c7a756",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.1-beta.2024-04-29-04-05-35.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-gFW1wjs0Nn/gvcHL4lc/2AAGf1Js2/3vvUG5BeDWpuFfXv83xA00g24DlVt4xrYVvMWVtXGU7hrr4iimufbFrg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDwoMFr0jHKPLaoVoYkTkkzmONn6xcp7wUiO8tzz2O6qwIhAKiZ6jOlSsCRxHOGOFjLHWVa9YVkdjQP8Iu9pGL87S5I",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 158983
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.1": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.1",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "~1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^2.0.0"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"dist": {
+				"shasum": "ae77c54675a70fbbc374a48c246f4340598b71cc",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.1.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-zmSW7HMD/sVgWjkhS3i+Yx3NkAe6ugDz2tUnLHtraeqJOGxM/HMe7cqHCRRrp7WkABB1/2tDKU1/AMRf8m43AQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDHOXeU5v88s1wvSrKB3QuUbV3EZjcGX9ofiy+S0v4wpwIhAN8o1SbycaGsYBr8rwopEfA+jZG6wfFYtQKsQooGCu8U",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 158937
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.1-beta.2024-04-30-05-06-04": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.1-beta.2024-04-30-05-06-04",
+			"dependencies": {
+				"fs": "^0.0.1-security",
+				"ajv": "^8.10.0",
+				"tslib": "^2.3.1",
+				"js-yaml": "^3.14.0",
+				"jsonpath": "^1.1.1",
+				"json-refs": "^3.0.15",
+				"node-fetch": "^3.2.3",
+				"vscode-jsonrpc": "^3.2.0",
+				"@stoplight/json": "~3.17.1",
+				"@stoplight/path": "1.3.2",
+				"@azure-tools/uri": "3.1.1",
+				"@stoplight/types": "^13.5.0",
+				"dependency-graph": "^0.11.0",
+				"@azure-tools/openapi": "^3.3.0",
+				"@stoplight/lifecycle": "2.3.2",
+				"@stoplight/spectral-core": "~1.11.1",
+				"string.prototype.matchall": "^4.0.2",
+				"@stoplight/spectral-formats": "~1.1.0",
+				"@stoplight/spectral-parsers": "^1.0.0",
+				"@stoplight/spectral-runtime": "^1.1.0",
+				"@stoplight/better-ajv-errors": "1.0.1",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@stoplight/spectral-rulesets": "~1.6.0",
+				"@stoplight/spectral-functions": "~1.6.1",
+				"@stoplight/spectral-ref-resolver": "^1.0.0",
+				"@apidevtools/json-schema-ref-parser": "^9.0.9",
+				"@stoplight/spectral-ruleset-bundler": "^1.2.1",
+				"@stoplight/spectral-ruleset-migrator": "^1.7.1",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.11.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "~2.3.1",
+				"typescript": "4.6.2",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^14.0.13",
+				"@types/js-yaml": "^3.12.4",
+				"@types/jsonpath": "^0.2.0",
+				"eslint-plugin-jest": "~26.1.4",
+				"eslint-plugin-node": "~11.1.0",
+				"eslint-plugin-import": "~2.26.0",
+				"eslint-plugin-unicorn": "~42.0.0",
+				"eslint-plugin-prettier": "~3.4.0",
+				"@typescript-eslint/parser": "^5.19.0",
+				"@typescript-eslint/eslint-plugin": "^5.19.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "825ee36dfd184192e825197106a24bfafce32781",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.1-beta.2024-04-30-05-06-04.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-ukTmiUBUepsNF+4kzAwVv8uTvQnNrBMNCLyIrdB27kGFSp2irhRINqAbz4uP5Sp0RElIBEipyiK+G0XRlLkJDg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBCS1dAH6W74s+ria72TUxBGiTbn7+nYJjgdCiW48NtXAiA1cMOM+ejEhqM9695YVsvUkL/VYSH3X/AQuL4ORSRa+w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 158983
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.2-beta.2024-04-30-23-10-49": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.2-beta.2024-04-30-23-10-49",
+			"dependencies": {
+				"tslib": "^2.3.1",
+				"js-yaml": "^4.1.0",
+				"vscode-jsonrpc": "^3.2.0",
+				"@azure-tools/uri": "^3.1.1",
+				"@stoplight/types": "^14.1.1",
+				"@stoplight/spectral-core": "^1.18.3",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.57.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "^3.2.5",
+				"typescript": "~4.6.4",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^18.11.9",
+				"@types/js-yaml": "^4.0.9",
+				"eslint-plugin-jest": "^28.3.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-import": "^2.29.1",
+				"eslint-plugin-unicorn": "^52.0.0",
+				"eslint-plugin-prettier": "^5.1.3",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "c0feaddca1cbbffa94115032d00ad4f7720a62a1",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.2-beta.2024-04-30-23-10-49.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-cN1/ZHLgGEp+3ruOa1qJmk+gi0E16qlhCYQIcLKejGPIx9soEBJHDNygoXp0yI5caayQOTDJRcgoDFVEoIzNNQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIC49KZKVl34jUVUZUL5QJ/tFnTTt7PoXdvO72gYd2HLrAiBWNPDd7cYslmmdsEbmjj9aUInumYgYEqnnTFIzLfBDsg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150386
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.2": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.2",
+			"dependencies": {
+				"tslib": "^2.3.1",
+				"js-yaml": "^4.1.0",
+				"vscode-jsonrpc": "^3.2.0",
+				"@azure-tools/uri": "^3.1.1",
+				"@stoplight/types": "^14.1.1",
+				"@stoplight/spectral-core": "^1.18.3",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@microsoft.azure/openapi-validator-core": "^1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^2.0.0"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.57.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "^3.2.5",
+				"typescript": "~4.6.4",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^18.11.9",
+				"@types/js-yaml": "^4.0.9",
+				"eslint-plugin-jest": "^28.3.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-import": "^2.29.1",
+				"eslint-plugin-unicorn": "^52.0.0",
+				"eslint-plugin-prettier": "^5.1.3",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"dist": {
+				"shasum": "ed3373b09e7c35b940b59faedefa5defc51ff0a6",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.2.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-lVrLpeYihutbb4s4zRjHDs6xWvfT2f4omQlcqFZAy3oGAWRQj2KdGZFRjBMmU4m2rtYz2dJGm32LpsN3LFASCA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDV6VWZP9YtLVXQm47/EGlFbxC33c1zpZXOpPuJbYNiogIhAIfwh9JTmzUFJg55ntlKWW4mItHEKo5XxDNACL8YQwKq",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150340
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.2-beta.2024-06-06-20-10-30": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.2-beta.2024-06-06-20-10-30",
+			"dependencies": {
+				"tslib": "^2.3.1",
+				"js-yaml": "^4.1.0",
+				"vscode-jsonrpc": "^3.2.0",
+				"@azure-tools/uri": "^3.1.1",
+				"@stoplight/types": "^14.1.1",
+				"@stoplight/spectral-core": "^1.18.3",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@microsoft.azure/openapi-validator-core": "beta",
+				"@microsoft.azure/openapi-validator-rulesets": "beta"
+			},
+			"devDependencies": {
+				"jest": "^27.0.6",
+				"eslint": "^8.57.0",
+				"ts-jest": "^27.1.3",
+				"prettier": "^3.2.5",
+				"typescript": "~4.6.4",
+				"@types/jest": "^27.0.6",
+				"@types/node": "^18.11.9",
+				"@types/js-yaml": "^4.0.9",
+				"eslint-plugin-jest": "^28.3.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-import": "^2.29.1",
+				"eslint-plugin-unicorn": "^52.0.0",
+				"eslint-plugin-prettier": "^5.1.3",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "e0af116652d3b33f6bce17593a1fe8413f2597ab",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.2-beta.2024-06-06-20-10-30.tgz",
+				"fileCount": 37,
+				"integrity": "sha512-qkjOQWpo5C4ZA9lYCwFCkjYgmNGF2Kakoelj+GTzZ4qRqe1MZORQEIRUjiUaz45kEonGD5kvz63iRgvaDY5GzA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGPUTZ6mv5U/+ezoCBHIN2ftbiR3Amp5f8M8U0jbNXPbAiBP9YeHy8G4KjrQWdztrHe26CDnLZp63tJgCvRiSMaMvA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 150386
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"2.2.3": {
+			"name": "@microsoft.azure/openapi-validator",
+			"version": "2.2.3",
+			"dependencies": {
+				"@azure-tools/uri": "^3.1.1",
+				"@microsoft.azure/openapi-validator-core": "^1.0.0",
+				"@microsoft.azure/openapi-validator-rulesets": "^2.0.0",
+				"@stoplight/json-ref-resolver": "^3.1.6",
+				"@stoplight/spectral-core": "^1.18.3",
+				"@stoplight/types": "^14.1.1",
+				"js-yaml": "^4.1.0",
+				"tslib": "^2.3.1",
+				"vscode-jsonrpc": "^3.2.0"
+			},
+			"devDependencies": {
+				"@types/js-yaml": "^4.0.9",
+				"@types/node": "^18.11.9",
+				"@types/jest": "^27.0.6",
+				"@typescript-eslint/eslint-plugin": "^7.8.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"jest": "^27.0.6",
+				"eslint": "^8.57.0",
+				"eslint-plugin-jest": "^28.3.0",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^5.1.3",
+				"eslint-plugin-unicorn": "^52.0.0",
+				"eslint-plugin-import": "^2.29.1",
+				"prettier": "^3.2.5",
+				"ts-jest": "^27.1.3",
+				"typescript": "~4.6.4"
+			},
+			"dist": {
+				"integrity": "sha512-yZF64zwBTX8QsOQvmd6oq8Csf/p1HSxEYn+u6Crxod0iZHjL/d3iVKQdr8xLaG6Rd9E4JHy2L9TXSka55GJS7w==",
+				"shasum": "1453255a367742c1cefcf9bd9d6b5861e74146fa",
+				"tarball": "https://registry.npmjs.org/@microsoft.azure/openapi-validator/-/openapi-validator-2.2.3.tgz",
+				"fileCount": 37,
+				"unpackedSize": 150627,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDFWt/Bnhro6KL8f2qMG58Ks9QJFKj0cTLMk5/zTOvnAQIhAMBfLXWvJUh3XRsn+WHFf+JxeBkNY/eAScFGyHtLqzTJ"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		}
+	}
+}
