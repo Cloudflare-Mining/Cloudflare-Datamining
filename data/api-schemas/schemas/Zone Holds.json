@@ -835,6 +835,9 @@
 		"summary": "Update Zone Hold",
 		"tags": [
 			"Zone Holds"
+		],
+		"x-api-token-group": [
+			"Zone Write"
 		]
 	},
 	"POST /zones/{zone_id}/hold": {
