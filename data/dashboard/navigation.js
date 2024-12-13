@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: I => !(0, p.n3)() && !(0, e.z1)("oauth-access-management")(I)
+		hasPermission: I => !(0, d.n3)() && !(0, e.z1)("oauth-access-management")(I)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -128,7 +128,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			hasPermission: I => (0, o.iY)(I) && (0, d.S6)(I) && !!(0, e.z1)("account-logpush")(I)
+			hasPermission: I => (0, o.iY)(I) && (0, m.S6)(I) && !!(0, e.z1)("account-logpush")(I)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -245,7 +245,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
-			tabs: O.Lx.concat(O.SF, O.Jg)
+			tabs: x.Lx.concat(x.SF, x.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
@@ -340,7 +340,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
-			tabs: O.SF.concat(O.Jg)
+			tabs: x.SF.concat(x.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
@@ -423,7 +423,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: I => {
 				const F = (0, C.tJ)(I);
-				return !(0, h.ky)(F, [b.uD.EnterpriseTrial])
+				return !(0, v.ky)(F, [b.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -669,7 +669,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: I => {
 				const F = (0, f.nA)(I);
-				return F ? !!(!(0, u.yD)(I) && !!(0, f.ZB)(I, "origin_reachability_dash", "dash_view") && (0, f.tU)(F, "enterprise") && !!(0, m.Ek)(I, "httpRequestsAdaptiveGroups")) : !1
+				return F ? !!(!(0, u.yD)(I) && !!(0, f.ZB)(I, "origin_reachability_dash", "dash_view") && (0, f.tU)(F, "enterprise") && !!(0, p.Ek)(I, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -677,7 +677,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: I => {
 				const F = (0, f.nA)(I);
-				return F ? !!(!(0, u.yD)(I) && !!(0, f.ZB)(I, "edge_reachability_dash", "dash_view") && (0, f.tU)(F, "enterprise") && !!(0, m.Ek)(I, "nelReportsAdaptiveGroups")) : !1
+				return F ? !!(!(0, u.yD)(I) && !!(0, f.ZB)(I, "edge_reachability_dash", "dash_view") && (0, f.tU)(F, "enterprise") && !!(0, p.Ek)(I, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -692,7 +692,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: I => (0, d.Xu)(I)
+			hasPermission: I => (0, m.Xu)(I)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -774,7 +774,7 @@ const navigation = {
 		hasPermission: I => {
 			const F = (0, f.nA)(I);
 			if ((0, u.yD)(I) || !(0, o.wB)(I, "zone_settings", "spectrum.app") || !F) return !1;
-			const W = !!((0, v.l8)(I) || (0, f.DQ)(I)),
+			const W = !!((0, h.l8)(I) || (0, f.DQ)(I)),
 				ee = !!(0, f.ZB)(I, "spectrum", "enabled"),
 				H = !!(0, f.Ns)(F);
 			return ee || W || !H
@@ -892,7 +892,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: x.x
+			tabs: O.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -1037,7 +1037,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: I => !(0, u.yD)(I) && !!(0, m.Ek)(I, "healthCheckEventsAdaptiveGroups")
+			hasPermission: I => !(0, u.yD)(I) && !!(0, p.Ek)(I, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
