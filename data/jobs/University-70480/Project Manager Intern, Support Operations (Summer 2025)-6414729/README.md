@@ -34,6 +34,7 @@
 	<li>Experience with Data Analytics tools (Tableau, Google Studio) a plus</li>
 	<li>Ability to commit to a 12 week summer internship.</li>
 	<li>In office 3 days a week in Austin, TX.</li>
+	<li>Only applicants local to Austin will be considered.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
