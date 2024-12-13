@@ -82,6 +82,15 @@
 	"analyst-sec-reports-q4": {
 		"enabled": false
 	},
+	"anyname-1": {
+		"enabled": false,
+		"branches": [
+			"basecase",
+			"helloworld",
+			"helloworld-2",
+			"helloworld-3"
+		]
+	},
 	"api-access": {
 		"enabled": true
 	},
@@ -955,6 +964,13 @@
 			"experiment"
 		]
 	},
+	"prg-domain-success-page-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-downgrade-annual-subscription-save-offer": {
 		"enabled": true,
 		"branches": [
@@ -1442,6 +1458,15 @@
 			"a",
 			"b",
 			"incident-2024-10-17"
+		]
+	},
+	"test-kezi": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment",
+			"experiment-2",
+			"experiment-3"
 		]
 	},
 	"test-test": {
