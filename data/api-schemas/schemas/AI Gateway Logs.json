@@ -65,6 +65,7 @@
 						"properties": {
 							"key": {
 								"enum": [
+									"id",
 									"created_at",
 									"request_content_type",
 									"response_content_type",
@@ -78,7 +79,11 @@
 									"tokens_in",
 									"tokens_out",
 									"duration",
-									"feedback"
+									"feedback",
+									"event_id",
+									"request_type",
+									"metadata.key",
+									"metadata.value"
 								],
 								"type": "string"
 							},
@@ -301,6 +306,7 @@
 						"properties": {
 							"key": {
 								"enum": [
+									"id",
 									"created_at",
 									"request_content_type",
 									"response_content_type",
@@ -314,7 +320,11 @@
 									"tokens_in",
 									"tokens_out",
 									"duration",
-									"feedback"
+									"feedback",
+									"event_id",
+									"request_type",
+									"metadata.key",
+									"metadata.value"
 								],
 								"type": "string"
 							},

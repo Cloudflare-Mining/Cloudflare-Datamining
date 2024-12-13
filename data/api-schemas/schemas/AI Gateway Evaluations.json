@@ -1223,6 +1223,8 @@
 								"items": {
 									"type": "string"
 								},
+								"maxItems": 5,
+								"minItems": 1,
 								"type": "array"
 							},
 							"evaluation_type_ids": {
