@@ -1,8 +1,8 @@
 {
 	"name": "@radix-ui/react-focus-scope",
 	"dist-tags": {
-		"next": "1.1.1-rc.1",
-		"latest": "1.1.0"
+		"latest": "1.1.0",
+		"next": "1.1.1-rc.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -4788,8 +4788,36 @@
 			"name": "@radix-ui/react-focus-scope",
 			"version": "1.1.1-rc.1",
 			"dependencies": {
-				"@radix-ui/react-compose-refs": "1.1.1-rc.1",
 				"@radix-ui/react-primitive": "2.0.1-rc.1",
+				"@radix-ui/react-compose-refs": "1.1.1-rc.1",
+				"@radix-ui/react-use-callback-ref": "1.1.0"
+			},
+			"peerDependencies": {
+				"react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"@types/react": "*",
+				"@types/react-dom": "*"
+			},
+			"dist": {
+				"shasum": "c7a4986bd173aeaf7c66f3451c20d0ccffd2b421",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.1.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-D1P9+y2asMGfvi4QCctE3vBaqp+OtB2242rGT8DeyPygjGUnCnqXEAcWqAESDtEBkJtUnT5ZZH67XYJr1vRXgg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC1NqC++ZoZjJF8r4nQAtd5GpMBIHSMpLOL3MKGuN2gqQIgAtupYRyhy4noE2b1OYYzrDW72Ah8PjzBsfxO82A1+xo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 60384
+			}
+		},
+		"1.1.1-rc.2": {
+			"name": "@radix-ui/react-focus-scope",
+			"version": "1.1.1-rc.2",
+			"dependencies": {
+				"@radix-ui/react-compose-refs": "1.1.1-rc.2",
+				"@radix-ui/react-primitive": "2.0.1-rc.2",
 				"@radix-ui/react-use-callback-ref": "1.1.0"
 			},
 			"peerDependencies": {
@@ -4799,15 +4827,15 @@
 				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
 			},
 			"dist": {
-				"shasum": "c7a4986bd173aeaf7c66f3451c20d0ccffd2b421",
-				"integrity": "sha512-D1P9+y2asMGfvi4QCctE3vBaqp+OtB2242rGT8DeyPygjGUnCnqXEAcWqAESDtEBkJtUnT5ZZH67XYJr1vRXgg==",
-				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.1.tgz",
+				"shasum": "64fd788fb993a7e811ba6dba50004c4643f80186",
+				"integrity": "sha512-2bOFNoJqXAZmuRYNIZ5XLJpegW+nF6po6UyiaP4raTJqnYQLechrNoT7UPgbWM4fpU9I0D2LwQ82vzmxWMNvlg==",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.2.tgz",
 				"fileCount": 8,
 				"unpackedSize": 60384,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQC1NqC++ZoZjJF8r4nQAtd5GpMBIHSMpLOL3MKGuN2gqQIgAtupYRyhy4noE2b1OYYzrDW72Ah8PjzBsfxO82A1+xo="
+						"sig": "MEQCIQCeZpNOEavOWSjWMKA9LWo7arAIlHqVrqnc5xXpI2i2ewIfJkO7J96XsAMNhEXhFopxOd0t+AU0tlgzvSi4bIpUNg=="
 					}
 				]
 			}
