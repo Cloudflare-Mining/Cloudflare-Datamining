@@ -1,8 +1,8 @@
 {
 	"name": "@radix-ui/react-focus-scope",
 	"dist-tags": {
-		"latest": "1.1.0",
-		"next": "1.1.1-rc.2"
+		"latest": "1.1.1",
+		"next": "1.1.1-rc.3"
 	},
 	"versions": {
 		"0.0.1": {
@@ -4816,8 +4816,64 @@
 			"name": "@radix-ui/react-focus-scope",
 			"version": "1.1.1-rc.2",
 			"dependencies": {
-				"@radix-ui/react-compose-refs": "1.1.1-rc.2",
 				"@radix-ui/react-primitive": "2.0.1-rc.2",
+				"@radix-ui/react-compose-refs": "1.1.1-rc.2",
+				"@radix-ui/react-use-callback-ref": "1.1.0"
+			},
+			"peerDependencies": {
+				"react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"@types/react": "*",
+				"@types/react-dom": "*"
+			},
+			"dist": {
+				"shasum": "64fd788fb993a7e811ba6dba50004c4643f80186",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.2.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-2bOFNoJqXAZmuRYNIZ5XLJpegW+nF6po6UyiaP4raTJqnYQLechrNoT7UPgbWM4fpU9I0D2LwQ82vzmxWMNvlg==",
+				"signatures": [
+					{
+						"sig": "MEQCIQCeZpNOEavOWSjWMKA9LWo7arAIlHqVrqnc5xXpI2i2ewIfJkO7J96XsAMNhEXhFopxOd0t+AU0tlgzvSi4bIpUNg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 60384
+			}
+		},
+		"1.1.1-rc.3": {
+			"name": "@radix-ui/react-focus-scope",
+			"version": "1.1.1-rc.3",
+			"dependencies": {
+				"@radix-ui/react-primitive": "2.0.1-rc.3",
+				"@radix-ui/react-compose-refs": "1.1.1-rc.3",
+				"@radix-ui/react-use-callback-ref": "1.1.0"
+			},
+			"peerDependencies": {
+				"react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+				"@types/react": "*",
+				"@types/react-dom": "*"
+			},
+			"dist": {
+				"shasum": "d7c6e5875fbc69b696649b7a5b008fee94f1a96b",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.3.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-CIA7gmpMVTmAdT15B5UBj8c/V+ENaYT76rOockdP8EnzWofFetH77fsV3yg0ZHjZjrRf6VE3qMIw/V469iJZtQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDORhyzID3aCHHqu3KIGd6Xiu1XSGhhjoZFBCrOMmf0MgIgEr55A4CstzFaLZLeasz59N8MWRgoAq8TLxxoM5kpizw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 60384
+			}
+		},
+		"1.1.1": {
+			"name": "@radix-ui/react-focus-scope",
+			"version": "1.1.1",
+			"dependencies": {
+				"@radix-ui/react-compose-refs": "1.1.1",
+				"@radix-ui/react-primitive": "2.0.1",
 				"@radix-ui/react-use-callback-ref": "1.1.0"
 			},
 			"peerDependencies": {
@@ -4827,15 +4883,15 @@
 				"react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
 			},
 			"dist": {
-				"shasum": "64fd788fb993a7e811ba6dba50004c4643f80186",
-				"integrity": "sha512-2bOFNoJqXAZmuRYNIZ5XLJpegW+nF6po6UyiaP4raTJqnYQLechrNoT7UPgbWM4fpU9I0D2LwQ82vzmxWMNvlg==",
-				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1-rc.2.tgz",
+				"shasum": "5c602115d1db1c4fcfa0fae4c3b09bb8919853cb",
+				"integrity": "sha512-01omzJAYRxXdG2/he/+xy+c8a8gCydoQ1yOxnWNcRhrrBW5W+RQJ22EK1SaO8tb3WoUsuEw7mJjBozPzihDFjA==",
+				"tarball": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1.tgz",
 				"fileCount": 8,
-				"unpackedSize": 60384,
+				"unpackedSize": 60341,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIQCeZpNOEavOWSjWMKA9LWo7arAIlHqVrqnc5xXpI2i2ewIfJkO7J96XsAMNhEXhFopxOd0t+AU0tlgzvSi4bIpUNg=="
+						"sig": "MEUCIEwPqSlXASFCJCI4gcJg6+Fy67cLDtxuVvZyKvko+pmLAiEA/RPLwCRHuB0yveJ5Lap12NAp9quOJQ79tBXKtrBU8TM="
 					}
 				]
 			}
