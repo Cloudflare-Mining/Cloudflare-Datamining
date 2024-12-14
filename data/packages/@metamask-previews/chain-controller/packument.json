@@ -2,7 +2,7 @@
 	"name": "@metamask-previews/chain-controller",
 	"dist-tags": {
 		"latest": "0.0.0-preview-699063fc",
-		"preview": "0.2.2-preview-59d85cb"
+		"preview": "0.2.2-preview-80f42889"
 	},
 	"versions": {
 		"0.0.0-preview-699063fc": {
@@ -12741,6 +12741,54 @@
 			"name": "@metamask-previews/chain-controller",
 			"version": "0.2.2-preview-59d85cb",
 			"dependencies": {
+				"uuid": "^8.3.2",
+				"@metamask/utils": "^10.0.0",
+				"@metamask/chain-api": "^0.1.0",
+				"@metamask/snaps-sdk": "^6.7.0",
+				"@metamask/snaps-utils": "^8.3.0",
+				"@metamask/keyring-utils": "^1.0.0",
+				"@metamask/base-controller": "^7.0.2",
+				"@metamask/snaps-controllers": "^9.10.0",
+				"@metamask/keyring-internal-api": "^1.0.0"
+			},
+			"devDependencies": {
+				"jest": "^27.5.1",
+				"ts-jest": "^27.1.4",
+				"typedoc": "^0.24.8",
+				"deepmerge": "^4.2.2",
+				"typescript": "~5.2.2",
+				"@types/jest": "^27.4.1",
+				"@metamask/providers": "^18.1.1",
+				"webextension-polyfill": "^0.12.0",
+				"@types/readable-stream": "^2.3.0",
+				"@metamask/auto-changelog": "^3.4.4",
+				"typedoc-plugin-missing-exports": "^2.0.0"
+			},
+			"peerDependencies": {
+				"@metamask/providers": "^18.1.0",
+				"webextension-polyfill": "^0.10.0 || ^0.11.0 || ^0.12.0"
+			},
+			"dist": {
+				"shasum": "6b97599d16db84785ee0362c4ce9492ef73c0ab9",
+				"tarball": "https://registry.npmjs.org/@metamask-previews/chain-controller/-/chain-controller-0.2.2-preview-59d85cb.tgz",
+				"fileCount": 36,
+				"integrity": "sha512-OVZFBOkisKuMwAwpCZd62xpPvkPO4aZsyDaWw8haQPY0rqAw6FRgdeGCxclmEWjptyq98UDtf1eaQ3456gISFg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBfTttrCPGfSNpMEE4QIQUvm1krI5G4nKZbQBvY5y+EUAiBnoXk3v6qsIqY08W0/458ENWUuducVDfn7G0OEij4WvA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 84539
+			},
+			"engines": {
+				"node": "^18.18 || >=20"
+			}
+		},
+		"0.2.2-preview-80f42889": {
+			"name": "@metamask-previews/chain-controller",
+			"version": "0.2.2-preview-80f42889",
+			"dependencies": {
 				"@metamask/base-controller": "^7.0.2",
 				"@metamask/chain-api": "^0.1.0",
 				"@metamask/keyring-internal-api": "^1.0.0",
@@ -12769,15 +12817,15 @@
 				"webextension-polyfill": "^0.10.0 || ^0.11.0 || ^0.12.0"
 			},
 			"dist": {
-				"shasum": "6b97599d16db84785ee0362c4ce9492ef73c0ab9",
-				"integrity": "sha512-OVZFBOkisKuMwAwpCZd62xpPvkPO4aZsyDaWw8haQPY0rqAw6FRgdeGCxclmEWjptyq98UDtf1eaQ3456gISFg==",
-				"tarball": "https://registry.npmjs.org/@metamask-previews/chain-controller/-/chain-controller-0.2.2-preview-59d85cb.tgz",
+				"shasum": "b1a1957c5628dfe5b470e0a7fcd8af9f37003e6f",
+				"integrity": "sha512-vOpNbF6hg9ip+U19eksJ4tHApYYokAI5gHSWjkNK58Tx9uoX8UClWrmMuwbW9ZYFRPvB4JcZ16vIgSeo4+MA3Q==",
+				"tarball": "https://registry.npmjs.org/@metamask-previews/chain-controller/-/chain-controller-0.2.2-preview-80f42889.tgz",
 				"fileCount": 36,
-				"unpackedSize": 84539,
+				"unpackedSize": 84540,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBfTttrCPGfSNpMEE4QIQUvm1krI5G4nKZbQBvY5y+EUAiBnoXk3v6qsIqY08W0/458ENWUuducVDfn7G0OEij4WvA=="
+						"sig": "MEQCIGlxIbarVO3T2abJMDVFHNx5t1/qqUMCeg+9pS6pToefAiA5iW3ySmkSbSLNp6chi5MxVqDV/pq3E536juFLWpjpqA=="
 					}
 				]
 			},
