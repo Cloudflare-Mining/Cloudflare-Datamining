@@ -2,7 +2,7 @@
 	"name": "cspell-grammar",
 	"dist-tags": {
 		"next": "8.9.0-alpha.0",
-		"latest": "8.16.1"
+		"latest": "8.17.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -4978,13 +4978,49 @@
 				"cspell-grammar": "bin.mjs"
 			},
 			"dist": {
-				"integrity": "sha512-7IRYa0O1xfK2HVbhGSpOPPt5HlP2ZHRHtdLU2iOvMSCkh0cSPERu++kdprvcaOf7E7koo0P+bxHSprcYbU/agg==",
 				"shasum": "69beb43fc1de65a1d929eb14ba748c6663141192",
 				"tarball": "https://registry.npmjs.org/cspell-grammar/-/cspell-grammar-8.16.1.tgz",
 				"fileCount": 62,
-				"unpackedSize": 73605,
+				"integrity": "sha512-7IRYa0O1xfK2HVbhGSpOPPt5HlP2ZHRHtdLU2iOvMSCkh0cSPERu++kdprvcaOf7E7koo0P+bxHSprcYbU/agg==",
+				"signatures": [
+					{
+						"sig": "MEQCIB0bK/V22ICjc3nYv5s6t/RY4VlDgzpsg98l6rdCEy34AiAfyTWkp28lXFuoLR6wsmydWpOFts7vtL4PTLSizsdebw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/cspell-grammar@8.16.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 73605
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"8.17.0": {
+			"name": "cspell-grammar",
+			"version": "8.17.0",
+			"dependencies": {
+				"@cspell/cspell-pipe": "8.17.0",
+				"@cspell/cspell-types": "8.17.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0"
+			},
+			"bin": {
+				"cspell-grammar": "bin.mjs"
+			},
+			"dist": {
+				"integrity": "sha512-2lvxGetbpCNRZJeGK1AjtBnDYD9gc3lPcjD4wFunPMMQbfi3p/pCUrNtMv8eA/pHaF403ah0MQfS/hgdLczoww==",
+				"shasum": "6da725eaf8730c3e3bd2441bb3c62dc8e2324257",
+				"tarball": "https://registry.npmjs.org/cspell-grammar/-/cspell-grammar-8.17.0.tgz",
+				"fileCount": 62,
+				"unpackedSize": 73605,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/cspell-grammar@8.17.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -4992,7 +5028,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIB0bK/V22ICjc3nYv5s6t/RY4VlDgzpsg98l6rdCEy34AiAfyTWkp28lXFuoLR6wsmydWpOFts7vtL4PTLSizsdebw=="
+						"sig": "MEYCIQDkS5pBHmsEyL6N7V68kiE3sH4TllKWSt+BtBj30qzn6wIhAIVBfTfRJj+iAw5qd1wKlBHoHtJHDSDhWx5/tq+p+/GU"
 					}
 				]
 			},
