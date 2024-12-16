@@ -402,6 +402,7 @@ export interface TestController {}
 export interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
+  props: any;
   abort(reason?: any): void;
 }
 export type ExportedHandlerFetchHandler<
@@ -422,6 +423,11 @@ export type ExportedHandlerTraceHandler<Env = unknown> = (
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
+export type ExportedHandlerTailStreamHandler<Env = unknown> = (
+  event: TailStream.TailEvent,
+  env: Env,
+  ctx: ExecutionContext,
+) => TailStream.TailEventHandlerType | Promise<TailStream.TailEventHandlerType>;
 export type ExportedHandlerScheduledHandler<Env = unknown> = (
   controller: ScheduledController,
   env: Env,
@@ -445,6 +451,7 @@ export interface ExportedHandler<
   fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata>;
   tail?: ExportedHandlerTailHandler<Env>;
   trace?: ExportedHandlerTraceHandler<Env>;
+  tailStream?: ExportedHandlerTailStreamHandler<Env>;
   scheduled?: ExportedHandlerScheduledHandler<Env>;
   test?: ExportedHandlerTestHandler<Env>;
   email?: EmailExportedHandler<Env>;
@@ -496,7 +503,7 @@ export interface Cloudflare {
 }
 export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
-  alarm?(): void | Promise<void>;
+  alarm?(alarmInfo?: AlarmInvocationInfo): void | Promise<void>;
   webSocketMessage?(
     ws: WebSocket,
     message: string | ArrayBuffer,
@@ -646,6 +653,7 @@ export interface DurableObjectStorage {
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
   onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
   waitForBookmark(bookmark: string): Promise<void>;
+  readonly primary?: DurableObjectStub;
   ensureReplicas(): void;
 }
 export interface DurableObjectListOptions {
@@ -3804,7 +3812,7 @@ export type GatewayOptions = {
 };
 export type AiGatewayPatchLog = {
   score?: number | null;
-  feedback?: -1 | 1 | "-1" | "1" | null;
+  feedback?: -1 | 1 | null;
   metadata?: Record<string, number | string | boolean | null | bigint> | null;
 };
 export type AiGatewayLog = {
@@ -3834,11 +3842,57 @@ export type AiGatewayLog = {
   response_head_complete: boolean;
   created_at: Date;
 };
+export type AIGatewayProviders =
+  | "workers-ai"
+  | "anthropic"
+  | "aws-bedrock"
+  | "azure-openai"
+  | "google-vertex-ai"
+  | "huggingface"
+  | "openai"
+  | "perplexity-ai"
+  | "replicate"
+  | "groq"
+  | "cohere"
+  | "google-ai-studio"
+  | "mistral"
+  | "grok"
+  | "openrouter";
+export type AIGatewayHeaders = {
+  "cf-aig-metadata":
+    | Record<string, number | string | boolean | null | bigint>
+    | string;
+  "cf-aig-custom-cost":
+    | {
+        per_token_in?: number;
+        per_token_out?: number;
+      }
+    | {
+        total_cost?: number;
+      }
+    | string;
+  "cf-aig-cache-ttl": number | string;
+  "cf-aig-skip-cache": boolean | string;
+  "cf-aig-cache-key": string;
+  "cf-aig-collect-log": boolean | string;
+  Authorization: string;
+  "Content-Type": string;
+  [key: string]: string | number | boolean | object;
+};
+export type AIGatewayUniversalRequest = {
+  provider: AIGatewayProviders | string; // eslint-disable-line
+  endpoint: string;
+  headers: Partial<AIGatewayHeaders>;
+  query: unknown;
+};
 export interface AiGatewayInternalError extends Error {}
 export interface AiGatewayLogNotFound extends Error {}
 export declare abstract class AiGateway {
   patchLog(logId: string, data: AiGatewayPatchLog): Promise<void>;
   getLog(logId: string): Promise<AiGatewayLog>;
+  run(
+    data: AIGatewayUniversalRequest | AIGatewayUniversalRequest[],
+  ): Promise<Response>;
 }
 export interface BasicImageTransformations {
   /**
@@ -5376,6 +5430,198 @@ export declare namespace Rpc {
       Reserved | symbol | keyof StubBase<never>
     >]: MethodOrProperty<T[K]>;
   };
+}
+export declare namespace TailStream {
+  interface Header {
+    readonly name: string;
+    readonly value: string;
+  }
+  interface FetchEventInfo {
+    readonly type: "fetch";
+    readonly method: string;
+    readonly url: string;
+    readonly cfJson: string;
+    readonly headers: Header[];
+  }
+  interface JsRpcEventInfo {
+    readonly type: "jsrpc";
+    readonly methodName: string;
+  }
+  interface ScheduledEventInfo {
+    readonly type: "scheduled";
+    readonly scheduledTime: Date;
+    readonly cron: string;
+  }
+  interface AlarmEventInfo {
+    readonly type: "alarm";
+    readonly scheduledTime: Date;
+  }
+  interface QueueEventInfo {
+    readonly type: "queue";
+    readonly queueName: string;
+    readonly batchSize: number;
+  }
+  interface EmailEventInfo {
+    readonly type: "email";
+    readonly mailFrom: string;
+    readonly rcptTo: string;
+    readonly rawSize: number;
+  }
+  interface TraceEventInfo {
+    readonly type: "trace";
+    readonly traces: (string | null)[];
+  }
+  interface HibernatableWebSocketEventInfoMessage {
+    readonly type: "message";
+  }
+  interface HibernatableWebSocketEventInfoError {
+    readonly type: "error";
+  }
+  interface HibernatableWebSocketEventInfoClose {
+    readonly type: "close";
+    readonly code: number;
+    readonly wasClean: boolean;
+  }
+  interface HibernatableWebSocketEventInfo {
+    readonly type: "hibernatableWebSocket";
+    readonly info:
+      | HibernatableWebSocketEventInfoClose
+      | HibernatableWebSocketEventInfoError
+      | HibernatableWebSocketEventInfoMessage;
+  }
+  interface Resume {
+    readonly type: "resume";
+    readonly attachment?: any;
+  }
+  interface CustomEventInfo {
+    readonly type: "custom";
+  }
+  interface FetchResponseInfo {
+    readonly type: "fetch";
+    readonly statusCode: number;
+  }
+  type EventOutcome =
+    | "ok"
+    | "canceled"
+    | "exception"
+    | "unknown"
+    | "killSwitch"
+    | "daemonDown"
+    | "exceededCpu"
+    | "exceededMemory"
+    | "loadShed"
+    | "responseStreamDisconnected"
+    | "scriptNotFound";
+  interface ScriptVersion {
+    readonly id: string;
+    readonly tag?: string;
+    readonly message?: string;
+  }
+  interface Trigger {
+    readonly traceId: string;
+    readonly invocationId: string;
+    readonly spanId: string;
+  }
+  interface Onset {
+    readonly type: "onset";
+    readonly dispatchNamespace?: string;
+    readonly entrypoint?: string;
+    readonly scriptName?: string;
+    readonly scriptTags?: string[];
+    readonly scriptVersion?: ScriptVersion;
+    readonly trigger?: Trigger;
+    readonly info:
+      | FetchEventInfo
+      | JsRpcEventInfo
+      | ScheduledEventInfo
+      | AlarmEventInfo
+      | QueueEventInfo
+      | EmailEventInfo
+      | TraceEventInfo
+      | HibernatableWebSocketEventInfo
+      | Resume
+      | CustomEventInfo;
+  }
+  interface Outcome {
+    readonly type: "outcome";
+    readonly outcome: EventOutcome;
+    readonly cpuTime: number;
+    readonly wallTime: number;
+  }
+  interface Hibernate {
+    readonly type: "hibernate";
+  }
+  interface SpanOpen {
+    readonly type: "spanOpen";
+    readonly op?: string;
+    readonly info?: FetchEventInfo | JsRpcEventInfo | Attribute[];
+  }
+  interface SpanClose {
+    readonly type: "spanClose";
+    readonly outcome: EventOutcome;
+  }
+  interface DiagnosticChannelEvent {
+    readonly type: "diagnosticChannel";
+    readonly channel: string;
+    readonly message: any;
+  }
+  interface Exception {
+    readonly type: "exception";
+    readonly name: string;
+    readonly message: string;
+    readonly stack?: string;
+  }
+  interface Log {
+    readonly type: "log";
+    readonly level: "debug" | "error" | "info" | "log" | "warn";
+    readonly message: string;
+  }
+  interface Return {
+    readonly type: "return";
+    readonly info?: FetchResponseInfo | Attribute[];
+  }
+  interface Link {
+    readonly type: "link";
+    readonly label?: string;
+    readonly traceId: string;
+    readonly invocationId: string;
+    readonly spanId: string;
+  }
+  interface Attribute {
+    readonly type: "attribute";
+    readonly name: string;
+    readonly value: string | string[] | boolean | boolean[] | number | number[];
+  }
+  type Mark =
+    | DiagnosticChannelEvent
+    | Exception
+    | Log
+    | Return
+    | Link
+    | Attribute[];
+  interface TailEvent {
+    readonly traceId: string;
+    readonly invocationId: string;
+    readonly spanId: string;
+    readonly timestamp: Date;
+    readonly sequence: number;
+    readonly event: Onset | Outcome | Hibernate | SpanOpen | SpanClose | Mark;
+  }
+  type TailEventHandler = (event: TailEvent) => void | Promise<void>;
+  type TailEventHandlerName =
+    | "onset"
+    | "outcome"
+    | "hibernate"
+    | "spanOpen"
+    | "spanClose"
+    | "diagnosticChannel"
+    | "exception"
+    | "log"
+    | "return"
+    | "link"
+    | "attribute";
+  type TailEventHandlerObject = Record<TailEventHandlerName, TailEventHandler>;
+  type TailEventHandlerType = TailEventHandler | TailEventHandlerObject;
 }
 // Copyright (c) 2022-2023 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
