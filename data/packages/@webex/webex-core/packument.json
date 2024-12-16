@@ -5,8 +5,8 @@
 		"beta": "3.0.0-beta.424",
 		"legacy": "2.60.4",
 		"wxcc": "3.5.0-wxcc.1",
-		"next": "3.7.0-next.1",
-		"latest": "3.7.0"
+		"latest": "3.7.0",
+		"next": "3.7.0-next.2"
 	},
 	"versions": {
 		"1.52.8": {
@@ -53353,12 +53353,67 @@
 			"name": "@webex/webex-core",
 			"version": "3.7.0-next.1",
 			"dependencies": {
+				"uuid": "^3.3.2",
+				"lodash": "^4.17.21",
+				"crypto-js": "^4.1.1",
+				"jsonwebtoken": "^9.0.0",
 				"@webex/common": "3.7.0-next.1",
-				"@webex/common-timers": "3.7.0-next.1",
+				"ampersand-state": "^5.0.3",
+				"core-decorators": "^0.20.0",
 				"@webex/http-core": "3.7.0-next.1",
-				"@webex/internal-plugin-device": "3.7.0-next.1",
+				"ampersand-events": "^2.0.2",
+				"@webex/common-timers": "3.7.0-next.1",
 				"@webex/plugin-logger": "3.7.0-next.1",
+				"ampersand-collection": "^2.0.2",
 				"@webex/storage-adapter-spec": "3.7.0-next.1",
+				"@webex/internal-plugin-device": "3.7.0-next.1"
+			},
+			"devDependencies": {
+				"chai": "^4.3.4",
+				"sinon": "^9.2.4",
+				"eslint": "^8.24.0",
+				"prettier": "^2.7.1",
+				"@babel/core": "^7.17.10",
+				"chai-as-promised": "^7.1.1",
+				"@webex/legacy-tools": "0.0.0",
+				"@sinonjs/fake-timers": "^6.0.1",
+				"@webex/test-helper-chai": "3.7.0-next.1",
+				"@webex/test-helper-mocha": "3.7.0-next.1",
+				"@webex/jest-config-legacy": "0.0.0",
+				"@webex/babel-config-legacy": "0.0.0",
+				"@webex/eslint-config-legacy": "0.0.0",
+				"@webex/test-helper-mock-webex": "3.7.0-next.1",
+				"@webex/test-helper-test-users": "3.7.0-next.1",
+				"@webex/test-helper-make-local-url": "3.7.0-next.1",
+				"@webex/test-helper-refresh-callback": "3.7.0-next.1"
+			},
+			"dist": {
+				"shasum": "b0c1cfd11879866a1fbbfdbf1a50345402707ae1",
+				"tarball": "https://registry.npmjs.org/@webex/webex-core/-/webex-core-3.7.0-next.1.tgz",
+				"fileCount": 204,
+				"integrity": "sha512-xTtoYPsT3GuGpLSQo1leoNV3yuxPZ5b+1NUJC8X52tVij0i0bQ4fgk9ZKbQd8jStOCIgEMwdXGw3sNNXqulRow==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDTuXxusbg0+G8zEKaDIEoNurYUZJWDBCv/K+kwUytSxAIgLNt1J70tgeKEZnreJy+i6pQgV+JASJc3dIGQxGgxoik=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1398871
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"3.7.0-next.2": {
+			"name": "@webex/webex-core",
+			"version": "3.7.0-next.2",
+			"dependencies": {
+				"@webex/common": "3.7.0-next.2",
+				"@webex/common-timers": "3.7.0-next.2",
+				"@webex/http-core": "3.7.0-next.2",
+				"@webex/internal-plugin-device": "3.7.0-next.2",
+				"@webex/plugin-logger": "3.7.0-next.2",
+				"@webex/storage-adapter-spec": "3.7.0-next.2",
 				"ampersand-collection": "^2.0.2",
 				"ampersand-events": "^2.0.2",
 				"ampersand-state": "^5.0.3",
@@ -53375,12 +53430,12 @@
 				"@webex/eslint-config-legacy": "0.0.0",
 				"@webex/jest-config-legacy": "0.0.0",
 				"@webex/legacy-tools": "0.0.0",
-				"@webex/test-helper-chai": "3.7.0-next.1",
-				"@webex/test-helper-make-local-url": "3.7.0-next.1",
-				"@webex/test-helper-mocha": "3.7.0-next.1",
-				"@webex/test-helper-mock-webex": "3.7.0-next.1",
-				"@webex/test-helper-refresh-callback": "3.7.0-next.1",
-				"@webex/test-helper-test-users": "3.7.0-next.1",
+				"@webex/test-helper-chai": "3.7.0-next.2",
+				"@webex/test-helper-make-local-url": "3.7.0-next.2",
+				"@webex/test-helper-mocha": "3.7.0-next.2",
+				"@webex/test-helper-mock-webex": "3.7.0-next.2",
+				"@webex/test-helper-refresh-callback": "3.7.0-next.2",
+				"@webex/test-helper-test-users": "3.7.0-next.2",
 				"chai": "^4.3.4",
 				"chai-as-promised": "^7.1.1",
 				"eslint": "^8.24.0",
@@ -53388,15 +53443,15 @@
 				"sinon": "^9.2.4"
 			},
 			"dist": {
-				"shasum": "b0c1cfd11879866a1fbbfdbf1a50345402707ae1",
-				"integrity": "sha512-xTtoYPsT3GuGpLSQo1leoNV3yuxPZ5b+1NUJC8X52tVij0i0bQ4fgk9ZKbQd8jStOCIgEMwdXGw3sNNXqulRow==",
-				"tarball": "https://registry.npmjs.org/@webex/webex-core/-/webex-core-3.7.0-next.1.tgz",
+				"shasum": "6c95d2e22806abe1cf13770ef5dd9e3b10e0b8ab",
+				"integrity": "sha512-9PuGFPGoS3g5N+BtrWKi/ZreInLwl7OtvfJFWVTRx0U6hQNq3g0PvFizmCNnS5li+KJzmZdQSkwbL/T1lZcs9Q==",
+				"tarball": "https://registry.npmjs.org/@webex/webex-core/-/webex-core-3.7.0-next.2.tgz",
 				"fileCount": 204,
-				"unpackedSize": 1398871,
+				"unpackedSize": 1399801,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDTuXxusbg0+G8zEKaDIEoNurYUZJWDBCv/K+kwUytSxAIgLNt1J70tgeKEZnreJy+i6pQgV+JASJc3dIGQxGgxoik="
+						"sig": "MEUCIGTyhOuOnmnCRA+30vuq/XOmXLMMKRE+jNYiujOuP3QFAiEA5XoPyj8Oxb6GgmHunze5Gm9CVGbrHbUnYSQHoU8H5ug="
 					}
 				]
 			},
