@@ -1,11 +1,6 @@
 <div class="mb2 gray5">11 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-http-2-prioritization-for-a-faster-web">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/better-http-2-prioritization-for-a-faster-web">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/better-http-2-prioritization-for-a-faster-web">日本語</a>, <a href="https://blog.cloudflare.com/es-es/better-http-2-prioritization-for-a-faster-web">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/better-http-2-prioritization-for-a-faster-web">Français</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-http-2-prioritization-for-a-faster-web">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/better-http-2-prioritization-for-a-faster-web">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/better-http-2-prioritization-for-a-faster-web">日本語</a>, <a href="https://blog.cloudflare.com/es-es/better-http-2-prioritization-for-a-faster-web">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/better-http-2-prioritization-for-a-faster-web">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xRrQyTeAXk1Noqos1Fs2o/64b177f265bc445141425ecd2a05ba4c/better-http-2-prioritization-for-a-faster-web.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j4rvXLTKgqCZFp2iPVXbe/e233c11eda52783682410685cb492308/http2-prioritization.png" alt="HTTP/2 Prioritization" class="kg-image" width="1600" height="1122" loading="lazy">
-
-	</figure>
 	<p>HTTP/2 promised a much faster web and Cloudflare rolled out HTTP/2 access for all our customers long, long ago. But one feature of HTTP/2, Prioritization, didn’t live up to the hype. Not because it was fundamentally broken but because of the way browsers implemented it.</p>
 	<p>Today Cloudflare is pushing out a change to HTTP/2 Prioritization that gives our servers control of prioritization decisions that truly make the web much faster.</p>
 	<p>Historically the browser has been in control of deciding how and when web content is loaded. Today we are introducing a radical change to that model for all paid plans that puts control into the hands of the site owner directly. Customers can enable “Enhanced HTTP/2 Prioritization” in the Speed tab of the Cloudflare dashboard: this overrides the browser defaults with an improved scheduling scheme that results in a significantly faster visitor experience (we have seen 50% faster on multiple occasions). With <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a>, site owners can take this a step further and fully customize the experience to their specific needs.</p>
@@ -80,49 +75,24 @@
 		</a>
 	</div>
 	<p>For illustrative purposes, we will use a simplified product category page from a typical <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>. In this example the page has:</p>
-	<ul>
-		<li>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OIMMAGl8LZikj4It8RAYg/96a1907773267633865d327e62dea3e7/html-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
-
-			</figure>
-			<p> The HTML file for the page itself, represented by a blue box.</p>
+	<ul style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);border-width:0px;color:rgb(51, 51, 51);font-family:&quot;Open Sans&quot;, Helvetica, Arial, sans-serif;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-emoji:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variant-position:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;list-style:outside disc;margin-bottom:0px;margin-right:0px;margin-top:1.5em;orphans:2;padding:0px;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-spacing:0px;">
+		<li style="border-width:0px;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;vertical-align:baseline;">
+			<p style="margin-left:2em;"><img class="image_resized" style="aspect-ratio:50/50;border-width:0px;display:inline;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px auto;max-height:2em;max-width:100%;padding:2px;vertical-align:middle;width:4.79%;" src="https://images.ctfassets.net/zkvhlag99gkb/145sNNiiOcM6IHvlHCPrKN/2bf1eda5852c3cbef911230fa4c5b327/html-1.png?h=50" width="50" height="50" alt=""> The HTML file for the page itself, represented by a blue box.</p>
 		</li>
-		<li>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BP5CWQGXtZ8sWj4SJlyVf/dd3304c7a9ae5d21ad1f84880fb2d41c/css-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
-
-			</figure>
-			<p> 1 external stylesheet (CSS file), represented by a green box.</p>
+		<li style="border-width:0px;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;vertical-align:baseline;">
+			<p style="margin-left:2em;"><img style="border-width:0px;display:inline;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;height:auto;line-height:inherit;margin:0px auto;max-height:2em;max-width:100%;padding:2px;vertical-align:middle;" src="https://images.ctfassets.net/zkvhlag99gkb/4BsBnjaP0Lf79mAiFfAecf/1270b865cbc581082352c89f8c1ecef4/css-1.png?h=50" width="50" height="50" alt=""> 1 external stylesheet (CSS file), represented by a green box.</p>
 		</li>
-		<li>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3noRXnXFonNFph0rYzLvPv/4cb372a4e370eaf1e4dfd28eac5d5d51/script-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
-
-			</figure>
-			<p> 4 external scripts (JavaScript), represented by orange boxes. 2 of the scripts are blocking at the beginning of the page and 2 are asynchronous. The blocking script boxes use a darker shade of orange.</p>
+		<li style="border-width:0px;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;vertical-align:baseline;">
+			<p style="margin-left:2em;"><img style="border-width:0px;display:inline;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;height:auto;line-height:inherit;margin:0px auto;max-height:2em;max-width:100%;padding:2px;vertical-align:middle;" src="https://images.ctfassets.net/zkvhlag99gkb/hpncpQ52hkS4CtiZuIs05/98953dd0e08b5c8d0bbb4d4cba5aa731/script-1.png" width="50" height="50" alt=""> 4 external scripts (JavaScript), represented by orange boxes. 2 of the scripts are blocking at the beginning of the page and 2 are asynchronous. The blocking script boxes use a darker shade of orange.</p>
 		</li>
-		<li>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GtlFz84dSeXdWAUCu9ROy/307487b2d0c4ed24439246f7056cc136/font-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
-
-			</figure>
-			<p> 1 custom web font, represented by a red box.</p>
+		<li style="border-width:0px;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;vertical-align:baseline;">
+			<p style="margin-left:2em;"><img style="border-width:0px;display:inline;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;height:auto;line-height:inherit;margin:0px auto;max-height:2em;max-width:100%;padding:2px;vertical-align:middle;" src="https://images.ctfassets.net/zkvhlag99gkb/59Odb7qJYEVNtcMILE7V1l/a59365e9c52bae8607237513e4b6f583/font-1.png" width="50" height="50" alt=""> 1 custom web font, represented by a red box.</p>
 		</li>
-		<li>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iuJKYAeJY7Ls3eet2ugyn/ff630135ca693a8a37f2181a88a82888/image-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
-
-			</figure>
-			<p> 13 images, represented by purple boxes. The page logo and 4 of the product images are visible in the viewport and 8 of the product images require scrolling to see. The 5 visible images use a darker shade of purple.</p>
+		<li style="border-width:0px;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin-bottom:0px;margin-right:0px;margin-top:0px;padding:0px;vertical-align:baseline;">
+			<p style="margin-left:2em;"><img style="border-width:0px;display:inline;font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-size:15px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;height:auto;line-height:inherit;margin:0px auto;max-height:2em;max-width:100%;padding:2px;vertical-align:middle;" src="https://images.ctfassets.net/zkvhlag99gkb/6Vu0MFw5Jmo9DKkBiNhTq4/dafbe4485dee9aeec87685728ec7b926/image-1.png" width="50" height="50" alt=""> 13 images, represented by purple boxes. The page logo and 4 of the product images are visible in the viewport and 8 of the product images require scrolling to see. The 5 visible images use a darker shade of purple.</p>
 		</li>
 	</ul>
-	<p>For simplicity, we will assume that all of the resources are the same size and each takes 1 second to download on the visitor’s connection. Loading everything takes a total of 20 seconds, but HOW it is loaded can have a huge <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">impact</a> to the experience.</p>
+	<p>For simplicity, we will assume that all the resources are the same size and each takes 1 second to download on the visitor’s connection. Loading everything takes a total of 20 seconds, but HOW it is loaded can have a huge <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">impact</a> to the experience.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZDzhZm88h13LKAQAlmJ3W/0283bd74ba6c85042717a096a1aa00ba/optimal-1.png" alt="Optimal Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
@@ -352,4 +322,5 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36yaMZfdrrrZlYjivB5xnY/8730346008c9a991586a91b61754fd1c/speed-week-copy-2_2x.png" alt="Cloudflare Speed Week" class="kg-image" width="1500" height="708" loading="lazy">
 
 	</figure>
+	<p></p>
 </div>
