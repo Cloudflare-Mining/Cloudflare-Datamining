@@ -1451,5 +1451,464 @@
 			"IP Prefixes: Write",
 			"IP Prefixes: BGP On Demand Write"
 		]
+	},
+	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
+		"description": "Create a BGP prefix, controlling the BGP advertisement status of a specific subnet. When created, BGP prefixes are initially withdrawn, and can be advertised with the Update BGP Prefix API.",
+		"operationId": "ip-address-management-prefixes-create-bgp-prefix",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "prefix_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cidr": {
+								"description": "IP Prefix in Classless Inter-Domain Routing format.",
+								"example": "192.0.2.0/24",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"asn": {
+													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"example": 209242,
+													"nullable": true,
+													"type": "integer"
+												},
+												"bgp_signal_opts": {
+													"properties": {
+														"enabled": {
+															"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
+															"example": false,
+															"type": "boolean"
+														},
+														"modified_at": {
+															"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"cidr": {
+													"description": "IP Prefix in Classless Inter-Domain Routing format.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"on_demand": {
+													"properties": {
+														"advertised": {
+															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
+														"advertised_modified_at": {
+															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"on_demand_enabled": {
+															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"on_demand_locked": {
+															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+															"example": false,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create BGP Prefix response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"asn": {
+															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"example": 209242,
+															"nullable": true,
+															"type": "integer"
+														},
+														"bgp_signal_opts": {
+															"properties": {
+																"enabled": {
+																	"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"modified_at": {
+																	"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"cidr": {
+															"description": "IP Prefix in Classless Inter-Domain Routing format.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"modified_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"on_demand": {
+															"properties": {
+																"advertised": {
+																	"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"advertised_modified_at": {
+																	"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"on_demand_enabled": {
+																	"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"on_demand_locked": {
+																	"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create BGP Prefix response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create BGP Prefix",
+		"tags": [
+			"IP Address Management BGP Prefixes"
+		]
 	}
 }

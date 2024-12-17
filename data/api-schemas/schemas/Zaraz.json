@@ -158,6 +158,26 @@
 														"zarazVersion": 43
 													},
 													"properties": {
+														"analytics": {
+															"description": "Cloudflare Monitoring settings.",
+															"properties": {
+																"defaultPurpose": {
+																	"description": "Consent purpose assigned to Monitoring.",
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether Advanced Monitoring reports are enabled.",
+																	"type": "boolean"
+																},
+																"sessionExpTime": {
+																	"description": "Session expiration time (seconds).",
+																	"maximum": 86400,
+																	"minimum": 60,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
 														"consent": {
 															"description": "Consent management configuration.",
 															"properties": {
@@ -1661,6 +1681,26 @@
 														"zarazVersion": 43
 													},
 													"properties": {
+														"analytics": {
+															"description": "Cloudflare Monitoring settings.",
+															"properties": {
+																"defaultPurpose": {
+																	"description": "Consent purpose assigned to Monitoring.",
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether Advanced Monitoring reports are enabled.",
+																	"type": "boolean"
+																},
+																"sessionExpTime": {
+																	"description": "Session expiration time (seconds).",
+																	"maximum": 86400,
+																	"minimum": 60,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
 														"consent": {
 															"description": "Consent management configuration.",
 															"properties": {
@@ -3102,6 +3142,26 @@
 										"zarazVersion": 43
 									},
 									"properties": {
+										"analytics": {
+											"description": "Cloudflare Monitoring settings.",
+											"properties": {
+												"defaultPurpose": {
+													"description": "Consent purpose assigned to Monitoring.",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether Advanced Monitoring reports are enabled.",
+													"type": "boolean"
+												},
+												"sessionExpTime": {
+													"description": "Session expiration time (seconds).",
+													"maximum": 86400,
+													"minimum": 60,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
 										"consent": {
 											"description": "Consent management configuration.",
 											"properties": {
@@ -4966,6 +5026,26 @@
 																			"zarazVersion": 43
 																		},
 																		"properties": {
+																			"analytics": {
+																				"description": "Cloudflare Monitoring settings.",
+																				"properties": {
+																					"defaultPurpose": {
+																						"description": "Consent purpose assigned to Monitoring.",
+																						"type": "string"
+																					},
+																					"enabled": {
+																						"description": "Whether Advanced Monitoring reports are enabled.",
+																						"type": "boolean"
+																					},
+																					"sessionExpTime": {
+																						"description": "Session expiration time (seconds).",
+																						"maximum": 86400,
+																						"minimum": 60,
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
 																			"consent": {
 																				"description": "Consent management configuration.",
 																				"properties": {
@@ -6924,6 +7004,26 @@
 									"zarazVersion": 43
 								},
 								"properties": {
+									"analytics": {
+										"description": "Cloudflare Monitoring settings.",
+										"properties": {
+											"defaultPurpose": {
+												"description": "Consent purpose assigned to Monitoring.",
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Whether Advanced Monitoring reports are enabled.",
+												"type": "boolean"
+											},
+											"sessionExpTime": {
+												"description": "Session expiration time (seconds).",
+												"maximum": 86400,
+												"minimum": 60,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
 									"consent": {
 										"description": "Consent management configuration.",
 										"properties": {
@@ -8296,6 +8396,26 @@
 														"zarazVersion": 43
 													},
 													"properties": {
+														"analytics": {
+															"description": "Cloudflare Monitoring settings.",
+															"properties": {
+																"defaultPurpose": {
+																	"description": "Consent purpose assigned to Monitoring.",
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether Advanced Monitoring reports are enabled.",
+																	"type": "boolean"
+																},
+																"sessionExpTime": {
+																	"description": "Session expiration time (seconds).",
+																	"maximum": 86400,
+																	"minimum": 60,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
 														"consent": {
 															"description": "Consent management configuration.",
 															"properties": {
@@ -9812,6 +9932,26 @@
 														"zarazVersion": 43
 													},
 													"properties": {
+														"analytics": {
+															"description": "Cloudflare Monitoring settings.",
+															"properties": {
+																"defaultPurpose": {
+																	"description": "Consent purpose assigned to Monitoring.",
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether Advanced Monitoring reports are enabled.",
+																	"type": "boolean"
+																},
+																"sessionExpTime": {
+																	"description": "Session expiration time (seconds).",
+																	"maximum": 86400,
+																	"minimum": 60,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
 														"consent": {
 															"description": "Consent management configuration.",
 															"properties": {

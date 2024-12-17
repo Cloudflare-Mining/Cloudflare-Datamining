@@ -288,6 +288,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
+		"description": "Lists and sorts an account’s targets. Filters are optional and are ORed\ntogether. However, when a timestamp is specified with both its before and\nafter counterparts, the timestamp filters are ANDed.",
 		"operationId": "infra-targets-list",
 		"parameters": [
 			{
@@ -349,7 +350,17 @@
 				}
 			},
 			{
-				"description": "Date and time at which the target was created",
+				"description": "Date and time at which the target was created before (inclusive)",
+				"in": "query",
+				"name": "created_before",
+				"schema": {
+					"format": "date-time",
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Date and time at which the target was created after (inclusive)",
 				"in": "query",
 				"name": "created_after",
 				"schema": {
@@ -359,13 +370,34 @@
 				}
 			},
 			{
-				"description": "Date and time at which the target was modified",
+				"description": "Date and time at which the target was modified before (inclusive)",
+				"in": "query",
+				"name": "modified_before",
+				"schema": {
+					"format": "date-time",
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Date and time at which the target was modified after (inclusive)",
 				"in": "query",
 				"name": "modified_after",
 				"schema": {
 					"format": "date-time",
 					"nullable": true,
 					"type": "string"
+				}
+			},
+			{
+				"description": "Filters for targets that have any of the following IP addresses. Specify\n`ips` multiple times in query parameter to build list of candidates.",
+				"in": "query",
+				"name": "ips",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -389,6 +421,34 @@
 					"maximum": 1000,
 					"minimum": 1,
 					"type": "integer"
+				}
+			},
+			{
+				"description": "The field to sort by.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"enum": [
+						"hostname",
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The sorting direction.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"asc",
+								"desc"
+							],
+							"type": "string"
+						}
+					]
 				}
 			}
 		],
