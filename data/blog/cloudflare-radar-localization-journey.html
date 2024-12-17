@@ -149,10 +149,6 @@ export default function TrafficChart() {
 			</svg>
 		</a>
 	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rcU3cH7ZXfsn5bxmx11UG/60e9ebfbec19caed3553e8d3b63828fd/image7.png" alt="" class="kg-image" width="847" height="614" loading="lazy">
-	</figure>
 	<p>In English, you can easily chain-connect words because most words lack <a href="https://en.wikipedia.org/wiki/Inflection"><u>inflections</u></a>. Almost all programming languages are designed using the English language in mind. An old linguist joke goes like: <i>an English teacher: a teacher of English or a teacher from England? </i>Case in point, it would be nightmarish to translate this example:</p>
 	<p><code>A lovely little old rectangular green French silver whittling knife</code>&nbsp;</p>
 	<p>Most Western languages need to connect words with some <i>glue</i>: prepositions, articles, or inflections. This is why, in general, string concatenation (putting together sentences or sentence parts by combining two or more strings) is a terrible practice for localization, even though it seems efficient from a development point of view. You can’t assume that all languages follow the same sentence structure as English. Most languages don’t.</p>
@@ -171,6 +167,9 @@ export default function TrafficChart() {
 		</a>
 	</div>
 	<p>As with string concatenation, string reuse (using the same string in more than one place and just swapping out the contents of a placeholder) seems efficient if you’re a developer. A problem arises when translating this into gendered languages, such as most European languages. In Spanish, depending on its position and context, a word as simple as “open” standing by itself, could have all these different translations:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rcU3cH7ZXfsn5bxmx11UG/60e9ebfbec19caed3553e8d3b63828fd/image7.png" alt="" class="kg-image" width="847" height="614" loading="lazy">
+	</figure>
 	<p>Translators will need to know what will replace the placeholders in strings like the one below, because the surrounding wording may refer to a term that is masculine, feminine, or neutral (for languages that have those, such as German). If a placeholder could be more than one of these (a masculine noun but also a feminine noun), the translation will become grammatically incorrect in at least some of the cases. In the following example, translators would need to know what <code>{link1}</code> and <code>{link2}</code> will be replaced with, so they know which grammatically correct wording to use around them.</p>
 	<p><code>Your use of the URL Scanner is subject to our {{link1}}. Any personal data in a submitted URL will be handled in accordance with our {{link2}}</code>.</p>
 	<p>A better way to do this is to have component placeholders and include the text to be translated for context:</p>
