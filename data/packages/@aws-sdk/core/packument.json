@@ -1,7 +1,7 @@
 {
 	"name": "@aws-sdk/core",
 	"dist-tags": {
-		"latest": "3.713.0"
+		"latest": "3.714.0"
 	},
 	"versions": {
 		"3.429.0": {
@@ -2549,7 +2549,47 @@
 			"name": "@aws-sdk/core",
 			"version": "3.713.0",
 			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/core": "^2.5.5",
+				"@smithy/types": "^3.7.2",
 				"@aws-sdk/types": "3.713.0",
+				"fast-xml-parser": "4.4.1",
+				"@smithy/signature-v4": "^4.2.4",
+				"@smithy/protocol-http": "^4.1.8",
+				"@smithy/smithy-client": "^3.5.0",
+				"@smithy/util-middleware": "^3.0.11",
+				"@smithy/property-provider": "^3.1.11",
+				"@smithy/node-config-provider": "^3.1.12"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typescript": "~4.9.5",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "7938561d078d36af301aec6b69b9d4b38ab7ce30",
+				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.713.0.tgz",
+				"fileCount": 93,
+				"integrity": "sha512-7Xq7LY6Q3eITvlqR1bP3cJu3RvTt4eb+WilK85eezPemi9589o6MNL0lu4nL0i+OdgPWw4x9z9WArRwXhHTreg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCC72pqTINUYgy7SMD11B37fn1dH4m09oiT54jfxz7orQIgWPw+GLmbvBgrzOdTTO1kg3ynZhoIsoTYkfumh3wB2v0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 78714
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"3.714.0": {
+			"name": "@aws-sdk/core",
+			"version": "3.714.0",
+			"dependencies": {
+				"@aws-sdk/types": "3.714.0",
 				"@smithy/core": "^2.5.5",
 				"@smithy/node-config-provider": "^3.1.12",
 				"@smithy/property-provider": "^3.1.11",
@@ -2569,15 +2609,15 @@
 				"typescript": "~4.9.5"
 			},
 			"dist": {
-				"integrity": "sha512-7Xq7LY6Q3eITvlqR1bP3cJu3RvTt4eb+WilK85eezPemi9589o6MNL0lu4nL0i+OdgPWw4x9z9WArRwXhHTreg==",
-				"shasum": "7938561d078d36af301aec6b69b9d4b38ab7ce30",
-				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.713.0.tgz",
+				"integrity": "sha512-TlZ50d8MEPVp9O03SvisOmcmxjxhMDKHJJcrBgYjgDej6QmNfiFwtCRkReXDdkEeXP29ehMs7uPXtmVvPqziYw==",
+				"shasum": "f53dbf5aa579f66bf3aa3e3e312b624e70ae871d",
+				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.714.0.tgz",
 				"fileCount": 93,
 				"unpackedSize": 78714,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCC72pqTINUYgy7SMD11B37fn1dH4m09oiT54jfxz7orQIgWPw+GLmbvBgrzOdTTO1kg3ynZhoIsoTYkfumh3wB2v0="
+						"sig": "MEUCIGLIfV2XOPbgHCwWGphCiMaqf2V2K5eAbXXhLbJz9KJKAiEA62y+KYZjXfIdbJHO76Xn+xhkZCjp78OwsRiKr70CwuA="
 					}
 				]
 			},

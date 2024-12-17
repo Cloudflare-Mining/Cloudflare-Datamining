@@ -1,7 +1,7 @@
 {
 	"name": "@mongosh/errors",
 	"dist-tags": {
-		"latest": "2.3.6"
+		"latest": "2.3.7"
 	},
 	"versions": {
 		"0.0.1-alpha.13": {
@@ -2798,9 +2798,40 @@
 			"name": "@mongosh/errors",
 			"version": "2.3.6",
 			"devDependencies": {
-				"@mongodb-js/eslint-config-mongosh": "2.3.6",
-				"@mongodb-js/prettier-config-devtools": "^1.0.1",
+				"chalk": "^4.1.2",
+				"eslint": "^7.25.0",
+				"depcheck": "^1.4.7",
+				"prettier": "^2.8.8",
+				"handlebars": "^4.7.7",
+				"typescript": "^5.3.3",
 				"@mongodb-js/tsconfig-mongosh": "2.3.6",
+				"@mongodb-js/eslint-config-mongosh": "2.3.6",
+				"@mongodb-js/prettier-config-devtools": "^1.0.1"
+			},
+			"dist": {
+				"shasum": "7695f68be96b88d2fe74e804ae077528423b0dc7",
+				"tarball": "https://registry.npmjs.org/@mongosh/errors/-/errors-2.3.6.tgz",
+				"fileCount": 27,
+				"integrity": "sha512-LF2n9WvwzJPRgaBZM9g3eMTX5TgX/PNtV6rYvpPLchzCBLbBObx2/w4/GZEVO/jy5VKLYwA/Ph8lfi+intdL7Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIBr1x+dZI3T/M5CZA0Asm/DoEQXiolxrfGx1p5kdTdgzAiEAnbHJk+4g6bZkqWZu44/M0krL7gRbwCybcNIEDd6iBdY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 55154
+			},
+			"engines": {
+				"node": ">=14.15.1"
+			}
+		},
+		"2.3.7": {
+			"name": "@mongosh/errors",
+			"version": "2.3.7",
+			"devDependencies": {
+				"@mongodb-js/eslint-config-mongosh": "2.3.7",
+				"@mongodb-js/prettier-config-devtools": "^1.0.1",
+				"@mongodb-js/tsconfig-mongosh": "2.3.7",
 				"chalk": "^4.1.2",
 				"depcheck": "^1.4.7",
 				"eslint": "^7.25.0",
@@ -2809,15 +2840,15 @@
 				"typescript": "^5.3.3"
 			},
 			"dist": {
-				"integrity": "sha512-LF2n9WvwzJPRgaBZM9g3eMTX5TgX/PNtV6rYvpPLchzCBLbBObx2/w4/GZEVO/jy5VKLYwA/Ph8lfi+intdL7Q==",
-				"shasum": "7695f68be96b88d2fe74e804ae077528423b0dc7",
-				"tarball": "https://registry.npmjs.org/@mongosh/errors/-/errors-2.3.6.tgz",
+				"integrity": "sha512-WQ7vyeypDYnQIVieNJDF+GhItt46oR9bL2ossWJ9PrTxX57gwV8y1k1YKdhmrWOAVejp5ZDNPWKPyAM5/Ri0Kw==",
+				"shasum": "547d3cf5937329861cd89d6701c9d51f20b5d7f1",
+				"tarball": "https://registry.npmjs.org/@mongosh/errors/-/errors-2.3.7.tgz",
 				"fileCount": 27,
 				"unpackedSize": 55154,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBr1x+dZI3T/M5CZA0Asm/DoEQXiolxrfGx1p5kdTdgzAiEAnbHJk+4g6bZkqWZu44/M0krL7gRbwCybcNIEDd6iBdY="
+						"sig": "MEUCIQDf/RT02FYJB9U+8V+2A4GF1PAbIPfTF2qSfFsXNdImXQIgfNygWC/5HHEEU5WXZZShmFIsV2pkIR4bf2Trw/XyhFw="
 					}
 				]
 			},
