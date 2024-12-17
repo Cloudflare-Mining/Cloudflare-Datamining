@@ -1,0 +1,383 @@
+{
+	"name": "postcss-scope",
+	"dist-tags": {
+		"latest": "1.7.4"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "postcss-scope",
+			"version": "1.0.0",
+			"dist": {
+				"shasum": "2cc78a3a822a0ad02e50236c5f32152bf220e745",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-j/kxXrDXYqxPucYZCbZy2JZT9Mja2Q/ubY4L6I282DUU94n/0ByYqsEmq98GFaBU+9SD39G32gUZ6Frrtf8ssg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDoLbT1Op4wcsHYIIzvg7fwl5wyMWlsPr0L+eLQCsz0XAiBbQtTK/hKHxTCZgYI9idKOsucyphJTb9J8EWC+EAhflA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 226,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQPOMACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrF0Q//WnP+X5QPerQHfJmgeetxq3bT+A+9/JaUfXEjuuG/53O6NbJ4\r\nOf7t+omxejMIr4VBp41M7QaUBVrlnvFu6bbOia53TmjmJyDj8tsZKisz4ge1\r\nyKI/WDTmL8Nkhn05EkkrW8nze7Knkqb5Ogbz2mcRryLiXC7L7f1tJYgWXHuW\r\n5sBGri2JeahchgMsC9hgNn4rSBC74XTchzn6lsPuofI93tIdG4vUjoovZbU7\r\noCIgtZ8rH+tsEwBW76SeVBXwGObiipa65sKoUQ5CDXxyXZ1iS6fujmjybnGw\r\nWVRX+8iv6vj7KT3a1PbUWZ8VYOaX1ovMPxJHJpgfDU5ZllbX/afgHa6uULmN\r\njiLLEPHQjhTFWoCR9j6g2/DeK7vntB+MDdLSOsGteJ6vkmkgbHvYAPTqMntf\r\nVok32KTbTsI4jtZIZ5FErt+kyKbiDKHcFin1mYeCOXOSQYS3l4qxYGzd5DEV\r\nkaXlwuGjTq07oNXp0cE1obqz00rSn+Q1w57GAc+iT5sISYpTSthwEIRta7/E\r\ne2UngkBIFTv01sq5fPoUkCI1Ww6waAlyiOLedMnIoyNo8JiuSBQqRITOi2HP\r\nfu1MoW7xm0FAumsuMq4dh843pQnPUtIKRI1zqrTPgIV08rFs7EhhGT7mMDHy\r\nyo/qqM//a/Iu5dHKLFu+UZoVTg7XDM0RB6I=\r\n=IpMF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "postcss-scope",
+			"version": "1.1.0",
+			"dependencies": {
+				"postcss": "^8.4.23"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "3c084f6f1dceda70b005ccaf9f9476873eb351fd",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.1.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-XJIpTdr39yTQFsAwtN564IBB0QJ/aScIsr1Gj1lqqfDiv+325GhXbcM3YW2R1qK+fInRj6dUOm+Bu6JZwcqO+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIH8huwr4BYgs8O/x97XjXiinQAnTvkXbYUT+yu64SKkAAiEAylUL2cwN6UV49unvZMC1t1tlEQDiC09C6f0wd2nQKAc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 5435,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQQ+vACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqO5A//aZkzWUOtiNJhAhWrV30ybvRut4jw6d+mWm0/bfdELsRyzAf+\r\ncBZZj4eJ9P/3JIahNLNscke2rZyc0yfFv6CwKU0OgQ5ygGEuzu/A6qj8vVnY\r\n3VtdzwqsBV925Xcs+CdogldLHvdln83l8yt8jfFq8Q1DnCmA1cI+w6e1JcaS\r\nDLnmF6t94b4qCPs0kjOqCiTQGnumM+FrneRYPj7Ub5rw9MCHwOGsciOnUB40\r\n9H6R6uGkWzQ6qilhPasKvxs3BjPFPiFMGeuV5ygwsVSg6p+Uyga0RGJrl9an\r\nLYDy1ZfSortWqc9k1NITDH9P2qsChHBx6OSQ3BLY4uyb18+e1eXk41onI+Pv\r\nHQYBvN1YXdw+cofrCD7p7yVlY6aLyNXy8yKNivtDPYgmFkyxCNR00j6wy+lY\r\njC8rX8isdYZDdpiY2SckDM+S9x9p9OjWixpRIL8UV6rLnM7sgmnf9ooJKp3L\r\nTmdjQRr6pXcb02VOqrRhg+D3jecDjiuNEV3yKtH6yZDT3DB+EuZpA2leW9lt\r\nLKj36wIa0pcHcouWUdz73Toxim32QOcxhIKoUfyoy0/2rcUpar3HyEqTR0EQ\r\nAdp29NqRkuwZogbWqCt1lN4yGwLF1CxRy/NIpFOzRv+xOavSDn61/L0fszcC\r\npIUbMjsj9BYPF6ATimdhR0k5tagi6Gstsr0=\r\n=2Wa9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.0": {
+			"name": "postcss-scope",
+			"version": "1.2.0",
+			"dependencies": {
+				"postcss": "^8.4.23"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "a50cff949e34336903362b228662667c2595f831",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.2.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-JWqQpbXLBTG+N8vmlojoLSCakoZLkoZy076Re54rxjRSZ1nS3KeutdzV7wxsz1MidSshyzt+oVEc/ayKRm/PlA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCs5dgEXtDFQ9Sr1O/6rvSC5IE9b/96i6WDBGmulbKAuQIgT4Kp68DWPi483zK8/27VTyg9m06MSD5Wrx4RiJs/MHg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 5507,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQRAmACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmriJg//dKjOV708SG4AgP78QdknAVq45uaq1GI49fRWHt7NaaXM1kZd\r\noupjpg00VX2HWQkj4mxdS7geYlBtzlAVVOWu4xIIK3cX42FBlDYkZQ0KODcx\r\nDiHBhs3V0twrJAQ0nZxDaQu6Ac3fJ2QNe3ZvM1jaUYPvB+2vufsxVV9Ys3ll\r\n5Y86JaXLsIETX2GYoADSidBjGmvup1fAwLjxGsGRukXLd48zMc/gFXqYFjfS\r\nNVnAIjRNMaMOL0Wq2oOSu8nb8xTBK0uVBdGaZLyAL357bFxO+Jx8d0C5Sfnx\r\n9T+mpBGE1ERsZVmfzpvRDTBd4BxCrA7pek/Ml0g44iJWTFsSqFM4oARnFQbV\r\ntv8ZCi5jtRdZ+Ssnct1/bosIgxKtrtcOJOgq0lB3WA+HnVFw3lgp71xlro9n\r\nqT5C9Q2OVdwU+GsGlLLVFUDmofck4yIP4TQOh1dJYKVTfobIa2lKmQnJPSQF\r\nUL8vYP1UASiTLKOkLuTkHovwecgP7YRpvcKw8Gc7g2Vf13CptFn1AUqEv4Ml\r\nhLPHg53INlqImKkkqTy4Lt3uy0BJT2fZdGk3gNaNF2mwlFlOPHKO+tqbAzIs\r\nXeH7wwl9RkGu2D5dmiZp+Sd1Y25SF0yYWVsXzWVzwNmuTY4fV880ybIvyUPx\r\nsheFFFc2STNhDDOr5UrKu3uynPi378/zcSc=\r\n=CnSG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.0": {
+			"name": "postcss-scope",
+			"version": "1.3.0",
+			"dependencies": {
+				"postcss": "^8.4.23"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "8a94ee42fb1ec179bbd4d794ccb25a0aaeb84f19",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-18FCGNhNMZvLK0wfDmSoPWt4lEnpZP6AwfWGNGhSQZkAHNgRzhKupO8cVdFNOUfZ9H94UeUet6rhWouKkMEGsA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGR8OwrXvqhhSDfFh3xY2WKbFuuZxmgP0U54UZzN51zcAiAkYgxx1B2Rq5MK1sV+QRv5vQuqd7hNTMY7qXlnqLajdw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 4701,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQRSfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmohug/+JIltvEE8nOm7KgSpt747IXMR1fbaM8BWmDhs3KCdM3WVeCIy\r\nUvzbU9PKxCSUQKSUNzEWsfBYCea+a8ZZi8EIFTBvgGJdsQZjeDWkWLfrPCZ1\r\nfJwP6I8KCTPq91KZVeX7sy5zTsbt/Sd+2Xt+GMpFpT9uYK1BoHXSp+iiiGuN\r\nKjHET3FSMqw+akXa646VNDqhLZ/oyNvobXkQkxwsxXmvtc7Z1+UPHohNfRLL\r\nOlTVyqaoZPvNcGZq60dkc8FZEnotOrg8E9t1aZfPOqrPLSEa/LZQoNtta6T9\r\noZuh0TM+8owU3xA50P3lqcScne0CDy4WvEHAcfmS63TIp0K6PgytkFo9WZm6\r\n64lk+c4wIYtk3FzhEkmH6NqrG2yRE/piM5f0pq/MCl7kbrcWGXQv5Acc9JAq\r\n6koDyGWd9+WsvP+RqQSBXZ3eXPMkVJGXC1G83nbtkKpHjpiDKTFTt9w/SpI+\r\nTsRbpCyjLD2hk1OBb6jO4HfjeFmwRL+h08VA4joq9NiJuXh7oFuXHrl5I3v0\r\n7l87xskNtT+4vj5pL1SOLjao2avmg8oHUXM+8u22uySofWViBPU+4ddQG+jX\r\na/P1HC+0khBYzxHagi5nKSEHwrXHMXTRT7gQ7vuSMXK+xXbOO3Wv8HB3DFWm\r\nMJbZTO1U8eiItnvkq4q/0u4euCNNQVzXRQ4=\r\n=Viog\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.4.0": {
+			"name": "postcss-scope",
+			"version": "1.4.0",
+			"dependencies": {
+				"postcss": "^8.4.23"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "288519f8182207c9b35ed3f11560ad44108ecb83",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.4.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-oHmyF4ek5g1E+NvsvvckYjPNOdErEMZLqED/IAxPh0HJFdUpEXglVTPv8nnO2dvOAiiWFbFuSig/bvpbdP3w1A==",
+				"signatures": [
+					{
+						"sig": "MEQCIGKwnrdH3zKNgLmcD8OzxerGoqwfYsoF0aMu8gEmALf4AiA5OshxkNiVWx50C/15XanO72RG6/mbmAqdT55mVRDGEw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 4873,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQReiACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpc4Q/+NRpBSycn+78r0gXDK9HjaGpZ5Xel4vh02tq5gOLYzWMEXMOL\r\nXxW1qE0fIaLzDXesRPrOwpCxzFlMvgzHBDdrt0O89EZTVo5/NhwR1vzxHQ2e\r\n9Ym/mmqCBHolNIf7eDqAYzwAtMKRGN7OUj9KO4/PT8ji4CHZr5xpLArUFf57\r\nEoZZeqvACkmrdk9EwTSA8oICgsyLEwLASBrF5i4H2vRnoQEd3PYMX5Q/Ygax\r\nzOzkIfcRqfjMb6jx7YWxuAHaK3d7wdvWGfC4KVMDjNJkot+eBua0ysi/sMHY\r\nEncvwB11aJ3SoLk7yMNxKt/fIca45Uljagx4lm8Q19pwf2/8iR5FcMmFiGFt\r\n3YRmlIPSC9/4rkPyK4oOLUDyZKi5UOKBDzDcPqC5m4oSo3/5s1bkcqx7S4BS\r\nHTrdWwGn3Gb6vLsfW/4s5UFQveg1rnyFyERWpG/vhl3Yxcf9B50B2hthgkE2\r\nTxwB3MGuVUxWKSegw4hsmnySRxMmSqKsHOw1vraQuqROH129xMv0DpCGawTk\r\nFo7QtXQQUHhfKnAgVysK4r3Q5yO1JqfnQRwtJ+EH+7kxbqyWPoJzcRdVsVBn\r\nrFZGQNoOhWU+2Os6zkAd1RS18znh5cAk5sohDgiRqbB12r15zlMpPagU5xmg\r\ndBHQ9bmtfoMGeoFePWX7z9vwW3KtJh27Ydo=\r\n=UYjX\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.5.0": {
+			"name": "postcss-scope",
+			"version": "1.5.0",
+			"dependencies": {
+				"postcss": "^8.4.23"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "2fb0b7e9e141ff9eee764879ebe2ca455b9e5612",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.5.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-zCF9bqoxpN/qCTVxO7JHj2EMLnSIXhLwVgOrEFCsReCsof5zXChIadTczGNDOi06PCW/BOw2IUe92ORfsZui8A==",
+				"signatures": [
+					{
+						"sig": "MEQCICvTjL3zbLsgaKVLvDsCCQuQhUBVXVb8Ma2pfKF7b8wuAiAcS1H2k2JaRg3P3SVj/VLyTK3l20YiyKbE3efX7lwjkw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 4887,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkQRgbACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmonlw/+I7w259IxXNspMnoasMueIeFRW76oS3zysRajrZj9TScuMsIo\r\nX/3tfCl9BnMtw/dDG6+3hB+/N+53RTnVFgoNmDQ94Q8rBrcaGvcO0tdMyaQo\r\nA17p7ssIwuDsOOeuEa3QWiAIg3GphbWfUhbEAdBPaiu/CE8dxafLiSyUq7CQ\r\nwG+3EKGgPM62NGbnIFMImzR1kXFW0kIEvJ3AbF2dvL/a8lK9gY86Zw/3TNCa\r\nV62duTgdlpAik6SByUGSzaQvkinx78o/nG9u2HJQ0SSx3HLUb/rNHfU4TUnJ\r\ntHxfs70FhcJ4Qwj8nn0FSn/WYRkk3pp2YD6NWQV0HmVnJt1TCYPacGUt63Pw\r\ntpr5qPhpBO1FdFfxVQpmV7i0xmNhupoCND6v65am0Xn2m2foUYTy85ouAHvR\r\nIIsbuddznz2cszMBv24stKpwZ3n5pZyzyR2DI/Q8wPVMfQlEpwmE2bRf3tmY\r\nVKo0cbAmPeNgOmJGta0YYIpqC5xhhnCOIZW+lBQQ13OGRxCqOA5VYquDf9zo\r\nv8+omrKdQgqTG66CMshtmOu2ZpnqG/44SJhKp8mA20TdbexjvAdAdv4xIsZS\r\nYRee0wX/OpVIoFzo7Ep0haDoo1GScrPf+HZv9DUUIc6td9ZwfE4c7UJLHy0c\r\nyemlEMX/4P75n+619TZjAeEUuc7yhYf2Rpc=\r\n=o1Eg\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.6.0": {
+			"name": "postcss-scope",
+			"version": "1.6.0",
+			"dependencies": {
+				"postcss": "^8.4.23",
+				"postcss-scopify": "^0.1.10",
+				"postcss-selector-parser": "^6.0.12"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "91ea185dcfe929ebdcf8e2bf1e4e9c7286cc2f92",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.6.0.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-C0MDG5D+oDYcceTj6AOx6b4d+cvRGmkzXnD9hnoM5IqlL6IsMnkRKIiKsL9Bl5LD/s5mhtmQu2pAQeCVqEx7hQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIG6+u0YeahF8cY/Vu5poQAQScwRnXthUUIjwy6N9bHR8AiA2G9iH+O9OWB0+I+AXX0CgNi2Qr6x31sI2jfIBDQW5pg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 131038
+			}
+		},
+		"1.7.0": {
+			"name": "postcss-scope",
+			"version": "1.7.0",
+			"dependencies": {
+				"postcss": "^8.4.23",
+				"postcss-scopify": "^0.1.10",
+				"postcss-selector-parser": "^6.0.12"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "76c703dc7a4fdec9f7da7191e1291f8f8fb9d58c",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.7.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-OQpUNKI/53qlTDc23gOlPwOdhoaD+Hj/TjZvdKrrfZGCElmpYyGWZhTp/UKcMhESGV+D/YNxpc0cRisYiVBDKQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD71wLsn/7dvE9JCcinRcnTFigUF5XLAIIJZj4iqTM7QQIgYuduGw0aKZQoDSHUw/pKC01kGOZPzeNIiyRO15AHXGs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 5988
+			}
+		},
+		"1.7.1": {
+			"name": "postcss-scope",
+			"version": "1.7.1",
+			"dependencies": {
+				"postcss": "^8.4.23",
+				"postcss-scopify": "^0.1.10",
+				"postcss-selector-parser": "^6.0.12"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "5e435bafe6d1537eed762440ea11acd6dddaefc1",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.7.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Bx/khGPLkZQ94QNiKEvGE7Qh1mubw0btDAhpgAjuhcahUqqY7VZN4fdVjwNAlblrVcsoQRwrfDuIEwh6yxWO+A==",
+				"signatures": [
+					{
+						"sig": "MEUCIFnH3wsw0JuwGigJ1CpvPMJUnZbQD0d9Cy89cO4sdL6eAiEAo6HBsk3QuZZ/58NUNPkAWSPndJJrbgKYIOO2O8fVuWk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 6041
+			}
+		},
+		"1.7.2": {
+			"name": "postcss-scope",
+			"version": "1.7.2",
+			"dependencies": {
+				"postcss": "^8.4.23",
+				"postcss-scopify": "^0.1.10",
+				"postcss-selector-parser": "^6.0.12"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "126dec2a75da6861bc2707d655b0f2a66110c1fa",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.7.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-LgigY5nrE21yXAhisWd4yb57e+lKrVebVprTukbO5Ymo6/ORJVZgzTgg+pqYXlhsAXugn7RKGGApGlxE4Vv+Mg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDGU92aUatQRGI5E7W5jF610sy964YUR/JSZoXA7vkFWAiAcAjUJryCokrYQWiop1TI2WJ0gO8uibR/yiMoRu7o2tQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 6206
+			}
+		},
+		"1.7.3": {
+			"name": "postcss-scope",
+			"version": "1.7.3",
+			"dependencies": {
+				"postcss": "^8.4.23",
+				"postcss-scopify": "^0.1.10",
+				"postcss-selector-parser": "^6.0.12"
+			},
+			"devDependencies": {
+				"jest": "^29.5.0",
+				"prettier": "^2.8.7",
+				"babel-jest": "^29.5.0",
+				"typescript": "^5.0.4",
+				"@babel/core": "^7.21.4",
+				"@types/jest": "^29.5.1",
+				"@types/node": "^18.15.12",
+				"@babel/preset-env": "^7.21.4",
+				"@babel/preset-typescript": "^7.21.4"
+			},
+			"dist": {
+				"shasum": "953675bb9f8b077a3c4814096fabeaa9582dd003",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.7.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-sN92vu+BD6st3r8Q5mkewCuxGIDB9LmUrMfXAe8sj9gtZKe3bp3wnFvMMzOuWHB4i7xNU1uaWeccksNOd6XrhA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD2pBER6XE4aBjUunLSKiApFp16ldotUCmQe5J3rM6M7QIgNTOmy4xvexIUqiCV2xokehWb9PeA4xaRLzVrhRCDqmg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 6336
+			}
+		},
+		"1.7.4": {
+			"name": "postcss-scope",
+			"version": "1.7.4",
+			"dependencies": {
+				"postcss": "^8.4.48",
+				"postcss-selector-parser": "^7.0.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.26.0",
+				"@babel/preset-env": "^7.26.0",
+				"@babel/preset-typescript": "^7.26.0",
+				"@types/jest": "^29.5.14",
+				"@types/node": "^22.9.0",
+				"babel-jest": "^29.7.0",
+				"jest": "^29.7.0",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3"
+			},
+			"dist": {
+				"integrity": "sha512-qZ7miyYDK6E5TLU1QL4a0baAVnX0CeI90YIz17fLSDsCU/F9m2Y2U3+QdTJ2x/Rvk3G0qqB1KHqmkEFfmtFxGg==",
+				"shasum": "03f02a9adea0af3038db6f264b85683db089ce0c",
+				"tarball": "https://registry.npmjs.org/postcss-scope/-/postcss-scope-1.7.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 7024,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDpW3UBY6xSfvxKLiyYRLXUim12vWsetHu+rnCYz9YX0wIhAMvdyD3z7Fakr+5olH517WR6erP7avzYdreilbI8c+9U"
+					}
+				]
+			}
+		}
+	}
+}
