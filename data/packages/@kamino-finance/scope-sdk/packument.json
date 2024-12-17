@@ -1,7 +1,7 @@
 {
 	"name": "@kamino-finance/scope-sdk",
 	"dist-tags": {
-		"latest": "8.0.2"
+		"latest": "8.0.3"
 	},
 	"versions": {
 		"8.0.0": {
@@ -161,6 +161,59 @@
 					}
 				],
 				"unpackedSize": 3763850
+			}
+		},
+		"8.0.3": {
+			"name": "@kamino-finance/scope-sdk",
+			"version": "8.0.3",
+			"dependencies": {
+				"@coral-xyz/anchor": "^0.29.0",
+				"@solana/buffer-layout": "^4.0.1",
+				"@solana/web3.js": "1.95.8",
+				"bn.js": "^5.2.1",
+				"decimal.js": "^10.3.1"
+			},
+			"devDependencies": {
+				"@types/bn.js": "^5.1.5",
+				"@types/bs58": "^4.0.4",
+				"@types/chai": "^4.3.5",
+				"@types/chai-as-promised": "^7.1.8",
+				"@types/mocha": "^10.0.7",
+				"@types/node-fetch": "^2.6.7",
+				"@typescript-eslint/eslint-plugin": "^5.5.0",
+				"@typescript-eslint/parser": "^5.5.0",
+				"anchor-client-gen": "^0.28.1",
+				"chai": "^4.3.7",
+				"chai-as-promised": "^7.1.1",
+				"chai-bignumber": "^3.1.0",
+				"chai-decimaljs": "^0.0.1",
+				"eslint": "^8.4.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-import": "^2.25.3",
+				"eslint-plugin-mocha": "^10.1.0",
+				"eslint-plugin-react": "^7.27.1",
+				"mocha": "^10.2.0",
+				"prettier": "^3.3.2",
+				"start-server-and-test": "^2.0.0",
+				"ts-mocha": "^10.0.0",
+				"tweetnacl-ts": "^1.0.3",
+				"typescript": "^5.5.4",
+				"typescript-eslint": "^0.0.1-alpha.0"
+			},
+			"dist": {
+				"shasum": "4e2276f99c2f5d51628ba095d47b7dc170877c54",
+				"integrity": "sha512-BEBjIOuWBJM2HTu6oJo5Uh10+5QEv0mcffbn7dlVBp7Exrcv/SXy8JjUhYH7+w5Jwhjz1zKc7VwCXhhHgHS2dw==",
+				"tarball": "https://registry.npmjs.org/@kamino-finance/scope-sdk/-/scope-sdk-8.0.3.tgz",
+				"fileCount": 734,
+				"unpackedSize": 3763849,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAhFdsf+ep5IDEBkb1vTSVBRKCbMUQRx+zfo255um2vrAiAV9VVhF26ZCeTk7looRjUI4JWqlPd25bDNl01Elt7mwA=="
+					}
+				]
 			}
 		}
 	}
