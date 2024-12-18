@@ -962,47 +962,25 @@
 				}
 			},
 			{
-				"description": "Filters actions based on a given timestamp, returning only logs that occurred after the specified date.",
+				"description": "Filters actions based on a given timestamp in the format yyyy-mm-dd, returning only logs that occurred on and after the specified date.",
 				"in": "query",
 				"name": "since",
 				"required": true,
 				"schema": {
-					"oneOf": [
-						{
-							"description": "A `full-date` that conforms to RFC3339.",
-							"example": "2014-10-30",
-							"format": "date",
-							"type": "string"
-						},
-						{
-							"description": "A `date-time` that conforms to RFC3339.",
-							"example": "2014-10-30T01:12:20Z",
-							"format": "date-time",
-							"type": "string"
-						}
-					]
+					"example": "2024-10-30",
+					"format": "date",
+					"type": "string"
 				}
 			},
 			{
-				"description": "Filters actions based on a given timestamp, returning only logs that occurred before the specified date.",
+				"description": "Filters actions based on a given timestamp in the format yyyy-mm-dd, returning only logs that occurred on and before the specified date.",
 				"in": "query",
 				"name": "before",
 				"required": true,
 				"schema": {
-					"oneOf": [
-						{
-							"description": "A `full-date` that conforms to RFC3339.",
-							"example": "2014-10-30",
-							"format": "date",
-							"type": "string"
-						},
-						{
-							"description": "A `date-time` that conforms to RFC3339.",
-							"example": "2014-10-30T01:12:20Z",
-							"format": "date-time",
-							"type": "string"
-						}
-					]
+					"example": "2024-10-31",
+					"format": "date",
+					"type": "string"
 				}
 			},
 			{
@@ -1097,7 +1075,7 @@
 													},
 													"time": {
 														"description": "A timestamp indicating when the action was logged.",
-														"example": "2017-04-26T17:31:07Z",
+														"example": "2024-04-26T17:31:07Z",
 														"format": "date-time",
 														"type": "string"
 													},
