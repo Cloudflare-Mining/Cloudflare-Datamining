@@ -1625,6 +1625,136 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"account": {
+													"properties": {
+														"account_type": {
+															"deprecated": true,
+															"type": "string"
+														},
+														"id": {
+															"deprecated": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the enrolled account.",
+															"example": "Company",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"created": {
+													"description": "When the device was created.",
+													"example": "2017-06-14T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"deleted": {
+													"description": "True if the device was deleted.",
+													"example": true,
+													"type": "boolean"
+												},
+												"device_type": {
+													"example": "windows",
+													"type": "string"
+												},
+												"gateway_device_id": {
+													"deprecated": true,
+													"example": "PD33E90AXfafe14643cbbbc-4a0ed4fc8415Q",
+													"type": "string"
+												},
+												"id": {
+													"description": "Device ID.",
+													"example": "LM63E90AXfafe14643cbbbc-4a0ed4fc8415A",
+													"type": "string"
+												},
+												"ip": {
+													"description": "IPv4 or IPv6 address.",
+													"example": "1.1.1.1",
+													"type": "string"
+												},
+												"key": {
+													"description": "The device's public key.",
+													"example": "yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=",
+													"type": "string"
+												},
+												"key_type": {
+													"description": "Type of the key.",
+													"example": "curve25519",
+													"type": "string"
+												},
+												"last_seen": {
+													"description": "When the device last connected to Cloudflare services.",
+													"example": "2017-06-14T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"mac_address": {
+													"description": "The device mac address.",
+													"example": "00-00-5E-00-53-00",
+													"type": "string"
+												},
+												"model": {
+													"description": "The device model name.",
+													"example": "MyPhone(pro-X)",
+													"type": "string"
+												},
+												"name": {
+													"description": "The device name.",
+													"example": "My mobile device",
+													"type": "string"
+												},
+												"os_version": {
+													"description": "The operating system version.",
+													"example": "10.0.0",
+													"type": "string"
+												},
+												"serial_number": {
+													"description": "The device serial number.",
+													"example": "EXAMPLEHMD6R",
+													"type": "string"
+												},
+												"tunnel_type": {
+													"description": "Type of the tunnel connection used.",
+													"example": "masque",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the device was updated.",
+													"example": "2017-06-14T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"user": {
+													"properties": {
+														"email": {
+															"description": "The contact email address of the user.",
+															"example": "user@example.com",
+															"maxLength": 90,
+															"type": "string"
+														},
+														"id": {
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The enrolled device user's name.",
+															"example": "John Appleseed",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"version": {
+													"description": "The WARP client version.",
+													"example": "1.0.0",
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -1741,6 +1871,136 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"account": {
+															"properties": {
+																"account_type": {
+																	"deprecated": true,
+																	"type": "string"
+																},
+																"id": {
+																	"deprecated": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the enrolled account.",
+																	"example": "Company",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"created": {
+															"description": "When the device was created.",
+															"example": "2017-06-14T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"deleted": {
+															"description": "True if the device was deleted.",
+															"example": true,
+															"type": "boolean"
+														},
+														"device_type": {
+															"example": "windows",
+															"type": "string"
+														},
+														"gateway_device_id": {
+															"deprecated": true,
+															"example": "PD33E90AXfafe14643cbbbc-4a0ed4fc8415Q",
+															"type": "string"
+														},
+														"id": {
+															"description": "Device ID.",
+															"example": "LM63E90AXfafe14643cbbbc-4a0ed4fc8415A",
+															"type": "string"
+														},
+														"ip": {
+															"description": "IPv4 or IPv6 address.",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
+														"key": {
+															"description": "The device's public key.",
+															"example": "yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=",
+															"type": "string"
+														},
+														"key_type": {
+															"description": "Type of the key.",
+															"example": "curve25519",
+															"type": "string"
+														},
+														"last_seen": {
+															"description": "When the device last connected to Cloudflare services.",
+															"example": "2017-06-14T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"mac_address": {
+															"description": "The device mac address.",
+															"example": "00-00-5E-00-53-00",
+															"type": "string"
+														},
+														"model": {
+															"description": "The device model name.",
+															"example": "MyPhone(pro-X)",
+															"type": "string"
+														},
+														"name": {
+															"description": "The device name.",
+															"example": "My mobile device",
+															"type": "string"
+														},
+														"os_version": {
+															"description": "The operating system version.",
+															"example": "10.0.0",
+															"type": "string"
+														},
+														"serial_number": {
+															"description": "The device serial number.",
+															"example": "EXAMPLEHMD6R",
+															"type": "string"
+														},
+														"tunnel_type": {
+															"description": "Type of the tunnel connection used.",
+															"example": "masque",
+															"type": "string"
+														},
+														"updated": {
+															"description": "When the device was updated.",
+															"example": "2017-06-14T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"user": {
+															"properties": {
+																"email": {
+																	"description": "The contact email address of the user.",
+																	"example": "user@example.com",
+																	"maxLength": 90,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The enrolled device user's name.",
+																	"example": "John Appleseed",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"version": {
+															"description": "The WARP client version.",
+															"example": "1.0.0",
+															"type": "string"
+														}
+													},
 													"type": "object"
 												}
 											}

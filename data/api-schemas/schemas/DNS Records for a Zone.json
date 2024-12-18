@@ -45125,28 +45125,6 @@
 												}
 											},
 											"type": "object"
-										},
-										"timing": {
-											"properties": {
-												"end_time": {
-													"description": "When the file parsing ended.",
-													"example": "2014-03-01T12:20:01Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"process_time": {
-													"description": "Processing time of the file in seconds.",
-													"example": 1,
-													"type": "number"
-												},
-												"start_time": {
-													"description": "When the file parsing started.",
-													"example": "2014-03-01T12:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												}
-											},
-											"type": "object"
 										}
 									},
 									"type": "object"
@@ -45242,28 +45220,6 @@
 															"description": "Total number of DNS records parsed.",
 															"example": 5,
 															"type": "number"
-														}
-													},
-													"type": "object"
-												},
-												"timing": {
-													"properties": {
-														"end_time": {
-															"description": "When the file parsing ended.",
-															"example": "2014-03-01T12:20:01Z",
-															"format": "date-time",
-															"type": "string"
-														},
-														"process_time": {
-															"description": "Processing time of the file in seconds.",
-															"example": 1,
-															"type": "number"
-														},
-														"start_time": {
-															"description": "When the file parsing started.",
-															"example": "2014-03-01T12:20:00Z",
-															"format": "date-time",
-															"type": "string"
 														}
 													},
 													"type": "object"
@@ -45498,28 +45454,6 @@
 												}
 											},
 											"type": "object"
-										},
-										"timing": {
-											"properties": {
-												"end_time": {
-													"description": "When the file parsing ended.",
-													"example": "2014-03-01T12:20:01Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"process_time": {
-													"description": "Processing time of the file in seconds.",
-													"example": 1,
-													"type": "number"
-												},
-												"start_time": {
-													"description": "When the file parsing started.",
-													"example": "2014-03-01T12:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												}
-											},
-											"type": "object"
 										}
 									},
 									"type": "object"
@@ -45615,28 +45549,6 @@
 															"description": "Total number of DNS records parsed.",
 															"example": 5,
 															"type": "number"
-														}
-													},
-													"type": "object"
-												},
-												"timing": {
-													"properties": {
-														"end_time": {
-															"description": "When the file parsing ended.",
-															"example": "2014-03-01T12:20:01Z",
-															"format": "date-time",
-															"type": "string"
-														},
-														"process_time": {
-															"description": "Processing time of the file in seconds.",
-															"example": 1,
-															"type": "number"
-														},
-														"start_time": {
-															"description": "When the file parsing started.",
-															"example": "2014-03-01T12:20:00Z",
-															"format": "date-time",
-															"type": "string"
 														}
 													},
 													"type": "object"
