@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 67,
+	"version": "20241218.30",
+	"short_version": "2024.12.486.0",
+	"size": 84696584,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "da5aadaf62c62b4f6ce85b393091e5bb",
+	"fingerprint": "d84efec33d69d375a0024384d04ef6c9",
+	"uploaded_at": "2024-12-18T21:19:36.764Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains minor fixes and improvements.\n\nNote: If using macOS Sequoia, Cloudflare recommends the use of macOS 15.1 or later. With macOS 15.1, Apple addressed several issues that may have caused the WARP client to not behave as expected when used with macOS 15.0.x.\n\n## Changes and improvements\n- Consumers can now set the tunnel protocol using \"warp-cli tunnel protocol set <proto>\".\n- Extended diagnostics collection time in warp-diag to ensure logs are captured reliably.\n- Improved captive portal support by disabling the firewall during captive portal login flows.\n- Improved reliability of connection establishment logic under degraded network conditions.\n- Improved reconnection speed when a Cloudflare server is in a degraded state.\n- Improved captive portal detection on certain public networks.\n- Fixed an issue where admin override displayed an incorrect override end time.\n- Reduced connectivity interruptions on WireGuard include split tunnel configurations.\n- Fixed connectivity issues switching between managed network profiles with different configured protocols\n- QLOGs are now disabled by default and can be enabled with `warp-cli debug qlog enable`. The qlog setting from previous releases will no longer be respected.\n\n## Known issues\n- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.2 or later.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
