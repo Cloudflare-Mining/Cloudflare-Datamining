@@ -2771,6 +2771,13 @@
 						"compatEnableDate": "2024-12-16",
 						"compatEnableFlag": "fixup-transform-stream-backpressure"
 					}
+				},
+				{
+					"name": "tailWorkerUserSpans",
+					"annotations": {
+						"compatEnableFlag": "tail_worker_user_spans",
+						"experimental": "true"
+					}
 				}
 			]
 		},
@@ -2859,6 +2866,35 @@
 				},
 				{
 					"name": "value",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:UserSpanData",
+			"fields": [
+				{
+					"name": "operationName",
+					"annotations": {}
+				},
+				{
+					"name": "startTimeNs",
+					"annotations": {}
+				},
+				{
+					"name": "endTimeNs",
+					"annotations": {}
+				},
+				{
+					"name": "tags",
+					"annotations": {}
+				},
+				{
+					"name": "spanId",
+					"annotations": {}
+				},
+				{
+					"name": "parentSpanId",
 					"annotations": {}
 				}
 			]
