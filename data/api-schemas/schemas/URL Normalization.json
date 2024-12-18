@@ -1,17 +1,192 @@
 {
-	"GET /zones/{zone_id}/url_normalization": {
-		"description": "Fetches the current URL normalization settings.",
-		"operationId": "url-normalization-get-url-normalization-settings",
+	"DELETE /zones/{zone_id}/url_normalization": {
+		"description": "Deletes the URL Normalization settings.",
+		"operationId": "deleteUrlNormalization",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "An empty response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"description": "A response object.",
+									"properties": {
+										"errors": {
+											"description": "A list of error messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Errors",
+											"type": "array"
+										},
+										"messages": {
+											"description": "A list of warning messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Messages",
+											"type": "array"
+										},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"title": "Success",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"title": "Response",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												null
+											]
+										},
+										"success": {
+											"enum": [
+												false
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "A failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete URL Normalization settings",
+		"tags": [
+			"URL Normalization"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/url_normalization": {
+		"description": "Fetches the current URL Normalization settings.",
+		"operationId": "getUrlNormalization",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -21,23 +196,169 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"scope": {
-									"description": "The scope of the URL normalization.",
-									"example": "incoming",
-									"type": "string"
+							"allOf": [
+								{
+									"description": "A response object.",
+									"properties": {
+										"errors": {
+											"description": "A list of error messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Errors",
+											"type": "array"
+										},
+										"messages": {
+											"description": "A list of warning messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Messages",
+											"type": "array"
+										},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"title": "Success",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"title": "Response",
+									"type": "object"
 								},
-								"type": {
-									"description": "The type of URL normalization performed by Cloudflare.",
-									"example": "cloudflare",
-									"type": "string"
+								{
+									"properties": {
+										"errors": {
+											"enum": [
+												[]
+											]
+										},
+										"result": {
+											"description": "A URL Normalization object.",
+											"properties": {
+												"scope": {
+													"description": "The scope of the URL normalization.",
+													"enum": [
+														"incoming",
+														"both"
+													],
+													"example": "incoming",
+													"title": "Scope",
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of URL normalization performed by Cloudflare.",
+													"enum": [
+														"cloudflare",
+														"rfc3986"
+													],
+													"example": "cloudflare",
+													"title": "Type",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"scope"
+											],
+											"title": "URL Normalization",
+											"type": "object"
+										},
+										"success": {
+											"enum": [
+												true
+											]
+										}
+									}
 								}
-							},
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Get URL normalization settings response"
+				"description": "A URL Normalization response."
 			},
 			"4XX": {
 				"content": {
@@ -45,118 +366,144 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"scope": {
-											"description": "The scope of the URL normalization.",
-											"example": "incoming",
-											"type": "string"
-										},
-										"type": {
-											"description": "The type of URL normalization performed by Cloudflare.",
-											"example": "cloudflare",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
+											"description": "A list of error messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
 																"type": "string"
 															}
 														},
 														"required": [
-															"code",
-															"message"
+															"pointer"
 														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Errors",
+											"type": "array"
 										},
 										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
+											"description": "A list of warning messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
 																"type": "string"
 															}
 														},
 														"required": [
-															"code",
-															"message"
+															"pointer"
 														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Messages",
+											"type": "array"
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
+											"description": "A result.",
+											"title": "Result"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
+											"description": "Whether the API call was successful.",
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
 									"required": [
+										"result",
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
+									"title": "Response",
 									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												null
+											]
+										},
+										"success": {
+											"enum": [
+												false
+											]
+										}
+									}
 								}
 							]
 						}
 					}
 				},
-				"description": "Get URL normalization settings response failure"
+				"description": "A failure response."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			}
 		],
-		"summary": "Get URL normalization settings",
+		"summary": "Get URL Normalization settings",
 		"tags": [
 			"URL Normalization"
 		],
@@ -190,18 +537,18 @@
 		}
 	},
 	"PUT /zones/{zone_id}/url_normalization": {
-		"description": "Updates the URL normalization settings.",
-		"operationId": "url-normalization-update-url-normalization-settings",
+		"description": "Updates the URL Normalization settings.",
+		"operationId": "updateUrlNormalization",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -210,18 +557,34 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "A URL Normalization object.",
 						"properties": {
 							"scope": {
 								"description": "The scope of the URL normalization.",
+								"enum": [
+									"incoming",
+									"both"
+								],
 								"example": "incoming",
+								"title": "Scope",
 								"type": "string"
 							},
 							"type": {
 								"description": "The type of URL normalization performed by Cloudflare.",
+								"enum": [
+									"cloudflare",
+									"rfc3986"
+								],
 								"example": "cloudflare",
+								"title": "Type",
 								"type": "string"
 							}
 						},
+						"required": [
+							"type",
+							"scope"
+						],
+						"title": "URL Normalization",
 						"type": "object"
 					}
 				}
@@ -233,23 +596,169 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"scope": {
-									"description": "The scope of the URL normalization.",
-									"example": "incoming",
-									"type": "string"
+							"allOf": [
+								{
+									"description": "A response object.",
+									"properties": {
+										"errors": {
+											"description": "A list of error messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Errors",
+											"type": "array"
+										},
+										"messages": {
+											"description": "A list of warning messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Messages",
+											"type": "array"
+										},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"title": "Success",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"title": "Response",
+									"type": "object"
 								},
-								"type": {
-									"description": "The type of URL normalization performed by Cloudflare.",
-									"example": "cloudflare",
-									"type": "string"
+								{
+									"properties": {
+										"errors": {
+											"enum": [
+												[]
+											]
+										},
+										"result": {
+											"description": "A URL Normalization object.",
+											"properties": {
+												"scope": {
+													"description": "The scope of the URL normalization.",
+													"enum": [
+														"incoming",
+														"both"
+													],
+													"example": "incoming",
+													"title": "Scope",
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of URL normalization performed by Cloudflare.",
+													"enum": [
+														"cloudflare",
+														"rfc3986"
+													],
+													"example": "cloudflare",
+													"title": "Type",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"scope"
+											],
+											"title": "URL Normalization",
+											"type": "object"
+										},
+										"success": {
+											"enum": [
+												true
+											]
+										}
+									}
 								}
-							},
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Update URL normalization settings response"
+				"description": "A URL Normalization response."
 			},
 			"4XX": {
 				"content": {
@@ -257,118 +766,144 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"scope": {
-											"description": "The scope of the URL normalization.",
-											"example": "incoming",
-											"type": "string"
-										},
-										"type": {
-											"description": "The type of URL normalization performed by Cloudflare.",
-											"example": "cloudflare",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
+											"description": "A list of error messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
 																"type": "string"
 															}
 														},
 														"required": [
-															"code",
-															"message"
+															"pointer"
 														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Errors",
+											"type": "array"
 										},
 										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
+											"description": "A list of warning messages.",
+											"items": {
+												"description": "A message.",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"example": 10000,
+														"title": "Code",
+														"type": "integer"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of this message.",
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer",
 																"type": "string"
 															}
 														},
 														"required": [
-															"code",
-															"message"
+															"pointer"
 														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
+														"title": "Source",
+														"type": "object"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message",
+												"type": "object"
+											},
+											"title": "Messages",
+											"type": "array"
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
+											"description": "A result.",
+											"title": "Result"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
+											"description": "Whether the API call was successful.",
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
 									"required": [
+										"result",
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
+									"title": "Response",
 									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												null
+											]
+										},
+										"success": {
+											"enum": [
+												false
+											]
+										}
+									}
 								}
 							]
 						}
 					}
 				},
-				"description": "Update URL normalization settings response failure"
+				"description": "A failure response."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			}
 		],
-		"summary": "Update URL normalization settings",
+		"summary": "Update URL Normalization settings",
 		"tags": [
 			"URL Normalization"
 		],
