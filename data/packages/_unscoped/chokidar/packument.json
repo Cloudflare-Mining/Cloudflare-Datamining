@@ -1,7 +1,7 @@
 {
 	"name": "chokidar",
 	"dist-tags": {
-		"latest": "4.0.2"
+		"latest": "4.0.3"
 	},
 	"versions": {
 		"0.1.1": {
@@ -3526,6 +3526,40 @@
 				"readdirp": "^4.0.1"
 			},
 			"devDependencies": {
+				"chai": "4.3.4",
+				"sinon": "12.0.1",
+				"upath": "2.0.1",
+				"rimraf": "5.0.5",
+				"prettier": "3.1.1",
+				"sinon-chai": "3.7.0",
+				"typescript": "5.5.2",
+				"@types/node": "20.14.8",
+				"@paulmillr/jsbt": "0.2.1"
+			},
+			"dist": {
+				"shasum": "97b9562c9f59de559177f069eadf5dcc67d24798",
+				"tarball": "https://registry.npmjs.org/chokidar/-/chokidar-4.0.2.tgz",
+				"fileCount": 12,
+				"integrity": "sha512-/b57FK+bblSU+dfewfFe0rT1YjVDfOmeLQwCAuC+vwvgLkXboATqqmy+Ipux6JrF6L5joe5CBnFOw+gLWH6yKg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXb2E4SC1KywYUnfmcZMh7ll5ZKuv/pkhIs4iZ3iXC8gIhAOUBw9GMVnKkHPe6n5M9Fi4aFxur6Fx4jQPICRy4Xkg+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 148603
+			},
+			"engines": {
+				"node": ">= 14.16.0"
+			}
+		},
+		"4.0.3": {
+			"name": "chokidar",
+			"version": "4.0.3",
+			"dependencies": {
+				"readdirp": "^4.0.1"
+			},
+			"devDependencies": {
 				"@paulmillr/jsbt": "0.2.1",
 				"@types/node": "20.14.8",
 				"chai": "4.3.4",
@@ -3537,15 +3571,15 @@
 				"upath": "2.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-/b57FK+bblSU+dfewfFe0rT1YjVDfOmeLQwCAuC+vwvgLkXboATqqmy+Ipux6JrF6L5joe5CBnFOw+gLWH6yKg==",
-				"shasum": "97b9562c9f59de559177f069eadf5dcc67d24798",
-				"tarball": "https://registry.npmjs.org/chokidar/-/chokidar-4.0.2.tgz",
+				"integrity": "sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==",
+				"shasum": "7be37a4c03c9aee1ecfe862a4a23b2c70c205d30",
+				"tarball": "https://registry.npmjs.org/chokidar/-/chokidar-4.0.3.tgz",
 				"fileCount": 12,
-				"unpackedSize": 148603,
+				"unpackedSize": 148759,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCXb2E4SC1KywYUnfmcZMh7ll5ZKuv/pkhIs4iZ3iXC8gIhAOUBw9GMVnKkHPe6n5M9Fi4aFxur6Fx4jQPICRy4Xkg+"
+						"sig": "MEUCIBdNPZNFgCQB0Av+H+o5aEev/7DL+txX2or2RCLYBpsbAiEA/qduexHQP8lKlFX2+jqYF/YFTtKsLT8TIUTLXcsa3Uk="
 					}
 				]
 			},
