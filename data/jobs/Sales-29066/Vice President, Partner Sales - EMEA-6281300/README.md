@@ -5,9 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations:&nbsp; Lisbon, Portugal;&nbsp; London, UK</strong></p>
 <p><strong>About the Role</strong></p>
 <p>As the Vice President, Partner Sales, you will define the vision, strategy and lead the partner sales organization. You will be responsible for building partner revenue growth, market expansion, and enhancing partner relationships to drive customer adoption in the EMEA theater.&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
 	<li>Develop and implement a comprehensive partner sales strategy that aligns with the company's business objectives.</li>
@@ -21,7 +21,6 @@
 	<li>Work closely with cross-functional teams, including marketing, product management, and customer support, to align partner strategies with overall business goals.</li>
 	<li>Coordinate with the direct sales team to ensure a cohesive approach to the market.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Qualifications:</strong></p>
 <ul>
 	<li>15+ years of proven success in sales, channel/alliances, partner management, and/or distribution relationship management, showing progressively greater levels of responsibility..&nbsp;&nbsp;</li>
