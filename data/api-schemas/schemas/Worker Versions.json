@@ -837,21 +837,16 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
-					"encoding": {
-						"<any part name>": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
-						}
-					},
 					"schema": {
-						"properties": {
-							"<any part name>": {
-								"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module`.",
-								"items": {
-									"format": "binary",
-									"type": "string"
-								},
-								"type": "array"
+						"additionalProperties": {
+							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module`.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+							"items": {
+								"format": "binary",
+								"type": "string"
 							},
+							"type": "array"
+						},
+						"properties": {
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -921,6 +916,9 @@
 								"type": "object"
 							}
 						},
+						"required": [
+							"metadata"
+						],
 						"type": "object"
 					}
 				}

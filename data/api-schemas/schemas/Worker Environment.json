@@ -872,21 +872,16 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
-					"encoding": {
-						"<any part name>": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
-						}
-					},
 					"schema": {
-						"properties": {
-							"<any part name>": {
-								"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name. Source maps may also be included using the `application/source-map` content type.",
-								"items": {
-									"format": "binary",
-									"type": "string"
-								},
-								"type": "array"
+						"additionalProperties": {
+							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+							"items": {
+								"format": "binary",
+								"type": "string"
 							},
+							"type": "array"
+						},
+						"properties": {
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -904,6 +899,9 @@
 								"type": "object"
 							}
 						},
+						"required": [
+							"metadata"
+						],
 						"type": "object"
 					}
 				}
@@ -1060,9 +1058,12 @@
 													"type": "array"
 												},
 												"usage_model": {
-													"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+													"description": "Usage model for the Worker invocations.",
+													"enum": [
+														"bundled",
+														"unbound"
+													],
 													"example": "unbound",
-													"pattern": "^(bundled|unbound)$",
 													"type": "string"
 												}
 											}
