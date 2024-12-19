@@ -336,6 +336,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.cloud_onramp",
 			url: "/magic-wan/cloud",
+			labels: O => (0, e.z1)("magic-beta-flags-disabled")(O) ? [] : ["beta"],
 			hasPermission: O => !!(0, u.$f)(O, "magic_cloud.enabled")
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
@@ -605,6 +606,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn",
+			labels: O => (0, e.z1)("magic-beta-flags-disabled")(O) ? [] : ["beta"],
 			hasPermission: O => !!((0, o.iY)(O) && !!(0, u.$f)(O, "magic_cloud.enabled")),
 			testId: "sidenav-mcn-pages-link"
 		}]
