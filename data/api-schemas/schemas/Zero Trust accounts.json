@@ -523,6 +523,9 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object"
+								},
+								{
 									"allOf": [
 										{
 											"allOf": [
@@ -650,7 +653,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -676,7 +680,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -712,7 +717,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust account information",
@@ -814,10 +820,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "account settings.",
+													"description": "Account settings",
 													"properties": {
 														"settings": {
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -1057,8 +1063,7 @@
 															},
 															"type": "object"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
@@ -1163,10 +1168,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"settings": {
-																	"description": "account settings.",
+																	"description": "Account settings",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -1406,8 +1411,7 @@
 																	},
 																	"type": "object"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
@@ -1463,7 +1467,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1489,7 +1494,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1525,7 +1531,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust account configuration",
@@ -1654,7 +1661,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1680,7 +1688,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1716,7 +1725,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust certificate configuration",
@@ -1841,8 +1851,7 @@
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1952,8 +1961,7 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1987,7 +1995,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -2013,7 +2022,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -2049,7 +2059,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get logging settings for the Zero Trust account",
@@ -2510,10 +2521,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "account settings.",
+						"description": "Account settings",
 						"properties": {
 							"settings": {
-								"description": "account settings.",
+								"description": "Account settings",
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
@@ -2753,8 +2764,7 @@
 								},
 								"type": "object"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			},
@@ -2836,10 +2846,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "account settings.",
+													"description": "Account settings",
 													"properties": {
 														"settings": {
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -3079,8 +3089,7 @@
 															},
 															"type": "object"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
@@ -3185,10 +3194,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"settings": {
-																	"description": "account settings.",
+																	"description": "Account settings",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -3428,8 +3437,7 @@
 																	},
 																	"type": "object"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
@@ -3485,7 +3493,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -3511,7 +3520,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -3547,7 +3557,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Patch Zero Trust account configuration",
@@ -3679,6 +3690,9 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object"
+								},
+								{
 									"allOf": [
 										{
 											"allOf": [
@@ -3806,7 +3820,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -3832,7 +3847,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -3868,7 +3884,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Zero Trust account",
@@ -4332,10 +4349,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "account settings.",
+						"description": "Account settings",
 						"properties": {
 							"settings": {
-								"description": "account settings.",
+								"description": "Account settings",
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
@@ -4575,8 +4592,7 @@
 								},
 								"type": "object"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			},
@@ -4658,10 +4674,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "account settings.",
+													"description": "Account settings",
 													"properties": {
 														"settings": {
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -4901,8 +4917,7 @@
 															},
 															"type": "object"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
@@ -5007,10 +5022,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "account settings.",
+															"description": "Account settings",
 															"properties": {
 																"settings": {
-																	"description": "account settings.",
+																	"description": "Account settings",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -5250,8 +5265,7 @@
 																	},
 																	"type": "object"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
@@ -5307,7 +5321,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -5333,7 +5348,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -5369,7 +5385,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Zero Trust account configuration",
@@ -5529,8 +5546,7 @@
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -5640,8 +5656,7 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -5675,7 +5690,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -5701,7 +5717,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -5737,7 +5754,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Zero Trust account logging settings",

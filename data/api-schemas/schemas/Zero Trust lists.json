@@ -108,7 +108,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -193,7 +194,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -227,7 +229,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -253,7 +256,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -279,7 +283,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -289,7 +294,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete Zero Trust list",
@@ -483,7 +489,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -646,7 +653,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -680,7 +688,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -706,7 +715,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -732,7 +742,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -742,7 +753,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Zero Trust lists",
@@ -899,7 +911,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1030,7 +1043,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1064,7 +1078,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1090,7 +1105,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1116,7 +1132,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1126,7 +1143,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust list details",
@@ -1320,7 +1338,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1488,7 +1507,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1522,7 +1542,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1548,7 +1569,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1574,7 +1596,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1584,7 +1607,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust list items",
@@ -1656,7 +1680,8 @@
 								},
 								"type": "array"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1786,7 +1811,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1917,7 +1943,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1951,7 +1978,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1977,7 +2005,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -2003,7 +2032,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2013,7 +2043,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Patch Zero Trust list",
@@ -2239,7 +2270,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2388,7 +2420,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2422,7 +2455,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -2448,7 +2482,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -2474,7 +2509,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2484,7 +2520,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Zero Trust list",
@@ -2690,7 +2727,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2821,7 +2859,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2855,7 +2894,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -2881,7 +2921,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -2907,7 +2948,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2917,7 +2959,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Zero Trust list",

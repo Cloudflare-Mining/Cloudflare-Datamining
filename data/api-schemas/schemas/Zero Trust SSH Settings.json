@@ -114,7 +114,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -222,7 +223,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -256,7 +258,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -282,7 +285,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -308,7 +312,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -318,7 +323,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Zero Trust SSH settings",
@@ -441,7 +447,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -549,7 +556,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -583,7 +591,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -609,7 +618,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -635,7 +645,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -645,7 +656,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Rotate Zero Trust SSH Account Seed",
@@ -680,7 +692,8 @@
 						},
 						"required": [
 							"public_key"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -787,7 +800,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -895,7 +909,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -929,7 +944,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -955,7 +971,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -981,7 +998,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -991,7 +1009,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Zero Trust SSH settings",

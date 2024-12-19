@@ -106,7 +106,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -117,6 +118,9 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
+								{
+									"type": "object"
+								},
 								{
 									"allOf": [
 										{
@@ -191,7 +195,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -225,7 +230,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -251,7 +257,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -277,7 +284,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -287,7 +295,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete a proxy endpoint",
@@ -422,7 +431,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -542,7 +552,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -576,7 +587,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -602,7 +614,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -628,7 +641,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -638,7 +652,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List proxy endpoints",
@@ -814,7 +829,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -825,6 +841,9 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
+								{
+									"type": "object"
+								},
 								{
 									"allOf": [
 										{
@@ -966,7 +985,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1000,7 +1020,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1026,7 +1047,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1052,7 +1074,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1062,7 +1085,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get a proxy endpoint",
@@ -1112,7 +1136,8 @@
 								"example": "Devops team",
 								"type": "string"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1231,7 +1256,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1351,7 +1377,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1385,7 +1412,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1411,7 +1439,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1437,7 +1466,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1447,7 +1477,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update a proxy endpoint",
@@ -1492,7 +1523,8 @@
 						"required": [
 							"name",
 							"ips"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1611,7 +1643,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1731,7 +1764,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1765,7 +1799,8 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
+											"minLength": 1,
+											"type": "object"
 										},
 										"messages": {
 											"allOf": [
@@ -1791,7 +1826,8 @@
 													"type": "array"
 												}
 											],
-											"example": []
+											"example": [],
+											"type": "object"
 										},
 										"result": {
 											"enum": [
@@ -1817,7 +1853,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1827,7 +1864,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a proxy endpoint",
