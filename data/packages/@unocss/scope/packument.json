@@ -1,7 +1,7 @@
 {
 	"name": "@unocss/scope",
 	"dist-tags": {
-		"latest": "0.65.1"
+		"latest": "0.65.2"
 	},
 	"versions": {
 		"0.1.0-beta.2": {
@@ -7249,13 +7249,36 @@
 			"name": "@unocss/scope",
 			"version": "0.65.1",
 			"dist": {
-				"integrity": "sha512-L3D0ZIeKEsKqn/xZV5m+uh63Tfrx2q9y473XhixzL9lRyHYnHc5IYjJBxLm+gOEIe2G6HTXZlpaiUQ+LZsfNnw==",
 				"shasum": "0b3de1ec0f6d59e6e173ba20c859e1c5adef16d4",
 				"tarball": "https://registry.npmjs.org/@unocss/scope/-/scope-0.65.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 2377,
+				"integrity": "sha512-L3D0ZIeKEsKqn/xZV5m+uh63Tfrx2q9y473XhixzL9lRyHYnHc5IYjJBxLm+gOEIe2G6HTXZlpaiUQ+LZsfNnw==",
+				"signatures": [
+					{
+						"sig": "MEQCIA/Iz2rkBlSAgDvMtdb7KnROzpbiGzZW4uC3EcZuJQAiAiBKT1hsZEY2u1+SmFgunXQdihn7qsUvnVfbKwOLd4MsmQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@unocss%2fscope@0.65.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2377
+			}
+		},
+		"0.65.2": {
+			"name": "@unocss/scope",
+			"version": "0.65.2",
+			"dist": {
+				"integrity": "sha512-dKRjxyeO+FYSPR+F5GN1Ax1O0ptvgiO8hRATWTDVw9/w9P8JgphjGEWUvw4D0G8Cl+Bne1Z1aEiDlzcAj1o/NA==",
+				"shasum": "5a9f9c4be2c512ff26f277fcd9762306c6028343",
+				"tarball": "https://registry.npmjs.org/@unocss/scope/-/scope-0.65.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2377,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@unocss%2fscope@0.65.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -7263,7 +7286,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIA/Iz2rkBlSAgDvMtdb7KnROzpbiGzZW4uC3EcZuJQAiAiBKT1hsZEY2u1+SmFgunXQdihn7qsUvnVfbKwOLd4MsmQ=="
+						"sig": "MEQCIFIj8KYh9Cbp4Sb3oYUbN8puQ8fEPKCojfQlLcO1mpivAiAQQrWvr1xFKD1XwWIGy/I8PEaUZh0TOvz+EJTMFfwNYw=="
 					}
 				]
 			}
