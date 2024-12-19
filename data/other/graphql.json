@@ -3048,6 +3048,42 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroups": {
+		"__description": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of SLO calculations",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension"
+	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsAvg": {
+		"__description": "",
+		"effectiveSlo": "Average calculated SLI for tunnel health checks",
+		"sampleInterval": "The average value used for sample interval",
+		"slo": "Average target SLO"
+	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"alertType": "The alert type of the notification policy",
+		"date": "SLO calculation event timestamp, truncated to start of a day",
+		"datetime": "SLO calculation event timestamp",
+		"datetimeHour": "SLO calculation event timestamp, truncated to start of hour",
+		"datetimeMinute": "SLO calculation event timestamp, truncated to start of minute",
+		"policyId": "The ID of the notification policy associated with the calculation",
+		"siteName": "The name of the site the tunnel is associated with",
+		"status": "The health status of the tunnel",
+		"tunnelId": "The ID of the tunnel",
+		"tunnelName": "The name of the tunnel"
+	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsMax": {
+		"__description": "",
+		"slo": "Maximum target SLO"
+	},
+	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroups": {
 		"__description": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"avg": "",
@@ -3964,6 +4000,7 @@
 		"magicFirewallSamplesAdaptiveGroups": "",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "",
+		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "",
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
 		"mnmFlowDataAdaptiveGroups": "",
@@ -7454,6 +7491,7 @@
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic IDS",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Transit traffic",
+		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
