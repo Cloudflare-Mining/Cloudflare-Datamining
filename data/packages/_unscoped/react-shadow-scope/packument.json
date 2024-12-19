@@ -1,7 +1,8 @@
 {
 	"name": "react-shadow-scope",
 	"dist-tags": {
-		"latest": "1.0.10"
+		"latest": "1.0.11",
+		"experimental": "0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1651,28 +1652,132 @@
 			"name": "react-shadow-scope",
 			"version": "1.0.10",
 			"devDependencies": {
-				"@types/react": "^18.2.6",
-				"@types/react-dom": "^18.2.4",
-				"express": "^4.18.2",
-				"react": "^16.8.3 || ^18",
-				"react-dom": "^16.14.0 || ^18",
 				"tsup": "^8.3.0",
-				"typescript": "^5.6.3"
+				"react": "^16.8.3 || ^18",
+				"express": "^4.18.2",
+				"react-dom": "^16.14.0 || ^18",
+				"typescript": "^5.6.3",
+				"@types/react": "^18.2.6",
+				"@types/react-dom": "^18.2.4"
 			},
 			"peerDependencies": {
 				"react": "^16.8.3 || ^18",
 				"react-dom": "^16.14.0 || ^18"
 			},
 			"dist": {
-				"integrity": "sha512-xefabEqlXtpT2h/Z4JVwGptJZbyK0hYHiNaHJNBFTCSSRm81EIShnQJdzKy5izPSc7RIaOqhrl0S5yOzpP/bug==",
 				"shasum": "0951f122201678fc7afd6f698b01dffa69d72b71",
 				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-1.0.10.tgz",
 				"fileCount": 7,
-				"unpackedSize": 91367,
+				"integrity": "sha512-xefabEqlXtpT2h/Z4JVwGptJZbyK0hYHiNaHJNBFTCSSRm81EIShnQJdzKy5izPSc7RIaOqhrl0S5yOzpP/bug==",
+				"signatures": [
+					{
+						"sig": "MEUCIEebqLIVqAOfIq0QzVlukQSgOoabWZVCzByyiSBWxiwWAiEA+qLuYNPlPX35YPO2lv75cmAT2atYJR/lV5+HAzE8FyQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 91367
+			}
+		},
+		"0.0.1-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f": {
+			"name": "react-shadow-scope",
+			"version": "0.0.1-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f",
+			"devDependencies": {
+				"tsup": "^8.3.0",
+				"react": "^19.0.0",
+				"eslint": "^9.16.0",
+				"express": "^4.18.2",
+				"globals": "^15.13.0",
+				"prettier": "^3.4.2",
+				"react-dom": "^19.0.0",
+				"@eslint/js": "^9.16.0",
+				"typescript": "^5.6.3",
+				"@types/react": "^19.0.1",
+				"@eslint/eslintrc": "^3.2.0",
+				"@types/react-dom": "^19.0.2",
+				"@typescript-eslint/parser": "^8.17.0",
+				"@typescript-eslint/eslint-plugin": "^8.17.0"
+			},
+			"peerDependencies": {
+				"react": ">=18.0.0",
+				"react-dom": ">=18.0.0"
+			},
+			"dist": {
+				"shasum": "f026f582d5018e5ef61d3f575acc90fb9f08e571",
+				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-0.0.1-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-0MYughEncm5ByQmYCwwEhBO0kWVAocDUBHT52fZSJ7XwkY6P4TRzK/f2S1m6QpEvs8FZgyvfeMXkFJpvQ6olQA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpdcJ2n2LVcom3HnrOVCMeQTpQwn0oi1fDnwmfHp6f1QIgGsUPAfOWGc2NWmrZmC5hSQ9Egz/5lZwfjiQyD0beD48=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 78959
+			}
+		},
+		"1.0.11": {
+			"name": "react-shadow-scope",
+			"version": "1.0.11",
+			"devDependencies": {
+				"tsup": "^8.3.0",
+				"react": "^16.8.3 || ^18",
+				"express": "^4.18.2",
+				"react-dom": "^16.14.0 || ^18",
+				"typescript": "^5.6.3",
+				"@types/react": "^18.2.6",
+				"@types/react-dom": "^18.2.4"
+			},
+			"peerDependencies": {
+				"react": "^16.8.3 || ^18",
+				"react-dom": "^16.14.0 || ^18"
+			},
+			"dist": {
+				"shasum": "ebd565b45ea7619b694ab5fc4efe5df85306dc44",
+				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-1.0.11.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-dvmY0NMCVqZmMCfAISxQLeu9xQv6eGPMEZ2POstfO/qkEL6C/+Ln+uzEDlj9+6pC1pmDTcW4yPWXezaA2tPcpw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZghLWg9/+jx07clDn0HcokY4xXCULaeSiT/0wo2CP1AIgBBWR9+NaC0F4QBegpXGbfIaYOv8u3778udLNHrPAIvY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 78886
+			}
+		},
+		"0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f": {
+			"name": "react-shadow-scope",
+			"version": "0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f",
+			"devDependencies": {
+				"@eslint/eslintrc": "^3.2.0",
+				"@eslint/js": "^9.16.0",
+				"@types/react": "^19.0.1",
+				"@types/react-dom": "^19.0.2",
+				"@typescript-eslint/eslint-plugin": "^8.17.0",
+				"@typescript-eslint/parser": "^8.17.0",
+				"eslint": "^9.16.0",
+				"express": "^4.18.2",
+				"globals": "^15.13.0",
+				"prettier": "^3.4.2",
+				"react": "^19.0.0",
+				"react-dom": "^19.0.0",
+				"tsup": "^8.3.0",
+				"typescript": "^5.6.3"
+			},
+			"peerDependencies": {
+				"react": ">=18.0.0",
+				"react-dom": ">=18.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-m82F1TH0pHK5yKXyE8EITohA/+5tjTe3Gh1GpMdM5SV+K6Wr43vh6DGEKNyleTq/6u5q2JpoAzWrxAKtwgMgug==",
+				"shasum": "fa771e713aed65e92c514a8e1a2594aac492409d",
+				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f.tgz",
+				"fileCount": 7,
+				"unpackedSize": 78959,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEebqLIVqAOfIq0QzVlukQSgOoabWZVCzByyiSBWxiwWAiEA+qLuYNPlPX35YPO2lv75cmAT2atYJR/lV5+HAzE8FyQ="
+						"sig": "MEYCIQCCpM9+RNVgSL3JEJCz4IIdzAdV01/Q8p8cr1/Qfhx/5QIhAODR04FlEg5n86xDrYWq8z7b0QFaEvv70E2/g4jDDdRm"
 					}
 				]
 			}
