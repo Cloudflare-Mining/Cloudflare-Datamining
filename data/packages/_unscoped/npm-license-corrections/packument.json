@@ -1,7 +1,7 @@
 {
 	"name": "npm-license-corrections",
 	"dist-tags": {
-		"latest": "1.8.0"
+		"latest": "1.9.0"
 	},
 	"versions": {
 		"1.0.0": {
@@ -276,6 +276,28 @@
 					}
 				],
 				"unpackedSize": 541391
+			}
+		},
+		"1.9.0": {
+			"name": "npm-license-corrections",
+			"version": "1.9.0",
+			"devDependencies": {
+				"semver": "^7.5.4",
+				"spdx-expression-validate": "^2.0.0",
+				"validate-npm-package-name": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-9Tq6y6zop5lsZy6dInbgrCLnqtuN+3jBc9NCusKjbeQL4LRudDkvmCYyInsDOaKN7GIVbBSvDto5MnEqYXVhxQ==",
+				"shasum": "27ce34fe1f3432bfb4313da201611478dacf124e",
+				"tarball": "https://registry.npmjs.org/npm-license-corrections/-/npm-license-corrections-1.9.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 543416,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDo9hcEirFntyO0yKhDsSCUFrZWxsjuHjLBNf46i4RdwAiAI+qbQ51/RKnR3OIYPtBlxe7OEImWnMuPtCtLKAvgEWQ=="
+					}
+				]
 			}
 		}
 	}
