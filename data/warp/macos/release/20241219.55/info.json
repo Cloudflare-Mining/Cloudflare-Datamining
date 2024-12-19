@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 69,
+	"version": "20241219.55",
+	"short_version": "2024.12.554.0",
+	"size": 86091189,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "9db10b272d9aa6bdf3de165a5cec7a83",
+	"fingerprint": "38177c0dc7849196e4d59c37410ee7d2",
+	"uploaded_at": "2024-12-19T22:33:11.258Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains improvements to support custom gateway certificate installation in addition to the changes and improvements included in release Version 2024.12.492.0 (20241218.36).\n\nNote: If using macOS Sequoia, Cloudflare recommends the use of macOS 15.2 or later. With macOS 15.2, Apple addressed several issues that may have caused the WARP client to not behave as expected when used with macOS 15.0.x.\n\n## Changes and improvements\n- Adds support for installing all available custom gateway certificates from an account to the system store.\n- Users can now get a list of installed certificates by running `warp-cli certs`.\n\n## Known issues\n- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.2 or later.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
