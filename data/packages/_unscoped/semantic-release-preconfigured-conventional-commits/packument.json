@@ -1,7 +1,7 @@
 {
 	"name": "semantic-release-preconfigured-conventional-commits",
 	"dist-tags": {
-		"latest": "1.1.116"
+		"latest": "1.1.117"
 	},
 	"versions": {
 		"1.0.0": {
@@ -4359,10 +4359,46 @@
 			"name": "semantic-release-preconfigured-conventional-commits",
 			"version": "1.1.116",
 			"dependencies": {
+				"@semantic-release/git": "10.0.1",
+				"@semantic-release/npm": "12.0.1",
+				"@semantic-release/exec": "6.0.3",
+				"@semantic-release/github": "11.0.1",
+				"@semantic-release/changelog": "6.0.3",
+				"@semantic-release/commit-analyzer": "13.0.0",
+				"@semantic-release/release-notes-generator": "14.0.1",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"devDependencies": {
+				"semantic-release": "24.2.0"
+			},
+			"peerDependencies": {
+				"semantic-release": "24.2.0"
+			},
+			"dist": {
+				"shasum": "7802a25c377709f4e88a1e4ad0aab869c5821d54",
+				"tarball": "https://registry.npmjs.org/semantic-release-preconfigured-conventional-commits/-/semantic-release-preconfigured-conventional-commits-1.1.116.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-yNVaznOOirKcjntuy6RPT3kiPlc0c6KIt2qpTxcxubfMuUAjdXoUBfC1msP47iBEXd65ecoC4I2nHr8wNAqxQQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICg/fAB2dJe+sgYIaUKmIlAhVhaxtYLhxmInUTqkmT5DAiAZsL8GhdQlw3bZSTVLxwyEir/yjv0/V4bQSIbTyPFznw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 11972
+			},
+			"engines": {
+				"node": "22.12"
+			}
+		},
+		"1.1.117": {
+			"name": "semantic-release-preconfigured-conventional-commits",
+			"version": "1.1.117",
+			"dependencies": {
 				"conventional-changelog-conventionalcommits": "8.0.0",
 				"@semantic-release/commit-analyzer": "13.0.0",
 				"@semantic-release/changelog": "6.0.3",
-				"@semantic-release/release-notes-generator": "14.0.1",
+				"@semantic-release/release-notes-generator": "14.0.2",
 				"@semantic-release/exec": "6.0.3",
 				"@semantic-release/git": "10.0.1",
 				"@semantic-release/github": "11.0.1",
@@ -4375,15 +4411,15 @@
 				"semantic-release": "24.2.0"
 			},
 			"dist": {
-				"integrity": "sha512-yNVaznOOirKcjntuy6RPT3kiPlc0c6KIt2qpTxcxubfMuUAjdXoUBfC1msP47iBEXd65ecoC4I2nHr8wNAqxQQ==",
-				"shasum": "7802a25c377709f4e88a1e4ad0aab869c5821d54",
-				"tarball": "https://registry.npmjs.org/semantic-release-preconfigured-conventional-commits/-/semantic-release-preconfigured-conventional-commits-1.1.116.tgz",
+				"integrity": "sha512-ZF5bqPmhR5g7Q0IssbjDJO4Ycf9SRyejGilYsvYMe7+7QgvfX1DIynPKjIEcMePk+DdD7YC+PSiQ8P+rc4BYMw==",
+				"shasum": "67a320a3bc0ad8221407da4292916429b398b961",
+				"tarball": "https://registry.npmjs.org/semantic-release-preconfigured-conventional-commits/-/semantic-release-preconfigured-conventional-commits-1.1.117.tgz",
 				"fileCount": 4,
 				"unpackedSize": 11972,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICg/fAB2dJe+sgYIaUKmIlAhVhaxtYLhxmInUTqkmT5DAiAZsL8GhdQlw3bZSTVLxwyEir/yjv0/V4bQSIbTyPFznw=="
+						"sig": "MEQCIBTBWUoMAMaoiFkquGUEpNQ+eANj6pKf1flDm7to9IFeAiBvHWqXpvU4NQ9JVofOa20AqKpakjJkN24J/gE2sYiC7g=="
 					}
 				]
 			},
