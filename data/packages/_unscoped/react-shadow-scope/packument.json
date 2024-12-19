@@ -2,7 +2,7 @@
 	"name": "react-shadow-scope",
 	"dist-tags": {
 		"latest": "1.0.11",
-		"experimental": "0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f"
+		"experimental": "0.0.3-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1749,6 +1749,43 @@
 			"name": "react-shadow-scope",
 			"version": "0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f",
 			"devDependencies": {
+				"tsup": "^8.3.0",
+				"react": "^19.0.0",
+				"eslint": "^9.16.0",
+				"express": "^4.18.2",
+				"globals": "^15.13.0",
+				"prettier": "^3.4.2",
+				"react-dom": "^19.0.0",
+				"@eslint/js": "^9.16.0",
+				"typescript": "^5.6.3",
+				"@types/react": "^19.0.1",
+				"@eslint/eslintrc": "^3.2.0",
+				"@types/react-dom": "^19.0.2",
+				"@typescript-eslint/parser": "^8.17.0",
+				"@typescript-eslint/eslint-plugin": "^8.17.0"
+			},
+			"peerDependencies": {
+				"react": ">=18.0.0",
+				"react-dom": ">=18.0.0"
+			},
+			"dist": {
+				"shasum": "fa771e713aed65e92c514a8e1a2594aac492409d",
+				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-m82F1TH0pHK5yKXyE8EITohA/+5tjTe3Gh1GpMdM5SV+K6Wr43vh6DGEKNyleTq/6u5q2JpoAzWrxAKtwgMgug==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCCpM9+RNVgSL3JEJCz4IIdzAdV01/Q8p8cr1/Qfhx/5QIhAODR04FlEg5n86xDrYWq8z7b0QFaEvv70E2/g4jDDdRm",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 78959
+			}
+		},
+		"0.0.3-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f": {
+			"name": "react-shadow-scope",
+			"version": "0.0.3-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f",
+			"devDependencies": {
 				"@eslint/eslintrc": "^3.2.0",
 				"@eslint/js": "^9.16.0",
 				"@types/react": "^19.0.1",
@@ -1769,15 +1806,15 @@
 				"react-dom": ">=18.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-m82F1TH0pHK5yKXyE8EITohA/+5tjTe3Gh1GpMdM5SV+K6Wr43vh6DGEKNyleTq/6u5q2JpoAzWrxAKtwgMgug==",
-				"shasum": "fa771e713aed65e92c514a8e1a2594aac492409d",
-				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-0.0.2-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f.tgz",
+				"integrity": "sha512-iTq2z3Upy3ENQjUx5/0JAhth1uES74BVYznMcokLyVKM9UYyN0qo6KvhqZYOpSiancHzsNp7CEW2s0+4vWylUA==",
+				"shasum": "873f0fdce7d4bac6f2930e910053521e43c039e5",
+				"tarball": "https://registry.npmjs.org/react-shadow-scope/-/react-shadow-scope-0.0.3-experimental-af6273c9-ee5b-47ed-9c1c-1a8a52d19e1f.tgz",
 				"fileCount": 7,
-				"unpackedSize": 78959,
+				"unpackedSize": 78963,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCCpM9+RNVgSL3JEJCz4IIdzAdV01/Q8p8cr1/Qfhx/5QIhAODR04FlEg5n86xDrYWq8z7b0QFaEvv70E2/g4jDDdRm"
+						"sig": "MEUCIQDuxt87a49Rf53ync3nS5KLdh+Ci0QTt8JVAhPIzek+pAIgbXe8au+o10sZXL2VMW0YKnG7NRMENfScwaLsDxBwWM0="
 					}
 				]
 			}
