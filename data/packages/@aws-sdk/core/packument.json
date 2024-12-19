@@ -1,7 +1,7 @@
 {
 	"name": "@aws-sdk/core",
 	"dist-tags": {
-		"latest": "3.714.0"
+		"latest": "3.716.0"
 	},
 	"versions": {
 		"3.429.0": {
@@ -2589,13 +2589,53 @@
 			"name": "@aws-sdk/core",
 			"version": "3.714.0",
 			"dependencies": {
+				"tslib": "^2.6.2",
+				"@smithy/core": "^2.5.5",
+				"@smithy/types": "^3.7.2",
+				"@aws-sdk/types": "3.714.0",
+				"fast-xml-parser": "4.4.1",
+				"@smithy/signature-v4": "^4.2.4",
+				"@smithy/protocol-http": "^4.1.8",
+				"@smithy/smithy-client": "^3.5.0",
+				"@smithy/util-middleware": "^3.0.11",
+				"@smithy/property-provider": "^3.1.11",
+				"@smithy/node-config-provider": "^3.1.12"
+			},
+			"devDependencies": {
+				"rimraf": "3.0.2",
+				"typescript": "~4.9.5",
+				"concurrently": "7.0.0",
+				"downlevel-dts": "0.10.1",
+				"@tsconfig/recommended": "1.0.1"
+			},
+			"dist": {
+				"shasum": "f53dbf5aa579f66bf3aa3e3e312b624e70ae871d",
+				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.714.0.tgz",
+				"fileCount": 93,
+				"integrity": "sha512-TlZ50d8MEPVp9O03SvisOmcmxjxhMDKHJJcrBgYjgDej6QmNfiFwtCRkReXDdkEeXP29ehMs7uPXtmVvPqziYw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGLIfV2XOPbgHCwWGphCiMaqf2V2K5eAbXXhLbJz9KJKAiEA62y+KYZjXfIdbJHO76Xn+xhkZCjp78OwsRiKr70CwuA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 78714
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"3.716.0": {
+			"name": "@aws-sdk/core",
+			"version": "3.716.0",
+			"dependencies": {
 				"@aws-sdk/types": "3.714.0",
 				"@smithy/core": "^2.5.5",
 				"@smithy/node-config-provider": "^3.1.12",
 				"@smithy/property-provider": "^3.1.11",
 				"@smithy/protocol-http": "^4.1.8",
 				"@smithy/signature-v4": "^4.2.4",
-				"@smithy/smithy-client": "^3.5.0",
+				"@smithy/smithy-client": "^3.5.1",
 				"@smithy/types": "^3.7.2",
 				"@smithy/util-middleware": "^3.0.11",
 				"fast-xml-parser": "4.4.1",
@@ -2609,15 +2649,15 @@
 				"typescript": "~4.9.5"
 			},
 			"dist": {
-				"integrity": "sha512-TlZ50d8MEPVp9O03SvisOmcmxjxhMDKHJJcrBgYjgDej6QmNfiFwtCRkReXDdkEeXP29ehMs7uPXtmVvPqziYw==",
-				"shasum": "f53dbf5aa579f66bf3aa3e3e312b624e70ae871d",
-				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.714.0.tgz",
+				"integrity": "sha512-5DkUiTrbyzO8/W4g7UFEqRFpuhgizayHI/Zbh0wtFMcot8801nJV+MP/YMhdjimlvAr/OqYB08FbGsPyWppMTw==",
+				"shasum": "17f92240a035ed6aea5ac277e35db8683ad5c734",
+				"tarball": "https://registry.npmjs.org/@aws-sdk/core/-/core-3.716.0.tgz",
 				"fileCount": 93,
 				"unpackedSize": 78714,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIGLIfV2XOPbgHCwWGphCiMaqf2V2K5eAbXXhLbJz9KJKAiEA62y+KYZjXfIdbJHO76Xn+xhkZCjp78OwsRiKr70CwuA="
+						"sig": "MEYCIQD45ISZVj20QOnwssOQ72pTepIgG2bXVRmlMhZqab28bgIhANgBVkVm3yzdNIscyyrOmjhAZbcNtpo2w6Oyr9xilZER"
 					}
 				]
 			},
