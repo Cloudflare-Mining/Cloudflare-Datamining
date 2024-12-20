@@ -1,0 +1,113 @@
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CW0ZR97E5h5cSLASwDO4Y/87388c0036a3a5a57199f79a6f253b18/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>OpenAI announced support for WebRTC in their <a href="https://platform.openai.com/docs/guides/realtime"><u>Realtime API</u></a> on December 17, 2024. Combining their Realtime API with <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-calls"><u>Cloudflare Calls</u></a> allows you to build experiences that weren’t possible just a few days earlier.</p>
+	<p>Previously, interactions with audio and video AIs were largely<i> single-player</i>: only one person could be interacting with the AI unless you were in the same physical room. Now, applications built using Cloudflare Calls and OpenAI’s Realtime API can now support multiple users across the globe simultaneously seeing and interacting with a voice or video AI.</p>
+	<div class="flex anchor relative">
+		<h2 id="have-your-ai-join-your-video-calls">Have your AI join your video calls&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#have-your-ai-join-your-video-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here’s what this means in practice: you can now invite ChatGPT to your next video meeting:</p>
+	<div style="position: relative; padding-top: 67.75407779171894%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/813712e4861ce560a8408ba34603c0ab/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F813712e4861ce560a8408ba34603c0ab%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>We built this into our <a href="https://github.com/cloudflare/orange"><u>Orange Meets</u></a> demo app to serve as an inspiration for what is possible, but the opportunities are much broader.</p>
+	<p>In the not-too-distant future, every company could have a&nbsp; 'corporate AI' they invite to their internal meetings that is secure, private and has access to their company data. Imagine this sort of real-time audio and video interactions with your company’s AI:</p>
+	<p>"Hey ChatGPT, do we have any open Jira tickets about this?"</p>
+	<p>"Hey Company AI, who are the competitors in the space doing Y?"</p>
+	<p>"AI, is XYZ a big customer? How much more did they spend with us vs last year?"</p>
+	<p>There are similar opportunities if your application is built for consumers: broadcasts and global livestreams can become much more interactive. The murder mystery game in the video above is just one example: you could build your own to play live with your friends in different cities.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="webrtc-vs-websockets">WebRTC vs. WebSockets</h2>
+		<a href="https://blog.cloudflare.com/#webrtc-vs-websockets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>These interactive multimedia experiences are enabled by the industry adoption of <a href="https://www.w3.org/TR/webrtc"><u>WebRTC</u></a>, which stands for Web Real-time Communication.</p>
+	<p>Many real-time product experiences have historically used <a href="https://developer.mozilla.org/en-US/docs/Glossary/WebSockets"><u>Websockets</u></a> instead of WebRTC. Websockets operate over a single, persistent TCP connection established between a client and server. This is useful for maintaining a data sync for text-based chat apps or maintaining the state of gameplay in your favorite video game. Cloudflare has extensive support for Websockets <a href="https://developers.cloudflare.com/network/websockets"><u>across our network</u></a> as well as <a href="https://blog.cloudflare.com/do-it-again"><u>in our AI Gateway</u></a>.</p>
+	<p>If you were building a chat application prior to WebSockets, you would likely have your client-side app poll the server every n seconds to see if there are new messages to be displayed. WebSockets eliminated this need for polling. Instead, the client and the server establish a persistent, long-running connection to send and receive messages.</p>
+	<p>However, once you have multiple users across geographies simultaneously interacting with voice and video, small delays in the data sync can become unacceptable product experiences. Imagine building an app that does real-time translation of audio. With WebSockets, you would need to chunk the audio input, so each chunk contains 100–500 milliseconds of audio. That chunking size, along with the <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/#webrtc-growing-pains"><u>head-of-line blocking</u></a>, becomes the latency floor for your ability to deliver a real-time multimodal experience to your users.</p>
+	<p>WebRTC solves this problem by having native support for audio and video tracks over UDP-based channels directly between users, eliminating the need for chunking. This lets you stream audio and video data to an AI model from multiple users and receive audio and video data back from the AI model in real-time.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="realtime-ai-fanout-using-cloudflare-calls">Realtime AI fanout using Cloudflare Calls</h2>
+		<a href="https://blog.cloudflare.com/#realtime-ai-fanout-using-cloudflare-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Historically, setting up the underlying infrastructure for WebRTC — servers for media routing, TURN relays, global availability — could be challenging.</p>
+	<p><a href="https://developers.cloudflare.com/calls/introduction"><u>Cloudflare Calls</u></a> handles the entirety of this complexity for developers, allowing them to leverage WebRTC without needing to worry about servers, regions, or scaling. Cloudflare Calls works as a single mesh network that automatically connects each user to a server close to them. Calls can connect directly with other WebRTC-powered services such as OpenAI’s, letting you deliver the output with near-zero latency to hundreds or thousands of users.</p>
+	<p>Privacy and security also come standard: all video and audio traffic that passes through Cloudflare Calls is encrypted by default. In this particular demo, we take it a step further by creating a button that allows you to decide when to allow ChatGPT to listen and interact with the meeting participants, allowing you to be more granular and targeted in your privacy and security posture.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-connected-cloudflare-calls-to-openais-realtime-api">How we connected Cloudflare Calls to OpenAI’s Realtime API&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-we-connected-cloudflare-calls-to-openais-realtime-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Calls has three building blocks: <a href="https://developers.cloudflare.com/calls/sessions-tracks"><u>Applications, Sessions, and Tracks</u></a><b>:</b></p>
+	<blockquote>
+		<p><i>“A </i><b><i>Session</i></b><i> in Cloudflare Calls correlates directly to a WebRTC PeerConnection. It represents the establishment of a communication channel between a client and the nearest Cloudflare data center, as determined by Cloudflare's anycast routing …&nbsp;</i></p>
+		<p><i>Within a Session, there can be one or more </i><b><i>Tracks</i></b><i>. … [which] align with the MediaStreamTrack concept, facilitating audio, video, or data transmission.”</i></p>
+	</blockquote>
+	<p>To include ChatGPT in our video conferencing demo, we needed to add ChatGPT as a <i>track</i> in an ongoing <i>session. </i>To do this, we connected to the Realtime API in <a href="https://github.com/cloudflare/orange"><u>Orange Meets</u></a>:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Connect Cloudflare Calls sessions and tracks like a switchboard
+async function connectHumanAndOpenAI(
+	humanSessionId: string,
+	openAiSessionId: string
+) {
+	const callsApiHeaders = {
+		Authorization: `Bearer ${APP_TOKEN}`,
+		'Content-Type': 'application/json',
+	}
+	// Pull OpenAI audio track to human's track
+	await fetch(`${callsEndpoint}/sessions/${humanSessionId}/tracks/new`, {
+		method: 'POST',
+		headers: callsApiHeaders,
+		body: JSON.stringify({
+			tracks: [
+				{
+					location: 'remote',
+					sessionId: openAiSessionId,
+					trackName: 'ai-generated-voice',
+					mid: '#user-mic',
+				},
+			],
+		}),
+	})
+	// Pull human's audio track to OpenAI's track
+	await fetch(`${callsEndpoint}/sessions/${openAiSessionId}/tracks/new`, {
+		method: 'POST',
+		headers: callsApiHeaders,
+		body: JSON.stringify({
+			tracks: [
+				{
+					location: 'remote',
+					sessionId: humanSessionId,
+					trackName: 'user-mic',
+					mid: '#ai-generated-voice',
+				},
+			],
+		}),
+	})
+}</code></pre>
+	<p>This code sets up the bidirectional routing between the human’s session and ChatGPT, which would allow the humans to hear ChatGPT and ChatGPT to hear the humans.</p>
+	<p>You can review all the code for this demo app on <a href="https://github.com/cloudflare/orange?tab=readme-ov-file#readme"><u>GitHub</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-today">Get started today&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Give the Cloudflare Calls + OpenAI Realtime API <a href="https://demo.orange.cloudflare.dev"><u>demo a try</u></a> for yourself and review how it was built via <a href="https://github.com/cloudflare/orange?tab=readme-ov-file#readme"><u>the source code on GitHub</u></a>. Then get started today with <a href="https://developers.cloudflare.com/calls/introduction"><u>Cloudflare Calls </u></a>to bring real-time, interactive AI to your apps and services.</p>
+</div>
