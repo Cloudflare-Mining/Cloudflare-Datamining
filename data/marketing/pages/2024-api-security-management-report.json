@@ -284,7 +284,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "4ba364b9-2e21-5ee9-9c31-63f5911bfe8b",
+							"altText": "The State of API Security and Management",
+							"title": "The State of API Security and Management",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KLzlKoh69NoJilkMYcacO/1bc5018ddee93d58c403e85d8a91831f/Infographic_548x584.png"
+								},
+								"description": "The State of API Security and Management"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "INFOGRAPHIC",
@@ -318,11 +332,54 @@
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6er2rppQw5K4yf4UdF5NkN",
+								"heading": "Blog",
+								"description": "Introducing Cloudflare's 2024 API security and management report",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7HczoGL7GOWbczwqQSzT50",
+									"elementName": "2024 API security and management report - Blog link",
+									"standardText": null,
+									"text": "Read now",
+									"url": "https://blog.cloudflare.com/2024-api-security-report/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "de098102-4b19-54bc-9c80-345c8601f6a3",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AJPcHGag2dGPVMHzn9vAz/0e0e0f004d4a6223f356076d4cb1195b/Insight_99x180.svg"
+										},
+										"description": "2024 API security and management report - Blog image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "5wn4dyLZM3GvAeYcAIvhju",
 								"heading": "Press",
 								"description": "2024 API Security & Management Report Press release",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5eQt4SDmdRay8u6pSYMapE",
+									"elementName": "2024 API Security & Management Report - Press Release link",
+									"standardText": null,
+									"text": "Read now",
+									"url": "https://www.cloudflare.com/press-releases/2024/new-cloudflare-report-shows-organizations-struggle-with-outdated-security/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "6c861e08-c590-54b4-8ffa-fc5eb865a8ca",
 									"altText": "2024 API Security & Management Report press release image",
