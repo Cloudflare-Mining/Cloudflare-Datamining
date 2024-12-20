@@ -6,7 +6,6 @@
 	</div>
 </div>
 <p><strong>Location available: </strong>Mexico City</p>
-<p>&nbsp;</p>
 <hr>
 <h4>About the department</h4>
 <p>People need to Trust Cloudflare. Our team is responsible for trust in everything that Cloudflare does. Trust &amp; Safety responds to claims of abuse and legal requests for private customer data&nbsp; for a vast and diverse customer base while maintaining Cloudflare’s core principles of transparency, consistency, and due process. We navigate the complex web of country-specific law enforcement demands and content-related regulations on a global scale.&nbsp;</p>
