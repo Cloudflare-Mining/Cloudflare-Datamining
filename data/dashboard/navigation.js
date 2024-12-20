@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: O => (0, e.z1)(y.Mr)(O) && (0, N.z7)(O) && !!(0, N.z$)(O).length
+		hasPermission: O => (0, e.z1)(E.Mr)(O) && (0, N.z7)(O) && !!(0, N.z$)(O).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -201,7 +201,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "sidenav-trace-link",
 		labels: ["beta"],
-		hasPermission: D.T
+		hasPermission: T.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -424,7 +424,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: O => {
 				const F = (0, A.tJ)(O);
-				return !(0, v.ky)(F, [E.uD.EnterpriseTrial])
+				return !(0, v.ky)(F, [y.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -705,7 +705,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: O => !!(0, T.V)(O)
+			hasPermission: O => !!(0, D.V)(O)
 		}, {
 			title: "navigation.zone.analytics.dashboards",
 			url: "/analytics/dashboards",
