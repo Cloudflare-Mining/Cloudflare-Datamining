@@ -105,7 +105,7 @@
 	"caching_level.api.title.get": "Get Cache Level setting",
 	"caching_level.api.title.patch": "Change Cache Level setting",
 	"caching.tab.configuration.back": "Back to Configuration",
-	"development_mode.description": "Temporarily bypass our cache allowing you to see changes to your origin server in realtime.\n\n**Note:** Enabling this feature can significantly increase origin server load. Development mode does not purge the cache so files will need to be purged after development mode expires.",
+	"development_mode.description": "Temporarily bypass our cache allowing you to see changes to your origin server in realtime.\n\n**Note:** Enabling this feature can significantly increase origin server load. Development Mode does not purge the cache so files will need to be purged after development mode expires.",
 	"development_mode.help": "#### What does Development Mode do?\nWhen Development Mode is on, all requests will be passed to the origin server. This allows requests for your website to temporarily bypass our cache so you can verify changes made to cached content.\n\nThis is useful if you need to see changes immediately. Once enabled, Development Mode lasts for three hours and then automatically turns off.\n\n**Note:** Unless you are making major changes to your website, we recommend using the Purge Individual Files option instead of turning on Development Mode. This is because Development Mode will cause all requests to go to your origin server, and increased requests to your origin server will temporarily raise your bandwidth and CPU usage.",
 	"development_mode.title": "Development Mode",
 	"development_mode.api.title.get": "Get Development Mode setting",
