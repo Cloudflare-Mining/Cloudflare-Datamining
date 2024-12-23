@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "0.9.0",
 		"dev": "1.7.0-dev20240711122353",
-		"latest": "1.11.0",
+		"latest": "1.12.0",
 		"alpha": "2.0.0-alpha.4"
 	},
 	"versions": {
@@ -7751,31 +7751,66 @@
 				"@typescript-eslint/utils": "^8.12.2"
 			},
 			"devDependencies": {
+				"redent": "4.0.0",
 				"@types/eslint": "8.56.10",
 				"@types/estree": "1.0.5",
-				"@typescript-eslint/rule-tester": "7.8.0",
-				"redent": "4.0.0",
 				"@qwik.dev/core": "2.0.0-alpha.4",
-				"@qwik.dev/router": "2.0.0-alpha.4"
+				"@qwik.dev/router": "2.0.0-alpha.4",
+				"@typescript-eslint/rule-tester": "7.8.0"
 			},
 			"peerDependencies": {
 				"eslint": "^8.57.0"
 			},
 			"dist": {
-				"integrity": "sha512-30tRYSeBpany5aXiy1j4ohYfVY/wQJh/vvvtAv34kndFbGlRyaxeBrTTpuxYQgTBzIMFcku17cezkD+6xl9gnw==",
 				"shasum": "a3cc1bc1a0b34b1a7ecc8cda1091a0710e0f9f6e",
 				"tarball": "https://registry.npmjs.org/eslint-plugin-qwik/-/eslint-plugin-qwik-2.0.0-alpha.4.tgz",
 				"fileCount": 4,
-				"unpackedSize": 103346,
+				"integrity": "sha512-30tRYSeBpany5aXiy1j4ohYfVY/wQJh/vvvtAv34kndFbGlRyaxeBrTTpuxYQgTBzIMFcku17cezkD+6xl9gnw==",
+				"signatures": [
+					{
+						"sig": "MEQCICKEgS0yh0Yi6kHHAwPtNZdELUL9T3hJMdulCOJLnj8kAiAwnELXHq09Zaqb5F1OgUUOy6aQtimkylnaFNVvI9RT1Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 103346
+			},
+			"engines": {
+				"node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+			}
+		},
+		"1.12.0": {
+			"name": "eslint-plugin-qwik",
+			"version": "1.12.0",
+			"dependencies": {
+				"jsx-ast-utils": "^3.3.5",
+				"@typescript-eslint/utils": "^8.12.2"
+			},
+			"devDependencies": {
+				"@types/eslint": "8.56.10",
+				"@types/estree": "1.0.5",
+				"@typescript-eslint/rule-tester": "7.8.0",
+				"redent": "4.0.0",
+				"@builder.io/qwik": "^1.12.0",
+				"@builder.io/qwik-city": "^1.12.0"
+			},
+			"peerDependencies": {
+				"eslint": "^8.57.0"
+			},
+			"dist": {
+				"integrity": "sha512-tOQutLiIUd2RRVOLeRwYedWLG6MzdCZM9nUpByZn2AgsW55NPJXXrY744YQ+AsVLE6g5sw7GhuL4qoAEX666Xg==",
+				"shasum": "71b0c5cbcb9ca438949496f42f9dfe43263f7258",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-qwik/-/eslint-plugin-qwik-1.12.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 103593,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICKEgS0yh0Yi6kHHAwPtNZdELUL9T3hJMdulCOJLnj8kAiAwnELXHq09Zaqb5F1OgUUOy6aQtimkylnaFNVvI9RT1Q=="
+						"sig": "MEUCIFiubMJq3HYER3s1B5e6ryrCg4s85XWbjWjz3JBiFJu4AiEA5SAfGNkntRZWv0ILuMj7ar81UqKRo4aWI6eLWjuzZgM="
 					}
 				]
 			},
 			"engines": {
-				"node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+				"node": ">=16.8.0 <18.0.0 || >=18.11"
 			}
 		}
 	}
