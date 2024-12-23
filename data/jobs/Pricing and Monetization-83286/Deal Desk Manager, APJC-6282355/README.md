@@ -5,33 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Kuala Lumpur, Malaysia</strong></p>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</span></p>
-<p><strong>What You’ll do</strong></p>
-<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare’s technology and gain a deeper understanding of internet technologies.</span></p>
+<p><strong>Location: Singapore or Sydney<br><br>About the Role</strong></p>
+<p>The&nbsp; Deal Desk Manager will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
+<ul>
+	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
+	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
+	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
+	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
+	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
+</ul>
+<p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
+<p><strong>What you'll do</strong></p>
+<ul>
+	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
+	<li>Audit and validate data and margins on adhoc deals submitted by the sales team.</li>
+	<li>Perform margin and pricing analysis in order to support business strategy.</li>
+	<li>Manage international pricing matrix, partner margin deals and large deal approvals.</li>
+	<li>Collaborate with internal teams to build, streamline and automate our deal desk processes.</li>
+	<li>Perform monthly and ad-hoc analysis to identify opportunities to improve the business KPIs through continuous improvement&nbsp;</li>
+	<li>Work with teams to develop pricing tools (e.g., TCO calculators, discounting guidelines) and integrate them into Salesforce</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;">
-		<div><strong>Ability and willingness to work occasional weekends, holidays, and after hours</strong></div>
-	</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable communicating in writing and always put the customer first</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a motivated self-starter who always looking to expand your skill sets</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You take initiatives and capable of learning new technologies / systems / features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy troubleshooting and solving unknown technical problems and issues</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
+	<li>Must be comfortable in a fast-paced sales environment</li>
+	<li>Understand the buying process and negotiating dynamic for enterprise entities</li>
+	<li>Experience working the deal desk/contract management team:</li>
+	<ul>
+		<li>Develop an in-depth understanding of the pricing models</li>
+		<li>Provide support in conjunction with contracts, legal &amp; finance teams</li>
+		<li>Ability to analyze &amp; recommend the best course of action for complex pricing &amp; licensing situations.</li>
+	</ul>
+	<li>Knowledge of Cloud/SaaS services, software and solutions is highly recommended</li>
+	<li>Expert knowledge of Microsoft Excel, SQL&nbsp; and prior experience with modeling and analysis</li>
+	<li>Enjoys engaging with complex, cross-functional teams and individuals</li>
+	<li>Experience with&nbsp;</li>
+	<ul>
+		<li>8+ years of&nbsp; experience&nbsp;</li>
+		<li>5+ years of deal desk experience</li>
+	</ul>
+	<li>Possess excellent written and oral communication skills</li>
+	<li>Proactive, creative, and results oriented individual</li>
+	<li>Experience selling software is considered a bonus</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have web development, hosting, or customer support experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
-</ul>
-<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
