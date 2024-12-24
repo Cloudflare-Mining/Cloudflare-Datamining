@@ -28,4 +28,4 @@ This project does not respect semantic versioning as almost every change could p
 
 ## Deploy Metadata
 
-You can read what changed in version 0.0.107 at https://github.com/microsoft/TypeScript-DOM-lib-generator/releases/tag/%40types%2Fserviceworker%400.0.107.
+You can read what changed in version 0.0.108 at https://github.com/microsoft/TypeScript-DOM-lib-generator/releases/tag/%40types%2Fserviceworker%400.0.108.

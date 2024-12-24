@@ -1,7 +1,7 @@
 {
 	"name": "@types/serviceworker",
 	"dist-tags": {
-		"latest": "0.0.107"
+		"latest": "0.0.108"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1975,15 +1975,33 @@
 			"version": "0.0.107",
 			"dependencies": {},
 			"dist": {
-				"integrity": "sha512-FfMNCrVjiz9w6RZKIfbfXZ6Vuyba4SZFf/cTyjs4ppl8DcFL9wBGm1SC/n6bilUJylKbbNcfTodjyf0hrvaQJg==",
 				"shasum": "41c55afdbfe43b2e06c7856179d2822f54176f75",
 				"tarball": "https://registry.npmjs.org/@types/serviceworker/-/serviceworker-0.0.107.tgz",
 				"fileCount": 7,
-				"unpackedSize": 884191,
+				"integrity": "sha512-FfMNCrVjiz9w6RZKIfbfXZ6Vuyba4SZFf/cTyjs4ppl8DcFL9wBGm1SC/n6bilUJylKbbNcfTodjyf0hrvaQJg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDmrC1BFzvY6SPfG25ABl1HAHA26Z2tJsJUwT8EGxjJKQIgQuANz39q+tORlH5IG4lb8mSHnubEc89//T/JueUalhg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 884191
+			}
+		},
+		"0.0.108": {
+			"name": "@types/serviceworker",
+			"version": "0.0.108",
+			"dependencies": {},
+			"dist": {
+				"integrity": "sha512-jicpN0A3+X1HUlVhtykUmqOnnfAzAD+IV2FOOzJ9EvN/FItR9igOWUey+ZyP/kRQr8uAN1HMVBBaYniVCniGAA==",
+				"shasum": "9cdf2f58ccfdd7b48e69182ed8babbeb24e2901b",
+				"tarball": "https://registry.npmjs.org/@types/serviceworker/-/serviceworker-0.0.108.tgz",
+				"fileCount": 7,
+				"unpackedSize": 885705,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDmrC1BFzvY6SPfG25ABl1HAHA26Z2tJsJUwT8EGxjJKQIgQuANz39q+tORlH5IG4lb8mSHnubEc89//T/JueUalhg="
+						"sig": "MEUCIFSqYM9kCAvC40/XpdarxThCt0GV4Cxci9Q3gh+6NNVKAiEA/GZxaDcHLjP5XCoJ1JFNHuxG+/0tiJBN3Edbwu8sMuc="
 					}
 				]
 			}

@@ -5,9 +5,9 @@
 		"ts2.1": "0.0.27",
 		"ts2.0": "0.0.27",
 		"ts2.4": "0.0.27",
+		"ts2.5": "0.0.27",
 		"ts2.6": "0.0.27",
 		"ts2.7": "0.0.27",
-		"ts2.5": "0.0.27",
 		"ts2.2": "0.0.27",
 		"ts2.8": "0.0.28",
 		"ts2.9": "0.0.28",
@@ -21,7 +21,7 @@
 		"ts3.2": "0.0.29",
 		"ts3.4": "0.0.29",
 		"ts3.8": "0.0.29",
-		"latest": "0.0.136"
+		"latest": "0.0.137"
 	},
 	"versions": {
 		"0.0.13-alpha": {
@@ -2209,15 +2209,33 @@
 			"version": "0.0.136",
 			"dependencies": {},
 			"dist": {
-				"integrity": "sha512-oT9aRNPaOPj9yQzFPwr64LTelwtnc1aEVDgdYz/wjNsu/GAjZCtZjVMkjnJ2GHhCXuQrrCMZRFCJkUx/hdNJ8Q==",
 				"shasum": "8fb1403ca234c4918e1ee44c5a7b9967fdb9ac87",
 				"tarball": "https://registry.npmjs.org/@types/sharedworker/-/sharedworker-0.0.136.tgz",
 				"fileCount": 7,
-				"unpackedSize": 883654,
+				"integrity": "sha512-oT9aRNPaOPj9yQzFPwr64LTelwtnc1aEVDgdYz/wjNsu/GAjZCtZjVMkjnJ2GHhCXuQrrCMZRFCJkUx/hdNJ8Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtOC8YrvQntX/0+S/NapglXP1NN/IiC8Z1e8BQLlj6JAIgWXiUYORdUVcF/QliDOTl6TWuUBfijmjmA/vfbEXUmjc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 883654
+			}
+		},
+		"0.0.137": {
+			"name": "@types/sharedworker",
+			"version": "0.0.137",
+			"dependencies": {},
+			"dist": {
+				"integrity": "sha512-h6fDbLEtW46rkEqML2pqtSsoP2bNSU38sikQrFDM47N6gT8aSAIscmGHBDyZ2s8u9F0gqy1lek6dqvbXNjfqcg==",
+				"shasum": "077f7c2a3fe2662e61f2713c12f2bba107a13658",
+				"tarball": "https://registry.npmjs.org/@types/sharedworker/-/sharedworker-0.0.137.tgz",
+				"fileCount": 7,
+				"unpackedSize": 885168,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCtOC8YrvQntX/0+S/NapglXP1NN/IiC8Z1e8BQLlj6JAIgWXiUYORdUVcF/QliDOTl6TWuUBfijmjmA/vfbEXUmjc="
+						"sig": "MEQCIEBN0a0yjkhTeDDfqDx7wC9m7GILWRrWer9Smr17hWEDAiBItLBOxSAywMDJKnhiE5WqRPtqvuhyZrui8K8IRjusIQ=="
 					}
 				]
 			}
