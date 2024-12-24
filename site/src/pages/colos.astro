@@ -1,7 +1,6 @@
 ---
 
 import { airports } from '../airportsWithLocations.js';
-import { types } from '../coloTypes';
 import Description from '../components/Description.astro';
 import MainHeading from '../components/MainHeading.astro';
 import Table from '../components/Table.astro';
@@ -10,6 +9,7 @@ export const prerender = true;
 
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;
+const types: Record<string, string> = {};
 
 for (const coloId in colos) {
 	const colo = colos[coloId];
@@ -43,17 +43,7 @@ for (const colo of DOColos) {
 		<p>Colos tagged with <code>DOs</code> support <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/" rel="noopener" target="_blank">Durable Objects</a></p>
 	</Description>
 	<Table
-		headers = {['Status', 'Total', '%']}
-		widths={['w-[80%]', 'w-[10%]', 'w-[10%]']}
-		id="status"
-		data = {['Online', 'Offline', 'China'].map((name: string) => [
-			name,
-			'loading...',
-			'loading...',
-		])}
-	></Table>
-	<Table
-		headers = {['ID', 'Colo', 'Tags', 'Status']}
+		headers = {['ID', 'Colo', 'Tags']}
 		widths={['w-[30%]', 'w-[30%]', 'w-[30%]', 'w-[10%]']}
 		id="colos"
 		data = {Object.keys(colos).map((id: string) => [
@@ -63,92 +53,6 @@ for (const colo of DOColos) {
 				types[colos[id]],
 				...additionalTags[colos[id]] || [],
 			].filter(Boolean),
-			'loading...',
 		])}
 	></Table>
 </Layout>
-
-<script>
-async function getColosStatus() {
-	const coloTable = document.querySelector('table#colos');
-	if (!coloTable) {
-		return;
-	}
-	const headers = coloTable.querySelectorAll('thead tr th');
-	if (!headers) {
-		return;
-	}
-	let statusIndex = null;
-	for (const [index, header] of headers.entries()) {
-		if (header.textContent === 'Status') {
-			statusIndex = index + 1;
-			break;
-		}
-	}
-	let tableRows = coloTable.querySelectorAll('tbody tr');
-	if (!tableRows) {
-		return;
-	}
-
-	const coloStatusRes = await fetch('https://colos-status.jross.workers.dev/');
-	const coloStatus = await coloStatusRes.json();
-	const colosStatuses = { Online: 0, China: 0, Offline: 0 };
-	let totalColos = 0;
-
-	for (const row of tableRows) {
-		const coloName = row.querySelector('td:nth-child(2)')?.textContent?.trim?.();
-		const status = row.querySelector(`td:nth-child(${statusIndex})`);
-		const tags = row.querySelector('td:nth-child(3)')?.innerHTML?.trim?.();
-		if (!coloName || !status) {
-			continue;
-		}
-		status.textContent = '';
-		let spanElement = status.querySelector('span');
-		if (!spanElement) {
-			spanElement = document.createElement('span');
-			status.append(spanElement);
-		}
-		spanElement.classList.add('font-sans', 'inline-flex', 'items-center', 'rounded-full', 'px-2.5', 'py-0.5', 'text-xs', 'font-medium');
-		const online = coloStatus?.[coloName] === true;
-		if (online) {
-			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
-			spanElement.textContent = 'Online';
-		} else if (tags?.includes('JDC')) {
-			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
-			spanElement.textContent = 'China';
-		} else {
-			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
-			spanElement.textContent = 'Offline';
-		}
-		const statusText = spanElement.textContent as 'Online' | 'China' | 'Offline';
-		colosStatuses[statusText]++;
-		totalColos++;
-	}
-
-	const statusTable = document.querySelector('table#status');
-	if (!statusTable) {
-		return;
-	}
-	tableRows = statusTable.querySelectorAll('tbody tr');
-	if (!tableRows) {
-		return;
-	}
-	for (const row of tableRows) {
-		const status = row.querySelector('td:nth-child(1)')?.textContent?.trim?.() as 'Online' | 'Offline' | 'China';
-		const total = row.querySelector('td:nth-child(2)');
-		const percent = row.querySelector('td:nth-child(3)');
-		if (!status || !total || !percent || colosStatuses[status] === undefined) {
-			continue;
-		}
-		total.textContent = colosStatuses[status] as unknown as string;
-		percent.textContent = (colosStatuses[status] / totalColos * 100).toFixed(2) + '%';
-	}
-}
-
-getColosStatus();
-
-setInterval(() => {
-	getColosStatus();
-}, 60000);
-
-</script>

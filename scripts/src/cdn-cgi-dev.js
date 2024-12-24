@@ -7,6 +7,8 @@ import fetch from 'node-fetch';
 
 import { getHttpsAgent, tryAndPush } from './utils.js';
 
+process.exit(0); // sadly this is broken
+
 const agent = getHttpsAgent();
 const dir = path.resolve('../data/cdn-cgi');
 

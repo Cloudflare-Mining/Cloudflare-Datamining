@@ -72,3 +72,8 @@ jobs:
           PAGES_DISPATCH_WORKER: ${{ secrets.PAGES_DISPATCH_WORKER }}
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
+          FETCH_CANARY_URL: ${{ secrets.FETCH_CANARY_URL }}
+          FETCH_UK_URL: ${{ secrets.FETCH_UK_URL }}
+          FETCH_FR_SG_URL: ${{ secrets.FETCH_FR_SG_URL }}
+          FETCH_TX_URL: ${{ secrets.FETCH_TX_URL }}
+          FETCH_SG_URL: ${{ secrets.FETCH_SG_URL }}

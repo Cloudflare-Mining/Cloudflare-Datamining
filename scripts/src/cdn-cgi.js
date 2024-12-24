@@ -14,64 +14,62 @@ await fs.ensureDir(dir);
 
 // colos with mostly stable versions across metals
 const colos = {
-	canary: 'lis01',
-	mcp: 'lhr01',
+	canary: {
+		urls: [
+			process.env.FETCH_CANARY_URL,
+		],
+	},
+	mcp: {
+		urls: [
+			process.env.FETCH_FR_SG_URL,
+			process.env.FETCH_UK_URL,
+		],
+		colos: ['LHR', 'EWR'],
+	},
+	main: {
+		urls: [
+			process.env.FETCH_TX_URL,
+			process.env.FETCH_SG_URL,
+		],
+		colos: ['DFW', 'SIN'],
+	},
 	// 'mcp-canary-candidate-01': 'gru05',
 	// 'mcp-canary-candidate-02': 'dac07',
 	// 'mcp-canary-candidate-03': 'kwi03',
 	// 'mcp-canary-candidate-04': 'han02',
 	// 'mcp-canary-candidate-05': 'poa01',
-	main: 'dfw01',
+	//main: 'dfw01',
 };
 
 const buildVersions = [];
 for (const [name, colo] of Object.entries(colos)) {
-	buildVersions.push({
-		file: `build-info/fl-${name}`,
-		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`,
-		info: colo,
-	});
-	buildVersions.push({
-		file: `build-info/cache-${name}`,
-		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`,
-		info: colo,
-	});
-	buildVersions.push({
-		file: `build-info/challenge-platform-${name}`,
-		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`,
-		info: colo,
-	});
-}
-
-// some known metals in colos with slivers
-const metals = {
-	canary: ['107m35', '107m47', '107m55', '107m72', '107m73'],
-	mcp: ['21m421', '21m424', '21m509', '21m515'],
-};
-
-for (const [name, metalIds] of Object.entries(metals)) {
-	for (const metalId of metalIds) {
+	for (const url of colo.urls) {
 		buildVersions.push({
 			file: `build-info/fl-${name}`,
-			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=fl`,
-			info: metalId,
+			url: `${url}&url=https://trace.colo.quest/info?type=fl`,
+			info: colo,
+		});
+		buildVersions.push({
+			file: `build-info/fl2-${name}`,
+			url: `${url}&url=https://trace.colo.quest/info?type=fl2`,
+			info: colo,
 		});
 		buildVersions.push({
 			file: `build-info/cache-${name}`,
-			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=cache`,
-			info: metalId,
+			url: `${url}&url=https://trace.colo.quest/info?type=cache`,
+			info: colo,
 		});
-		buildVersions.push({
-			file: `build-info/challenge-platform-${name}`,
-			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=challenge-platform`,
-			info: metalId,
-		});
+		// buildVersions.push({
+		// 	file: `build-info/challenge-platform-${name}`,
+		// 	url: `${url}colo=${colo}&url=https://trace.colo.quest`,
+		// 	info: colo,
+		// });
 	}
 }
 
 for (const { file, url, info } of buildVersions) {
 	let filePath = path.resolve(dir, file);
-	console.log('Fetching', file, info);
+	console.log('Fetching', file);
 	try {
 		const controller = new AbortController();
 		const timeout = setTimeout(() => {
@@ -83,6 +81,11 @@ for (const { file, url, info } of buildVersions) {
 			// if sliver, append that to the file name
 			if (headers?.get('x-cdn-cgi-sliver')) {
 				filePath = path.resolve(dir, `${file}_sliver-${headers.get('x-cdn-cgi-sliver')}`);
+			}
+			const coloFromRay = headers?.get('cf-ray')?.split('-')[1];
+			if (info.colors && !info.colos.includes(coloFromRay)) {
+				console.log(`Skipping ${file} because it's not from the expected colo: ${coloFromRay}`);
+				continue;
 			}
 			const data = await dataReq.text();
 			await fs.ensureFile(filePath);

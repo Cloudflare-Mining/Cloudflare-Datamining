@@ -36,3 +36,8 @@ jobs:
           DISCORD_WEBHOOK_CDNCGI_OTHER: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_OTHER }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
           FETCH_FROM_COLO_MULTI_URL: ${{ secrets.FETCH_FROM_COLO_MULTI_URL }}
+          FETCH_CANARY_URL: ${{ secrets.FETCH_CANARY_URL }}
+          FETCH_UK_URL: ${{ secrets.FETCH_UK_URL }}
+          FETCH_FR_SG_URL: ${{ secrets.FETCH_FR_SG_URL }}
+          FETCH_TX_URL: ${{ secrets.FETCH_TX_URL }}
+          FETCH_SG_URL: ${{ secrets.FETCH_SG_URL }}
