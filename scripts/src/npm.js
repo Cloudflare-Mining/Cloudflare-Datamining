@@ -61,21 +61,35 @@ async function run() {
 		}),
 	];
 
-	const rawMaintainers = rawData.flatMap(pkg => pkg.maintainers);
 	const uniqueMaintainers = [];
-	for (const maintainer of rawMaintainers) {
-		if (!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)) {
-			uniqueMaintainers.push({
-				username: maintainer.username,
-			});
-		}
-	}
 	await fs.ensureDir(path.resolve('../data/packages'));
 	await fs.emptyDir(path.resolve('../data/packages'));
-	await fs.writeFile(path.resolve('../data/packages/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
+
 
 	const getDataAndWriteFiles = [];
 	for (const packageInfo of rawData) {
+		if (packageInfo.scope && !['cloudflare', 'miniflare', '@cfpreview'].includes(packageInfo.scope)) {
+			// if it's a scoped package, we only want cloudflare, miniflare, or cfpreview
+			console.log('Skipping', packageInfo.name, 'because of scope', packageInfo.scope);
+			continue;
+		} else if (
+			!packageInfo.scope
+			&& !packageInfo.name.startsWith('@cloudflare/') && !packageInfo.name.startsWith('@miniflare/') && !packageInfo.name.startsWith('@cfpreview/')
+			&& !['cf-ci-write', 'cf-ci2', 'cf-radar', 'wrangler-publisher', 'dash_service_account', 'threepointone'].some(maintainer => packageInfo.maintainers.some(findMaintainer => findMaintainer.username === maintainer))
+		) {
+			// or if no scope but the name indicates a scope via @
+			console.log('Skipping', packageInfo.name, 'because of name', packageInfo.name);
+			continue;
+		}
+
+		for (const maintainer of packageInfo.maintainers) {
+			if (!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)) {
+				uniqueMaintainers.push({
+					username: maintainer.username,
+				});
+			}
+		}
+
 		let name = filenamify(packageInfo.name, { replacement: '__' });
 		// if no scope, extract from name
 		if (!packageInfo.scope) {
@@ -159,6 +173,7 @@ async function run() {
 		});
 	}
 	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
+	await fs.writeFile(path.resolve('../data/packages/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
 
 	// scan all packages for links
 	async function *getFiles(dir) {
