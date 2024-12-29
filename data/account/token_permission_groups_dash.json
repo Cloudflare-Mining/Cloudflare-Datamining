@@ -1,17 +1,44 @@
 [
 	{
+		"id": "19637fbb73d242c0a92845d8db0b95b1",
+		"name": "AI Audit Read",
+		"description": "Grants access to reading AI Audit",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "aiaudit_read"
+	},
+	{
+		"id": "1ba6ab4cacdb454b913bbb93e1b8cb8c",
+		"name": "AI Audit Write",
+		"description": "Grants access to reading and editing AI Audit",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "aiaudit_write"
+	},
+	{
 		"id": "4dc8917b4b40457d88d3035d5dadb054",
 		"name": "AI Gateway Read",
-		"description": "Grants access to reading Ai Gateways",
+		"description": "Grants access to reading AI Gateways",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
 		"label": "aig_read"
 	},
 	{
+		"id": "644535f4ed854494a59cb289d634b257",
+		"name": "AI Gateway Run",
+		"description": "Grants access to run AI Gateways",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "aig_run"
+	},
+	{
 		"id": "6c8a3737f07f46369c1ea1f22138daaf",
 		"name": "AI Gateway Write",
-		"description": "Grants access to reading and editing Ai Gateways",
+		"description": "Grants access to reading and editing AI Gateways",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -297,6 +324,24 @@
 		"label": "account_custom_pages_write"
 	},
 	{
+		"id": "cfa964bcdafc4ab39704e7476154e41b",
+		"name": "Account DNS Settings Read",
+		"description": "Grants read access to Account DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "account_dns_settings_read"
+	},
+	{
+		"id": "dc44f27f48ab405392a5f69fe822bd01",
+		"name": "Account DNS Settings Write",
+		"description": "Grants write access to Account DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "account_dns_settings_write"
+	},
+	{
 		"id": "de7a688cc47d43bd9ea700b467a09c96",
 		"name": "Account Firewall Access Rules Read",
 		"description": "Grants read access to account firewall access rules",
@@ -470,7 +515,7 @@
 	{
 		"id": "7cf72faf220841aabcfdfab81c43c4f6",
 		"name": "Billing Read",
-		"description": "Grants read access to billing profile, subscriptions, and access to fetch invoices and entitlements",
+		"description": "Grants read access to billing profile, subscriptions, usage data and access to fetch invoices and entitlements",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -522,6 +567,24 @@
 		"label": "bot_management_write"
 	},
 	{
+		"id": "374b03fa229f4eb6b011bb1cd7f235ee",
+		"name": "Browser Rendering Read",
+		"description": "Grants read access to Browser Rendering API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "browser_rendering_read"
+	},
+	{
+		"id": "adddda876faa4a0590f1b23a038976e4",
+		"name": "Browser Rendering Write",
+		"description": "Grants write access to Browser Rendering API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "browser_rendering_write"
+	},
+	{
 		"id": "e17beae8b8cb423a99b1730f21238bed",
 		"name": "Cache Purge",
 		"description": "Grants access to purge cache",
@@ -560,7 +623,7 @@
 	{
 		"id": "b711942448db4b0aace44d1312f9fdb0",
 		"name": "Calls Write",
-		"description": "Grants read/write access to Calls configuration",
+		"description": "Grants read\/write access to Calls configuration",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -637,6 +700,24 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "cloudchamber_write"
+	},
+	{
+		"id": "00ec19a0d4fa4e4aae23b50bf04c0630",
+		"name": "Cloudflare CDS Compute Account Read",
+		"description": "Grants read access to Cloudflare CDS compute account resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_cds_compute_account_read"
+	},
+	{
+		"id": "9bf884ba0de445dab37ea4a3e1a2c9f1",
+		"name": "Cloudflare CDS Compute Account Write",
+		"description": "Grants write access to Cloudflare CDS compute account resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_cds_compute_account_write"
 	},
 	{
 		"id": "3a1e1ef09dd34271bb44fc4c6a419952",
@@ -916,6 +997,24 @@
 			"com.cloudflare.api.account.zone"
 		],
 		"label": "dns_read"
+	},
+	{
+		"id": "95d69e8d6d5144bfb0923667355d9f11",
+		"name": "DNS View Read",
+		"description": "Grants read access to DNS Views",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "dns_view_read"
+	},
+	{
+		"id": "5b7aedd821a548b9bf5a2acabbce98c7",
+		"name": "DNS View Write",
+		"description": "Grants write access to DNS Views",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "dns_view_write"
 	},
 	{
 		"id": "4755a26eedb94da69e1066d98aa820be",
@@ -1226,7 +1325,7 @@
 	{
 		"id": "92b8234e99f64e05bbbc59e1dc0f76b6",
 		"name": "IP Prefixes: Write",
-		"description": "Grants access to read/write ip prefix settings",
+		"description": "Grants access to read\/write ip prefix settings",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -1294,6 +1393,24 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "l4_ddos_managed_ruleset_write"
+	},
+	{
+		"id": "59059f0c977b44f8b1c18e0aaf91c369",
+		"name": "Load Balancers Account Read",
+		"description": "Grants read access to account load balancers and associated resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "load_balancers_account_read"
+	},
+	{
+		"id": "419ec42810af4659ade77716dbe47bc6",
+		"name": "Load Balancers Account Write",
+		"description": "Grants write access to account load balancers and associated resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "load_balancers_account_write"
 	},
 	{
 		"id": "e9a975f628014f1d85b723993116f7d5",
@@ -1611,6 +1728,15 @@
 		"label": "pipelines_read"
 	},
 	{
+		"id": "5606e7405dc542949d949d59993d321f",
+		"name": "Pipelines Send",
+		"description": "Grants access to Send Events to Cloudflare Pipelines",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "pipelines_send"
+	},
+	{
 		"id": "e34111af393449539859485aa5ddd5bd",
 		"name": "Pipelines Write",
 		"description": "Grants write access to Cloudflare Pipelines",
@@ -1656,6 +1782,15 @@
 		"label": "queues_write"
 	},
 	{
+		"id": "dfe525ec7b07472c827d8d009178b2ac",
+		"name": "Radar Read",
+		"description": "Grants access to reading Radar",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "radar_read"
+	},
+	{
 		"id": "93ae59e7a40c4287a57ff6e501186a63",
 		"name": "Response Compression Read",
 		"description": "Grants read access to the response compression phase",
@@ -1690,6 +1825,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "account_rule_policies_write"
+	},
+	{
+		"id": "d5812c023a5048b4882175a28952362d",
+		"name": "SCIM Provisioning",
+		"description": "Grants membership permissions needed for SCIM provisioning",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "scim_provisioning_write"
 	},
 	{
 		"id": "7b7216b327b04b8fbc8f524e1f9b7531",
@@ -2104,6 +2248,24 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "access_seats_write"
+	},
+	{
+		"id": "0a6cfe8cd3ed445e918579e2fb13087b",
+		"name": "Zone DNS Settings Read",
+		"description": "Grants read access to Zone DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "zone_dns_settings_read"
+	},
+	{
+		"id": "c4df38be41c247b3b4b7702e76eadae0",
+		"name": "Zone DNS Settings Write",
+		"description": "Grants write access to Zone DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "zone_dns_settings_write"
 	},
 	{
 		"id": "c8fed203ed3043cba015a93ad1616f1f",
