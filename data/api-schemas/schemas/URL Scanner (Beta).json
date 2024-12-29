@@ -1,26 +1,26 @@
 {
-	"GET /accounts/{accountId}/urlscanner/v2/dom/{scanId}": {
+	"GET /accounts/{account_id}/urlscanner/v2/dom/{scan_id}": {
 		"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
 		"operationId": "urlscanner-get-scan-dom-v2",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -173,9 +173,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan's DOM",
@@ -194,28 +196,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/v2/har/{scanId}": {
+	"GET /accounts/{account_id}/urlscanner/v2/har/{scan_id}": {
 		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"operationId": "urlscanner-get-scan-har-v2",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -659,9 +661,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan's HAR",
@@ -680,14 +684,14 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/v2/responses/{responseId}": {
+	"GET /accounts/{account_id}/urlscanner/v2/responses/{response_id}": {
 		"description": "Returns the raw response of the network request. If HTML, a plain text response will be returned.",
 		"operationId": "urlscanner-get-response-v2",
 		"parameters": [
 			{
 				"description": "Response hash.",
 				"in": "path",
-				"name": "responseId",
+				"name": "response_id",
 				"required": true,
 				"schema": {
 					"description": "Response hash.",
@@ -695,12 +699,12 @@
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -708,7 +712,7 @@
 		"responses": {
 			"200": {
 				"content": {
-					"text/plain or image": {
+					"text/plain": {
 						"schema": {
 							"description": "Web resource or image.",
 							"type": "string"
@@ -770,9 +774,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get raw response",
@@ -791,28 +797,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/v2/result/{scanId}": {
+	"GET /accounts/{account_id}/urlscanner/v2/result/{scan_id}": {
 		"description": "Get URL scan by uuid",
 		"operationId": "urlscanner-get-scan-v2",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -2785,9 +2791,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan",
@@ -2806,28 +2814,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/v2/screenshots/{scanId}.png": {
+	"GET /accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png": {
 		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"operationId": "urlscanner-get-scan-screenshot-v2",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			},
@@ -2995,9 +3003,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get screenshot",
@@ -3016,17 +3026,17 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/v2/search": {
+	"GET /accounts/{account_id}/urlscanner/v2/search": {
 		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'page.domain:microsoft AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2024-01 TO 2024-10]': my scans from 2024 January to 2024 October.<br/>- 'page.domain:(blogspot OR www.blogspot)': Searches for scans whose main domain starts with \"blogspot\" or with \"www.blogspot\"<br/>- 'date:>now-7d AND path:okta-sign-in.min.js: scans from the last 7 days with any request path that ends with \"okta-sign-in.min.js\"<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.",
 		"operationId": "urlscanner-search-scans-v2",
 		"parameters": [
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			},
@@ -3235,9 +3245,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Search URL scans",
@@ -3256,17 +3268,17 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{accountId}/urlscanner/v2/bulk": {
+	"POST /accounts/{account_id}/urlscanner/v2/bulk": {
 		"description": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish.",
 		"operationId": "urlscanner-create-scan-bulk-v2",
 		"parameters": [
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -3490,9 +3502,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Bulk create URL Scans",
@@ -3511,17 +3525,17 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{accountId}/urlscanner/v2/scan": {
+	"POST /accounts/{account_id}/urlscanner/v2/scan": {
 		"description": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"operationId": "urlscanner-create-scan-v2",
 		"parameters": [
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -3795,9 +3809,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create URL Scan",

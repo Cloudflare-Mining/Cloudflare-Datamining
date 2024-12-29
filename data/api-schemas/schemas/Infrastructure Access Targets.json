@@ -745,10 +745,6 @@
 		"summary": "List all targets",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -1381,9 +1377,6 @@
 		"summary": "Create new target",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {

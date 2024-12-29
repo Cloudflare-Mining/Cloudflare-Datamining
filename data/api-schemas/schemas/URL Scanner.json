@@ -1,12 +1,12 @@
 {
-	"GET /accounts/{accountId}/urlscanner/response/{responseId}": {
+	"GET /accounts/{account_id}/urlscanner/response/{response_id}": {
 		"description": "Returns the plain response of the network request.",
 		"operationId": "urlscanner-get-response-text",
 		"parameters": [
 			{
 				"description": "Response hash.",
 				"in": "path",
-				"name": "responseId",
+				"name": "response_id",
 				"required": true,
 				"schema": {
 					"description": "Response hash.",
@@ -14,12 +14,12 @@
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -27,7 +27,7 @@
 		"responses": {
 			"200": {
 				"content": {
-					"text/plain or image": {
+					"text/plain": {
 						"schema": {
 							"description": "Web resource text/image.",
 							"type": "string"
@@ -45,7 +45,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -139,9 +139,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get raw response",
@@ -160,26 +162,26 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/scan": {
+	"GET /accounts/{account_id}/urlscanner/scan": {
 		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"operationId": "urlscanner-search-scans",
 		"parameters": [
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Scan uuid",
+				"description": "Scan UUID.",
 				"in": "query",
-				"name": "scanId",
+				"name": "scan_id",
 				"schema": {
-					"description": "Scan uuid",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -460,7 +462,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -504,9 +506,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Search URL scans",
@@ -525,28 +529,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/scan/{scanId}": {
+	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}": {
 		"description": "Get URL scan by uuid",
 		"operationId": "urlscanner-get-scan",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			},
@@ -1968,7 +1972,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -2062,9 +2066,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan",
@@ -2083,28 +2089,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/scan/{scanId}/har": {
+	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/har": {
 		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"operationId": "urlscanner-get-scan-har",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -2608,7 +2614,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -2702,9 +2708,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan's HAR",
@@ -2723,28 +2731,28 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{accountId}/urlscanner/scan/{scanId}/screenshot": {
+	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/screenshot": {
 		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"operationId": "urlscanner-get-scan-screenshot",
 		"parameters": [
 			{
-				"description": "Scan uuid.",
+				"description": "Scan UUID.",
 				"in": "path",
-				"name": "scanId",
+				"name": "scan_id",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid.",
+					"description": "Scan UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			},
@@ -2919,7 +2927,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -3013,9 +3021,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get screenshot",
@@ -3034,17 +3044,17 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{accountId}/urlscanner/scan": {
+	"POST /accounts/{account_id}/urlscanner/scan": {
 		"description": "Submit a URL to scan. You can also set some options, like the visibility level and custom headers. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"operationId": "urlscanner-create-scan",
 		"parameters": [
 			{
-				"description": "Account Id.",
+				"description": "Account ID.",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account Id.",
+					"description": "Account ID.",
 					"type": "string"
 				}
 			}
@@ -3191,7 +3201,7 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid uuid.",
+												"example": "Scan ID is not a valid UUID.",
 												"type": "string"
 											}
 										},
@@ -3449,9 +3459,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create URL Scan",

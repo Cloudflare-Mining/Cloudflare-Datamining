@@ -212,9 +212,6 @@
 		"summary": "Delete an ASN",
 		"tags": [
 			"Botnet Threat Feed"
-		],
-		"x-api-token-group": [
-			"DDoS Botnet Feed Write"
 		]
 	},
 	"GET /accounts/{account_id}/botnet_feed/asn/{asn_id}/day_report": {
@@ -448,10 +445,6 @@
 		"summary": "Get daily report",
 		"tags": [
 			"Botnet Threat Feed"
-		],
-		"x-api-token-group": [
-			"DDoS Botnet Feed Write",
-			"DDoS Botnet Feed Read"
 		]
 	},
 	"GET /accounts/{account_id}/botnet_feed/asn/{asn_id}/full_report": {
@@ -676,10 +669,6 @@
 		"summary": "Get full report",
 		"tags": [
 			"Botnet Threat Feed"
-		],
-		"x-api-token-group": [
-			"DDoS Botnet Feed Write",
-			"DDoS Botnet Feed Read"
 		]
 	},
 	"GET /accounts/{account_id}/botnet_feed/configs/asn": {
@@ -887,10 +876,6 @@
 		"summary": "Get list of ASNs",
 		"tags": [
 			"Botnet Threat Feed"
-		],
-		"x-api-token-group": [
-			"DDoS Botnet Feed Write",
-			"DDoS Botnet Feed Read"
 		]
 	}
 }

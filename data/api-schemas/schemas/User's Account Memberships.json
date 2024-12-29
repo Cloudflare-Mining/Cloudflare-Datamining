@@ -216,9 +216,6 @@
 		"summary": "Delete Membership",
 		"tags": [
 			"User's Account Memberships"
-		],
-		"x-api-token-group": [
-			"Memberships Write"
 		]
 	},
 	"GET /memberships": {
@@ -1464,10 +1461,6 @@
 		"summary": "List Memberships",
 		"tags": [
 			"User's Account Memberships"
-		],
-		"x-api-token-group": [
-			"Memberships Write",
-			"Memberships Read"
 		]
 	},
 	"GET /memberships/{membership_id}": {
@@ -2161,10 +2154,6 @@
 		"summary": "Membership Details",
 		"tags": [
 			"User's Account Memberships"
-		],
-		"x-api-token-group": [
-			"Memberships Write",
-			"Memberships Read"
 		]
 	},
 	"PUT /memberships/{membership_id}": {
@@ -2880,9 +2869,6 @@
 		"summary": "Update Membership",
 		"tags": [
 			"User's Account Memberships"
-		],
-		"x-api-token-group": [
-			"Memberships Write"
 		]
 	}
 }

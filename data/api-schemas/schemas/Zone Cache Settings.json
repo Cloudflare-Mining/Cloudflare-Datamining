@@ -440,10 +440,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -959,12 +955,6 @@
 		"summary": "Get Cache Reserve setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1521,12 +1511,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -2069,12 +2053,6 @@
 		"summary": "Get Regional Tiered Cache setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2821,12 +2799,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -3340,12 +3312,6 @@
 		"summary": "Get Origin Max HTTP Version Setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3885,10 +3851,6 @@
 		"summary": "Change Cache Reserve setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4455,10 +4417,6 @@
 		"summary": "Change Regional Tiered Cache setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5357,10 +5315,6 @@
 		"tags": [
 			"Zone Cache Settings"
 		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -5896,10 +5850,6 @@
 		"summary": "Change Origin Max HTTP Version Setting",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6451,10 +6401,6 @@
 		"summary": "Start Cache Reserve Clear",
 		"tags": [
 			"Zone Cache Settings"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

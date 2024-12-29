@@ -553,12 +553,6 @@
 		"tags": [
 			"DNS Settings for a Zone"
 		],
-		"x-api-token-group": [
-			"Zone DNS Settings Write",
-			"Zone DNS Settings Read",
-			"DNS Read",
-			"DNS Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -1269,10 +1263,6 @@
 		"summary": "Update DNS Settings",
 		"tags": [
 			"DNS Settings for a Zone"
-		],
-		"x-api-token-group": [
-			"Zone DNS Settings Write",
-			"DNS Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -781,10 +781,6 @@
 		"summary": "List Existing Custom Scan Expressions",
 		"tags": [
 			"Content Scanning"
-		],
-		"x-api-token-group": [
-			"Zone WAF Read",
-			"Account WAF Read"
 		]
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
@@ -1035,10 +1031,6 @@
 		"summary": "Get Content Scanning Status",
 		"tags": [
 			"Content Scanning"
-		],
-		"x-api-token-group": [
-			"Zone WAF Read",
-			"Account WAF Read"
 		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {

@@ -151,11 +151,6 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.read"
@@ -412,11 +407,6 @@
 		"summary": "Get Script Settings",
 		"tags": [
 			"Worker Environment"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -808,9 +798,6 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -1195,9 +1182,6 @@
 		"summary": "Put script content",
 		"tags": [
 			"Worker Environment"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

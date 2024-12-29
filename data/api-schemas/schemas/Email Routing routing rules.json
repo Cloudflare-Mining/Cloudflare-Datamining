@@ -556,9 +556,6 @@
 		"tags": [
 			"Email Routing routing rules"
 		],
-		"x-api-token-group": [
-			"Email Routing Rules Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.rule.list"
@@ -808,9 +805,6 @@
 		"tags": [
 			"Email Routing routing rules"
 		],
-		"x-api-token-group": [
-			"Email Routing Rules Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.rule.read"
@@ -1019,9 +1013,6 @@
 		"summary": "Get catch-all rule",
 		"tags": [
 			"Email Routing routing rules"
-		],
-		"x-api-token-group": [
-			"Email Routing Rules Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -312,10 +312,6 @@
 		"summary": "Delete PagerDuty Services",
 		"tags": [
 			"Notification destinations with PagerDuty"
-		],
-		"x-api-token-group": [
-			"Notifications Write",
-			"Account Settings Write"
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty": {
@@ -690,13 +686,6 @@
 		"tags": [
 			"Notification destinations with PagerDuty"
 		],
-		"x-api-token-group": [
-			"Cloudflare Zero Trust PII Read",
-			"Notifications Write",
-			"Notifications Read",
-			"Account Settings Write",
-			"Account Settings Read"
-		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1013,10 +1002,6 @@
 		"summary": "Connect PagerDuty",
 		"tags": [
 			"Notification destinations with PagerDuty"
-		],
-		"x-api-token-group": [
-			"Notifications Write",
-			"Account Settings Write"
 		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect": {
@@ -1315,10 +1300,6 @@
 		"summary": "Create PagerDuty integration token",
 		"tags": [
 			"Notification destinations with PagerDuty"
-		],
-		"x-api-token-group": [
-			"Notifications Write",
-			"Account Settings Write"
 		]
 	}
 }

@@ -464,10 +464,6 @@
 		"summary": "List SSH Certificate Authorities (CA)",
 		"tags": [
 			"Gateway CA"
-		],
-		"x-api-token-group": [
-			"Access: SSH Auditing CA Write",
-			"Access: SSH Auditing CA Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
@@ -681,9 +677,6 @@
 		"summary": "Add a new SSH Certificate Authority (CA)",
 		"tags": [
 			"Gateway CA"
-		],
-		"x-api-token-group": [
-			"Access: SSH Auditing CA Write"
 		]
 	}
 }

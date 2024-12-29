@@ -477,11 +477,6 @@
 		"tags": [
 			"Worker Deployments"
 		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.deployment.list"
@@ -1054,9 +1049,6 @@
 		"summary": "Create Deployment",
 		"tags": [
 			"Worker Deployments"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
