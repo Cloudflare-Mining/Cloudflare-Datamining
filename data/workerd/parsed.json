@@ -2778,6 +2778,14 @@
 						"compatEnableFlag": "tail_worker_user_spans",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "cacheNoCache",
+					"annotations": {
+						"compatDisableFlag": "cache_no_cache_disabled",
+						"compatEnableFlag": "cache_no_cache_enabled",
+						"experimental": "true"
+					}
 				}
 			]
 		},
