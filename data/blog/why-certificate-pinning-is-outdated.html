@@ -8,7 +8,7 @@
 	<p>In today’s world, technology is quickly evolving and some practices that were once considered the gold standard are quickly becoming outdated. At Cloudflare, we stay close to industry changes to ensure that we can provide the best solutions to our customers. One practice that we’re continuing to see in use that no longer serves its original purpose is certificate pinning. In this post, we’ll dive into certificate pinning, the consequences of using it in today’s <a href="https://www.cloudflare.com/en-gb/learning/ssl/how-does-public-key-encryption-work">Public Key Infrastructure (PKI)</a> world, and alternatives to pinning that offer the same level of security without the management overhead. &nbsp;</p>
 	<p>PKI exists to help issue and manage <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate">TLS certificates</a>, which are vital to keeping the Internet secure – they ensure that users access the correct applications or servers and that data between two parties stays encrypted. The mis-issuance of a certificate can pose great risk. For example, if a malicious party is able to issue a TLS certificate for your bank’s website, then they can potentially impersonate your bank and intercept that traffic to get access to your bank account. To prevent a mis-issued certificate from intercepting traffic, the server can give a certificate to the client and say “only trust connections if you see this certificate and drop any responses that present a different certificate” – this practice is called certificate pinning.</p>
 	<p>In the early 2000s, it was common for banks and other organizations that handle sensitive data to pin certificates to clients. However, over the last 20 years, TLS certificate issuance has evolved and changed, and new solutions have been developed to help customers achieve the security benefit they receive through certificate pinning, with simpler management, and without the risk of disruption.</p>
-	<p>Cloudflare’s mission is to help build a better Internet, which is why our teams are always focused on keeping domains secure and online.</p>
+	<p>Cloudflare’s mission is to help build a better Internet, which is why our teams are always focused on <a href="https://www.cloudflare.com/application-services/solutions/domain-protection-services">keeping domains secure and online</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-certificate-pinning-is-causing-more-outages-now-than-it-did-before">Why certificate pinning is causing more outages now than it did before</h2>
 		<a href="https://blog.cloudflare.com/#why-certificate-pinning-is-causing-more-outages-now-than-it-did-before" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -128,10 +128,10 @@
 	<p><b>Disadvantages:</b></p>
 	<ul>
 		<li>
-			<p><b><b><b>Broader trust:</b></b></b> Most Certificate Authorities (CAs) issue their certificates from one root, so pinning a root CA certificate enables the client to trust every certificate issued from that CA. However, this broader trust can be problematic. If the root CA is compromised, every certificate issued by that CA is also compromised, which significantly increases the potential scope and impact of a security breach. This broad trust can therefore create a single point of failure, making the entire ecosystem more vulnerable to attacks.</p>
+			<p><b>Broader trust:</b> Most Certificate Authorities (CAs) issue their certificates from one root, so pinning a root CA certificate enables the client to trust every certificate issued from that CA. However, this broader trust can be problematic. If the root CA is compromised, every certificate issued by that CA is also compromised, which significantly increases the potential scope and impact of a security breach. This broad trust can therefore create a single point of failure, making the entire ecosystem more vulnerable to attacks.</p>
 		</li>
 		<li>
-			<p><b><b><b>Neglected Maintenance:</b></b></b> Root certificates are infrequently rotated, which can lead to a “set and forget” mentality when pinning them. Although it's rare, CAs do <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html">change their roots</a> and when this happens, a correctly renewed certificate will break the pin, causing an outage. Since these pins are rarely updated, resolving such outages can be time-consuming as engineering teams try to identify and locate where the outdated pins have been set.</p>
+			<p><b>Neglected Maintenance:</b> Root certificates are infrequently rotated, which can lead to a “set and forget” mentality when pinning them. Although it's rare, CAs do <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html">change their roots</a> and when this happens, a correctly renewed certificate will break the pin, causing an outage. Since these pins are rarely updated, resolving such outages can be time-consuming as engineering teams try to identify and locate where the outdated pins have been set.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -146,22 +146,22 @@
 	<p><b>Advantages:</b></p>
 	<ul>
 		<li>
-			<p><b><b><b>Better security:</b></b></b> Narrows down the trust to certificates issued by a specific intermediate CA.</p>
+			<p><b>Better security:</b> Narrows down the trust to certificates issued by a specific intermediate CA.</p>
 		</li>
 		<li>
-			<p><b><b><b>Simpler management:</b></b></b> With intermediate CA lifetimes spanning a few years, certificate pins require less frequent updates, reducing the maintenance burden.</p>
+			<p><b>Simpler management:</b> With intermediate CA lifetimes spanning a few years, certificate pins require less frequent updates, reducing the maintenance burden.</p>
 		</li>
 	</ul>
 	<p><b>Disadvantages:</b></p>
 	<ul>
 		<li>
-			<p><b><b><b>Broad trust:</b></b></b> While pinning on an intermediate certificate is more restrictive than pinning on a root certificate, it still allows for a broad range of certificates to be trusted.</p>
+			<p><b>Broad trust:</b> While pinning on an intermediate certificate is more restrictive than pinning on a root certificate, it still allows for a broad range of certificates to be trusted.</p>
 		</li>
 		<li>
-			<p><b><b><b>Maintenance:</b></b></b> Intermediate certificates are rotated more frequently than root certificates, requiring more regular updates to pinned certificates.</p>
+			<p><b>Maintenance:</b> Intermediate certificates are rotated more frequently than root certificates, requiring more regular updates to pinned certificates.</p>
 		</li>
 		<li>
-			<p><b><b><b>Less predictability:</b></b></b> With CAs like Let’s Encrypt issuing their certificates from varying intermediates, it’s no longer possible to predict which certificate chain will be used during a renewal, making it more likely for a certificate renewal to break a certificate pin and cause an outage.</p>
+			<p><b>Less predictability:</b> With CAs like Let’s Encrypt issuing their certificates from varying intermediates, it’s no longer possible to predict which certificate chain will be used during a renewal, making it more likely for a certificate renewal to break a certificate pin and cause an outage.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -176,16 +176,16 @@
 	<p><b>Advantages:</b></p>
 	<ul>
 		<li>
-			<p><b><b><b>High security:</b></b></b> Provides the highest level of security by ensuring that only a specific certificate is trusted, minimizing the risk of a monster-in-the-middle attack.</p>
+			<p><b>High security:</b> Provides the highest level of security by ensuring that only a specific certificate is trusted, minimizing the risk of a monster-in-the-middle attack.</p>
 		</li>
 	</ul>
 	<p><b>Disadvantages:</b></p>
 	<ul>
 		<li>
-			<p><b><b><b>Risky:</b></b></b> Requires careful management of certificate renewals to prevent outages.</p>
+			<p><b>Risky:</b> Requires careful management of certificate renewals to prevent outages.</p>
 		</li>
 		<li>
-			<p><b><b><b>Management burden:</b></b></b> Leaf certificates have shorter lifetimes, with 90 days becoming the standard, requiring constant updates to the certificate pin to avoid a breaking change during a renewal.</p>
+			<p><b>Management burden:</b> Leaf certificates have shorter lifetimes, with 90 days becoming the standard, requiring constant updates to the certificate pin to avoid a breaking change during a renewal.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
