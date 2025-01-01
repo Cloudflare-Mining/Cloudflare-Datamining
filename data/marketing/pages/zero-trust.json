@@ -2587,12 +2587,6 @@
 										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
 									},
 									{
-										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
-										"linkText": "Whitepapers",
-										"page": null,
-										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Whitepaper"
-									},
-									{
 										"contentfulId": "pwITDWH0n5Z1DjX1KLTmg",
 										"linkText": "Webinars",
 										"page": null,
@@ -2630,7 +2624,20 @@
 							"title": "Simplify SSE & SASE adoption",
 							"eyebrow": null,
 							"copy": "__Modernize your network and protect your workforce with our unified cloud-native platform__\n\n<br>\n\nToo many SSE and SASE journeys are held back by disjointed 'platforms' saddled with tech debt. Cloudflare's connectivity cloud is the modern answer — a composable, cloud-native platform that adapts to any use case.\n<br>",
-							"primaryCta": null,
+							"primaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "Y8iBiTykNeJ5pq6mXuVLC",
+								"elementName": "Talk to an expert - CTA",
+								"standardText": null,
+								"text": "Talk to an expert",
+								"url": "/products/zero-trust/plans/enterprise/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
 							"secondaryCta": {
 								"buttonAssetFile": null,
 								"buttonTextLoggedIn": null,
@@ -2651,7 +2658,21 @@
 							"contentTypeId": "elementHalfWidthHeroImage",
 							"contentfulId": "5MzeTRkMYxgv9yvssOdddH",
 							"entityTitle": "Cloudflare's SSE  & SASE Platform - image",
-							"imageAsset": null
+							"imageAsset": {
+								"id": "99e61802-defd-5f24-b370-cce7a30b0d36",
+								"altText": "Cloudflare's SSE  & SASE Platform",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/51lajZjkeMPRXXEJJSjcVm/de01b00d3bba248d3a833ab7af9fa504/Network_Connectivity_plus_Zero_Trust_Security_Diagram.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
 						},
 						"promotionalBanner": null,
 						"sectionPadding": null,
@@ -5384,90 +5405,6 @@
 								}
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "53U4ozgCnJnxCmvwwz4ND",
-						"title": "Tackle SSE or SASE one step at a time to adopt Zero Trust",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
-							"elementName": "Talk to an expert",
-							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
-							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
-								"modalName": "Talk to an expert",
-								"modalId": "talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2JsxTTKN1SRNdRwkWXKgDw",
-							"elementName": "Compare plans",
-							"standardText": null,
-							"text": "Compare plans",
-							"url": "https://www.cloudflare.com/plans/zero-trust-services/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"sectionPadding": null,
-						"eyebrow": null
 					}
 				],
 				"noindex": false,
