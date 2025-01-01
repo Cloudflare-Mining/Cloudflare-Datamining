@@ -1770,18 +1770,6 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "4fD4BdNYH87js80vLS8b8f",
-												"locale": "en-US",
-												"title": "Privacy and data protection",
-												"description": "Access privacy policies and how we support GDPR",
-												"url": "/trust-hub/privacy-and-data-protection/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "4ZYWCM4UVgcqeiDBaYBNJB",
 												"locale": "en-US",
 												"title": "Trust & safety",
@@ -2587,6 +2575,12 @@
 										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
 									},
 									{
+										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
+										"linkText": "Whitepapers",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Whitepaper"
+									},
+									{
 										"contentfulId": "pwITDWH0n5Z1DjX1KLTmg",
 										"linkText": "Webinars",
 										"page": null,
@@ -2691,6 +2685,71 @@
 						"bladeBorder": "none",
 						"backgroundColor": "white",
 						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "Zero Trust Network Access (ZTNA)",
+								"contentfulId": "XGi19MscOrq4TfPNCeDuX",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "a0efa544-aa20-5337-8e79-d5411ea6b5ac",
+									"altText": "Cloudflare access round icon",
+									"title": "Cloudflare access round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7H02c695tAmuf4JsFZEuGt/41456dda4de5de97a71290c651405e45/cloudflare-access-round-fill.svg"
+										},
+										"description": "Cloudflare access round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Zero Trust Network Access (ZTNA)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "70BVQ0zHpoglRhShuSf4w",
+									"elementName": "Zero Trust Network Access (ZTNA) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/access/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
 							{
 								"locale": "en-US",
 								"entryTitle": "Secure Web Gateway (SWG)",
