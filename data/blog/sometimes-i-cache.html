@@ -370,8 +370,8 @@ function shouldRevalidate(expirationDate) {
   if (remainingCacheTimeInS &lt;= 0) {
 	return true
   }
-  // p(t) is evaluated here
-  return Math.random() &lt; Math.exp(-REVALIDATION_STEEPNESS*(CACHE_REVALIDATION_INTERVAL_IN_S-remainingCacheTimeInS)
+// p(t) is evaluated here
+  return Math.random() &lt; Math.exp(-REVALIDATION_STEEPNESS*remainingCacheTimeInS)
 }
 </code></pre>
 	<p><i>Codeblock 7: Image server with early-revalidation and a probabilistic cache using exponential distribution</i></p>
