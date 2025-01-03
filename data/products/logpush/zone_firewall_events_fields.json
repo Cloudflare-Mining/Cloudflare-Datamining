@@ -1,5 +1,5 @@
 {
-	"Action": "string; The code of the first-class action the Cloudflare Firewall took on this request. Possible actions are unknown | allow | block | challenge | jschallenge | log | connectionclose | challengesolved | challengefailed | challengebypassed | jschallengesolved | jschallengefailed | jschallengebypassed | bypass | managedchallenge | managedchallengeskipped | managedchallengenoninteractivesolved | managedchallengeinteractivesolved | managedchallengebypassed.",
+	"Action": "string; The code of the first-class action the Cloudflare Firewall took on this request. Possible actions are unknown | allow | block | challenge | jschallenge | log | connectionclose | challengesolved | challengebypassed | jschallengesolved | jschallengebypassed | bypass | managedchallenge | managedchallengenoninteractivesolved | managedchallengeinteractivesolved | managedchallengebypassed.",
 	"ClientASN": "int; The ASN number of the visitor.",
 	"ClientASNDescription": "string; The ASN of the visitor as string.",
 	"ClientCountry": "string; Country from which request originated.",
