@@ -605,7 +605,7 @@ const navigation = {
 			hasPermission: O => (0, te.K)(O, "account")
 		}, {
 			title: "navigation.account.mcn",
-			url: "/mcn",
+			url: "/mcn/integrations",
 			labels: O => (0, e.z1)("magic-beta-flags-disabled")(O) ? [] : ["beta"],
 			hasPermission: O => !!((0, o.iY)(O) && !!(0, u.$f)(O, "magic_cloud.enabled")),
 			testId: "sidenav-mcn-pages-link"
