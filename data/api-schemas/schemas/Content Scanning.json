@@ -398,6 +398,10 @@
 		"summary": "Delete a Custom Scan Expression",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Account WAF Write"
 		]
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
@@ -781,6 +785,12 @@
 		"summary": "List Existing Custom Scan Expressions",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Zone WAF Read",
+			"Account WAF Write",
+			"Account WAF Read"
 		]
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
@@ -1031,6 +1041,12 @@
 		"summary": "Get Content Scanning Status",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Zone WAF Read",
+			"Account WAF Write",
+			"Account WAF Read"
 		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
@@ -1240,6 +1256,10 @@
 		"summary": "Disable Content Scanning",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Account WAF Write"
 		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
@@ -1449,6 +1469,10 @@
 		"summary": "Enable Content Scanning",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Account WAF Write"
 		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
@@ -1856,6 +1880,10 @@
 		"summary": "Add Custom Scan Expressions",
 		"tags": [
 			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Account WAF Write"
 		]
 	}
 }

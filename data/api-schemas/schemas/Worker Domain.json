@@ -5,21 +5,21 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "domain_id",
-				"required": true,
-				"schema": {
-					"description": "Identifer of the Worker Domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
 					"type": "string"
 				}
 			}
@@ -57,11 +57,9 @@
 		"tags": [
 			"Worker Domain"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.domain.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
 	},
 	"GET /accounts/{account_id}/workers/domains": {
 		"description": "Lists all Worker Domains for an account.",
@@ -454,11 +452,10 @@
 		"tags": [
 			"Worker Domain"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.domain.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
 		"description": "Gets a Worker domain.",
@@ -466,21 +463,21 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "domain_id",
-				"required": true,
-				"schema": {
-					"description": "Identifer of the Worker Domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifer of the account.",
 					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
 					"type": "string"
 				}
 			}
@@ -810,11 +807,10 @@
 		"tags": [
 			"Worker Domain"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.domain.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
 		"description": "Attaches a Worker to a zone and hostname.",
@@ -1194,10 +1190,8 @@
 		"tags": [
 			"Worker Domain"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.domain.update"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
 	}
 }

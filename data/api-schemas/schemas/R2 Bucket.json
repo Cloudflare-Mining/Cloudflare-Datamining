@@ -202,6 +202,9 @@
 		"summary": "Delete Event Notification Rules",
 		"tags": [
 			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
@@ -1294,6 +1297,10 @@
 		"summary": "List Event Notification Rules",
 		"tags": [
 			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
@@ -4428,6 +4435,9 @@
 		"summary": "Create Event Notification Rule",
 		"tags": [
 			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
 		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {

@@ -413,6 +413,10 @@
 		"summary": "Delete a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
@@ -932,6 +936,12 @@
 		"summary": "List virtual networks",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
@@ -1810,6 +1820,10 @@
 		"summary": "Update a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {
@@ -2241,6 +2255,10 @@
 		"summary": "Create a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	}
 }

@@ -448,6 +448,12 @@
 		"summary": "Retrieve zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
@@ -775,6 +781,12 @@
 		"summary": "Retrieve information about all schemas on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
@@ -2520,6 +2532,10 @@
 		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
@@ -3199,6 +3215,10 @@
 		"summary": "Upload a schema to a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -3531,6 +3551,10 @@
 		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

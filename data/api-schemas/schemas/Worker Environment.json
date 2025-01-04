@@ -40,7 +40,7 @@
 				"content": {
 					"string": {
 						"schema": {
-							"example": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
+							"example": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n"
 						}
 					}
 				},
@@ -151,11 +151,11 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Get script settings from a worker with an environment",
@@ -408,11 +408,11 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Patch script metadata, such as bindings",
@@ -798,11 +798,9 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"description": "Put script content from a worker with an environment",
@@ -1011,10 +1009,65 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"placement": {
+													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+													"properties": {
+														"mode": {
+															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"enum": [
+																"smart"
+															],
+															"type": "string"
+														},
+														"status": {
+															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"enum": [
+																"SUCCESS",
+																"NO_VALID_HOSTS",
+																"NO_VALID_BINDINGS",
+																"UNSUPPORTED_APPLICATION",
+																"INSUFFICIENT_INVOCATIONS",
+																"INSUFFICIENT_SUBREQUESTS"
+															],
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
 												"placement_mode": {
-													"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-													"example": "smart",
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"enum": [
+																"smart"
+															],
+															"type": "string"
+														},
+														{
+															"deprecated": true
+														}
+													]
+												},
+												"placement_status": {
+													"allOf": [
+														{
+															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"enum": [
+																"SUCCESS",
+																"NO_VALID_HOSTS",
+																"NO_VALID_BINDINGS",
+																"UNSUPPORTED_APPLICATION",
+																"INSUFFICIENT_INVOCATIONS",
+																"INSUFFICIENT_SUBREQUESTS"
+															],
+															"readOnly": true,
+															"type": "string"
+														},
+														{
+															"deprecated": true
+														}
+													]
 												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
@@ -1047,10 +1100,9 @@
 												"usage_model": {
 													"description": "Usage model for the Worker invocations.",
 													"enum": [
-														"bundled",
-														"unbound"
+														"standard"
 													],
-													"example": "unbound",
+													"example": "standard",
 													"type": "string"
 												}
 											}
@@ -1183,10 +1235,8 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
 	}
 }

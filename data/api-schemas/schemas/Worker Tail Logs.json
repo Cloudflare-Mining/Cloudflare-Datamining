@@ -5,11 +5,12 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier for the tail.",
-					"example": "03dc9f77817b488fb26c5861ec18f791",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"type": "string"
 				}
 			},
@@ -26,12 +27,11 @@
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "Identifier for the tail.",
+					"example": "03dc9f77817b488fb26c5861ec18f791",
 					"type": "string"
 				}
 			}
@@ -279,28 +279,14 @@
 		"tags": [
 			"Worker Tail Logs"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.read",
-				"com.cloudflare.edge.worker.tail.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"description": "Get list of tails currently deployed on a Worker.",
-		"operationId": "worker-tail-logs-list-tails",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "script_name",
-				"required": true,
-				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
-					"example": "this-is_my_script-01",
-					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
@@ -309,6 +295,17 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			}
@@ -600,27 +597,15 @@
 		"tags": [
 			"Worker Tail Logs"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"description": "Starts a tail that receives logs and exception from a Worker.",
 		"operationId": "worker-tail-logs-start-tail",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "script_name",
-				"required": true,
-				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
-					"example": "this-is_my_script-01",
-					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
@@ -629,6 +614,17 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			}
@@ -926,11 +922,9 @@
 		"tags": [
 			"Worker Tail Logs"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.read",
-				"com.cloudflare.edge.worker.tail.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
+		]
 	}
 }

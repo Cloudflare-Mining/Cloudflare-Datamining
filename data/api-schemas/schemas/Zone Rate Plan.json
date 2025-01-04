@@ -525,6 +525,10 @@
 		"tags": [
 			"Zone Rate Plan"
 		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#billing:read"
@@ -1032,6 +1036,10 @@
 		"summary": "Available Plan Details",
 		"tags": [
 			"Zone Rate Plan"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1580,6 +1588,10 @@
 		"summary": "List Available Rate Plans",
 		"tags": [
 			"Zone Rate Plan"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

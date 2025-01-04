@@ -5,23 +5,23 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "script_name",
-				"required": true,
-				"schema": {
-					"description": "Name of the script.",
-					"example": "this-is_my_script-01",
-					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			}
@@ -477,27 +477,16 @@
 		"tags": [
 			"Worker Deployments"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.deployment.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
 		"description": "Deployments configure how [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions) are deployed to traffic. A deployment can consist of one or two versions of a Worker.",
 		"operationId": "worker-deployments-create-deployment",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "script_name",
-				"required": true,
-				"schema": {
-					"description": "Name of the script.",
-					"example": "this-is_my_script-01",
-					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
@@ -506,6 +495,17 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -1050,10 +1050,8 @@
 		"tags": [
 			"Worker Deployments"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.deployment.edit"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
 	}
 }

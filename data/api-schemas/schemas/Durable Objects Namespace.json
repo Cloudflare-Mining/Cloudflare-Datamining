@@ -386,26 +386,15 @@
 		"tags": [
 			"Durable Objects Namespace"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.durable-object.class.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
 		"description": "Returns the Durable Objects in a given namespace.",
 		"operationId": "durable-objects-namespace-list-objects",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "ID of the namespace.",
-					"example": "5fd1cafff895419c8bcc647fc64ab8f0",
-					"type": "string"
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
@@ -414,6 +403,16 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "ID of the namespace.",
+					"example": "5fd1cafff895419c8bcc647fc64ab8f0",
 					"type": "string"
 				}
 			},
@@ -829,10 +828,9 @@
 		"tags": [
 			"Durable Objects Namespace"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.durable-object.class.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	}
 }

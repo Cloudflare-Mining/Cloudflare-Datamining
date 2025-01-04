@@ -211,6 +211,9 @@
 		"tags": [
 			"Logcontrol CMB config for an account"
 		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -433,6 +436,10 @@
 		"summary": "Get CMB config",
 		"tags": [
 			"Logcontrol CMB config for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -677,6 +684,9 @@
 		"summary": "Update CMB config",
 		"tags": [
 			"Logcontrol CMB config for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

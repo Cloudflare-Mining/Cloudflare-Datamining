@@ -290,11 +290,34 @@
 		"tags": [
 			"Worker Account Settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.read"
-			]
-		}
+		"x-api-token-group": [
+			"DNS View Write",
+			"DNS View Read",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Cloudflare Zero Trust PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/account-settings": {
 		"description": "Creates Worker account settings for an account.",
@@ -605,10 +628,8 @@
 		"tags": [
 			"Worker Account Settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.update"
-			]
-		}
+		"x-api-token-group": [
+			"Account Settings Write"
+		]
 	}
 }

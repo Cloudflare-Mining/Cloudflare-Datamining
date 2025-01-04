@@ -148,6 +148,10 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.delete"
@@ -314,6 +318,10 @@
 		"summary": "Delete Queue Consumer",
 		"tags": [
 			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -732,6 +740,12 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.list"
@@ -1128,6 +1142,12 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
@@ -1441,6 +1461,12 @@
 		"summary": "List Queue Consumers",
 		"tags": [
 			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1843,6 +1869,10 @@
 		"summary": "Create Queue",
 		"tags": [
 			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2321,6 +2351,10 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.create"
@@ -2549,6 +2583,10 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -2775,6 +2813,10 @@
 		"summary": "Pull Queue Messages",
 		"tags": [
 			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3414,6 +3456,10 @@
 		"tags": [
 			"Queue"
 		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -3903,6 +3949,10 @@
 		"summary": "Update Queue Consumer",
 		"tags": [
 			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

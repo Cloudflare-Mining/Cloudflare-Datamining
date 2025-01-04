@@ -279,11 +279,9 @@
 		"tags": [
 			"Worker Routes"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.route.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Routes Write"
+		]
 	},
 	"GET /zones/{zone_id}/workers/routes": {
 		"description": "Returns routes for a zone.",
@@ -614,11 +612,10 @@
 		"tags": [
 			"Worker Routes"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.route.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Routes Write",
+			"Workers Routes Read"
+		]
 	},
 	"GET /zones/{zone_id}/workers/routes/{route_id}": {
 		"description": "Returns information about a route, including URL pattern and Worker.",
@@ -964,11 +961,10 @@
 		"tags": [
 			"Worker Routes"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.route.read"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Routes Write",
+			"Workers Routes Read"
+		]
 	},
 	"POST /zones/{zone_id}/workers/routes": {
 		"description": "Creates a route that maps a URL pattern to a Worker.",
@@ -1258,11 +1254,9 @@
 		"tags": [
 			"Worker Routes"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.route.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Routes Write"
+		]
 	},
 	"PUT /zones/{zone_id}/workers/routes/{route_id}": {
 		"description": "Updates the URL pattern or Worker associated with a route.",
@@ -1633,10 +1627,8 @@
 		"tags": [
 			"Worker Routes"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.route.update"
-			]
-		}
+		"x-api-token-group": [
+			"Workers Routes Write"
+		]
 	}
 }

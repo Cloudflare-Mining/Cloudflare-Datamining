@@ -525,6 +525,10 @@
 		"summary": "Search Resources",
 		"tags": [
 			"Account Load Balancer Search"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	}
 }

@@ -389,6 +389,12 @@
 		"tags": [
 			"Custom pages for a zone"
 		],
+		"x-api-token-group": [
+			"Custom Pages Write",
+			"Custom Pages Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"

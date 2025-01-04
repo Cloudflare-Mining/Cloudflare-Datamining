@@ -283,6 +283,10 @@
 		"summary": "Delete a Turnstile Widget",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Account Settings Write"
 		]
 	},
 	"GET /accounts/{account_id}/challenges/widgets": {
@@ -601,6 +605,12 @@
 		"summary": "List Turnstile Widgets",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Turnstile Sites Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
@@ -887,6 +897,12 @@
 		"summary": "Turnstile Widget Details",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Turnstile Sites Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"POST /accounts/{account_id}/challenges/widgets": {
@@ -1289,6 +1305,10 @@
 		"summary": "Create a Turnstile Widget",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Account Settings Write"
 		]
 	},
 	"POST /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": {
@@ -1591,6 +1611,10 @@
 		"summary": "Rotate Secret for a Turnstile Widget",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Account Settings Write"
 		]
 	},
 	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
@@ -1950,6 +1974,10 @@
 		"summary": "Update a Turnstile Widget",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Write",
+			"Account Settings Write"
 		]
 	}
 }

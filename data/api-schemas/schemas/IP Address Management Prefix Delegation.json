@@ -327,6 +327,9 @@
 		"summary": "Delete Prefix Delegation",
 		"tags": [
 			"IP Address Management Prefix Delegation"
+		],
+		"x-api-token-group": [
+			"IP Prefixes: Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
@@ -1149,6 +1152,9 @@
 		"summary": "Create Prefix Delegation",
 		"tags": [
 			"IP Address Management Prefix Delegation"
+		],
+		"x-api-token-group": [
+			"IP Prefixes: Write"
 		]
 	}
 }

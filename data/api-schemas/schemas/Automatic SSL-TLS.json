@@ -305,6 +305,12 @@
 		"tags": [
 			"Automatic SSL/TLS"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -634,6 +640,10 @@
 		"summary": "Patch Automatic SSL/TLS Enrollment status for given zone",
 		"tags": [
 			"Automatic SSL/TLS"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

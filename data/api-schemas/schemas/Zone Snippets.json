@@ -595,6 +595,9 @@
 		"tags": [
 			"Zone Snippets"
 		],
+		"x-api-token-group": [
+			"Snippets Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -921,6 +924,10 @@
 		"summary": "All Snippets",
 		"tags": [
 			"Zone Snippets"
+		],
+		"x-api-token-group": [
+			"Snippets Write",
+			"Snippets Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1835,6 +1842,10 @@
 		"tags": [
 			"Zone Snippets"
 		],
+		"x-api-token-group": [
+			"Snippets Write",
+			"Snippets Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2560,6 +2571,9 @@
 		"summary": "Put Rules",
 		"tags": [
 			"Zone Snippets"
+		],
+		"x-api-token-group": [
+			"Snippets Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

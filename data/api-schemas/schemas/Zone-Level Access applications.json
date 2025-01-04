@@ -229,6 +229,10 @@
 		"summary": "Delete an Access application",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps": {
@@ -4564,6 +4568,14 @@
 		"summary": "List Access Applications",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}": {
@@ -8888,6 +8900,12 @@
 		"summary": "Get an Access application",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/user_policy_checks": {
@@ -21738,6 +21756,10 @@
 		"summary": "Add an Access application",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/revoke_tokens": {
@@ -21906,6 +21928,12 @@
 		"summary": "Revoke application tokens",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}": {
@@ -34451,6 +34479,10 @@
 		"summary": "Update an Access application",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Write"
 		]
 	}
 }
