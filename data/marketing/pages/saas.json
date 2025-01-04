@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-11-30T00:01:52.147Z",
-					"updatedAt": "2025-01-01T00:22:02.279Z"
+					"updatedAt": "2025-01-04T09:28:08.329Z"
 				},
 				"contentfulId": "7DFz0nPLXiy8COGuE4MwsU",
 				"contentTypeId": "page",
@@ -63,58 +63,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "6hMS8FijIVNhOi1WYQxmZJ",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare for SaaS ",
-						"titleSize": null,
-						"subtitle": null,
-						"subtitleSize": null,
-						"copy": "Delivering secure, fast, and reliable experiences to the end users of your SaaS application at global scale requires an orchestrated effort.\n\nCloudflare offers a suite of easy-to-use products that help SaaS providers deliver the fastest, most secure apps to market.\n\nWe also make it easy to extend your world-class Cloudflare security posture and performance to customers.\n",
-						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an expert",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "saas-product-page-contact-sales",
-						"buttonText2": null,
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": "16915c4f78a4f9f222a6e91bffd437d0",
-						"streamOptions": null,
-						"streamCaptions": "none",
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": true,
-						"streamThumbnails": "0m:06s",
-						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": null,
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
-						"backgroundColor": "light-blue",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xxHKrzap7Uq8hx3JQNcAk/5d6d52353fd1e23f4c20ed36a725fcea/BDES-6258_CF-for-SaaS-Hero-Illustration.png"
-							},
-							"description": "BDES-6258 SaaS"
-						},
-						"imageAssetFile": null
-					},
 					{
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "4xm5h4gvpydaEsN2ui4m4B",
@@ -435,7 +383,22 @@
 						"title": "New Forrester study: The Total Economic Impact™ of Cloudflare",
 						"copy": "Forrester found that our connectivity cloud delivered a 238% ROI over 3 years by boosting productivity, security efficiency, protection and more.",
 						"toggleText": null,
-						"button": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "63qG8tGKhLMjAv2ltnEmnm",
+								"elementName": "New Forrester study - New Component - Button",
+								"standardText": null,
+								"text": "Read study",
+								"url": "https://www.cloudflare.com/lp/forrester-tei-study-2024/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],

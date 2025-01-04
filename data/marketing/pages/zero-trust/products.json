@@ -578,7 +578,42 @@
 										"locale": "en-US",
 										"name": "Register your domain",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6qAZoc0eN1q1EoNP2hbSvr",
+											"locale": "en-US",
+											"title": "Register your domain",
+											"description": null,
+											"url": "/products/registrar/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "4oL0Xdb9Y4erdV4GCHEswP",
+										"locale": "en-US",
+										"name": "Get 1.1.1.1",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4paxgo4Sco4YzkdZiALaSK",
+											"locale": "en-US",
+											"title": "Get 1.1.1.1",
+											"description": null,
+											"url": "https://one.one.one.one/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -2468,6 +2503,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4UL2kTPsB5NHjF54e7lo0n",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare extends inline security controls to deliver simple, preventative cloud security. </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudflare-acquires-kivera/\">\n           <strong>Announcement ></strong>\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SSE & SASE",
@@ -2921,7 +2962,21 @@
 								"entryTitle": "Email Security",
 								"contentfulId": "5V6fsn0Jpjz7ERBTfkNnMk",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "718a54d1-767b-589c-bfd2-c17f7ae3c4da",
+									"altText": "Email Security - outline icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/78PFeEyuCKBME15BK8LRX2/8a2b35c61cb7340cf67bbe1884eaab63/email.png"
+										},
+										"description": "Email Security - outline icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"title": "Email Security",
 								"description": {
 									"nodeType": "document",
@@ -3037,7 +3092,21 @@
 								"entryTitle": "Magic WAN",
 								"contentfulId": "4kYYmYZ0ctjEWhGiPvHMmw",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "5bc06627-ed3f-5ce6-a1b5-60df706bfd73",
+									"altText": "Magic WAN - outline icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29idhYyD8JV6oSk4tJMH5u/2c9adb0c479c8e53151a09067e130b74/cloudflare-magic-wan.png"
+										},
+										"description": "Magic WAN - outline icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"title": "Magic WAN",
 								"description": {
 									"nodeType": "document",
@@ -3088,7 +3157,21 @@
 								"entryTitle": "Magic Firewall",
 								"contentfulId": "2NoNKQbgMrTjhe6OrhiY8M",
 								"contentTypeId": "elementAddOn",
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "7b71cbeb-32fc-5e7a-8e81-505da7e88fdf",
+									"altText": "Magic Firewall - outline icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bF9fQUQMqtKJL7RPSij1q/b0659da7a520c0848627d51df5746c57/Group_48097316.png"
+										},
+										"description": "Magic Firewall - outline icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"title": "Magic Firewall",
 								"description": {
 									"nodeType": "document",

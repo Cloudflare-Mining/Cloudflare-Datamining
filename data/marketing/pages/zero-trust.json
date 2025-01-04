@@ -578,7 +578,42 @@
 										"locale": "en-US",
 										"name": "Register your domain",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6qAZoc0eN1q1EoNP2hbSvr",
+											"locale": "en-US",
+											"title": "Register your domain",
+											"description": null,
+											"url": "/products/registrar/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "4oL0Xdb9Y4erdV4GCHEswP",
+										"locale": "en-US",
+										"name": "Get 1.1.1.1",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4paxgo4Sco4YzkdZiALaSK",
+											"locale": "en-US",
+											"title": "Get 1.1.1.1",
+											"description": null,
+											"url": "https://one.one.one.one/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -2467,6 +2502,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4UL2kTPsB5NHjF54e7lo0n",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare extends inline security controls to deliver simple, preventative cloud security. </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudflare-acquires-kivera/\">\n           <strong>Announcement ></strong>\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
+					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
@@ -5272,11 +5313,54 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1DjXdISmloiSOdupprFfai",
+								"heading": "Product brief",
+								"description": "SASE & SSE Platform (Cloudflare One)",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "blGhFgmnHswhki6fZStRI",
+									"elementName": "Cloudflare One - link",
+									"standardText": null,
+									"text": "Read the solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bPZaJAiXoHwgx17L99K8I/ced52f424f35e96412d5e092b6b0478d/SASE-SSE-cloudflare-one-platform-brief-2024-Q2.pdf",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "2wOphfNwqIX8mboGdsHJ77",
 								"heading": "Documentation",
 								"description": "Cloudflare One technical documentation",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3ZzzZn92nIPTkkmqJCZJ87",
+									"elementName": "Cloudflare One technical documentation - Link",
+									"standardText": null,
+									"text": "Read technical docs",
+									"url": "https://developers.cloudflare.com/cloudflare-one/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "d36590f1-ba3f-515e-8f35-dbccbf837f12",
 									"altText": null,

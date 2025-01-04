@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-12T21:12:29.329Z",
-					"updatedAt": "2025-01-03T01:58:53.318Z"
+					"updatedAt": "2025-01-04T09:13:00.401Z"
 				},
 				"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 				"contentTypeId": "page",
@@ -280,57 +280,6 @@
 						],
 						"sectionPadding": null,
 						"htmlId": null
-					},
-					{
-						"contentfulId": "4mA1M9q2o8YccWWcigmwSg",
-						"title": "Pick the right option for you",
-						"copy": "Choose IP-based Rate Limiting to protect unauthenticated endpoints, limit the number of requests from specific IP addresses, and handle abuse from repeat offenders.\n\nUpgrade to Advanced Rate Limiting if you want to protect your APIs from abuse, mitigate volumetric attacks from authenticated API sessions, and take full control of the parameters you rate limit on.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "71cf0deb-6608-501f-97dc-6ae68e5f31ab",
-							"altText": "Updated RL Rule",
-							"title": "Updated RL Rule",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RJvfH8ugcj1YSQOyxdNAt/c54f1382677f32d0a087846eb5bde80b/updated_RL_rule.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "HOW IT WORKS",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
@@ -904,7 +853,17 @@
 								"heading": "Ebook",
 								"description": "Adopting everywhere security",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5FWLXMgboKGfe5JMmi7ocX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Adopting everywhere security - Link",
+									"standardText": null,
+									"text": "Read the ebook",
+									"url": "/lp/everywhere-security-ebook/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
 									"altText": "Ebook Thumbnail",
