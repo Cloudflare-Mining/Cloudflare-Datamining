@@ -2440,7 +2440,34 @@
 						"isDefaultNav": true,
 						"backgroundColor": null,
 						"sectionPadding": "default",
-						"navigationItems": null
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+								"locale": "en-US",
+								"name": "Log in",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": null,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+									"locale": "en-US",
+									"title": "Log in",
+									"description": null,
+									"url": "https://dash.cloudflare.com/login",
+									"badges": null,
+									"specialLinkType": "BLUE_CTA",
+									"openInNewWindow": true,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							}
+						]
 					},
 					"experimentId": null,
 					"variant": null
@@ -2726,6 +2753,47 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "40BldVOCWurr2vXVBaXYVD",
+								"title": "Massive network scale",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our global network spans over %{DataCenterCount} cities & %{CountryCount} countries. Operating within %{OperationMilliseconds} milliseconds of about %{GlobalInternetConnectedPercent}% of the Internet-connected population globally.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3koa7SB4Mh43OUBWp6sOS6/ac8fd8d2200196284a61b4d66e87db7a/icon-scale-blue.png"
+									},
+									"description": "icon scale blue"
+								},
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5Pa4dp71wuTrPD0S6zkIb",
