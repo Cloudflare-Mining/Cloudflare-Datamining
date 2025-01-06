@@ -1,11 +1,6 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KGm2qiwgg1icwvQc0xope/c798378b2000f880f5299ca1719c7efa/no-scrubs-architecture-unmetered-mitigation.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When building a DDoS mitigation service it’s incredibly tempting to think that the solution is scrubbing centers or scrubbing servers. I, too, thought that was a good idea in the beginning, but experience has shown that there are serious pitfalls to this approach.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LesaJydiArltdyjZRhtaV/26bec646125f117594381835ab30b378/Screen-Shot-2017-09-25-at-09.50.52.png" alt="" class="kg-image" width="608" height="351" loading="lazy">
-
-	</figure>
 	<p>A scrubbing server is a dedicated machine that receives all network traffic destined for an IP address and attempts to filter good traffic from bad. Ideally, the scrubbing server will only forward non-DDoS packets to the Internet application being attacked. A scrubbing center is a dedicated location filled with scrubbing servers.</p>
 	<div class="flex anchor relative">
 		<h3 id="three-problems-with-scrubbers">Three Problems With Scrubbers</h3>
