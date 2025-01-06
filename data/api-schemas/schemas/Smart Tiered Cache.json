@@ -1,6 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
-		"description": "Remvoves enablement of Smart Tiered Cache",
+		"description": "Smart Tiered Cache dynamically selects the single closest upper tier for each of your website’s origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin.",
 		"operationId": "smart-tiered-cache-delete-smart-tiered-cache-setting",
 		"parameters": [
 			{
@@ -16,12 +16,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -74,20 +68,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -100,173 +80,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														}
-													]
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"editable": {
-													"description": "Whether the setting is editable",
-													"type": "boolean"
-												},
-												"id": {
-													"description": "The identifier of the caching setting",
-													"type": "string"
-												},
-												"modified_on": {
-													"description": "The time when the setting was last modified",
-													"format": "date-time",
-													"type": "string"
-												},
-												"value": {
-													"description": "The status of the feature being on / off",
-													"enum": [
-														"on",
-														"off"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"id",
-												"value",
-												"modified_on",
-												"editable"
-											],
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete Smart Tiered Cache setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
+												"messages"
 											],
 											"type": "object"
 										},
@@ -286,20 +100,10 @@
 															"description": "The time when the setting was last modified",
 															"format": "date-time",
 															"type": "string"
-														},
-														"value": {
-															"description": "The status of the feature being on / off",
-															"enum": [
-																"on",
-																"off"
-															],
-															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"value",
-														"modified_on",
 														"editable"
 													],
 													"type": "object"
@@ -307,93 +111,154 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
 										"result": {
-											"enum": [
-												null
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "Last time this setting was modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"enum": [
+																"tiered_cache_smart_topology_enable"
+															],
+															"example": "tiered_cache_smart_topology_enable",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
 											],
-											"nullable": true,
+											"title": "Smart Tiered Cache",
 											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
 										}
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Smart Tiered Cache setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -401,6 +266,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -427,6 +295,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
+		"description": "Smart Tiered Cache dynamically selects the single closest upper tier for each of your website’s origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin.",
 		"operationId": "smart-tiered-cache-get-smart-tiered-cache-setting",
 		"parameters": [
 			{
@@ -494,20 +363,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -520,173 +375,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														}
-													]
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"editable": {
-													"description": "Whether the setting is editable",
-													"type": "boolean"
-												},
-												"id": {
-													"description": "The identifier of the caching setting",
-													"type": "string"
-												},
-												"modified_on": {
-													"description": "The time when the setting was last modified",
-													"format": "date-time",
-													"type": "string"
-												},
-												"value": {
-													"description": "The status of the feature being on / off",
-													"enum": [
-														"on",
-														"off"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"id",
-												"value",
-												"modified_on",
-												"editable"
-											],
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get Smart Tiered Cache setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
+												"messages"
 											],
 											"type": "object"
 										},
@@ -708,7 +397,71 @@
 															"type": "string"
 														},
 														"value": {
-															"description": "The status of the feature being on / off",
+															"description": "The value of the feature",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"editable"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"tiered_cache_smart_topology_enable"
+																	],
+																	"example": "tiered_cache_smart_topology_enable",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Smart Tiered Cache",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"value": {
+															"default": "off",
+															"description": "Value of the Smart Tiered Cache zone setting.",
 															"enum": [
 																"on",
 																"off"
@@ -717,103 +470,117 @@
 														}
 													},
 													"required": [
-														"id",
-														"value",
-														"modified_on",
-														"editable"
+														"value"
 													],
 													"type": "object"
 												}
-											},
+											],
 											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
 										}
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Smart Tiered Cache setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -821,6 +588,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -849,7 +619,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
-		"description": "Updates enablement of Tiered Cache",
+		"description": "Smart Tiered Cache dynamically selects the single closest upper tier for each of your website’s origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin.",
 		"operationId": "smart-tiered-cache-patch-smart-tiered-cache-setting",
 		"parameters": [
 			{
@@ -942,20 +712,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -968,173 +724,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														}
-													]
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"editable": {
-													"description": "Whether the setting is editable",
-													"type": "boolean"
-												},
-												"id": {
-													"description": "The identifier of the caching setting",
-													"type": "string"
-												},
-												"modified_on": {
-													"description": "The time when the setting was last modified",
-													"format": "date-time",
-													"type": "string"
-												},
-												"value": {
-													"description": "The status of the feature being on / off",
-													"enum": [
-														"on",
-														"off"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"id",
-												"value",
-												"modified_on",
-												"editable"
-											],
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Patch Smart Tiered Cache setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
+												"messages"
 											],
 											"type": "object"
 										},
@@ -1156,7 +746,71 @@
 															"type": "string"
 														},
 														"value": {
-															"description": "The status of the feature being on / off",
+															"description": "The value of the feature",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"editable"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"tiered_cache_smart_topology_enable"
+																	],
+																	"example": "tiered_cache_smart_topology_enable",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Smart Tiered Cache",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"value": {
+															"default": "off",
+															"description": "Value of the Smart Tiered Cache zone setting.",
 															"enum": [
 																"on",
 																"off"
@@ -1165,103 +819,117 @@
 														}
 													},
 													"required": [
-														"id",
-														"value",
-														"modified_on",
-														"editable"
+														"value"
 													],
 													"type": "object"
 												}
-											},
+											],
 											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
 										}
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch Smart Tiered Cache setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1269,6 +937,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
