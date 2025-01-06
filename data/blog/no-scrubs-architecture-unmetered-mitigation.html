@@ -63,7 +63,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SsunNzjBUScjiFqvOYqsC/a2f6047bc836d427abf6659b86826c3c/image2-1.png" alt="" class="kg-image" width="1044" height="330" loading="lazy">
 
 	</figure>
-	<p>Over the years we’ve learned how to automatically detect and mitigate anything the internet can throw at us. For most of the attacks, we rely on dynamically managing iptables: the standard Linux firewall. We’ve spoken about <a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible">the most effective techniques</a> in past. iptables has a number of very powerful features which we select depending on specific attack vector. From our experience xt_bpf, ipset, hashlimits and connlimits are the most useful iptables modules.</p>
+	<p>Over the years we’ve learned how to automatically detect and mitigate anything the Internet can throw at us. For most of the attacks, we rely on dynamically managing iptables: the standard Linux firewall. We’ve spoken about <a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible">the most effective techniques</a> in past. iptables has a number of very powerful features which we select depending on specific attack vector. From our experience xt_bpf, ipset, hashlimits and connlimits are the most useful iptables modules.</p>
 	<p>For very large attacks the Linux Kernel is not fast enough though. To relieve the kernel from processing excessive number of packets, we experimented with various <a href="https://blog.cloudflare.com/kernel-bypass">kernel bypass</a> techniques. We’ve settled on a partial kernel bypass interface - Solarflare specific EFVI.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -79,7 +79,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare’s vision is to help to build a better internet. Fixing DDoS is a part of it. We’ve been relentlessly documenting the most important and dangerous attacks we’ve encountered, fighting botnets and open sourcing critical pieces of our DDoS infrastructure.</p>
+	<p>Cloudflare’s vision is to help to build a better Internet. Fixing DDoS is a part of it. We’ve been relentlessly documenting the most important and dangerous attacks we’ve encountered, fighting botnets and open sourcing critical pieces of our DDoS infrastructure.</p>
 	<p>We’ve open sourced various tools, from the very low level projects like our <a href="https://blog.cloudflare.com/introducing-the-bpf-tools">BPF Tools</a>, that we use to fight <a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler">DNS and SYN</a> floods, to contributing to <a href="https://github.com/openresty">OpenResty</a> a performant application framework on top of NGINX, which is great for building L7 defenses.</p>
 	<div class="flex anchor relative">
 		<h3 id="further-reading">Further Reading</h3>
