@@ -1860,6 +1860,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -1975,18 +1985,11 @@
 										},
 										"summary_0": {
 											"additionalProperties": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
+												"type": "string"
 											},
 											"example": {
-												"ACK Flood": [
-													"65.662148"
-												],
-												"SYN Flood": [
-													"16.86401"
-												]
+												"ACK Flood": "65.662148",
+												"SYN Flood": "16.86401"
 											},
 											"type": "object"
 										}
@@ -3586,7 +3589,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},
@@ -4487,7 +4490,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},
@@ -4801,7 +4804,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},
@@ -7119,6 +7122,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -7233,20 +7246,13 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"GET": {
-													"example": "99.100257",
-													"type": "string"
-												},
-												"POST": {
-													"example": "0.899743",
-													"type": "string"
-												}
+											"additionalProperties": {
+												"type": "string"
 											},
-											"required": [
-												"GET",
-												"POST"
-											],
+											"example": {
+												"GET": "99.100257",
+												"POST": "0.899743"
+											},
 											"type": "object"
 										}
 									},
@@ -7646,17 +7652,19 @@
 											"type": "object"
 										},
 										"summary_0": {
+											"example": {
+												"HTTP/1.x": "21.722365",
+												"HTTP/2": "77.056555",
+												"HTTP/3": "1.22108"
+											},
 											"properties": {
 												"HTTP/1.x": {
-													"example": "21.722365",
 													"type": "string"
 												},
 												"HTTP/2": {
-													"example": "77.056555",
 													"type": "string"
 												},
 												"HTTP/3": {
-													"example": "1.22108",
 													"type": "string"
 												}
 											},
@@ -8065,13 +8073,15 @@
 											"type": "object"
 										},
 										"summary_0": {
+											"example": {
+												"IPv4": "99.935733",
+												"IPv6": "0.064267"
+											},
 											"properties": {
 												"IPv4": {
-													"example": "99.935733",
 													"type": "string"
 												},
 												"IPv6": {
-													"example": "0.064267",
 													"type": "string"
 												}
 											},
@@ -8382,6 +8392,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -8497,14 +8517,11 @@
 										},
 										"summary_0": {
 											"additionalProperties": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
+												"type": "string"
 											},
 											"example": {
-												"Bot": "14.285714",
-												"HTTP Anomaly": "85.714286"
+												"HTTP Anomaly": "85.714286",
+												"XSS": "10.274394"
 											},
 											"type": "object"
 										}
@@ -8788,6 +8805,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -8902,20 +8929,13 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"DDOS": {
-													"example": "24.421594",
-													"type": "string"
-												},
-												"WAF": {
-													"example": "53.213368",
-													"type": "string"
-												}
+											"additionalProperties": {
+												"type": "string"
 											},
-											"required": [
-												"WAF",
-												"DDOS"
-											],
+											"example": {
+												"DDOS": "24.421594",
+												"WAF": "53.213368"
+											},
 											"type": "object"
 										}
 									},
@@ -10063,6 +10083,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -10089,25 +10119,30 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"GET": {
-													"items": {
-														"example": "70.970199",
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"GET": [
+													"70.970199"
+												],
+												"timestamps": [
+													"2023-10-01T00:00:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2023-10-01T00:00:00Z",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"GET"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -10451,17 +10486,41 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"example": {
+												"HTTP/1.x": [
+													"50.338734"
+												],
+												"HTTP/2": [
+													"48.661266"
+												],
+												"HTTP/3": [
+													"1.22108"
+												],
+												"timestamps": [
+													"2023-10-01T00:00:00Z"
+												]
+											},
 											"properties": {
 												"HTTP/1.x": {
 													"items": {
-														"example": "50.338734",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"HTTP/2": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"HTTP/3": {
+													"items": {
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"timestamps": {
 													"items": {
-														"example": "2023-10-01T00:00:00Z",
 														"type": "string"
 													},
 													"type": "array"
@@ -10469,7 +10528,9 @@
 											},
 											"required": [
 												"timestamps",
-												"HTTP/1.x"
+												"HTTP/1.x",
+												"HTTP/2",
+												"HTTP/3"
 											],
 											"type": "object"
 										}
@@ -10810,7 +10871,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},
@@ -11209,24 +11270,32 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"example": {
+												"IPv4": [
+													"99.935733"
+												],
+												"IPv6": [
+													"0.064267"
+												],
+												"timestamps": [
+													"2023-10-01T00:00:00Z"
+												]
+											},
 											"properties": {
 												"IPv4": {
 													"items": {
-														"example": "99.935733",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"IPv6": {
 													"items": {
-														"example": "0.064267",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"timestamps": {
 													"items": {
-														"example": "2023-10-01T00:00:00Z",
 														"type": "string"
 													},
 													"type": "array"
@@ -11571,6 +11640,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -11604,7 +11683,7 @@
 												"type": "array"
 											},
 											"example": {
-												"Bot": [
+												"XSS": [
 													"0.324198"
 												],
 												"timestamps": [
@@ -11935,6 +12014,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -11961,25 +12050,30 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"DDOS": {
-													"items": {
-														"example": "48.926354",
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"DDOS": [
+													"48.926354"
+												],
+												"timestamps": [
+													"2023-10-01T00:00:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2023-10-01T00:00:00Z",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"DDOS"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -12320,7 +12414,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},

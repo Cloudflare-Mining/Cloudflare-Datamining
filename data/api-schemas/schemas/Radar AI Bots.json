@@ -99,6 +99,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -214,10 +224,7 @@
 										},
 										"summary_0": {
 											"additionalProperties": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
+												"type": "string"
 											},
 											"example": {
 												"Amazonbot": "10.274394",
@@ -431,7 +438,7 @@
 				"name": "limitPerGroup",
 				"schema": {
 					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
-					"example": 4,
+					"example": 10,
 					"type": "integer"
 				}
 			},

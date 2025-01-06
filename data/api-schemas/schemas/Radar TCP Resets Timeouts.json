@@ -555,7 +555,6 @@
 										"serie_0": {
 											"properties": {
 												"later_in_flow": {
-													"description": "Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.",
 													"items": {
 														"description": "Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.",
 														"example": "10",
@@ -564,7 +563,6 @@
 													"type": "array"
 												},
 												"no_match": {
-													"description": "All other connections.",
 													"items": {
 														"description": "All other connections.",
 														"example": "65",
@@ -573,7 +571,6 @@
 													"type": "array"
 												},
 												"post_ack": {
-													"description": "Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.",
 													"items": {
 														"description": "Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.",
 														"example": "5",
@@ -582,7 +579,6 @@
 													"type": "array"
 												},
 												"post_psh": {
-													"description": "Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment.",
 													"items": {
 														"description": "Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment.",
 														"example": "10",
@@ -591,7 +587,6 @@
 													"type": "array"
 												},
 												"post_syn": {
-													"description": "Connection resets or timeouts after the server received only a single SYN packet.",
 													"items": {
 														"description": "Connection resets or timeouts after the server received only a single SYN packet.",
 														"example": "10",

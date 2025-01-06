@@ -1355,6 +1355,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -1469,35 +1479,16 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"A": {
-													"example": "19",
-													"type": "string"
-												},
-												"AAAA": {
-													"example": "1",
-													"type": "string"
-												},
-												"PTR": {
-													"example": "74",
-													"type": "string"
-												},
-												"SOA": {
-													"example": "5",
-													"type": "string"
-												},
-												"SRV": {
-													"example": "1",
-													"type": "string"
-												}
+											"additionalProperties": {
+												"type": "string"
 											},
-											"required": [
-												"PTR",
-												"A",
-												"SOA",
-												"AAAA",
-												"SRV"
-											],
+											"example": {
+												"A": "19",
+												"AAAA": "1",
+												"PTR": "74",
+												"SOA": "5",
+												"SRV": "1"
+											},
 											"type": "object"
 										}
 									},
@@ -1684,6 +1675,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -1798,20 +1799,16 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"NOERROR": {
-													"example": "6",
-													"type": "string"
-												},
-												"NXDOMAIN": {
-													"example": "94",
-													"type": "string"
-												}
+											"additionalProperties": {
+												"type": "string"
 											},
-											"required": [
-												"NXDOMAIN",
-												"NOERROR"
-											],
+											"example": {
+												"NOERROR": "70",
+												"NOTIMP": "5",
+												"NXDOMAIN": "10",
+												"REFUSED": "5",
+												"SERVFAIL": "5"
+											},
 											"type": "object"
 										}
 									},
@@ -3342,6 +3339,16 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -3611,6 +3618,16 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
+					"example": 10,
+					"type": "integer"
 				}
 			},
 			{

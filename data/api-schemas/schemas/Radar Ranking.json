@@ -53,6 +53,15 @@
 				}
 			},
 			{
+				"description": "Include top locations in the response.",
+				"in": "query",
+				"name": "includeTopLocations",
+				"schema": {
+					"description": "Include top locations in the response.",
+					"type": "boolean"
+				}
+			},
+			{
 				"description": "Array of dates to filter the ranking.",
 				"in": "query",
 				"name": "date",
@@ -60,6 +69,7 @@
 					"description": "Array of dates to filter the ranking.",
 					"example": "2022-09-19",
 					"items": {
+						"format": "date",
 						"type": "string"
 					},
 					"type": "array"
@@ -574,6 +584,7 @@
 					"description": "Array of dates to filter the ranking.",
 					"example": "2022-09-19",
 					"items": {
+						"format": "date",
 						"type": "string"
 					},
 					"type": "array"
