@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.11.2",
-		"beta": "0.0.0-8b48ca6f1"
+		"beta": "0.0.0-9d2740aa5"
 	},
 	"versions": {
 		"0.1.0": {
@@ -21122,6 +21122,80 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-8b48ca6f1",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241230.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "c76d27e9af313820d41cec2dd3136a72cfe547c8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-8b48ca6f1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-hJt3ui03RPd6LL01e6hH1T0A6h6E47+d+MNPHGFx4FE+8l0KRx77VsylH4uu+wYuibfJz3lQacswIGAB1o9T+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIBgvBTki/TncT4BwzE4/oQUp6wR8IM4/QCq1QfsxcPhbAiEAjkRWwCMjmYAR4oW6VrBPKFhCVoc/K15xQRwzQ068tvE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044944
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-df15eb020": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-df15eb020",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241230.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "bdd7bf2dcfd031a0d73affc6b30b4295cdc4ad55",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-df15eb020.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-GFshx4QGlzM7poKOyQDVW51H3K/8GHyR7q/ofdJoS9mEAe38gXTNcRmrBso2gVsx2vRZFopOYYymX6qNK4EpWA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCHwgmhCMjXc7Bk947xYgQUQ87Ko7ufTGR8kdvXl+9wwAIhAIy1jVdfphj2G5AZQCqm4FLsCASyCg5cXfMxU90C/mC6",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044944
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-9d2740aa5": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-9d2740aa5",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -21135,19 +21209,19 @@
 				"toucan-js": "^3.3.1",
 				"typescript": "~5.6.3",
 				"vitest": "~2.1.8",
-				"@cloudflare/eslint-config-worker": "1.1.0",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-hJt3ui03RPd6LL01e6hH1T0A6h6E47+d+MNPHGFx4FE+8l0KRx77VsylH4uu+wYuibfJz3lQacswIGAB1o9T+w==",
-				"shasum": "c76d27e9af313820d41cec2dd3136a72cfe547c8",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-8b48ca6f1.tgz",
+				"integrity": "sha512-Ch1uLbeK3Je9wN6u6gkXuFHoFfMUuhfXUegprf0Z5KutylEXfhFcGgQ1pX4KIT5K0URCc+CJQjELWdAgskkxnA==",
+				"shasum": "0a720aea17a5361ae15e9bb26495766fdf5103dd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-9d2740aa5.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1044944,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBgvBTki/TncT4BwzE4/oQUp6wR8IM4/QCq1QfsxcPhbAiEAjkRWwCMjmYAR4oW6VrBPKFhCVoc/K15xQRwzQ068tvE="
+						"sig": "MEUCIDIMGym4/rvRITDNRmHnTUdv7Txvs+Dh6X2G2LNNt55uAiEAtbCfi7AR2j0BB7wMke/3SB3Z5Klza4fqfd/knDNiGMg="
 					}
 				]
 			},
