@@ -5,36 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong></p>
+<p><strong>Available locations: </strong>Lisbon, Portugal</p>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for a Software Engineer intern to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Scala and Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, Postgres and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Austin, Texas</li>
-	<li>London, United Kingdom</li>
-	<li>Lisbon, Portugal&nbsp;</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<p><strong>Role Summary</strong></p>
-<p>We’re looking for a passionate systems engineer to join our team to help supercharge operating system development in Cloudflare. You will be responsible for the operating system powering one of the biggest distributed networks in the world. In addition you will develop and maintain services and tools, which help all other engineering teams at Cloudflare to debug and run their code efficiently and securely. An ideal candidate has strong bias towards automation, observability and modern SRE practices.&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Safely and timely release the Linux kernel to Cloudflare production systems</li>
-	<li>Define and maintain system health metrics for the Linux kernel and early userspace operating system components, like systemd</li>
-	<li>Design, implement and support tools and workflows, which enable engineering teams to efficiently debug their code in production environments</li>
-	<li>Write workflows and automation to remediate toil and repetitive tasks</li>
-	<li>Develop infrastructure for automated testing and fuzzing of the operating system components</li>
-	<li>Help secure Cloudflare production environments</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with Javascript, Typescript, and React</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Linux fundamentals</li>
-	<li>Programming in Go and/or Rust</li>
-	<li>Experience using K8s including KubeVirt</li>
-	<li>Understanding of networking protocols</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Programming in C and/or assembly</li>
-	<li>Linux kernel internals</li>
-	<li>familiarity with Linux kernel open source development processes</li>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
