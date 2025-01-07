@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.12.0"
+		"latest": "0.12.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -3219,7 +3219,37 @@
 				"miniflare": "3.20241218.0"
 			},
 			"devDependencies": {
+				"glob": "^10.3.3",
+				"concurrently": "^8.2.2",
+				"@miniflare/core": "^2.14.2",
+				"@miniflare/cache": "^2.14.2",
+				"@miniflare/html-rewriter": "^2.14.2",
 				"@cloudflare/workers-types": "^4.20241218.0",
+				"@miniflare/storage-memory": "^2.14.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "d440592618eea1d29425b207ce8b98f47a54cd14",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.12.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-RCccO8iRsDPYkzkqMAF4dEtZtRLIqcaL4gH67RcKnnjiWCBEfe7ljvhBK//uaDjGzEiiRQV7zmq0eUUAhZU88A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDhBtdaz+MIbFwQ5tnDUPqtwe/N27VQ0dfNHqRuNRvY8wIhAKEGLDq1MDaVLSEs3bdCENuABoSvTTxV8RY4t8V7fySA",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 54823
+			}
+		},
+		"0.12.1": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.12.1",
+			"dependencies": {
+				"miniflare": "3.20241230.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20241230.0",
 				"@miniflare/cache": "^2.14.2",
 				"@miniflare/core": "^2.14.2",
 				"@miniflare/html-rewriter": "^2.14.2",
@@ -3229,15 +3259,15 @@
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-RCccO8iRsDPYkzkqMAF4dEtZtRLIqcaL4gH67RcKnnjiWCBEfe7ljvhBK//uaDjGzEiiRQV7zmq0eUUAhZU88A==",
-				"shasum": "d440592618eea1d29425b207ce8b98f47a54cd14",
-				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.12.0.tgz",
+				"integrity": "sha512-eVnY6/EJfQYFLtgA+bNCUunZ5rYG+27MQxxQ3/pDb2CSfZP6GIwEtctE400yf9D9NaW+3l8yR6fyIcNsQ3m9/g==",
+				"shasum": "ee507c807a6e2bde3d8cc23f48db39e38cd87976",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.12.1.tgz",
 				"fileCount": 17,
 				"unpackedSize": 54823,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDhBtdaz+MIbFwQ5tnDUPqtwe/N27VQ0dfNHqRuNRvY8wIhAKEGLDq1MDaVLSEs3bdCENuABoSvTTxV8RY4t8V7fySA"
+						"sig": "MEUCIQDjF2jiDmP3IpyAz8sYCSt59zSbY8f8BeosL9P41FrInwIgUURHTfE0v6xpuBnmuISaW67H2A9Pc1VsK4Lx2bNsVgU="
 					}
 				]
 			}
