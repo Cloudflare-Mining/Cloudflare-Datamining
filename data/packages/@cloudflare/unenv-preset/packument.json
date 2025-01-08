@@ -2,7 +2,7 @@
 	"name": "@cloudflare/unenv-preset",
 	"dist-tags": {
 		"latest": "0.0.1",
-		"beta": "0.0.0-ff4e77e5a"
+		"beta": "0.0.0-78c1649a1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -88,6 +88,84 @@
 			"name": "@cloudflare/unenv-preset",
 			"version": "0.0.0-ff4e77e5a",
 			"devDependencies": {
+				"unbuild": "^2.0.0",
+				"typescript": "~5.6.3",
+				"@types/node": "*"
+			},
+			"peerDependencies": {
+				"unenv": "npm:unenv-nightly@*",
+				"workerd": "^1.20241216.0"
+			},
+			"dist": {
+				"shasum": "2fe635657d05b3acf65fc41ce078a4af08e26898",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-ff4e77e5a.tgz",
+				"fileCount": 31,
+				"integrity": "sha512-vT5qdg3S7TYtuAUP43NGVEyzhf8VQYxrpazOM0tm5HQowndDzC71t59M6QDPbWVGMTm8C7nAytfnPqPR2L/hEQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCU+AdxTrBdOOMVCR5hFfvEbgpD6fZ3g+56OhhjHsw7AwIhAK0t3LPhs1aunhrzAatR13e15nza3/tSkOaQIUck7+ii",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 79221
+			}
+		},
+		"0.0.0-15613eefe": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-15613eefe",
+			"devDependencies": {
+				"unbuild": "^2.0.0",
+				"typescript": "~5.6.3",
+				"@types/node": "*"
+			},
+			"peerDependencies": {
+				"unenv": "npm:unenv-nightly@*",
+				"workerd": "^1.20241216.0"
+			},
+			"dist": {
+				"shasum": "1cf039bc4745f4cd9b24072b51ee09e7d401c966",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-15613eefe.tgz",
+				"fileCount": 31,
+				"integrity": "sha512-FJRXJY2LB42Pw5KVyg7YAvXIdcosQ9ZyJmO0rTMxqIsjaDCcLghq0k7CFUwMBu7mdeH1vbAasC6lzO8xSHXGuw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCR3BBHgW/cs0cO5HeVa3cF3AlzgnMEGnZCYmeEe+nLVQIhAK8+iPHPER9J72M1j22RFGnrBiTcpfwSWfOgmN9U0t9X",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 79221
+			}
+		},
+		"0.0.0-3f685e4e2": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-3f685e4e2",
+			"devDependencies": {
+				"unbuild": "^2.0.0",
+				"typescript": "~5.6.3",
+				"@types/node": "*"
+			},
+			"peerDependencies": {
+				"unenv": "npm:unenv-nightly@*",
+				"workerd": "^1.20241216.0"
+			},
+			"dist": {
+				"shasum": "650c96075516077ea2fc09179503b3cac1e1d133",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-3f685e4e2.tgz",
+				"fileCount": 31,
+				"integrity": "sha512-BQzu1Bp5BG2Iz6pyoDaREHkeCS9Yj5QXeKSyynibO/iYEgD+JuIW4tVeHqjYFRqA1SulHY1ZA7LyU2USB7pxjQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFgGTF9hdujwCUX2USLvzk2D5XIwjkIQePhiR1MjlZYlAiBlZDk6w5LOY0JRot2Ha3fCj9FNcOXDACHZmGYuwvp7Yw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 79221
+			}
+		},
+		"0.0.0-78c1649a1": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-78c1649a1",
+			"devDependencies": {
 				"@types/node": "*",
 				"typescript": "~5.6.3",
 				"unbuild": "^2.0.0"
@@ -97,15 +175,15 @@
 				"workerd": "^1.20241216.0"
 			},
 			"dist": {
-				"integrity": "sha512-vT5qdg3S7TYtuAUP43NGVEyzhf8VQYxrpazOM0tm5HQowndDzC71t59M6QDPbWVGMTm8C7nAytfnPqPR2L/hEQ==",
-				"shasum": "2fe635657d05b3acf65fc41ce078a4af08e26898",
-				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-ff4e77e5a.tgz",
+				"integrity": "sha512-eE8l6f4UbBzuWwznyF09oYTMbZyEbSk9rvh7UKyrCoS0jf2JZBGKNNUEVAGTVYsbJz+5Tz5AXvOHLkKtO75a5A==",
+				"shasum": "901ef930afcc8edc3019e0d383b714cfa2a52025",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-78c1649a1.tgz",
 				"fileCount": 31,
 				"unpackedSize": 79221,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCU+AdxTrBdOOMVCR5hFfvEbgpD6fZ3g+56OhhjHsw7AwIhAK0t3LPhs1aunhrzAatR13e15nza3/tSkOaQIUck7+ii"
+						"sig": "MEUCIHNHcca26AQG9KDW2Ph99elwFpJi/5ayCPvsJti+Y2H8AiEAlFGcCHwYiuFr7pgfmNrZXfTv4zmHFgZ76TrAs7W12A4="
 					}
 				]
 			}
