@@ -1659,12 +1659,19 @@
 		"authoritativeNameserverIps": "List of IPs of the authoritative nameservers that provided the answers, if any",
 		"categoryId": "ID of the category that was assigned to the domain",
 		"cnames": "List of resolved intermediate cname domains",
+		"customResolverAddress": "Address at which the custom resolver query was resolved at",
+		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
+		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"dohSubdomain": "The destination DoH subdomain the DNS query was made to",
 		"dotSubdomain": "The destination DoT subdomain the DNS query was made to",
 		"edeErrors": "List of returned Extended DNS Error Codes",
+		"internalDnsFallbackStrategy": "The fallback strategy applied over the internal DNS response. Empty if no fallback strategy was applied",
+		"internalDnsRCode": "The return code sent back by the internal DNS service",
+		"internalDnsViewId": "The DNS internal view identifier that was sent to the internal DNS service",
+		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"matchedApplicationId": "ID of the application the domain belongs to",
 		"matchedApplicationName": "Name of the application the domain belongs to",
@@ -1674,6 +1681,8 @@
 		"resolvedIpCountries": "Country code of each resolved IP, if any",
 		"resolvedIps": "List of resolved IPs in the response, if any",
 		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n",
+		"resolverPolicyId": "ID of the resolver policy/rule that was applied, if any",
+		"resolverPolicyName": "Name of the resolver policy that was applied, if any",
 		"resourceRecordClasses": "Resource records' classes",
 		"resourceRecordNames": "Resource records' names",
 		"resourceRecordRDatas": "Resource records' rdata values",
@@ -1769,12 +1778,19 @@
 		"categoryIds": "Json array of categories for this query",
 		"categoryNames": "List of matching categories names for this query",
 		"cnames": "List of resolved intermediate cname domains",
+		"customResolverAddress": "Address at which the custom resolver query was resolved at",
+		"customResolverCacheStatus": "Whether the custom resolver response was cached or not",
+		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"dohSubdomain": "The destination DoH subdomain the DNS query was made to",
 		"dotSubdomain": "The destination DoT subdomain the DNS query was made to",
 		"edeErrors": "List of returned Extended DNS Error Codes",
+		"internalDnsFallbackStrategy": "The fallback strategy applied over the internal DNS response. Empty if no fallback strategy was applied",
+		"internalDnsRCode": "The return code sent back by the internal DNS service",
+		"internalDnsViewId": "The DNS internal view identifier that was sent to the internal DNS service",
+		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"locationName": "The name identifying the customer Location used when resolving",
 		"matchedApplicationId": "ID of the application the domain belongs to",
@@ -1789,6 +1805,8 @@
 		"resolvedIpCountries": "Country code of each resolved IP, if any",
 		"resolvedIps": "List of resolved IPs in the response, if any",
 		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n",
+		"resolverPolicyId": "ID of the resolver policy/rule that was applied, if any",
+		"resolverPolicyName": "Name of the resolver policy that was applied, if any",
 		"resourceRecordClasses": "Resource records' classes",
 		"resourceRecordNames": "Resource records' names",
 		"resourceRecordRDatas": "Resource records' rdata values",
@@ -3064,10 +3082,13 @@
 	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"alertType": "The alert type of the notification policy",
-		"date": "SLO calculation event timestamp, truncated to start of a day",
+		"date": "SLO calculation event timestamp, truncated to the day",
 		"datetime": "SLO calculation event timestamp",
-		"datetimeHour": "SLO calculation event timestamp, truncated to start of hour",
-		"datetimeMinute": "SLO calculation event timestamp, truncated to start of minute",
+		"datetimeFifteenMinutes": "SLO calculation event timestamp, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "SLO calculation event timestamp, truncated to multiple of 5 minutes",
+		"datetimeHalfOfHour": "SLO calculation event timestamp, truncated to multiple of 30 minutes",
+		"datetimeHour": "SLO calculation event timestamp, truncated to the hour",
+		"datetimeMinute": "SLO calculation event timestamp, truncated to the minute",
 		"policyId": "The ID of the notification policy associated with the calculation",
 		"siteName": "The name of the site the tunnel is associated with",
 		"status": "The health status of the tunnel",
@@ -6905,6 +6926,10 @@
 		"totalTimeWaitedP75": "75th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
 		"totalTimeWaitedP90": "90th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
 		"totalTimeWaitedP95": "95th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
+		"turnstileFailures": "Number of Turnstile challenges failed or timed out",
+		"turnstileInfiniteQueueRefreshes": "Number of requests from users who failed a Turnstile challenge and were placed in an infinite queue",
+		"turnstileIssued": "Number of Turnstile challenges issued",
+		"turnstileSuccesses": "Number of Turnstile challenges successfully completed",
 		"waitingRoomId": "Unique Identifier for the waiting room",
 		"waitingRoomName": "Name of the waiting room"
 	},
@@ -6930,7 +6955,11 @@
 		"sessionsRevoked": "Average rate of sessions revoked. A negative number means no data",
 		"totalActiveUsers": "Average rate of total active users. A negative number means no data",
 		"totalActiveUsersConfig": "Configured value of total active users. A negative number means no data",
-		"totalQueuedUsers": "Average of total queued users"
+		"totalQueuedUsers": "Average of total queued users",
+		"turnstileFailures": "Average rate of Turnstile challenges failed or timed out. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "Average rate of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "Average rate of Turnstile challenges issued. A negative number means no data",
+		"turnstileSuccesses": "Average rate of Turnstile challenges successfully completed. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsAvgWeighted": {
 		"__description": "",
@@ -6974,7 +7003,11 @@
 		"sessionsRevoked": "The maximum value of the actual sessions revoked. A negative number means no data",
 		"totalActiveUsers": "The maximum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The maximum value of the configured total active users. A negative number means no data",
-		"totalQueuedUsers": "The maximum value of total number of queued users. A negative number means no data"
+		"totalQueuedUsers": "The maximum value of total number of queued users. A negative number means no data",
+		"turnstileFailures": "The maximum value of Turnstile challenges failed or timed out. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "The maximum value of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "The maximum value of Turnstile challenges issued. A negative number means no data",
+		"turnstileSuccesses": "The maximum value of Turnstile challenges successfully completed. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsMin": {
 		"__description": "",
@@ -6985,7 +7018,11 @@
 		"sessionsRevoked": "The minimum value of the actual sessions revoked. A negative number means no data",
 		"totalActiveUsers": "The minimum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means either Waiting Room is in passthrough or no data",
-		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data"
+		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data",
+		"turnstileFailures": "The minimum value of Turnstile challenges failed or timed out. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "The minimum value of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "The minimum value of Turnstile challenges issued. A negative number means no data",
+		"turnstileSuccesses": "The minimum value of Turnstile challenges successfully completed. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -6993,7 +7030,11 @@
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsSum": {
 		"__description": "",
 		"newUsersPerMinute": "Sum of new users per minute. A negative number means no data",
-		"sessionsRevoked": "Sum of sessions revoked. A negative number means no data"
+		"sessionsRevoked": "Sum of sessions revoked. A negative number means no data",
+		"turnstileFailures": "Sum of Turnstile challenges failed or timed out. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "Sum of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "Sum of Turnstile challenges issued. A negative number means no data",
+		"turnstileSuccesses": "Sum of Turnstile challenges successfully completed. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {
 		"__description": ""
