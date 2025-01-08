@@ -7,14 +7,17 @@
 </div>
 <p><strong>Available locations: London or Lisbon </strong></p>
 <p><strong>About the Department</strong></p>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p><strong>About the Team</strong></p>
-<p>Cloudflare Zaraz allows engineers and product teams to fuel the growth of their web applications using 3rd party tools while maintaining high performance metrics, minimizing security risks, and respecting privacy obligations. In doing so, the team helped establish the open source Managed Components initiative as a new Internet standard to improve how third party code is packaged for inclusion in digital products across a range of devices.</p>
-<p>Building on its successful adoption so far, we’re looking to expand the Cloudflare Zaraz category &amp; catalog with a fresh complement of growth tools to continue removing obstacles in the path to develop thriving Internet properties.</p>
+<p>Our team is focused on helping developers fuel the data-driven growth of their Internet properties while respecting privacy.&nbsp;</p>
+<p>We build on top of the Cloudflare development platform, pushing its limits to deliver tooling ranging from open source contributions to high impact Enterprise-grade product solutions for massive-traffic volumes and bespoke customer requirements.</p>
+<p>Specifically, while the team started with Cloudflare Zaraz - allowing engineers and product teams to use 3rd party tooling while maintaining high performance metrics and minimizing security risks - its remit has expanded to manage CDNJS, and the open source Managed Components initiative, alongside a growing number of special projects.</p>
 <p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
 <p><strong>What you'll do</strong></p>
-<p>In this role, you will join world class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of Cloudflare Zaraz on the Internet - ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will be encouraged to bring ideas and own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, ship a new feature layered upon 3 different technologies, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust. We use Workers heavily and creatively.</p>
+<p>In this role, you will join world class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing products - ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will be encouraged to bring ideas and own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, ship a new feature layered upon 3 different technologies, or fix a bug in how our user experience renders.&nbsp;</p>
+<p>You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust.</p>
+<p>We use Cloudflare Workers heavily and creatively.</p>
 <p>If applicable to ongoing projects, you will also support the health and availability of services by being part of an on-call rotation.</p>
 <p><strong>About you</strong></p>
 <p>We want you to love it here! This role is a good fit for you if:</p>
@@ -28,6 +31,7 @@
 	<li>you want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>5+ years experience working with high volume software applications, with a strong focus on TypeScript programming language</li>
 	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
@@ -42,7 +46,6 @@
 	<li>Experience using the Cloudflare Workers development platform</li>
 	<li>Experience contributing to OSS software development or maintaining OSS projects</li>
 </ul>
-<p><strong>Available Locations</strong>: Lisbon or remote PT, London or Remote UK, Paris of Remote FR, Amsterdam or Remote NL, Munich or Remote DE&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
