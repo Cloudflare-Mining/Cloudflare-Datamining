@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7be5e5e9-4316-5185-a3ae-01826b4074f0")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "c3a41df2-a761-5e6a-9d43-cb11a23a66d0")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1018,10 +1018,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "7b66f6f6e9c1a24eafc7046a53b963f106ba27f3",
-						dashVersion: "30150839",
+						commit: "4e5c1f19882cafc23028230af1bfa491af4157b9",
+						dashVersion: "30179228",
 						env: "production",
-						builtAt: 1736274780153,
+						builtAt: 1736361016453,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11650,6 +11650,7 @@
 					setDeploymentConfig: (0, e.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}/deployment_configs/${"environment"}/envs`,
 					gitConnections: (0, e.BC)`/accounts/${"accountId"}/pages/connections`,
 					gitConnectionsProvider: (0, e.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}`,
+					gitConnectionPermissions: (0, e.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/permissions`,
 					gitRepos: (0, e.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos`,
 					gitRepo: (0, e.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos/${"repo"}`,
 					gitBranches: (0, e.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos/${"repo"}/branches`,
@@ -18991,4 +18992,4 @@
 	}
 ]);
 
-//# debugId=7be5e5e9-4316-5185-a3ae-01826b4074f0
+//# debugId=c3a41df2-a761-5e6a-9d43-cb11a23a66d0
