@@ -61,7 +61,7 @@
 	"ResolverPolicyID": "string; Resolver policy UUID, if any matched.",
 	"ResolverPolicyName": "string; Resolver policy name, if any matched.",
 	"ResourceRecords": "array[object]; The rdata objects (for example, [{\"type\":\"5\",\"data\":\"dns-packet-placeholder...\"}]).",
-	"ResourceRecordsJSON": "string; String that represents the JSON array with the returned resource records (for example, \"[{\\\"name\\\": \\\"example.com\\\", \\\"type\\\": \\\"CNAME\\\", \\\"class\\\": \\\"IN\\\", \\\"ttl\\\": 3600, \\\"rdata\\\": \\\"cname.example.com.\\\"}]\").",
+	"ResourceRecordsJSON": "string; String that represents the JSON array with the returned resource records (for example, '[{\"name\": \"example.com\", \"type\": \"CNAME\", \"class\": \"IN\", \"ttl\": 3600, \"rdata\": \"cname.example.com.\"}]').",
 	"SrcIP": "string; The source IP address making the DNS query (for example, '104.16.132.229').",
 	"SrcIPContinentCode": "string; Continent code of the source IP address making the DNS query (for example, 'NA').",
 	"SrcIPCountryCode": "string; Country code of the source IP address making the DNS query (for example, 'US').",
