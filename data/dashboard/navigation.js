@@ -4,7 +4,7 @@ const navigation = {
 		url: "/organizations",
 		labels: ["new"],
 		iconType: "globe",
-		hasPermission: M => !!(0, e.z1)("control-plane-large-orgs")(M)
+		hasPermission: _ => !!(0, e.z1)("control-plane-large-orgs")(_)
 	}, {
 		title: "navigation.root.accounts",
 		url: "/",
@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: M => (0, e.z1)(b.Mr)(M) && (0, z.z7)(M) && !!(0, z.z$)(M).length
+		hasPermission: _ => (0, e.z1)(C.Mr)(_) && (0, z.z7)(_) && !!(0, z.z$)(_).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -40,12 +40,12 @@ const navigation = {
 		title: "navigation.profile.access_management",
 		url: "/access-management",
 		iconType: "lock",
-		hasPermission: M => !!(0, e.z1)("oauth-access-management")(M)
+		hasPermission: _ => !!(0, e.z1)("oauth-access-management")(_)
 	}, {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: M => !(0, c.n3)() && !(0, e.z1)("oauth-access-management")(M)
+		hasPermission: _ => !(0, c.n3)() && !(0, e.z1)("oauth-access-management")(_)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -54,26 +54,26 @@ const navigation = {
 		title: "navigation.profile.sessions",
 		url: "/sessions",
 		iconType: "time",
-		hasPermission: M => !(0, e.z1)("oauth-access-management")(M)
+		hasPermission: _ => !(0, e.z1)("oauth-access-management")(_)
 	}],
 	account: [{
 		title: "navigation.account.home",
 		url: "/home",
 		iconType: "home",
 		testId: "sidenav-home-link",
-		hasPermission: M => !!(0, e.z1)("dashnav-developer-platform-home")(M) && !!(0, e.z1)("dx-account-zone-selector-table-view-v2")(M) && (0, o.iY)(M)
+		hasPermission: _ => !!(0, e.z1)("dashnav-developer-platform-home")(_) && !!(0, e.z1)("dx-account-zone-selector-table-view-v2")(_) && (0, o.iY)(_)
 	}, {
 		title: "navigation.account.home",
 		url: "/",
 		iconType: "home",
 		testId: "sidenav-home-link",
-		hasPermission: M => !!(0, e.z1)("dx-account-zone-selector-table-view-v2")(M) && (!(0, e.z1)("dashnav-developer-platform-home")(M) || !(0, o.iY)(M))
+		hasPermission: _ => !!(0, e.z1)("dx-account-zone-selector-table-view-v2")(_) && (!(0, e.z1)("dashnav-developer-platform-home")(_) || !(0, o.iY)(_))
 	}, {
 		title: "navigation.root.websites",
 		url: "/websites",
 		testId: "sidenav-websites-link",
 		iconType: "internet-browser",
-		hasPermission: M => !(0, e.z1)("dx-account-zone-selector-table-view-v2")(M)
+		hasPermission: _ => !(0, e.z1)("dx-account-zone-selector-table-view-v2")(_)
 	}, {
 		title: "navigation.account.discover",
 		url: "/discover",
@@ -100,7 +100,7 @@ const navigation = {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			labels: ["beta"],
-			hasPermission: M => (0, o.gw)(M)
+			hasPermission: _ => (0, o.gw)(_)
 		}]
 	}, {
 		title: "navigation.common.analytics_and_logs",
@@ -111,89 +111,89 @@ const navigation = {
 			title: "navigation.account.account_analytics",
 			url: "/analytics",
 			labels: ["beta"],
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.account_http_traffic",
 			url: "/http-traffic",
 			labels: ["beta"],
-			hasPermission: M => (0, o.iY)(M) && !!(0, e.z1)("account-traffic-analytics")(M)
+			hasPermission: _ => (0, o.iY)(_) && !!(0, e.z1)("account-traffic-analytics")(_)
 		}, {
 			title: "navigation.account.network_analytics",
 			url: "/network-analytics/all-traffic",
-			hasPermission: M => (0, o.iY)(M) && (0, O.Ob)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, O.Ob)(_)
 		}, {
 			title: "navigation.account.web_analytics",
 			url: "/web-analytics",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			hasPermission: M => (0, o.iY)(M) && (0, f.S6)(M) && !!(0, e.z1)("account-logpush")(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, f.S6)(_) && !!(0, e.z1)("account-logpush")(_)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
-			hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "account_analytics", "carbon_dashboard")
+			hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "account_analytics", "carbon_dashboard")
 		}, {
 			title: "navigation.account.magic.network_monitoring",
 			url: "/network-monitoring",
-			hasPermission: M => (0, o.iY)(M) && (!!(0, r.Le)(M, "account_analytics", "magic_network_monitoring") || !!(0, u.$f)(M, "rulesets.magic_transit_allowed"))
+			hasPermission: _ => (0, o.iY)(_) && (!!(0, r.Le)(_, "account_analytics", "magic_network_monitoring") || !!(0, u.$f)(_, "rulesets.magic_transit_allowed"))
 		}, {
 			title: "navigation.account.dashboards",
 			url: "/dashboards",
-			hasPermission: M => !!(0, e.z1)("custom-dashboards")(M)
+			hasPermission: _ => !!(0, e.z1)("custom-dashboards")(_)
 		}]
 	}, {
 		title: "navigation.account.security_center",
 		url: "/security-center",
 		iconType: "product-security-center",
 		testId: "sidenav-security-center-link",
-		hasPermission: M => (0, o.iY)(M) && (0, d.xU)(M),
+		hasPermission: _ => (0, o.iY)(_) && (0, p.xU)(_),
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
-			hasPermission: M => (0, o.iY)(M) && (0, d.sL)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.sL)(_)
 		}, {
 			title: "navigation.account.security_center.security_analytics",
 			url: "/security-center/analytics",
-			hasPermission: M => (0, o.iY)(M) && (0, d.en)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.en)(_)
 		}, {
 			title: "navigation.account.security_center.security_events",
 			url: "/security-center/events",
-			hasPermission: M => (0, o.iY)(M) && (0, d.en)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.en)(_)
 		}, {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
-			hasPermission: M => (0, o.iY)(M) && (0, d.sL)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.sL)(_)
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
-			hasPermission: M => (0, o.iY)(M) && (0, d.TT)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.TT)(_)
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
-			hasPermission: M => (0, o.iY)(M) && (0, d.jD)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.jD)(_)
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			labels: ["beta"],
-			hasPermission: M => (0, o.iY)(M) && (0, d.BU)(M) && (0, r.hI)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.BU)(_) && (0, r.hI)(_)
 		}, {
 			title: "navigation.account.security_center.blocked_content",
 			url: "/security-center/blocked-content",
 			labels: ["new"],
-			hasPermission: M => (0, o.iY)(M) && (0, d.XB)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.XB)(_)
 		}, {
 			title: "navigation.account.security_center.cfone_priorities",
 			url: "/cloudforce-one/priorities",
-			hasPermission: M => (0, o.iY)(M) && (0, d.fs)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.fs)(_)
 		}, {
 			title: "navigation.account.security_center.cfone_reports",
 			url: "/cloudforce-one/reports",
-			hasPermission: M => (0, o.iY)(M) && (0, d.Bc)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.Bc)(_)
 		}, {
 			title: "navigation.account.security_center.cfone_requests",
 			url: "/cloudforce-one/requests",
-			hasPermission: M => (0, o.iY)(M) && (0, d.gA)(M)
+			hasPermission: _ => (0, o.iY)(_) && (0, p.gA)(_)
 		}]
 	}, {
 		title: "navigation.account.request_tracer",
@@ -218,13 +218,13 @@ const navigation = {
 		url: "/dns-firewall",
 		iconType: "reliability-dns",
 		testId: "sidenav-dns_firewall-link",
-		hasPermission: M => (0, u.Ci)(M)
+		hasPermission: _ => (0, u.Ci)(_)
 	}, {
 		title: "navigation.account.turnstile",
 		url: "/turnstile",
 		iconType: "turnstile",
 		testId: "sidenav-turnstile-link",
-		hasPermission: M => (0, o.iY)(M) && !!(0, e.z1)("managed-challenge-ui")(M)
+		hasPermission: _ => (0, o.iY)(_) && !!(0, e.z1)("managed-challenge-ui")(_)
 	}, {
 		title: "account.home",
 		url: "/",
@@ -235,13 +235,13 @@ const navigation = {
 		url: "/interconnects",
 		iconType: "cloudflare-magic-wan",
 		testId: "sidenav-interconnects-link",
-		hasPermission: M => !!((0, o.iY)(M) && (0, e.z1)("magic-interconnects")(M) && (!!(0, r.Le)(M, "magic_wan", "mw_home") || !!(0, r.Le)(M, "magic_transit", "mt_home")))
+		hasPermission: _ => !!((0, o.iY)(_) && (0, e.z1)("magic-interconnects")(_) && (!!(0, r.Le)(_, "magic_wan", "mw_home") || !!(0, r.Le)(_, "magic_transit", "mt_home")))
 	}, {
 		title: "navigation.account.magic_transit",
 		url: "/magic-transit",
 		iconType: "magic-transit-logo",
 		testId: "sidenav-magic-transit-link",
-		hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_transit", "mt_home"),
+		hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_transit", "mt_home"),
 		pages: [{
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
@@ -258,26 +258,26 @@ const navigation = {
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		testId: "sidenav-magic-firewall-link",
-		hasPermission: M => !!(0, o.zJ)(M),
+		hasPermission: _ => !!(0, o.zJ)(_),
 		tabs: A.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		testId: "sidenav-ddos-link",
-		hasPermission: M => {
-			const R = !!(0, o.Wq)(M) && !!(0, o.fO)(M);
-			return !!(0, o.us)(M) || R
+		hasPermission: _ => {
+			const R = !!(0, o.Wq)(_) && !!(0, o.fO)(_);
+			return !!(0, o.us)(_) || R
 		},
 		tabs: A.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
-			hasPermission: M => !!(0, o.Wq)(M) && !!(0, o.fO)(M)
+			hasPermission: _ => !!(0, o.Wq)(_) && !!(0, o.fO)(_)
 		}, {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection",
-			hasPermission: M => (0, o.us)(M),
+			hasPermission: _ => (0, o.us)(_),
 			tabs: A.O1
 		}]
 	}, {
@@ -288,7 +288,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.ip_addresses.ip_prefixes",
 			url: "/ip-addresses/ip-prefixes",
-			hasPermission: M => (0, o.iY)(M) && ((0, u.$f)(M, "addressing.byoip_allowed") || !!(0, r.Le)(M, "addressing", "ip_prefixes"))
+			hasPermission: _ => (0, o.iY)(_) && ((0, u.$f)(_, "addressing.byoip_allowed") || !!(0, r.Le)(_, "addressing", "ip_prefixes"))
 		}, {
 			title: "navigation.account.ip_addresses.proxy-ips",
 			url: "/ip-addresses/proxy-ips"
@@ -301,43 +301,43 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: () => {
-			const M = (0, i.e1)(),
+			const _ = (0, i.e1)(),
 				R = "https://one.dash.cloudflare.com";
-			return M ? `${R}/${M}/` : R
+			return _ ? `${R}/${_}/` : R
 		},
 		iconType: "cloudflare-zero-trust",
 		testId: "sidenav-zero-trust-link",
-		labels: M => (0, e.z1)("zt-sidebar")(M) ? [] : ["external-link"],
-		hasPermission: M => (0, o.iY)(M)
+		labels: _ => (0, e.z1)("zt-sidebar")(_) ? [] : ["external-link"],
+		hasPermission: _ => (0, o.iY)(_)
 	}, {
 		title: "navigation.account.magic_wan",
 		url: "/magic-wan",
 		iconType: "cloudflare-magic-wan",
 		testId: "sidenav-magic-wan-link",
-		hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_wan", "mw_home") || !!(0, r.Le)(M, "magic_wan", "mc_home"),
+		hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_wan", "mw_home") || !!(0, r.Le)(_, "magic_wan", "mc_home"),
 		pages: [{
 			title: "navigation.account.magic_connectors.overview",
 			url: "/magic-wan/overview",
-			hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_wan", "mc_home") && !(0, e.z1)("magic-cf-site")(M)
+			hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_wan", "mc_home") && !(0, e.z1)("magic-cf-site")(_)
 		}, {
 			title: "navigation.account.magic_connectors.sites",
 			url: "/magic-wan/sites",
-			hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_wan", "mc_home") && !(0, e.z1)("magic-cf-site")(M)
+			hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_wan", "mc_home") && !(0, e.z1)("magic-cf-site")(_)
 		}, {
 			title: "navigation.account.magic_connectors.network_overview",
 			url: "/magic-wan/network",
 			labels: ["beta"],
-			hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_wan", "mc_home") && !!(0, e.z1)("magic-cf-site")(M)
+			hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_wan", "mc_home") && !!(0, e.z1)("magic-cf-site")(_)
 		}, {
 			title: "navigation.account.magic_connectors.mconn_onramp",
 			url: "/magic-wan/mconn-onramp",
 			labels: ["beta"],
-			hasPermission: M => (0, o.iY)(M) && !!(0, r.Le)(M, "magic_wan", "mc_home") && !!(0, e.z1)("magic-cf-site")(M)
+			hasPermission: _ => (0, o.iY)(_) && !!(0, r.Le)(_, "magic_wan", "mc_home") && !!(0, e.z1)("magic-cf-site")(_)
 		}, {
 			title: "navigation.account.magic_connectors.cloud_onramp",
 			url: "/magic-wan/cloud",
-			labels: M => (0, e.z1)("magic-beta-flags-disabled")(M) ? [] : ["beta"],
-			hasPermission: M => !!(0, u.$f)(M, "magic_cloud.enabled")
+			labels: _ => (0, e.z1)("magic-beta-flags-disabled")(_) ? [] : ["beta"],
+			hasPermission: _ => !!(0, u.$f)(_, "magic_cloud.enabled")
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
@@ -350,7 +350,7 @@ const navigation = {
 			url: "/magic-wan/packet-captures/captures"
 		}]
 	}, {
-		hasPermission: M => (0, o.iY)(M),
+		hasPermission: _ => (0, o.iY)(_),
 		iconType: "email-forwarding",
 		title: "navigation.account.area_one",
 		url: "/area1",
@@ -365,7 +365,7 @@ const navigation = {
 		}, {
 			url: "/area1/retro-scan",
 			title: "navigation.account.area_one.retro_scan",
-			hasPermission: M => (0, e.z1)("area-1-retro-scan")(M) === !0
+			hasPermission: _ => (0, e.z1)("area-1-retro-scan")(_) === !0
 		}]
 	}, {
 		title: "account.home",
@@ -373,58 +373,61 @@ const navigation = {
 		labels: ["separator"],
 		iconType: "internet-browser"
 	}, {
-		title: "navigation.account.workers_and_pages",
+		title: "navigation.account.compute_workers",
 		url: "/workers-and-pages",
 		additionalMatchUrls: ["/workers/services", "/workers/subdomain", "/workers/analytics-engine", "/workers/compute-setting", "/pages/view", "/pages/new"],
 		iconType: "workers-pages",
-		hasPermission: M => (0, o.iY)(M),
+		hasPermission: _ => (0, o.iY)(_),
 		testId: "sidenav-workers-pages-link",
 		pages: [{
+			title: "navigation.account.workers_and_pages",
+			url: "/workers-and-pages"
+		}, {
 			title: "navigation.account.workers.kv",
 			url: "/workers/kv/namespaces",
-			hasPermission: M => !(0, e.z1)("storage-and-databases-account-navigation")(M)
+			hasPermission: _ => !(0, e.z1)("storage-and-databases-account-navigation")(_)
 		}, {
 			title: "navigation.account.workers.durable_objects",
 			url: "/workers/durable-objects",
-			hasPermission: M => !!(0, e.z1)("durable-objects-ui")(M)
+			hasPermission: _ => !!(0, e.z1)("durable-objects-ui")(_)
 		}, {
 			title: "navigation.account.workers.workflows",
 			url: "/workers/workflows",
 			labels: ["beta"],
-			hasPermission: M => !!(0, e.z1)("workflows-ui")(M)
+			hasPermission: _ => !!(0, e.z1)("workflows-ui")(_)
 		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
-			labels: M => (0, r.Le)(M, "CloudflareQueues", "beta") ? ["beta"] : [],
-			hasPermission: M => !!(0, e.z1)("queues-ui")(M) && !(0, e.z1)("storage-and-databases-account-navigation")(M),
+			labels: _ => (0, r.Le)(_, "CloudflareQueues", "beta") ? ["beta"] : [],
+			hasPermission: _ => !!(0, e.z1)("queues-ui")(_) && !(0, e.z1)("storage-and-databases-account-navigation")(_),
 			testId: "sidenav-queues-link"
 		}, {
 			title: "navigation.account.workers.d1",
 			url: "/workers/d1",
-			hasPermission: M => !(0, e.z1)("storage-and-databases-account-navigation")(M)
+			hasPermission: _ => !(0, e.z1)("storage-and-databases-account-navigation")(_)
 		}, {
 			title: "navigation.account.workers.constellation",
 			url: "/workers/constellation",
 			labels: ["beta"],
-			hasPermission: M => !!(0, e.z1)("constellation-ui")(M) && !(0, r.RO)(M)
+			hasPermission: _ => !!(0, e.z1)("constellation-ui")(_) && !(0, r.RO)(_)
 		}, {
 			title: "navigation.account.workers.hyperdrive",
 			url: "/workers/hyperdrive",
-			hasPermission: M => !!(0, e.z1)("hyperdrive-ui")(M) && !(0, e.z1)("storage-and-databases-account-navigation")(M)
+			hasPermission: _ => !!(0, e.z1)("hyperdrive-ui")(_) && !(0, e.z1)("storage-and-databases-account-navigation")(_)
 		}, {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: M => (0, ee.r)(M) && (0, ee._)(M) && !(0, e.z1)("storage-and-databases-account-navigation")(M)
+			hasPermission: _ => (0, J.r)(_) && (0, J._)(_) && !(0, e.z1)("storage-and-databases-account-navigation")(_)
 		}, {
 			title: "navigation.account.workers.browser_rendering",
 			url: "/workers/browser-rendering"
 		}, {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
-			hasPermission: M => {
-				const R = (0, L.tJ)(M);
-				return !(0, p.ky)(R, [y.uD.EnterpriseTrial])
+			hasPermission: _ => {
+				const R = (0, L.tJ)(_);
+				return !(0, g.ky)(R, [b.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -432,13 +435,13 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: M => (0, o.iY)(M) && (0, D.k)(M)
+		hasPermission: _ => (0, o.iY)(_) && (0, D.k)(_)
 	}, {
 		title: "navigation.account.storage_and_databases",
 		url: "/workers/kv/namespaces",
 		iconType: "d1",
 		testId: "sidenav-d1-link",
-		hasPermission: M => !!(0, e.z1)("storage-and-databases-account-navigation")(M),
+		hasPermission: _ => !!(0, e.z1)("storage-and-databases-account-navigation")(_),
 		pages: [{
 			title: "navigation.account.workers.kv",
 			url: "/workers/kv/namespaces"
@@ -448,17 +451,17 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.hyperdrive",
 			url: "/workers/hyperdrive",
-			hasPermission: M => !!(0, e.z1)("hyperdrive-ui")(M)
+			hasPermission: _ => !!(0, e.z1)("hyperdrive-ui")(_)
 		}, {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: M => (0, ee.r)(M) && (0, ee._)(M)
+			hasPermission: _ => (0, J.r)(_) && (0, J._)(_)
 		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
-			labels: M => (0, r.Le)(M, "CloudflareQueues", "beta") ? ["beta"] : [],
-			hasPermission: M => !!(0, e.z1)("queues-ui")(M),
+			labels: _ => (0, r.Le)(_, "CloudflareQueues", "beta") ? ["beta"] : [],
+			hasPermission: _ => !!(0, e.z1)("queues-ui")(_),
 			testId: "sidenav-queues-link"
 		}]
 	}, {
@@ -466,84 +469,84 @@ const navigation = {
 		url: "/r2/overview",
 		iconType: "r2",
 		testId: "sidenav-r2-link",
-		hasPermission: M => (0, o.iY)(M),
+		hasPermission: _ => (0, o.iY)(_),
 		pages: [{
 			title: "navigation.account.r2.overview",
 			url: "/r2/overview",
-			hasPermission: M => (0, o.o_)(M)
+			hasPermission: _ => (0, o.o_)(_)
 		}, {
 			title: "navigation.account.r2_slurper",
 			url: "/r2/slurper",
 			testId: "sidenav-r2Migrator-link",
-			hasPermission: M => (0, o.o_)(M)
+			hasPermission: _ => (0, o.o_)(_)
 		}]
 	}, {
 		title: "navigation.account.workers.ai",
 		url: "/ai/workers-ai",
 		iconType: "workers-constellation",
-		hasPermission: M => !!(0, r.RO)(M) || !!(0, r.B)(M),
+		hasPermission: _ => !!(0, r.RO)(_) || !!(0, r.B)(_),
 		testId: "sidenav-ai-link",
 		pages: [{
 			title: "navigation.account.workers.ai.workers-ai",
 			url: "/ai/workers-ai",
 			testId: "sidenav-ai-workers-link",
-			hasPermission: M => (0, r.RO)(M)
+			hasPermission: _ => (0, r.RO)(_)
 		}, {
 			title: "navigation.account.workers.ai.vectorize",
 			url: "/ai/vectorize",
 			testId: "sidenav-ai-vectorize-link",
-			hasPermission: M => (0, r.RO)(M)
+			hasPermission: _ => (0, r.RO)(_)
 		}, {
 			title: "navigation.account.workers.ai.ai-gateway",
 			url: "/ai/ai-gateway",
 			testId: "sidenav-ai-gateway-link",
-			hasPermission: M => !!(0, r.B)(M)
+			hasPermission: _ => !!(0, r.B)(_)
 		}]
 	}, {
 		title: "navigation.account.stream",
 		url: "/stream",
 		iconType: "stream",
 		testId: "sidenav-stream-link",
-		hasPermission: M => (0, o.iY)(M),
+		hasPermission: _ => (0, o.iY)(_),
 		pages: [{
 			title: "navigation.account.stream.videos",
 			url: "/stream/videos",
-			hasPermission: M => (0, o.hv)(M)
+			hasPermission: _ => (0, o.hv)(_)
 		}, {
 			title: "navigation.account.stream.live_inputs",
 			url: "/stream/inputs",
-			hasPermission: M => (0, o.hv)(M)
+			hasPermission: _ => (0, o.hv)(_)
 		}, {
 			title: "navigation.common.analytics",
 			url: "/stream/analytics",
-			hasPermission: M => (0, o.hv)(M)
+			hasPermission: _ => (0, o.hv)(_)
 		}, {
 			title: "navigation.account.stream.plans",
 			url: "/stream/plans",
-			hasPermission: M => !(0, o.hv)(M)
+			hasPermission: _ => !(0, o.hv)(_)
 		}]
 	}, {
 		title: "navigation.account.images",
 		url: "/images",
 		iconType: "image",
 		testId: "sidenav-images-link",
-		hasPermission: M => (0, o.iY)(M),
+		hasPermission: _ => (0, o.iY)(_),
 		pages: [{
 			title: "navigation.account.images.overview",
 			url: "/images"
 		}, {
 			title: "navigation.account.images.variants",
 			url: "/images/variants",
-			hasPermission: M => (0, o.dL)(M)
+			hasPermission: _ => (0, o.dL)(_)
 		}, {
 			title: "navigation.account.images.keys",
 			url: "/images/keys",
-			hasPermission: M => (0, o.dL)(M)
+			hasPermission: _ => (0, o.dL)(_)
 		}, {
 			title: "navigation.account.images.sourcing_kit",
 			url: "/images/sourcing-kit",
 			testId: "sidenav-sourcingkit-link",
-			hasPermission: M => (0, o.dL)(M),
+			hasPermission: _ => (0, o.dL)(_),
 			labels: ["beta"]
 		}, {
 			title: "navigation.account.images.delivery_zones",
@@ -553,7 +556,7 @@ const navigation = {
 			title: "navigation.account.images.plans",
 			url: "/images/plans",
 			testId: "sidenav-plans-link",
-			hasPermission: M => !(0, o.IU)(M)
+			hasPermission: _ => !(0, o.IU)(_)
 		}]
 	}, {
 		title: "navigation.account.calls",
@@ -561,7 +564,7 @@ const navigation = {
 		labels: ["beta"],
 		iconType: "calls",
 		testId: "sidenav-calls-link",
-		hasPermission: M => (0, o.iY)(M)
+		hasPermission: _ => (0, o.iY)(_)
 	}, {
 		title: "account.home",
 		url: "/",
@@ -576,38 +579,38 @@ const navigation = {
 			title: "navigation.account.members",
 			url: "/members",
 			testId: "account-homepage-members",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.api_tokens",
 			url: "/api-tokens",
 			testId: "account-homepage-api-tokens",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.audit_log",
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
-			hasPermission: M => (0, a.b)(M) ? (0, o.iY)(M) : (0, r.Yj)(M)("auditlogs").read
+			hasPermission: _ => (0, a.b)(_) ? (0, o.iY)(_) : (0, r.Yj)(_)("auditlogs").read
 		}, {
 			title: "navigation.account.billing",
 			url: "/billing",
 			testId: "account-homepage-billing",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.configurations",
 			url: "/configurations",
 			testId: "account-homepage-configurations",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.account.shared_configurations",
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: M => (0, X.K)(M, "account")
+			hasPermission: _ => (0, $.K)(_, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn/integrations",
-			labels: M => (0, e.z1)("magic-beta-flags-disabled")(M) ? [] : ["beta"],
-			hasPermission: M => !!((0, o.iY)(M) && !!(0, u.$f)(M, "magic_cloud.enabled")),
+			labels: _ => (0, e.z1)("magic-beta-flags-disabled")(_) ? [] : ["beta"],
+			hasPermission: _ => !!((0, o.iY)(_) && !!(0, u.$f)(_, "magic_cloud.enabled")),
 			testId: "sidenav-mcn-pages-link"
 		}]
 	}, {
@@ -615,19 +618,19 @@ const navigation = {
 		url: "/notifications",
 		iconType: "notifications",
 		testId: "sidenav-notifications-link",
-		hasPermission: M => (0, o.iY)(M)
+		hasPermission: _ => (0, o.iY)(_)
 	}, {
 		title: "navigation.account.account_inbox",
 		url: "/account-inbox",
 		iconType: "inbox",
-		hasPermission: M => (0, o.iY)(M) && !!(0, e.z1)("dx-message-inbox")(M),
+		hasPermission: _ => (0, o.iY)(_) && !!(0, e.z1)("dx-message-inbox")(_),
 		testId: "sidenav-account-inbox-link"
 	}, {
 		title: "account.bulk_redirects.title",
 		url: "/bulk-redirects",
 		iconType: "filter",
 		testId: "sidenav-bulk-redirects-link",
-		hasPermission: M => (0, o.iY)(M)
+		hasPermission: _ => (0, o.iY)(_)
 	}],
 	zone: [{
 		title: "navigation.common.overview",
@@ -642,44 +645,44 @@ const navigation = {
 		iconType: "ai-audit",
 		labels: ["beta"],
 		navigationType: "global-settings",
-		hasPermission: M => !!(0, e.z1)("ai-audit")(M)
+		hasPermission: _ => !!(0, e.z1)("ai-audit")(_)
 	}, {
 		title: "navigation.common.analytics_and_logs",
 		url: "/analytics",
 		iconType: "chart",
 		testId: "zone-navigation-link-analytics",
 		navigationType: "version",
-		hasPermission: M => (0, o.$n)(M, "analytics", "analytics"),
+		hasPermission: _ => (0, o.$n)(_, "analytics", "analytics"),
 		pages: [{
 			title: "navigation.zone.analytics.traffic",
 			url: "/analytics/traffic",
 			navigationType: "version",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.analytics.security",
 			url: "/analytics/security",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.analytics.performance",
 			url: "/analytics/performance",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.analytics.origin_reachability",
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
-			hasPermission: M => {
-				const R = (0, m.nA)(M);
-				return R ? !!(!(0, u.yD)(M) && !!(0, m.ZB)(M, "origin_reachability_dash", "dash_view") && (0, m.tU)(R, "enterprise") && !!(0, g.Ek)(M, "httpRequestsAdaptiveGroups")) : !1
+			hasPermission: _ => {
+				const R = (0, d.nA)(_);
+				return R ? !!(!(0, u.yD)(_) && !!(0, d.ZB)(_, "origin_reachability_dash", "dash_view") && (0, d.tU)(R, "enterprise") && !!(0, h.Ek)(_, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
-			hasPermission: M => {
-				const R = (0, m.nA)(M);
-				return R ? !!(!(0, u.yD)(M) && !!(0, m.ZB)(M, "edge_reachability_dash", "dash_view") && (0, m.tU)(R, "enterprise") && !!(0, g.Ek)(M, "nelReportsAdaptiveGroups")) : !1
+			hasPermission: _ => {
+				const R = (0, d.nA)(_);
+				return R ? !!(!(0, u.yD)(_) && !!(0, d.ZB)(_, "edge_reachability_dash", "dash_view") && (0, d.tU)(R, "enterprise") && !!(0, h.Ek)(_, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -689,28 +692,28 @@ const navigation = {
 			title: "navigation.zone.analytics.workers",
 			url: "/analytics/workers",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: M => (0, f.Xu)(M)
+			hasPermission: _ => (0, f.Xu)(_)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M) && !!(0, m.ZB)(M, "logs", "instant_log") && !!(0, u.rV)(M, "logpush.max_instant_logs_jobs_allowed")
+			hasPermission: _ => !(0, u.yD)(_) && !!(0, d.ZB)(_, "logs", "instant_log") && !!(0, u.rV)(_, "logpush.max_instant_logs_jobs_allowed")
 		}, {
 			title: "navigation.zone.analytics.log_explorer",
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: M => !!(0, w.V)(M)
+			hasPermission: _ => !!(0, w.V)(_)
 		}, {
 			title: "navigation.zone.analytics.dashboards",
 			url: "/analytics/dashboards",
 			navigationType: "global-settings",
-			hasPermission: M => !!(0, e.z1)("custom-dashboards")(M)
+			hasPermission: _ => !!(0, e.z1)("custom-dashboards")(_)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -719,14 +722,14 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: x.bB,
-		hasPermission: M => !(0, u.yD)(M) && (0, _.m7)(M)
+		hasPermission: _ => !(0, u.yD)(_) && (0, M.m7)(_)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
 		navigationType: "global-settings",
 		iconType: "reliability-dns",
 		testId: "zone-navigation-link-dns",
-		hasPermission: M => (0, o.$n)(M, "dns_records", "dns-record"),
+		hasPermission: _ => (0, o.$n)(_, "dns_records", "dns-record"),
 		pages: [{
 			title: "navigation.zone.dns.records",
 			url: "/dns/records",
@@ -754,14 +757,14 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: E.hg,
-			hasPermission: M => (0, o.iY)(M) && !(0, u.yD)(M) && (0, o.$n)(M, "dns_records", "dns-record")
+			tabs: y.hg,
+			hasPermission: _ => (0, o.iY)(_) && !(0, u.yD)(_) && (0, o.$n)(_, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: M => (0, h.ig)(M) ? !1 : (0, o.$n)(M, "dns_records", "dns-record") && !!(0, m.ZB)(M, "email", "dmarc_visible")
+			hasPermission: _ => (0, m.ig)(_) ? !1 : (0, o.$n)(_, "dns_records", "dns-record") && !!(0, d.ZB)(_, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -773,13 +776,13 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
-		hasPermission: M => {
-			const R = (0, m.nA)(M);
-			if ((0, u.yD)(M) || !(0, o.wB)(M, "zone_settings", "spectrum.app") || !R) return !1;
-			const U = !!((0, v.l8)(M) || (0, m.DQ)(M)),
-				J = !!(0, m.ZB)(M, "spectrum", "enabled"),
-				G = !!(0, m.Ns)(R);
-			return J || U || !G
+		hasPermission: _ => {
+			const R = (0, d.nA)(_);
+			if ((0, u.yD)(_) || !(0, o.wB)(_, "zone_settings", "spectrum.app") || !R) return !1;
+			const Q = !!((0, v.l8)(_) || (0, d.DQ)(_)),
+				q = !!(0, d.ZB)(_, "spectrum", "enabled"),
+				H = !!(0, d.Ns)(R);
+			return q || Q || !H
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -787,7 +790,7 @@ const navigation = {
 		iconType: "lock",
 		testId: "zone-navigation-link-ssl-tls",
 		navigationType: "both",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "ssl", "ssl.cert"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "ssl", "ssl.cert"),
 		pages: [{
 			title: "navigation.common.overview",
 			url: "/ssl-tls",
@@ -800,12 +803,12 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.staging_certs",
 			url: "/ssl-tls/staging-certificates",
 			navigationType: "global-settings",
-			hasPermission: M => (0, u.$f)(M, "staging_certificates")
+			hasPermission: _ => (0, u.$f)(_, "staging_certificates")
 		}, {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			navigationType: "global-settings",
-			hasPermission: M => !!(0, e.z1)("client-certificates")(M) || !!(0, m.ZB)(M, "ssl", "client_certificates")
+			hasPermission: _ => !!(0, e.z1)("client-certificates")(_) || !!(0, d.ZB)(_, "ssl", "client_certificates")
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
 			navigationType: "global-settings",
@@ -821,55 +824,55 @@ const navigation = {
 		iconType: "shield",
 		testId: "zone-navigation-link-security",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "waf", "firewall.rule") || (0, o.$n)(M, "page_shield", "script-monitor"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "waf", "firewall.rule") || (0, o.$n)(_, "page_shield", "script-monitor"),
 		pages: [{
 			title: "navigation.zone.security.analytics",
 			navigationType: "version",
 			url: "/security/analytics",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.events",
 			url: "/security/events",
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
 			tabs: s.gn,
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
 			tabs: l.mt,
-			hasPermission: M => (0, o.$n)(M, "page_shield", "script-monitor")
+			hasPermission: _ => (0, o.$n)(_, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.data",
 			url: "/security/data",
 			navigationType: "global-settings",
-			hasPermission: M => (0, u.du)(M, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed") && (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, u.du)(_, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed") && (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			navigationType: "version",
-			hasPermission: M => (0, V.R0)(M),
+			hasPermission: _ => (0, V.R0)(_),
 			tabs: l.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.settings",
 			url: "/security/settings",
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule")
 		}]
 	}, {
 		title: "navigation.zone.access",
@@ -877,14 +880,14 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
-		hasPermission: M => !(0, u.yD)(M) && ((0, o.wB)(M, "access", "access.app") || (0, o.wB)(M, "access", "access.zone.app"))
+		hasPermission: _ => !(0, u.yD)(_) && ((0, o.wB)(_, "access", "access.app") || (0, o.wB)(_, "access", "access.zone.app"))
 	}, {
 		title: "navigation.zone.speed",
 		url: "/speed",
 		iconType: "bolt",
 		testId: "zone-navigation-link-speed",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "setting"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "setting"),
 		pages: [{
 			title: "navigation.zone.speed.test",
 			url: "/speed/test",
@@ -902,12 +905,12 @@ const navigation = {
 		iconType: "drive",
 		testId: "zone-navigation-link-caching",
 		navigationType: "global-settings",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "setting"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "setting"),
 		pages: [{
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: j
+			tabs: N
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -916,12 +919,12 @@ const navigation = {
 			title: "navigation.zone.caching.cache_rules",
 			url: "/caching/cache-rules",
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "firewall.rule") || (0, o.$n)(M, "zone_settings", "page-rule")
+			hasPermission: _ => (0, o.$n)(_, "waf", "firewall.rule") || (0, o.$n)(_, "zone_settings", "page-rule")
 		}, {
 			title: "navigation.zone.caching.tiered_cache",
 			url: "/caching/tiered-cache",
 			navigationType: "version",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.zone.caching.cache_reserve",
 			navigationType: "global-settings",
@@ -933,78 +936,78 @@ const navigation = {
 		iconType: "edgeworker",
 		testId: "zone-navigation-link-workers",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.wB)(M, "worker", "worker.route")
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.wB)(_, "worker", "worker.route")
 	}, {
 		title: "navigation.zone.rules",
 		url: "/rules/overview",
 		iconType: "filter",
 		testId: "zone-navigation-link-page-rules",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "page-rule"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "page-rule"),
 		pages: [{
 			title: "navigation.zone.rules.templates",
 			url: "/rules/templates",
 			labels: ["new"],
-			tabs: $.HI,
+			tabs: ee.HI,
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && ((0, o.$n)(M, "waf", "firewall.rule") || (0, o.$n)(M, "zone_settings", "page-rule"))
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && ((0, o.$n)(_, "waf", "firewall.rule") || (0, o.$n)(_, "zone_settings", "page-rule"))
 		}, {
 			title: "navigation.zone.rules.configuration_rules",
 			url: "/rules/configuration-rules",
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && ((0, o.$n)(M, "waf", "firewall.rule") || (0, o.$n)(M, "zone_settings", "page-rule"))
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && ((0, o.$n)(_, "waf", "firewall.rule") || (0, o.$n)(_, "zone_settings", "page-rule"))
 		}, {
 			title: "navigation.zone.rules.overview",
 			url: "/rules/overview",
 			labels: ["new"],
 			navigationType: "global-settings",
 			additionalMatchUrls: ["/:accountId/:zoneName/rules/url-normalization", "/:accountId/:zoneName/rules/redirect-rules", "/:accountId/:zoneName/rules/transform-rules", "/:accountId/:zoneName/rules/configuration-rules", "/:accountId/:zoneName/rules/cache-rules", "/:accountId/:zoneName/rules/origin-rules", "/:accountId/:zoneName/rules/compression-rules", "/:accountId/:zoneName/rules/templates"],
-			hasPermission: M => !!(0, e.z1)("rules-overview")(M)
+			hasPermission: _ => !!(0, e.z1)("rules-overview")(_)
 		}, {
 			title: "navigation.zone.rules.snippets",
 			url: "/rules/snippets",
 			labels: ["beta"],
 			navigationType: "version",
-			hasPermission: M => (0, o.$n)(M, "waf", "page-rule", "read")
+			hasPermission: _ => (0, o.$n)(_, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: $.mI,
-			hasPermission: M => !(0, e.z1)("rules-overview")(M)
+			tabs: ee.mI,
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_)
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",
 			navigationType: "version",
-			tabs: $.KZ,
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && (0, o.$n)(M, "zone_settings", "page-rule")
+			tabs: ee.KZ,
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && (0, o.$n)(_, "zone_settings", "page-rule")
 		}, {
 			title: "navigation.zone.rules.origin_rules",
 			url: "/rules/origin-rules",
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && (0, o.$n)(M, "waf", "page-rule", "read")
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && (0, o.$n)(_, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.caching.cache_rules",
 			url: "/rules/cache-rules",
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && (0, o.$n)(M, "zone_settings", "setting") && ((0, o.$n)(M, "waf", "firewall.rule") || (0, o.$n)(M, "zone_settings", "page-rule"))
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && (0, o.$n)(_, "zone_settings", "setting") && ((0, o.$n)(_, "waf", "firewall.rule") || (0, o.$n)(_, "zone_settings", "page-rule"))
 		}, {
 			title: "navigation.zone.rules.cloud_connector",
 			labels: ["beta"],
 			url: "/rules/cloud-connector",
 			navigationType: "version",
-			hasPermission: M => !!(0, e.z1)("cloud-connector-enabled")(M)
+			hasPermission: _ => !!(0, e.z1)("cloud-connector-enabled")(_)
 		}, {
 			title: "navigation.zone.rules.compression_rules",
 			url: "/rules/compression-rules",
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && (0, o.$n)(M, "waf", "page-rule", "read") && !!(0, u.rV)(M, "rulesets.response_compression_max_rules")
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && (0, o.$n)(_, "waf", "page-rule", "read") && !!(0, u.rV)(_, "rulesets.response_compression_max_rules")
 		}, {
 			title: "navigation.account.request_tracer",
 			url: "/rules/trace/search",
 			labels: ["beta"],
 			navigationType: "version",
-			hasPermission: M => !!(0, e.z1)("rules-overview")(M) && !!(0, k.T)(M)
+			hasPermission: _ => !!(0, e.z1)("rules-overview")(_) && !!(0, k.T)(_)
 		}, {
 			title: "navigation.zone.rules.page_rules",
 			url: "/rules",
@@ -1013,7 +1016,7 @@ const navigation = {
 			title: "navigation.zone.rules.url_normalization",
 			url: "/rules/url-normalization",
 			navigationType: "version",
-			hasPermission: M => !(0, e.z1)("rules-overview")(M) && (0, o.$n)(M, "waf", "page-rule", "read")
+			hasPermission: _ => !(0, e.z1)("rules-overview")(_) && (0, o.$n)(_, "waf", "page-rule", "read")
 		}]
 	}, {
 		title: "navigation.zone.network",
@@ -1021,44 +1024,44 @@ const navigation = {
 		iconType: "network",
 		testId: "zone-navigation-link-network",
 		navigationType: "both",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "setting")
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "setting")
 	}, {
 		title: "navigation.zone.traffic",
 		url: "/traffic",
 		iconType: "reliability-load-balancer",
 		testId: "zone-navigation-link-traffic",
 		navigationType: "version",
-		hasPermission: M => (0, o.$n)(M, "lb", "load-balancer") || (0, o.$n)(M, "waitingroom", "waiting-room"),
+		hasPermission: _ => (0, o.$n)(_, "lb", "load-balancer") || (0, o.$n)(_, "waitingroom", "waiting-room"),
 		pages: [{
 			title: "navigation.zone.traffic.argo",
 			url: "/traffic",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.traffic.load_balancing",
 			url: "/traffic/load-balancing",
 			navigationType: "global-settings",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.zone.traffic.load_balancing_analytics",
 			url: "/traffic/load-balancing-analytics",
 			navigationType: "global-settings",
-			hasPermission: M => (0, o.iY)(M)
+			hasPermission: _ => (0, o.iY)(_)
 		}, {
 			title: "navigation.zone.traffic.health_checks",
 			url: "/traffic/health-checks",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}, {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M) && !!(0, g.Ek)(M, "healthCheckEventsAdaptiveGroups")
+			hasPermission: _ => !(0, u.yD)(_) && !!(0, h.Ek)(_, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
 			navigationType: "global-settings",
-			hasPermission: M => !(0, u.yD)(M)
+			hasPermission: _ => !(0, u.yD)(_)
 		}]
 	}, {
 		title: "navigation.zone.custom_pages",
@@ -1066,34 +1069,34 @@ const navigation = {
 		iconType: "wrench",
 		testId: "zone-navigation-link-custom-pages",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "custom-page")
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "custom-page")
 	}, {
 		title: "navigation.zone.apps",
 		url: "/apps",
 		navigationType: "global-settings",
 		iconType: "platform-apps",
 		testId: "zone-navigation-link-apps",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "app", "com.cloudflare.api.app.manage", "edit")
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "app", "com.cloudflare.api.app.manage", "edit")
 	}, {
 		title: "navigation.zone.scrape_shield",
 		url: "/content-protection",
 		iconType: "file",
 		testId: "zone-navigation-link-content-protection",
 		navigationType: "version",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zone_settings", "setting")
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zone_settings", "setting")
 	}, {
 		title: "navigation.zone.zaraz",
 		url: "/zaraz",
 		navigationType: "global-settings",
-		labels: M => [],
+		labels: _ => [],
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
-		hasPermission: M => !(0, u.yD)(M) && (0, o.$n)(M, "zaraz", "zaraz"),
+		hasPermission: _ => !(0, u.yD)(_) && (0, o.$n)(_, "zaraz", "zaraz"),
 		pages: [{
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: C.az
+			tabs: E.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
@@ -1106,7 +1109,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.analytics",
 			navigationType: "global-settings",
 			url: "/zaraz/monitoring",
-			tabs: C.EV
+			tabs: E.EV
 		}, {
 			title: "navigation.zone.zaraz.settings",
 			navigationType: "global-settings",
@@ -1115,16 +1118,16 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: M => !!(0, Q.GM)(M) && !!(0, e.z1)("zaraz-plans-page-access")(M)
+			hasPermission: _ => !!(0, U.GM)(_) && !!(0, e.z1)("zaraz-plans-page-access")(_)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
 		url: "/web3",
 		navigationType: "global-settings",
 		iconType: "web3",
-		hasPermission: M => {
-			const R = (0, r.uF)(M);
-			return ((R == null ? void 0 : R.roles) || []).includes("Trust and Safety") ? !1 : !(0, u.yD)(M)
+		hasPermission: _ => {
+			const R = (0, r.uF)(_);
+			return ((R == null ? void 0 : R.roles) || []).includes("Trust and Safety") ? !1 : !(0, u.yD)(_)
 		}
 	}],
 	zeroTrust: [{

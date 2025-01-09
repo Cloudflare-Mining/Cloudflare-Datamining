@@ -478,7 +478,7 @@
 			"iconType": "internet-browser"
 		},
 		{
-			"title": "navigation.account.workers_and_pages",
+			"title": "navigation.account.compute_workers",
 			"url": "/workers-and-pages",
 			"additionalMatchUrls": [
 				"/workers/services",
@@ -492,6 +492,10 @@
 			"hasPermission": null,
 			"testId": "sidenav-workers-pages-link",
 			"pages": [
+				{
+					"title": "navigation.account.workers_and_pages",
+					"url": "/workers-and-pages"
+				},
 				{
 					"title": "navigation.account.workers.kv",
 					"url": "/workers/kv/namespaces",
