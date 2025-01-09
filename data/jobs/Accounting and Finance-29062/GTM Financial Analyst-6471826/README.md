@@ -19,7 +19,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 5 years of Business Operations, Strategic Finance, FP&amp;A, Investment Banking or Consulting experience</li>
+	<li>Minimum 5 years of Accounting, Business Operations, Strategic Finance, FP&amp;A, Investment Banking or Consulting experience</li>
 	<li>Bachelor’s degree, MBA a plus</li>
 	<li>Advanced / working proficiency with English mandatory, both written and verbal</li>
 	<li>Strategic thinker, balancing near term deliverables with long-term considerations&nbsp;</li>
