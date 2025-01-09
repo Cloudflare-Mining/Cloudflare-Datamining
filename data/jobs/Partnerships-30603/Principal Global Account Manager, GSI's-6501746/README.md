@@ -5,35 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, New York, and Washington DC.</strong></h3>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application and Product Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application &amp; Product Security team is responsible for keeping our products, and platforms secure.</p>
-<p><strong>What you’ll do</strong></p>
-<p>We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</p>
+<p><strong>Available Locations: This role may be located in Austin, TX, Denver, CO or San Francisco, CA</strong></p>
+<p><strong>About The Role:</strong></p>
+<p>We are seeking a Principal Global Partner Account Manager to join our Global System Integrator (GSI) team. The role is based out of North America and will report to the Sr. Director, Global Partners.&nbsp;&nbsp;</p>
+<p>The Global Partner Account Manager will be responsible for managing and optimizing strategic relationships with our key partners such as Deloitte, NTT, IBM, and Accenture. This role will focus on developing and executing partnership strategies that enhance collaboration, drive revenue growth, and leverage the combined strengths of our organizations to deliver exceptional value to clients.</p>
+<p>The ideal candidate will have strong executive presence, established relationships and experience leading GSI partnerships, preferably in the technology and/or security and networking sector. They can work independently to build a strategy and execute the plan leveraging stakeholders both internally and externally. They will have the ability to influence decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Partner Managers, Customer Success teams, Sales Operations, Marketing teams and external partner executives.&nbsp;&nbsp;</p>
+<p>You will be expected to travel as required. The ideal candidate will have a network of existing partner contacts within the key GSI partnerships, including client leads and decision makers.&nbsp;&nbsp;</p>
+<p>Key Accountability: Achieve and exceed partner booked sales goals.</p>
+<p><strong>Responsibilities:&nbsp;</strong></p>
 <ul>
-	<li>Work with engineering teams to help secure Cloudflare products and platforms</li>
-	<li>Assess products and new feature releases through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</li>
-	<li>Contribute to security architecture/design and assist in building and rolling out processes for secure code development and deployment</li>
-	<li>Build secure frameworks &amp; libraries that engineering teams can use at scale</li>
-	<li>Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</li>
-	<li>Managing and prioritizing multiple tasks in accordance with high level objectives</li>
+	<li>Create and implement strategic account plans for each partner that align with overall business &nbsp; objectives and growth targets</li>
+	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner</li>
+	<li>Build the joint go-to-market services and solution stack offerings working closely with the global alliances team and services team</li>
+	<li>Relationship development including building executive key influencer and sales relationships that peer with Cloudflare leadership</li>
+	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration</li>
+	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and territories</li>
+	<li>Own and run business and quarterly planning / reviews both internally and externally</li>
+	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact</li>
+	<li>Own the plan for ongoing training and support for client leads and technical resources</li>
+	<li>Work with GSI partnerships and/or field sales on RFPs, proactive account planning, deal registrations and forecasting</li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>Desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Experience in securing large scale distributed systems</li>
-	<li>Experience in designing, building and implementing systems</li>
-	<li>Experience in assessing the security posture of systems/services</li>
-	<li>Experience in penetration testing and providing mitigating controls</li>
-	<li>Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</li>
-	<li>Strong communication skills and ability to work with remote teams</li>
-	<li>Results and goal-oriented</li>
+	<li>Relevant Bachelor Degree&nbsp;</li>
+	<li>15+ years experience working with Global System Integrator partnerships</li>
+	<li>Existing relationships with Accenture, NTT and Kyndryl</li>
+	<li>Executive presence with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation</li>
+	<li>Experience working in the technology sector. Network and/or security vendor experience a bonus</li>
+	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions</li>
+	<li>Ability to work independently and collaboratively across various teams in a fast-paced environment</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Estimated annual salary for Texas based hires $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:137000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">168,000</span> - $187,000 USD</li>
+	<li>For Colorado based hires: Estimated annual salary of $257,000 - $314,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $287,000 - $380.000.</li>
 </ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -61,6 +71,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
