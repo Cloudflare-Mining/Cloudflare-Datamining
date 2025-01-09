@@ -1458,20 +1458,44 @@ export interface Element {
   hasAttribute(name: string): boolean;
   setAttribute(name: string, value: string): Element;
   removeAttribute(name: string): Element;
-  before(content: string, options?: ContentOptions): Element;
-  after(content: string, options?: ContentOptions): Element;
-  prepend(content: string, options?: ContentOptions): Element;
-  append(content: string, options?: ContentOptions): Element;
-  replace(content: string, options?: ContentOptions): Element;
+  before(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
+  after(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
+  prepend(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
+  append(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
+  replace(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
   remove(): Element;
   removeAndKeepContent(): Element;
-  setInnerContent(content: string, options?: ContentOptions): Element;
+  setInnerContent(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Element;
   onEndTag(handler: (tag: EndTag) => void | Promise<void>): void;
 }
 export interface EndTag {
   name: string;
-  before(content: string, options?: ContentOptions): EndTag;
-  after(content: string, options?: ContentOptions): EndTag;
+  before(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): EndTag;
+  after(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): EndTag;
   remove(): EndTag;
 }
 export interface Comment {
@@ -1486,9 +1510,18 @@ export interface Text {
   readonly text: string;
   readonly lastInTextNode: boolean;
   readonly removed: boolean;
-  before(content: string, options?: ContentOptions): Text;
-  after(content: string, options?: ContentOptions): Text;
-  replace(content: string, options?: ContentOptions): Text;
+  before(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Text;
+  after(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Text;
+  replace(
+    content: string | ReadableStream | Response,
+    options?: ContentOptions,
+  ): Text;
   remove(): Text;
 }
 export interface DocumentEnd {
@@ -1685,7 +1718,7 @@ export interface Request<
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/cache)
    */
-  cache?: "no-store";
+  cache?: "no-store" | "no-cache";
 }
 export interface RequestInit<Cf = CfProperties> {
   /* A string to set request's method. */
@@ -1699,7 +1732,7 @@ export interface RequestInit<Cf = CfProperties> {
   fetcher?: Fetcher | null;
   cf?: Cf;
   /* A string indicating how the request will interact with the browser's cache to set request's cache. */
-  cache?: "no-store";
+  cache?: "no-store" | "no-cache";
   /* A cryptographic hash of the resource to be fetched by request. Sets request's integrity. */
   integrity?: string;
   /* An AbortSignal to set request's signal. */
