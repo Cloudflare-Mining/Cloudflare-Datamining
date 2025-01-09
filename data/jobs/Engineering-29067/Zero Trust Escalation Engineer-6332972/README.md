@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h2>Available Locations:&nbsp;<br>Atlanta, GA, Austin, TX, Denver, CO, Lisbon, Portugal, London, United Kingdom, New York, NY, Seattle, WA, Toronto, ON, Washington, DC&nbsp;</h2>
 <h2>What you’ll do</h2>
 <p>As a member of the Zero Trust Escalation Engineering team, you will play a key role in addressing technical issues experienced by customers and internal users in all layers of our Zero Trust offering (Gateway SWG, Gateway Resolver, ZTNA Access, Infrastructure Access, Browser Isolation, Data Loss Prevention).</p>
 <p>As the goto person for problem management of the most complex issues, you will collaborate with multiple Zero Trust teams to triage, prioritize, reproduce, evaluate impact, delve into client or server logs and source code, and methodically determine root causes. You will communicate updates and estimated time of resolution to stakeholders, including senior management.</p>
