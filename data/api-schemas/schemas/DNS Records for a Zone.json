@@ -1175,7 +1175,7 @@
 																				"properties": {
 																					"flatten_cname": {
 																						"default": false,
-																						"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																						"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																						"example": true,
 																						"type": "boolean"
 																					}
@@ -3822,7 +3822,7 @@
 																						"properties": {
 																							"flatten_cname": {
 																								"default": false,
-																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																								"example": true,
 																								"type": "boolean"
 																							}
@@ -6577,7 +6577,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -9192,7 +9192,7 @@
 																					"properties": {
 																						"flatten_cname": {
 																							"default": false,
-																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																							"example": true,
 																							"type": "boolean"
 																						}
@@ -12023,7 +12023,7 @@
 														"properties": {
 															"flatten_cname": {
 																"default": false,
-																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																"example": true,
 																"type": "boolean"
 															}
@@ -14565,7 +14565,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -17180,7 +17180,7 @@
 																					"properties": {
 																						"flatten_cname": {
 																							"default": false,
-																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																							"example": true,
 																							"type": "boolean"
 																						}
@@ -19852,7 +19852,7 @@
 														"properties": {
 															"flatten_cname": {
 																"default": false,
-																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																"example": true,
 																"type": "boolean"
 															}
@@ -22400,7 +22400,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -25015,7 +25015,7 @@
 																					"properties": {
 																						"flatten_cname": {
 																							"default": false,
-																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																							"example": true,
 																							"type": "boolean"
 																						}
@@ -27714,7 +27714,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -30198,7 +30198,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -32676,7 +32676,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -35246,7 +35246,7 @@
 																						"properties": {
 																							"flatten_cname": {
 																								"default": false,
-																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																								"example": true,
 																								"type": "boolean"
 																							}
@@ -37781,7 +37781,7 @@
 																						"properties": {
 																							"flatten_cname": {
 																								"default": false,
-																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																								"example": true,
 																								"type": "boolean"
 																							}
@@ -40316,7 +40316,7 @@
 																						"properties": {
 																							"flatten_cname": {
 																								"default": false,
-																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																								"example": true,
 																								"type": "boolean"
 																							}
@@ -42851,7 +42851,7 @@
 																						"properties": {
 																							"flatten_cname": {
 																								"default": false,
-																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																								"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																								"example": true,
 																								"type": "boolean"
 																							}
@@ -46226,7 +46226,7 @@
 														"properties": {
 															"flatten_cname": {
 																"default": false,
-																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																"example": true,
 																"type": "boolean"
 															}
@@ -48774,7 +48774,7 @@
 																			"properties": {
 																				"flatten_cname": {
 																					"default": false,
-																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																					"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -51389,7 +51389,7 @@
 																					"properties": {
 																						"flatten_cname": {
 																							"default": false,
-																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting has no effect on proxied records, which are always flattened.",
+																							"description": "If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.",
 																							"example": true,
 																							"type": "boolean"
 																						}

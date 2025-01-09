@@ -8,8 +8,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -19,8 +19,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -359,8 +359,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -499,8 +499,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -612,8 +612,8 @@
 											"items": {
 												"properties": {
 													"account_id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"description": "Identifier of a Cloudflare account.",
+														"example": "258def64c72dae45f3e4c8516e2111f2",
 														"maxLength": 32,
 														"type": "string"
 													},
@@ -658,8 +658,8 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"description": "Identifier of an IP Prefix.",
+														"example": "2af39739cc4e3b5910c918468bb89828",
 														"maxLength": 32,
 														"type": "string"
 													},
@@ -805,8 +805,8 @@
 													"items": {
 														"properties": {
 															"account_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"description": "Identifier of a Cloudflare account.",
+																"example": "258def64c72dae45f3e4c8516e2111f2",
 																"maxLength": 32,
 																"type": "string"
 															},
@@ -851,8 +851,8 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"description": "Identifier of an IP Prefix.",
+																"example": "2af39739cc4e3b5910c918468bb89828",
 																"maxLength": 32,
 																"type": "string"
 															},
@@ -1006,8 +1006,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -1017,8 +1017,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -1100,8 +1100,8 @@
 										"result": {
 											"properties": {
 												"account_id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Cloudflare account.",
+													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -1146,8 +1146,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of an IP Prefix.",
+													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -1261,8 +1261,8 @@
 												"result": {
 													"properties": {
 														"account_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of a Cloudflare account.",
+															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -1307,8 +1307,8 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of an IP Prefix.",
+															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -1460,8 +1460,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -1471,8 +1471,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -1574,8 +1574,8 @@
 										"result": {
 											"properties": {
 												"account_id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Cloudflare account.",
+													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -1620,8 +1620,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of an IP Prefix.",
+													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -1735,8 +1735,8 @@
 												"result": {
 													"properties": {
 														"account_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of a Cloudflare account.",
+															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -1781,8 +1781,8 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of an IP Prefix.",
+															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -1930,8 +1930,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -2033,8 +2033,8 @@
 										"result": {
 											"properties": {
 												"account_id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Cloudflare account.",
+													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -2159,8 +2159,8 @@
 												"result": {
 													"properties": {
 														"account_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of a Cloudflare account.",
+															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -2318,8 +2318,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -2435,8 +2435,8 @@
 										"result": {
 											"properties": {
 												"account_id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Cloudflare account.",
+													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -2481,8 +2481,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of an IP Prefix.",
+													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -2596,8 +2596,8 @@
 												"result": {
 													"properties": {
 														"account_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of a Cloudflare account.",
+															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
 															"type": "string"
 														},
@@ -2642,8 +2642,8 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"description": "Identifier of an IP Prefix.",
+															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
 															"type": "string"
 														},

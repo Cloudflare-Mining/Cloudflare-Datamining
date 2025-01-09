@@ -1,6 +1,7 @@
 {
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
-		"description": "List the current advertisement state for a prefix.",
+		"deprecated": true,
+		"description": "View the current advertisement state for a prefix.\n\n**Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing \nsubnets of an IP prefix.\n",
 		"operationId": "ip-address-management-dynamic-advertisement-get-advertisement-status",
 		"parameters": [
 			{
@@ -8,8 +9,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -19,8 +20,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -102,7 +103,7 @@
 										"result": {
 											"properties": {
 												"advertised": {
-													"description": "Enablement of prefix advertisement to the Internet.",
+													"description": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If \n`false`, the BGP route is withdrawn.\n",
 													"example": true,
 													"type": "boolean"
 												},
@@ -201,7 +202,7 @@
 												"result": {
 													"properties": {
 														"advertised": {
-															"description": "Enablement of prefix advertisement to the Internet.",
+															"description": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If \n`false`, the BGP route is withdrawn.\n",
 															"example": true,
 															"type": "boolean"
 														},
@@ -330,7 +331,8 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
-		"description": "Advertise or withdraw BGP route for a prefix.",
+		"deprecated": true,
+		"description": "Advertise or withdraw the BGP route for a prefix.\n\n**Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing \nsubnets of an IP prefix.\n",
 		"operationId": "ip-address-management-dynamic-advertisement-update-prefix-dynamic-advertisement-status",
 		"parameters": [
 			{
@@ -338,8 +340,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -349,8 +351,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -362,7 +364,7 @@
 					"schema": {
 						"properties": {
 							"advertised": {
-								"description": "Enablement of prefix advertisement to the Internet.",
+								"description": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If \n`false`, the BGP route is withdrawn.\n",
 								"example": true,
 								"type": "boolean"
 							}
@@ -451,7 +453,7 @@
 										"result": {
 											"properties": {
 												"advertised": {
-													"description": "Enablement of prefix advertisement to the Internet.",
+													"description": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If \n`false`, the BGP route is withdrawn.\n",
 													"example": true,
 													"type": "boolean"
 												},
@@ -550,7 +552,7 @@
 												"result": {
 													"properties": {
 														"advertised": {
-															"description": "Enablement of prefix advertisement to the Internet.",
+															"description": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If \n`false`, the BGP route is withdrawn.\n",
 															"example": true,
 															"type": "boolean"
 														},

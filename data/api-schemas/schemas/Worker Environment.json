@@ -1023,11 +1023,8 @@
 															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
 															"enum": [
 																"SUCCESS",
-																"NO_VALID_HOSTS",
-																"NO_VALID_BINDINGS",
 																"UNSUPPORTED_APPLICATION",
-																"INSUFFICIENT_INVOCATIONS",
-																"INSUFFICIENT_SUBREQUESTS"
+																"INSUFFICIENT_INVOCATIONS"
 															],
 															"readOnly": true,
 															"type": "string"
@@ -1055,11 +1052,8 @@
 															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
 															"enum": [
 																"SUCCESS",
-																"NO_VALID_HOSTS",
-																"NO_VALID_BINDINGS",
 																"UNSUPPORTED_APPLICATION",
-																"INSUFFICIENT_INVOCATIONS",
-																"INSUFFICIENT_SUBREQUESTS"
+																"INSUFFICIENT_INVOCATIONS"
 															],
 															"readOnly": true,
 															"type": "string"

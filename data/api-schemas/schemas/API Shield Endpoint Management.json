@@ -698,6 +698,8 @@
 																]
 															},
 															{
+																"default": {},
+																"nullable": true,
 																"properties": {
 																	"features": {
 																		"anyOf": [
@@ -1040,12 +1042,6 @@
 																"type": "object"
 															}
 														]
-													},
-													{
-														"properties": {
-															"features": {}
-														},
-														"type": "object"
 													}
 												]
 											},
@@ -1352,6 +1348,8 @@
 															]
 														},
 														{
+															"default": {},
+															"nullable": true,
 															"properties": {
 																"features": {
 																	"anyOf": [
@@ -1694,12 +1692,6 @@
 															"type": "object"
 														}
 													]
-												},
-												{
-													"properties": {
-														"features": {}
-													},
-													"type": "object"
 												}
 											]
 										}
@@ -2298,6 +2290,8 @@
 														]
 													},
 													{
+														"default": {},
+														"nullable": true,
 														"properties": {
 															"features": {
 																"anyOf": [
@@ -2761,6 +2755,674 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
+		]
+	},
+	"POST /zones/{zone_id}/api_gateway/operations/item": {
+		"description": "Add one operation to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+		"operationId": "api-shield-endpoint-management-add-operation-to-a-zone",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"endpoint": {
+								"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+								"example": "/api/v1/users/{var1}",
+								"format": "uri-template",
+								"maxLength": 4096,
+								"pattern": "^/.*$",
+								"type": "string"
+							},
+							"host": {
+								"description": "RFC3986-compliant host.",
+								"example": "www.example.com",
+								"format": "hostname",
+								"maxLength": 255,
+								"type": "string"
+							},
+							"method": {
+								"description": "The HTTP method used to access the endpoint.",
+								"enum": [
+									"GET",
+									"POST",
+									"HEAD",
+									"OPTIONS",
+									"PUT",
+									"DELETE",
+									"CONNECT",
+									"PATCH",
+									"TRACE"
+								],
+								"example": "GET",
+								"type": "string"
+							}
+						},
+						"required": [
+							"method",
+							"host",
+							"endpoint"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"endpoint": {
+																			"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																			"example": "/api/v1/users/{var1}",
+																			"format": "uri-template",
+																			"maxLength": 4096,
+																			"pattern": "^/.*$",
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "RFC3986-compliant host.",
+																			"example": "www.example.com",
+																			"format": "hostname",
+																			"maxLength": 255,
+																			"type": "string"
+																		},
+																		"method": {
+																			"description": "The HTTP method used to access the endpoint.",
+																			"enum": [
+																				"GET",
+																				"POST",
+																				"HEAD",
+																				"OPTIONS",
+																				"PUT",
+																				"DELETE",
+																				"CONNECT",
+																				"PATCH",
+																				"TRACE"
+																			],
+																			"example": "GET",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"method",
+																		"host",
+																		"endpoint"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"last_updated": {
+																			"allOf": [
+																				{
+																					"example": "2014-01-01T05:20:00.12345Z",
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				{
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"operation_id": {
+																			"allOf": [
+																				{
+																					"minLength": 36,
+																					"type": "string"
+																				},
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"type": "string"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"operation_id",
+																		"last_updated"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														{
+															"default": {},
+															"nullable": true,
+															"properties": {
+																"features": {
+																	"anyOf": [
+																		{
+																			"properties": {
+																				"thresholds": {
+																					"properties": {
+																						"auth_id_tokens": {
+																							"description": "The total number of auth-ids seen across this calculation.",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"data_points": {
+																							"description": "The number of data points used for the threshold suggestion calculation.",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"type": "string"
+																						},
+																						"p50": {
+																							"description": "The p50 quantile of requests (in period_seconds).",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"p90": {
+																							"description": "The p90 quantile of requests (in period_seconds).",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"p99": {
+																							"description": "The p99 quantile of requests (in period_seconds).",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"period_seconds": {
+																							"description": "The period over which this threshold is suggested.",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"requests": {
+																							"description": "The estimated number of requests covered by these calculations.",
+																							"readOnly": true,
+																							"type": "integer"
+																						},
+																						"suggested_threshold": {
+																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
+																							"readOnly": true,
+																							"type": "integer"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"required": [
+																				"period_seconds",
+																				"suggested_threshold",
+																				"p50",
+																				"p90",
+																				"p99",
+																				"requests",
+																				"auth_id_tokens",
+																				"data_points",
+																				"last_updated"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"parameter_schemas": {
+																					"properties": {
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"type": "string"
+																						},
+																						"parameter_schemas": {
+																							"description": "An operation schema object containing a response.",
+																							"example": {
+																								"parameters": [
+																									{
+																										"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																										"in": "path",
+																										"name": "var1",
+																										"required": true,
+																										"schema": {
+																											"maximum": 10,
+																											"minimum": 1,
+																											"type": "integer"
+																										}
+																									}
+																								],
+																								"responses": null
+																							},
+																							"properties": {
+																								"parameters": {
+																									"description": "An array containing the learned parameter schemas.",
+																									"example": [
+																										{
+																											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																											"in": "path",
+																											"name": "var1",
+																											"required": true,
+																											"schema": {
+																												"maximum": 10,
+																												"minimum": 1,
+																												"type": "integer"
+																											}
+																										}
+																									],
+																									"items": {
+																										"type": "object"
+																									},
+																									"readOnly": true,
+																									"type": "array"
+																								},
+																								"responses": {
+																									"description": "An empty response object. This field is required to yield a valid operation schema.",
+																									"nullable": true,
+																									"readOnly": true,
+																									"type": "object"
+																								}
+																							},
+																							"readOnly": true,
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"required": [
+																				"parameter_schemas",
+																				"last_updated"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"api_routing": {
+																					"last_updated": "2014-01-01T05:20:00.12345Z",
+																					"route": "https://api.example.com/api/service"
+																				}
+																			},
+																			"properties": {
+																				"api_routing": {
+																					"description": "API Routing settings on endpoint.",
+																					"properties": {
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"type": "string"
+																						},
+																						"route": {
+																							"description": "Target route.",
+																							"example": "https://api.example.com/api/service",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"confidence_intervals": {
+																					"last_updated": "2014-01-01T05:20:00.12345Z",
+																					"suggested_threshold": {
+																						"confidence_intervals": {
+																							"p90": {
+																								"lower": 23.1,
+																								"upper": 23.9
+																							},
+																							"p95": {
+																								"lower": 22,
+																								"upper": 24.1
+																							},
+																							"p99": {
+																								"lower": 20.2,
+																								"upper": 30
+																							}
+																						},
+																						"mean": 23.5
+																					}
+																				}
+																			},
+																			"properties": {
+																				"confidence_intervals": {
+																					"properties": {
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"type": "string"
+																						},
+																						"suggested_threshold": {
+																							"properties": {
+																								"confidence_intervals": {
+																									"properties": {
+																										"p90": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										},
+																										"p95": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										},
+																										"p99": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										}
+																									},
+																									"type": "object"
+																								},
+																								"mean": {
+																									"description": "Suggested threshold.",
+																									"example": 25.5,
+																									"type": "number"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"schema_info": {
+																					"properties": {
+																						"active_schema": {
+																							"description": "Schema active on endpoint.",
+																							"properties": {
+																								"created_at": {
+																									"example": "2014-01-01T05:20:00.12345Z",
+																									"format": "date-time",
+																									"type": "string"
+																								},
+																								"id": {
+																									"allOf": [
+																										{
+																											"minLength": 36,
+																											"type": "string"
+																										},
+																										{
+																											"description": "UUID",
+																											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																											"maxLength": 36,
+																											"type": "string"
+																										}
+																									]
+																								},
+																								"is_learned": {
+																									"description": "True if schema is Cloudflare-provided.",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"name": {
+																									"description": "Schema file name.",
+																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"learned_available": {
+																							"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"mitigation_action": {
+																							"description": "Action taken on requests failing validation.",
+																							"enum": [
+																								"none",
+																								"log",
+																								"block"
+																							],
+																							"example": "block",
+																							"nullable": true,
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		}
+																	],
+																	"readOnly": true,
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													]
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Add one operation to a zone response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Add one operation to a zone response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Add one operation to a zone",
+		"tags": [
+			"API Shield Endpoint Management"
 		]
 	}
 }

@@ -325,6 +325,27 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/operations/item": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string"
+					}
+				]
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/operations/schema_validation": [
 		{
 			"in": "path",

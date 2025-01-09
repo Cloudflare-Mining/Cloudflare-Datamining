@@ -8,8 +8,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -19,8 +19,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -30,8 +30,8 @@
 				"name": "binding_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Service Binding.",
+					"example": "0429b49b6a5155297b78e75a44b09e14",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -220,8 +220,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -231,8 +231,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -315,8 +315,8 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"description": "Identifier of a Service Binding.",
+														"example": "0429b49b6a5155297b78e75a44b09e14",
 														"maxLength": 32,
 														"type": "string"
 													},
@@ -336,7 +336,7 @@
 														"type": "object"
 													},
 													"service_id": {
-														"description": "Identifier",
+														"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 														"example": "2db684ee7ca04e159946fd05b99e1bcd",
 														"maxLength": 32,
 														"type": "string"
@@ -475,8 +475,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -486,8 +486,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -497,8 +497,8 @@
 				"name": "binding_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Service Binding.",
+					"example": "0429b49b6a5155297b78e75a44b09e14",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -580,8 +580,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Service Binding.",
+													"example": "0429b49b6a5155297b78e75a44b09e14",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -601,7 +601,7 @@
 													"type": "object"
 												},
 												"service_id": {
-													"description": "Identifier",
+													"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 													"example": "2db684ee7ca04e159946fd05b99e1bcd",
 													"maxLength": 32,
 													"type": "string"
@@ -738,8 +738,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -817,7 +817,7 @@
 											"items": {
 												"properties": {
 													"id": {
-														"description": "Identifier",
+														"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 														"example": "2db684ee7ca04e159946fd05b99e1bcd",
 														"maxLength": 32,
 														"type": "string"
@@ -955,8 +955,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -966,8 +966,8 @@
 				"name": "prefix_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of an IP Prefix.",
+					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -984,7 +984,7 @@
 								"type": "string"
 							},
 							"service_id": {
-								"description": "Identifier",
+								"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 								"example": "2db684ee7ca04e159946fd05b99e1bcd",
 								"maxLength": 32,
 								"type": "string"
@@ -1071,8 +1071,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"description": "Identifier of a Service Binding.",
+													"example": "0429b49b6a5155297b78e75a44b09e14",
 													"maxLength": 32,
 													"type": "string"
 												},
@@ -1092,7 +1092,7 @@
 													"type": "object"
 												},
 												"service_id": {
-													"description": "Identifier",
+													"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 													"example": "2db684ee7ca04e159946fd05b99e1bcd",
 													"maxLength": 32,
 													"type": "string"
