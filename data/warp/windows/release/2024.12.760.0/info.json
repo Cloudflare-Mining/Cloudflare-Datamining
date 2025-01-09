@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 82,
+	"version": "2024.12.760.0",
+	"short_version": "",
+	"size": 126201856,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "1f1cbdf966db1a91463f6a77a27e2b08",
+	"fingerprint": "0b159b28c9c83c5ae48c7050cb2ec9b6",
+	"uploaded_at": "2025-01-09T16:09:25.966Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains only a hotfix from the 2024.12.554.0 release\r\n\r\n## Changes and improvements\r\n- Fixed an issue that could prevent clients with certain split tunnel configurations from connecting\r\n\r\n## Known issues\r\n- DNS resolution may be broken when the following conditions are all true:\r\n  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.\r\n  - A custom DNS server address is configured on the primary network adapter.\r\n  - The custom DNS server address on the primary network adapter is changed while WARP is connected.\r\n\r\n  To work around this issue, please reconnect the WARP client by toggling off and back on.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"ecdc7c2fb33a52548cc1823bddc926a5968fb6d53d9adbb345b700764528aa30"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
