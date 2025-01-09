@@ -1172,7 +1172,7 @@
 		},
 		{
 			"title": "navigation.zone.rules",
-			"url": "/rules/templates",
+			"url": "/rules/overview",
 			"iconType": "filter",
 			"testId": "zone-navigation-link-page-rules",
 			"navigationType": "version",
@@ -1195,6 +1195,25 @@
 					"hasPermission": null
 				},
 				{
+					"title": "navigation.zone.rules.overview",
+					"url": "/rules/overview",
+					"labels": [
+						"new"
+					],
+					"navigationType": "global-settings",
+					"additionalMatchUrls": [
+						"/:accountId/:zoneName/rules/url-normalization",
+						"/:accountId/:zoneName/rules/redirect-rules",
+						"/:accountId/:zoneName/rules/transform-rules",
+						"/:accountId/:zoneName/rules/configuration-rules",
+						"/:accountId/:zoneName/rules/cache-rules",
+						"/:accountId/:zoneName/rules/origin-rules",
+						"/:accountId/:zoneName/rules/compression-rules",
+						"/:accountId/:zoneName/rules/templates"
+					],
+					"hasPermission": null
+				},
+				{
 					"title": "navigation.zone.rules.snippets",
 					"url": "/rules/snippets",
 					"labels": [
@@ -1207,7 +1226,8 @@
 					"title": "navigation.zone.rules.transform_rules",
 					"url": "/rules/transform-rules",
 					"navigationType": "version",
-					"tabs": []
+					"tabs": [],
+					"hasPermission": null
 				},
 				{
 					"title": "navigation.zone.rules.redirect_rules",
@@ -1240,6 +1260,15 @@
 				{
 					"title": "navigation.zone.rules.compression_rules",
 					"url": "/rules/compression-rules",
+					"navigationType": "version",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.request_tracer",
+					"url": "/rules/trace/search",
+					"labels": [
+						"beta"
+					],
 					"navigationType": "version",
 					"hasPermission": null
 				},

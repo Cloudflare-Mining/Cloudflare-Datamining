@@ -6,6 +6,7 @@
 	"trace.overview.description.third": "Understand how different Cloudflare configurations interact with an HTTP request for one of your <0>proxied</0> hostnames.",
 	"trace.overview.card.title": "How to use Cloudflare Trace",
 	"trace.overview.card.description": "Follow an HTTP/S request through Cloudflare's reverse proxy to your origin. Results will show matches for all active rules and configurations, both at the account level or for a specific domain or subdomain. If the hostname is not <0>proxied by Cloudflare</0>, Trace will still return all the configurations that Cloudflare would have applied to the request.",
+	"trace.overview.card.description_minimal": "Follow an HTTP/S request through Cloudflare's reverse proxy to your origin.",
 	"trace.overview.card.configuration": "Tune your configuration",
 	"trace.overview.card.configuration.description": "Select a hostname that belongs to your Cloudflare account and tune its configurations.",
 	"trace.overview.card.trace": "Build a trace",
