@@ -41,6 +41,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -124,11 +130,13 @@
 										}
 									},
 									"required": [
-										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
+										"id",
+										"account_id",
+										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -258,29 +266,6 @@
 				}
 			},
 			{
-				"description": "Order By Column Name",
-				"in": "query",
-				"name": "order_by",
-				"schema": {
-					"description": "Order By Column Name",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Order By Direction",
-				"in": "query",
-				"name": "order_by_direction",
-				"schema": {
-					"default": "asc",
-					"description": "Order By Direction",
-					"enum": [
-						"asc",
-						"desc"
-					],
-					"type": "string"
-				}
-			},
-			{
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -312,6 +297,12 @@
 								"result": {
 									"items": {
 										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"account_tag": {
+												"type": "string"
+											},
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
@@ -395,11 +386,13 @@
 											}
 										},
 										"required": [
-											"id",
 											"gateway_id",
 											"name",
 											"filters",
 											"enable",
+											"id",
+											"account_id",
+											"account_tag",
 											"created_at",
 											"modified_at"
 										],
@@ -527,6 +520,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -610,11 +609,13 @@
 										}
 									},
 									"required": [
-										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
+										"id",
+										"account_id",
+										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -811,6 +812,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -894,11 +901,13 @@
 										}
 									},
 									"required": [
-										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
+										"id",
+										"account_id",
+										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -1111,6 +1120,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1194,11 +1209,13 @@
 										}
 									},
 									"required": [
-										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
+										"id",
+										"account_id",
+										"account_tag",
 										"created_at",
 										"modified_at"
 									],

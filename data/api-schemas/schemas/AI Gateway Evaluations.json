@@ -41,6 +41,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -48,6 +54,12 @@
 										"datasets": {
 											"items": {
 												"properties": {
+													"account_id": {
+														"type": "string"
+													},
+													"account_tag": {
+														"type": "string"
+													},
 													"created_at": {
 														"format": "date-time",
 														"type": "string"
@@ -136,6 +148,8 @@
 													"filters",
 													"enable",
 													"id",
+													"account_id",
+													"account_tag",
 													"created_at",
 													"modified_at"
 												],
@@ -218,14 +232,16 @@
 									},
 									"required": [
 										"id",
+										"account_id",
+										"account_tag",
 										"gateway_id",
 										"name",
-										"processed",
-										"total_logs",
-										"results",
 										"created_at",
 										"modified_at",
-										"datasets"
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
 									],
 									"type": "object"
 								},
@@ -557,29 +573,6 @@
 				}
 			},
 			{
-				"description": "Order By Column Name",
-				"in": "query",
-				"name": "order_by",
-				"schema": {
-					"description": "Order By Column Name",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Order By Direction",
-				"in": "query",
-				"name": "order_by_direction",
-				"schema": {
-					"default": "asc",
-					"description": "Order By Direction",
-					"enum": [
-						"asc",
-						"desc"
-					],
-					"type": "string"
-				}
-			},
-			{
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -611,6 +604,12 @@
 								"result": {
 									"items": {
 										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"account_tag": {
+												"type": "string"
+											},
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
@@ -618,6 +617,12 @@
 											"datasets": {
 												"items": {
 													"properties": {
+														"account_id": {
+															"type": "string"
+														},
+														"account_tag": {
+															"type": "string"
+														},
 														"created_at": {
 															"format": "date-time",
 															"type": "string"
@@ -706,6 +711,8 @@
 														"filters",
 														"enable",
 														"id",
+														"account_id",
+														"account_tag",
 														"created_at",
 														"modified_at"
 													],
@@ -788,14 +795,16 @@
 										},
 										"required": [
 											"id",
+											"account_id",
+											"account_tag",
 											"gateway_id",
 											"name",
-											"processed",
-											"total_logs",
-											"results",
 											"created_at",
 											"modified_at",
-											"datasets"
+											"datasets",
+											"results",
+											"processed",
+											"total_logs"
 										],
 										"type": "object"
 									},
@@ -921,6 +930,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -928,6 +943,12 @@
 										"datasets": {
 											"items": {
 												"properties": {
+													"account_id": {
+														"type": "string"
+													},
+													"account_tag": {
+														"type": "string"
+													},
 													"created_at": {
 														"format": "date-time",
 														"type": "string"
@@ -1016,6 +1037,8 @@
 													"filters",
 													"enable",
 													"id",
+													"account_id",
+													"account_tag",
 													"created_at",
 													"modified_at"
 												],
@@ -1098,14 +1121,16 @@
 									},
 									"required": [
 										"id",
+										"account_id",
+										"account_tag",
 										"gateway_id",
 										"name",
-										"processed",
-										"total_logs",
-										"results",
 										"created_at",
 										"modified_at",
-										"datasets"
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
 									],
 									"type": "object"
 								},
@@ -1255,6 +1280,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1262,6 +1293,12 @@
 										"datasets": {
 											"items": {
 												"properties": {
+													"account_id": {
+														"type": "string"
+													},
+													"account_tag": {
+														"type": "string"
+													},
 													"created_at": {
 														"format": "date-time",
 														"type": "string"
@@ -1350,6 +1387,8 @@
 													"filters",
 													"enable",
 													"id",
+													"account_id",
+													"account_tag",
 													"created_at",
 													"modified_at"
 												],
@@ -1432,14 +1471,16 @@
 									},
 									"required": [
 										"id",
+										"account_id",
+										"account_tag",
 										"gateway_id",
 										"name",
-										"processed",
-										"total_logs",
-										"results",
 										"created_at",
 										"modified_at",
-										"datasets"
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
 									],
 									"type": "object"
 								},

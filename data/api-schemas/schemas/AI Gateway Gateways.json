@@ -33,6 +33,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean"
 										},
@@ -54,6 +60,10 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
 											"type": "string"
 										},
 										"logpush": {
@@ -89,11 +99,14 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"cache_ttl",
 										"collect_logs",
+										"cache_ttl",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -211,29 +224,6 @@
 				}
 			},
 			{
-				"description": "Order By Column Name",
-				"in": "query",
-				"name": "order_by",
-				"schema": {
-					"description": "Order By Column Name",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Order By Direction",
-				"in": "query",
-				"name": "order_by_direction",
-				"schema": {
-					"default": "asc",
-					"description": "Order By Direction",
-					"enum": [
-						"asc",
-						"desc"
-					],
-					"type": "string"
-				}
-			},
-			{
 				"in": "query",
 				"name": "search",
 				"schema": {
@@ -251,6 +241,12 @@
 								"result": {
 									"items": {
 										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"account_tag": {
+												"type": "string"
+											},
 											"cache_invalidate_on_update": {
 												"type": "boolean"
 											},
@@ -272,6 +268,10 @@
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"internal_id": {
+												"format": "uuid",
 												"type": "string"
 											},
 											"logpush": {
@@ -307,11 +307,14 @@
 										},
 										"required": [
 											"id",
+											"internal_id",
+											"account_id",
+											"account_tag",
 											"rate_limiting_interval",
 											"rate_limiting_limit",
 											"rate_limiting_technique",
-											"cache_ttl",
 											"collect_logs",
+											"cache_ttl",
 											"cache_invalidate_on_update",
 											"created_at",
 											"modified_at"
@@ -432,6 +435,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean"
 										},
@@ -453,6 +462,10 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
 											"type": "string"
 										},
 										"logpush": {
@@ -488,11 +501,14 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"cache_ttl",
 										"collect_logs",
+										"cache_ttl",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -664,6 +680,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean"
 										},
@@ -685,6 +707,10 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
 											"type": "string"
 										},
 										"logpush": {
@@ -720,11 +746,14 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"cache_ttl",
 										"collect_logs",
+										"cache_ttl",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -908,6 +937,12 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean"
 										},
@@ -929,6 +964,10 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
 											"type": "string"
 										},
 										"logpush": {
@@ -964,11 +1003,14 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"cache_ttl",
 										"collect_logs",
+										"cache_ttl",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
