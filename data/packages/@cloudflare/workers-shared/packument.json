@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.11.2",
-		"beta": "0.0.0-65a3e3590"
+		"beta": "0.0.0-b8e5f63a8"
 	},
 	"versions": {
 		"0.1.0": {
@@ -21677,6 +21677,80 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-65a3e3590",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241230.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "ef49bc2283d23cb58ab08e22c6d924d602a20abe",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-65a3e3590.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-xzoXDb33TZfPuqN6P41KzS2wrQvfdz5bfFphrFI1FDUZM86CpaTeS+zaT0Ik+TvrhDlHj4VQ2qHt0cJbAKovIw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDKKgJYt/1lM0FCrwAfIfd4eAFkdgCIJtB5ZWlx7QaJtQIgEQ/PV8AiVpcnZGOY1xpAkk3BR6dj/9eqIOdFOfLqRfM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044944
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-78bdec59c": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-78bdec59c",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20241230.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "22250c7ee5dee0bc8890f8f46b867f2969bd96dd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-78bdec59c.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-unqYnoUEOKD7pIwU1+8rYhc6s0+oLvUQDLmiqCnOBOUznlAU34VYa035HHHgJGFwT+0GC5vk+sntPE5r2z33Pw==",
+				"signatures": [
+					{
+						"sig": "MEUCIClpT2Lzw7edZ7gUR+qaHgwNyxTk9ITtYX+pHBZZibLvAiEAx4htd/PkLGnW4/CNlPnHZqmQmrAYThIAT9jbHYKkZ0s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1044944
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-b8e5f63a8": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-b8e5f63a8",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -21690,19 +21764,19 @@
 				"toucan-js": "^3.3.1",
 				"typescript": "~5.6.3",
 				"vitest": "~2.1.8",
-				"@cloudflare/workers-tsconfig": "0.0.0",
-				"@cloudflare/eslint-config-worker": "1.1.0"
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-xzoXDb33TZfPuqN6P41KzS2wrQvfdz5bfFphrFI1FDUZM86CpaTeS+zaT0Ik+TvrhDlHj4VQ2qHt0cJbAKovIw==",
-				"shasum": "ef49bc2283d23cb58ab08e22c6d924d602a20abe",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-65a3e3590.tgz",
+				"integrity": "sha512-LBmQHsaQ/RQz5PkEYkOU+lc8Wqp2glSGCHsvdMo8zliwJZcf0zD2bojjRecjagGpJ8v2HvS0V0j7VTEuJWA5LQ==",
+				"shasum": "6068f72223e51f608c29ce4d387640f1f761ef83",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-b8e5f63a8.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1044944,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDKKgJYt/1lM0FCrwAfIfd4eAFkdgCIJtB5ZWlx7QaJtQIgEQ/PV8AiVpcnZGOY1xpAkk3BR6dj/9eqIOdFOfLqRfM="
+						"sig": "MEYCIQDuTZAAV6nFqvBnb1tOEw5ybVLWnmbt8yU++CBTT6wbOQIhAKUiWylTbUrPU7yFF9tUScKydq7rzsXa7VH6gxvCZ/Xw"
 					}
 				]
 			},
