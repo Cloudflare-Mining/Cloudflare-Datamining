@@ -10,7 +10,7 @@
 <p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
 <p>Based in Singapore, you will drive sales into commercial accounts across Indonesia territory for Cloudflare’s solutions. Your strategic selling activities will include "hunter" type activities to proactively penetrate target named accounts, detailed account planning, focused relationship building and leading effective sales campaigns to successful closure.</p>
 <p>The ideal candidate will possess both a major account sales background in technology solutions, primarily software based, that enables them to drive engagement with senior level decision makers within Cloudflare’s target customers.&nbsp; Industry experience selling into Finance, Retail, Manufacturing and other verticals along with Service Provider is desired in this role.</p>
-<p>As a Senior Territory Account Executive, you'll be responsible for developing and executing against a Sales strategy/plan for assigned vertical or accounts, as well as driving large account sales into the Indonesia market to achieve revenue targets. Therefore, you must have a strong network of contacts with decision makers in commercial accounts across the region, and have experience selling complex solutions to these accounts. You will have an intuitive understanding and experience with the key business and technical needs of these and large accounts and will create and deliver compelling value propositions to them for Cloudflare solutions.</p>
+<p>As a Territory Account Executive, you'll be responsible for developing and executing against a Sales strategy/plan for assigned vertical or accounts, as well as driving large account sales into the Indonesia market to achieve revenue targets. Therefore, you must have a strong network of contacts with decision makers in commercial accounts across the region, and have experience selling complex solutions to these accounts. You will have an intuitive understanding and experience with the key business and technical needs of these and large accounts and will create and deliver compelling value propositions to them for Cloudflare solutions.</p>
 <h3><strong>Additional responsibilities will include</strong></h3>
 <ul>
 	<li>Manage contract negotiations</li>
@@ -23,7 +23,7 @@
 	<li>Bachelor's degree required</li>
 	<li>Fluent in English and Bahasa Indonesia</li>
 	<li>Relevant direct experience, track record, and relationships within largest corporate accounts in the Indonesia market&nbsp;</li>
-	<li>Minimum 10 years of direct B2B selling experience, preferably managing internet accounts&nbsp;</li>
+	<li>Minimum 5 years of direct B2B selling experience, preferably managing internet accounts&nbsp;</li>
 	<li>Direct experience selling network security and/or CDN solutions and services preferred</li>
 	<li>Prior experience being part of an early sales team helping drive traction in the Indonesia market for a US-based SaaS company highly preferred</li>
 	<li>Experience managing longer, complex sales cycles</li>
