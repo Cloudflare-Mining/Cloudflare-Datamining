@@ -749,11 +749,11 @@
 		"name": "Network Services (Magic)",
 		"description": "Grants write access to network configurations for Magic services.",
 		"permissions": {
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": true
 			},
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
@@ -772,11 +772,11 @@
 		"name": "Network Services (Magic, Read-Only)",
 		"description": "Grants read access to network configurations for Magic services.",
 		"permissions": {
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": false
 			},
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": false
 			},
@@ -1130,6 +1130,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"billing": {
 				"read": true,
 				"edit": true
@@ -1183,10 +1187,6 @@
 				"preview": true,
 				"raw": true,
 				"trace": true
-			},
-			"magic": {
-				"read": true,
-				"edit": true
 			},
 			"ces_phishguard": {
 				"read": true,
@@ -1758,6 +1758,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": false
+			},
 			"billing": {
 				"read": true,
 				"edit": false
@@ -1800,10 +1804,6 @@
 				"edit": false
 			},
 			"ces_integration": {
-				"read": true,
-				"edit": false
-			},
-			"magic": {
 				"read": true,
 				"edit": false
 			},
@@ -1945,6 +1945,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"billing": {
 				"read": true,
 				"edit": true
@@ -1997,10 +2001,6 @@
 				"preview": true,
 				"raw": true,
 				"trace": true
-			},
-			"magic": {
-				"read": true,
-				"edit": true
 			},
 			"ces_phishguard": {
 				"read": true,
