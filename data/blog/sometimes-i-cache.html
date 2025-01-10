@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JRBcwN5l6vgSUG2l3sdz/25eb0496b0b2baa30ea890dd7c1dc078/image__1_.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called cache revalidation.</p>
+	<p>HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
 	<p>In this blog post, we dive into how cache revalidation works, and present a new approach based on probability. For every request going to the origin, we simulate a die roll. If it’s 6, the request can go to the origin. Otherwise, it stays stale to protect our origin from being overloaded. To see how this is built and optimised, read on.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>
@@ -141,9 +141,15 @@ export default {
 		</a>
 	</div>
 	<p>To make sure there is only one request at a time going to the origin server, the solution that's usually deployed is a cache lock. The idea is that for a specific item, a cat picture in our case, requests to the origin try to obtain a lock. The request obtaining the lock can go to the origin, the others will serve stale content.</p>
-	<p>The lock has two methods: <code>try_lock()</code> and <code>unlock</code>.
-		* <code>try_lock</code> if the lock is free, take it and return <code>true</code>. If not, return <code>false</code>.
-		* <code>unlock</code> releases the lock.</p>
+	<p>The lock has two methods: <code>try_lock</code> and <code>unlock</code>.</p>
+	<ul>
+		<li>
+			<p><code>try_lock</code> if the lock is free, take it and return <code>true</code>. If not, return <code>false</code>.</p>
+		</li>
+		<li>
+			<p><code>unlock</code> releases the lock.</p>
+		</li>
+	</ul>
 	<p>Such a lock can be implemented as a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>Cloudflare RPC service</u></a>:</p>
 	<pre class="language-Javascript"><code class="language-Javascript">import { WorkerEntrypoint } from 'cloudflare:workers'
 
@@ -196,7 +202,7 @@ function shouldRevalidate(env, expirationDate) {
 		</a>
 	</div>
 	<p>A first approach is to reduce the number of requests going to the origin server. Instead of always sending a request to revalidate, we are going to send 1 out of 10. This means that instead of sending 10 requests per second when the cache is invalidated, we send 1 per second.</p>
-	<p>Because we don't have a lock, we do that with probabilities. We set the probability of sending a request to the origin to be $p=\frac{1}{10}$. With a rate of 10 requests per second, after 1 second, the expectancy of a request being sent to the origin is $1-(1-p)^10=65\%$. We draw the evolution of the function $E(r, t)=1-(1-p)^{r \times t}$ representing the expectancy of a request being sent to the server over time. $r = 10$ and is the request rate.</p>
+	<p>Because we don't have a lock, we do that with probabilities. We set the probability of sending a request to the origin to be $p=\frac{1}{10}$. With a rate $r$ of 10 requests per second, after 1 second, the expectancy of a request being sent to the origin is $1-(1-p)^{10}=65\%$. We draw the evolution of the function $E(r, t)=1-(1-p)^{r \times t}$ representing the expectancy of a request being sent to the server over time.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78UvqHlQ6Se6cifbla3ozw/111decceed55ba1387b78a75e28f04cc/BLOG-2639_6.jpg" alt="BLOG-2639 6" class="kg-image" width="1000" height="600" loading="lazy">
 	</figure>
