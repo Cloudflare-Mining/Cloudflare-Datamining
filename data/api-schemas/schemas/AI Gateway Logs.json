@@ -83,7 +83,9 @@
 									"event_id",
 									"request_type",
 									"metadata.key",
-									"metadata.value"
+									"metadata.value",
+									"prompts.prompt_id",
+									"prompts.version_id"
 								],
 								"type": "string"
 							},
@@ -324,7 +326,9 @@
 									"event_id",
 									"request_type",
 									"metadata.key",
-									"metadata.value"
+									"metadata.value",
+									"prompts.prompt_id",
+									"prompts.version_id"
 								],
 								"type": "string"
 							},
