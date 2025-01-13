@@ -960,7 +960,7 @@ const navigation = {
 			title: "navigation.zone.rules.overview",
 			url: "/rules/overview",
 			labels: ["new"],
-			navigationType: "global-settings",
+			navigationType: "version",
 			additionalMatchUrls: ["/:accountId/:zoneName/rules/url-normalization", "/:accountId/:zoneName/rules/redirect-rules", "/:accountId/:zoneName/rules/transform-rules", "/:accountId/:zoneName/rules/configuration-rules", "/:accountId/:zoneName/rules/cache-rules", "/:accountId/:zoneName/rules/origin-rules", "/:accountId/:zoneName/rules/compression-rules", "/:accountId/:zoneName/rules/templates"],
 			hasPermission: L => !!(0, e.z1)("rules-overview")(L)
 		}, {
