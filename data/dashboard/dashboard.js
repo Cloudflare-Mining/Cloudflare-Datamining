@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7cd4c6fb-e51f-55fe-ab12-0df1b7163488")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "22de259d-ce3d-553a-8315-f691243db4a1")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1018,10 +1018,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0d104fbafe325e501e57b9a72ff86d1fd9590880",
-						dashVersion: "30266031",
+						commit: "c11633f5f3e7037f9d7b084777d4b00ca3ed798d",
+						dashVersion: "30274793",
 						env: "production",
-						builtAt: 1736764702436,
+						builtAt: 1736784398919,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -1767,7 +1767,8 @@
 				},
 				onError: r => {
 					({
-						REDUX_LOGGER: void 0
+						REDUX_LOGGER: void 0,
+						E2E: void 0
 					}).TESTING && t.g.logAppError(r)
 				},
 				fallback: ({
@@ -10472,7 +10473,7 @@
 				return (s === "string" ? String : Number)(r)
 			}
 			let i = function(r) {
-					return r.PURCHASE_WORKERS_PAID = "navigate to workers plan page", r.LIST_CONFIGS = "list hyperdrive configs", r.CREATE_HYPERDRIVE_CONFIG = "create hyperdrive config", r.VIEW_CONFIG_DETAILS = "view hyperdrive config details", r.UPDATE_CACHING_SETTINGS = "update hyperdrive config caching settings", r.DELETE_HYPERDRIVE_CONFIG = "delete hyperdrive config", r.CLICK_HYPERDRIVE_DOCUMENTATION = "click hyperdrive documentation", r.CLICK_GET_STARTED_GUIDE = "click hyperdrive get started guide", r.CLICK_CONNECTIVITY_GUIDES = "click hyperdrive connectivity guides", r.CLICK_QUICK_LINK = "click hyperdrive quick link", r
+					return r.PURCHASE_WORKERS_PAID = "navigate to workers plan page", r.LIST_CONFIGS = "list hyperdrive configs", r.SEARCH_CONFIGS = "search hyperdrive configs", r.CREATE_HYPERDRIVE_CONFIG = "create hyperdrive config", r.VIEW_CONFIG_DETAILS = "view hyperdrive config details", r.UPDATE_CACHING_SETTINGS = "update hyperdrive config caching settings", r.DELETE_HYPERDRIVE_CONFIG = "delete hyperdrive config", r.CLICK_HYPERDRIVE_DOCUMENTATION = "click hyperdrive documentation", r.CLICK_GET_STARTED_GUIDE = "click hyperdrive get started guide", r.CLICK_CONNECTIVITY_GUIDES = "click hyperdrive connectivity guides", r.CLICK_QUICK_LINK = "click hyperdrive quick link", r.CLICK_DISCORD = "click hyperdrive discord", r.CLICK_COMMUNITY = "click hyperdrive community", r
 				}({}),
 				u = function(r) {
 					return r[r["connection string"] = 0] = "connection string", r[r.manual = 1] = "manual", r
@@ -16231,8 +16232,6 @@
 					},
 					kvNamespace: (0, e.BC)`/accounts/${"accountId"}/storage/kv/namespaces/${"namespaceId"}`,
 					kvNamespaces: (0, e.BC)`/accounts/${"accountId"}/storage/kv/namespaces`,
-					kvRequestMetrics: (0, e.BC)`/accounts/${"accountId"}/storage/analytics`,
-					kvStorageMetrics: (0, e.BC)`/accounts/${"accountId"}/storage/analytics/stored`,
 					newVersions: (0, e.BC)`/accounts/${"accountId"}/workers/scripts/${"scriptName"}/versions`,
 					nextCron: `${m}/next`,
 					outboundDispatchers: (0, e.BC)`/accounts/${"accountId"}/workers/dispatch_outbounds/by-outbound/${"serviceId"}/environment/${"environmentName"}`,
@@ -17282,6 +17281,7 @@
 					isAuthenticated: n.eg.any.optional,
 					isPaused: n.eg.any.optional,
 					isCloudflare: n.eg.any.optional,
+					isE2e: n.eg.boolean.optional,
 					isExpanding: n.eg.boolean.optional,
 					isEntAccount: n.eg.boolean.optional,
 					isEnterprise: n.eg.boolean.optional,
@@ -17750,7 +17750,8 @@
 				it = () => {
 					o().identify(st({}, (0, e.getAttribution)(), {
 						locale: (0, l.r)((0, d.bh)().getState()),
-						isCloudflare: !!(0, m.Jd)()
+						isCloudflare: !!(0, m.Jd)(),
+						isE2e: Boolean(void 0)
 					}))
 				},
 				j = () => !0,
@@ -19011,4 +19012,4 @@
 	}
 ]);
 
-//# debugId=7cd4c6fb-e51f-55fe-ab12-0df1b7163488
+//# debugId=22de259d-ce3d-553a-8315-f691243db4a1
