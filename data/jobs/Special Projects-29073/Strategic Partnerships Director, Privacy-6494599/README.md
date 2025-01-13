@@ -38,7 +38,6 @@
 	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $209,000 - $255,000.</li>
 	<li>For Bay Area based hires: Estimated annual salary of $220,000 - $268,000.</li>
 </ul>
-<p>[Commissions: If applicable include this line:] This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
