@@ -5,32 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin, Denver, Atlanta, Washington D.C., London, Lisbon</p>
-<h4><strong>About the Role</strong></h4>
-<p>Cloudflare has embarked on a transformation of our entire quote to cash process. We’re looking for a seasoned product manager who will take charge of these processes, providing leadership, communication and accountability for successful delivery. You will:&nbsp;</p>
+<h3><strong>Finance Business Partner, G&amp;A</strong></h3>
+<p><strong>Locations -&nbsp;</strong>Hiring for this role in Austin, Texas&nbsp;</p>
+<h4><strong>About the role</strong></h4>
+<p>The FP&amp;A and Business Operations Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. Team members in G&amp;A Finance partner closely with business leaders in IT, CFO org, Legal, People &amp; Places and cross-functionally with R&amp;D, Sales &amp; Marketing Finance teams. Members of this team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Own your space. You will manage a set of key products in the Quote to Cash lifecycle, directly impacting both internal and external customers around the world.&nbsp;</li>
-	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
-	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating billing progresses and longer term ones like a full ERP implementation all need to be serviced. The urgent cannot starve the important.&nbsp;</li>
-	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
-	<li>Commit to quality. Our #1 priority is to have an accurate picture of revenue and service of our customers but we also have numerous other concerns like speed of innovation and advancing the roadmap.</li>
-	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
-	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
-	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
+	<li>Be a thought partner to business leaders helping to resolve competing business priorities and determine optimal investment allocation by function.</li>
+	<li>Prepare financial analysis, business insights and presentation materials for regular financial and business updates to G&amp;A business leadership.&nbsp;</li>
+	<li>Partner with accounting to support month-end close, flux review processes, and deliver high-quality financial reporting.</li>
+	<li>Design, automate, and optimize flexible finance processes to meet the needs of a dynamic and fast-growing business environment.</li>
+	<li>Work with cross-functional teams to support the company's growth initiatives.</li>
+	<li>This role reports to the G&amp;A Finance leader and does not have any direct reports.&nbsp;</li>
 </ul>
-<p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.&nbsp;</p>
-<h4><strong>Desirable Skills</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Demonstrated success delivering technology solutions in the Billing space</li>
-	<li>Knowledge of best practices for in fintech, financial reporting, compliance or other similar domain at a Saas company</li>
-	<li>Experience managing customer facing products focused on global payments, tax, checkout, invoicing, and other quote to cash activities&nbsp;</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
-	<li>Finance fluency - You’re dealing with data that represents money and that implies a certain level of care. You’ll also be working with a lot of finance types. Fluency in this world might be helpful</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+	<li>Min. 3 years of experience as a Financial Analyst, total atleast 5 years of financial experience&nbsp;</li>
+	<li>Bachelor's degree (MBA preferred)</li>
+	<li>Prior financial analyst experience working in a tech multinational/ global company highly preferable</li>
+	<li>Prior G&amp;A finance/ finance business partner experience preferred, not mandatory</li>
+	<li>Financial Modeling: High Proficiency with MS Excel and Google Sheets; ability to build thoughtful, complex and auditable financial model</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Strong partnering capabilities, with the ability to influence business partners without direct authority and to appropriately push back when required.</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Tools &amp; Systems: Proficiency with Enterprise Financial Planning Tools &amp; Systems; experience with Anaplan, Netsuite, Workday a plus</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
