@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: L => (0, e.z1)(b.Mr)(L) && (0, Q.z7)(L) && !!(0, Q.z$)(L).length
+		hasPermission: L => (0, e.z1)(E.Mr)(L) && (0, k.z7)(L) && !!(0, k.z$)(L).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: L => !(0, c.n3)() && !(0, e.z1)("oauth-access-management")(L)
+		hasPermission: L => !(0, l.n3)() && !(0, e.z1)("oauth-access-management")(L)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -120,7 +120,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.network_analytics",
 			url: "/network-analytics/all-traffic",
-			hasPermission: L => (0, o.iY)(L) && (0, O.Ob)(L)
+			hasPermission: L => (0, o.iY)(L) && (0, x.Ob)(L)
 		}, {
 			title: "navigation.account.web_analytics",
 			url: "/web-analytics",
@@ -128,7 +128,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			hasPermission: L => (0, o.iY)(L) && (0, f.S6)(L) && !!(0, e.z1)("account-logpush")(L)
+			hasPermission: L => (0, o.iY)(L) && (0, g.S6)(L) && !!(0, e.z1)("account-logpush")(L)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -201,7 +201,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "sidenav-trace-link",
 		labels: ["beta"],
-		hasPermission: R.T
+		hasPermission: j.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -212,7 +212,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		testId: "sidenav-waf-link",
-		tabs: A.DW
+		tabs: b.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -259,17 +259,17 @@ const navigation = {
 		iconType: "magic-firewall",
 		testId: "sidenav-magic-firewall-link",
 		hasPermission: L => !!(0, o.zJ)(L),
-		tabs: A.$$
+		tabs: b.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		testId: "sidenav-ddos-link",
 		hasPermission: L => {
-			const k = !!(0, o.Wq)(L) && !!(0, o.fO)(L);
-			return !!(0, o.us)(L) || k
+			const z = !!(0, o.Wq)(L) && !!(0, o.fO)(L);
+			return !!(0, o.us)(L) || z
 		},
-		tabs: A.Dn,
+		tabs: b.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
@@ -278,7 +278,7 @@ const navigation = {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection",
 			hasPermission: L => (0, o.us)(L),
-			tabs: A.O1
+			tabs: b.O1
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -302,8 +302,8 @@ const navigation = {
 		title: "navigation.account.zero_trust",
 		url: () => {
 			const L = (0, i.e1)(),
-				k = "https://one.dash.cloudflare.com";
-			return L ? `${k}/${L}/` : k
+				z = "https://one.dash.cloudflare.com";
+			return L ? `${z}/${L}/` : z
 		},
 		iconType: "cloudflare-zero-trust",
 		testId: "sidenav-zero-trust-link",
@@ -335,7 +335,7 @@ const navigation = {
 			hasPermission: L => (0, o.iY)(L) && !!(0, r.Le)(L, "magic_wan", "mc_home") && !!(0, e.z1)("magic-cf-site")(L)
 		}, {
 			title: "navigation.account.magic_connectors.cloud_onramp",
-			url: "/magic-wan/cloud",
+			url: "/magic-wan/cloud-onramp",
 			labels: L => (0, e.z1)("magic-beta-flags-disabled")(L) ? [] : ["beta"],
 			hasPermission: L => !!(0, u.$f)(L, "magic_cloud.enabled")
 		}, {
@@ -359,7 +359,7 @@ const navigation = {
 			url: "/area1",
 			title: "navigation.common.overview"
 		}, {
-			url: () => (0, O.Uj)("email-security/overview"),
+			url: () => (0, x.Uj)("email-security/overview"),
 			title: "navigation.account.zero_trust.email_security.overview",
 			labels: ["external-link"]
 		}, {
@@ -426,8 +426,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: L => {
-				const k = (0, C.tJ)(L);
-				return !(0, v.ky)(k, [E.uD.EnterpriseTrial])
+				const z = (0, A.tJ)(L);
+				return !(0, h.ky)(z, [C.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -435,7 +435,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: L => (0, o.iY)(L) && (0, D.k)(L)
+		hasPermission: L => (0, o.iY)(L) && (0, w.k)(L)
 	}, {
 		title: "navigation.account.storage_and_databases",
 		url: "/workers/kv/namespaces",
@@ -673,16 +673,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
 			hasPermission: L => {
-				const k = (0, m.nA)(L);
-				return k ? !!(!(0, u.yD)(L) && !!(0, m.ZB)(L, "origin_reachability_dash", "dash_view") && (0, m.tU)(k, "enterprise") && !!(0, g.Ek)(L, "httpRequestsAdaptiveGroups")) : !1
+				const z = (0, f.nA)(L);
+				return z ? !!(!(0, u.yD)(L) && !!(0, f.ZB)(L, "origin_reachability_dash", "dash_view") && (0, f.tU)(z, "enterprise") && !!(0, m.Ek)(L, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
 			hasPermission: L => {
-				const k = (0, m.nA)(L);
-				return k ? !!(!(0, u.yD)(L) && !!(0, m.ZB)(L, "edge_reachability_dash", "dash_view") && (0, m.tU)(k, "enterprise") && !!(0, g.Ek)(L, "nelReportsAdaptiveGroups")) : !1
+				const z = (0, f.nA)(L);
+				return z ? !!(!(0, u.yD)(L) && !!(0, f.ZB)(L, "edge_reachability_dash", "dash_view") && (0, f.tU)(z, "enterprise") && !!(0, m.Ek)(L, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -697,18 +697,18 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: L => (0, f.Xu)(L)
+			hasPermission: L => (0, g.Xu)(L)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
 			navigationType: "global-settings",
-			hasPermission: L => !(0, u.yD)(L) && !!(0, m.ZB)(L, "logs", "instant_log") && !!(0, u.rV)(L, "logpush.max_instant_logs_jobs_allowed")
+			hasPermission: L => !(0, u.yD)(L) && !!(0, f.ZB)(L, "logs", "instant_log") && !!(0, u.rV)(L, "logpush.max_instant_logs_jobs_allowed")
 		}, {
 			title: "navigation.zone.analytics.log_explorer",
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: L => !!(0, x.V)(L)
+			hasPermission: L => !!(0, O.V)(L)
 		}, {
 			title: "navigation.zone.analytics.dashboards",
 			url: "/analytics/dashboards",
@@ -721,8 +721,8 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: w.bB,
-		hasPermission: L => !(0, u.yD)(L) && (0, M.m7)(L)
+		tabs: D.bB,
+		hasPermission: L => !(0, u.yD)(L) && (0, _.m7)(L)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -757,14 +757,14 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: _.hg,
+			tabs: M.hg,
 			hasPermission: L => (0, o.iY)(L) && !(0, u.yD)(L) && (0, o.$n)(L, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: L => (0, d.ig)(L) ? !1 : (0, o.$n)(L, "dns_records", "dns-record") && !!(0, m.ZB)(L, "email", "dmarc_visible")
+			hasPermission: L => (0, d.ig)(L) ? !1 : (0, o.$n)(L, "dns_records", "dns-record") && !!(0, f.ZB)(L, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -777,12 +777,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: L => {
-			const k = (0, m.nA)(L);
-			if ((0, u.yD)(L) || !(0, o.wB)(L, "zone_settings", "spectrum.app") || !k) return !1;
-			const U = !!((0, y.l8)(L) || (0, m.DQ)(L)),
-				q = !!(0, m.ZB)(L, "spectrum", "enabled"),
-				V = !!(0, m.Ns)(k);
-			return q || U || !V
+			const z = (0, f.nA)(L);
+			if ((0, u.yD)(L) || !(0, o.wB)(L, "zone_settings", "spectrum.app") || !z) return !1;
+			const U = !!((0, v.l8)(L) || (0, f.DQ)(L)),
+				J = !!(0, f.ZB)(L, "spectrum", "enabled"),
+				V = !!(0, f.Ns)(z);
+			return J || U || !V
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -808,7 +808,7 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			navigationType: "global-settings",
-			hasPermission: L => !!(0, e.z1)("client-certificates")(L) || !!(0, m.ZB)(L, "ssl", "client_certificates")
+			hasPermission: L => !!(0, e.z1)("client-certificates")(L) || !!(0, f.ZB)(L, "ssl", "client_certificates")
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
 			navigationType: "global-settings",
@@ -845,7 +845,7 @@ const navigation = {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: l.mt,
+			tabs: c.mt,
 			hasPermission: L => (0, o.$n)(L, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -862,7 +862,7 @@ const navigation = {
 			url: "/security/api-shield",
 			navigationType: "version",
 			hasPermission: L => (0, H.R0)(L),
-			tabs: l.Dw
+			tabs: c.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -910,7 +910,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: z
+			tabs: B
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1008,7 +1008,7 @@ const navigation = {
 			labels: ["beta"],
 			navigationType: "version",
 			additionalMatchUrls: ["/:accountId/:zoneName/rules/trace/results"],
-			hasPermission: L => !!(0, e.z1)("rules-overview")(L) && !!(0, R.T)(L)
+			hasPermission: L => !!(0, e.z1)("rules-overview")(L) && !!(0, j.T)(L)
 		}, {
 			title: "navigation.zone.rules.page_rules",
 			url: "/rules",
@@ -1057,7 +1057,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: L => !(0, u.yD)(L) && !!(0, g.Ek)(L, "healthCheckEventsAdaptiveGroups")
+			hasPermission: L => !(0, u.yD)(L) && !!(0, m.Ek)(L, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
@@ -1097,7 +1097,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: h.az
+			tabs: y.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
@@ -1110,7 +1110,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.analytics",
 			navigationType: "global-settings",
 			url: "/zaraz/monitoring",
-			tabs: h.EV
+			tabs: y.EV
 		}, {
 			title: "navigation.zone.zaraz.settings",
 			navigationType: "global-settings",
@@ -1119,7 +1119,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: L => !!(0, N.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
+			hasPermission: L => !!(0, R.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
@@ -1127,178 +1127,178 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "web3",
 		hasPermission: L => {
-			const k = (0, r.uF)(L);
-			return ((k == null ? void 0 : k.roles) || []).includes("Trust and Safety") ? !1 : !(0, u.yD)(L)
+			const z = (0, r.uF)(L);
+			return ((z == null ? void 0 : z.roles) || []).includes("Trust and Safety") ? !1 : !(0, u.yD)(L)
 		}
 	}],
 	zeroTrust: [{
-		url: () => (0, O.Uj)("home"),
+		url: () => (0, x.Uj)("home"),
 		title: "navigation.account.zero_trust",
 		iconType: "cloudflare-zero-trust"
 	}, {
-		url: () => (0, O.Uj)("analytics/access"),
+		url: () => (0, x.Uj)("analytics/access"),
 		title: "navigation.account.zero_trust.analytics",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("analytics/access"),
+			url: () => (0, x.Uj)("analytics/access"),
 			title: "navigation.account.zero_trust.analytics.access"
 		}, {
-			url: () => (0, O.Uj)("analytics/gateway"),
+			url: () => (0, x.Uj)("analytics/gateway"),
 			title: "navigation.account.zero_trust.analytics.gateway"
 		}, {
-			url: () => (0, O.Uj)("analytics/overview"),
+			url: () => (0, x.Uj)("analytics/overview"),
 			title: "navigation.account.zero_trust.analytics.analytics_and_reporting"
 		}]
 	}, {
-		url: () => (0, O.Uj)("risk-score/scoring"),
+		url: () => (0, x.Uj)("risk-score/scoring"),
 		title: "navigation.account.zero_trust.risk_score",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("risk-score/scoring"),
+			url: () => (0, x.Uj)("risk-score/scoring"),
 			title: "navigation.account.zero_trust.risk_score.user_risk_scoring"
 		}, {
-			url: () => (0, O.Uj)("risk-score/behaviors"),
+			url: () => (0, x.Uj)("risk-score/behaviors"),
 			title: "navigation.account.zero_trust.risk_score.risk_behaviors"
 		}]
 	}, {
-		url: () => (0, O.Uj)("gateway/locations"),
+		url: () => (0, x.Uj)("gateway/locations"),
 		title: "navigation.account.zero_trust.gateway",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("gateway/locations"),
+			url: () => (0, x.Uj)("gateway/locations"),
 			title: "navigation.account.zero_trust.gateway.dns_locations"
 		}, {
-			url: () => (0, O.Uj)("gateway/policies"),
+			url: () => (0, x.Uj)("gateway/policies"),
 			title: "navigation.account.zero_trust.gateway.firewall_policies"
 		}, {
-			url: () => (0, O.Uj)("gateway/proxy-endpoints"),
+			url: () => (0, x.Uj)("gateway/proxy-endpoints"),
 			title: "navigation.account.zero_trust.gateway.proxy_endpoints"
 		}, {
-			url: () => (0, O.Uj)("gateway/egress-policies"),
+			url: () => (0, x.Uj)("gateway/egress-policies"),
 			title: "navigation.account.zero_trust.gateway.egress_policies"
 		}, {
-			url: () => (0, O.Uj)("gateway/resolver-policies"),
+			url: () => (0, x.Uj)("gateway/resolver-policies"),
 			title: "navigation.account.zero_trust.gateway.resolver_policies"
 		}]
 	}, {
-		url: () => (0, O.Uj)("access/apps"),
+		url: () => (0, x.Uj)("access/apps"),
 		title: "navigation.account.zero_trust.access",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("access/apps"),
+			url: () => (0, x.Uj)("access/apps"),
 			title: "navigation.account.zero_trust.access.applications"
 		}, {
-			url: () => (0, O.Uj)("access/groups"),
+			url: () => (0, x.Uj)("access/groups"),
 			title: "navigation.account.zero_trust.access.access_groups"
 		}, {
-			url: () => (0, O.Uj)("access/service-auth"),
+			url: () => (0, x.Uj)("access/service-auth"),
 			title: "navigation.account.zero_trust.access.service_auth"
 		}, {
-			url: () => (0, O.Uj)("access/tags"),
+			url: () => (0, x.Uj)("access/tags"),
 			title: "navigation.account.zero_trust.access.tags"
 		}]
 	}, {
-		url: () => (0, O.Uj)("networks/tunnels"),
+		url: () => (0, x.Uj)("networks/tunnels"),
 		title: "navigation.account.zero_trust.networks",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("networks/tunnels"),
+			url: () => (0, x.Uj)("networks/tunnels"),
 			title: "navigation.account.zero_trust.networks.tunnels"
 		}, {
-			url: () => (0, O.Uj)("networks/routes"),
+			url: () => (0, x.Uj)("networks/routes"),
 			title: "navigation.account.zero_trust.networks.routes"
 		}]
 	}, {
-		url: () => (0, O.Uj)("casb/findings"),
+		url: () => (0, x.Uj)("casb/findings"),
 		title: "navigation.account.zero_trust.casb",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("casb/findings"),
+			url: () => (0, x.Uj)("casb/findings"),
 			title: "navigation.account.zero_trust.casb.findings"
 		}, {
-			url: () => (0, O.Uj)("casb/integration"),
+			url: () => (0, x.Uj)("casb/integration"),
 			title: "navigation.account.zero_trust.casb.integrations"
 		}]
 	}, {
-		url: () => (0, O.Uj)("dlp/profiles"),
+		url: () => (0, x.Uj)("dlp/profiles"),
 		title: "navigation.account.zero_trust.dlp",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("dlp/profiles"),
+			url: () => (0, x.Uj)("dlp/profiles"),
 			title: "navigation.account.zero_trust.dlp.profiles"
 		}, {
-			url: () => (0, O.Uj)("dlp/dataset"),
+			url: () => (0, x.Uj)("dlp/dataset"),
 			title: "navigation.account.zero_trust.dlp.datasets"
 		}]
 	}, {
-		url: () => (0, O.Uj)("dex/monitoring"),
+		url: () => (0, x.Uj)("dex/monitoring"),
 		title: "navigation.account.zero_trust.dex",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("dex/monitoring"),
+			url: () => (0, x.Uj)("dex/monitoring"),
 			title: "navigation.account.zero_trust.dex.monitoring"
 		}, {
-			url: () => (0, O.Uj)("dex/tests"),
+			url: () => (0, x.Uj)("dex/tests"),
 			title: "navigation.account.zero_trust.dex.tests"
 		}]
 	}, {
-		url: () => (0, O.Uj)("email-security/overview"),
+		url: () => (0, x.Uj)("email-security/overview"),
 		title: "navigation.account.zero_trust.email_security",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("email-security/overview"),
+			url: () => (0, x.Uj)("email-security/overview"),
 			title: "navigation.account.zero_trust.email_security.monitoring"
 		}, {
-			url: () => (0, O.Uj)("email-security/investigation"),
+			url: () => (0, x.Uj)("email-security/investigation"),
 			title: "navigation.account.zero_trust.email_security.investigation"
 		}, {
-			url: () => (0, O.Uj)("email-security/settings"),
+			url: () => (0, x.Uj)("email-security/settings"),
 			title: "navigation.account.zero_trust.email_security.settings"
 		}, {
-			url: () => (0, O.Uj)("email-security/directories"),
+			url: () => (0, x.Uj)("email-security/directories"),
 			title: "navigation.account.zero_trust.email_security.directories"
 		}, {
-			url: () => (0, O.Uj)("email-security/phishguard"),
+			url: () => (0, x.Uj)("email-security/phishguard"),
 			title: "navigation.account.zero_trust.email_security.phishGuard"
 		}]
 	}, {
-		url: () => (0, O.Uj)("team/devices"),
+		url: () => (0, x.Uj)("team/devices"),
 		title: "navigation.account.zero_trust.my_team",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("team/devices"),
+			url: () => (0, x.Uj)("team/devices"),
 			title: "navigation.account.zero_trust.my_team.devices"
 		}, {
-			url: () => (0, O.Uj)("team/users"),
+			url: () => (0, x.Uj)("team/users"),
 			title: "navigation.account.zero_trust.my_team.users"
 		}, {
-			url: () => (0, O.Uj)("team/lists"),
+			url: () => (0, x.Uj)("team/lists"),
 			title: "navigation.account.zero_trust.my_team.lists"
 		}]
 	}, {
-		url: () => (0, O.Uj)("logs/admin"),
+		url: () => (0, x.Uj)("logs/admin"),
 		title: "navigation.account.zero_trust.logs",
 		iconType: "cloudflare-zero-trust",
 		pages: [{
-			url: () => (0, O.Uj)("logs/admin"),
+			url: () => (0, x.Uj)("logs/admin"),
 			title: "navigation.account.zero_trust.logs.admin"
 		}, {
-			url: () => (0, O.Uj)("logs/access"),
+			url: () => (0, x.Uj)("logs/access"),
 			title: "navigation.account.zero_trust.logs.access"
 		}, {
-			url: () => (0, O.Uj)("logs/gateway"),
+			url: () => (0, x.Uj)("logs/gateway"),
 			title: "navigation.account.zero_trust.logs.gateway"
 		}, {
-			url: () => (0, O.Uj)("logs/logpush"),
+			url: () => (0, x.Uj)("logs/logpush"),
 			title: "navigation.account.zero_trust.logs.logpush"
 		}, {
-			url: () => (0, O.Uj)("logs/posture"),
+			url: () => (0, x.Uj)("logs/posture"),
 			title: "navigation.account.zero_trust.logs.posture"
 		}]
 	}, {
-		url: () => (0, O.Uj)("settings"),
+		url: () => (0, x.Uj)("settings"),
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: S.G
+	support: N.G
 }
