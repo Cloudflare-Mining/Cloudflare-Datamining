@@ -12,7 +12,7 @@
 	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
 	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
 	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
-	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
+	<li>Provide additional deal desk support to other enterprise businesses based on business need</li>
 </ul>
 <p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
 <p><strong>What you'll do</strong></p>
