@@ -1752,6 +1752,22 @@
 		]
 	},
 	{
+		"id": "f0ba3733e746429182fcd40ec648c066",
+		"name": "Trust and Safety Read",
+		"description": "Grants access to read abuse reports and abuse actions",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "120f843a9c074f399b830e542e5616b8",
+		"name": "Trust and Safety Write",
+		"description": "Grants access to interact with abuse reports and abuse actions",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "5d78fd7895974fd0bdbbbb079482721b",
 		"name": "Turnstile Sites Read",
 		"description": "Grants read access to Turnstile",
