@@ -581,30 +581,95 @@
 															"biso_admin_controls": {
 																"description": "Configure how browser isolation behaves.",
 																"properties": {
+																	"copy": {
+																		"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled",
+																			"remote_only"
+																		],
+																		"example": "remote_only",
+																		"type": "string"
+																	},
 																	"dcp": {
-																		"description": "Set to false to enable copy-pasting.",
+																		"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dd": {
-																		"description": "Set to false to enable downloading.",
+																		"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dk": {
-																		"description": "Set to false to enable keyboard usage.",
+																		"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
+																	"download": {
+																		"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string"
+																	},
 																	"dp": {
-																		"description": "Set to false to enable printing.",
+																		"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"du": {
-																		"description": "Set to false to enable uploading.",
+																		"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																		"example": false,
 																		"type": "boolean"
+																	},
+																	"keyboard": {
+																		"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string"
+																	},
+																	"paste": {
+																		"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled",
+																			"remote_only"
+																		],
+																		"example": "enabled",
+																		"type": "string"
+																	},
+																	"printing": {
+																		"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string"
+																	},
+																	"upload": {
+																		"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																		"enum": [
+																			"enabled",
+																			"disabled"
+																		],
+																		"example": "enabled",
+																		"type": "string"
+																	},
+																	"version": {
+																		"default": "v1",
+																		"description": "Indicates which version of the browser isolation controls should apply.",
+																		"enum": [
+																			"v1",
+																			"v2"
+																		],
+																		"type": "string"
 																	}
 																},
 																"type": "object"
@@ -1224,30 +1289,95 @@
 																	"biso_admin_controls": {
 																		"description": "Configure how browser isolation behaves.",
 																		"properties": {
+																			"copy": {
+																				"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled",
+																					"remote_only"
+																				],
+																				"example": "remote_only",
+																				"type": "string"
+																			},
 																			"dcp": {
-																				"description": "Set to false to enable copy-pasting.",
+																				"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dd": {
-																				"description": "Set to false to enable downloading.",
+																				"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dk": {
-																				"description": "Set to false to enable keyboard usage.",
+																				"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
+																			"download": {
+																				"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string"
+																			},
 																			"dp": {
-																				"description": "Set to false to enable printing.",
+																				"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"du": {
-																				"description": "Set to false to enable uploading.",
+																				"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																				"example": false,
 																				"type": "boolean"
+																			},
+																			"keyboard": {
+																				"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string"
+																			},
+																			"paste": {
+																				"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled",
+																					"remote_only"
+																				],
+																				"example": "enabled",
+																				"type": "string"
+																			},
+																			"printing": {
+																				"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string"
+																			},
+																			"upload": {
+																				"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																				"enum": [
+																					"enabled",
+																					"disabled"
+																				],
+																				"example": "enabled",
+																				"type": "string"
+																			},
+																			"version": {
+																				"default": "v1",
+																				"description": "Indicates which version of the browser isolation controls should apply.",
+																				"enum": [
+																					"v1",
+																					"v2"
+																				],
+																				"type": "string"
 																			}
 																		},
 																		"type": "object"
@@ -1960,30 +2090,95 @@
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
+																"copy": {
+																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "remote_only",
+																	"type": "string"
+																},
 																"dcp": {
-																	"description": "Set to false to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to false to enable downloading.",
+																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to false to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
+																"download": {
+																	"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
 																"dp": {
-																	"description": "Set to false to enable printing.",
+																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to false to enable uploading.",
+																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"keyboard": {
+																	"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"paste": {
+																	"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"printing": {
+																	"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"upload": {
+																	"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"version": {
+																	"default": "v1",
+																	"description": "Indicates which version of the browser isolation controls should apply.",
+																	"enum": [
+																		"v1",
+																		"v2"
+																	],
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -2571,30 +2766,95 @@
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
+																		"copy": {
+																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "remote_only",
+																			"type": "string"
+																		},
 																		"dcp": {
-																			"description": "Set to false to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to false to enable downloading.",
+																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to false to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
+																		"download": {
+																			"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"dp": {
-																			"description": "Set to false to enable printing.",
+																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to false to enable uploading.",
+																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"keyboard": {
+																			"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"paste": {
+																			"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"printing": {
+																			"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"upload": {
+																			"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"version": {
+																			"default": "v1",
+																			"description": "Indicates which version of the browser isolation controls should apply.",
+																			"enum": [
+																				"v1",
+																				"v2"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -3205,30 +3465,95 @@
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
 										"properties": {
+											"copy": {
+												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled",
+													"remote_only"
+												],
+												"example": "remote_only",
+												"type": "string"
+											},
 											"dcp": {
-												"description": "Set to false to enable copy-pasting.",
+												"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
-												"description": "Set to false to enable downloading.",
+												"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
-												"description": "Set to false to enable keyboard usage.",
+												"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
+											"download": {
+												"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
 											"dp": {
-												"description": "Set to false to enable printing.",
+												"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
-												"description": "Set to false to enable uploading.",
+												"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
+											},
+											"keyboard": {
+												"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"paste": {
+												"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled",
+													"remote_only"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"printing": {
+												"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"upload": {
+												"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"version": {
+												"default": "v1",
+												"description": "Indicates which version of the browser isolation controls should apply.",
+												"enum": [
+													"v1",
+													"v2"
+												],
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -3801,30 +4126,95 @@
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
+																"copy": {
+																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "remote_only",
+																	"type": "string"
+																},
 																"dcp": {
-																	"description": "Set to false to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to false to enable downloading.",
+																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to false to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
+																"download": {
+																	"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
 																"dp": {
-																	"description": "Set to false to enable printing.",
+																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to false to enable uploading.",
+																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"keyboard": {
+																	"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"paste": {
+																	"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"printing": {
+																	"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"upload": {
+																	"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"version": {
+																	"default": "v1",
+																	"description": "Indicates which version of the browser isolation controls should apply.",
+																	"enum": [
+																		"v1",
+																		"v2"
+																	],
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -4412,30 +4802,95 @@
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
+																		"copy": {
+																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "remote_only",
+																			"type": "string"
+																		},
 																		"dcp": {
-																			"description": "Set to false to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to false to enable downloading.",
+																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to false to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
+																		"download": {
+																			"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"dp": {
-																			"description": "Set to false to enable printing.",
+																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to false to enable uploading.",
+																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"keyboard": {
+																			"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"paste": {
+																			"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"printing": {
+																			"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"upload": {
+																			"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"version": {
+																			"default": "v1",
+																			"description": "Indicates which version of the browser isolation controls should apply.",
+																			"enum": [
+																				"v1",
+																				"v2"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -5146,30 +5601,95 @@
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
+																"copy": {
+																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "remote_only",
+																	"type": "string"
+																},
 																"dcp": {
-																	"description": "Set to false to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to false to enable downloading.",
+																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to false to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
+																"download": {
+																	"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
 																"dp": {
-																	"description": "Set to false to enable printing.",
+																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to false to enable uploading.",
+																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"keyboard": {
+																	"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"paste": {
+																	"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"printing": {
+																	"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"upload": {
+																	"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"version": {
+																	"default": "v1",
+																	"description": "Indicates which version of the browser isolation controls should apply.",
+																	"enum": [
+																		"v1",
+																		"v2"
+																	],
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -5754,30 +6274,95 @@
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
+																		"copy": {
+																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "remote_only",
+																			"type": "string"
+																		},
 																		"dcp": {
-																			"description": "Set to false to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to false to enable downloading.",
+																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to false to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
+																		"download": {
+																			"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"dp": {
-																			"description": "Set to false to enable printing.",
+																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to false to enable uploading.",
+																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"keyboard": {
+																			"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"paste": {
+																			"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"printing": {
+																			"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"upload": {
+																			"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"version": {
+																			"default": "v1",
+																			"description": "Indicates which version of the browser isolation controls should apply.",
+																			"enum": [
+																				"v1",
+																				"v2"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -6400,30 +6985,95 @@
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
 										"properties": {
+											"copy": {
+												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled",
+													"remote_only"
+												],
+												"example": "remote_only",
+												"type": "string"
+											},
 											"dcp": {
-												"description": "Set to false to enable copy-pasting.",
+												"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
-												"description": "Set to false to enable downloading.",
+												"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
-												"description": "Set to false to enable keyboard usage.",
+												"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
+											"download": {
+												"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
 											"dp": {
-												"description": "Set to false to enable printing.",
+												"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
-												"description": "Set to false to enable uploading.",
+												"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 												"example": false,
 												"type": "boolean"
+											},
+											"keyboard": {
+												"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"paste": {
+												"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled",
+													"remote_only"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"printing": {
+												"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"upload": {
+												"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											},
+											"version": {
+												"default": "v1",
+												"description": "Indicates which version of the browser isolation controls should apply.",
+												"enum": [
+													"v1",
+													"v2"
+												],
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -6996,30 +7646,95 @@
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
+																"copy": {
+																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "remote_only",
+																	"type": "string"
+																},
 																"dcp": {
-																	"description": "Set to false to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to false to enable downloading.",
+																	"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to false to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
+																"download": {
+																	"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
 																"dp": {
-																	"description": "Set to false to enable printing.",
+																	"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to false to enable uploading.",
+																	"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"keyboard": {
+																	"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"paste": {
+																	"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled",
+																		"remote_only"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"printing": {
+																	"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"upload": {
+																	"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"version": {
+																	"default": "v1",
+																	"description": "Indicates which version of the browser isolation controls should apply.",
+																	"enum": [
+																		"v1",
+																		"v2"
+																	],
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -7607,30 +8322,95 @@
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
+																		"copy": {
+																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "remote_only",
+																			"type": "string"
+																		},
 																		"dcp": {
-																			"description": "Set to false to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to false to enable downloading.",
+																			"description": "Set to false to enable downloading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to false to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
+																		"download": {
+																			"description": "Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"dp": {
-																			"description": "Set to false to enable printing.",
+																			"description": "Set to false to enable printing. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to false to enable uploading.",
+																			"description": "Set to false to enable uploading. Only applies when `version == \"v1\"`.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"keyboard": {
+																			"description": "Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"paste": {
+																			"description": "Configure whether pasting is enabled or not. When set with \"remote_only\", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled",
+																				"remote_only"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"printing": {
+																			"description": "Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"upload": {
+																			"description": "Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == \"v2\"`.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"version": {
+																			"default": "v1",
+																			"description": "Indicates which version of the browser isolation controls should apply.",
+																			"enum": [
+																				"v1",
+																				"v2"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
