@@ -288,7 +288,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
-		"description": "Lists and sorts an account’s targets. Filters are optional and are ORed\ntogether. However, when a timestamp is specified with both its before and\nafter counterparts, the timestamp filters are ANDed.",
+		"description": "Lists and sorts an account’s targets. Filters are optional and are ANDed\ntogether.",
 		"operationId": "infra-targets-list",
 		"parameters": [
 			{
