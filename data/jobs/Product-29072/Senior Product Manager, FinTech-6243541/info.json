@@ -31,7 +31,10 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
+				"Denver, US",
+				"Washington DC, US",
 				"Lisbon, Portugal",
 				"London, UK"
 			],
@@ -39,7 +42,7 @@
 		}
 	],
 	"id": 6243541,
-	"updated_at": "2025-01-14T17:00:50-05:00",
+	"updated_at": "2025-01-14T18:22:10-05:00",
 	"requisition_id": null,
 	"title": "Senior Product Manager, FinTech",
 	"departments": [
@@ -66,11 +69,32 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	]
 }

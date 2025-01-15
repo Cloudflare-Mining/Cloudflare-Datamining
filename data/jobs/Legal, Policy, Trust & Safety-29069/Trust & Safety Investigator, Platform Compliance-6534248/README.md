@@ -5,8 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>We are looking for a thoughtful, detail-oriented Trust and Safety Investigator for our Platform Operations Team to work with our global Trust &amp; Safety team. In this role, you will address sensitive and escalated abuse, compliance tasks, and Trust and Safety issues that affect our customers. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies. This role is Remote/Hybrid to be based in West Coast North America</p>
-<p><strong>Location: Austin TX, New York, New Jersey</strong></p>
+<p>We are looking for a thoughtful, detail-oriented Trust and Safety Investigator for our Platform Operations Team to work with our global Trust &amp; Safety team. In this role, you will address sensitive and escalated abuse, compliance tasks, and Trust and Safety issues that affect our customers. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies. This role is Remote/Hybrid to be based in East Coast North America</p>
+<p><strong>Location: Austin TX, DC</strong></p>
 <p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
 	<li>Be part of a world class globally-distributed team.</li>
@@ -38,15 +38,18 @@
 </ul>
 <p>Please note: This job description is intended to provide a general overview of the role and may be modified as necessary to align with the company's evolving needs.</p>
 <p><strong>Compensation</strong></p>
-<p><em>Compensation may be adjusted depending on work location.</em></p>
+<p><em>Compensation may be adjusted depending on work location </em></p>
+<p><strong></strong></p>
 <ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $93,000 - $113,000.</li>
 	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $103,000 - $125,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $108,000 - $132,000.</li>
 </ul>
+<p><strong></strong></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you.</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
