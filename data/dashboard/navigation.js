@@ -939,12 +939,18 @@ const navigation = {
 		hasPermission: L => !(0, u.yD)(L) && (0, o.wB)(L, "worker", "worker.route")
 	}, {
 		title: "navigation.zone.rules",
-		url: "/rules/overview",
-		iconType: "filter",
-		testId: "zone-navigation-link-page-rules",
+		url: "/rules",
 		navigationType: "version",
+		iconType: "filter",
+		testId: "zone-navigation-link-rules",
 		hasPermission: L => !(0, u.yD)(L) && (0, o.$n)(L, "zone_settings", "page-rule"),
 		pages: [{
+			title: "navigation.zone.rules.overview",
+			url: "/rules/overview",
+			labels: ["new"],
+			navigationType: "version",
+			hasPermission: L => !!(0, e.z1)("rules-overview")(L)
+		}, {
 			title: "navigation.zone.rules.templates",
 			url: "/rules/templates",
 			labels: ["new"],
@@ -956,13 +962,6 @@ const navigation = {
 			url: "/rules/configuration-rules",
 			navigationType: "version",
 			hasPermission: L => !(0, e.z1)("rules-overview")(L) && ((0, o.$n)(L, "waf", "firewall.rule") || (0, o.$n)(L, "zone_settings", "page-rule"))
-		}, {
-			title: "navigation.zone.rules.overview",
-			url: "/rules/overview",
-			labels: ["new"],
-			navigationType: "version",
-			additionalMatchUrls: ["/:accountId/:zoneName/rules/url-normalization", "/:accountId/:zoneName/rules/redirect-rules", "/:accountId/:zoneName/rules/transform-rules", "/:accountId/:zoneName/rules/configuration-rules", "/:accountId/:zoneName/rules/cache-rules", "/:accountId/:zoneName/rules/origin-rules", "/:accountId/:zoneName/rules/compression-rules", "/:accountId/:zoneName/rules/templates"],
-			hasPermission: L => !!(0, e.z1)("rules-overview")(L)
 		}, {
 			title: "navigation.zone.rules.snippets",
 			url: "/rules/snippets",
@@ -1011,7 +1010,7 @@ const navigation = {
 			hasPermission: L => !!(0, e.z1)("rules-overview")(L) && !!(0, j.T)(L)
 		}, {
 			title: "navigation.zone.rules.page_rules",
-			url: "/rules",
+			url: "/rules/page-rules",
 			navigationType: "version"
 		}, {
 			title: "navigation.zone.rules.url_normalization",
