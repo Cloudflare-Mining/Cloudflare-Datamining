@@ -541,7 +541,7 @@
 																			{
 																				"properties": {
 																					"access_client_id": {
-																						"description": "The Client ID of the Access token to use when connecting to the origin database",
+																						"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																						"example": "0123456789abcdef0123456789abcdef.access",
 																						"type": "string"
 																					},
@@ -580,6 +580,22 @@
 														"type": "object"
 													}
 												],
+												"properties": {
+													"created_on": {
+														"description": "When the Hyperdrive configuration was created.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_on": {
+														"description": "When the Hyperdrive configuration was last modified.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													}
+												},
 												"required": [
 													"caching"
 												],
@@ -998,7 +1014,7 @@
 																		{
 																			"properties": {
 																				"access_client_id": {
-																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
 																					"type": "string"
 																				},
@@ -1037,6 +1053,22 @@
 													"type": "object"
 												}
 											],
+											"properties": {
+												"created_on": {
+													"description": "When the Hyperdrive configuration was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "When the Hyperdrive configuration was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"required": [
 												"caching"
 											],
@@ -1314,7 +1346,7 @@
 											{
 												"properties": {
 													"access_client_id": {
-														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
 														"type": "string"
 													},
@@ -1605,7 +1637,7 @@
 																		{
 																			"properties": {
 																				"access_client_id": {
-																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
 																					"type": "string"
 																				},
@@ -1644,6 +1676,22 @@
 													"type": "object"
 												}
 											],
+											"properties": {
+												"created_on": {
+													"description": "When the Hyperdrive configuration was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "When the Hyperdrive configuration was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"required": [
 												"caching"
 											],
@@ -1971,7 +2019,7 @@
 											{
 												"properties": {
 													"access_client_id": {
-														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
 														"type": "string"
 													},
@@ -2272,7 +2320,7 @@
 																		{
 																			"properties": {
 																				"access_client_id": {
-																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
 																					"type": "string"
 																				},
@@ -2311,6 +2359,22 @@
 													"type": "object"
 												}
 											],
+											"properties": {
+												"created_on": {
+													"description": "When the Hyperdrive configuration was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "When the Hyperdrive configuration was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"required": [
 												"caching"
 											],
@@ -2650,7 +2714,7 @@
 											{
 												"properties": {
 													"access_client_id": {
-														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
 														"type": "string"
 													},
@@ -2951,7 +3015,7 @@
 																		{
 																			"properties": {
 																				"access_client_id": {
-																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
 																					"type": "string"
 																				},
@@ -2990,6 +3054,22 @@
 													"type": "object"
 												}
 											],
+											"properties": {
+												"created_on": {
+													"description": "When the Hyperdrive configuration was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "When the Hyperdrive configuration was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"required": [
 												"caching"
 											],
