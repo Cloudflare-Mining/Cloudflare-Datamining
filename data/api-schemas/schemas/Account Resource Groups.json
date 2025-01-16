@@ -221,6 +221,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -228,6 +231,9 @@
 		"summary": "Remove Resource Group",
 		"tags": [
 			"Account Resource Groups"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -588,6 +594,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -595,6 +604,10 @@
 		"summary": "List Resource Groups",
 		"tags": [
 			"Account Resource Groups"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -813,6 +826,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -820,6 +836,10 @@
 		"summary": "Resource Group Details",
 		"tags": [
 			"Account Resource Groups"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1061,6 +1081,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1068,6 +1091,9 @@
 		"summary": "Create Resource Group",
 		"tags": [
 			"Account Resource Groups"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1345,6 +1371,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1352,6 +1381,9 @@
 		"summary": "Update Resource Group",
 		"tags": [
 			"Account Resource Groups"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
