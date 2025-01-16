@@ -5,37 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon&nbsp;</p>
-<p><strong>Role Description</strong></p>
-<p>Network Operations Center ("NOC") Analyst provides premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will focus on monitoring, alerting, and addressing issues related to availability and latency degradation in Layer 7 traffic, as well as handling basic security escalations and offering recommendations to mitigate fundamental attacks. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
-<p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer in regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location: London, UK<br><br>About the Role</strong></p>
+<p>The&nbsp; Deal Desk Manager will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
 <ul>
-	<li>Configure and maintain custom alerting for availability and latency across Layer 7.&nbsp;&nbsp;</li>
-	<li>Maintain customer dashboards&nbsp; in Grafana, which will be used to monitor for alert signals.</li>
-	<li>Work closely with internal teams such as System Reliability Engineering, Infrastructure Engineering, and Network Engineering to alert against, and subsequently provide meaningful data on performance degradation.</li>
-	<li>Outreach to customers for triggered alerts, providing them with meaningful information on what alerts are firing and why.</li>
-	<li>Escalate impactful alerts to customer support and/or other internal teams.</li>
-	<li>Join customer calls to provide granular and frequent status updates on critical issues.</li>
-	<li>Compile historical reporting on a regular cadence to customers, including remediation steps.</li>
+	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
+	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
+	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
+	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
+	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
 </ul>
-<p><strong>Requirements</strong></p>
-<p><strong>3+ years experience in a customer-facing technical support role</strong></p>
+<p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Modern internet protocols like HTTPS, UDP, TCP, etc.</li>
-	<li>Analysis of traffic for anomaly detection and creation of mitigation rules</li>
-	<li>Knowledge of Cloudflare Products &amp; Features</li>
-	<li>Excellent communication skills with both an internal technical audience and a high-level customer stakeholder</li>
-	<li>Command line / Bash shell</li>
-	<li>Demonstrates excellent crisis management principles</li>
-	<li>Strong multi-tasker with ability to quickly context switch</li>
-	<li>Motivated self-starter who is always looking to improve and expand skills</li>
-	<li>Flexible for scheduled holiday/weekend coverage.</li>
-	<li>Highly desirable:</li>
+	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
+	<li>Audit and validate data and margins on adhoc deals submitted by the sales team.</li>
+	<li>Perform margin and pricing analysis in order to support business strategy.</li>
+	<li>Manage international pricing matrix, partner margin deals and large deal approvals.</li>
+	<li>Collaborate with internal teams to build, streamline and automate our deal desk processes.</li>
+	<li>Perform monthly and ad-hoc analysis to identify opportunities to improve the business KPIs through continuous improvement&nbsp;</li>
+	<li>Work with teams to develop pricing tools (e.g., TCO calculators, discounting guidelines) and integrate them into Salesforce</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Must be comfortable in a fast-paced sales environment</li>
+	<li>Understand the buying process and negotiating dynamic for enterprise entities</li>
+	<li>Experience working the deal desk/contract management team:</li>
 	<ul>
-		<li>Experience with prometheus queries, grafana, alertmanager, webhooks, and pagerduty.</li>
-		<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+		<li>Develop an in-depth understanding of the pricing models</li>
+		<li>Provide support in conjunction with contracts, legal &amp; finance teams</li>
+		<li>Ability to analyze &amp; recommend the best course of action for complex pricing &amp; licensing situations.</li>
 	</ul>
+	<li>Knowledge of Cloud/SaaS services, software and solutions is highly recommended</li>
+	<li>Expert knowledge of Microsoft Excel, SQL&nbsp; and prior experience with modeling and analysis</li>
+	<li>Enjoys engaging with complex, cross-functional teams and individuals</li>
+	<li>Experience with&nbsp;</li>
+	<ul>
+		<li>3+ years of&nbsp; experience&nbsp;</li>
+		<li>3+ years of deal desk experience</li>
+	</ul>
+	<li>Possess excellent written and oral communication skills</li>
+	<li>Proactive, creative, and results oriented individual</li>
+	<li>Experience selling software is considered a bonus</li>
+	<li>Selling software is considered a bonus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
