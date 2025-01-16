@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "2.5.4"
+		"latest": "2.6.1"
 	},
 	"versions": {
 		"2.0.0": {
@@ -733,6 +733,84 @@
 			"name": "chanfana",
 			"version": "2.5.4",
 			"dependencies": {
+				"zod": "^3.23.8",
+				"js-yaml": "^4.1.0",
+				"openapi3-ts": "^4.4.0",
+				"@asteasolutions/zod-to-openapi": "^7.2.0"
+			},
+			"devDependencies": {
+				"hono": "4.6.12",
+				"tsup": "8.3.5",
+				"husky": "9.1.7",
+				"vitest": "2.1.6",
+				"wrangler": "3.91.0",
+				"typescript": "5.7.2",
+				"@types/node": "22.10.1",
+				"itty-router": "5.0.18",
+				"@biomejs/biome": "1.9.4",
+				"@types/js-yaml": "^4.0.9",
+				"vitest-openapi": "^1.0.3",
+				"@cloudflare/workers-types": "4.20241127.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@cloudflare/vitest-pool-workers": "^0.5.26"
+			},
+			"dist": {
+				"shasum": "4f2373fd52f1af5ad534320fc65187162b1f32a8",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.5.4.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-rJPKWpeEKKgPE+7WrJt4PzwV4B7G4NzqH080wJJTVisSQh5sr1lYt7KrWcua1GLjO94y19vHdanBtzubX0WBKA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGZbCnwhjWIkoFWrAahjsaf2TR5XNtR44z+ClnN5R+sPAiADGmsRBxD5WsQhQ24us5B5op2ZE2sTIxxHMoTA0Bt5Wg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 175320
+			}
+		},
+		"2.6.0": {
+			"name": "chanfana",
+			"version": "2.6.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"js-yaml": "^4.1.0",
+				"openapi3-ts": "^4.4.0",
+				"@asteasolutions/zod-to-openapi": "^7.2.0"
+			},
+			"devDependencies": {
+				"hono": "4.6.16",
+				"tsup": "8.3.5",
+				"husky": "9.1.7",
+				"vitest": "2.1.8",
+				"wrangler": "3.101.0",
+				"typescript": "5.7.3",
+				"@types/node": "22.10.5",
+				"itty-router": "5.0.18",
+				"@biomejs/biome": "1.9.4",
+				"@types/js-yaml": "^4.0.9",
+				"vitest-openapi": "^1.0.3",
+				"@cloudflare/workers-types": "4.20250109.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@cloudflare/vitest-pool-workers": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "402b2265b2130e9bbcce2229e371c73fa36ab290",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.6.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-JXtHZ2pzYik97s7Q38OIOp4j82kIq/O8g15vFeZXhIIOeU+sEsDhJcJ2B0a4cbGXDGzsw+tvAr1NLfWlTfDtEw==",
+				"signatures": [
+					{
+						"sig": "MEQCIDjKE1kiwOnankxPAG+ZWRu127zDEL9aS1FqkSFi3hVAAiASyTRvwhrIkDVIYmx0tLSrTLVMhpE9v/BFw3MxbeJUaA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 184884
+			}
+		},
+		"2.6.1": {
+			"name": "chanfana",
+			"version": "2.6.1",
+			"dependencies": {
 				"@asteasolutions/zod-to-openapi": "^7.2.0",
 				"js-yaml": "^4.1.0",
 				"openapi3-ts": "^4.4.0",
@@ -740,30 +818,30 @@
 			},
 			"devDependencies": {
 				"@biomejs/biome": "1.9.4",
-				"@cloudflare/vitest-pool-workers": "^0.5.26",
-				"@cloudflare/workers-types": "4.20241127.0",
+				"@cloudflare/vitest-pool-workers": "^0.6.0",
+				"@cloudflare/workers-types": "4.20250109.0",
 				"@types/js-yaml": "^4.0.9",
-				"@types/node": "22.10.1",
+				"@types/node": "22.10.5",
 				"@types/service-worker-mock": "^2.0.1",
-				"hono": "4.6.12",
+				"hono": "4.6.16",
 				"husky": "9.1.7",
 				"itty-router": "5.0.18",
 				"tsup": "8.3.5",
-				"typescript": "5.7.2",
-				"vitest": "2.1.6",
+				"typescript": "5.7.3",
+				"vitest": "2.1.8",
 				"vitest-openapi": "^1.0.3",
-				"wrangler": "3.91.0"
+				"wrangler": "3.101.0"
 			},
 			"dist": {
-				"integrity": "sha512-rJPKWpeEKKgPE+7WrJt4PzwV4B7G4NzqH080wJJTVisSQh5sr1lYt7KrWcua1GLjO94y19vHdanBtzubX0WBKA==",
-				"shasum": "4f2373fd52f1af5ad534320fc65187162b1f32a8",
-				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.5.4.tgz",
+				"integrity": "sha512-H0ANyqdl56UBF30ryMOxtyBQ04xoRcFJFpWwnC5n/MjIuQA/AdpGzKNoZDkEjpptoygbh28UHf8S742oDKcKXA==",
+				"shasum": "20d101e35b4f20c7817ec233990e2d6e7f70c682",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.6.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 175320,
+				"unpackedSize": 184916,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIGZbCnwhjWIkoFWrAahjsaf2TR5XNtR44z+ClnN5R+sPAiADGmsRBxD5WsQhQ24us5B5op2ZE2sTIxxHMoTA0Bt5Wg=="
+						"sig": "MEUCIQDAb9XnJfpdZiV+O73lbSPInGOjmzS6CBdHwZo47aYybQIgSfnlGFG7udwFbVFLBe3Tzv+j51V+dyN/YzkShYFqjSs="
 					}
 				]
 			}
