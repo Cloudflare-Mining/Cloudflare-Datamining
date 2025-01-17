@@ -31,6 +31,9 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
+				"Austin, US",
+				"Denver, US",
 				"Toronto, Canada",
 				"Lisbon, Portugal",
 				"London, UK"
@@ -39,7 +42,7 @@
 		}
 	],
 	"id": 6305668,
-	"updated_at": "2025-01-08T14:19:22-05:00",
+	"updated_at": "2025-01-16T19:25:27-05:00",
 	"requisition_id": null,
 	"title": "Product Manager, Enterprise Readiness",
 	"departments": [
@@ -51,6 +54,13 @@
 		}
 	],
 	"offices": [
+		{
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
 		{
 			"id": 19988,
 			"name": "London, United Kingdom",
@@ -64,6 +74,20 @@
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		},
 		{
 			"id": 73335,
