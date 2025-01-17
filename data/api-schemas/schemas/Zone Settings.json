@@ -209,6 +209,61 @@
 														"allOf": [
 															{
 																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
+																			"aegis"
+																		],
+																		"example": "aegis",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether the feature is enabled or not.",
+																				"type": "boolean"
+																			},
+																			"pool_id": {
+																				"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+																				"example": "pool-id",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+														"title": "Aegis",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
 																	"editable": {
 																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -2061,6 +2116,101 @@
 														"allOf": [
 															{
 																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"origin_h2_max_streams"
+																		],
+																		"example": "origin_h2_max_streams",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the Origin H2 Max Streams Setting.",
+																		"example": 50,
+																		"maximum": 200,
+																		"minimum": 1,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+														"title": "Origin H2 Max Streams",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"origin_max_http_version"
+																		],
+																		"example": "origin_max_http_version",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the Origin Max HTTP Version Setting.",
+																		"enum": [
+																			"2",
+																			"1"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+														"title": "Origin Max HTTP Version",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
 																	"editable": {
 																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -3789,6 +3939,61 @@
 													],
 													"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 													"title": "Advanced DDoS Protection"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"aegis"
+																	],
+																	"example": "aegis",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether the feature is enabled or not.",
+																			"type": "boolean"
+																		},
+																		"pool_id": {
+																			"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+																			"example": "pool-id",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+													"title": "Aegis",
+													"type": "object"
 												},
 												{
 													"allOf": [
@@ -5641,6 +5846,101 @@
 													"default": "off",
 													"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 													"title": "Error Pages On"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_h2_max_streams"
+																	],
+																	"example": "origin_h2_max_streams",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the Origin H2 Max Streams Setting.",
+																	"example": 50,
+																	"maximum": 200,
+																	"minimum": 1,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+													"title": "Origin H2 Max Streams",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_max_http_version"
+																	],
+																	"example": "origin_max_http_version",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the Origin Max HTTP Version Setting.",
+																	"enum": [
+																		"2",
+																		"1"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+													"title": "Origin Max HTTP Version",
+													"type": "object"
 												},
 												{
 													"allOf": [
@@ -8808,6 +9108,61 @@
 									"allOf": [
 										{
 											"properties": {
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "Last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"enum": [
+														"aegis"
+													],
+													"example": "aegis",
+													"type": "string"
+												},
+												"value": {
+													"description": "Value of the zone setting.",
+													"properties": {
+														"enabled": {
+															"description": "Whether the feature is enabled or not.",
+															"type": "boolean"
+														},
+														"pool_id": {
+															"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+															"example": "pool-id",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+									"title": "Aegis",
+									"type": "object"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
 												"editable": {
 													"default": true,
 													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -10598,6 +10953,101 @@
 									"allOf": [
 										{
 											"properties": {
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "Last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Value of the zone setting.",
+													"enum": [
+														"origin_h2_max_streams"
+													],
+													"example": "origin_h2_max_streams",
+													"type": "string"
+												},
+												"value": {
+													"description": "Value of the Origin H2 Max Streams Setting.",
+													"example": 50,
+													"maximum": 200,
+													"minimum": 1,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+									"title": "Origin H2 Max Streams",
+									"type": "object"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "Last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Value of the zone setting.",
+													"enum": [
+														"origin_max_http_version"
+													],
+													"example": "origin_max_http_version",
+													"type": "string"
+												},
+												"value": {
+													"description": "Value of the Origin Max HTTP Version Setting.",
+													"enum": [
+														"2",
+														"1"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+									"title": "Origin Max HTTP Version",
+									"type": "object"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
 												"editable": {
 													"default": true,
 													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -12186,6 +12636,61 @@
 														],
 														"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 														"title": "Advanced DDoS Protection"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
+																			"aegis"
+																		],
+																		"example": "aegis",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether the feature is enabled or not.",
+																				"type": "boolean"
+																			},
+																			"pool_id": {
+																				"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+																				"example": "pool-id",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+														"title": "Aegis",
+														"type": "object"
 													},
 													{
 														"allOf": [
@@ -14043,6 +14548,101 @@
 														"allOf": [
 															{
 																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"origin_h2_max_streams"
+																		],
+																		"example": "origin_h2_max_streams",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the Origin H2 Max Streams Setting.",
+																		"example": 50,
+																		"maximum": 200,
+																		"minimum": 1,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+														"title": "Origin H2 Max Streams",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"origin_max_http_version"
+																		],
+																		"example": "origin_max_http_version",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Value of the Origin Max HTTP Version Setting.",
+																		"enum": [
+																			"2",
+																			"1"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+														"title": "Origin Max HTTP Version",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
 																	"editable": {
 																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -15709,6 +16309,61 @@
 								],
 								"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 								"title": "Advanced DDoS Protection"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"id": {
+												"description": "Identifier of the zone setting.",
+												"type": "string"
+											},
+											"modified_on": {
+												"description": "Last time this setting was modified.",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "ID of the zone setting.",
+												"enum": [
+													"aegis"
+												],
+												"example": "aegis",
+												"type": "string"
+											},
+											"value": {
+												"description": "Value of the zone setting.",
+												"properties": {
+													"enabled": {
+														"description": "Whether the feature is enabled or not.",
+														"type": "boolean"
+													},
+													"pool_id": {
+														"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+														"example": "pool-id",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+								"title": "Aegis",
+								"type": "object"
 							},
 							{
 								"allOf": [
@@ -17566,6 +18221,101 @@
 								"allOf": [
 									{
 										"properties": {
+											"id": {
+												"description": "Identifier of the zone setting.",
+												"type": "string"
+											},
+											"modified_on": {
+												"description": "Last time this setting was modified.",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "Value of the zone setting.",
+												"enum": [
+													"origin_h2_max_streams"
+												],
+												"example": "origin_h2_max_streams",
+												"type": "string"
+											},
+											"value": {
+												"description": "Value of the Origin H2 Max Streams Setting.",
+												"example": 50,
+												"maximum": 200,
+												"minimum": 1,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+								"title": "Origin H2 Max Streams",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"id": {
+												"description": "Identifier of the zone setting.",
+												"type": "string"
+											},
+											"modified_on": {
+												"description": "Last time this setting was modified.",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "Value of the zone setting.",
+												"enum": [
+													"origin_max_http_version"
+												],
+												"example": "origin_max_http_version",
+												"type": "string"
+											},
+											"value": {
+												"description": "Value of the Origin Max HTTP Version Setting.",
+												"enum": [
+													"2",
+													"1"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+								"title": "Origin Max HTTP Version",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
 											"editable": {
 												"default": true,
 												"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -19152,6 +19902,61 @@
 													],
 													"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 													"title": "Advanced DDoS Protection"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"aegis"
+																	],
+																	"example": "aegis",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether the feature is enabled or not.",
+																			"type": "boolean"
+																		},
+																		"pool_id": {
+																			"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+																			"example": "pool-id",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+													"title": "Aegis",
+													"type": "object"
 												},
 												{
 													"allOf": [
@@ -21004,6 +21809,101 @@
 													"default": "off",
 													"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 													"title": "Error Pages On"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_h2_max_streams"
+																	],
+																	"example": "origin_h2_max_streams",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the Origin H2 Max Streams Setting.",
+																	"example": 50,
+																	"maximum": 200,
+																	"minimum": 1,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled.",
+													"title": "Origin H2 Max Streams",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_max_http_version"
+																	],
+																	"example": "origin_max_http_version",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Value of the Origin Max HTTP Version Setting.",
+																	"enum": [
+																		"2",
+																		"1"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+													"title": "Origin Max HTTP Version",
+													"type": "object"
 												},
 												{
 													"allOf": [
