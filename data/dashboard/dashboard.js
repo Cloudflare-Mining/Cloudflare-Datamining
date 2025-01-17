@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b82a1bd4-3454-5a90-a716-2196f5cca0d3")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "4ff4e6ed-b9ab-5cc9-b8b1-235caf8471f6")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1018,10 +1018,10 @@
 					t.g.build = Sn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "8080773df70ebb40ebe1d9c373f6cb8b6add3008",
-						dashVersion: "30399952",
+						commit: "80282191086d27f6b076137856346f954a8f6b7e",
+						dashVersion: "30407956",
 						env: "production",
-						builtAt: 1737080083674,
+						builtAt: 1737118806226,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -19103,4 +19103,4 @@
 	}
 ]);
 
-//# debugId=b82a1bd4-3454-5a90-a716-2196f5cca0d3
+//# debugId=4ff4e6ed-b9ab-5cc9-b8b1-235caf8471f6
