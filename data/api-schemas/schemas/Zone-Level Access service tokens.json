@@ -135,6 +135,11 @@
 														}
 													]
 												},
+												"last_seen_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
 												"name": {
 													"description": "The name of the service token.",
 													"example": "CI/CD token",
@@ -417,6 +422,11 @@
 															}
 														]
 													},
+													"last_seen_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"type": "string"
+													},
 													"name": {
 														"description": "The name of the service token.",
 														"example": "CI/CD token",
@@ -682,6 +692,11 @@
 															"type": "string"
 														}
 													]
+												},
+												"last_seen_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -1235,6 +1250,11 @@
 															"type": "string"
 														}
 													]
+												},
+												"last_seen_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the service token.",
