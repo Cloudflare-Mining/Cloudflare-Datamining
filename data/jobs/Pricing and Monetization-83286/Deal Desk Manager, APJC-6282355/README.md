@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Singapore or Sydney<br><br>About the Role</strong></p>
+<p><strong>Location: Singapore<br><br>About the Role</strong></p>
 <p>The&nbsp; Deal Desk Manager will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
 <ul>
 	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
