@@ -5,47 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-size: 10pt;"><strong>Available Location: Lisbon, Portugal; London, UK; Singapore or Remote US&nbsp;</strong></span></p>
-<p><span style="font-size: 10pt;"><strong>About the Role</strong></span></p>
-<p><span style="font-size: 10pt;">We are seeking a Data Center Design Engineer to design Cloudflare’s pending and future infrastructure deployments for generational improvement in cost, quality, and speed of deployment. We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining data center design best practices in a high growth environment.&nbsp; Getting stuff done is a must!</span></p>
-<p><span style="font-size: 10pt;">The Data Center Strategy team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors.&nbsp;&nbsp;</span></p>
-<p><span style="font-size: 10pt;"><strong>What you get to do in this role:</strong></span></p>
+<p><strong>Available Location: </strong>Atlanta, GA; Austin, TX; Lisbon, Portugal; London, United Kingdom; New York, NY; Washington, DC</p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a Data Center Design Engineer to design Cloudflare’s pending and future infrastructure deployments for generational improvement in cost, quality, and speed of deployment. We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining data center design best practices in a high growth environment. &nbsp;Getting stuff done is a must!</p>
+<p>The Data Center Strategy team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors. &nbsp;</p>
+<p><strong>What you get to do in this role:</strong></p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Translate data center capacity requirements into actionable white space design and/or rack plans within individual data center contract constraints for power, cooling</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Manage implementation phase of cage projects with data center providers</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Design low voltage structured cabling, fiber, cross-connect &amp; conveyance infrastructure as well as any supporting infrastructure on the data center ceiling/floor</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Work with supply chain team on rack integration plans and location deployment qualification</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Work cross-functionally with Cloudflare data center engineering team and other internal teams (capacity planning, network strategy, security) to verify scope and solution and create repeatable standard installation procedures</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Take ownership of and lead projects to design and implement data center expansions or new data centers on tight deadlines with minimal oversight&nbsp;</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Technical support in negotiations with external data center partners</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Assist in RFP preparation, review and cost/engineering analysis</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Review one-line diagrams and cooling equations for new and existing data centers (Data Center M&amp;E)</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Power component (PDU) review/approval for Hardware sourcing team</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Implement, document and maintain power consumption tracking tools and fulfil ad-hoc reporting requests</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Research new and innovative power efficiency technologies and programs</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Travel up to 25% to perform infrastructure audits, validate data center construction work and buildouts, and participate in commercial processes.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Other duties as assigned</span></li>
+	<li>Translate data center capacity requirements into actionable white space design and/or rack plans within individual data center contract constraints for power, cooling</li>
+	<li>Manage implementation phase of cage projects with data center providers</li>
+	<li>Design low voltage structured cabling, fiber, cross-connect &amp; conveyance infrastructure as well as any supporting infrastructure on the data center ceiling/floor</li>
+	<li>Work with supply chain team on rack integration plans and location deployment qualification</li>
+	<li>Work cross-functionally with Cloudflare data center engineering team and other internal teams (capacity planning, network strategy, security) to verify scope and solution and create repeatable standard installation procedures</li>
+	<li>Take ownership of and lead projects to design and implement data center expansions or new data centers on tight deadlines with minimal oversight</li>
+	<li>Technical support in negotiations with external data center partners</li>
+	<li>Assist in RFP preparation, review and cost/engineering analysis</li>
+	<li>Review one-line diagrams and cooling equations for new and existing data centers (Data Center M&amp;E)</li>
+	<li>Power component (PDU) review/approval for Hardware sourcing team</li>
+	<li>Implement, document and maintain power consumption tracking tools and fulfil ad-hoc reporting requests</li>
+	<li>Research new and innovative power efficiency technologies and programs</li>
+	<li>Travel up to 25% to perform infrastructure audits, validate data center construction work and buildouts, and participate in commercial processes.</li>
+	<li>Other duties as assigned</li>
 </ul>
-<h3><span style="font-size: 10pt;"><strong>Requirements</strong></span></h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Bachelors or equivalent experience plus 5+ years of experience in data center mechanical and electrical design and operations/deployment/installation, P.E. certification or equivalent a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience in HVAC, Chilled Water Systems, Condenser Water Systems, Pump controls, Glycool/Glycols, AHU units (DX, split, RTU, CRAC, etc.), CRAH, Raised Floor Systems, HOT/COLD aisle containment and Building Management Systems</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Understanding of basic electrical theory (voltage, current, power), basic circuit design &amp; analysis, and single- and three-phase power systems</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Familiarity with Data Center M&amp;E infrastructure design concepts, electrical/UPS topologies, cooling methodologies (central plant, room cooling, high density thermal strategies)</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Familiarity with industry standards for resilient Data Center design and Uptime Institute Tier Classifications</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Excellent verbal, written communication and presentation skills</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience working with multiple time zones and multiple cross-functional teams</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience working on time sensitive projects with delivery responsibility under pressure</span></li>
+	<li>Bachelors or equivalent experience plus 5+ years of experience in data center mechanical and electrical design and operations/deployment/installation, P.E. certification or equivalent a plus</li>
+	<li>Experience in HVAC, Chilled Water Systems, Condenser Water Systems, Pump controls, Glycool/Glycols, AHU units (DX, split, RTU, CRAC, etc.), CRAH, Raised Floor Systems, HOT/COLD aisle containment and Building Management Systems</li>
+	<li>Understanding of basic electrical theory (voltage, current, power), basic circuit design &amp; analysis, and single- and three-phase power systems</li>
+	<li>Familiarity with Data Center M&amp;E infrastructure design concepts, electrical/UPS topologies, cooling methodologies (central plant, room cooling, high density thermal strategies)</li>
+	<li>Familiarity with industry standards for resilient Data Center design and Uptime Institute Tier Classifications</li>
+	<li>Excellent verbal, written communication and presentation skills</li>
+	<li>Experience working with multiple time zones and multiple cross-functional teams</li>
+	<li>Experience working on time sensitive projects with delivery responsibility under pressure</li>
 </ul>
-<h4><span style="font-size: 10pt;"><strong>Bonus Points</strong></span></h4>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Degree in electrical/mechanical engineering or IT a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience in large-scale mission critical facility infrastructure design, construction, commissioning, and/or operations a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience with industry standards, building codes and safety standards including UMC, NFPA, ASHRAE, UBC, UMC and LEED, Uptime Institute</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Knowledge of programming languages a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">JIRA, Confluence admin-level experience a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">AutoCAD experience a plus</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience with FLOTHERM or Tileflow a plus</span></li>
+	<li>Degree in electrical/mechanical engineering or IT a plus</li>
+	<li>Experience in large-scale mission critical facility infrastructure design, construction, commissioning, and/or operations a plus</li>
+	<li>Experience with industry standards, building codes and safety standards including UMC, NFPA, ASHRAE, UBC, UMC and LEED, Uptime Institute</li>
+	<li>Knowledge of programming languages a plus</li>
+	<li>JIRA, Confluence admin-level experience a plus</li>
+	<li>AutoCAD experience a plus</li>
+	<li>Experience with FLOTHERM or Tileflow a plus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
