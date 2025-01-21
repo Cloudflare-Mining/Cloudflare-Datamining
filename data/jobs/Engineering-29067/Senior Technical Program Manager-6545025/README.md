@@ -5,35 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<h4><strong>Job Locations: Mexico City, MX</strong></h4>
-<p>&nbsp;</p>
-<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Zero Trust, Workers, Speed, Images, Stream, CDN and others.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations - US: Austin<br></strong></p>
+<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Product Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, design, marketing, security, billing, technical operations, infrastructure, legal, and more to build and execute on the overall strategy.&nbsp;</h4>
+<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
+<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
+<p><strong>You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
+<p><strong>Major areas of responsibilities</strong></p>
 <ul>
-	<li>You have previous experience working as part of a team in a customer-facing role</li>
-	<li>You have experience solving DNS and other networking-related problems</li>
-	<li>You understand how the Internet works</li>
-	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
-	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
-	<li>You are comfortable communicating through various support channels and always put the customer first</li>
-	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
-	<li>Flexibility to work holidays and rotational weekend shifts</li>
+	<li>Understand technical requirements of assigned engineering programs</li>
+	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
+	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
+	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
+	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
+	<li>Provide regular status updates to stakeholders and senior management<br><br></li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
 <ul>
-	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
-	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
-	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
+	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
+	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
+	<li>Experience working with multiple time zones and multiple cross functional teams</li>
+	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
