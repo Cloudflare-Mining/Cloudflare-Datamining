@@ -371,6 +371,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -836,6 +857,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -1301,6 +1343,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -1766,6 +1829,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -2231,6 +2315,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -2696,6 +2801,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -3161,6 +3287,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -3626,6 +3773,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -4091,6 +4259,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -4556,6 +4745,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -5021,6 +5231,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -5486,6 +5717,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -5951,6 +6203,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -6416,6 +6689,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -6881,6 +7175,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -7346,6 +7661,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -7811,6 +8147,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -8276,6 +8633,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -9240,6 +9618,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -9705,6 +10104,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -10170,6 +10590,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -10635,6 +11076,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -11100,6 +11562,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -11565,6 +12048,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -12030,6 +12534,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -12495,6 +13020,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -12960,6 +13506,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -13425,6 +13992,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -13890,6 +14478,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -14355,6 +14964,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -14820,6 +15450,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -15285,6 +15936,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -15750,6 +16422,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -16215,6 +16908,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -16680,6 +17394,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -17145,6 +17880,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -17610,6 +18366,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -18075,6 +18852,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -18540,6 +19338,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -19005,6 +19824,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -19470,6 +20310,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -19935,6 +20796,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -20400,6 +21282,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -20865,6 +21768,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -21330,6 +22254,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -21795,6 +22740,27 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
