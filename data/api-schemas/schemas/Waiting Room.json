@@ -4513,7 +4513,8 @@
 													"enum": [
 														"event_prequeueing",
 														"not_queueing",
-														"queueing"
+														"queueing",
+														"suspended"
 													],
 													"example": "queueing",
 													"type": "string"
@@ -4585,7 +4586,8 @@
 															"enum": [
 																"event_prequeueing",
 																"not_queueing",
-																"queueing"
+																"queueing",
+																"suspended"
 															],
 															"example": "queueing",
 															"type": "string"
