@@ -391,6 +391,10 @@ const navigation = {
 			url: "/workers/durable-objects",
 			hasPermission: C => !!(0, o.z1)("durable-objects-ui")(C)
 		}, {
+			title: "navigation.account.workers.containers",
+			url: "/workers/containers",
+			hasPermission: C => !!(0, o.z1)("containers-ui")(C)
+		}, {
 			title: "navigation.account.workers.workflows",
 			url: "/workers/workflows",
 			labels: ["beta"],
