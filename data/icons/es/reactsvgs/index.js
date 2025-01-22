@@ -56,6 +56,8 @@ import Discord from './Discord';
 import Discover from './Discover';
 import Documentation from './Documentation';
 import Download from './Download';
+import DragOutline from './DragOutline';
+import DragSolid from './DragSolid';
 import Drive from './Drive';
 import EdgeLogDelivery from './EdgeLogDelivery';
 import Edgeworker from './Edgeworker';
@@ -96,6 +98,7 @@ import Linkedin from './Linkedin';
 import List from './List';
 import Lock from './Lock';
 import Logs from './Logs';
+import MachineLearningContextualOutline from './MachineLearningContextualOutline';
 import MagicFirewall from './MagicFirewall';
 import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
@@ -115,12 +118,15 @@ import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PlatformApps from './PlatformApps';
 import Plus from './Plus';
+import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
+import PodcastMicrophoneSolid from './PodcastMicrophoneSolid';
 import Printer from './Printer';
 import Processing from './Processing';
 import ProductSecurityCenter from './ProductSecurityCenter';
 import PubSub from './PubSub';
 import PullRequest from './PullRequest';
 import Queues from './Queues';
+import R2Outline from './R2Outline';
 import R2 from './R2';
 import Refresh from './Refresh';
 import RegistrarLogo from './RegistrarLogo';
@@ -243,6 +249,8 @@ export default {
   discover: Discover,
   documentation: Documentation,
   download: Download,
+  'drag-outline': DragOutline,
+  'drag-solid': DragSolid,
   drive: Drive,
   'edge-log-delivery': EdgeLogDelivery,
   edgeworker: Edgeworker,
@@ -283,6 +291,7 @@ export default {
   list: List,
   lock: Lock,
   logs: Logs,
+  'machine-learning-contextual-outline': MachineLearningContextualOutline,
   'magic-firewall': MagicFirewall,
   'magic-transit-logo': MagicTransitLogo,
   mail: Mail,
@@ -302,12 +311,15 @@ export default {
   pause: Pause,
   'platform-apps': PlatformApps,
   plus: Plus,
+  'podcast-microphone-outline': PodcastMicrophoneOutline,
+  'podcast-microphone-solid': PodcastMicrophoneSolid,
   printer: Printer,
   processing: Processing,
   'product-security-center': ProductSecurityCenter,
   'pub-sub': PubSub,
   'pull-request': PullRequest,
   queues: Queues,
+  r2outline: R2Outline,
   r2: R2,
   refresh: Refresh,
   'registrar-logo': RegistrarLogo,

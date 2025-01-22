@@ -58,6 +58,8 @@ declare const _default: {
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'drag-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'drag-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'edge-log-delivery': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -98,6 +100,7 @@ declare const _default: {
     list: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     lock: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     logs: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'machine-learning-contextual-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-firewall': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-transit-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     mail: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -117,12 +120,15 @@ declare const _default: {
     pause: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'platform-apps': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     plus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'podcast-microphone-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'podcast-microphone-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     printer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     processing: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'product-security-center': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pub-sub': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pull-request': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     queues: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    r2outline: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     r2: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     refresh: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'registrar-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

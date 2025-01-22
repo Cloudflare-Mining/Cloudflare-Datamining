@@ -1,5 +1,17 @@
 # Change Log
 
+## 12.23.0
+
+### Minor Changes
+
+- bedf19c5b6: Adds new icons:
+  - DragOutline
+  - DragSolid
+  - MachineLearningContextualOutline
+  - PodcastMicrophoneOutline
+  - PodcastMicrophoneSolid
+  - R2Outline
+
 ## 12.22.0
 
 ### Minor Changes
