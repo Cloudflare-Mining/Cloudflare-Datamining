@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ba1aba0f-152a-5656-9ad3-5a4544894952")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "d93e1cbc-e890-5d71-948d-c62ab91bbd8a")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1014,10 +1014,10 @@
 					t.g.build = Pn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "bd389e61edd8ae0bb3f6d6ea813e358799600c59",
-						dashVersion: "30480355",
+						commit: "cb0a5c49223b68526e3fed77c2965a759d6f7286",
+						dashVersion: "30499421",
 						env: "production",
-						builtAt: 1737488506822,
+						builtAt: 1737551175941,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -12007,7 +12007,7 @@
 				CLICK_DETAILS_BUTTON: "click insights row details button"
 			}
 		},
-		"../react/pages/security/analytics/labels.ts": function(F, y, t) {
+		"../react/pages/security/analytics/resources/labels.ts": function(F, y, t) {
 			"use strict";
 			t.d(y, {
 				AU: function() {
@@ -12108,6 +12108,84 @@
 					[a.DLP]: "firewall.analytics.services.labels.dlp",
 					[a.BOT_MANAGEMENT]: "firewall.analytics.services.labels.botManagement"
 				}
+		},
+		"../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts": function(F, y, t) {
+			"use strict";
+			t.d(y, {
+				AS: function() {
+					return m
+				},
+				IK: function() {
+					return r
+				},
+				Ki: function() {
+					return a
+				},
+				Lz: function() {
+					return s
+				},
+				nT: function() {
+					return d
+				},
+				o4: function() {
+					return l
+				},
+				oY: function() {
+					return p
+				},
+				qH: function() {
+					return n
+				},
+				x3: function() {
+					return i
+				}
+			});
+			var e = t("../react/pages/security/analytics/resources/labels.ts"),
+				o = t("../react/common/constants/analytics/botScoreSrc.ts");
+			const a = ["block", "challenge", "jschallenge", "managedChallenge"],
+				p = ["miss", "expired", "bypass", "dynamic"],
+				u = c => Object.fromEntries(Object.entries(c).map(([f, E]) => [E, f])),
+				m = {
+					block: "block",
+					challenge: "challenge",
+					jschallenge: "jschallenge",
+					managed_challenge: "managedChallenge"
+				},
+				i = u(m),
+				d = {
+					asn: e.AU.ASN,
+					country: e.AU.COUNTRY,
+					ip: e.AU.IP,
+					ipRange: e.AU.IP_RANGE,
+					securityLevel: e.AU.SECURITY_LEVEL,
+					validation: e.AU.VALIDATION,
+					zoneLockdown: e.AU.ZONE_LOCKDOWN,
+					waf: e.AU.WAF,
+					rateLimit: e.AU.RATE_LIMIT,
+					firewallRules: e.AU.FIREWALL_RULES,
+					bic: e.AU.BIC,
+					hot: e.AU.HOT,
+					unknown: e.AU.UNKNOWN,
+					l7ddos: e.AU.L7DOS,
+					botFight: e.AU.BOT_FIGHT_MODE,
+					apiShield: e.AU.API_SHIELD,
+					apiShieldSchemaValidation: e.AU.API_SHIELD_SCHEMA_VALIDATION,
+					apiShieldTokenValidation: e.AU.API_SHIELD_TOKEN_VALIDATION,
+					firewallCustom: e.AU.FIREWALL_CUSTOM,
+					firewallManaged: e.AU.FIREWALL_MANAGED,
+					dlp: e.AU.DLP,
+					botManagement: e.AU.BOT_MANAGEMENT,
+					uaBlock: e.AU.UA_BLOCK
+				},
+				_ = u(d),
+				n = u(o.EG);
+			let r = function(c) {
+				return c.SAMPLED = "sampled", c.RAW = "raw", c
+			}({});
+			const s = "security-analytics-log-explorer";
+			let l = function(c) {
+				return c.CLICK_ADAPTIVE_SAMPLING = 'click on "adaptive sampling"', c.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'click on "Go to Log Explorer" in the description', c.CLICK_TO_LOG_EXPLORER_BANNER = 'click on "Go to Log Explorer" in the banner"', c.CLICK_SWITCH_TO_RAW_LOGS = 'click on "Switch to raw logs"', c.CLICK_SWITCH_TO_SAMPLED_LOGS = 'click on "Switch back to sampled logs"', c
+			}({})
 		},
 		"../react/pages/security/api-shield/constants.ts": function(F, y, t) {
 			"use strict";
@@ -13595,84 +13673,6 @@
 			});
 			let e = function(o) {
 				return o.UI_SECTION = "UI_SECTION", o.WAF_RULES = "WAF_RULES", o
-			}({})
-		},
-		"../react/pages/security/security-analytics/logs/constants.ts": function(F, y, t) {
-			"use strict";
-			t.d(y, {
-				AS: function() {
-					return m
-				},
-				IK: function() {
-					return r
-				},
-				Ki: function() {
-					return a
-				},
-				Lz: function() {
-					return s
-				},
-				nT: function() {
-					return d
-				},
-				o4: function() {
-					return l
-				},
-				oY: function() {
-					return p
-				},
-				qH: function() {
-					return n
-				},
-				x3: function() {
-					return i
-				}
-			});
-			var e = t("../react/pages/security/analytics/labels.ts"),
-				o = t("../react/common/constants/analytics/botScoreSrc.ts");
-			const a = ["block", "challenge", "jschallenge", "managedChallenge"],
-				p = ["miss", "expired", "bypass", "dynamic"],
-				u = c => Object.fromEntries(Object.entries(c).map(([f, E]) => [E, f])),
-				m = {
-					block: "block",
-					challenge: "challenge",
-					jschallenge: "jschallenge",
-					managed_challenge: "managedChallenge"
-				},
-				i = u(m),
-				d = {
-					asn: e.AU.ASN,
-					country: e.AU.COUNTRY,
-					ip: e.AU.IP,
-					ipRange: e.AU.IP_RANGE,
-					securityLevel: e.AU.SECURITY_LEVEL,
-					validation: e.AU.VALIDATION,
-					zoneLockdown: e.AU.ZONE_LOCKDOWN,
-					waf: e.AU.WAF,
-					rateLimit: e.AU.RATE_LIMIT,
-					firewallRules: e.AU.FIREWALL_RULES,
-					bic: e.AU.BIC,
-					hot: e.AU.HOT,
-					unknown: e.AU.UNKNOWN,
-					l7ddos: e.AU.L7DOS,
-					botFight: e.AU.BOT_FIGHT_MODE,
-					apiShield: e.AU.API_SHIELD,
-					apiShieldSchemaValidation: e.AU.API_SHIELD_SCHEMA_VALIDATION,
-					apiShieldTokenValidation: e.AU.API_SHIELD_TOKEN_VALIDATION,
-					firewallCustom: e.AU.FIREWALL_CUSTOM,
-					firewallManaged: e.AU.FIREWALL_MANAGED,
-					dlp: e.AU.DLP,
-					botManagement: e.AU.BOT_MANAGEMENT,
-					uaBlock: e.AU.UA_BLOCK
-				},
-				_ = u(d),
-				n = u(o.EG);
-			let r = function(c) {
-				return c.SAMPLED = "sampled", c.RAW = "raw", c
-			}({});
-			const s = "security-analytics-log-explorer";
-			let l = function(c) {
-				return c.CLICK_ADAPTIVE_SAMPLING = 'click on "adaptive sampling"', c.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'click on "Go to Log Explorer" in the description', c.CLICK_TO_LOG_EXPLORER_BANNER = 'click on "Go to Log Explorer" in the banner"', c.CLICK_SWITCH_TO_RAW_LOGS = 'click on "Switch to raw logs"', c.CLICK_SWITCH_TO_SAMPLED_LOGS = 'click on "Switch back to sampled logs"', c
 			}({})
 		},
 		"../react/pages/security/settings/hooks/index.ts": function(F, y, t) {
@@ -17153,7 +17153,7 @@
 				z = t("../react/pages/security/bots/tracking.ts"),
 				re = t("../react/pages/security/resources/constants.tsx"),
 				de = t("../react/pages/security/page-shield/resources/index.ts"),
-				ye = t("../react/pages/security/security-analytics/logs/constants.ts"),
+				ye = t("../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts"),
 				Te = t("../react/pages/security/settings/index.tsx"),
 				we = t("../react/pages/shared-config/sparrowEvents.tsx"),
 				Re = t("../react/pages/spectrum/tracking.tsx"),
@@ -19080,4 +19080,4 @@
 	}
 ]);
 
-//# debugId=ba1aba0f-152a-5656-9ad3-5a4544894952
+//# debugId=d93e1cbc-e890-5d71-948d-c62ab91bbd8a
