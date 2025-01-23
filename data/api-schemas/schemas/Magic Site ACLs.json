@@ -179,8 +179,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -221,8 +230,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -557,8 +575,17 @@
 																"description": "The name of the LAN based on the provided lan_id.",
 																"type": "string"
 															},
+															"port_ranges": {
+																"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+																"items": {
+																	"description": "A valid port range value.",
+																	"example": "8080-9000",
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"ports": {
-																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 																"items": {
 																	"example": 1,
 																	"type": "integer"
@@ -599,8 +626,17 @@
 																"description": "The name of the LAN based on the provided lan_id.",
 																"type": "string"
 															},
+															"port_ranges": {
+																"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+																"items": {
+																	"description": "A valid port range value.",
+																	"example": "8080-9000",
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"ports": {
-																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 																"items": {
 																	"example": 1,
 																	"type": "integer"
@@ -948,8 +984,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -990,8 +1035,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -1228,8 +1282,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -1270,8 +1333,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -1463,8 +1535,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -1505,8 +1586,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -1732,8 +1822,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -1774,8 +1873,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -1972,8 +2080,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -2014,8 +2131,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -2252,8 +2378,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -2294,8 +2429,17 @@
 										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
+									"port_ranges": {
+										"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"description": "A valid port range value.",
+											"example": "8080-9000",
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"ports": {
-										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 										"items": {
 											"example": 1,
 											"type": "integer"
@@ -2487,8 +2631,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
@@ -2529,8 +2682,17 @@
 															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
+														"port_ranges": {
+															"description": "Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"description": "A valid port range value.",
+																"example": "8080-9000",
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"ports": {
-															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed.",
 															"items": {
 																"example": 1,
 																"type": "integer"
