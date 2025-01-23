@@ -1,0 +1,256 @@
+{
+	"alias": "durable-chat-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				"README.md",
+				"package.json",
+				"tsconfig.json",
+				"wrangler.json",
+				"public/favicon.ico",
+				"public/index.html",
+				"public/styles.css",
+				"src/shared.ts",
+				"public/css/normalize.css",
+				"public/css/skeleton.css",
+				"src/client/index.tsx",
+				"src/client/tsconfig.json",
+				"src/server/index.ts",
+				"src/server/tsconfig.json",
+				"src/server/worker-configuration.d.ts"
+			],
+			"replacements": {
+				"durable-chat-template": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Chat with other users in real-time using Durable Objects and PartyKit.",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Durable Chat App",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Durable Chat App",
+			"products": [
+				"Workers",
+				"Durable Objects"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/e18406a7-a5d8-4c3d-2b9e-f59e6beb9200/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": "public/favicon.ico",
+								"content": {
+									"$ref": "assets://template/files/public/favicon.ico"
+								}
+							},
+							{
+								"filename": "public/index.html",
+								"content": {
+									"$ref": "assets://template/files/public/index.html"
+								}
+							},
+							{
+								"filename": "public/styles.css",
+								"content": {
+									"$ref": "assets://template/files/public/styles.css"
+								}
+							},
+							{
+								"filename": "src/shared.ts",
+								"content": {
+									"$ref": "assets://template/files/src/shared.ts"
+								}
+							},
+							{
+								"filename": "public/css/normalize.css",
+								"content": {
+									"$ref": "assets://template/files/public/css/normalize.css"
+								}
+							},
+							{
+								"filename": "public/css/skeleton.css",
+								"content": {
+									"$ref": "assets://template/files/public/css/skeleton.css"
+								}
+							},
+							{
+								"filename": "src/client/index.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/client/index.tsx"
+								}
+							},
+							{
+								"filename": "src/client/tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/src/client/tsconfig.json"
+								}
+							},
+							{
+								"filename": "src/server/index.ts",
+								"content": {
+									"$ref": "assets://template/files/src/server/index.ts"
+								}
+							},
+							{
+								"filename": "src/server/tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/src/server/tsconfig.json"
+								}
+							},
+							{
+								"filename": "src/server/worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/src/server/worker-configuration.d.ts"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": "public/favicon.ico",
+					"content": {
+						"$ref": "assets://template/files/public/favicon.ico"
+					}
+				},
+				{
+					"filename": "public/index.html",
+					"content": {
+						"$ref": "assets://template/files/public/index.html"
+					}
+				},
+				{
+					"filename": "public/styles.css",
+					"content": {
+						"$ref": "assets://template/files/public/styles.css"
+					}
+				},
+				{
+					"filename": "src/shared.ts",
+					"content": {
+						"$ref": "assets://template/files/src/shared.ts"
+					}
+				},
+				{
+					"filename": "public/css/normalize.css",
+					"content": {
+						"$ref": "assets://template/files/public/css/normalize.css"
+					}
+				},
+				{
+					"filename": "public/css/skeleton.css",
+					"content": {
+						"$ref": "assets://template/files/public/css/skeleton.css"
+					}
+				},
+				{
+					"filename": "src/client/index.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/client/index.tsx"
+					}
+				},
+				{
+					"filename": "src/client/tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/src/client/tsconfig.json"
+					}
+				},
+				{
+					"filename": "src/server/index.ts",
+					"content": {
+						"$ref": "assets://template/files/src/server/index.ts"
+					}
+				},
+				{
+					"filename": "src/server/tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/src/server/tsconfig.json"
+					}
+				},
+				{
+					"filename": "src/server/worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/src/server/worker-configuration.d.ts"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "17.0.0"
+}
