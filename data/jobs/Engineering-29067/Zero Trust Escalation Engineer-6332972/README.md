@@ -5,32 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX&nbsp;</strong></h3>
-<h3><strong>About the R2 team</strong></h3>
-<p>Cloudflare's R2 team is comprised of the <a href="https://developers.cloudflare.com/r2/">R2</a> object storage service and <a href="https://developers.cloudflare.com/queues/">Queues</a>, our global queuing service that allows applications to reliably send and receive messages. In this role, you'll work with a top-notch engineering team to drive these products forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>In this role, you will collaborate with Customers, Designers, and Product Managers to design and build systems that push the boundaries of what is possible at the Cloudflare edge. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem or implement a new feature, modify how R2 and Queues process requests, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including. We primarily use Typescript and Go.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><span style="font-size: 12pt;">Available Locations:&nbsp;</span></p>
 <ul>
-	<li>4+ years of Software Engineering experience (preferably backend experience)</li>
-	<li>Experience building and managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system.</li>
+	<li><span style="font-size: 12pt;">Austin, TX</span></li>
+	<li><span style="font-size: 12pt;">Lisbon, Portugal, </span></li>
+	<li><span style="font-size: 12pt;">London, United Kingdom</span></li>
 </ul>
-<h3><strong>Compensation</strong></h3>
+<h2>What you’ll do</h2>
+<p>As a member of the Zero Trust Escalation Engineering team, you will play a key role in addressing technical issues experienced by customers and internal users in all layers of our Zero Trust offering (Gateway SWG, Gateway Resolver, ZTNA Access, Infrastructure Access, Browser Isolation, Data Loss Prevention).</p>
+<p>As the goto person for problem management of the most complex issues, you will collaborate with multiple Zero Trust teams to triage, prioritize, reproduce, evaluate impact, delve into client or server logs and source code, and methodically determine root causes. You will communicate updates and estimated time of resolution to stakeholders, including senior management.</p>
+<p>The interconnectedness of our products will require you to use a wide range of advanced troubleshooting strategies and tools to reproduce and solve the most complex problems. You will need to have a broad, in-depth product knowledge and technical understanding, spanning multiple teams within the Zero Trust organization.</p>
+<p>In addition to driving issue resolutions, you will contribute to the enhancement of operational efficiency. You will develop tooling, write thorough documentation, refine processes, and identify patterns to elevate the quality and efficiency of our management of issues, as well as our software development process.</p>
+<h2>Examples of desirable skills, knowledge, and experience</h2>
+<ul>
+	<li>Depth of knowledge in our Zero Trust product portfolio, technologies, and customer use cases</li>
+	<li>Demonstrable experience with network-related software and underlying Internet technologies between L4 and L7 (TCP/UDP, DNS, VPNs, VLANs, proxies, etc.)</li>
+	<li>Experience working with and debugging man-in-the-middle TLS terminating proxies</li>
+	<li>Knowledgeable of DNS over HTTPS (DoH), DNS over TLS (DoT), and related DNS protocols</li>
+	<li>Proven track record in tracking and solving problems within complex and distributed environments, both on desktop and on the edge/in the cloud.</li>
+	<li>Experience capturing and analyzing network data captures to troubleshoot network-related issues (network connectivity, data loss, etc.)</li>
+	<li>Strong experience in writing scripts or actual code, ideally in languages such as Python, Rust, or Go.</li>
+</ul>
+<p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $162,000 - $198,000</li>
+	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $91,000 - $111,000.</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $105,000 - $129,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $111,000 - $135,000.</span></li>
 </ul>
-<h3><strong>Equity</strong></h3>
+<p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
+<p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -41,18 +48,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
