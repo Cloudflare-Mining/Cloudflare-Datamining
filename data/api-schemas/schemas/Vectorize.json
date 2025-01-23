@@ -1981,11 +1981,10 @@
 		"tags": [
 			"Vectorize"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.list"
-			]
-		}
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes": {
 		"description": "Creates and returns a new Vectorize Index.",
@@ -3320,11 +3319,10 @@
 		"tags": [
 			"Vectorize"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.read"
-			]
-		}
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert": {
 		"description": "Inserts vectors into the specified index and returns a mutation id corresponding to the vectors enqueued for insertion.",
@@ -3718,11 +3716,9 @@
 		"tags": [
 			"Vectorize"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.update"
-			]
-		}
+		"x-api-token-group": [
+			"Vectorize Write"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create": {
 		"description": "Enable metadata filtering based on metadata property. Limited to 10 properties.",
@@ -4985,11 +4981,10 @@
 		"tags": [
 			"Vectorize"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.read"
-			]
-		}
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert": {
 		"description": "Upserts vectors into the specified index, creating them if they do not exist and returns a mutation id corresponding to the vectors enqueued for upsertion.",
@@ -5383,10 +5378,8 @@
 		"tags": [
 			"Vectorize"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.update"
-			]
-		}
+		"x-api-token-group": [
+			"Vectorize Write"
+		]
 	}
 }

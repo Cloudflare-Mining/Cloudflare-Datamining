@@ -309,6 +309,12 @@
 		"tags": [
 			"Analyze Certificate"
 		],
+		"x-api-token-group": [
+			"Access: Certificates Write",
+			"Access: Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"

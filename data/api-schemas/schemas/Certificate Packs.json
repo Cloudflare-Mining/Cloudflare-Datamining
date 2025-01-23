@@ -316,6 +316,9 @@
 		"tags": [
 			"Certificate Packs"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read",
@@ -686,6 +689,10 @@
 		"tags": [
 			"Certificate Packs"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -992,6 +999,10 @@
 		"summary": "Get Certificate Pack",
 		"tags": [
 			"Certificate Packs"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1828,6 +1839,9 @@
 		"summary": "Restart Validation or Update Advanced Certificate Manager Certificate Pack",
 		"tags": [
 			"Certificate Packs"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

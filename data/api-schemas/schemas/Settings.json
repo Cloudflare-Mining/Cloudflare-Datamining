@@ -1,0 +1,161 @@
+{
+	"GET /accounts/{account_id}/cni/settings": {
+		"operationId": "get_settings",
+		"parameters": [
+			{
+				"description": "Account tag to retrieve settings for",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"default_asn": {
+									"format": "int32",
+									"minimum": 0,
+									"nullable": true,
+									"type": "integer"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "The active account settings values"
+			},
+			"400": {
+				"description": "Bad request"
+			},
+			"404": {
+				"description": "Account not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get the current settings for the active account",
+		"tags": [
+			"Settings"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Cloudflare Zero Trust PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	},
+	"PUT /accounts/{account_id}/cni/settings": {
+		"operationId": "update_settings",
+		"parameters": [
+			{
+				"description": "Account tag to update settings for",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_asn": {
+								"format": "int32",
+								"minimum": 0,
+								"nullable": true,
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"default_asn": {
+									"format": "int32",
+									"minimum": 0,
+									"nullable": true,
+									"type": "integer"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "The active account settings values"
+			},
+			"400": {
+				"description": "Bad request"
+			},
+			"404": {
+				"description": "Account not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update the current settings for the active account",
+		"tags": [
+			"Settings"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		]
+	}
+}

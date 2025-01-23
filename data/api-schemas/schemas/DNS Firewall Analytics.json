@@ -675,12 +675,7 @@
 		"summary": "Table",
 		"tags": [
 			"DNS Firewall Analytics"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#analytics:read"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime": {
 		"description": "Retrieves a list of aggregate metrics grouped by time interval.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
@@ -1475,11 +1470,6 @@
 		"summary": "By Time",
 		"tags": [
 			"DNS Firewall Analytics"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#analytics:read"
-			]
-		}
+		]
 	}
 }

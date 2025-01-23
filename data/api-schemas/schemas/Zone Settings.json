@@ -3713,6 +3713,10 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -7447,6 +7451,10 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -8361,11 +8369,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:read"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -16145,6 +16148,9 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -23410,6 +23416,9 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -24396,11 +24405,6 @@
 		"tags": [
 			"Zone Settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:edit"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

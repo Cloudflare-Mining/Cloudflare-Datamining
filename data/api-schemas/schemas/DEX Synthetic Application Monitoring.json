@@ -294,13 +294,7 @@
 		"summary": "List Cloudflare colos",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/live": {
 		"description": "Get the live status of a latest device given device_id from the device_state table",
@@ -1015,13 +1009,7 @@
 		"summary": "Get the live status of a latest device",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"description": "List details for devices using WARP",
@@ -1940,13 +1928,7 @@
 		"summary": "List fleet status devices",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/live": {
 		"description": "List details for live (up to 60 minutes) devices using WARP",
@@ -2331,13 +2313,7 @@
 		"summary": "List fleet status details by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
 		"description": "List details for devices using WARP, up to 7 days",
@@ -2578,13 +2554,7 @@
 		"summary": "List fleet status aggregate details by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an http test for a given time period between 1 hour and 7 days.",
@@ -3363,13 +3333,7 @@
 		"summary": "Get details and aggregate metrics for an http test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for an http test for a given time period between 1 hour and 7 days.",
@@ -3707,13 +3671,7 @@
 		"summary": "Get percentiles for an http test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/tests/overview": {
 		"description": "List DEX tests with overview metrics",
@@ -4569,13 +4527,7 @@
 		"summary": "List DEX test analytics",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/tests/unique-devices": {
 		"description": "Returns unique count of devices that have run synthetic application monitoring tests in the past 7 days.",
@@ -4813,13 +4765,7 @@
 		"summary": "Get count of devices targeted",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
 		"description": "Get a breakdown of hops and performance metrics for a specific traceroute test run",
@@ -5135,13 +5081,7 @@
 		"summary": "Get details for a specific traceroute test run",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an traceroute test for a given time period between 1 hour and 7 days.",
@@ -5865,13 +5805,7 @@
 		"summary": "Get details and aggregate metrics for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
 		"description": "Get a breakdown of metrics by hop for individual traceroute test runs",
@@ -6240,13 +6174,7 @@
 		"summary": "Get network path breakdown for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for a traceroute test for a given time period between 1 hour and 7 days.",
@@ -6584,12 +6512,6 @@
 		"summary": "Get percentiles for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	}
 }

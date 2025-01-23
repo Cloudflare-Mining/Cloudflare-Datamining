@@ -188,6 +188,10 @@
 		"tags": [
 			"User"
 		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.user.read"
@@ -438,6 +442,9 @@
 		"summary": "Edit User",
 		"tags": [
 			"User"
+		],
+		"x-api-token-group": [
+			"User Details Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

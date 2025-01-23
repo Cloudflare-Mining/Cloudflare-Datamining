@@ -352,13 +352,7 @@
 		"summary": "List account commands",
 		"tags": [
 			"DEX Remote Commands"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
 		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
@@ -567,13 +561,7 @@
 		"summary": "Download command output file",
 		"tags": [
 			"DEX Remote Commands"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
 		"description": "List devices with WARP client support for remote captures which have been connected in the last 1 hour.",
@@ -892,13 +880,7 @@
 		"summary": "List devices eligible for remote captures",
 		"tags": [
 			"DEX Remote Commands"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
 		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
@@ -1157,13 +1139,7 @@
 		"summary": "Returns account commands usage, quota, and reset time",
 		"tags": [
 			"DEX Remote Commands"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	},
 	"POST /accounts/{account_id}/dex/commands": {
 		"description": "Initiate commands for up to 10 devices per account",
@@ -1529,12 +1505,6 @@
 		"summary": "Create account commands",
 		"tags": [
 			"DEX Remote Commands"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#dex:read",
-				"#teams:report"
-			]
-		}
+		]
 	}
 }

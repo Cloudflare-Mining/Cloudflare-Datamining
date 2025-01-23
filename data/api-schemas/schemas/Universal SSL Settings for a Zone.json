@@ -295,6 +295,10 @@
 		"tags": [
 			"Universal SSL Settings for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -619,6 +623,9 @@
 		"summary": "Edit Universal SSL Settings",
 		"tags": [
 			"Universal SSL Settings for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

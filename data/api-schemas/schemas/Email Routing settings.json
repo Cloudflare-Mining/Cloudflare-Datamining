@@ -297,11 +297,9 @@
 		"tags": [
 			"Email Routing settings"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.zone.email.routing.config.update"
-			]
-		},
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

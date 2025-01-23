@@ -271,11 +271,10 @@
 		"tags": [
 			"Radar Traffic Anomalies"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -460,11 +459,10 @@
 		"tags": [
 			"Radar Traffic Anomalies"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

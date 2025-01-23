@@ -305,11 +305,6 @@
 		"tags": [
 			"Tiered Caching"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:read"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -648,12 +643,6 @@
 		"tags": [
 			"Tiered Caching"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:read",
-				"#zone_settings:edit"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

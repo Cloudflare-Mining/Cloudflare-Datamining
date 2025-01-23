@@ -224,6 +224,10 @@
 		"summary": "Delete a Page Rule",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Zone Write",
+			"Page Rules Write"
 		]
 	},
 	"GET /zones/{zone_id}/pagerules": {
@@ -1634,6 +1638,12 @@
 		"summary": "List Page Rules",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Zone Read",
+			"Zone Write",
+			"Page Rules Write",
+			"Page Rules Read"
 		]
 	},
 	"GET /zones/{zone_id}/pagerules/{pagerule_id}": {
@@ -3003,6 +3013,47 @@
 		"summary": "Get a Page Rule",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"Cloudflare Zero Trust PII Read",
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin",
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Revoke",
+			"Access: Certificates Write",
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"DNS Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Zone Write",
+			"Workers Routes Write",
+			"Workers Routes Read",
+			"Stream Write",
+			"Stream Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read",
+			"Logs Write",
+			"Logs Read",
+			"Cache Purge",
+			"Page Rules Write",
+			"Page Rules Read",
+			"Load Balancers Write",
+			"Load Balancers Read",
+			"Firewall Services Write",
+			"Firewall Services Read",
+			"DNS Write",
+			"Apps Write",
+			"Analytics Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/pagerules/{pagerule_id}": {
@@ -5503,6 +5554,10 @@
 		"summary": "Edit a Page Rule",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Zone Write",
+			"Page Rules Write"
 		]
 	},
 	"POST /zones/{zone_id}/pagerules": {
@@ -7995,6 +8050,10 @@
 		"summary": "Create a Page Rule",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Zone Write",
+			"Page Rules Write"
 		]
 	},
 	"PUT /zones/{zone_id}/pagerules/{pagerule_id}": {
@@ -10499,6 +10558,10 @@
 		"summary": "Update a Page Rule",
 		"tags": [
 			"Page Rules"
+		],
+		"x-api-token-group": [
+			"Zone Write",
+			"Page Rules Write"
 		]
 	}
 }

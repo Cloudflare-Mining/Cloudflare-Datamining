@@ -184,11 +184,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -672,11 +671,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -785,11 +783,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2802,11 +2799,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3014,11 +3010,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3027,7 +3022,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/search": {
-		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'page.domain:microsoft AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2024-01 TO 2024-10]': my scans from 2024 January to 2024 October.<br/>- 'page.domain:(blogspot OR www.blogspot)': Searches for scans whose main domain starts with \"blogspot\" or with \"www.blogspot\"<br/>- 'date:>now-7d AND path:okta-sign-in.min.js: scans from the last 7 days with any request path that ends with \"okta-sign-in.min.js\"<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.",
+		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'page.domain:microsoft AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2024-01 TO 2024-10]': my scans from 2024 January to 2024 October.<br/>- 'page.domain:(blogspot OR www.blogspot)': Searches for scans whose main domain starts with \"blogspot\" or with \"www.blogspot\"<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.",
 		"operationId": "urlscanner-search-scans-v2",
 		"parameters": [
 			{
@@ -3256,11 +3251,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3513,11 +3507,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3820,11 +3813,10 @@
 		"tags": [
 			"URL Scanner (Beta)"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
+		"x-api-token-group": [
+			"URL Scanner Write",
+			"URL Scanner Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

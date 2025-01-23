@@ -516,6 +516,10 @@
 		"tags": [
 			"User's Organizations"
 		],
+		"x-api-token-group": [
+			"Memberships Write",
+			"Memberships Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
 			"display": true,

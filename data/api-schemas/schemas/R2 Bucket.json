@@ -374,11 +374,9 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"description": "Delete the CORS policy for a bucket",
@@ -756,11 +754,9 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Disables Sippy on this bucket",
@@ -949,11 +945,9 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.delete"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		]
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration": {
 		"description": "List all event notification rules for a bucket.",
@@ -1597,11 +1591,10 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Gets metadata for an existing R2 bucket.",
@@ -2628,11 +2621,10 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.list"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"description": "Gets state of public access over the bucket's R2-managed (r2.dev) domain.",
@@ -3690,11 +3682,9 @@
 		"tags": [
 			"R2 Bucket"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.r2.bucket.create"
-			]
-		}
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		]
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"description": "Register a new custom domain for an existing R2 bucket.",

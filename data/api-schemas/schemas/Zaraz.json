@@ -1515,12 +1515,7 @@
 		"summary": "Get Zaraz configuration",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/default": {
 		"description": "Gets default Zaraz configuration for a zone.",
@@ -3038,12 +3033,7 @@
 		"summary": "Get default Zaraz configuration",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/export": {
 		"description": "Exports full current published Zaraz configuration for a zone, secret variables included.",
@@ -4503,12 +4493,7 @@
 		"summary": "Export Zaraz configuration",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Lists a history of published Zaraz configuration records for a zone.",
@@ -4807,12 +4792,7 @@
 		"summary": "List Zaraz historical configuration records",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
 		"description": "Gets a history of published Zaraz configurations by ID(s) for a zone.",
@@ -6473,12 +6453,7 @@
 		"summary": "Get Zaraz historical configurations by ID(s)",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Gets Zaraz workflow for a zone.",
@@ -6682,12 +6657,7 @@
 		"summary": "Get Zaraz workflow",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:read"
-			]
-		}
+		]
 	},
 	"POST /zones/{zone_id}/settings/zaraz/publish": {
 		"description": "Publish current Zaraz preview configuration for a zone.",
@@ -9753,12 +9723,7 @@
 		"summary": "Update Zaraz configuration",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:edit"
-			]
-		}
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Restores a historical published Zaraz configuration by ID for a zone.",
@@ -11289,12 +11254,7 @@
 		"summary": "Restore Zaraz historical configuration by ID",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Updates Zaraz workflow for a zone.",
@@ -11513,11 +11473,6 @@
 		"summary": "Update Zaraz workflow",
 		"tags": [
 			"Zaraz"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zaraz:publish"
-			]
-		}
+		]
 	}
 }

@@ -313,6 +313,9 @@
 		"tags": [
 			"Keyless SSL for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:edit"
@@ -887,6 +890,10 @@
 		"tags": [
 			"Keyless SSL for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -1407,6 +1414,47 @@
 		"summary": "Get Keyless SSL Configuration",
 		"tags": [
 			"Keyless SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"Cloudflare Zero Trust PII Read",
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin",
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Revoke",
+			"Access: Certificates Write",
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"DNS Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Zone Write",
+			"Workers Routes Write",
+			"Workers Routes Read",
+			"Stream Write",
+			"Stream Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read",
+			"Logs Write",
+			"Logs Read",
+			"Cache Purge",
+			"Page Rules Write",
+			"Page Rules Read",
+			"Load Balancers Write",
+			"Load Balancers Read",
+			"Firewall Services Write",
+			"Firewall Services Read",
+			"DNS Write",
+			"Apps Write",
+			"Analytics Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1986,6 +2034,9 @@
 		"summary": "Edit Keyless SSL Configuration",
 		"tags": [
 			"Keyless SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2568,6 +2619,9 @@
 		"summary": "Create Keyless SSL Configuration",
 		"tags": [
 			"Keyless SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
