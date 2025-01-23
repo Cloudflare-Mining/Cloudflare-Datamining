@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -125,12 +126,14 @@
 														"eligible": {
 															"description": "Determines whether or not the account is eligible for the delivery mechanism.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ready": {
 															"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"type": {
 															"description": "Determines type of delivery mechanism.",
@@ -140,7 +143,8 @@
 																"webhook"
 															],
 															"example": "email",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -274,12 +278,14 @@
 																"eligible": {
 																	"description": "Determines whether or not the account is eligible for the delivery mechanism.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ready": {
 																	"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"type": {
 																	"description": "Determines type of delivery mechanism.",
@@ -289,7 +295,8 @@
 																		"webhook"
 																	],
 																	"example": "email",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"

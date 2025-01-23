@@ -12,7 +12,8 @@
 					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -349,7 +351,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -463,33 +466,38 @@
 														"example": "2020-10-26T18:25:04.532316Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "The unique identifier of a webhook",
 														"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_failure": {
 														"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
 														"example": "2020-10-26T18:25:04.532316Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_success": {
 														"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
 														"example": "2020-10-26T18:25:04.532316Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 														"example": "Slack Webhook",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"secret": {
 														"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
@@ -503,7 +511,8 @@
 															"gchat"
 														],
 														"example": "slack",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"url": {
 														"description": "The POST endpoint to call when dispatching a notification.",
@@ -634,33 +643,38 @@
 																"example": "2020-10-26T18:25:04.532316Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier of a webhook",
 																"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"last_failure": {
 																"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
 																"example": "2020-10-26T18:25:04.532316Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"last_success": {
 																"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
 																"example": "2020-10-26T18:25:04.532316Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 																"example": "Slack Webhook",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"secret": {
 																"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
@@ -674,7 +688,8 @@
 																	"gchat"
 																],
 																"example": "slack",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"url": {
 																"description": "The POST endpoint to call when dispatching a notification.",
@@ -813,7 +828,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -825,7 +841,8 @@
 					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -909,33 +926,38 @@
 													"example": "2020-10-26T18:25:04.532316Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The unique identifier of a webhook",
 													"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_failure": {
 													"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
 													"example": "2020-10-26T18:25:04.532316Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_success": {
 													"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
 													"example": "2020-10-26T18:25:04.532316Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 													"example": "Slack Webhook",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
@@ -949,7 +971,8 @@
 														"gchat"
 													],
 													"example": "slack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"url": {
 													"description": "The POST endpoint to call when dispatching a notification.",
@@ -1048,33 +1071,38 @@
 															"example": "2020-10-26T18:25:04.532316Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier of a webhook",
 															"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"last_failure": {
 															"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
 															"example": "2020-10-26T18:25:04.532316Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"last_success": {
 															"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
 															"example": "2020-10-26T18:25:04.532316Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 															"example": "Slack Webhook",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"secret": {
 															"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
@@ -1088,7 +1116,8 @@
 																"gchat"
 															],
 															"example": "slack",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The POST endpoint to call when dispatching a notification.",
@@ -1225,7 +1254,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1237,7 +1267,8 @@
 							"name": {
 								"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 								"example": "Slack Webhook",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secret": {
 								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
@@ -1563,7 +1594,8 @@
 					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1575,7 +1607,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1587,7 +1620,8 @@
 							"name": {
 								"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
 								"example": "Slack Webhook",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secret": {
 								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",

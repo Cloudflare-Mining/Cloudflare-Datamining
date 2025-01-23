@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -125,12 +126,14 @@
 														"description": {
 															"description": "Describes the alert type.",
 															"example": "High levels of 5xx HTTP errors at your origin",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"display_name": {
 															"description": "Alert type name.",
 															"example": "Origin Error Rate Alert",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"filter_options": {
 															"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
@@ -163,7 +166,8 @@
 														"type": {
 															"description": "Use this value when creating and updating a notification policy.",
 															"example": "http_alert_origin_error",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -322,12 +326,14 @@
 																"description": {
 																	"description": "Describes the alert type.",
 																	"example": "High levels of 5xx HTTP errors at your origin",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"display_name": {
 																	"description": "Alert type name.",
 																	"example": "Origin Error Rate Alert",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"filter_options": {
 																	"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
@@ -360,7 +366,8 @@
 																"type": {
 																	"description": "Use this value when creating and updating a notification policy.",
 																	"example": "http_alert_origin_error",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"

@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -239,7 +240,8 @@
 													"mechanism": {
 														"description": "The mechanism to which the notification has been dispatched.",
 														"example": "test@example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"mechanism_type": {
 														"description": "The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured.",
@@ -254,14 +256,16 @@
 													"name": {
 														"description": "Name of the policy.",
 														"example": "SSL Notification Event Policy",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"policy_id": {
 														"description": "The unique identifier of a notification policy",
 														"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"sent": {
 														"description": "Timestamp of when the notification was dispatched in ISO 8601 format.",
@@ -473,7 +477,8 @@
 															"mechanism": {
 																"description": "The mechanism to which the notification has been dispatched.",
 																"example": "test@example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mechanism_type": {
 																"description": "The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured.",
@@ -488,14 +493,16 @@
 															"name": {
 																"description": "Name of the policy.",
 																"example": "SSL Notification Event Policy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"policy_id": {
 																"description": "The unique identifier of a notification policy",
 																"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"sent": {
 																"description": "Timestamp of when the notification was dispatched in ISO 8601 format.",
