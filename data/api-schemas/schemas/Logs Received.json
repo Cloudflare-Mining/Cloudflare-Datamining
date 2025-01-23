@@ -255,7 +255,8 @@
 					"example": "41ddf1740f67442d",
 					"maxLength": 16,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -264,7 +265,8 @@
 				"schema": {
 					"description": "The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified.",
 					"example": "ClientIP,RayID,EdgeStartTimestamp",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -279,7 +281,8 @@
 						"rfc3339"
 					],
 					"example": "unixnano",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -444,7 +447,8 @@
 						}
 					],
 					"description": "Sets the (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than seven days.",
-					"example": "2018-05-20T10:00:00Z"
+					"example": "2018-05-20T10:00:00Z",
+					"x-auditable": true
 				}
 			},
 			{
@@ -461,7 +465,8 @@
 						}
 					],
 					"description": "Sets the (exclusive) end of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. `end` must be at least five minutes earlier than now and must be later than `start`. Difference between `start` and `end` must be not greater than one hour.",
-					"example": "2018-05-20T10:01:00Z"
+					"example": "2018-05-20T10:01:00Z",
+					"x-auditable": true
 				}
 			},
 			{
@@ -470,7 +475,8 @@
 				"schema": {
 					"description": "The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified.",
 					"example": "ClientIP,RayID,EdgeStartTimestamp",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -481,7 +487,8 @@
 					"example": 0.1,
 					"maximum": 1,
 					"minimum": 0,
-					"type": "number"
+					"type": "number",
+					"x-auditable": true
 				}
 			},
 			{
@@ -490,7 +497,8 @@
 				"schema": {
 					"description": "When `?count=` is provided, the response will contain up to `count` results. Since results are not sorted, you are likely to get different data for repeated requests. `count` must be an integer > 0.",
 					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -505,7 +513,8 @@
 						"rfc3339"
 					],
 					"example": "unixnano",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -675,7 +684,8 @@
 							"properties": {
 								"key": {
 									"example": "value",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"

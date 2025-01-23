@@ -2774,6 +2774,25 @@
 					},
 					"type": "array"
 				}
+			},
+			{
+				"description": "Filters response to domains with the currently active delivery mode.",
+				"in": "query",
+				"name": "active_delivery_mode",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"DIRECT",
+								"BCC",
+								"JOURNAL",
+								"API",
+								"RETRO_SCAN"
+							],
+							"type": "string"
+						}
+					]
+				}
 			}
 		],
 		"responses": {
@@ -2846,12 +2865,14 @@
 													"allowed_delivery_modes": [
 														"API"
 													],
+													"authorization": null,
 													"created_at": "2023-11-14T22:13:20Z",
 													"domain": "example.com",
 													"drop_dispositions": [
 														"MALICIOUS",
 														"SPAM"
 													],
+													"emails_processed": null,
 													"folder": "Inbox",
 													"id": 2400,
 													"inbox_provider": "Microsoft",
@@ -2878,6 +2899,34 @@
 														},
 														"type": "array"
 													},
+													"authorization": {
+														"allOf": [
+															{
+																"properties": {
+																	"authorized": {
+																		"type": "boolean"
+																	},
+																	"status_message": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"authorized",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															{
+																"nullable": true,
+																"type": "object"
+															}
+														]
+													},
 													"created_at": {
 														"format": "date-time",
 														"type": "string"
@@ -2902,6 +2951,38 @@
 															"type": "string"
 														},
 														"type": "array"
+													},
+													"emails_processed": {
+														"allOf": [
+															{
+																"properties": {
+																	"timestamp": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"total_emails_processed": {
+																		"format": "int32",
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"total_emails_processed_previous": {
+																		"format": "int32",
+																		"minimum": 0,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"total_emails_processed",
+																	"total_emails_processed_previous",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															{
+																"nullable": true,
+																"type": "object"
+															}
+														]
 													},
 													"folder": {
 														"allOf": [
@@ -3224,12 +3305,14 @@
 												"allowed_delivery_modes": [
 													"API"
 												],
+												"authorization": null,
 												"created_at": "2023-11-14T22:13:20Z",
 												"domain": "example.com",
 												"drop_dispositions": [
 													"MALICIOUS",
 													"SPAM"
 												],
+												"emails_processed": null,
 												"folder": "Inbox",
 												"id": 2400,
 												"inbox_provider": "Microsoft",
@@ -3256,6 +3339,34 @@
 													},
 													"type": "array"
 												},
+												"authorization": {
+													"allOf": [
+														{
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"nullable": true,
+																	"type": "string"
+																},
+																"timestamp": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
+												},
 												"created_at": {
 													"format": "date-time",
 													"type": "string"
@@ -3280,6 +3391,38 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"emails_processed": {
+													"allOf": [
+														{
+															"properties": {
+																"timestamp": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"total_emails_processed": {
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"total_emails_processed_previous": {
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
 												},
 												"folder": {
 													"allOf": [
@@ -5629,12 +5772,14 @@
 												"allowed_delivery_modes": [
 													"API"
 												],
+												"authorization": null,
 												"created_at": "2023-11-14T22:13:20Z",
 												"domain": "example.com",
 												"drop_dispositions": [
 													"MALICIOUS",
 													"SPAM"
 												],
+												"emails_processed": null,
 												"folder": "Inbox",
 												"id": 2400,
 												"inbox_provider": "Microsoft",
@@ -5661,6 +5806,34 @@
 													},
 													"type": "array"
 												},
+												"authorization": {
+													"allOf": [
+														{
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"nullable": true,
+																	"type": "string"
+																},
+																"timestamp": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
+												},
 												"created_at": {
 													"format": "date-time",
 													"type": "string"
@@ -5685,6 +5858,38 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"emails_processed": {
+													"allOf": [
+														{
+															"properties": {
+																"timestamp": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"total_emails_processed": {
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"total_emails_processed_previous": {
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "object"
+														}
+													]
 												},
 												"folder": {
 													"allOf": [
