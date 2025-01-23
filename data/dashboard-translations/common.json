@@ -1514,6 +1514,11 @@
 	"account.rulesets.scope.all_ent": "%{rulesetName} will execute for all incoming requests to enterprise zones on **%{accountName}**.",
 	"account.rulesets.scope.custom": "%{rulesetName} will execute for incoming requests that match the below filter on **%{accountName}**.",
 	"account.rulesets.scope.custom_ent": "%{rulesetName} will execute for incoming requests that match the below filter to enterprise zones on **%{accountName}**.",
+	"account.user_groups.create_group": "Create Group",
+	"account.user_groups.create_group.detail": "Create a group and assign members and permissions",
+	"account.user_groups.create_group.input.name": "Name",
+	"account.user_groups.create_group.button.go_back": "Go back",
+	"account.user_groups.create_group.button.create_group": "Create group",
 	"account_waf.entrypoint_table.warning": "Ruleset <strong>&ldquo;%{rulesetName}&rdquo;</strong> deployed in other rules",
 	"account.custom_rulesets.create_rule.exit": "You have unsaved changes that will be lost if you exit. Are you sure you'd like to leave?",
 	"account.subscriptions": "Paid Products and Add-ons",
@@ -7101,6 +7106,7 @@
 	"page.bulk_redirects.documentation_label": "About Bulk Redirects",
 	"zone.overview": "Zone Overview",
 	"zone.overview.documentation_label": "Review Cloudflare fundamentals",
+	"zone.overview.purchase_plan_survey": "Why did you choose a %{planName} plan? <0>Share your feedback</0>",
 	"zone.overview.page_rules.deprecated": "<2>Page Rules are deprecated</2>. You should consider alternative <0>Rules</0> options due to their enhanced configurability. Refer to <1>the migration guide</1> for details.",
 	"zone_versioning.version.successfully_switched": "Successfully switched to %{version} for %{zoneName}",
 	"zone_versioning.version.global_settings": "Global Settings",
@@ -7149,5 +7155,9 @@
 	"common.share_permission.view.configuration.share": "Share",
 	"common.share_permission.view.configuration.share_update": "Update Share",
 	"common.share_permission.view.configuration.source_account": "Source account",
-	"common.share_permission.edit_share": "Edit sharing recipients"
+	"common.share_permission.edit_share": "Edit sharing recipients",
+	"common.charts.linear": "Linear",
+	"common.charts.logarithmic": "Logarithmic",
+	"common.relative": "Relative",
+	"common.timestamp": "Timestamp"
 }
