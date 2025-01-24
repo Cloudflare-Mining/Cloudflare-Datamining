@@ -9,7 +9,7 @@
 <p>Engineering Manager</p>
 <p>&nbsp;</p>
 <p><strong>Role Summary</strong></p>
-<p>We are looking for an Engineering Manager to join the growing network-layer connectivity and security product space. You’ll lead a team of capable engineers to deliver features that customers love while keeping our systems updated and able to handle the scale that comes with growth. You will be responsible for a set of products, features, and technologies that comprise Magic Transit and Magic WAN, working alongside other engineering teams in this space to deliver a cohesive customer experience.</p>
+<p>We are looking for a Software Engineering Manager to join the growing network-layer connectivity and security product space. You’ll lead a team of capable engineers to deliver features that customers love while keeping our systems updated and able to handle the scale that comes with growth. You will be responsible for a set of products, features, and technologies that comprise Magic Transit and Magic WAN, working alongside other engineering teams in this space to deliver a cohesive customer experience.</p>
 <p>&nbsp;</p>
 <p><strong>Role Responsibilities</strong></p>
 <ul>
@@ -22,7 +22,7 @@
 <p>&nbsp;</p>
 <p><strong>Role Requirements</strong></p>
 <ul>
-	<li>2+ years Experience as an Engineering Manager</li>
+	<li>2+ years Experience as an Engineering Manager for a team of Software Engineers</li>
 	<li>Strong technical background in Layer 3 and Layer 4 networking.</li>
 	<li>Technical experience with Linux networking such as Network Namespaces, eBPF and nftables.</li>
 	<li>Experience programming in systems languages such as Rust and Golang.</li>
