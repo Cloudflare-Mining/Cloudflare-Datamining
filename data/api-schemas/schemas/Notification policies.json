@@ -920,31 +920,6 @@
 														"x-auditable": true
 													},
 													"mechanisms": {
-														"additionalProperties": {
-															"items": {
-																"properties": {
-																	"id": {
-																		"oneOf": [
-																			{
-																				"description": "UUID",
-																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"maxLength": 36,
-																				"readOnly": true,
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			{
-																				"description": "The email address",
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
-														},
 														"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 														"example": {
 															"email": [
@@ -962,6 +937,53 @@
 																	"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 																}
 															]
+														},
+														"properties": {
+															"email": {
+																"items": {
+																	"properties": {
+																		"id": {
+																			"description": "The email address",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"pagerduty": {
+																"items": {
+																	"properties": {
+																		"id": {
+																			"description": "UUID",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"webhooks": {
+																"items": {
+																	"properties": {
+																		"id": {
+																			"description": "UUID",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															}
 														},
 														"type": "object"
 													},
@@ -1562,31 +1584,6 @@
 																"x-auditable": true
 															},
 															"mechanisms": {
-																"additionalProperties": {
-																	"items": {
-																		"properties": {
-																			"id": {
-																				"oneOf": [
-																					{
-																						"description": "UUID",
-																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																						"maxLength": 36,
-																						"readOnly": true,
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"description": "The email address",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				]
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
 																"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 																"example": {
 																	"email": [
@@ -1604,6 +1601,53 @@
 																			"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 																		}
 																	]
+																},
+																"properties": {
+																	"email": {
+																		"items": {
+																			"properties": {
+																				"id": {
+																					"description": "The email address",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"pagerduty": {
+																		"items": {
+																			"properties": {
+																				"id": {
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"webhooks": {
+																		"items": {
+																			"properties": {
+																				"id": {
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
 																},
 																"type": "object"
 															},
@@ -2304,31 +2348,6 @@
 													"x-auditable": true
 												},
 												"mechanisms": {
-													"additionalProperties": {
-														"items": {
-															"properties": {
-																"id": {
-																	"oneOf": [
-																		{
-																			"description": "UUID",
-																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																			"maxLength": 36,
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		{
-																			"description": "The email address",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														},
-														"type": "array"
-													},
 													"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 													"example": {
 														"email": [
@@ -2346,6 +2365,53 @@
 																"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 															}
 														]
+													},
+													"properties": {
+														"email": {
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "The email address",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"pagerduty": {
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "UUID",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"webhooks": {
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "UUID",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -2914,31 +2980,6 @@
 															"x-auditable": true
 														},
 														"mechanisms": {
-															"additionalProperties": {
-																"items": {
-																	"properties": {
-																		"id": {
-																			"oneOf": [
-																				{
-																					"description": "UUID",
-																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																					"maxLength": 36,
-																					"readOnly": true,
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				{
-																					"description": "The email address",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			]
-																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
-															},
 															"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 															"example": {
 																"email": [
@@ -2956,6 +2997,53 @@
 																		"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 																	}
 																]
+															},
+															"properties": {
+																"email": {
+																	"items": {
+																		"properties": {
+																			"id": {
+																				"description": "The email address",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"pagerduty": {
+																	"items": {
+																		"properties": {
+																			"id": {
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"webhooks": {
+																	"items": {
+																		"properties": {
+																			"id": {
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
 															},
 															"type": "object"
 														},
@@ -3556,31 +3644,6 @@
 								"type": "object"
 							},
 							"mechanisms": {
-								"additionalProperties": {
-									"items": {
-										"properties": {
-											"id": {
-												"oneOf": [
-													{
-														"description": "UUID",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"description": "The email address",
-														"type": "string",
-														"x-auditable": true
-													}
-												]
-											}
-										},
-										"type": "object"
-									},
-									"type": "array"
-								},
 								"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 								"example": {
 									"email": [
@@ -3598,6 +3661,53 @@
 											"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 										}
 									]
+								},
+								"properties": {
+									"email": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "The email address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"pagerduty": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"webhooks": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -4391,31 +4501,6 @@
 								"type": "object"
 							},
 							"mechanisms": {
-								"additionalProperties": {
-									"items": {
-										"properties": {
-											"id": {
-												"oneOf": [
-													{
-														"description": "UUID",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"description": "The email address",
-														"type": "string",
-														"x-auditable": true
-													}
-												]
-											}
-										},
-										"type": "object"
-									},
-									"type": "array"
-								},
 								"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
 								"example": {
 									"email": [
@@ -4433,6 +4518,53 @@
 											"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
 										}
 									]
+								},
+								"properties": {
+									"email": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "The email address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"pagerduty": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"webhooks": {
+										"items": {
+											"properties": {
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
