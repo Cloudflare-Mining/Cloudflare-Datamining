@@ -5,12 +5,10 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p></p>
+<h2><strong>Location: Austin, TX</strong></h2>
 <h2><strong>About The Role</strong><strong>:</strong></h2>
-<p></p>
 <p>We are looking for a Special Operations Threat Investigations Analyst on Cloudflare’s Trust and Safety team. If you’re passionate about making the web safer, have extensive experience investigating, and building things that benefit others, are driven to execute at warp-speed, like solving problems yourself and enabling technical teams to be productive and move quickly, we’d love to talk.</p>
 <p>In this role, you’ll perform investigations, assist in maintaining systems, plan requirements, identify risks, and communicate clearly with project stakeholders. You will coordinate closely with our engineering teams on tooling gaps and requirements, and the best place for existing tooling to live. You’ll learn and grow alongside talented teammates who share your attention to detail and appetite for problem-solving. Passion for Trust &amp; Safety or Information Security, and a track record of successfully managing the delivery of complete technical projects is a requirement.</p>
-<p></p>
 <h2><strong>Responsibilities</strong><strong>:</strong></h2>
 <ul>
 	<li>Conducting threat investigations related to potential misuse of Cloudflare’s platform.</li>
