@@ -5,10 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Texas , San Francisco, CA, New York, NY</p>
-<p><strong>What You Will Do</strong></p>
+<h4><strong>Available Locations: Texas (Austin, Houston, San Antonio, Dallas), San Francisco, CA, New York, NY</strong></h4>
+<h4>About the position</h4>
 <p>The Category Manager is a leader who builds strong relationships with internal and external partners to develop and execute enterprise-wide sourcing strategies that deliver value and create measurable, meaningful impact on Cloudflare’s success. Your mission will be to lead complex, high visibility engagements across all global business functions and procurement spend categories to enable Procurement to deliver on savings and partnership commitments with scale and agility.</p>
-<p>To be successful in this role you will think strategically, demonstrate exceptional contracting, negotiation, and communication skills, and have a high level of customer focus and business judgment. You will have a demonstrated track record managing large-scale supply chain and procurement improvement projects and superior data analysis and presentation skills. This role is high visibility and will interact with senior leaders in the company and with strategic suppliers.&nbsp; While the category focus will be Marketing, other Corporate Services may also be addressed including Professional Services, Facilities, HR, Legal, and Finance. The ideal candidate for this role has a history of solving complex problems, developing and building new solutions, and delivering results. The ability to influence stakeholders and effectively communicate with executives in order to earn a role as a trusted advisor is essential to the role. The Category Manager will :</p>
+<p>To be successful in this role you will think strategically, demonstrate exceptional contracting, negotiation, and communication skills, and have a high level of customer focus and business judgment. You will have a demonstrated track record managing large-scale supply chain and procurement improvement projects and superior data analysis and presentation skills. This role is high visibility and will interact with senior leaders in the company and with strategic suppliers.&nbsp; The category focus is on IT &amp; Telecom (hardware, software, engineering services, data center, infrastructure or other technology experience). The ideal candidate for this role has a history of solving complex problems, developing and building new solutions, and delivering results. The ability to influence stakeholders and effectively communicate with executives in order to earn a role as a trusted advisor is essential to the role.</p>
+<h4>What you'll do</h4>
 <ul>
 	<li>Strategic Sourcing &amp; Category Management</li>
 	<ul>
@@ -35,7 +36,7 @@
 </ul>
 <p><strong>What Makes You a Qualified Candidate</strong></p>
 <ul>
-	<li>Bachelor’s Degree and 5+ years of relevant strategic sourcing experience, to include at a minimum, 5 years in a procurement function developing category plans and sourcing in one or more of the following categories: Marketing and/or Corporate Services (HR, Legal, and Facilities)</li>
+	<li>Bachelor’s Degree and 8+ years of relevant strategic sourcing experience, to include at a minimum, 5 years in a procurement function developing category plans and sourcing in one or more of the following categories: Technology (hardware, software, engineering services, data center, infrastructure or other technology experience)</li>
 	<li>Track record leading large, complex negotiations with strategic suppliers across indirect spend categories, with the ability to lead cross functional negotiation teams and ensure alignment at all levels.&nbsp;</li>
 	<li>Proven contracting expertise; the ability to dig deep into contract details, collaborate with internal teams to understand business requirements, draft contractual terms, formulate strategy, and execute contract negotiations to achieve best possible outcomes while maintaining successful business relationships.</li>
 	<li>Ability to identify potential risks and liabilities in contracts as they relate to policies and business objectives, and proactively develop solutions on contractual terms in collaboration with Legal, Risk, Data Privacy, Information Security, and business stakeholders.</li>
@@ -50,8 +51,14 @@
 	<li>Expert level understanding of the value drivers and cost levers associated with indirect spend categories.</li>
 	<li>Project Management skills - a structured and programmatic approach to delivering value to the business. Ability to manage multiple projects at once, while keeping stakeholders informed and aligned through effective communications and formal project updates.&nbsp;</li>
 	<li>Adaptability – ability to thrive in a high volume, fast paced environment and work on multiple initiatives at the same time, adapting to changing priorities and requirements.</li>
+	<li>Proficiency in Google Presentations, Sheets, and utilization of internal and external data sources.</li>
 </ul>
-<p>Proficiency in Google Presentations, Sheets, and utilization of internal and external data sources.<strong><br><br></strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $131,000 - $161,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $139,000 - $169,000</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -79,8 +86,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><br><br></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
