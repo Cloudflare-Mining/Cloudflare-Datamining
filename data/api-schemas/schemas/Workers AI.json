@@ -1107,6 +1107,10 @@
 									},
 									{
 										"properties": {
+											"frequency_penalty": {
+												"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+												"type": "number"
+											},
 											"image": {
 												"oneOf": [
 													{
@@ -1129,6 +1133,10 @@
 												"description": "The maximum number of tokens to generate in the response.",
 												"type": "integer"
 											},
+											"presence_penalty": {
+												"description": "Increases the likelihood of the model introducing new topics.",
+												"type": "number"
+											},
 											"prompt": {
 												"description": "The input text prompt for the model to generate a response.",
 												"type": "string"
@@ -1138,8 +1146,24 @@
 												"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
 												"type": "boolean"
 											},
+											"repetition_penalty": {
+												"description": "Penalty for repeated tokens; higher values discourage repetition.",
+												"type": "number"
+											},
+											"seed": {
+												"description": "Random seed for reproducibility of the generation.",
+												"type": "number"
+											},
 											"temperature": {
 												"description": "Controls the randomness of the output; higher values produce more random results.",
+												"type": "number"
+											},
+											"top_k": {
+												"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+												"type": "number"
+											},
+											"top_p": {
+												"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 												"type": "number"
 											}
 										},

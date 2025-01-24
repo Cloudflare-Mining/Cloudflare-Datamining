@@ -3369,7 +3369,6 @@
 					"schema": {
 						"description": "ndjson file containing vectors to insert.",
 						"example": "@/path/to/vectors.ndjson",
-						"format": "binary",
 						"type": "string"
 					}
 				}
@@ -5031,7 +5030,6 @@
 					"schema": {
 						"description": "ndjson file containing vectors to upsert.",
 						"example": "@/path/to/vectors.ndjson",
-						"format": "binary",
 						"type": "string"
 					}
 				}
