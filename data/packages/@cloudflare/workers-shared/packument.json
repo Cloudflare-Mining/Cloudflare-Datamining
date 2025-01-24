@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
-		"latest": "0.12.3",
-		"beta": "0.0.0-fd5a45520"
+		"beta": "0.0.0-135dd8537",
+		"latest": "0.12.4"
 	},
 	"versions": {
 		"0.1.0": {
@@ -24933,6 +24933,80 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-fd5a45520",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^5.0.10",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250121.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "f37cd6392146e70423b4dd52f4c0aa0d6fefda25",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-fd5a45520.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-CbZLLWCAnucrfOcbsWfl/0xRpeNgwlZEz37BSchdzxlUqx/VA0vT9Eftz3zy1KCYKIIlE/xSq0+M/7TVo6sE3A==",
+				"signatures": [
+					{
+						"sig": "MEUCIAZ6uLgC9SqUriAXJIIcFjL/ptqehld1Ezh5WmOAaq0JAiEAzE/bKH5KExerMQxsISgIy+cqO+2sE7aFzCCdZ0I4FjU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1060647
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.12.4": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.12.4",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^5.0.10",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "~5.6.3",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250121.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "cb862102f6aa9a9b4b3ce08020b6ca3f6d21882c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.12.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-mIQdm5rA68UJGJUvUzfXfUmO6xvyp5/QNBwpqIx/uIMxfJvTwO5WhCUc04x2/pU7WCuXC+ZZYwgjrr6YnVzFMA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDc3w0S8oxiuNy7TXgUSofDlA9YYdsNTXriZGcjXWA+wAIgd0DA4bUBaKIL+CZvgLjkUAMr5Ktof0Xs6x9GLG8ExqY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1060638
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-135dd8537": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-135dd8537",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -24946,19 +25020,19 @@
 				"toucan-js": "^3.3.1",
 				"typescript": "~5.6.3",
 				"vitest": "~2.1.8",
-				"@cloudflare/eslint-config-worker": "1.1.0",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-CbZLLWCAnucrfOcbsWfl/0xRpeNgwlZEz37BSchdzxlUqx/VA0vT9Eftz3zy1KCYKIIlE/xSq0+M/7TVo6sE3A==",
-				"shasum": "f37cd6392146e70423b4dd52f4c0aa0d6fefda25",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-fd5a45520.tgz",
+				"integrity": "sha512-SplrGpYD3X5bc4CAH+AFyePyj4XCX+A7UAY8hH149im5W1ZZs2ndczq8YLa+5Y1dJQ5F1M/bwkSVmEikrv48xA==",
+				"shasum": "04cf11534d51cc69d7625088fda180574166102a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-135dd8537.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1060647,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIAZ6uLgC9SqUriAXJIIcFjL/ptqehld1Ezh5WmOAaq0JAiEAzE/bKH5KExerMQxsISgIy+cqO+2sE7aFzCCdZ0I4FjU="
+						"sig": "MEYCIQC2yQhL5zoKvU7wlCmFyFMgxeshkWR+BjJafZFBdy4qAAIhALvz/6w4XbUeYrAwKglMv9OnW7lW7Zau5/zohguEnzaR"
 					}
 				]
 			},
