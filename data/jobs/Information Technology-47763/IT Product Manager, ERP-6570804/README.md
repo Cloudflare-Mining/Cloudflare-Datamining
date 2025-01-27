@@ -5,45 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Position Location: Austin, TX</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h3><strong>What You’ll do</strong></h3>
-<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h3><strong>Skills, Knowledge, and Experience</strong></h3>
+<h4>About the department</h4>
+<p>The Information Technology Product group is responsible for setting the direction and priorities for Cloudflare enterprise business systems. Our Product Managers partner with all functional teams across Cloudflare to define capabilities that enable us to grow, service our customers &amp; provide reliable platforms for all employees.</p>
+<h4>What you'll do</h4>
+<p>We are seeking an <strong>IT Product Manager, ERP System </strong>to lead a variety of core business systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of Finance business areas and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the part of the transformation group supporting the internal ERP business systems, having a holistic view of the end-to-end process from a systems point of view. The IT Product Manager will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Fluent English speaker is a requirement</li>
-	<li>5-8 years working within a Technical Support team solving various technical issues&nbsp;</li>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
+	<li>ERP System Ownership: Serve as the primary product owner and point of contact for ERP systems (Oracle), including but not limited to modules such as Finance, and Supply Chain.</li>
+	<li>Requirements Gathering and Analysis: Collaborate with business stakeholders to elicit, analyze, and document complex business requirements, translating them into clear and actionable technical specifications.</li>
+	<li>Product Roadmap Development: Develop and maintain a comprehensive product roadmap for ERP systems, aligning with overall business objectives and prioritizing initiatives based on strategic value.</li>
+	<li>Technology and Technical Leadership: Drive the technology strategy for ERP systems, including evaluating new technologies, recommending upgrades, and ensuring alignment with industry best practices. Collaborate closely with Engineering and Enterprise Systems teams to provide technical leadership and guidance, ensuring adherence to standards, best practices, and optimal system performance.</li>
+	<li>Stakeholder Management: Build and maintain strong relationships with key stakeholders, including business users, IT teams, and external vendors.</li>
+	<li>Vendor Management: Manage vendor relationships, including contract negotiations, performance monitoring, and issue resolution.</li>
+	<li>IT Governance: Adhere to IT governance processes, including change management, incident management, and security protocols.</li>
+	<li>Cross-Functional Collaboration: Collaborate closely with the Sr. Technical Program Manager to plan, execute, and monitor the successful rollout of ERP system implementations, ensuring alignment between technical delivery and business objectives.&nbsp;</li>
+	<li>System Optimization and Performance Tuning: Monitor system performance, identify bottlenecks, and implement optimization strategies to improve system responsiveness and efficiency.</li>
+	<li>User Training and Support: Develop and deliver user training programs, provide ongoing support, and address user issues and inquiries.</li>
 </ul>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>ERP System Expertise: Deep understanding of ERP systems, preferably Oracle, including configuration, customization, and integration.</li>
+	<li>Technical Proficiency: Strong technical skills, including SQL, PL/SQL, and other relevant programming languages.</li>
+	<li>Business Acumen: Strong business acumen and ability to understand complex business processes and translate them into technical solutions.</li>
+	<li>Project Management: Proven project management skills, including planning, execution, and risk management.</li>
+	<li>Problem-Solving: Excellent problem-solving and analytical skills.</li>
+	<li>Communication Skills: Strong communication skills, both written and verbal, to effectively interact with technical and non-technical stakeholders.</li>
+	<li>Leadership Skills: Ability to lead and motivate teams, build consensus, and influence decision-making.</li>
 </ul>
-<h3><strong>Availability and Schedule Requirements</strong></h3>
-<ul>
-	<li>Flexibility to work varying work schedules including; Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
