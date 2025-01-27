@@ -102,6 +102,22 @@
 															"example": false,
 															"type": "boolean"
 														},
+														"internal_dns": {
+															"description": "Settings for this internal zone.",
+															"properties": {
+																"reference_zone_id": {
+																	"description": "The ID of the zone to fallback to.",
+																	"example": {
+																		"description": "Identifier",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string"
+																	},
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"multi_provider": {
 															"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 															"example": false,
@@ -322,6 +338,22 @@
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"internal_dns": {
+																	"description": "Settings for this internal zone.",
+																	"properties": {
+																		"reference_zone_id": {
+																			"description": "The ID of the zone to fallback to.",
+																			"example": {
+																				"description": "Identifier",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"type": "string"
+																			},
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
 																"multi_provider": {
 																	"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
@@ -604,6 +636,22 @@
 										"example": false,
 										"type": "boolean"
 									},
+									"internal_dns": {
+										"description": "Settings for this internal zone.",
+										"properties": {
+											"reference_zone_id": {
+												"description": "The ID of the zone to fallback to.",
+												"example": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"multi_provider": {
 										"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 										"example": false,
@@ -818,6 +866,22 @@
 															"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 															"example": false,
 															"type": "boolean"
+														},
+														"internal_dns": {
+															"description": "Settings for this internal zone.",
+															"properties": {
+																"reference_zone_id": {
+																	"description": "The ID of the zone to fallback to.",
+																	"example": {
+																		"description": "Identifier",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string"
+																	},
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"multi_provider": {
 															"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
@@ -1039,6 +1103,22 @@
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"internal_dns": {
+																	"description": "Settings for this internal zone.",
+																	"properties": {
+																		"reference_zone_id": {
+																			"description": "The ID of the zone to fallback to.",
+																			"example": {
+																				"description": "Identifier",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"type": "string"
+																			},
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
 																"multi_provider": {
 																	"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
