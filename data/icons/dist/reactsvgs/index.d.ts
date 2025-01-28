@@ -71,6 +71,7 @@ declare const _default: {
     eye: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     facebook: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     file: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'filter-drawer-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     filter: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'firewall-rules': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     flowchart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

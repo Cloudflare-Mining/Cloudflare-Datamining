@@ -69,6 +69,7 @@ import ExternalLink from './ExternalLink';
 import Eye from './Eye';
 import Facebook from './Facebook';
 import File from './File';
+import FilterDrawerOutline from './FilterDrawerOutline';
 import Filter from './Filter';
 import FirewallRules from './FirewallRules';
 import Flowchart from './Flowchart';
@@ -262,6 +263,7 @@ export default {
   eye: Eye,
   facebook: Facebook,
   file: File,
+  'filter-drawer-outline': FilterDrawerOutline,
   filter: Filter,
   'firewall-rules': FirewallRules,
   flowchart: Flowchart,

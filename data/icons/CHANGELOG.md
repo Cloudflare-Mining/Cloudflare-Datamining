@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.24.0
+
+### Minor Changes
+
+- c93108a8d5: Add FilterDrawerOutline Icon
+
 ## 12.23.0
 
 ### Minor Changes
