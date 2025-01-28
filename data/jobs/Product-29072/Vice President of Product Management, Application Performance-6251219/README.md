@@ -27,7 +27,7 @@
 </ul>
 <h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>10+ years experience in product management and a proven track record of leading large successful programs that span multiple teams</li>
+	<li>15+ years experience in product management and a proven track record of leading large successful programs that span multiple teams</li>
 	<li>Demonstrated ability to build, lead and develop a team of high-performing product managers and product leaders (direct reports)</li>
 	<li>Consistent track record of building and leading product teams: people want to work on your team again</li>
 	<li>Proven track record shipping data-driven, secure, enterprise products at scale in a highly dynamic environment</li>
