@@ -574,7 +574,7 @@
 	"zoneless_workers.worker_details.deployments.description.version_history": "Versions track code and configuration changes to your Worker. You can deploy or rollback to the last 10 saved versions.",
 	"zoneless_workers.worker_details.deployments.deployed_date_source_author": "Deployed %{date} by %{author} via %{source}",
 	"zoneless_workers.worker_details.deployments.source_by_author": "Deployed via %{source} by %{author}",
-	"zoneless_workers.worker_details.deployments.button.deploy_version.disabled_tooltip": "Add another version to deploy",
+	"zoneless_workers.worker_details.deployments.button.deploy_version.disabled_tooltip": "Upload a worker version to deploy. <0>Learn more</0>",
 	"zoneless_workers.worker_details.deployments.button.rollback.disabled_tooltip": "This version is already in active deployment.",
 	"zoneless_workers.worker_details.deployments.button.rollback.non_deployable": "Only the latest 10 versions are deployable.",
 	"zoneless_workers.worker_details.deployments.docs_link.versions": "Using Versions",
@@ -1641,5 +1641,6 @@
 	"zoneless_workers.builds.view_build": "View build",
 	"zoneless_workers.preview_urls": "Preview URLs",
 	"zoneless_workers.actions.git.unconnected": "Connect your git provider on the settings page",
-	"zoneless_workers.actions.git.connected": "View your workers code"
+	"zoneless_workers.actions.git.connected": "View your workers code",
+	"zoneless_workers.metrics.no_versions": "No Versions deployed"
 }
