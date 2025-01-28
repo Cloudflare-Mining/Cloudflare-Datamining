@@ -9,13 +9,13 @@
 <p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
 <p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
 <p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Systems Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>We are looking for a Software Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
 <p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment.</p>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Bachelor’s degree in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development (+3 years), with a strong focus on TypeScript (or JavaScript) programming language;</li>
-	<li>Solid understanding of systems engineering principles and practices;</li>
+	<li>Bachelor’s degree or equivalent in Computer Science, Engineering, or a related field;</li>
+	<li>Proven experience in software development (+3 years), with a strong focus on building high-performance distributed systems;</li>
+	<li>Solid understanding of software engineering principles and practices;</li>
 	<li>Strong problem-solving skills and attention to detail;</li>
 	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
 	<li>Passion for learning and exploring new technologies;</li>
@@ -25,12 +25,11 @@
 </ul>
 <p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>Experience with WebAssembly, Rust or Go;</li>
+	<li>Experience with TypeScript (or JavaScript), WebAssembly, Python, Rust or Go;</li>
 	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc) and V8 isolates;</li>
-	<li>Experience building high performance distributed systems;</li>
-	<li>Knowledge of SQL;</li>
+	<li>Knowledge of SQL</li>
 	<li>Previous experience working in an Agile environment;</li>
-	<li>Contributions to large open source projects.</li>
+	<li>Meaningful contributions to open-source projects.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
