@@ -6,26 +6,45 @@
 	</div>
 </div>
 <h4>About the department</h4>
-<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
-<p><br>The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
-<p><br>The Release Manager Team within the Production Engineering organization is responsible for&nbsp; ensuring that we can deliver new features to production in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
+<p>Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.</p>
 <h4>What you'll do</h4>
-<p>In this role you’ll have an opportunity to work on a number of different projects over the course of a year.&nbsp; &nbsp; These projects are critical to Cloudflare’s success and will often be developed in incubation mode with a focus on agile and iterative delivery to prove and build value over time.&nbsp; A sampling of the areas you may get a chance to work on are a service to automate firmware updates, tools to manage our IP addresses and adding complex capacity dashboard functionality.&nbsp;&nbsp;</p>
-<p>Because you’ll be solving problems of great significance, and <a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/">shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<p>We are looking for a highly skilled and self-motivated Technical Program Manager, IT/Enterprise Engineering with excellent communication skills who thrives on solving challenges to join our team. Your main role will be to work with the team to plan and manage programs to successful completion. Our large programs span over multiple quarters involving IT, various Business Verticals and Technical Operations teams.&nbsp;</p>
 <p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
-<p>A rough list of the skills we would love to see you bring:</p>
+<p>You bring a passion for matching up business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You are able to implement and drive processes and persistently make progress.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading initiatives, and is able to adapt to changing situations. Combined with technical expertise, you have the ability to build trust and strong partnership with counterparts in Engineering, Development, Operations, and Business teams.</p>
+<p><strong>Re</strong><strong>sponsibilities:</strong></p>
 <ul>
-	<li>Programming experience in Go, Python or similar languages</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Designing and building APIs</li>
-	<li>Great oral and written communications skills</li>
-	<li>Desire to learn and improve</li>
-	<li>Willing and eager to share knowledge, and mentor</li>
-	<li>At least 8 years software development experience</li>
-	<li>Experience building and operating high complexity and volume production systems</li>
-	<li>​​Understanding of security issues and responsibilities</li>
+	<li>Build&nbsp; bridges across Cloudflare to ensure programs/ projects are effectively planned, developed, integrated and deployed with quality and on time delivery into our production systems.</li>
+	<li>Be&nbsp; the glue that binds a highly cohesive cross functional core team in the planning and execution of tasks required to ensure success of the multitude of projects comprising&nbsp; a program.</li>
+	<li>Gather business requirements and assist with translating requirements into future state design options, while deftly incorporating sound architecture and design principles into the final solution.</li>
+	<li>Build clear and transparent communication channels to align business stakeholders, IT, and third-party vendors to ensure relevant audiences receive appropriate updates on programs and projects.</li>
+	<li>Work with stakeholders in controlling program scope&nbsp; and executing to committed schedules, as well as maintaining and reporting out program deliverables across&nbsp; multiple teams and business units.</li>
+</ul>
+<ul>
+	<li>Establish and maintain relationships with vendors, ensuring adherence to best practices and accountability throughout the program lifecycle.</li>
+</ul>
+<ul>
+	<li>Maintain clear line-of-site on the critical path timeline; managing risks, and facilitating resolution of blockers to ensure project success.</li>
+	<li>Collaborate with Business PMs on internal processes, tools and workflows across multiple teams and functions across Cloudflare, in support of IT governance and project management methodologies, processes and procedures.</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>5+ years experience in program and project management.</li>
+	<li>A strong engineering or development background to facilitate architecture and integration discussions.</li>
+	<li>Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study.</li>
+	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority.</li>
+	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements.</li>
+	<li>Strong competency with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc).&nbsp;&nbsp;</li>
+	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested).</li>
+	<li>Thrive in a fast-paced hyper-growth engineering environment, with the ability to learn new technologies quickly, and extremely comfortable&nbsp; with ambiguity.</li>
+	<li>Bachelor's degree in Computer Science, Information Systems Management, Technology management, Business management or comparable work experience.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Proven working experience as a program manager in the technology sector, preferably within an IT or Corporate Technology department</li>
+	<li>Experience with both waterfall and Agile development methodologies</li>
+	<li>Experience major platforms (Salesforce, Oracle EBS, SAP, etc.)</li>
+	<li>PMP/PgMP and Agile certifications</li>
+	<li>Fluency in organizational change management methodologies (Prosci, etc.)</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
