@@ -1,5 +1,24 @@
 [
 	{
+		"id": "524d8604ba35958b4a8d9e5fb06d5eeb",
+		"name": "Brand Protection",
+		"description": "Grants access to abuse reports and brand protection",
+		"permissions": {
+			"blocks": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "fe700b87d989a8a99428e5258301e277",
 		"name": "Cloudforce One Read",
 		"description": "Grants read access to Cloudforce One",
