@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.12.5",
-		"beta": "0.0.0-ca41ebf0e"
+		"beta": "0.0.0-ce8bfbdad"
 	},
 	"versions": {
 		"0.1.0": {
@@ -25858,6 +25858,80 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-ca41ebf0e",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^5.0.10",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250121.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "10360ad6584296019df0d3b133a6e3a03f9edb3d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-ca41ebf0e.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-gW+d60UMpBS+74qIv7XWnzP6f5DCwpmoy5rdBSYp8BK/MaRVMvynVygEQctLvrSPUyTwDhfdvNzp0lc28c7r1g==",
+				"signatures": [
+					{
+						"sig": "MEQCIEyoifim3pOjaNAbDbTAdbjQg9zy2bpzyswSyCkzJJE7AiBgqgDC5zOYFYvdyqfTEJkcZEV96laGkEA1/msVeipKIg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1062398
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-ad58eaaca": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-ad58eaaca",
+			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^5.0.10",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250121.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "fe0e355772881b7c529fa7253fe0b5df11be339a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-ad58eaaca.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-vY+wmCUrRkriyqToak64P6q+ktqpUInOuL30noS7kznpd9Oo4nPQ4/fSfb/+ZWt9H1xVryLfAMnbCKSoIrQz4Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIBOkfKpqj6mDQP+WcAnVC2vi8j/iiPcCzx3ryEN5IxxBAiEApLE7ZbAoshUcHo2Ye2+ztS+9FcBWZE/gj7dL8iEY6Uc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1062398
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-ce8bfbdad": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-ce8bfbdad",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -25871,19 +25945,19 @@
 				"toucan-js": "^3.3.1",
 				"typescript": "^5.7.2",
 				"vitest": "~2.1.8",
-				"@cloudflare/workers-tsconfig": "0.0.0",
-				"@cloudflare/eslint-config-worker": "1.1.0"
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-gW+d60UMpBS+74qIv7XWnzP6f5DCwpmoy5rdBSYp8BK/MaRVMvynVygEQctLvrSPUyTwDhfdvNzp0lc28c7r1g==",
-				"shasum": "10360ad6584296019df0d3b133a6e3a03f9edb3d",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-ca41ebf0e.tgz",
+				"integrity": "sha512-pp25z+a0E5SQH6liSPf8jhACIvTBTU+zDCpwHh3ZWxZ+mKK56I459u51NfiVYa6yIa2/diwV8GKhP2ELboL3Mw==",
+				"shasum": "24da79d97450b8a38ad179564e404571291844fa",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-ce8bfbdad.tgz",
 				"fileCount": 11,
 				"unpackedSize": 1062398,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEyoifim3pOjaNAbDbTAdbjQg9zy2bpzyswSyCkzJJE7AiBgqgDC5zOYFYvdyqfTEJkcZEV96laGkEA1/msVeipKIg=="
+						"sig": "MEUCICFXGHzdAYlG9zGwLVPVuZjwZgBVWKUvp2YtPGHvclz0AiEA+8SOolgC41TR2iLNcHpPGmlF2GCf/hC/gNGkIMKaM4U="
 					}
 				]
 			},
