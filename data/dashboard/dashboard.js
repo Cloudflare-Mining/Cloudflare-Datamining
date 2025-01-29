@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "c6f88d4b-d9e6-5070-82a1-3d5efacf174d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a2218dc1-92c7-5654-813e-7dd1bcbc3c38")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -755,7 +755,7 @@
 			};
 			var tn = t("../react/utils/useDomainConnectRedirect.ts");
 			const nn = "GTM-NDGPDFZ",
-				on = ye().lazy(() => Promise.all([t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(16339), t.e(74862), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(40912), t.e(32036), t.e(20263), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				on = ye().lazy(() => Promise.all([t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(16339), t.e(74862), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(40912), t.e(32036), t.e(68009), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
 				rn = ye().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(39074), t.e(24074), t.e(16339), t.e(60734), t.e(69088), t.e(32036), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var an = ({
 					userIsAuthed: N
@@ -903,10 +903,10 @@
 					t.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "ec40d1fe27dad7fe745ec071be47ef113dde66a5",
-						dashVersion: "30651342",
+						commit: "b992cdd25b9f03fdf6e33a2126df856c81e76551",
+						dashVersion: "30683226",
 						env: "production",
-						builtAt: 1738089681984,
+						builtAt: 1738175420649,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -3966,6 +3966,8 @@
 					entityType: "userCommPreferences"
 				}, {
 					entityType: "userDetails"
+				}, {
+					entityType: "userGroup"
 				}, {
 					entityType: "workerRoutes"
 				}, {
@@ -14192,7 +14194,7 @@
 				i = t.n(m),
 				p = t("../react/pages/security/settings/hooks/index.ts"),
 				C = t("../react/pages/security/settings/resources/index.ts");
-			const n = d().lazy(() => Promise.all([t.e(37800), t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(4e4), t.e(3391), t.e(68204), t.e(2515), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60911), t.e(60734), t.e(40912), t.e(71449), t.e(9147), t.e(44753), t.e(20263), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
+			const n = d().lazy(() => Promise.all([t.e(37800), t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(4e4), t.e(3391), t.e(68204), t.e(2515), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60911), t.e(60734), t.e(40912), t.e(71449), t.e(9147), t.e(44753), t.e(68009), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				r = () => {
 					const {
 						t: s
@@ -19001,4 +19003,4 @@
 	}
 ]);
 
-//# debugId=c6f88d4b-d9e6-5070-82a1-3d5efacf174d
+//# debugId=a2218dc1-92c7-5654-813e-7dd1bcbc3c38
