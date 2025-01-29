@@ -538,6 +538,7 @@ interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
+  container?: Container;
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
   acceptWebSocket(ws: WebSocket, tags?: string[]): void;
   getWebSockets(tag?: string): WebSocket[];
@@ -3401,6 +3402,18 @@ interface EventSourceEventSourceInit {
   withCredentials?: boolean;
   fetcher?: Fetcher;
 }
+interface Container {
+  get running(): boolean;
+  start(options?: ContainerStartupOptions): void;
+  monitor(): Promise<void>;
+  destroy(error?: any): Promise<void>;
+  signal(signo: number): void;
+  getTcpPort(port: number): Fetcher;
+}
+interface ContainerStartupOptions {
+  entrypoint?: string[];
+  enableInternet: boolean;
+}
 type AiImageClassificationInput = {
   image: number[];
 };
@@ -4097,6 +4110,7 @@ interface AiModels {
 }
 type AiOptions = {
   gateway?: GatewayOptions;
+  returnRawResponse?: boolean;
   prefix?: string;
   extraHeaders?: object;
 };
@@ -4131,11 +4145,17 @@ type AiModelListType = Record<string, any>;
 declare abstract class Ai<AiModelList extends AiModelListType = AiModels> {
   aiGatewayLogId: string | null;
   gateway(gatewayId: string): AiGateway;
-  run<Name extends keyof AiModelList>(
+  run<Name extends keyof AiModelList, Options extends AiOptions>(
     model: Name,
     inputs: AiModelList[Name]["inputs"],
-    options?: AiOptions,
-  ): Promise<AiModelList[Name]["postProcessedOutputs"]>;
+    options?: Options,
+  ): Promise<
+    Options extends {
+      returnRawResponse: true;
+    }
+      ? Response
+      : AiModelList[Name]["postProcessedOutputs"]
+  >;
   public models(params?: AiModelsSearchParams): Promise<AiModelsSearchObject[]>;
 }
 type GatewayOptions = {
