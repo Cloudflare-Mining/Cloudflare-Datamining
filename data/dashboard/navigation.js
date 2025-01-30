@@ -176,7 +176,7 @@ const navigation = {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			labels: ["beta"],
-			hasPermission: L => (0, a.iY)(L) && (0, u.BU)(L) && (0, e.hI)(L)
+			hasPermission: L => (0, a.iY)(L) && (0, u.BU)(L) && ((0, e.hI)(L) || (0, e.CV)(L))
 		}, {
 			title: "navigation.account.security_center.blocked_content",
 			url: "/security-center/blocked-content",
