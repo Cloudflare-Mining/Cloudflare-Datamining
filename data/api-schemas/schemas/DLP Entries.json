@@ -209,6 +209,9 @@
 		"summary": "Delete custom entry",
 		"tags": [
 			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries": {
@@ -711,6 +714,10 @@
 		"summary": "List all entries",
 		"tags": [
 			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -1219,6 +1226,10 @@
 		"summary": "Get DLP Entry",
 		"tags": [
 			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries": {
@@ -1525,6 +1536,9 @@
 		"summary": "Create custom entry",
 		"tags": [
 			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -2128,6 +2142,9 @@
 		"summary": "Update entry",
 		"tags": [
 			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

@@ -2581,6 +2581,10 @@
 		"summary": "Pool Health Details",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/references": {
@@ -2941,6 +2945,10 @@
 		"summary": "List Pool References",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/pools": {

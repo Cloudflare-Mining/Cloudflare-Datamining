@@ -219,6 +219,9 @@
 		"summary": "Delete an SSH Certificate Authority (CA)",
 		"tags": [
 			"Gateway CA"
+		],
+		"x-api-token-group": [
+			"Access: SSH Auditing CA Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {

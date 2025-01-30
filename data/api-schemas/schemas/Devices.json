@@ -844,6 +844,9 @@
 		"summary": "Delete a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices": {
@@ -4873,6 +4876,10 @@
 		"summary": "Get device settings profile by ID",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -5312,6 +5319,10 @@
 		"summary": "Get the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -5757,6 +5768,10 @@
 		"summary": "Get the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -6196,6 +6211,10 @@
 		"summary": "Get the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
@@ -6624,6 +6643,10 @@
 		"summary": "Get the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -7058,6 +7081,10 @@
 		"summary": "Get your Local Domain Fallback list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
@@ -7486,6 +7513,10 @@
 		"summary": "Get the Split Tunnel include list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
@@ -9478,6 +9509,9 @@
 		"summary": "Update a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
@@ -11895,6 +11929,9 @@
 		"summary": "Set the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -12378,6 +12415,9 @@
 		"summary": "Set the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -12852,6 +12892,9 @@
 		"summary": "Set the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
@@ -13315,6 +13358,9 @@
 		"summary": "Set the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -13787,6 +13833,9 @@
 		"summary": "Set your Local Domain Fallback list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
@@ -14250,6 +14299,9 @@
 		"summary": "Set the Split Tunnel include list",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

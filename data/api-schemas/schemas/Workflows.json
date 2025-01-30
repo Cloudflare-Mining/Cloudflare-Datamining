@@ -583,6 +583,11 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -945,6 +950,11 @@
 		"summary": "List of workflow instances",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1514,6 +1524,11 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -1753,6 +1768,11 @@
 		"summary": "List deployed Workflow versions",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2035,6 +2055,11 @@
 		"summary": "Get Workflow version details",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2395,6 +2420,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -2695,6 +2723,9 @@
 		"tags": [
 			"Workflows"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.workers.write",
@@ -2955,6 +2986,9 @@
 		"summary": "Create/modify Workflow",
 		"tags": [
 			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -310,6 +310,9 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -718,6 +721,10 @@
 		"tags": [
 			"Secondary DNS (TSIG)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1071,6 +1078,10 @@
 		"summary": "TSIG Details",
 		"tags": [
 			"Secondary DNS (TSIG)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1453,6 +1464,9 @@
 		"summary": "Create TSIG",
 		"tags": [
 			"Secondary DNS (TSIG)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1845,6 +1859,9 @@
 		"summary": "Update TSIG",
 		"tags": [
 			"Secondary DNS (TSIG)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

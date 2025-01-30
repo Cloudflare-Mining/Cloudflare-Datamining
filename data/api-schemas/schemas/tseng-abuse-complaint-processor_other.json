@@ -56,19 +56,19 @@
 								"type": "string"
 							},
 							"address1": {
-								"description": "Text not exceeding 100 characters",
+								"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 100,
 								"minLength": 1,
 								"type": "string"
 							},
 							"agent_name": {
-								"description": "The name of the copyright holder. Text not exceeding 60 characters.",
+								"description": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 60,
 								"minLength": 1,
 								"type": "string"
 							},
 							"agree": {
-								"description": "Can be 0 or 1",
+								"description": "Can be `0` for false or `1` for true",
 								"enum": [
 									0,
 									1
@@ -76,7 +76,7 @@
 								"type": "integer"
 							},
 							"city": {
-								"description": "Text not exceeding 255 characters",
+								"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
@@ -88,13 +88,13 @@
 								"type": "string"
 							},
 							"company": {
-								"description": "Text not exceeding 100 characters",
+								"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 100,
 								"minLength": 1,
 								"type": "string"
 							},
 							"country": {
-								"description": "Text not exceeding 255 characters",
+								"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
@@ -104,7 +104,7 @@
 								"type": "string"
 							},
 							"email": {
-								"description": "A valid email of the abuse reporter",
+								"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"type": "string"
 							},
 							"email2": {
@@ -127,7 +127,7 @@
 								"type": "string"
 							},
 							"name": {
-								"description": "Text not exceeding 255 characters",
+								"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
@@ -146,7 +146,7 @@
 								"type": "boolean"
 							},
 							"original_work": {
-								"description": "Text not exceeding 255 characters",
+								"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
@@ -173,13 +173,13 @@
 								"type": "string"
 							},
 							"state": {
-								"description": "Text not exceeding 255 characters",
+								"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
 							},
 							"tele": {
-								"description": "Text not exceeding 20 characters",
+								"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"maxLength": 20,
 								"minLength": 1,
 								"type": "string"
@@ -209,7 +209,7 @@
 								"type": "string"
 							},
 							"urls": {
-								"description": "A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique",
+								"description": "A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 								"type": "string"
 							}
 						},
@@ -220,7 +220,8 @@
 							"host_notification",
 							"owner_notification",
 							"ncmec_notification",
-							"urls"
+							"urls",
+							"agree"
 						],
 						"type": "object"
 					}

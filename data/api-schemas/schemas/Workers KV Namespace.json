@@ -1801,6 +1801,10 @@
 		"summary": "Read the metadata for a key",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {

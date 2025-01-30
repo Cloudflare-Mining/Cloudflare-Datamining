@@ -638,6 +638,9 @@
 		"summary": "Get active sessions",
 		"tags": [
 			"Zero Trust users"
+		],
+		"x-api-token-group": [
+			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
@@ -1028,6 +1031,9 @@
 		"summary": "Get single active session",
 		"tags": [
 			"Zero Trust users"
+		],
+		"x-api-token-group": [
+			"Access: Audit Logs Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
@@ -1665,6 +1671,9 @@
 		"summary": "Get last seen identity",
 		"tags": [
 			"Zero Trust users"
+		],
+		"x-api-token-group": [
+			"Access: Audit Logs Read"
 		]
 	}
 }

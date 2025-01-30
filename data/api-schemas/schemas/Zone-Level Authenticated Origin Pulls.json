@@ -453,6 +453,9 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1425,6 +1428,10 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1725,6 +1732,10 @@
 		"summary": "Get Enablement Setting for Zone",
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2525,6 +2536,9 @@
 		"summary": "Set Enablement for Zone",
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

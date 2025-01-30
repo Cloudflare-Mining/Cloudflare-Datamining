@@ -119,6 +119,10 @@
 		"tags": [
 			"Workers AI Text To Image"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -285,6 +289,10 @@
 		"summary": "Execute @cf/bytedance/stable-diffusion-xl-lightning model.",
 		"tags": [
 			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -453,6 +461,10 @@
 		"tags": [
 			"Workers AI Text To Image"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -619,6 +631,10 @@
 		"summary": "Execute @cf/runwayml/stable-diffusion-v1-5-img2img model.",
 		"tags": [
 			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -787,6 +803,10 @@
 		"tags": [
 			"Workers AI Text To Image"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -953,6 +973,10 @@
 		"summary": "Execute @cf/stabilityai/stable-diffusion-xl-base-1.0 model.",
 		"tags": [
 			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

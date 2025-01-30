@@ -2418,6 +2418,12 @@
 		"summary": "Get tunnel route by IP",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {

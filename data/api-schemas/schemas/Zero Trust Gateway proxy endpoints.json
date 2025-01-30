@@ -302,6 +302,9 @@
 		"summary": "Delete a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
@@ -659,6 +662,10 @@
 		"summary": "List proxy endpoints",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
@@ -1092,6 +1099,10 @@
 		"summary": "Get a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
@@ -1484,6 +1495,9 @@
 		"summary": "Update a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
@@ -1871,6 +1885,9 @@
 		"summary": "Create a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

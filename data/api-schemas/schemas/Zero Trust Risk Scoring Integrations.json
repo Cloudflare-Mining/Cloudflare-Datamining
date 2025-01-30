@@ -208,6 +208,9 @@
 		"summary": "Delete a risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -722,6 +725,10 @@
 		"summary": "Get risk score integration by id.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}": {
@@ -979,6 +986,10 @@
 		"summary": "Get risk score integration by reference id.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -1552,6 +1563,9 @@
 		"summary": "Update a risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

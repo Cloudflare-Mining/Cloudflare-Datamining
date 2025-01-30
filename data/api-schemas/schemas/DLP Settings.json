@@ -208,6 +208,10 @@
 		"summary": "Fetch limits associated with DLP for account",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
@@ -422,6 +426,10 @@
 		"summary": "Get payload log settings",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/patterns/validate": {
@@ -659,6 +667,9 @@
 		"summary": "Validate a DLP regex pattern",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
@@ -890,6 +901,9 @@
 		"summary": "Set payload log settings",
 		"tags": [
 			"DLP Settings"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

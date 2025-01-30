@@ -854,7 +854,8 @@
 		"summary": "List domains",
 		"tags": [
 			"Registrar Domains"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/registrar/domains/{domain_name}": {
 		"description": "Show individual domain.",
@@ -1199,7 +1200,8 @@
 		"summary": "Get domain",
 		"tags": [
 			"Registrar Domains"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"PUT /accounts/{account_id}/registrar/domains/{domain_name}": {
 		"description": "Update individual domain.",
@@ -1575,6 +1577,7 @@
 		"summary": "Update domain",
 		"tags": [
 			"Registrar Domains"
-		]
+		],
+		"x-api-token-group": null
 	}
 }

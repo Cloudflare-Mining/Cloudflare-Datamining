@@ -217,6 +217,9 @@
 		"summary": "Delete additional audio tracks on a video",
 		"tags": [
 			"Stream Audio Tracks"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/audio": {
@@ -456,6 +459,10 @@
 		"summary": "List additional audio tracks on a video",
 		"tags": [
 			"Stream Audio Tracks"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}": {
@@ -725,6 +732,9 @@
 		"summary": "Edit additional audio tracks on a video",
 		"tags": [
 			"Stream Audio Tracks"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/audio/copy": {

@@ -857,6 +857,10 @@
 		"summary": "Get Region",
 		"tags": [
 			"Load Balancer Regions"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	}
 }

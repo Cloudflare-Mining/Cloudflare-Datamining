@@ -494,6 +494,9 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -960,6 +963,9 @@
 		"summary": "Delete Waiting Room Rule",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -3165,6 +3171,10 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3587,6 +3597,10 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3974,6 +3988,10 @@
 		"summary": "Preview active event details",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -4426,6 +4444,10 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -4702,6 +4724,10 @@
 		"summary": "Get waiting room status",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -6449,6 +6475,9 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -6984,6 +7013,9 @@
 		"summary": "Patch Waiting Room Rule",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -10974,6 +11006,9 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -11467,6 +11502,9 @@
 		"summary": "Replace Waiting Room Rules",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

@@ -129,6 +129,9 @@
 		"summary": "Delete an output",
 		"tags": [
 			"Stream Live Inputs"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
@@ -1042,6 +1045,10 @@
 		"summary": "List all outputs associated with a specified live input",
 		"tags": [
 			"Stream Live Inputs"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
@@ -2549,6 +2556,9 @@
 		"summary": "Update an output",
 		"tags": [
 			"Stream Live Inputs"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	}
 }

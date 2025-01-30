@@ -1089,6 +1089,10 @@
 		"summary": "Get message details",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/detections": {
@@ -1561,6 +1565,10 @@
 		"summary": "Get message detection details",
 		"tags": [
 			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/preview": {
@@ -2632,7 +2640,8 @@
 		"summary": "Get reclassify submissions",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/move": {
 		"operationId": "email_security_post_message_move",
@@ -2887,7 +2896,8 @@
 		"summary": "Move a message",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify": {
 		"operationId": "email_security_post_reclassify",
@@ -3111,7 +3121,8 @@
 		"summary": "Change email classfication",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
 		"operationId": "email_security_post_bulk_message_move",
@@ -3365,7 +3376,8 @@
 		"summary": "Move multiple messages",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
 		"operationId": "email_security_post_preview",
@@ -3580,7 +3592,8 @@
 		"summary": "Preview for non-detection messages",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
 		"operationId": "email_security_post_release",
@@ -3823,6 +3836,7 @@
 		"summary": "Release messages from quarantine",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-api-token-group": null
 	}
 }

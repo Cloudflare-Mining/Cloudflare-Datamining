@@ -1229,6 +1229,10 @@
 		"summary": "Retrieve embed Code HTML",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/storage-usage": {
@@ -1462,6 +1466,10 @@
 		"summary": "Storage use",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream": {
@@ -2959,6 +2967,9 @@
 		"summary": "Upload videos from a URL",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/direct_upload": {
@@ -3344,6 +3355,9 @@
 		"summary": "Upload videos via direct upload URLs",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	}
 }

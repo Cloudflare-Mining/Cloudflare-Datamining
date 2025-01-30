@@ -294,6 +294,12 @@
 		"summary": "List Cloudflare colos",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/live": {
@@ -1009,6 +1015,12 @@
 		"summary": "Get the live status of a latest device",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
@@ -1928,6 +1940,12 @@
 		"summary": "List fleet status devices",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/live": {
@@ -2313,6 +2331,12 @@
 		"summary": "List fleet status details by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
@@ -2554,6 +2578,12 @@
 		"summary": "List fleet status aggregate details by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
@@ -3333,6 +3363,12 @@
 		"summary": "Get details and aggregate metrics for an http test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
@@ -3671,6 +3707,12 @@
 		"summary": "Get percentiles for an http test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/tests/overview": {
@@ -4527,6 +4569,12 @@
 		"summary": "List DEX test analytics",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/tests/unique-devices": {
@@ -4765,6 +4813,12 @@
 		"summary": "Get count of devices targeted",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
@@ -5081,6 +5135,12 @@
 		"summary": "Get details for a specific traceroute test run",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
@@ -5805,6 +5865,12 @@
 		"summary": "Get details and aggregate metrics for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
@@ -6174,6 +6240,12 @@
 		"summary": "Get network path breakdown for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
@@ -6512,6 +6584,12 @@
 		"summary": "Get percentiles for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	}
 }

@@ -572,6 +572,10 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2497,6 +2501,9 @@
 		"summary": "Replace Hostname Associations",
 		"tags": [
 			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

@@ -310,6 +310,9 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -734,6 +737,10 @@
 		"tags": [
 			"Secondary DNS (Peer)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1103,6 +1110,10 @@
 		"summary": "Peer Details",
 		"tags": [
 			"Secondary DNS (Peer)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1482,6 +1493,9 @@
 		"summary": "Create Peer",
 		"tags": [
 			"Secondary DNS (Peer)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1898,6 +1912,9 @@
 		"summary": "Update Peer",
 		"tags": [
 			"Secondary DNS (Peer)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

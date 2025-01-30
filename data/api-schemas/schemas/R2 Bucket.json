@@ -3201,6 +3201,277 @@
 			"R2 Bucket"
 		]
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
+		"description": "Get lock rules for a bucket",
+		"operationId": "r2-get-bucket-lock-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"rules": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"condition": {
+																		"oneOf": [
+																			{
+																				"description": "Condition to apply a lock rule to an object for how long in seconds",
+																				"properties": {
+																					"maxAgeSeconds": {
+																						"example": 100,
+																						"type": "integer"
+																					},
+																					"type": {
+																						"enum": [
+																							"Age"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"maxAgeSeconds"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"description": "Condition to apply a lock rule to an object until a specific date",
+																				"properties": {
+																					"date": {
+																						"format": "date",
+																						"type": "string"
+																					},
+																					"type": {
+																						"enum": [
+																							"Date"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"date"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"description": "Condition to apply a lock rule indefinitely",
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"Indefinite"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"enabled": {
+																		"description": "Whether or not this rule is in effect",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Unique identifier for this rule",
+																		"example": "Lock all objects for 24 hours",
+																		"type": "string"
+																	},
+																	"prefix": {
+																		"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"condition",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Bucket Lock Rules",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Gets configuration for Sippy for an existing R2 bucket.",
 		"operationId": "r2-get-bucket-sippy-config",
@@ -5536,6 +5807,278 @@
 			}
 		],
 		"summary": "Put Object Lifecycle Rules",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
+	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
+		"description": "Set lock rules for a bucket",
+		"operationId": "r2-put-bucket-lock-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"rules": {
+								"items": {
+									"properties": {
+										"condition": {
+											"oneOf": [
+												{
+													"description": "Condition to apply a lock rule to an object for how long in seconds",
+													"properties": {
+														"maxAgeSeconds": {
+															"example": 100,
+															"type": "integer"
+														},
+														"type": {
+															"enum": [
+																"Age"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"maxAgeSeconds"
+													],
+													"type": "object"
+												},
+												{
+													"description": "Condition to apply a lock rule to an object until a specific date",
+													"properties": {
+														"date": {
+															"format": "date",
+															"type": "string"
+														},
+														"type": {
+															"enum": [
+																"Date"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"date"
+													],
+													"type": "object"
+												},
+												{
+													"description": "Condition to apply a lock rule indefinitely",
+													"properties": {
+														"type": {
+															"enum": [
+																"Indefinite"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"enabled": {
+											"description": "Whether or not this rule is in effect",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "Unique identifier for this rule",
+											"example": "Lock all objects for 24 hours",
+											"type": "string"
+										},
+										"prefix": {
+											"description": "Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"condition",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Put Bucket Lock Rules",
 		"tags": [
 			"R2 Bucket"
 		]

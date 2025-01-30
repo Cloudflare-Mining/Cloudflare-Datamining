@@ -765,6 +765,12 @@
 		"tags": [
 			"Custom pages for a zone"
 		],
+		"x-api-token-group": [
+			"Custom Pages Write",
+			"Custom Pages Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1160,6 +1166,10 @@
 		"summary": "Update a custom page",
 		"tags": [
 			"Custom pages for a zone"
+		],
+		"x-api-token-group": [
+			"Custom Pages Write",
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

@@ -1643,6 +1643,11 @@
 		"summary": "Get Zaraz configuration",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/default": {
@@ -3289,6 +3294,11 @@
 		"summary": "Get default Zaraz configuration",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/export": {
@@ -4876,6 +4886,11 @@
 		"summary": "Export Zaraz configuration",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history": {
@@ -5180,6 +5195,11 @@
 		"summary": "List Zaraz historical configuration records",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
@@ -6973,6 +6993,11 @@
 		"summary": "Get Zaraz historical configurations by ID(s)",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/workflow": {
@@ -7179,6 +7204,11 @@
 		"summary": "Get Zaraz workflow",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		]
 	},
 	"POST /zones/{zone_id}/settings/zaraz/publish": {
@@ -10501,6 +10531,10 @@
 		"summary": "Update Zaraz configuration",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
 		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/history": {
@@ -12160,6 +12194,10 @@
 		"summary": "Restore Zaraz historical configuration by ID",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
 		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
@@ -12382,6 +12420,10 @@
 		"summary": "Update Zaraz workflow",
 		"tags": [
 			"Zaraz"
+		],
+		"x-api-token-group": [
+			"Zaraz Edit",
+			"Zaraz Admin"
 		]
 	}
 }

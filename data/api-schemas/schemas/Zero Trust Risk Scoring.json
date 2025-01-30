@@ -299,6 +299,9 @@
 		"summary": "Get risk event/score information for a specific user",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
@@ -817,6 +820,9 @@
 		"summary": "Get risk score info for all users in the account",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
@@ -1028,6 +1034,9 @@
 		"summary": "Clear the risk score for a particular user",
 		"tags": [
 			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {

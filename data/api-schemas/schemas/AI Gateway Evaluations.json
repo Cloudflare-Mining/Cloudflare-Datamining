@@ -312,6 +312,9 @@
 		"tags": [
 			"AI Gateway Evaluations"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -515,6 +518,10 @@
 		"summary": "List Evaluators",
 		"tags": [
 			"AI Gateway Evaluations"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -876,6 +883,10 @@
 		"tags": [
 			"AI Gateway Evaluations"
 		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.aig"
@@ -1200,6 +1211,10 @@
 		"summary": "Fetch a Evaluation",
 		"tags": [
 			"AI Gateway Evaluations"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1558,6 +1573,9 @@
 		"summary": "Create a new Evaluation",
 		"tags": [
 			"AI Gateway Evaluations"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

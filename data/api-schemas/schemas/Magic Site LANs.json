@@ -258,6 +258,14 @@
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
+																"dns_servers": {
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"reservations": {
 																	"additionalProperties": {
 																		"description": "IP address associated with the MAC address",
@@ -407,6 +415,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -656,6 +665,14 @@
 																		"example": "192.0.2.1",
 																		"type": "string"
 																	},
+																	"dns_servers": {
+																		"items": {
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"reservations": {
 																		"additionalProperties": {
 																			"description": "IP address associated with the MAC address",
@@ -807,6 +824,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1067,6 +1085,14 @@
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
+																"dns_servers": {
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"reservations": {
 																	"additionalProperties": {
 																		"description": "IP address associated with the MAC address",
@@ -1216,6 +1242,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1356,6 +1383,14 @@
 												"description": "A valid IPv4 address.",
 												"example": "192.0.2.1",
 												"type": "string"
+											},
+											"dns_servers": {
+												"items": {
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"reservations": {
 												"additionalProperties": {
@@ -1612,6 +1647,14 @@
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
+																"dns_servers": {
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"reservations": {
 																	"additionalProperties": {
 																		"description": "IP address associated with the MAC address",
@@ -1761,6 +1804,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1893,6 +1937,14 @@
 												"description": "A valid IPv4 address.",
 												"example": "192.0.2.1",
 												"type": "string"
+											},
+											"dns_servers": {
+												"items": {
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"reservations": {
 												"additionalProperties": {
@@ -2154,6 +2206,14 @@
 																		"example": "192.0.2.1",
 																		"type": "string"
 																	},
+																	"dns_servers": {
+																		"items": {
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"reservations": {
 																		"additionalProperties": {
 																			"description": "IP address associated with the MAC address",
@@ -2305,6 +2365,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2445,6 +2506,14 @@
 												"description": "A valid IPv4 address.",
 												"example": "192.0.2.1",
 												"type": "string"
+											},
+											"dns_servers": {
+												"items": {
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"reservations": {
 												"additionalProperties": {
@@ -2701,6 +2770,14 @@
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
+																"dns_servers": {
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"reservations": {
 																	"additionalProperties": {
 																		"description": "IP address associated with the MAC address",
@@ -2850,6 +2927,7 @@
 		"tags": [
 			"Magic Site LANs"
 		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

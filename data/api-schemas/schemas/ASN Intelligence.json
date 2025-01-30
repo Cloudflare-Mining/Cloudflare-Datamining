@@ -291,6 +291,10 @@
 		"summary": "Get ASN Overview",
 		"tags": [
 			"ASN Intelligence"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
@@ -503,6 +507,10 @@
 		"summary": "Get ASN Subnets",
 		"tags": [
 			"ASN Intelligence"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	}
 }

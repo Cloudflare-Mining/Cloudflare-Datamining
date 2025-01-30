@@ -352,6 +352,12 @@
 		"summary": "List account commands",
 		"tags": [
 			"DEX Remote Commands"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
@@ -561,6 +567,12 @@
 		"summary": "Download command output file",
 		"tags": [
 			"DEX Remote Commands"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
@@ -880,6 +892,12 @@
 		"summary": "List devices eligible for remote captures",
 		"tags": [
 			"DEX Remote Commands"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
@@ -1139,6 +1157,12 @@
 		"summary": "Returns account commands usage, quota, and reset time",
 		"tags": [
 			"DEX Remote Commands"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"POST /accounts/{account_id}/dex/commands": {
@@ -1505,6 +1529,9 @@
 		"summary": "Create account commands",
 		"tags": [
 			"DEX Remote Commands"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
 		]
 	}
 }

@@ -717,6 +717,9 @@
 		"tags": [
 			"Web3 Hostname"
 		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2104,6 +2107,10 @@
 		"tags": [
 			"Web3 Hostname"
 		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write",
+			"Web3 Hostnames Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2607,6 +2614,10 @@
 		"tags": [
 			"Web3 Hostname"
 		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write",
+			"Web3 Hostnames Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3067,6 +3078,10 @@
 		"summary": "IPFS Universal Path Gateway Content List Entry Details",
 		"tags": [
 			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write",
+			"Web3 Hostnames Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -5037,6 +5052,9 @@
 		"tags": [
 			"Web3 Hostname"
 		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -5534,6 +5552,9 @@
 		"summary": "Edit IPFS Universal Path Gateway Content List Entry",
 		"tags": [
 			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

@@ -195,6 +195,9 @@
 		"summary": "Delete security.txt",
 		"tags": [
 			"security.txt"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		]
 	},
 	"GET /zones/{zone_id}/security-center/securitytxt": {
@@ -477,6 +480,10 @@
 		"summary": "Get security.txt",
 		"tags": [
 			"security.txt"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		]
 	},
 	"PUT /zones/{zone_id}/security-center/securitytxt": {
@@ -763,6 +770,9 @@
 		"summary": "Update security.txt",
 		"tags": [
 			"security.txt"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		]
 	}
 }

@@ -46,7 +46,8 @@
 		"summary": "Delete a specified CNI object",
 		"tags": [
 			"CNIs"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
 		"operationId": "list_cnis",
@@ -216,7 +217,8 @@
 		"summary": "List existing CNI objects",
 		"tags": [
 			"CNIs"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "get_cni",
@@ -356,7 +358,8 @@
 		"summary": "Get information about a CNI object",
 		"tags": [
 			"CNIs"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
 		"operationId": "create_cni",
@@ -557,7 +560,8 @@
 		"summary": "Create a new CNI object",
 		"tags": [
 			"CNIs"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "update_cni",
@@ -791,6 +795,7 @@
 		"summary": "Modify stored information about a CNI object",
 		"tags": [
 			"CNIs"
-		]
+		],
+		"x-api-token-group": null
 	}
 }

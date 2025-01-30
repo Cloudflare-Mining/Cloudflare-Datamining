@@ -248,6 +248,467 @@
 			"pro": true
 		}
 	},
+	"GET /radar/ranking/internet_services/timeseries_groups": {
+		"description": "Gets Internet Services rank update changes over time. Raw values are returned.",
+		"operationId": "radar-get-ranking-internet-services-timeseries",
+		"parameters": [
+			{
+				"description": "Filter for services category.",
+				"in": "query",
+				"name": "serviceCategory",
+				"schema": {
+					"description": "Filter for services category.",
+					"example": "Generative AI",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														}
+													]
+												},
+												"type": "array"
+											},
+											"example": {
+												"Google": [
+													2
+												],
+												"timestamps": [
+													"2022-09-02"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Internet services rank time series",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ranking/internet_services/top": {
+		"description": "Get top Internet services based on their rank.",
+		"operationId": "radar-get-ranking-top-internet-services",
+		"parameters": [
+			{
+				"description": "Filter for services category.",
+				"in": "query",
+				"name": "serviceCategory",
+				"schema": {
+					"description": "Filter for services category.",
+					"example": "Generative AI",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of dates to filter the ranking.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Array of dates to filter the ranking.",
+					"example": "2022-09-19",
+					"items": {
+						"format": "date",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"top_0": {
+													"properties": {
+														"date": {
+															"example": "2022-09-19",
+															"type": "string"
+														},
+														"serviceCategory": {
+															"example": "Overall",
+															"type": "string"
+														}
+													},
+													"required": [
+														"date",
+														"serviceCategory"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"top_0"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"rank": {
+														"example": 1,
+														"type": "integer"
+													},
+													"service": {
+														"example": "Google",
+														"type": "string"
+													}
+												},
+												"required": [
+													"rank",
+													"service"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top Internet services",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/ranking/timeseries_groups": {
 		"description": "Gets Domains Rank updates change over time. Raw values are returned.",
 		"operationId": "radar-get-ranking-domain-timeseries",

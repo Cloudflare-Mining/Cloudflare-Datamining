@@ -301,6 +301,9 @@
 		"summary": "Delete a Zero Trust Gateway rule",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/rules": {
@@ -1829,6 +1832,10 @@
 		"summary": "List Zero Trust Gateway rules",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/rules/{rule_id}": {
@@ -3303,6 +3310,10 @@
 		"summary": "Get Zero Trust Gateway rule details",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/rules": {
@@ -5340,6 +5351,9 @@
 		"summary": "Create a Zero Trust Gateway rule",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration": {
@@ -6812,6 +6826,9 @@
 		"summary": "Reset the expiration of a Zero Trust Gateway Rule",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
@@ -8859,6 +8876,9 @@
 		"summary": "Update a Zero Trust Gateway rule",
 		"tags": [
 			"Zero Trust Gateway rules"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

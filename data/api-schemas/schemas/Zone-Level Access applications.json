@@ -9232,6 +9232,12 @@
 		"summary": "Test Access policies",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/apps": {

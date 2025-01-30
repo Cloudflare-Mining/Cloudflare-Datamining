@@ -300,6 +300,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -688,6 +693,13 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"DNS Read",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -985,6 +997,11 @@
 		"summary": "Force AXFR",
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1420,6 +1437,11 @@
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1853,6 +1875,11 @@
 		"summary": "Update Secondary Zone Configuration",
 		"tags": [
 			"Secondary DNS (Secondary Zone)"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write",
+			"DNS Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

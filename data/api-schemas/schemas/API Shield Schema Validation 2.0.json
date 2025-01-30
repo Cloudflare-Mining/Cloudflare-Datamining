@@ -176,6 +176,10 @@
 		"summary": "Delete a schema",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -308,6 +312,12 @@
 		"summary": "Retrieve operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -1044,6 +1054,12 @@
 		"summary": "Retrieve information about a specific schema on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations": {
@@ -1834,6 +1850,12 @@
 		"summary": "Retrieve all operations from a schema.",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
@@ -2103,6 +2125,12 @@
 		"summary": "Retrieve schema hosts in a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/operations/schema_validation": {
@@ -2359,6 +2387,10 @@
 		"summary": "Update multiple operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -2809,6 +2841,10 @@
 		"summary": "Enable validation for a schema",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/user_schemas": {
@@ -3377,6 +3413,10 @@
 		"summary": "Update operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/settings/schema_validation": {

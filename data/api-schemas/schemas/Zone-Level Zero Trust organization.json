@@ -773,6 +773,9 @@
 		"summary": "Revoke all Access tokens for a user",
 		"tags": [
 			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/organizations": {

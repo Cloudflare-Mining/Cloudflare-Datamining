@@ -299,6 +299,9 @@
 		"tags": [
 			"Zone Snippets"
 		],
+		"x-api-token-group": [
+			"Snippets Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1263,6 +1266,10 @@
 		"tags": [
 			"Zone Snippets"
 		],
+		"x-api-token-group": [
+			"Snippets Write",
+			"Snippets Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1514,6 +1521,10 @@
 		"summary": "Snippet Content",
 		"tags": [
 			"Zone Snippets"
+		],
+		"x-api-token-group": [
+			"Snippets Write",
+			"Snippets Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2206,6 +2217,9 @@
 		"summary": "Put Snippet",
 		"tags": [
 			"Zone Snippets"
+		],
+		"x-api-token-group": [
+			"Snippets Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

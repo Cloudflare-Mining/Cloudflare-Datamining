@@ -1258,6 +1258,11 @@
 		"summary": "Clean up Cloudflare Tunnel connections",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One cloudflared Connectors Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -4754,6 +4759,14 @@
 		"summary": "List Cloudflare Tunnel connections",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One cloudflared Connectors Write",
+			"Cloudflare One cloudflared Connectors Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
@@ -5293,6 +5306,14 @@
 		"summary": "Get Cloudflare Tunnel connector",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One cloudflared Connectors Write",
+			"Cloudflare One cloudflared Connectors Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
@@ -5619,6 +5640,14 @@
 		"summary": "Get a Cloudflare Tunnel token",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One cloudflared Connectors Write",
+			"Cloudflare One cloudflared Connectors Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/tunnels": {
@@ -9010,6 +9039,12 @@
 		"summary": "Get a Warp Connector Tunnel token",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One Warp Connectors Write",
+			"Cloudflare One Warp Connectors Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
@@ -12118,6 +12153,11 @@
 		"summary": "Get a Cloudflare Tunnel management token",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One cloudflared Connectors Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/warp_connector": {

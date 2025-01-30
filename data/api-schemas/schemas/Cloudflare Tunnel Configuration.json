@@ -491,6 +491,14 @@
 		"summary": "Get configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One cloudflared Connectors Write",
+			"Cloudflare One cloudflared Connectors Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
@@ -1233,6 +1241,11 @@
 		"summary": "Put configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One cloudflared Connectors Write",
+			"Argo Tunnel Write"
 		]
 	}
 }

@@ -139,6 +139,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -291,6 +295,10 @@
 		"tags": [
 			"Workers AI Text Embeddings"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -442,6 +450,10 @@
 		"summary": "Execute @cf/baai/bge-small-en-v1.5 model.",
 		"tags": [
 			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -230,6 +230,10 @@
 		"summary": "Download indicator feed data",
 		"tags": [
 			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds": {
@@ -1060,6 +1064,10 @@
 		"summary": "Get indicator feed metadata",
 		"tags": [
 			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
@@ -1204,6 +1212,10 @@
 		"summary": "Get indicator feed data",
 		"tags": [
 			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/permissions/view": {
@@ -1569,6 +1581,10 @@
 		"summary": "List indicator feed permissions",
 		"tags": [
 			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
 	"POST /accounts/{account_id}/intel/indicator-feeds": {

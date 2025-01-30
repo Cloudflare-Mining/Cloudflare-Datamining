@@ -310,6 +310,9 @@
 		"tags": [
 			"Secondary DNS (ACL)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -706,6 +709,10 @@
 		"tags": [
 			"Secondary DNS (ACL)"
 		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1047,6 +1054,10 @@
 		"summary": "ACL Details",
 		"tags": [
 			"Secondary DNS (ACL)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1405,6 +1416,9 @@
 		"summary": "Create ACL",
 		"tags": [
 			"Secondary DNS (ACL)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -1779,6 +1793,9 @@
 		"summary": "Update ACL",
 		"tags": [
 			"Secondary DNS (ACL)"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

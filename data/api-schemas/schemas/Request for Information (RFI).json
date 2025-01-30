@@ -187,6 +187,9 @@
 		"summary": "Delete a Request",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
@@ -388,6 +391,9 @@
 		"summary": "Delete a Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/{message_identifer}": {
@@ -586,6 +592,9 @@
 		"summary": "Delete a Request Message",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"GET /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
@@ -882,6 +891,10 @@
 		"summary": "Get a Request",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
@@ -1138,6 +1151,10 @@
 		"summary": "Get a Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_identifier}/cloudforce-one/requests/constants": {
@@ -1394,6 +1411,10 @@
 		"summary": "Get Request Priority, Status, and TLP constants",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_identifier}/cloudforce-one/requests/quota": {
@@ -1627,6 +1648,10 @@
 		"summary": "Get Request Quota",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /accounts/{account_identifier}/cloudforce-one/requests/types": {
@@ -1826,6 +1851,10 @@
 		"summary": "Get Request Types",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests": {
@@ -2532,6 +2561,9 @@
 		"summary": "List Request Assets",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/new": {
@@ -2792,6 +2824,9 @@
 		"summary": "Create a New Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message": {
@@ -3123,6 +3158,9 @@
 		"summary": "List Request Messages",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/new": {
@@ -3400,6 +3438,9 @@
 		"summary": "Create a New Request Message",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/new": {
@@ -3731,6 +3772,9 @@
 		"summary": "Create a New Request",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
@@ -4073,6 +4117,9 @@
 		"summary": "Update a Request",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
@@ -4344,6 +4391,9 @@
 		"summary": "Update a Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/{message_identifer}": {
@@ -4629,6 +4679,9 @@
 		"summary": "Update a Request Message",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }

@@ -254,6 +254,9 @@
 		"tags": [
 			"Observatory"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -515,6 +518,9 @@
 		"summary": "Delete scheduled page test",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1010,6 +1016,10 @@
 		"summary": "Get quota and availability",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1535,6 +1545,10 @@
 		"summary": "List tested webpages",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2094,6 +2108,10 @@
 		"tags": [
 			"Observatory"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2575,6 +2593,10 @@
 		"tags": [
 			"Observatory"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2943,6 +2965,10 @@
 		"tags": [
 			"Observatory"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3242,6 +3268,10 @@
 		"summary": "Get a page test schedule",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3761,6 +3791,9 @@
 		"summary": "Start page test",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4326,6 +4359,9 @@
 		"summary": "Create scheduled page test",
 		"tags": [
 			"Observatory"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

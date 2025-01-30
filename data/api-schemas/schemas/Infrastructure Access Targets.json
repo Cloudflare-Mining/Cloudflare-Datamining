@@ -134,6 +134,9 @@
 		"summary": "Delete target",
 		"tags": [
 			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
@@ -285,6 +288,9 @@
 		"summary": "Delete targets",
 		"tags": [
 			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
@@ -398,6 +404,63 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "Filters for targets that have any of the following UUIDs. Specify\n`target_ids` multiple times in query parameter to build list of\ncandidates.",
+				"in": "query",
+				"name": "target_ids",
+				"schema": {
+					"items": {
+						"format": "uuid",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters for targets whose IP addresses look like the specified string.\nSupports `*` as a wildcard character",
+				"in": "query",
+				"name": "ip_like",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines an IPv4 filter range's starting value (inclusive). Requires\n`ipv4_end` to be specified as well.",
+				"in": "query",
+				"name": "ipv4_start",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines an IPv4 filter range's ending value (inclusive). Requires\n`ipv4_start` to be specified as well.",
+				"in": "query",
+				"name": "ipv4_end",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines an IPv6 filter range's starting value (inclusive). Requires\n`ipv6_end` to be specified as well.",
+				"in": "query",
+				"name": "ipv6_start",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines an IPv6 filter range's ending value (inclusive). Requires\n`ipv6_start` to be specified as well.",
+				"in": "query",
+				"name": "ipv6_end",
+				"schema": {
+					"nullable": true,
+					"type": "string"
 				}
 			},
 			{
@@ -1041,6 +1104,10 @@
 		"summary": "Get target",
 		"tags": [
 			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
@@ -1737,6 +1804,9 @@
 		"summary": "Update target",
 		"tags": [
 			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
@@ -2010,6 +2080,9 @@
 		"summary": "Create new targets",
 		"tags": [
 			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

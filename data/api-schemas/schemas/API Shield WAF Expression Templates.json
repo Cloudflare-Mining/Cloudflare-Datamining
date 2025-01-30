@@ -229,6 +229,10 @@
 		"summary": "Generate fallthrough WAF expression template from a set of API hosts",
 		"tags": [
 			"API Shield WAF Expression Templates"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	}
 }

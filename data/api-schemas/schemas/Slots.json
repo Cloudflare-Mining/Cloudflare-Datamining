@@ -156,7 +156,8 @@
 		"summary": "Retrieve a list of all slots matching the specified parameters",
 		"tags": [
 			"Slots"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
 		"operationId": "get_slot",
@@ -257,6 +258,7 @@
 		"summary": "Get information about the specified slot",
 		"tags": [
 			"Slots"
-		]
+		],
+		"x-api-token-group": null
 	}
 }

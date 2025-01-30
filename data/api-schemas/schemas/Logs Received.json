@@ -412,6 +412,10 @@
 		"tags": [
 			"Logs Received"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -800,6 +804,10 @@
 		"summary": "List fields",
 		"tags": [
 			"Logs Received"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

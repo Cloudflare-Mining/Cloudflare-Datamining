@@ -409,6 +409,9 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -913,6 +916,10 @@
 		"summary": "Get the Hostname Status for Client Authentication",
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1554,6 +1561,10 @@
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1965,6 +1976,10 @@
 		"summary": "Get the Hostname Client Certificate",
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2392,6 +2407,9 @@
 		"summary": "Upload a Hostname Client Certificate",
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3073,6 +3091,9 @@
 		"summary": "Enable or Disable a Hostname for Client Authentication",
 		"tags": [
 			"Per-hostname Authenticated Origin Pull"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

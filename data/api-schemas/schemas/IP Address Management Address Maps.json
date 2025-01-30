@@ -672,6 +672,9 @@
 		"summary": "Remove an account membership from an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips/{ip_address}": {
@@ -1368,6 +1371,9 @@
 		"summary": "Remove a zone membership from an Address Map",
 		"tags": [
 			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/address_maps": {

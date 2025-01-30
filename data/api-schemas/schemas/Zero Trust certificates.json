@@ -442,6 +442,9 @@
 		"summary": "Delete Zero Trust certificate",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates": {
@@ -935,6 +938,10 @@
 		"summary": "List Zero Trust certificates",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates/{certificate_id}": {
@@ -1375,6 +1382,10 @@
 		"summary": "Get Zero Trust certificate details",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates": {
@@ -1820,6 +1831,9 @@
 		"summary": "Create Zero Trust certificate",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/activate": {
@@ -2265,6 +2279,9 @@
 		"summary": "Activate a Zero Trust certificate",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate": {
@@ -2711,6 +2728,9 @@
 		"summary": "Deactivate a Zero Trust certificate",
 		"tags": [
 			"Zero Trust certificates"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

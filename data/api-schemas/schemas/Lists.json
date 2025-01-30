@@ -724,6 +724,9 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2386,6 +2389,10 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write",
+			"Account Rule Lists Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3075,6 +3082,10 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write",
+			"Account Rule Lists Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3491,6 +3502,10 @@
 		"summary": "Get bulk operation status",
 		"tags": [
 			"Lists"
+		],
+		"x-api-token-group": [
+			"Account Rule Lists Write",
+			"Account Rule Lists Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -5299,6 +5314,9 @@
 		"summary": "Update all list items",
 		"tags": [
 			"Lists"
+		],
+		"x-api-token-group": [
+			"Account Rule Lists Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

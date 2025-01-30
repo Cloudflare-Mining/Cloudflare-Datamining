@@ -766,6 +766,13 @@
 		"tags": [
 			"Custom pages for an account"
 		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1161,6 +1168,10 @@
 		"summary": "Update a custom page",
 		"tags": [
 			"Custom pages for an account"
+		],
+		"x-api-token-group": [
+			"Account Custom Pages Write",
+			"Account Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

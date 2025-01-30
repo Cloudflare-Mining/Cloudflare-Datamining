@@ -45,7 +45,8 @@
 		"summary": "Delete an interconnect object",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
@@ -256,7 +257,8 @@
 		"summary": "List existing interconnects",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "get_interconnect",
@@ -427,7 +429,8 @@
 		"summary": "Get information about an interconnect object",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
 		"operationId": "get_interconnect_loa",
@@ -475,7 +478,8 @@
 		"summary": "Generate the Letter of Authorization (LOA) for a given interconnect",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
 		"operationId": "get_interconnect_status",
@@ -601,7 +605,8 @@
 		"summary": "Get the current status of an interconnect object",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
 		"operationId": "create_interconnect",
@@ -868,6 +873,7 @@
 		"summary": "Create a new interconnect",
 		"tags": [
 			"Interconnects"
-		]
+		],
+		"x-api-token-group": null
 	}
 }
