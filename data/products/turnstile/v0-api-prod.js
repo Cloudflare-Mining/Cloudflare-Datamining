@@ -1,6 +1,6 @@
 "use strict";
 (function() {
-	function Bt(e, t, a, o, c, l, g) {
+	function Ht(e, t, a, o, c, l, g) {
 		try {
 			var h = e[l](g),
 				s = h.value
@@ -19,11 +19,11 @@
 				var l = e.apply(t, a);
 
 				function g(s) {
-					Bt(l, o, c, g, h, "next", s)
+					Ht(l, o, c, g, h, "next", s)
 				}
 
 				function h(s) {
-					Bt(l, o, c, g, h, "throw", s)
+					Ht(l, o, c, g, h, "throw", s)
 				}
 				g(void 0)
 			})
@@ -223,10 +223,10 @@
 	(function(e) {
 		e.NORMAL = "normal", e.COMPACT = "compact", e.INVISIBLE = "invisible", e.FLEXIBLE = "flexible"
 	})(L || (L = {}));
-	var He;
+	var Be;
 	(function(e) {
 		e.AUTO = "auto", e.LIGHT = "light", e.DARK = "dark"
-	})(He || (He = {}));
+	})(Be || (Be = {}));
 	var Oe;
 	(function(e) {
 		e.VERIFYING = "verifying", e.VERIFYING_HAVING_TROUBLES = "verifying-having-troubles", e.VERIFYING_OVERRUN = "verifying-overrun", e.FAILURE_WO_HAVING_TROUBLES = "failure-wo-having-troubles", e.FAILURE_HAVING_TROUBLES = "failure-having-troubles", e.FAILURE_FEEDBACK = "failure-feedback", e.FAILURE_FEEDBACK_CODE = "failure-feedback-code", e.EXPIRED_NEVER_REFRESH = "expired-never-refresh", e.EXPIRED_MANUAL_REFRESH = "expired-manual-refresh", e.TIMEOUT_NEVER_REFRESH = "timeout-never-refresh", e.TIMEOUT_MANUAL_REFRESH = "timeout-manual-refresh", e.INTERACTIVITY_REQUIRED = "interactivity-required", e.OUTDATED_BROWSER = "outdated-browser", e.TIME_CHECK_CACHED_WARNING = "time-check-cached-warning", e.INVALID_DOMAIN = "invalid-domain"
@@ -259,10 +259,10 @@
 	(function(e) {
 		e.New = "new", e.CrashedRetry = "crashed_retry", e.FailureRetry = "failure_retry", e.StaleExecute = "stale_execute", e.AutoExpire = "auto_expire", e.AutoTimeout = "auto_timeout", e.ManualRefresh = "manual_refresh", e.Api = "api", e.CheckDelays = "check_delays", e.TimeCheckCachedWarningAux = "time_check_cached_warning_aux", e.JsCookiesMissingAux = "js_cookies_missing_aux", e.RedirectingTextOverrun = "redirecting_text_overrun"
 	})(q || (q = {}));
-	var Be;
+	var He;
 	(function(e) {
 		e.FAILURE = "failure", e.VERIFYING = "verifying", e.OVERRUNNING = "overrunning", e.CUSTOM = "custom"
-	})(Be || (Be = {}));
+	})(He || (He = {}));
 
 	function M(e, t) {
 		return e.indexOf(t) !== -1
@@ -538,7 +538,7 @@
 	}
 	var St = function(e, t, a) {
 			var o = Tt(t.params, !1),
-				c = "h/".concat("g", "/"),
+				c = "h/".concat("b", "/"),
 				l, g, h = "".concat(o, "/cdn-cgi/challenge-platform/").concat(c, "feedback-reports/").concat(Xe(e), "/").concat(t.displayLanguage, "/").concat((l = t.params.theme) !== null && l !== void 0 ? l : t.theme, "/").concat(a);
 			t.wrapper.parentNode || m("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			var s = document.createElement("div");
@@ -835,12 +835,12 @@
 		e.style.width = "0", e.style.height = "0"
 	}
 
-	function Hr(e, t) {
+	function Br(e, t) {
 		var a = t.get("turnstile_iframe_alt");
 		a && (e.title = a)
 	}
 
-	function Br(e) {
+	function Hr(e) {
 		return e.origin ? e.origin === "https://challenges.cloudflare.com" || e.origin === "https://challenges-staging.cloudflare.com" : !0
 	}
 
@@ -959,7 +959,7 @@
 					(!v || !E) && m("Widget ".concat(r, " to reset was not found."), 3330), u.params.appearance === Q.INTERACTION_ONLY && xr(E), u.params.sitekey === null && m("Unexpected Error: Sitekey is null", 3347);
 					var w = E.cloneNode(),
 						A;
-					w.src = Rt(r, u.params.sitekey, u.params, (A = u.rcV) !== null && A !== void 0 ? A : K, !1, "g", n, _t(u)), (d = E.parentNode) === null || d === void 0 || d.replaceChild(w, E), kt(v), u.retryTimeout && window.clearTimeout(u.retryTimeout)
+					w.src = Rt(r, u.params.sitekey, u.params, (A = u.rcV) !== null && A !== void 0 ? A : K, !1, "b", n, _t(u)), (d = E.parentNode) === null || d === void 0 || d.replaceChild(w, E), kt(v), u.retryTimeout && window.clearTimeout(u.retryTimeout)
 				} else m("Widget ".concat(r, " to reset was not found."), 3331)
 			},
 			I = function(n) {
@@ -986,7 +986,7 @@
 				if (typeof n == "string") try {
 					var E = document.querySelector(n);
 					E || m('Unable to find a container for "'.concat(n, '"'), 3585), v = E
-				} catch (Ht) {
+				} catch (Bt) {
 					m('Invalid type for "container", expected "selector" or an implementation of "HTMLElement", got "'.concat(n, '"'), 3586)
 				} else D(n, HTMLElement) ? v = n : m('Invalid type for parameter "container", expected "string" or an implementation of "HTMLElement"', 3587);
 				var w = !0,
@@ -1000,8 +1000,8 @@
 							break
 						}
 					}
-				} catch (Ht) {
-					A = !0, S = Ht
+				} catch (Bt) {
+					A = !0, S = Bt
 				} finally {
 					try {
 						!w && U.return != null && U.return()
@@ -1015,9 +1015,9 @@
 						he = f.action,
 						re = f.cData,
 						Ne = f.chlPageData,
-						H = f.sitekey,
+						B = f.sitekey,
 						ae;
-					f.theme = (ae = f.theme) !== null && ae !== void 0 ? ae : He.AUTO;
+					f.theme = (ae = f.theme) !== null && ae !== void 0 ? ae : Be.AUTO;
 					var se;
 					f.retry = (se = f.retry) !== null && se !== void 0 ? se : ve.AUTO;
 					var ne;
@@ -1037,12 +1037,12 @@
 						Te = f["before-interactive-callback"],
 						Y = f["error-callback"],
 						Je = f["unsupported-callback"];
-					typeof H != "string" && m('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof H == "undefined" ? "undefined" : F(H), '"'), 3588), Kt(H) || m('Invalid input for parameter "sitekey", got "'.concat(H, '"'), 3589), pt(f.size) || m('Invalid type for parameter "size", expected normal|compact, got "'.concat(f.size, '" ').concat(F(f.size)), 3590), ct(f.theme) || m('Invalid type for parameter "theme", expected dark|light|auto, got "'.concat(f.theme, '" ').concat(F(f.theme)), 3591), ut(f.retry) || m('Invalid type for parameter "retry", expected never|auto, got "'.concat(f.retry, '" ').concat(F(f.retry)), 3592), f.language || (f.language = "auto"), gt(f.language) || (x('Invalid language value: "'.concat(f.language, ", expected either: auto, or an ISO 639-1 two-letter language code (e.g. en) or language and country code (e.g. en-US).")), f.language = "auto"), yt(f.appearance) || m('Unknown appearance value: "'.concat(f.appearance, ", expected either: 'always', 'execute', or 'interaction-only'."), 3600), ht(f.execution) || m('Unknown execution value: "'.concat(f.execution, ", expected either: 'render' or 'execute'."), 3601), lt(f["retry-interval"]) || m('Invalid retry-interval value: "'.concat(f["retry-interval"], ', expected an integer value > 0 and < 900000"'), 3602), st(f["expiry-interval"]) || m('Invalid expiry-interval value: "'.concat(f["expiry-interval"], ', expected an integer value > 0 and < 360000"'), 3602);
+					typeof B != "string" && m('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof B == "undefined" ? "undefined" : F(B), '"'), 3588), Kt(B) || m('Invalid input for parameter "sitekey", got "'.concat(B, '"'), 3589), pt(f.size) || m('Invalid type for parameter "size", expected normal|compact, got "'.concat(f.size, '" ').concat(F(f.size)), 3590), ct(f.theme) || m('Invalid type for parameter "theme", expected dark|light|auto, got "'.concat(f.theme, '" ').concat(F(f.theme)), 3591), ut(f.retry) || m('Invalid type for parameter "retry", expected never|auto, got "'.concat(f.retry, '" ').concat(F(f.retry)), 3592), f.language || (f.language = "auto"), gt(f.language) || (x('Invalid language value: "'.concat(f.language, ", expected either: auto, or an ISO 639-1 two-letter language code (e.g. en) or language and country code (e.g. en-US).")), f.language = "auto"), yt(f.appearance) || m('Unknown appearance value: "'.concat(f.appearance, ", expected either: 'always', 'execute', or 'interaction-only'."), 3600), ht(f.execution) || m('Unknown execution value: "'.concat(f.execution, ", expected either: 'render' or 'execute'."), 3601), lt(f["retry-interval"]) || m('Invalid retry-interval value: "'.concat(f["retry-interval"], ', expected an integer value > 0 and < 900000"'), 3602), st(f["expiry-interval"]) || m('Invalid expiry-interval value: "'.concat(f["expiry-interval"], ', expected an integer value > 0 and < 360000"'), 3602);
 					var Re, Z = (Re = f["refresh-expired"]) !== null && Re !== void 0 ? Re : ee.AUTO;
 					vt(Z) ? f["refresh-expired"] = Z : m('Invalid type for parameter "refresh-expired", expected never|manual|auto, got "'.concat(Z, '" ').concat(typeof Z == "undefined" ? "undefined" : F(Z)), 3603);
 					var Ae, oe = (Ae = f["refresh-timeout"]) !== null && Ae !== void 0 ? Ae : ce.AUTO;
 					mt(Z) ? f["refresh-timeout"] = oe : m('Invalid type for parameter "refresh-timeout", expected never|manual|auto, got "'.concat(oe, '" ').concat(typeof oe == "undefined" ? "undefined" : F(oe)), 3603);
-					var B = document.createElement("iframe"),
+					var H = document.createElement("iframe"),
 						fe = document.createElement("div"),
 						Vt = fe.attachShadow({
 							mode: "closed"
@@ -1095,7 +1095,7 @@
 							isOverrunning: !1
 						})), Ct(y);
 						var et = y.widgetMap.get(Ie);
-						et || m("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", Rt(Ie, H, f, K, !1, "g", q.New, _t(et))), B.onerror = function() {
+						et || m("Turnstile Initialization Error ", 3606), H.style.display = "none", H.style.border = "none", H.style.overflow = "hidden", H.setAttribute("src", Rt(Ie, B, f, K, !1, "b", q.New, _t(et))), H.onerror = function() {
 							if (Y) {
 								Y == null || Y(String(Yt.code));
 								return
@@ -1104,15 +1104,15 @@
 						};
 						var Wt = ["cross-origin-isolated", "fullscreen", "autoplay"],
 							tt;
-						M((tt = (u = document.featurePolicy) === null || u === void 0 || (r = u.features) === null || r === void 0 ? void 0 : r.call(u)) !== null && tt !== void 0 ? tt : [], wt) && Wt.push(wt), B.setAttribute("allow", Wt.join("; ")), B.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), B.id = pe;
+						M((tt = (u = document.featurePolicy) === null || u === void 0 || (r = u.features) === null || r === void 0 ? void 0 : r.call(u)) !== null && tt !== void 0 ? tt : [], wt) && Wt.push(wt), H.setAttribute("allow", Wt.join("; ")), H.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), H.id = pe;
 						var rt;
-						B.tabIndex = (rt = f.tabindex) !== null && rt !== void 0 ? rt : 0, B.title = "Widget containing a Cloudflare security challenge", Vt.appendChild(B);
+						H.tabIndex = (rt = f.tabindex) !== null && rt !== void 0 ? rt : 0, H.title = "Widget containing a Cloudflare security challenge", Vt.appendChild(H);
 						var at, Ir = (at = f["response-field"]) !== null && at !== void 0 ? at : !0;
 						if (Ir) {
 							var Le = document.createElement("input");
 							Le.type = "hidden";
 							var nt;
-							if (Le.name = (nt = f["response-field-name"]) !== null && nt !== void 0 ? nt : xt, Le.id = "".concat(pe, "_response"), fe.appendChild(Le), typeof f["response-field-name"] != "string" && Rr(H)) {
+							if (Le.name = (nt = f["response-field-name"]) !== null && nt !== void 0 ? nt : xt, Le.id = "".concat(pe, "_response"), fe.appendChild(Le), typeof f["response-field-name"] != "string" && Rr(B)) {
 								var Me = document.createElement("input");
 								Me.type = "hidden", Me.name = bt, Me.id = "".concat(pe, "_legacy_response"), fe.appendChild(Me)
 							}
@@ -1156,7 +1156,7 @@
 					switch (f.label) {
 						case 0:
 							if (u = b.params.sitekey, d = Er(), !d) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(b, n, !1), [2];
-							v = "h/".concat("g", "/"), E = new URL(d), w = "https", A = "", U = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(r).concat(A), f.label = 1;
+							v = "h/".concat("b", "/"), E = new URL(d), w = "https", A = "", U = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(r).concat(A), f.label = 1;
 						case 1:
 							return f.trys.push([1, 6, , 7]), [4, fetch(U, {
 								method: "POST",
@@ -1189,7 +1189,7 @@
 		var k = function(b) {
 			var n = b.data;
 			if (n.source === V) {
-				if (!Br(b)) {
+				if (!Hr(b)) {
 					x("Ignored message from wrong origin: ".concat(b.origin, "."));
 					return
 				}
@@ -1216,7 +1216,7 @@
 							var w = new Map;
 							r.displayLanguage = n.displayLanguage, Object.keys(n.translationData).forEach(function(oe) {
 								w.set(oe, n.translationData[oe])
-							}), Hr(E, w);
+							}), Br(E, w);
 							break
 						}
 						case "languageUnsupported": {
@@ -1284,7 +1284,7 @@
 							break
 						}
 						case "turnstileResults": {
-							var H, ae, se = (H = r.wrapper.parentNode) === null || H === void 0 ? void 0 : H.querySelector("#".concat(i, "-fr"));
+							var B, ae, se = (B = r.wrapper.parentNode) === null || B === void 0 ? void 0 : B.querySelector("#".concat(i, "-fr"));
 							se || m("Received state for an unknown widget: ".concat(n.widgetId), 3078), (ae = se.contentWindow) === null || ae === void 0 || ae.postMessage({
 								source: V,
 								widgetId: n.widgetId,
@@ -1372,7 +1372,7 @@
 								cData: r.cData,
 								chlPageData: r.chlPageData,
 								rcV: r.rcV,
-								ch: "dc9b2fe37153",
+								ch: "6682e961b853",
 								au: y.scriptUrl,
 								url: Er(),
 								retry: r.params.retry,
@@ -1468,7 +1468,7 @@
 						var r = $(i);
 						if (r) {
 							var u = y.widgetMap.get(i);
-							u && St(r, u, Be.CUSTOM)
+							u && St(r, u, He.CUSTOM)
 						}
 					}
 				}
