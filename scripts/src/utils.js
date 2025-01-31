@@ -173,6 +173,7 @@ export async function getBMCookie(url) {
 			height: 1080,
 		},
 		headless: 'new',
+		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	});
 	const page = await browser.newPage();
 	await page.setUserAgent(userAgent);

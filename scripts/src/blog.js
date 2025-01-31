@@ -68,6 +68,7 @@ const browser = await puppeteer.launch({
 		height: 1080,
 	},
 	headless: 'new',
+	args: ['--no-sandbox', '--disable-setuid-sandbox'],
 });
 const fetchURL = async function(url, waitFor, slug) {
 	const page = await browser.newPage();
