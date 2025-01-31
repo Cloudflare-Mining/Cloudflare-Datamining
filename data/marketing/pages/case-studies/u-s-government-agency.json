@@ -1,0 +1,74 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/u-s-government-agency/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "U.S. Government Agency",
+				"contentfulId": "6szCuxmVDG6STQM4hUtvDC",
+				"nameUrlSlug": "u-s-government-agency",
+				"metaTags": {
+					"metaTitle": "U.S. Government Agency & Cloudflare | Customer Story",
+					"metaDescription": " U.S. government entities partner with Cloudflare to enhance finserv security.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/11TDDkix2nsORRbuNbIj0l/1c25171ce64f8638d49df60668849e10/Public_Sector_01.png"
+						},
+						"description": "Cloudflare for Public Sector - Hero illustration"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2024-09-13",
+				"homepageUrl": " /public-sector/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Cloudflare deploys curated threat intelligence feed to protect selected financial institutions",
+				"longDescription": "## __Cloudflare deploys curated threat intelligence feed to protect selected financial institutions__\n\n<br>\n\n### __Challenge: Protecting financial services against targeted attacks__\n\nThe financial sector is a top target for cyber threat actors. Successful attacks against financial services institutions provide an easy path for cybercriminals to monetize their attacks. Additionally, these organizations hold large volumes of sensitive data that can be used for various fraudulent activities.\n\nKnowledge of new and emerging attack campaigns is critical for these organizations to identify and block attacks before an intrusion occurs. However, the sensitive nature of the industry makes sharing threat intelligence a complex issue.\n\n### __Solution: Providing seamless access to custom threat indicators__\n\nA strategic partnership between Cloudflare and some U.S. government entities has enabled Cloudflare to provide custom threat indicators to approved financial services providers. These custom threat indicators are derived from a combination of Cloudflare data and that provided by its U.S. government partners.\n\nThis curated threat intelligence feed provides financial institutions with access to known IP addresses, URLs, and domain names of the attacker's infrastructure as well as malware hashes and identification of the attackers behind the group. Each indicator has been reviewed by analysts to verify that it is associated with an attack campaign before it is included in the Cloudflare dataset.\n\nThis custom indicator service was rolled out to select financial institutions via the Cloudflare DNS Gateway. Selected organizations only need to select a checkbox to activate the Custom Indicator Feed in their DNS Gateway and can generate specific filters based on this threat intelligence.\n\n### __Impact: Curated threat intelligence reduces threat exposure__\n\nIntegrating curated threat intelligence into Cloudflare DNS Gateway dramatically reduces the exposure of financial institutions to common cyber threats. These attacks are automatically blocked at the Cloudflare network, preventing them from reaching target systems.\n\nIn Q1 2024, Cloudflare observed 41 billion malicious HTTP requests targeting the Banking, Financial Services, and Insurance (BFSI) industry with distributed denial of service (DDoS) attacks. As new botnet IP addresses are identified and added to the Custom Threat Indicator Feed, Cloudflare will be able to identify and block attempted attack traffic for participating institutions,\n\nPhishing attacks are another threat where this service brings clear value to participating financial institutions. Knowledge of IP addresses, domain names, and file hashes associated with emerging phishing attack campaigns enables Cloudflare to better filter malicious emails and sever command and control (C2) channels between malware and attacker-controlled infrastructure, limiting the damage that can be done to infected systems.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Reduced threat exposure due to automated filtering of malicious content\n\n- Improved security efficiency due to automatic sharing of threat intelligence data\n\n- Improved risk management due to enhanced visibility into attacks targeting the financial sector",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "DNS",
+						"url": "/application-services/products/dns/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "/application-services/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YXtCIajgzc4s7krW9WXqZ/6e5362380b9b2375171b14f6265be7ad/Government-Agency-Logo.png"
+					},
+					"description": "Government Agency - Logo"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6szCuxmVDG6STQM4hUtvDC",
+			"pathname": "/case-studies/u-s-government-agency/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

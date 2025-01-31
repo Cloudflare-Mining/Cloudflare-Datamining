@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[Legal] - GDPR Sub-Processors List and Updates",
+				"pageName": "[Legal] - GDPR Sub-Processors List and Updates - Home",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-06-03T22:54:28.313Z",
-					"updatedAt": "2025-01-11T03:04:25.566Z"
+					"updatedAt": "2025-01-29T12:02:18.313Z"
 				},
 				"contentfulId": "8ENALtnZjrqJFAZk9k7qP",
 				"contentTypeId": "page",
@@ -64,26 +64,121 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "OCilK3xIAmg1QshyIjE88",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "28tQSybj1m9qHRzLkjJhI9",
+						"menuTitle": "Cloudflare Sub-Processors",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
 						"htmlId": null,
-						"mainHeadline": "Cloudflare Sub-Processors",
+						"menuItems": [
+							{
+								"contentfulId": "Nw5LlyB1zLuZoyvFcnX4T",
+								"linkText": "Home",
+								"page": null,
+								"url": "/gdpr/subprocessors/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "4ThwCWz1C4Ki9AzwsrRZIG",
+								"linkText": "For Cloudflare services",
+								"page": null,
+								"url": "gdpr/subprocessors/cloudflare-services",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "6VTcIMYxEfLcN91GcbWz2I",
+								"linkText": "For professional services",
+								"page": null,
+								"url": "gdpr/subprocessors/professional-services",
+								"subMenuItems": []
+							}
+						]
+					},
+					{
+						"contentfulId": "5YVUENr1K4V2bQfvp0XqFD",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare Sub-Processors",
+						"titleSize": null,
+						"subtitle": null,
+						"subtitleSize": null,
+						"copy": "Cloudflare relies on sub-processors to deliver its services. Any sub-processor that processes our customers' personal data undergoes a thorough information security and privacy review process.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "For Cloudflare services",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "gdpr/subprocessors/cloudflare-services/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "For professional services ",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "/gdpr/subprocessors/professional-services/",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": false,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "7efda890-1f3f-5402-9b81-59544ade24c0",
+							"altText": "GDPR Sub-Processors List and Updates - Hero image",
+							"title": "[Legal] - GDPR Sub-Processors List and Updates - Hero image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DsM2yAbF81bZsz3UYi6bf/568dd0ee950e339e18587826640c7875/GDPR-Sub-Processors-Hero_image.png"
+								},
+								"description": "GDPR Sub-Processors - Hero image"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "4v3c9Toj36s2ZcKnDcwQsM",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"sectionPadding": null,
-						"columnLayout": "Right Sidebar",
+						"columnLayout": "Half & Half",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6YXrDMzamySbG2tneU011",
+								"contentfulId": "5rmZPKnde9v2LaEie01KQf",
 								"title": null,
 								"htmlId": null,
-								"elementPosition": null,
+								"elementPosition": "relative",
 								"column": {
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "paragraph",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -97,82 +192,16 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last Updated: March 29, 2024 ",
+													"value": "Have questions?",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "paragraph",
+											"nodeType": "hr",
 											"data": {
 												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare uses a handful of sub-processors to support the Cloudflare service. Some of these sub-processors are members of the Cloudflare Group (Cloudflare, Inc. and its subsidiaries) and some are third parties.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare uses the following third-party entities as sub-processors for the activities listed below: ",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "3TGN8mcCwWXy5Mp1Uc21Dl",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [
-														{
-															"contentTypeId": "elementMarkdown",
-															"contentfulId": "3TGN8mcCwWXy5Mp1Uc21Dl",
-															"locale": "en-US",
-															"entryTitle": "Cloudflare Subprocessors",
-															"markdown": "\n| Sub‑Processor         | Activity     |  Location     | \n| ---------- | ---------- | ---------- |\n| Slack Technologies, Inc.       | Customer support communications       | United States       |\n| Zendesk, Inc.       | Customer support and account management       | Zendesk operates servers globally using Amazon Web Services (AWS) as described [here](https://support.zendesk.com/hc/en-us/articles/4408825765530). Current hosting locations are the United States, the European Economic Area, Japan, and Australia       |\n| Salesforce, Inc.      | Customer support and account management       | United States|\n| Google LLC        | Cloudflare Developer Platform, Cloudflare Zero Trust, and Cloudflare Mobile SDK Service       | European Economic Area, Japan, United States       |\n| Microsoft Corporation      | Cloudflare Developer Platform, Cloudflare Zero Trust       | European Economic Area      |\n| Oracle America, Inc.       | Cloudflare Developer Platform and Cache Reserve        | United States, European Economic Area, Canada, Singapore        |\n| Amazon Web Services (AWS)       | Cloudflare Area 1       | United States, European Economic Area        |\n"
-														}
-													],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
 												"uri": null
 											},
 											"value": null,
@@ -194,7 +223,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": "If you have questions about these terms or anything else about Cloudflare, please don't hesitate to contact us:",
 													"marks": [],
 													"content": null
 												}
@@ -215,40 +244,82 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare Group  companies may be sub-processors because employees of those affiliates may need to provide account and engineering support. As of the date above, the Cloudflare Group includes the following subsidiaries of Cloudflare, Inc.:",
+													"value": "+1 (650) 319-8930",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "embedded-entry-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "4vHkpbW7RJiPICndVqqLd6",
-														"type": "Link",
-														"linkType": "Entry"
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
 													},
-													"related_asset": [],
-													"entry_elementMarkdown": [
+													"value": "Cloudflare, Inc.",
+													"marks": [
 														{
-															"contentTypeId": "elementMarkdown",
-															"contentfulId": "4vHkpbW7RJiPICndVqqLd6",
-															"locale": "en-US",
-															"entryTitle": "Cloudflare Entities",
-															"markdown": "\n| Cloudflare Entity    | Location     | \n| ---------- | ---------- |\n| Cloudflare Ltd.    | United Kingdom       |\n| Cloudflare Pte. Ltd.       | Singapore       |\n| Cloudflare Australia Pty Ltd        | Australia       |\n| Cloudflare Germany GmbH      | Germany       |\n| Cloudflare Portugal, Unipessoal Lda.       | Portugal       |\n| Cloudflare France SAS        | France       |\n| Cloudflare Japan K.K.       | Japan       |\n| Cloudflare (Canada) Information Technology Co., Ltd.       | Canada       |\n| Cloudflare Netherlands B.V.       | Netherlands       |\n| Cloudflare Middle East FZ-LLC       | Dubai, U.A.E.       |   \n| Cloudflare India Private Limited      | India      |   \n| Area 1 Security, LLC       | United States       |   \n| Cloudflare Korea LLC       | South Korea       |   \n| Cloudflare Mexico S. de R.L de C.V.       | Mexico      |   \n| Cloudflare Malaysia Sdn. Bhd.       | Malaysia      |   "
+															"type": "bold"
 														}
 													],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
+													"content": null
 												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n101 Townsend St,\nSan Francisco, CA 94107\nUSA\n\n",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "mailto:privacyquestions@cloudflare.com"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "privacyquestions@cloudflare.com",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
 												"uri": null
 											},
 											"value": null,
@@ -270,7 +341,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\n\nYou can subscribe to our ",
+													"value": "You can subscribe to our ",
 													"marks": [],
 													"content": null
 												},
@@ -316,10 +387,10 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6JOES8KJJ3PUJeWJfMWHX7",
+								"contentfulId": "6zolsqGIcw3vxWETZakUTb",
 								"title": null,
 								"htmlId": null,
-								"elementPosition": null,
+								"elementPosition": "relative",
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -406,7 +477,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Website Terms of Use",
+																			"value": "Website terms of use",
 																			"marks": [],
 																			"content": null
 																		}
@@ -469,7 +540,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Self-Serve Subscription Agreement",
+																			"value": "Self-serve subscription agreement",
 																			"marks": [],
 																			"content": null
 																		}
@@ -532,7 +603,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Service-Specific Terms",
+																			"value": "Service-specific terms",
 																			"marks": [],
 																			"content": null
 																		}
@@ -595,7 +666,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Privacy Policy",
+																			"value": "Privacy policy",
 																			"marks": [],
 																			"content": null
 																		}
@@ -658,7 +729,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Cookie Policy",
+																			"value": "Cookie policy",
 																			"marks": [],
 																			"content": null
 																		}
@@ -784,7 +855,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Transparency Report",
+																			"value": "Transparency report",
 																			"marks": [],
 																			"content": null
 																		}
@@ -847,7 +918,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Domain Registration Agreement",
+																			"value": "Domain registration agreement",
 																			"marks": [],
 																			"content": null
 																		}
@@ -910,7 +981,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Modern Slavery Act Statement",
+																			"value": "Modern slavery act statement",
 																			"marks": [],
 																			"content": null
 																		}
@@ -933,37 +1004,6 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Have Questions?",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -972,93 +1012,6 @@
 											"value": null,
 											"marks": null,
 											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "If you have questions about these terms or anything else about Cloudflare, please don't hesitate to contact us:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "+1 (650) 319-8930",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare, Inc.",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\n101 Townsend St,\nSan Francisco, CA 94107\nUSA\n\n",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "mailto:privacyquestions@cloudflare.com"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "privacyquestions@cloudflare.com",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
 												{
 													"nodeType": "text",
 													"data": {

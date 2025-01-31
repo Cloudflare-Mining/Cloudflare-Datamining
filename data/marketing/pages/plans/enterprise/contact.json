@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-12-14T19:26:03.277Z",
-					"updatedAt": "2024-11-01T21:13:56.215Z"
+					"updatedAt": "2025-01-30T23:26:58.474Z"
 				},
 				"contentfulId": "3LRhTKKI1zdMKIfNeqcv8r",
 				"contentTypeId": "page",
@@ -784,30 +784,6 @@
 											"title": "Compare all plans",
 											"description": null,
 											"url": "/plans/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "4viH1bjzimQpBqExRKCSx5",
-										"locale": "en-US",
-										"name": "Register domain",
-										"description": "Register domain",
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "2BdwqYwpU0MXk89gee5sFk",
-											"locale": "en-US",
-											"title": "Register domain",
-											"description": "Register domain",
-											"url": "/products/registrar/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
@@ -2530,6 +2506,114 @@
 						"customPrivacyPolicy": false,
 						"customPrivacyPolicyText": null,
 						"featureList": null
+					},
+					{
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "1lWE9xgFrgxxGkpDjW0Onx",
+						"title": "Explore Cloudflare",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1hXdufLx3vxKQo5y2ESpAi",
+								"heading": "Report",
+								"description": "The Forrester Total Economic Impact™ of Cloudflare's Connectivity Cloud\n",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6skvvj6zB87d5SJ6HXtgcn",
+									"elementName": "CTA button - The Forrester Total Economic Impact™ of Cloudflare's Connectivity Cloud",
+									"standardText": null,
+									"text": "Get the report",
+									"url": "https://www.cloudflare.com/lp/forrester-tei-study-2024/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "197eb4d0-2c05-52bd-bc59-8b59ab0fe201",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dlg4oApldWlYGAWdzwN7C/3b0f1908d3e4ca00a193c2fd679981a3/Analyst_Report_B.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6KHdxCbCpfcuj1Vqjso4UZ",
+								"heading": "Report",
+								"description": "Cloudflare named in 2024 Gartner® Magic Quadrant™ for Single-Vendor SASE",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1ILUJMMgmItWjnVQsrxsV4",
+									"elementName": "CTA button - Cloudflare named in 2024 Gartner® Magic Quadrant™ for Single-Vendor SASE",
+									"standardText": null,
+									"text": "Get the report",
+									"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "e9c1e168-b723-58ef-9d62-a7040a2fb5c8",
+									"altText": "Transparency shield - H2 2023",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/46qAmWP6k85QXgczQ1gweP/0a2565957bd7525f426a7668829b6f54/BDES-6280_2H-2023Transparency-Report-Hero.png"
+										},
+										"description": "Transparency shield - H2 2023"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4ibLsfXw8o2ioMMBrCA1Hb",
+								"heading": "Ebook",
+								"description": "The connectivity cloud explained. Take back IT and security control.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2uGgjUiUvQrj8C62D0gqcz",
+									"elementName": "CTA button - connectivity-cloud-explained",
+									"standardText": null,
+									"text": "Get the ebook",
+									"url": "https://www.cloudflare.com/lp/connectivity-cloud-explained/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "0b921605-7dfa-5a1a-bbf7-131746e7115c",
+									"altText": "Magic Cloud Networking simplifies security, connectivity, and management of public clouds",
+									"title": "Magic Cloud Networking simplifies security, connectivity, and management of public clouds",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ebB2PIRADHOuHFS5Y00fV/6df6e999d35cde1ffce518938905b8db/Magic_Cloud_Networking_simplifies_security__connectivity__and_management_of_public_clouds.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "2kSQZdb1qMvHLwcuLYBwX5",

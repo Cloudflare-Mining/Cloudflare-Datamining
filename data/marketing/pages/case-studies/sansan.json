@@ -1,0 +1,66 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/sansan/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Sansan",
+				"contentfulId": "4IISC7mliIKzUYF4toVlBV",
+				"nameUrlSlug": "sansan",
+				"metaTags": {
+					"metaTitle": "Sansan & Cloudflare | Customer Story",
+					"metaDescription": "Sansan transitioned from multiple web application firewalls (WAFs) to a single, integrated solution with Cloudflare WAF,Bot Management, and Advanced DDoS Protection.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/93JoW3KhUp7DPMIq3Q5yF/5afaf5084aed06e4526e1aecc3bb7ee4/Sansan_Social_CFLogo.png"
+						},
+						"description": "Sansan Meta"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2024-12-11",
+				"homepageUrl": "https://www.sansan.com",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Sansan transitioned to a single integrated solution with Cloudflare, standardising security measures across the company, streamlining operations, and reducing costs.",
+				"longDescription": "## Sansan improves the security and reduces costs by standardized operations with company-wide deployment of Cloudflare WAF and Bot Management\n\nFounded in 2007 with the mission of \"Turning encounters into innovation\", Sansan provides digital transformation services to change work style with \"Sansan\" - digital transformation service for sales team, \"Eight\" - business card management service, \"Bill One\" - invoice management service, \"Contract One\" - database for contract info, not limited for Japan, but also for foreign countries. Sansan has 1,759 employees as of August 31 in 2024, and is expanding more.\n\n### Facing fragmented security operations\n\nIn the past, individual teams at Sansan selected security solutions based on the business scale of each service they provided. This approach limited in-house team members' ability to manage certain vendor solutions, forcing them to rely on outsourced support. Additionally, siloed operations hindered the development of internal knowledge and expertise.\n\nIn many cases, web application firewall (WAF) costs were tied to the cost structure of each service. As a result, even when WAFs were planned for security reasons, cost constraints forced each individual project at Sansan to choose a lower cost WAF solution. \n\nTo address these challenges, Sansan turned to Cloudflare. Cloudflare offers a cloud-native delivery model that is suitable for comprehensive deployment across departments. \n\nSansan planned a company-wide deployment of Cloudflare WAF. Over six months, the company migrated all of its major services to Cloudflare WAF, With help from the Cloudflare solution, teams detected approximately 45.2 million attacks per month, effectively safeguarding their services.\n\nTakeshi Matsuda, security engineer at Sansan, commented on the move to Cloudflare: \"Although Sansan's services use a wide range of IaaS platforms and architectures, including VMs, containers, and serverless, we could easily integrate Cloudflare's cloud-based architecture across our multi-cloud environment without any issues.\"\n\n### Centralizing log management with Cloudflare Logpush\n\nBefore the Cloudflare rollout, each service department kept separate logs, making it difficult to perform log monitoring on a company-wide level. When an incident occurred, the security department had to request logs from each responsible department to conduct detailed investigations. In addition to it, the format of logs were not uniformed.\n\nNow, with Cloudflare Logpush, Sansan benefits from standardized and integrated security monitoring. Logpush enables seamless log aggregation within a unified SIEM, reducing interdepartmental overheads. \n\n\"Cloudflare WAF has helped us to accumulate organizational knowledge about WAF usage and streamline our operations,\" says Matsuda. \"Since implementation, our total operational costs have been reduced by about 90%. We also appreciate how easy Cloudflare WAF is to use, and this has helped us decrease our dependence on external vendors when addressing security vulnerabilities and allowed us to build a more agile response system.\"\n\n### Responding to unauthorized data access via crawlers\n\nSansan has also enhanced protection against unauthorized bot access. \n\nBefore rolling out Cloudflare, Sansan had a reactive approach to addressing customer data access via crawlers, such as blocking requests from specific source IPs. However, when over 50 IPs were flagged for malicious crawling, Sansan realized the limitations of this approach. \n\n\"Cloudflare's WAF Attack Score gives us more power to check access attempts for malicious behavior, and Bot Management allows us to more accurately identify source clients based on JA3 / JA4 fingerprints,\" says Matsuda. \"We also use Botscore, which has enhanced our ability to detect unauthorized bot access. We now know that approximately 10% of our total traffic comes from bots. We believe this knowledge will help us better protect ourselves in security against a variety of threat customer data leaks\"\n\n### Anticipating further cost savings through increased use of CDNs\n\nSansan has received  a positive response to the rollout of Cloudflare's application security solutions, including Cloudflare WAF and Bot Management. The company plans to take the next step by deploying Cloudflare Cache to reduce the load on its origin servers and save on operational costs. \n\n\"Sansan currently uses Cloudflare Cache for a few services to improve service levels and reduce costs,\" says Matsuda. \"This has led to a 20% reduction in the load on our origin servers. We intend to take this further to improve service quality and cost efficiency by integrating Cloudflare Workers alongside Cache.\"",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Safeguarded operations by implementing WAF,Bot Management, and  Advanced DDoS Protection across all its services\n- Detects approximately 45.2 million attacks each month\n- Achieved a roughly 90% reduction in costs associated with operating application security services.",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Takeshi Matsuda",
+				"employeeQuoteText": "Implementing Cloudflare WAF has helped us accumulate organizational knowledge on WAF usage and streamline our operations. As a result, we estimate that we've reduced our total operating costs by 90%",
+				"employeeQuoteJobTitle": "Security Engineer, Sansan",
+				"employeeQuoteName2": "Takeshi Matsuda",
+				"employeeQuoteText2": "We now know that around 10% of our total traffic comes from bots. We believe this knowledge will help us better protect ourselves in security against a variety of threats.",
+				"employeeQuoteJobTitle2": "Security Engineer, Sansan",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/RZeql4RtQNSiF1CN8vnii/0aee60bc8c5ce3c72e611d2d836597f9/Sansan_Logo.jpg"
+					},
+					"description": "Sansan logo"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4IISC7mliIKzUYF4toVlBV",
+			"pathname": "/case-studies/sansan/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"ja-JP"
+			]
+		}
+	}
+}

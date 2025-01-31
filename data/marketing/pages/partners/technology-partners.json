@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-07-30T20:56:15.811Z",
-					"updatedAt": "2023-07-06T21:48:02.428Z"
+					"updatedAt": "2025-01-15T17:51:03.611Z"
 				},
 				"contentfulId": "RwqkoHyxAp2Ou7W8zqqhk",
 				"contentTypeId": "page",
@@ -78,9 +78,9 @@
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": "partners-technology-partners-form-modal",
-						"buttonText2": "Download Brief",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QRlYQgNL3mpxdI5Vy49YR/29355573d1848f93a2460df83390c39b/Tech_Partner_Program_Whitepaper.pdf",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -118,12 +118,18 @@
 						"imageAssetFile": null
 					},
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "2BRCsa1B9ITcPwDFrrUXeV",
+						"htmlContent": "<style>\n\n.featured-logos{ \n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) ) ;\n  column-gap: 1.6rem;\n  row-gap: 2.5rem;\n  margin-bottom: 80px;\n  align-items: baseline;\n}\n\n @media screen and (min-width: 992px) {\n.featured-logos{ \n  column-gap: 6.6rem;\n}\n}\n\n</style>\n\n <h2 class=\" pb7-ns pb6 pt9-ns headline-2\">Featured technology partners</h2>\n\n<div class=\"featured-logos\">\n\n     <a href=\"/partners/technology-partners/crowdstrike/\"> <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Dxa5UKt0uYBd8JD2n44xS/dbcf41938a9b5dd466d44c7827029722/crowdstrike-logo-partners.png\" alt=\"Crowdstrike\"/> </a>\n\n   <a href=\"/integrations/google-cloud/\"> <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PuoBpqoTJZoRjeYhewn9Z/da84faf882eab8a9ea702752beac70fc/google-cloud-partners.png\" alt=\"Google cloud\"/> </a>\n\n   <a href=\"/partners/technology-partners/microsoft/\"> <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MLqPsTivyJLfzrrHGVFNg/6c67828fb22ac54ed54ecb2bd8539655/microsoft-logo-partners\" alt=\"Microsoft\"/> </a>\n\n         <a href=\"/partners/technology-partners/okta/\"> <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LP2RY1zFroOhXP0zlcKaU/8088d23d0ea4b0507957db4abe7ca4a7/Okta-logo-partners.png\" alt=\"SentinelOne\"/> </a>\n\n     <a href=\"/partners/technology-partners/ping-identity/\" > <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pQ5VgM1JASsQe6y3Mz27E/2eb6ea219ced8489488a11826867fbff/Ping-Identity-partners.png\" alt=\"Ping Identity\"/> </a>\n\n   <a href=\"/partners/technology-partners/sentinelone/\"> <img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J1pICv4PLXnAiSYknXISK/00c7a2f97099e4c6c3198e520a7a3726/SentinelOne-Logo-partners.png\" alt=\"SentinelOne\"/> </a>\n\n  </div>",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "7axNCb7e0RwJsocYuG9Crz",
 						"contentTypeId": "bladeFeatureList",
-						"title": "Explore Our Partners",
-						"bladeBorder": "none",
+						"title": "Explore our partners",
+						"bladeBorder": "border-top",
 						"backgroundColor": "white",
-						"subtitle": "The Integrated Global Cloud Network",
+						"subtitle": "The integrated global cloud network",
 						"sectionPadding": null,
 						"htmlId": null,
 						"featureLists": [
@@ -473,7 +479,7 @@
 					{
 						"contentfulId": "4c4apjLwv18U5HZoQkDg2E",
 						"contentTypeId": "bladeResourceGrid",
-						"title": "Tech Partner Directory",
+						"title": "Tech partner directory",
 						"description": null,
 						"sectionPadding": null,
 						"bladeBorder": "none",
@@ -506,7 +512,7 @@
 							"filterCategories": [
 								{
 									"internalTitle": "Solution Category",
-									"filterTitle": "Solution Category",
+									"filterTitle": "Solution category",
 									"filterItems": [
 										{
 											"filterItemName": "Application Services",
@@ -3024,122 +3030,8 @@
 								},
 								{
 									"internalTitle": "Partnership Type",
-									"filterTitle": "Partnership Type",
+									"filterTitle": "Partnership type",
 									"filterItems": [
-										{
-											"filterItemName": "Area 1 Email Security",
-											"resources": [
-												{
-													"resourceMedia": null,
-													"resourceMediaAssetFile": null,
-													"image": {
-														"id": "2886402c-7535-51c4-9ea5-fd347f47c578",
-														"altText": null,
-														"title": null,
-														"activeAsset": "Contentful Asset",
-														"locale": "en-US",
-														"contentfulAsset": {
-															"file": {
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/31NsxJ4KhntGQ3RpeSuy9M/c51e2c381f37239df89de3259c9f2231/Fortinet_logo.png"
-															},
-															"description": "Fortinet logo"
-														},
-														"brandfolderAsset": null,
-														"brandfolderAssetMobile": null
-													},
-													"resourceStreamId": null,
-													"title": "[Tech Partner Directory] - Fortinet - Element Resource",
-													"callToAction": "Learn More",
-													"id": "bcba9b60-7cfe-5130-93ad-f0679247a0b7",
-													"resourceTitle": "Fortinet",
-													"resourceType": "Link",
-													"topic": [
-														"Stop Phishing & BEC Attacks",
-														"Enhance Cloud Email Security"
-													],
-													"orderDate": "2022-10-11",
-													"industry": null,
-													"description": "Fortinet empowers its customers with intelligent, seamless protection across the expanding attack surface and the power to take on ever-increasing performance requirements of the borderless network—today and into the future.",
-													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/fortinet/",
-													"hideFromResourceHub": true
-												},
-												{
-													"resourceMedia": null,
-													"resourceMediaAssetFile": null,
-													"image": {
-														"id": "205dc502-04c2-56f7-ac21-86e9cf9523a1",
-														"altText": null,
-														"title": null,
-														"activeAsset": "Contentful Asset",
-														"locale": "en-US",
-														"contentfulAsset": {
-															"file": {
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5amShuBnW15gWIN3Xcudwh/1ece657a0535fb6ea8bcfe001b3bc2db/microsoft.png"
-															},
-															"description": ""
-														},
-														"brandfolderAsset": null,
-														"brandfolderAssetMobile": null
-													},
-													"resourceStreamId": null,
-													"title": "[Tech Partner Directory]  - Microsoft - Element Resource",
-													"callToAction": "Learn More",
-													"id": "4d05d66f-a6a2-50b8-aca2-a61dc79a6f47",
-													"resourceTitle": "Microsoft",
-													"resourceType": "Link",
-													"topic": [
-														"Accelerate Internet Applications",
-														"Accelerate Mobile Experiences",
-														"Ensure Application Availability",
-														"Multi-cloud / Hybrid Cloud Deployments",
-														"Secure Internet Applications",
-														"Secure On-Premise Networks",
-														"Secure Teams, Devices, and Internal Applications",
-														"Enable Zero Trust Security for Workforce",
-														"Enhance Cloud Email Security"
-													],
-													"orderDate": "2022-07-29",
-													"industry": null,
-													"description": "Microsoft's mission is to empower every person and every organization on the planet to achieve more, enabling digital transformation for the era of an intelligent cloud and an intelligent edge.",
-													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/microsoft/",
-													"hideFromResourceHub": true
-												},
-												{
-													"resourceMedia": null,
-													"resourceMediaAssetFile": null,
-													"image": {
-														"id": "c5bbd0c4-6d33-521e-81d6-bffe181be264",
-														"altText": null,
-														"title": null,
-														"activeAsset": "Contentful Asset",
-														"locale": "en-US",
-														"contentfulAsset": {
-															"file": {
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LSW7Ny1T3Vzaa9BdQjLir/311976b3d17c59e5a93f303cb031f263/google-logo-png-google-sva-scholarship-20.png"
-															},
-															"description": "Google logo"
-														},
-														"brandfolderAsset": null,
-														"brandfolderAssetMobile": null
-													},
-													"resourceStreamId": null,
-													"title": "[Tech Partner Directory]  - Google - Element Resource",
-													"callToAction": "Learn More",
-													"id": "8862c76d-052a-5372-b0d0-fc10bd245378",
-													"resourceTitle": "Google",
-													"resourceType": "Link",
-													"topic": [
-														"Enable Zero Trust Security for Workforce",
-														"Ensure Application Availability"
-													],
-													"orderDate": "2022-07-28",
-													"industry": null,
-													"description": "Google is a global technology company specializing in Internet-related services and products. The company is primarily focused on web-based search and display advertising tools, search engine, cloud computing, software, and hardware.\n",
-													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/google/",
-													"hideFromResourceHub": true
-												}
-											]
-										},
 										{
 											"filterItemName": "Analytics Partnerships",
 											"resources": [
@@ -4164,6 +4056,120 @@
 										{
 											"filterItemName": "CASB Integrations",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": {
+														"id": "205dc502-04c2-56f7-ac21-86e9cf9523a1",
+														"altText": null,
+														"title": null,
+														"activeAsset": "Contentful Asset",
+														"locale": "en-US",
+														"contentfulAsset": {
+															"file": {
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5amShuBnW15gWIN3Xcudwh/1ece657a0535fb6ea8bcfe001b3bc2db/microsoft.png"
+															},
+															"description": ""
+														},
+														"brandfolderAsset": null,
+														"brandfolderAssetMobile": null
+													},
+													"resourceStreamId": null,
+													"title": "[Tech Partner Directory]  - Microsoft - Element Resource",
+													"callToAction": "Learn More",
+													"id": "4d05d66f-a6a2-50b8-aca2-a61dc79a6f47",
+													"resourceTitle": "Microsoft",
+													"resourceType": "Link",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Ensure Application Availability",
+														"Multi-cloud / Hybrid Cloud Deployments",
+														"Secure Internet Applications",
+														"Secure On-Premise Networks",
+														"Secure Teams, Devices, and Internal Applications",
+														"Enable Zero Trust Security for Workforce",
+														"Enhance Cloud Email Security"
+													],
+													"orderDate": "2022-07-29",
+													"industry": null,
+													"description": "Microsoft's mission is to empower every person and every organization on the planet to achieve more, enabling digital transformation for the era of an intelligent cloud and an intelligent edge.",
+													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/microsoft/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": {
+														"id": "c5bbd0c4-6d33-521e-81d6-bffe181be264",
+														"altText": null,
+														"title": null,
+														"activeAsset": "Contentful Asset",
+														"locale": "en-US",
+														"contentfulAsset": {
+															"file": {
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LSW7Ny1T3Vzaa9BdQjLir/311976b3d17c59e5a93f303cb031f263/google-logo-png-google-sva-scholarship-20.png"
+															},
+															"description": "Google logo"
+														},
+														"brandfolderAsset": null,
+														"brandfolderAssetMobile": null
+													},
+													"resourceStreamId": null,
+													"title": "[Tech Partner Directory]  - Google - Element Resource",
+													"callToAction": "Learn More",
+													"id": "8862c76d-052a-5372-b0d0-fc10bd245378",
+													"resourceTitle": "Google",
+													"resourceType": "Link",
+													"topic": [
+														"Enable Zero Trust Security for Workforce",
+														"Ensure Application Availability"
+													],
+													"orderDate": "2022-07-28",
+													"industry": null,
+													"description": "Google is a global technology company specializing in Internet-related services and products. The company is primarily focused on web-based search and display advertising tools, search engine, cloud computing, software, and hardware.\n",
+													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/google/",
+													"hideFromResourceHub": true
+												}
+											]
+										},
+										{
+											"filterItemName": "Cloudflare Email Security",
+											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": {
+														"id": "2886402c-7535-51c4-9ea5-fd347f47c578",
+														"altText": null,
+														"title": null,
+														"activeAsset": "Contentful Asset",
+														"locale": "en-US",
+														"contentfulAsset": {
+															"file": {
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/31NsxJ4KhntGQ3RpeSuy9M/c51e2c381f37239df89de3259c9f2231/Fortinet_logo.png"
+															},
+															"description": "Fortinet logo"
+														},
+														"brandfolderAsset": null,
+														"brandfolderAssetMobile": null
+													},
+													"resourceStreamId": null,
+													"title": "[Tech Partner Directory] - Fortinet - Element Resource",
+													"callToAction": "Learn More",
+													"id": "bcba9b60-7cfe-5130-93ad-f0679247a0b7",
+													"resourceTitle": "Fortinet",
+													"resourceType": "Link",
+													"topic": [
+														"Stop Phishing & BEC Attacks",
+														"Enhance Cloud Email Security"
+													],
+													"orderDate": "2022-10-11",
+													"industry": null,
+													"description": "Fortinet empowers its customers with intelligent, seamless protection across the expanding attack surface and the power to take on ever-increasing performance requirements of the borderless network—today and into the future.",
+													"externalLinkUrl": "https://www.cloudflare.com/partners/technology-partners/fortinet/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -6008,44 +6014,6 @@
 								}
 							]
 						}
-					},
-					{
-						"contentfulId": "4KKlprQ0D67cKviLf0jWja",
-						"contentTypeId": "bladeResourceGrid",
-						"title": "Learn More",
-						"description": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"textColor": "black",
-						"backgroundColor": "white",
-						"htmlId": null,
-						"resourceList": [
-							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QRlYQgNL3mpxdI5Vy49YR/29355573d1848f93a2460df83390c39b/Tech_Partner_Program_Whitepaper.pdf"
-									},
-									"description": ""
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Whitepaper",
-								"callToAction": "Download PDF",
-								"id": "bfd4887f-e69e-5e9d-a526-b65468575d27",
-								"resourceTitle": "Tech Partner Program Whitepaper",
-								"resourceType": "Whitepaper",
-								"topic": [
-									"N/A"
-								],
-								"orderDate": "2022-07-18",
-								"industry": null,
-								"description": "Learn more about how Cloudflare's Technology Partnerships Program facilitates and drives innovative integrations that create value for joint customers and our technology partners.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": true
-							}
-						],
-						"filterMenu": null
 					}
 				],
 				"noindex": false,
