@@ -5,18 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>While this job can be worked almost entirely remotely, hiring is focused on the following greater metro areas (~50 miles):<br></strong></p>
-<ul>
-	<li><strong>Austin, TX</strong></li>
-	<li><strong>Atlanta, GA</strong></li>
-	<li><strong>Champaign, IL</strong></li>
-	<li><strong>Denver, CO</strong></li>
-	<li><strong>New York City</strong></li>
-	<li><strong>Seattle, WA</strong></li>
-	<li><strong>Washington, DC</strong></li>
-	<li><strong>Mexico City, MX</strong></li>
-	<li><strong>Toronto, CA</strong></li>
-</ul>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX metro area. It will be a hybrid role, with the expectation of 2 days per week in the office.<br><br></strong></p>
 <p><span style="font-weight: 400;"><strong>Hiring Process &amp; Cloudflare's Engineering Teams</strong></span><em><span style="font-weight: 400;"><br></span></em></p>
 <p><span style="font-weight: 400;">Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. To streamline our hiring for Distributed Systems Engineers at Cloudflare, we’ve created a Single Hiring Pipeline (SHP) that enables candidates to be considered for multiple engineering teams through a single, standardized interview process. This approach allows us to assess your skills and knowledge and match you with the team that best aligns with your strengths and interests.&nbsp;As part of the hiring process you will have the opportunity to meet with and ultimately select one or more teams; here are a few examples of the teams that you could be part of.</span></p>
 <p><strong>Application Performance; Application Security; Zero Trust Services; Serverless, Bot Management; DDoS Protection; Network Services / Magic Products; Full Stack / Microservices; Security / Cryptography; Content Delivery; Email Security; API Security; Client / WARP applications; Machine Learning; Threat Intelligence</strong></p>
