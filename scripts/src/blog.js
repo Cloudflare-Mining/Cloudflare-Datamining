@@ -116,7 +116,9 @@ const fetchURL = async function(url, waitFor, slug) {
 			};
 		} catch (err) {
 			console.warn('Failed to find selector', url, waitFor, err);
-			try { await page.close(); } catch {}
+			try {
+				await page.close();
+			} catch {}
 			return;
 		}
 	}
