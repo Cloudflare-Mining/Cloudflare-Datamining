@@ -1273,7 +1273,7 @@ fi</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Matrix multiplication now uses <a href="https://github.com/tensorflow/tensorflow/blob/15ec568b5505727c940b651aeb2a9643b504086c/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.cc#L161-L199">AVX2 instructions</a>, which uses blocks of 8x8 to multiply and accumulate the multiplication result.</p>
-	<p>Proportionally, matrix multiplication and quantization operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p><!--kg-card-begin: html-->
+	<p>Proportionally, matrix multiplication and <a href="https://www.cloudflare.com/learning/ai/what-is-quantization">quantization</a> operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;

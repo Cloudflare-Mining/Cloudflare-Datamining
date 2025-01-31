@@ -24,29 +24,71 @@ export interface Env {
 	<p>That was deployed on Workers AI and all I had to do was ask for poems. Here’s my terminal output (with just the domain name changed).</p>
 	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud"}' | jq -r .response</code></pre>
-	<p><code>Cloud computing provides a connectivity that's unmatched,</code><code>A bridge that spans the globe with ease and grace.</code><code>It brings us closer, no matter where we are,</code><code>And makes the world a smaller, more intimate place.</code></p>
-	<p><code>With just a click, we can connect and share,</code><code>Our thoughts and ideas, our hopes and dreams.</code><code>The cloud unites us, in a way that's fair,</code><code>And makes the world a more harmonious theme.</code></p>
-	<p><code>So let us embrace this connectivity,</code><code>And use it to build a better world for all.</code><code>For in the cloud, we find a unity,</code><code>That can help us reach new heights, and stand tall.</code></p>
+	<p><code>Cloud computing provides a connectivity that's unmatched,</code></p>
+	<p><code>A bridge that spans the globe with ease and grace.</code></p>
+	<p><code>It brings us closer, no matter where we are,</code></p>
+	<p><code>And makes the world a smaller, more intimate place.</code></p>
+	<p><code>With just a click, we can connect and share,</code></p>
+	<p><code>Our thoughts and ideas, our hopes and dreams.</code></p>
+	<p><code>The cloud unites us, in a way that's fair,</code></p>
+	<p><code>And makes the world a more harmonious theme.</code></p>
+	<p><code>So let us embrace this connectivity,</code></p>
+	<p><code>And use it to build a better world for all.</code></p>
+	<p><code>For in the cloud, we find a unity,</code></p>
+	<p><code>That can help us reach new heights, and stand tall.</code></p>
 	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud and contrast it with the  \
 captivity cloud"}' | jq -r .response</code></pre>
-	<p><code>The connectivity cloud, a wondrous sight to see,</code><code>Where data flows and knowledge is set free,</code><code>A place where minds meet and ideas take flight,</code><code>A world of endless possibility in sight.</code></p>
-	<p><code>But then there's the captivity cloud, a darker place,</code><code>Where thoughts are trapped and minds are in disgrace,</code><code>A prison of the mind, where freedom's lost,</code><code>A world of endless sorrow and cost.</code></p>
-	<p><code>So let us choose the connectivity cloud,</code><code>And let our minds be free and allowed,</code><code>To soar and glide and reach for the sky,</code><code>And never be held back, but always fly.</code></p>
+	<p><code>The connectivity cloud, a wondrous sight to see,</code></p>
+	<p><code>Where data flows and knowledge is set free,</code></p>
+	<p><code>A place where minds meet and ideas take flight,</code></p>
+	<p><code>A world of endless possibility in sight.</code></p>
+	<p><code>But then there's the captivity cloud, a darker place,</code></p>
+	<p><code>Where thoughts are trapped and minds are in disgrace,</code></p>
+	<p><code>A prison of the mind, where freedom's lost,</code></p>
+	<p><code>A world of endless sorrow and cost.</code></p>
+	<p><code>So let us choose the connectivity cloud,</code></p>
+	<p><code>And let our minds be free and allowed,</code></p>
+	<p><code>To soar and glide and reach for the sky,</code></p>
+	<p><code>And never be held back, but always fly.</code></p>
 	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud and contrast it with the  \
 captivity cloud using Elizabethan English"}' | jq -r .response</code></pre>
-	<p><code>In the connectivity cloud, I find my peace,</code><code>Where thoughts and dreams and hopes do cease to flee.</code><code>The captivity cloud doth but darken my day,</code><code>With chains of sorrow that will not away.</code></p>
-	<p><code>In the connectivity cloud, I find my home,</code><code>Where love and joy and laughter do make their moan.</code><code>The captivity cloud doth but lock me in,</code><code>With sorrow's shackles that will not give in.</code></p>
-	<p><code>In the connectivity cloud, I find my fate,</code><code>Where fortune smiles and misery doth wait.</code><code>The captivity cloud doth but bring me woe,</code><code>With darkness that will not let me go.</code></p>
-	<p><code>In the connectivity cloud, I find my heart,</code><code>Where love and hope and joy do play their part.</code><code>The captivity cloud doth but tear it apart,</code><code>With sorrow's hand that will not let it start.</code></p>
+	<p><code>In the connectivity cloud, I find my peace,</code></p>
+	<p><code>Where thoughts and dreams and hopes do cease to flee.</code></p>
+	<p><code>The captivity cloud doth but darken my day,</code></p>
+	<p><code>With chains of sorrow that will not away.</code></p>
+	<p><code>In the connectivity cloud, I find my home,</code></p>
+	<p><code>Where love and joy and laughter do make their moan.</code></p>
+	<p><code>The captivity cloud doth but lock me in,</code></p>
+	<p><code>With sorrow's shackles that will not give in.</code></p>
+	<p><code>In the connectivity cloud, I find my fate,</code></p>
+	<p><code>Where fortune smiles and misery doth wait.</code></p>
+	<p><code>The captivity cloud doth but bring me woe,</code></p>
+	<p><code>With darkness that will not let me go.</code></p>
+	<p><code>In the connectivity cloud, I find my heart,</code></p>
+	<p><code>Where love and hope and joy do play their part.</code></p>
+	<p><code>The captivity cloud doth but tear it apart,</code></p>
+	<p><code>With sorrow's hand that will not let it start.</code></p>
 	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud and contrast it with the  \
 captivity cloud in the style of Lord Byron"}' | jq -r .response</code></pre>
-	<p><code>In the realm of the cloud, where data reigns supreme,</code><code>A new divide has emerged, a digital dream,</code><code>The connectivity cloud, a place of delight,</code><code>Where knowledge and wisdom take flight.</code></p>
-	<p><code>But then there's the captivity cloud, a darker hue,</code><code>Where privacy and security are hard to pursue,</code><code>A prison of sorts, where freedom's light is lost,</code><code>And data's secrets are forever crossed.</code></p>
-	<p><code>Yet still, we cling to the captivity cloud,</code><code>For in its depths, we find a measure of proof,</code><code>That though the connectivity cloud may be bright,</code><code>The captivity cloud holds a certain allure in sight.</code></p>
-	<p><code>So let us embrace both, the light and the dark,</code><code>For in their union, we find a digital spark,</code><code>That illuminates the path to a brighter day,</code><code>Where knowledge and privacy reign in a digital way.</code></p>
+	<p><code>In the realm of the cloud, where data reigns supreme,</code></p>
+	<p><code>A new divide has emerged, a digital dream,</code></p>
+	<p><code>The connectivity cloud, a place of delight,</code></p>
+	<p><code>Where knowledge and wisdom take flight.</code></p>
+	<p><code>But then there's the captivity cloud, a darker hue,</code></p>
+	<p><code>Where privacy and security are hard to pursue,</code></p>
+	<p><code>A prison of sorts, where freedom's light is lost,</code></p>
+	<p><code>And data's secrets are forever crossed.</code></p>
+	<p><code>Yet still, we cling to the captivity cloud,</code></p>
+	<p><code>For in its depths, we find a measure of proof,</code></p>
+	<p><code>That though the connectivity cloud may be bright,</code></p>
+	<p><code>The captivity cloud holds a certain allure in sight.</code></p>
+	<p><code>So let us embrace both, the light and the dark,</code></p>
+	<p><code>For in their union, we find a digital spark,</code></p>
+	<p><code>That illuminates the path to a brighter day,</code></p>
+	<p><code>Where knowledge and privacy reign in a digital way.</code></p>
 	<p>What are you going to build on Workers AI? It’s ready and waiting. We’ll help you go from idea to deployed in minutes.</p>
 	<p>If you want to know exactly how to deploy something like this <a href="https://blog.cloudflare.com/workers-ai">read the Workers AI announcement blog</a>.</p>
 </div>

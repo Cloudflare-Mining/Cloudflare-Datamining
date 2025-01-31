@@ -25,15 +25,43 @@
 		</a>
 	</div>
 	<p>Around the time that the outage referenced above began, we also observed a shift in routing for the <a href="https://bgpview.io/prefix/91.206.110.0/23">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213">AS35213</a>. However, a day later, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en">the largest digital services provider in Russia</a>”. This aligns with the claims noted above about connecting Ukrainian Internet users to the Russian network.</p>
-	<p>Peer AS</p>
-	<p>Last Update</p>
-	<p>AS Path</p>
-	<p>AS1299 (TWELVE99 Arelion, fka Telia Carrier)</p>
-	<p>5/1/2022 16:02:26</p>
-	<p>1299 12389 201776 47598</p>
-	<p>AS6777 (AMS-IX-RS)</p>
-	<p>4/28/2022 11:23:33</p>
-	<p>12883 47598</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Peer AS</b></p>
+				</td>
+				<td>
+					<p><b>Last Update&nbsp;</b></p>
+				</td>
+				<td>
+					<p><b>AS Path</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AS1299 (TWELVE99 Arelion, fka Telia Carrier)</p>
+				</td>
+				<td>
+					<p>5/1/2022 16:02:26</p>
+				</td>
+				<td>
+					<p>1299 12389 201776 47598</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AS6777 (AMS-IX-RS)</p>
+				</td>
+				<td>
+					<p>4/28/2022 11:23:33</p>
+				</td>
+				<td>
+					<p>12883 47598</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Because <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Cloudflare uses Anycast</a> to route content requests to data centers on our network, routing changes such as this one can impact data center selection. This is clearly evident in the graph below. Prior to the outage, when Khersontelecom reached the Internet through other Ukrainian providers, requests from the network were handled by Cloudflare data centers in Kyiv, Ukraine and Frankfurt, Germany. On May 1, after the Russian network began to route traffic for Khersontelecom, requests were sent to our Moscow data center.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -41,15 +69,43 @@
 
 	</figure>
 	<p>These requests continued to be handled by our Moscow data center for approximately three days. However, the graph also shows that traffic started being handled again by the Kyiv and Frankfurt data centers, with the Moscow data center no longer in the mix, around 06:00 UTC on May 4. This aligns with the observed update to the routing path for AS47598 shown in the table below – it no longer had Russian networks as upstream providers, but instead returned to reaching the Internet through other Ukrainian networks.</p>
-	<p>Peer AS</p>
-	<p>Last Update</p>
-	<p>AS Path</p>
-	<p>AS174 (COGENT-174)</p>
-	<p>5/4/2022 05:56:27</p>
-	<p>174 3326 3326 3326 47598</p>
-	<p>AS1273 (CW Vodafone Group PLC)</p>
-	<p>5/4/2022 03:11:25</p>
-	<p>1273 12389 201776 47598</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Peer AS</b></p>
+				</td>
+				<td>
+					<p><b>Last Update&nbsp;</b></p>
+				</td>
+				<td>
+					<p><b>AS Path</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AS174 (COGENT-174)</p>
+				</td>
+				<td>
+					<p>5/4/2022 05:56:27</p>
+				</td>
+				<td>
+					<p>174 3326 3326 3326 47598</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AS1273 (CW Vodafone Group PLC)</p>
+				</td>
+				<td>
+					<p>5/4/2022 03:11:25</p>
+				</td>
+				<td>
+					<p>1273 12389 201776 47598</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
