@@ -911,6 +911,7 @@
 																"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																"properties": {
 																	"fallback": {
+																		"default": "none",
 																		"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																		"enum": [
 																			"none",
@@ -1619,6 +1620,7 @@
 																		"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																		"properties": {
 																			"fallback": {
+																				"default": "none",
 																				"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																				"enum": [
 																					"none",
@@ -2424,6 +2426,7 @@
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"fallback": {
+																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -3100,6 +3103,7 @@
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"fallback": {
+																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -3803,6 +3807,7 @@
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
 											"fallback": {
+												"default": "none",
 												"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 												"enum": [
 													"none",
@@ -4464,6 +4469,7 @@
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"fallback": {
+																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -5140,6 +5146,7 @@
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"fallback": {
+																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -5942,6 +5949,7 @@
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"fallback": {
+																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -6615,6 +6623,7 @@
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"fallback": {
+																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
@@ -7329,6 +7338,7 @@
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
 											"fallback": {
+												"default": "none",
 												"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 												"enum": [
 													"none",
@@ -7990,6 +8000,7 @@
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"fallback": {
+																	"default": "none",
 																	"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																	"enum": [
 																		"none",
@@ -8666,6 +8677,7 @@
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"fallback": {
+																			"default": "none",
 																			"description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.",
 																			"enum": [
 																				"none",
