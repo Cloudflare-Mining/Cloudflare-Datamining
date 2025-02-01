@@ -5,12 +5,12 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Position Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></h3>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal | London, UK</p>
 <p>Cloudflare is seeking an organized, self-motivated Business Analyst to understand business needs and translate them into areas for improvement. You will be responsible for prioritizing initiatives based on business impact, developing requirements, ensuring solutions align with business goals, and owning communications and enablement that will ensure the business is ready to adopt new processes. In this role you will have the opportunity to directly impact the productivity of our Support team (and in turn, thousands of customers that we work with every week) by driving the implementation of new system functionality and enhancements in Salesforce Service Cloud.&nbsp;</p>
 <p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
 <p>The ideal candidate is comfortable working in a fast-paced environment, is empathetic, flexible, iterative, curious, and enjoys collaborating cross-functionally to achieve a common goal.</p>
 <p>This position will be based in Austin, Texas; London, UK; or Lisbon, Portugal. You will be reporting into the Support Operations team.</p>
-<h3><strong>Major areas of responsibilities</strong></h3>
+<h4><strong>Major areas of responsibilities</strong></h4>
 <ul>
 	<li>Serves as business partner and trusted advisor for Customer Support. Collects, understands, and synthesizes user feedback as well as strategic business priorities. Has deep understanding of business stakeholder group.</li>
 	<li>Stack ranks priorities that reflect the stakeholder group’s needs. Provides input on Salesforce Service Cloud roadmap.</li>
@@ -21,7 +21,7 @@
 	<li>Ensures the relevant parts of the business are ready for each release that impacts them. Leads and / or organizes necessary meetings to deliver system demos, perform user acceptance testing, and end user training.</li>
 	<li>Documents releases in an easy to understand way. Thoroughly communicates updates to business stakeholders.</li>
 </ul>
-<h3><strong>Desirable skills and knowledge</strong></h3>
+<h4><strong>Desirable skills and knowledge</strong></h4>
 <ul>
 	<li>Bachelor’s degree in Business Administration, Computer Science, Information Systems, or a related field.</li>
 	<li>Ability to analyze complex business problems and identify effective solutions.</li>
@@ -31,6 +31,36 @@
 	<li>Direct experience or knowledge of Customer Support team is a plus.</li>
 	<li>Experience with Salesforce Service Cloud a plus.</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
