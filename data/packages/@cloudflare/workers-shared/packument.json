@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.13.0",
-		"beta": "0.0.0-cf09cfa33"
+		"beta": "0.0.0-f9fd9df8f"
 	},
 	"versions": {
 		"0.1.0": {
@@ -26561,6 +26561,43 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-cf09cfa33",
 			"dependencies": {
+				"zod": "^3.22.3",
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"rimraf": "^5.0.10",
+				"vitest": "~2.1.8",
+				"esbuild": "0.17.19",
+				"toucan-js": "^3.3.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20250129.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.31",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "d8a9520054fe16ed378a49ad1936d4d5a5ac3b1f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-cf09cfa33.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-tLbx7oHNJgMRiB+0H88M7J9XneWSRUkYt0T8dryc1/YrrHj+c6NHQsaTdfE2zkHhmvTQqdXWlVGoS8UxPAhZhw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHh9Zcce1hSEYhx/rC//b28zDQ5ASriqq9Y7g262XLDoAiBMcMCT7HF+R+k328ItyqZPcfoBNFVJMaJVnuS9Q11pjA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1062768
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-f9fd9df8f": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-f9fd9df8f",
+			"dependencies": {
 				"mime": "^3.0.0",
 				"zod": "^3.22.3"
 			},
@@ -26578,15 +26615,15 @@
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-tLbx7oHNJgMRiB+0H88M7J9XneWSRUkYt0T8dryc1/YrrHj+c6NHQsaTdfE2zkHhmvTQqdXWlVGoS8UxPAhZhw==",
-				"shasum": "d8a9520054fe16ed378a49ad1936d4d5a5ac3b1f",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-cf09cfa33.tgz",
+				"integrity": "sha512-GQ7GrtDKoi4Qrfh6QLouGumrw+7AOC4lm9GFKmIaA1E3a4mbQsArNs3vh754fVMFSkB01BG5kqt3IUf9RLnlSA==",
+				"shasum": "3be2891c481800516ce3a242bb2a61e141316419",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-f9fd9df8f.tgz",
 				"fileCount": 11,
-				"unpackedSize": 1062768,
+				"unpackedSize": 1062598,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIHh9Zcce1hSEYhx/rC//b28zDQ5ASriqq9Y7g262XLDoAiBMcMCT7HF+R+k328ItyqZPcfoBNFVJMaJVnuS9Q11pjA=="
+						"sig": "MEYCIQC8/p1RFOzZMmcIToO8xtktNDS74bxzMCtNCfXMvHVtYQIhAP0VYf6zCpcAC7NiREd7S6ZXhXvPGnV1hdpwOn5rhbG/"
 					}
 				]
 			},
