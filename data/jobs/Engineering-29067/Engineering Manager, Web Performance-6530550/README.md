@@ -5,58 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations - US: Austin<br></strong></p>
-<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Product Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, design, marketing, security, billing, technical operations, infrastructure, legal, and more to build and execute on the overall strategy.&nbsp;</h4>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
-<p><strong>Major areas of responsibilities</strong></p>
+<p><strong>Available Location(s): Austin, TX</strong></p>
+<p><strong>Cloudflare is looking for an Engineering Manager to lead the Speed team.</strong></p>
+<p>The Speed team builds technology to measure and accelerate web experiences on Cloudflare. Our mission is to help our customers’ websites get faster. The Speed team creates innovative new features like Fonts, Observatory and Speculation Hints, looks after mature systems at scale like Web Analytics, and manages a large pipeline of web performance data that can be used to help benchmark and improve other products.</p>
+<p>As the engineering manager, you will play a key role in shaping the team’s strategy, working with other leaders and teams to build products that customers love, and that meet the team’s ambitious standards of quality, reliability, and scalability.</p>
+<p>You will be expected to lead, inspire, and foster a culture of diversity. You will communicate clearly and with empathy, and work towards creating a cohesive high-performance team. You will be responsible for all aspects of team life - building roadmaps, running meetings, creating processes, hiring, and setting up engineers for success.</p>
+<p>The team predominantly uses Go, Rust and Typescript and is familiar with browser APIs. Any prior experience in these technologies will make you well-suited for this role.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Understand technical requirements of assigned engineering programs</li>
-	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management<br><br></li>
+	<li>Experience building and leading a team, including hiring, coaching, and professional development</li>
+	<li>A self-directing nature, keen to take ownership of projects from start to finish</li>
+	<li>Experience coordinating projects across multiple teams</li>
+	<li>Empathetic and clear communication skills, verbal and written</li>
+	<li>Previous programming experience</li>
+	<li>Knowledge of browser APIs and browser performance tooling (eg. Lighthouse)</li>
+	<li>Strong data analysis skills, ideally with experience in Grafana, SQL or BigQuery</li>
+	<li>Excellent technical leadership skills, driving for very high-quality and low-complexity code</li>
+	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Experience building distributed systems</li>
+	<li>Experience programming with Rust, Go, Typescript</li>
+	<li>Experience with Cloudflare Workers</li>
+	<li>Experience leading distributed teams</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong><br>Equity</strong></p>
+<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
 </ul>
 <p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
 </ul>
 <p><strong>Time Off</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
