@@ -265,16 +265,6 @@
 				}
 			},
 			{
-				"description": "Filter scans by Autonomous System Number (ASN) of _any_ request made by the webpage.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Filter scans by Autonomous System Number (ASN) of _any_ request made by the webpage.",
-					"example": "13335",
-					"type": "string"
-				}
-			},
-			{
 				"description": "Filter scans by hash of any html/js/css request made by the webpage.",
 				"in": "query",
 				"name": "hash",
