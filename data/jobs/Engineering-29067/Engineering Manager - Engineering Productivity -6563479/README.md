@@ -6,9 +6,7 @@
 	</div>
 </div>
 <h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
-<p>Austin, TX</p>
 <p>London, UK</p>
-<p>Lisbon, Portugal&nbsp;</p>
 <h4><strong>About the Department</strong></h4>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
 <h4><strong>What you'll do</strong></h4>
