@@ -5,58 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
-<p>London, UK</p>
-<p>Lisbon, Portugal&nbsp;</p>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>You will lead a team of passionate, talented engineers that are building innovative products that touch billions of web requests each day. In this role, you will introduce tools and processes to make our engineers’ lives better. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>About the team</strong></p>
-<p>The Engineering Productivity Team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and serve high volumes of requests every day.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p><strong>What You’ll Do</strong></p>
+<p>Cloudflare operates one of the largest and most interconnected global networks, with data centers across more than 120 countries. This expansive infrastructure enables us to deliver unparalleled performance, security, and reliability to millions of Internet resources. Supporting such a vast network requires a world class legal team to navigate complex matters, anticipate challenges, and guide the company around obstacles, all while maintaining our commitment to the security and privacy of our customers. We’re looking for a new team member who can help foster our unique corporate philosophy and approach. We seek someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth to work as part of a great team.</p>
+<p>We are seeking an exceptionally talented, energetic, and friendly Trade Compliance Specialist to join our legal team. In this role, you will focus on developing and standardizing trade compliance processes, driving automation initiatives, and supporting the team with strategic projects and training.&nbsp; By ensuring compliance with international trade laws and regulations, you will play a critical part in enabling the operation and expansion of Cloudflare’s global network and data centers. You will work collaboratively with the Global Trade Compliance team in the Americas, EMEA and APJC regions to enhance operational efficiency and ensure alignment with global goals. This position is about supporting and enabling the team rather than managing regional functions, making it a critical role in strengthening our shared success. As part of the job, you will:&nbsp;</p>
+<p><strong>Location: Lisbon, Portugal</strong></p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>4+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Familiarity with networking terminology, tooling, patterns, and technologies.</li>
+	<li>Design and maintain team-wide processes for the trade compliance programs, incorporating regional input;</li>
+	<li>Identify and implement best practices to streamline workflows and ensure consistency;</li>
+	<li>Ensure legal regulatory compliance with all aspects of trade operations;</li>
+	<li>Lead projects to automate manual processes (e.g., recordkeeping, reporting, import / export compliance audits);</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Experience building and running Platform engineering teams</li>
+	<li>Collaborate with internal partners and external vendors to enhance the functionality of trade compliance systems;</li>
+	<li>Ensure trade data integrity and accuracy within trade systems and related tools;</li>
+	<li>Monitor, measure and develop reports with key performance indicators (KPIs);</li>
+	<li>Evaluate new government requirements and partner with team members to ensure trade compliance;</li>
+	<li>Assist with various departmental projects by providing technical expertise. Projects may include support for: audits, product compliance, vendor management, duty/tax optimization. Support training materials design and delivery;</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Facilitate knowledge-sharing sessions to align the team on best practices and ensure continuous improvement;</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Collaborate in strategic initiatives as directed by ensuring timelines and objectives are met.</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Requires ability to evaluate risk, strong problem solving skills and excellent communication skills, including ability to resolve/research complex issues with Cloudflare’s business partners, suppliers and brokers;</li>
+	<li>5+ years of equivalent practical work experience;</li>
+	<li>Bachelor’s degree in international business, or equivalent;&nbsp;</li>
+	<li>Experience working on EU or U.S. trade compliance and customs regulations;</li>
+	<li>Experience in process development, compliance operations, or workflow optimization;</li>
+	<li>Experience with trade compliance systems or automation tools is a plus;</li>
 </ul>
+<ul>
+	<li>Strong process improvement and project management skills;</li>
+	<li>Ability to work collaboratively with cross-functional and geographically distributed teams;</li>
+	<li>Excellent analytical skills and attention to detail;</li>
+	<li>Strong training skills, with the ability to simplify complex processes;&nbsp;</li>
+	<li>Proficiency with Google Suite and ERP systems; and</li>
+	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

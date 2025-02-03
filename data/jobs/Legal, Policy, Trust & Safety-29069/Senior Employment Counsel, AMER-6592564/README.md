@@ -5,31 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
-<p>London, UK</p>
-<p>Lisbon, Portugal&nbsp;</p>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>You will lead a team of passionate, talented engineers that are building innovative products that touch billions of web requests each day. In this role, you will introduce tools and processes to make our engineers’ lives better. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>About the team</strong></p>
-<p>The Engineering Productivity Team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and serve high volumes of requests every day.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p>Cloudflare’s business requires a world class legal team to help the company deal with complex matters by anticipating complications and distractions, and guiding the company around those obstacles.&nbsp; We’re looking for a new team member who can help foster our unique corporate philosophy and approach, in which the security and privacy of our customers are paramount. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>We are looking for an exceptionally talented, energetic and friendly employment lawyer to join our legal team based either in Washington DC, Austin or San Francisco. You will play a key role advising on Cloudflare’s employment matters in AMER (primarily North America, Canada, Mexico but AMER coverage is ever expanding as Cloudflare grows), as well as providing legal support for our broader legal compliance initiatives. The perfect candidate is passionate about employment law and can channel that passion into solving complex problems and novel legal issues in a fast-paced multi-jurisdictional environment.</p>
+<p><strong>Locations: Washington DC, Austin, San Francisco</strong></p>
+<p><strong>In this role you will:</strong></p>
 <ul>
-	<li>4+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Familiarity with networking terminology, tooling, patterns, and technologies.</li>
+	<li>Provide effective, business-focused, day-to-day advice to various internal stakeholders in AMER, including our HR business partners, recruiting, rewards, new countries, and mobility teams on a broad range of issues relating to employment law across the region.</li>
+	<li>Deliver clear practical advice that enables our business partners to achieve their objectives while mitigating legal risk and considering the interests of all stakeholders.</li>
+	<li>Effectively collaborate with colleagues around the world.</li>
+	<li>Advise on and help resolve contentious employment matters, including by helping supervise any resulting litigation.</li>
+	<li>Draft, review and revise internal processes, policies and workflows.</li>
+	<li>Provide in person and online training to employees in AMER on employment related matters, including harassment and discrimination.</li>
+	<li>Work closely with outside counsel where appropriate either in obtaining cost-effective, business-orientated legal advice or helping supervise employment litigation.</li>
+	<li>Keep up-to-date and advise on relevant laws, regulations, and industry trends on employee issues affecting Cloudflare’s businesses in AMER.</li>
+	<li>Contribute to wider global and/or cross-functional projects, including new country expansion initiatives and M&amp;A transactions.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>You have:</strong></p>
 <ul>
-	<li>Experience building and running Platform engineering teams</li>
+	<li>8+ years experience either in a law firm or in-house (preferably with technology companies).</li>
+	<li>Experience handling or assisting with US employment litigation matters.&nbsp;</li>
+	<li>Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
+	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner.</li>
+	<li>Ability to organize, prioritize, and manage many tasks on complex projects.</li>
+	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
 <p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $187,000 - $229,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $206,000 - $252,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $215,000 - $263,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -57,6 +63,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
