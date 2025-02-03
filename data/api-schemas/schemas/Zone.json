@@ -658,6 +658,12 @@
 															"type": "string"
 														},
 														"type": "array"
+													},
+													"verification_key": {
+														"description": "Verification key for partial zone setup.",
+														"example": "284344499-1084221259",
+														"readOnly": true,
+														"type": "string"
 													}
 												},
 												"required": [
@@ -1072,6 +1078,12 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"verification_key": {
+													"description": "Verification key for partial zone setup.",
+													"example": "284344499-1084221259",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1594,6 +1606,12 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"verification_key": {
+													"description": "Verification key for partial zone setup.",
+													"example": "284344499-1084221259",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -2048,6 +2066,12 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"verification_key": {
+													"description": "Verification key for partial zone setup.",
+													"example": "284344499-1084221259",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
