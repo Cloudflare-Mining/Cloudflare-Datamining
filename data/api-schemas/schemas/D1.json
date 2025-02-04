@@ -20,6 +20,7 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
+					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
 					"type": "string"
@@ -351,11 +352,13 @@
 														"type": "string"
 													},
 													"name": {
+														"description": "D1 database name.",
 														"example": "my-database",
 														"pattern": "^[a-z0-9][a-z0-9-_]*$",
 														"type": "string"
 													},
 													"uuid": {
+														"description": "D1 database identifier (UUID).",
 														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 														"readOnly": true,
 														"type": "string"
@@ -534,9 +537,20 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
-					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-					"readOnly": true,
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "D1 database identifier (UUID).",
+							"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"readOnly": true,
+							"type": "string"
+						},
+						{
+							"description": "D1 database name.",
+							"example": "my-database",
+							"pattern": "^[a-z0-9][a-z0-9-_]*$",
+							"type": "string"
+						}
+					]
 				}
 			}
 		],
@@ -627,6 +641,7 @@
 													"type": "number"
 												},
 												"name": {
+													"description": "D1 database name.",
 													"example": "my-database",
 													"pattern": "^[a-z0-9][a-z0-9-_]*$",
 													"type": "string"
@@ -636,6 +651,7 @@
 													"type": "number"
 												},
 												"uuid": {
+													"description": "D1 database identifier (UUID).",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
 													"type": "string"
@@ -789,6 +805,7 @@
 					"schema": {
 						"properties": {
 							"name": {
+								"description": "D1 database name.",
 								"example": "my-database",
 								"pattern": "^[a-z0-9][a-z0-9-_]*$",
 								"type": "string"
@@ -903,6 +920,7 @@
 													"type": "number"
 												},
 												"name": {
+													"description": "D1 database name.",
 													"example": "my-database",
 													"pattern": "^[a-z0-9][a-z0-9-_]*$",
 													"type": "string"
@@ -912,6 +930,7 @@
 													"type": "number"
 												},
 												"uuid": {
+													"description": "D1 database identifier (UUID).",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
 													"type": "string"
@@ -1062,6 +1081,7 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
+					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
 					"type": "string"
@@ -1481,6 +1501,7 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
+					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
 					"type": "string"
@@ -1964,6 +1985,7 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
+					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
 					"type": "string"
@@ -2254,6 +2276,7 @@
 				"name": "database_id",
 				"required": true,
 				"schema": {
+					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
 					"type": "string"
