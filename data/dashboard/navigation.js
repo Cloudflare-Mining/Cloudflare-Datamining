@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: L => !(0, g.n3)() && !(0, o.z1)("oauth-access-management")(L)
+		hasPermission: L => !(0, h.n3)() && !(0, o.z1)("oauth-access-management")(L)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -130,6 +130,11 @@ const navigation = {
 			url: "/logs",
 			hasPermission: L => (0, a.iY)(L) && (0, m.S6)(L) && !!(0, o.z1)("account-logpush")(L)
 		}, {
+			title: "navigation.account.log_explorer",
+			url: "/log-explorer",
+			labels: ["beta"],
+			hasPermission: L => (0, a.iY)(L) && (0, l.V)(L)
+		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
 			hasPermission: L => (0, a.iY)(L) && !!(0, e.Le)(L, "account_analytics", "carbon_dashboard")
@@ -151,7 +156,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
-			hasPermission: L => (0, a.iY)(L) && (0, u.sL)(L)
+			hasPermission: L => (0, a.iY)(L) && (0, u.v_)(L)
 		}, {
 			title: "navigation.account.security_center.security_analytics",
 			url: "/security-center/analytics",
@@ -201,7 +206,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "sidenav-trace-link",
 		labels: ["beta"],
-		hasPermission: O.T
+		hasPermission: x.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -245,7 +250,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
-			tabs: h.Lx.concat(h.SF, h.Jg)
+			tabs: g.Lx.concat(g.SF, g.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
@@ -341,7 +346,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
-			tabs: h.SF.concat(h.Jg)
+			tabs: g.SF.concat(g.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
@@ -902,7 +907,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: x.x
+			tabs: O.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -1012,7 +1017,7 @@ const navigation = {
 			labels: ["beta"],
 			navigationType: "version",
 			additionalMatchUrls: ["/:accountId/:zoneName/rules/trace/results"],
-			hasPermission: L => !!(0, o.z1)("rules-overview")(L) && !!(0, O.T)(L)
+			hasPermission: L => !!(0, o.z1)("rules-overview")(L) && !!(0, x.T)(L)
 		}, {
 			title: "navigation.zone.rules.page_rules",
 			url: "/rules/page-rules",
