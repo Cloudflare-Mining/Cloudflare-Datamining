@@ -22,7 +22,7 @@
 		]
 	},
 	"account-load-balancing": {
-		"enabled": false
+		"enabled": true
 	},
 	"account-logpush": {
 		"enabled": true
@@ -475,6 +475,9 @@
 	},
 	"ddos-rulesets-l7-override-all-allowed": {
 		"enabled": true
+	},
+	"deploy-to-workers-v2": {
+		"enabled": false
 	},
 	"deployment-rollbacks": {
 		"enabled": true
