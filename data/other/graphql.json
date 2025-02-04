@@ -721,6 +721,48 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
+	"AccountCloudchamberMetricsAdaptiveGroups": {
+		"__description": "Metrics for Cloudchamber applications and deployments",
+		"avg": "The average value of a metric per dimension",
+		"count": "Number of metrics received",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum value of a metric per dimension"
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"cpu": "Average CPU load",
+		"gpuMemory": "Average GPU memory usage",
+		"memory": "Average memory usage",
+		"rxBandwidth": "Average RX bandwidth",
+		"txBandwidth": "Average TX bandwidth"
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"applicationId": "The application ID",
+		"date": "The date the metric was received",
+		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
+		"datetimeHour": "The date and time the metric was received, truncated to one hour",
+		"datetimeMinute": "The date and time the metric was received, truncated to one minute",
+		"deploymentId": "The deployment ID",
+		"location": "Location",
+		"placementId": "The placement ID",
+		"procType": "Process type",
+		"region": "Region"
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsMax": {
+		"__description": "",
+		"gpuMemory": "Maximum GPU memory usage",
+		"memory": "Maximum memory usage",
+		"rxBytes": "Total bytes received",
+		"txBytes": "Total bytes transmitted"
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -742,7 +784,8 @@
 		"datetimeFifteenMinutes": "The date and time the D1 request was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the D1 request was received truncated to five minutes",
 		"datetimeHour": "The date and time the D1 request was received truncated to the hour",
-		"datetimeMinute": "The date and time the D1 request was received truncated to the minute"
+		"datetimeMinute": "The date and time the D1 request was received truncated to the minute",
+		"datetimeSixHours": "The date and time the D1 request was received truncated to start of six hour window"
 	},
 	"AccountD1AnalyticsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -789,6 +832,7 @@
 		"datetimeFiveMinutes": "D1 query sample timestamp, truncated to five minutes",
 		"datetimeHour": "D1 query sample timestamp, truncated to the hour",
 		"datetimeMinute": "D1 query sample timestamp, truncated to the minute",
+		"datetimeSixHours": "D1 query sample timestamp, truncated to start of six hour window",
 		"query": "The SQL query that ran on a D1 database, with parameterized values replaced with placeholders."
 	},
 	"AccountD1QueriesAdaptiveGroupsFilter_InputObject": {
@@ -822,7 +866,8 @@
 		"datetimeFifteenMinutes": "D1 storage sample timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "D1 storage sample timestamp, truncated to five minutes",
 		"datetimeHour": "D1 storage sample timestamp, truncated to the hour",
-		"datetimeMinute": "D1 storage sample timestamp, truncated to the minute"
+		"datetimeMinute": "D1 storage sample timestamp, truncated to the minute",
+		"datetimeSixHours": "D1 storage sample timestamp, truncated to start of six hour window"
 	},
 	"AccountD1StorageAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -1014,6 +1059,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
@@ -1069,6 +1115,7 @@
 		"date": "Datetime the metrics period started, truncated to start of a day",
 		"datetimeHour": "Datetime the metrics period started, truncated to start of an hour",
 		"datetimeMinute": "Datetime the metrics period started, truncated to start of a minute",
+		"datetimeSixHours": "Datetime the metrics period started, truncated to start of six hour window",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string"
 	},
@@ -1130,6 +1177,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
@@ -3423,6 +3471,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"scriptName": "The name of the script",
 		"status": "Status of the worker invocation",
 		"usageModel": "Usage model of the worker invocation"
@@ -3989,6 +4038,7 @@
 		"callsTurnUsageAdaptiveGroups": "",
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
+		"cloudchamberMetricsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
@@ -4672,6 +4722,7 @@
 		"datetimeFiveMinutes": "Request timestamp, truncated to five minutes",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
+		"datetimeSixHours": "Request timestamp, truncated to start of six hour window",
 		"httpStatus": "Response status of worker",
 		"isSample": "1 if the request was sampled to bypass Smart Placement, 0 if it was processed using Smart Placement",
 		"placementUsed": "1 if the request was processed using Smart Placement, 0 if it was processed in default mode",
@@ -4745,6 +4796,7 @@
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"dispatchNamespaceName": "The name of the script's dispatch namespace",
 		"environmentName": "The name of the script environment",
 		"isDispatcher": "Whether the request is from a Dispatch Worker. Non-zero if true",
@@ -4899,6 +4951,7 @@
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
 		"scriptName": "The name of the script",
 		"scriptVersion": "The version of the Worker",
@@ -6932,10 +6985,11 @@
 		"totalTimeWaitedP75": "75th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
 		"totalTimeWaitedP90": "90th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
 		"totalTimeWaitedP95": "95th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
-		"turnstileFailures": "Number of Turnstile challenges failed or timed out",
-		"turnstileInfiniteQueueRefreshes": "Number of requests from users who failed a Turnstile challenge and were placed in an infinite queue",
-		"turnstileIssued": "Number of Turnstile challenges issued",
-		"turnstileSuccesses": "Number of Turnstile challenges successfully completed",
+		"turnstileFailures": "Number of users seen who failed to complete a Turnstile challenge and therefore are likely bots. These users are placed in the infinite queue if enabled.",
+		"turnstileInfiniteQueueRefreshes": "Number of requests from users who failed to complete a Turnstile challenge and were placed in an infinite queue",
+		"turnstileIssued": "Number of times a Turnstile challenge was included in the HTML sent to a user",
+		"turnstileSuccesses": "Number of users seen who solved a Turnstile challenge and therefore are likely human. These users are placed in the normal queue.",
+		"turnstileUnsolved": "Number of users seen who didn't attempt a Turnstile challenge and therefore might be bots. These users will continue to be challenged with every request until they either pass or fail the challenge.",
 		"waitingRoomId": "Unique Identifier for the waiting room",
 		"waitingRoomName": "Name of the waiting room"
 	},
@@ -6962,10 +7016,11 @@
 		"totalActiveUsers": "Average rate of total active users. A negative number means no data",
 		"totalActiveUsersConfig": "Configured value of total active users. A negative number means no data",
 		"totalQueuedUsers": "Average of total queued users",
-		"turnstileFailures": "Average rate of Turnstile challenges failed or timed out. A negative number means no data",
-		"turnstileInfiniteQueueRefreshes": "Average rate of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
-		"turnstileIssued": "Average rate of Turnstile challenges issued. A negative number means no data",
-		"turnstileSuccesses": "Average rate of Turnstile challenges successfully completed. A negative number means no data"
+		"turnstileFailures": "Average rate of users failing a Turnstile challenge and therefore probably being bots. These users are placed in the infinite queue if enabled. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "Average rate of requests from users who failed to complete a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "Average rate of Turnstile challenge being included in the HTML sent to a user. A negative number means no data",
+		"turnstileSuccesses": "Average rate of users solving a Turnstile challenge and therefore likely being human. These users are placed in the normal queue. A negative number means no data",
+		"turnstileUnsolved": "Average rate of users not attempting a Turnstile challenge and therefore possibly being bots. These users will continue to be challenged with every request until they either pass or fail the challenge. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsAvgWeighted": {
 		"__description": "",
@@ -7010,10 +7065,11 @@
 		"totalActiveUsers": "The maximum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The maximum value of the configured total active users. A negative number means no data",
 		"totalQueuedUsers": "The maximum value of total number of queued users. A negative number means no data",
-		"turnstileFailures": "The maximum value of Turnstile challenges failed or timed out. A negative number means no data",
-		"turnstileInfiniteQueueRefreshes": "The maximum value of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
-		"turnstileIssued": "The maximum value of Turnstile challenges issued. A negative number means no data",
-		"turnstileSuccesses": "The maximum value of Turnstile challenges successfully completed. A negative number means no data"
+		"turnstileFailures": "The maximum number of users seen who failed to complete a Turnstile challenge and therefore are likely bots. These users are placed in the infinite queue if enabled. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "The maximum value of requests from users who failed to complete a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "The maximum number of times a Turnstile challenge was included in the HTML sent to a user. A negative number means no data",
+		"turnstileSuccesses": "The maximum number of users seen who solved a Turnstile challenge and therefore are likely human. These users are placed in the normal queue. A negative number means no data",
+		"turnstileUnsolved": "The maximum number of users seen who didn't attempt a Turnstile challenge and therefore might be bots. These users will continue to be challenged with every request until they either pass or fail the challenge. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsMin": {
 		"__description": "",
@@ -7025,10 +7081,11 @@
 		"totalActiveUsers": "The minimum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means either Waiting Room is in passthrough or no data",
 		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data",
-		"turnstileFailures": "The minimum value of Turnstile challenges failed or timed out. A negative number means no data",
-		"turnstileInfiniteQueueRefreshes": "The minimum value of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
-		"turnstileIssued": "The minimum value of Turnstile challenges issued. A negative number means no data",
-		"turnstileSuccesses": "The minimum value of Turnstile challenges successfully completed. A negative number means no data"
+		"turnstileFailures": "The minimum number of users seen who failed to complete a Turnstile challenge and therefore are likely bots. These users are placed in the infinite queue if enabled. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "The minimum value of requests from users who failed to complete a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "The minimum number of times a Turnstile challenge was included in the HTML sent to a user. A negative number means no data",
+		"turnstileSuccesses": "The minimum number of users seen who solved a Turnstile challenge and therefore are likely human. These users are placed in the normal queue. A negative number means no data",
+		"turnstileUnsolved": "The minimum number of users seen who didn't attempt a Turnstile challenge and therefore might be bots. These users will continue to be challenged with every request until they either pass or fail the challenge. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -7037,10 +7094,11 @@
 		"__description": "",
 		"newUsersPerMinute": "Sum of new users per minute. A negative number means no data",
 		"sessionsRevoked": "Sum of sessions revoked. A negative number means no data",
-		"turnstileFailures": "Sum of Turnstile challenges failed or timed out. A negative number means no data",
-		"turnstileInfiniteQueueRefreshes": "Sum of requests from users who failed a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
-		"turnstileIssued": "Sum of Turnstile challenges issued. A negative number means no data",
-		"turnstileSuccesses": "Sum of Turnstile challenges successfully completed. A negative number means no data"
+		"turnstileFailures": "Sum of users seen who failed to complete a Turnstile challenge and therefore are likely bots. These users are placed in the infinite queue if enabled. A negative number means no data",
+		"turnstileInfiniteQueueRefreshes": "Sum of requests from users who failed to complete a Turnstile challenge and were placed in an infinite queue. A negative number means no data",
+		"turnstileIssued": "Sum of times a Turnstile challenge was included in the HTML sent to a user. A negative number means no data",
+		"turnstileSuccesses": "Sum of users seen who solved a Turnstile challenge and therefore are likely human. These users are placed in the normal queue. A negative number means no data",
+		"turnstileUnsolved": "Sum of users seen who didn't attempt a Turnstile challenge and therefore might be bots. These users will continue to be challenged with every request until they either pass or fail the challenge. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {
 		"__description": ""
@@ -7062,6 +7120,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"httpResponseStatus": "Origin HTTP response code",
 		"status": "Status of the worker invocation"
 	},
@@ -7090,6 +7149,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"httpResponseStatus": "Origin HTTP response code"
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroupsFilter_InputObject": {
@@ -7500,6 +7560,7 @@
 		"callsTurnUsageAdaptiveGroups": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
+		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
