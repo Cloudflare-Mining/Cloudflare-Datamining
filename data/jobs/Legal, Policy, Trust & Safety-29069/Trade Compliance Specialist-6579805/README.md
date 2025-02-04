@@ -5,57 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin, TX highly preferred Will consider Houston, Dallas and San Antonio. Must relocate to Austin if outside of major Texas cities, near Austin, TX.</p>
-<hr>
-<p><strong>About the Team</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
-<p><strong>About the Role</strong></p>
-<p>This role will report to BI Team and work closely with the Finance &amp; BizOps team who is responsible for developing and maintaining key GTM metrics reporting and incubating new initiatives that cover across product, go-to-market and finance. This role will help develop analytics solutions and scale internal data processes. Success in this role comes from marrying a strong data background with acute business acumen and curiosity to deliver highly strategic and compelling insights.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: Mexico City, Mexico</strong></p>
+<p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
+<p><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
+<p>&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
+<p>Cloudflare operates one of the largest and most interconnected global networks, with data centers across more than 120 countries. This expansive infrastructure enables us to deliver unparalleled performance, security, and reliability to millions of Internet resources. Supporting such a vast network requires a world class legal team to navigate complex matters, anticipate challenges, and guide the company around obstacles, all while maintaining our commitment to the security and privacy of our customers. We’re looking for a new team member who can help foster our unique corporate philosophy and approach. We seek someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth to work as part of a great team.</p>
+<p>We are seeking an exceptionally talented, energetic, and friendly Trade Compliance Specialist to join our legal team. In this role, you will focus on developing and standardizing trade compliance processes, driving automation initiatives, and supporting the team with strategic projects and training.&nbsp; By ensuring compliance with international trade laws and regulations, you will play a critical part in enabling the operation and expansion of Cloudflare’s global network and data centers. You will work collaboratively with the Global Trade Compliance team in the Americas, EMEA, and APJC regions to enhance operational efficiency and ensure alignment with global goals. This position is about supporting and enabling the team rather than managing regional functions, making it a critical role in strengthening our shared success. As part of the job, you will:&nbsp;</p>
+<p><strong>Location: Mexico City, Mexico</strong></p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong grasp of business, finance, and product analytical needs</li>
-	<li>Fundamental understanding of the data landscape i.e., tooling, tech stack, source systems etc.</li>
-	<li>Work closely with the Data Engineering team to improve the data collection and quality.</li>
-	<li>Design, build and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis and GTM metrics reporting automation</li>
-	<li>Present the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner.</li>
-	<li>Deeply embedded in the Finance Biz Ops team and act as a technical advisor to the team in addressing data challenges and scaling solutions / programs from incubation stage to a longer-team high performing state</li>
+	<li>Design and maintain team-wide processes for the trade compliance programs, incorporating regional input;</li>
+	<li>Identify and implement best practices to streamline workflows and ensure consistency;</li>
+	<li>Ensure legal regulatory compliance with all aspects of trade operations;</li>
+	<li>Lead projects to automate manual processes (e.g., recordkeeping, reporting, import / export compliance audits);</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>5 + years of data analyst experience with 1+ years of proven industry experience in a large scale environment (PBs scale, globally distributed teams).</li>
-	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Capable of multitasking and thriving in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
+	<li>Collaborate with internal partners and external vendors to enhance the functionality of trade compliance systems;</li>
+	<li>Ensure trade data integrity and accuracy within trade systems and related tools;</li>
+	<li>Monitor, measure and develop reports with key performance indicators (KPIs);</li>
+	<li>Evaluate new government requirements and partner with team members to ensure trade compliance;</li>
+	<li>Assist with various departmental projects by providing technical expertise. Projects may include support for: audits, product compliance, vendor management, duty/tax optimization. Support training materials design and delivery;</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Facilitate knowledge-sharing sessions to align the team on best practices and ensure continuous improvement;</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Collaborate in strategic initiatives as directed by ensuring timelines and objectives are met.</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Requires ability to evaluate risk, strong problem solving skills and excellent communication skills, including ability to resolve/research complex issues with Cloudflare’s business partners, suppliers and brokers;</li>
+	<li>5+ years of equivalent practical work experience;</li>
+	<li>Bachelor’s degree in international business, or equivalent;&nbsp;</li>
+	<li>Experience working on Mexican, or US trade compliance and customs regulations;</li>
+	<li>Experience in process development, compliance operations, or workflow optimization;</li>
+	<li>Experience with trade compliance systems or automation tools is a plus;</li>
+</ul>
+<ul>
+	<li>Strong process improvement and project management skills;</li>
+	<li>Ability to work collaboratively with cross-functional and geographically distributed teams;</li>
+	<li>Excellent analytical skills and attention to detail;</li>
+	<li>Strong training skills, with the ability to simplify complex processes;&nbsp;</li>
+	<li>Proficiency with Google Suite and ERP systems; and</li>
+	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
