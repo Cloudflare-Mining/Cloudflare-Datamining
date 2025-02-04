@@ -133,6 +133,9 @@
 													"script": {
 														"type": "string"
 													},
+													"use_containers": {
+														"type": "boolean"
+													},
 													"use_sqlite": {
 														"type": "boolean"
 													}
@@ -268,6 +271,9 @@
 															},
 															"script": {
 																"type": "string"
+															},
+															"use_containers": {
+																"type": "boolean"
 															},
 															"use_sqlite": {
 																"type": "boolean"
