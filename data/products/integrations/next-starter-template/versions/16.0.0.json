@@ -1,0 +1,268 @@
+{
+	"alias": "next-starter-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".eslintrc.json",
+				".gitignore",
+				"README.md",
+				"env.d.ts",
+				"next.config.mjs",
+				"open-next.config.ts",
+				"package.json",
+				"postcss.config.mjs",
+				"tailwind.config.ts",
+				"tsconfig.json",
+				"wrangler.json",
+				"public/next.svg",
+				"src/app/favicon.ico",
+				"src/app/globals.css",
+				"src/app/layout.tsx",
+				"src/app/page.tsx"
+			],
+			"replacements": {
+				"next-starter-template": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Build a full-stack web application with Next.js.",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Next.js Framework Starter",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Next.js Framework Starter",
+			"products": [
+				"Workers"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/e42eec61-db86-49c8-7b29-c3ed4783e400/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".eslintrc.json",
+								"content": {
+									"$ref": "assets://template/files/.eslintrc.json"
+								}
+							},
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "env.d.ts",
+								"content": {
+									"$ref": "assets://template/files/env.d.ts"
+								}
+							},
+							{
+								"filename": "next.config.mjs",
+								"content": {
+									"$ref": "assets://template/files/next.config.mjs"
+								}
+							},
+							{
+								"filename": "open-next.config.ts",
+								"content": {
+									"$ref": "assets://template/files/open-next.config.ts"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "postcss.config.mjs",
+								"content": {
+									"$ref": "assets://template/files/postcss.config.mjs"
+								}
+							},
+							{
+								"filename": "tailwind.config.ts",
+								"content": {
+									"$ref": "assets://template/files/tailwind.config.ts"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": "public/next.svg",
+								"content": {
+									"$ref": "assets://template/files/public/next.svg"
+								}
+							},
+							{
+								"filename": "src/app/favicon.ico",
+								"content": {
+									"$ref": "assets://template/files/src/app/favicon.ico"
+								}
+							},
+							{
+								"filename": "src/app/globals.css",
+								"content": {
+									"$ref": "assets://template/files/src/app/globals.css"
+								}
+							},
+							{
+								"filename": "src/app/layout.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/app/layout.tsx"
+								}
+							},
+							{
+								"filename": "src/app/page.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/app/page.tsx"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".eslintrc.json",
+					"content": {
+						"$ref": "assets://template/files/.eslintrc.json"
+					}
+				},
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "env.d.ts",
+					"content": {
+						"$ref": "assets://template/files/env.d.ts"
+					}
+				},
+				{
+					"filename": "next.config.mjs",
+					"content": {
+						"$ref": "assets://template/files/next.config.mjs"
+					}
+				},
+				{
+					"filename": "open-next.config.ts",
+					"content": {
+						"$ref": "assets://template/files/open-next.config.ts"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "postcss.config.mjs",
+					"content": {
+						"$ref": "assets://template/files/postcss.config.mjs"
+					}
+				},
+				{
+					"filename": "tailwind.config.ts",
+					"content": {
+						"$ref": "assets://template/files/tailwind.config.ts"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": "public/next.svg",
+					"content": {
+						"$ref": "assets://template/files/public/next.svg"
+					}
+				},
+				{
+					"filename": "src/app/favicon.ico",
+					"content": {
+						"$ref": "assets://template/files/src/app/favicon.ico"
+					}
+				},
+				{
+					"filename": "src/app/globals.css",
+					"content": {
+						"$ref": "assets://template/files/src/app/globals.css"
+					}
+				},
+				{
+					"filename": "src/app/layout.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/app/layout.tsx"
+					}
+				},
+				{
+					"filename": "src/app/page.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/app/page.tsx"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "16.0.0"
+}
