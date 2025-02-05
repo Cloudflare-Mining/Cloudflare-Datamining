@@ -147,7 +147,7 @@
                 "provider": "workers-ai",
                 "endpoint": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
                 "headers": {
-                    "Authorization": "Bearer A5UFQkHewHF1-sA3hTVQFaPxRuu5wmS0eJcCS_MC",
+                    "Authorization": "Bearer XXXXXX",
                     "Content-Type": "application/json"
                 },
                 "query": {
@@ -177,8 +177,7 @@
             ]
         }
     }
-]'
-</code></pre>
+]'</code></pre>
 	<p>The request to the improved Universal Endpoint system demonstrates how it handles multiple providers with integrated retry mechanisms and fallback logic. In this example, the first request is sent to a provider like OpenAI, asking it to generate a text-to-image prompt. The “retry” option ensures that transient issues don’t result in immediate failure.</p>
 	<p>The system’s ability to seamlessly switch between providers while applying retry strategies ensures higher reliability and robustness in managing requests. By leveraging fallback logic, the Improved Universal Endpoint can dynamically adapt to provider failures, ensuring that tasks are completed successfully even in complex, multi-step workflows.</p>
 	<p>In addition to retry logic, we will have the ability to inspect requests and responses and make dynamic decisions based on the content of the result. This enables developers to create conditional workflows where the system can adapt its behavior depending on the nature of the response, creating a highly flexible and intelligent decision-making process.</p>
