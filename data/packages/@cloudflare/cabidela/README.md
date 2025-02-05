@@ -1,8 +1,19 @@
-# Cabidela
+<div align="center">
+  <a href="https://cabidela.pages.dev/">
+    <img src="https://raw.githubusercontent.com/cloudflare/cabidela/refs/heads/main/assets/cabidela.png" width="500" height="auto" alt="cabidela"/>
+  </a>
+</div>
 
-Cabidela is a small, fast, eval-less, [Cloudflare Workers](https://developers.cloudflare.com/workers/) compatible, dynamic JSON Schema validator.
 
-It implements a large subset of <https://json-schema.org/draft/2020-12/json-schema-validation> that should cover most use-cases. But not all. See limitations below.
+<p align="center">
+    <em>Small, fast, eval-less, [Cloudflare Workers](https://developers.cloudflare.com/workers/) compatible, dynamic JSON Schema validator.</em>
+</p>
+
+<hr />
+
+# What is
+
+Cabidela is a small, fast, eval-less, [Cloudflare Workers](https://developers.cloudflare.com/workers/) compatible, dynamic JSON Schema validator. It implements a large subset of <https://json-schema.org/draft/2020-12/json-schema-validation> that should cover most use-cases. But not all. See limitations below.
 
 ## How to use
 
