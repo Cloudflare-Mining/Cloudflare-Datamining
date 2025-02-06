@@ -12,6 +12,7 @@
 <p>Cloudflare is looking for a full stack engineer on the Enterprise Readiness team to help us build the features for Large Scale Enterprise customers, our partners, and our internal admin tooling platform. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build scalable frameworks and tooling to create awesome developer experiences and improve developer productivity.</p>
 <p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
 <p>Technologies we use include React, Javascript, TypeScript, Cypress, Go, PostgreSQL, Redis, Kubernetes, Kafka, Quicksilver</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
 	<li>5+ years of professional experience building and managing software applications at large scale.</li>
