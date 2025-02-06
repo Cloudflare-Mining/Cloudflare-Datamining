@@ -5,70 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available locations: Austin TX, San Francisco, CA</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>We are growing our Total Rewards team and looking for someone with a background in compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
+<p><strong>About the team</strong></p>
+<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
+<p><strong>About the Role</strong></p>
+<p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
+<p>This role will be based out of our Austin office. Remote candidates in the US will also be considered.</p>
+<p><strong>What you'll do</strong></p>
+<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
+<p><strong>Responsibilities include</strong></p>
 <ul>
-	<li>Participate in compensation surveys and analyze market data&nbsp;&nbsp;</li>
-	<li>Audit, maintain, enhance and refresh compensation databases and systems</li>
-	<li>Support day to day ad hoc analytical data analysis</li>
-	<li>Work with data to develop compensation models in order to derive useful compensation insights that will drive our decision making&nbsp;</li>
-	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
-	<li>Partner with the People Operations and Systems team to configure and administer compensation systems, including Workday for compensation planning&nbsp;</li>
-	<li>Help with the implementation and administration of compensation policies and programs&nbsp;&nbsp;</li>
-	<li>Assist with development of total compensation communications, including training, compensation statements, videos and other material</li>
-	<li>Support the administration of the Company’s compensation cycles&nbsp;&nbsp;</li>
+	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
+	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
+	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
+	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
+	<li>Mentoring and guiding developers in the Trust and Safety Engineering team to help build collective knowledge and technical expertise</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>5+ years of Compensation experience</li>
-	<li>Experience with salary structure design and market pricing</li>
-	<li>Exposure to with equity program administration</li>
-	<li>Knowledge of Radford survey benchmark jobs and database</li>
-	<li>Strong analytical skills; the ability to synthesize data and develop insights</li>
-	<li>Ability to work independently as well as work collaboratively</li>
-	<li>Exceptional communication skills both written and oral</li>
-	<li>Microsoft Excel and Google sheets guru, proficient in PowerPoint and presentation software</li>
-	<li>Working knowledge of Workday, especially for Compensation Planning</li>
+	<li>At least 3 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
+	<li>Prior experience working with Go or Rust</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Expertise in writing well tested code</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus</strong></p>
+<p>(Relevant but not required - we love to learn on the job!)</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $109,000 - $133,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $122,000 - $150,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $129,000 - $157,000</li>
+	<li>Prior experience working in the Trust &amp; Safety domain space or building abuse detection systems</li>
+	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
+	<li>Expertise in web security issues and industry standards for access control</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

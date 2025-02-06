@@ -5,70 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available locations: Austin TX, San Francisco, CA</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>We are growing our Total Rewards team and looking for someone with a background in compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs.</p>
-<h4><strong>What you'll do</strong></h4>
+<h4><strong>Job Locations: Mexico City, MX</strong></h4>
+<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Sun-Thursday” or “Tues-Sat” 5-day working week schedule. &nbsp;Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<p><strong>About the Department</strong><br>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<p><br><strong>What You’ll do</strong><br>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work directly with our customers and cross-functionally to solve a variety of technical issues. This is a position where you will learn the inner workings of Cloudflare's products and gain a deeper understanding of internet technologies.</p>
+<p><strong>Skills, Knowledge, And Experience</strong></p>
 <ul>
-	<li>Participate in compensation surveys and analyze market data&nbsp;&nbsp;</li>
-	<li>Audit, maintain, enhance and refresh compensation databases and systems</li>
-	<li>Support day to day ad hoc analytical data analysis</li>
-	<li>Work with data to develop compensation models in order to derive useful compensation insights that will drive our decision making&nbsp;</li>
-	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
-	<li>Partner with the People Operations and Systems team to configure and administer compensation systems, including Workday for compensation planning&nbsp;</li>
-	<li>Help with the implementation and administration of compensation policies and programs&nbsp;&nbsp;</li>
-	<li>Assist with development of total compensation communications, including training, compensation statements, videos and other material</li>
-	<li>Support the administration of the Company’s compensation cycles&nbsp;&nbsp;</li>
+	<li>Experience: 2+ years of experience in a Technical Support role, Web Developer Support, or a similar position, with a proven track record of resolving diverse technical issues.</li>
+	<li>Community Engagement: Active participation in web development communities, with a demonstrated commitment to staying current with industry trends and sharing knowledge with peers.</li>
+	<li>Internet Fundamentals: Fundamental understanding of how the Internet works (OSI Model), with knowledge of Cloudflare's products that impact Layers 3, 4, and 7.</li>
+	<li>Technical Proficiency: Skilled in analyzing and troubleshooting DNS, SSL/TLS, HTTP, and optimizing website performance.</li>
+	<li>Tooling Expertise: Proficient in command line interfaces and experienced with tools such as browser developer tools, cURL, Git/Wrangler/npm, Postman, TCPDump/Wireshark, SSH, OpenSSL, and similar utilities.</li>
+	<li>Video Technology: Experienced with video encoding and streaming solutions, understanding the associated technical challenges.</li>
+	<li>Scripting Skills: Competent in writing scripts in Bash, Python, JavaScript, or other scripting languages.</li>
+	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.<strong><br><br>Bonus:<br></strong></li>
+	<li>You have a site actively using our platform</li>
+	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2<strong><br><br>Availability And Schedule Requirements<br><br></strong></li>
+	<li>Flexibility to work varying work schedules including; <strong>Pacific time</strong>, holidays, weekends, more than 5 days in a row, or additional hours</li>
+	<li>Ability to work on-site as needed out of one of our US based offices</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>5+ years of Compensation experience</li>
-	<li>Experience with salary structure design and market pricing</li>
-	<li>Exposure to with equity program administration</li>
-	<li>Knowledge of Radford survey benchmark jobs and database</li>
-	<li>Strong analytical skills; the ability to synthesize data and develop insights</li>
-	<li>Ability to work independently as well as work collaboratively</li>
-	<li>Exceptional communication skills both written and oral</li>
-	<li>Microsoft Excel and Google sheets guru, proficient in PowerPoint and presentation software</li>
-	<li>Working knowledge of Workday, especially for Compensation Planning</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual salary of $109,000 - $133,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $122,000 - $150,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $129,000 - $157,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
