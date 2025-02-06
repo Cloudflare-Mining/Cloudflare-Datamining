@@ -5,31 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal | London, UK</p>
-<p>Cloudflare is seeking an organized, self-motivated Business Analyst to understand business needs and translate them into areas for improvement. You will be responsible for prioritizing initiatives based on business impact, developing requirements, ensuring solutions align with business goals, and owning communications and enablement that will ensure the business is ready to adopt new processes. In this role you will have the opportunity to directly impact the productivity of our Support team (and in turn, thousands of customers that we work with every week) by driving the implementation of new system functionality and enhancements in Salesforce Service Cloud.&nbsp;</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
-<p>The ideal candidate is comfortable working in a fast-paced environment, is empathetic, flexible, iterative, curious, and enjoys collaborating cross-functionally to achieve a common goal.</p>
-<p>This position will be based in Austin, Texas; London, UK; or Lisbon, Portugal. You will be reporting into the Support Operations team.</p>
-<h4><strong>Major areas of responsibilities</strong></h4>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin</p>
+<h4>About the Role</h4>
+<p>Cloudflare helps build the future of the Internet. We started Cloudflare to solve one of the largest challenges facing any organization: how do you keep your websites, APIs, services, and infrastructure safe from attack without compromising on performance or reliability? Our customers relied on legacy, painful hardware to solve this challenge. They wanted a scalable service that would work around the world.</p>
+<p>To deliver that, we built one of the world's largest networks. Today our network spans more than 250 cities worldwide and is within milliseconds of nearly everyone connected to the Internet. We have built the capacity to stand up to nation-state scale cyberattacks and a threat intelligence system powered by the immense amount of Internet traffic that we see.</p>
+<p>In the last five years, Cloudflare has built the next phase of our product journey, <strong>Cloudflare Zero Trust</strong>, on top of that network to solve another challenge: ensuring the people and teams within an organization can access the tools they need to do their jobs and are safe from data loss and threats.</p>
+<h4>What you'll do</h4>
+<p>You will be the Product Manager for Digital Experience Monitoring, owning user, application, and network performance monitoring for all Cloudflare Zero Trust deployments. You will take this product from 0 to 1 by leading all efforts related to experience monitoring, directly supporting engineering, design, sales and support.</p>
+<p>In this role you will shape the product, working closely with the development team and other functions across Cloudflare, to listen to customer problems and devise solutions that solve them.&nbsp;</p>
+<p>You will work to ensure that users are able to answer any questions about their global performance and availability directly from our dashboard. You will work to ensure the user experience is inclusive and accessible to all. You will solve problems that have wide impact and significance, shaping the future of security on the Internet.&nbsp;</p>
+<p>We operate with small teams of highly motivated and experienced engineers and product professionals. You will need a baseline understanding of networking or be highly motivated to learn in these areas. A suitable candidate will have an exceptional understanding of what it takes to build and ship software at scale, customer management, or product, and a deep desire to learn each and every day.&nbsp;</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li>Serves as business partner and trusted advisor for Customer Support. Collects, understands, and synthesizes user feedback as well as strategic business priorities. Has deep understanding of business stakeholder group.</li>
-	<li>Stack ranks priorities that reflect the stakeholder group’s needs. Provides input on Salesforce Service Cloud roadmap.</li>
-	<li>Facilitates conflict resolution with decision-makers by providing full analysis of options, pros and cons and a documented log of the decisions.</li>
-	<li>Drives effective discovery sessions to capture as-is and to-be process flows in a consistent and reusable format.</li>
-	<li>Deep familiarity of core systems, processes and all related system capabilities leveraged by stakeholders.</li>
-	<li>Collaborates with developers to test and verify that the solution meets the business requirements.</li>
-	<li>Ensures the relevant parts of the business are ready for each release that impacts them. Leads and / or organizes necessary meetings to deliver system demos, perform user acceptance testing, and end user training.</li>
-	<li>Documents releases in an easy to understand way. Thoroughly communicates updates to business stakeholders.</li>
+	<li>Help contribute to crafting Cloudflare’s vision for the future of the Internet</li>
+	<li>Define the product, learn from customer usage, iterate and improve</li>
+	<li>Contribute to the Cloudflare Zero Trust vision and product strategy all up</li>
+	<li>Work with customer-facing teams during and after sales cycles</li>
+	<li>Communicate with peers, leadership, and customers</li>
+	<li>Organize and triage features and issues</li>
+	<li>Manage a product roadmap and its translation to revenue</li>
+	<li>Make decisions and own outcomes</li>
+	<li>Work alongside an engineering team to execute on the product vision</li>
 </ul>
-<h4><strong>Desirable skills and knowledge</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Bachelor’s degree in Business Administration, Computer Science, Information Systems, or a related field.</li>
-	<li>Ability to analyze complex business problems and identify effective solutions.</li>
-	<li>Comfortable working in a fast-paced environment with multiple concurrent priorities.</li>
-	<li>Excellent communication skills (written and verbal) and attention to detail.</li>
-	<li>Excels at building relationships and communicating with all types of stakeholders, from VPs to developers to Customer Support Engineers.</li>
-	<li>Direct experience or knowledge of Customer Support team is a plus.</li>
-	<li>Experience with Salesforce Service Cloud a plus.</li>
+	<li>4+ years of experience in product management, software engineering, or management consulting working alongside engineering, design and sales</li>
+	<li>4+ years of experience working in data science, data analysis, or with large data sets translating business insights into creative and engaging outputs&nbsp;</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in an organization with multiple stakeholders</li>
+	<li>Ability to to support customers in all phases: pre-sales, proof of concept, and post sales deployments</li>
+	<li>Exceptional empathy, curiosity, attention to detail, and problem solving abilities</li>
+	<li>Excellent written and verbal communication skills</li>
+</ul>
+<p><strong>Bonus Points if you also have:&nbsp;</strong></p>
+<ul>
+	<li>An eye for design and relentless desire to translate users needs into intuitive designs</li>
+	<li>A knack for taking complex data sets and distilling them into a cohesive narrative</li>
+	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
+	<li>Working knowledge of how the Internet works at network layers 3 through 7</li>
+	<li>A solid understanding of API design &amp; documentation</li>
+	<li>Pricing strategy and revenue forecasting experience</li>
+	<li>MBA with BS/MS in computer science</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
@@ -60,7 +75,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
