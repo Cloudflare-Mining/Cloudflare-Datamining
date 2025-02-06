@@ -29,8 +29,8 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>4+ years of experience in product management, software engineering, or management consulting working alongside engineering, design and sales</li>
-	<li>4+ years of experience working in data science, data analysis, or with large data sets translating business insights into creative and engaging outputs&nbsp;</li>
+	<li>4-7 years of experience in product management, software engineering, or management consulting working alongside engineering, design and sales</li>
+	<li>4-7 years of experience working in data science, data analysis, or with large data sets translating business insights into creative and engaging outputs&nbsp;</li>
 	<li>Demonstrated ability to lead, drive consensus and deliver in an organization with multiple stakeholders</li>
 	<li>Ability to to support customers in all phases: pre-sales, proof of concept, and post sales deployments</li>
 	<li>Exceptional empathy, curiosity, attention to detail, and problem solving abilities</li>
