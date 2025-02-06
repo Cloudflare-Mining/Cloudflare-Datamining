@@ -2,7 +2,7 @@
 	"name": "@cloudflare/unenv-preset",
 	"dist-tags": {
 		"latest": "1.1.1",
-		"beta": "0.0.0-e98269a59"
+		"beta": "0.0.0-5ed27444d"
 	},
 	"versions": {
 		"0.0.1": {
@@ -4805,27 +4805,114 @@
 			"name": "@cloudflare/unenv-preset",
 			"version": "0.0.0-e98269a59",
 			"devDependencies": {
-				"@types/node-unenv": "npm:@types/node@^22.10.5",
-				"typescript": "^5.7.2",
-				"unbuild": "^3.2.0",
 				"undici": "^5.28.4",
 				"vitest": "~2.1.8",
-				"wrangler": "0.0.0-e98269a59"
+				"unbuild": "^3.2.0",
+				"wrangler": "0.0.0-e98269a59",
+				"typescript": "^5.7.2",
+				"@types/node-unenv": "npm:@types/node@^22.10.5"
 			},
 			"peerDependencies": {
 				"unenv": "2.0.0-rc.1",
 				"workerd": "^1.20250124.0"
 			},
 			"dist": {
-				"integrity": "sha512-6JsglBbp4JfuB4A0FL0Gj/waFWQlzdblJlA94EYZQ1vA/RR2y2ZtpfkUCqtmopQouQb/5f3gNNeIHx5U3btaKg==",
 				"shasum": "0438f960e9b88af644686bec016a7c999f1766f5",
 				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-e98269a59.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-6JsglBbp4JfuB4A0FL0Gj/waFWQlzdblJlA94EYZQ1vA/RR2y2ZtpfkUCqtmopQouQb/5f3gNNeIHx5U3btaKg==",
+				"signatures": [
+					{
+						"sig": "MEQCICrzm984nGQXakUV8bgcrb8DDbtXE481AhbbFabB9gM/AiAj4/cLvmdK8TF8Pe+yqpx5k1FQL4LBLFqiiyndkKCarg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 32686
+			}
+		},
+		"0.0.0-cee82faca": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-cee82faca",
+			"devDependencies": {
+				"undici": "^5.28.4",
+				"vitest": "~2.1.8",
+				"unbuild": "^3.2.0",
+				"wrangler": "0.0.0-cee82faca",
+				"typescript": "^5.7.2",
+				"@types/node-unenv": "npm:@types/node@^22.10.5"
+			},
+			"peerDependencies": {
+				"unenv": "2.0.0-rc.1",
+				"workerd": "^1.20250124.0"
+			},
+			"dist": {
+				"shasum": "d406001650e56d899db7372200a02b399bb54771",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-cee82faca.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-Qii+LL00auLVFnU1jh18KbXo7jB0LAk0SOx9dA/B58bkb47b077EhUsL9vQwXi4ZCP8Ysp/yT0Hh0iqlXRxzEg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDtvahG3WAYZcfzfNDJD0L8A7MoV+JOa+TeLxJijLPvdwIhAJujpDev6ApGgdMXrPAjhvoeIX6Qv5LDq45hm4UsEa/R",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 32686
+			}
+		},
+		"0.0.0-88514c82d": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-88514c82d",
+			"devDependencies": {
+				"undici": "^5.28.4",
+				"vitest": "~2.1.8",
+				"unbuild": "^3.2.0",
+				"wrangler": "0.0.0-88514c82d",
+				"typescript": "^5.7.2",
+				"@types/node-unenv": "npm:@types/node@^22.10.5"
+			},
+			"peerDependencies": {
+				"unenv": "2.0.0-rc.1",
+				"workerd": "^1.20250124.0"
+			},
+			"dist": {
+				"shasum": "bbe62a5ddae0d38b9ed40495e5897a22d76cb1e5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-88514c82d.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-tMXS3BJsxhwDJ6glAkz6PgUjVLKgV5oaXr5tBCHs5si7VVYqwWKiHCUFVTmRUQN05qJnpZ8HeoeOgLQbltg1bw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCQhsdDjUYylu4mhm4XFQ7gB4SJ0ocGruooLFyYrBdW2QIhAP50d2pZGjFfMJuBqoTJCe7TaIA/BfHRbl1Qy17RhbHy",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 32686
+			}
+		},
+		"0.0.0-5ed27444d": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-5ed27444d",
+			"devDependencies": {
+				"@types/node-unenv": "npm:@types/node@^22.10.5",
+				"typescript": "^5.7.2",
+				"unbuild": "^3.2.0",
+				"undici": "^5.28.4",
+				"vitest": "~2.1.8",
+				"wrangler": "0.0.0-5ed27444d"
+			},
+			"peerDependencies": {
+				"unenv": "2.0.0-rc.1",
+				"workerd": "^1.20250124.0"
+			},
+			"dist": {
+				"integrity": "sha512-MMUhtioJUYAtubKICi49BCYB7IciByG7qVImkpjLZW+83Xb8I+vZyNpZeEL52qphEFh+BiNrEW0w70FMkBzSpw==",
+				"shasum": "809396ce4014c3bdef98e77d54da649dfe123539",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-5ed27444d.tgz",
 				"fileCount": 21,
 				"unpackedSize": 32686,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCICrzm984nGQXakUV8bgcrb8DDbtXE481AhbbFabB9gM/AiAj4/cLvmdK8TF8Pe+yqpx5k1FQL4LBLFqiiyndkKCarg=="
+						"sig": "MEUCIBo+qJJBqgLAhPhpIHjm88qFs1GirJkwjp9RVCho+SQgAiEA63RFpnR/d52oU+5deAN2qtXsJ/x4GP0wsj8KkxShE/k="
 					}
 				]
 			}
