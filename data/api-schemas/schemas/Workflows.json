@@ -2465,7 +2465,8 @@
 					"schema": {
 						"properties": {
 							"instance_id": {
-								"maxLength": 64,
+								"maximum": 64,
+								"minimum": 1,
 								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 								"type": "string"
 							},
