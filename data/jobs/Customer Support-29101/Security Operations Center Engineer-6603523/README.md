@@ -5,32 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Singapore</strong></p>
-<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
-<p><strong>Responsibilities</strong><strong>:</strong></p>
+<p><strong>Available Locations: </strong>Sydney, Australia</p>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>Security Operations Center (SOC) Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Bot Management and Rate Limiting to help customers.</p>
+<p>SOC Engineers analyze threats, make detailed and informed suggestions for mitigation and may implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</p>
 <ul>
-	<li>Be part of a world class globally-distributed team.</li>
-	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information in response to third-party civil matters as well as in legal process served from law enforcement and government officials.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
-	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Participate in a rotating weekend coverage duty.</li>
+	<li>Serve as a trusted technical advisor for our enterprise customers, monitoring and investigating alerts and identifying threats to their environment.</li>
+	<li>Perform hands-so attack mitigation by crafting specific rules to mitigate ongoing attacks.&nbsp;</li>
+	<li>Work with Engineering on highly sophisticated attacks to develop tailored mitigation techniques and improved signature development.</li>
+	<li>Configure / Manage security monitoring rules and contribute to tool improvements.</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to differentiate between expected and malicious traffic.</li>
+	<li>Threat Attack mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, rate limiting etc.</li>
+	<li>Work with Engineering and Product teams to improve products and tools.</li>
+	<li>Engage with customers through email and phone, providing clear, concise, and empathetic communication to effectively address their technical needs and ensure a positive support experience.</li>
 </ul>
-<p><strong>Requirements</strong><strong>:</strong></p>
+<h3><strong>What We're Looking For</strong></h3>
 <ul>
-	<li style="font-weight: bold;"><strong>Japanese fluency (JLPT N2 and above, or native-level fluency).</strong></li>
-	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Legal or Trust &amp; Safety.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
-	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
-	<li>A great attitude and team player.&nbsp;</li>
-</ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
-	<li>You’ve interacted with law enforcement officials and agencies.</li>
-	<li>Hands-on experience with Cloudflare’s products and services.</li>
+	<li>You have a minimum of 4 years experience working as a SOC Engineer supporting networking or web security products.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal, and you are fluent in English.</li>
+	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, as well as tools such as iptables and looking glass.</li>
+	<li>Proven experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</li>
+	<li>Knowledge of Cloudflare Security Products &amp; Features</li>
+	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
+	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent are preferred.</li>
+	<li>You are calm under pressure.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
