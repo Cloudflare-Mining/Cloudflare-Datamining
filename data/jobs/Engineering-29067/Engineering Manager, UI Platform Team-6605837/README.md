@@ -5,49 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX or Lisbon, Portugal</p>
+<h4><strong>Available Locations:&nbsp;</strong></h4>
+<ul>
+	<li>London, UK</li>
+	<li>Lisbon, Portugal&nbsp;</li>
+</ul>
+<h4><strong>About the Department</strong></h4>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
 <h4><strong>What you'll do</strong></h4>
-<p>Cloudflare is looking for a backend engineer on our control plan product platform to help us build our customer APIs and our internal service APIs. This is a role for engineers that are familiar with standard backend backend architecture, and capable in database design and interaction. Our API platform is under constant load and scrutiny, so experience and commitment to easily understood and test code is also a key part of the role. Your ability to visualize the flow of data through a complex application is critical to your success, and to the team’s. You will be working closely with the product team to understand and document the functional needs of their product requirements, developing new code to solve new problems, as well as maintaining existing code to squash bugs. Our tech stack includes services built using Go, Redis, Postgres, and Cloudflare products (e.g. Workers). We are looking for proficiency in RESTful API design, relational databases (SQL), and modern containerized deployment practices.&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>We're seeking an Engineering Manager to lead the UI Platform Team at Cloudflare.&nbsp; You'll be responsible for the core technology that drives the Cloudflare Dashboard.&nbsp; You'll be pioneering new techniques and tooling to move away from a traditional monolithic application and onto <a href="https://blog.cloudflare.com/fragment-piercing/">Cloudflare's innovative Web Fragments</a>. You will set best practices, evangelize this change across engineering teams, and ensure adoption. The team also owns UI infrastructure (CI/CD, observability, experimentation tools) for the monolith and for the fragment architecture. Our mission is to improve developer productivity and application performance.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>3-5 years of professional experience building and managing software applications at large scale.</li>
-	<li>Deep knowledge of at least one modern programming language such as Go, Rust, JavaScript, PHP with strong computer science fundamentals.</li>
-	<li>Experience in designing and architecting large-scale distributed systems.</li>
-	<li>Passion for Observability (experience with Prometheus, Grafana, and Kibana are a plus, but not required).</li>
-	<li>Experience designing, implementing, and documenting customer-facing APIs are a huge plus.</li>
-	<li>Solid knowledge of SQL and common relational database systems such as PostgreSQL.</li>
-	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
-	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc).</li>
-	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
+	<li>Lead and mentor the team to build, migrate, and scale UI platform frameworks.</li>
+	<li>Set and promote best practices for UI development and evangelize the transition across engineering teams.</li>
+	<li>Drive UI infrastructure excellence, including CI/CD, observability, and experimentation tools.</li>
+	<li>Collaborate with product and design teams to deliver self-serviceable, cohesive user experiences.</li>
+	<li>Tackle cross-cutting concerns to improve developer velocity and code quality.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Technologies We Use</strong></p>
+<p>React, TypeScript, JavaScript (ES6+), Remix, Qwik, PlayWright, Cypress, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs</p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>We want someone who understands and obsesses over front-end systems.</li>
+	<li>Has built new technology that powers important systems.</li>
+	<li>Experience building and leading a team, including hiring, coaching, and professional development.</li>
+	<li>A self-directing nature, keen to take ownership of projects from start to finish.</li>
+	<li>Experience coordinating projects across multiple teams and experience with driving migrations from monolith to modular frameworks is a plus.</li>
+	<li>Empathetic and clear communication skills, verbal and written</li>
+	<li>Strong leadership, collaboration, and technical evangelism skills.</li>
+	<li>Experience building and scaling large-scale web applications.</li>
+	<li>Expertise in React.js, TypeScript, and modern front-end systems.</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Why Join Us?</p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Lead a pivotal migration to a modern, scalable UI platform.</li>
+	<li>Shape best practices and drive impactful engineering change.</li>
+	<li>Work with modern technologies and solve large-scale challenges.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
