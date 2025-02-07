@@ -1,9 +1,9 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JR64uLhxWHgQPhhOlkyTt/dc50a43a0475ab8a0069bb8fce372e47/Screenshot_2025-02-06_at_4.54.16_PM.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Multiple Cloudflare services, including our <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2 object storage</u></a>, were unavailable for 59 minutes on Thursday, February 6th. This caused all operations against R2 to fail for the duration of the incident, and caused a number of other Cloudflare services that depend on R2 — including <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream"><u>Stream</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images"><u>Images</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/cache-reserve"><u>Cache Reserve</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/vectorize"><u>Vectorize</u></a> and <a href="https://developers.cloudflare.com/logs/edge-log-delivery"><u>Log Delivery</u></a> — to suffer significant failures.</p>
+	<p>Multiple Cloudflare services, including our <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2 object storage</u></a>, were unavailable for 59 minutes on Thursday, February 6, 2025. This caused all operations against R2 to fail for the duration of the incident, and caused a number of other Cloudflare services that depend on R2 — including <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream"><u>Stream</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images"><u>Images</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/cache-reserve"><u>Cache Reserve</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/vectorize"><u>Vectorize</u></a> and <a href="https://developers.cloudflare.com/logs/edge-log-delivery"><u>Log Delivery</u></a> — to suffer significant failures.</p>
 	<p>The incident occurred due to human error and insufficient validation safeguards during a routine abuse remediation for a report about a phishing site hosted on R2. The action taken on the complaint resulted in an advanced product disablement action on the site that led to disabling the production R2 Gateway service responsible for the R2 API.&nbsp;&nbsp;</p>
 	<p>Critically, this incident did <b>not</b> result in the loss or corruption of any data stored on R2.&nbsp;</p>
-	<p>We’re deeply sorry for this incident: this was a failure of a number of controls and we are prioritizing work to implement additional system-level controls related not only to our abuse processing systems, but so that we continue to reduce the blast radius of <i>any</i> system- or human- action that could result in disabling any production service at Cloudflare.</p>
+	<p>We’re deeply sorry for this incident: this was a failure of a number of controls, and we are prioritizing work to implement additional system-level controls related not only to our abuse processing systems, but so that we continue to reduce the blast radius of <i>any</i> system- or human- action that could result in disabling any production service at Cloudflare.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-was-impacted">What was impacted?</h2>
 		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -117,8 +117,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>
-	</p>
 	<div class="flex anchor relative">
 		<h2 id="incident-timeline-and-impact">Incident timeline and impact</h2>
 		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -292,7 +290,7 @@
 		</table>
 	</div>
 	<p>At the R2 service level, our internal Prometheus metrics showed R2’s SLO near-immediately drop to 0% as R2’s Gateway service stopped serving all requests and terminated in-flight requests.</p>
-	<p>The slight delay in failure was due to the product disablement action taking 1-2 minutes to take effect as well as our configured metrics aggregation intervals:</p>
+	<p>The slight delay in failure was due to the product disablement action taking 1–2 minutes to take effect as well as our configured metrics aggregation intervals:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pbONRcG99RWttIUyGqnI6/bad397f73762a706285ea143ed2418b3/BLOG-2685_2.png" alt="BLOG-2685 2" class="kg-image" width="1999" height="844" loading="lazy">
 	</figure>
@@ -346,7 +344,7 @@
 			<p><b>In-flight</b>: Expand existing abuse checks that prevent accidental blocking of internal hostnames to also prevent any product disablement action of products associated with an internal Cloudflare account.&nbsp;&nbsp;</p>
 		</li>
 		<li>
-			<p><b>In-flight</b>: Internal accounts are being moved to our new Organizations model ahead of public release of this feature. The R2 production account was a member of this organization but our abuse remediation engine did not have the necessary protections to prevent acting against accounts within this organization.</p>
+			<p><b>In-flight</b>: Internal accounts are being moved to our new Organizations model ahead of public release of this feature. The R2 production account was a member of this organization, but our abuse remediation engine did not have the necessary protections to prevent acting against accounts within this organization.</p>
 		</li>
 	</ul>
 	<p>We’re continuing to discuss &amp; review additional steps and effort that can continue to reduce the blast radius of any system- or human- action that could result in disabling any production service at Cloudflare.</p>
@@ -358,6 +356,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>We understand this was a serious incident and we are painfully aware of — and extremely sorry for — the impact it caused to customers and teams building and running their businesses on Cloudflare.</p>
+	<p>We understand this was a serious incident, and we are painfully aware of — and extremely sorry for — the impact it caused to customers and teams building and running their businesses on Cloudflare.</p>
 	<p>This is the first (and ideally, the last) incident of this kind and duration for R2, and we’re committed to improving controls across our systems and workflows to prevent this in the future.</p>
 </div>
