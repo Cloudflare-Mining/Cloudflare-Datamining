@@ -1499,7 +1499,7 @@
 	"zoneless_workers.workers_observability.event-table.refresh": "Refresh",
 	"zoneless_workers.workers_observability.event-table.delay": "Logs can take up to 2 minutes to appear in the dashboard",
 	"zoneless_workers.workers_observability.event-table.bad-filters": "There are no events matching the filters in the selected timeframe",
-	"zoneless_workers.workers_observability.live-tail.empty": "Preparing real-time logs",
+	"zoneless_workers.workers_observability.live-tail.empty": "Listening for events",
 	"zoneless_workers.workers_observability.live-tail.error-1": "Failed to connect to real-time logs",
 	"zoneless_workers.workers_observability.event-table.clear-filters": "Clear filters",
 	"zoneless_workers.workers_observability.event-table.no-more-events": "No older events matching the criteria within the selected timeframe",
@@ -1643,5 +1643,6 @@
 	"zoneless_workers.preview_urls": "Preview URLs",
 	"zoneless_workers.actions.git.unconnected": "Connect your git provider on the settings page",
 	"zoneless_workers.actions.git.connected": "View your workers code",
-	"zoneless_workers.metrics.no_versions": "No Versions deployed"
+	"zoneless_workers.metrics.no_versions": "No Versions deployed",
+	"zoneless_workers.internal_worker.toast": "This is an internal Worker with internal capability grants. Modifications of this Worker in dash will result in loss of those grants, and could break your Worker. Deploy this Worker via Wrangler to retain your binding grants."
 }

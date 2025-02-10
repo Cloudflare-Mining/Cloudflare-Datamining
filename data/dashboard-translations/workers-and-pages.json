@@ -50,7 +50,7 @@
 	"workers_and_pages.template_configuration.submitting": "Setting up your repository. This may take a few seconds...",
 	"workers_and_pages.create.github.reauth.title": "Reauthenticate <0>%{username}</0>",
 	"workers_and_pages.create.github.reauth.templates_require": "Templates require write permissions to create GitHub repositories on your behalf.",
-	"workers_and_pages.create.github.reauth.step_1": "<0>Step 1:</0> Review and accept new permissions to the Cloudflare GitHub app to allow Cloudflare to create repositories.",
+	"workers_and_pages.create.github.reauth.step_1": "<0>Step 1:</0> If new permissions are awaiting review, accept them to allow Cloudflare to create repositories.",
 	"workers_and_pages.create.github.reauth.step_2": "<0>Step 2:</0> Save your repository access permission. If the \"Save\" button is disabled, you may need to change and re-select your choice to enable the button.",
 	"workers_and_pages.create.github.reauth.update_permissions": "Update permission on GitHub",
 	"workers_and_pages.create.reauth.accept_updated_permissions": "You must accept <0>updated permissions</0> on GitHub to use this account.",
@@ -571,7 +571,7 @@
 	"workers_and_pages.observability.workers_logs.drawer.invocation-logs.title": "Include Invocation logs",
 	"workers_and_pages.observability.workers_logs.drawer.invocation-logs.description": "Cloudflare autogenerates logs that contains details such as the request, response and related metadata based on the context of the invocation.",
 	"workers_and_pages.observability.workers_logs.drawer.head-sampling.title": "Head-based sampling rate",
-	"workers_and_pages.observability.workers_logs.drawer.head-sampling.description": "Control your observability bill by adjusting the head-based sampling rate.",
+	"workers_and_pages.observability.workers_logs.drawer.head-sampling.description": "Head-based sampling allows you to log the specified percentage of Worker invocations.",
 	"workers_and_pages.observability.workers_logs.drawer.head-sampling.error": "Add a sampling rate between 0 and 100.",
 	"workers_and_pages.observability.workers_logs.drawer.head-sampling.helper": "Approx. 1 out of %{total} events will be indexed and stored.",
 	"workers_and_pages.contexual_update_messages.bindings.env_var.add": "Add variable: %{name}",
@@ -589,5 +589,6 @@
 	"workers_and_pages.contexual_update_messages.compatibility_flags": "Updated compatibility flags",
 	"workers_and_pages.contexual_update_messages.cpu_time_limit": "Updated CPU time limit to %{cpuTimeLimitMs} ms",
 	"workers_and_pages.contexual_update_messages.cpu_time_limit.cleared": "Removed CPU time limit",
-	"workers_and_pages.contexual_update_messages.usage_model": "Updated usage model to %{usageModel}"
+	"workers_and_pages.contexual_update_messages.usage_model": "Updated usage model to %{usageModel}",
+	"workers_and_pages.deploy_to_workers": "Deploy to Workers"
 }

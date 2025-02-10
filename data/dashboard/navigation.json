@@ -103,28 +103,28 @@
 		},
 		{
 			"title": "navigation.account.registrar",
-			"url": "/domains",
+			"url": "/registrar/domains",
 			"testId": "sidenav-domains-link",
 			"iconType": "registrar-logo",
 			"pages": [
 				{
 					"title": "navigation.account.registrar.manage_domains",
-					"url": "/domains",
+					"url": "/registrar/domains",
 					"state": {
 						"forceRenderIfNoDomains": true
 					}
 				},
 				{
 					"title": "navigation.account.registrar.transfer_domains",
-					"url": "/domains/transfer"
+					"url": "/registrar/transfer"
 				},
 				{
 					"title": "navigation.account.registrar.register_domains",
-					"url": "/domains/register"
+					"url": "/registrar/register"
 				},
 				{
 					"title": "navigation.account.registrar.domain_protection",
-					"url": "/domains/protection",
+					"url": "/registrar/protection",
 					"labels": [
 						"beta"
 					],
@@ -868,6 +868,12 @@
 					"hasPermission": null
 				},
 				{
+					"title": "navigation.account.web_analytics",
+					"url": "/analytics/web/overview",
+					"navigationType": "global-settings",
+					"hasPermission": null
+				},
+				{
 					"title": "navigation.zone.analytics.security",
 					"url": "/analytics/security",
 					"navigationType": "global-settings",
@@ -1055,6 +1061,13 @@
 					"title": "navigation.zone.security.analytics",
 					"navigationType": "version",
 					"url": "/security/analytics",
+					"tabs": [],
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.zone.security.asset_management",
+					"navigationType": "version",
+					"url": "/security/application-mapping",
 					"hasPermission": null
 				},
 				{
