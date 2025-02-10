@@ -5,10 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location:</strong> Lisbon, Portugal</p>
+<p><strong>Available location:</strong> Lisbon, Portugal</p>
 <p><strong>The Team</strong></p>
 <p>Security Compliance is seen as a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
 <p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. You will join as a member focused on developing and maintaining an internal control framework, aligned with security and privacy standards and internal security requirements. This team is part of Security Compliance and is part of the greater Security Team under Cloudflare’s Chief Security Officer. We guarantee that you will be challenged and have room for growth on our team!&nbsp;</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal summer intern is passionate about making the Internet a better place. You will work with a strong team of talented professionals. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for those who want to learn the ins and outs of cybersecurity.&nbsp;</p>
+<p>What would you do as a Cloudflare intern?</p>
+<ul>
+	<li>Ship and deliver projects over 12-16 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Learn and develop skills through our professional development workshops.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
+</ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li>Work cross-functionally with Engineering, Product, IT, Legal and operational teams to drive security control implementation for the organization.</li>

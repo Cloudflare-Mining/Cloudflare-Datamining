@@ -5,12 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Location: Lisbon, Portugal</strong></h4>
+<h4><strong>Available location: Lisbon, Portugal</strong></h4>
 <h4><strong>About the department</strong></h4>
 <p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet to be resilient and transparent.</p>
 <p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable security, privacy, and systems, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
 <p>Our team includes experts in applied cryptography, privacy, network architectures and protocols, measurement, cache optimization, machine learning for systems, and time series analysis.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. &nbsp; We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
 <p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal summer intern is passionate about making the Internet a better place. You will work with a strong team of talented professionals. Your work this summer will impact hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for those who want to learn the ins and outs of Research.&nbsp;</p>
+<p>What would you do as a Cloudflare intern?</p>
+<ul>
+	<li>Ship and deliver projects over 12-16 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Learn and develop skills through our professional development workshops.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
+</ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <h4><strong>What you'll do</strong></h4>
 <p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
 <p>Successful candidates will be matched to suitable projects in on-going research directions. Current research streams delve into:</p>
