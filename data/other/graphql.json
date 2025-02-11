@@ -2438,6 +2438,7 @@
 	"AccountHyperdriveQueriesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"cacheStatus": "The cache status of the Hyperdrive query event",
+		"coloCode": "IATA airport code for the Cloudflare datacenter where the query was handled.",
 		"configId": "The ID of the Hyperdrive Config",
 		"date": "Hyperdrive query event timestamp, truncated to start of a day",
 		"datetime": "Hyperdrive query event timestamp",
@@ -4116,6 +4117,7 @@
 		"warpDeviceAdaptiveGroups": "",
 		"workerPlacementAdaptiveGroups": "",
 		"workersAnalyticsEngineAdaptiveGroups": "",
+		"workersBuildsBuildMinutesAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsScheduled": "",
 		"workersOverviewDataAdaptiveGroups": "",
@@ -4773,6 +4775,25 @@
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkersBuildsBuildMinutesAdaptiveGroups": {
+		"__description": "Workers Builds build minute overview data with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "Build minutes recorded timestamp"
+	},
+	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsSum": {
+		"__description": "",
+		"buildMinutes": "The sum of build minutes"
 	},
 	"AccountWorkersInvocationsAdaptive": {
 		"__description": "Beta. Workers invocations with adaptive sampling",
@@ -7639,6 +7660,7 @@
 		"warpDeviceAdaptiveGroups": "Beta. Warp device health events with adaptive sampling",
 		"workerPlacementAdaptiveGroups": "Worker placement metrics",
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
+		"workersBuildsBuildMinutesAdaptiveGroups": "Workers Builds build minute overview data with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
 		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
