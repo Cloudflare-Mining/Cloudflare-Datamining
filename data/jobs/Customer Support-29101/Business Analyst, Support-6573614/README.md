@@ -5,48 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Atlanta, GA; Austin, TX; Lisbon, Portugal; London, United Kingdom; New York, NY; Washington, DC</p>
-<p><strong>About the Role</strong></p>
-<p>We are seeking a Data Center Design Engineer to design Cloudflare’s pending and future infrastructure deployments for generational improvement in cost, quality, and speed of deployment. We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining data center design best practices in a high growth environment. &nbsp;Getting stuff done is a must!</p>
-<p>The Data Center Strategy team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors. &nbsp;</p>
-<p><strong>What you get to do in this role:</strong></p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal | London, UK</p>
+<p>Cloudflare is seeking an organized, self-motivated Business Analyst to understand business needs and translate them into areas for improvement. You will be responsible for prioritizing initiatives based on business impact, developing requirements, ensuring solutions align with business goals, and owning communications and enablement that will ensure the business is ready to adopt new processes. In this role you will have the opportunity to directly impact the productivity of our Support team (and in turn, thousands of customers that we work with every week) by driving the implementation of new system functionality and enhancements in Salesforce Service Cloud.&nbsp;</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
+<p>The ideal candidate is comfortable working in a fast-paced environment, is empathetic, flexible, iterative, curious, and enjoys collaborating cross-functionally to achieve a common goal.</p>
+<p>This position will be based in Austin, Texas; London, UK; or Lisbon, Portugal. You will be reporting into the Support Operations team.</p>
+<h4><strong>Major areas of responsibilities</strong></h4>
 <ul>
-	<li>Translate data center capacity requirements into actionable white space design and/or rack plans within individual data center contract constraints for power, cooling</li>
-	<li>Manage implementation phase of cage projects with data center providers</li>
-	<li>Design low voltage structured cabling, fiber, cross-connect &amp; conveyance infrastructure as well as any supporting infrastructure on the data center ceiling/floor</li>
-	<li>Work with supply chain team on rack integration plans and location deployment qualification</li>
-	<li>Work cross-functionally with Cloudflare data center engineering team and other internal teams (capacity planning, network strategy, security) to verify scope and solution and create repeatable standard installation procedures</li>
-	<li>Take ownership of and lead projects to design and implement data center expansions or new data centers on tight deadlines with minimal oversight</li>
-	<li>Technical support in negotiations with external data center partners</li>
-	<li>Assist in RFP preparation, review and cost/engineering analysis</li>
-	<li>Review one-line diagrams and cooling equations for new and existing data centers (Data Center M&amp;E)</li>
-	<li>Power component (PDU) review/approval for Hardware sourcing team</li>
-	<li>Implement, document and maintain power consumption tracking tools and fulfil ad-hoc reporting requests</li>
-	<li>Research new and innovative power efficiency technologies and programs</li>
-	<li>Travel up to 25% to perform infrastructure audits, validate data center construction work and buildouts, and participate in commercial processes.</li>
-	<li>Other duties as assigned</li>
+	<li>Serves as business partner and trusted advisor for Customer Support. Collects, understands, and synthesizes user feedback as well as strategic business priorities. Has deep understanding of business stakeholder group.</li>
+	<li>Stack ranks priorities that reflect the stakeholder group’s needs. Provides input on Salesforce Service Cloud roadmap.</li>
+	<li>Facilitates conflict resolution with decision-makers by providing full analysis of options, pros and cons and a documented log of the decisions.</li>
+	<li>Drives effective discovery sessions to capture as-is and to-be process flows in a consistent and reusable format.</li>
+	<li>Deep familiarity of core systems, processes and all related system capabilities leveraged by stakeholders.</li>
+	<li>Collaborates with developers to test and verify that the solution meets the business requirements.</li>
+	<li>Ensures the relevant parts of the business are ready for each release that impacts them. Leads and / or organizes necessary meetings to deliver system demos, perform user acceptance testing, and end user training.</li>
+	<li>Documents releases in an easy to understand way. Thoroughly communicates updates to business stakeholders.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Desirable skills and knowledge</strong></h4>
 <ul>
-	<li>Bachelors or equivalent experience plus 5+ years of experience in data center mechanical and electrical design and operations/deployment/installation, P.E. certification or equivalent a plus</li>
-	<li>Experience in HVAC, Chilled Water Systems, Condenser Water Systems, Pump controls, Glycool/Glycols, AHU units (DX, split, RTU, CRAC, etc.), CRAH, Raised Floor Systems, HOT/COLD aisle containment and Building Management Systems</li>
-	<li>Understanding of basic electrical theory (voltage, current, power), basic circuit design &amp; analysis, and single- and three-phase power systems</li>
-	<li>Familiarity with Data Center M&amp;E infrastructure design concepts, electrical/UPS topologies, cooling methodologies (central plant, room cooling, high density thermal strategies)</li>
-	<li>Familiarity with industry standards for resilient Data Center design and Uptime Institute Tier Classifications</li>
-	<li>Excellent verbal, written communication and presentation skills</li>
-	<li>Experience working with multiple time zones and multiple cross-functional teams</li>
-	<li>Experience working on time sensitive projects with delivery responsibility under pressure</li>
+	<li>Bachelor’s degree in Business Administration, Computer Science, Information Systems, or a related field.</li>
+	<li>Ability to analyze complex business problems and identify effective solutions.</li>
+	<li>Comfortable working in a fast-paced environment with multiple concurrent priorities.</li>
+	<li>Excellent communication skills (written and verbal) and attention to detail.</li>
+	<li>Excels at building relationships and communicating with all types of stakeholders, from VPs to developers to Customer Support Engineers.</li>
+	<li>Direct experience or knowledge of Customer Support team is a plus.</li>
+	<li>Experience with Salesforce Service Cloud a plus.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Degree in electrical/mechanical engineering or IT a plus</li>
-	<li>Experience in large-scale mission critical facility infrastructure design, construction, commissioning, and/or operations a plus</li>
-	<li>Experience with industry standards, building codes and safety standards including UMC, NFPA, ASHRAE, UBC, UMC and LEED, Uptime Institute</li>
-	<li>Knowledge of programming languages a plus</li>
-	<li>JIRA, Confluence admin-level experience a plus</li>
-	<li>AutoCAD experience a plus</li>
-	<li>Experience with FLOTHERM or Tileflow a plus</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
