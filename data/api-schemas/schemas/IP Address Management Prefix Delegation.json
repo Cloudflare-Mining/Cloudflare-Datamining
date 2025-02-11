@@ -12,7 +12,8 @@
 					"example": "d933b1530bc56c9953cf8ce166da8004",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -34,7 +36,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -124,7 +127,8 @@
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -218,7 +222,8 @@
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -344,7 +349,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -355,7 +361,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -467,7 +474,8 @@
 													"cidr": {
 														"description": "IP Prefix in Classless Inter-Domain Routing format.",
 														"example": "192.0.2.0/24",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -478,14 +486,16 @@
 														"description": "Account identifier for the account to which prefix is being delegated.",
 														"example": "b1946ac92492d2347c6235b4d2611184",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of a Delegation.",
 														"example": "d933b1530bc56c9953cf8ce166da8004",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -496,7 +506,8 @@
 														"description": "Identifier of an IP Prefix.",
 														"example": "2af39739cc4e3b5910c918468bb89828",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -620,7 +631,8 @@
 															"cidr": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -631,14 +643,16 @@
 																"description": "Account identifier for the account to which prefix is being delegated.",
 																"example": "b1946ac92492d2347c6235b4d2611184",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of a Delegation.",
 																"example": "d933b1530bc56c9953cf8ce166da8004",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -649,7 +663,8 @@
 																"description": "Identifier of an IP Prefix.",
 																"example": "2af39739cc4e3b5910c918468bb89828",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -774,7 +789,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -785,7 +801,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -797,13 +814,15 @@
 							"cidr": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
 								"example": "192.0.2.0/24",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"delegated_account_id": {
 								"description": "Account identifier for the account to which prefix is being delegated.",
 								"example": "b1946ac92492d2347c6235b4d2611184",
 								"maxLength": 32,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -893,7 +912,8 @@
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -904,14 +924,16 @@
 													"description": "Account identifier for the account to which prefix is being delegated.",
 													"example": "b1946ac92492d2347c6235b4d2611184",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of a Delegation.",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -922,7 +944,8 @@
 													"description": "Identifier of an IP Prefix.",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1014,7 +1037,8 @@
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1025,14 +1049,16 @@
 															"description": "Account identifier for the account to which prefix is being delegated.",
 															"example": "b1946ac92492d2347c6235b4d2611184",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of a Delegation.",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1043,7 +1069,8 @@
 															"description": "Identifier of an IP Prefix.",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

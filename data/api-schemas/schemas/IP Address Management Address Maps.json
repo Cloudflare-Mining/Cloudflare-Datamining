@@ -11,7 +11,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -350,7 +352,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -361,7 +364,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -688,7 +692,8 @@
 				"schema": {
 					"description": "An IPv4 or IPv6 address.",
 					"example": "192.0.2.1",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -699,7 +704,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -710,7 +716,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1038,7 +1045,8 @@
 					"description": "Identifier of a zone.",
 					"example": "8ac8489932db6327334c9b6d58544cfe",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1049,7 +1057,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1060,7 +1069,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1388,7 +1398,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1501,13 +1512,15 @@
 														"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"can_modify_ips": {
 														"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -1518,26 +1531,30 @@
 														"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 														"example": "*.example.com",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 														"example": "My Ecommerce zones",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"enabled": {
 														"default": false,
 														"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 														"example": true,
 														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of an Address Map.",
 														"example": "055817b111884e0227e1be16a0be6ee0",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -1667,13 +1684,15 @@
 																"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 																"example": true,
 																"readOnly": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"can_modify_ips": {
 																"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 																"example": true,
 																"readOnly": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -1684,26 +1703,30 @@
 																"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 																"example": "*.example.com",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 																"example": "My Ecommerce zones",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"enabled": {
 																"default": false,
 																"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of an Address Map.",
 																"example": "055817b111884e0227e1be16a0be6ee0",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -1837,7 +1860,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1848,7 +1872,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1933,13 +1958,15 @@
 															"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"can_modify_ips": {
 															"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1950,26 +1977,30 @@
 															"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 															"example": "*.example.com",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 															"example": "My Ecommerce zones",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"default": false,
 															"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an Address Map.",
 															"example": "055817b111884e0227e1be16a0be6ee0",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1993,7 +2024,8 @@
 																	"ip": {
 																		"description": "An IPv4 or IPv6 address.",
 																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2008,7 +2040,8 @@
 																		"description": "Controls whether the membership can be deleted via the API or not.",
 																		"example": true,
 																		"readOnly": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -2019,7 +2052,8 @@
 																		"description": "The identifier for the membership (eg. a zone or account tag).",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The type of the membership.",
@@ -2028,7 +2062,8 @@
 																			"account"
 																		],
 																		"example": "zone",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2131,13 +2166,15 @@
 																	"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 																	"example": true,
 																	"readOnly": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"can_modify_ips": {
 																	"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 																	"example": true,
 																	"readOnly": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -2148,26 +2185,30 @@
 																	"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 																	"example": "*.example.com",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 																	"example": "My Ecommerce zones",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier of an Address Map.",
 																	"example": "055817b111884e0227e1be16a0be6ee0",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -2191,7 +2232,8 @@
 																			"ip": {
 																				"description": "An IPv4 or IPv6 address.",
 																				"example": "192.0.2.1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -2206,7 +2248,8 @@
 																				"description": "Controls whether the membership can be deleted via the API or not.",
 																				"example": true,
 																				"readOnly": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
@@ -2217,7 +2260,8 @@
 																				"description": "The identifier for the membership (eg. a zone or account tag).",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"kind": {
 																				"description": "The type of the membership.",
@@ -2226,7 +2270,8 @@
 																					"account"
 																				],
 																				"example": "zone",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -2361,7 +2406,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2372,7 +2418,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2385,20 +2432,23 @@
 								"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 								"example": "*.example.com",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 								"example": "My Ecommerce zones",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"enabled": {
 								"default": false,
 								"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 								"example": true,
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						}
 					}
@@ -2485,13 +2535,15 @@
 													"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"can_modify_ips": {
 													"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2502,26 +2554,30 @@
 													"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 													"example": "*.example.com",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 													"example": "My Ecommerce zones",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enabled": {
 													"default": false,
 													"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 													"example": true,
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an Address Map.",
 													"example": "055817b111884e0227e1be16a0be6ee0",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2619,13 +2675,15 @@
 															"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"can_modify_ips": {
 															"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2636,26 +2694,30 @@
 															"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 															"example": "*.example.com",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 															"example": "My Ecommerce zones",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"default": false,
 															"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an Address Map.",
 															"example": "055817b111884e0227e1be16a0be6ee0",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2786,7 +2848,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2799,20 +2862,23 @@
 								"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 								"example": "My Ecommerce zones",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"enabled": {
 								"default": false,
 								"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 								"example": true,
 								"nullable": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"ips": {
 								"items": {
 									"description": "An IPv4 or IPv6 address.",
 									"example": "192.0.2.1",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -2824,7 +2890,8 @@
 											"description": "Controls whether the membership can be deleted via the API or not.",
 											"example": true,
 											"readOnly": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
@@ -2835,7 +2902,8 @@
 											"description": "The identifier for the membership (eg. a zone or account tag).",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"kind": {
 											"description": "The type of the membership.",
@@ -2844,7 +2912,8 @@
 												"account"
 											],
 											"example": "zone",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2938,13 +3007,15 @@
 															"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"can_modify_ips": {
 															"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2955,26 +3026,30 @@
 															"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 															"example": "*.example.com",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 															"example": "My Ecommerce zones",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enabled": {
 															"default": false,
 															"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an Address Map.",
 															"example": "055817b111884e0227e1be16a0be6ee0",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2998,7 +3073,8 @@
 																	"ip": {
 																		"description": "An IPv4 or IPv6 address.",
 																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3013,7 +3089,8 @@
 																		"description": "Controls whether the membership can be deleted via the API or not.",
 																		"example": true,
 																		"readOnly": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -3024,7 +3101,8 @@
 																		"description": "The identifier for the membership (eg. a zone or account tag).",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The type of the membership.",
@@ -3033,7 +3111,8 @@
 																			"account"
 																		],
 																		"example": "zone",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3136,13 +3215,15 @@
 																	"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 																	"example": true,
 																	"readOnly": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"can_modify_ips": {
 																	"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 																	"example": true,
 																	"readOnly": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -3153,26 +3234,30 @@
 																	"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
 																	"example": "*.example.com",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
 																	"example": "My Ecommerce zones",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"default": false,
 																	"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier of an Address Map.",
 																	"example": "055817b111884e0227e1be16a0be6ee0",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -3196,7 +3281,8 @@
 																			"ip": {
 																				"description": "An IPv4 or IPv6 address.",
 																				"example": "192.0.2.1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3211,7 +3297,8 @@
 																				"description": "Controls whether the membership can be deleted via the API or not.",
 																				"example": true,
 																				"readOnly": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
@@ -3222,7 +3309,8 @@
 																				"description": "The identifier for the membership (eg. a zone or account tag).",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"kind": {
 																				"description": "The type of the membership.",
@@ -3231,7 +3319,8 @@
 																					"account"
 																				],
 																				"example": "zone",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3365,7 +3454,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3376,7 +3466,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3700,7 +3791,8 @@
 				"schema": {
 					"description": "An IPv4 or IPv6 address.",
 					"example": "192.0.2.1",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3711,7 +3803,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3722,7 +3815,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4050,7 +4144,8 @@
 					"description": "Identifier of a zone.",
 					"example": "8ac8489932db6327334c9b6d58544cfe",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4061,7 +4156,8 @@
 					"description": "Identifier of an Address Map.",
 					"example": "055817b111884e0227e1be16a0be6ee0",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4072,7 +4168,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],

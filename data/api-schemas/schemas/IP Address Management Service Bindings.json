@@ -11,7 +11,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -33,7 +35,8 @@
 					"description": "Identifier of a Service Binding.",
 					"example": "0429b49b6a5155297b78e75a44b09e14",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -223,7 +226,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -234,7 +238,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -312,13 +317,15 @@
 													"cidr": {
 														"description": "IP Prefix in Classless Inter-Domain Routing format.",
 														"example": "192.0.2.0/24",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of a Service Binding.",
 														"example": "0429b49b6a5155297b78e75a44b09e14",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"provisioning": {
 														"description": "Status of a Service Binding's deployment to the Cloudflare network",
@@ -330,7 +337,8 @@
 																	"active"
 																],
 																"example": "provisioning",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -339,12 +347,14 @@
 														"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 														"example": "2db684ee7ca04e159946fd05b99e1bcd",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"service_name": {
 														"description": "Name of a service running on the Cloudflare network",
 														"example": "Magic Transit",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -478,7 +488,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -489,7 +500,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -500,7 +512,8 @@
 					"description": "Identifier of a Service Binding.",
 					"example": "0429b49b6a5155297b78e75a44b09e14",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -577,13 +590,15 @@
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of a Service Binding.",
 													"example": "0429b49b6a5155297b78e75a44b09e14",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"provisioning": {
 													"description": "Status of a Service Binding's deployment to the Cloudflare network",
@@ -595,7 +610,8 @@
 																"active"
 															],
 															"example": "provisioning",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -604,12 +620,14 @@
 													"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 													"example": "2db684ee7ca04e159946fd05b99e1bcd",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"service_name": {
 													"description": "Name of a service running on the Cloudflare network",
 													"example": "Magic Transit",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -741,7 +759,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -820,12 +839,14 @@
 														"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 														"example": "2db684ee7ca04e159946fd05b99e1bcd",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of a service running on the Cloudflare network",
 														"example": "Magic Transit",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												}
 											},
@@ -958,7 +979,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -969,7 +991,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -981,13 +1004,15 @@
 							"cidr": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
 								"example": "192.0.2.0/24",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"service_id": {
 								"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 								"example": "2db684ee7ca04e159946fd05b99e1bcd",
 								"maxLength": 32,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1068,13 +1093,15 @@
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of a Service Binding.",
 													"example": "0429b49b6a5155297b78e75a44b09e14",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"provisioning": {
 													"description": "Status of a Service Binding's deployment to the Cloudflare network",
@@ -1086,7 +1113,8 @@
 																"active"
 															],
 															"example": "provisioning",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1095,12 +1123,14 @@
 													"description": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the\n**List Services** endpoint.\n",
 													"example": "2db684ee7ca04e159946fd05b99e1bcd",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"service_name": {
 													"description": "Name of a service running on the Cloudflare network",
 													"example": "Magic Transit",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

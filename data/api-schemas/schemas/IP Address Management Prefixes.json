@@ -11,7 +11,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -351,7 +353,8 @@
 					"example": "d933b1530bc56c9953cf8ce166da8004",
 					"maxLength": 32,
 					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -362,7 +365,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -502,7 +506,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -615,36 +620,42 @@
 														"description": "Identifier of a Cloudflare account.",
 														"example": "258def64c72dae45f3e4c8516e2111f2",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"advertised": {
 														"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 														"example": true,
 														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"advertised_modified_at": {
 														"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"approved": {
 														"description": "Approval state of the prefix (P = pending, V = active).",
 														"example": "P",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"asn": {
 														"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 														"example": 209242,
 														"nullable": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"cidr": {
 														"description": "IP Prefix in Classless Inter-Domain Routing format.",
 														"example": "192.0.2.0/24",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -655,20 +666,23 @@
 														"description": "Description of the prefix.",
 														"example": "Internal test prefix",
 														"maxLength": 1000,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of an IP Prefix.",
 														"example": "2af39739cc4e3b5910c918468bb89828",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"loa_document_id": {
 														"description": "Identifier for the uploaded LOA document.",
 														"example": "d933b1530bc56c9953cf8ce166da8004",
 														"maxLength": 32,
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -678,12 +692,14 @@
 													"on_demand_enabled": {
 														"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"on_demand_locked": {
 														"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -808,36 +824,42 @@
 																"description": "Identifier of a Cloudflare account.",
 																"example": "258def64c72dae45f3e4c8516e2111f2",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"advertised": {
 																"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"advertised_modified_at": {
 																"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"approved": {
 																"description": "Approval state of the prefix (P = pending, V = active).",
 																"example": "P",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"asn": {
 																"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 																"example": 209242,
 																"nullable": true,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"cidr": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -848,20 +870,23 @@
 																"description": "Description of the prefix.",
 																"example": "Internal test prefix",
 																"maxLength": 1000,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of an IP Prefix.",
 																"example": "2af39739cc4e3b5910c918468bb89828",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"loa_document_id": {
 																"description": "Identifier for the uploaded LOA document.",
 																"example": "d933b1530bc56c9953cf8ce166da8004",
 																"maxLength": 32,
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -871,12 +896,14 @@
 															"on_demand_enabled": {
 																"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"on_demand_locked": {
 																"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1009,7 +1036,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1020,7 +1048,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1103,36 +1132,42 @@
 													"description": "Identifier of a Cloudflare account.",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"advertised": {
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"advertised_modified_at": {
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
 													"example": "P",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 													"example": 209242,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1143,20 +1178,23 @@
 													"description": "Description of the prefix.",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1166,12 +1204,14 @@
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"on_demand_locked": {
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1264,36 +1304,42 @@
 															"description": "Identifier of a Cloudflare account.",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
 															"example": "P",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 															"example": 209242,
 															"nullable": true,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1304,20 +1350,23 @@
 															"description": "Description of the prefix.",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1327,12 +1376,14 @@
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1463,7 +1514,8 @@
 					"description": "Identifier of an IP Prefix.",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1474,7 +1526,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1487,7 +1540,8 @@
 								"description": "Description of the prefix.",
 								"example": "Internal test prefix",
 								"maxLength": 1000,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1577,36 +1631,42 @@
 													"description": "Identifier of a Cloudflare account.",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"advertised": {
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"advertised_modified_at": {
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
 													"example": "P",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 													"example": 209242,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1617,20 +1677,23 @@
 													"description": "Description of the prefix.",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1640,12 +1703,14 @@
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"on_demand_locked": {
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1738,36 +1803,42 @@
 															"description": "Identifier of a Cloudflare account.",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
 															"example": "P",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 															"example": 209242,
 															"nullable": true,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1778,20 +1849,23 @@
 															"description": "Description of the prefix.",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1801,12 +1875,14 @@
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1933,7 +2009,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2036,7 +2113,8 @@
 													"description": "Identifier of a Cloudflare account.",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2046,30 +2124,35 @@
 												"filename": {
 													"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
 													"example": "site_loa_doc.pdf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier for the uploaded LOA document.",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"size_bytes": {
 													"description": "File size of the uploaded LOA document.",
 													"example": 444,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"verified": {
 													"description": "Whether the LOA has been verified by Cloudflare staff.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"verified_at": {
 													"description": "Timestamp of the moment the LOA was marked as validated.",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2162,7 +2245,8 @@
 															"description": "Identifier of a Cloudflare account.",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2172,30 +2256,35 @@
 														"filename": {
 															"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
 															"example": "site_loa_doc.pdf",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier for the uploaded LOA document.",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"size_bytes": {
 															"description": "File size of the uploaded LOA document.",
 															"example": 444,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"verified": {
 															"description": "Whether the LOA has been verified by Cloudflare staff.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"verified_at": {
 															"description": "Timestamp of the moment the LOA was marked as validated.",
 															"format": "date-time",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2321,7 +2410,8 @@
 					"description": "Identifier of a Cloudflare account.",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2334,19 +2424,22 @@
 								"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 								"example": 209242,
 								"nullable": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"cidr": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
 								"example": "192.0.2.0/24",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"loa_document_id": {
 								"description": "Identifier for the uploaded LOA document.",
 								"example": "d933b1530bc56c9953cf8ce166da8004",
 								"maxLength": 32,
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2438,36 +2531,42 @@
 													"description": "Identifier of a Cloudflare account.",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"advertised": {
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"advertised_modified_at": {
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
 													"example": "P",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 													"example": 209242,
 													"nullable": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2478,20 +2577,23 @@
 													"description": "Description of the prefix.",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2501,12 +2603,14 @@
 												"on_demand_enabled": {
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"on_demand_locked": {
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2599,36 +2703,42 @@
 															"description": "Identifier of a Cloudflare account.",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
 															"example": "P",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
 															"example": 209242,
 															"nullable": true,
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2639,20 +2749,23 @@
 															"description": "Description of the prefix.",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2662,12 +2775,14 @@
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
