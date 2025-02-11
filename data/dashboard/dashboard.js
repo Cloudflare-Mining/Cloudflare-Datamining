@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "53fb4afa-5caf-5902-ad7d-fc9dfdf6a584")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "aab97c56-9ade-598a-8bf3-49fdd7988af5")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -668,7 +668,7 @@
 				}
 			}
 			var bt = (0, We.withRouter)((0, at.connect)(null, {
-				notifyAdd: Oe.IH
+				notifyAdd: Oe.add
 			})(Ct));
 			Ct.propTypes = {
 				notifyAdd: ae().func.isRequired
@@ -730,7 +730,7 @@
 			var Bt = t("../react/app/components/Persistence/index.tsx"),
 				en = t("../node_modules/@cloudflare/elements/es/index.js"),
 				tn = t("../react/app/components/LoadingSuspense.tsx");
-			const nn = be().lazy(() => Promise.all([t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(5668), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(40912), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
+			const nn = be().lazy(() => Promise.all([t.e(2480), t.e(39074), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(11284), t.e(5668), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(25390), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
 			var on = () => be().createElement(tn.Z, null, be().createElement(nn, null));
 			const rn = () => ($e.useEffect(() => ne, []), null);
 			var an = t("../../../../node_modules/moment/moment.js"),
@@ -868,7 +868,7 @@
 			};
 			var En = t("../react/utils/useDomainConnectRedirect.ts");
 			const vn = "GTM-NDGPDFZ",
-				yn = be().lazy(() => Promise.all([t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(16339), t.e(62803), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(40912), t.e(32036), t.e(68009), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				yn = be().lazy(() => Promise.all([t.e(2480), t.e(39074), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(11284), t.e(16339), t.e(62803), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60734), t.e(25390), t.e(32036), t.e(68009), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
 				Cn = be().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(39074), t.e(24074), t.e(16339), t.e(60734), t.e(69088), t.e(32036), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var hn = ({
 					userIsAuthed: D
@@ -1014,10 +1014,10 @@
 					t.g.build = Pn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "04fbfae9290af77de4eecdef7b6b002321962e4e",
-						dashVersion: "30989556",
+						commit: "773409b1b3325d8d89ce78652172bdffb961f322",
+						dashVersion: "30995771",
 						env: "production",
-						builtAt: 1739291869857,
+						builtAt: 1739299491510,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -4581,21 +4581,21 @@
 		},
 		"../react/common/actions/notificationsActions.ts": function(x, y, t) {
 			"use strict";
-			t.d(y, {
-				IH: function() {
+			t.r(y), t.d(y, {
+				add: function() {
 					return l
 				},
-				Vp: function() {
-					return m
+				error: function() {
+					return v
 				},
-				ZK: function() {
-					return d
-				},
-				um: function() {
+				info: function() {
 					return i
 				},
-				vU: function() {
-					return v
+				success: function() {
+					return m
+				},
+				warn: function() {
+					return d
 				}
 			});
 			var e = t("../react/common/actionTypes.ts");
@@ -14425,7 +14425,7 @@
 				i = t.n(m),
 				d = t("../react/pages/security/settings/hooks/index.ts"),
 				v = t("../react/pages/security/settings/resources/index.ts");
-			const n = p().lazy(() => Promise.all([t.e(37800), t.e(39074), t.e(2480), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(73267), t.e(4e4), t.e(3391), t.e(68204), t.e(2515), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60911), t.e(60734), t.e(40912), t.e(71449), t.e(9147), t.e(30906), t.e(68009), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
+			const n = p().lazy(() => Promise.all([t.e(37800), t.e(2480), t.e(39074), t.e(10008), t.e(73598), t.e(94012), t.e(24074), t.e(11284), t.e(4e4), t.e(3391), t.e(68204), t.e(2515), t.e(3538), t.e(77216), t.e(40517), t.e(39760), t.e(60911), t.e(60734), t.e(25390), t.e(71449), t.e(9147), t.e(30906), t.e(68009), t.e(42185)]).then(t.bind(t, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				r = () => {
 					const {
 						t: s
@@ -16417,7 +16417,8 @@
 						purgeTriggerCache: (0, e.BC)`/accounts/${"accountId"}/builds/triggers/${"trigger_uuid"}/purge_build_cache`,
 						triggerEnvironmentVariables: (0, e.BC)`/accounts/${"accountId"}/builds/triggers/${"trigger_uuid"}/environment_variables`,
 						triggerEnvironmentVariable: (0, e.BC)`/accounts/${"accountId"}/builds/triggers/${"trigger_uuid"}/environment_variables/${"environment_variable_key"}`,
-						workerTriggers: (0, e.BC)`/accounts/${"accountId"}/builds/workers/${"scriptTag"}/triggers`
+						workerTriggers: (0, e.BC)`/accounts/${"accountId"}/builds/workers/${"scriptTag"}/triggers`,
+						configAutofill: (0, e.BC)`/accounts/${"accountId"}/builds/repos/${"providerType"}/${"providerAccountId"}/${"repoId"}/config_autofill?branch=${"branch"}&root_directory=${"rootDirectory"}`
 					},
 					certificates: (0, e.BC)`/zones/${"zoneId"}/ssl/certificate_packs/${"certId"}`,
 					createApiToken: (0, e.BC)`/user/tokens`,
@@ -19243,4 +19244,4 @@
 	}
 ]);
 
-//# debugId=53fb4afa-5caf-5902-ad7d-fc9dfdf6a584
+//# debugId=aab97c56-9ade-598a-8bf3-49fdd7988af5
