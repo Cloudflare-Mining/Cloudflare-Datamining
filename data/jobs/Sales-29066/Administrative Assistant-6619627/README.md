@@ -7,19 +7,22 @@
 </div>
 <p><strong>Available Locations: </strong>Austin, TX</p>
 <p><strong>About the Role</strong></p>
-<p>Looking for an Administrative Assistant to support the Area Vice President. We are looking for a dynamic dedicated candidate with 3-5 years experience of supporting Director or VP level Executives. Candidate must be comfortable with multi-tasking and prioritization in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
-<p>Responsibilities</p>
+<p>The Administrative Assistant will support two Sales Vice Presidents. We are looking for a dynamic and dedicated candidate with 3-5+ years of experience supporting Director or VP level Executives. Candidate must be comfortable with multi-tasking and prioritization in a fast-paced environment with close attention to detail, accuracy, and timeliness.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Manage and organize calendars</li>
+	<li>Manage and organize calendars for two Sales Leaders</li>
+	<li>Expertise in Google Suite (Sheets, Slides, Gmail is a must)</li>
 	<li>Coordinate international / domestic travel (including visa and passport needs)</li>
 	<li>Prepare and manage expense reports</li>
 	<li>Coordinate both internal and external meeting needs</li>
-	<li>Assist with special projects as needed</li>
+	<li>Assist with special / ad-hoc projects as needed</li>
+	<li>Submit vendor contracts and Purchase Orders (POs)</li>
 	<li>Coordinate / assist with event planning as needed</li>
+	<li>Assist with live meetings (greeting attendees, ensuring backend operations run smoothly)</li>
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li>3-5 years of experience as an Administrative Assistant</li>
+	<li>3-5+ years of experience as an Administrative Assistant</li>
 	<li>Strong written and verbal communication skills</li>
 	<li>Detail oriented</li>
 	<li>Strong sense of urgency and proactiveness</li>
