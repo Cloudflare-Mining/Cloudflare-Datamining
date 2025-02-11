@@ -12,6 +12,9 @@
 	"2fa-recovery-user-delete": {
 		"enabled": true
 	},
+	"account-brand-protection-abuse-reports-enabled": {
+		"enabled": false
+	},
 	"account-home-live-training-cta": {
 		"enabled": false,
 		"branches": [
@@ -708,6 +711,13 @@
 			"email-upfront",
 			"hidden-email-blue-google",
 			"hidden-email"
+		]
+	},
+	"dx-super-add-button-non-account-pages": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
 		]
 	},
 	"dx-transfer-account-domain-sidebar": {
