@@ -329,6 +329,7 @@
 																			"validation": {
 																				"allOf": [
 																					{
+																						"deprecated": true,
 																						"enum": [
 																							"luhn"
 																						],
@@ -385,13 +386,17 @@
 																"properties": {
 																	"confidence": {
 																		"properties": {
+																			"ai_context_available": {
+																				"type": "boolean"
+																			},
 																			"available": {
 																				"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																				"type": "boolean"
 																			}
 																		},
 																		"required": [
-																			"available"
+																			"available",
+																			"ai_context_available"
 																		],
 																		"type": "object"
 																	},
@@ -843,6 +848,7 @@
 																		"validation": {
 																			"allOf": [
 																				{
+																					"deprecated": true,
 																					"enum": [
 																						"luhn"
 																					],
@@ -899,13 +905,17 @@
 															"properties": {
 																"confidence": {
 																	"properties": {
+																		"ai_context_available": {
+																			"type": "boolean"
+																		},
 																		"available": {
 																			"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																			"type": "boolean"
 																		}
 																	},
 																	"required": [
-																		"available"
+																		"available",
+																		"ai_context_available"
 																	],
 																	"type": "object"
 																},
@@ -1264,6 +1274,7 @@
 									"validation": {
 										"allOf": [
 											{
+												"deprecated": true,
 												"enum": [
 													"luhn"
 												],
@@ -1392,6 +1403,7 @@
 														"validation": {
 															"allOf": [
 																{
+																	"deprecated": true,
 																	"enum": [
 																		"luhn"
 																	],
@@ -1583,6 +1595,7 @@
 													"validation": {
 														"allOf": [
 															{
+																"deprecated": true,
 																"enum": [
 																	"luhn"
 																],
@@ -1759,6 +1772,7 @@
 																		"validation": {
 																			"allOf": [
 																				{
+																					"deprecated": true,
 																					"enum": [
 																						"luhn"
 																					],
@@ -1815,13 +1829,17 @@
 															"properties": {
 																"confidence": {
 																	"properties": {
+																		"ai_context_available": {
+																			"type": "boolean"
+																		},
 																		"available": {
 																			"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																			"type": "boolean"
 																		}
 																	},
 																	"required": [
-																		"available"
+																		"available",
+																		"ai_context_available"
 																	],
 																	"type": "object"
 																},

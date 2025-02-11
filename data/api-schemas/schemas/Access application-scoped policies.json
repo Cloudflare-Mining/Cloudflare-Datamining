@@ -786,6 +786,29 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches an IP address from a list.",
 																					"properties": {
 																						"ip_list": {
@@ -1325,6 +1348,29 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches an IP address from a list.",
 																					"properties": {
 																						"ip_list": {
@@ -1860,6 +1906,29 @@
 																						"gsuite"
 																					],
 																					"title": "Google Workspace group",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
 																					"type": "object"
 																				},
 																				{
@@ -2746,6 +2815,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -3285,6 +3377,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -3820,6 +3935,29 @@
 																					"gsuite"
 																				],
 																				"title": "Google Workspace group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
 																				"type": "object"
 																			},
 																			{
@@ -4626,6 +4764,29 @@
 															"type": "object"
 														},
 														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
+															"type": "object"
+														},
+														{
 															"description": "Matches an IP address from a list.",
 															"properties": {
 																"ip_list": {
@@ -5156,6 +5317,29 @@
 																"gsuite"
 															],
 															"title": "Google Workspace group",
+															"type": "object"
+														},
+														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
 															"type": "object"
 														},
 														{
@@ -5694,6 +5878,29 @@
 																"gsuite"
 															],
 															"title": "Google Workspace group",
+															"type": "object"
+														},
+														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
 															"type": "object"
 														},
 														{
@@ -6420,6 +6627,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -6959,6 +7189,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -7494,6 +7747,29 @@
 																					"gsuite"
 																				],
 																				"title": "Google Workspace group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
 																				"type": "object"
 																			},
 																			{
@@ -8311,6 +8587,29 @@
 															"type": "object"
 														},
 														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
+															"type": "object"
+														},
+														{
 															"description": "Matches an IP address from a list.",
 															"properties": {
 																"ip_list": {
@@ -8841,6 +9140,29 @@
 																"gsuite"
 															],
 															"title": "Google Workspace group",
+															"type": "object"
+														},
+														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
 															"type": "object"
 														},
 														{
@@ -9379,6 +9701,29 @@
 																"gsuite"
 															],
 															"title": "Google Workspace group",
+															"type": "object"
+														},
+														{
+															"description": "Matches a specific identity provider id.",
+															"properties": {
+																"login_method": {
+																	"properties": {
+																		"id": {
+																			"description": "The ID of an identity provider.",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"login_method"
+															],
+															"title": "Login Method",
 															"type": "object"
 														},
 														{
@@ -10105,6 +10450,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -10644,6 +11012,29 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
+																				"type": "object"
+																			},
+																			{
 																				"description": "Matches an IP address from a list.",
 																				"properties": {
 																					"ip_list": {
@@ -11179,6 +11570,29 @@
 																					"gsuite"
 																				],
 																				"title": "Google Workspace group",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches a specific identity provider id.",
+																				"properties": {
+																					"login_method": {
+																						"properties": {
+																							"id": {
+																								"description": "The ID of an identity provider.",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"login_method"
+																				],
+																				"title": "Login Method",
 																				"type": "object"
 																			},
 																			{
@@ -12092,6 +12506,29 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches an IP address from a list.",
 																					"properties": {
 																						"ip_list": {
@@ -12631,6 +13068,29 @@
 																					"type": "object"
 																				},
 																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
+																					"type": "object"
+																				},
+																				{
 																					"description": "Matches an IP address from a list.",
 																					"properties": {
 																						"ip_list": {
@@ -13166,6 +13626,29 @@
 																						"gsuite"
 																					],
 																					"title": "Google Workspace group",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches a specific identity provider id.",
+																					"properties": {
+																						"login_method": {
+																							"properties": {
+																								"id": {
+																									"description": "The ID of an identity provider.",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"id"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"login_method"
+																					],
+																					"title": "Login Method",
 																					"type": "object"
 																				},
 																				{

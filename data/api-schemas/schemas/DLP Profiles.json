@@ -315,6 +315,9 @@
 														"allOf": [
 															{
 																"properties": {
+																	"ai_context_enabled": {
+																		"type": "boolean"
+																	},
 																	"allowed_match_count": {
 																		"default": 0,
 																		"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -403,6 +406,7 @@
 																										"validation": {
 																											"allOf": [
 																												{
+																													"deprecated": true,
 																													"enum": [
 																														"luhn"
 																													],
@@ -459,13 +463,17 @@
 																							"properties": {
 																								"confidence": {
 																									"properties": {
+																										"ai_context_available": {
+																											"type": "boolean"
+																										},
 																										"available": {
 																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																											"type": "boolean"
 																										}
 																									},
 																									"required": [
-																										"available"
+																										"available",
+																										"ai_context_available"
 																									],
 																									"type": "object"
 																								},
@@ -728,6 +736,9 @@
 														"allOf": [
 															{
 																"properties": {
+																	"ai_context_enabled": {
+																		"type": "boolean"
+																	},
 																	"allowed_match_count": {
 																		"format": "int32",
 																		"type": "integer"
@@ -801,6 +812,7 @@
 																										"validation": {
 																											"allOf": [
 																												{
+																													"deprecated": true,
 																													"enum": [
 																														"luhn"
 																													],
@@ -857,13 +869,17 @@
 																							"properties": {
 																								"confidence": {
 																									"properties": {
+																										"ai_context_available": {
+																											"type": "boolean"
+																										},
 																										"available": {
 																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																											"type": "boolean"
 																										}
 																									},
 																									"required": [
-																										"available"
+																										"available",
+																										"ai_context_available"
 																									],
 																									"type": "object"
 																								},
@@ -1159,6 +1175,7 @@
 																										"validation": {
 																											"allOf": [
 																												{
+																													"deprecated": true,
 																													"enum": [
 																														"luhn"
 																													],
@@ -1215,13 +1232,17 @@
 																							"properties": {
 																								"confidence": {
 																									"properties": {
+																										"ai_context_available": {
+																											"type": "boolean"
+																										},
 																										"available": {
 																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																											"type": "boolean"
 																										}
 																									},
 																									"required": [
-																										"available"
+																										"available",
+																										"ai_context_available"
 																									],
 																									"type": "object"
 																								},
@@ -1693,6 +1714,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"default": 0,
 																	"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -1781,6 +1805,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -1837,13 +1862,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -2106,6 +2135,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"format": "int32",
 																	"type": "integer"
@@ -2179,6 +2211,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -2235,13 +2268,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -2537,6 +2574,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -2593,13 +2631,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -3069,6 +3111,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"default": 0,
 																	"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -3157,6 +3202,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -3213,13 +3259,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -3482,6 +3532,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"format": "int32",
 																	"type": "integer"
@@ -3555,6 +3608,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -3611,13 +3665,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -3913,6 +3971,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -3969,13 +4028,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -4445,6 +4508,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"default": 0,
 																	"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -4533,6 +4599,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -4589,13 +4656,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -4858,6 +4929,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"format": "int32",
 																	"type": "integer"
@@ -4931,6 +5005,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -4987,13 +5062,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -5289,6 +5368,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -5345,13 +5425,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -5744,6 +5828,9 @@
 									"profiles": {
 										"items": {
 											"properties": {
+												"ai_context_enabled": {
+													"type": "boolean"
+												},
 												"allowed_match_count": {
 													"default": 0,
 													"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -5808,6 +5895,7 @@
 																			"validation": {
 																				"allOf": [
 																					{
+																						"deprecated": true,
 																						"enum": [
 																							"luhn"
 																						],
@@ -5978,6 +6066,9 @@
 							},
 							{
 								"properties": {
+									"ai_context_enabled": {
+										"type": "boolean"
+									},
 									"allowed_match_count": {
 										"default": 0,
 										"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -6042,6 +6133,7 @@
 																"validation": {
 																	"allOf": [
 																		{
+																			"deprecated": true,
 																			"enum": [
 																				"luhn"
 																			],
@@ -6290,6 +6382,9 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_context_enabled": {
+																			"type": "boolean"
+																		},
 																		"allowed_match_count": {
 																			"default": 0,
 																			"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -6378,6 +6473,7 @@
 																											"validation": {
 																												"allOf": [
 																													{
+																														"deprecated": true,
 																														"enum": [
 																															"luhn"
 																														],
@@ -6434,13 +6530,17 @@
 																								"properties": {
 																									"confidence": {
 																										"properties": {
+																											"ai_context_available": {
+																												"type": "boolean"
+																											},
 																											"available": {
 																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																												"type": "boolean"
 																											}
 																										},
 																										"required": [
-																											"available"
+																											"available",
+																											"ai_context_available"
 																										],
 																										"type": "object"
 																									},
@@ -6703,6 +6803,9 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_context_enabled": {
+																			"type": "boolean"
+																		},
 																		"allowed_match_count": {
 																			"format": "int32",
 																			"type": "integer"
@@ -6776,6 +6879,7 @@
 																											"validation": {
 																												"allOf": [
 																													{
+																														"deprecated": true,
 																														"enum": [
 																															"luhn"
 																														],
@@ -6832,13 +6936,17 @@
 																								"properties": {
 																									"confidence": {
 																										"properties": {
+																											"ai_context_available": {
+																												"type": "boolean"
+																											},
 																											"available": {
 																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																												"type": "boolean"
 																											}
 																										},
 																										"required": [
-																											"available"
+																											"available",
+																											"ai_context_available"
 																										],
 																										"type": "object"
 																									},
@@ -7134,6 +7242,7 @@
 																											"validation": {
 																												"allOf": [
 																													{
+																														"deprecated": true,
 																														"enum": [
 																															"luhn"
 																														],
@@ -7190,13 +7299,17 @@
 																								"properties": {
 																									"confidence": {
 																										"properties": {
+																											"ai_context_available": {
+																												"type": "boolean"
+																											},
 																											"available": {
 																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																												"type": "boolean"
 																											}
 																										},
 																										"required": [
-																											"available"
+																											"available",
+																											"ai_context_available"
 																										],
 																										"type": "object"
 																									},
@@ -7456,6 +7569,9 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"ai_context_enabled": {
+																				"type": "boolean"
+																			},
 																			"allowed_match_count": {
 																				"default": 0,
 																				"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -7544,6 +7660,7 @@
 																												"validation": {
 																													"allOf": [
 																														{
+																															"deprecated": true,
 																															"enum": [
 																																"luhn"
 																															],
@@ -7600,13 +7717,17 @@
 																									"properties": {
 																										"confidence": {
 																											"properties": {
+																												"ai_context_available": {
+																													"type": "boolean"
+																												},
 																												"available": {
 																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																													"type": "boolean"
 																												}
 																											},
 																											"required": [
-																												"available"
+																												"available",
+																												"ai_context_available"
 																											],
 																											"type": "object"
 																										},
@@ -7869,6 +7990,9 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"ai_context_enabled": {
+																				"type": "boolean"
+																			},
 																			"allowed_match_count": {
 																				"format": "int32",
 																				"type": "integer"
@@ -7942,6 +8066,7 @@
 																												"validation": {
 																													"allOf": [
 																														{
+																															"deprecated": true,
 																															"enum": [
 																																"luhn"
 																															],
@@ -7998,13 +8123,17 @@
 																									"properties": {
 																										"confidence": {
 																											"properties": {
+																												"ai_context_available": {
+																													"type": "boolean"
+																												},
 																												"available": {
 																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																													"type": "boolean"
 																												}
 																											},
 																											"required": [
-																												"available"
+																												"available",
+																												"ai_context_available"
 																											],
 																											"type": "object"
 																										},
@@ -8300,6 +8429,7 @@
 																												"validation": {
 																													"allOf": [
 																														{
+																															"deprecated": true,
 																															"enum": [
 																																"luhn"
 																															],
@@ -8356,13 +8486,17 @@
 																									"properties": {
 																										"confidence": {
 																											"properties": {
+																												"ai_context_available": {
+																													"type": "boolean"
+																												},
 																												"available": {
 																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																													"type": "boolean"
 																												}
 																											},
 																											"required": [
-																												"available"
+																												"available",
+																												"ai_context_available"
 																											],
 																											"type": "object"
 																										},
@@ -8761,6 +8895,9 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"ai_context_enabled": {
+								"type": "boolean"
+							},
 							"allowed_match_count": {
 								"format": "int32",
 								"nullable": true,
@@ -8825,6 +8962,7 @@
 																"validation": {
 																	"allOf": [
 																		{
+																			"deprecated": true,
 																			"enum": [
 																				"luhn"
 																			],
@@ -8876,6 +9014,7 @@
 														"validation": {
 															"allOf": [
 																{
+																	"deprecated": true,
 																	"enum": [
 																		"luhn"
 																	],
@@ -9075,6 +9214,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"default": 0,
 																	"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -9163,6 +9305,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -9219,13 +9362,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -9488,6 +9635,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"format": "int32",
 																	"type": "integer"
@@ -9561,6 +9711,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -9617,13 +9768,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -9919,6 +10074,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -9975,13 +10131,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -10376,6 +10536,9 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"ai_context_enabled": {
+								"type": "boolean"
+							},
 							"allowed_match_count": {
 								"format": "int32",
 								"nullable": true,
@@ -10524,6 +10687,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"default": 0,
 																	"description": "Related DLP policies will trigger when the match count exceeds the number set.",
@@ -10612,6 +10778,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -10668,13 +10835,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -10937,6 +11108,9 @@
 													"allOf": [
 														{
 															"properties": {
+																"ai_context_enabled": {
+																	"type": "boolean"
+																},
 																"allowed_match_count": {
 																	"format": "int32",
 																	"type": "integer"
@@ -11010,6 +11184,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -11066,13 +11241,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},
@@ -11368,6 +11547,7 @@
 																									"validation": {
 																										"allOf": [
 																											{
+																												"deprecated": true,
 																												"enum": [
 																													"luhn"
 																												],
@@ -11424,13 +11604,17 @@
 																						"properties": {
 																							"confidence": {
 																								"properties": {
+																									"ai_context_available": {
+																										"type": "boolean"
+																									},
 																									"available": {
 																										"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
 																										"type": "boolean"
 																									}
 																								},
 																								"required": [
-																									"available"
+																									"available",
+																									"ai_context_available"
 																								],
 																								"type": "object"
 																							},

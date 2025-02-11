@@ -1486,15 +1486,23 @@
 																											"type": "string"
 																										},
 																										"name_by_idp": {
-																											"additionalProperties": {
-																												"type": "string"
+																											"description": "A mapping from IdP ID to attribute name.",
+																											"items": {
+																												"properties": {
+																													"idp_id": {
+																														"description": "The UID of the IdP.",
+																														"example": "exampleIdPID1",
+																														"type": "string"
+																													},
+																													"source_name": {
+																														"description": "The name of the IdP provided attribute.",
+																														"example": "AttributeName1",
+																														"type": "string"
+																													}
+																												},
+																												"type": "object"
 																											},
-																											"description": "A mapping from IdP ID to claim name.",
-																											"example": {
-																												"exampleIdPID1": "ClaimName1",
-																												"exampleIdPID2": "ClaimName2"
-																											},
-																											"type": "object"
+																											"type": "array"
 																										}
 																									},
 																									"type": "object"
@@ -5820,15 +5828,23 @@
 																										"type": "string"
 																									},
 																									"name_by_idp": {
-																										"additionalProperties": {
-																											"type": "string"
+																										"description": "A mapping from IdP ID to attribute name.",
+																										"items": {
+																											"properties": {
+																												"idp_id": {
+																													"description": "The UID of the IdP.",
+																													"example": "exampleIdPID1",
+																													"type": "string"
+																												},
+																												"source_name": {
+																													"description": "The name of the IdP provided attribute.",
+																													"example": "AttributeName1",
+																													"type": "string"
+																												}
+																											},
+																											"type": "object"
 																										},
-																										"description": "A mapping from IdP ID to claim name.",
-																										"example": {
-																											"exampleIdPID1": "ClaimName1",
-																											"exampleIdPID2": "ClaimName2"
-																										},
-																										"type": "object"
+																										"type": "array"
 																									}
 																								},
 																								"type": "object"
@@ -10391,15 +10407,23 @@
 																					"type": "string"
 																				},
 																				"name_by_idp": {
-																					"additionalProperties": {
-																						"type": "string"
+																					"description": "A mapping from IdP ID to attribute name.",
+																					"items": {
+																						"properties": {
+																							"idp_id": {
+																								"description": "The UID of the IdP.",
+																								"example": "exampleIdPID1",
+																								"type": "string"
+																							},
+																							"source_name": {
+																								"description": "The name of the IdP provided attribute.",
+																								"example": "AttributeName1",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
 																					},
-																					"description": "A mapping from IdP ID to claim name.",
-																					"example": {
-																						"exampleIdPID1": "ClaimName1",
-																						"exampleIdPID2": "ClaimName2"
-																					},
-																					"type": "object"
+																					"type": "array"
 																				}
 																			},
 																			"type": "object"
@@ -14573,15 +14597,23 @@
 																												"type": "string"
 																											},
 																											"name_by_idp": {
-																												"additionalProperties": {
-																													"type": "string"
+																												"description": "A mapping from IdP ID to attribute name.",
+																												"items": {
+																													"properties": {
+																														"idp_id": {
+																															"description": "The UID of the IdP.",
+																															"example": "exampleIdPID1",
+																															"type": "string"
+																														},
+																														"source_name": {
+																															"description": "The name of the IdP provided attribute.",
+																															"example": "AttributeName1",
+																															"type": "string"
+																														}
+																													},
+																													"type": "object"
 																												},
-																												"description": "A mapping from IdP ID to claim name.",
-																												"example": {
-																													"exampleIdPID1": "ClaimName1",
-																													"exampleIdPID2": "ClaimName2"
-																												},
-																												"type": "object"
+																												"type": "array"
 																											}
 																										},
 																										"type": "object"
@@ -18682,15 +18714,23 @@
 																										"type": "string"
 																									},
 																									"name_by_idp": {
-																										"additionalProperties": {
-																											"type": "string"
+																										"description": "A mapping from IdP ID to attribute name.",
+																										"items": {
+																											"properties": {
+																												"idp_id": {
+																													"description": "The UID of the IdP.",
+																													"example": "exampleIdPID1",
+																													"type": "string"
+																												},
+																												"source_name": {
+																													"description": "The name of the IdP provided attribute.",
+																													"example": "AttributeName1",
+																													"type": "string"
+																												}
+																											},
+																											"type": "object"
 																										},
-																										"description": "A mapping from IdP ID to claim name.",
-																										"example": {
-																											"exampleIdPID1": "ClaimName1",
-																											"exampleIdPID2": "ClaimName2"
-																										},
-																										"type": "object"
+																										"type": "array"
 																									}
 																								},
 																								"type": "object"
@@ -23114,15 +23154,23 @@
 																					"type": "string"
 																				},
 																				"name_by_idp": {
-																					"additionalProperties": {
-																						"type": "string"
+																					"description": "A mapping from IdP ID to attribute name.",
+																					"items": {
+																						"properties": {
+																							"idp_id": {
+																								"description": "The UID of the IdP.",
+																								"example": "exampleIdPID1",
+																								"type": "string"
+																							},
+																							"source_name": {
+																								"description": "The name of the IdP provided attribute.",
+																								"example": "AttributeName1",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
 																					},
-																					"description": "A mapping from IdP ID to claim name.",
-																					"example": {
-																						"exampleIdPID1": "ClaimName1",
-																						"exampleIdPID2": "ClaimName2"
-																					},
-																					"type": "object"
+																					"type": "array"
 																				}
 																			},
 																			"type": "object"
@@ -27296,15 +27344,23 @@
 																												"type": "string"
 																											},
 																											"name_by_idp": {
-																												"additionalProperties": {
-																													"type": "string"
+																												"description": "A mapping from IdP ID to attribute name.",
+																												"items": {
+																													"properties": {
+																														"idp_id": {
+																															"description": "The UID of the IdP.",
+																															"example": "exampleIdPID1",
+																															"type": "string"
+																														},
+																														"source_name": {
+																															"description": "The name of the IdP provided attribute.",
+																															"example": "AttributeName1",
+																															"type": "string"
+																														}
+																													},
+																													"type": "object"
 																												},
-																												"description": "A mapping from IdP ID to claim name.",
-																												"example": {
-																													"exampleIdPID1": "ClaimName1",
-																													"exampleIdPID2": "ClaimName2"
-																												},
-																												"type": "object"
+																												"type": "array"
 																											}
 																										},
 																										"type": "object"
@@ -31405,15 +31461,23 @@
 																										"type": "string"
 																									},
 																									"name_by_idp": {
-																										"additionalProperties": {
-																											"type": "string"
+																										"description": "A mapping from IdP ID to attribute name.",
+																										"items": {
+																											"properties": {
+																												"idp_id": {
+																													"description": "The UID of the IdP.",
+																													"example": "exampleIdPID1",
+																													"type": "string"
+																												},
+																												"source_name": {
+																													"description": "The name of the IdP provided attribute.",
+																													"example": "AttributeName1",
+																													"type": "string"
+																												}
+																											},
+																											"type": "object"
 																										},
-																										"description": "A mapping from IdP ID to claim name.",
-																										"example": {
-																											"exampleIdPID1": "ClaimName1",
-																											"exampleIdPID2": "ClaimName2"
-																										},
-																										"type": "object"
+																										"type": "array"
 																									}
 																								},
 																								"type": "object"
