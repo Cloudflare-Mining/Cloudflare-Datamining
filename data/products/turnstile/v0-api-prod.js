@@ -229,7 +229,7 @@
 	})(Be || (Be = {}));
 	var Oe;
 	(function(e) {
-		e.VERIFYING = "verifying", e.VERIFYING_HAVING_TROUBLES = "verifying-having-troubles", e.VERIFYING_OVERRUN = "verifying-overrun", e.FAILURE_WO_HAVING_TROUBLES = "failure-wo-having-troubles", e.FAILURE_HAVING_TROUBLES = "failure-having-troubles", e.FAILURE_FEEDBACK = "failure-feedback", e.FAILURE_FEEDBACK_CODE = "failure-feedback-code", e.EXPIRED_NEVER_REFRESH = "expired-never-refresh", e.EXPIRED_MANUAL_REFRESH = "expired-manual-refresh", e.TIMEOUT_NEVER_REFRESH = "timeout-never-refresh", e.TIMEOUT_MANUAL_REFRESH = "timeout-manual-refresh", e.INTERACTIVITY_REQUIRED = "interactivity-required", e.OUTDATED_BROWSER = "outdated-browser", e.TIME_CHECK_CACHED_WARNING = "time-check-cached-warning", e.INVALID_DOMAIN = "invalid-domain"
+		e.VERIFYING = "verifying", e.VERIFYING_HAVING_TROUBLES = "verifying-having-troubles", e.VERIFYING_OVERRUN = "verifying-overrun", e.FAILURE_WO_HAVING_TROUBLES = "failure-wo-having-troubles", e.FAILURE_HAVING_TROUBLES = "failure-having-troubles", e.FAILURE_FEEDBACK = "failure-feedback", e.FAILURE_FEEDBACK_CODE = "failure-feedback-code", e.EXPIRED_NEVER_REFRESH = "expired-never-refresh", e.EXPIRED_MANUAL_REFRESH = "expired-manual-refresh", e.TIMEOUT_NEVER_REFRESH = "timeout-never-refresh", e.TIMEOUT_MANUAL_REFRESH = "timeout-manual-refresh", e.INTERACTIVITY_REQUIRED = "interactivity-required", e.UNSUPPORTED_BROWSER = "unsupported-browser", e.TIME_CHECK_CACHED_WARNING = "time-check-cached-warning", e.INVALID_DOMAIN = "invalid-domain"
 	})(Oe || (Oe = {}));
 	var ve;
 	(function(e) {
@@ -538,7 +538,7 @@
 	}
 	var St = function(e, t, a) {
 			var o = Tt(t.params, !1),
-				c = "h/".concat("g", "/"),
+				c = "h/".concat("b", "/"),
 				l, g, h = "".concat(o, "/cdn-cgi/challenge-platform/").concat(c, "feedback-reports/").concat(Xe(e), "/").concat(t.displayLanguage, "/").concat((l = t.params.theme) !== null && l !== void 0 ? l : t.theme, "/").concat(a);
 			t.wrapper.parentNode || m("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			var s = document.createElement("div");
@@ -959,7 +959,7 @@
 					(!v || !E) && m("Widget ".concat(r, " to reset was not found."), 3330), u.params.appearance === Q.INTERACTION_ONLY && xr(E), u.params.sitekey === null && m("Unexpected Error: Sitekey is null", 3347);
 					var w = E.cloneNode(),
 						A;
-					w.src = Rt(r, u.params.sitekey, u.params, (A = u.rcV) !== null && A !== void 0 ? A : K, !1, "g", n, _t(u)), (d = E.parentNode) === null || d === void 0 || d.replaceChild(w, E), kt(v), u.retryTimeout && window.clearTimeout(u.retryTimeout)
+					w.src = Rt(r, u.params.sitekey, u.params, (A = u.rcV) !== null && A !== void 0 ? A : K, !1, "b", n, _t(u)), (d = E.parentNode) === null || d === void 0 || d.replaceChild(w, E), kt(v), u.retryTimeout && window.clearTimeout(u.retryTimeout)
 				} else m("Widget ".concat(r, " to reset was not found."), 3331)
 			},
 			I = function(n) {
@@ -1095,7 +1095,7 @@
 							isOverrunning: !1
 						})), Ct(y);
 						var et = y.widgetMap.get(Ie);
-						et || m("Turnstile Initialization Error ", 3606), H.style.display = "none", H.style.border = "none", H.style.overflow = "hidden", H.setAttribute("src", Rt(Ie, B, f, K, !1, "g", q.New, _t(et))), H.onerror = function() {
+						et || m("Turnstile Initialization Error ", 3606), H.style.display = "none", H.style.border = "none", H.style.overflow = "hidden", H.setAttribute("src", Rt(Ie, B, f, K, !1, "b", q.New, _t(et))), H.onerror = function() {
 							if (Y) {
 								Y == null || Y(String(Yt.code));
 								return
@@ -1156,7 +1156,7 @@
 					switch (f.label) {
 						case 0:
 							if (u = b.params.sitekey, d = Er(), !d) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(b, n, !1), [2];
-							v = "h/".concat("g", "/"), E = new URL(d), w = "https", A = "", U = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(r).concat(A), f.label = 1;
+							v = "h/".concat("b", "/"), E = new URL(d), w = "https", A = "", U = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(r).concat(A), f.label = 1;
 						case 1:
 							return f.trys.push([1, 6, , 7]), [4, fetch(U, {
 								method: "POST",
@@ -1225,7 +1225,7 @@
 						}
 						case "reject": {
 							var A = r.shadow.getElementById(i);
-							if (r.isExecuting = !1, A || m("Cannot initialize Widget, Element not found (#".concat(i, ")."), 3075), n.reason === "outdated_browser") {
+							if (r.isExecuting = !1, A || m("Cannot initialize Widget, Element not found (#".concat(i, ")."), 3075), n.reason === "unsupported_browser") {
 								var S;
 								(S = r.cbUnsupported) === null || S === void 0 || S.call(r)
 							}
@@ -1373,7 +1373,7 @@
 								cData: r.cData,
 								chlPageData: r.chlPageData,
 								rcV: r.rcV,
-								ch: "8a57887573f2",
+								ch: "324d0dcf743c",
 								au: y.scriptUrl,
 								url: Er(),
 								retry: r.params.retry,
