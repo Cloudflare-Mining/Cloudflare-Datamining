@@ -68,9 +68,6 @@
 	"dex-endpoint-monitoring": {
 		"enabled": true
 	},
-	"dex-filter-by-geo": {
-		"enabled": true
-	},
 	"dex-fleet-status-v2": {
 		"enabled": true
 	},
@@ -87,9 +84,6 @@
 		"enabled": true
 	},
 	"dex-test-percentiles-approx-fallback": {
-		"enabled": true
-	},
-	"dex-test-targeting": {
 		"enabled": true
 	},
 	"dex-timescale": {
@@ -268,6 +262,9 @@
 	},
 	"zt-overview-phase-1": {
 		"enabled": true
+	},
+	"zt-overview-phase-2": {
+		"enabled": false
 	},
 	"zt-posture-api-cutover": {
 		"enabled": false
