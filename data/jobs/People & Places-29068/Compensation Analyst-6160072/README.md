@@ -36,8 +36,6 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $109,000 - $133,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $122,000 - $150,000</li>
 	<li>For Bay Area-based hires: Estimated annual salary of $129,000 - $157,000</li>
 </ul>
 <p><strong>Equity</strong></p>
