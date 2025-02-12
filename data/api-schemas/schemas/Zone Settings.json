@@ -2373,6 +2373,72 @@
 																	"id": {
 																		"description": "ID of the zone setting.",
 																		"enum": [
+																			"privacy_pass"
+																		],
+																		"example": "privacy_pass"
+																	},
+																	"value": {
+																		"default": "off",
+																		"deprecated": true,
+																		"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+																	}
+																}
+															}
+														],
+														"default": "off",
+														"deprecated": true,
+														"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+														"title": "Privacy Pass v1 (deprecated)",
+														"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
 																			"proxy_read_timeout"
 																		],
 																		"example": "proxy_read_timeout"
@@ -6069,6 +6135,72 @@
 													"default": "off",
 													"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
 													"title": "Prefetch preload"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"privacy_pass"
+																	],
+																	"example": "privacy_pass"
+																},
+																"value": {
+																	"default": "off",
+																	"deprecated": true,
+																	"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"type": "string",
+																	"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+																}
+															}
+														}
+													],
+													"default": "off",
+													"deprecated": true,
+													"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+													"title": "Privacy Pass v1 (deprecated)",
+													"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 												},
 												{
 													"allOf": [
@@ -11245,6 +11377,72 @@
 												"id": {
 													"description": "ID of the zone setting.",
 													"enum": [
+														"privacy_pass"
+													],
+													"example": "privacy_pass"
+												},
+												"value": {
+													"default": "off",
+													"deprecated": true,
+													"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+													"enum": [
+														"on",
+														"off"
+													],
+													"type": "string",
+													"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+												}
+											}
+										}
+									],
+									"default": "off",
+									"deprecated": true,
+									"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+									"title": "Privacy Pass v1 (deprecated)",
+									"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"default": true,
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"example": "development_mode",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on"
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"enum": [
 														"proxy_read_timeout"
 													],
 													"example": "proxy_read_timeout"
@@ -14797,6 +14995,72 @@
 														"default": "off",
 														"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
 														"title": "Prefetch preload"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
+																			"privacy_pass"
+																		],
+																		"example": "privacy_pass"
+																	},
+																	"value": {
+																		"default": "off",
+																		"deprecated": true,
+																		"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+																	}
+																}
+															}
+														],
+														"default": "off",
+														"deprecated": true,
+														"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+														"title": "Privacy Pass v1 (deprecated)",
+														"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 													},
 													{
 														"allOf": [
@@ -18516,6 +18780,72 @@
 											"id": {
 												"description": "ID of the zone setting.",
 												"enum": [
+													"privacy_pass"
+												],
+												"example": "privacy_pass"
+											},
+											"value": {
+												"default": "off",
+												"deprecated": true,
+												"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+												"enum": [
+													"on",
+													"off"
+												],
+												"type": "string",
+												"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+											}
+										}
+									}
+								],
+								"default": "off",
+								"deprecated": true,
+								"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+								"title": "Privacy Pass v1 (deprecated)",
+								"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"editable": {
+												"default": true,
+												"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+												"enum": [
+													true,
+													false
+												],
+												"readOnly": true,
+												"type": "boolean"
+											},
+											"id": {
+												"description": "Identifier of the zone setting.",
+												"example": "development_mode",
+												"type": "string"
+											},
+											"modified_on": {
+												"description": "last time this setting was modified.",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											},
+											"value": {
+												"description": "Current value of the zone setting.",
+												"example": "on"
+											}
+										},
+										"required": [
+											"id",
+											"value"
+										]
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "ID of the zone setting.",
+												"enum": [
 													"proxy_read_timeout"
 												],
 												"example": "proxy_read_timeout"
@@ -22066,6 +22396,72 @@
 													"default": "off",
 													"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
 													"title": "Prefetch preload"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"privacy_pass"
+																	],
+																	"example": "privacy_pass"
+																},
+																"value": {
+																	"default": "off",
+																	"deprecated": true,
+																	"description": "Value of the Privacy Pass v1 (deprecated) zone setting",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"type": "string",
+																	"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
+																}
+															}
+														}
+													],
+													"default": "off",
+													"deprecated": true,
+													"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+													"title": "Privacy Pass v1 (deprecated)",
+													"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 												},
 												{
 													"allOf": [
