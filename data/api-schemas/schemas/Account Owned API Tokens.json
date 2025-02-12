@@ -364,11 +364,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -542,7 +537,6 @@
 																			"id": {
 																				"description": "Identifier of the group.",
 																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"meta": {
@@ -982,7 +976,6 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"meta": {
@@ -1265,11 +1258,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -1355,6 +1343,29 @@
 												}
 											],
 											"items": {
+												"properties": {
+													"id": {
+														"description": "Public ID.",
+														"type": "string"
+													},
+													"name": {
+														"description": "Permission Group Name",
+														"type": "string"
+													},
+													"scopes": {
+														"description": "Resources to which the Permission Group is scoped",
+														"items": {
+															"enum": [
+																"com.cloudflare.api.account",
+																"com.cloudflare.api.account.zone",
+																"com.cloudflare.api.user",
+																"com.cloudflare.edge.r2.bucket"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
 												"type": "object"
 											},
 											"type": "array"
@@ -1861,7 +1872,6 @@
 													"id": {
 														"description": "Identifier of the group.",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-														"readOnly": true,
 														"type": "string"
 													},
 													"meta": {
@@ -2143,7 +2153,6 @@
 																				"id": {
 																					"description": "Identifier of the group.",
 																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"meta": {
@@ -2528,7 +2537,6 @@
 															"id": {
 																"description": "Identifier of the group.",
 																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																"readOnly": true,
 																"type": "string"
 															},
 															"meta": {
@@ -2827,7 +2835,6 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"meta": {

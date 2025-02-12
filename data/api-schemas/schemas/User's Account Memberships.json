@@ -380,11 +380,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -821,11 +816,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1210,7 +1200,6 @@
 																					"id": {
 																						"description": "Identifier of the group.",
 																						"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																						"readOnly": true,
 																						"type": "string"
 																					},
 																					"meta": {
@@ -1911,7 +1900,6 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"meta": {
@@ -2630,7 +2618,6 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"meta": {

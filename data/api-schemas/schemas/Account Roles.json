@@ -14,6 +14,27 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of roles per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
 			}
 		],
 		"responses": {
@@ -86,11 +107,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
