@@ -10,11 +10,6 @@
 	<li>London, UK</li>
 	<li>Lisbon, Portugal&nbsp;</li>
 	<li>Austin, TX&nbsp;</li>
-	<li>Toronto, Ontario&nbsp;</li>
-	<li>Washington D.C&nbsp;</li>
-	<li>Mexico City, Mexico</li>
-	<li>Denver, CO</li>
-	<li>Atlanta, GA&nbsp;</li>
 </ul>
 <h4><strong>About the Department</strong></h4>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
