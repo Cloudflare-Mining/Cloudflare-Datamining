@@ -2295,7 +2295,8 @@
 											"another-cache-tag"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -2312,7 +2313,8 @@
 											"images.example.com"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -2329,7 +2331,8 @@
 											"images.example.com/bar/baz"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -2342,7 +2345,8 @@
 									"purge_everything": {
 										"description": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									}
 								},
 								"title": "Purge everything",
@@ -2357,7 +2361,8 @@
 											"http://www.example.com/js/index.js"
 										],
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -2390,12 +2395,17 @@
 										"items": {
 											"properties": {
 												"headers": {
+													"additionalProperties": {
+														"type": "string",
+														"x-auditable": true
+													},
 													"example": "<HTTP header object>",
 													"type": "object"
 												},
 												"url": {
 													"example": "http://www.example.com/cat_picture.jpg",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
