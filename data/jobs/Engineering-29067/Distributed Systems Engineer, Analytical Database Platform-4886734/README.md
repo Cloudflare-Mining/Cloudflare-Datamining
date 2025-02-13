@@ -64,7 +64,7 @@
 	</li>
 </ul>
 <p><span style="font-weight: 400;">If you're passionate about building scalable and performant databases using cutting-edge technologies, and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
-<p>&nbsp;</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

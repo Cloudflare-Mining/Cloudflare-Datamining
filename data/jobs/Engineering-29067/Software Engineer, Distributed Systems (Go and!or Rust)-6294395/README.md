@@ -38,7 +38,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
 </ul>
-<p>&nbsp;</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
