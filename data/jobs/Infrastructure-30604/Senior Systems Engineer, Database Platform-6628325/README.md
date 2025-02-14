@@ -5,34 +5,65 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX | Lisbon, Portugal | London, UK</p>
-<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Support, Engineering, Post-Sales services, and more. Your main responsibility will be to work cross-functionally to create, define, project manage, execute, track, and report on major initiatives to successful completion.</p>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various Support, Services, and Engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap. You have the ability to drive change, ensure adoption, and help team members understand the benefits of your work.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.</p>
-<p>This position will be based in Austin, Texas, London, England, or Lisbon, Portugal. You will be reporting into the Support Program Management Organization (PMO).</p>
-<h4><strong>Major areas of responsibilities</strong></h4>
+<p><strong>Available Locations: </strong>Hybrid - Austin, Lisbon or London</p>
+<h4><strong>Role Summary</strong></h4>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p>The ideal candidate will work alongside database engineers, software developers, and Infrastructure teams, contributing to the evolution of database platform architecture, access control, and automation strategies. They will play a critical role in enhancing PostgreSQL infrastructure and improving database reliability, automation, and tooling.&nbsp;If you are passionate about <strong>PostgreSQL, automation, and database tooling</strong>, we’d love to hear from you!</p>
+<h4><strong>Role Responsibilities</strong></h4>
 <ul>
-	<li>Understand technical and business requirements of assigned programs</li>
-	<li>Effectively balance risk and achieve business objectives</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet support and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management</li>
+	<li>Build, deploy, and manage PostgreSQL databases in production environments.&nbsp;</li>
+	<li>Develop and maintain database tooling for automation, monitoring and performance tuning.</li>
+	<li>Optimize database performance, indexing strategies, and query tuning.&nbsp;</li>
+	<li>Implement high availability, backup and disaster recovery solutions.&nbsp;</li>
+	<li>Work closely with SRE and Applications teams to integrate database tools.&nbsp;</li>
+	<li>Implement proactive solutions using observability tools to monitor database health.&nbsp;</li>
 </ul>
-<h4><strong>Desirable skills and knowledge</strong></h4>
+<h4><strong>Must-Have Skills</strong></h4>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Flexibility and adaptability, experience trying different approaches and adapting as you go based on the needs of your team / project</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
-	<li>Knowledge of web performance, security, and network services a plus</li>
-	<li>Experience with AI, self-service, or voice of the customer programs a plus</li>
+	<li>Experience building large multi-tenant databases, operating, capacity planning, and designing for failover, fault tolerance, and disaster recovery.</li>
+	<li>Experience building and maintaining database tooling for automation and monitoring.</li>
+	<li>Experience optimizing database performance and query tuning.</li>
+	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
+	<li>Experience in scripting languages (Python, Bash) for automation.&nbsp;</li>
+	<li>Experience with infrastructure-as-code (Terraform, Ansible or Salt) .</li>
+</ul>
+<h4><strong>Nice-to-Have Skills</strong></h4>
+<ul>
+	<li>Expertise in database schema migrations and automation using tools like Flyway, Liquibase or goose.&nbsp;</li>
+	<li>Contributions to PostgreSQL or relevant open-source projects.</li>
+	<li>Experience defining and implementing security policies for a RDBMS.</li>
+	<li>Experience with connection pooling solutions such as PgBouncer, HAProxy.</li>
+	<li>Experience with non-relational data stores such as time-series databases (ex. OpenTSDB) and key-value stores (eg., Redis)&nbsp;</li>
+	<li>Experience developing software in Go, Python or C/C++</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
