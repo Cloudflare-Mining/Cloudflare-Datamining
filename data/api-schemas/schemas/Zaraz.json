@@ -189,21 +189,24 @@
 																	"properties": {
 																		"accept_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"confirm_my_choices": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"reject_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
@@ -234,7 +237,8 @@
 																},
 																"consentModalIntroHTMLWithTranslations": {
 																	"additionalProperties": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": "Object where keys are language codes",
 																	"type": "object"
@@ -288,14 +292,16 @@
 																		"properties": {
 																			"description": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
 																			},
 																			"name": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
@@ -1132,7 +1138,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -1277,7 +1284,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -1329,7 +1337,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -1474,7 +1483,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -1840,21 +1850,24 @@
 																	"properties": {
 																		"accept_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"confirm_my_choices": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"reject_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
@@ -1885,7 +1898,8 @@
 																},
 																"consentModalIntroHTMLWithTranslations": {
 																	"additionalProperties": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": "Object where keys are language codes",
 																	"type": "object"
@@ -1939,14 +1953,16 @@
 																		"properties": {
 																			"description": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
 																			},
 																			"name": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
@@ -2783,7 +2799,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -2928,7 +2945,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -2980,7 +2998,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -3125,7 +3144,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -3428,21 +3448,24 @@
 													"properties": {
 														"accept_all": {
 															"additionalProperties": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": "Object where keys are language codes",
 															"type": "object"
 														},
 														"confirm_my_choices": {
 															"additionalProperties": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": "Object where keys are language codes",
 															"type": "object"
 														},
 														"reject_all": {
 															"additionalProperties": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": "Object where keys are language codes",
 															"type": "object"
@@ -3473,7 +3496,8 @@
 												},
 												"consentModalIntroHTMLWithTranslations": {
 													"additionalProperties": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": "Object where keys are language codes",
 													"type": "object"
@@ -3527,14 +3551,16 @@
 														"properties": {
 															"description": {
 																"additionalProperties": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": "Object where keys are language codes",
 																"type": "object"
 															},
 															"name": {
 																"additionalProperties": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": "Object where keys are language codes",
 																"type": "object"
@@ -4371,7 +4397,8 @@
 																						{
 																							"type": "boolean"
 																						}
-																					]
+																					],
+																					"x-auditable": true
 																				},
 																				"description": "Default fields for tool's actions",
 																				"type": "object"
@@ -4516,7 +4543,8 @@
 																						{
 																							"type": "boolean"
 																						}
-																					]
+																					],
+																					"x-auditable": true
 																				},
 																				"description": "Tool's settings",
 																				"type": "object"
@@ -4568,7 +4596,8 @@
 																						{
 																							"type": "boolean"
 																						}
-																					]
+																					],
+																					"x-auditable": true
 																				},
 																				"description": "Default fields for tool's actions",
 																				"type": "object"
@@ -4713,7 +4742,8 @@
 																						{
 																							"type": "boolean"
 																						}
-																					]
+																					],
+																					"x-auditable": true
 																				},
 																				"description": "Tool's settings",
 																				"type": "object"
@@ -5449,21 +5479,24 @@
 																						"properties": {
 																							"accept_all": {
 																								"additionalProperties": {
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"description": "Object where keys are language codes",
 																								"type": "object"
 																							},
 																							"confirm_my_choices": {
 																								"additionalProperties": {
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"description": "Object where keys are language codes",
 																								"type": "object"
 																							},
 																							"reject_all": {
 																								"additionalProperties": {
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"description": "Object where keys are language codes",
 																								"type": "object"
@@ -5494,7 +5527,8 @@
 																					},
 																					"consentModalIntroHTMLWithTranslations": {
 																						"additionalProperties": {
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"description": "Object where keys are language codes",
 																						"type": "object"
@@ -5548,14 +5582,16 @@
 																							"properties": {
 																								"description": {
 																									"additionalProperties": {
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"description": "Object where keys are language codes",
 																									"type": "object"
 																								},
 																								"name": {
 																									"additionalProperties": {
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"description": "Object where keys are language codes",
 																									"type": "object"
@@ -6392,7 +6428,8 @@
 																															{
 																																"type": "boolean"
 																															}
-																														]
+																														],
+																														"x-auditable": true
 																													},
 																													"description": "Default fields for tool's actions",
 																													"type": "object"
@@ -6537,7 +6574,8 @@
 																															{
 																																"type": "boolean"
 																															}
-																														]
+																														],
+																														"x-auditable": true
 																													},
 																													"description": "Tool's settings",
 																													"type": "object"
@@ -6589,7 +6627,8 @@
 																															{
 																																"type": "boolean"
 																															}
-																														]
+																														],
+																														"x-auditable": true
 																													},
 																													"description": "Default fields for tool's actions",
 																													"type": "object"
@@ -6734,7 +6773,8 @@
 																															{
 																																"type": "boolean"
 																															}
-																														]
+																														],
+																														"x-auditable": true
 																													},
 																													"description": "Tool's settings",
 																													"type": "object"
@@ -7557,21 +7597,24 @@
 												"properties": {
 													"accept_all": {
 														"additionalProperties": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": "Object where keys are language codes",
 														"type": "object"
 													},
 													"confirm_my_choices": {
 														"additionalProperties": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": "Object where keys are language codes",
 														"type": "object"
 													},
 													"reject_all": {
 														"additionalProperties": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": "Object where keys are language codes",
 														"type": "object"
@@ -7602,7 +7645,8 @@
 											},
 											"consentModalIntroHTMLWithTranslations": {
 												"additionalProperties": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": "Object where keys are language codes",
 												"type": "object"
@@ -7656,14 +7700,16 @@
 													"properties": {
 														"description": {
 															"additionalProperties": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": "Object where keys are language codes",
 															"type": "object"
 														},
 														"name": {
 															"additionalProperties": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": "Object where keys are language codes",
 															"type": "object"
@@ -8500,7 +8546,8 @@
 																					{
 																						"type": "boolean"
 																					}
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"description": "Default fields for tool's actions",
 																			"type": "object"
@@ -8645,7 +8692,8 @@
 																					{
 																						"type": "boolean"
 																					}
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"description": "Tool's settings",
 																			"type": "object"
@@ -8697,7 +8745,8 @@
 																					{
 																						"type": "boolean"
 																					}
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"description": "Default fields for tool's actions",
 																			"type": "object"
@@ -8842,7 +8891,8 @@
 																					{
 																						"type": "boolean"
 																					}
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"description": "Tool's settings",
 																			"type": "object"
@@ -9077,21 +9127,24 @@
 																	"properties": {
 																		"accept_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"confirm_my_choices": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"reject_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
@@ -9122,7 +9175,8 @@
 																},
 																"consentModalIntroHTMLWithTranslations": {
 																	"additionalProperties": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": "Object where keys are language codes",
 																	"type": "object"
@@ -9176,14 +9230,16 @@
 																		"properties": {
 																			"description": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
 																			},
 																			"name": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
@@ -10020,7 +10076,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -10165,7 +10222,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -10217,7 +10275,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -10362,7 +10421,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -10740,21 +10800,24 @@
 																	"properties": {
 																		"accept_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"confirm_my_choices": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
 																		},
 																		"reject_all": {
 																			"additionalProperties": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"description": "Object where keys are language codes",
 																			"type": "object"
@@ -10785,7 +10848,8 @@
 																},
 																"consentModalIntroHTMLWithTranslations": {
 																	"additionalProperties": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": "Object where keys are language codes",
 																	"type": "object"
@@ -10839,14 +10903,16 @@
 																		"properties": {
 																			"description": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
 																			},
 																			"name": {
 																				"additionalProperties": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"description": "Object where keys are language codes",
 																				"type": "object"
@@ -11683,7 +11749,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -11828,7 +11895,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
@@ -11880,7 +11948,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Default fields for tool's actions",
 																								"type": "object"
@@ -12025,7 +12094,8 @@
 																										{
 																											"type": "boolean"
 																										}
-																									]
+																									],
+																									"x-auditable": true
 																								},
 																								"description": "Tool's settings",
 																								"type": "object"
