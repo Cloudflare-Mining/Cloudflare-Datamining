@@ -435,7 +435,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: E => (0, S.r)(E) && (0, S._)(E) && !(0, o.z1)("storage-and-databases-account-navigation")(E)
+			hasPermission: E => (0, j.r)(E) && (0, j._)(E) && !(0, o.z1)("storage-and-databases-account-navigation")(E)
 		}, {
 			title: "navigation.account.workers.browser_rendering",
 			url: "/workers/browser-rendering"
@@ -473,7 +473,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: E => (0, S.r)(E) && (0, S._)(E)
+			hasPermission: E => (0, j.r)(E) && (0, j._)(E)
 		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
@@ -805,9 +805,9 @@ const navigation = {
 			const z = (0, d.nA)(E);
 			if ((0, r.yD)(E) || !(0, a.wB)(E, "zone_settings", "spectrum.app") || !z) return !1;
 			const q = !!((0, C.l8)(E) || (0, d.DQ)(E)),
-				V = !!(0, d.ZB)(E, "spectrum", "enabled"),
-				K = !!(0, d.Ns)(z);
-			return V || q || !K
+				K = !!(0, d.ZB)(E, "spectrum", "enabled"),
+				G = !!(0, d.Ns)(z);
+			return K || q || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -854,7 +854,7 @@ const navigation = {
 			title: "navigation.zone.security.analytics",
 			navigationType: "version",
 			url: "/security/analytics",
-			tabs: G.Wu,
+			tabs: H.Wu,
 			hasPermission: E => (0, a.$n)(E, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.asset_management",
@@ -876,7 +876,7 @@ const navigation = {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: T.mt,
+			tabs: S.mt,
 			hasPermission: E => (0, a.$n)(E, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -893,7 +893,7 @@ const navigation = {
 			url: "/security/api-shield",
 			navigationType: "version",
 			hasPermission: E => (0, R.R0)(E),
-			tabs: T.Dw
+			tabs: S.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -1127,7 +1127,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: H.az
+			tabs: V.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
@@ -1140,7 +1140,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.analytics",
 			navigationType: "global-settings",
 			url: "/zaraz/monitoring",
-			tabs: H.EV
+			tabs: V.EV
 		}, {
 			title: "navigation.zone.zaraz.settings",
 			navigationType: "global-settings",
