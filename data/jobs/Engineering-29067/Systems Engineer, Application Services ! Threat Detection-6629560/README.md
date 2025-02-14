@@ -5,32 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon, Portugal, London, United Kingdom, Austin, United States</strong></p>
-<p><strong>What you'll do</strong></p>
-<p>As a Senior Software Engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
-<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available locations: Lisbon - Hybrid&nbsp;</strong></p>
+<p><strong>About The Team</strong></p>
+<p>We are a group of around 140 Engineers responsible for Cloudflare’s fast-growing security product portfolio (currently WAF, Page Shield, Bot detection, API Shield and DDoS protection). Being part of Cloudflare means working at internet scale and we are uniquely positioned to tackle challenging problems related to being connected to more networks, websites and customers than any other provider worldwide. Working at great scale by default (to an extent not offered by most other employers in big tech) means pushing boundaries well beyond what commodity solutions like Nginx and Kafka provide out of the box. You’ll be working with custom components that have been created in an engineering-driven and pragmatic way - our code is well-tested and documented and uses modern ecosystems like Go and Rust. This gives you confidence that you will spend your time having an impact and not firefighting!</p>
+<p>Application Services is the single biggest contributor to Cloudflare’s annual revenue and has ambitious goals for growth. This means you’d be joining a high-profile part of the business that can really accelerate and support your career. Cloudflare has a strong track record of growing in a thoughtful way and hires carefully so we’re confident that you will enjoy working with your colleagues here!</p>
+<p><strong>About You</strong></p>
+<p>You’re a high-performing Engineer in cyber security with at least 3 years of professional experience working hands-on as a software developer. You have experience working with threat detection.</p>
+<p>Cloudflare’s culture is busy and multifaceted, and people who succeed here are persistent, have a can-do attitude and a genuine willingness to assume good faith in others. This last quality in particular requires them to be empathetic and emotionally intelligent, so you’re someone willing to take responsibility for the culture and environment that you create around you.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>At least 3 years of experience of technical leadership</li>
-	<li>Experience managing high available systems with disaster recovery support.</li>
-	<li>Experience in at least of the following languages: Go, Rust</li>
-	<li>Experience in Typescript</li>
-	<li>Experience designing and integrating RESTful APIs at scale</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Knowledge on distributed NoSQL databases</li>
-	<li>Excellent debugging experience and optimization skills</li>
-	<li>Experience with Kubernetes</li>
+	<li>
+		<p>Design systems and write code following bleeding edge industry best practices and help others on the team do the same. Review RFCs, technical specifications and code.</p>
+	</li>
+	<li>
+		<p>Deploy and maintain live software-based services at scale (up to 100m requests / second, 1m customers). Take regular shifts as part of the team’s On Call rota.</p>
+	</li>
+	<li>
+		<p>Support and grow other Engineers through knowledge sharing.</p>
+	</li>
+	<li>
+		<p>Keep up to date with trends in detecting current and emerging security risks to web applications and provide input on how these impact Cloudflare’s products.</p>
+	</li>
+	<li>
+		<p>Work with Engineers and Product Managers outside your immediate team in communicating our roadmap and getting things done.</p>
+	</li>
 </ul>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Required Skills and Experience</strong></p>
 <ul>
-	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
-	<li>Provide technical leadership to the team projects and objectives</li>
-	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
-	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
-	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
-	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
+	<li>
+		<p>Skilled hands-on writing lean and effective code according to modern best practices. The specific languages and tech stack you’re used to aren’t important as long as you’re open to learning Go, Rust and Clickhouse, plus devops tooling like Kubernetes, Salt, Kafka and Systemd. Strong Linux / Unix fundamentals will be very helpful.</p>
+	</li>
+	<li>
+		<p>Experience of cyber security and in particular detecting emerging threats (e.g. OWASP Top Ten).</p>
+	</li>
+	<li>
+		<p>Experience with threat detection based on Machine Learning is a bonus.</p>
+	</li>
 </ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

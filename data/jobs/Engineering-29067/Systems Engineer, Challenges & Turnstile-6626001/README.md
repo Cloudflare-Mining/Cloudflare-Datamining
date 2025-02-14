@@ -5,33 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon, Portugal, London, United Kingdom, Austin, United States</strong></p>
-<p><strong>What you'll do</strong></p>
-<p>As a Senior Software Engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
-<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: Lisbon (preferred) or London&nbsp;</strong></p>
+<p><span style="text-decoration: underline;"><strong><br>About Cloudflare and Our Team</strong></span></p>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team, specifically responsible for Turnstile and Challenges Pages, works in close collaboration with a dedicated Product Manager and other engineering teams to develop cutting-edge Bot detection solutions. Have a look at some of our <a href="https://blog.cloudflare.com/tag/turnstile/">articles mentioning Turnstile</a>!</p>
+<p><span style="text-decoration: underline;"><strong>Working in Our Team</strong></span></p>
+<p>You'll be integral to making our product more robust, secure, and stable. Our product runs in all corners of the web, on any imaginable browser, requiring continuous testing and adaptability. We value innovation and problem-solving skills - we encourage you to bring forward problems you identify along with your best solutions. Our team syncs are centered around addressing these challenges, focusing on short and long-term solutions for maximum business value.</p>
+<p><span style="text-decoration: underline;"><strong>What You'll Do</strong></span></p>
+<p>As a Software Engineer in our team, you'll play a key role in expanding our Turnstile and Challenges products. Your responsibilities will include:</p>
 <ul>
-	<li>At least 3 years of experience of technical leadership</li>
-	<li>Experience managing high available systems with disaster recovery support.</li>
-	<li>Experience in at least of the following languages: Go, Rust</li>
-	<li>Experience in Typescript</li>
-	<li>Experience designing and integrating RESTful APIs at scale</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Knowledge on distributed NoSQL databases</li>
-	<li>Excellent debugging experience and optimization skills</li>
-	<li>Experience with Kubernetes</li>
+	<li>Enhancing bot and human detection capabilities while maintaining a focus on privacy, security, and usability.</li>
+	<li>Full-stack development - from Edge process configuration to client-side logic.</li>
+	<li>Building scalable, secure, and privacy-conscious software to accommodate a growing user base with diverse requirements.</li>
+	<li><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></li>
 </ul>
-<p><strong>Responsibilities</strong></p>
+<p><span style="text-decoration: underline;"><strong>About You</strong></span></p>
+<p>We're looking for an engineer with:</p>
 <ul>
-	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
-	<li>Provide technical leadership to the team projects and objectives</li>
-	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
-	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
-	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
-	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
+	<li>Proficiency in Rust and TypeScript (or eagerness to learn)</li>
+	<li>A security-focused mindset, essential for a product like Turnstile.</li>
+	<li>A natural sense of curiosity and a self-driven attitude.</li>
 </ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed</p>
-<p>&nbsp;</p>
+<p><span style="text-decoration: underline;"><strong>Bonus Points</strong></span></p>
+<ul>
+	<li>Experience with ClickHouse, PostgreSQL, Docker, Salt, Lua, Go, and Unix systems will be highly regarded.</li>
+	<ul>
+		<li>You <strong>do not</strong> need to have experience with any of these technologies!</li>
+	</ul>
+	<li>Previous experience with counter abuse, fraud detection and mitigation.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
