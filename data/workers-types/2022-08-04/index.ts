@@ -474,7 +474,7 @@ export declare abstract class Navigator {
       | URLSearchParams,
   ): boolean;
   readonly userAgent: string;
-  readonly gpu: GPU;
+  readonly gpu?: GPU;
 }
 /**
  * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
@@ -2682,7 +2682,7 @@ export declare class URLSearchParams {
 export declare class URLPattern {
   constructor(
     input?: string | URLPatternURLPatternInit,
-    baseURL?: string,
+    baseURL?: string | URLPatternURLPatternOptions,
     patternOptions?: URLPatternURLPatternOptions,
   );
   get protocol(): string;
