@@ -780,12 +780,15 @@
 	"AccountD1AnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"databaseId": "The UUID of a D1 database",
+		"databaseRole": "The role of the D1 database that served the request. One of [primary, replica]",
 		"date": "The date the D1 request was received",
 		"datetimeFifteenMinutes": "The date and time the D1 request was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the D1 request was received truncated to five minutes",
 		"datetimeHour": "The date and time the D1 request was received truncated to the hour",
 		"datetimeMinute": "The date and time the D1 request was received truncated to the minute",
-		"datetimeSixHours": "The date and time the D1 request was received truncated to start of six hour window"
+		"datetimeSixHours": "The date and time the D1 request was received truncated to start of six hour window",
+		"servedByInstance": "A consistent identifier of the D1 database instance (whether primary or replica) that served the request.",
+		"servedByRegion": "The region of the D1 database that served the request. One of [WNAM, ENAM, WEUR, EEUR, APAC, OC]"
 	},
 	"AccountD1AnalyticsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -827,13 +830,17 @@
 	"AccountD1QueriesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"databaseId": "The UUID of a D1 database",
+		"databaseRole": "The role of the D1 database that served the request. One of [primary, replica]",
 		"date": "D1 query sample timestamp",
 		"datetimeFifteenMinutes": "D1 query sample timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "D1 query sample timestamp, truncated to five minutes",
 		"datetimeHour": "D1 query sample timestamp, truncated to the hour",
 		"datetimeMinute": "D1 query sample timestamp, truncated to the minute",
 		"datetimeSixHours": "D1 query sample timestamp, truncated to start of six hour window",
-		"query": "The SQL query that ran on a D1 database, with parameterized values replaced with placeholders."
+		"error": "The error D1 returned (if any) after attempting to run a query.",
+		"query": "The SQL query that ran on a D1 database, with parameterized values replaced with placeholders.",
+		"servedByInstance": "A consistent identifier of the D1 database instance (whether primary or replica) that served the request.",
+		"servedByRegion": "The region of the D1 database that served the request. One of [WNAM, ENAM, WEUR, EEUR, APAC, OC]"
 	},
 	"AccountD1QueriesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3296,6 +3303,202 @@
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountMconnTelemetryEventsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
+		"count": "Recorded Event count",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountMconnTelemetryEventsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"kind": "Event kind"
+	},
+	"AccountMconnTelemetryEventsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetryEventsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
+		"count": "Snapshot Disk count",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"sum": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"name": "Device name"
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"inProgress": "I/Os currently in progress",
+		"major": "Device major number",
+		"minor": "Device minor number"
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"discards": "Discards completed successfully (delta)",
+		"discardsMerged": "Discards merged (delta)",
+		"flushes": "Flushes completed successfully (delta)",
+		"merged": "Reads merged (delta)",
+		"reads": "Reads completed successfully (delta)",
+		"sectorsDiscarded": "Sectors discarded (delta)",
+		"sectorsRead": "Sectors read successfully (delta)",
+		"sectorsWritten": "Sectors written successfully (delta)",
+		"writes": "Writes completed (delta)",
+		"writesMerged": "Writes merged (delta)"
+	},
+	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
+		"count": "Snapshot Mount count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"fileSystem": "File system on disk (EXT4, NTFS, etc.)",
+		"kind": "Kind of disk (HDD, SSD, etc.)",
+		"mountPoint": "Path where disk is mounted",
+		"name": "Name of the disk mount"
+	},
+	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"availableBytes": "Available disk size (bytes)",
+		"isReadOnly": "Determines whether the disk is read-only",
+		"isRemovable": "Determines whether the disk is removable",
+		"totalBytes": "Total disk size (bytes)"
+	},
+	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
+		"count": "Snapshot Netdev count",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"name": "Name of the network device"
+	},
+	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"recvBytes": "Total bytes received (delta)",
+		"recvCompressed": "Compressed packets received (delta)",
+		"recvDrop": "Packets dropped (delta)",
+		"recvErrs": "Bad packets received (delta)",
+		"recvFifo": "FIFO overruns (delta)",
+		"recvFrame": "Frame alignment errors (delta)",
+		"recvMulticast": "Multicast packets received (delta)",
+		"recvPackets": "Total packets received (delta)",
+		"sentBytes": "Total bytes transmitted (delta)",
+		"sentCarrier": "Number of packets not sent due to carrier errors (delta)",
+		"sentColls": "Number of collisions (delta)",
+		"sentCompressed": "Number of compressed packets transmitted (delta)",
+		"sentDrop": "Number of packets dropped during transmission (delta)",
+		"sentErrs": "Number of transmission errors (delta)",
+		"sentFifo": "FIFO overruns (delta)",
+		"sentPackets": "Total packets transmitted (delta)"
+	},
+	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
+		"count": "Snapshot Thermal count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"label": "Sensor identifier for the component"
+	},
+	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"criticalCelcius": "Critical failure temperature of the component (degrees Celsius)",
+		"currentCelcius": "Current temperature of the component (degrees Celsius)",
+		"maxCelcius": "Maximum temperature of the component (degrees Celsius)"
+	},
+	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
+		"count": "Snapshot count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"version": "Version"
+	},
+	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"cpuCount": "Count of processors/cores",
+		"kernelBtime": "Boot time (seconds since Unix epoch)",
+		"kernelProcessesRunning": "Number of processes in runnable state",
+		"loadAverage15m": "The fifteen-minute load average",
+		"loadAverage1m": "The one-minute load average",
+		"loadAverage5m": "The five-minute load average",
+		"memoryActiveBytes": "Memory that has been used more recently",
+		"memoryAvailableBytes": "Estimate of how much memory is available for starting new applications",
+		"memoryBuffersBytes": "Relatively temporary storage for raw disk blocks",
+		"memoryCachedBytes": "In-memory cache for files read from the disk",
+		"memoryFreeBytes": "The sum of LowFree and HighFree",
+		"memoryInactiveBytes": "Memory which has been less recently used",
+		"memoryTotalBytes": "Total usable RAM"
+	},
+	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMnmFlowDataAdaptiveGroups": {
 		"__description": "Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
@@ -4081,6 +4284,12 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "",
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
+		"mconnTelemetryEventsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "",
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"ohttpMetricsAdaptive": "",
@@ -7623,6 +7832,12 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
+		"mconnTelemetryEventsStagingAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
+		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
