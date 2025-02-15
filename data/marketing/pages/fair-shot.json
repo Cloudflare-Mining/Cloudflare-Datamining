@@ -165,21 +165,7 @@
 							},
 							"description": ""
 						},
-						"imageAssetFile": {
-							"id": "8a9c4ee7-8df5-5eff-b242-3f4aac7ef8ee",
-							"altText": "cloudflare-waiting-room-spot-illustration",
-							"title": "cloudflare-waiting-room-spot-illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aIAcylAmcVdLv8SVp2i9X/befc5471b4e7bcf9b05868376c752bef/cloudflare-waiting-room-spot-illustration.svg"
-								},
-								"description": "Cloudflare waiting room spot illustration"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -360,36 +346,6 @@
 							},
 							{
 								"contentTypeId": "bladeQuote",
-								"contentfulId": "3Y06EZLn7Y9E6yLGNOWdWv",
-								"quote": "\"Typically, we'll hit about 70% utilization across our web servers and database. With Cloudflare Waiting Room's queue enabled, we were letting 200 visitors through at a time, and we saw there's no noticeable spike. It was only at 10% of capacity...which is really good to see.\"\n",
-								"quoteAuthor": "Jake Gissing",
-								"quoteTitle": "Developer, Ticket Tailor",
-								"learnMoreText": "Read the case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/tickettailor/",
-								"imageAssetFile": {
-									"id": "7527ae2d-4b36-5209-a679-be0d93679066",
-									"altText": "ticket tailor logo",
-									"title": "ticket tailor logo",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/21D7VdQluaJRAo7MBkheFj/1b9d01781ba518c3b8499b07705e3d63/logo_ticket-tailor.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/21D7VdQluaJRAo7MBkheFj/1b9d01781ba518c3b8499b07705e3d63/logo_ticket-tailor.svg"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
 								"contentfulId": "54f0iEKiVLcGKV2gSgPcgz",
 								"quote": "\"Our relationship with Cloudflare went from 'Let's try Waiting Room' to 'Unless you have this, we're not going live with that public facing site.' Our solution is all about patient relationship management, so, as we expand with hospitals, it is going to be part of our default recommendation to them and how they deal with their security stance for opening up their surfaces to the community.\"\n",
 								"quoteAuthor": "Michael Millar",
@@ -402,69 +358,6 @@
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/14MhwwgMBSDAKJHVDHYSER/4347ece393320d14b8c1ce2d0df13539/logo_verto-health.png"
 									},
 									"description": "Verto Health logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "0R7PRzTWRbNGJ1lJDdXD6",
-								"quote": "\"Cloudflare Waiting Room allowed us to plan for a steady load instead of having a large investment in the infrastructure for the launch. And it helped with communication because it was considered a good service to the public.\"",
-								"quoteAuthor": "Māris Dreimanis",
-								"quoteTitle": "Vaccination Project Office IT Coordinator",
-								"learnMoreText": "Read the case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/latvia-ministry-of-health/",
-								"imageAssetFile": {
-									"id": "0c36e523-bd62-51f9-b204-fdfb1be84b40",
-									"altText": "Latvia logo",
-									"title": "Latvia logo",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6owWIOM57gBi4O3ZUyt4Qt/35b745379689e0a2d1ea5880b1934d3d/latvia_logo_large.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6owWIOM57gBi4O3ZUyt4Qt/35b745379689e0a2d1ea5880b1934d3d/latvia_logo_large.png"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "2sWp5Z9btgyXwhiDEIx0aj",
-								"quote": "\"Layering the Waiting Room with Cloudflare Workers has allowed us to scale up to virtually unlimited demand.\" ",
-								"quoteAuthor": "Aditya Bansod",
-								"quoteTitle": "CTO and Co-founder, Luma Health",
-								"learnMoreText": "Read the case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/luma-health/",
-								"imageAssetFile": {
-									"id": "cea31661-c314-5bb4-bf04-a453e6b4003e",
-									"altText": "Logo lumahealth gray",
-									"title": "Logo lumahealth gray",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 4740,
-										"height": 144,
-										"width": 784,
-										"filename": "logo_lumahealth_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_lumahealth_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I7pcXKuFXsu6C8B0jWoQM/79b522a8ce45af4f551792f6e6ae7176/logo_lumahealth.svg"
-									},
-									"description": null
 								}
 							},
 							{
