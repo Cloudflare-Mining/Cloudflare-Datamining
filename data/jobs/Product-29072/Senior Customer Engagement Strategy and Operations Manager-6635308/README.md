@@ -6,7 +6,6 @@
 	</div>
 </div>
 <p><strong>Available Locations:&nbsp;</strong>San Francisco, CA &amp; New York, NY</p>
-<p><strong>Job Title - </strong>Senior Customer Engagement Strategy and Operations Manager</p>
 <p><strong>Role Summary</strong></p>
 <p>This is a unique role to work daily with the President of Product and Engineering in high visibility customer engagements. You will accompany the President of Product and Engineering to his customer meetings (virtual or in person), and partner closely with sales and product teams to ensure a world-class experience for our customers before, during or after the meeting. In this dynamic, fast-paced environment, you will collaborate with senior leadership and cross-functional teams to drive strategic initiatives and scalable processes focused on customer outcomes. We're looking for a resourceful, entrepreneurial individual who thrives in ambiguous situations, can think critically under pressure, and can manage relationships and build consensus with stakeholders at all levels. If you're someone who can roll up your sleeves and navigate complex challenges without a playbook, while applying strong conceptual and analytical problem-solving skills, we'd love to hear from you. This role will report to the Chief of Staff of the President of Product and Engineering, but you will work directly with the President and engage with C-level and senior executive customers.</p>
 <p><strong>Role Responsibilities</strong></p>
