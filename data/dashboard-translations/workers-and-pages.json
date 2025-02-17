@@ -608,5 +608,13 @@
 	"workers_and_pages.contexual_update_messages.cpu_time_limit": "Updated CPU time limit to %{cpuTimeLimitMs} ms",
 	"workers_and_pages.contexual_update_messages.cpu_time_limit.cleared": "Removed CPU time limit",
 	"workers_and_pages.contexual_update_messages.usage_model": "Updated usage model to %{usageModel}",
-	"workers_and_pages.deploy_to_workers": "Deploy to Workers"
+	"workers_and_pages.deploy_to_workers": "Deploy to Workers",
+	"workers_and_pages.deploy_to_workers.repository_url": "Repository URL",
+	"workers_and_pages.deploy_to_workers.import_repository": "Import repository",
+	"workers_and_pages.deploy_to_workers.validation.invalid_repository_url": "Invalid repository URL.",
+	"workers_and_pages.deploy_to_workers.validation.repository_not_found": "Repository not found. Are you sure it's public?",
+	"workers_and_pages.deploy_to_workers.validation.failed_to_get_contents": "Failed to get repository contents.",
+	"workers_and_pages.deploy_to_workers.validation.no_wrangler_file": "Could not find wrangler.toml, wrangler.json, or wrangler.jsonc.",
+	"workers_and_pages.deploy_to_workers.validation.failed_to_parse_repository_url": "Could not parse repository URL.",
+	"workers_and_pages.deploy_to_workers.validation.failed_to_parse_wrangler_config": "Could not get resource manifest from wrangler config."
 }

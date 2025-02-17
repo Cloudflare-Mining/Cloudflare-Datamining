@@ -851,6 +851,11 @@ const navigation = {
 		navigationType: "version",
 		hasPermission: E => !(0, r.yD)(E) && (0, a.$n)(E, "waf", "firewall.rule") || (0, a.$n)(E, "page_shield", "script-monitor"),
 		pages: [{
+			title: "navigation.zone.security.overview",
+			navigationType: "version",
+			url: "/security/overview",
+			hasPermission: E => (0, a.$n)(E, "waf", "firewall.rule") && !!(0, o.z1)("appsec-overview")(E)
+		}, {
 			title: "navigation.zone.security.analytics",
 			navigationType: "version",
 			url: "/security/analytics",
