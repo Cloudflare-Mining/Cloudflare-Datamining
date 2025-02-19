@@ -5,34 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX | Lisbon, Portugal | London, UK</p>
-<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Support, Engineering, Post-Sales services, and more. Your main responsibility will be to work cross-functionally to create, define, project manage, execute, track, and report on major initiatives to successful completion.</p>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various Support, Services, and Engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap. You have the ability to drive change, ensure adoption, and help team members understand the benefits of your work.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.</p>
-<p>This position will be based in Austin, Texas, London, England, or Lisbon, Portugal. You will be reporting into the Support Program Management Organization (PMO).</p>
-<h4><strong>Major areas of responsibilities</strong></h4>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Understand technical and business requirements of assigned programs</li>
-	<li>Effectively balance risk and achieve business objectives</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet support and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management</li>
+	<li>Attends to customers’ needs, provides timely and friendly service, and handles complaints gracefully.</li>
+	<li>Communicates clearly, directly, and professionally with customers and team members.</li>
+	<li>Works effectively with kitchen and other staff to ensure smooth service.</li>
+	<li>Addresses customer or service issues quickly with creativity and resourcefulness.</li>
+	<li>Handles multiple tables efficiently, prioritizes tasks under pressure.</li>
+	<li>Ensures orders are accurate, tables are clean, and presentation meets standards.</li>
+	<li>Shows up on time, prepared, and stays focused on quality service.</li>
+	<li>Maintains positivity and composure, even during busy shifts or difficult situations.</li>
 </ul>
-<h4><strong>Desirable skills and knowledge</strong></h4>
+<p><strong>Desirable Skills, Knowledge, and Experience:</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Flexibility and adaptability, experience trying different approaches and adapting as you go based on the needs of your team / project</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
-	<li>Knowledge of web performance, security, and network services a plus</li>
-	<li>Experience with AI, self-service, or voice of the customer programs a plus</li>
+	<li>Proven ability to attend to customers’ needs and provide prompt, friendly service while effectively managing complaints and ensuring guest satisfaction.</li>
+	<li>Strong verbal communication skills, with the ability to convey information clearly and professionally to both customers and team members.</li>
+	<li>Experience working collaboratively with kitchen staff and fellow team members to ensure seamless service and a positive dining experience.</li>
+	<li>Resourceful in addressing customer and service issues quickly and creatively, demonstrating a proactive approach to problem resolution.</li>
+	<li>Ability to efficiently manage multiple tables and prioritize tasks under pressure, ensuring timely service without compromising quality.</li>
+	<li>Strong focus on accuracy in order-taking and presentation, along with maintaining cleanliness and organization in the dining area.</li>
+	<li>Commitment to punctuality, preparedness for each shift, and a strong work ethic focused on delivering quality service.</li>
+	<li>Maintains a positive demeanor and composure during busy shifts or challenging situations, contributing to a supportive team environment.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

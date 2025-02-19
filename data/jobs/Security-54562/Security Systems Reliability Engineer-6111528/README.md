@@ -45,6 +45,7 @@
 	<li>Strong background in deploying and supporting infrastructure and security technologies.Knowledge of scripting and automation tools (e.g., Python, Terraform, Ansible).</li>
 	<li>Excellent communication and collaboration skills.</li>
 </ul>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

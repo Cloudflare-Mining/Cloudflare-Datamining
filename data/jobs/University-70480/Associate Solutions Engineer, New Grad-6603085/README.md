@@ -30,11 +30,11 @@
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
 	<li>Bachelor or Masters Graduates of technical and engineering degrees including but not limited to, Computer, Software, Electronics, Communications, Telecommunications, Information Technology Mathematics Engineering and Science degrees, or relevant subjects.</li>
-	<li>Good understanding of how the Internet works. Development and application development knowledge is a major plus.&nbsp;</li>
-	<li>Have intellectual curiosity and strong desire and determination to learn</li>
+	<li>Good understanding of how the Internet works.&nbsp;</li>
+	<li>Have intellectual curiosity and strong desire and determination to learn.</li>
 	<li>Good communication skills. Ability to present in front of an audience.</li>
-	<li>Demonstrated experience with a scripting language (e.g. Python, JavaScript, Bash, Lua, Go) and a desire to expand those skills.</li>
-	<li>Expertise in internet technologies: OSI Model layers 1-7, BGP, GRE, TCP/UDP, DNS (authoritative and recursive), HTTP(S), SSL / TLS.</li>
+	<li>Demonstrated understanding in internet technologies: OSI Model layers 1-7,TCP/UDP, DNS , HTTP(S), SSL / TLS.</li>
+	<li>Comfortable with command line interfaces, APIs, and some scripting/programming experience with one or more of JavaScript, Python, Golang, BASH, and cloud computing technologies.</li>
 </ul>
 <p><strong>Bonus</strong>:&nbsp;</p>
 <p>Cloud Technologies Certification , Emphasis on Cybersecurity is a plus</p>
