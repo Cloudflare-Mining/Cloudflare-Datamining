@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 70,
+	"version": "20250219.15",
+	"short_version": "2025.1.861.0",
+	"size": 92359731,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "368a20f981c7a30b779fd27b7f1b9ed6",
+	"fingerprint": "4b1cc68888ea3f37a8a376d06750b7f1",
+	"uploaded_at": "2025-02-19T16:21:04.840Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "# ⚠️ Important Update\n\nMicrosoft has announced that App Center is being retired, and this page is no longer being actively maintained.  \n\n👉 **If you're seeing this message within an update dialog:** Please update your client to continue to receive updates.  \n👉 Visit Cloudflare's new developer documentation for client downloads, maintained version history, and release notes. See: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp/\n\n&nbsp;\n\n---\n\n&nbsp;\n\n\n# Release Notes\n\n\nThis release contains minor fixes and improvements.\n\nNote: If using macOS Sequoia, Cloudflare recommends the use of macOS 15.3 or later. With macOS 15.3, Apple addressed several issues that may have caused the WARP client to not behave as expected when used with macOS 15.0.x.\n\n## Changes and improvements\n\n- Improved command line interface for Zero Trust Access for Infrastructure with added function for filtering and ordering.\n- Fixed client connectivity issues when switching between managed network profiles that use different WARP protocols.\n- Improved OS version posture checks on macOS for greater reliability and availability.\n- Added support for WARP desktop to use additional DoH endpoints to help reduce NAT congestion.\n- Improved Wireguard connection stability on reconnections.\n- Added additional HTTP/3 QUIC connectivity test to warp-diag.\n- Added support for collection of system health metrics for enhanced device Digital Experience Monitoring.\n- Automated the removal of active registrations for devices with multiple registrations with the same Zero Trust organization.\n- Fixes issues with deleted registration at start up.\n\n\n## Known issues\n- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.3 or later.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
