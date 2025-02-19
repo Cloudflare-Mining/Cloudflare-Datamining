@@ -30,21 +30,65 @@
 	<p>To understand what <i>unpredictable</i> means, it helps to consider that all cryptography is based on an asymmetry of information. If you’re trying to securely perform some cryptographic operation, then what you’re concerned about is that somebody - an <i>adversary</i> - will try to break your security. The only thing that distinguishes you from the adversary is that you know some things that the adversary does not, and the job of cryptography is to ensure that this asymmetry of information is enough to keep you secure.</p>
 	<p>Let’s consider a simple example. Imagine that you and a friend are trying to go to a movie, but you don’t want your nemesis to figure out which movie you’re going to go to (lest she show up and thwart your movie watching!). This week, it’s your turn to choose the movie. Once you’ve made your choice, you’re going to need to send a message to your friend telling him which movie you’ve chosen, but you’re going to need to ensure that even if your nemesis intercepts the message, she won’t be able to figure out what it says.</p>
 	<p>You devise the following scheme: since there are only two movies available to watch at the moment, you label one A and the other B. Then, while in the presence of your friend, you flip a coin. You agree on the following table outlining which message that you will send depending on your choice of what movie to watch and whether the coin comes up heads (H) or tails (T). Later, once you’ve made up your mind about which movie to see, you’ll use this table to send an encrypted message to your friend telling him which movie you’ve chosen.</p>
-	<p><b>Movie</b></p>
-	<p><b>Coin</b></p>
-	<p><b>Message</b></p>
-	<p>A</p>
-	<p>H</p>
-	<p>“The rain in Spain stays mainly on the plain.”</p>
-	<p>A</p>
-	<p>T</p>
-	<p>“In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.”</p>
-	<p>B</p>
-	<p>H</p>
-	<p>“In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.”</p>
-	<p>B</p>
-	<p>T</p>
-	<p>“The rain in Spain stays mainly on the plain.”</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Movie</b></p>
+				</td>
+				<td>
+					<p><b>Coin</b></p>
+				</td>
+				<td>
+					<p><b>Message</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A</p>
+				</td>
+				<td>
+					<p>H</p>
+				</td>
+				<td>
+					<p>“The rain in Spain stays mainly on the plain.”</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>A</p>
+				</td>
+				<td>
+					<p>T</p>
+				</td>
+				<td>
+					<p>“In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.”</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>B</p>
+				</td>
+				<td>
+					<p>H</p>
+				</td>
+				<td>
+					<p>“In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.”</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>B</p>
+				</td>
+				<td>
+					<p>T</p>
+				</td>
+				<td>
+					<p>“The rain in Spain stays mainly on the plain.”</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>If you were to decide on movie B, and the coin came up heads, you would send the message, “In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.” Since your friend knows that the coin came up heads - he was there when it happened - he knows that you must have decided on movie B. But consider it from your nemesis’ perspective. She doesn’t know the result of the coin toss - all she knows is that there’s a 50% chance that the coin came up heads, and a 50% chance that it came up tails. Thus, seeing the message “In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen” doesn’t help her at all! There’s a 50% chance that the coin came up heads (implying movie B), and a 50% chance that it came up tails (implying movie A). She doesn’t know anything more than she knew before!</p>
 	<p>Let’s return now to the concept of <i>unpredictability</i>. Imagine that the result of the coin toss was completely predictable - say your nemesis planted a trick coin that always comes up heads on the first toss, tails on the second, heads on the third, and so on. Since she would know that there was a 100% chance of the first coin toss coming up heads, then regardless of which message you sent, she would know which movie you were going to see. While the trick coin still exhibits some basic properties of “randomness” as the term is used in the field of statistics - it comes up heads as often as it comes up tails - it’s <i>predictable</i>, which makes it useless for cryptography. The takeaway: when we say <i>random</i> in the context of cryptography, we mean <i>unpredictable</i>.</p>
 	<div class="flex anchor relative">
