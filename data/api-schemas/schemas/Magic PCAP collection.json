@@ -241,6 +241,12 @@
 																"minLength": 32,
 																"type": "string"
 															},
+															"offset_time": {
+																"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+																"example": "2020-01-01T08:00:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
 															"status": {
 																"description": "The status of the packet capture request.",
 																"enum": [
@@ -573,6 +579,12 @@
 																		"example": "66802ca5668e47a2b82c2e6746e45037",
 																		"maxLength": 32,
 																		"minLength": 32,
+																		"type": "string"
+																	},
+																	"offset_time": {
+																		"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+																		"example": "2020-01-01T08:00:00Z",
+																		"format": "date-time",
 																		"type": "string"
 																	},
 																	"status": {
@@ -1024,6 +1036,12 @@
 															"minLength": 32,
 															"type": "string"
 														},
+														"offset_time": {
+															"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+															"example": "2020-01-01T08:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
 														"status": {
 															"description": "The status of the packet capture request.",
 															"enum": [
@@ -1333,6 +1351,12 @@
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
+																	"type": "string"
+																},
+																"offset_time": {
+																	"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"format": "date-time",
 																	"type": "string"
 																},
 																"status": {
@@ -2220,6 +2244,12 @@
 										},
 										"type": "object"
 									},
+									"offset_time": {
+										"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+										"example": "2020-01-01T08:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
 									"packet_limit": {
 										"description": "The limit of packets contained in a packet capture.",
 										"example": 10000,
@@ -2499,6 +2529,12 @@
 															"example": "66802ca5668e47a2b82c2e6746e45037",
 															"maxLength": 32,
 															"minLength": 32,
+															"type": "string"
+														},
+														"offset_time": {
+															"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+															"example": "2020-01-01T08:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"status": {
@@ -2810,6 +2846,12 @@
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
+																	"type": "string"
+																},
+																"offset_time": {
+																	"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"format": "date-time",
 																	"type": "string"
 																},
 																"status": {

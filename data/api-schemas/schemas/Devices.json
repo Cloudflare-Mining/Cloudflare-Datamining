@@ -195,6 +195,11 @@
 														"example": true,
 														"type": "boolean"
 													},
+													"doh_in_tunnel": {
+														"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+														"example": true,
+														"type": "boolean"
+													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"example": true,
@@ -328,6 +333,11 @@
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"example": 100,
 														"type": "number"
+													},
+													"register_interface_ip_with_dns": {
+														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+														"example": true,
+														"type": "boolean"
 													},
 													"service_mode_v2": {
 														"properties": {
@@ -555,6 +565,11 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"doh_in_tunnel": {
+																"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+																"example": true,
+																"type": "boolean"
+															},
 															"enabled": {
 																"description": "Whether the policy will be applied to matching devices.",
 																"example": true,
@@ -688,6 +703,11 @@
 																"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 																"example": 100,
 																"type": "number"
+															},
+															"register_interface_ip_with_dns": {
+																"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+																"example": true,
+																"type": "boolean"
 															},
 															"service_mode_v2": {
 																"properties": {
@@ -2742,6 +2762,11 @@
 														"example": true,
 														"type": "boolean"
 													},
+													"doh_in_tunnel": {
+														"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+														"example": true,
+														"type": "boolean"
+													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"example": true,
@@ -2875,6 +2900,11 @@
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"example": 100,
 														"type": "number"
+													},
+													"register_interface_ip_with_dns": {
+														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+														"example": true,
+														"type": "boolean"
 													},
 													"service_mode_v2": {
 														"properties": {
@@ -3102,6 +3132,11 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"doh_in_tunnel": {
+																"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+																"example": true,
+																"type": "boolean"
+															},
 															"enabled": {
 																"description": "Whether the policy will be applied to matching devices.",
 																"example": true,
@@ -3235,6 +3270,11 @@
 																"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 																"example": 100,
 																"type": "number"
+															},
+															"register_interface_ip_with_dns": {
+																"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+																"example": true,
+																"type": "boolean"
 															},
 															"service_mode_v2": {
 																"properties": {
@@ -3551,6 +3591,11 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"doh_in_tunnel": {
+													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+													"example": true,
+													"type": "boolean"
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -3651,6 +3696,11 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"register_interface_ip_with_dns": {
+													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+													"example": true,
+													"type": "boolean"
 												},
 												"service_mode_v2": {
 													"properties": {
@@ -3835,6 +3885,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"doh_in_tunnel": {
+															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+															"example": true,
+															"type": "boolean"
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"example": true,
@@ -3935,6 +3990,11 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"register_interface_ip_with_dns": {
+															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+															"example": true,
+															"type": "boolean"
 														},
 														"service_mode_v2": {
 															"properties": {
@@ -4250,6 +4310,11 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"doh_in_tunnel": {
+													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+													"example": true,
+													"type": "boolean"
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -4383,6 +4448,11 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"example": 100,
 													"type": "number"
+												},
+												"register_interface_ip_with_dns": {
+													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+													"example": true,
+													"type": "boolean"
 												},
 												"service_mode_v2": {
 													"properties": {
@@ -4589,6 +4659,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"doh_in_tunnel": {
+															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+															"example": true,
+															"type": "boolean"
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"example": true,
@@ -4722,6 +4797,11 @@
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 															"example": 100,
 															"type": "number"
+														},
+														"register_interface_ip_with_dns": {
+															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+															"example": true,
+															"type": "boolean"
 														},
 														"service_mode_v2": {
 															"properties": {
@@ -7899,8 +7979,18 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"doh_in_tunnel": {
+								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+								"example": true,
+								"type": "boolean"
+							},
 							"exclude_office_ips": {
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
+								"example": true,
+								"type": "boolean"
+							},
+							"register_interface_ip_with_dns": {
+								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -8081,6 +8171,11 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"doh_in_tunnel": {
+													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+													"example": true,
+													"type": "boolean"
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -8181,6 +8276,11 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"register_interface_ip_with_dns": {
+													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+													"example": true,
+													"type": "boolean"
 												},
 												"service_mode_v2": {
 													"properties": {
@@ -8365,6 +8465,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"doh_in_tunnel": {
+															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+															"example": true,
+															"type": "boolean"
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"example": true,
@@ -8465,6 +8570,11 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"register_interface_ip_with_dns": {
+															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+															"example": true,
+															"type": "boolean"
 														},
 														"service_mode_v2": {
 															"properties": {
@@ -8673,6 +8783,11 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"doh_in_tunnel": {
+								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+								"example": true,
+								"type": "boolean"
+							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"example": true,
@@ -8699,6 +8814,11 @@
 								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 								"example": 100,
 								"type": "number"
+							},
+							"register_interface_ip_with_dns": {
+								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+								"example": true,
+								"type": "boolean"
 							},
 							"service_mode_v2": {
 								"properties": {
@@ -8883,6 +9003,11 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"doh_in_tunnel": {
+													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+													"example": true,
+													"type": "boolean"
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -9016,6 +9141,11 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"example": 100,
 													"type": "number"
+												},
+												"register_interface_ip_with_dns": {
+													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+													"example": true,
+													"type": "boolean"
 												},
 												"service_mode_v2": {
 													"properties": {
@@ -9222,6 +9352,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"doh_in_tunnel": {
+															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+															"example": true,
+															"type": "boolean"
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"example": true,
@@ -9355,6 +9490,11 @@
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 															"example": 100,
 															"type": "number"
+														},
+														"register_interface_ip_with_dns": {
+															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+															"example": true,
+															"type": "boolean"
 														},
 														"service_mode_v2": {
 															"properties": {
@@ -9919,6 +10059,11 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"doh_in_tunnel": {
+								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+								"example": true,
+								"type": "boolean"
+							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"example": true,
@@ -9955,6 +10100,11 @@
 								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 								"example": 100,
 								"type": "number"
+							},
+							"register_interface_ip_with_dns": {
+								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+								"example": true,
+								"type": "boolean"
 							},
 							"service_mode_v2": {
 								"properties": {
@@ -10144,6 +10294,11 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"doh_in_tunnel": {
+													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+													"example": true,
+													"type": "boolean"
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -10277,6 +10432,11 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"example": 100,
 													"type": "number"
+												},
+												"register_interface_ip_with_dns": {
+													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+													"example": true,
+													"type": "boolean"
 												},
 												"service_mode_v2": {
 													"properties": {
@@ -10483,6 +10643,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"doh_in_tunnel": {
+															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
+															"example": true,
+															"type": "boolean"
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"example": true,
@@ -10616,6 +10781,11 @@
 															"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 															"example": 100,
 															"type": "number"
+														},
+														"register_interface_ip_with_dns": {
+															"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
+															"example": true,
+															"type": "boolean"
 														},
 														"service_mode_v2": {
 															"properties": {
