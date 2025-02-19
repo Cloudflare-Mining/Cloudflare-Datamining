@@ -605,6 +605,10 @@
 		"summary": "List Subnets",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
@@ -1053,6 +1057,9 @@
 		"summary": "Update Cloudflare Source Subnet",
 		"tags": [
 			"Zero Trust Subnets"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write"
 		]
 	}
 }
