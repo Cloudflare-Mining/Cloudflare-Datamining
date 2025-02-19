@@ -5,39 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role:</strong></p>
-<p>Cloudflare is seeking a highly experienced Director of Strategic Partnerships to lead some of our most important initiatives and partnerships. This role will be pivotal in driving product growth, fostering executive-level relationships, and developing a comprehensive strategy to grow our strategic partnerships. You would be joining an elite team in the Special Projects division of Cloudflare and lead some of our privacy initiatives and emerging products. Having a passion for consumer privacy and an understanding of privacy preserving technologies, content classification, artificial intelligence and the mechanics of online advertising is imperative for success in this unique role. The candidate must have technical experience with buyers and sellers of online systems that preserve consumer privacy across various transactions. This will be a high visibility role developing partnerships and product strategy across the entirety of Cloudflare’s existing and emerging product portfolios.&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal | London, UK</p>
+<p>Cloudflare is seeking an organized, self-motivated Business Analyst to understand business needs and translate them into areas for improvement. You will be responsible for prioritizing initiatives based on business impact, developing requirements, ensuring solutions align with business goals, and owning communications and enablement that will ensure the business is ready to adopt new processes. In this role you will have the opportunity to directly impact the productivity of our Support team (and in turn, thousands of customers that we work with every week) by driving the implementation of new system functionality and enhancements in Salesforce Service Cloud.&nbsp;</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
+<p>The ideal candidate is comfortable working in a fast-paced environment, is empathetic, flexible, iterative, curious, and enjoys collaborating cross-functionally to achieve a common goal.</p>
+<p>This position will be based in Austin, Texas; London, UK; or Lisbon, Portugal. You will be reporting into the Support Operations team.</p>
+<h4><strong>Major areas of responsibilities</strong></h4>
 <ul>
-	<li>Develop and execute a privacy strategy for Cloudflare</li>
-	<li>Ideate, discover and propose new product partnership opportunities leveraging Cloudflare's privacy infrastructure and products to expand market share, increase developer adoption, and grow direct revenue</li>
-	<li>Manage all aspects of partner integrations and proposals, including design, validation, implementation, troubleshooting and educating internal stakeholders (Product, ENG &amp; GTM)</li>
-	<li>Collaborate with Product, Engineering &amp; GTM leaders to design and pitch strategic opportunities with customers.</li>
-	<li>Help develop and support new initiatives and strategic partners with our product and engineering teams</li>
-	<li>Measure and track the success of privacy initiatives through metrics such as user engagement, customer satisfaction, and revenue</li>
-	<li>Generate awareness about Cloudflare’s strategic partnerships internally and externally</li>
-	<li>Develop, negotiate, and close agreements with new and existing partners</li>
-	<li>Collaborate with product, marketing, and sales teams to ensure seamless integration of partnership initiatives.</li>
+	<li>Serves as business partner and trusted advisor for Customer Support. Collects, understands, and synthesizes user feedback as well as strategic business priorities. Has deep understanding of business stakeholder group.</li>
+	<li>Stack ranks priorities that reflect the stakeholder group’s needs. Provides input on Salesforce Service Cloud roadmap.</li>
+	<li>Facilitates conflict resolution with decision-makers by providing full analysis of options, pros and cons and a documented log of the decisions.</li>
+	<li>Drives effective discovery sessions to capture as-is and to-be process flows in a consistent and reusable format.</li>
+	<li>Deep familiarity of core systems, processes and all related system capabilities leveraged by stakeholders.</li>
+	<li>Collaborates with developers to test and verify that the solution meets the business requirements.</li>
+	<li>Ensures the relevant parts of the business are ready for each release that impacts them. Leads and / or organizes necessary meetings to deliver system demos, perform user acceptance testing, and end user training.</li>
+	<li>Documents releases in an easy to understand way. Thoroughly communicates updates to business stakeholders.</li>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<h4><strong>Desirable skills and knowledge</strong></h4>
 <ul>
-	<li>Minimum 15+ years of experience, in, or a combination of product management, partnerships, or related technical fields</li>
-	<li>Bachelor’s degree in a technical/engineering field, or specific technical experience preferred.</li>
-	<li>Experience in the Cloud (SaaS/PaaS/IaaS), Security (DDoS, firewalls) or similar technology preferred.</li>
-	<li>Proven track record of managing and growing large, complex accounts and driving executive-level engagements.</li>
-	<li>Strong strategic thinking and the ability to develop and execute comprehensive account strategies.</li>
-	<li>Excellent communication and interpersonal skills, with the ability to influence and build credibility with senior stakeholders at every level.</li>
-	<li>An ambitious and entrepreneurial mindset that enables you to work independently with little guidance, but also work collaboratively across the org.</li>
-	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, including product, Engineering, sales, and marketing teams, to establish effective partnerships.</li>
-	<li>A natural curiosity and eagerness to do whatever it takes, no task is beneath you, is a must. We are a scrappy team that works hard to accomplish ideas that others say can’t be done.</li>
+	<li>Bachelor’s degree in Business Administration, Computer Science, Information Systems, or a related field.</li>
+	<li>Ability to analyze complex business problems and identify effective solutions.</li>
+	<li>Comfortable working in a fast-paced environment with multiple concurrent priorities.</li>
+	<li>Excellent communication skills (written and verbal) and attention to detail.</li>
+	<li>Excels at building relationships and communicating with all types of stakeholders, from VPs to developers to Customer Support Engineers.</li>
+	<li>Direct experience or knowledge of Customer Support team is a plus.</li>
+	<li>Experience with Salesforce Service Cloud a plus.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $186,000 - $228,000.</li>
-	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $209,000 - $255,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $220,000 - $268,000.</li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -66,12 +61,11 @@
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
-	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: We equip politically and artistically important organizations and journalists with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
-	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: We created Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
 	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
 	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
 	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>

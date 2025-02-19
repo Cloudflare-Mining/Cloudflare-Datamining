@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6494599?gh_jid=6494599",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6247604?gh_jid=6247604",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3034488,
+	"internal_job_id": 2960377,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,13 +18,13 @@
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": null,
+			"value": "Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6400 - Special Projects",
+			"value": "4500 - Emerg Tech & Incubation",
 			"value_type": "single_select"
 		},
 		{
@@ -33,20 +33,21 @@
 			"value": [
 				"Austin, US",
 				"New York, US",
-				"Washington DC, US"
+				"Lisbon, Portugal",
+				"London, UK"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6494599,
-	"updated_at": "2025-02-12T14:42:32-05:00",
-	"requisition_id": "503",
-	"title": "Strategic Partnerships Director, Privacy",
+	"id": 6247604,
+	"updated_at": "2025-02-18T11:33:27-05:00",
+	"requisition_id": null,
+	"title": "Product Manager, Privacy & Analytics",
 	"company_name": "Cloudflare",
 	"departments": [
 		{
-			"id": 29073,
-			"name": "Special Projects",
+			"id": 39629,
+			"name": "Emerging Technology and Incubation",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -60,11 +61,25 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }
