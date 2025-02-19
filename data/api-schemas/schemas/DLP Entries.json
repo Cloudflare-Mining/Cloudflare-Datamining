@@ -387,10 +387,11 @@
 																	"confidence": {
 																		"properties": {
 																			"ai_context_available": {
+																				"description": "Indicates whether this entry has AI remote service validation",
 																				"type": "boolean"
 																			},
 																			"available": {
-																				"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																				"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
 																				"type": "boolean"
 																			}
 																		},
@@ -906,10 +907,11 @@
 																"confidence": {
 																	"properties": {
 																		"ai_context_available": {
+																			"description": "Indicates whether this entry has AI remote service validation",
 																			"type": "boolean"
 																		},
 																		"available": {
-																			"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
 																			"type": "boolean"
 																		}
 																	},
@@ -1830,10 +1832,11 @@
 																"confidence": {
 																	"properties": {
 																		"ai_context_available": {
+																			"description": "Indicates whether this entry has AI remote service validation",
 																			"type": "boolean"
 																		},
 																		"available": {
-																			"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service",
 																			"type": "boolean"
 																		}
 																	},
