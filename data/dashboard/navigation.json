@@ -246,27 +246,9 @@
 					"hasPermission": null
 				},
 				{
-					"title": "navigation.account.security_center.cfone_priorities",
-					"url": "/cloudforce-one/priorities",
+					"title": "navigation.account.security_center.threat_intelligence",
+					"url": "/security-center/threat-intelligence",
 					"hasPermission": null
-				},
-				{
-					"title": "navigation.account.security_center.cfone_reports",
-					"url": "/cloudforce-one/reports",
-					"hasPermission": null
-				},
-				{
-					"title": "navigation.account.security_center.cfone_requests",
-					"url": "/cloudforce-one/requests",
-					"hasPermission": null
-				},
-				{
-					"title": "navigation.account.security_center.cfone_threat_events",
-					"url": "/cloudforce-one/threat-events",
-					"hasPermission": null,
-					"labels": [
-						"new"
-					]
 				}
 			]
 		},
@@ -582,6 +564,16 @@
 			]
 		},
 		{
+			"title": "navigation.account.secrets_store",
+			"url": "/secrets-store",
+			"labels": [
+				"new"
+			],
+			"iconType": "lock",
+			"testId": "secrets-store",
+			"hasPermission": null
+		},
+		{
 			"title": "navigation.account.workers_for_platforms",
 			"url": "/workers-for-platforms",
 			"iconType": "workers-for-platforms",
@@ -666,6 +658,14 @@
 					"title": "navigation.account.workers.ai.ai-gateway",
 					"url": "/ai/ai-gateway",
 					"testId": "sidenav-ai-gateway-link",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.workers.ai.ai-rag",
+					"url": "/ai/ai-rag",
+					"labels": [
+						"beta"
+					],
 					"hasPermission": null
 				}
 			]
