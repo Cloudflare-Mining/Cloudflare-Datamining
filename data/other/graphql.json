@@ -730,7 +730,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
 		"__description": "",
-		"cpu": "Average CPU load",
+		"cpuLoad": "Average CPU load",
 		"gpuMemory": "Average GPU memory usage",
 		"memory": "Average memory usage",
 		"rxBandwidth": "Average RX bandwidth",
@@ -755,9 +755,12 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsMax": {
 		"__description": "",
+		"cpuLoad": "Maximum CPU load",
 		"gpuMemory": "Maximum GPU memory usage",
 		"memory": "Maximum memory usage",
+		"rxBandwidth": "Maximum RX bandwidth",
 		"rxBytes": "Total bytes received",
+		"txBandwidth": "Maximum TX bandwidth",
 		"txBytes": "Total bytes transmitted"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsOrderBy": {
@@ -3303,6 +3306,26 @@
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountMconnTelemetryEventsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
+		"count": "Recorded Event count",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountMconnTelemetryEventsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"kind": "Event kind"
+	},
+	"AccountMconnTelemetryEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetryEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
 		"count": "Recorded Event count",
@@ -3322,6 +3345,47 @@
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
+		"count": "Snapshot Disk count",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"sum": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"name": "Device name"
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsMax": {
+		"__description": "",
+		"inProgress": "I/Os currently in progress",
+		"major": "Device major number",
+		"minor": "Device minor number"
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsSum": {
+		"__description": "",
+		"discards": "Discards completed successfully (delta)",
+		"discardsMerged": "Discards merged (delta)",
+		"flushes": "Flushes completed successfully (delta)",
+		"merged": "Reads merged (delta)",
+		"reads": "Reads completed successfully (delta)",
+		"sectorsDiscarded": "Sectors discarded (delta)",
+		"sectorsRead": "Sectors read successfully (delta)",
+		"sectorsWritten": "Sectors written successfully (delta)",
+		"writes": "Writes completed (delta)",
+		"writesMerged": "Writes merged (delta)"
 	},
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
@@ -3364,6 +3428,37 @@
 		"writes": "Writes completed (delta)",
 		"writesMerged": "Writes merged (delta)"
 	},
+	"AccountMconnTelemetrySnapshotMountsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
+		"count": "Snapshot Mount count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"fileSystem": "File system on disk (EXT4, NTFS, etc.)",
+		"kind": "Kind of disk (HDD, SSD, etc.)",
+		"mountPoint": "Path where disk is mounted",
+		"name": "Name of the disk mount"
+	},
+	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsMax": {
+		"__description": "",
+		"availableBytes": "Available disk size (bytes)",
+		"isReadOnly": "Determines whether the disk is read-only",
+		"isRemovable": "Determines whether the disk is removable",
+		"totalBytes": "Total disk size (bytes)"
+	},
+	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
 		"count": "Snapshot Mount count",
@@ -3394,6 +3489,46 @@
 	},
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
+		"count": "Snapshot Netdev count",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"name": "Name of the network device"
+	},
+	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsSum": {
+		"__description": "",
+		"recvBytes": "Total bytes received (delta)",
+		"recvCompressed": "Compressed packets received (delta)",
+		"recvDrop": "Packets dropped (delta)",
+		"recvErrs": "Bad packets received (delta)",
+		"recvFifo": "FIFO overruns (delta)",
+		"recvFrame": "Frame alignment errors (delta)",
+		"recvMulticast": "Multicast packets received (delta)",
+		"recvPackets": "Total packets received (delta)",
+		"sentBytes": "Total bytes transmitted (delta)",
+		"sentCarrier": "Number of packets not sent due to carrier errors (delta)",
+		"sentColls": "Number of collisions (delta)",
+		"sentCompressed": "Number of compressed packets transmitted (delta)",
+		"sentDrop": "Number of packets dropped during transmission (delta)",
+		"sentErrs": "Number of transmission errors (delta)",
+		"sentFifo": "FIFO overruns (delta)",
+		"sentPackets": "Total packets transmitted (delta)"
 	},
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
@@ -3435,6 +3570,33 @@
 		"sentFifo": "FIFO overruns (delta)",
 		"sentPackets": "Total packets transmitted (delta)"
 	},
+	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
+		"count": "Snapshot Thermal count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"label": "Sensor identifier for the component"
+	},
+	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsMax": {
+		"__description": "",
+		"criticalCelcius": "Critical failure temperature of the component (degrees Celsius)",
+		"currentCelcius": "Current temperature of the component (degrees Celsius)",
+		"maxCelcius": "Maximum temperature of the component (degrees Celsius)"
+	},
+	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
 		"count": "Snapshot Thermal count",
@@ -3460,6 +3622,43 @@
 		"maxCelcius": "Maximum temperature of the component (degrees Celsius)"
 	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotsAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
+		"count": "Snapshot count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"version": "Version"
+	},
+	"AccountMconnTelemetrySnapshotsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotsAdaptiveGroupsMax": {
+		"__description": "",
+		"cpuCount": "Count of processors/cores",
+		"kernelBtime": "Boot time (seconds since Unix epoch)",
+		"kernelProcessesRunning": "Number of processes in runnable state",
+		"loadAverage15m": "The fifteen-minute load average",
+		"loadAverage1m": "The one-minute load average",
+		"loadAverage5m": "The five-minute load average",
+		"memoryActiveBytes": "Memory that has been used more recently",
+		"memoryAvailableBytes": "Estimate of how much memory is available for starting new applications",
+		"memoryBuffersBytes": "Relatively temporary storage for raw disk blocks",
+		"memoryCachedBytes": "In-memory cache for files read from the disk",
+		"memoryFreeBytes": "The sum of LowFree and HighFree",
+		"memoryInactiveBytes": "Memory which has been less recently used",
+		"memoryTotalBytes": "Total usable RAM"
+	},
+	"AccountMconnTelemetrySnapshotsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroups": {
@@ -4284,11 +4483,17 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "",
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
+		"mconnTelemetryEventsAdaptiveGroups": "",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotDisksAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotMountsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotNetdevsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotThermalsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "",
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
@@ -7840,11 +8045,17 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
+		"mconnTelemetryEventsAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
+		"mconnTelemetrySnapshotDisksAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotMountsAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotNetdevsAdaptiveGroups": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotThermalsAdaptiveGroups": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotThermalsStagingAdaptiveGroups": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotsAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
