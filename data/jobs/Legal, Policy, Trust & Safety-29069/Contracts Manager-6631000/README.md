@@ -5,44 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><span style="font-size: 10pt;"><strong>Available Locations: Austin, TX, San Francisco, CA, London, UK, or Lisbon, Portugal</strong></span></h2>
-<h2>About the department</h2>
-<p>As a Senior Director of Product at Cloudflare, you are responsible for building teams and products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
-<h2>About the role</h2>
-<p>Threat Intelligence is vital to all of our security offerings. Securing our customers' applications and networks is core to what we do. As part of this, our security products need to be able to rely on high quality threat intelligence that can guarantee we are detecting threats early and with low false positives. As the Senior Director of Product for Threat Intelligence, you will be working with a wide range of cross functional teams supporting our largest customers to ensure we have both the tooling and the processes to detect and react to attacks. You will ultimately help define the strategy of our Threat Intelligence approach, managing a capable team of product managers and delivering great solutions to help Cloudflare move into the much broader security space.</p>
-<h2>What you'll do</h2>
-<p>In this role you will shape the Threat Intelligence solutions offered by Cloudflare, working closely with the development team, support teams and other functions across Cloudflare, to listen to customer problems and deliver solutions that satisfy customers needs. You will solve problems that have wide impact and significance, shaping the future of security on the Internet.</p>
-<p>We operate with very small teams of highly motivated and experienced engineers and product professionals. This candidate will need to be able to understand the technology behind our products to help guide engineering decisions and prioritizations. A suitable candidate will have an exceptional understanding of engineering, customer management, or product, and a deep desire to learn. As this role is a management role, you will also be expected to hire and build a great team, and be able to report progress towards senior leadership and engage at an executive level across the company.&nbsp;</p>
-<p>Examples of desirable skills, knowledge and experience:</p>
+<p><strong>About the Department</strong></p>
+<p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class legal team to help the company avoid distractions, and guide company leadership around obstacles. Our legal team is made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>In this role, you’ll be a valued member of Cloudflare’s procurement legal team, a vital part of the commercial legal team.&nbsp;As a Contracts Manager at Cloudflare, you will play a pivotal role in drafting, negotiating, and managing a wide range of commercial agreements, ensuring alignment with our legal, regulatory, and operational standards. You will work closely with our Procurement team and be the first point of contact for responding to legal escalations related to inbound contracts, and you will also collaborate and work cross-functionally with other internal groups, across IT, Infrastructure, Security, and Privacy teams. The position is based in Austin, TX, Washington D.C., or San Francisco, CA and frequent communication with our other offices will be required.</p>
+<p><strong>Available Location: Austin, TX or Washington, DC</strong></p>
+<p><strong>What You’ll Be Doing</strong></p>
 <ul>
-	<li>7+ years of experience in a management position (product) or substantial management experience in cross functional roles/entrepreneurship</li>
-	<li>Customer facing experience, with large customer engagement with executive leadership</li>
-	<li>The ability to work in a fast-moving and ever-changing environment</li>
-	<li>Experience working alongside engineering, design, marketing teams etc. - engaging with senior cross functional leaders</li>
-	<li>Exceptional people skills and empathy</li>
-	<li>A high degree of attention to detail</li>
-	<li>A deep understanding of technical subjects and the internet</li>
-	<li>A deep understanding of cyber security topics</li>
-	<li>A kind and generous attitude towards customers and co-workers alike</li>
+	<li>Manage busy contract queue, thoroughly reviewing contracts and triaging other legal requests, working with legal counsel as needed</li>
+	<li>Act as the first point of contact for escalations from Procurement and other internal teams requiring legal input, addressing issues efficiently and aligning with internal policies</li>
+	<li>Conduct initial review of contracts in relation to risks stemming from contract language and internal legal thresholds, and collaborate with stakeholders to mitigate these risks effectively</li>
+	<li>Review, and negotiate a wide variety of vendor contracts, such as SaaS agreements, NDAs, MSAs, DPAs, DSAs, and other general commercial terms and conditions.</li>
+	<li>Communicate complex legal concepts and contract terms to various stakeholders in a clear and actionable manner, ensuring alignment and understanding across teams</li>
+	<li>Maintain a library of form documents, contract clauses, templates, and historical documents, and making updates to the material as needed</li>
+	<li>Work with cross functional teams like Privacy and Security to develop, maintain, and update contract templates, playbooks, and policies.&nbsp;</li>
+	<li>Provide input into the formulation, development, and/or revision of operating policies, procedures, and strategies for the procurement legal function, as appropriate&nbsp;</li>
 </ul>
-<h3>Responsibilities</h3>
-<p>You will:&nbsp;</p>
+<p>Requirements&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Take leadership. You will manage a team of product managers ensuring coverage and accountability for the myriad projects across the organization.&nbsp;</li>
-	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors</li>
-	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating customers to new and better systems and longer term ones like implementations of net new solutions not available today</li>
-	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
-	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
-	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
-	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
-	<li>This is a self-directed role where you will be expected to own a product suite vision, direction</li>
+	<li>B.A. or B.S. degree; paralegal certification a plus but not required</li>
+	<li>3+ years relevant business or legal experience&nbsp;</li>
+	<li>Ability to meet the needs of a high-growth, fast-paced Internet company</li>
+	<li>Great organizational skills and ability to prioritize workloads while maintaining attention to detail</li>
+	<li>Creative negotiation and problem-solving skills, balancing good judgment and business needs&nbsp;</li>
+	<li>Excellent interpersonal skills for facilitating collaboration by cultivating relationships and communicating with legal and cross-functional partners</li>
+	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence</li>
+	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace&nbsp;</li>
+</ul>
+<p>Bonus Points</p>
+<ul>
+	<li>Experience in a legal setting (law firm or in-house)</li>
+	<li>Experience with colocation and/or wholesale internet infrastructure agreements</li>
+	<li>Experience with inbound contracting and industry leading procurement processes</li>
+	<li>Experience using process/document management systems similar to CERTA, Zip, Ironclad, Jira, and/or DocuSign</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $257,000 - $314,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $286,000 - $350,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $302,000 - $369,000.</span></li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $102,000 - $124,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $119,000 - $145,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -71,6 +72,8 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
