@@ -1,21 +1,32 @@
-### `import {Agent} from "@cloudflare/agents"`
+### 🧠 `@cloudflare/agents` βeta!
 
-A place to run ALL your AI agents, in realtime, on the edge.
+A place to run ALL your AI agents.
 
-An `Agent` is a container for your agents. Built on Cloudflare's Durable Objects, it gives a stateful environment that can respond to inputs like emails, websockets, http requests, media streams, delays, crons, or even arbitrary function calls, and run long running processes and code. The Cloudflare network will quickly start and run these containers for you across a planetary network of edge data centers. You can combine agents with LLMs, workers, databases, and other services to build complex agentic workflows.
+Built on Cloudflare's Durable Objects, `@cloudflare/agents` gives a stateful environment that can respond to inputs like emails, websockets, http requests, media streams, delays and crons, or even arbitrary function calls, and run long running processes and code. The Cloudflare network will quickly start and run these containers for you across a planetary network of computers. You can combine agents with LLMs, workers, databases, and other services to build complex agentic workflows.
 
 ### examples
 
-- [Building effective AI agents with Cloudflare](#): A deep dive into implementing the major 5 LLM agent patterns with `@cloudflare/agents`.
+- [Building effective AI agents with Cloudflare](/guides/anthropic-patterns/README.md): A deep dive into implementing the major 5 LLM agent patterns with `@cloudflare/agents`.
+
+Coming soon -
+
 - [Humans in the loop, forever](#): A look at running AI agents that can interact with humans and run for years.
 - [Adding agents to an existing application/stack](#): A guide to adding agents to an existing application/stack.
-- (more soon)
+- (and more soon)
 
 ### get started
 
-You can make a brand new project with `npm create cloudflare@latest --template agents` which will generate a full stack project for building your and deploying your agents.
+Make a new full stack project:
 
-Alternately, run `npm install @cloudflare/agents` to install the package and follow the usage instructions below.
+```sh
+npm create cloudflare@latest -- --template agents
+```
+
+Or install the package in your wrangler project and follow the usage instructions below.
+
+```sh
+npm install @cloudflare/agents
+```
 
 ### usage
 
@@ -25,8 +36,8 @@ Alternately, run `npm install @cloudflare/agents` to install the package and fol
 import { Agent } from "@cloudflare/agents";
 import openai from "openai";
 
-export class MyEmailAgent extends Agent<Env> {
-  async run(props) {
+export class MyEmailAgent extends Agent {
+  async onRequest(request) {
     // ... run your agentic workflow in here
     // use ai sdk, langchain, direct calls to openai, anthropic, etc.
     // combine with KV, D1, R2, vectorize, etc.
@@ -37,6 +48,10 @@ export class MyEmailAgent extends Agent<Env> {
     });
     return result.choices[0].message.content;
   }
+  // or define your own methods
+  async run(props) {
+    // ...
+  }
 }
 ```
 
@@ -45,13 +60,15 @@ export class MyEmailAgent extends Agent<Env> {
 ```jsonc
 {
   // ...
-  "agents": [
-    {
-      "binding": "MyEmailAgent",
-      "class_name": "MyEmailAgent"
-      // you can also use an id param, like my-email-agent-:id@example.com
-    }
-  ]
+  "durable_objects": {
+    "bindings": [
+      {
+        "binding": "MyEmailAgent",
+        "class_name": "MyEmailAgent"
+        // you can also use an id param, like my-email-agent-:id@example.com
+      }
+    ]
+  }
 }
 ```
 
@@ -85,19 +102,9 @@ export default {
 };
 ```
 
-### connect your email to an agent
+### http/websockets
 
-[TODO]
-
-### connect your chat system to an agent
-
-[TODO]
-
-### lifecycle events
-
-`@cloudflare/agents` has several dx improvements on top of Durable Objects,like lifecycle handlers for http requests, websockets, and alarms and a single boolean config for enabling/disabling hibernation.
-
-- `onStart()`: Called when the server starts for the first time or after waking up from hibernation. You can use this to load data from storage and perform other initialization, such as retrieving data or configuration from other services or databases.
+Every agent can respond to http and websocket requests. You can use this to build chatbots, trigger workflows, and more.
 
 - `onConnect(connection, context)` - Called when a new websocket connection is established. You can use this to set up any connection-specific state or perform other initialization. Receives a reference to the connecting `Connection`, and a `ConnectionContext` that provides information about the initial connection request.
 
@@ -109,31 +116,17 @@ export default {
 
 - `onRequest(request): Response` - Called when a request is made to the server. This is useful for handling HTTP requests in addition to WebSocket connections.
 
-- `onEmail(email)` - Called when an email is received.
+### email (coming soon)
 
-- `onAlarm()` - Called when an alarm is triggered. You can set an alarm by calling `this.ctx.storage.setAlarm(Date)`. Read more about Durable Objects alarms [here](https://developers.cloudflare.com/durable-objects/api/alarms/).
+Cloudflare Agents can receive and send emails. After setting up your project to recieve emails ([instructions here](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)), you can route an email to your agent's `onEmail` method, run some code, and then optionally reply to the email.
 
-All these methods can be optionally `async`:
-
-### additional methods
-
-- `getConnectionTags(connection, context): string[]` - You can set additional metadata on connections by returning them from `getConnectionTags()`, and then filter connections based on the tag with `this.getConnections`.
-
-- `broadcast(message, exclude = [])` - Send a message to all websocket connections, optionally excluding connection ids listed in the second array parameter.
-
-- `getConnections(tags = [])` - Get all currently connected WebSocket connections, optionally filtered by tags set by `getConnectionTags()`. Returns an iterable list of `Connection`.
-
-- `getConnection(id)` - Get a connection by its ID.
-
-We also include the client for connecting to agents inside `@cloudflare/agents/client`, as well as a react hook for connecting to agents inside `@cloudflare/agents/react`.
-
-### scheduling (coming soon)
+### scheduling
 
 An `Agent` can schedule tasks to be run in the future by calling `this.schedule(when, callback, data)`, where `when` can be a delay, a Date, or a cron string; `callback` the function name to call, and `data` is an object of data to pass to the function.
 
 ```ts
 // schedule a task to run in 10 seconds
-this.schedule(Date.now() + 10000, "myTask", { message: "hello" });
+this.schedule(10, "myTask", { message: "hello" });
 
 // schedule a task to run at a specific date
 this.schedule(new Date("2025-01-01"), "myTask", { message: "hello" });
@@ -143,6 +136,9 @@ this.schedule("*/10 * * * *", "myTask", { message: "hello" });
 
 // schedule a task to run every 10 seconds, but only on mondays
 this.schedule("0 0 * * 1", "myTask", { message: "hello" });
+
+// cancel a scheduled task
+this.cancelSchedule(taskId);
 ```
 
 ### pause/resume
@@ -151,18 +147,66 @@ An `Agent` will shut down (hibernate) if it's idle for a few seconds, and wake u
 
 ```ts
 // save data to the database
-this.sql`INSERT INTO data (message) VALUES (${message})`;
+this.ctx.storage.sql.exec("INSERT INTO data (message) VALUES (${message})");
 
 // get data from the database
-const data = this.sql`SELECT * FROM data`.all();
+const data = this.ctx.storage.sql.exec("SELECT * FROM data").all();
 ```
+
+### persistence
+
+Each agent comes with an inbuilt sqlite database for persisting state. You can access it with `this.ctx.storage.sql` inside an agent. [Learn more about it here.](https://developers.cloudflare.com/durable-objects/get-started/tutorial-with-sql-api/)
+
+(coming soon) In addition, `this.state` is a key value store that is persisted across agent restarts.
+
+### memory (coming soon)
+
+The Cloudflare platform has a number of storage solutions for differing usecases: KV for key value storage, D1 for relational storage, R2 for object storage, and more. In particular, [vectorize](https://developers.cloudflare.com/vectorize/) is a vector database that makes building RAG systems easier.
+
+In addition to that... (coming soon)
+
+### workflows
+
+While it's extremely easy to run long running code inside a durable object, we also recommend using Cloudflare Workflows for building more complex workflows. This goves features like retries, sleeping, and evet triggers out of the box. Learn more about workflows [here](https://developers.cloudflare.com/workflows/).
+
+```ts
+import { WorkflowEntrypoint, Agent } from "@cloudflare/agents";
+
+export class MyWorkflow extends WorkflowEntrypoint {
+  async run(props) {
+    // ...
+  }
+}
+
+export class MyAgent extends Agent {
+  async run(props) {
+    this.env.MyWorkflow.create(props);
+  }
+}
+```
+
+### evals (coming soon)
+
+### observability (coming soon)
+
+### develop and test locally
+
+Cloudflare Agents can be developed and tested locally with `wrangler dev` or `vite dev`, and deployed with `wrangler deploy`. This means that it can be included in your existing Workers project and/or codebase.
+
+### bring your own X
+
+You can use any of the included solutions, or bring your own services. Have your own vector database/rag service? Maybe you want to use resend for emails? It all works great in the connectivity cloud!
+
+### python agents (coming soon)
+
+### self hosting (coming soon)
 
 ### how is this different from durable objects?
 
-[TODO]
-
 ### read more
 
+- [Build agents on Cloudflare](https://developers.cloudflare.com/agents/)
+- [A list of reasons why you should be using Cloudflare Workers for building your AI agent infrastructure/product/personal assistant](https://sunilpai.dev/posts/cloudflare-workers-for-ai-agents/)
 - [ai agents are local first clients](https://www.joshwcomeau.com/ai/local-first/)
 - [full stack ai agents](https://sunilpai.dev/posts/full-stack-ai-agents/)
 - [reliable ux for ai chat with cloudflare agents](https://sunilpai.dev/posts/reliable-ux-for-ai-chat-with-durable-objects/)
