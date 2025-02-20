@@ -209,7 +209,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		testId: "sidenav-waf-link",
-		tabs: w.DW
+		tabs: x.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -256,7 +256,7 @@ const navigation = {
 		iconType: "magic-firewall",
 		testId: "sidenav-magic-firewall-link",
 		hasPermission: L => !!(0, i.zJ)(L),
-		tabs: w.$$
+		tabs: x.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -266,7 +266,7 @@ const navigation = {
 			const U = !!(0, i.Wq)(L) && !!(0, i.fO)(L);
 			return !!(0, i.us)(L) || U
 		},
-		tabs: w.Dn,
+		tabs: x.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
@@ -275,7 +275,7 @@ const navigation = {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection",
 			hasPermission: L => (0, i.us)(L),
-			tabs: w.O1
+			tabs: x.O1
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -880,7 +880,7 @@ const navigation = {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: x.mt,
+			tabs: w.mt,
 			hasPermission: L => (0, i.$n)(L, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -897,7 +897,7 @@ const navigation = {
 			url: "/security/api-shield",
 			navigationType: "version",
 			hasPermission: L => (0, j.R0)(L),
-			tabs: x.Dw
+			tabs: w.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
