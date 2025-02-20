@@ -1149,6 +1149,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
@@ -1216,10 +1220,6 @@
 				"edit": false
 			},
 			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
 				"read": true,
 				"edit": true
 			},
@@ -1554,11 +1554,11 @@
 		"name": "Workers Admin",
 		"description": "Can manage Cloudflare Workers and related developer platform products.",
 		"permissions": {
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": true
 			},
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": true
 			},
@@ -1769,6 +1769,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"magic": {
 				"read": true,
 				"edit": false
@@ -1832,10 +1836,6 @@
 				"trace": true,
 				"raw": true,
 				"preview": true
-			},
-			"organization": {
-				"read": true,
-				"edit": false
 			},
 			"ces_analytics": {
 				"read": true,
@@ -1956,6 +1956,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
@@ -2022,10 +2026,6 @@
 				"edit": false
 			},
 			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
 				"read": true,
 				"edit": true
 			},

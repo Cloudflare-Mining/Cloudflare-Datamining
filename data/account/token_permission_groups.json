@@ -456,6 +456,22 @@
 		]
 	},
 	{
+		"id": "d7887c7a417e4cf2a69f1d01c1a1dc3b",
+		"name": "Auto Rag Read",
+		"description": "Grants access to reading data from Auto Rag",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "7fb8d27511b34d02994d005b520b679f",
+		"name": "Auto Rag Write",
+		"description": "Grants access to reading and writing data from Auto Rag",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "7cf72faf220841aabcfdfab81c43c4f6",
 		"name": "Billing Read",
 		"description": "Grants read access to billing profile, subscriptions, usage data and access to fetch invoices and entitlements",
