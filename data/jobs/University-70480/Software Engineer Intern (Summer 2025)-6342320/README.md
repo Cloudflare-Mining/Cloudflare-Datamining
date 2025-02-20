@@ -8,7 +8,8 @@
 <p><strong>Available location: Lisbon, Portugal</strong></p>
 <p><strong>About Cloudflare's Engineering teams</strong></p>
 <p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
-<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</p>
+<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. In AI Gateway we proxied 9 billion AI requests, in Email Routing we forward 40 million requests per day and in Workflows we execute some 2 million instances per week! We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture.&nbsp;</p>
+<p>Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</p>
 <p><strong>About the Internship Program</strong></p>
 <p>The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</p>
 <p>What would you do as a Cloudflare intern?</p>
@@ -20,21 +21,21 @@
 	<li>Present your project to the entire company at the end of the internship.</li>
 	<li>Get direct access to our executives and leadership team including our co-founders.</li>
 	<li>Learn and develop skills through our professional development workshops.</li>
-	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
 	<li>Receive Cloudflare swag and free Cloudflare products!</li>
 </ul>
-<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated critical thinking skills and drive to learn and adapt new technologies.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity, empathy and ability to get things done.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to commit to a 12 week summer internship.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">In office 3 days a week in Lisbon, Portugal.</span></li>
+	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a 12 week summer internship.</li>
+	<li>In office 3 days a week in Lisbon, Portugal.</li>
 </ul>
 <p><strong>Please note</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</span></li>
+	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
