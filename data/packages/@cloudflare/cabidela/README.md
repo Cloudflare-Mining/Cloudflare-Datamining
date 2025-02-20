@@ -6,14 +6,14 @@
 
 
 <p align="center">
-    <em>Small, fast, eval-less, [Cloudflare Workers](https://developers.cloudflare.com/workers/) compatible, dynamic JSON Schema validator.</em>
+    <em>Small, fast, eval-less, <a href="https://developers.cloudflare.com/workers/">Cloudflare Workers</a> compatible, dynamic JSON Schema validator.</em>
 </p>
 
 <hr />
 
-# What is
+## What is
 
-Cabidela is a small, fast, eval-less, [Cloudflare Workers](https://developers.cloudflare.com/workers/) compatible, dynamic JSON Schema validator. It implements a large subset of <https://json-schema.org/draft/2020-12/json-schema-validation> that should cover most use-cases. But not all. See limitations below.
+Cabidela is a small, fast, eval-less, Cloudflare Workers compatible, dynamic JSON Schema validator. It implements a large subset of <https://json-schema.org/draft/2020-12/json-schema-validation> that should cover most use-cases. But not all. See limitations below.
 
 ## How to use
 
@@ -187,11 +187,11 @@ JSON Schema validators like Ajv tend to follow this pattern:
 2. Compile the schema.
 3. Validate one or more payloads against the (compiled) schema.
 
-All of these steps have a cost. Compiling the schema makes sense if you are going to validate multiple payloads in the same session. But in the case of a Workers applications we typically want to validate with the HTTP request, one payload at a time, and then we discard the validator.
+All of these steps have a cost. Compiling the schema makes sense if you are going to validate multiple payloads in the same session. But in the case of a Workers application we typically want to validate with the HTTP request, one payload at a time, and then we discard the validator.
 
 Cabidela skips the compilation step and validates the payload directly against the schema.
 
-In our benchmarks, Cabidela is significantly faster than Ajv on all operations if you don't reuse the validator. Even when we skip the instantiation and compilation steps from Ajv, Cabidela still performs on par or better than Ajv.
+In our benchmarks, Cabidela is significantly faster than Ajv on all operations if you don't reuse the validator. Even when we skip the instantiation and compilation steps from Ajv, Cabidela still performs relatively well.
 
 Here are some results:
 
@@ -239,7 +239,7 @@ npm run benchmark
 
 ## Current limitations
 
-Cabidela supports most of JSON Schema specification for most use-cases, we think. However it's not complete. **Currently** we do not support:
+Cabidela supports most of JSON Schema specification, and should be useful for many applications, but it's not complete. **Currently** we do not support:
 
 - Multiple (array of) types `{ "type": ["number", "string"] }`
 - Regular expressions
