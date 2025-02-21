@@ -19,11 +19,10 @@
 	</ol>
 </ol>
 <h4><strong>About the Role</strong></h4>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <p>We are looking for experienced front-end engineers to join our Cloudflare Dashboard team. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We have growing front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build scalable frameworks and tooling to create awesome developer experiences and improve developer productivity.</p>
 <p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p>Technologies we use include React, Redux, TypeScript, ES6, Webpack, Cypress, Go, git, Bitbucket, Teamcity and many more..</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Technologies we use include React, Redux, TypeScript, ES6, Remix, Vite, Webpack, Cypress, Go, git, Bitbucket, Teamcity and many more..</p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
 	<li>BA/BS in Computer Science or equivalent</li>
 	<li>Minimum of 4+ years experience building web applications</li>
@@ -39,6 +38,7 @@
 	<li>Unit/integration testing experience</li>
 	<li>Experience working with and/or designing RESTful APIs</li>
 	<li>Working knowledge of internationalization, localization, and/or accessibility</li>
+	<li>Bonus points for experience with Remix</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
