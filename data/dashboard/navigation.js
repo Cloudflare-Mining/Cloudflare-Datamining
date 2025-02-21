@@ -689,8 +689,8 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: L => {
 				const U = (0, u.nA)(L),
-					W = !!(0, o.z1)("zone-level-rum")(L);
-				return (U == null ? void 0 : U.status) === "active" && W && !(0, r.yD)(L)
+					F = !!(0, o.z1)("zone-level-rum")(L);
+				return (U == null ? void 0 : U.status) === "active" && F && !(0, r.yD)(L)
 			}
 		}, {
 			title: "navigation.zone.analytics.security",
@@ -808,10 +808,10 @@ const navigation = {
 		hasPermission: L => {
 			const U = (0, u.nA)(L);
 			if ((0, r.yD)(L) || !(0, i.wB)(L, "zone_settings", "spectrum.app") || !U) return !1;
-			const W = !!((0, g.l8)(L) || (0, u.DQ)(L)),
+			const F = !!((0, g.l8)(L) || (0, u.DQ)(L)),
 				X = !!(0, u.ZB)(L, "spectrum", "enabled"),
 				re = !!(0, u.Ns)(U);
-			return X || W || !re
+			return X || F || !re
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
