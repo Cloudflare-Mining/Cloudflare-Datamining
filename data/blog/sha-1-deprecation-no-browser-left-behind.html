@@ -15,8 +15,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>This isn't the first time we've been through this exercise. The original hashing algorithm used for most certificate signatures in the early days of the web was MD5. In 2008, researchers demonstrated they were able to create a collision, generating a <a href="https://events.ccc.de/congress/2008/Fahrplan/attachments/1251_md5-collisions-1.0.pdf">forged MD5-signed intermediate certificate that could then be used to impersonate any domain on the Internet</a>. It took browser makers until 2013 to fully deprecate MD5 support and switch to the stronger SHA-1 algorithm. The good news was browsers, back to the first versions of Mozilla and Internet Explorer, supported SHA-1 alongside MD5 so the transition, while still painful, left virtually no one behind.</p>
-	<p>Computers keep getting faster and now SHA-1 is increasingly <a href="https://www.schneier.com/blog/archives/2012/10/when_will_we_se.html">vulnerable to potential collision attacks</a>. The estimate today is that it would likely cost around USD$700,000 to generate a SHA-1 collision. By 2021, the price is forecast to fall to just USD$43,000. There’s concern <a href="https://threatpost.com/practical-sha-1-collision-months-not-years-away/114979">those estimates are optimistic</a>, if anything. To ensure security, it therefore makes sense for modern browsers to deprecate SHA-1 support and move to the more secure SHA-256 algorithm, also known as SHA-2.</p>
+	<p>This isn't the first time we've been through this exercise. The original hashing algorithm used for most certificate signatures in the early days of the web was MD5. In 2008, researchers demonstrated they were able to create a collision, generating a <a href="https://events.ccc.de/congress/2008/Fahrplan/attachments/1251_md5-collisions-1.0.pdf">forged MD5-signed intermediate certificate that could then be used to impersonate any domain on the Internet</a>. It took browser makers until 2013 to fully deprecate MD5 support and switch to the stronger SHA-1 algorithm. The good news was browsers, back to the first versions of Mozilla and Internet Explorer, supported SHA-1 alongside MD5 so the transition, while still painful, left virtually no one behind.
+
+		Computers keep getting faster and now SHA-1 is increasingly <a href="http://web.archive.org/web/20160123155707/https://www.schneier.com/blog/archives/2012/10/when_will_we_se.html">vulnerable to potential collision attacks</a>. The estimate today is that it would likely cost around USD$700,00 to generate an SHA-1 collision. By 2021, the price is forecast to fall to just USD$43,000. There's concern <a href="http://web.archive.org/web/20151223003430/https://threatpost.com/practical-sha-1-collision-months-not-years-away/114979">those estimates are optimistic</a>, if anything. To ensure security, it therefore makes sense for modern browsers to deprecate SHA-1 support and move to the more secure SHA-256 algorithm, also known as SHA-2.</p>
 	<h4>SHA-2: This Time It’s Different</h4>
 	<p>Unfortunately, unlike with the deprecation of MD5, where SHA-1 was widely available across even legacy browsers, SHA-2 support is more limited. Windows XP older than Service Pack 3, for instance, has no SHA-2 support. In addition, many less than 5-year-old Android phones (pre-Gingerbread) don't support SHA-2 completely. Given how difficult some carriers make it to upgrade phones, many of these legacy phones are still in use today.</p>
 	<p>In a Silicon Valley tech company, where most employees get a new laptop every year and having a 5-year-old phone is unheard of, this may not seem like a problem. But the Internet is used by billions of people around the world and most of them don’t have the latest technology. To understand the impact, we spent the last few weeks testing browser connections to CloudFlare's network for SHA-2 support. We see approximately 1 trillion page views for more than 2.2 billion unique visitors every month, which gives us a pretty representative sample of global traffic.</p>
@@ -34,63 +35,223 @@
 	</figure>
 	<p>Now, if it were just a bunch of large enterprises in the United States that refused to get off old versions of Windows XP, then you could make an argument that this is actually a good thing. Unfortunately, the data shows that's not the case. The United States has 99.26% SHA-2 support, making it the 15th most modern browser market (out of more than 190 countries we saw traffic from during our test). In fact, SHA-2 support in Western Europe and North America is universally over 99%.</p>
 	<p>So where isn't SHA-2 supported? Here are the 25 countries with the lowest SHA-2 support:</p>
-	<p><b>Country</b></p>
-	<p><b>Percentage of Browsers Without SHA-2 Support</b></p>
-	<p>China</p>
-	<p>6.08%</p>
-	<p>Cameroon</p>
-	<p>5.39%</p>
-	<p>Yemen</p>
-	<p>5.25%</p>
-	<p>Sudan</p>
-	<p>4.69%</p>
-	<p>Egypt</p>
-	<p>4.85%</p>
-	<p>Libya</p>
-	<p>4.83%</p>
-	<p>Ivory Coast</p>
-	<p>4.67%</p>
-	<p>Nepal</p>
-	<p>4.52%</p>
-	<p>Ghana</p>
-	<p>4.42%</p>
-	<p>Nigeria</p>
-	<p>4.32%</p>
-	<p>Ethiopia</p>
-	<p>3.82%</p>
-	<p>Iran</p>
-	<p>3.78%</p>
-	<p>Tanzania</p>
-	<p>3.72%</p>
-	<p>Syria</p>
-	<p>3.63%</p>
-	<p>Paraguay</p>
-	<p>3.53%</p>
-	<p>Angola</p>
-	<p>3.50%</p>
-	<p>Kenya</p>
-	<p>3.29%</p>
-	<p>Algeria</p>
-	<p>3.12%</p>
-	<p>Bahrain</p>
-	<p>3.09%</p>
-	<p>Nicaragua</p>
-	<p>3.08%</p>
-	<p>Myanmar</p>
-	<p>3.01%</p>
-	<p>Senegal</p>
-	<p>2.94%</p>
-	<p>Bangladesh</p>
-	<p>2.58%</p>
-	<p>Venezuela</p>
-	<p>2.58%</p>
-	<p>Pakistan</p>
-	<p>2.55%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Country</b></p>
+				</td>
+				<td>
+					<p><b>Percentage of Browsers Without SHA-2 Support</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>China</p>
+				</td>
+				<td>
+					<p>6.08%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cameroon</p>
+				</td>
+				<td>
+					<p>5.39%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Yemen</p>
+				</td>
+				<td>
+					<p>5.25%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Sudan</p>
+				</td>
+				<td>
+					<p>4.69%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Egypt</p>
+				</td>
+				<td>
+					<p>4.85%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Libya</p>
+				</td>
+				<td>
+					<p>4.83%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ivory Coast</p>
+				</td>
+				<td>
+					<p>4.67%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nepal</p>
+				</td>
+				<td>
+					<p>4.52%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ghana</p>
+				</td>
+				<td>
+					<p>4.42%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nigeria</p>
+				</td>
+				<td>
+					<p>4.32%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ethiopia</p>
+				</td>
+				<td>
+					<p>3.82%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Iran</p>
+				</td>
+				<td>
+					<p>3.78%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tanzania</p>
+				</td>
+				<td>
+					<p>3.72%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Syria</p>
+				</td>
+				<td>
+					<p>3.63%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Paraguay</p>
+				</td>
+				<td>
+					<p>3.53%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Angola</p>
+				</td>
+				<td>
+					<p>3.50%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Kenya</p>
+				</td>
+				<td>
+					<p>3.29%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Algeria</p>
+				</td>
+				<td>
+					<p>3.12%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bahrain</p>
+				</td>
+				<td>
+					<p>3.09%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nicaragua</p>
+				</td>
+				<td>
+					<p>3.08%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Myanmar</p>
+				</td>
+				<td>
+					<p>3.01%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Senegal</p>
+				</td>
+				<td>
+					<p>2.94%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bangladesh</p>
+				</td>
+				<td>
+					<p>2.58%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Venezuela</p>
+				</td>
+				<td>
+					<p>2.58%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Pakistan</p>
+				</td>
+				<td>
+					<p>2.55%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>We double-checked these numbers with other large Internet providers who had conducted similar surveys and confirmed their results were similar.</p>
 	<p>Unfortunately, this list largely overlaps with lists of the <a href="http://data.worldbank.org/indicator/NY.GDP.PCAP.CD?order=wbapi_data_value_2013+wbapi_data_value&amp;sort=asc">poorest</a>, <a href="https://freedomhouse.org/report/special-reports/worst-worst-2012-worlds-most-repressive-societies">most repressive</a>, and <a href="https://en.wikipedia.org/wiki/List_of_ongoing_armed_conflicts">most war torn</a> countries in the world. In other words, after December 31st most of the encrypted web will be cut off from the most vulnerable populations of Internet users who need encryption the most. And, unfortunately, if we're going to bring the next 2 billion Internet users online, a lot of them are going to be doing so on secondhand Android phones, so this problem isn't going away any time soon.</p>
 	<h4>SHA-1 Fallback</h4>
-	<p>The practical solution is to serve SHA-2 signed certificates for modern browsers and fall back to SHA-1 certificates for browsers that cannot support SHA-2. That ensures modern browsers can deprecate SHA-1 but we can continue to support users in the developing world on legacy devices.</p>
-	<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fallback to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise">Enterprise</a> customers today and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
+	<p>The practical solution is to serve SHA-2 signed certificates for modern browsers and fall back to SHA-1 certificates for browsers that cannot support SHA-2. That ensures modern browsers can deprecate SHA-1, but we can continue to support users in the developing world on legacy devices.</p>
+	<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fall back to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise">Enterprise</a> customers today, and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o4W75kwZYSrfUpzxbaaxr/b64e7059ef7501ac2b42674bc4bac57e/disable-standalone.png" alt="image alt text" class="kg-image" width="1926" height="488" loading="lazy">
@@ -106,89 +267,330 @@
 	<p>For instance, Alibaba, the Chinese Internet commerce giant, supports SHA-1 fallback across many of its sites. That's not surprising given more than 6% of their Chinese customers could not securely buy from their online store if they only supported SHA-2.</p>
 	<p>Facebook also supports SHA-1 fallback across many of their sites. Again, that's not surprising given the company's breadth of user base and ambitions to bring more users online across the developing world.</p>
 	<p>Here is the exclusive club of non-CloudFlare sites in the top-100,000 that support SHA-1 fallback:</p>
-	<p><b>Website</b></p>
-	<p><b>Notes</b></p>
-	<p>tmall.com</p>
-	<p>Alibaba</p>
-	<p>taobao.com</p>
-	<p>Alibaba</p>
-	<p>1688.com</p>
-	<p>Alibaba</p>
-	<p>etao.com</p>
-	<p>Alibaba</p>
-	<p>tmall.hk</p>
-	<p>Alibaba</p>
-	<p>alitrip.com</p>
-	<p>Alibaba</p>
-	<p>taiwan.tmall.com</p>
-	<p>Alibaba</p>
-	<p>jiyoujia.com</p>
-	<p>Alibaba</p>
-	<p>yunos.com</p>
-	<p>Alibaba</p>
-	<p>facebook.com</p>
-	<p>Facebook</p>
-	<p>whatsapp.com</p>
-	<p>Facebook</p>
-	<p>fbcdn.net</p>
-	<p>Facebook</p>
-	<p>messenger.com</p>
-	<p>Facebook</p>
-	<p>fbsbx.com</p>
-	<p>Facebook</p>
-	<p>fb.com</p>
-	<p>Facebook</p>
-	<p>sogou.com</p>
-	<p>Primarily Chinese audience</p>
-	<p>voc.com.cn</p>
-	<p>Primarily Chinese audience</p>
-	<p>dresslink.com</p>
-	<p>Primarily Chinese audience</p>
-	<p>mongodb.com</p>
-	<p>220-volt.ru</p>
-	<p>infostart.ru</p>
-	<p>SHA-1 certificate expires in 2024 (!)</p>
-	<p>sailthru.com</p>
-	<p>invitro.ru</p>
-	<p>relax.by</p>
-	<p>ligabbva.com</p>
-	<p>deindeal.ch</p>
-	<p>webtatic.com</p>
-	<p>liftmaster.com</p>
-	<p>jobvite.com</p>
-	<p>SHA-1 certificate expired</p>
-	<p>udsm.ac.tz</p>
-	<p>SHA-1 certificate expired</p>
-	<p>rdvmedicaux.com</p>
-	<p>SHA-1 certificate expired</p>
-	<p>univ-nantes.fr</p>
-	<p>SHA-1 certificate expired</p>
-	<p>l2inc.com</p>
-	<p>SHA-1 certificate expired</p>
-	<p>hellweg.de</p>
-	<p>SHA-1 certificate expired</p>
-	<p>meintrendyhandy.de</p>
-	<p>SHA-1 certificate expired</p>
-	<p>inweb24.com</p>
-	<p>SHA-1 certificate expired</p>
-	<p>planetnatural.com</p>
-	<p>SHA-1 certificate expired</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b><u>Website</u></b></p>
+				</td>
+				<td>
+					<p><b><u>Notes</u></b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>tmall.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>taobao.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1688.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>etao.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>tmall.hk</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>alitrip.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>taiwan.tmall.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>jiyoujia.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>yunos.com</p>
+				</td>
+				<td>
+					<p>Alibaba</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>facebook.com</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>whatsapp.com</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>fbcdn.net</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>messenger.com</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>fbsbx.com</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>fb.com</p>
+				</td>
+				<td>
+					<p>Facebook</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sogou.com</p>
+				</td>
+				<td>
+					<p>Primarily Chinese audience</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>voc.com.cn</p>
+				</td>
+				<td>
+					<p>Primarily Chinese audience</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>dresslink.com</p>
+				</td>
+				<td>
+					<p>Primarily Chinese audience</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>mongodb.com</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>220-volt.ru</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>infostart.ru</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expires in 2024 (!)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sailthru.com</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>invitro.ru</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>relax.by</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ligabbva.com</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>deindeal.ch</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>webtatic.com</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>liftmaster.com</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>jobvite.com</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>udsm.ac.tz</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>rdvmedicaux.com</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>univ-nantes.fr</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>l2inc.com</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>hellweg.de</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>meintrendyhandy.de</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>inweb24.com</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>planetnatural.com</p>
+				</td>
+				<td>
+					<p>SHA-1 certificate expired</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>CloudFlare, as of today, adds another 4,000 sites of the top 100,000 to this soon-to-be-less-exclusive club.</p>
 	<h4>Chicken &amp; Egg: Mozilla</h4>
-	<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to a SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
+	<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to an SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42K28oUV57ioVVJA6ncoRb/7bb6f415d1328859765c90a7edc91299/image_5.png" alt="Mozilla logo" class="kg-image" width="267" height="272" loading="lazy">
 
 	</figure>
-	<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force a SHA-2 only Internet.</p>
+	<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand-new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force an SHA-2 only Internet.</p>
 	<p>We worked with the Mozilla team as we developed our SHA-1 fallback feature. They helped us kick the tires on the feature and ensure that we were able to fingerprint connections to deliver the most secure experience possible based on what the browser could support. In the new year, we'll open source the algorithm we're using so even sites that are not on CloudFlare can properly support SHA-1 fallback.</p>
 	<h4>Recommendations</h4>
 	<p>What should the industry do? <a href="https://www.facebook.com/notes/alex-stamos/the-sha-1-sunset/10153782990367929">Along with Facebook</a>, we propose the following to ensure the most up-to-date security for modern browsers while responsibly supporting legacy clients that can't support SHA-2. First, modern browsers should continue to remove support for SHA-1 certificates. There is no doubt that their security is in question. If a user is running a modern browser, all connections should require SHA-256 or better for the certificate signature algorithm.</p>
 	<p>Second, we urge the CA/B Forum, the industry group that sets encryption policy for certificate authorities and browsers, to create a new class of certificate. Today certificates come in multiple classes: Domain Validated (DV), which can be issued just by proving someone controls a domain; Organization Validated (OV), which can be issued if the domain is validated and some vetting is done on the organization requesting the certificate; and Extended Validation (EV), which require a more thorough vetting of the organization requesting the certificate.</p>
 	<p>We propose a new Legacy Verified (LV) certificate. These certificates would allow legacy signature protocols, such as SHA-1, and only be issued to organizations that can confirm they properly only issue certs based on modern protocols to modern browsers while falling back for legacy browsers.</p>
 	<p>Finally, the organizations that provide SHA-1 fallback support should commit that if a vulnerability is discovered which allows some form of downgrade attack — where a modern browser can be tricked into receiving a certificate signed with an insecure protocol — and the vulnerability cannot be patched then they will withdraw fallback support. The CA/B Forum should make this a requirement of an organization being issued LV certificates.</p>
-	<p>CloudFlare has worked to ensure that we can continue to responsibly provide SHA-1 support for all our paid customers even after the new year. We believe this is critical for ensuring that we don't cut off the world's most vulnerable populations from access to encrypted content online. If you’re not a CloudFlare customer and you are worried about supporting legacy browsers, make sure you get yourself a SHA-1 certificate before the end of the year. After that, unless our proposal for LV certificates is adopted, if you want to enable encryption for all Internet users it will be too late.</p>
+	<p>CloudFlare has worked to ensure that we can continue to responsibly provide SHA-1 support for all our paid customers even after the new year. We believe this is critical for ensuring that we don't cut off the world's most vulnerable populations from access to encrypted content online. If you’re not a CloudFlare customer, and you are worried about supporting legacy browsers, make sure you get yourself an SHA-1 certificate before the end of the year. After that, unless our proposal for LV certificates is adopted, if you want to enable encryption for all Internet users it will be too late.</p>
 	<h4>December 23, 2015 Update</h4>
 	<p>Twitter has indicated their <a href="https://blog.twitter.com/2015/sunsetting-sha-1">backing for the proposal</a> to create LV certs.</p>
 </div>
