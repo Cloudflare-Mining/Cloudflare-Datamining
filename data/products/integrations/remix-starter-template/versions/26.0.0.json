@@ -1,0 +1,346 @@
+{
+	"alias": "remix-starter-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".eslintrc.cjs",
+				".gitignore",
+				"README.md",
+				"load-context.ts",
+				"package-lock.json",
+				"package.json",
+				"postcss.config.js",
+				"server.ts",
+				"tailwind.config.ts",
+				"tsconfig.json",
+				"vite.config.ts",
+				"worker-configuration.d.ts",
+				"wrangler.json",
+				"app/entry.client.tsx",
+				"app/entry.server.tsx",
+				"app/root.tsx",
+				"app/tailwind.css",
+				"public/.assetsignore",
+				"public/favicon.ico",
+				"public/logo-dark.png",
+				"public/logo-light.png",
+				"app/routes/_index.tsx"
+			],
+			"replacements": {
+				"remix-starter-template": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Build a full-stack web application with Remix.",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Remix Framework Starter",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Remix Framework Starter",
+			"products": [
+				"Workers"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/eb6781d2-a092-458b-772c-97b1cdaaf700/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".eslintrc.cjs",
+								"content": {
+									"$ref": "assets://template/files/.eslintrc.cjs"
+								}
+							},
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "load-context.ts",
+								"content": {
+									"$ref": "assets://template/files/load-context.ts"
+								}
+							},
+							{
+								"filename": "package-lock.json",
+								"content": {
+									"$ref": "assets://template/files/package-lock.json"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "postcss.config.js",
+								"content": {
+									"$ref": "assets://template/files/postcss.config.js"
+								}
+							},
+							{
+								"filename": "server.ts",
+								"content": {
+									"$ref": "assets://template/files/server.ts"
+								}
+							},
+							{
+								"filename": "tailwind.config.ts",
+								"content": {
+									"$ref": "assets://template/files/tailwind.config.ts"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "vite.config.ts",
+								"content": {
+									"$ref": "assets://template/files/vite.config.ts"
+								}
+							},
+							{
+								"filename": "worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/worker-configuration.d.ts"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": "app/entry.client.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/entry.client.tsx"
+								}
+							},
+							{
+								"filename": "app/entry.server.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/entry.server.tsx"
+								}
+							},
+							{
+								"filename": "app/root.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/root.tsx"
+								}
+							},
+							{
+								"filename": "app/tailwind.css",
+								"content": {
+									"$ref": "assets://template/files/app/tailwind.css"
+								}
+							},
+							{
+								"filename": "public/.assetsignore",
+								"content": {
+									"$ref": "assets://template/files/public/.assetsignore"
+								}
+							},
+							{
+								"filename": "public/favicon.ico",
+								"content": {
+									"$ref": "assets://template/files/public/favicon.ico"
+								}
+							},
+							{
+								"filename": "public/logo-dark.png",
+								"content": {
+									"$ref": "assets://template/files/public/logo-dark.png"
+								}
+							},
+							{
+								"filename": "public/logo-light.png",
+								"content": {
+									"$ref": "assets://template/files/public/logo-light.png"
+								}
+							},
+							{
+								"filename": "app/routes/_index.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/routes/_index.tsx"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".eslintrc.cjs",
+					"content": {
+						"$ref": "assets://template/files/.eslintrc.cjs"
+					}
+				},
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "load-context.ts",
+					"content": {
+						"$ref": "assets://template/files/load-context.ts"
+					}
+				},
+				{
+					"filename": "package-lock.json",
+					"content": {
+						"$ref": "assets://template/files/package-lock.json"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "postcss.config.js",
+					"content": {
+						"$ref": "assets://template/files/postcss.config.js"
+					}
+				},
+				{
+					"filename": "server.ts",
+					"content": {
+						"$ref": "assets://template/files/server.ts"
+					}
+				},
+				{
+					"filename": "tailwind.config.ts",
+					"content": {
+						"$ref": "assets://template/files/tailwind.config.ts"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "vite.config.ts",
+					"content": {
+						"$ref": "assets://template/files/vite.config.ts"
+					}
+				},
+				{
+					"filename": "worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/worker-configuration.d.ts"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": "app/entry.client.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/entry.client.tsx"
+					}
+				},
+				{
+					"filename": "app/entry.server.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/entry.server.tsx"
+					}
+				},
+				{
+					"filename": "app/root.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/root.tsx"
+					}
+				},
+				{
+					"filename": "app/tailwind.css",
+					"content": {
+						"$ref": "assets://template/files/app/tailwind.css"
+					}
+				},
+				{
+					"filename": "public/.assetsignore",
+					"content": {
+						"$ref": "assets://template/files/public/.assetsignore"
+					}
+				},
+				{
+					"filename": "public/favicon.ico",
+					"content": {
+						"$ref": "assets://template/files/public/favicon.ico"
+					}
+				},
+				{
+					"filename": "public/logo-dark.png",
+					"content": {
+						"$ref": "assets://template/files/public/logo-dark.png"
+					}
+				},
+				{
+					"filename": "public/logo-light.png",
+					"content": {
+						"$ref": "assets://template/files/public/logo-light.png"
+					}
+				},
+				{
+					"filename": "app/routes/_index.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/routes/_index.tsx"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "26.0.0"
+}
