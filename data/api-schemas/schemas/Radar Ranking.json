@@ -110,7 +110,7 @@
 														"properties": {
 															"id": {
 																"example": 81,
-																"type": "number"
+																"type": "integer"
 															},
 															"name": {
 																"example": "Content Servers",
@@ -118,7 +118,7 @@
 															},
 															"superCategoryId": {
 																"example": 26,
-																"type": "number"
+																"type": "integer"
 															}
 														},
 														"required": [
@@ -161,8 +161,7 @@
 												}
 											},
 											"required": [
-												"categories",
-												"top_locations"
+												"categories"
 											],
 											"type": "object"
 										}
@@ -234,6 +233,167 @@
 			}
 		],
 		"summary": "Get domains rank details",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ranking/internet_services/categories": {
+		"description": "Get the list of Internet services categories.",
+		"operationId": "radar-get-ranking-internet-services-categories",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of dates to filter the ranking.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Array of dates to filter the ranking.",
+					"example": "2022-09-19",
+					"items": {
+						"format": "date",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"categories_0": {
+											"items": {
+												"properties": {
+													"name": {
+														"example": "Generative AI",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"categories_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Internet services categories",
 		"tags": [
 			"Radar Ranking"
 		],
@@ -780,6 +940,19 @@
 				}
 			},
 			{
+				"description": "Filter by domain category.",
+				"in": "query",
+				"name": "domainCategory",
+				"schema": {
+					"description": "Filter by domain category.",
+					"example": "News & Media",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
@@ -1029,6 +1202,19 @@
 				"schema": {
 					"description": "Array of locations (alpha-2 country codes).",
 					"example": "US",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter by domain category.",
+				"in": "query",
+				"name": "domainCategory",
+				"schema": {
+					"description": "Filter by domain category.",
+					"example": "News & Media",
 					"items": {
 						"type": "string"
 					},
