@@ -7,6 +7,7 @@
 </div>
 <h3><strong>Finance Business Partner, G&amp;A</strong></h3>
 <p><strong>Locations -&nbsp;</strong>Hiring for this role in Austin, Texas&nbsp;</p>
+<p><strong>Level:</strong> Individual Contributor</p>
 <h4><strong>About the role</strong></h4>
 <p>The FP&amp;A and Business Operations Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. Team members in G&amp;A Finance partner closely with business leaders in IT, CFO org, Legal, People &amp; Places and cross-functionally with R&amp;D, Sales &amp; Marketing Finance teams. Members of this team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
 <h4><strong>What you'll do</strong></h4>

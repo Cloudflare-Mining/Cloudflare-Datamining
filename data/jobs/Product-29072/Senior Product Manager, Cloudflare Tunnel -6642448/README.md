@@ -5,27 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location: </strong>Lisbon, Portugal</p>
+<h4><strong>Role Summary&nbsp;</strong></h4>
+<p>We are hiring a Product Manager for <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>. Cloudflare Tunnel easily and securely connects our customers' infrastructure to the Cloudflare Global Network. Today, there are a half a million active Tunnels deployed across hundreds of thousands of our customer’s accounts.</p>
+<p>Our connector is also flexible enough to support a variety of use cases whether that be connecting a local HTTP server, web services served by a Kubernetes cluster, or an entire private network segment to Cloudflare. The goal of our connector is not just to create software that is reliable and performant for administrators, but something that is also ridiculously easy to use by any individual around the world.&nbsp;</p>
+<p>In this role you will shape the product, working closely with the development team and other functions across Cloudflare, to listen to customer problems and devise solutions that solve them. You will work to ensure the connector, which has been deployed on millions of networks, is simple, secure, and performant for all use cases. You will solve problems that have wide impact and significance, shaping the future of connectivity on the Internet.</p>
+<p>We operate with small teams of highly motivated and experienced engineers and product professionals. You will need an understanding of networking and, what deployment of software looks like in all sizes of companies and the ability to help customers troubleshoot complex deployment issues. As a product that has low level network interactions with all parts of the enterprise stack, candidates will need both technical depth, and empathy and understanding to work with customers of all levels of sophistication.&nbsp;</p>
+<h4><strong>Role Responsibilities&nbsp;</strong></h4>
+<p>As a member of the growing team of product managers your responsibilities include:&nbsp;</p>
 <ul>
-	<li>Attends to customers’ needs, provides timely and friendly service, and handles complaints gracefully.</li>
-	<li>Communicates clearly, directly, and professionally with customers and team members.</li>
-	<li>Works effectively with kitchen and other staff to ensure smooth service.</li>
-	<li>Addresses customer or service issues quickly with creativity and resourcefulness.</li>
-	<li>Handles multiple tables efficiently, prioritizes tasks under pressure.</li>
-	<li>Ensures orders are accurate, tables are clean, and presentation meets standards.</li>
-	<li>Shows up on time, prepared, and stays focused on quality service.</li>
-	<li>Maintains positivity and composure, even during busy shifts or difficult situations.</li>
+	<li>Own the product vision for your area. Ensure that it aligns with the overall product and company vision.</li>
+	<li>Represent the customer. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer’s voice into the creation process.</li>
+	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li>Author use cases and prioritize requirements. Translate market observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and other stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Develop new opportunities. With your finger on the pulse of the market, the customers and the engineering teams, you are uniquely positioned to bring new products to market that solve real customer problems.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience:</strong></p>
+<h4><strong>Role Requirements</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Proven ability to attend to customers’ needs and provide prompt, friendly service while effectively managing complaints and ensuring guest satisfaction.</li>
-	<li>Strong verbal communication skills, with the ability to convey information clearly and professionally to both customers and team members.</li>
-	<li>Experience working collaboratively with kitchen staff and fellow team members to ensure seamless service and a positive dining experience.</li>
-	<li>Resourceful in addressing customer and service issues quickly and creatively, demonstrating a proactive approach to problem resolution.</li>
-	<li>Ability to efficiently manage multiple tables and prioritize tasks under pressure, ensuring timely service without compromising quality.</li>
-	<li>Strong focus on accuracy in order-taking and presentation, along with maintaining cleanliness and organization in the dining area.</li>
-	<li>Commitment to punctuality, preparedness for each shift, and a strong work ethic focused on delivering quality service.</li>
-	<li>Maintains a positive demeanor and composure during busy shifts or challenging situations, contributing to a supportive team environment.</li>
+	<li>5+ years of experience in product management working alongside engineering, sales engineering, and design teams</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in an organization with multiple stakeholders</li>
+	<li>Ability to to support customers in all phases: pre-sales, piloting and post sales support</li>
+	<li>Working knowledge of VPNs, Routing, DNS, Firewalls, Client/Server architectures is required</li>
+	<li>Exceptional empathy, curiosity, attention to detail, and problem solving abilities</li>
+</ul>
+<p><strong>Bonus points if you also have:&nbsp;</strong></p>
+<ul>
+	<li>Working knowledge of how the Internet works at network layers 3 through 7.</li>
+	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
+	<li>Domain expertise (e.g. as a practitioner or technology provider) in several of: HTTP content delivery, network performance, browser technologies and Internet security.</li>
+	<li>A solid understanding of RESTful API design &amp; documentation.</li>
+	<li>Pricing strategy and revenue forecasting experience.</li>
+	<li>BS/MS in computer science or engineering</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -7,7 +7,6 @@
 </div>
 <p><span style="font-size: 12pt;">Available Locations:&nbsp;</span></p>
 <ul>
-	<li><span style="font-size: 12pt;">Austin, TX</span></li>
 	<li><span style="font-size: 12pt;">Lisbon, Portugal, </span></li>
 	<li><span style="font-size: 12pt;">London, United Kingdom</span></li>
 </ul>
