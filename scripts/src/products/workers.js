@@ -81,6 +81,11 @@ const reqs = [
 		method: 'DELETE',
 		write: false,
 	},
+	{
+		name: 'builds-limits-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/builds/account/limits`,
+		method: 'GET',
+	},
 ];
 const results = {};
 console.log('Making requests...');
