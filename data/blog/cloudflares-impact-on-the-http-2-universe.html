@@ -11,42 +11,142 @@
 	</div>
 	<p>Previously, we showcased browser market share data from our <a href="https://www.cloudflare.com">own website</a>. Using these numbers, we predicted the ratio of HTTP/2 traffic that we expected to see once enabled. Now, we can compare this original data set with updated data from the last 48 hours.</p>
 	<p>Below is the market share of HTTP/2 capable browsers that we saw on our website during a 48 hour period. The first one was before our HTTP/2 launch, the other one was last week. Both data sets were pulled from Google Analytics, and user agents were analyzed for HTTP/2 support.</p>
-	<p>HTTP/2 capable browser</p>
-	<p>Global Market Share Late Nov 2015</p>
-	<p>Global Market Share Late Jan 2016</p>
-	<p>IE 11 on Windows 10</p>
-	<p>0.14%</p>
-	<p>0.34%</p>
-	<p>Edge 12, and 13</p>
-	<p>0.35%</p>
-	<p>0.48%</p>
-	<p>Firefox 36 - 45</p>
-	<p>5.09%</p>
-	<p>11.05%</p>
-	<p>Chrome 41 - 49</p>
-	<p>15.06%</p>
-	<p>38.86%</p>
-	<p>Safari 9</p>
-	<p>0.91%</p>
-	<p>2.69%</p>
-	<p>Opera 28 - 34</p>
-	<p>0.57%</p>
-	<p>0.78%</p>
-	<p>Safari for iOS 9.1</p>
-	<p>1.07%</p>
-	<p>0.94%</p>
-	<p>Opera 30 for Android</p>
-	<p>0.01%</p>
-	<p>0.00%</p>
-	<p>Chrome 46 - 48 for Android</p>
-	<p>3.59%</p>
-	<p>1.60%</p>
-	<p>Firefox 41 - 44 for Android</p>
-	<p>0.01%</p>
-	<p>0.00%</p>
-	<p><b>Total</b></p>
-	<p><b>26.79%</b></p>
-	<p><b>56.74%</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>HTTP/2 capable browser</p>
+				</td>
+				<td>
+					<p>Global Market Share Late Nov 2015</p>
+				</td>
+				<td>
+					<p>Global Market Share Late Jan 2016</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>IE 11 on Windows 10</p>
+				</td>
+				<td>
+					<p>0.14%</p>
+				</td>
+				<td>
+					<p>0.34%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Edge 12, and 13</p>
+				</td>
+				<td>
+					<p>0.35%</p>
+				</td>
+				<td>
+					<p>0.48%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Firefox 36 - 45</p>
+				</td>
+				<td>
+					<p>5.09%</p>
+				</td>
+				<td>
+					<p>11.05%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Chrome 41 - 49</p>
+				</td>
+				<td>
+					<p>15.06%</p>
+				</td>
+				<td>
+					<p>38.86%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Safari 9</p>
+				</td>
+				<td>
+					<p>0.91%</p>
+				</td>
+				<td>
+					<p>2.69%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Opera 28 - 34</p>
+				</td>
+				<td>
+					<p>0.57%</p>
+				</td>
+				<td>
+					<p>0.78%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Safari for iOS 9.1</p>
+				</td>
+				<td>
+					<p>1.07%</p>
+				</td>
+				<td>
+					<p>0.94%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Opera 30 for Android</p>
+				</td>
+				<td>
+					<p>0.01%</p>
+				</td>
+				<td>
+					<p>0.00%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Chrome 46 - 48 for Android</p>
+				</td>
+				<td>
+					<p>3.59%</p>
+				</td>
+				<td>
+					<p>1.60%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Firefox 41 - 44 for Android</p>
+				</td>
+				<td>
+					<p>0.01%</p>
+				</td>
+				<td>
+					<p>0.00%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Total</b></p>
+				</td>
+				<td>
+					<p><b>26.79%</b></p>
+				</td>
+				<td>
+					<p><b>56.74%</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Since November, the number of browsers visiting CloudFlare.com that support HTTP/2 has more than doubled. In particular, notice how the market share of Chrome and Firefox versions that support HTTP/2 increased dramatically within the last 2 months.</p>
 	<p>The reason for this is, that even with Auto-Update functionality in modern browsers, new versions are not adopted instantaneous. We had documented the <a href="https://blog.cloudflare.com/ios-9-how-did-the-launch-really-go">release of iOS 9</a>, which is an example for a quite swift adoption.Looking at the challenges around the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">SHA-1 deprecation</a>, we can see that some really old OS and browser version are still around.</p>
 	<p>Keep in mind that we still see a larger number of non-browsers that don’t fall into any of the above buckets on our edge network. This is due to bots, crawlers, scrapers, and the like. The numbers above represent typical website traffic after it has been sanitized by CloudFlare.</p>
@@ -60,18 +160,54 @@
 	</div>
 	<p>With the promising browser market share data above, we can now compare the ratio of traffic served via the different HTTP versions on <a href="https://www.cloudflare.com">www.cloudflare.com</a>.</p>
 	<p>Again, contrast the data from around our release in December to the current data.</p>
-	<p>Protocol Version</p>
-	<p>Percentage of Hits December 2015</p>
-	<p>Percentage of Hits February 2016</p>
-	<p>HTTP/1.x</p>
-	<p>19.36%</p>
-	<p>17.29%</p>
-	<p>SPDY/3.1</p>
-	<p>57.02%</p>
-	<p>29.79%</p>
-	<p>HTTP/2</p>
-	<p>23.62%</p>
-	<p>52.93%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Protocol Version</p>
+				</td>
+				<td>
+					<p>Percentage of Hits December 2015</p>
+				</td>
+				<td>
+					<p>Percentage of Hits February 2016</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>HTTP/1.x</p>
+				</td>
+				<td>
+					<p>19.36%</p>
+				</td>
+				<td>
+					<p>17.29%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SPDY/3.1</p>
+				</td>
+				<td>
+					<p>57.02%</p>
+				</td>
+				<td>
+					<p>29.79%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>HTTP/2</p>
+				</td>
+				<td>
+					<p>23.62%</p>
+				</td>
+				<td>
+					<p>52.93%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>The great news: the HTTP/2 traffic ratio has indeed more than doubled on <a href="https://www.cloudflare.com">www.cloudflare.com</a> since we rolled out HTTP/2.</p>
 	<p>Nevertheless, we are still serving a large portion of traffic over SPDY, mostly due to older versions of Chrome.Therefore it was a good choice to keep supporting this protocol version.</p>
 	<div class="flex anchor relative">
