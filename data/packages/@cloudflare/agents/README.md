@@ -116,7 +116,22 @@ Every agent can respond to http and websocket requests. You can use this to buil
 
 - `onRequest(request): Response` - Called when a request is made to the server. This is useful for handling HTTP requests in addition to WebSocket connections.
 
-### email (coming soon)
+To simplify things, you can use a combination of `routeAgentRequest` and the client/react to route requests to your agent.
+
+First, setup your server:
+
+```ts
+import { routeAgentRequest } from "@cloudflare/agents";
+
+export default {
+  async fetch(request, env, ctx) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
+```
 
 Cloudflare Agents can receive and send emails. After setting up your project to recieve emails ([instructions here](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)), you can route an email to your agent's `onEmail` method, run some code, and then optionally reply to the email.
 
