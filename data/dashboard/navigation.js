@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: L => (0, o.z1)(p.Mr)(L) && (0, k.z7)(L) && !!(0, k.z$)(L).length
+		hasPermission: L => (0, o.z1)(p.Mr)(L) && (0, B.z7)(L) && !!(0, B.z$)(L).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -198,7 +198,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "sidenav-trace-link",
 		labels: ["beta"],
-		hasPermission: G.T
+		hasPermission: Z.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -209,7 +209,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		testId: "sidenav-waf-link",
-		tabs: x.DW
+		tabs: w.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -227,6 +227,11 @@ const navigation = {
 		url: "/",
 		labels: ["separator"],
 		iconType: "internet-browser"
+	}, {
+		title: "navigation.zone.traffic.load_balancing",
+		url: "/load-balancing",
+		iconType: "reliability-load-balancer",
+		hasPermission: L => !!(0, o.z1)("account-load-balancing")(L)
 	}, {
 		title: "navigation.account.interconnects",
 		url: "/interconnects",
@@ -256,7 +261,7 @@ const navigation = {
 		iconType: "magic-firewall",
 		testId: "sidenav-magic-firewall-link",
 		hasPermission: L => !!(0, i.zJ)(L),
-		tabs: x.$$
+		tabs: w.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -266,7 +271,7 @@ const navigation = {
 			const U = !!(0, i.Wq)(L) && !!(0, i.fO)(L);
 			return !!(0, i.us)(L) || U
 		},
-		tabs: x.Dn,
+		tabs: w.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
@@ -275,7 +280,7 @@ const navigation = {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection",
 			hasPermission: L => (0, i.us)(L),
-			tabs: x.O1
+			tabs: w.O1
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -431,7 +436,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: L => {
 				const U = (0, d.tJ)(L);
-				return !(0, v.ky)(U, [f.uD.EnterpriseTrial])
+				return !(0, v.ky)(U, [m.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -599,7 +604,7 @@ const navigation = {
 			url: "/user-groups",
 			labels: ["alpha"],
 			testId: "account-homepage-user-groups",
-			hasPermission: L => (0, i.iY)(L) && !!(0, o.z1)(m.Fq)(L)
+			hasPermission: L => (0, i.iY)(L) && !!(0, o.z1)(f.Fq)(L)
 		}, {
 			title: "navigation.account.api_tokens",
 			url: "/api-tokens",
@@ -625,7 +630,7 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: L => (0, R.K)(L, "account")
+			hasPermission: L => (0, k.K)(L, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn/integrations",
@@ -880,7 +885,7 @@ const navigation = {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: w.mt,
+			tabs: x.mt,
 			hasPermission: L => (0, i.$n)(L, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -897,7 +902,7 @@ const navigation = {
 			url: "/security/api-shield",
 			navigationType: "version",
 			hasPermission: L => (0, j.R0)(L),
-			tabs: w.Dw
+			tabs: x.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -932,7 +937,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: B.x
+			tabs: R.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -1042,7 +1047,7 @@ const navigation = {
 			labels: ["beta"],
 			navigationType: "version",
 			additionalMatchUrls: ["/:accountId/:zoneName/rules/trace/results"],
-			hasPermission: L => !!(0, o.z1)("rules-overview")(L) && !!(0, G.T)(L)
+			hasPermission: L => !!(0, o.z1)("rules-overview")(L) && !!(0, Z.T)(L)
 		}, {
 			title: "navigation.zone.rules.page_rules",
 			url: "/rules/page-rules",
