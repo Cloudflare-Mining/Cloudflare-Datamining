@@ -116,7 +116,9 @@ Every agent can respond to http and websocket requests. You can use this to buil
 
 - `onRequest(request): Response` - Called when a request is made to the server. This is useful for handling HTTP requests in addition to WebSocket connections.
 
-To simplify things, you can use a combination of `routeAgentRequest` and the client/react to route requests to your agent.
+### routing
+
+To simplify things, you can use a combination of `routeAgentRequest` and the client/react modules to route requests to your agent.
 
 First, setup your server:
 
@@ -133,7 +135,124 @@ export default {
 };
 ```
 
+This will route any http/websocket requests matching the pattern `/agents/:agent/:name` to the agent and trigger it's `onRequest`/`onConnect` methods respectively.
+
+Then, connect to your agent from your react app:
+
+```ts
+import { useAgent } from "@cloudflare/agents/react";
+
+// and inside your component
+const agent = useAgent({
+  agent: "agent-class", // this is the agent class, converted to kebab-case
+  name: "agent-name", // this is the name of the agent, used for routing
+  onMessage: (message) => {
+    console.log(message);
+  },
+  // also available: onOpen, onClose, onError
+});
+```
+
+You can also make a regular fetch request to the agent:
+
+```ts
+import { agentFetch } from "@cloudflare/agents/client";
+
+const response = await agentFetch(
+  {
+    agent: "agent-class",
+    name: "agent-name",
+  },
+  /* optional */ {
+    method: "POST",
+    body: JSON.stringify({ message: "hello" }),
+  }
+);
+```
+
 Cloudflare Agents can receive and send emails. After setting up your project to recieve emails ([instructions here](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)), you can route an email to your agent's `onEmail` method, run some code, and then optionally reply to the email.
+
+### state sync with `.state`/`.setState`/`.onStateUpdate`
+
+Every agent has built-in state management capabilities. You can set and update the agent's state directly using `this.state`:
+
+```ts
+import { Agent } from "@cloudflare/agents";
+
+export class MyAgent extends Agent {
+  // Update state in response to events
+  async incrementCounter() {
+    this.setState({
+      ...this.state,
+      counter: this.state.counter + 1,
+    });
+  }
+
+  // Handle incoming messages
+  async onMessage(message) {
+    if (message.type === "update") {
+      this.setState({
+        ...this.state,
+        ...message.data,
+      });
+    }
+  }
+
+  // Handle state updates
+  onStateUpdate(state, source: "server" | Connection) {
+    console.log("state updated", state);
+  }
+}
+```
+
+The agent's state is:
+
+- Persisted across agent restarts
+- Automatically serialized/deserialized (works with any JSON-serializable data)
+- Immediately consistent within the agent
+- Thread-safe for concurrent updates
+
+Clients can connect to an agent and stay synchronized with its state using the React hooks provided:
+
+```ts
+import { useAgent } from "@cloudflare/agents/react";
+
+function MyComponent() {
+  // Connect to the agent and receive state updates
+  const agent = useAgent<{/* ... state structure */}>({
+    agent: "my-agent",
+    onStateUpdate: (state, source: "server" | "client") => {
+      // State updates from the agent arrive here
+      console.log("New state:", state, source);
+    },
+  });
+
+  // Send state updates to the agent
+  const updateState = (updates) => {
+    agent.setState(updates);
+  };
+
+  return (
+    // Your component UI
+  );
+}
+```
+
+The state synchronization system:
+
+- Automatically syncs the agent's state to all connected clients
+- Handles client disconnections and reconnections gracefully
+- Provides immediate local updates
+- Supports multiple simultaneous client connections
+
+Common use cases:
+
+- Real-time collaborative features
+- Multi-window/tab synchronization
+- Live updates across multiple devices
+- Maintaining consistent UI state across clients
+
+When new clients connect, they automatically receive the current state from the agent, ensuring all clients start with the latest data.
 
 ### scheduling
 
