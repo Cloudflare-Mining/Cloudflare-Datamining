@@ -181,6 +181,163 @@
 						"togglesTo": []
 					},
 					{
+						"contentfulId": "6IN7ukbcugGp2R3jLnVmfq",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "How to prevent account takeover",
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5iusEajevxsYacSG7mUuCh",
+								"title": "Rate limiting",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Account takeover attacks may use brute force in order to gain access to user accounts. Limiting the amount of login attempts can stop such attacks before they succeed.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "33d7be39-e735-5720-b9b5-adb3e706d3a0",
+									"altText": "Filtering",
+									"title": "Filtering",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yN31lNkrnW8tWlBe5AtYd/015bcf1db5f5566031dc1f34eb248137/filtering.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "Y9opkrvFI2avgnL1MUPQM",
+								"title": "Bot management",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Credential stuffing bot attacks use previously stolen credentials in an attempt to gain access to accounts. Stopping malicious bot activity can help prevent account takeover.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
+									"altText": "Security bots ",
+									"title": "Security bots ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1hkXgdYDSvwDMK0OACvjiw",
+								"title": "WAF rules",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "ATO attacks often originate from known bad IP addresses. They may also use SQL injection attacks and other layer 7 attacks to gain access. WAF rules can block such requests.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6116a658-a791-529f-86ef-243564024b8d",
+									"altText": "Security waf blue",
+									"title": "Security waf blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ekrF3dQ9wlkBCY0Km9Rsw/2c6f76a6e909a6bec5d42ef5e83366e9/security-waf.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5gpfJwRTqawhMjytdEq008",
+								"title": "Zero Trust security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "The use of a Zero Trust framework, which includes enforcing the use of multi-factor authentication (MFA) and verifying all requests no matter their origin, can help prevent account takeover attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
+									"altText": "security-shield-zero-trust",
+									"title": "security-shield-zero-trust",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+										},
+										"description": "Shield with arrow icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeCardCarousel",
 						"contentfulId": "3ZkTUggUGlCMjtvMvDJorf",
 						"title": "Account takeover prevention use cases",
@@ -294,6 +451,42 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "71sKS5ikmDmAbbtqwuYHC7",
+								"title": "Zero Trust",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Rely on a Zero Trust architecture to prevent infiltration and stop lateral movement.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
+									"altText": "security-shield-zero-trust",
+									"title": "security-shield-zero-trust",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+										},
+										"description": "Shield with arrow icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -377,6 +570,42 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6weqc3NSLT8ijreufbNS5L",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare protects our growing hybrid workforce with our own Security Services Edge (SSE) / Zero Trust platform",
+								"learnMoreUrl": "case-studies/cloudflare-one/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "85501cdf-e9d3-5cea-bc83-ff53a571e7d4",
+									"altText": "Cloudflare element featured image account takeover",
+									"title": "Cloudflare element featured image account takeover",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EoHwFjIfCAVJQJloDiq7/cb523ec0494d9361fbf6bbba11b023ee/Cloudflare-element-featured-image.svg"
+										},
+										"description": "Cloudflare element featured image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
 						"sectionPadding": "tile--no-top-padding",
@@ -435,7 +664,17 @@
 								"heading": "Whitepaper",
 								"description": "Learn the steps, tools, and teams needed to transform your network and modernize your security.",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "T3tv0eIrfuWNhJsCbGljT",
+									"elementName": "Account takeover prevention solution page - Zero Trust Roadmap - Element-Link",
+									"standardText": null,
+									"text": "Download PDF",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9jyDLdW3VXPGwChDCCnrx/18edf82b3d4a36595e51c16ed5c62816/Zero-Trust-Roadmap-WP.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "dadd5429-548d-5988-ab7b-39db42a6280e",
 									"altText": null,
@@ -609,6 +848,39 @@
 						"accordionElements": [
 							{
 								"contentTypeId": "elementRichText",
+								"contentfulId": "5d8K8qIBxctD5ddE0qxDio",
+								"title": "What are some negative impacts of account takeovers?",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Account takeover (ATO) attacks can result in a number of negative outcomes, including malware installation, data exfiltration, fraudulent transactions or money transfers, or lateral movement to gain additional access within a secure network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
 								"contentfulId": "3T1gVB6GE3eXgKUu5WUqTa",
 								"title": "What should you do if you or your organization is a victim of ATO?",
 								"htmlId": null,
@@ -663,6 +935,39 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
+								"contentfulId": "6OpEja0DMxlboanuZBMPjd",
+								"title": "How can you protect against account takeover?",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A number of strategies can help protect against account takeover, including the use of multi-factor authentication (MFA) with hard keys, using phishing protection, managing bot activity, and enforcing strong password policies.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
 								"contentfulId": "57YsbLvvfAT65IjMHnavZr",
 								"title": "What is account takeover detection?",
 								"htmlId": null,
@@ -686,6 +991,39 @@
 														"uri": null
 													},
 													"value": "Account takeover detection is the process of recognizing when account takeover (ATO) has occurred. A number of telltale signs may indicate an ATO attack has taken place, including suspicious IP addresses accessing an account, unknown devices requesting access, and unusual activity originating from legitimate user accounts.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5yXK5I2pzVRQiTigkBqSSP",
+								"title": "How common is account takeover?",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Account takeover is one of the most common cyber attacks. As one of the most profitable kinds of cyber attacks, malicious parties are highly motivated to carry out ATO attacks. Studies have found that almost a quarter of American adults have been ATO victims.",
 													"marks": [],
 													"content": null
 												}
