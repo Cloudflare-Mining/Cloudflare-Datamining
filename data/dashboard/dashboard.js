@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "5c53de6a-b89d-5e9d-8163-0e2e6c8dfe3b")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b57f577a-f89a-560c-a39f-968b3b23703e")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1015,10 +1015,10 @@
 					t.g.build = Ln({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0c2b5a57b93e0b17585f175ee032ce7ef7754d65",
-						dashVersion: "31254228",
+						commit: "84e9d1f2d0c67ef33707440a4d69a87a44cb1867",
+						dashVersion: "31263651",
 						env: "production",
-						builtAt: 1740175136245,
+						builtAt: 1740259390312,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -12309,7 +12309,7 @@
 					changeDeployHooks: (0, e.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}/deploy_hooks/${"hookId"}`,
 					accessApps: (0, e.BC)`/accounts/${"accountId"}/access/apps`,
 					accessIdPs: (0, e.BC)`/accounts/${"accountId"}/access/identity_providers`,
-					accessOrg: (0, e.BC)`${"accountId"}/access/organizations`,
+					accessOrg: (0, e.BC)`/accounts/${"accountId"}/access/organizations`,
 					accessPolicies: (0, e.BC)`/accounts/${"accountId"}/access/apps/${"appId"}/policies`,
 					accountMembers: (0, e.BC)`/accounts/${"accountId"}/members?per_page=50&page=${"page"}&direction=desc`,
 					bootstrap: (0, e.BC)`/system/bootstrap`,
@@ -19760,4 +19760,4 @@
 	}
 ]);
 
-//# debugId=5c53de6a-b89d-5e9d-8163-0e2e6c8dfe3b
+//# debugId=b57f577a-f89a-560c-a39f-968b3b23703e
