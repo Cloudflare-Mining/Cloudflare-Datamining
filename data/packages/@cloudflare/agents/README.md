@@ -36,7 +36,7 @@ npm install @cloudflare/agents
 import { Agent } from "@cloudflare/agents";
 import openai from "openai";
 
-export class MyEmailAgent extends Agent {
+export class MyAgent extends Agent {
   async onRequest(request) {
     // ... run your agentic workflow in here
     // use ai sdk, langchain, direct calls to openai, anthropic, etc.
@@ -63,9 +63,8 @@ export class MyEmailAgent extends Agent {
   "durable_objects": {
     "bindings": [
       {
-        "binding": "MyEmailAgent",
-        "class_name": "MyEmailAgent"
-        // you can also use an id param, like my-email-agent-:id@example.com
+        "binding": "MyAgent",
+        "class_name": "MyAgent"
       }
     ]
   }
@@ -76,30 +75,15 @@ You can then use the agent in a worker:
 
 ```ts
 // get a handle on a brand new agent
-const id = env.MyEmailAgent.newUniqueId();
-const agent = env.MyEmailAgent.get(id);
+const id = env.MyAgent.newUniqueId();
+const agent = env.MyAgent.get(id);
 // you can save the id to a database and use it to retrieve the agent later
 
 // run the agent
 agent.run(props);
 
 // you can also create/get a named agent
-const agent = getAgentByName(env.MyEmailAgent, "my-email-agent");
-```
-
-You could also route a request/websocket to `/agents/:namespace/:id`, or an email `agent-:namespace-:id@example.com` to get a handle on an agent.
-
-```ts
-import { routeAgentRequest, routeAgentEmail } from "@cloudflare/agents";
-
-export default {
-  async fetch(request, env, ctx) {
-    return routeAgentRequest(request, env); // /agents/my-email-agent/agent-007 gets routed to onRequest/onConnect
-  },
-  async email(email, env, ctx) {
-    return routeAgentEmail(email, env); // agent-my-email-agent-007@example.com gets routed to onEmail
-  },
-};
+const agent = getAgentByName(env.MyAgent, "my-agent");
 ```
 
 ### http/websockets
@@ -169,8 +153,6 @@ const response = await agentFetch(
   }
 );
 ```
-
-Cloudflare Agents can receive and send emails. After setting up your project to recieve emails ([instructions here](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)), you can route an email to your agent's `onEmail` method, run some code, and then optionally reply to the email.
 
 ### state sync with `.state`/`.setState`/`.onStateUpdate`
 
