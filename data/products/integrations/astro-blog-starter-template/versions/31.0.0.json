@@ -1,0 +1,554 @@
+{
+	"alias": "astro-blog-starter-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".gitignore",
+				"README.md",
+				"astro.config.mjs",
+				"package-lock.json",
+				"package.json",
+				"tsconfig.json",
+				"worker-configuration.d.ts",
+				"wrangler.json",
+				"public/.assetsignore",
+				"public/blog-placeholder-1.jpg",
+				"public/blog-placeholder-2.jpg",
+				"public/blog-placeholder-3.jpg",
+				"public/blog-placeholder-4.jpg",
+				"public/blog-placeholder-5.jpg",
+				"public/blog-placeholder-about.jpg",
+				"public/favicon.svg",
+				"src/consts.ts",
+				"src/content.config.ts",
+				"src/env.d.ts",
+				"public/fonts/atkinson-bold.woff",
+				"public/fonts/atkinson-regular.woff",
+				"src/components/BaseHead.astro",
+				"src/components/Footer.astro",
+				"src/components/FormattedDate.astro",
+				"src/components/Header.astro",
+				"src/components/HeaderLink.astro",
+				"src/layouts/BlogPost.astro",
+				"src/pages/about.astro",
+				"src/pages/index.astro",
+				"src/pages/rss.xml.js",
+				"src/styles/global.css",
+				"src/content/blog/first-post.md",
+				"src/content/blog/markdown-style-guide.md",
+				"src/content/blog/second-post.md",
+				"src/content/blog/third-post.md",
+				"src/content/blog/using-mdx.mdx",
+				"src/pages/blog/[...slug].astro",
+				"src/pages/blog/index.astro"
+			],
+			"replacements": {
+				"astro-blog-starter-template": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Build a personal website, blog, or portfolio with Astro.",
+	"docs_url": null,
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Astro Framework Starter",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "Astro Framework Starter",
+			"products": [
+				"Workers"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/33bbbf02-eda2-4d3f-b244-c27a280f3900/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "astro.config.mjs",
+								"content": {
+									"$ref": "assets://template/files/astro.config.mjs"
+								}
+							},
+							{
+								"filename": "package-lock.json",
+								"content": {
+									"$ref": "assets://template/files/package-lock.json"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/worker-configuration.d.ts"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": "public/.assetsignore",
+								"content": {
+									"$ref": "assets://template/files/public/.assetsignore"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-1.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-1.jpg"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-2.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-2.jpg"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-3.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-3.jpg"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-4.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-4.jpg"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-5.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-5.jpg"
+								}
+							},
+							{
+								"filename": "public/blog-placeholder-about.jpg",
+								"content": {
+									"$ref": "assets://template/files/public/blog-placeholder-about.jpg"
+								}
+							},
+							{
+								"filename": "public/favicon.svg",
+								"content": {
+									"$ref": "assets://template/files/public/favicon.svg"
+								}
+							},
+							{
+								"filename": "src/consts.ts",
+								"content": {
+									"$ref": "assets://template/files/src/consts.ts"
+								}
+							},
+							{
+								"filename": "src/content.config.ts",
+								"content": {
+									"$ref": "assets://template/files/src/content.config.ts"
+								}
+							},
+							{
+								"filename": "src/env.d.ts",
+								"content": {
+									"$ref": "assets://template/files/src/env.d.ts"
+								}
+							},
+							{
+								"filename": "public/fonts/atkinson-bold.woff",
+								"content": {
+									"$ref": "assets://template/files/public/fonts/atkinson-bold.woff"
+								}
+							},
+							{
+								"filename": "public/fonts/atkinson-regular.woff",
+								"content": {
+									"$ref": "assets://template/files/public/fonts/atkinson-regular.woff"
+								}
+							},
+							{
+								"filename": "src/components/BaseHead.astro",
+								"content": {
+									"$ref": "assets://template/files/src/components/BaseHead.astro"
+								}
+							},
+							{
+								"filename": "src/components/Footer.astro",
+								"content": {
+									"$ref": "assets://template/files/src/components/Footer.astro"
+								}
+							},
+							{
+								"filename": "src/components/FormattedDate.astro",
+								"content": {
+									"$ref": "assets://template/files/src/components/FormattedDate.astro"
+								}
+							},
+							{
+								"filename": "src/components/Header.astro",
+								"content": {
+									"$ref": "assets://template/files/src/components/Header.astro"
+								}
+							},
+							{
+								"filename": "src/components/HeaderLink.astro",
+								"content": {
+									"$ref": "assets://template/files/src/components/HeaderLink.astro"
+								}
+							},
+							{
+								"filename": "src/layouts/BlogPost.astro",
+								"content": {
+									"$ref": "assets://template/files/src/layouts/BlogPost.astro"
+								}
+							},
+							{
+								"filename": "src/pages/about.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/about.astro"
+								}
+							},
+							{
+								"filename": "src/pages/index.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/index.astro"
+								}
+							},
+							{
+								"filename": "src/pages/rss.xml.js",
+								"content": {
+									"$ref": "assets://template/files/src/pages/rss.xml.js"
+								}
+							},
+							{
+								"filename": "src/styles/global.css",
+								"content": {
+									"$ref": "assets://template/files/src/styles/global.css"
+								}
+							},
+							{
+								"filename": "src/content/blog/first-post.md",
+								"content": {
+									"$ref": "assets://template/files/src/content/blog/first-post.md"
+								}
+							},
+							{
+								"filename": "src/content/blog/markdown-style-guide.md",
+								"content": {
+									"$ref": "assets://template/files/src/content/blog/markdown-style-guide.md"
+								}
+							},
+							{
+								"filename": "src/content/blog/second-post.md",
+								"content": {
+									"$ref": "assets://template/files/src/content/blog/second-post.md"
+								}
+							},
+							{
+								"filename": "src/content/blog/third-post.md",
+								"content": {
+									"$ref": "assets://template/files/src/content/blog/third-post.md"
+								}
+							},
+							{
+								"filename": "src/content/blog/using-mdx.mdx",
+								"content": {
+									"$ref": "assets://template/files/src/content/blog/using-mdx.mdx"
+								}
+							},
+							{
+								"filename": "src/pages/blog/[...slug].astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/blog/[...slug].astro"
+								}
+							},
+							{
+								"filename": "src/pages/blog/index.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/blog/index.astro"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "astro.config.mjs",
+					"content": {
+						"$ref": "assets://template/files/astro.config.mjs"
+					}
+				},
+				{
+					"filename": "package-lock.json",
+					"content": {
+						"$ref": "assets://template/files/package-lock.json"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/worker-configuration.d.ts"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": "public/.assetsignore",
+					"content": {
+						"$ref": "assets://template/files/public/.assetsignore"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-1.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-1.jpg"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-2.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-2.jpg"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-3.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-3.jpg"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-4.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-4.jpg"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-5.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-5.jpg"
+					}
+				},
+				{
+					"filename": "public/blog-placeholder-about.jpg",
+					"content": {
+						"$ref": "assets://template/files/public/blog-placeholder-about.jpg"
+					}
+				},
+				{
+					"filename": "public/favicon.svg",
+					"content": {
+						"$ref": "assets://template/files/public/favicon.svg"
+					}
+				},
+				{
+					"filename": "src/consts.ts",
+					"content": {
+						"$ref": "assets://template/files/src/consts.ts"
+					}
+				},
+				{
+					"filename": "src/content.config.ts",
+					"content": {
+						"$ref": "assets://template/files/src/content.config.ts"
+					}
+				},
+				{
+					"filename": "src/env.d.ts",
+					"content": {
+						"$ref": "assets://template/files/src/env.d.ts"
+					}
+				},
+				{
+					"filename": "public/fonts/atkinson-bold.woff",
+					"content": {
+						"$ref": "assets://template/files/public/fonts/atkinson-bold.woff"
+					}
+				},
+				{
+					"filename": "public/fonts/atkinson-regular.woff",
+					"content": {
+						"$ref": "assets://template/files/public/fonts/atkinson-regular.woff"
+					}
+				},
+				{
+					"filename": "src/components/BaseHead.astro",
+					"content": {
+						"$ref": "assets://template/files/src/components/BaseHead.astro"
+					}
+				},
+				{
+					"filename": "src/components/Footer.astro",
+					"content": {
+						"$ref": "assets://template/files/src/components/Footer.astro"
+					}
+				},
+				{
+					"filename": "src/components/FormattedDate.astro",
+					"content": {
+						"$ref": "assets://template/files/src/components/FormattedDate.astro"
+					}
+				},
+				{
+					"filename": "src/components/Header.astro",
+					"content": {
+						"$ref": "assets://template/files/src/components/Header.astro"
+					}
+				},
+				{
+					"filename": "src/components/HeaderLink.astro",
+					"content": {
+						"$ref": "assets://template/files/src/components/HeaderLink.astro"
+					}
+				},
+				{
+					"filename": "src/layouts/BlogPost.astro",
+					"content": {
+						"$ref": "assets://template/files/src/layouts/BlogPost.astro"
+					}
+				},
+				{
+					"filename": "src/pages/about.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/about.astro"
+					}
+				},
+				{
+					"filename": "src/pages/index.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/index.astro"
+					}
+				},
+				{
+					"filename": "src/pages/rss.xml.js",
+					"content": {
+						"$ref": "assets://template/files/src/pages/rss.xml.js"
+					}
+				},
+				{
+					"filename": "src/styles/global.css",
+					"content": {
+						"$ref": "assets://template/files/src/styles/global.css"
+					}
+				},
+				{
+					"filename": "src/content/blog/first-post.md",
+					"content": {
+						"$ref": "assets://template/files/src/content/blog/first-post.md"
+					}
+				},
+				{
+					"filename": "src/content/blog/markdown-style-guide.md",
+					"content": {
+						"$ref": "assets://template/files/src/content/blog/markdown-style-guide.md"
+					}
+				},
+				{
+					"filename": "src/content/blog/second-post.md",
+					"content": {
+						"$ref": "assets://template/files/src/content/blog/second-post.md"
+					}
+				},
+				{
+					"filename": "src/content/blog/third-post.md",
+					"content": {
+						"$ref": "assets://template/files/src/content/blog/third-post.md"
+					}
+				},
+				{
+					"filename": "src/content/blog/using-mdx.mdx",
+					"content": {
+						"$ref": "assets://template/files/src/content/blog/using-mdx.mdx"
+					}
+				},
+				{
+					"filename": "src/pages/blog/[...slug].astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/blog/[...slug].astro"
+					}
+				},
+				{
+					"filename": "src/pages/blog/index.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/blog/index.astro"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "31.0.0"
+}
