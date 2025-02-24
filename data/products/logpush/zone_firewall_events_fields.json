@@ -24,7 +24,7 @@
 	"EdgeColoCode": "string; The airport code of the Cloudflare datacenter that served this request.",
 	"EdgeResponseStatus": "int; HTTP response status code returned to browser.",
 	"Kind": "string; The kind of event, currently only possible values are: firewall.",
-	"LeakedCredentialCheckResult": "string; Result of the check for leaked credentials.",
+	"LeakedCredentialCheckResult": "string; Result of the check for [leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/). Possible results are: password_leaked | username_and_password_leaked | username_password_similar | username_leaked | clean.",
 	"MatchIndex": "int; Rules match index in the chain. The last matching rule will have MatchIndex 0. If another rule matched before the last one, it will have MatchIndex 1. The same applies to any other matching rules, which will have a MatchIndex value of 2, 3, and so on.",
 	"Metadata": "object; Additional product-specific information. Metadata is organized in key:value pairs. Key and Value formats can vary by Cloudflare security product and can change over time.",
 	"OriginResponseStatus": "int; HTTP origin response status code returned to browser.",
