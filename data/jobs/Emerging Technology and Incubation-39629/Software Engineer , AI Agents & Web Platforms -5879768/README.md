@@ -6,47 +6,48 @@
 	</div>
 </div>
 <p><strong>Available locations: London or Lisbon </strong></p>
-<p><strong>About the Department</strong></p>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the Team</strong></p>
-<p>Our team is focused on helping developers fuel the data-driven growth of their Internet properties while respecting privacy.&nbsp;</p>
-<p>We build on top of the Cloudflare development platform, pushing its limits to deliver tooling ranging from open source contributions to high impact Enterprise-grade product solutions for massive-traffic volumes and bespoke customer requirements.</p>
-<p>Specifically, while the team started with Cloudflare Zaraz - allowing engineers and product teams to use 3rd party tooling while maintaining high performance metrics and minimizing security risks - its remit has expanded to manage CDNJS, and the open source Managed Components initiative, alongside a growing number of special projects.</p>
-<p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
-<p><strong>What you'll do</strong></p>
-<p>In this role, you will join world class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing products - ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will be encouraged to bring ideas and own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, ship a new feature layered upon 3 different technologies, or fix a bug in how our user experience renders.&nbsp;</p>
-<p>You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust.</p>
-<p>We use Cloudflare Workers heavily and creatively.</p>
-<p>If applicable to ongoing projects, you will also support the health and availability of services by being part of an on-call rotation.</p>
-<p><strong>About you</strong></p>
-<p>We want you to love it here! This role is a good fit for you if:</p>
+<p><strong>About the Department</strong><strong><br></strong> Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>About the Team</strong><strong><br></strong> Our team is focused on helping developers fuel the data-driven growth of their Internet properties while respecting privacy. We build on top of the Cloudflare development platform, pushing its limits to deliver tooling that ranges from open source contributions to high-impact, Enterprise-grade product solutions for massive-traffic volumes and bespoke customer requirements.</p>
+<p>Originally starting with Cloudflare Zaraz—to enable engineers and product teams to integrate 3rd party tooling while maintaining high performance and minimizing security risks—our remit has since expanded. We now manage CDNJS, drive the open source Managed Components initiative, and lead a variety of special projects. Most notably, our team is now responsible for shipping cutting-edge AI agent platform primitives, including the Cloudflare Browser Rendering API, which is designed to deliver seamless, efficient rendering and interaction for AI-driven applications.</p>
+<p>We are a tight-knit team that communicates and collaborates regularly. We celebrate our achievements, support one another through challenges, and hold both our work and each other to the highest standard.</p>
+<p><strong>What you'll do</strong><strong><br></strong> In this role, you will join world-class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing offerings—ensuring continual reliability, best-in-class performance, and the implementation of new features and functionality.</p>
+<p>You will be encouraged to bring your ideas forward and own your code from inception to release, delivering solutions at every layer of the software stack to empower Cloudflare customers. On any given day, you might:</p>
 <ul>
-	<li>you bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two - understanding how big-picture goals inform technical details, and vice-versa.&nbsp;</li>
-	<li>you are bold and persistent in your efforts to get your work across the finish line</li>
-	<li>you are excited to collaborate &amp; communicate with engineers across Cloudflare, and contribute at many layers of the stack</li>
-	<li>you take pride in shipping effective, reliable code</li>
-	<li>you are energized by learning new skills, battling through mind-bending debugging sessions, and sharing your knowledge with others</li>
-	<li>you feel that documenting your work is just as important as delivering the code</li>
-	<li>you want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism</li>
+	<li>Write a design document outlining your strategy to tackle a specific challenge.</li>
+	<li>Ship a new feature that integrates multiple technologies.</li>
+	<li>Architect and deliver innovative API primitives for our AI agent platforms, including enhancements to the Cloudflare Browser Rendering API.</li>
+	<li>Fix a bug affecting how our user experience renders.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>&nbsp;</p>
+<p>You can expect to work with a variety of languages and technologies including, but not limited to, TypeScript, Go, and Rust. We use Cloudflare Workers heavily and creatively. If applicable to ongoing projects, you will also help maintain the health and availability of services by participating in an on-call rotation.</p>
+<p><strong>About you</strong><strong><br></strong> We want you to love it here! This role is a great fit for you if:</p>
 <ul>
-	<li>5+ years experience working with high volume software applications, with a strong focus on TypeScript programming language</li>
-	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Rust, or C++</li>
-	<li>Strong written communication skills for contributing to internal and public-facing technical documentation, and authoring blog posts</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design</li>
+	<li>You have a passion for meeting business needs while building technically innovative solutions, and you excel at balancing big-picture goals with technical detail.</li>
+	<li>You are bold and persistent in your efforts to get your work across the finish line.</li>
+	<li>You are excited to collaborate and communicate with engineers across Cloudflare, contributing at many layers of the stack.</li>
+	<li>You take pride in shipping effective, reliable code.</li>
+	<li>You are energized by learning new skills, tackling challenging debugging sessions, and sharing your knowledge with others.</li>
+	<li>You believe that thorough documentation is just as important as delivering code.</li>
+	<li>You want to join a team that upholds a culture of support, open and honest communication, and collaborative problem-solving.</li>
+	<li>You are keen to explore emerging AI technologies and are excited by the opportunity to integrate AI agent platform primitives into our product suite.</li>
+</ul>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
+<ul>
+	<li>5+ years of experience working with high-volume software applications, with a strong focus on the TypeScript programming language.</li>
+	<li>Ability to scope, work on, and independently deliver initiatives.</li>
+	<li>Knowledge of at least one modern, strongly-typed programming language such as Go, Rust, or C++.</li>
+	<li>Strong written communication skills for contributing to both internal and public-facing technical documentation, as well as authoring blog posts.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and either object-oriented or functional design.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Understanding of the web and technologies such as web browsers, HTTP, JavaScript</li>
-	<li>Experience building reliable, high performance distributed systems or on cloud platforms</li>
-	<li>Experience using the Cloudflare Workers development platform</li>
-	<li>Experience contributing to OSS software development or maintaining OSS projects</li>
+	<li>Understanding of the web and related technologies such as web browsers, HTTP, and JavaScript.</li>
+	<li>Experience building reliable, high-performance distributed systems or working on cloud platforms.</li>
+	<li>Familiarity with the Cloudflare Workers development platform.</li>
+	<li>Experience contributing to or maintaining open source software projects.</li>
+	<li>Exposure to AI frameworks or experience in shipping AI-driven platform primitives (e.g., developing or enhancing the Cloudflare Browser Rendering API).</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Locations:</strong> Lisbon or London</p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
