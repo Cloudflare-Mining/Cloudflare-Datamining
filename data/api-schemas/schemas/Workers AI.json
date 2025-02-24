@@ -758,7 +758,6 @@
 											},
 											"prompt": {
 												"description": "The input text prompt for the model to generate a response.",
-												"maxLength": 131072,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -772,6 +771,20 @@
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
+											},
+											"response_format": {
+												"properties": {
+													"json_schema": {},
+													"type": {
+														"enum": [
+															"json_object",
+															"json_schema"
+														],
+														"type": "string"
+													}
+												},
+												"title": "JSON Mode",
+												"type": "object"
 											},
 											"seed": {
 												"description": "Random seed for reproducibility of the generation.",
@@ -846,7 +859,6 @@
 													"properties": {
 														"content": {
 															"description": "The content of the message as a string.",
-															"maxLength": 131072,
 															"type": "string"
 														},
 														"role": {
@@ -873,6 +885,20 @@
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
+											},
+											"response_format": {
+												"properties": {
+													"json_schema": {},
+													"type": {
+														"enum": [
+															"json_object",
+															"json_schema"
+														],
+														"type": "string"
+													}
+												},
+												"title": "JSON Mode",
+												"type": "object"
 											},
 											"seed": {
 												"description": "Random seed for reproducibility of the generation.",
