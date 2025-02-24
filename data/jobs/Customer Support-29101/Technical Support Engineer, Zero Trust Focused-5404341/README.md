@@ -5,57 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location(s): Austin, TX</strong></p>
-<p><strong>Cloudflare is looking for an Engineering Manager to lead the Speed team.</strong></p>
-<p>The Speed team builds technology to measure and accelerate web experiences on Cloudflare. Our mission is to help our customers’ websites get faster. The Speed team creates innovative new features like Fonts, Observatory and Speculation Hints, looks after mature systems at scale like Web Analytics, and manages a large pipeline of web performance data that can be used to help benchmark and improve other products.</p>
-<p>As the engineering manager, you will play a key role in shaping the team’s strategy, working with other leaders and teams to build products that customers love, and that meet the team’s ambitious standards of quality, reliability, and scalability.</p>
-<p>You will be expected to lead, inspire, and foster a culture of diversity. You will communicate clearly and with empathy, and work towards creating a cohesive high-performance team. You will be responsible for all aspects of team life - building roadmaps, running meetings, creating processes, hiring, and setting up engineers for success.</p>
-<p>The team predominantly uses Go, Rust and Typescript and is familiar with browser APIs. Any prior experience in these technologies will make you well-suited for this role.</p>
+<p>&nbsp;</p>
+<h4><strong>Job Locations: Mexico City, MX</strong></h4>
+<p>&nbsp;</p>
+<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll Do</strong></h4>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Zero Trust, Workers, Speed, Images, Stream, CDN and others.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience building and leading a team, including hiring, coaching, and professional development</li>
-	<li>A self-directing nature, keen to take ownership of projects from start to finish</li>
-	<li>Experience coordinating projects across multiple teams</li>
-	<li>Empathetic and clear communication skills, verbal and written</li>
-	<li>Previous programming experience</li>
-	<li>Knowledge of browser APIs and browser performance tooling (eg. Lighthouse)</li>
-	<li>Strong data analysis skills, ideally with experience in Grafana, SQL or BigQuery</li>
-	<li>Excellent technical leadership skills, driving for very high-quality and low-complexity code</li>
-	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+	<li>You have experience solving DNS and other networking-related problems</li>
+	<li>You understand how the Internet works</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+	<li>Flexibility to work holidays and rotational weekend shifts</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Experience building distributed systems</li>
-	<li>Experience programming with Rust, Go, Typescript</li>
-	<li>Experience with Cloudflare Workers</li>
-	<li>Experience leading distributed teams</li>
+	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
+	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
 </ul>
-<p><strong><br>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
 <p><strong>Financial Benefits</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
 </ul>
 <p><strong>Time Off</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
