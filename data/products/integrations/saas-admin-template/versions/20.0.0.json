@@ -1,0 +1,899 @@
+{
+	"alias": "saas-admin-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".editorconfig",
+				".gitignore",
+				"README.md",
+				"astro.config.mjs",
+				"components.json",
+				"package.json",
+				"tailwind.config.mjs",
+				"tsconfig.json",
+				"worker-configuration.d.ts",
+				"wrangler.json",
+				".vscode/extensions.json",
+				".vscode/launch.json",
+				"migrations/0001_create_customers.sql",
+				"migrations/0002_create_subscriptions.sql",
+				"migrations/0003_create_user_subscriptions.sql",
+				"public/.assetsignore",
+				"public/favicon.svg",
+				"src/env.d.ts",
+				"src/components/Header.tsx",
+				"src/layouts/Layout.astro",
+				"src/lib/api-endpoints.ts",
+				"src/lib/api.ts",
+				"src/lib/utils.ts",
+				"src/pages/admin.astro",
+				"src/pages/index.astro",
+				"src/styles/globals.css",
+				"src/workflows/customer_workflow.ts",
+				"src/workflows/wrapper.js",
+				"src/components/admin/api-documentation.tsx",
+				"src/components/admin/api-token-missing-card.tsx",
+				"src/components/admin/create-customer.tsx",
+				"src/components/admin/create-subscription.tsx",
+				"src/components/admin/customers-table.tsx",
+				"src/components/admin/data-table.tsx",
+				"src/components/admin/run-customer-workflow.tsx",
+				"src/components/admin/subscriptions-table.tsx",
+				"src/components/ui/accordion.tsx",
+				"src/components/ui/badge.tsx",
+				"src/components/ui/button.tsx",
+				"src/components/ui/card.tsx",
+				"src/components/ui/dialog.tsx",
+				"src/components/ui/form.tsx",
+				"src/components/ui/input.tsx",
+				"src/components/ui/label.tsx",
+				"src/components/ui/table.tsx",
+				"src/components/ui/textarea.tsx",
+				"src/lib/services/customer.ts",
+				"src/lib/services/customer_subscription.ts",
+				"src/lib/services/subscription.ts",
+				"src/pages/admin/customers.astro",
+				"src/pages/admin/subscriptions.astro",
+				"src/pages/api/customer_subscriptions.ts",
+				"src/pages/api/customers.ts",
+				"src/pages/api/subscriptions.ts",
+				"src/pages/admin/customers/[id].astro",
+				"src/pages/admin/subscriptions/[id].astro",
+				"src/pages/api/customers/[id].ts",
+				"src/pages/api/subscriptions/[id].ts",
+				"src/pages/api/customers/[id]/workflow.ts"
+			],
+			"replacements": {
+				"admin-db": {
+					"$ref": "values://resources/DBD1Database/result/name"
+				},
+				"saas-admin-template": {
+					"$ref": "values://target/worker/name"
+				},
+				"3009feae-2321-421c-97e8-181886710aa0": {
+					"$ref": "values://resources/DBD1Database/result/id"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "Admin dashboard template built with Astro, shadcn/ui, and Cloudflare's developer stack",
+	"docs_url": "https://developers.cloudflare.com/workers/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "SaaS Admin Template",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create D1 Database",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "DBD1DatabaseName",
+					"label": "Name your D1 Database",
+					"required": true,
+					"default_value": "admin-db"
+				},
+				{
+					"type": "select_input",
+					"name": "DBD1DatabaseLocationHint",
+					"label": "Database location hint",
+					"required": true,
+					"default_value": "automatic",
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Automatic: D1 auto-assigns your database to the nearest available region.",
+								"value": "automatic"
+							},
+							{
+								"label": "Western North America",
+								"value": "WNAM"
+							},
+							{
+								"label": "Eastern North America",
+								"value": "ENAM"
+							},
+							{
+								"label": "Western Europe",
+								"value": "WEUR"
+							},
+							{
+								"label": "Eastern Europe",
+								"value": "EEUR"
+							},
+							{
+								"label": "Asia-Pacific",
+								"value": "APAC"
+							}
+						]
+					}
+				}
+			],
+			"resources": [
+				{
+					"name": "DBD1Database",
+					"type": "d1",
+					"params": {
+						"name": {
+							"$ref": "values://data/DBD1DatabaseName"
+						},
+						"locationHint": {
+							"$ref": "values://data/DBD1DatabaseLocationHint"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "SaaS Admin Template",
+			"products": [
+				"Workers",
+				"D1"
+			],
+			"categories": [],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c6fc5da3-1e0a-4608-b2f1-9628577ec800/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/0f9ff766-eb55-4eee-1ad6-efeb981fe800/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".editorconfig",
+								"content": {
+									"$ref": "assets://template/files/.editorconfig"
+								}
+							},
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "astro.config.mjs",
+								"content": {
+									"$ref": "assets://template/files/astro.config.mjs"
+								}
+							},
+							{
+								"filename": "components.json",
+								"content": {
+									"$ref": "assets://template/files/components.json"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "tailwind.config.mjs",
+								"content": {
+									"$ref": "assets://template/files/tailwind.config.mjs"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/worker-configuration.d.ts"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": ".vscode/extensions.json",
+								"content": {
+									"$ref": "assets://template/files/.vscode/extensions.json"
+								}
+							},
+							{
+								"filename": ".vscode/launch.json",
+								"content": {
+									"$ref": "assets://template/files/.vscode/launch.json"
+								}
+							},
+							{
+								"filename": "migrations/0001_create_customers.sql",
+								"content": {
+									"$ref": "assets://template/files/migrations/0001_create_customers.sql"
+								}
+							},
+							{
+								"filename": "migrations/0002_create_subscriptions.sql",
+								"content": {
+									"$ref": "assets://template/files/migrations/0002_create_subscriptions.sql"
+								}
+							},
+							{
+								"filename": "migrations/0003_create_user_subscriptions.sql",
+								"content": {
+									"$ref": "assets://template/files/migrations/0003_create_user_subscriptions.sql"
+								}
+							},
+							{
+								"filename": "public/.assetsignore",
+								"content": {
+									"$ref": "assets://template/files/public/.assetsignore"
+								}
+							},
+							{
+								"filename": "public/favicon.svg",
+								"content": {
+									"$ref": "assets://template/files/public/favicon.svg"
+								}
+							},
+							{
+								"filename": "src/env.d.ts",
+								"content": {
+									"$ref": "assets://template/files/src/env.d.ts"
+								}
+							},
+							{
+								"filename": "src/components/Header.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/Header.tsx"
+								}
+							},
+							{
+								"filename": "src/layouts/Layout.astro",
+								"content": {
+									"$ref": "assets://template/files/src/layouts/Layout.astro"
+								}
+							},
+							{
+								"filename": "src/lib/api-endpoints.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/api-endpoints.ts"
+								}
+							},
+							{
+								"filename": "src/lib/api.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/api.ts"
+								}
+							},
+							{
+								"filename": "src/lib/utils.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/utils.ts"
+								}
+							},
+							{
+								"filename": "src/pages/admin.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/admin.astro"
+								}
+							},
+							{
+								"filename": "src/pages/index.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/index.astro"
+								}
+							},
+							{
+								"filename": "src/styles/globals.css",
+								"content": {
+									"$ref": "assets://template/files/src/styles/globals.css"
+								}
+							},
+							{
+								"filename": "src/workflows/customer_workflow.ts",
+								"content": {
+									"$ref": "assets://template/files/src/workflows/customer_workflow.ts"
+								}
+							},
+							{
+								"filename": "src/workflows/wrapper.js",
+								"content": {
+									"$ref": "assets://template/files/src/workflows/wrapper.js"
+								}
+							},
+							{
+								"filename": "src/components/admin/api-documentation.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/api-documentation.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/api-token-missing-card.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/api-token-missing-card.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/create-customer.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/create-customer.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/create-subscription.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/create-subscription.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/customers-table.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/customers-table.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/data-table.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/data-table.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/run-customer-workflow.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/run-customer-workflow.tsx"
+								}
+							},
+							{
+								"filename": "src/components/admin/subscriptions-table.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/admin/subscriptions-table.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/accordion.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/accordion.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/badge.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/badge.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/button.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/button.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/card.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/card.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/dialog.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/dialog.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/form.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/form.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/input.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/input.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/label.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/label.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/table.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/table.tsx"
+								}
+							},
+							{
+								"filename": "src/components/ui/textarea.tsx",
+								"content": {
+									"$ref": "assets://template/files/src/components/ui/textarea.tsx"
+								}
+							},
+							{
+								"filename": "src/lib/services/customer.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/services/customer.ts"
+								}
+							},
+							{
+								"filename": "src/lib/services/customer_subscription.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/services/customer_subscription.ts"
+								}
+							},
+							{
+								"filename": "src/lib/services/subscription.ts",
+								"content": {
+									"$ref": "assets://template/files/src/lib/services/subscription.ts"
+								}
+							},
+							{
+								"filename": "src/pages/admin/customers.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/admin/customers.astro"
+								}
+							},
+							{
+								"filename": "src/pages/admin/subscriptions.astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/admin/subscriptions.astro"
+								}
+							},
+							{
+								"filename": "src/pages/api/customer_subscriptions.ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/customer_subscriptions.ts"
+								}
+							},
+							{
+								"filename": "src/pages/api/customers.ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/customers.ts"
+								}
+							},
+							{
+								"filename": "src/pages/api/subscriptions.ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/subscriptions.ts"
+								}
+							},
+							{
+								"filename": "src/pages/admin/customers/[id].astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/admin/customers/[id].astro"
+								}
+							},
+							{
+								"filename": "src/pages/admin/subscriptions/[id].astro",
+								"content": {
+									"$ref": "assets://template/files/src/pages/admin/subscriptions/[id].astro"
+								}
+							},
+							{
+								"filename": "src/pages/api/customers/[id].ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/customers/[id].ts"
+								}
+							},
+							{
+								"filename": "src/pages/api/subscriptions/[id].ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/subscriptions/[id].ts"
+								}
+							},
+							{
+								"filename": "src/pages/api/customers/[id]/workflow.ts",
+								"content": {
+									"$ref": "assets://template/files/src/pages/api/customers/[id]/workflow.ts"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".editorconfig",
+					"content": {
+						"$ref": "assets://template/files/.editorconfig"
+					}
+				},
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "astro.config.mjs",
+					"content": {
+						"$ref": "assets://template/files/astro.config.mjs"
+					}
+				},
+				{
+					"filename": "components.json",
+					"content": {
+						"$ref": "assets://template/files/components.json"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "tailwind.config.mjs",
+					"content": {
+						"$ref": "assets://template/files/tailwind.config.mjs"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/worker-configuration.d.ts"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": ".vscode/extensions.json",
+					"content": {
+						"$ref": "assets://template/files/.vscode/extensions.json"
+					}
+				},
+				{
+					"filename": ".vscode/launch.json",
+					"content": {
+						"$ref": "assets://template/files/.vscode/launch.json"
+					}
+				},
+				{
+					"filename": "migrations/0001_create_customers.sql",
+					"content": {
+						"$ref": "assets://template/files/migrations/0001_create_customers.sql"
+					}
+				},
+				{
+					"filename": "migrations/0002_create_subscriptions.sql",
+					"content": {
+						"$ref": "assets://template/files/migrations/0002_create_subscriptions.sql"
+					}
+				},
+				{
+					"filename": "migrations/0003_create_user_subscriptions.sql",
+					"content": {
+						"$ref": "assets://template/files/migrations/0003_create_user_subscriptions.sql"
+					}
+				},
+				{
+					"filename": "public/.assetsignore",
+					"content": {
+						"$ref": "assets://template/files/public/.assetsignore"
+					}
+				},
+				{
+					"filename": "public/favicon.svg",
+					"content": {
+						"$ref": "assets://template/files/public/favicon.svg"
+					}
+				},
+				{
+					"filename": "src/env.d.ts",
+					"content": {
+						"$ref": "assets://template/files/src/env.d.ts"
+					}
+				},
+				{
+					"filename": "src/components/Header.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/Header.tsx"
+					}
+				},
+				{
+					"filename": "src/layouts/Layout.astro",
+					"content": {
+						"$ref": "assets://template/files/src/layouts/Layout.astro"
+					}
+				},
+				{
+					"filename": "src/lib/api-endpoints.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/api-endpoints.ts"
+					}
+				},
+				{
+					"filename": "src/lib/api.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/api.ts"
+					}
+				},
+				{
+					"filename": "src/lib/utils.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/utils.ts"
+					}
+				},
+				{
+					"filename": "src/pages/admin.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/admin.astro"
+					}
+				},
+				{
+					"filename": "src/pages/index.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/index.astro"
+					}
+				},
+				{
+					"filename": "src/styles/globals.css",
+					"content": {
+						"$ref": "assets://template/files/src/styles/globals.css"
+					}
+				},
+				{
+					"filename": "src/workflows/customer_workflow.ts",
+					"content": {
+						"$ref": "assets://template/files/src/workflows/customer_workflow.ts"
+					}
+				},
+				{
+					"filename": "src/workflows/wrapper.js",
+					"content": {
+						"$ref": "assets://template/files/src/workflows/wrapper.js"
+					}
+				},
+				{
+					"filename": "src/components/admin/api-documentation.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/api-documentation.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/api-token-missing-card.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/api-token-missing-card.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/create-customer.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/create-customer.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/create-subscription.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/create-subscription.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/customers-table.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/customers-table.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/data-table.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/data-table.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/run-customer-workflow.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/run-customer-workflow.tsx"
+					}
+				},
+				{
+					"filename": "src/components/admin/subscriptions-table.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/admin/subscriptions-table.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/accordion.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/accordion.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/badge.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/badge.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/button.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/button.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/card.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/card.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/dialog.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/dialog.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/form.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/form.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/input.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/input.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/label.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/label.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/table.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/table.tsx"
+					}
+				},
+				{
+					"filename": "src/components/ui/textarea.tsx",
+					"content": {
+						"$ref": "assets://template/files/src/components/ui/textarea.tsx"
+					}
+				},
+				{
+					"filename": "src/lib/services/customer.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/services/customer.ts"
+					}
+				},
+				{
+					"filename": "src/lib/services/customer_subscription.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/services/customer_subscription.ts"
+					}
+				},
+				{
+					"filename": "src/lib/services/subscription.ts",
+					"content": {
+						"$ref": "assets://template/files/src/lib/services/subscription.ts"
+					}
+				},
+				{
+					"filename": "src/pages/admin/customers.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/admin/customers.astro"
+					}
+				},
+				{
+					"filename": "src/pages/admin/subscriptions.astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/admin/subscriptions.astro"
+					}
+				},
+				{
+					"filename": "src/pages/api/customer_subscriptions.ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/customer_subscriptions.ts"
+					}
+				},
+				{
+					"filename": "src/pages/api/customers.ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/customers.ts"
+					}
+				},
+				{
+					"filename": "src/pages/api/subscriptions.ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/subscriptions.ts"
+					}
+				},
+				{
+					"filename": "src/pages/admin/customers/[id].astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/admin/customers/[id].astro"
+					}
+				},
+				{
+					"filename": "src/pages/admin/subscriptions/[id].astro",
+					"content": {
+						"$ref": "assets://template/files/src/pages/admin/subscriptions/[id].astro"
+					}
+				},
+				{
+					"filename": "src/pages/api/customers/[id].ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/customers/[id].ts"
+					}
+				},
+				{
+					"filename": "src/pages/api/subscriptions/[id].ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/subscriptions/[id].ts"
+					}
+				},
+				{
+					"filename": "src/pages/api/customers/[id]/workflow.ts",
+					"content": {
+						"$ref": "assets://template/files/src/pages/api/customers/[id]/workflow.ts"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "20.0.0"
+}
