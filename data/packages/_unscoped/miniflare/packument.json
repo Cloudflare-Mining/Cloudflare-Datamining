@@ -4,7 +4,7 @@
 		"latest-2": "2.14.4",
 		"latest": "3.20250214.0",
 		"next": "0.0.0-f6ca0960f",
-		"beta": "0.0.0-0f3ace7fc"
+		"beta": "0.0.0-51a2fd398"
 	},
 	"versions": {
 		"0.1.0": {
@@ -68730,6 +68730,81 @@
 			"name": "miniflare",
 			"version": "0.0.0-0f3ace7fc",
 			"dependencies": {
+				"ws": "8.18.0",
+				"zod": "3.22.3",
+				"acorn": "8.14.0",
+				"youch": "3.2.3",
+				"undici": "^5.28.5",
+				"workerd": "1.20250214.0",
+				"exit-hook": "2.2.1",
+				"stoppable": "1.1.0",
+				"acorn-walk": "8.3.2",
+				"glob-to-regexp": "0.4.1",
+				"@cspotcode/source-map-support": "0.8.1"
+			},
+			"devDependencies": {
+				"ava": "^6.0.1",
+				"mime": "^3.0.0",
+				"kleur": "^4.1.5",
+				"which": "^2.0.2",
+				"eslint": "^8.57.1",
+				"rimraf": "^5.0.10",
+				"devalue": "^4.3.0",
+				"esbuild": "0.17.19",
+				"heap-js": "^2.5.0",
+				"capnp-es": "^0.0.7",
+				"@types/ws": "^8.5.7",
+				"source-map": "^0.6.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"@types/node": "^18.19.75",
+				"expect-type": "^0.15.0",
+				"@types/debug": "^4.1.7",
+				"@types/which": "^2.0.1",
+				"concurrently": "^8.2.2",
+				"pretty-bytes": "^6.0.0",
+				"@types/estree": "^1.0.0",
+				"@ava/typescript": "^4.1.0",
+				"@types/stoppable": "^1.1.1",
+				"eslint-plugin-es": "^4.1.0",
+				"devtools-protocol": "^0.0.1182435",
+				"http-cache-semantics": "^4.1.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-prettier": "^5.0.1",
+				"@microsoft/api-extractor": "7.49.1",
+				"@cloudflare/workers-types": "^4.20250214.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-shared": "0.0.0-0f3ace7fc",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@cloudflare/kv-asset-handler": "0.3.4",
+				"@cloudflare/workflows-shared": "0.2.2",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"shasum": "a3eba202bb24ebe4e09347b21b426861ac5ba848",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-0f3ace7fc.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-/hrlcuX8UxxnrXVmsrP0hUki0/xBD+ETtThuQfpD6AZEiFf2MYisaupNZSu9tsh9lG4kLop3DD+KYRWDa1LUoA==",
+				"signatures": [
+					{
+						"sig": "MEQCICv3aKcVwK2ZPzSByfA6ZoGZDhH140Ks5GGDMVsWcJEnAiB0asBdHun7rxpqX+pUorYgWDLH5JtjxRWPJI4o6fJxbA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2839144
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"0.0.0-51a2fd398": {
+			"name": "miniflare",
+			"version": "0.0.0-51a2fd398",
+			"dependencies": {
 				"@cspotcode/source-map-support": "0.8.1",
 				"acorn": "8.14.0",
 				"acorn-walk": "8.3.2",
@@ -68778,22 +68853,22 @@
 				"typescript": "^5.7.2",
 				"which": "^2.0.2",
 				"@cloudflare/kv-asset-handler": "0.3.4",
-				"@cloudflare/workflows-shared": "0.2.2",
-				"@cloudflare/workers-shared": "0.0.0-0f3ace7fc"
+				"@cloudflare/workers-shared": "0.0.0-51a2fd398",
+				"@cloudflare/workflows-shared": "0.2.2"
 			},
 			"bin": {
 				"miniflare": "bootstrap.js"
 			},
 			"dist": {
-				"integrity": "sha512-/hrlcuX8UxxnrXVmsrP0hUki0/xBD+ETtThuQfpD6AZEiFf2MYisaupNZSu9tsh9lG4kLop3DD+KYRWDa1LUoA==",
-				"shasum": "a3eba202bb24ebe4e09347b21b426861ac5ba848",
-				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-0f3ace7fc.tgz",
+				"integrity": "sha512-zJQ68k0uwN4u0v6rkpS4yVyHps7UE2KcQHJRqkOvHjQH3soGRoL/GlZSga9/gqosZWD9XpofONOzl8x4Plz3xg==",
+				"shasum": "7f48de6b1fc261f547e2eb60500a4fb26871c9a3",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-51a2fd398.tgz",
 				"fileCount": 42,
 				"unpackedSize": 2839144,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCICv3aKcVwK2ZPzSByfA6ZoGZDhH140Ks5GGDMVsWcJEnAiB0asBdHun7rxpqX+pUorYgWDLH5JtjxRWPJI4o6fJxbA=="
+						"sig": "MEQCIEUchC82qKHsa5OcOTcSBJnLtzb/EY8bIb9Q/NdV4iCQAiA3oNikSkC0jbb6tQHPFTvp7rSG8I1K+uZt0n4EaDd9PQ=="
 					}
 				]
 			},
