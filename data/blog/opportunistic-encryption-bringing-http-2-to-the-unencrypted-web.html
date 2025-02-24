@@ -19,8 +19,10 @@
 		</a>
 	</div>
 	<p>Opportunistic Encryption uses <a href="http://httpwg.org/http-extensions/alt-svc.html">HTTP Alternative Services</a>, a mechanism that allows servers to tell clients that the service they are accessing is available at another network location or over another protocol. When a supporting browser makes a request to a CloudFlare site with Opportunistic Encryption enabled, CloudFlare adds an Alternative Service header to indicate that the site is available over HTTP/2 (or SPDY) on port 443.</p>
-	<p>For customers with HTTP/2 enabled:<code>Alt-Svc: h2=”:443”; ma=60</code></p>
-	<p>For customers with HTTP/2 disabled:<code>Alt-Svc: spdy/3.1=”:443”; ma=60</code></p>
+	<p>For customers with HTTP/2 enabled:</p>
+	<pre class="language-Rust"><code class="language-Rust">Alt-Svc: h2=”:443”; ma=60</code></pre>
+	<p>For customers with HTTP/2 disabled:</p>
+	<pre class="language-Rust"><code class="language-Rust">Alt-Svc: spdy/3.1=”:443”; ma=60</code></pre>
 	<p>This header simply states that the domain can be authoritatively accessed using HTTP/2 (“h2”) or SPDY 3.1 (“spdy/3.1”) at the same network address, over port 443 (the standard HTTPS port). The field “ma” (max-age) indicates how long in seconds the client should remember the existence of the alternative service.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,7 +31,7 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/jabberwocky381/2829700354/in/photolist-5j3Xk9-9ozwgL-CyXzMW-b9NypP-af3UAc-c5VG2j-7tCoKg-8iRnKw-4F2xWk-4F6MDS-g5xKwj-6t8Gpg-e7gmMh-ahbP86-aheB15-aheAzE-8ucqdq-aheBcf-DETnGc-8ogV2T-9PNooC-9PKwkx-9PNots-2hpkp-F3qYFL-xdQqLr-9PKwe2-9PKwhT-Fe87Tv-Fe88gK-GnUy7Z-HigQiP-H9VVcS-HigRaP-H9VUFw-HigQPZ-H9VVdy-H9VUA1-H9VV9W-HigPYR-H9VULm-HigRat-HigQUt-H9VVRC-HigQXV-HigQxg-H9VV6u-H9VUuQ-frEFs1-HfkgMN">image</a> by <a href="https://www.flickr.com/photos/jabberwocky381">Evan Jackson</a></p>
 	<p>When Firefox (or any other browser that supports Opportunistic Encryption) receives an “h2” Alt-Svc header, it knows that the site is available using HTTP/2 over TLS on port 443. For any subsequent HTTP requests to that domain, the browser will connect using TLS on port 443, where the server will present a certificate for the domain signed by a trusted certificate authority. The browser will then validate the certificate. If the connection succeeds, the browser will send the requests over that connection using HTTP/2.</p>
-	<p>Opportunistically encrypted requests will contain “http” in the <a href="https://http2.github.io/http2-spec/#HttpRequest"><code>:scheme</code> pseudo-header</a> instead of “https”. From a bit-on-the-wire perspective, this pseudo-header is the only difference between HTTP requests with Opportunistic Encryption over TLS and HTTPS. However, there is a big difference between how browsers treat assets fetched using HTTP vs. HTTPS URLs (as discussed below).</p>
+	<p>Opportunistically requests will contain “http” in the<a href="https://http2.github.io/http2-spec/#HttpRequest"><code>:scheme</code> pseudo-header</a> instead of “https”. From a bit-on-the-wire perspective, this pseudo-header is the only difference between HTTP requests with Opportunistic Encryption over TLS and HTTPS. However, there is a big difference between how browsers treat assets fetched using HTTP vs. HTTPS URLs (as discussed below). </p>
 	<p>HTTP Alternative Services is a relatively new but widely used mechanism. For example, Alt-Svc is used by Google to advertise support for their experimental transport protocol, <a href="https://www.chromium.org/quic">QUIC</a>, to browsers in much the same way as we use it to advertise support for Opportunistic Encryption.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-not-just-use-https">Why not just use HTTPS?</h2>
