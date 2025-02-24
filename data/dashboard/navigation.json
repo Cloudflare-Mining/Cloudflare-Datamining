@@ -480,7 +480,7 @@
 			"iconType": "internet-browser"
 		},
 		{
-			"title": "navigation.account.compute_workers",
+			"title": "navigation.account.workers_and_pages",
 			"url": "/workers-and-pages",
 			"additionalMatchUrls": [
 				"/workers/services",
@@ -757,6 +757,44 @@
 			"iconType": "calls",
 			"testId": "sidenav-calls-link",
 			"hasPermission": null
+		},
+		{
+			"title": "navigation.account.tag_management",
+			"url": "/tag-management",
+			"iconType": "zaraz",
+			"hasPermission": null,
+			"pages": [
+				{
+					"title": "navigation.account.tag_management.tag_setup",
+					"url": "/tag-management/zaraz",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.tag_management.consent",
+					"url": "/tag-management/consent",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.tag_management.history",
+					"url": "/tag-management/history",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.tag_management.monitoring",
+					"url": "/tag-management/monitoring",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.tag_management.settings",
+					"url": "/tag-management/settings",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.tag_management.plans",
+					"url": "/tag-management/plans",
+					"hasPermission": null
+				}
+			]
 		},
 		{
 			"title": "account.home",
@@ -1408,49 +1446,6 @@
 			"testId": "zone-navigation-link-content-protection",
 			"navigationType": "version",
 			"hasPermission": null
-		},
-		{
-			"title": "navigation.zone.zaraz",
-			"url": "/zaraz",
-			"navigationType": "global-settings",
-			"iconType": "zaraz",
-			"testId": "zone-navigation-link-zaraz",
-			"hasPermission": null,
-			"pages": [
-				{
-					"title": "navigation.zone.zaraz.tools.configuration",
-					"navigationType": "global-settings",
-					"url": "/zaraz/tools-config",
-					"tabs": []
-				},
-				{
-					"title": "navigation.zone.zaraz.consent",
-					"navigationType": "global-settings",
-					"url": "/zaraz/consent"
-				},
-				{
-					"title": "navigation.zone.zaraz.history",
-					"navigationType": "global-settings",
-					"url": "/zaraz/history"
-				},
-				{
-					"title": "navigation.zone.zaraz.analytics",
-					"navigationType": "global-settings",
-					"url": "/zaraz/monitoring",
-					"tabs": []
-				},
-				{
-					"title": "navigation.zone.zaraz.settings",
-					"navigationType": "global-settings",
-					"url": "/zaraz/settings"
-				},
-				{
-					"title": "navigation.zone.zaraz.plans",
-					"navigationType": "global-settings",
-					"url": "/zaraz/plans",
-					"hasPermission": null
-				}
-			]
 		},
 		{
 			"title": "navigation.zone.web3.title",

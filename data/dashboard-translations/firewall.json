@@ -227,6 +227,7 @@
 	"api_discovery.session_identifiers.form.validation.no_configuration": "A JWT configuration needs to be created to continue.",
 	"api_discovery.session_identifiers.form.validation.claim_not_allowed": "This claim is not allowed.",
 	"api_discovery.session_identifiers.form.validation.claim_max_length": "Maximum %{characters} characters.",
+	"api_discovery.session_identifiers.form.validation.standard_http": "%{field} is a known HTTP header that usually cannot be used to identify individual users across HTTP requests",
 	"api_discovery.session_identifiers.form.submit.unknown_error": "An unknown error occurred while updating the Session Identifiers. Please try again in a few moments",
 	"api_discovery.session_identifiers.form.submit.error": "**%{smart_count}** error found. Correct the issue and submit the form again. |||| **%{smart_count}** errors found. Correct the issues and submit the form again.",
 	"api_discovery.session_identifiers.form.explainer": "Editing session identifiers may impact session based rules like Sequence Rules. Rate limiting recommendations and Discovery will be reset and take approximately 24 hours to gather new information.",

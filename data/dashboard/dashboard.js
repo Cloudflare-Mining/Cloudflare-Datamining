@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "2b8ba224-6579-54e9-84d1-05d0ceadf7f5")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "667e9e99-88df-576e-acb7-0711bc101fb0")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1015,10 +1015,10 @@
 					t.g.build = Ln({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "58a849f62fc2524c1faf78721f2721d01890d423",
-						dashVersion: "31275404",
+						commit: "85f434ff8be49fe7d309aa429d517eb95c7b99f5",
+						dashVersion: "31293838",
 						env: "production",
-						builtAt: 1740392495649,
+						builtAt: 1740428061971,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7477,7 +7477,7 @@
 			}
 
 			function P(V) {
-				return V.plan_pending ? V.plan_pending : V.plan
+				return (V == null ? void 0 : V.plan_pending) ? V == null ? void 0 : V.plan_pending : V == null ? void 0 : V.plan
 			}
 
 			function B(V) {
@@ -16499,6 +16499,7 @@
 							dispatchNamespace: "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/configuration",
 							durableObjects: "https://developers.cloudflare.com/durable-objects",
 							hyperdrive: "https://developers.cloudflare.com/hyperdrive",
+							images: "https://developers.cloudflare.com/images/transform-images/bindings/",
 							kv: "https://developers.cloudflare.com/kv",
 							mTLS: "https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls",
 							queues: "https://developers.cloudflare.com/queues/configuration/javascript-apis",
@@ -16918,7 +16919,8 @@
 						triggerEnvironmentVariables: (0, e.BC)`/accounts/${"accountId"}/builds/triggers/${"trigger_uuid"}/environment_variables`,
 						triggerEnvironmentVariable: (0, e.BC)`/accounts/${"accountId"}/builds/triggers/${"trigger_uuid"}/environment_variables/${"environment_variable_key"}`,
 						workerTriggers: (0, e.BC)`/accounts/${"accountId"}/builds/workers/${"scriptTag"}/triggers`,
-						configAutofill: (0, e.BC)`/accounts/${"accountId"}/builds/repos/${"providerType"}/${"providerAccountId"}/${"repoId"}/config_autofill?branch=${"branch"}&root_directory=${"rootDirectory"}`
+						configAutofill: (0, e.BC)`/accounts/${"accountId"}/builds/repos/${"providerType"}/${"providerAccountId"}/${"repoId"}/config_autofill?branch=${"branch"}&root_directory=${"rootDirectory"}`,
+						accountLimits: (0, e.BC)`/accounts/${"accountId"}/builds/account/limits`
 					},
 					certificates: (0, e.BC)`/zones/${"zoneId"}/ssl/certificate_packs/${"certId"}`,
 					createApiToken: (0, e.BC)`/user/tokens`,
@@ -19734,6 +19736,23 @@
 				return d
 			}
 		},
+		"../../../dash/intl/intl-translations/src/index.ts": function(x, y, t) {
+			"use strict";
+			t.d(y, {
+				Fy: function() {
+					return e.Z
+				},
+				if: function() {
+					return a.Z
+				},
+				n4: function() {
+					return o.n
+				}
+			});
+			var e = t("../../../dash/intl/intl-translations/src/makeLoadPhrases.ts"),
+				o = t("../../../dash/intl/intl-translations/src/catalogMap.ts"),
+				a = t("../../../dash/intl/intl-translations/src/supportedCatalogs.ts")
+		},
 		"../react/app/assets lazy recursive ^\\.\\/favicon\\-.*\\.ico$": function(x, y, t) {
 			var e = {
 				"./favicon-cookie.ico": ["../react/app/assets/favicon-cookie.ico", 48837],
@@ -19760,4 +19779,4 @@
 	}
 ]);
 
-//# debugId=2b8ba224-6579-54e9-84d1-05d0ceadf7f5
+//# debugId=667e9e99-88df-576e-acb7-0711bc101fb0
