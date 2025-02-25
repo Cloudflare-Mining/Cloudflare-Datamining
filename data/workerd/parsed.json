@@ -2809,6 +2809,14 @@
 						"compatEnableFlag": "memory_cache_delete",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "uniqueCtxPerInvocation",
+					"annotations": {
+						"compatDisableFlag": "nonclass_entrypoint_reuses_ctx_across_invocations",
+						"compatEnableDate": "2025-03-10",
+						"compatEnableFlag": "unique_ctx_per_invocation"
+					}
 				}
 			]
 		},
