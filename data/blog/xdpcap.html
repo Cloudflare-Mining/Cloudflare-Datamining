@@ -139,10 +139,26 @@ reading from file -, link-type EN10MB (Ethernet)
 	</figure>
 	<p>Flow of XDP program foo tail-calling into program bar</p>
 	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, foo’s tail-call map holds a single entry:</p>
-	<p>index</p>
-	<p>program</p>
-	<p>0</p>
-	<p>bar</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>index</p>
+				</td>
+				<td>
+					<p>program</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>0</p>
+				</td>
+				<td>
+					<p>bar</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>A tail-call into an empty index will not do anything, XDP programs always need to return an action themselves after a tail-call should it fail. Once again, this is enforced by the kernel verifier. In the case of program foo:</p>
 	<pre class="language-c"><code class="language-c">int foo(struct xdp_md *ctx) {
     // tail-call into index 0 - program bar
@@ -160,16 +176,50 @@ reading from file -, link-type EN10MB (Ethernet)
 	</figure>
 	<p>Flow of XDP program foo tail-calling into an xdpcap filter</p>
 	<p>The filter must return the original action taken by the instrumented program to ensure the packet is processed correctly. To achieve this, xdpcap generates one filter program per possible XDP action, each one hardcoded to return that specific action. All the programs are set in the map:</p>
-	<p>index</p>
-	<p>program</p>
-	<p>0 (<code>XDP_ABORTED</code>)</p>
-	<p>filter <code>XDP_ABORTED</code></p>
-	<p>1 (<code>XDP_DROP</code>)</p>
-	<p>filter <code>XDP_DROP</code></p>
-	<p>2 (<code>XDP_PASS</code>)</p>
-	<p>filter <code>XDP_PASS</code></p>
-	<p>3 (<code>XDP_TX</code>)</p>
-	<p>filter <code>XDP_TX</code></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>index</p>
+				</td>
+				<td>
+					<p>program</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>0 (<code>XDP_ABORTED</code>)</p>
+				</td>
+				<td>
+					<p>filter <code>XDP_ABORTED</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1 (<code>XDP_DROP</code>)</p>
+				</td>
+				<td>
+					<p>filter <code>XDP_DROP</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2 (<code>XDP_PASS</code>)</p>
+				</td>
+				<td>
+					<p>filter <code>XDP_PASS</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3 (<code>XDP_TX</code>)</p>
+				</td>
+				<td>
+					<p>filter <code>XDP_TX</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>By tail-calling into the correct index, the instrumented program determines the final action:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

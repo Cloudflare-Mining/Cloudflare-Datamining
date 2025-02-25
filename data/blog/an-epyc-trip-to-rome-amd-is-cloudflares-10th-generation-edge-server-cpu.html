@@ -8,81 +8,257 @@
 	<p>More than 1 billion unique IP addresses pass through the <a href="https://blog.cloudflare.com/tag/cloudflare-network">Cloudflare Network</a> each day, serving on average 11 million HTTP requests per second and operating within 100ms of 95% of the Internet-connected population globally. Our network spans 200 cities in more than 90 countries, and our engineering teams have built an extremely <a href="https://blog.cloudflare.com/tag/speed-and-reliability">fast and reliable infrastructure</a>.</p>
 	<p>We’re extremely proud of our work and are determined to help make the Internet a <a href="https://www.fastcompany.com/most-innovative-companies/2019/sectors/security">better and more secure place</a>. Cloudflare engineers who are involved with hardware get down to servers and their components to understand and select the best hardware to maximize the performance of our stack.</p>
 	<p>Our software stack is compute intensive and is very much CPU bound, driving our engineers to work continuously at optimizing Cloudflare’s performance and reliability at all layers of our stack. With the server, a straightforward solution for increasing computing power is to have more CPU cores. The more cores we can include in a server, the more output we can expect. This is important for us since the diversity of our products and customers has grown over time with increasing demand that requires our servers to do more. To help us drive compute performance, we needed to increase core density and that's what we did. Below is the processor detail for servers we’ve deployed since 2015, including the core counts:</p>
-	<p>---</p>
-	<p>Gen 6</p>
-	<p>Gen 7</p>
-	<p>Gen 8</p>
-	<p>Gen 9</p>
-	<p>Start of service</p>
-	<p>2015</p>
-	<p>2016</p>
-	<p>2017</p>
-	<p>2018</p>
-	<p>CPU</p>
-	<p>Intel Xeon E5-2630 v3</p>
-	<p>Intel Xeon E5-2630 v4</p>
-	<p>Intel Xeon Silver 4116</p>
-	<p>Intel Xeon Platinum 6162</p>
-	<p>Physical Cores</p>
-	<p>2 x 8</p>
-	<p>2 x 10</p>
-	<p>2 x 12</p>
-	<p>2 x 24</p>
-	<p>TDP</p>
-	<p>2 x 85W</p>
-	<p>2 x 85W</p>
-	<p>2 x 85W</p>
-	<p>2 x 150W</p>
-	<p>TDP per Core</p>
-	<p>10.65W</p>
-	<p>8.50W</p>
-	<p>7.08W</p>
-	<p>6.25W</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>---</p>
+				</td>
+				<td>
+					<p>Gen 6</p>
+				</td>
+				<td>
+					<p>Gen 7</p>
+				</td>
+				<td>
+					<p>Gen 8</p>
+				</td>
+				<td>
+					<p>Gen 9</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Start of service</p>
+				</td>
+				<td>
+					<p>2015</p>
+				</td>
+				<td>
+					<p>2016</p>
+				</td>
+				<td>
+					<p>2017</p>
+				</td>
+				<td>
+					<p>2018</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU</p>
+				</td>
+				<td>
+					<p>Intel Xeon E5-2630 v3</p>
+				</td>
+				<td>
+					<p>Intel Xeon E5-2630 v4</p>
+				</td>
+				<td>
+					<p>Intel Xeon Silver 4116</p>
+				</td>
+				<td>
+					<p>Intel Xeon Platinum 6162</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Physical Cores</p>
+				</td>
+				<td>
+					<p>2 x 8</p>
+				</td>
+				<td>
+					<p>2 x 10</p>
+				</td>
+				<td>
+					<p>2 x 12</p>
+				</td>
+				<td>
+					<p>2 x 24</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TDP</p>
+				</td>
+				<td>
+					<p>2 x 85W</p>
+				</td>
+				<td>
+					<p>2 x 85W</p>
+				</td>
+				<td>
+					<p>2 x 85W</p>
+				</td>
+				<td>
+					<p>2 x 150W</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TDP per Core</p>
+				</td>
+				<td>
+					<p>10.65W</p>
+				</td>
+				<td>
+					<p>8.50W</p>
+				</td>
+				<td>
+					<p>7.08W</p>
+				</td>
+				<td>
+					<p>6.25W</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>In 2018, we made a big jump in total number of cores per server with <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>. Our physical footprint was reduced by 33% compared to Gen 8, giving us increased capacity and computing power per rack. Thermal Design Power (TDP aka typical power usage) are mentioned above to highlight that we've also been more power efficient over time. Power efficiency is important to us: first, because we'd like to be as <a href="https://blog.cloudflare.com/a-carbon-neutral-north-america">carbon friendly</a> as we can; and second, so we can better utilize our provisioned power supplied by the data centers. But we know we can do better.</p>
 	<p>Our main defining metric is Requests per Watt. We can increase our Requests per Second number with more cores, but we have to stay within our power budget envelope. We are constrained by the data centers’ power infrastructure which, along with our selected power distribution units, leads us to power cap for each server rack. Adding servers to a rack obviously adds more power draw increasing power consumption at the rack level. Our Operational Costs significantly increase if we go over a rack’s power cap and have to provision another rack. What we need is more compute power inside the same power envelope which will drive a higher (better) Requests per Watt number – our key metric.</p>
-	<p>As you might imagine, we look at power consumption carefully in the design stage. From the above you can see that it’s not worth the time for us to deploy more power-hungry CPUs if TDP per Core is higher than our current generation which would hurt our Requests per Watt metric. As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today and we’ve made our decision. We’re moving on from Gen 9's 48-core setup of dual socket <a href="https://ark.intel.com/content/www/us/en/ark/products/136869/intel-xeon-platinum-6162-processor-33m-cache-1-90-ghz.html">Intel® Xeon® Platinum 6162</a>'s to a 48-core single socket <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC™ 7642</a>.</p>
+	<p>As you might imagine, we look at power consumption carefully in the design stage. From the above you can see that it’s not worth the time for us to deploy more power-hungry CPUs if TDP per Core is higher than our current generation which would hurt our Requests per Watt metric. As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today, and we’ve made our decision. We’re moving on from Gen 9's 48-core setup of dual socket <a href="https://ark.intel.com/content/www/us/en/ark/products/136869/intel-xeon-platinum-6162-processor-33m-cache-1-90-ghz.html">Intel® Xeon® Platinum 6162</a>'s to a 48-core single socket <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC™ 7642</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ub4NDKC4KKIMsXY2cFPJW/2bb5250e410aa4c75cad9651ab1b84f7/1.jpg" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
 
 	</figure>
-	<p>Gen X server setup with single socket 48-core AMD EPYC 7642</p>
-	<p>---</p>
-	<p>Intel</p>
-	<p>AMD</p>
-	<p>CPU</p>
-	<p>Xeon Platinum 6162</p>
-	<p>EPYC 7642</p>
-	<p>Microarchitecture</p>
-	<p>“Skylake”</p>
-	<p>“Zen 2”</p>
-	<p>Codename</p>
-	<p>“Skylake SP”</p>
-	<p>“Rome”</p>
-	<p>Process</p>
-	<p>14nm</p>
-	<p>7nm</p>
-	<p>Physical Cores</p>
-	<p>2 x 24</p>
-	<p>48</p>
-	<p>Frequency</p>
-	<p>1.9 GHz</p>
-	<p>2.4 GHz</p>
-	<p>L3 Cache / socket</p>
-	<p>24 x 1.375MiB</p>
-	<p>16 x 16MiB</p>
-	<p>Memory / socket</p>
-	<p>6 channels, up to DDR4-2400</p>
-	<p>8 channels, up to DDR4-3200</p>
-	<p>TDP</p>
-	<p>2 x 150W</p>
-	<p>225W</p>
-	<p>PCIe / socket</p>
-	<p>48 lanes</p>
-	<p>128 lanes</p>
-	<p>ISA</p>
-	<p>x86-64</p>
-	<p>x86-64</p>
+	<p> Gen X server setup with single socket 48-core AMD EPYC 7642.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>---</p>
+				</td>
+				<td>
+					<p>Intel</p>
+				</td>
+				<td>
+					<p>AMD</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU</p>
+				</td>
+				<td>
+					<p>Xeon Platinum 6162</p>
+				</td>
+				<td>
+					<p>EPYC 7642</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Microarchitecture</p>
+				</td>
+				<td>
+					<p>“Skylake”</p>
+				</td>
+				<td>
+					<p>“Zen 2”</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Codename</p>
+				</td>
+				<td>
+					<p>“Skylake SP”</p>
+				</td>
+				<td>
+					<p>“Rome”</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Process</p>
+				</td>
+				<td>
+					<p>14nm</p>
+				</td>
+				<td>
+					<p>7nm</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Physical Cores</p>
+				</td>
+				<td>
+					<p>2 x 24</p>
+				</td>
+				<td>
+					<p>48</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Frequency</p>
+				</td>
+				<td>
+					<p>1.9 GHz</p>
+				</td>
+				<td>
+					<p>2.4 GHz</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>L3 Cache / socket</p>
+				</td>
+				<td>
+					<p>24 x 1.375MiB</p>
+				</td>
+				<td>
+					<p>16 x 16MiB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Memory / socket</p>
+				</td>
+				<td>
+					<p>6 channels, up to DDR4-2400</p>
+				</td>
+				<td>
+					<p>8 channels, up to DDR4-3200</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TDP</p>
+				</td>
+				<td>
+					<p>2 x 150W</p>
+				</td>
+				<td>
+					<p>225W</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PCIe / socket</p>
+				</td>
+				<td>
+					<p>48 lanes</p>
+				</td>
+				<td>
+					<p>128 lanes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ISA</p>
+				</td>
+				<td>
+					<p>x86-64</p>
+				</td>
+				<td>
+					<p>x86-64</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>From the specs, we see that with the AMD chip we get to keep the same amount of cores and lower TDP. Gen 9's TDP per Core was 6.25W, Gen X's will be 4.69W... That's a 25% decrease. With higher frequency, and perhaps going to a more simplified setup of single socket, we can speculate that the AMD chip will perform better. We're walking through a series of tests, simulations, and live production results in the rest of this blog to see how much better AMD performs.</p>
 	<p>As a side note before we go further, TDP is a simplified metric from the manufacturers’ datasheets that we use in the early stages of our server design and CPU selection process. A quick Google search leads to thoughts that AMD and Intel define TDP differently, which basically makes the spec unreliable. Actual CPU power draw, and more importantly server system power draw, are what we really factor in our final decisions.</p>
 	<figure class="kg-card kg-image-card ">
@@ -99,7 +275,7 @@
 		</a>
 	</div>
 	<p>At the beginning of our journey to choose our next CPU, we got a variety of processors from different vendors that could fit well with our software stack and services, which are written in C, LuaJIT, and Go. More details about benchmarking for our stack were explained when we benchmarked <a href="https://blog.cloudflare.com/arm-takes-wing">Qualcomm's ARM® chip in the past</a>. We're going to go through the same suite of tests as Vlad's blog this time around since it is a quick and easy "sniff test". This allows us to test a bunch of CPUs within a manageable time period before we commit to spend more engineering effort and need to apply our software stack.</p>
-	<p>We tried a variety of CPUs with different number of cores, sockets, and frequencies. Since we're explaining how we chose the AMD EPYC 7642, all of the graphs in this blog focus on how AMD compares with our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9's Intel Xeon Platinum 6162 CPU</a> as a baseline.</p>
+	<p>We tried a variety of CPUs with different number of cores, sockets, and frequencies. Since we're explaining how we chose the AMD EPYC 7642, all the graphs in this blog focus on how AMD compares with our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9's Intel Xeon Platinum 6162 CPU</a> as a baseline.</p>
 	<p>Our results correspond to server node for both CPUs tested; meaning the numbers pertain to 2x 24-core processors for Intel, and 1x 48-core processor for AMD – a two socket Intel based server and a one socket AMD EPYC powered server. Before we started our testing, we changed the Cloudflare lab test servers’ BIOS settings to match our production server settings. This gave us CPU frequencies yields for AMD at 3.03 Ghz and Intel at 2.50 Ghz on average with very little variation. With gross simplification, we expect that with the same amount of cores AMD would perform about 21% better than Intel. Let’s start with our crypto tests.</p>
 	<div class="flex anchor relative">
 		<h3 id="cryptography">Cryptography</h3>
@@ -120,7 +296,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OpcfNqi2hraQrS8fZV0Lw/29fcc9dcf3ec73400a8fe784a12b26f5/4.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
 
 	</figure>
-	<p>Looking promising for AMD. In public key cryptography, it does 18% better. Meanwhile for symmetric key, AMD loses on AES-128-GCM but it’s comparable overall.</p>
+	<p>Looking promising for AMD. In public key cryptography, it does 18% better. Meanwhile, for symmetric key, AMD loses on AES-128-GCM, but it’s comparable overall.</p>
 	<div class="flex anchor relative">
 		<h3 id="compression">Compression</h3>
 		<a href="https://blog.cloudflare.com/#compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -141,7 +317,7 @@
 
 	</figure>
 	<p>AMD wins by an average of 29% using gzip across all qualities. It does even better with brotli with tests lower than quality 7, which we use for dynamic compression. There’s a throughput cliff starting brotli-9 which <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad’s explanation</a> is that Brotli consumes lots of memory and thrashes cache. Nevertheless, AMD wins by a healthy margin.</p>
-	<p>A lot of our services are written in Go. In the following graphs we’re redoing the crypto and compression tests in Go along with RegExp on 32KB strings and the strings library.</p>
+	<p>A lot of our services are written in Go. In the following graphs we’re redoing the crypto and compression tests in Go along with RegExp on 32KB strings and the strings' library.</p>
 	<div class="flex anchor relative">
 		<h3 id="go-cryptography">Go Cryptography</h3>
 		<a href="https://blog.cloudflare.com/#go-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -208,7 +384,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BY6NTdgjUWGiDBwC0NMNv/8943902a6f047eb8d2f9079e9b1e432b/12.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
 
 	</figure>
-	<p>AMD performs better in all of our Go benchmarks except for ECDSA P256 Sign losing by 38%, which is peculiar since with the test in C it does 24% better. It’s worth investigating what’s going on here. Other than that, AMD doesn’t win by as much of a margin but it still proves to be better.</p>
+	<p>AMD performs better in all of our Go benchmarks except for ECDSA P256 Sign losing by 38%, which is peculiar since with the test in C it does 24% better. It’s worth investigating what’s going on here. Other than that, AMD doesn’t win by as much of a margin, but it still proves to be better.</p>
 	<div class="flex anchor relative">
 		<h3 id="luajit">LuaJIT</h3>
 		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -248,7 +424,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Step one of course was to get all our test servers set up for a production environment. All of our machines in the fleet are loaded with the same processes and services which makes for a great apples-to-apples comparison. &nbsp;Like data centers everywhere, we have multiple generations of servers deployed and we deploy our servers in clusters such that each cluster is pretty homogeneous by server generation. In some environments this can lead to varying utilization curves between clusters. &nbsp;This is not the case for us. Our engineers have optimized CPU utilization across all server generations so that no matter if the machine's CPU has 8 cores or 24 cores, CPU usage is generally the same.</p>
+	<p>Step one of course was to get all our test servers set up for a production environment. All of our machines in the fleet are loaded with the same processes and services which makes for a great apples-to-apples comparison. &nbsp;Like data centers everywhere, we have multiple generations of servers deployed, and we deploy our servers in clusters such that each cluster is pretty homogeneous by server generation. In some environments this can lead to varying utilization curves between clusters. &nbsp;This is not the case for us. Our engineers have optimized CPU utilization across all server generations so that no matter if the machine's CPU has 8 cores or 24 cores, CPU usage is generally the same.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CiOx8dprb9NuYH2kUrZQ/ef686808c946d6cc55aa2983dc50c839/15.png" alt="" class="kg-image" width="1999" height="1236" loading="lazy">
@@ -272,8 +448,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DnPzngVCU8da71wGJUleo/b132d4256abe8c60809cf7b2c6d27ea4/18.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
 
 	</figure>
-	<p>Observing our servers request rate over their power consumption, the AMD Gen X server performs 28% better. While we could have expected more out of AMD since its TDP is 25% lower, keep in mind that TDP is very ambiguous. In fact, we saw that AMD actual power draw ran nearly at spec TDP with its much higher than base frequency; &nbsp;Intel was far from it. Another reason why TDP is becoming a less reliable estimate of power draw. Moreover, CPU is just one component contributing to the overall power of the system. Let’s remind that Intel CPUs are integrated in a multi-node system as described in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>, while AMD is in a regular 1U form-factor machine. That actually doesn’t favor AMD since multi-node systems are designed for high density capabilities at lower power per node, yet it still outperformed the Intel system on a power per node basis anyway.</p>
-	<p>Through the majority of comparisons from the datasheets, test simulations, and live production performance, the 1P AMD EPYC 7642 configuration performed significantly better than the 2P Intel Xeon 6162. We’ve seen in some environments that AMD can do up to 36% better in live production and we believe we can achieve that consistently with some optimization on both our hardware and software.</p>
+	<p>Observing our servers request rate over their power consumption, the AMD Gen X server performs 28% better. While we could have expected more out of AMD since its TDP is 25% lower, keep in mind that TDP is very ambiguous. In fact, we saw that AMD actual power draw ran nearly at spec TDP with it's much higher than base frequency; Intel was far from it. Another reason why TDP is becoming a less reliable estimate of power draw. Moreover, CPU is just one component contributing to the overall power of the system. Let’s remind that Intel CPUs are integrated in a multi-node system as described in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>, while AMD is in a regular 1U form-factor machine. That actually doesn’t favor AMD since multi-node systems are designed for high density capabilities at lower power per node, yet it still outperformed the Intel system on a power per node basis anyway.</p>
+	<p>Through the majority of comparisons from the datasheets, test simulations, and live production performance, the 1P AMD EPYC 7642 configuration performed significantly better than the 2P Intel Xeon 6162. We’ve seen in some environments that AMD can do up to 36% better in live production, and we believe we can achieve that consistently with some optimization on both our hardware and software.</p>
 	<p>So that's it. AMD wins.</p>
 	<p>The additional graphs below show the median and p99 NGINX processing mostly on-CPU time latencies between the two CPUs throughout 24 hours. On average, AMD processes about 25% faster. At p99, it does about 20-50% depending on the time of day.</p>
 	<figure class="kg-card kg-image-card ">
@@ -294,7 +470,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Hardware and Performance engineers at Cloudflare do significant research and testing to figure out the best server configuration for our customers. Solving big problems like this is why <a href="https://www.fastcompany.com/best-workplaces-for-innovators/2019">we love working here</a>, and we're also helping solving yours with our services like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">serverless</a> edge compute and the array of security solutions such as <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a>, and <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS protection</a>. All of our servers on the Cloudflare Network are designed to make our products work reliably, and we strive to make each new generation of our server design better than its predecessor. We believe the AMD EPYC 7642 is the answer for our Gen X's processor question.</p>
+	<p>Hardware and Performance engineers at Cloudflare do significant research and testing to figure out the best server configuration for our customers. Solving big problems like this is why <a href="https://www.fastcompany.com/best-workplaces-for-innovators/2019">we love working here</a>, and we're also helping to solve yours with our services like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">serverless</a> edge compute and the array of security solutions such as <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a>, and <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS protection</a>. All of our servers on the Cloudflare Network are designed to make our products work reliably, and we strive to make each new generation of our server design better than its predecessor. We believe the AMD EPYC 7642 is the answer for our Gen X's processor question.</p>
 	<p>With <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, developers have enjoyed deploying their applications to our <a href="https://blog.cloudflare.com/tag/cloudflare-network">Network</a>, which is ever expanding across the globe. We’ve been proud to empower our customers by letting them focus on writing their code while we are managing the security and reliability in the cloud. We are now even more excited to say that their work will be deployed on our Gen X servers powered by 2nd Gen AMD EPYC processors.</p>
 	<figure class="kg-card kg-image-card ">
 

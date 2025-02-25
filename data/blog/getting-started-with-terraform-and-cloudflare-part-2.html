@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RjSXgMC8ct7LBS5x2dK3n/725e6cce7f592197bf5d40978c5a2fb5/getting-started-with-terraform-and-cloudflare-part-2.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><i>In </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1"><i>Part 1 of Getting Started with Terraform</i></a><i>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</i></p>
+	<p><i> In </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1"><i>Part 1 of Getting Started with Terraform</i></a><i>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</i></p>
 	<p><i>We covered </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform"><i>installing Terraform</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld"><i>provider initialization</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory"><i>storing configuration in git</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings"><i>applying zone settings</i></a><i>, and </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits"><i>managing rate limits</i></a><i>. This post continues the Cloudflare Terraform provider walkthrough with examples of </i><a href="https://blog.cloudflare.com/#addingloadbalancing"><i>load balancing</i></a><i>, </i><a href="https://blog.cloudflare.com/#usingpagerules"><i>page rules</i></a><i>, </i><a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges"><i>reviewing and rolling back configuration</i></a><i>, and </i><a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration"><i>importing state</i></a><i>.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="reviewing-the-current-configuration">Reviewing the current configuration</h3>
@@ -390,7 +390,7 @@ Hello, this is 203.0.113.10!</code></pre>
 	<p>Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules">Page Rules</a>.</p>
 	<p>Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
 	<h4>1. Create a new branch and append the page rule</h4>
-	<p>As usual we'll create a new branch and append our configuration.</p>
+	<p>As usual, we'll create a new branch and append our configuration.</p>
 	<pre class="language-bash"><code class="language-bash">$ git checkout -b step6-pagerule
 Switched to a new branch 'step6-pagerule'
 
@@ -529,7 +529,7 @@ $ curl -vso /dev/null https://www.upinatoms.com/expensive-db-call 2&gt;&amp;1 | 
 	<p>Sometimes when you deploy configuration changes you later determine that they need to be rolled back. You could be performance testing a new configuration and want to revert to your previous configuration when done testing. Or maybe you fat-fingered an IP address and brought your entire site down (#hugops).</p>
 	<p>Either way, if you've determined you want to revert your configuration, all you need to do is check the desired branch out and ask Terraform to move your Cloudflare settings back in time. And note that if you accidentally brought your site down you should consider establishing a good strategy for peer reviewing pull requests (rather than merging directly to primary, as I do here for brevity)!</p>
 	<h4>1. Reviewing your configuration history</h4>
-	<p>Before we figure out how far back in time we want to rollback, let's take a look at our (git) versioned history.</p>
+	<p>Before we figure out how far back in time we want to roll back, let's take a look at our (git) versioned history.</p>
 	<pre class="language-bash"><code class="language-bash">$ git log
 commit d4fec164581bec44684a4d59bb80aec1f1da5a6e
 Author: Me
@@ -756,7 +756,7 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.</code></pre>
 		</a>
 	</div>
 	<p>An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
-	<p>When Terraform makes calls to Cloudflare's API to create new resources , it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
+	<p>When Terraform makes calls to Cloudflare's API to create new resources, it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
 	<p>If you've configured Cloudflare through other means, e.g., by logging into the Cloudflare Dashboard or making <code>curl</code> calls to <code>api.cloudflare.com</code>, Terraform does not (yet) have these resource IDs in the state file. To manage this preexisting configuration you will need to first i) reproduce the configuration in your config file and; ii) import resources one-by-one by providing their IDs and resource names.</p>
 	<h4>1. Reviewing your current state file</h4>
 	<p>Before importing resources created by other means, let's take a look at how an existing DNS records is represented in the state file.</p>
@@ -914,24 +914,76 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.</code></pre>
 }</code></pre>
 	<h5>ii. Create Terraform configuration for existing records</h5>
 	<p>In the previous step, we found 5 MX records that we wish to add.</p>
-	<p>ID</p>
-	<p>Priority</p>
-	<p>Content</p>
-	<p>a96d72b3c6afe3077f9e9c677fb0a556</p>
-	<p>10</p>
-	<p>aspmx.lo.google.com</p>
-	<p>8ea8c36c8530ee01068c65c0ddc4379b</p>
-	<p>15</p>
-	<p>alt1.aspmx.l.google.com</p>
-	<p>ad0e9ff2479b13c5fbde77a02ea6fa2c</p>
-	<p>15</p>
-	<p>alt2.aspmx.l.google.com</p>
-	<p>ad6ee69519cd02a0155a56b6d64c278a</p>
-	<p>20</p>
-	<p>alt3.aspmx.l.google.com</p>
-	<p>baf6655f33738b7fd902630858878206</p>
-	<p>20</p>
-	<p>alt4.aspmx.l.google.com</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>ID</p>
+				</td>
+				<td>
+					<p>Priority</p>
+				</td>
+				<td>
+					<p>Content</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>a96d72b3c6afe3077f9e9c677fb0a556</p>
+				</td>
+				<td>
+					<p>10</p>
+				</td>
+				<td>
+					<p>aspmx.lo.google.com</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8ea8c36c8530ee01068c65c0ddc4379b</p>
+				</td>
+				<td>
+					<p>15</p>
+				</td>
+				<td>
+					<p>alt1.aspmx.l.google.com</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ad0e9ff2479b13c5fbde77a02ea6fa2c</p>
+				</td>
+				<td>
+					<p>15</p>
+				</td>
+				<td>
+					<p>alt2.aspmx.l.google.com</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ad6ee69519cd02a0155a56b6d64c278a</p>
+				</td>
+				<td>
+					<p>20</p>
+				</td>
+				<td>
+					<p>alt3.aspmx.l.google.com</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>baf6655f33738b7fd902630858878206</p>
+				</td>
+				<td>
+					<p>20</p>
+				</td>
+				<td>
+					<p>alt4.aspmx.l.google.com</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Before importing, we need to create Terraform configuration and give each record a unique name that can be referenced during the import.</p>
 	<pre class="language-bash"><code class="language-bash">$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_record" "mx-10" {

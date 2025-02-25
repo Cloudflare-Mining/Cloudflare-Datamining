@@ -5,14 +5,15 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KiDis2Ki65ox7urlr4a4b/6cd4b8365cf245434a629f47083e53cf/chat-bot_2x_optimized.png" alt="chat-bot@2x_optimized" class="kg-image" width="3195" height="1598" loading="lazy">
 
 	</figure>
-	<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
+	<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast-growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
 	<p>Whilst it's easy to see how a tool like this saves a few seconds per day for the asker and askee, and saves on some mental context switches, the time saved is unlikely to add up to the cost of development and maintenance.</p>
 	<pre class="language-10"><code class="language-10">= 5 minutes per day
 x 260 work days 
 = 1300 mins 
 / 60 mins 
 = 20 person hours per year</code></pre>
-	<p>So a 20 hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
+	<p></p>
+	<p>So a 20-hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
 	<div class="flex anchor relative">
 		<h3 id="enter-cloudflare-workers-workers-kv">Enter Cloudflare Workers + Workers KV</h3>
 		<a href="https://blog.cloudflare.com/#enter-cloudflare-workers-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -35,21 +36,65 @@ x 260 work days
 		</a>
 	</div>
 	<p>At Cloudflare, people ask these questions in Chat, so that's a natural interface to service ownership. Here's the spec:</p>
-	<p>Use Case</p>
-	<p>Input</p>
-	<p>Output</p>
-	<p>Add</p>
-	<p>@ownerbot add Jira IT <a href="https://chat.google.com/room/ABC123">http://chat.google.com/room/ABC123</a></p>
-	<p>Service added</p>
-	<p>Delete</p>
-	<p>@ownerbot delete Jira</p>
-	<p>Service deleted</p>
-	<p>Question</p>
-	<p>@ownerbot Kibana</p>
-	<p>SRE Core owns Kibana. The room is: <a href="https://chat.google.com/ABC123">http://chat.google.com/ABC123</a></p>
-	<p>Export</p>
-	<p>@ownerbot export</p>
-	<p><code>[{name: "Kibana", owner: "SRE Core"...}]</code></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Use Case</p>
+				</td>
+				<td>
+					<p>Input</p>
+				</td>
+				<td>
+					<p>Output</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Add</p>
+				</td>
+				<td>
+					<p>@ownerbot add Jira IT <a href="http://web.archive.org/web/20190624175546/http://chat.google.com/room/ABC123">http://chat.google.com/room/ABC123</a></p>
+				</td>
+				<td>
+					<p>Service added</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Delete</p>
+				</td>
+				<td>
+					<p>@ownerbot delete Jira</p>
+				</td>
+				<td>
+					<p>Service deleted</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Question</p>
+				</td>
+				<td>
+					<p>@ownerbot Kibana</p>
+				</td>
+				<td>
+					<p>SRE Core owns Kibana. The room is: <a href="http://web.archive.org/web/20190624175546/http://chat.google.com/ABC123">http://chat.google.com/ABC123</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Export</p>
+				</td>
+				<td>
+					<p>@ownerbot export</p>
+				</td>
+				<td>
+					<p><code>[{name: "Kibana", owner: "SRE Core"...}]</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="hello-ownerbot">Hello @ownerbot</h3>
 		<a href="https://blog.cloudflare.com/#hello-ownerbot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -67,13 +112,14 @@ x 260 work days
 			<p>Enter the bot name</p>
 		</li>
 		<li>
-			<p>Download the private key json file</p>
+			<p>Download the private key JSON file</p>
 		</li>
 		<li>
 			<p>Go to the <a href="https://console.developers.google.com">API Console</a></p>
 		</li>
 		<li>
-			<p>Search for the <b>Hangouts Chat API</b> (<i>Note: not the Google+ Hangouts API</i>)</p>
+			<p>Search for the <b>Hangouts Chat API</b> (<i>Note: not the Google+ Hangouts API</i>)
+			</p>
 			<figure class="kg-card kg-image-card ">
 
 				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mQUzoV7nOtkEjVc5IOxnf/5981969de5b73cec65d8146eeec3b383/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" class="kg-image" width="1710" height="250" loading="lazy">
@@ -81,16 +127,17 @@ x 260 work days
 			</figure>
 		</li>
 		<li>
-			<p>Click <b>Configuration</b> onthe left menu</p>
+			<p>Click <b>Configuration</b> on the left menu</p>
 		</li>
 		<li>
 			<p>Fill out the form as per below <a href="https://blog.cloudflare.com/#fn1">[1]</a></p>
 			<ul>
 				<li>
-					<p>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx">generate a guid</a> and use that in the url.</p>
+					<p>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx">generate a guide</a> and use that in the url.</p>
 				</li>
 				<li>
-					<p>The URL will be the route you associate with your Worker in the Dashboard</p>
+					<p>The URL will be the route you associate with your Worker in the Dashboard
+					</p>
 					<figure class="kg-card kg-image-card ">
 
 						<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LfF9FngUCK4THzSlrnFho/ecfee7e37965cdfb841e4f1a304959cd/bot-configuration-1.png" alt="bot-configuration-1" class="kg-image" width="2000" height="1820" loading="lazy">
@@ -118,7 +165,7 @@ x 260 work days
 			</svg>
 		</a>
 	</div>
-	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
+	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guide). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pjvx9aep146V4aVSCBjvV/41307cdb04256dea6036ff1c6fab1902/route.png" alt="route" class="kg-image" width="1246" height="546" loading="lazy">
@@ -152,7 +199,7 @@ function process(request) {
     }
   });
 }</code></pre>
-	<p>Save and deploy that and we should be able message our bot:</p>
+	<p>Save and deploy that, and we should be able to message our bot:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BL2D9sXew5rPpVLtif5bS/d75d9c07bbb51ff94de92115e34a8d71/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" class="kg-image" width="1462" height="680" loading="lazy">
@@ -282,7 +329,7 @@ function process(request) {
 			</svg>
 		</a>
 	</div>
-	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot">full source on Github</a>. Let's take it for a spin!</p>
+	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot">full source on GitHub</a>. Let's take it for a spin!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UJpvFMBP0gI5gx6ggEadY/303538f35b351adb396c9f3a0da38c94/ownerbot1-1.gif" alt="ownerbot1-1" class="kg-image" width="847" height="526" loading="lazy">
@@ -302,10 +349,10 @@ function process(request) {
 			<p>Chatbots are an awesome use case for Serverless. You can deploy and not worry again about the infrastructure</p>
 		</li>
 		<li>
-			<p>Workers KV means extends the range of useful chat bots to include stateful bots like @ownerbot</p>
+			<p>Workers KV means extends the range of useful chatbots to include stateful bots like @ownerbot</p>
 		</li>
 		<li>
-			<p>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chat bot.</p>
+			<p>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chatbot.</p>
 		</li>
 	</ul>
 	<p>In <b>Part 2</b> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
@@ -318,4 +365,5 @@ function process(request) {
 			<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
 		</li>
 	</ol>
+	<p></p>
 </div>

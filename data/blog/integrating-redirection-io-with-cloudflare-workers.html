@@ -161,17 +161,53 @@ return new Response('', {
   ),
 ])</code></pre>
 	<p>When talking about performance, it is a good idea to provide some numbers for a valid comparison:</p>
-	<p>Cloudflare enabled</p>
-	<p>Workers enabled</p>
-	<p>Request timing</p>
-	<p>✅</p>
-	<p>❌</p>
-	<p>~32ms</p>
-	<p>✅</p>
-	<p>✅ (empty worker)</p>
-	<p>~36ms</p>
-	<p>✅</p>
-	<p>✅ (redirection.io Worker with no cache)</p>
-	<p>~44ms</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Cloudflare enabled</p>
+				</td>
+				<td>
+					<p>Workers enabled</p>
+				</td>
+				<td>
+					<p>Request timing</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>❌</p>
+				</td>
+				<td>
+					<p>~32ms</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅ (empty worker)</p>
+				</td>
+				<td>
+					<p>~36ms</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅ (redirection.io Worker with no cache)</p>
+				</td>
+				<td>
+					<p>~44ms</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's api are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> today, and report back!</p>
 </div>

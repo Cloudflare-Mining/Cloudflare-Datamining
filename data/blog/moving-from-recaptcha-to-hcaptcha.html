@@ -38,8 +38,8 @@
 		</a>
 	</div>
 	<p>Since those early days, some customers have expressed concerns about using a Google service to serve CAPTCHAs. Google's business is targeting users with advertising. Cloudflare's is not. We have strict privacy commitments. We were able to get comfortable with the Privacy Policy around reCAPTCHA, but understood why some of our customers were concerned about feeding more data to Google.</p>
-	<p>We also had issues in some regions, such as China, where Google's services are intermittently blocked. China alone accounts for 25 percent of all Internet users. Given that some subset of those could not access Cloudflare's customers if they triggered a CAPTCHA was always concerning to us.</p>
-	<p>Over the years, the privacy and blocking concerns were enough to cause us to think about switching from reCAPTCHA. But, like most technology companies, it was difficult to prioritize removing something that was largely working instead of brand new features and functionality for our customers.</p>
+	<p>Furthermore, we also had issues in some regions, such as China, where Google's services are intermittently blocked. China alone accounts for 25 percent of all Internet users. Given that some subset of those could not access Cloudflare's customers if they triggered a CAPTCHA was always concerning to us.</p>
+	<p>Over the years, the privacy and blocking concerns were enough to cause us to think about switching from reCAPTCHA. But, like most technology companies, it was difficult to prioritize removing something that was largely working instead of brand-new features and functionality for our customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="googles-changing-business-model">Google's Changing Business Model</h3>
 		<a href="https://blog.cloudflare.com/#googles-changing-business-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -71,21 +71,74 @@
 	</div>
 	<p>When we first started working on this project, the assumption was that <a href="https://www.cloudflare.com/application-services/products/bot-management">Cloudflare Bot Management</a> and Firewall Rules would be by far the largest consumer of CAPTCHAs. This was somewhat correct. While Firewall/Bots was the #1 consumer, it only was a bit over 50% of our CAPTCHAs served.</p>
 	<p>These are the breakdowns of when Cloudflare customers asked us to serve a CAPTCHA on their zones, by total CAPTCHAs served.</p>
-	<p>Source</p>
-	<p>Firewall and Bot Rules</p>
-	<p>54.8%</p>
-	<p>IP Firewall</p>
-	<p>18.6%</p>
-	<p>Security Level</p>
-	<p>16.8%</p>
-	<p>DDoS</p>
-	<p>6.3%</p>
-	<p>Rate Limiting</p>
-	<p>1.7%</p>
-	<p>WAF Rules</p>
-	<p>1.5%</p>
-	<p>Other</p>
-	<p>0.3%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Source</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Firewall and Bot Rules</p>
+				</td>
+				<td>
+					<p>54.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>IP Firewall</p>
+				</td>
+				<td>
+					<p>18.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security Level</p>
+				</td>
+				<td>
+					<p>16.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DDoS</p>
+				</td>
+				<td>
+					<p>6.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Rate Limiting</p>
+				</td>
+				<td>
+					<p>1.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>WAF Rules</p>
+				</td>
+				<td>
+					<p>1.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Other</p>
+				</td>
+				<td>
+					<p>0.3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Our Firewall and Bot Rules are at the top and are the majority of the CAPTCHAs served by Cloudflare. These are rules written by our customers that specifically throw a CAPTCHA when the rule is matched. Examples of these include firing a Captcha if a <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Bot Management score</a> is below a threshold where you believe it is likely that the connection is automated, but the score is above a threshold where you are not certain. Another common rule in this bucket is to CAPTCHA 100% of all traffic behind a site or specific endpoint. Customers may be doing this to limit connections to their origins, or to slow down automated systems from doing something like credential stuffing on a login page or polluting registration data. This leads to some sites on Cloudflare serving hundreds of millions of CAPTCHAs per day.</p>
 	<p>The second most popular is our <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Firewall</a>. This is similar to the Firewall and Bot Rules, but much less granular at the IP, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, or country level. The majority of CAPTCHAs for this category are done for rules written at the ASN or country level. Presumably our customers find some level of distrust with a particular ASN (for example, why would there be supposed user traffic coming from a cloud infrastructure provider?) or are being attacked from specific countries.</p>
 	<p>Next comes <a href="https://support.cloudflare.com/hc/en-us/articles/200170056-Understanding-the-Cloudflare-Security-Level">Security Levels</a>. Security levels have two distinct use cases: 1) as a blunt tool for IP address reputation and 2) I’m Under Attack Mode. While we recommend to customers that they only use I’m Under Attack Mode while under an active denial of service attack, some customers leave the feature on 100% of the time as a rudimentary form of rate limiting and filtering.</p>
@@ -107,5 +160,5 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PzJKNivdvbBrD44OEP5eM/9e34ea294023466b4e7977dc4415ba47/image4-8.png" alt="" class="kg-image" width="1668" height="206" loading="lazy">
 
 	</figure>
-	<p>Over time, we believe visual (and audio) CAPTCHAs are an imperfect answer to a number of difficult problems. Cloudflare is continuing work to minimize and hopefully eventually eliminate altogether the number of CAPTCHAs we issue and we will be excited to share the results of that work in this blog as we move along. The name of our internal chat room for the team making this change isn’t New CAPTCHA, it’s (No)CAPTCHA.</p>
+	<p>Over time, we believe visual (and audio) CAPTCHAs are an imperfect answer to a number of difficult problems. Cloudflare is continuing work to minimize and hopefully eventually eliminate altogether the number of CAPTCHAs we issue, and we will be excited to share the results of that work in this blog as we move along. The name of our internal chat room for the team making this change isn’t New CAPTCHA, it’s (No)CAPTCHA.</p>
 </div>

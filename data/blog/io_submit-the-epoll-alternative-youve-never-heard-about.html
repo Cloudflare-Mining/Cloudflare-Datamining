@@ -39,7 +39,7 @@
 		</a>
 	</div>
 	<p>To use Linux AIO you first need <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c">to define the 5 needed syscalls</a> - glibc doesn't provide wrapper functions. To use Linux AIO we need:</p>
-	<p>(1) First call <code>io_setup()</code> to setup the <code>aio_context</code> data structure. Kernel will hand us an opaque pointer.</p>
+	<p>(1) First call <code>io_setup()</code> to set up the <code>aio_context</code> data structure. Kernel will hand us an opaque pointer.</p>
 	<p>(2) Then we can call <code>io_submit()</code> to submit a vector of "I/O control blocks" <code>struct iocb</code> for processing.</p>
 	<p>(3) Finally, we can call <code>io_getevents()</code> to block and wait for a vector of <code>struct io_event</code> - completion notification of the iocb's.</p>
 	<p>There are 8 commands that can be submitted in an iocb. Two read, two write, two fsync variants and a POLL command introduced in 4.18 Kernel:</p>
@@ -90,13 +90,13 @@ r = io_getevents(ctx, 1, 1, events, NULL);
 
 bytes_read = events[0].res;
 printf("read %lld bytes from /etc/passwd\n", bytes_read);</code></pre>
-	<p>Full source is, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c">as usual, on github</a>. Here's an strace of this program:</p>
+	<p>Full source is, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c">as usual, on GitHub</a>. Here's a strace of this program:</p>
 	<pre class="language-.txt"><code class="language-.txt">openat(AT_FDCWD, "/etc/passwd", O_RDONLY)
 io_setup(128, [0x7f4fd60ea000])
 io_submit(0x7f4fd60ea000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7ffc5ff703d0, aio_nbytes=4096, aio_offset=0}])
 io_getevents(0x7f4fd60ea000, 1, 1, [{data=0, obj=0x7ffc5ff70390, res=2494, res2=0}], NULL)</code></pre>
 	<p>This all worked fine! But the disk read was not asynchronous: the <code>io_submit</code> syscall blocked and did all the work! The <code>io_getevents</code> call finished instantly. We could try to make the disk read async, but this requires O_DIRECT flag which skips the caches.</p>
-	<p>Lets try to better illustrate the blocking nature of <code>io_submit</code> on normal files. Here's similar example, showing strace when reading large 1GiB block from <code>/dev/zero</code>:</p>
+	<p>Let's try to better illustrate the blocking nature of <code>io_submit</code> on normal files. Here's similar example, showing strace when reading large 1GiB block from <code>/dev/zero</code>:</p>
 	<pre class="language-bash"><code class="language-bash">io_submit(0x7fe1e800a000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7fe1a79f4000, aio_nbytes=1073741824, aio_offset=0}]) \
     = 1 &lt;0.738380&gt;
 io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824, res2=0}], NULL) \
@@ -129,14 +129,43 @@ io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824,
 	<p>It's important to note the <code>iocb</code> requests passed to kernel are evaluated in-order sequentially.</p>
 	<p>While Linux AIO won't help with async operations, it can definitely be used for syscall batching!</p>
 	<p>If you have a web server needing to send and receive data from hundreds of network sockets, using <code>io_submit</code> can be a great idea. This would avoid having to call <code>send</code> and <code>recv</code> hundreds of times. This will improve performance - jumping back and forth from userspace to kernel is not free, especially <a href="https://gist.github.com/antirez/9e716670f76133ec81cb24036f86ee95">since the meltdown and spectre mitigations</a>.</p>
-	<p>One buffer</p>
-	<p>Multiple buffers</p>
-	<p>One file descriptor</p>
-	<p>read()</p>
-	<p>readv()</p>
-	<p>Many file descriptors</p>
-	<p>io_submit + IOCB_CMD_PREAD</p>
-	<p>io_submit + IOCB_CMD_PREADV</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>One buffer</p>
+				</td>
+				<td>
+					<p>Multiple buffers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>One file descriptor</p>
+				</td>
+				<td>
+					<p>read()</p>
+				</td>
+				<td>
+					<p>readv()</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Many file descriptors</p>
+				</td>
+				<td>
+					<p>io_submit + IOCB_CMD_PREAD</p>
+				</td>
+				<td>
+					<p>io_submit + IOCB_CMD_PREADV</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>To illustrate the batching aspect of <code>io_submit</code>, let's create a small program forwarding data from one TCP socket to another. In simplest form, without Linux AIO, the program would have a trivial flow like this:</p>
 	<pre class="language-.py"><code class="language-.py">while True:
   d = sd1.read(4096)

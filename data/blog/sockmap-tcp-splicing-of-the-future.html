@@ -18,21 +18,66 @@
 	</div>
 	<p>Transmitting large amounts of data from userspace is inefficient. Linux provides a couple of specialized syscalls that aim to address this problem. For example, the <code>sendfile(2)</code> syscall (<a href="https://yarchive.net/comp/linux/splice.html">which Linus doesn't like</a>) can be used to speed up transferring large files from disk to a socket. Then there is <code>splice(2)</code> which traditional proxies use to forward data between two TCP sockets. Finally, <code>vmsplice</code> can be used to stick memory buffer into a pipe without copying, but is very hard to use correctly.</p>
 	<p>Sadly, <code>sendfile</code>, <code>splice</code> and <code>vmsplice</code> are very specialized, synchronous and solve only one part of the problem - they avoid copying the data to userspace. They leave other efficiency issues unaddressed.</p>
-	<p>between</p>
-	<p>avoid user-space memory</p>
-	<p>zerocopy</p>
-	<p>sendfile</p>
-	<p>disk file --&gt; socket</p>
-	<p>yes</p>
-	<p>no</p>
-	<p>splice</p>
-	<p>pipe &lt;--&gt; socket</p>
-	<p>yes</p>
-	<p>yes?</p>
-	<p>vmsplice</p>
-	<p>memory region --&gt; pipe</p>
-	<p>no</p>
-	<p>yes</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>between</p>
+				</td>
+				<td>
+					<p>avoid user-space memory</p>
+				</td>
+				<td>
+					<p>zerocopy</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sendfile</p>
+				</td>
+				<td>
+					<p>disk file --&gt; socket</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+				<td>
+					<p>no</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>splice</p>
+				</td>
+				<td>
+					<p>pipe &lt;--&gt; socket</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+				<td>
+					<p>yes?</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>vmsplice</p>
+				</td>
+				<td>
+					<p>memory region --&gt; pipe</p>
+				</td>
+				<td>
+					<p>no</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Processes that forward large amounts of data face three problems:</p>
 	<ol>
 		<li>
@@ -80,7 +125,7 @@
 	<pre class="language-bash"><code class="language-bash">while data:
     data = read(sd, 4096)
     writeall(sd, data)</code></pre>
-	<p>Nothing simpler. On a blocking socket this is a totally valid program, and will work just fine. For completeness <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-naive.c#L57-L78">I prepared full code here</a>.</p>
+	<p>Nothing simpler. On a blocking socket this is a totally valid program, and will work just fine. For completeness, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-naive.c#L57-L78">I prepared full code here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="splice-specialized-syscall">Splice: specialized syscall</h3>
 		<a href="https://blog.cloudflare.com/#splice-specialized-syscall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -121,7 +166,7 @@ while n:
 			</svg>
 		</a>
 	</div>
-	<p>In recent years Linux Kernel introduced an <a href="https://lwn.net/Articles/740157">eBPF virtual machine</a>. With it, user-space programs can run specialized, non-turing-complete bytecode in the kernel context. Nowadays it's possible to <a href="https://blog.cloudflare.com/tag/ebpf">select eBPF programs</a> for dozens of use cases, ranging from packet filtering, to policy enforcement.</p>
+	<p>In recent years Linux Kernel introduced an <a href="https://lwn.net/Articles/740157">eBPF virtual machine</a>. With it, user-space programs can run specialized, non-turing-complete bytecode in the kernel context. Nowadays, it's possible to <a href="https://blog.cloudflare.com/tag/ebpf">select eBPF programs</a> for dozens of use cases, ranging from packet filtering, to policy enforcement.</p>
 	<p>From Kernel 4.14 Linux got new eBPF machinery that can be used for socket splicing - SOCKMAP. It was created by John Fastabend at <a href="https://cilium.io/blog/2018/04/24/cilium-security-for-age-of-microservices">Cilium.io</a>, exposing the <a href="https://www.kernel.org/doc/Documentation/networking/strparser.txt">Strparser</a> interface to eBPF programs. Cilium uses SOCKMAP for Layer 7 policy enforcement, and all the logic it uses is embedded in an eBPF program. The API is not well documented, requires root and, from our experience, is <a href="https://lore.kernel.org/netdev/20190211090949.18560-1-jakub@cloudflare.com">slightly</a> <a href="https://lore.kernel.org/netdev/20190128091335.20908-1-jakub@cloudflare.com">buggy</a>. But it's very promising. Read more:</p>
 	<ul>
 		<li>
@@ -131,7 +176,7 @@ while n:
 			<p><a href="https://lwn.net/Articles/731133">Original SOCKMAP commit</a></p>
 		</li>
 	</ul>
-	<p>This is how to use SOCKMAP: SOCKMAP or specifically "BPF_MAP_TYPE_SOCKMAP", is a type of an eBPF map. This map is an "array" - indices are integers. All this is pretty standard. The magic is in the map values - they must be TCP socket descriptors.</p>
+	<p>This is how to use SOCKMAP: SOCKMAP or specifically "BPF_MAP_TYPE_SOCKMAP", is a type of eBPF map. This map is an "array" - indices are integers. All this is pretty standard. The magic is in the map values - they must be TCP socket descriptors.</p>
 	<p>This map is very special - it has two eBPF programs attached to it. You read it right: the eBPF programs live <i>attached to a map</i>, not attached to a socket, cgroup or network interface as usual. This is how you would set up <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L36-L80">SOCKMAP in user program</a>:</p>
 	<pre class="language-bash"><code class="language-bash">sock_map = bpf_create_map(BPF_MAP_TYPE_SOCKMAP, sizeof(int), sizeof(int), 2, 0)
 
@@ -202,25 +247,80 @@ poll(fds, 1, -1);</code></pre>
 		</li>
 	</ol>
 	<p>Theoretically, SOCKMAP should beat all the others:</p>
-	<p>syscall cost</p>
-	<p>waking up userspace</p>
-	<p>copying cost</p>
-	<p>read write loop</p>
-	<p>2 syscalls</p>
-	<p>yes</p>
-	<p>2 copies</p>
-	<p>splice</p>
-	<p>2 syscalls</p>
-	<p>yes</p>
-	<p>0 copy (?)</p>
-	<p>io_submit</p>
-	<p>1 syscall</p>
-	<p>yes</p>
-	<p>2 copies</p>
-	<p>SOCKMAP</p>
-	<p>none</p>
-	<p>no</p>
-	<p>0 copies</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>syscall cost</p>
+				</td>
+				<td>
+					<p>waking up userspace</p>
+				</td>
+				<td>
+					<p>copying cost</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>read write loop</p>
+				</td>
+				<td>
+					<p>2 syscalls</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+				<td>
+					<p>2 copies</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>splice</p>
+				</td>
+				<td>
+					<p>2 syscalls</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+				<td>
+					<p>0 copy (?)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>io_submit</p>
+				</td>
+				<td>
+					<p>1 syscall</p>
+				</td>
+				<td>
+					<p>yes</p>
+				</td>
+				<td>
+					<p>2 copies</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SOCKMAP</p>
+				</td>
+				<td>
+					<p>none</p>
+				</td>
+				<td>
+					<p>no</p>
+				</td>
+				<td>
+					<p>0 copies</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="show-me-the-numbers">Show me the numbers</h3>
 		<a href="https://blog.cloudflare.com/#show-me-the-numbers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -293,7 +393,7 @@ Values:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yxe0fOUjkJpcsD1uoCIm6/03169327d9ee3060e31aa1d59d12283a/numbers-2mib-2.png" alt="numbers-2mib-2" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
-	<p>This charts shows that both naive read+write and io_submit programs were able to achieve 1500us mean round trip time for TCP echo server of 2MiB blocks.</p>
+	<p>This chart shows that both naive read+write and io_submit programs were able to achieve 1500us mean round trip time for TCP echo server of 2MiB blocks.</p>
 	<p>Here we clearly see that splice and SOCKMAP are slower than others. They were CPU-bound and unable to reach the line rate. We have raised the <a href="https://www.spinics.net/lists/netdev/msg539609.html">unusual splice performance problems</a> in the past, but perhaps we should debug it one more time.</p>
 	<p>For each server we run the tests twice: without and with SO_BUSYPOLL setting. This setting should remove the "wakeup latency" and greatly reduce the jitter. The results show that naive and io_submit tests are almost identical. This is perfect! BUSYPOLL does indeed reduce the deviation and latency, at a cost of more CPU usage. Notice that neither splice nor SOCKMAP are affected by this setting.</p>
 	<div class="flex anchor relative">
@@ -310,7 +410,7 @@ Values:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WxbvoQBvU00WzJldYpSED/b794cd76ed5acb14d807fd0fd624857a/numbers-16kib-1.png" alt="numbers-16kib-1" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
-	<p>In this test the non-BUSYPOLL runs of all the programs look quite similar (min and max values), with SOCKMAP being the exception. This is great - we can speculate the wakeup time is comparable. Surprisingly, the splice has slightly better median time from others. Perhaps this can be explained by CPU artifacts, like having better CPU cache locality due to less data copying. SOCKMAP is again, slowest with worst max and median times. Boo.</p>
+	<p>In this test the non-BUSYPOLL runs of all the programs look quite similar (min and max values), with SOCKMAP being the exception. This is great - we can speculate the wakeup time is comparable. Surprisingly, the splice has slightly better median time from others. Perhaps this can be explained by CPU artifacts, like having better CPU cache locality due to fewer data copying. SOCKMAP is again, slowest with worst max and median times. Boo.</p>
 	<p>Remember we truncated the worst 1% of the data - we artificially shortened the "max" values.</p>
 	<div class="flex anchor relative">
 		<h3 id="tl-dr">TL;DR</h3>
@@ -322,7 +422,7 @@ Values:
 	</div>
 	<p>In this blog post we discussed the theoretical benefits of SOCKMAP. Sadly, we noticed it's not ready for prime time yet. We compared it against splice, which we noticed didn't benefit from BUSYPOLL and had disappointing performance. We noticed that the naive read/write loop and iosubmit approaches have exactly the same performance characteristics and do benefit from BUSYPOLL to reduce jitter (wakeup time).</p>
 	<p>If you are piping data between TCP sockets, you should definitely take a look at SOCKMAP. While our benchmarks show it's not ready for prime time yet, with poor performance, high jitter and a couple of bugs, it's very promising. We are very excited about it. It's the first technology on Linux that truly allows the user-space process to offload TCP splicing to the kernel. It also has potential for much better performance than other approaches, ticking all the boxes of being async, kernel-only and totally avoiding needless copying of data.</p>
-	<p>This is not everything. SOCKMAP is able to pipe data across multiple sockets - you can imagine a full mesh of connections being able to send data to each other. Furthermore it exposes the <code>strparser</code> API, which can be used to offload basic application framing. Combined with <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/tls.txt">kTLS</a> you can combine it with transparent encryption. Furthermore, there are rumors of adding UDP support. The possibilities are endless.</p>
-	<p>Recently the kernel has been exploding with eBPF innovations. It seems like we've only just scratched the surface of the possibilities exposed by the modern eBPF interfaces.</p>
+	<p>This is not everything. SOCKMAP is able to pipe data across multiple sockets - you can imagine a full mesh of connections being able to send data to each other. Furthermore, it exposes the <code>strparser</code> API, which can be used to offload basic application framing. Combined with <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/tls.txt">kTLS</a> you can combine it with transparent encryption. Furthermore, there are rumors of adding UDP support. The possibilities are endless.</p>
+	<p>Recently the kernel has been exploding with eBPveF innovations. It seems like we've only just scratched the surface of the possibilities exposed by the modern eBPF interfaces.</p>
 	<p>Many thanks to <a href="https://twitter.com/jkbs0">Jakub Sitnicki</a> for suggesting SOCKMAP in the first place, writing the proof of concept and now actually fixing the bugs we found. Go strong Warsaw office!</p>
 </div>
