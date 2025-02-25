@@ -6,20 +6,18 @@
 	</div>
 </div>
 <h4><strong>Available Location: Sydney, Australia</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
 <h4><strong>What you'll do</strong></h4>
-<p>Do you like solving complex problems? Are you great at helping a team grow to surpass their potential together? Do you enjoy interacting with people at all levels and roles?</p>
-<p>As a <strong>Technical Support Manager</strong> at Cloudflare you will:</p>
-<p><strong>Provide World-Class Support to our Millions of Customers</strong> - You will help the team triage and answer high priority tickets from both top partners and free customers, understand our customers needs and problems, in depth, in order to provide insights on them to the company and solve them, and are confident in addressing customer escalations with team members.</p>
-<p><strong>Manage Technical Support Engineers</strong> - You will coach the team to excel at their jobs, manage individual and team projects to on-time completion, have regular one-on-ones with everyone on your technical support engineering team, encourage professional development, help with training and QA, manage the support hiring process, and keep team morale high.</p>
+<p>The Manager of Escalation Engineering will manage a highly technical Escalation Engineering team in Support, a team that performs deep, technical troubleshooting for complex, escalated issues. This role owns the standard customer escalation process, critical escalation flows, escalation metrics and tracking, and works with all Product and Engineering teams to identify product bugs, network problems, and platform issues. Their team acts as an escalation point and owner for many escalations per month: isolates, replicates and resolves problems while making the product and company better based on their learnings.</p>
+<p>As an <strong>Escalation Engineering Manager</strong> at Cloudflare you will:</p>
+<p><strong>Provide World-Class Support to our Millions of Customers</strong> - You will help the team triage and answer high priority issues from both top partners and free customers, understand our customers needs and problems, in depth, in order to provide insights on them to the company and solve them, and are confident in addressing customer escalations with team members.</p>
+<p><strong>Manage Escalation Engineers</strong> - You will coach the team to excel at their jobs, manage individual and team projects to on-time completion, have regular one-on-ones with everyone on your escalation team, encourage professional development, help with training and QA, manage the engineer hiring process, and keep team morale high.</p>
 <p><strong>Help Manage and Improve Tools and Processes - </strong>You will manage and continuously improve our processes for helping customers, managing the team, and working with the rest of the company. They will also help to manage all of our support tools and software.</p>
 <p><strong>Work Cross-Functionally With Other Teams</strong> - You will work with other teams to guide projects that help the support team, customers and the company. You will act as the Voice of the Customer to communicate clearly the requests and problems our customers are reporting to the rest of the company through to resolution.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum of 3 years of team lead or management experience, with teams of 4 or more people</li>
-	<li>Experience managing Support Engineers' performance and development</li>
-	<li>Strong experience at hiring, coaching, and training Support Engineers</li>
+	<li>Minimum of 3 years of management experience, with teams of 4 or more people</li>
+	<li>Experience managing engineers' performance and development</li>
+	<li>Strong experience at hiring, coaching, and training engineers</li>
 	<li>Experience managing a team to meet and exceed their individual, team, and company goals</li>
 	<li>Minimum of 5 years technical support experience for SaaS/PaaS enterprise solutions</li>
 	<li>Fundamental understanding how the Internet works (OSI Model)&nbsp;</li>
