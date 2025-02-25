@@ -58,6 +58,7 @@
 	"network.nel.title": "Network Error Logging",
 	"network.opportunistic_onion.title": "Onion Routing",
 	"network.opportunistic_onion.description": "Onion Routing allows routing traffic from legitimate users on the Tor network through Cloudflare's onion services rather than exit nodes, thereby improving privacy of the users and enabling more fine-grained protection.",
+	"network.opportunistic_onion.warning": "To configure Onion Routing <0>SSL/TLS encryption</0> should be enabled.",
 	"network.opportunistic_onion.help": "#### How does Onion Routing work?\nWhen this setting is enabled, the response to HTTPS requests coming from the Tor Browser will include an \"alt-svc\" header containing the address of one or more onion services operated by us. The Tor Browser establishes a Tor circuit with one of our onion services and, after a verification step by the browser, the subsequent requests will be routed through the onion service instead.\nThis allows us to distinguish individual circuits and only challenge circuits that show unusual behavior, while keeping users' anonymity intact.",
 	"network.page.subheadline": "Manage network settings for your website.",
 	"network.page.title": "Network",

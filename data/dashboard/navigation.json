@@ -396,7 +396,6 @@
 		},
 		{
 			"title": "navigation.account.magic_wan",
-			"url": "/magic-wan/network",
 			"iconType": "cloudflare-magic-wan",
 			"testId": "sidenav-magic-wan-link",
 			"hasPermission": null,
@@ -691,6 +690,14 @@
 				{
 					"title": "navigation.account.stream.live_inputs",
 					"url": "/stream/inputs",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.stream.video_transformations",
+					"labels": [
+						"beta"
+					],
+					"url": "/stream/video-transformations",
 					"hasPermission": null
 				},
 				{
