@@ -598,7 +598,12 @@
 		"tags": [
 			"Magic Interconnects"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1213,7 +1218,12 @@
 		"tags": [
 			"Magic Interconnects"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1840,7 +1850,10 @@
 		"tags": [
 			"Magic Interconnects"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Prefix Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2558,7 +2571,10 @@
 		"tags": [
 			"Magic Interconnects"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Prefix Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

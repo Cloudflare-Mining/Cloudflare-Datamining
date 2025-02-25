@@ -157,7 +157,12 @@
 		"tags": [
 			"Slots"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
 		"operationId": "get_slot",
@@ -259,6 +264,11 @@
 		"tags": [
 			"Slots"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		]
 	}
 }

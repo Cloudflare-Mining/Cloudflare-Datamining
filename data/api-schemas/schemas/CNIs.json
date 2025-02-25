@@ -47,7 +47,10 @@
 		"tags": [
 			"CNIs"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Prefix Write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
 		"operationId": "list_cnis",
@@ -218,7 +221,12 @@
 		"tags": [
 			"CNIs"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "get_cni",
@@ -359,7 +367,12 @@
 		"tags": [
 			"CNIs"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
+		]
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
 		"operationId": "create_cni",
@@ -561,7 +574,10 @@
 		"tags": [
 			"CNIs"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Prefix Write"
+		]
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "update_cni",
@@ -796,6 +812,9 @@
 		"tags": [
 			"CNIs"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Prefix Write"
+		]
 	}
 }
