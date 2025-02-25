@@ -2824,6 +2824,14 @@
 						"compatDisableFlag": "queue_consumer_wait_for_wait_until",
 						"compatEnableFlag": "queue_consumer_no_wait_for_wait_until"
 					}
+				},
+				{
+					"name": "populateProcessEnv",
+					"annotations": {
+						"compatDisableFlag": "nodejs_compat_do_not_populate_process_env",
+						"compatEnableFlag": "nodejs_compat_populate_process_env",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
