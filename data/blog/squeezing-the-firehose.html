@@ -100,26 +100,80 @@
 		</a>
 	</figure>
 	<p>They were so good, because they were lies. If with nginx error logs we were pushing under 20Mbps of uncompressed logs, here we jumped 30x to 600Mbps and compression wasn't able to keep up. Still, as a starting point, this experiment gave us some expectations in terms of compression ratios for the main target.</p>
-	<p>Compression</p>
-	<p>Messages consumed</p>
-	<p>Disk usage</p>
-	<p>Average message size</p>
-	<p>None</p>
-	<p>30.18M</p>
-	<p>48106MB</p>
-	<p>1594B</p>
-	<p>Gzip</p>
-	<p>3.17M</p>
-	<p>1443MB</p>
-	<p>455B</p>
-	<p>Snappy</p>
-	<p>20.99M</p>
-	<p>14807MB</p>
-	<p>705B</p>
-	<p>LZ4</p>
-	<p>20.93M</p>
-	<p>14731MB</p>
-	<p>703B</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Compression</p>
+				</td>
+				<td>
+					<p>Messages consumed</p>
+				</td>
+				<td>
+					<p>Disk usage</p>
+				</td>
+				<td>
+					<p>Average message size</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>None</p>
+				</td>
+				<td>
+					<p>30.18M</p>
+				</td>
+				<td>
+					<p>48106MB</p>
+				</td>
+				<td>
+					<p>1594B</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Gzip</p>
+				</td>
+				<td>
+					<p>3.17M</p>
+				</td>
+				<td>
+					<p>1443MB</p>
+				</td>
+				<td>
+					<p>455B</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Snappy</p>
+				</td>
+				<td>
+					<p>20.99M</p>
+				</td>
+				<td>
+					<p>14807MB</p>
+				</td>
+				<td>
+					<p>705B</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>LZ4</p>
+				</td>
+				<td>
+					<p>20.93M</p>
+				</td>
+				<td>
+					<p>14731MB</p>
+				</td>
+				<td>
+					<p>703B</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Gzip sounded too expensive from the beginning (especially in Go), but Snappy should have been able to keep up. We profiled our producer and it was spending just 2.4% of CPU time in Snappy compression, never saturating a single core:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/6.png">
@@ -257,46 +311,140 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (5) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (6) (kafka.log.LogValidator$)</code></pre>
 	<p>We promptly <a href="https://github.com/Shopify/sarama/pull/1015">fixed the issue</a> and resumed the testing. These were the results:</p>
-	<p>Compression</p>
-	<p>User time</p>
-	<p>Messages</p>
-	<p>Time per 1m</p>
-	<p>CPU ratio</p>
-	<p>Disk usage</p>
-	<p>Avg message size</p>
-	<p>Compression ratio</p>
-	<p>None</p>
-	<p>209.67s</p>
-	<p>26.00M</p>
-	<p>8.06s</p>
-	<p>1x</p>
-	<p>41448MB</p>
-	<p>1594B</p>
-	<p>1x</p>
-	<p>Gzip</p>
-	<p>570.56s</p>
-	<p>6.98M</p>
-	<p>81.74s</p>
-	<p>10.14x</p>
-	<p>3111MB</p>
-	<p>445B</p>
-	<p>3.58x</p>
-	<p>Snappy</p>
-	<p>337.55s</p>
-	<p>26.02M</p>
-	<p>12.97s</p>
-	<p>1.61x</p>
-	<p>17675MB</p>
-	<p>679B</p>
-	<p>2.35x</p>
-	<p>LZ4</p>
-	<p>525.82s</p>
-	<p>26.01M</p>
-	<p>20.22s</p>
-	<p>2.51x</p>
-	<p>22922MB</p>
-	<p>881B</p>
-	<p>1.81x</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Compression</p>
+				</td>
+				<td>
+					<p>User time</p>
+				</td>
+				<td>
+					<p>Messages</p>
+				</td>
+				<td>
+					<p>Time per 1m</p>
+				</td>
+				<td>
+					<p>CPU ratio</p>
+				</td>
+				<td>
+					<p>Disk usage</p>
+				</td>
+				<td>
+					<p>Avg message size</p>
+				</td>
+				<td>
+					<p>Compression ratio</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>None</p>
+				</td>
+				<td>
+					<p>209.67s</p>
+				</td>
+				<td>
+					<p>26.00M</p>
+				</td>
+				<td>
+					<p>8.06s</p>
+				</td>
+				<td>
+					<p>1x</p>
+				</td>
+				<td>
+					<p>41448MB</p>
+				</td>
+				<td>
+					<p>1594B</p>
+				</td>
+				<td>
+					<p>1x</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Gzip</p>
+				</td>
+				<td>
+					<p>570.56s</p>
+				</td>
+				<td>
+					<p>6.98M</p>
+				</td>
+				<td>
+					<p>81.74s</p>
+				</td>
+				<td>
+					<p>10.14x</p>
+				</td>
+				<td>
+					<p>3111MB</p>
+				</td>
+				<td>
+					<p>445B</p>
+				</td>
+				<td>
+					<p>3.58x</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Snappy</p>
+				</td>
+				<td>
+					<p>337.55s</p>
+				</td>
+				<td>
+					<p>26.02M</p>
+				</td>
+				<td>
+					<p>12.97s</p>
+				</td>
+				<td>
+					<p>1.61x</p>
+				</td>
+				<td>
+					<p>17675MB</p>
+				</td>
+				<td>
+					<p>679B</p>
+				</td>
+				<td>
+					<p>2.35x</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>LZ4</p>
+				</td>
+				<td>
+					<p>525.82s</p>
+				</td>
+				<td>
+					<p>26.01M</p>
+				</td>
+				<td>
+					<p>20.22s</p>
+				</td>
+				<td>
+					<p>2.51x</p>
+				</td>
+				<td>
+					<p>22922MB</p>
+				</td>
+				<td>
+					<p>881B</p>
+				</td>
+				<td>
+					<p>1.81x</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Now we were able to keep up with both Snappy and LZ4. Gzip was still out of the question and LZ4 had incompatibility issues between Kafka versions and our Go client, which left us with Snappy. This was a winner in terms of compression ratio and speed too, so we were not very disappointed by the lack of choice.</p>
 	<div class="flex anchor relative">
 		<h3 id="deploying-into-production">Deploying into production</h3>
@@ -350,7 +498,7 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QWGl1NhwkYWMHl5Q5Lius/a4085495612071ae2a16a8aa9a675a05/16.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
-	<p>CPU usage of the producer did not go up substantially, which means most of the work is spend in non compression related tasks. Consumers did not see any increase in CPU usage either, which means we've got our 2.6x decrease in size practically for free.</p>
+	<p>CPU usage of the producer did not go up substantially, which means most of the work is spent in non compression related tasks. Consumers did not see any increase in CPU usage either, which means we've got our 2.6x decrease in size practically for free.</p>
 	<p>It was time to hunt the biggest beast of all: <code>requests</code> topic with HTTP access logs. There we were doing up to 100Gbps and 7.5Mrps of ingress at peak (a lot more when big attacks are happening, but this was a quiet week):</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/17.png">
@@ -368,7 +516,7 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KvLGzI0Rnk44SXDJb6JXT/cdb6ee681318809a65b8ef8a61229589/19.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
-	<p>That's a 2.25x decrease in ingress bandwidth and average message size. We have multiple replicas and consumers, which means egress is a multiple of ingress. We were able to reduce in-DC traffic by hundreds of gigabits of internal traffic and save terabytes of flash storage. With network and disks being bottlenecks, this meant we'd need less than a half of hardware we had. Kafka was one the the main hardware hogs in this datacenter, so this was a large scale win.</p>
+	<p>That's a 2.25x decrease in ingress bandwidth and average message size. We have multiple replicas and consumers, which means egress is a multiple of ingress. We were able to reduce in-DC traffic by hundreds of gigabits of internal traffic and save terabytes of flash storage. With network and disks being bottlenecks, this meant we'd need less than a half of hardware we had. Kafka was one of the main hardware hogs in this datacenter, so this was a large scale win.</p>
 	<p>Yet, 2.25x seemed a bit on the low side.</p>
 	<div class="flex anchor relative">
 		<h3 id="looking-for-more">Looking for more</h3>
@@ -378,7 +526,7 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 			</svg>
 		</a>
 	</div>
-	<p>We wanted to see if we can do better. To do that, we extracted one batch of records from Kafka and ran some benchmarks on it. All batches are around 1MB uncompressed, 600 records in each on average.</p>
+	<p>We wanted to see if we can do better. To do that, we extracted one batch of records from Kafka and ran some benchmarks on it. All batches are around 1&nbsp;MB uncompressed, 600 records in each on average.</p>
 	<p>To run the benchmarks we used <a href="https://github.com/inikep/lzbench">lzbench</a>, which runs lots of different compression algorithms and provides a summary. Here's what we saw with results sorted by compression ratio (heavily filtered list):</p>
 	<pre class="language-bash"><code class="language-bash">lzbench 1.7.3 (64-bit MacOS)   Assembled by P.Skibinski
 Compressor name         Compress. Decompress. Compr. size  Ratio Filename
@@ -400,22 +548,66 @@ zstd 1.3.3 -5             154 MB/s   891 MB/s      226798  23.04</code></pre>
 
 	</figure>
 	<p>In our case we were getting this:</p>
-	<p>Compressor name</p>
-	<p>Ratio</p>
-	<p>Compression</p>
-	<p>Decompression</p>
-	<p>zstd</p>
-	<p>3.794</p>
-	<p>409 MB/s</p>
-	<p>844 MB/s</p>
-	<p>lz4</p>
-	<p>2.475</p>
-	<p>594 MB/s</p>
-	<p>2428 MB/s</p>
-	<p>snappy</p>
-	<p>2.313</p>
-	<p>446 MB/s</p>
-	<p>1344 MB/s</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Compressor name</p>
+				</td>
+				<td>
+					<p>Ratio</p>
+				</td>
+				<td>
+					<p>Compression</p>
+				</td>
+				<td>
+					<p>Decompression</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>zstd</p>
+				</td>
+				<td>
+					<p>3.794</p>
+				</td>
+				<td>
+					<p>409 MB/s</p>
+				</td>
+				<td>
+					<p>844 MB/s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>lz4</p>
+				</td>
+				<td>
+					<p>2.475</p>
+				</td>
+				<td>
+					<p>594 MB/s</p>
+				</td>
+				<td>
+					<p>2428 MB/s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>snappy</p>
+				</td>
+				<td>
+					<p>2.313</p>
+				</td>
+				<td>
+					<p>446 MB/s</p>
+				</td>
+				<td>
+					<p>1344 MB/s</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Clearly, results are very dependent on the kind of data you are trying to compress. For our data zstd was giving amazing results even on the lowest compression level. Compression ratio was better than even gzip at maximum compression level, while throughput was a lot higher. For posterity, this is how DNS logs compressed (HTTP logs compressed similarly):</p>
 	<pre class="language-bash"><code class="language-bash">$ ./lzbench -ezstd/zlib rrdns.recordbatch
 lzbench 1.7.3 (64-bit MacOS)   Assembled by P.Skibinski
@@ -454,7 +646,7 @@ zlib 1.2.11 -8           9.67 MB/s   429 MB/s      239659  25.85 rrdns.recordbat
 zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbatch</code></pre>
 	<p>For our purposes we picked level 6 as the compromise between compression ratio and CPU cost. It is possible to be even more aggressive as real world usage proved later.</p>
 	<p>One great property of zstd is more or less the same decompression speed between levels, which means you only have one knob that connects CPU cost of compression to compression ratio.</p>
-	<p>Armed with this knowledge, we dug up <a href="https://issues.apache.org/jira/browse/KAFKA-4514">forgotten Kafka ticket</a> to add zstd, along with <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-110%3A+Add+Codec+for+ZStandard+Compression">KIP</a> (Kafka Improvement Proposal) and even <a href="https://github.com/apache/kafka/pull/2267">PR on Github</a>. Sadly, these did not get traction back in the day, but this work saved us a lot of time.</p>
+	<p>Armed with this knowledge, we dug up <a href="https://issues.apache.org/jira/browse/KAFKA-4514">forgotten Kafka ticket</a> to add zstd, along with <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-110%3A+Add+Codec+for+ZStandard+Compression">KIP</a> (Kafka Improvement Proposal) and even <a href="https://github.com/apache/kafka/pull/2267">PR on GitHub</a>. Sadly, these did not get traction back in the day, but this work saved us a lot of time.</p>
 	<p>We <a href="https://github.com/bobrik/kafka/commit/8b17836efda64dba1ebdc080e30ee2945793aef3">ported</a> the patch to Kafka 1.0.0 release and pushed it in production. After another round of smaller scale testing and with <a href="https://github.com/bobrik/sarama/commit/c36187fbafab5afe5c152d2012b05b9306196cdb">patched</a> clients we pushed Zstd into production for requests topic.</p>
 	<p>Graphs below include switch from no compression (before 2/9) to Snappy (2/9 to 2/17) to Zstandard (after 2/17):</p>
 	<figure class="kg-card kg-image-card ">
@@ -476,7 +668,7 @@ zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbat
 			</svg>
 		</a>
 	</div>
-	<p>Zstandard is a great modern compression algorighm, promising high compression ratio and throughput, tunable in small increments. Whenever you consider using compression, you should check zstd. If you don't consider compression, then it's worth seeing if you can get benefits from it. Run benchmarks with your data in either case.</p>
+	<p>Zstandard is a great modern compression algorithm, promising high compression ratio and throughput, tunable in small increments. Whenever you consider using compression, you should check zstd. If you don't consider compression, then it's worth seeing if you can get benefits from it. Run benchmarks with your data in either case.</p>
 	<p>Testing in real world scenario showed how benchmarks, even coming from zstd itself, can be misleading. Going beyond codecs built into Kafka allowed us to improve compression ratio 2x at very low cost.</p>
 	<p>We hope that the data we gathered can be a catalyst to making Zstandard an official compression codec in Kafka to benefit other people. There are 3 bits allocated for codec type and only 2 are used so far, which means there are 4 more vacant places.</p>
 	<p>If you were skeptical of compression benefits in Kafka because of old flaws in Kafka protocol, this may be the time to reconsider.</p>

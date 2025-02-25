@@ -25,7 +25,7 @@
 	<p>Below are the user agents with the highest frequency of TLS 1.0 or 1.1 requests to api.cloudflare.com. If you recognize your API client in this list, please take steps to upgrade as soon as possible.</p>
 	<h5>curl running on outdated operating systems</h5>
 	<p>Many developers use <a href="https://curl.haxx.se">curl</a>, an excellent tool built by Daniel Stenberg, to make API calls to api.cloudflare.com. As is common with command-line tools, curl relies on the underlying crypto library that it is built against for SSL/TLS support, e.g., <a href="https://www.openssl.org">OpenSSL</a>, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS">NSS</a>, etc.</p>
-	<p>Therefore, users running curl on operating systems with outdated crypto libraries are likely to encounter problems. TLS 1.2 support was <a href="https://github.com/openssl/openssl/blob/OpenSSL_1_0_1-stable/CHANGES">first added</a> to OpenSSL in v1.0.1, which was released in March of 2012.</p>
+	<p>Therefore, users running curl on operating systems with outdated crypto libraries are likely to encounter problems. TLS 1.2 support was <a href="https://github.com/openssl/openssl/blob/OpenSSL_1_0_1-stable/CHANGES">first added</a> to OpenSSL in v1.0.1, which was released in March 2012.</p>
 	<h5>Java 1.7 or earlier</h5>
 	<p>TLS 1.2 support was added to the JRE in <a href="http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html">1.7.0_131-b12</a>, so API calls made using ancient versions of Java may fail.</p>
 	<h5>Internet Explorer 10 or earlier</h5>
@@ -39,46 +39,68 @@
 		</a>
 	</div>
 	<p>While TLS 1.0 and 1.1 will be permanently disabled on June 4 (12 weeks from today), we will take steps before then to encourage users still running outdated browsers and operating systems to upgrade.<a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
-	<p>Date</p>
-	<p>Days from Today</p>
-	<p>Event</p>
-	<p>2018/03/12</p>
-	<p>0</p>
-	<ul>
-		<li>
-			<p>Publication date of this blog post.</p>
-		</li>
-	</ul>
-	<p>2018/04/30</p>
-	<p>49</p>
-	<ul>
-		<li>
-			<p>Cloudflare Dashboard available for use at <a href="https://dash.cloudflare.com">dash.cloudflare.com</a>. Some percent of users will automatically be redirected here.</p>
-		</li>
-		<li>
-			<p>API responses from api.cloudflare.com will include a deprecation warning in the <code>messages</code> field (when request is made using TLS 1.0 or 1.1).</p>
-		</li>
-	</ul>
-	<p>2018/05/07</p>
-	<p>56</p>
-	<ul>
-		<li>
-			<p>Twenty-four (24) hour brownout of TLS 1.0 and 1.1 on api.cloudflare.com.</p>
-		</li>
-		<li>
-			<p>All API responses for calls made using either of these versions will be returned as an HTTP 400/Bad Request with a detailed error message in the payload.</p>
-		</li>
-	</ul>
-	<p>2018/06/04</p>
-	<p>84</p>
-	<ul>
-		<li>
-			<p>TLS 1.0 and 1.1 permanently disabled on api.cloudflare.com.</p>
-		</li>
-		<li>
-			<p>Cloudflare Dashboard available exclusively at <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and will require TLS 1.2 or higher.</p>
-		</li>
-	</ul>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Date</p>
+				</td>
+				<td>
+					<p>Days from Today</p>
+				</td>
+				<td>
+					<p>Event</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2018/03/12</p>
+				</td>
+				<td>
+					<p>0</p>
+				</td>
+				<td>
+					<p>Publication date of this blog post.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2018/04/30</p>
+				</td>
+				<td>
+					<p>49</p>
+				</td>
+				<td>
+					<p>Cloudflare Dashboard available for use at <a href="http://web.archive.org/web/20181208134816/https://dash.cloudflare.com">dash.cloudflare.com</a>. Some percent of users will automatically be redirected here.</p>
+					<p>API responses from api.cloudflare.com will include a deprecation warning in the <code>messages </code>field (when request is made using TLS 1.0 or 1.1).</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2018/05/07</p>
+				</td>
+				<td>
+					<p>56</p>
+				</td>
+				<td>
+					<p>Twenty-four (24) hour brownout of TLS 1.0 and 1.1 on api.cloudflare.com.</p>
+					<p>All API responses for calls made using either of these versions will be returned as an HTTP 400/Bad Request with a detailed error message in the payload.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2018/06/04</p>
+				</td>
+				<td>
+					<p>84</p>
+				</td>
+				<td>
+					<p>TLS 1.0 and 1.1 permanently disabled on api.cloudflare.com.</p>
+					<p>Cloudflare Dashboard available exclusively at <a href="http://web.archive.org/web/20181208134816/https://dash.cloudflare.com">dash.cloudflare.com</a> and will require TLS 1.2 or higher.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="deprecation-message-in-api-responses">Deprecation message in API responses</h3>
 		<a href="https://blog.cloudflare.com/#deprecation-message-in-api-responses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -87,7 +109,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Beginning on April 30, API responses from api.cloudflare.com will include a deprecation warning in the messages field when the request is made using TLS 1.0 or 1.1:</p>
+	<p>Beginning on April 30, API responses from api.cloudflare.com will include a deprecation warning in the messages' field when the request is made using TLS 1.0 or 1.1:</p>
 	<pre class="language-bash"><code class="language-bash">{
   "result": {
     "id":"2d4d028de3015345da9420df5514dad0",
@@ -112,7 +134,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>On May 7, we will temporary disable TLS 1.0 and 1.1 for a 24-hour "brownout" period. All calls made to api.cloudflare.com using TLS 1.0 or 1.1 will be immediately returned with an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400">HTTP 400</a> (Bad Request) error and the requested action will not be processed. Additionally, the Cloudfare Dashboard will be inaccessible using TLS 1.0 or 1.1 during this time.</p>
+	<p>On May 7, we will temporarily disable TLS 1.0 and 1.1 for a 24-hour "brownout" period. All calls made to api.cloudflare.com using TLS 1.0 or 1.1 will be immediately returned with an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400">HTTP 400</a> (Bad Request) error and the requested action will not be processed. Additionally, the Cloudfare Dashboard will be inaccessible using TLS 1.0 or 1.1 during this time.</p>
 	<p>The purpose of this brownout is to provide a warning to Cloudflare customers still using legacy browsers or operating systems. If your API calls suddenly stop working on this date, take a look at your technical stack.</p>
 	<div class="flex anchor relative">
 		<h3 id="permanent-disabling-of-tls-1-0-and-1-1">Permanent disabling of TLS 1.0 and 1.1</h3>
@@ -132,7 +154,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Currently you have the ability in the Crypto tab of the dashboard to disable TLS 1.0 and 1.1 together, but not 1.0 only:</p>
+	<p>Currently, you have the ability in the Crypto tab of the dashboard to disable TLS 1.0 and 1.1 together, but not 1.0 only:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61PQSC3j3jCJSf2vDnRGkI/57fdcc2524221450a6f5c2036a7cce45/require-modern-tls.png" alt="require-modern-tls" class="kg-image" width="970" height="177" loading="lazy">
@@ -168,10 +190,11 @@
 	<hr>
 	<ol>
 		<li>
-			<p>There is a client-side mitigation to BEAST but it's not universally deployed. Additionally, TLS POODLE only affects some implementations. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+			<p>There is a client-side mitigation to BEAST, but it's not universally deployed. Additionally, TLS POODLE only affects some implementations. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
 		</li>
 		<li>
 			<p>Operating systems matter as some browsers, such as IE and Edge, rely on the crypto stack that is bundled with the underlying OS for SSL/TLS support. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
 		</li>
 	</ol>
+	<p></p>
 </div>
