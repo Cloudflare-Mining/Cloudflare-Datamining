@@ -150,7 +150,17 @@
 												},
 												"duration": {
 													"default": "1m",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
 													"example": "300s",
 													"type": "string"
 												},
@@ -170,6 +180,17 @@
 													"minimum": 1,
 													"type": "number"
 												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string"
+												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -177,13 +198,44 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string"
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string"
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [
 												"name",
 												"prefixes",
 												"automatic_advertisement",
-												"duration"
+												"type"
 											],
 											"type": "object"
 										}
@@ -318,7 +370,17 @@
 														},
 														"duration": {
 															"default": "1m",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
 															"example": "300s",
 															"type": "string"
 														},
@@ -338,6 +400,17 @@
 															"minimum": 1,
 															"type": "number"
 														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string"
+														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -345,13 +418,44 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string"
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string"
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"required": [
 														"name",
 														"prefixes",
 														"automatic_advertisement",
-														"duration"
+														"type"
 													],
 													"type": "object"
 												}
@@ -620,7 +724,17 @@
 													},
 													"duration": {
 														"default": "1m",
-														"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+														"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+														"enum": [
+															"1m",
+															"5m",
+															"10m",
+															"15m",
+															"20m",
+															"30m",
+															"45m",
+															"60m"
+														],
 														"example": "300s",
 														"type": "string"
 													},
@@ -640,6 +754,17 @@
 														"minimum": 1,
 														"type": "number"
 													},
+													"prefix_match": {
+														"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+														"enum": [
+															"exact",
+															"subnet",
+															"supernet"
+														],
+														"example": "exact",
+														"nullable": true,
+														"type": "string"
+													},
 													"prefixes": {
 														"items": {
 															"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -647,13 +772,44 @@
 															"type": "string"
 														},
 														"type": "array"
+													},
+													"type": {
+														"description": "MNM rule type.",
+														"enum": [
+															"threshold",
+															"zscore",
+															"advanced_ddos"
+														],
+														"example": "zscore",
+														"type": "string"
+													},
+													"zscore_sensitivity": {
+														"description": "Level of sensitivity set for zscore rules.",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														],
+														"example": "high",
+														"nullable": true,
+														"type": "string"
+													},
+													"zscore_target": {
+														"description": "Target of the zscore rule analysis.",
+														"enum": [
+															"bits",
+															"packets"
+														],
+														"example": "bits",
+														"nullable": true,
+														"type": "string"
 													}
 												},
 												"required": [
 													"name",
 													"prefixes",
 													"automatic_advertisement",
-													"duration"
+													"type"
 												],
 												"type": "object"
 											},
@@ -809,7 +965,17 @@
 															},
 															"duration": {
 																"default": "1m",
-																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+																"enum": [
+																	"1m",
+																	"5m",
+																	"10m",
+																	"15m",
+																	"20m",
+																	"30m",
+																	"45m",
+																	"60m"
+																],
 																"example": "300s",
 																"type": "string"
 															},
@@ -829,6 +995,17 @@
 																"minimum": 1,
 																"type": "number"
 															},
+															"prefix_match": {
+																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+																"enum": [
+																	"exact",
+																	"subnet",
+																	"supernet"
+																],
+																"example": "exact",
+																"nullable": true,
+																"type": "string"
+															},
 															"prefixes": {
 																"items": {
 																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -836,13 +1013,44 @@
 																	"type": "string"
 																},
 																"type": "array"
+															},
+															"type": {
+																"description": "MNM rule type.",
+																"enum": [
+																	"threshold",
+																	"zscore",
+																	"advanced_ddos"
+																],
+																"example": "zscore",
+																"type": "string"
+															},
+															"zscore_sensitivity": {
+																"description": "Level of sensitivity set for zscore rules.",
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"example": "high",
+																"nullable": true,
+																"type": "string"
+															},
+															"zscore_target": {
+																"description": "Target of the zscore rule analysis.",
+																"enum": [
+																	"bits",
+																	"packets"
+																],
+																"example": "bits",
+																"nullable": true,
+																"type": "string"
 															}
 														},
 														"required": [
 															"name",
 															"prefixes",
 															"automatic_advertisement",
-															"duration"
+															"type"
 														],
 														"type": "object"
 													},
@@ -1105,7 +1313,17 @@
 												},
 												"duration": {
 													"default": "1m",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
 													"example": "300s",
 													"type": "string"
 												},
@@ -1125,6 +1343,17 @@
 													"minimum": 1,
 													"type": "number"
 												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string"
+												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -1132,13 +1361,44 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string"
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string"
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [
 												"name",
 												"prefixes",
 												"automatic_advertisement",
-												"duration"
+												"type"
 											],
 											"type": "object"
 										}
@@ -1273,7 +1533,17 @@
 														},
 														"duration": {
 															"default": "1m",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
 															"example": "300s",
 															"type": "string"
 														},
@@ -1293,6 +1563,17 @@
 															"minimum": 1,
 															"type": "number"
 														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string"
+														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -1300,13 +1581,44 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string"
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string"
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"required": [
 														"name",
 														"prefixes",
 														"automatic_advertisement",
-														"duration"
+														"type"
 													],
 													"type": "object"
 												}
@@ -1465,7 +1777,17 @@
 							},
 							"duration": {
 								"default": "1m",
-								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
 								"example": "300s",
 								"type": "string"
 							},
@@ -1616,7 +1938,17 @@
 												},
 												"duration": {
 													"default": "1m",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
 													"example": "300s",
 													"type": "string"
 												},
@@ -1636,6 +1968,17 @@
 													"minimum": 1,
 													"type": "number"
 												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string"
+												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -1643,13 +1986,44 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string"
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string"
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [
 												"name",
 												"prefixes",
 												"automatic_advertisement",
-												"duration"
+												"type"
 											],
 											"type": "object"
 										}
@@ -1784,7 +2158,17 @@
 														},
 														"duration": {
 															"default": "1m",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
 															"example": "300s",
 															"type": "string"
 														},
@@ -1804,6 +2188,17 @@
 															"minimum": 1,
 															"type": "number"
 														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string"
+														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -1811,13 +2206,44 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string"
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string"
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"required": [
 														"name",
 														"prefixes",
 														"automatic_advertisement",
-														"duration"
+														"type"
 													],
 													"type": "object"
 												}
@@ -2354,7 +2780,17 @@
 							},
 							"duration": {
 								"default": "1m",
-								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
 								"example": "300s",
 								"type": "string"
 							},
@@ -2509,7 +2945,17 @@
 												},
 												"duration": {
 													"default": "1m",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
 													"example": "300s",
 													"type": "string"
 												},
@@ -2529,6 +2975,17 @@
 													"minimum": 1,
 													"type": "number"
 												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string"
+												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -2536,13 +2993,44 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string"
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string"
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [
 												"name",
 												"prefixes",
 												"automatic_advertisement",
-												"duration"
+												"type"
 											],
 											"type": "object"
 										}
@@ -2677,7 +3165,17 @@
 														},
 														"duration": {
 															"default": "1m",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
 															"example": "300s",
 															"type": "string"
 														},
@@ -2697,6 +3195,17 @@
 															"minimum": 1,
 															"type": "number"
 														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string"
+														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -2704,13 +3213,44 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string"
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string"
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"required": [
 														"name",
 														"prefixes",
 														"automatic_advertisement",
-														"duration"
+														"type"
 													],
 													"type": "object"
 												}
@@ -2858,7 +3398,17 @@
 							},
 							"duration": {
 								"default": "1m",
-								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
 								"example": "300s",
 								"type": "string"
 							},
@@ -3019,7 +3569,17 @@
 												},
 												"duration": {
 													"default": "1m",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
 													"example": "300s",
 													"type": "string"
 												},
@@ -3039,6 +3599,17 @@
 													"minimum": 1,
 													"type": "number"
 												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string"
+												},
 												"prefixes": {
 													"items": {
 														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -3046,13 +3617,44 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string"
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string"
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string"
 												}
 											},
 											"required": [
 												"name",
 												"prefixes",
 												"automatic_advertisement",
-												"duration"
+												"type"
 											],
 											"type": "object"
 										}
@@ -3187,7 +3789,17 @@
 														},
 														"duration": {
 															"default": "1m",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
 															"example": "300s",
 															"type": "string"
 														},
@@ -3207,6 +3819,17 @@
 															"minimum": 1,
 															"type": "number"
 														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string"
+														},
 														"prefixes": {
 															"items": {
 																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
@@ -3214,13 +3837,44 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string"
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string"
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"required": [
 														"name",
 														"prefixes",
 														"automatic_advertisement",
-														"duration"
+														"type"
 													],
 													"type": "object"
 												}

@@ -143,7 +143,8 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional description of the interconnect.",
@@ -167,7 +168,8 @@
 																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"rate": {
 																		"default": "mid",
@@ -178,7 +180,8 @@
 																			"high"
 																		],
 																		"example": "low",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"target": {
 																		"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -190,12 +193,14 @@
 																						"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																						"example": "203.0.113.1",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"saved": {
 																						"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																						"example": "203.0.113.1",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -213,7 +218,8 @@
 																			"request"
 																		],
 																		"example": "request",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -223,19 +229,22 @@
 																"example": "c4a7362d577a6c3019a474fd6f485821",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"interface_address": {
 																"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																"example": "192.0.2.0/31",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The date and time the tunnel was last modified.",
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mtu": {
 																"default": 1476,
@@ -382,7 +391,8 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional description of the interconnect.",
@@ -406,7 +416,8 @@
 																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"rate": {
 																				"default": "mid",
@@ -417,7 +428,8 @@
 																					"high"
 																				],
 																				"example": "low",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"target": {
 																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -429,12 +441,14 @@
 																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																								"example": "203.0.113.1",
 																								"readOnly": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"saved": {
 																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																								"example": "203.0.113.1",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -452,7 +466,8 @@
 																					"request"
 																				],
 																				"example": "request",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -462,19 +477,22 @@
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"interface_address": {
 																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																		"example": "192.0.2.0/31",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"modified_on": {
 																		"description": "The date and time the tunnel was last modified.",
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"mtu": {
 																		"default": 1476,
@@ -766,7 +784,8 @@
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description of the interconnect.",
@@ -790,7 +809,8 @@
 																	"default": true,
 																	"description": "Determines whether to run healthchecks for a tunnel.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"rate": {
 																	"default": "mid",
@@ -801,7 +821,8 @@
 																		"high"
 																	],
 																	"example": "low",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"target": {
 																	"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -813,12 +834,14 @@
 																					"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																					"example": "203.0.113.1",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"saved": {
 																					"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																					"example": "203.0.113.1",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -836,7 +859,8 @@
 																		"request"
 																	],
 																	"example": "request",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -846,19 +870,22 @@
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interface_address": {
 															"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 															"example": "192.0.2.0/31",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time the tunnel was last modified.",
 															"example": "2017-06-14T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"mtu": {
 															"default": 1476,
@@ -1003,7 +1030,8 @@
 																	"example": "2017-06-14T00:00:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description of the interconnect.",
@@ -1027,7 +1055,8 @@
 																			"default": true,
 																			"description": "Determines whether to run healthchecks for a tunnel.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"rate": {
 																			"default": "mid",
@@ -1038,7 +1067,8 @@
 																				"high"
 																			],
 																			"example": "low",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"target": {
 																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -1050,12 +1080,14 @@
 																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																							"example": "203.0.113.1",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"saved": {
 																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																							"example": "203.0.113.1",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1073,7 +1105,8 @@
 																				"request"
 																			],
 																			"example": "request",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1083,19 +1116,22 @@
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"interface_address": {
 																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																	"example": "192.0.2.0/31",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "The date and time the tunnel was last modified.",
 																	"example": "2017-06-14T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"mtu": {
 																	"default": 1476,
@@ -1391,7 +1427,8 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional description of the interconnect.",
@@ -1415,7 +1452,8 @@
 																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"rate": {
 																		"default": "mid",
@@ -1426,7 +1464,8 @@
 																			"high"
 																		],
 																		"example": "low",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"target": {
 																		"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -1438,12 +1477,14 @@
 																						"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																						"example": "203.0.113.1",
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"saved": {
 																						"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																						"example": "203.0.113.1",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -1461,7 +1502,8 @@
 																			"request"
 																		],
 																		"example": "request",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1471,19 +1513,22 @@
 																"example": "c4a7362d577a6c3019a474fd6f485821",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"interface_address": {
 																"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																"example": "192.0.2.0/31",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The date and time the tunnel was last modified.",
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mtu": {
 																"default": 1476,
@@ -1634,7 +1679,8 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional description of the interconnect.",
@@ -1658,7 +1704,8 @@
 																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"rate": {
 																				"default": "mid",
@@ -1669,7 +1716,8 @@
 																					"high"
 																				],
 																				"example": "low",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"target": {
 																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -1681,12 +1729,14 @@
 																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																								"example": "203.0.113.1",
 																								"readOnly": true,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"saved": {
 																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																								"example": "203.0.113.1",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1704,7 +1754,8 @@
 																					"request"
 																				],
 																				"example": "request",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1714,19 +1765,22 @@
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"interface_address": {
 																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																		"example": "192.0.2.0/31",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"modified_on": {
 																		"description": "The date and time the tunnel was last modified.",
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"mtu": {
 																		"default": 1476,
@@ -1925,7 +1979,8 @@
 										"default": true,
 										"description": "Determines whether to run healthchecks for a tunnel.",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"rate": {
 										"default": "mid",
@@ -1936,7 +1991,8 @@
 											"high"
 										],
 										"example": "low",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"target": {
 										"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -1948,12 +2004,14 @@
 														"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 														"example": "203.0.113.1",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"saved": {
 														"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 														"example": "203.0.113.1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1971,7 +2029,8 @@
 											"request"
 										],
 										"example": "request",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1979,7 +2038,8 @@
 							"interface_address": {
 								"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 								"example": "192.0.2.0/31",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"mtu": {
 								"default": 1476,
@@ -2115,7 +2175,8 @@
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description of the interconnect.",
@@ -2139,7 +2200,8 @@
 																	"default": true,
 																	"description": "Determines whether to run healthchecks for a tunnel.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"rate": {
 																	"default": "mid",
@@ -2150,7 +2212,8 @@
 																		"high"
 																	],
 																	"example": "low",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"target": {
 																	"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -2162,12 +2225,14 @@
 																					"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																					"example": "203.0.113.1",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"saved": {
 																					"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																					"example": "203.0.113.1",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2185,7 +2250,8 @@
 																		"request"
 																	],
 																	"example": "request",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2195,19 +2261,22 @@
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interface_address": {
 															"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 															"example": "192.0.2.0/31",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time the tunnel was last modified.",
 															"example": "2017-06-14T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"mtu": {
 															"default": 1476,
@@ -2356,7 +2425,8 @@
 																	"example": "2017-06-14T00:00:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description of the interconnect.",
@@ -2380,7 +2450,8 @@
 																			"default": true,
 																			"description": "Determines whether to run healthchecks for a tunnel.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"rate": {
 																			"default": "mid",
@@ -2391,7 +2462,8 @@
 																				"high"
 																			],
 																			"example": "low",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"target": {
 																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
@@ -2403,12 +2475,14 @@
 																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
 																							"example": "203.0.113.1",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"saved": {
 																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
 																							"example": "203.0.113.1",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -2426,7 +2500,8 @@
 																				"request"
 																			],
 																			"example": "request",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2436,19 +2511,22 @@
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"interface_address": {
 																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																	"example": "192.0.2.0/31",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "The date and time the tunnel was last modified.",
 																	"example": "2017-06-14T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"mtu": {
 																	"default": 1476,

@@ -143,7 +143,8 @@
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
 													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"type": "string"
@@ -166,12 +167,14 @@
 														"lat": {
 															"description": "Latitude",
 															"example": 37.6192,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
 															"example": 122.3816,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -179,12 +182,14 @@
 												"name": {
 													"description": "The name of the site.",
 													"example": "site_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 													"example": "8d67040d3835dbcf46ce29da440dc482",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -453,7 +458,8 @@
 													"connector_id": {
 														"description": "Magic Connector identifier tag.",
 														"example": "ac60d3d0435248289d446cedd870bcf4",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"type": "string"
@@ -476,12 +482,14 @@
 															"lat": {
 																"description": "Latitude",
 																"example": 37.6192,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"lon": {
 																"description": "Longitude",
 																"example": 122.3816,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -489,12 +497,14 @@
 													"name": {
 														"description": "The name of the site.",
 														"example": "site_1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"secondary_connector_id": {
 														"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 														"example": "8d67040d3835dbcf46ce29da440dc482",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -770,7 +780,8 @@
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
 													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"type": "string"
@@ -793,12 +804,14 @@
 														"lat": {
 															"description": "Latitude",
 															"example": 37.6192,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
 															"example": 122.3816,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -806,12 +819,14 @@
 												"name": {
 													"description": "The name of the site.",
 													"example": "site_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 													"example": "8d67040d3835dbcf46ce29da440dc482",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -981,7 +996,8 @@
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
 								"example": "ac60d3d0435248289d446cedd870bcf4",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"description": {
 								"type": "string"
@@ -992,12 +1008,14 @@
 									"lat": {
 										"description": "Latitude",
 										"example": 37.6192,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
 										"example": 122.3816,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1005,12 +1023,14 @@
 							"name": {
 								"description": "The name of the site.",
 								"example": "site_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 								"example": "8d67040d3835dbcf46ce29da440dc482",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1128,7 +1148,8 @@
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
 													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"type": "string"
@@ -1151,12 +1172,14 @@
 														"lat": {
 															"description": "Latitude",
 															"example": 37.6192,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
 															"example": 122.3816,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1164,12 +1187,14 @@
 												"name": {
 													"description": "The name of the site.",
 													"example": "site_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 													"example": "8d67040d3835dbcf46ce29da440dc482",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1325,7 +1350,8 @@
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
 								"example": "ac60d3d0435248289d446cedd870bcf4",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"description": {
 								"type": "string"
@@ -1341,12 +1367,14 @@
 									"lat": {
 										"description": "Latitude",
 										"example": 37.6192,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
 										"example": 122.3816,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1354,12 +1382,14 @@
 							"name": {
 								"description": "The name of the site.",
 								"example": "site_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 								"example": "8d67040d3835dbcf46ce29da440dc482",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1480,7 +1510,8 @@
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
 													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"type": "string"
@@ -1503,12 +1534,14 @@
 														"lat": {
 															"description": "Latitude",
 															"example": 37.6192,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
 															"example": 122.3816,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1516,12 +1549,14 @@
 												"name": {
 													"description": "The name of the site.",
 													"example": "site_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 													"example": "8d67040d3835dbcf46ce29da440dc482",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1684,7 +1719,8 @@
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
 								"example": "ac60d3d0435248289d446cedd870bcf4",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"description": {
 								"type": "string"
@@ -1695,12 +1731,14 @@
 									"lat": {
 										"description": "Latitude",
 										"example": 37.6192,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
 										"example": 122.3816,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1708,12 +1746,14 @@
 							"name": {
 								"description": "The name of the site.",
 								"example": "site_1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 								"example": "8d67040d3835dbcf46ce29da440dc482",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1831,7 +1871,8 @@
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
 													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"type": "string"
@@ -1854,12 +1895,14 @@
 														"lat": {
 															"description": "Latitude",
 															"example": 37.6192,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
 															"example": 122.3816,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1867,12 +1910,14 @@
 												"name": {
 													"description": "The name of the site.",
 													"example": "site_1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
 													"example": "8d67040d3835dbcf46ce29da440dc482",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

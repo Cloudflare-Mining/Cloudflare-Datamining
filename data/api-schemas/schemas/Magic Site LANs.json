@@ -300,7 +300,8 @@
 												"vlan_tag": {
 													"description": "VLAN port number.",
 													"example": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -715,7 +716,8 @@
 													"vlan_tag": {
 														"description": "VLAN port number.",
 														"example": 0,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1140,7 +1142,8 @@
 												"vlan_tag": {
 													"description": "VLAN port number.",
 													"example": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1449,7 +1452,8 @@
 							"vlan_tag": {
 								"description": "VLAN port number.",
 								"example": 0,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1712,7 +1716,8 @@
 												"vlan_tag": {
 													"description": "VLAN port number.",
 													"example": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2011,7 +2016,8 @@
 							"vlan_tag": {
 								"description": "VLAN port number.",
 								"example": 0,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2279,7 +2285,8 @@
 													"vlan_tag": {
 														"description": "VLAN port number.",
 														"example": 0,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2583,7 +2590,8 @@
 							"vlan_tag": {
 								"description": "VLAN port number.",
 								"example": 0,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2846,7 +2854,8 @@
 												"vlan_tag": {
 													"description": "VLAN port number.",
 													"example": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

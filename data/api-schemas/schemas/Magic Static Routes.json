@@ -170,12 +170,14 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
 																"example": "New route for new prefix 203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
@@ -189,21 +191,25 @@
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Priority of the static route.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
@@ -213,7 +219,8 @@
 																		"items": {
 																			"description": "Scope colo name.",
 																			"example": "den01",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -222,16 +229,19 @@
 																		"items": {
 																			"description": "Scope colo region.",
 																			"example": "APAC",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -372,12 +382,14 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
 																		"example": "New route for new prefix 203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
@@ -391,21 +403,25 @@
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Priority of the static route.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
@@ -415,7 +431,8 @@
 																				"items": {
 																					"description": "Scope colo name.",
 																					"example": "den01",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -424,16 +441,19 @@
 																				"items": {
 																					"description": "Scope colo region.",
 																					"example": "APAC",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
-																				"type": "array"
+																				"type": "array",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -720,12 +740,14 @@
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
 															"example": "New route for new prefix 203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
@@ -739,21 +761,25 @@
 															"example": "2017-06-14T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
 															"example": "203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "Priority of the static route.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
@@ -763,7 +789,8 @@
 																	"items": {
 																		"description": "Scope colo name.",
 																		"example": "den01",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -772,16 +799,19 @@
 																	"items": {
 																		"description": "Scope colo region.",
 																		"example": "APAC",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -920,12 +950,14 @@
 																	"example": "2017-06-14T00:00:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
 																	"example": "New route for new prefix 203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
@@ -939,21 +971,25 @@
 																	"example": "2017-06-14T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
 																	"example": "203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Priority of the static route.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
@@ -963,7 +999,8 @@
 																			"items": {
 																				"description": "Scope colo name.",
 																				"example": "den01",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -972,16 +1009,19 @@
 																			"items": {
 																				"description": "Scope colo region.",
 																				"example": "APAC",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1246,12 +1286,14 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
 																"example": "New route for new prefix 203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
@@ -1265,21 +1307,25 @@
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Priority of the static route.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
@@ -1289,7 +1335,8 @@
 																		"items": {
 																			"description": "Scope colo name.",
 																			"example": "den01",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -1298,16 +1345,19 @@
 																		"items": {
 																			"description": "Scope colo region.",
 																			"example": "APAC",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1444,12 +1494,14 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
 																		"example": "New route for new prefix 203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
@@ -1463,21 +1515,25 @@
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Priority of the static route.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
@@ -1487,7 +1543,8 @@
 																				"items": {
 																					"description": "Scope colo name.",
 																					"example": "den01",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -1496,16 +1553,19 @@
 																				"items": {
 																					"description": "Scope colo region.",
 																					"example": "APAC",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
-																				"type": "array"
+																				"type": "array",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1779,12 +1839,14 @@
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
 															"example": "New route for new prefix 203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
@@ -1798,21 +1860,25 @@
 															"example": "2017-06-14T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
 															"example": "203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "Priority of the static route.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
@@ -1822,7 +1888,8 @@
 																	"items": {
 																		"description": "Scope colo name.",
 																		"example": "den01",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -1831,16 +1898,19 @@
 																	"items": {
 																		"description": "Scope colo region.",
 																		"example": "APAC",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1975,12 +2045,14 @@
 																	"example": "2017-06-14T00:00:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
 																	"example": "New route for new prefix 203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
@@ -1994,21 +2066,25 @@
 																	"example": "2017-06-14T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
 																	"example": "203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Priority of the static route.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
@@ -2018,7 +2094,8 @@
 																			"items": {
 																				"description": "Scope colo name.",
 																				"example": "den01",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -2027,16 +2104,19 @@
 																			"items": {
 																				"description": "Scope colo region.",
 																				"example": "APAC",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2317,12 +2397,14 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
 																"example": "New route for new prefix 203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
@@ -2336,21 +2418,25 @@
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Priority of the static route.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
@@ -2360,7 +2446,8 @@
 																		"items": {
 																			"description": "Scope colo name.",
 																			"example": "den01",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -2369,16 +2456,19 @@
 																		"items": {
 																			"description": "Scope colo region.",
 																			"example": "APAC",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2515,12 +2605,14 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
 																		"example": "New route for new prefix 203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
@@ -2534,21 +2626,25 @@
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Priority of the static route.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
@@ -2558,7 +2654,8 @@
 																				"items": {
 																					"description": "Scope colo name.",
 																					"example": "den01",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -2567,16 +2664,19 @@
 																				"items": {
 																					"description": "Scope colo region.",
 																					"example": "APAC",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
-																				"type": "array"
+																				"type": "array",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2755,21 +2855,25 @@
 												"description": {
 													"description": "An optional human provided description of the static route.",
 													"example": "New route for new prefix 203.0.113.1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"nexthop": {
 													"description": "The next-hop IP Address for the static route.",
 													"example": "203.0.113.1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"prefix": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"priority": {
 													"description": "Priority of the static route.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"scope": {
 													"description": "Used only for ECMP routes.",
@@ -2779,7 +2883,8 @@
 															"items": {
 																"description": "Scope colo name.",
 																"example": "den01",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
@@ -2788,16 +2893,19 @@
 															"items": {
 																"description": "Scope colo region.",
 																"example": "APAC",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												},
 												"weight": {
 													"description": "Optional weight of the ECMP scope - if provided.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2939,12 +3047,14 @@
 																"example": "2017-06-14T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
 																"example": "New route for new prefix 203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
@@ -2958,21 +3068,25 @@
 																"example": "2017-06-14T05:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
 																"example": "203.0.113.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "Priority of the static route.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
@@ -2982,7 +3096,8 @@
 																		"items": {
 																			"description": "Scope colo name.",
 																			"example": "den01",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -2991,16 +3106,19 @@
 																		"items": {
 																			"description": "Scope colo region.",
 																			"example": "APAC",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3141,12 +3259,14 @@
 																		"example": "2017-06-14T00:00:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
 																		"example": "New route for new prefix 203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
@@ -3160,21 +3280,25 @@
 																		"example": "2017-06-14T05:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
 																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Priority of the static route.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
@@ -3184,7 +3308,8 @@
 																				"items": {
 																					"description": "Scope colo name.",
 																					"example": "den01",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -3193,16 +3318,19 @@
 																				"items": {
 																					"description": "Scope colo region.",
 																					"example": "APAC",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
-																				"type": "array"
+																				"type": "array",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3376,21 +3504,25 @@
 									"description": {
 										"description": "An optional human provided description of the static route.",
 										"example": "New route for new prefix 203.0.113.1",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"nexthop": {
 										"description": "The next-hop IP Address for the static route.",
 										"example": "203.0.113.1",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"prefix": {
 										"description": "IP Prefix in Classless Inter-Domain Routing format.",
 										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"priority": {
 										"description": "Priority of the static route.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									},
 									"scope": {
 										"description": "Used only for ECMP routes.",
@@ -3400,7 +3532,8 @@
 												"items": {
 													"description": "Scope colo name.",
 													"example": "den01",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": "array"
 											},
@@ -3409,16 +3542,19 @@
 												"items": {
 													"description": "Scope colo region.",
 													"example": "APAC",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
-												"type": "array"
+												"type": "array",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
 									},
 									"weight": {
 										"description": "Optional weight of the ECMP scope - if provided.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -3551,12 +3687,14 @@
 															"example": "2017-06-14T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
 															"example": "New route for new prefix 203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
@@ -3570,21 +3708,25 @@
 															"example": "2017-06-14T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
 															"example": "203.0.113.1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
 															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "Priority of the static route.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
@@ -3594,7 +3736,8 @@
 																	"items": {
 																		"description": "Scope colo name.",
 																		"example": "den01",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -3603,16 +3746,19 @@
 																	"items": {
 																		"description": "Scope colo region.",
 																		"example": "APAC",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3751,12 +3897,14 @@
 																	"example": "2017-06-14T00:00:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
 																	"example": "New route for new prefix 203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
@@ -3770,21 +3918,25 @@
 																	"example": "2017-06-14T05:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
 																	"example": "203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
 																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"priority": {
 																	"description": "Priority of the static route.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
@@ -3794,7 +3946,8 @@
 																			"items": {
 																				"description": "Scope colo name.",
 																				"example": "den01",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -3803,16 +3956,19 @@
 																			"items": {
 																				"description": "Scope colo region.",
 																				"example": "APAC",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"required": [
