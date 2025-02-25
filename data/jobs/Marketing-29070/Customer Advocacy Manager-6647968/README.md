@@ -5,34 +5,68 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal | London, UK</p>
-<p>Cloudflare is seeking an organized, self-motivated Business Analyst to understand business needs and translate them into areas for improvement. You will be responsible for prioritizing initiatives based on business impact, developing requirements, ensuring solutions align with business goals, and owning communications and enablement that will ensure the business is ready to adopt new processes. In this role you will have the opportunity to directly impact the productivity of our Support team (and in turn, thousands of customers that we work with every week) by driving the implementation of new system functionality and enhancements in Salesforce Service Cloud.&nbsp;</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
-<p>The ideal candidate is comfortable working in a fast-paced environment, is empathetic, flexible, iterative, curious, and enjoys collaborating cross-functionally to achieve a common goal.</p>
-<p>This position will be based in Austin, Texas; London, UK; or Lisbon, Portugal. You will be reporting into the Support Operations team.</p>
-<h4><strong>Major areas of responsibilities</strong></h4>
+<p><strong>Responsibilities</strong></p>
+<p>The Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate should have previous experience in both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company.</p>
+<p>You will work cross functionally to build customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
+<p>The candidate is an individual contributor who will work closely with the global Customer Advocacy team, who are driving all Customer Marketing and Customer Advocacy programs. Success is measured by quantity and quality of content, amount of engagement with each account, brand equity, and levels/titles of participating customers.</p>
+<p><strong>Locations: Austin, San Francisco, DC</strong></p>
+<p>The main responsibilities are:</p>
+<p><strong>Customer References:</strong></p>
 <ul>
-	<li>Serves as business partner and trusted advisor for Customer Support. Collects, understands, and synthesizes user feedback as well as strategic business priorities. Has deep understanding of business stakeholder group.</li>
-	<li>Stack ranks priorities that reflect the stakeholder group’s needs. Provides input on Salesforce Service Cloud roadmap.</li>
-	<li>Facilitates conflict resolution with decision-makers by providing full analysis of options, pros and cons and a documented log of the decisions.</li>
-	<li>Drives effective discovery sessions to capture as-is and to-be process flows in a consistent and reusable format.</li>
-	<li>Deep familiarity of core systems, processes and all related system capabilities leveraged by stakeholders.</li>
-	<li>Collaborates with developers to test and verify that the solution meets the business requirements.</li>
-	<li>Ensures the relevant parts of the business are ready for each release that impacts them. Leads and / or organizes necessary meetings to deliver system demos, perform user acceptance testing, and end user training.</li>
-	<li>Documents releases in an easy to understand way. Thoroughly communicates updates to business stakeholders.</li>
+	<li>
+		<ul>
+			<li>Cultivate, grow and maintain an active customer reference pipeline</li>
+			<li>Support and fulfill sales 1:1 and RFP requests for customer references</li>
+			<li>Support customer reference requests from event and campaign managers, and analyst and public relations teams&nbsp;</li>
+		</ul>
+	</li>
 </ul>
-<h4><strong>Desirable skills and knowledge</strong></h4>
+<p><strong>Customer Advocacy:&nbsp;</strong></p>
 <ul>
-	<li>Bachelor’s degree in Business Administration, Computer Science, Information Systems, or a related field.</li>
-	<li>Ability to analyze complex business problems and identify effective solutions.</li>
-	<li>Comfortable working in a fast-paced environment with multiple concurrent priorities.</li>
-	<li>Excellent communication skills (written and verbal) and attention to detail.</li>
-	<li>Excels at building relationships and communicating with all types of stakeholders, from VPs to developers to Customer Support Engineers.</li>
-	<li>Direct experience or knowledge of Customer Support team is a plus.</li>
-	<li>Experience with Salesforce Service Cloud a plus.</li>
+	<li>
+		<ul>
+			<li>Recruit and engage customers for participation in speaking engagements, webinars, press releases, blogs/articles, analysts reports and interviews, and other marketing activities</li>
+			<li>Lead the development and manage high quality customer story content, including case studies, story slides, and customer video content</li>
+			<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships.&nbsp;</li>
+		</ul>
+	</li>
+</ul>
+<p><strong>Advisory Boards and Councils:&nbsp;</strong></p>
+<ul>
+	<ul>
+		<li>Recruit and engage with customers for participation in our customer advisory events</li>
+		<li>Manage the internal nomination process, coordination across many teams and executives, pre/post event success&nbsp;&nbsp;</li>
+		<li>Manage in-person, best-in-class executive customer experiences&nbsp;</li>
+	</ul>
+</ul>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Proven success in customer advocacy/marketing role(s).</li>
+	<li>Ability to identify and cultivate new relationships with customers across market segments and industries with particular focus on well known global brands</li>
+	<li>Professional and self-motivated team member, who can organize and manage multiple projects across functions (especially with Marketing and Sales) and with multiple stakeholders and contributors</li>
+	<li>Experience with Reference Management and/or Customer Advocacy/Marketing tools</li>
+	<li>Outgoing with dynamic interpersonal and top-notch verbal and written communication skills</li>
+</ul>
+<p><strong>Skills, knowledge and experience</strong></p>
+<ul>
+	<li>Bachelor’s Degree in Business/Marketing or Communications related field&nbsp;</li>
+	<li>5+ years of customer marketing/advocacy experience</li>
+	<li>Significant experience in B2B technology marketing with a keen understanding of the Internet ecosystem and technical audiences&nbsp;&nbsp;&nbsp;</li>
+	<li>Customer-first mentality</li>
+	<li>Collaborative, learner, team-oriented attitude</li>
+	<li>Ability to effectively influence both internal and external stakeholders across all levels of the organization</li>
+	<li>Have a bias to action and the ability to not only manage but thrive in a fast-paced environment</li>
+</ul>
+<ul>
+	<li>A passion for Cloudflare’s mission and the success of our customers, partners, and community</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $108,000 - $132,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $115,000 - $141,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $122,000 - $149,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -60,7 +94,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
