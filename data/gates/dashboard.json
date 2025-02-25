@@ -159,6 +159,9 @@
 	"appsec-overview": {
 		"enabled": false
 	},
+	"appsec-overview-insights": {
+		"enabled": false
+	},
 	"area-1-retro-scan": {
 		"enabled": true
 	},
@@ -1839,6 +1842,9 @@
 		"enabled": true
 	},
 	"waf-attack-score-class-waf-filter": {
+		"enabled": true
+	},
+	"waf-complexity-based-rate-limiting-rule": {
 		"enabled": true
 	},
 	"waf-disposable-email-check-allowed": {
