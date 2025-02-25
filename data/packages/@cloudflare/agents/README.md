@@ -319,7 +319,7 @@ import { AIChatAgent } from "@cloudflare/agents/ai-chat-agent";
 import { createOpenAI } from "@ai-sdk/openai";
 
 export class DialogueAgent extends AIChatAgent {
-  async onChatMessage(connection, messages, onFinish) {
+  async onChatMessage(onFinish) {
     return createDataStreamResponse({
       execute: async (dataStream) => {
         const ai = createOpenAI({
@@ -327,8 +327,8 @@ export class DialogueAgent extends AIChatAgent {
         });
 
         const stream = streamText({
-          model: ai("gpt-4"),
-          messages,
+          model: ai("gpt-4o"),
+          messages: this.messages,
           onFinish, // call onFinish so that messages get saved
         });
 
