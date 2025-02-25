@@ -2817,6 +2817,13 @@
 						"compatEnableDate": "2025-03-10",
 						"compatEnableFlag": "unique_ctx_per_invocation"
 					}
+				},
+				{
+					"name": "queueConsumerNoWaitForWaitUntil",
+					"annotations": {
+						"compatDisableFlag": "queue_consumer_wait_for_wait_until",
+						"compatEnableFlag": "queue_consumer_no_wait_for_wait_until"
+					}
 				}
 			]
 		},
