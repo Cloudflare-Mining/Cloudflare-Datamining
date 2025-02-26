@@ -291,7 +291,6 @@
 		"hrushikeshdeshpande-updating-semgrep",
 		"igorminar/workers-types-2024-03-26",
 		"jasnell/importable-env",
-		"jasnell/moar-streaming-tail-worker",
 		"jasnell/node-crypto-sign-verify",
 		"jasnell/rename-compatflags-api",
 		"jlee/bad-fuzzing-repro",
@@ -675,8 +674,10 @@
 		"yagiz/create-isolate-group-allocator",
 		"yagiz/create-passthrough-tracer-definitions",
 		"yagiz/enable-eslint-crypto-dh",
-		"yagiz/enable-eslint-crypto-hash",
 		"yagiz/enable-eslint-crypto-hkdf",
+		"yagiz/enable-eslint-crypto-keys",
+		"yagiz/enable-eslint-crypto-pbkdf2",
+		"yagiz/enable-eslint-crypto-random",
 		"yagiz/fix-buffer-slice",
 		"yagiz/improve-node-build",
 		"yagiz/introduce-tls",
@@ -688,7 +689,6 @@
 		"yagiz/replace-urlpattern",
 		"yagiz/simplify-clangcl-windows",
 		"yagiz/small-perf",
-		"yagiz/update-justfile",
 		"yagiz/workerd-patches",
 		"yagiz/wpt-run"
 	]
