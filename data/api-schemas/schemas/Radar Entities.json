@@ -1,54 +1,54 @@
 {
 	"GET /radar/entities/asns": {
-		"description": "Get a list of autonomous systems (ASes).",
+		"description": "Retrieves a list of autonomous systems.",
 		"operationId": "radar-get-entities-asn-list",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Number of objects to skip before grabbing results.",
+					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Comma separated list of ASNs.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs).",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma separated list of ASNs.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs).",
 					"example": "174,7922",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Location Alpha2 to filter results.",
+				"description": "Location alpha-2 code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location Alpha2 to filter results.",
+					"description": "Location alpha-2 code.",
 					"example": "US",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Order asn list.",
+				"description": "Metric to order the ASNs by.",
 				"in": "query",
 				"name": "orderBy",
 				"schema": {
 					"default": "ASN",
-					"description": "Order asn list.",
+					"description": "Metric to order the ASNs by.",
 					"enum": [
 						"ASN",
 						"POPULATION"
@@ -57,11 +57,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -190,7 +190,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get autonomous systems",
+		"summary": "List autonomous systems",
 		"tags": [
 			"Radar Entities"
 		],
@@ -206,26 +206,26 @@
 		}
 	},
 	"GET /radar/entities/asns/{asn}": {
-		"description": "Get the requested autonomous system information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+		"description": "Retrieves the requested autonomous system information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-id",
 		"parameters": [
 			{
-				"description": "Autonomous System Number (ASN).",
+				"description": "Single Autonomous System Number (ASN) as integer.",
 				"in": "path",
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"description": "Autonomous System Number (ASN).",
-					"example": 3,
+					"description": "Single Autonomous System Number (ASN) as integer.",
+					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -413,7 +413,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get autonomous system information by AS number",
+		"summary": "Get AS details by ASN",
 		"tags": [
 			"Radar Entities"
 		],
@@ -429,35 +429,35 @@
 		}
 	},
 	"GET /radar/entities/asns/{asn}/rel": {
-		"description": "Get AS-level relationship for given networks.",
+		"description": "Retrieves AS-level relationship for given networks.",
 		"operationId": "radar-get-asns-rel",
 		"parameters": [
 			{
-				"description": "Get all ASNs with provider-customer or peering relationships with the given ASN",
+				"description": "Retrieves all ASNs with provider-customer or peering relationships with the given ASN.",
 				"in": "path",
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"description": "Get all ASNs with provider-customer or peering relationships with the given ASN",
+					"description": "Retrieves all ASNs with provider-customer or peering relationships with the given ASN.",
 					"example": 3,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Get the AS relationship of ASN2 with respect to the given ASN",
+				"description": "Retrieves the AS relationship of ASN2 with respect to the given ASN.",
 				"in": "query",
 				"name": "asn2",
 				"schema": {
-					"description": "Get the AS relationship of ASN2 with respect to the given ASN",
+					"description": "Retrieves the AS relationship of ASN2 with respect to the given ASN.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -600,7 +600,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get as-level relationships by AS number",
+		"summary": "Get AS-level relationships by ASN",
 		"tags": [
 			"Radar Entities"
 		],
@@ -616,7 +616,7 @@
 		}
 	},
 	"GET /radar/entities/asns/ip": {
-		"description": "Get the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+		"description": "Retrieves the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-ip",
 		"parameters": [
 			{
@@ -632,11 +632,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -817,7 +817,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get autonomous system information by IP address",
+		"summary": "Get AS details by IP address",
 		"tags": [
 			"Radar Entities"
 		],
@@ -833,7 +833,7 @@
 		}
 	},
 	"GET /radar/entities/ip": {
-		"description": "Get IP address information. ",
+		"description": "Retrieves IP address information. ",
 		"operationId": "radar-get-entities-ip",
 		"parameters": [
 			{
@@ -849,11 +849,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -966,7 +966,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get IP address",
+		"summary": "Get IP address details",
 		"tags": [
 			"Radar Entities"
 		],
@@ -982,44 +982,44 @@
 		}
 	},
 	"GET /radar/entities/locations": {
-		"description": "Get a list of locations.",
+		"description": "Retrieves a list of locations.",
 		"operationId": "radar-get-entities-locations",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Number of objects to skip before grabbing results.",
+					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Comma separated list of locations.",
+				"description": "Comma-separated list of locations (alpha-2 location codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma separated list of locations.",
+					"description": "Comma-separated list of locations (alpha-2 location codes).",
 					"example": "US,CA",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1134,7 +1134,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get locations",
+		"summary": "List locations",
 		"tags": [
 			"Radar Entities"
 		],
@@ -1150,26 +1150,26 @@
 		}
 	},
 	"GET /radar/entities/locations/{location}": {
-		"description": "Get the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+		"description": "Retrieves the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
 		"operationId": "radar-get-entities-location-by-alpha2",
 		"parameters": [
 			{
-				"description": "Alpha-2 country code.",
+				"description": "Location alpha-2 code.",
 				"in": "path",
 				"name": "location",
 				"required": true,
 				"schema": {
-					"description": "Alpha-2 country code.",
+					"description": "Location alpha-2 code.",
 					"example": "US",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1277,7 +1277,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get location",
+		"summary": "Get location details",
 		"tags": [
 			"Radar Entities"
 		],

@@ -1,0 +1,5960 @@
+{
+	"GET /radar/attacks/layer3/summary/bitrate": {
+		"description": "Retrieves the distribution of layer 3 attacks by bitrate.",
+		"operationId": "radar-get-attacks-layer3-summary-by-bitrate",
+		"parameters": [
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"OVER_100_GBPS": {
+													"example": "13.141944",
+													"type": "string"
+												},
+												"UNDER_500_MBPS": {
+													"example": "74.891763",
+													"type": "string"
+												},
+												"_10_GBPS_TO_100_GBPS": {
+													"example": "0.01056",
+													"type": "string"
+												},
+												"_1_GBPS_TO_10_GBPS": {
+													"example": "6.007082",
+													"type": "string"
+												},
+												"_500_MBPS_TO_1_GBPS": {
+													"example": "5.948652",
+													"type": "string"
+												}
+											},
+											"required": [
+												"UNDER_500_MBPS",
+												"OVER_100_GBPS",
+												"_1_GBPS_TO_10_GBPS",
+												"_500_MBPS_TO_1_GBPS",
+												"_10_GBPS_TO_100_GBPS"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by bitrate summary",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/summary/duration": {
+		"description": "Retrieves the distribution of layer 3 attacks by duration.",
+		"operationId": "radar-get-attacks-layer3-summary-by-duration",
+		"parameters": [
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"OVER_3_HOURS": {
+													"example": "4.462923",
+													"type": "string"
+												},
+												"UNDER_10_MINS": {
+													"example": "76.243322",
+													"type": "string"
+												},
+												"_10_MINS_TO_20_MINS": {
+													"example": "9.48709",
+													"type": "string"
+												},
+												"_1_HOUR_TO_3_HOURS": {
+													"example": "4.038413",
+													"type": "string"
+												},
+												"_20_MINS_TO_40_MINS": {
+													"example": "3.87624",
+													"type": "string"
+												},
+												"_40_MINS_TO_1_HOUR": {
+													"example": "1.892012",
+													"type": "string"
+												}
+											},
+											"required": [
+												"UNDER_10_MINS",
+												"_10_MINS_TO_20_MINS",
+												"OVER_3_HOURS",
+												"_1_HOUR_TO_3_HOURS",
+												"_20_MINS_TO_40_MINS",
+												"_40_MINS_TO_1_HOUR"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by duration summary",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/summary/ip_version": {
+		"description": "Retrieves the distribution of layer 3 attacks by IP version.",
+		"operationId": "radar-get-attacks-layer3-summary-by-ip-version",
+		"parameters": [
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"IPv4": {
+													"example": "99.984766",
+													"type": "string"
+												},
+												"IPv6": {
+													"example": "0.015234",
+													"type": "string"
+												}
+											},
+											"required": [
+												"IPv4",
+												"IPv6"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by IP version summary",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/summary/protocol": {
+		"description": "Retrieves the distribution of layer 3 attacks by protocol.",
+		"operationId": "radar-get-attacks-layer3-summary-by-protocol",
+		"parameters": [
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"GRE": {
+													"example": "0.756379",
+													"type": "string"
+												},
+												"ICMP": {
+													"example": "0.015245",
+													"type": "string"
+												},
+												"TCP": {
+													"example": "82.89908",
+													"type": "string"
+												},
+												"UDP": {
+													"example": "16.328986",
+													"type": "string"
+												}
+											},
+											"required": [
+												"TCP",
+												"UDP",
+												"GRE",
+												"ICMP"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by protocol summary",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/summary/vector": {
+		"description": "Retrieves the distribution of layer 3 attacks by vector.",
+		"operationId": "radar-get-attacks-layer3-summary-by-vector",
+		"parameters": [
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"additionalProperties": {
+												"type": "string"
+											},
+											"example": {
+												"ACK Flood": "65.662148",
+												"SYN Flood": "16.86401"
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by vector summary",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries": {
+		"description": "Retrieves layer 3 attacks over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-by-bytes",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
+					],
+					"example": "MIN0_MAX",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Measurement units, eg. bytes.",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"default": "bytes",
+					"description": "Measurement units, eg. bytes.",
+					"enum": [
+						"BYTES",
+						"BYTES_OLD"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by bytes time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/bitrate": {
+		"description": "Retrieves the distribution of layer 3 attacks by bitrate over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-bitrate",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"OVER_100_GBPS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"UNDER_500_MBPS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_10_GBPS_TO_100_GBPS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_1_GBPS_TO_10_GBPS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_500_MBPS_TO_1_GBPS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"UNDER_500_MBPS",
+												"OVER_100_GBPS",
+												"_1_GBPS_TO_10_GBPS",
+												"_500_MBPS_TO_1_GBPS",
+												"_10_GBPS_TO_100_GBPS"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by bitrate time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/duration": {
+		"description": "Retrieves the distribution of layer 3 attacks by duration over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-duration",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"OVER_3_HOURS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"UNDER_10_MINS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_10_MINS_TO_20_MINS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_1_HOUR_TO_3_HOURS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_20_MINS_TO_40_MINS": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"_40_MINS_TO_1_HOUR": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"UNDER_10_MINS",
+												"_10_MINS_TO_20_MINS",
+												"OVER_3_HOURS",
+												"_1_HOUR_TO_3_HOURS",
+												"_20_MINS_TO_40_MINS",
+												"_40_MINS_TO_1_HOUR"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by duration time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/industry": {
+		"description": "Retrieves the distribution of layer 3 attacks by targeted industry over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-industry",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"Internet": [
+													"5.519081"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by target industries time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/ip_version": {
+		"description": "Retrieves the distribution of layer 3 attacks by IP version over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-ip-version",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"IPv4": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"IPv6": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"IPv4",
+												"IPv6"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by IP version time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/protocol": {
+		"description": "Retrieves the distribution of layer 3 attacks by protocol over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-protocol",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"GRE": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ICMP": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"TCP": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"UDP": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"TCP",
+												"UDP",
+												"GRE",
+												"ICMP"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by protocol time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/vector": {
+		"description": "Retrieves the distribution of layer 3 attacks by vector over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vector",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"ACK Flood": [
+													"97.28898"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by vector time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/timeseries_groups/vertical": {
+		"description": "Retrieves the distribution of layer 3 attacks by targeted vertical over time.",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vertical",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"Internet and Telecom": [
+													"5.519081"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 3 attacks by vertical time series",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/attacks": {
+		"description": "Retrieves the top layer 3 attacks from origin to target location. Values are a percentage out of the total layer 3 attacks (with billing country). You can optionally limit the number of attacks by origin/target location (useful if all the top attacks are from or to the same location).",
+		"operationId": "radar-get-attacks-layer3-top-attacks",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+				"in": "query",
+				"name": "limitDirection",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"example": "ORIGIN",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
+				"in": "query",
+				"name": "limitPerLocation",
+				"schema": {
+					"description": "Limits the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Attack magnitude can be defined by total mitigated bytes or by total mitigated attacks.",
+				"in": "query",
+				"name": "magnitude",
+				"schema": {
+					"description": "Attack magnitude can be defined by total mitigated bytes or by total mitigated attacks.",
+					"enum": [
+						"MITIGATED_BYTES",
+						"MITIGATED_ATTACKS"
+					],
+					"example": "MITIGATED_BYTES",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"originCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"originCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"originCountryAlpha2",
+													"originCountryName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top layer 3 attack pairs (origin and target locations)",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/industry": {
+		"description": "Retrieves the top industries targeted by layer 3 attacks.",
+		"operationId": "radar-get-attacks-layer3-top-industries",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"name": {
+														"example": "Computer Software",
+														"type": "string"
+													},
+													"value": {
+														"example": "65",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top industries targeted by layer 3 attacks",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/locations/origin": {
+		"description": "Retrieves the origin locations of layer 3 attacks.",
+		"operationId": "radar-get-attacks-layer3-top-origin-locations",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"originCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"originCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"rank": {
+														"example": 1,
+														"type": "number"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"originCountryAlpha2",
+													"originCountryName",
+													"value",
+													"rank"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top origin locations of layer 3 attacks",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/locations/target": {
+		"description": "Retrieves the target locations of layer 3 attacks.",
+		"operationId": "radar-get-attacks-layer3-top-target-locations",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"rank": {
+														"example": 1,
+														"type": "number"
+													},
+													"targetCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"targetCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"targetCountryAlpha2",
+													"targetCountryName",
+													"value",
+													"rank"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top target locations of layer 3 attacks",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/vertical": {
+		"description": "Retrieves the top verticals targeted by layer 3 attacks.",
+		"operationId": "radar-get-attacks-layer3-top-verticals",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"name": {
+														"example": "Internet and Telecom",
+														"type": "string"
+													},
+													"value": {
+														"example": "65",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get top verticals targeted by layer 3 attacks",
+		"tags": [
+			"Radar Layer 3 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

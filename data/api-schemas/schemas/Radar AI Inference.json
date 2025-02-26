@@ -1,27 +1,27 @@
 {
 	"GET /radar/ai/inference/summary/model": {
-		"description": "Percentage distribution of unique accounts by model.",
+		"description": "Retrieves the distribution of unique accounts by model.",
 		"operationId": "radar-get-ai-inference-summary-by-model",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -32,11 +32,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -60,21 +60,21 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -262,7 +262,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get models summary",
+		"summary": "Get Workers AI models summary",
 		"tags": [
 			"Radar AI Inference"
 		],
@@ -278,28 +278,28 @@
 		}
 	},
 	"GET /radar/ai/inference/summary/task": {
-		"description": "Percentage distribution of unique accounts by task.",
+		"description": "Retrieves the distribution of unique accounts by task.",
 		"operationId": "radar-get-ai-inference-summary-by-task",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -310,11 +310,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -338,21 +338,21 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -539,7 +539,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get tasks summary",
+		"summary": "Get Workers AI tasks summary",
 		"tags": [
 			"Radar AI Inference"
 		],
@@ -555,7 +555,7 @@
 		}
 	},
 	"GET /radar/ai/inference/timeseries_groups/model": {
-		"description": "Percentage distribution of unique accounts by model over time.",
+		"description": "Retrieves the distribution of unique accounts by model over time.",
 		"operationId": "radar-get-ai-inference-timeseries-group-by-model",
 		"parameters": [
 			{
@@ -575,24 +575,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -603,11 +603,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -631,21 +631,21 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -762,7 +762,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get models time series",
+		"summary": "Get Workers AI models time series",
 		"tags": [
 			"Radar AI Inference"
 		],
@@ -778,7 +778,7 @@
 		}
 	},
 	"GET /radar/ai/inference/timeseries_groups/task": {
-		"description": "Percentage distribution of unique accounts by task over time.",
+		"description": "Retrieves the distribution of unique accounts by task over time.",
 		"operationId": "radar-get-ai-inference-timeseries-group-by-task",
 		"parameters": [
 			{
@@ -798,24 +798,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -826,11 +826,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -854,21 +854,21 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limit the number of objects (e.g., browsers, verticals, etc.) to the top items within the specified time range. If the limitPerGroup is set, the response will include that number of items, with the remaining items grouped together under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. If there are more items than the limit, the response will include the count of items, with any remaining items grouped together under an \"other\" category.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -985,7 +985,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get tasks time series",
+		"summary": "Get Workers AI tasks time series",
 		"tags": [
 			"Radar AI Inference"
 		],

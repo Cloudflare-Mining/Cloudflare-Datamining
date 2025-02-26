@@ -1,27 +1,27 @@
 {
 	"GET /radar/email/security/summary/arc": {
-		"description": "Percentage distribution of emails classified by ARC validation.",
+		"description": "Retrieves the distribution of emails by ARC (Authenticated Received Chain) validation.",
 		"operationId": "radar-get-email-security-summary-by-arc",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -32,11 +32,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -60,11 +60,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -78,11 +78,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -96,11 +96,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -114,11 +114,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -133,11 +133,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -336,7 +336,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC validations summary",
+		"summary": "Get email ARC validation summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -352,28 +352,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/dkim": {
-		"description": "Percentage distribution of emails classified by DKIM validation.",
+		"description": "Retrieves the distribution of emails by DKIM (DomainKeys Identified Mail) validation.",
 		"operationId": "radar-get-email-security-summary-by-dkim",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -384,11 +384,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -412,11 +412,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -430,11 +430,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -448,11 +448,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -466,11 +466,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -485,11 +485,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -688,7 +688,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM validations summary",
+		"summary": "Get email DKIM validation summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -704,28 +704,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/dmarc": {
-		"description": "Percentage distribution of emails classified by DMARC validation.",
+		"description": "Retrieves the distribution of emails by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation.",
 		"operationId": "radar-get-email-security-summary-by-dmarc",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -736,11 +736,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -764,11 +764,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -782,11 +782,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -800,11 +800,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -818,11 +818,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -837,11 +837,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1040,7 +1040,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC validations summary",
+		"summary": "Get email DMARC validation summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1056,28 +1056,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/malicious": {
-		"description": "Percentage distribution of emails classified as MALICIOUS.",
+		"description": "Retrieves the distribution of emails by malicious classification.",
 		"operationId": "radar-get-email-security-summary-by-malicious",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1088,11 +1088,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1116,11 +1116,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1134,11 +1134,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1152,11 +1152,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1170,11 +1170,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1188,11 +1188,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -1207,11 +1207,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1405,7 +1405,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get malicious validations summary",
+		"summary": "Get email malicious classification summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1421,28 +1421,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/spam": {
-		"description": "Proportion of emails categorized as either spam or legitimate (non-spam).",
+		"description": "Retrieves the proportion of emails by spam classification (spam vs. non-spam).",
 		"operationId": "radar-get-email-security-summary-by-spam",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1453,11 +1453,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1481,11 +1481,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1499,11 +1499,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1517,11 +1517,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1535,11 +1535,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1553,11 +1553,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -1572,11 +1572,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1770,7 +1770,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get spam summary",
+		"summary": "Get email spam classification summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1786,28 +1786,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/spf": {
-		"description": "Percentage distribution of emails classified by SPF validation.",
+		"description": "Retrieves the distribution of emails by SPF (Sender Policy Framework) validation.",
 		"operationId": "radar-get-email-security-summary-by-spf",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1818,11 +1818,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1846,11 +1846,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1864,11 +1864,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1882,11 +1882,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -1900,11 +1900,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -1919,11 +1919,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -2122,7 +2122,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF validations summary",
+		"summary": "Get email SPF validation summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2138,28 +2138,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/spoof": {
-		"description": "Proportion of emails categorized as either spoof or legitimate (non-spoof).",
+		"description": "Retrieves the proportion of emails by spoof classification (spoof vs. non-spoof).",
 		"operationId": "radar-get-email-security-summary-by-spoof",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2170,11 +2170,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2198,11 +2198,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2216,11 +2216,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2234,11 +2234,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2252,11 +2252,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2270,11 +2270,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -2289,11 +2289,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -2487,7 +2487,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get spoof summary",
+		"summary": "Get email spoof classification summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2503,28 +2503,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/threat_category": {
-		"description": "Percentage distribution of emails classified in Threat Categories.",
+		"description": "Retrieves the distribution of emails by threat categories.",
 		"operationId": "radar-get-email-security-summary-by-threat-category",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2535,11 +2535,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2563,11 +2563,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2581,11 +2581,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2599,11 +2599,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2617,11 +2617,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2635,11 +2635,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -2654,11 +2654,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -2862,7 +2862,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get threat categories summary",
+		"summary": "Get email threat category summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2878,28 +2878,28 @@
 		}
 	},
 	"GET /radar/email/security/summary/tls_version": {
-		"description": "Percentage distribution of emails classified by TLS version.",
+		"description": "Retrieves the distribution of emails by TLS version.",
 		"operationId": "radar-get-email-security-summary-by-tls-version",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -2910,11 +2910,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2938,11 +2938,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2956,11 +2956,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2974,11 +2974,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -2992,11 +2992,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3010,11 +3010,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -3218,7 +3218,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLS version summary",
+		"summary": "Get email TLS version summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3234,7 +3234,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/arc": {
-		"description": "Percentage distribution of emails classified by ARC validation over time.",
+		"description": "Retrieves the distribution of emails by ARC (Authenticated Received Chain) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-arc",
 		"parameters": [
 			{
@@ -3254,24 +3254,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3282,11 +3282,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3310,11 +3310,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3328,11 +3328,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3346,11 +3346,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3364,11 +3364,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -3383,11 +3383,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -3507,7 +3507,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC validations time series",
+		"summary": "Get email ARC validation time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3523,7 +3523,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dkim": {
-		"description": "Percentage distribution of emails classified by DKIM validation over time.",
+		"description": "Retrieves the distribution of emails by DKIM (DomainKeys Identified Mail) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dkim",
 		"parameters": [
 			{
@@ -3543,24 +3543,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3571,11 +3571,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3599,11 +3599,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3617,11 +3617,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3635,11 +3635,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3653,11 +3653,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -3672,11 +3672,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -3796,7 +3796,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM validations time series",
+		"summary": "Get email DKIM validation time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3812,7 +3812,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dmarc": {
-		"description": "Percentage distribution of emails classified by DMARC validation over time.",
+		"description": "Retrieves the distribution of emails by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dmarc",
 		"parameters": [
 			{
@@ -3832,24 +3832,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -3860,11 +3860,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3888,11 +3888,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3906,11 +3906,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3924,11 +3924,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -3942,11 +3942,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -3961,11 +3961,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -4085,7 +4085,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC validations time series",
+		"summary": "Get email DMARC validation time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4101,7 +4101,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/malicious": {
-		"description": "Percentage distribution of emails classified as MALICIOUS over time.",
+		"description": "Retrieves the distribution of emails by malicious classification over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-malicious",
 		"parameters": [
 			{
@@ -4121,24 +4121,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4149,11 +4149,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4177,11 +4177,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4195,11 +4195,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4213,11 +4213,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4231,11 +4231,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4249,11 +4249,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -4268,11 +4268,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -4384,7 +4384,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get malicious validations time series",
+		"summary": "Get email malicious classification time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4400,7 +4400,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spam": {
-		"description": "Percentage distribution of emails classified as SPAM over time.",
+		"description": "Retrieves the distribution of emails by spam classification (spam vs. non-spam) over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spam",
 		"parameters": [
 			{
@@ -4420,24 +4420,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4448,11 +4448,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4476,11 +4476,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4494,11 +4494,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4512,11 +4512,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4530,11 +4530,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4548,11 +4548,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -4567,11 +4567,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -4683,7 +4683,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get spam validations time series",
+		"summary": "Get email spam classification time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4699,7 +4699,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spf": {
-		"description": "Percentage distribution of emails classified by SPF validation over time.",
+		"description": "Retrieves the distribution of emails by SPF (Sender Policy Framework) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spf",
 		"parameters": [
 			{
@@ -4719,24 +4719,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -4747,11 +4747,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4775,11 +4775,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4793,11 +4793,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4811,11 +4811,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -4829,11 +4829,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -4848,11 +4848,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -4972,7 +4972,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF validations time series",
+		"summary": "Get email SPF validation time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4988,7 +4988,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spoof": {
-		"description": "Percentage distribution of emails classified as SPOOF over time.",
+		"description": "Retrieves the distribution of emails by spoof classification (spoof vs. non-spoof) over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spoof",
 		"parameters": [
 			{
@@ -5008,24 +5008,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5036,11 +5036,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5064,11 +5064,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5082,11 +5082,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5100,11 +5100,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5118,11 +5118,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5136,11 +5136,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -5155,11 +5155,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -5271,7 +5271,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get spoof validations time series",
+		"summary": "Get email spoof classification time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5287,7 +5287,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
-		"description": "Percentage distribution of emails classified by threat category over time.",
+		"description": "Retrieves the distribution of emails by threat category over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-threat-category",
 		"parameters": [
 			{
@@ -5307,24 +5307,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5335,11 +5335,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5363,11 +5363,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5381,11 +5381,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5399,11 +5399,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5417,11 +5417,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5435,11 +5435,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -5454,11 +5454,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -5586,7 +5586,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get threat categories time series",
+		"summary": "Get email threat category time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5602,7 +5602,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/tls_version": {
-		"description": "Percentage distribution of emails classified by TLS version over time.",
+		"description": "Retrieves the distribution of emails by TLS version over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-tls-version",
 		"parameters": [
 			{
@@ -5622,24 +5622,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5650,11 +5650,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5678,11 +5678,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5696,11 +5696,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5714,11 +5714,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5732,11 +5732,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5750,11 +5750,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -5882,7 +5882,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLS version time series",
+		"summary": "Get email TLS version time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5898,38 +5898,38 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds": {
-		"description": "Get the top TLDs by email messages. Values are a percentage out of total email volume.",
+		"description": "Retrieves the top TLDs by number of email messages.",
 		"operationId": "radar-get-email-security-top-tlds-by-messages",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -5940,11 +5940,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5968,11 +5968,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -5986,11 +5986,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6004,11 +6004,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6022,11 +6022,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6040,11 +6040,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -6059,11 +6059,11 @@
 				}
 			},
 			{
-				"description": "Filter for TLDs by category.",
+				"description": "Filters results by TLD category.",
 				"in": "query",
 				"name": "tldCategory",
 				"schema": {
-					"description": "Filter for TLDs by category.",
+					"description": "Filters results by TLD category.",
 					"enum": [
 						"CLASSIC",
 						"COUNTRY"
@@ -6073,11 +6073,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -6250,7 +6250,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top TLDs by email messages",
+		"summary": "Get top TLDs by email message volume",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6266,16 +6266,16 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds/malicious/{malicious}": {
-		"description": "Get the TLDs by emails classified as malicious or not.",
+		"description": "Retrieves the top TLDs by emails classified as malicious or not.",
 		"operationId": "radar-get-email-security-top-tlds-by-malicious",
 		"parameters": [
 			{
-				"description": "Malicious.",
+				"description": "Malicious classification.",
 				"in": "path",
 				"name": "malicious",
 				"required": true,
 				"schema": {
-					"description": "Malicious.",
+					"description": "Malicious classification.",
 					"enum": [
 						"MALICIOUS",
 						"NOT_MALICIOUS"
@@ -6285,34 +6285,34 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -6323,11 +6323,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -6351,11 +6351,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6369,11 +6369,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6387,11 +6387,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6405,11 +6405,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6423,11 +6423,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -6442,11 +6442,11 @@
 				}
 			},
 			{
-				"description": "Filter for TLDs by category.",
+				"description": "Filters results by TLD category.",
 				"in": "query",
 				"name": "tldCategory",
 				"schema": {
-					"description": "Filter for TLDs by category.",
+					"description": "Filters results by TLD category.",
 					"enum": [
 						"CLASSIC",
 						"COUNTRY"
@@ -6456,11 +6456,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -6633,7 +6633,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top TLDs by malicious classification",
+		"summary": "Get top TLDs by email malicious classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6649,16 +6649,16 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds/spam/{spam}": {
-		"description": "Get the top TLDs by emails classified as spam or not.",
+		"description": "Retrieves the top TLDs by emails classified as spam or not.",
 		"operationId": "radar-get-email-security-top-tlds-by-spam",
 		"parameters": [
 			{
-				"description": "Spam.",
+				"description": "Spam classification.",
 				"in": "path",
 				"name": "spam",
 				"required": true,
 				"schema": {
-					"description": "Spam.",
+					"description": "Spam classification.",
 					"enum": [
 						"SPAM",
 						"NOT_SPAM"
@@ -6668,34 +6668,34 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -6706,11 +6706,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -6734,11 +6734,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6752,11 +6752,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6770,11 +6770,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6788,11 +6788,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -6806,11 +6806,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -6825,11 +6825,11 @@
 				}
 			},
 			{
-				"description": "Filter for TLDs by category.",
+				"description": "Filters results by TLD category.",
 				"in": "query",
 				"name": "tldCategory",
 				"schema": {
-					"description": "Filter for TLDs by category.",
+					"description": "Filters results by TLD category.",
 					"enum": [
 						"CLASSIC",
 						"COUNTRY"
@@ -6839,11 +6839,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -7016,7 +7016,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top TLDs by spam classification",
+		"summary": "Get top TLDs by email spam classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -7032,16 +7032,16 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds/spoof/{spoof}": {
-		"description": "Get the TLDs by emails classified as spoof or not.",
+		"description": "Retrieves the top TLDs by emails classified as spoof or not.",
 		"operationId": "radar-get-email-security-top-tlds-by-spoof",
 		"parameters": [
 			{
-				"description": "Spoof.",
+				"description": "Spoof classification.",
 				"in": "path",
 				"name": "spoof",
 				"required": true,
 				"schema": {
-					"description": "Spoof.",
+					"description": "Spoof classification.",
 					"enum": [
 						"SPOOF",
 						"NOT_SPOOF"
@@ -7051,34 +7051,34 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -7089,11 +7089,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -7117,11 +7117,11 @@
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 				"in": "query",
 				"name": "arc",
 				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -7135,11 +7135,11 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
-					"description": "Filter for dkim.",
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -7153,11 +7153,11 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
-					"description": "Filter for dmarc.",
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -7171,11 +7171,11 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
-					"description": "Filter for spf.",
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
 					"example": "PASS",
 					"items": {
 						"enum": [
@@ -7189,11 +7189,11 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
+				"description": "Filters results by TLS version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
-					"description": "Filter for tls version.",
+					"description": "Filters results by TLS version.",
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
@@ -7208,11 +7208,11 @@
 				}
 			},
 			{
-				"description": "Filter for TLDs by category.",
+				"description": "Filters results by TLD category.",
 				"in": "query",
 				"name": "tldCategory",
 				"schema": {
-					"description": "Filter for TLDs by category.",
+					"description": "Filters results by TLD category.",
 					"enum": [
 						"CLASSIC",
 						"COUNTRY"
@@ -7222,11 +7222,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -7399,7 +7399,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top TLDs by spoof classification",
+		"summary": "Get top TLDs by email spoof classification",
 		"tags": [
 			"Radar Email Security"
 		],

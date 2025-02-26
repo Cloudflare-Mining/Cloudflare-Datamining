@@ -1,24 +1,24 @@
 {
 	"GET /radar/annotations": {
-		"description": "Get the latest annotations.",
+		"description": "Retrieves the latest annotations.",
 		"operationId": "radar-get-annotations",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Number of objects to skip before grabbing results.",
+					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer"
 				}
 			},
@@ -56,31 +56,31 @@
 				}
 			},
 			{
-				"description": "Single ASN as integer.",
+				"description": "Single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Single ASN as integer.",
-					"example": "174",
+					"description": "Single Autonomous System Number (ASN) as integer.",
+					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Location Alpha2 code.",
+				"description": "Location alpha-2 code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location Alpha2 code.",
+					"description": "Location alpha-2 code.",
 					"example": "US",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -320,25 +320,25 @@
 		}
 	},
 	"GET /radar/annotations/outages": {
-		"description": "Get latest Internet outages and anomalies.",
+		"description": "Retrieves the latest Internet outages and anomalies.",
 		"operationId": "radar-get-annotations-outages",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Number of objects to skip before grabbing results.",
+					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer"
 				}
 			},
@@ -376,31 +376,31 @@
 				}
 			},
 			{
-				"description": "Single ASN as integer.",
+				"description": "Single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Single ASN as integer.",
-					"example": "174",
+					"description": "Single Autonomous System Number (ASN) as integer.",
+					"example": 174,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Location Alpha2 code.",
+				"description": "Location alpha-2 code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Location Alpha2 code.",
+					"description": "Location alpha-2 code.",
 					"example": "US",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -640,15 +640,15 @@
 		}
 	},
 	"GET /radar/annotations/outages/locations": {
-		"description": "Get the number of outages by location.",
+		"description": "Retrieves the number of outages by location.",
 		"operationId": "radar-get-annotations-outages-top",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
@@ -687,11 +687,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -801,7 +801,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the number of outages for locations",
+		"summary": "Get the number of outages by location",
 		"tags": [
 			"Radar Annotations"
 		],

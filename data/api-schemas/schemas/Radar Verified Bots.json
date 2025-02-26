@@ -1,37 +1,37 @@
 {
 	"GET /radar/verified_bots/top/bots": {
-		"description": "Get top verified bots by HTTP requests, with owner and category.",
+		"description": "Retrieves the top verified bots by HTTP requests, with owner and category.",
 		"operationId": "radar-get-verified-bots-top-by-http-requests",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -42,11 +42,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -70,11 +70,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -83,11 +83,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -96,11 +96,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -109,11 +109,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -326,38 +326,38 @@
 		}
 	},
 	"GET /radar/verified_bots/top/categories": {
-		"description": "Get top verified bot categories by HTTP requests, along with their corresponding percentage, over the total verified bot HTTP requests.",
+		"description": "Retrieves the top verified bot categories by HTTP requests, along with their corresponding percentage, over the total verified bot HTTP requests.",
 		"operationId": "radar-get-verified-bots-top-categories-by-http-requests",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -368,11 +368,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -396,11 +396,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -409,11 +409,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -422,11 +422,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -435,11 +435,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"

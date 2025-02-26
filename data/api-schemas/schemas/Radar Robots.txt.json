@@ -1,38 +1,38 @@
 {
 	"GET /radar/robots_txt/top/domain_categories": {
-		"description": "Get the top domain categories by the number of robots.txt files parsed.",
+		"description": "Retrieves the top domain categories by the number of robots.txt files parsed.",
 		"operationId": "radar-get-robots-txt-top-domain-categories-by-files-parsed",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter by user agent category.",
+				"description": "Filters results by user agent category.",
 				"in": "query",
 				"name": "userAgentCategory",
 				"schema": {
 					"default": "AI",
-					"description": "Filter by user agent category.",
+					"description": "Filters results by user agent category.",
 					"enum": [
 						"AI"
 					],
@@ -55,11 +55,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -273,39 +273,39 @@
 		}
 	},
 	"GET /radar/robots_txt/top/user_agents/directive": {
-		"description": "Get the top user agents on robots.txt files by directive.",
+		"description": "Retrieves the top user agents on robots.txt files.",
 		"operationId": "radar-get-robots-txt-top-user-agents-by-directive",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter by user agent category.",
+				"description": "Filters results by user agent category.",
 				"in": "query",
 				"name": "userAgentCategory",
 				"schema": {
 					"default": "AI",
-					"description": "Filter by user agent category.",
+					"description": "Filters results by user agent category.",
 					"enum": [
 						"AI"
 					],
@@ -328,11 +328,11 @@
 				}
 			},
 			{
-				"description": "Filter by domain category.",
+				"description": "Filters results by domain category.",
 				"in": "query",
 				"name": "domainCategory",
 				"schema": {
-					"description": "Filter by domain category.",
+					"description": "Filters results by domain category.",
 					"example": "News & Media",
 					"items": {
 						"type": "string"
@@ -341,11 +341,11 @@
 				}
 			},
 			{
-				"description": "Filter by directive.",
+				"description": "Filters results by robots.txt directive.",
 				"in": "query",
 				"name": "directive",
 				"schema": {
-					"description": "Filter by directive.",
+					"description": "Filters results by robots.txt directive.",
 					"enum": [
 						"ALLOW",
 						"DISALLOW"
@@ -354,11 +354,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -564,7 +564,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top user agents by robots.txt directive",
+		"summary": "Get top user agents on robots.txt files",
 		"tags": [
 			"Radar Robots.txt"
 		],

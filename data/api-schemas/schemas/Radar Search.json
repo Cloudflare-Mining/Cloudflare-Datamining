@@ -1,14 +1,14 @@
 {
 	"GET /radar/search/global": {
-		"description": "Lets you search for locations, autonomous systems (ASes), and reports.",
+		"description": "Searches for locations, autonomous systems, and reports.",
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
@@ -23,12 +23,12 @@
 				}
 			},
 			{
-				"description": "Search for locations, AS and reports.",
+				"description": "Search for locations, autonomous systems and reports.",
 				"in": "query",
 				"name": "query",
 				"required": true,
 				"schema": {
-					"description": "Search for locations, AS and reports.",
+					"description": "Search for locations, autonomous systems and reports.",
 					"example": "United",
 					"type": "string"
 				}
@@ -70,11 +70,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -184,7 +184,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search for locations, autonomous systems (AS) and reports",
+		"summary": "Search for locations, ASes, and reports",
 		"tags": [
 			"Radar Search"
 		],

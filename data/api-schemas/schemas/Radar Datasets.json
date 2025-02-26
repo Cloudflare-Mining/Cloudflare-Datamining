@@ -1,34 +1,34 @@
 {
 	"GET /radar/datasets": {
-		"description": "Get a list of datasets.",
+		"description": "Retrieves a list of datasets.",
 		"operationId": "radar-get-reports-datasets",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Number of objects to skip before grabbing results.",
+					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Dataset type.",
+				"description": "Filters results by dataset type.",
 				"in": "query",
 				"name": "datasetType",
 				"schema": {
 					"default": "RANKING_BUCKET",
-					"description": "Dataset type.",
+					"description": "Filters results by dataset type.",
 					"enum": [
 						"RANKING_BUCKET",
 						"REPORT"
@@ -38,11 +38,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -169,7 +169,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get datasets",
+		"summary": "List datasets",
 		"tags": [
 			"Radar Datasets"
 		],
@@ -185,16 +185,16 @@
 		}
 	},
 	"GET /radar/datasets/{alias}": {
-		"description": "Get the CSV content of a given dataset by alias or ID. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
+		"description": "Retrieves the CSV content of a given dataset by alias or ID. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
 		"operationId": "radar-get-reports-dataset-download",
 		"parameters": [
 			{
-				"description": "Dataset alias or id",
+				"description": "Dataset alias or ID.",
 				"in": "path",
 				"name": "alias",
 				"required": true,
 				"schema": {
-					"description": "Dataset alias or id",
+					"description": "Dataset alias or ID.",
 					"example": "ranking_top_1000",
 					"type": "string"
 				}
@@ -273,15 +273,15 @@
 		}
 	},
 	"POST /radar/datasets/download": {
-		"description": "Get a URL to download a single dataset.",
+		"description": "Retrieves an URL to download a single dataset.",
 		"operationId": "radar-post-reports-dataset-download-url",
 		"parameters": [
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"

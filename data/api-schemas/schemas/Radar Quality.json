@@ -1,27 +1,27 @@
 {
 	"GET /radar/quality/iqi/summary": {
-		"description": "Get a summary (percentiles) of bandwidth, latency or DNS response time from the Radar Internet Quality Index (IQI).",
+		"description": "Retrieves a summary (percentiles) of bandwidth, latency, or DNS response time from the Radar Internet Quality Index (IQI).",
 		"operationId": "radar-get-quality-index-summary",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -32,11 +32,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -60,11 +60,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -73,11 +73,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -86,11 +86,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -99,12 +99,12 @@
 				}
 			},
 			{
-				"description": "Which metric to return: bandwidth, latency or DNS response time.",
+				"description": "Defines which metric to return (bandwidth, latency, or DNS response time).",
 				"in": "query",
 				"name": "metric",
 				"required": true,
 				"schema": {
-					"description": "Which metric to return: bandwidth, latency or DNS response time.",
+					"description": "Defines which metric to return (bandwidth, latency, or DNS response time).",
 					"enum": [
 						"BANDWIDTH",
 						"DNS",
@@ -115,11 +115,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -334,7 +334,7 @@
 		}
 	},
 	"GET /radar/quality/iqi/timeseries_groups": {
-		"description": "Get a time series (percentiles) of bandwidth, latency or DNS response time from the Radar Internet Quality Index (IQI).",
+		"description": "Retrieves a time series (percentiles) of bandwidth, latency, or DNS response time from the Radar Internet Quality Index (IQI).",
 		"operationId": "radar-get-quality-index-timeseries-group",
 		"parameters": [
 			{
@@ -354,24 +354,24 @@
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by the specified date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -382,11 +382,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
+				"description": "Start of the date range.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
+					"description": "Start of the date range.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -410,11 +410,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -423,11 +423,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -436,11 +436,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -449,21 +449,21 @@
 				}
 			},
 			{
-				"description": "Enable interpolation for all series (using the average).",
+				"description": "Enables interpolation for all series (using the average).",
 				"in": "query",
 				"name": "interpolation",
 				"schema": {
-					"description": "Enable interpolation for all series (using the average).",
+					"description": "Enables interpolation for all series (using the average).",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Which metric to return: bandwidth, latency or DNS response time.",
+				"description": "Defines which metric to return (bandwidth, latency, or DNS response time).",
 				"in": "query",
 				"name": "metric",
 				"required": true,
 				"schema": {
-					"description": "Which metric to return: bandwidth, latency or DNS response time.",
+					"description": "Defines which metric to return (bandwidth, latency, or DNS response time).",
 					"enum": [
 						"BANDWIDTH",
 						"DNS",
@@ -474,11 +474,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -622,17 +622,17 @@
 		}
 	},
 	"GET /radar/quality/speed/histogram": {
-		"description": "Get an histogram from the previous 90 days of Cloudflare Speed Test data, split into fixed bandwidth (Mbps), latency (ms) or jitter (ms) buckets.",
+		"description": "Retrieves a histogram from the previous 90 days of Cloudflare Speed Test data, split into fixed bandwidth (Mbps), latency (ms), or jitter (ms) buckets.",
 		"operationId": "radar-get-quality-speed-histogram",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
@@ -653,11 +653,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -666,11 +666,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -679,11 +679,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -692,11 +692,11 @@
 				}
 			},
 			{
-				"description": "The width for every bucket in the histogram.",
+				"description": "Width for every bucket in the histogram.",
 				"in": "query",
 				"name": "bucketSize",
 				"schema": {
-					"description": "The width for every bucket in the histogram.",
+					"description": "Width for every bucket in the histogram.",
 					"type": "integer"
 				}
 			},
@@ -717,11 +717,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -857,17 +857,17 @@
 		}
 	},
 	"GET /radar/quality/speed/summary": {
-		"description": "Get a summary of bandwidth, latency, jitter and packet loss, from the previous 90 days of Cloudflare Speed Test data.",
+		"description": "Retrieves a summary of bandwidth, latency, jitter, and packet loss, from the previous 90 days of Cloudflare Speed Test data.",
 		"operationId": "radar-get-quality-speed-summary",
 		"parameters": [
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
@@ -888,11 +888,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -901,11 +901,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -914,11 +914,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -927,11 +927,11 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1166,27 +1166,27 @@
 		}
 	},
 	"GET /radar/quality/speed/top/ases": {
-		"description": "Get the top autonomous systems by bandwidth, latency, jitter or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
+		"description": "Retrieves the top autonomous systems by bandwidth, latency, jitter, or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
 		"operationId": "radar-get-quality-speed-top-ases",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
@@ -1207,11 +1207,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -1220,11 +1220,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -1233,11 +1233,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -1264,20 +1264,20 @@
 				}
 			},
 			{
-				"description": "Reverse the order of results.",
+				"description": "Reverses the order of results.",
 				"in": "query",
 				"name": "reverse",
 				"schema": {
-					"description": "Reverse the order of results.",
+					"description": "Reverses the order of results.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1490,7 +1490,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top speed test autonomous systems",
+		"summary": "Get top ASes by speed test results",
 		"tags": [
 			"Radar Quality"
 		],
@@ -1506,27 +1506,27 @@
 		}
 	},
 	"GET /radar/quality/speed/top/locations": {
-		"description": "Get the top locations by bandwidth, latency, jitter or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
+		"description": "Retrieves the top locations by bandwidth, latency, jitter, or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
 		"operationId": "radar-get-quality-speed-top-locations",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
+				"description": "Limits the number of objects returned in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
+					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
+				"description": "Array of names used to label the series in the response.",
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
+					"description": "Array of names used to label the series in the response.",
 					"items": {
+						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
@@ -1547,11 +1547,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
 						"type": "string"
@@ -1560,11 +1560,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
 						"type": "string"
@@ -1573,11 +1573,11 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
-					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
 						"type": "string"
@@ -1604,20 +1604,20 @@
 				}
 			},
 			{
-				"description": "Reverse the order of results.",
+				"description": "Reverses the order of results.",
 				"in": "query",
 				"name": "reverse",
 				"schema": {
-					"description": "Reverse the order of results.",
+					"description": "Reverses the order of results.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Format in which results will be returned.",
 					"enum": [
 						"JSON",
 						"CSV"
@@ -1830,7 +1830,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top speed test locations",
+		"summary": "Get top locations by speed test results",
 		"tags": [
 			"Radar Quality"
 		],
