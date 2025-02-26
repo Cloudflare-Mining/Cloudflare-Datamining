@@ -393,7 +393,8 @@
 																			"enum": [
 																				"always_use_https"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Always Use HTTPS",
@@ -409,7 +410,8 @@
 																			"enum": [
 																				"automatic_https_rewrites"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -418,7 +420,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Automatic HTTPS Rewrites",
@@ -434,14 +437,16 @@
 																			"enum": [
 																				"browser_cache_ttl"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 																			"example": 30,
 																			"maximum": 31536000,
 																			"minimum": 0,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Browser Cache TTL",
@@ -457,7 +462,8 @@
 																			"enum": [
 																				"browser_check"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Browser Integrity Check.\n",
@@ -466,7 +472,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Browser Integrity Check",
@@ -482,14 +489,16 @@
 																			"enum": [
 																				"bypass_cache_on_cookie"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 																			"example": "bypass=.*|PHPSESSID=.*",
 																			"maxLength": 150,
 																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Bypass Cache on Cookie",
@@ -505,7 +514,8 @@
 																			"enum": [
 																				"cache_by_device_type"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Cache By Device Type.\n",
@@ -514,7 +524,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Cache By Device Type",
@@ -530,7 +541,8 @@
 																			"enum": [
 																				"cache_deception_armor"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Cache Deception Armor.\n",
@@ -539,7 +551,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Cache Deception Armor",
@@ -749,7 +762,8 @@
 																			"enum": [
 																				"cache_level"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -761,7 +775,8 @@
 																				"cache_everything"
 																			],
 																			"example": "bypass",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Cache Level",
@@ -777,14 +792,16 @@
 																			"enum": [
 																				"cache_on_cookie"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 																			"example": "bypass=.*|PHPSESSID=.*",
 																			"maxLength": 150,
 																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Cache on Cookie",
@@ -800,7 +817,8 @@
 																			"enum": [
 																				"cache_ttl_by_status"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"additionalProperties": {
@@ -843,7 +861,8 @@
 																			"enum": [
 																				"disable_apps"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disable Apps",
@@ -859,7 +878,8 @@
 																			"enum": [
 																				"disable_performance"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disable Performance",
@@ -875,7 +895,8 @@
 																			"enum": [
 																				"disable_security"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disable Security",
@@ -891,7 +912,8 @@
 																			"enum": [
 																				"disable_zaraz"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Disable Zaraz",
@@ -907,12 +929,14 @@
 																			"enum": [
 																				"edge_cache_ttl"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"maximum": 31536000,
 																			"minimum": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Edge Cache TTL",
@@ -928,7 +952,8 @@
 																			"enum": [
 																				"email_obfuscation"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Email Obfuscation.\n",
@@ -937,7 +962,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Email Obfuscation",
@@ -953,7 +979,8 @@
 																			"enum": [
 																				"explicit_cache_control"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Origin Cache Control.\n",
@@ -962,7 +989,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Origin Cache Control",
@@ -979,7 +1007,8 @@
 																				"forwarding_url"
 																			],
 																			"example": "forwarding_url",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"properties": {
@@ -990,13 +1019,15 @@
 																						302
 																					],
 																					"example": "temporary",
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				},
 																				"url": {
 																					"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																					"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 																					"maxLength": 1500,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		}
@@ -1014,13 +1045,15 @@
 																			"enum": [
 																				"host_header_override"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The hostname to use in the `Host` header",
 																			"example": "example.com",
 																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Host Header Override",
@@ -1037,7 +1070,8 @@
 																				"ip_geolocation"
 																			],
 																			"example": "ip_geolocation",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of adding the IP Geolocation Header.\n",
@@ -1046,7 +1080,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "IP Geolocation Header",
@@ -1063,7 +1098,8 @@
 																				"mirage"
 																			],
 																			"example": "mirage",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Mirage.\n",
@@ -1072,7 +1108,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Mirage",
@@ -1089,7 +1126,8 @@
 																				"opportunistic_encryption"
 																			],
 																			"example": "opportunistic_encryption",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Opportunistic Encryption.\n",
@@ -1098,7 +1136,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Opportunistic Encryption",
@@ -1115,7 +1154,8 @@
 																				"origin_error_page_pass_thru"
 																			],
 																			"example": "origin_error_page_pass_thru",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Origin Error Page Passthru.\n",
@@ -1124,7 +1164,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Origin Error Page Passthru",
@@ -1141,7 +1182,8 @@
 																				"polish"
 																			],
 																			"example": "polish",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The level of Polish you want applied to your origin.\n",
@@ -1151,7 +1193,8 @@
 																				"lossy"
 																			],
 																			"example": "lossless",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Polish",
@@ -1168,12 +1211,14 @@
 																				"resolve_override"
 																			],
 																			"example": "resolve_override",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The origin address you want to override with.\n",
 																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Resolve Override",
@@ -1189,7 +1234,8 @@
 																			"enum": [
 																				"respect_strong_etag"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Respect Strong ETags\n",
@@ -1198,7 +1244,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Respect Strong ETags",
@@ -1214,7 +1261,8 @@
 																			"enum": [
 																				"response_buffering"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Response Buffering\n",
@@ -1223,7 +1271,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Response Buffering",
@@ -1239,7 +1288,8 @@
 																			"enum": [
 																				"rocket_loader"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Rocket Loader\n",
@@ -1248,7 +1298,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Rocket Loader",
@@ -1264,7 +1315,8 @@
 																			"enum": [
 																				"security_level"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"enum": [
@@ -1276,7 +1328,8 @@
 																				"under_attack"
 																			],
 																			"example": "under_attack",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Security Level",
@@ -1293,7 +1346,8 @@
 																				"sort_query_string_for_cache"
 																			],
 																			"example": "sort_query_string_for_cache",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of Query String Sort\n",
@@ -1302,7 +1356,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "Query String Sort",
@@ -1318,7 +1373,8 @@
 																			"enum": [
 																				"ssl"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -1330,7 +1386,8 @@
 																				"origin_pull"
 																			],
 																			"example": "full",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "SSL",
@@ -1347,7 +1404,8 @@
 																				"true_client_ip_header"
 																			],
 																			"example": "true_client_ip_header",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of True Client IP Header.\n",
@@ -1356,7 +1414,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "True Client IP Header",
@@ -1373,7 +1432,8 @@
 																				"waf"
 																			],
 																			"example": "waf",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The status of WAF managed rules (previous version).\n",
@@ -1382,7 +1442,8 @@
 																				"off"
 																			],
 																			"example": "on",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "WAF",
@@ -1403,7 +1464,8 @@
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier",
@@ -1416,12 +1478,14 @@
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"priority": {
 														"default": 1,
 														"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"status": {
 														"default": "disabled",
@@ -1431,7 +1495,8 @@
 															"disabled"
 														],
 														"example": "active",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"targets": {
 														"description": "The rule targets to evaluate on each request.",
@@ -1464,11 +1529,13 @@
 																								"equals",
 																								"not_equal",
 																								"not_contain"
-																							]
+																							],
+																							"x-auditable": true
 																						},
 																						"value": {
 																							"description": "The value to apply the operator to.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"required": [
@@ -1483,7 +1550,8 @@
 																							"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																							"example": "*example.com/images/*",
 																							"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -1496,7 +1564,8 @@
 																			"enum": [
 																				"url"
 																			],
-																			"example": "url"
+																			"example": "url",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1770,7 +1839,8 @@
 																		"enum": [
 																			"always_use_https"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Always Use HTTPS",
@@ -1786,7 +1856,8 @@
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -1795,7 +1866,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Automatic HTTPS Rewrites",
@@ -1811,14 +1883,16 @@
 																		"enum": [
 																			"browser_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 																		"example": 30,
 																		"maximum": 31536000,
 																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Cache TTL",
@@ -1834,7 +1908,8 @@
 																		"enum": [
 																			"browser_check"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Browser Integrity Check.\n",
@@ -1843,7 +1918,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Integrity Check",
@@ -1859,14 +1935,16 @@
 																		"enum": [
 																			"bypass_cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Bypass Cache on Cookie",
@@ -1882,7 +1960,8 @@
 																		"enum": [
 																			"cache_by_device_type"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache By Device Type.\n",
@@ -1891,7 +1970,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache By Device Type",
@@ -1907,7 +1987,8 @@
 																		"enum": [
 																			"cache_deception_armor"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache Deception Armor.\n",
@@ -1916,7 +1997,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Deception Armor",
@@ -2126,7 +2208,8 @@
 																		"enum": [
 																			"cache_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -2138,7 +2221,8 @@
 																			"cache_everything"
 																		],
 																		"example": "bypass",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Level",
@@ -2154,14 +2238,16 @@
 																		"enum": [
 																			"cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache on Cookie",
@@ -2177,7 +2263,8 @@
 																		"enum": [
 																			"cache_ttl_by_status"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"additionalProperties": {
@@ -2220,7 +2307,8 @@
 																		"enum": [
 																			"disable_apps"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Apps",
@@ -2236,7 +2324,8 @@
 																		"enum": [
 																			"disable_performance"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Performance",
@@ -2252,7 +2341,8 @@
 																		"enum": [
 																			"disable_security"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Security",
@@ -2268,7 +2358,8 @@
 																		"enum": [
 																			"disable_zaraz"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Zaraz",
@@ -2284,12 +2375,14 @@
 																		"enum": [
 																			"edge_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"maximum": 31536000,
 																		"minimum": 1,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Edge Cache TTL",
@@ -2305,7 +2398,8 @@
 																		"enum": [
 																			"email_obfuscation"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Email Obfuscation.\n",
@@ -2314,7 +2408,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Email Obfuscation",
@@ -2330,7 +2425,8 @@
 																		"enum": [
 																			"explicit_cache_control"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Cache Control.\n",
@@ -2339,7 +2435,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Cache Control",
@@ -2356,7 +2453,8 @@
 																			"forwarding_url"
 																		],
 																		"example": "forwarding_url",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"properties": {
@@ -2367,13 +2465,15 @@
 																					302
 																				],
 																				"example": "temporary",
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"url": {
 																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 																				"maxLength": 1500,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -2391,13 +2491,15 @@
 																		"enum": [
 																			"host_header_override"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The hostname to use in the `Host` header",
 																		"example": "example.com",
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Host Header Override",
@@ -2414,7 +2516,8 @@
 																			"ip_geolocation"
 																		],
 																		"example": "ip_geolocation",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of adding the IP Geolocation Header.\n",
@@ -2423,7 +2526,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -2440,7 +2544,8 @@
 																			"mirage"
 																		],
 																		"example": "mirage",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Mirage.\n",
@@ -2449,7 +2554,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Mirage",
@@ -2466,7 +2572,8 @@
 																			"opportunistic_encryption"
 																		],
 																		"example": "opportunistic_encryption",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Opportunistic Encryption.\n",
@@ -2475,7 +2582,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -2492,7 +2600,8 @@
 																			"origin_error_page_pass_thru"
 																		],
 																		"example": "origin_error_page_pass_thru",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Error Page Passthru.\n",
@@ -2501,7 +2610,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -2518,7 +2628,8 @@
 																			"polish"
 																		],
 																		"example": "polish",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The level of Polish you want applied to your origin.\n",
@@ -2528,7 +2639,8 @@
 																			"lossy"
 																		],
 																		"example": "lossless",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Polish",
@@ -2545,12 +2657,14 @@
 																			"resolve_override"
 																		],
 																		"example": "resolve_override",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The origin address you want to override with.\n",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Resolve Override",
@@ -2566,7 +2680,8 @@
 																		"enum": [
 																			"respect_strong_etag"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Respect Strong ETags\n",
@@ -2575,7 +2690,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Respect Strong ETags",
@@ -2591,7 +2707,8 @@
 																		"enum": [
 																			"response_buffering"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Response Buffering\n",
@@ -2600,7 +2717,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Response Buffering",
@@ -2616,7 +2734,8 @@
 																		"enum": [
 																			"rocket_loader"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Rocket Loader\n",
@@ -2625,7 +2744,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Rocket Loader",
@@ -2641,7 +2761,8 @@
 																		"enum": [
 																			"security_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"enum": [
@@ -2653,7 +2774,8 @@
 																			"under_attack"
 																		],
 																		"example": "under_attack",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Security Level",
@@ -2670,7 +2792,8 @@
 																			"sort_query_string_for_cache"
 																		],
 																		"example": "sort_query_string_for_cache",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Query String Sort\n",
@@ -2679,7 +2802,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Query String Sort",
@@ -2695,7 +2819,8 @@
 																		"enum": [
 																			"ssl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -2707,7 +2832,8 @@
 																			"origin_pull"
 																		],
 																		"example": "full",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "SSL",
@@ -2724,7 +2850,8 @@
 																			"true_client_ip_header"
 																		],
 																		"example": "true_client_ip_header",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of True Client IP Header.\n",
@@ -2733,7 +2860,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "True Client IP Header",
@@ -2750,7 +2878,8 @@
 																			"waf"
 																		],
 																		"example": "waf",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of WAF managed rules (previous version).\n",
@@ -2759,7 +2888,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "WAF",
@@ -2780,7 +2910,8 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -2793,12 +2924,14 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"priority": {
 													"default": 1,
 													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"default": "disabled",
@@ -2808,7 +2941,8 @@
 														"disabled"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"targets": {
 													"description": "The rule targets to evaluate on each request.",
@@ -2841,11 +2975,13 @@
 																							"equals",
 																							"not_equal",
 																							"not_contain"
-																						]
+																						],
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value to apply the operator to.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2860,7 +2996,8 @@
 																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																						"example": "*example.com/images/*",
 																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				}
 																			}
@@ -2873,7 +3010,8 @@
 																		"enum": [
 																			"url"
 																		],
-																		"example": "url"
+																		"example": "url",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3110,7 +3248,8 @@
 													"enum": [
 														"always_use_https"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Always Use HTTPS",
@@ -3126,7 +3265,8 @@
 													"enum": [
 														"automatic_https_rewrites"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -3135,7 +3275,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Automatic HTTPS Rewrites",
@@ -3151,14 +3292,16 @@
 													"enum": [
 														"browser_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 													"example": 30,
 													"maximum": 31536000,
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Cache TTL",
@@ -3174,7 +3317,8 @@
 													"enum": [
 														"browser_check"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Browser Integrity Check.\n",
@@ -3183,7 +3327,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Integrity Check",
@@ -3199,14 +3344,16 @@
 													"enum": [
 														"bypass_cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Bypass Cache on Cookie",
@@ -3222,7 +3369,8 @@
 													"enum": [
 														"cache_by_device_type"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache By Device Type.\n",
@@ -3231,7 +3379,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache By Device Type",
@@ -3247,7 +3396,8 @@
 													"enum": [
 														"cache_deception_armor"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache Deception Armor.\n",
@@ -3256,7 +3406,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Deception Armor",
@@ -3466,7 +3617,8 @@
 													"enum": [
 														"cache_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -3478,7 +3630,8 @@
 														"cache_everything"
 													],
 													"example": "bypass",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Level",
@@ -3494,14 +3647,16 @@
 													"enum": [
 														"cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache on Cookie",
@@ -3517,7 +3672,8 @@
 													"enum": [
 														"cache_ttl_by_status"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"additionalProperties": {
@@ -3560,7 +3716,8 @@
 													"enum": [
 														"disable_apps"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Apps",
@@ -3576,7 +3733,8 @@
 													"enum": [
 														"disable_performance"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Performance",
@@ -3592,7 +3750,8 @@
 													"enum": [
 														"disable_security"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Security",
@@ -3608,7 +3767,8 @@
 													"enum": [
 														"disable_zaraz"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Zaraz",
@@ -3624,12 +3784,14 @@
 													"enum": [
 														"edge_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"maximum": 31536000,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Edge Cache TTL",
@@ -3645,7 +3807,8 @@
 													"enum": [
 														"email_obfuscation"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Email Obfuscation.\n",
@@ -3654,7 +3817,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Email Obfuscation",
@@ -3670,7 +3834,8 @@
 													"enum": [
 														"explicit_cache_control"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Cache Control.\n",
@@ -3679,7 +3844,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Cache Control",
@@ -3696,7 +3862,8 @@
 														"forwarding_url"
 													],
 													"example": "forwarding_url",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"properties": {
@@ -3707,13 +3874,15 @@
 																302
 															],
 															"example": "temporary",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 															"maxLength": 1500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -3731,13 +3900,15 @@
 													"enum": [
 														"host_header_override"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The hostname to use in the `Host` header",
 													"example": "example.com",
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Host Header Override",
@@ -3754,7 +3925,8 @@
 														"ip_geolocation"
 													],
 													"example": "ip_geolocation",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of adding the IP Geolocation Header.\n",
@@ -3763,7 +3935,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -3780,7 +3953,8 @@
 														"mirage"
 													],
 													"example": "mirage",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Mirage.\n",
@@ -3789,7 +3963,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Mirage",
@@ -3806,7 +3981,8 @@
 														"opportunistic_encryption"
 													],
 													"example": "opportunistic_encryption",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Opportunistic Encryption.\n",
@@ -3815,7 +3991,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -3832,7 +4009,8 @@
 														"origin_error_page_pass_thru"
 													],
 													"example": "origin_error_page_pass_thru",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Error Page Passthru.\n",
@@ -3841,7 +4019,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -3858,7 +4037,8 @@
 														"polish"
 													],
 													"example": "polish",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The level of Polish you want applied to your origin.\n",
@@ -3868,7 +4048,8 @@
 														"lossy"
 													],
 													"example": "lossless",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Polish",
@@ -3885,12 +4066,14 @@
 														"resolve_override"
 													],
 													"example": "resolve_override",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The origin address you want to override with.\n",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Resolve Override",
@@ -3906,7 +4089,8 @@
 													"enum": [
 														"respect_strong_etag"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Respect Strong ETags\n",
@@ -3915,7 +4099,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Respect Strong ETags",
@@ -3931,7 +4116,8 @@
 													"enum": [
 														"response_buffering"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Response Buffering\n",
@@ -3940,7 +4126,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Response Buffering",
@@ -3956,7 +4143,8 @@
 													"enum": [
 														"rocket_loader"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Rocket Loader\n",
@@ -3965,7 +4153,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Rocket Loader",
@@ -3981,7 +4170,8 @@
 													"enum": [
 														"security_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"enum": [
@@ -3993,7 +4183,8 @@
 														"under_attack"
 													],
 													"example": "under_attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Security Level",
@@ -4010,7 +4201,8 @@
 														"sort_query_string_for_cache"
 													],
 													"example": "sort_query_string_for_cache",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Query String Sort\n",
@@ -4019,7 +4211,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Query String Sort",
@@ -4035,7 +4228,8 @@
 													"enum": [
 														"ssl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -4047,7 +4241,8 @@
 														"origin_pull"
 													],
 													"example": "full",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "SSL",
@@ -4064,7 +4259,8 @@
 														"true_client_ip_header"
 													],
 													"example": "true_client_ip_header",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of True Client IP Header.\n",
@@ -4073,7 +4269,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "True Client IP Header",
@@ -4090,7 +4287,8 @@
 														"waf"
 													],
 													"example": "waf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of WAF managed rules (previous version).\n",
@@ -4099,7 +4297,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "WAF",
@@ -4118,7 +4317,8 @@
 							"priority": {
 								"default": 1,
 								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"status": {
 								"default": "disabled",
@@ -4128,7 +4328,8 @@
 									"disabled"
 								],
 								"example": "active",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"targets": {
 								"description": "The rule targets to evaluate on each request.",
@@ -4161,11 +4362,13 @@
 																		"equals",
 																		"not_equal",
 																		"not_contain"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "The value to apply the operator to.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -4180,7 +4383,8 @@
 																	"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																	"example": "*example.com/images/*",
 																	"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -4193,7 +4397,8 @@
 													"enum": [
 														"url"
 													],
-													"example": "url"
+													"example": "url",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4311,7 +4516,8 @@
 																		"enum": [
 																			"always_use_https"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Always Use HTTPS",
@@ -4327,7 +4533,8 @@
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -4336,7 +4543,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Automatic HTTPS Rewrites",
@@ -4352,14 +4560,16 @@
 																		"enum": [
 																			"browser_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 																		"example": 30,
 																		"maximum": 31536000,
 																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Cache TTL",
@@ -4375,7 +4585,8 @@
 																		"enum": [
 																			"browser_check"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Browser Integrity Check.\n",
@@ -4384,7 +4595,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Integrity Check",
@@ -4400,14 +4612,16 @@
 																		"enum": [
 																			"bypass_cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Bypass Cache on Cookie",
@@ -4423,7 +4637,8 @@
 																		"enum": [
 																			"cache_by_device_type"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache By Device Type.\n",
@@ -4432,7 +4647,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache By Device Type",
@@ -4448,7 +4664,8 @@
 																		"enum": [
 																			"cache_deception_armor"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache Deception Armor.\n",
@@ -4457,7 +4674,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Deception Armor",
@@ -4667,7 +4885,8 @@
 																		"enum": [
 																			"cache_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -4679,7 +4898,8 @@
 																			"cache_everything"
 																		],
 																		"example": "bypass",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Level",
@@ -4695,14 +4915,16 @@
 																		"enum": [
 																			"cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache on Cookie",
@@ -4718,7 +4940,8 @@
 																		"enum": [
 																			"cache_ttl_by_status"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"additionalProperties": {
@@ -4761,7 +4984,8 @@
 																		"enum": [
 																			"disable_apps"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Apps",
@@ -4777,7 +5001,8 @@
 																		"enum": [
 																			"disable_performance"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Performance",
@@ -4793,7 +5018,8 @@
 																		"enum": [
 																			"disable_security"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Security",
@@ -4809,7 +5035,8 @@
 																		"enum": [
 																			"disable_zaraz"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Zaraz",
@@ -4825,12 +5052,14 @@
 																		"enum": [
 																			"edge_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"maximum": 31536000,
 																		"minimum": 1,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Edge Cache TTL",
@@ -4846,7 +5075,8 @@
 																		"enum": [
 																			"email_obfuscation"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Email Obfuscation.\n",
@@ -4855,7 +5085,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Email Obfuscation",
@@ -4871,7 +5102,8 @@
 																		"enum": [
 																			"explicit_cache_control"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Cache Control.\n",
@@ -4880,7 +5112,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Cache Control",
@@ -4897,7 +5130,8 @@
 																			"forwarding_url"
 																		],
 																		"example": "forwarding_url",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"properties": {
@@ -4908,13 +5142,15 @@
 																					302
 																				],
 																				"example": "temporary",
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"url": {
 																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 																				"maxLength": 1500,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -4932,13 +5168,15 @@
 																		"enum": [
 																			"host_header_override"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The hostname to use in the `Host` header",
 																		"example": "example.com",
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Host Header Override",
@@ -4955,7 +5193,8 @@
 																			"ip_geolocation"
 																		],
 																		"example": "ip_geolocation",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of adding the IP Geolocation Header.\n",
@@ -4964,7 +5203,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -4981,7 +5221,8 @@
 																			"mirage"
 																		],
 																		"example": "mirage",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Mirage.\n",
@@ -4990,7 +5231,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Mirage",
@@ -5007,7 +5249,8 @@
 																			"opportunistic_encryption"
 																		],
 																		"example": "opportunistic_encryption",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Opportunistic Encryption.\n",
@@ -5016,7 +5259,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -5033,7 +5277,8 @@
 																			"origin_error_page_pass_thru"
 																		],
 																		"example": "origin_error_page_pass_thru",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Error Page Passthru.\n",
@@ -5042,7 +5287,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -5059,7 +5305,8 @@
 																			"polish"
 																		],
 																		"example": "polish",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The level of Polish you want applied to your origin.\n",
@@ -5069,7 +5316,8 @@
 																			"lossy"
 																		],
 																		"example": "lossless",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Polish",
@@ -5086,12 +5334,14 @@
 																			"resolve_override"
 																		],
 																		"example": "resolve_override",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The origin address you want to override with.\n",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Resolve Override",
@@ -5107,7 +5357,8 @@
 																		"enum": [
 																			"respect_strong_etag"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Respect Strong ETags\n",
@@ -5116,7 +5367,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Respect Strong ETags",
@@ -5132,7 +5384,8 @@
 																		"enum": [
 																			"response_buffering"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Response Buffering\n",
@@ -5141,7 +5394,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Response Buffering",
@@ -5157,7 +5411,8 @@
 																		"enum": [
 																			"rocket_loader"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Rocket Loader\n",
@@ -5166,7 +5421,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Rocket Loader",
@@ -5182,7 +5438,8 @@
 																		"enum": [
 																			"security_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"enum": [
@@ -5194,7 +5451,8 @@
 																			"under_attack"
 																		],
 																		"example": "under_attack",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Security Level",
@@ -5211,7 +5469,8 @@
 																			"sort_query_string_for_cache"
 																		],
 																		"example": "sort_query_string_for_cache",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Query String Sort\n",
@@ -5220,7 +5479,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Query String Sort",
@@ -5236,7 +5496,8 @@
 																		"enum": [
 																			"ssl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -5248,7 +5509,8 @@
 																			"origin_pull"
 																		],
 																		"example": "full",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "SSL",
@@ -5265,7 +5527,8 @@
 																			"true_client_ip_header"
 																		],
 																		"example": "true_client_ip_header",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of True Client IP Header.\n",
@@ -5274,7 +5537,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "True Client IP Header",
@@ -5291,7 +5555,8 @@
 																			"waf"
 																		],
 																		"example": "waf",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of WAF managed rules (previous version).\n",
@@ -5300,7 +5565,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "WAF",
@@ -5321,7 +5587,8 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -5334,12 +5601,14 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"priority": {
 													"default": 1,
 													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"default": "disabled",
@@ -5349,7 +5618,8 @@
 														"disabled"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"targets": {
 													"description": "The rule targets to evaluate on each request.",
@@ -5382,11 +5652,13 @@
 																							"equals",
 																							"not_equal",
 																							"not_contain"
-																						]
+																						],
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value to apply the operator to.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -5401,7 +5673,8 @@
 																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																						"example": "*example.com/images/*",
 																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				}
 																			}
@@ -5414,7 +5687,8 @@
 																		"enum": [
 																			"url"
 																		],
-																		"example": "url"
+																		"example": "url",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -5602,7 +5876,8 @@
 													"enum": [
 														"always_use_https"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Always Use HTTPS",
@@ -5618,7 +5893,8 @@
 													"enum": [
 														"automatic_https_rewrites"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -5627,7 +5903,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Automatic HTTPS Rewrites",
@@ -5643,14 +5920,16 @@
 													"enum": [
 														"browser_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 													"example": 30,
 													"maximum": 31536000,
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Cache TTL",
@@ -5666,7 +5945,8 @@
 													"enum": [
 														"browser_check"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Browser Integrity Check.\n",
@@ -5675,7 +5955,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Integrity Check",
@@ -5691,14 +5972,16 @@
 													"enum": [
 														"bypass_cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Bypass Cache on Cookie",
@@ -5714,7 +5997,8 @@
 													"enum": [
 														"cache_by_device_type"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache By Device Type.\n",
@@ -5723,7 +6007,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache By Device Type",
@@ -5739,7 +6024,8 @@
 													"enum": [
 														"cache_deception_armor"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache Deception Armor.\n",
@@ -5748,7 +6034,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Deception Armor",
@@ -5958,7 +6245,8 @@
 													"enum": [
 														"cache_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -5970,7 +6258,8 @@
 														"cache_everything"
 													],
 													"example": "bypass",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Level",
@@ -5986,14 +6275,16 @@
 													"enum": [
 														"cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache on Cookie",
@@ -6009,7 +6300,8 @@
 													"enum": [
 														"cache_ttl_by_status"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"additionalProperties": {
@@ -6052,7 +6344,8 @@
 													"enum": [
 														"disable_apps"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Apps",
@@ -6068,7 +6361,8 @@
 													"enum": [
 														"disable_performance"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Performance",
@@ -6084,7 +6378,8 @@
 													"enum": [
 														"disable_security"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Security",
@@ -6100,7 +6395,8 @@
 													"enum": [
 														"disable_zaraz"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Zaraz",
@@ -6116,12 +6412,14 @@
 													"enum": [
 														"edge_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"maximum": 31536000,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Edge Cache TTL",
@@ -6137,7 +6435,8 @@
 													"enum": [
 														"email_obfuscation"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Email Obfuscation.\n",
@@ -6146,7 +6445,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Email Obfuscation",
@@ -6162,7 +6462,8 @@
 													"enum": [
 														"explicit_cache_control"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Cache Control.\n",
@@ -6171,7 +6472,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Cache Control",
@@ -6188,7 +6490,8 @@
 														"forwarding_url"
 													],
 													"example": "forwarding_url",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"properties": {
@@ -6199,13 +6502,15 @@
 																302
 															],
 															"example": "temporary",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 															"maxLength": 1500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -6223,13 +6528,15 @@
 													"enum": [
 														"host_header_override"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The hostname to use in the `Host` header",
 													"example": "example.com",
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Host Header Override",
@@ -6246,7 +6553,8 @@
 														"ip_geolocation"
 													],
 													"example": "ip_geolocation",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of adding the IP Geolocation Header.\n",
@@ -6255,7 +6563,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -6272,7 +6581,8 @@
 														"mirage"
 													],
 													"example": "mirage",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Mirage.\n",
@@ -6281,7 +6591,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Mirage",
@@ -6298,7 +6609,8 @@
 														"opportunistic_encryption"
 													],
 													"example": "opportunistic_encryption",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Opportunistic Encryption.\n",
@@ -6307,7 +6619,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -6324,7 +6637,8 @@
 														"origin_error_page_pass_thru"
 													],
 													"example": "origin_error_page_pass_thru",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Error Page Passthru.\n",
@@ -6333,7 +6647,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -6350,7 +6665,8 @@
 														"polish"
 													],
 													"example": "polish",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The level of Polish you want applied to your origin.\n",
@@ -6360,7 +6676,8 @@
 														"lossy"
 													],
 													"example": "lossless",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Polish",
@@ -6377,12 +6694,14 @@
 														"resolve_override"
 													],
 													"example": "resolve_override",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The origin address you want to override with.\n",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Resolve Override",
@@ -6398,7 +6717,8 @@
 													"enum": [
 														"respect_strong_etag"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Respect Strong ETags\n",
@@ -6407,7 +6727,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Respect Strong ETags",
@@ -6423,7 +6744,8 @@
 													"enum": [
 														"response_buffering"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Response Buffering\n",
@@ -6432,7 +6754,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Response Buffering",
@@ -6448,7 +6771,8 @@
 													"enum": [
 														"rocket_loader"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Rocket Loader\n",
@@ -6457,7 +6781,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Rocket Loader",
@@ -6473,7 +6798,8 @@
 													"enum": [
 														"security_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"enum": [
@@ -6485,7 +6811,8 @@
 														"under_attack"
 													],
 													"example": "under_attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Security Level",
@@ -6502,7 +6829,8 @@
 														"sort_query_string_for_cache"
 													],
 													"example": "sort_query_string_for_cache",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Query String Sort\n",
@@ -6511,7 +6839,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Query String Sort",
@@ -6527,7 +6856,8 @@
 													"enum": [
 														"ssl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -6539,7 +6869,8 @@
 														"origin_pull"
 													],
 													"example": "full",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "SSL",
@@ -6556,7 +6887,8 @@
 														"true_client_ip_header"
 													],
 													"example": "true_client_ip_header",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of True Client IP Header.\n",
@@ -6565,7 +6897,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "True Client IP Header",
@@ -6582,7 +6915,8 @@
 														"waf"
 													],
 													"example": "waf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of WAF managed rules (previous version).\n",
@@ -6591,7 +6925,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "WAF",
@@ -6610,7 +6945,8 @@
 							"priority": {
 								"default": 1,
 								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"status": {
 								"default": "disabled",
@@ -6620,7 +6956,8 @@
 									"disabled"
 								],
 								"example": "active",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"targets": {
 								"description": "The rule targets to evaluate on each request.",
@@ -6653,11 +6990,13 @@
 																		"equals",
 																		"not_equal",
 																		"not_contain"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "The value to apply the operator to.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -6672,7 +7011,8 @@
 																	"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																	"example": "*example.com/images/*",
 																	"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -6685,7 +7025,8 @@
 													"enum": [
 														"url"
 													],
-													"example": "url"
+													"example": "url",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -6807,7 +7148,8 @@
 																		"enum": [
 																			"always_use_https"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Always Use HTTPS",
@@ -6823,7 +7165,8 @@
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -6832,7 +7175,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Automatic HTTPS Rewrites",
@@ -6848,14 +7192,16 @@
 																		"enum": [
 																			"browser_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 																		"example": 30,
 																		"maximum": 31536000,
 																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Cache TTL",
@@ -6871,7 +7217,8 @@
 																		"enum": [
 																			"browser_check"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Browser Integrity Check.\n",
@@ -6880,7 +7227,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Integrity Check",
@@ -6896,14 +7244,16 @@
 																		"enum": [
 																			"bypass_cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Bypass Cache on Cookie",
@@ -6919,7 +7269,8 @@
 																		"enum": [
 																			"cache_by_device_type"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache By Device Type.\n",
@@ -6928,7 +7279,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache By Device Type",
@@ -6944,7 +7296,8 @@
 																		"enum": [
 																			"cache_deception_armor"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache Deception Armor.\n",
@@ -6953,7 +7306,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Deception Armor",
@@ -7163,7 +7517,8 @@
 																		"enum": [
 																			"cache_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -7175,7 +7530,8 @@
 																			"cache_everything"
 																		],
 																		"example": "bypass",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Level",
@@ -7191,14 +7547,16 @@
 																		"enum": [
 																			"cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache on Cookie",
@@ -7214,7 +7572,8 @@
 																		"enum": [
 																			"cache_ttl_by_status"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"additionalProperties": {
@@ -7257,7 +7616,8 @@
 																		"enum": [
 																			"disable_apps"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Apps",
@@ -7273,7 +7633,8 @@
 																		"enum": [
 																			"disable_performance"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Performance",
@@ -7289,7 +7650,8 @@
 																		"enum": [
 																			"disable_security"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Security",
@@ -7305,7 +7667,8 @@
 																		"enum": [
 																			"disable_zaraz"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Zaraz",
@@ -7321,12 +7684,14 @@
 																		"enum": [
 																			"edge_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"maximum": 31536000,
 																		"minimum": 1,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Edge Cache TTL",
@@ -7342,7 +7707,8 @@
 																		"enum": [
 																			"email_obfuscation"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Email Obfuscation.\n",
@@ -7351,7 +7717,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Email Obfuscation",
@@ -7367,7 +7734,8 @@
 																		"enum": [
 																			"explicit_cache_control"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Cache Control.\n",
@@ -7376,7 +7744,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Cache Control",
@@ -7393,7 +7762,8 @@
 																			"forwarding_url"
 																		],
 																		"example": "forwarding_url",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"properties": {
@@ -7404,13 +7774,15 @@
 																					302
 																				],
 																				"example": "temporary",
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"url": {
 																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 																				"maxLength": 1500,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -7428,13 +7800,15 @@
 																		"enum": [
 																			"host_header_override"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The hostname to use in the `Host` header",
 																		"example": "example.com",
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Host Header Override",
@@ -7451,7 +7825,8 @@
 																			"ip_geolocation"
 																		],
 																		"example": "ip_geolocation",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of adding the IP Geolocation Header.\n",
@@ -7460,7 +7835,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -7477,7 +7853,8 @@
 																			"mirage"
 																		],
 																		"example": "mirage",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Mirage.\n",
@@ -7486,7 +7863,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Mirage",
@@ -7503,7 +7881,8 @@
 																			"opportunistic_encryption"
 																		],
 																		"example": "opportunistic_encryption",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Opportunistic Encryption.\n",
@@ -7512,7 +7891,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -7529,7 +7909,8 @@
 																			"origin_error_page_pass_thru"
 																		],
 																		"example": "origin_error_page_pass_thru",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Error Page Passthru.\n",
@@ -7538,7 +7919,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -7555,7 +7937,8 @@
 																			"polish"
 																		],
 																		"example": "polish",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The level of Polish you want applied to your origin.\n",
@@ -7565,7 +7948,8 @@
 																			"lossy"
 																		],
 																		"example": "lossless",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Polish",
@@ -7582,12 +7966,14 @@
 																			"resolve_override"
 																		],
 																		"example": "resolve_override",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The origin address you want to override with.\n",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Resolve Override",
@@ -7603,7 +7989,8 @@
 																		"enum": [
 																			"respect_strong_etag"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Respect Strong ETags\n",
@@ -7612,7 +7999,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Respect Strong ETags",
@@ -7628,7 +8016,8 @@
 																		"enum": [
 																			"response_buffering"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Response Buffering\n",
@@ -7637,7 +8026,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Response Buffering",
@@ -7653,7 +8043,8 @@
 																		"enum": [
 																			"rocket_loader"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Rocket Loader\n",
@@ -7662,7 +8053,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Rocket Loader",
@@ -7678,7 +8070,8 @@
 																		"enum": [
 																			"security_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"enum": [
@@ -7690,7 +8083,8 @@
 																			"under_attack"
 																		],
 																		"example": "under_attack",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Security Level",
@@ -7707,7 +8101,8 @@
 																			"sort_query_string_for_cache"
 																		],
 																		"example": "sort_query_string_for_cache",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Query String Sort\n",
@@ -7716,7 +8111,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Query String Sort",
@@ -7732,7 +8128,8 @@
 																		"enum": [
 																			"ssl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -7744,7 +8141,8 @@
 																			"origin_pull"
 																		],
 																		"example": "full",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "SSL",
@@ -7761,7 +8159,8 @@
 																			"true_client_ip_header"
 																		],
 																		"example": "true_client_ip_header",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of True Client IP Header.\n",
@@ -7770,7 +8169,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "True Client IP Header",
@@ -7787,7 +8187,8 @@
 																			"waf"
 																		],
 																		"example": "waf",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of WAF managed rules (previous version).\n",
@@ -7796,7 +8197,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "WAF",
@@ -7817,7 +8219,8 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -7830,12 +8233,14 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"priority": {
 													"default": 1,
 													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"default": "disabled",
@@ -7845,7 +8250,8 @@
 														"disabled"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"targets": {
 													"description": "The rule targets to evaluate on each request.",
@@ -7878,11 +8284,13 @@
 																							"equals",
 																							"not_equal",
 																							"not_contain"
-																						]
+																						],
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value to apply the operator to.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -7897,7 +8305,8 @@
 																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																						"example": "*example.com/images/*",
 																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				}
 																			}
@@ -7910,7 +8319,8 @@
 																		"enum": [
 																			"url"
 																		],
-																		"example": "url"
+																		"example": "url",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -8110,7 +8520,8 @@
 													"enum": [
 														"always_use_https"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Always Use HTTPS",
@@ -8126,7 +8537,8 @@
 													"enum": [
 														"automatic_https_rewrites"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -8135,7 +8547,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Automatic HTTPS Rewrites",
@@ -8151,14 +8564,16 @@
 													"enum": [
 														"browser_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 													"example": 30,
 													"maximum": 31536000,
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Cache TTL",
@@ -8174,7 +8589,8 @@
 													"enum": [
 														"browser_check"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Browser Integrity Check.\n",
@@ -8183,7 +8599,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Browser Integrity Check",
@@ -8199,14 +8616,16 @@
 													"enum": [
 														"bypass_cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Bypass Cache on Cookie",
@@ -8222,7 +8641,8 @@
 													"enum": [
 														"cache_by_device_type"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache By Device Type.\n",
@@ -8231,7 +8651,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache By Device Type",
@@ -8247,7 +8668,8 @@
 													"enum": [
 														"cache_deception_armor"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Cache Deception Armor.\n",
@@ -8256,7 +8678,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Deception Armor",
@@ -8466,7 +8889,8 @@
 													"enum": [
 														"cache_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -8478,7 +8902,8 @@
 														"cache_everything"
 													],
 													"example": "bypass",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache Level",
@@ -8494,14 +8919,16 @@
 													"enum": [
 														"cache_on_cookie"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 													"example": "bypass=.*|PHPSESSID=.*",
 													"maxLength": 150,
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Cache on Cookie",
@@ -8517,7 +8944,8 @@
 													"enum": [
 														"cache_ttl_by_status"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"additionalProperties": {
@@ -8560,7 +8988,8 @@
 													"enum": [
 														"disable_apps"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Apps",
@@ -8576,7 +9005,8 @@
 													"enum": [
 														"disable_performance"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Performance",
@@ -8592,7 +9022,8 @@
 													"enum": [
 														"disable_security"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Security",
@@ -8608,7 +9039,8 @@
 													"enum": [
 														"disable_zaraz"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Disable Zaraz",
@@ -8624,12 +9056,14 @@
 													"enum": [
 														"edge_cache_ttl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"maximum": 31536000,
 													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											},
 											"title": "Edge Cache TTL",
@@ -8645,7 +9079,8 @@
 													"enum": [
 														"email_obfuscation"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Email Obfuscation.\n",
@@ -8654,7 +9089,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Email Obfuscation",
@@ -8670,7 +9106,8 @@
 													"enum": [
 														"explicit_cache_control"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Cache Control.\n",
@@ -8679,7 +9116,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Cache Control",
@@ -8696,7 +9134,8 @@
 														"forwarding_url"
 													],
 													"example": "forwarding_url",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"properties": {
@@ -8707,13 +9146,15 @@
 																302
 															],
 															"example": "temporary",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 															"maxLength": 1500,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -8731,13 +9172,15 @@
 													"enum": [
 														"host_header_override"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The hostname to use in the `Host` header",
 													"example": "example.com",
 													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Host Header Override",
@@ -8754,7 +9197,8 @@
 														"ip_geolocation"
 													],
 													"example": "ip_geolocation",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of adding the IP Geolocation Header.\n",
@@ -8763,7 +9207,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -8780,7 +9225,8 @@
 														"mirage"
 													],
 													"example": "mirage",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Mirage.\n",
@@ -8789,7 +9235,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Mirage",
@@ -8806,7 +9253,8 @@
 														"opportunistic_encryption"
 													],
 													"example": "opportunistic_encryption",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Opportunistic Encryption.\n",
@@ -8815,7 +9263,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -8832,7 +9281,8 @@
 														"origin_error_page_pass_thru"
 													],
 													"example": "origin_error_page_pass_thru",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Origin Error Page Passthru.\n",
@@ -8841,7 +9291,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -8858,7 +9309,8 @@
 														"polish"
 													],
 													"example": "polish",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The level of Polish you want applied to your origin.\n",
@@ -8868,7 +9320,8 @@
 														"lossy"
 													],
 													"example": "lossless",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Polish",
@@ -8885,12 +9338,14 @@
 														"resolve_override"
 													],
 													"example": "resolve_override",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The origin address you want to override with.\n",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Resolve Override",
@@ -8906,7 +9361,8 @@
 													"enum": [
 														"respect_strong_etag"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Respect Strong ETags\n",
@@ -8915,7 +9371,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Respect Strong ETags",
@@ -8931,7 +9388,8 @@
 													"enum": [
 														"response_buffering"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Response Buffering\n",
@@ -8940,7 +9398,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Response Buffering",
@@ -8956,7 +9415,8 @@
 													"enum": [
 														"rocket_loader"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Rocket Loader\n",
@@ -8965,7 +9425,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Rocket Loader",
@@ -8981,7 +9442,8 @@
 													"enum": [
 														"security_level"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"enum": [
@@ -8993,7 +9455,8 @@
 														"under_attack"
 													],
 													"example": "under_attack",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Security Level",
@@ -9010,7 +9473,8 @@
 														"sort_query_string_for_cache"
 													],
 													"example": "sort_query_string_for_cache",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of Query String Sort\n",
@@ -9019,7 +9483,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "Query String Sort",
@@ -9035,7 +9500,8 @@
 													"enum": [
 														"ssl"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -9047,7 +9513,8 @@
 														"origin_pull"
 													],
 													"example": "full",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "SSL",
@@ -9064,7 +9531,8 @@
 														"true_client_ip_header"
 													],
 													"example": "true_client_ip_header",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of True Client IP Header.\n",
@@ -9073,7 +9541,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "True Client IP Header",
@@ -9090,7 +9559,8 @@
 														"waf"
 													],
 													"example": "waf",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "The status of WAF managed rules (previous version).\n",
@@ -9099,7 +9569,8 @@
 														"off"
 													],
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"title": "WAF",
@@ -9118,7 +9589,8 @@
 							"priority": {
 								"default": 1,
 								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"status": {
 								"default": "disabled",
@@ -9128,7 +9600,8 @@
 									"disabled"
 								],
 								"example": "active",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"targets": {
 								"description": "The rule targets to evaluate on each request.",
@@ -9161,11 +9634,13 @@
 																		"equals",
 																		"not_equal",
 																		"not_contain"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "The value to apply the operator to.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -9180,7 +9655,8 @@
 																	"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																	"example": "*example.com/images/*",
 																	"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -9193,7 +9669,8 @@
 													"enum": [
 														"url"
 													],
-													"example": "url"
+													"example": "url",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -9315,7 +9792,8 @@
 																		"enum": [
 																			"always_use_https"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Always Use HTTPS",
@@ -9331,7 +9809,8 @@
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Automatic HTTPS Rewrites.\n",
@@ -9340,7 +9819,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Automatic HTTPS Rewrites",
@@ -9356,14 +9836,16 @@
 																		"enum": [
 																			"browser_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The number of seconds to cache resources for. The API prohibits\nsetting this to 0 for non-Enterprise domains.\n",
 																		"example": 30,
 																		"maximum": 31536000,
 																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Cache TTL",
@@ -9379,7 +9861,8 @@
 																		"enum": [
 																			"browser_check"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Browser Integrity Check.\n",
@@ -9388,7 +9871,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Browser Integrity Check",
@@ -9404,14 +9888,16 @@
 																		"enum": [
 																			"bypass_cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest. Refer to [Bypass Cache on Cookie\nsetting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#bypass-cache-on-cookie-setting)\nto learn about limited regular expression support.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Bypass Cache on Cookie",
@@ -9427,7 +9913,8 @@
 																		"enum": [
 																			"cache_by_device_type"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache By Device Type.\n",
@@ -9436,7 +9923,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache By Device Type",
@@ -9452,7 +9940,8 @@
 																		"enum": [
 																			"cache_deception_armor"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Cache Deception Armor.\n",
@@ -9461,7 +9950,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Deception Armor",
@@ -9671,7 +10161,8 @@
 																		"enum": [
 																			"cache_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "* `bypass`: Cloudflare does not cache.\n* `basic`: Delivers resources from cache when there is no query\n  string.\n* `simplified`: Delivers the same resource to everyone independent\n  of the query string.\n* `aggressive`: Caches all static content that has a query string.\n* `cache_everything`: Treats all content as static and caches all\n  file types beyond the [Cloudflare default cached\n  content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).\n",
@@ -9683,7 +10174,8 @@
 																			"cache_everything"
 																		],
 																		"example": "bypass",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache Level",
@@ -9699,14 +10191,16 @@
 																		"enum": [
 																			"cache_on_cookie"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
 																		"example": "bypass=.*|PHPSESSID=.*",
 																		"maxLength": 150,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Cache on Cookie",
@@ -9722,7 +10216,8 @@
 																		"enum": [
 																			"cache_ttl_by_status"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"additionalProperties": {
@@ -9765,7 +10260,8 @@
 																		"enum": [
 																			"disable_apps"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Apps",
@@ -9781,7 +10277,8 @@
 																		"enum": [
 																			"disable_performance"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Performance",
@@ -9797,7 +10294,8 @@
 																		"enum": [
 																			"disable_security"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Security",
@@ -9813,7 +10311,8 @@
 																		"enum": [
 																			"disable_zaraz"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Disable Zaraz",
@@ -9829,12 +10328,14 @@
 																		"enum": [
 																			"edge_cache_ttl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"maximum": 31536000,
 																		"minimum": 1,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Edge Cache TTL",
@@ -9850,7 +10351,8 @@
 																		"enum": [
 																			"email_obfuscation"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Email Obfuscation.\n",
@@ -9859,7 +10361,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Email Obfuscation",
@@ -9875,7 +10378,8 @@
 																		"enum": [
 																			"explicit_cache_control"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Cache Control.\n",
@@ -9884,7 +10388,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Cache Control",
@@ -9901,7 +10406,8 @@
 																			"forwarding_url"
 																		],
 																		"example": "forwarding_url",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"properties": {
@@ -9912,13 +10418,15 @@
 																					302
 																				],
 																				"example": "temporary",
-																				"type": "integer"
+																				"type": "integer",
+																				"x-auditable": true
 																			},
 																			"url": {
 																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
 																				"maxLength": 1500,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -9936,13 +10444,15 @@
 																		"enum": [
 																			"host_header_override"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The hostname to use in the `Host` header",
 																		"example": "example.com",
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Host Header Override",
@@ -9959,7 +10469,8 @@
 																			"ip_geolocation"
 																		],
 																		"example": "ip_geolocation",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of adding the IP Geolocation Header.\n",
@@ -9968,7 +10479,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -9985,7 +10497,8 @@
 																			"mirage"
 																		],
 																		"example": "mirage",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Mirage.\n",
@@ -9994,7 +10507,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Mirage",
@@ -10011,7 +10525,8 @@
 																			"opportunistic_encryption"
 																		],
 																		"example": "opportunistic_encryption",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Opportunistic Encryption.\n",
@@ -10020,7 +10535,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -10037,7 +10553,8 @@
 																			"origin_error_page_pass_thru"
 																		],
 																		"example": "origin_error_page_pass_thru",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Origin Error Page Passthru.\n",
@@ -10046,7 +10563,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -10063,7 +10581,8 @@
 																			"polish"
 																		],
 																		"example": "polish",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The level of Polish you want applied to your origin.\n",
@@ -10073,7 +10592,8 @@
 																			"lossy"
 																		],
 																		"example": "lossless",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Polish",
@@ -10090,12 +10610,14 @@
 																			"resolve_override"
 																		],
 																		"example": "resolve_override",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The origin address you want to override with.\n",
 																		"example": "example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Resolve Override",
@@ -10111,7 +10633,8 @@
 																		"enum": [
 																			"respect_strong_etag"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Respect Strong ETags\n",
@@ -10120,7 +10643,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Respect Strong ETags",
@@ -10136,7 +10660,8 @@
 																		"enum": [
 																			"response_buffering"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Response Buffering\n",
@@ -10145,7 +10670,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Response Buffering",
@@ -10161,7 +10687,8 @@
 																		"enum": [
 																			"rocket_loader"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Rocket Loader\n",
@@ -10170,7 +10697,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Rocket Loader",
@@ -10186,7 +10714,8 @@
 																		"enum": [
 																			"security_level"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"enum": [
@@ -10198,7 +10727,8 @@
 																			"under_attack"
 																		],
 																		"example": "under_attack",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Security Level",
@@ -10215,7 +10745,8 @@
 																			"sort_query_string_for_cache"
 																		],
 																		"example": "sort_query_string_for_cache",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of Query String Sort\n",
@@ -10224,7 +10755,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "Query String Sort",
@@ -10240,7 +10772,8 @@
 																		"enum": [
 																			"ssl"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
@@ -10252,7 +10785,8 @@
 																			"origin_pull"
 																		],
 																		"example": "full",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "SSL",
@@ -10269,7 +10803,8 @@
 																			"true_client_ip_header"
 																		],
 																		"example": "true_client_ip_header",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of True Client IP Header.\n",
@@ -10278,7 +10813,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "True Client IP Header",
@@ -10295,7 +10831,8 @@
 																			"waf"
 																		],
 																		"example": "waf",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The status of WAF managed rules (previous version).\n",
@@ -10304,7 +10841,8 @@
 																			"off"
 																		],
 																		"example": "on",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "WAF",
@@ -10325,7 +10863,8 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -10338,12 +10877,14 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"priority": {
 													"default": 1,
 													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"default": "disabled",
@@ -10353,7 +10894,8 @@
 														"disabled"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"targets": {
 													"description": "The rule targets to evaluate on each request.",
@@ -10386,11 +10928,13 @@
 																							"equals",
 																							"not_equal",
 																							"not_contain"
-																						]
+																						],
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value to apply the operator to.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -10405,7 +10949,8 @@
 																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																						"example": "*example.com/images/*",
 																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				}
 																			}
@@ -10418,7 +10963,8 @@
 																		"enum": [
 																			"url"
 																		],
-																		"example": "url"
+																		"example": "url",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

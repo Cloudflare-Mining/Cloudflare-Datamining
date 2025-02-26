@@ -2889,10 +2889,19 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"enabled": {
+								"description": "Enables or disables RUM. This option can be used only when auto_install is set to true.",
+								"example": true,
+								"type": "boolean"
+							},
 							"host": {
 								"description": "The hostname to use for gray-clouded sites.",
 								"example": "example.com",
 								"type": "string"
+							},
+							"lite": {
+								"description": "If enabled, the JavaScript snippet will not be injected for visitors from the EU.",
+								"type": "boolean"
 							},
 							"zone_tag": {
 								"description": "The zone identifier.",
