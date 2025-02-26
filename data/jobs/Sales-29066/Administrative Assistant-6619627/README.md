@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: </strong>Austin, TX</p>
 <p><strong>About the Role</strong></p>
-<p>The Administrative Assistant will support two Sales Vice Presidents. We are looking for a dynamic and dedicated candidate with 3-5+ years of experience supporting Director or VP level Executives. Candidate must be comfortable with multi-tasking and prioritization in a fast-paced environment with close attention to detail, accuracy, and timeliness.</p>
+<p>We have multiple openings for an Administrative Assistant to support various leaders on our Sales Team. We are looking for a dynamic and dedicated candidate with 3-5+ years of experience supporting Director or VP level Executives. Candidate must be comfortable with multi-tasking and prioritization in a fast-paced environment with close attention to detail, accuracy, and timeliness.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li>Manage and organize calendars for two Sales Leaders</li>

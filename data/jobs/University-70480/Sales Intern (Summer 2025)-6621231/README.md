@@ -5,57 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin, TX highly preferred Will consider Houston, Dallas and San Antonio. Must relocate to Austin if outside of major Texas cities, near Austin, TX.</p>
-<hr>
-<p><strong>About the Team</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
-<p><strong>About the Role</strong></p>
-<p>This role will report to BI Team and work closely with the Finance &amp; BizOps team who is responsible for developing and maintaining key GTM metrics reporting and incubating new initiatives that cover across product, go-to-market and finance. This role will help develop analytics solutions and scale internal data processes. Success in this role comes from marrying a strong data background with acute business acumen and curiosity to deliver highly strategic and compelling insights.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Location(s): Austin, TX, US</strong></p>
+<p><strong>About the Departments</strong></p>
+<p>The Renewals and Business Development Departments are a part of the Cloudflare Sales Organization. The Sales Organization consists of Customer Success Managers, Account Executives, Business Development Representatives, Solution Engineers, Renewal Account Managers and Sales Operation who all work together to help our customers adopt Cloudflare and create reliable and secure Internet experiences for all.</p>
+<p>Renewal Account Managers work to ensure that Cloudflare’s current customers maintain access to their Cloudflare products and have adequate licenses for their future business needs. They would closely with customers, partners, the account executive, and customer success managers to coordinate efficient management of the account.&nbsp; Renewal AMs hold responsibility for driving business growth and expanding the customer base of Cloudflare by identifying and nurturing potential opportunities through proactive outreach and effective lead qualification.</p>
+<p>Business Development Representatives contribute to Cloudflare's revenue generation engine by delivering pipeline at scale to the Sales counterparts. They do this through a maniacal focus on people, process, and tools. The Business Development organization is anchored in a culture focused on the development &amp; training of its employees, incubating talent across the company, teamwork, and celebrating success.&nbsp;</p>
+<p><strong>About our Internship Program</strong></p>
+<p>The focus of the Renewal and BDR Internship is learning and practicing the sales and operational skills required to be a successful Renewal Account Manager and Business Development Representative. You will have the opportunity to learn about Cloudflare’s products and sales process before partnering with current Renewal AMs and BDRs to experience their day to day.&nbsp;</p>
+<p>From the Renewal Account Manager, you will learn the science of owning and maximizing renewal value of a book of business of existing customers. They do this by building and leveraging customer relationships, channel relationships, and capturing and articulating ROI to senior customer stakeholders.</p>
+<p>From the Business Development Representative, you will learn to drive business growth and expand the customer base of Cloudflare by identifying and nurturing potential opportunities through proactive outreach and effective lead qualification.&nbsp;</p>
+<p>Our internship program runs for 12 weeks and will give you the opportunity to learn about both of these roles, attend workshops, improve your skill set and build a strong network within Cloudflare.&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong grasp of business, finance, and product analytical needs</li>
-	<li>Fundamental understanding of the data landscape i.e., tooling, tech stack, source systems etc.</li>
-	<li>Work closely with the Data Engineering team to improve the data collection and quality.</li>
-	<li>Design, build and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis and GTM metrics reporting automation</li>
-	<li>Present the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner.</li>
-	<li>Deeply embedded in the Finance Biz Ops team and act as a technical advisor to the team in addressing data challenges and scaling solutions / programs from incubation stage to a longer-team high performing state</li>
+	<li>Participate in reviewing of customer contracts, renewal process, customer communication, and deal negotiation of renewals.&nbsp;</li>
+	<li>Analyze data and leverage tools to identify selling opportunities and business value.</li>
+	<li>Be an active participant in several customer touchpoints including: Business Value Justification meetings, Business Reviews, and Renewal Meeting.</li>
+	<li>Prospect and research potential leads or target accounts.&nbsp;</li>
+	<li>Initiate outbound calls to introduce Cloudflare products/services.</li>
+	<li>Qualify leads based on interest, budget, authority, and fit.</li>
+	<li>Build relationships and rapport with potential customers.</li>
+	<li>Develop in-depth knowledge of Cloudflare offerings.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>5 + years of data analyst experience with 1+ years of proven industry experience in a large scale environment (PBs scale, globally distributed teams).</li>
-	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Capable of multitasking and thriving in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>A passion for Cloudflare’s mission, vision, and growth.</li>
+	<li>Desire to learn strategies for creating new sales opportunities and expanding existing customer relationships with Cloudflare.</li>
+	<li>Excellent written and verbal skills, including the ability to collaborate cross-functionally with all stakeholders, including sales ops, marketing ops, marketing, and sales leadership.</li>
+	<li>Deep curiosity with an ability to quickly learn technical concepts and terms; excellent listening and empathy, with an ability to get things done in a collaborative team environment.</li>
+	<li>Strategic thinker who is able to get to work quickly and execute independently.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
