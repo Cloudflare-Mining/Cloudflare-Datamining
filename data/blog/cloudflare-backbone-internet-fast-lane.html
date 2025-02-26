@@ -46,36 +46,112 @@
 	<p>With the backbone disabled, if a visitor from São Paulo performed a request to our service, they would be routed to our São Paulo data center via <a href="https://blog.cloudflare.com/a-brief-anycast-primer">BGP Anycast</a>. With caching disabled, our São Paulo data center forwarded the request over the public Internet to the origin server in Chicago. On average, the entire process to fetch data from the origin server and return to the response to the requesting user took 335.8 milliseconds.</p>
 	<p>Once the backbone was enabled and requests were created, our software performed tests to determine the fastest healthy route to the origin, whether it was a route on the public Internet or through our private backbone. For this test the backbone was faster, resulting in an average total request time of 230.2 milliseconds. Just by routing the request through our private backbone, we <b>improved the average response time by 31%</b>.</p>
 	<p>We saw even better improvement when testing from Tokyo. When routing the request over the public Internet, the request took an average of 424 milliseconds. By enabling our backbone which created a faster path, the request took an average of 234 milliseconds, creating an <b>average response time improvement of 44%</b>.</p>
-	<p>Visitor Location</p>
-	<p>Distance to Chicago</p>
-	<p>Avg. response time using public Internet (ms)</p>
-	<p>Avg. response using backbone (ms)</p>
-	<p>Change in response time</p>
-	<p>Miami, FL, US</p>
-	<p>1917 km</p>
-	<p>84</p>
-	<p>75</p>
-	<p><b>10.7% decrease</b></p>
-	<p>Seattle, WA, US</p>
-	<p>2785 km</p>
-	<p>118</p>
-	<p>124</p>
-	<p>5.1% increase</p>
-	<p>San Jose, CA, US</p>
-	<p>2856 km</p>
-	<p>122</p>
-	<p>132</p>
-	<p>8.2% increase</p>
-	<p>São Paulo, BR</p>
-	<p>8403 km</p>
-	<p>336</p>
-	<p>230</p>
-	<p><b>31.5% decrease</b></p>
-	<p>Tokyo, JP</p>
-	<p>10129 km</p>
-	<p>424</p>
-	<p>234</p>
-	<p><b>44.8% decrease</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Visitor Location</p>
+				</td>
+				<td>
+					<p>Distance to Chicago</p>
+				</td>
+				<td>
+					<p>Avg. response time using public Internet (ms)</p>
+				</td>
+				<td>
+					<p>Avg. response using backbone (ms)</p>
+				</td>
+				<td>
+					<p>Change in response time</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Miami, FL, US</p>
+				</td>
+				<td>
+					<p>1917 km</p>
+				</td>
+				<td>
+					<p>84</p>
+				</td>
+				<td>
+					<p>75</p>
+				</td>
+				<td>
+					<p><b>10.7% decrease</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Seattle, WA, US</p>
+				</td>
+				<td>
+					<p>2785 km</p>
+				</td>
+				<td>
+					<p>118</p>
+				</td>
+				<td>
+					<p>124</p>
+				</td>
+				<td>
+					<p>5.1% increase</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>San Jose, CA, US</p>
+				</td>
+				<td>
+					<p>2856 km</p>
+				</td>
+				<td>
+					<p>122</p>
+				</td>
+				<td>
+					<p>132</p>
+				</td>
+				<td>
+					<p>8.2% increase</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>São Paulo, BR</p>
+				</td>
+				<td>
+					<p>8403 km</p>
+				</td>
+				<td>
+					<p>336</p>
+				</td>
+				<td>
+					<p>230</p>
+				</td>
+				<td>
+					<p><b>31.5% decrease</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tokyo, JP</p>
+				</td>
+				<td>
+					<p>10129 km</p>
+				</td>
+				<td>
+					<p>424</p>
+				</td>
+				<td>
+					<p>234</p>
+				</td>
+				<td>
+					<p><b>44.8% decrease</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>We also observed a smaller deviation in the response time of packets routed through our backbone over larger distances.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -107,4 +183,5 @@
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

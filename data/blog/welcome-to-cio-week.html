@@ -30,29 +30,98 @@
 	</figure>
 	<p>Companies built or rented space in data centers that were physically located within or close to major office locations. They hosted business applications — email servers, ERP systems, CRMs, etc. — on servers in these data centers. Employees in offices connected to these applications through the local area network (LAN) or over private <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">wide area network (WAN)</a> links from branch locations. A stack of security hardware (e.g., firewalls) in each data center enforced security for all traffic flowing in and out. Once on the corporate network, users could move laterally to other connected devices and hosted applications, but basic forms of network authentication and physical security controls like employee badge systems generally prevented untrusted users from getting access.</p>
 	<p><b>Network Architecture Scorecard: Generation 1</b></p>
-	<p>Characteristic</p>
-	<p>Score</p>
-	<p>Description</p>
-	<p>Security</p>
-	<p>⭐⭐</p>
-	<p>All traffic flows through <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter security</a> hardware. Network access restricted with physical controls. Lateral movement is only possible once on network.</p>
-	<p>Performance</p>
-	<p>⭐⭐⭐</p>
-	<p>Majority of users and applications stay within the same building or regional network.</p>
-	<p>Reliability</p>
-	<p>⭐⭐</p>
-	<p>Dedicated data centers, private links, and security hardware present single points of failure. There are cost tradeoffs to purchase redundant links and hardware.</p>
-	<p>Cost</p>
-	<p>⭐⭐</p>
-	<p>Private connectivity and hardware are high cost capital expenditures, creating a high barrier to entry for small or new businesses. However, a limited number of links/boxes are required (trade off with redundancy/reliability). Operational costs are low to medium after initial installation.</p>
-	<p>Visibility</p>
-	<p>⭐⭐⭐</p>
-	<p>All traffic is routed through central location, so it’s possible to access NetFlow/packet captures and more for 100% of flows.</p>
-	<p>Agility</p>
-	<p>⭐</p>
-	<p>Significant network changes have a long lead time.</p>
-	<p>Precision</p>
-	<p>⭐</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Characteristic</b></p>
+				</td>
+				<td>
+					<p><b>Score</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>All traffic flows through perimeter security hardware. Network access restricted with physical controls. Lateral movement is only possible once on network.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Performance</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Majority of users and applications stay within the same building or regional network.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Reliability</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>Dedicated data centers, private links, and security hardware present single points of failure. There are cost tradeoffs to purchase redundant links and hardware.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cost</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>Private connectivity and hardware are high cost capital expenditures, creating a high barrier to entry for small or new businesses. However, a limited number of links/boxes are required (trade off with redundancy/reliability). Operational costs are low to medium after initial installation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Visibility</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>All traffic is routed through central location, so it’s possible to access NetFlow/packet captures and more for 100% of flows.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Agility</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Significant network changes have a long lead time.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Precision</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Controls are primarily exercised at the network layer (e.g., IP ACLs). Accomplishing “allow only HR to access employee payment data” looks like: <code>IP in range X allowed to access IP in range Y </code>(and requires accompanying spreadsheet to track IP allocation).</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Controls are primarily exercised at the network layer (e.g., IP ACLs). Accomplishing “allow only HR to access employee payment data” looks like: <code>IP in range X allowed to access IP in range Y</code> (and requires accompanying spreadsheet to track IP allocation).</p>
 	<div class="flex anchor relative">
 		<h2 id="applications-and-users-left-the-castle">Applications and users left the castle</h2>
@@ -93,30 +162,98 @@
 	<h4><b>Network fragility</b></h4>
 	<p>All this complexity means that making changes can be really hard. On the legacy side of current hybrid architectures, provisioning MPLS lines and deploying new security hardware come with long lead times, only worsened by recent issues in the global hardware supply chain. And with the medley of point solutions introduced to manage various aspects of the network, a change to one tool can have unintended consequences for another. These effects compound in IT departments often being the bottleneck for business changes, limiting the flexibility of organizations to adapt to an only-accelerating rate of change.</p>
 	<p><b>Network Architecture Scorecard: Generation 2</b></p>
-	<p>Characteristic</p>
-	<p>Score</p>
-	<p>Description</p>
-	<p>Security</p>
-	<p>⭐</p>
-	<p>Many traffic flows are routed outside of perimeter security hardware, Shadow IT is rampant, and controls that do exist are enforced inconsistently and across a hodgepodge of tools.</p>
-	<p>Performance</p>
-	<p>⭐</p>
-	<p>Traffic backhauled through central locations introduces latency as users move further away; VPNs and a bevy of security tools introduce processing overhead and additional network hops.</p>
-	<p>Reliability</p>
-	<p>⭐⭐</p>
-	<p>The redundancy/cost tradeoff from Generation 1 is still present; partial cloud adoption grants some additional resiliency but growing use of unreliable Internet introduces new challenges.</p>
-	<p>Cost</p>
-	<p>⭐</p>
-	<p>Costs from Generation 1 architecture are retained (few companies have successfully deprecated MPLS/security hardware so far), but new costs of additional tools added, and operational overhead is growing.</p>
-	<p>Visibility</p>
-	<p>⭐</p>
-	<p>Traffic flows and visibility are fragmented; IT stitches partial picture together across multiple tools.</p>
-	<p>Agility</p>
-	<p>⭐⭐</p>
-	<p>Some changes are easier to make for aspects of business migrated to cloud; others have grown more painful as additional tools introduce complexity.</p>
-	<p>Precision</p>
-	<p>⭐⭐</p>
-	<p>Mix of controls exercised at network layer and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in group X allowed to access IP in range Y</code> (and accompanying spreadsheet to track IP allocation)</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Characteristic</b></p>
+				</td>
+				<td>
+					<p><b>Score</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Many traffic flows are routed outside of perimeter security hardware, Shadow IT is rampant, and controls that do exist are enforced inconsistently and across a hodgepodge of tools.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Performance</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Traffic backhauled through central locations introduces latency as users move further away; VPNs and a bevy of security tools introduce processing overhead and additional network hops.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Reliability</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>The redundancy/cost tradeoff from Generation 1 is still present; partial cloud adoption grants some additional resiliency but growing use of unreliable Internet introduces new challenges.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cost</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Costs from Generation 1 architecture are retained (few companies have successfully deprecated MPLS/security hardware so far), but new costs of additional tools added, and operational overhead is growing.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Visibility</p>
+				</td>
+				<td>
+					<p>⭐</p>
+				</td>
+				<td>
+					<p>Traffic flows and visibility are fragmented; IT stitches partial picture together across multiple tools.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Agility</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>Some changes are easier to make for aspects of business migrated to cloud; others have grown more painful as additional tools introduce complexity.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Precision</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>Mix of controls exercised at network layer and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in group X allowed to access IP in range Y </code>(and accompanying spreadsheet to track IP allocation)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>In summary — to reiterate where we started — modern CIOs have really hard jobs. But we believe there’s a better future ahead.</p>
 	<div class="flex anchor relative">
 		<h2 id="generation-3-the-internet-as-the-new-corporate-network">Generation 3: The Internet as the new corporate network</h2>
@@ -168,7 +305,7 @@
 	</div>
 	<p>These changes sound radical and exciting. But they’re also intimidating — wouldn’t a shift this large be impossible to execute, or at least take an unmanageably long time, in complex modern networks? Our customers have proven this doesn’t have to be the case.</p>
 	<p><b>Meaningful change starting with just one flow</b></p>
-	<p>Generation 3 platforms should prioritize ease of use. It should be possible for companies to start their Zero Trust journey with just one traffic flow and grow momentum from there. There’s lots of potential angles to start with, but we think one of the easiest is configuring clientless Zero Trust access for one application. Anyone, from the smallest to the largest organizations, should be able to pick an app and prove the value of this approach within minutes.</p>
+	<p>Generation 3 platforms should prioritize ease of use. It should be possible for companies to start their Zero Trust journey with just one traffic flow and grow momentum from there. There are lots of potential angles to start with, but we think one of the easiest is configuring clientless Zero Trust access for one application. Anyone, from the smallest to the largest organizations, should be able to pick an app and prove the value of this approach within minutes.</p>
 	<p><b>A bridge between the old &amp; new world</b></p>
 	<p>Shifting from network-level <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access controls</a> (IP ACLs, VPNs, etc.) to application and user-level controls to enforce Zero Trust across your entire network will take time. CIOs should pick a platform that makes it easy to migrate infrastructure over time by allowing:</p>
 	<ul>
@@ -188,30 +325,98 @@
 
 	</figure>
 	<p><b>Network Architecture Scorecard: Generation 3</b></p>
-	<p>Characteristic</p>
-	<p>Score</p>
-	<p>Description</p>
-	<p>Security</p>
-	<p>⭐⭐⭐</p>
-	<p>Granular security controls are exercised on every traffic flow; attacks are blocked close to their source; technologies like Browser Isolation keep malicious code entirely off of user devices.</p>
-	<p>Performance</p>
-	<p>⭐⭐⭐</p>
-	<p>Security controls are enforced at location closest to each user; intelligent routing decisions ensure optimal performance for all types of traffic.</p>
-	<p>Reliability</p>
-	<p>⭐⭐⭐</p>
-	<p>The platform leverages redundant infrastructure to ensure 100% availability; no one device is responsible for holding policy and no one link is responsible for carrying all critical traffic.</p>
-	<p>Cost</p>
-	<p>⭐⭐</p>
-	<p>Total cost of ownership is reduced by consolidating functions.</p>
-	<p>Visibility</p>
-	<p>⭐⭐⭐</p>
-	<p>Data from across the edge is aggregated, processed and presented along with insights and controls to act on it.</p>
-	<p>Agility</p>
-	<p>⭐⭐⭐</p>
-	<p>Making changes to network configuration or policy is as simple as pushing buttons in a dashboard; changes propagate globally within seconds.</p>
-	<p>Precision</p>
-	<p>⭐⭐⭐</p>
-	<p>Controls are exercised at the user and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in HR on trusted devices allowed to access employee payment data</code></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Characteristic</b></p>
+				</td>
+				<td>
+					<p><b>Score</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Granular security controls are exercised on every traffic flow; attacks are blocked close to their source; technologies like Browser Isolation keep malicious code entirely off of user devices.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Performance</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Security controls are enforced at location closest to each user; intelligent routing decisions ensure optimal performance for all types of traffic.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Reliability</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>The platform leverages redundant infrastructure to ensure 100% availability; no one device is responsible for holding policy and no one link is responsible for carrying all critical traffic.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cost</p>
+				</td>
+				<td>
+					<p>⭐⭐</p>
+				</td>
+				<td>
+					<p>Total cost of ownership is reduced by consolidating functions.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Visibility</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Data from across the edge is aggregated, processed and presented along with insights and controls to act on it.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Agility</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Making changes to network configuration or policy is as simple as pushing buttons in a dashboard; changes propagate globally within seconds.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Precision</p>
+				</td>
+				<td>
+					<p>⭐⭐⭐</p>
+				</td>
+				<td>
+					<p>Controls are exercised at the user and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in HR on trusted devices allowed to access employee payment data</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h2 id="cloudflare-one-is-the-first-built-from-scratch-unified-platform-for-next-generation-networks">Cloudflare One is the first built-from-scratch, unified platform for next-generation networks</h2>
 		<a href="https://blog.cloudflare.com/#cloudflare-one-is-the-first-built-from-scratch-unified-platform-for-next-generation-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">

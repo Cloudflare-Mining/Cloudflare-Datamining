@@ -35,16 +35,50 @@
 
 	</figure>
 	<p>The first is the algorithm used to generate the CID (sha2-256 in this case); then comes the length of the encoded content (32 for a sha2-256 hash), and finally the content itself. When referring to the <a href="https://github.com/multiformats/multicodec/blob/master/table.csv">multicodec table</a>, it is possible to understand how the content is encoded.</p>
-	<p>Name</p>
-	<p>Code (in hexadecimal)</p>
-	<p>identity</p>
-	<p>0x00</p>
-	<p>sha1</p>
-	<p>0x11</p>
-	<p>sha2-256</p>
-	<p>0x12 = 00010010</p>
-	<p>keccak-256</p>
-	<p>0x1b</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Name</p>
+				</td>
+				<td>
+					<p>Code (in hexadecimal)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>identity</p>
+				</td>
+				<td>
+					<p>0x00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sha1</p>
+				</td>
+				<td>
+					<p>0x11</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sha2-256</p>
+				</td>
+				<td>
+					<p>0x12 = 00010010</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>keccak-256</p>
+				</td>
+				<td>
+					<p>0x1b</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>This encoding mechanism is useful, because it creates a unique and upgradable content-addressing system across multiple protocols.</p>
 	<p>If you want to learn more, have a look at <a href="https://proto.school/#/anatomy-of-a-cid">ProtoSchool’s tutorial</a>.</p>
 	<div class="flex anchor relative">
@@ -70,10 +104,10 @@
 	<p>An IPFS URL (Unified Resource Locator) looks like this: <code>ipfs://QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco</code>. Accessing this URL means retrieving <code>QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco</code> using the IPFS protocol, denoted by ipfs://. However, typing such a URL is quite error-prone. Also, these URLs are not very human-friendly, because there is no good way to remember such long strings. To get around this issue, you can use DNSLink. DNSLink is a way of specifying IPFS CIDs within a DNS TXT record. For instance, <a href="http://wikipedia-on-ipfs.org">wikipedia on ipfs</a> has the following TXT record</p>
 	<p><code>$ dig +short TXT _dnslink.en.wikipedia-on-ipfs.org</code></p>
 	<p><code>_dnslink=/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco</code></p>
-	<p>In addition, its A record points to an IPFS gateway. This means that, when you access en.wikipedia-on-ipfs.org, your request is directed to an IPFS HTTP Gateway, which then looks out for the CID using your domain TXT record, and returns the content associated to this CID using the IPFS network.</p>
+	<p>In addition, it's A record points to an IPFS gateway. This means that, when you access en.wikipedia-on-ipfs.org, your request is directed to an IPFS HTTP Gateway, which then looks out for the CID using your domain TXT record, and returns the content associated to this CID using the IPFS network.</p>
 	<p>This is trading ease-of-access against security. The web browser of the user doesn't verify the integrity of the content served. This could be because the browser does not implement IPFS or because it has no way of validating domain signature — <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works">DNSSEC</a>. We wrote about this issue in our previous blog post on <a href="https://blog.cloudflare.com/e2e-integrity">End-to-End Integrity</a>.</p>
 	<div class="flex anchor relative">
-		<h2 id="human-readable-identifiers">Human readable identifiers</h2>
+		<h2 id="human-readable-identifiers">Human-readable identifiers</h2>
 		<a href="https://blog.cloudflare.com/#human-readable-identifiers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -101,7 +135,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>An account is identified by its address. An address starts with "0x" and is followed by 20 bytes (<a href="https://ethereum.github.io/yellowpaper/paper.pdf">ref 4.1 Ethereum yellow paper</a>), for example: 0xf10326c1c6884b094e03d616cc8c7b920e3f73e0. This is not very readable, and can be pretty scary when transactions are not reversible and one can easily mistype a single &nbsp;character.</p>
+	<p>An account is identified by its address. An address starts with "0x" and is followed by 20 bytes (<a href="https://ethereum.github.io/yellowpaper/paper.pdf">ref 4.1 Ethereum yellow paper</a>), for example: 0xf10326c1c6884b094e03d616cc8c7b920e3f73e0. This is not very readable, and can be pretty scary when transactions are not reversible and one can easily mistype a single character.</p>
 	<p>A first mitigation strategy was to introduce a new notation to capitalise some letters based on the hash of the address 0xF10326C1c6884b094E03d616Cc8c7b920E3F73E0. This can help detect mistype, but it is still not readable. If I have to send a transaction to a friend, I have no way of confirming she hasn't mistyped the address.</p>
 	<p>The <a href="https://ens.domains">Ethereum Name Service</a> (ENS) was created to tackle this issue. It is a system capable of turning human-readable names, referred to as domains, to blockchain addresses. For instance, the domain <a href="https://app.ens.domains/name/privacy-pass.eth">privacy-pass.eth</a> points to the Ethereum address 0xF10326C1c6884b094E03d616Cc8c7b920E3F73E0.</p>
 	<p>To achieve this, the system is organised in <a href="https://docs.ens.domains">two components</a>, registries and resolvers.</p>
@@ -113,7 +147,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yVOgswqi6HQ38qlhTaTdK/0956f47fa306bebb2233e9601d0b430c/image1-3.png" alt="" class="kg-image" width="1064" height="531" loading="lazy">
 
 	</figure>
-	<p>Accessing the IPFS content identifier for privacy-pass.eth works in a similar way. The resolver is the same, only the accessed data is different — Alice calls a different method from the smart contract.</p>
+	<p>Accessing the IPFS content identifier for privacy-pass.eth works similarly. The resolver is the same, only the accessed data is different — Alice calls a different method from the smart contract.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CjIbo1euB3DG5EZgnL3Bm/9b59d7bd3c7fa63870238274ef5a0200/image5.png" alt="" class="kg-image" width="1027" height="531" loading="lazy">
@@ -139,7 +173,7 @@
 	</div>
 	<p>The <a href="https://github.com/wealdtech/coredns-ens">first version</a> of EthLink was built by Jim McDonald and is operated by True Name LTD at eth.link. Starting from next week, eth.link will transition to use the Cloudflare Distributed Web Resolver. To that end, we have built EthLink on top of Cloudflare Workers. This is a proxy to IPFS. It proxies all ENS registered domains when .link is appended. For instance, privacy-pass.eth should render the Privacy Pass homepage. From your web browser, <a href="https://privacy-pass.eth.link">https://privacy-pass.eth.link</a> does it.</p>
 	<p>The resolution is done at the Cloudflare edge using a Cloudflare Worker. Cloudflare Workers allows JavaScript code to be run on Cloudflare infrastructure, eliminating the need to maintain a server and increasing the reliability of the service. In addition, it follows Service Workers API, so results returned from the resolver can be checked by end users if needed.</p>
-	<p>To do this, we setup a wildcard DNS record for *.eth.link to be proxied through Cloudflare and handled by a Cloudflare Worker. &nbsp;When a user Alice accesses <a href="https://privacy-pass.eth.link">privacy-pass.eth.link</a>, the worker first gets the CID of the CID to be retrieved from Ethereum. Then, it requests the content matching this CID to IPFS, and returns it to Alice.</p>
+	<p>To do this, we set up a wildcard DNS record for *.eth.link to be proxied through Cloudflare and handled by a Cloudflare Worker. &nbsp;When a user Alice accesses <a href="https://privacy-pass.eth.link">privacy-pass.eth.link</a>, the worker first gets the CID of the CID to be retrieved from Ethereum. Then, it requests the content matching this CID to IPFS, and returns it to Alice.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WivGoQhRDcSaDh99sVdNI/0e9bca31a378146d49d92c3af71180e8/image3.png" alt="" class="kg-image" width="1458" height="670" loading="lazy">

@@ -41,41 +41,153 @@
 	</div>
 	<p>Of course, it’s not so simple. There are nine different suites of post-quantum key exchange algorithms still in the running in round three of the NIST Post-Quantum standardization project: Kyber, SABER, NTRU, and Classic McEliece (the “finalists”); and SIKE, BIKE, FrodoKEM, HQC, and NTRU Prime (“alternates”). These schemes have wildly different characteristics. This means that for step one, replacing the key exchange by post-quantum key exchange, we need to understand the differences between these schemes and decide which one fits best in TLS. Because we’re doing ephemeral key exchange, we consider the size of the public key and the ciphertext since they need to be transmitted for every handshake. We also consider the “speed” of the key generation, encapsulation, and decapsulation operations, because these will affect how many servers we will need to handle these connections.</p>
 	<p><i><b>Table 1: Post-Quantum KEMs at security level comparable with AES128. Sizes in bytes.</b></i></p>
-	<p>Scheme</p>
-	<p>Transmission size (pk+ct)</p>
-	<p>Speed of operations</p>
-	<p><i>Finalists</i></p>
-	<p>Kyber512</p>
-	<p>1,632</p>
-	<p>Very fast</p>
-	<p>NTRU-HPS-2048-509</p>
-	<p>1,398</p>
-	<p>Very fast</p>
-	<p>SABER (LightSABER)</p>
-	<p>1,408</p>
-	<p>Very fast</p>
-	<p>Classic McEliece</p>
-	<p>261,248</p>
-	<p>Very slow</p>
-	<p><i>Alternate candidates</i></p>
-	<p>SIKEp434</p>
-	<p>676</p>
-	<p>Slow</p>
-	<p>NTRU Prime (ntrulpr)</p>
-	<p>1,922</p>
-	<p>Very fast</p>
-	<p>NTRU Prime (sntru)</p>
-	<p>1,891</p>
-	<p>Fast</p>
-	<p>BIKE</p>
-	<p>5,892</p>
-	<p>Slow</p>
-	<p>HQC</p>
-	<p>6,730</p>
-	<p>Reasonable</p>
-	<p>FrodoKEM</p>
-	<p>19,336</p>
-	<p>Reasonable</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Scheme</b></p>
+				</td>
+				<td>
+					<p><b>Transmission size (pk+ct)</b></p>
+				</td>
+				<td>
+					<p><b>Speed of operations</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i>Finalists</i></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Kyber512</p>
+				</td>
+				<td>
+					<p>1,632</p>
+				</td>
+				<td>
+					<p>Very fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>NTRU-HPS-2048-509</p>
+				</td>
+				<td>
+					<p>1,398</p>
+				</td>
+				<td>
+					<p>Very fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SABER (LightSABER)</p>
+				</td>
+				<td>
+					<p>1,408</p>
+				</td>
+				<td>
+					<p>Very fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Classic McEliece</p>
+				</td>
+				<td>
+					<p>261,248</p>
+				</td>
+				<td>
+					<p>Very slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i>Alternate candidates</i></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SIKEp434</p>
+				</td>
+				<td>
+					<p>676</p>
+				</td>
+				<td>
+					<p>Slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>NTRU Prime (ntrulpr)</p>
+				</td>
+				<td>
+					<p>1,922</p>
+				</td>
+				<td>
+					<p>Very fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>NTRU Prime (sntru)</p>
+				</td>
+				<td>
+					<p>1,891</p>
+				</td>
+				<td>
+					<p>Fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BIKE</p>
+				</td>
+				<td>
+					<p>5,892</p>
+				</td>
+				<td>
+					<p>Slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>HQC</p>
+				</td>
+				<td>
+					<p>6,730</p>
+				</td>
+				<td>
+					<p>Reasonable</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>FrodoKEM</p>
+				</td>
+				<td>
+					<p>19,336</p>
+				</td>
+				<td>
+					<p>Reasonable</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Fortunately, once we make this table the landscape for KEMs that are suitable for use in TLS quickly becomes clear. We will have to sacrifice an additional 1,400 - 2,000 bytes, assuming SIKE’s slow runtime is a bigger penalty to the connection establishment (<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">see our previous work here</a>). So we can choose one of the lattice-based finalists (Kyber, SABER or NTRU) and call it a day.<sup>1</sup></p>
 	<div class="flex anchor relative">
 		<h3 id="signature-schemes">Signature schemes</h3>
@@ -87,40 +199,150 @@
 	</div>
 	<p>For our post-quantum signature scheme, we can draw a similar table. In TLS, we generally care about the sizes of public keys and signatures. In terms of runtime, we care about signing and verification times, as key generation is only done once for each certificate, offline. The round three candidates for signature schemes are: Dilithium, Falcon, Rainbow (the three finalists), and SPHINCS+, Picnic, and GeMSS.</p>
 	<p><i><b>Table 2: Post-Quantum signature schemes at security level comparable with AES128 (or smallest parameter set). Sizes in bytes.</b></i></p>
-	<p>Scheme</p>
-	<p>Public key size</p>
-	<p>Signature size</p>
-	<p>Speed of operations</p>
-	<p><i>Finalists</i></p>
-	<p>Dilithium2</p>
-	<p>1,312</p>
-	<p>2,420</p>
-	<p>Very fast</p>
-	<p>Falcon-512</p>
-	<p>897</p>
-	<p>690</p>
-	<p>Fast if you have the right hardware</p>
-	<p>Rainbow-I-CZ</p>
-	<p>103,648</p>
-	<p>66</p>
-	<p>Fast</p>
-	<p><i>Alternate Candidates</i></p>
-	<p>SPHINCS+-128f</p>
-	<p>32</p>
-	<p>17,088</p>
-	<p>Slow</p>
-	<p>SPHINCS+-128s</p>
-	<p>32</p>
-	<p>7,856</p>
-	<p>Very slow</p>
-	<p>GeMSS-128</p>
-	<p>352,188</p>
-	<p>33</p>
-	<p>Very slow</p>
-	<p>Picnic3</p>
-	<p>35</p>
-	<p>14,612</p>
-	<p>Very slow</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Scheme</b></p>
+				</td>
+				<td>
+					<p><b>Public key size</b></p>
+				</td>
+				<td>
+					<p><b>Signature size</b></p>
+				</td>
+				<td>
+					<p><b>Speed of operations</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i>Finalists</i></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Dilithium2</p>
+				</td>
+				<td>
+					<p>1,312</p>
+				</td>
+				<td>
+					<p>2,420</p>
+				</td>
+				<td>
+					<p>Very fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Falcon-512</p>
+				</td>
+				<td>
+					<p>897</p>
+				</td>
+				<td>
+					<p>690</p>
+				</td>
+				<td>
+					<p>Fast if you have the right hardware</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Rainbow-I-CZ</p>
+				</td>
+				<td>
+					<p>103,648</p>
+				</td>
+				<td>
+					<p>66</p>
+				</td>
+				<td>
+					<p>Fast</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i>Alternate Candidates</i></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SPHINCS+-128f</p>
+				</td>
+				<td>
+					<p>32</p>
+				</td>
+				<td>
+					<p>17,088</p>
+				</td>
+				<td>
+					<p>Slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SPHINCS+-128s</p>
+				</td>
+				<td>
+					<p>32</p>
+				</td>
+				<td>
+					<p>7,856</p>
+				</td>
+				<td>
+					<p>Very slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GeMSS-128</p>
+				</td>
+				<td>
+					<p>352,188</p>
+				</td>
+				<td>
+					<p>33</p>
+				</td>
+				<td>
+					<p>Very slow</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Picnic3</p>
+				</td>
+				<td>
+					<p>35</p>
+				</td>
+				<td>
+					<p>14,612</p>
+				</td>
+				<td>
+					<p>Very slow</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>There are many signatures in a TLS handshake. Aside from the handshake signature that the server creates to authenticate the handshake (with public key in the server certificate), there are signatures on the certificate chain (with public keys for intermediate certificates), as well as OCSP Stapling (1) and Certificate Transparency (2) signatures (without public keys).</p>
 	<p>This means that if we used Dilithium for all of these, we require 17KB of public keys and signatures. Falcon is looking very attractive here, only requiring 6KB, but it might not run fast enough on embedded devices that don’t have special hardware to accelerate 64-bit floating point computations in constant time. SPHINCS+, GeMSS, or Rainbow each have significant deployment challenges, so it seems that there is no one-scheme-fits-all solution.</p>
 	<p>Picking and choosing specific algorithms for particular use cases, such as using a scheme with short signatures for root certificates, OCSP Stapling, and CT might help to alleviate the problems a bit. We might use Rainbow for the CA root, OCSP staples, and CT logs, which would mean we only need 66 bytes for each signature. It is very nice that Rainbow signatures are only very slightly larger than 64-byte ed25519 elliptic curve signatures, and they are significantly smaller than 256-byte RSA-2048 signatures. This gives us a lot of space to absorb the impact of the larger handshake signatures required. For intermediate certificates, where both the public key and the signature are transmitted, we might use Falcon because it’s nice and small, and the client only needs to do signature verification.</p>
@@ -180,6 +402,6 @@ Authentication via KEM in TLS from the AuthKEM proposal</code></pre>
 			<p>Post-Quantum TLS without Handshake Signatures by Peter Schwabe, Douglas Stebila and Thom Wiggers: <a href="https://eprint.iacr.org/2020/534">https://eprint.iacr.org/2020/534/</a></p>
 		</li>
 	</ul>
-	<p>.....</p>
+	<hr>
 	<p><sup>1</sup>Of course, it’s not so simple. The performance measurements were done on a beefy Macbook, using AVX2 intrinsics. For stuff like IoT (yes, your smart washing machine will also need to go post-quantum) or a smart card you probably want to add another few columns to this table before making a choice, such as code size, side channel considerations, power consumption, and execution time on your platform.</p>
 </div>

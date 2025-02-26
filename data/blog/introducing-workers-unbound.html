@@ -6,7 +6,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MQCyFtv9DAm5SPnGcER4E/3cbc2dc8cdfd5d59cf5f0f943ac7d0aa/image3-14.png" alt="" class="kg-image" width="1999" height="1016" loading="lazy">
 
 	</figure>
-	<p>We launched Cloudflare Workers® in 2017 with the goal of building the development platform that we wished we had. We want to enable developers to build great software while Cloudflare manages the overhead of configuring and maintaining the infrastructure. Workers is with you from the first line of code, to the first application, all the way to a globally scaled product. By making our Edge network programmable and providing servers in 200+ locations around the world, we offer you the power to execute on even the biggest ideas.</p>
+	<p>We launched Cloudflare Workers® in 2017 with the goal of building the development platform that we wished we had. We want to enable developers to build great software while Cloudflare manages the overhead of configuring and maintaining the infrastructure. Workers are with you from the first line of code, to the first application, all the way to a globally scaled product. By making our Edge network programmable and providing servers in 200+ locations around the world, we offer you the power to execute on even the biggest ideas.</p>
 	<p>Behind the scenes at Cloudflare, we’ve been steadily working towards making development on the Edge even more powerful and flexible. Today, we are excited to announce the next phase of this with the launch of our new platform, Workers Unbound, without restrictive CPU limits in a private beta (sign up for details <a href="https://www.cloudflare.com/workers-unbound-beta">here</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -42,8 +42,8 @@
 		</a>
 	</div>
 	<p><a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">Serverless</a> as it’s known today is constrained by being built on top of old paradigms. Most serverless platforms have inherited containers from their cloud computing origins. Cloudflare has had the opportunity to rethink serverless by building on the Edge and making this technology more performant at scale for complex applications.</p>
-	<p>We reap performance benefits by running code on <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html">V8 Isolates</a>, which are designed to start very quickly with minimal cold start times. Isolates are a technology built by the Google Chrome team to power the JavaScript engine in the browser and they introduce a new model for running multi-tenant code. They provide lightweight contexts that group variables with the code allowed to mutate them.</p>
-	<p>Isolates are far more lightweight than containers, a central tenet of most other serverless providers’ architecture. Containers effectively run a virtual machine, and there’s a lot of overhead associated with them. That, in turn, makes it very hard to run the workload outside of a centralized environment.</p>
+	<p>We reap performance benefits by running code on <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html">V8 Isolates</a>, which are designed to start very quickly with minimal cold start times. Isolates are a technology built by the Google Chrome team to power the JavaScript engine in the browser, and they introduce a new model for running multi-tenant code. They provide lightweight contexts that group variables with the code allowed to mutate them.</p>
+	<p>Isolates are far more lightweight than containers, a central tenet of most other serverless providers’ architecture. Containers effectively run a virtual machine, and there’s a lot of overhead associated with them. That, in turn, makes it very hard to run the workload outside a centralized environment.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GMRxjfSybfSIYGYmzpEiH/a36b5bafa3d383f794d1262b6d06e3f3/isolates-model_2x.png" alt="" class="kg-image" width="3762" height="1882" loading="lazy">
@@ -60,32 +60,98 @@
 		</a>
 	</div>
 	<p>Performance at scale is top of mind for us because improving performance on our Edge means we can pass those cost savings down to you. We pay the overhead of a JavaScript runtime once, and then are able to run essentially limitless scripts with almost no individual overhead.</p>
-	<p>Workers Unbound is a truly cost effective platform when compared to AWS Lambda. With serverless, you should only pay for what you use with no hidden fees. Workers will not charge you for hidden extras like <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateway</a> or DNS request fees.</p>
+	<p>Workers Unbound is a truly cost-effective platform when compared to AWS Lambda. With serverless, you should only pay for what you use with no hidden fees. Workers will not charge you for hidden extras like <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateway</a> or DNS request fees.</p>
 	<p>Serverless Pricing Comparison*</p>
-	<p>Workers Unbound</p>
-	<p>AWS Lambda</p>
-	<p>AWS Lambda @ Edge</p>
-	<p>Requests (per MM requests)</p>
-	<p>\$0.15</p>
-	<p>\$0.20 - \$0.28</p>
-	<p>$0.60</p>
-	<p>Duration (per MM GB-sec)</p>
-	<p>\$12.50</p>
-	<p>\$16.67 - \$22.92</p>
-	<p>$50.01</p>
-	<p>Data Transfer (per egress GB)</p>
-	<p>\$0.045</p>
-	<p>\$0.09 - \$0.16</p>
-	<p>\$0.09 - \$0.16</p>
-	<p>API Gateway (per MM requests)</p>
-	<p>\$0</p>
-	<p>\$3.50 - \$4.68</p>
-	<p>CloudFront pricing</p>
-	<p>DNS Queries (per MM requests)</p>
-	<p>\$0</p>
-	<p>\$0.40</p>
-	<p>\$0.40</p>
-	<p>* Based on pricing disclosed on aws.amazon.com/lambda/pricing as of July 24, 2020. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month. API Gateway for AWS is based on Rest APIs above 1MM/month, for up to 333MM/month. Both the Workers Unbound and AWS Lambda services provide 1MM free requests per month and 400,000 GB-seconds of compute time per month. DNS Queries rate for AWS is based on the listed price for up to 1 Billion queries / month.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Workers Unbound</p>
+				</td>
+				<td>
+					<p>AWS Lambda</p>
+				</td>
+				<td>
+					<p>AWS Lambda @ Edge</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Requests (per MM requests)</p>
+				</td>
+				<td>
+					<p>$0.15</p>
+				</td>
+				<td>
+					<p>$0.20 - $0.28</p>
+				</td>
+				<td>
+					<p>$0.60</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Duration (per MM GB-sec)</p>
+				</td>
+				<td>
+					<p>$12.50</p>
+				</td>
+				<td>
+					<p>$16.67 - $22.92</p>
+				</td>
+				<td>
+					<p>$50.01</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Transfer (per egress GB)</p>
+				</td>
+				<td>
+					<p>$0.09</p>
+				</td>
+				<td>
+					<p>$0.09 - $0.16</p>
+				</td>
+				<td>
+					<p>$0.09 - $0.16</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>API Gateway (per MM requests)</p>
+				</td>
+				<td>
+					<p>$0</p>
+				</td>
+				<td>
+					<p>$3.50 - $4.68</p>
+				</td>
+				<td>
+					<p>CloudFront pricing</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DNS Queries (per MM requests)</p>
+				</td>
+				<td>
+					<p>$0</p>
+				</td>
+				<td>
+					<p>$0.40</p>
+				</td>
+				<td>
+					<p>$0.40</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i>* Based on pricing disclosed on aws.amazon.com/lambda/pricing as of July 24, 2020. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month. API Gateway for AWS is based on Rest APIs above 1MM/month, for up to 333MM/month. Both the Workers Unbound and AWS Lambda services provide 1MM free requests per month and 400,000 GB-seconds of compute time per month. DNS Queries rate for AWS is based on the listed price for up to 1 Billion queries / month.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="how-much-can-i-save">How much can I save?</h3>
 		<a href="https://blog.cloudflare.com/#how-much-can-i-save" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -97,37 +163,115 @@
 	<p>To put our numbers to the test, we deployed a <a href="https://github.com/Electroid/serverless-compare">hello world</a> GraphQL server to both Workers and Lambda. The median execution time on Lambda was 1.54ms, whereas the same workload took 0.90ms on Workers. After crunching the numbers and factoring in all the opaque fees that AWS charges (including API Gateway to allow for requests from the Internet), we found that using Workers Unbound can save you up to 75% -- and that’s just for a hello world! Imagine the cost savings when you’re running complex workloads for millions of users.</p>
 	<p>You might be wondering how we’re able to be so competitive. It all comes down to efficiency. The lightweight nature of Workers allows us to do the same work, but with less platform overhead and resource consumption. The execution times from this <a href="https://github.com/Electroid/serverless-compare">GraphQL hello world test are shown below and put platform providers’ overhead on display</a>. Since the test is truly a hello world, the variation is explained by architectural differences between providers (e.g. <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolates v. containers</a>).</p>
 	<p>GraphQL hello world Execution Time (ms) across Serverless Platforms*</p>
-	<p>Cloudflare Workers</p>
-	<p>AWS Lambda</p>
-	<p>Google Cloud Functions</p>
-	<p>Azure Functions</p>
-	<p>Min</p>
-	<p>0.58</p>
-	<p>1.22</p>
-	<p>6.16</p>
-	<p>5.00</p>
-	<p>p50</p>
-	<p>0.90</p>
-	<p>1.54</p>
-	<p>10.41</p>
-	<p>21.00</p>
-	<p>p90</p>
-	<p>1.24</p>
-	<p>7.45</p>
-	<p>15.93</p>
-	<p>110.00</p>
-	<p>p99</p>
-	<p>3.32</p>
-	<p>57.51</p>
-	<p>20.25</p>
-	<p>207.96</p>
-	<p>Max</p>
-	<p>16.39</p>
-	<p>398.54</p>
-	<p>31933.18</p>
-	<p>2768.00</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Cloudflare Workers</p>
+				</td>
+				<td>
+					<p>AWS Lambda</p>
+				</td>
+				<td>
+					<p>Google Cloud Functions</p>
+				</td>
+				<td>
+					<p>Azure Functions</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Min</p>
+				</td>
+				<td>
+					<p>0.58</p>
+				</td>
+				<td>
+					<p>1.22</p>
+				</td>
+				<td>
+					<p>6.16</p>
+				</td>
+				<td>
+					<p>5.00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>p50</p>
+				</td>
+				<td>
+					<p>0.90</p>
+				</td>
+				<td>
+					<p>1.54</p>
+				</td>
+				<td>
+					<p>10.41</p>
+				</td>
+				<td>
+					<p>21.00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>p90</p>
+				</td>
+				<td>
+					<p>1.24</p>
+				</td>
+				<td>
+					<p>7.45</p>
+				</td>
+				<td>
+					<p>15.93</p>
+				</td>
+				<td>
+					<p>110.00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>p99</p>
+				</td>
+				<td>
+					<p>3.32</p>
+				</td>
+				<td>
+					<p>57.51</p>
+				</td>
+				<td>
+					<p>20.25</p>
+				</td>
+				<td>
+					<p>207.96</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Max</p>
+				</td>
+				<td>
+					<p>16.39</p>
+				</td>
+				<td>
+					<p>398.54</p>
+				</td>
+				<td>
+					<p>31933.18</p>
+				</td>
+				<td>
+					<p>2768.00</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p><i>* The 128MB memory tier was used for each platform. This testing was run in us-east for AWS, us-central for Google, and us-west for Azure. Each platform test was run at a throughput of 1 request per second over the course of an hour. The execution times were taken from each provider's logging system.</i></p>
-	<p>These numbers speak for themself and highlight the efficiency of the Worker’s architecture. On Workers, you don’t just get faster results, you also benefit from the cost savings we pass onto you.</p>
+	<p>These numbers speak for themselves and highlight the efficiency of the Worker’s architecture. On Workers, you don’t just get faster results, you also benefit from the cost savings we pass onto you.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-can-i-use-it">When can I use it?</h3>
 		<a href="https://blog.cloudflare.com/#when-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">

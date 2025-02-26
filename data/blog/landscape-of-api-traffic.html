@@ -136,18 +136,58 @@
 	</div>
 	<p>A key aspect of <a href="https://www.cloudflare.com/application-services/solutions/api-security">securing APIs against snooping and tampering</a> is encrypting the session. Clients use SSL/TLS to authenticate the server they are connecting with, for example, by making sure it is truly their cryptocurrency vendor. The benefit of transport layer encryption is that after handshaking, all application protocol bytes are encrypted, providing both confidentiality and integrity assurances.</p>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/introducing-tls-1-3">launched the latest version of TLS (v1.3)</a> in September 2016, and it was <a href="https://blog.cloudflare.com/you-get-tls-1-3-you-get-tls-1-3-everyone-gets-tls-1-3">enabled by default on some properties</a> in May 2018. When looking at API traffic today, TLS v1.3 is the most adopted protocol with 55.9% of traffic using it. The vulnerable v1.0 &nbsp;and v1.1 were <a href="https://datatracker.ietf.org/doc/html/rfc8996">deprecated in March 2021</a> and their use has virtually disappeared.</p>
-	<p>Transport security protocol</p>
-	<p>December 2021</p>
-	<p>TLS 1.3</p>
-	<p>55.9%</p>
-	<p>TLS 1.2</p>
-	<p>32.7%</p>
-	<p>QUIC</p>
-	<p>8.4%</p>
-	<p>None</p>
-	<p>2.8%</p>
-	<p>TLS 1.0</p>
-	<p>0.3%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Transport security protocol</b></p>
+				</td>
+				<td>
+					<p><b>December 2021</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TLS 1.3</p>
+				</td>
+				<td>
+					<p>55.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TLS 1.2</p>
+				</td>
+				<td>
+					<p>32.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>QUIC</p>
+				</td>
+				<td>
+					<p>8.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>None</p>
+				</td>
+				<td>
+					<p>2.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TLS 1.0</p>
+				</td>
+				<td>
+					<p>0.3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>The protocol that is growing fastest is QUIC. While QUIC can be used to carry many types of application protocols, Cloudflare has so far focused on <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a>, the mapping of HTTP over IETF QUIC. We <a href="https://blog.cloudflare.com/the-quicening">started supporting</a> draft versions of QUIC in 2018 and when QUIC version 1 was published as RFC 9000 in May 2021, we <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">enabled it for everyone</a> the next day. QUIC uses the TLS 1.3 handshake but has its own mechanism for protecting and securing packets. Looking at HTTP-based API traffic, we see HTTP/3 going from less than 3% in early February 2021 to more than 8% in December 2021. This growth broadly aligns RFC 9000 being published and during the periodHTTP/3 support being stabilized and enabled in a range of client implementations.</p>
 	<p>Mutual TLS, which is often used for mobile or IoT devices, accounts for 0.3% of total API traffic. Since we <a href="https://blog.cloudflare.com/introducing-tls-client-auth">released the first version of mTLS</a> in 2017 we’ve seen a growing number of inquiries from users across all Cloudflare plans, as we have recently made it easier for customers to start using mTLS with Cloudflare <a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>. Customers can now use Cloudflare dashboard to issue and manage certificates with one-click avoiding all the complexity of having to manage a Private Key Infrastructure and root certificates themselves.</p>
 	<p>Finally, unencrypted traffic can provide a great opportunity for attackers to access plain communications. The total unencrypted API traffic dropped from 4.6% of total requests in early 2021 to 2.6% in December 2021. This represents a significant step forward in establishing basic security for all API connections.</p>

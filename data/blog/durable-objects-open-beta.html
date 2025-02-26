@@ -25,14 +25,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KDw6tGDQlvRrae4PS7AGM/eb4cb08f52b3a5f989531ac06214894c/image3-54.png" alt="" class="kg-image" width="938" height="525" loading="lazy">
 
 	</figure>
-	<p>By contrast, a Durable Object is defined by a JavaScript class and an id. There is only ever one instance of a Durable Object with a given id running anywhere in the world. All Workers making subrequests for the Durable Object with that id are routed to the same instance - letting them coordinate across multiple requests. The Durable Object instance can then make requests to downstream APIs and store data with our strongly consistent storage API.</p>
+	<p>By contrast, a Durable Object is defined by a JavaScript class and an ID. There is only ever one instance of a Durable Object with a given ID running anywhere in the world. All Workers making subrequests for the Durable Object with that ID are routed to the same instance - letting them coordinate across multiple requests. The Durable Object instance can then make requests to downstream APIs and store data with our strongly consistent storage API.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HLQ06eTIRyAl30bPTlVov/975cd2e8aa2360c4eab7e4c5a6d440ef/image1-65.png" alt="" class="kg-image" width="1213" height="544" loading="lazy">
 
 	</figure>
-	<p>In this example shown above, we’ve chosen our application’s user id as the Durable Object’s id. &nbsp;When a Worker needs access to a specific user’s data, they can contact the Object with that user’s id. &nbsp;That Object can then handle API calls and data access specific to that individual user.</p>
-	<p>Remember that Durable Objects scale incredibly well across multiple Object ids, but that each Object itself is backed by a single-thread. You should be careful to choose an id for your Objects that minimizes the number of requests processed by a single object. &nbsp;In our example above, if our user API grew to be too complicated, we might decide to have a separate id for each combination of a user id and an API endpoint to host in a single object.</p>
+	<p>In this example shown above, we’ve chosen our application’s user ID as the Durable Object’s ID. &nbsp;When a Worker needs access to a specific user’s data, they can contact the Object with that user’s ID. &nbsp;That Object can then handle API calls and data access specific to that individual user.</p>
+	<p>Remember that Durable Objects scale incredibly well across multiple Object IDs, but that each Object itself is backed by a single-thread. You should be careful to choose an ID for your Objects that minimizes the number of requests processed by a single object. &nbsp;In our example above, if our user API grew to be too complicated, we might decide to have a separate ID for each combination of a user ID and an API endpoint to host in a single object.</p>
 	<p>For more on Durable Objects, see the <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">docs</a> and the announcement <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">blog</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="pricing">Pricing</h3>
@@ -42,39 +42,143 @@
 			</svg>
 		</a>
 	</div>
-	<p>While there’s no charge to use Durable Objects during the beta period, we want to share pricing so you can build your applications with confidence.</p>
+	<p>While there’s no charge to use Durable Objects during the beta period, we want to share pricing, so you can build your applications with confidence.</p>
 	<p>When you use Durable Objects, you are billed for the compute time your Object uses as well as the storage API operations your Object performs.</p>
 	<p>Durable Objects are significantly cheaper than comparable compute and storage offerings from the other major cloud providers.</p>
 	<p>As announced on the Workers Unbound <a href="https://blog.cloudflare.com/introducing-workers-unbound">blog</a>, Durable Objects bills the standard Workers platform rates for long-running compute time.</p>
-	<p>Compute</p>
-	<p>Durable Objects</p>
-	<p>AWS Lambda</p>
-	<p>Price per request</p>
-	<p>\$0.15 / MM</p>
-	<p>\$0.20-0.28 / MM</p>
-	<p>Compute ($ per MM GB-sec)</p>
-	<p>\$12.50</p>
-	<p>\$16.67 - \$22.92 (depending on geo)</p>
-	<p>Data Transfer</p>
-	<p>\$0.09 / GB</p>
-	<p>\$0.09/GB - \$0.15/GB (depending on geo)</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Compute</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Durable Objects</p>
+				</td>
+				<td>
+					<p>AWS Lambda</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Price per request</p>
+				</td>
+				<td>
+					<p>\$0.15 / MM</p>
+				</td>
+				<td>
+					<p>\$0.20-0.28 / MM</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Compute ($ per MM GB-sec)</p>
+				</td>
+				<td>
+					<p>\$12.50</p>
+				</td>
+				<td>
+					<p>\$16.67 - \$22.92 (depending on geo)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Transfer</p>
+				</td>
+				<td>
+					<p>\$0.09 / GB</p>
+				</td>
+				<td>
+					<p>\$0.09/GB - \$0.15/GB (depending on geo)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>*Based on pricing disclosed on aws.amazon.com/lambda/pricing as of March 16, 2021. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month.</p>
 	<p>Durable Objects charges per storage operation for reads, writes and deletes and per GB-Month for data stored. Operations are metered in 4 KB increments - for example, an 8 KB read or write would be billed as two operations. When compared to AWS DynamoDB, Durable Objects charge less for every type of operation, and depending on the size of your operations, your savings could be significant. All price comparisons we’re showing below are based on single-region, strongly consistent DynamoDB storage. AWS charges extra for multi-region and transactionally consistent storage, which is already included for Durable Objects. If you use these features in DynamoDB, your savings will be even greater.</p>
-	<p>Storage</p>
-	<p>Durable Objects</p>
-	<p>AWS DynamoDB</p>
-	<p>Price per MM read request</p>
-	<p>\$0.20 / MM / 4 KB</p>
-	<p>\$0.25 - \$0.375 / MM / 4 KB</p>
-	<p>Price per MM write request</p>
-	<p>\$1.00 / MM / 4 KB</p>
-	<p>\$1.25 - \$1.88 / MM / 1 KB</p>
-	<p>Price per MM delete request</p>
-	<p>\$1.00 / MM regardless of size</p>
-	<p>\$1.25 - \$1.88 / MM / 1 KB</p>
-	<p>Price per GB stored data</p>
-	<p>\$0.20 / GB</p>
-	<p>\$0.25 / GB</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Storage</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Durable Objects</p>
+				</td>
+				<td>
+					<p>AWS DynamoDB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Price per MM read request</p>
+				</td>
+				<td>
+					<p>\$0.20 / MM / 4 KB</p>
+				</td>
+				<td>
+					<p>\$0.25 - \$0.375 / MM / 4 KB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Price per MM write request</p>
+				</td>
+				<td>
+					<p>\$1.00 / MM / 4 KB</p>
+				</td>
+				<td>
+					<p>\$1.25 - \$1.88 / MM / 1 KB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Price per MM delete request</p>
+				</td>
+				<td>
+					<p>\$1.00 / MM regardless of size</p>
+				</td>
+				<td>
+					<p>\$1.25 - \$1.88 / MM / 1 KB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Price per GB stored data</p>
+				</td>
+				<td>
+					<p>\$0.20 / GB</p>
+				</td>
+				<td>
+					<p>\$0.25 / GB</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>*Based on pricing disclosed on aws.amazon.com/dynamodb/pricing/on-demand/ as of March 16, 2021. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places.</p>
 	<p>We chose to meter our requests in 4 KB increments across the board to provide the lowest prices with the greatest flexibility. Deletes do not have a size limit.</p>
 	<p>We’ve seen that the vast majority of requests are actually smaller than 4 KB in size - Workers KV, our global, eventually consistent data store, has a median value size in the low single KB range.</p>
@@ -125,4 +229,5 @@
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.1875%;"><iframe src="https://iframe.videodelivery.net/e3b60d8931812206c33ca38c3fab3535?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
+	<p></p>
 </div>

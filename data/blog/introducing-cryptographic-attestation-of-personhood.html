@@ -19,7 +19,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In many instances, businesses need a way to tell whether an online user is human or not. Typically those reasons relate to security, or abuse of an online service. Back at the turn of the century, CAPTCHAs were created to do just that. The first one <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%20term%20was%20coined%20in,two%20groups%20working%20in%20parallel.">was developed back in 1997</a>, and the term ("Completely Automated Public Turing test to tell Computers and Humans Apart") was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford.</p>
+	<p>In many instances, businesses need a way to tell whether an online user is human or not. Typically, those reasons relate to security, or abuse of an online service. Back at the turn of the century, CAPTCHAs were created to do just that. The first one <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%20term%20was%20coined%20in,two%20groups%20working%20in%20parallel.">was developed back in 1997</a>, and the term ("Completely Automated Public Turing test to tell Computers and Humans Apart") was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford.</p>
 	<p>By their very nature, the challenge-response nature of CAPTCHAs have to be automated: so they can scale across both humans and the bots they need to catch.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-get-rid-of-captchas">Why get rid of CAPTCHAs?</h2>
@@ -46,7 +46,7 @@
 		</li>
 	</ol>
 	<p>In fact, the World Wide Web Consortium (W3C) worked on multiple drafts — as early as 2003 — pointing out the <a href="https://www.w3.org/TR/turingtest">inaccessibility of CAPTCHAs</a>.</p>
-	<p><i>And this is just from the user side</i>. Inflicting all these costs on users has very real costs for businesses, too. There’s a reason why businesses spend so much time &nbsp;optimizing the performance and layout of their websites and applications. That work stops users from bouncing when you want them to register. It stops shopping carts getting abandoned when you want them to end in the checkout. In general, you want to stop customers from getting frustrated and simply not come back.</p>
+	<p><i>And this is just from the user side</i>. Inflicting all these costs on users has very real costs for businesses, too. There’s a reason why businesses spend so much time optimizing the performance and layout of their websites and applications. That work stops users from bouncing when you want them to register. It stops shopping carts getting abandoned when you want them to end in the checkout. In general, you want to stop customers from getting frustrated and simply not come back.</p>
 	<p>CAPTCHAs are effectively businesses putting friction in front of their users, and as anyone who has managed a high performing online business will tell you, it’s not something you want to do unless you have no choice.</p>
 	<p>We started tackling these issues when we <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">moved from Google reCAPTCHA to hCAPTCHA</a>. Today, we are going further.</p>
 	<div class="flex anchor relative">
@@ -101,18 +101,58 @@
 	</div>
 	<p>The Cryptographic Attestation of Personhood relies on <a href="https://www.w3.org/TR/webauthn-2/#sctn-attestation">Web Authentication (WebAuthn) Attestation</a>. This is an API that has been standardized at the W3C and is already implemented in most modern web browsers and operating systems. It aims to provide a standard interface to authenticate users on the web and use the cryptography capability of their devices.</p>
 	<p>As the need for stronger security with improved usability increases, we envision the deployment instances of WebAuthn to rise.</p>
-	<p>Platform</p>
-	<p>Compatible Browsers</p>
-	<p>iOS 14.5</p>
-	<p>All browsers</p>
-	<p>Android 10 and later</p>
-	<p>Chrome</p>
-	<p>Windows</p>
-	<p>All browsers</p>
-	<p>macOS</p>
-	<p>All browsers</p>
-	<p>Ubuntu</p>
-	<p>All browsers</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Platform</p>
+				</td>
+				<td>
+					<p>Compatible Browsers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>iOS 14.5</p>
+				</td>
+				<td>
+					<p>All browsers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Android 10 and later</p>
+				</td>
+				<td>
+					<p>Chrome</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Windows</p>
+				</td>
+				<td>
+					<p>All browsers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>macOS</p>
+				</td>
+				<td>
+					<p>All browsers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ubuntu</p>
+				</td>
+				<td>
+					<p>All browsers</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Assuming you are using a hardware device with a compatible configuration, you might be wondering what is happening behind the scenes.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-elevator-pitch">The elevator pitch</h3>
@@ -168,18 +208,54 @@
 	</div>
 	<p>Designing a challenge asking users to prove they are in control of a key from a certain manufacturer comes with a privacy and security challenge.</p>
 	<p>The privacy properties of the Cryptographic Attestation of Personhood are summarized in the following table.</p>
-	<p>Property</p>
-	<p>Cloudflare Could</p>
-	<p>Cloudflare Does</p>
-	<p>Get your fingerprints or face</p>
-	<p>NO</p>
-	<p>N/A</p>
-	<p>Know the manufacturer of your key</p>
-	<p>YES - limited to the number of keys in your batch*</p>
-	<p>YES</p>
-	<p>Associate a unique ID to your key</p>
-	<p>YES**</p>
-	<p>NO</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Property</p>
+				</td>
+				<td>
+					<p>Cloudflare Could</p>
+				</td>
+				<td>
+					<p>Cloudflare Does</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Get your fingerprints or face</p>
+				</td>
+				<td>
+					<p>NO</p>
+				</td>
+				<td>
+					<p>N/A</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Know the manufacturer of your key</p>
+				</td>
+				<td>
+					<p>YES - limited to the number of keys in your batch*</p>
+				</td>
+				<td>
+					<p>YES</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Associate a unique ID to your key</p>
+				</td>
+				<td>
+					<p>YES**</p>
+				</td>
+				<td>
+					<p>NO</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p><i>* There must be 100,000 or more keys per batch (</i><a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation"><i>FIDO UAF Protocol Specification #4.1.2.1.1</i></a><i>). However, self-signed keys and keys from certain manufacturers have been found to</i> <a href="https://www.chromium.org/security-keys"><i>not meet this requirement</i></a><i>.</i></p>
 	<p><i>**This would require that we set a separate and distinct cookie to track your key. This is antithetical to privacy on the Internet, and to the goals of this project. You can learn more about how we are removing cookies like</i> <a href="https://blog.cloudflare.com/deprecating-cfduid-cookie"><i>__cfduid here</i></a><i>.</i></p>
 	<div class="flex anchor relative">
@@ -211,9 +287,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>While the Cryptographic Attestation of Personhood has a lot of upside in terms of privacy, it is not perfect. Cloudflare still needs to know your manufacturer to let you in. As WebAuthn works with any certificate, we need to make sure Cloudflare receives certificates from untampered hardware keys. We would prefer to not have that information, further preserving your privacy.</p>
+	<p>While the Cryptographic Attestation of Personhood has a lot of upsides in terms of privacy, it is not perfect. Cloudflare still needs to know your manufacturer to let you in. As WebAuthn works with any certificate, we need to make sure Cloudflare receives certificates from untampered hardware keys. We would prefer to not have that information, further preserving your privacy.</p>
 	<p>We have worked on privacy standards in the past, leading the efforts with Privacy Pass for instance. <a href="https://privacypass.cloudflare.com">Privacy Pass</a> allows you to solve a challenge once and provide a proof you passed it, meaning you don’t have to solve multiple CAPTCHAs. It greatly improved the user experience of VPN users, who face more challenges than other Internet users.</p>
-	<p>For the Cryptographic Attestation of Personhood, we dig into an emerging field in cryptography called <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">Zero Knowledge proofs</a> (ZK proof). It allows our users to prove their manufacturer is part of a set of manufacturers trusted by Cloudflare. Using a &nbsp;ZK proof, the devices from a single manufacturer become indistinguishable from each other, as well as from devices from other manufacturers. This new system requires more technical details and deserves a dedicated blog post. Stay tuned.</p>
+	<p>For the Cryptographic Attestation of Personhood, we dig into an emerging field in cryptography called <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">Zero Knowledge proofs</a> (ZK proof). It allows our users to prove their manufacturer is part of a set of manufacturers trusted by Cloudflare. Using a ZK proof, the devices from a single manufacturer become indistinguishable from each other, as well as from devices from other manufacturers. This new system requires more technical details and deserves a dedicated blog post. Stay tuned.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-never-ending-quest">A never-ending quest</h2>
 		<a href="https://blog.cloudflare.com/#a-never-ending-quest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -223,7 +299,7 @@
 		</a>
 	</div>
 	<p>Designing a challenge aimed at protecting millions of Internet properties is no easy task. In the current setup, we believe Cryptographic Attestation of Personhood offers strong security and usability guarantees compared to traditional CAPTCHA challenges. During a preliminary user study, users indicated a strong preference for touching their hardware key over clicking on pictures. Nevertheless, we know that this is a new system with room for improvements.</p>
-	<p>This experiment will be available on a limited basis in English-speaking regions. This allows us to have diversity in the pool of users and test this process in various locations. However, we recognize this is insufficient coverage and we intend to test further. If you have specific needs, feel free to reach out.</p>
+	<p>This experiment will be available on a limited basis in English-speaking regions. This allows us to have diversity in the pool of users and test this process in various locations. However, we recognize this is insufficient coverage, and we intend to test further. If you have specific needs, feel free to reach out.</p>
 	<p>Another issue that we keep a close eye on is security. The security of this challenge depends on the underlying hardware provided by trusted manufacturers. We have confidence they are secured. If any breach were to occur, we would be able to quickly deauthorize manufacturers’ public keys at various levels of granularity.</p>
 	<figure class="kg-card kg-image-card ">
 

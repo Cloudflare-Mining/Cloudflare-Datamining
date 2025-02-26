@@ -50,18 +50,58 @@
 	</figure>
 	<p>When users first launch the WARP client, they will be prompted to authenticate with one of the providers configured. Once logged in, Cloudflare Gateway can send their traffic through your organization’s policies and attribute each connection to the user’s identity.</p>
 	<p>Depending on what your IdP supports, you can create rules based on the following attributes:</p>
-	<p>Attribute</p>
-	<p>Example</p>
-	<p>User Name</p>
-	<p>John Doe</p>
-	<p>User Email</p>
-	<p><a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
-	<p>User Group Name*</p>
-	<p>Marketing Team</p>
-	<p>User Group Email*</p>
-	<p><a href="mailto:marketing@example.com">marketing@example.com</a></p>
-	<p>User Group ID</p>
-	<p>1234</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Attribute</p>
+				</td>
+				<td>
+					<p>Example</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>User Name</p>
+				</td>
+				<td>
+					<p>John Doe</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>User Email</p>
+				</td>
+				<td>
+					<p><a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>User Group Name*</p>
+				</td>
+				<td>
+					<p>Marketing Team</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>User Group Email*</p>
+				</td>
+				<td>
+					<p><a href="mailto:marketing@example.com">marketing@example.com</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>User Group ID</p>
+				</td>
+				<td>
+					<p>1234</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p><i>*Note: some IdPs use group email in place of a group name</i></p>
 	<p>Cloudflare Gateway gives teams the ability to create fine-grained rules that meet the real needs of IT administrators. But policy enforcement is only one side of the equation — protecting users and preventing corporate data loss requires visibility into Internet traffic across an organization, for auditing compliance or security incident investigations.</p>
 	<div class="flex anchor relative">
@@ -88,7 +128,7 @@
 		</a>
 	</div>
 	<p>At the end of Zero Trust Week, <a href="https://blog.cloudflare.com/browser-beta">we announced our Cloudflare Isolated Browser</a> to protect organizations from Internet threats unknown to threat intelligence (i.e., zero-day attacks). By integrating with Gateway, organizations can use the Remote Browser to provide higher levels of security to individual users who might be targets of spear phishing campaigns.</p>
-	<p>For example, consider an employee in the finance department who interfaces with systems handling procurements or fund disbursement. A security team might consider preventing this employee from accessing the public Internet with their native browser and forcing that traffic into an isolated remote browser. Any traffic destined to internal systems would use the native browser. To create this policy, an administrator could create the following rules:</p>
+	<p>For example, consider an employee in the finance department who interfaces with systems handling procurement or fund disbursement. A security team might consider preventing this employee from accessing the public Internet with their native browser and forcing that traffic into an isolated remote browser. Any traffic destined to internal systems would use the native browser. To create this policy, an administrator could create the following rules:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2czRlPLAbdEExXkBOgd1ZZ/c5225ffc1a0e055e92c233cc805076fc/image7-9.png" alt="" class="kg-image" width="1999" height="747" loading="lazy">

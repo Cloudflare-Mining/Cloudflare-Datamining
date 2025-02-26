@@ -27,7 +27,7 @@
 	<p>Measuring and comparing the performance of Content Distribution Networks (CDN) is critical in terms of understanding the level of service offered to end users, detecting and debugging network issues, and planning the deployment of new network locations. Measuring our own existing infrastructure is relatively straightforward, for example, by collecting <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> and HTTP request statistics received at each one of our data centers.</p>
 	<p>But what if we want to understand and evaluate the performance of other networks? Understandably, such data is not shared among networks due to privacy and business concerns. An alternative to data sharing is <i>direct</i> observation with what are called “active measurements.” An example of active measurement is when a measuring tape is used to determine the size of a room — one must take an action to perform the measurement.</p>
 	<p>Active measurements from Cloudflare data centers to other CDNs, however, don’t say much about the client experience. The only way to actively measure CDNs is by probing from third-party points of view, namely some type of end-client or globally distributed measurement platform. For example, ping probes might be launched from <a href="https://atlas.ripe.net">RIPE Atlas clients</a> to many CDNs; alternatively, we might rely on data obtained from <a href="https://en.wikipedia.org/wiki/Real_user_monitoring">Real User Measurements (RUM)</a> services that embed JavaScript requests into various services and pages around the world.</p>
-	<p>Active measurements are extremely valuable, and we heavily rely on them to collect a wide range of performance metrics. However, active measurements are not always reliable. Consider ping probes from RIPE Atlas. A collection of direct pings is most assuredly accurate. The weakness is that the distribution of its probes is heavily concentrated in Europe and North America, and it offers very sparse coverage of Autonomous Systems (ASes) in other regions (Asia, Africa, South America). Additionally the distribution of RIPE Atlas probes to ASes does not reflect the distribution of users to ASes, instead university networks and hosting providers or enterprises are overrepresented in the probes population.</p>
+	<p>Active measurements are extremely valuable, and we heavily rely on them to collect a wide range of performance metrics. However, active measurements are not always reliable. Consider ping probes from RIPE Atlas. A collection of direct pings is most assuredly accurate. The weakness is that the distribution of its probes is heavily concentrated in Europe and North America, and it offers very sparse coverage of Autonomous Systems (ASes) in other regions (Asia, Africa, South America). Additionally, the distribution of RIPE Atlas probes to ASes does not reflect the distribution of users to ASes, instead university networks and hosting providers or enterprises are overrepresented in the probes' population.</p>
 	<p>Similarly, data from third party Real User Measurements (RUM) services have weaknesses too. RUM platforms compare CDNs by embedding JavaScript request probes in websites visited by users all over the world. This sounds great, except the data cannot be validated by outside parties, which is an important aspect of measurement. For example, consider the following chart that shows Cloudfront’s median <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round-Trip Time (RTT)</a> in Greece as measured by the two leading RUM platforms, <a href="https://www.cedexis.com">Cedexis</a> and <a href="https://perfops.net">Perfops</a>. While both platforms follow the same measurement method, their results for the same time period and the same networks differ considerably. If the two sets of measurements for the same thing differ, then neither can be relied upon.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,7 +44,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>So, how might we measure without active probes? We’ve devised a method to understand latency across CDNs by using our own RTT measurements. In particular, we can use these measurements as a proxy for estimating the latency between clients and other CDNs. With this technique, we can understand latency to locations where CDNs have deployed their infrastructure, as well as show performance improvements in locations where one CDN exists but others do not. Importantly, we have validated the assumptions shown below through a large-scale traceroute and ping measurement campaign, and we’ve designed this technique so that it can be reproduced by others. After all, independent validation is important across measurement communities.</p>
+	<p>So, how might we measure without active probes? We’ve devised a method to understand latency across CDNs by using our own RTT measurements. In particular, we can use these measurements as a proxy for estimating the latency between clients and other CDNs. With this technique, we can understand latency to locations where CDNs have deployed their infrastructure, as well as show performance improvements in locations where one CDN exists, but others do not. Importantly, we have validated the assumptions shown below through a large-scale traceroute and ping measurement campaign, and we’ve designed this technique so that it can be reproduced by others. After all, independent validation is important across measurement communities.</p>
 	<div class="flex anchor relative">
 		<h3 id="step-1-predicting-anycast-catchments">Step 1. Predicting Anycast Catchments</h3>
 		<a href="https://blog.cloudflare.com/#step-1-predicting-anycast-catchments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -96,18 +96,50 @@
 	<p>The next step is to estimate the RTT between the client AS and the corresponding CDN location. To this end, we utilize passive RTT measurements from Cloudflare’s own infrastructure. For each of our data centers, we calculate the median TCP RTT for each IP /24 subnet that sends us HTTP requests. We then assume that a request from a given IP subnet to a data center that is common between Cloudflare and another CDN will have a comparable RTT (our approach focuses on the performance of the anycast network and omits host software differences). This assumption is generally true, because the distance between two endpoints is the dominant factor in determining latency. Note that the median RTT is selected to represent client performance. In contrast, the minimum RTT is an indication of closeness to clients (not expected performance). Our approach on estimating latencies is similar to the work of <a href="https://dl.acm.org/doi/10.1145/1177080.1177092">Madhyastha et al.</a> who combined the median RTT of existing measurements with a path prediction technique informed by network topologies to infer end-to-end latencies that cannot be measured directly. While this work reported an accuracy of 65% for arbitrary ASes, we focus on CDNs which, on average, have much smaller paths (most clients are within 1 AS hop) making the path prediction problem significantly easier (as noted by <a href="https://dl.acm.org/doi/10.1145/2815675.2815719">Chiu et al.</a> and <a href="https://dl.acm.org/doi/abs/10.1145/2934872.2959053">Singh and Gill</a>). Also note that for the purposes of RTT estimation, it’s important to predict which CDN data center the request from a client IP will use, not the actual hops along the path.</p>
 	<h4>Example</h4>
 	<p>Assume that for a certain IP subnet used by AS3379 (a Greek ISP), the following table shows the median RTT for each Cloudflare data center that receives HTTP requests from that subnet. Note that while requests from an IP typically land at the nearest data center (Athens in that case), some requests may arrive at different data centers due to traffic load management and different <a href="https://www.cloudflare.com/plans">service tiers</a>.</p>
-	<p>Data Center</p>
-	<p>Athens</p>
-	<p>Sofia</p>
-	<p>Milan</p>
-	<p>Frankfurt</p>
-	<p>Amsterdam</p>
-	<p><b>Median RTT</b></p>
-	<p>22 ms</p>
-	<p>42 ms</p>
-	<p>43 ms</p>
-	<p>70 ms</p>
-	<p>75 ms</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Data Center</b></p>
+				</td>
+				<td>
+					<p><b>Athens</b></p>
+				</td>
+				<td>
+					<p><b>Sofia</b></p>
+				</td>
+				<td>
+					<p><b>Milan</b></p>
+				</td>
+				<td>
+					<p><b>Frankfurt</b></p>
+				</td>
+				<td>
+					<p><b>Amsterdam</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Median RTT</b></p>
+				</td>
+				<td>
+					<p>22 ms</p>
+				</td>
+				<td>
+					<p>42 ms</p>
+				</td>
+				<td>
+					<p>43 ms</p>
+				</td>
+				<td>
+					<p>70 ms</p>
+				</td>
+				<td>
+					<p>75 ms</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Assume that another CDN B does not have data centers or cache servers in Athens and Sofia, but only in Milan, Frankfurt, and Amsterdam. Based on the topology and colocation data of CDN B, we will predict the anycast catchments, and we find that for AS3379 the data center in Frankfurt will be used. In that case, we will use the corresponding latency as an estimate of the median latency between CDN B and the given prefix.</p>
 	<p>The above methodology works well because Cloudflare’s global network allows us to collect network measurements between 63,832 ASes (virtually every AS which hosts clients), and 300 cities in 115 different countries where Cloudflare infrastructure is deployed, allowing us to cover the vast majority of regions where other CDNs have deployed infrastructure.</p>
 	<div class="flex anchor relative">

@@ -4,7 +4,7 @@
 	<p>One problem arises from this design: what protects against a malevolent peer who decides to announce incorrect information? The damage caused by <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">route hijacks can be major</a>.</p>
 	<p>Routing Public Key Infrastructure (RPKI) is a framework created in 2008. Its goal is to provide a source of truth for Internet Resources (IP addresses) and ASes in signed cryptographically signed records called Route Origin Objects (ROA).</p>
 	<p>Recently, we’ve seen the significant threshold of two hundred thousands of ROAs being passed. This represents a big step in making the Internet more secure against accidental and deliberate BGP tampering.</p>
-	<p>We have talked about RPKI <a href="https://blog.cloudflare.com/tag/rpki">in the past</a> but we thought it would be a good time for an update.</p>
+	<p>We have talked about RPKI <a href="https://blog.cloudflare.com/tag/rpki">in the past</a>, but we thought it would be a good time for an update.</p>
 	<p>In a more technical context, the RPKI framework consists of two parts:</p>
 	<ul>
 		<li>
@@ -26,21 +26,54 @@
 	<p>Many providers subsequently indicated on social media (for example, <a href="https://twitter.com/Aussie_BB/status/1252046032214450176">here</a> or <a href="https://twitter.com/swisscom_csirt/status/1300666695959244800">here</a>) that they had an RPKI deployment in the works. This increase in Origin Validation by networks is increasing the security of the Internet globally.</p>
 	<p>The site’s test for Origin Validation consists of queries toward two addresses, one of which is behind an RPKI invalid prefix and the other behind an RPKI valid prefix. If the query towards the invalid succeeds, the test fails as the ISP does not implement Origin Validation. We counted the number of queries that failed to reach invalid.cloudflare.com. This also included a few thousand <a href="https://atlas.ripe.net/measurements/?page=1&amp;search=target%3Ainvalid.rpki.cloudflare.com#tab-http">RIPE Atlas tests</a> that were started by Cloudflare and various contributors, providing coverage for smaller networks.</p>
 	<p>Every month since launch we’ve seen that around 10 to 20 networks are deploying RPKI Origin Validation. Among the major providers we can build the following table:</p>
-	<p>Month</p>
-	<p>Networks</p>
-	<p>August</p>
-	<p>Swisscom (Switzerland), Salt (Switzerland)</p>
-	<p>July</p>
-	<p>Telstra (Australia), Quadranet (USA), Videotron (Canada)</p>
-	<p>June</p>
-	<p>Colocrossing (USA), Get Norway (Norway), Vocus (Australia), Hurricane Electric (Worldwide), Cogent (Worldwide)</p>
-	<p>May</p>
-	<p>Sengked Fiber (Indonesia), Online.net (France), WebAfrica Networks (South Africa), CableNet (Cyprus), IDnet (Indonesia), Worldstream (Netherlands), GTT (Worldwide)</p><!--kg-card-begin: html-->
-	<p></p><!--kg-card-end: html-->
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Month</p>
+				</td>
+				<td>
+					<p>Networks</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>August</p>
+				</td>
+				<td>
+					<p>Swisscom (Switzerland), Salt (Switzerland)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>July</p>
+				</td>
+				<td>
+					<p>Telstra (Australia), Quadranet (USA), Videotron (Canada)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>June</p>
+				</td>
+				<td>
+					<p>Colocrossing (USA), Get Norway (Norway), Vocus (Australia), Hurricane Electric (Worldwide), Cogent (Worldwide)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>May</p>
+				</td>
+				<td>
+					<p>Sengked Fiber (Indonesia), Online.net (France), WebAfrica Networks (South Africa), CableNet (Cyprus), IDnet (Indonesia), Worldstream (Netherlands), GTT (Worldwide)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>With the help of many <a href="https://github.com/cloudflare/isbgpsafeyet.com/blob/master/CONTRIBUTING.md">contributors</a>, we have compiled a list of network operators and public statements at the top of the isbgpsafeyet.com page.</p>
 	<p>We excluded providers that manually blocked the traffic towards the prefix instead of using RPKI. Among the techniques we see are firewall filtering and manual prefix rejection. The filtering is often propagated to other customer ISPs. In a unique case, an ISP generated a “more-specific” blackhole route that leaked to multiple peers over the Internet.</p>
 	<p>The deployment of RPKI by major transit providers, also known as Tier 1, such as Cogent, GTT, Hurricane Electric, NTT and Telia made many downstream networks more secure without them having them deploying validation software.</p>
-	<p>Overall, we looked at the evolution of the successful tests per ASN and we noticed a steady increase over the recent months of 8%.</p>
+	<p>Overall, we looked at the evolution of the successful tests per ASN, and we noticed a steady increase over the recent months of 8%.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1F5LrsstbIKXWNt4drF5Vt/7515a8aad81c55ee921785a2f71ff3a8/success-ratio-3-1.png" alt="Graph showing the increase of successful RPKI OV tests per ASN" class="kg-image" width="1544" height="738" loading="lazy">
@@ -84,7 +117,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">2018</a> and <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">2019</a>, Cloudflare was impacted by BGP route hijacks. Both could have been avoided with RPKI. Not long after the first incident, we started signing prefixes and developing RPKI software. It was necessary to make BGP safer and we wanted to do more than talk about it. But we also needed enough networks to be deploying RPKI as well. By making deployment easier for everyone, we hoped to increase adoption.</p>
+	<p>In <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">2018</a> and <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">2019</a>, Cloudflare was impacted by BGP route hijacks. Both could have been avoided with RPKI. Not long after the first incident, we started signing prefixes and developing RPKI software. It was necessary to make BGP safer, and we wanted to do more than talk about it. But we also needed enough networks to be deploying RPKI as well. By making deployment easier for everyone, we hoped to increase adoption.</p>
 	<p>The following is a reminder of what we built over the years around RPKI and how it grew.</p>
 	<p><a href="https://github.com/cloudflare/cfrpki">OctoRPKI</a> is Cloudflare’s open source RPKI Validation software. It periodically generates a JSON document of validated prefixes that we pass onto our routers using <a href="https://github.com/cloudflare/gortr">GoRTR</a>. It generates most of the data behind the graphs here.</p>
 	<p>The latest version, <a href="https://github.com/cloudflare/cfrpki/releases/tag/v1.2.0">1.2.0</a>, of OctoRPKI was released at the end of October. It implements important security fixes, better memory management and extended <a href="https://github.com/cloudflare/cfrpki/blob/master/Monitoring.md">logging</a>. This is the first validator to provide detailed information around cryptographically invalid records into <a href="https://sentry.io/welcome">Sentry</a> and performance data in <a href="https://opentracing.io">distributed tracing tools</a>.GoRTR remains heavily used in production, including by <a href="https://github.com/cloudflare/gortr#in-the-field">transit providers</a>. It can natively connect to other validators like <a href="https://www.rpki-client.org">rpki-client</a>.</p>
@@ -120,7 +153,7 @@
 		</a>
 	</div>
 	<p>We believe RPKI is going to continue growing, and we would like to thank the hundreds of network engineers around the world who are making the Internet routing more secure by deploying RPKI.</p>
-	<p>25% of routes are signed and 20% of the Internet is doing origin validation and those numbers grow everyday. We believe BGP will be safer <a href="https://youtu.be/3BAwBClazWc?t=1333">before reaching 100%</a> of deployment; for instance, once the remaining transit providers enable Origin Validation, it is unlikely a BGP hijack will make it to the front page of world news outlets.</p>
+	<p>25% of routes are signed and 20% of the Internet is doing origin validation and those numbers grow every day. We believe BGP will be safer <a href="https://youtu.be/3BAwBClazWc?t=1333">before reaching 100%</a> of deployment; for instance, once the remaining transit providers enable Origin Validation, it is unlikely a BGP hijack will make it to the front page of world news outlets.</p>
 	<p>While difficult to quantify, we believe that critical mass of protected resources will be reached in late 2021.</p>
-	<p>We will keep improving the tooling; OctoRPKI and GoRTR are open-source and we welcome contributions. In the near future, we plan on releasing a packaged version of GoRTR that can be directly installed on certain routers. Stay tuned!</p>
+	<p>We will keep improving the tooling; OctoRPKI and GoRTR are open-source, and we welcome contributions. In the near future, we plan on releasing a packaged version of GoRTR that can be directly installed on certain routers. Stay tuned!</p>
 </div>

@@ -1,14 +1,14 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3G5lASciGdmfDGvaGQ7SKg/b7b14f7536578fbb0a9db5fa4d7cded4/deploying-gateway-using-a-raspberry-pi-dns-over-https-and-pi-hole.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Like many who are able, I am working remotely and in this post, I describe some of the ways to deploy <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">Cloudflare Gateway</a> directly from your home. Gateway’s DNS filtering protects networks from malware, phishing, ransomware and other security threats. It’s not only for corporate environments - it can be deployed on your browser or laptop to protect your computer or your home WiFi. Below you will learn how to deploy Gateway, including, but not limited to, DNS over HTTPS (DoH) using a <a href="https://www.raspberrypi.org">Raspberry Pi</a>, <a href="https://pi-hole.net">Pi-hole</a> and <a href="https://dnscrypt.info">DNSCrypt</a>.</p>
-	<p>We recently launched Cloudflare Gateway and shortly thereafter, offered it for free until at least September to any company in need. Cloudflare leadership asked the global Solutions Engineering (SE) team, amongst others, to assist with the incoming onboarding calls. As an SE at Cloudflare, our role is to learn new products, such as Gateway, to educate, and to ensure the success of our prospects and customers. We talk to our customers daily, understand the challenges they face and consult on best practices. We were ready to help!</p>
+	<p>Like many who are able, I am working remotely and in this post, I describe some of the ways to deploy <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">Cloudflare Gateway</a> directly from your home. Gateway’s DNS filtering protects networks from malware, phishing, ransomware, and other security threats. It’s not only for corporate environments - it can be deployed on your browser or laptop to protect your computer or your home WiFi. Below you will learn how to deploy Gateway, including, but not limited to, DNS over HTTPS (DoH) using a <a href="https://www.raspberrypi.org">Raspberry Pi</a>, <a href="https://pi-hole.net">Pi-hole</a> and <a href="https://dnscrypt.info">DNSCrypt</a>.</p>
+	<p>We recently launched Cloudflare Gateway and shortly thereafter, offered it for free until at least September to any company in need. Cloudflare's leadership asked the global Solutions Engineering (SE) team, amongst others, to assist with the incoming onboarding calls. As an SE at Cloudflare, our role is to learn new products, such as Gateway, to educate, and to ensure the success of our prospects and customers. We talk to our customers daily, understand the challenges they face and consult on best practices. We were ready to help!</p>
 	<p>One way we stay on top of all the services that Cloudflare provides, is by using them ourselves. In this blog, I'll talk about my experience setting up Cloudflare Gateway.</p>
-	<p>Gateway sits between your users, device or network and the public Internet. Once you setup Cloudflare Gateway, the service will inspect and manage all Internet-bound DNS queries. In simple terms, you point your recursive DNS to Cloudflare and we enforce policies you create, such as activating SafeSearch, an automated filter for adult and offensive content that's built into popular search engines like Google, Bing, DuckDuckGo, Yandex and others.</p>
+	<p>Gateway sits between your users, device or network and the public Internet. Once you set up Cloudflare Gateway, the service will inspect and manage all Internet-bound DNS queries. In simple terms, you point your recursive DNS to Cloudflare, and we enforce policies you create, such as activating SafeSearch, an automated filter for adult and offensive content that's built into popular search engines like Google, Bing, DuckDuckGo, Yandex and others.</p>
 	<p>There are various methods and locations DNS filtering can be enabled, whether it’s on your entire laptop, each of your individual browsers and devices or your entire home network. With DNS filtering front of mind, including DoH, I explored each model. The model you choose ultimately depends on your objective.</p>
 	<p>But first, let’s review what DNS and DNS over HTTPS are.</p>
-	<p>DNS is the protocol used to resolve hostnames (like <a href="https://www.cloudflare.com">www.cloudflare.com</a>) into IP addresses so computers can talk to each other. DNS is an unencrypted clear text protocol, meaning that any eavesdropper or machine between the client and DNS server can see the contents of the DNS request. DNS over HTTPS adds security to DNS and encrypt DNS queries using HTTPS (the protocol we use to encrypt the web).</p>
+	<p>DNS is the protocol used to resolve hostnames (like <a href="https://www.cloudflare.com">www.cloudflare.com</a>) into IP addresses, so computers can talk to each other. DNS is an unencrypted clear text protocol, meaning that any eavesdropper or machine between the client and DNS server can see the contents of the DNS request. DNS over HTTPS adds security to DNS and encrypt DNS queries using HTTPS (the protocol we use to encrypt the web).</p>
 	<h4>Let’s get started</h4>
-	<p>Navigate to <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com</a>. If you don’t already have an account, the sign up process only takes a few minutes.</p>
+	<p>Navigate to <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com</a>. If you don’t already have an account, the sign-up process only takes a few minutes.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n8xAHDWRIAbKWwth0cHvY/19769138e2c833a919718cfcbe63d0f6/1-1.png" alt="" class="kg-image" width="1999" height="753" loading="lazy">
@@ -43,43 +43,131 @@
 	<p>DNS over HTTPS is my favorite method for deploying Gateway and securing DNS queries at the same time. Enabling DoH prevents anyone but the DNS server of your choosing from seeing your <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a>.</p>
 	<h4>Enabling DNS over HTTPS in browsers</h4>
 	<p>By enabling it in a browser, only queries issued in that browser are affected. It’s available in most browsers and there are quite a few tutorials online to show you how to turn it on.</p>
-	<p>Browser</p>
-	<p>SupportsDoH</p>
-	<p>Supports CustomAlternative Providers</p>
-	<p>SupportsCustom Servers</p>
-	<p><b>Chrome</b></p>
-	<p>Yes</p>
-	<p>Yes</p>
-	<p>No</p>
-	<p><b>Safari</b></p>
-	<p>No</p>
-	<p>No</p>
-	<p>No</p>
-	<p><b>Edge</b></p>
-	<p>Yes**</p>
-	<p>Yes**</p>
-	<p>No**</p>
-	<p><b>Firefox</b></p>
-	<p>Yes</p>
-	<p>Yes</p>
-	<p>Yes</p>
-	<p><b>Opera</b></p>
-	<p>Yes*</p>
-	<p>Yes*</p>
-	<p>No*</p>
-	<p><b>Brave</b></p>
-	<p>Yes*</p>
-	<p>Yes*</p>
-	<p>No*</p>
-	<p><b>Vivaldi</b></p>
-	<p>Yes*</p>
-	<p>Yes*</p>
-	<p>No*</p>
-	<p>* Chromium based browser. Same support as Chrome** Most recent version of <a href="https://support.microsoft.com/en-us/help/4501095/download-the-new-microsoft-edge-based-on-chromium">Edge is built on Chromium</a></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Browser</p>
+				</td>
+				<td>
+					<p>Supports
+						DoH</p>
+				</td>
+				<td>
+					<p>Supports Custom
+						Alternative Providers</p>
+				</td>
+				<td>
+					<p>Supports
+						Custom Servers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Chrome</b></p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+				<td>
+					<p>No</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Safari</b></p>
+				</td>
+				<td>
+					<p>No</p>
+				</td>
+				<td>
+					<p>No</p>
+				</td>
+				<td>
+					<p>No</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Edge</b></p>
+				</td>
+				<td>
+					<p>Yes**</p>
+				</td>
+				<td>
+					<p>Yes**</p>
+				</td>
+				<td>
+					<p>No**</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Firefox</b></p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Opera</b></p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>No*</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Brave</b></p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>No*</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Vivaldi</b></p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>Yes*</p>
+				</td>
+				<td>
+					<p>No*</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>* Chromium based browser. Same support as Chrome.
+		** Most recent version of <a href="https://support.microsoft.com/en-us/help/4501095/download-the-new-microsoft-edge-based-on-chromium">Edge is built on Chromium</a>.</p>
 	<h4>Chromium based browsers</h4>
 	<p>Using Chrome as an example on behalf of all the Chromium-based browsers, enabling DNS over HTTPS is straightforward, but as you can see in the table above, there is one issue: Chrome does not currently support custom servers. So while it is great that a user can protect their DNS queries, they cannot choose the provider, including Gateway.</p>
 	<p>Here is how to enable DoH in Chromium based browsers:</p>
-	<p>Navigate to <code>chrome://flags</code> and toggle the beta flag to enabled.</p>
+	<p>Navigate to <code>chrome://flags</code> and toggle the beta flag to enable.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7q6IpMHlqqtv5xDY1VxNsp/2fcea3020dfae12c74f0b4ecae52c464/4.png" alt="" class="kg-image" width="1590" height="280" loading="lazy">
@@ -87,7 +175,7 @@
 	</figure>
 	<h4>Firefox</h4>
 	<p>Firefox is the exception to the rule because they support both DNS over HTTPS and the ability to define a custom server. Mozilla provides detailed instructions about how to <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https#w_manually-enabling-and-disabling-dns-over-https">get started</a>.</p>
-	<p>Once enabled, navigate to Preferences -&gt; General -&gt; Network Security and select ‘Settings’. Scroll to the section ‘Enable DNS over HTTPS’, select ‘Custom’ and input your Gateway DoH address, as shown below:</p>
+	<p>Once enabled, navigate to Preferences → General → Network Security and select ‘Settings’. Scroll to the section ‘Enable DNS over HTTPS’, select ‘Custom’ and input your Gateway DoH address, as shown below:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2R4NdeknrFbnlvJs3vdB5B/79a0f48c9be1db182c1595ae19d180b4/5.png" alt="" class="kg-image" width="1702" height="580" loading="lazy">
@@ -109,11 +197,11 @@
 			<p>Raspberry Pi with WiFi or Ethernet connectivity</p>
 		</li>
 	</ul>
-	<p>There aren't any consumer routers on the market that natively support DoH custom servers and likely few that natively support DoH at all. A newer router I purchased, the Netgear R7800, does not support either, but it is one of the most popular routers for flashing <a href="https://dd-wrt.com">dd-wrt</a> or <a href="https://openwrt.org">open-wrt</a>, which both support DoH. Unfortunately, neither of these popular firmwares support custom servers.</p>
+	<p>There aren't any consumer routers on the market that natively support DoH custom servers and likely few that natively support DoH at all. A newer router I purchased, the Netgear R7800, does not support either, but it is one of the most popular routers for flashing <a href="https://dd-wrt.com">dd-wrt</a> or <a href="https://openwrt.org">open-wrt</a>, which both support DoH. Unfortunately, neither of these popular firm wares support custom servers.</p>
 	<p>While it’s rare to find a router that supports DoH out of the box, DoH with custom servers, or has potential to be flashed, it’s common for a router to support DHCP forwarding (dd-wrt and open-wrt both support DHCP forwarding). So, I installed Pi-hole on my Raspberry Pi and used it as my home network’s DNS and DHCP server.</p>
 	<h4>Getting started with Pi-hole and dnscrypt-proxy</h4>
 	<p>If your Raspberry Pi is new and hasn’t been configured yet, follow their <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">guide</a> to get started. (Note: by default, <a href="https://www.raspberrypi.org/documentation/remote-access/ssh">ssh is disabled</a>, so you will need a keyboard and/or mouse to access your box in your terminal.)</p>
-	<p>Once your Raspberry Pi has been initialized, assign it a static IP address in the same network as your router. I hardcoded my router's LAN address to <code>192.168.1.2</code></p>
+	<p>Once your Raspberry Pi has been initialized, assign it a static IP address in the same network as your router. I hard-coded my router's LAN address to <code>192.168.1.2</code></p>
 	<p>Using vim:<code>sudo vi /etc/dhcpcd.conf</code></p>
 	<figure class="kg-card kg-image-card ">
 
@@ -130,7 +218,7 @@
 	<p>Now that your Raspberry Pi is configured, we need to install Pi-hole: <a href="https://github.com/pi-hole/pi-hole/#one-step-automated-install">https://github.com/pi-hole/pi-hole/#one-step-automated-install</a></p>
 	<p>I chose to use <a href="https://github.com/DNSCrypt/dnscrypt-proxy">dnscrypt-proxy</a> as the local service that Pi-hole will use to forward all DNS queries. You can find the latest version <a href="https://github.com/DNSCrypt/dnscrypt-proxy/releases">here</a>.</p>
 	<p>To install dnscrypt-proxy on your pi-hole, follow these steps:</p>
-	<p><code>wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.39/dnscrypt-proxy-linux_arm-2.0.39.tar.gz</code><code>tar -xf dnscrypt-proxy-linux_arm-2.0.39.tar.gz</code><code>mv linux-arm dnscrypt-proxy</code><code>cd dnscrypt-proxy</code><code>cp example-dnscrypt-proxy.toml dnscrypt-proxy.toml</code></p>
+	<p><code>wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.39/dnscrypt-proxy-linux_arm-2.0.39.tar.gztar -xf dnscrypt-proxy-linux_arm-2.0.39.tar.gzmv linux-arm dnscrypt-proxycd dnscrypt-proxycp example-dnscrypt-proxy.toml dnscrypt-proxy.toml</code></p>
 	<p>Next step is to build a DoH stamp. A <a href="https://dnscrypt.info/stamps">stamp</a> is simply an encoded DNS address that encodes your DoH server and other options.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -158,7 +246,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PLyDvqCgFY4d0kO0vB2KZ/360809e390de37d4bc7734da088f68fe/10.png" alt="" class="kg-image" width="1536" height="262" loading="lazy">
 
 	</figure>
-	<p>Also in <code>dnscrypt-proxy.toml</code> configuration file, update the following settings:<code>server_names = ['gateway']</code><code>listen_addresses = ['127.0.0.1:5054']</code><code>fallback_resolvers = ['1.1.1.1:53', '1.0.0.1:53']</code><code>cache = false</code></p>
+	<p>Also in <code>dnscrypt-proxy.toml</code> configuration file, update the following settings:<code>server_names = ['gateway']listen_addresses = ['127.0.0.1:5054']fallback_resolvers = ['1.1.1.1:53', '1.0.0.1:53']cache = false</code></p>
 	<p>Now we need to install dnscrypt-proxy as a service and configure Pi-hole to point to the <code>listen_addresses</code> defined above.</p>
 	<p>Install dnscrypt-proxy as a service:<code>sudo ./dnscrypt-proxy -service install</code></p>
 	<p>Start the service:<code>sudo ./dnscrypt-proxy -service start</code></p>
@@ -195,21 +283,21 @@
 	</figure>
 	<p>Change the upstream server to <code>127.0.0.1#5054</code> and hit save. According to Pi-hole's <a href="https://docs.pi-hole.net/ftldns/dns-resolver">forward destination determination</a> algorithm, the fastest upstream DNS server is chosen. Therefore, if you want to deploy redundancy, it has to be done in the DNSCrypt configuration.</p>
 	<p>Almost done!</p>
-	<p>In Settings-&gt;DHCP, enable the DHCP server:</p>
+	<p>In Settings→DHCP, enable the DHCP server:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41Av4X5OMI6Y9NSbdcnwEs/3541123fb9ed7c6505cc5356437bdbb3/16.png" alt="" class="kg-image" width="1988" height="822" loading="lazy">
 
 	</figure>
 	<p>Hit save.</p>
-	<p>At this point, your Pi-hole server is running in isolation and we need to deploy it to your network. The simplest way to ensure your Pi-hole is being used exclusively by every device is to use your Pi-hole as both a DNS server and a DHCP server. I’ve found that routers behave oddly if you outsource DNS but not DHCP, so I outsource both.</p>
+	<p>At this point, your Pi-hole server is running in isolation, and we need to deploy it to your network. The simplest way to ensure your Pi-hole is being used exclusively by every device is to use your Pi-hole as both a DNS server and a DHCP server. I’ve found that routers behave oddly if you outsource DNS but not DHCP, so I outsource both.</p>
 	<p>After I enabled the DHCP server on the Pi-hole, I set the router’s configuration to DHCP forwarding and defined the Pi-hole static address:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2d3YZJ6ZNT4WxfyW0PgOI6/7daed00420fbfe92f043fe4e7e9d6a67/17.png" alt="" class="kg-image" width="990" height="858" loading="lazy">
 
 	</figure>
-	<p>After applying the routers configuration, I confirmed it was working properly by forgetting the network in my network settings and re-joining. This results in a new IPv4 address (from our new DHCP server) and if all goes well, a new DNS server (the IP of Pi-hole).</p>
+	<p>After applying the routers' configuration, I confirmed it was working properly by forgetting the network in my network settings and re-joining. This results in a new IPv4 address (from our new DHCP server) and if all goes well, a new DNS server (the IP of Pi-hole).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68h97XSNWbUYIJfngnm87K/1058280247a7142e69c8de457ff17b91/18.png" alt="" class="kg-image" width="854" height="344" loading="lazy">
@@ -235,5 +323,5 @@
 			</svg>
 		</a>
 	</div>
-	<p>In this blog post, we've discussed the various ways Gateway can be deployed and how encrypted DNS is one of the next big Internet privacy improvements. Deploying Gateway can be done on a per device basis, on your router or even with a Raspberry Pi.</p>
+	<p>In this blog post, we've discussed the various ways Gateway can be deployed and how encrypted DNS is one of the next big Internet privacy improvements. Deploying Gateway can be done on a per-device basis, on your router or even with a Raspberry Pi.</p>
 </div>

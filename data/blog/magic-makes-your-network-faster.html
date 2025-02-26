@@ -59,26 +59,78 @@
 	<p>The answer lies in Cloudflare’s network architecture — our web of connectivity to the rest of the Internet. Cloudflare has invested heavily in building one of the world’s most <a href="https://www.peeringdb.com/net/4224">interconnected networks</a> (9800 interconnections and counting, including with major ISPs, cloud services, and enterprises). We’re also continuing to grow our own <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">private backbone</a> and giving customers the ability to <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">directly connect with us</a>. And our expansive connectivity to <a href="https://blog.cloudflare.com/last-mile-insights">last mile</a> providers means we’re just milliseconds away from the source of all your network traffic, regardless of where in the world your users or employees are.</p>
 	<p>This toolkit of varying connectivity options means traffic routed through the Cloudflare network is often meaningfully faster than paths across the public Internet alone, because more options available for <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> path selection mean increased ability to choose more performant routes. Imagine having only one possible path between your house and the grocery store versus ten or more - chances are, adding more options means better alternatives will be available. A cornucopia of connectivity methods also means more resiliency: if there’s an issue on one of the paths (like construction happening on what is usually the fastest street), we can easily route around it to avoid impact to your traffic.</p>
 	<p>One common comparison customers are interested in is latency for inbound traffic. From the end user perspective, does routing through Cloudflare speed up or slow down traffic to networks protected by Magic Transit? Our response: let’s test it out and see! We’ve repeatedly compared Magic Transit vs standard Internet performance for customer networks across geographies and industries and consistently seen really exciting results. Here’s an example from one recent test where we used third-party probes to measure the ping time to the same customer network location (their data center in Qatar) before and after onboarding with Magic Transit:</p>
-	<p>Probe location</p>
-	<p>RTT w/o Magic (ms)</p>
-	<p>RTT w/ Magic (ms)</p>
-	<p>Difference (ms)</p>
-	<p>Difference (% improvement)</p>
-	<p>Dubai</p>
-	<p>27</p>
-	<p>23</p>
-	<p>4</p>
-	<p>13%</p>
-	<p>Marseille</p>
-	<p>202</p>
-	<p>188</p>
-	<p>13</p>
-	<p>7%</p>
-	<p>Global (results averaged across 800+ distributed probes)</p>
-	<p>194</p>
-	<p>124</p>
-	<p>70</p>
-	<p>36%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Probe location</p>
+				</td>
+				<td>
+					<p>RTT w/o Magic (ms)</p>
+				</td>
+				<td>
+					<p>RTT w/ Magic (ms)</p>
+				</td>
+				<td>
+					<p>Difference (ms)</p>
+				</td>
+				<td>
+					<p>Difference (% improvement)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Dubai</p>
+				</td>
+				<td>
+					<p>27</p>
+				</td>
+				<td>
+					<p>23</p>
+				</td>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>13%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Marseille</p>
+				</td>
+				<td>
+					<p>202</p>
+				</td>
+				<td>
+					<p>188</p>
+				</td>
+				<td>
+					<p>13</p>
+				</td>
+				<td>
+					<p>7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Global (results averaged across 800+ distributed probes)</p>
+				</td>
+				<td>
+					<p>194</p>
+				</td>
+				<td>
+					<p>124</p>
+				</td>
+				<td>
+					<p>70</p>
+				</td>
+				<td>
+					<p>36%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>All of these results were collected <i>without</i> the use of Argo Smart Routing for Packets, which we announced on Tuesday. Early data indicates that networks using Smart Routing will see even more substantial gains.</p>
 	<div class="flex anchor relative">
 		<h3 id="modern-architecture-eliminates-traffic-trombones">Modern architecture eliminates traffic trombones</h3>
@@ -114,7 +166,42 @@
 
 	</figure>
 	<p>Here’s a summary of results from performance tests on this example network demonstrating the difference between the traditional hub and spoke setup and the Magic “global hub” — we saw up to 70% improvement in these tests, demonstrating the dramatic impact this architecture shift can make.</p>
-	<p>| | LAX &lt;&gt; OR (ms) ||--------|-----------|-----------|-----------|-----------|| <b>ICMP round-trip for “Regular” (hub and spoke) WAN</b> | 127 || <b>ICMP round-trip for Magic WAN</b> | 38 || <b>Latency savings for Magic WAN vs “Regular” WAN</b> | 70% |</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>LAX &lt;&gt; OR (ms)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ICMP round-trip for “Regular” (hub and spoke) WAN</b></p>
+				</td>
+				<td>
+					<p>127</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ICMP round-trip for Magic WAN</b></p>
+				</td>
+				<td>
+					<p>38</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Latency savings for Magic WAN vs “Regular” WAN</b></p>
+				</td>
+				<td>
+					<p>70%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>This effect can be amplified for networks with globally distributed locations — imagine the benefits for customers who are used to delays from backhauling traffic between different regions across the world.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-smarter">Getting smarter</h3>
@@ -144,4 +231,5 @@
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/233e1b1e7b7aae7dce341bf1d9fd5c82?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>
