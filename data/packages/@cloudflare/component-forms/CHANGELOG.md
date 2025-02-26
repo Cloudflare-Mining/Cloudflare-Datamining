@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.40
+
+### Patch Changes
+
+- Updated dependencies [d6c0e18b95]
+  - @cloudflare/component-select-2@7.1.16
+
 ## 6.1.39
 
 ### Patch Changes

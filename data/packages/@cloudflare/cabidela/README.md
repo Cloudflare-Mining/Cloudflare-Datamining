@@ -4,7 +4,6 @@
   </a>
 </div>
 
-
 <p align="center">
     <em>Small, fast, eval-less, <a href="https://developers.cloudflare.com/workers/">Cloudflare Workers</a> compatible, dynamic JSON Schema validator.</em>
 </p>
@@ -136,6 +135,51 @@ console.log(payload);
 
 ```
 
+### oneOf defaults
+
+Using `applyDefaults` with `oneOf` will one apply the default value of the sub-schema that matches the condition. For
+example, using this schema:
+
+```javascript
+  {
+    type: "object",
+    oneOf: [
+      {
+        type: "object",
+        properties: {
+          sun: {
+            type: "number",
+            default: 9000,
+          },
+          moon: {
+            type: "number",
+            default: 9000,
+          },
+        },
+        required: ["sun"],
+      },
+      {
+        type: "object",
+        properties: {
+          sun: {
+            type: "number",
+            default: 9000,
+          },
+          moon: {
+            type: "number",
+            default: 9000,
+          },
+        },
+        required: ["moon"],
+      },
+    ],
+  };
+```
+
+- The payload `{ sun: 10}` will be modified to `{ sun: 10, moon: 9000 }`.
+- The payload `{ moon: 10}` will be modified to `{ sun: 9000, moon: 10 }`.
+- The payload `{ saturn: 10}` will throw an error because no condition is met.
+
 ## Custom errors
 
 If the new instance options has the  `errorMessages` flag set to true, you can use the property `errorMessage` in the schema to define custom error messages.
@@ -160,7 +204,7 @@ const payload = {
 
 cabidela.validate(payload);
 // throws "Error: prompt required"
-```
+````
 
 ## Tests
 
@@ -236,7 +280,6 @@ We use Vitest's [bench](https://vitest.dev/api/#bench) feature to run the benchm
 npm run benchmark
 ```
 
-
 ## Current limitations
 
 Cabidela supports most of JSON Schema specification, and should be useful for many applications, but it's not complete. **Currently** we do not support:
@@ -249,4 +292,3 @@ Cabidela supports most of JSON Schema specification, and should be useful for ma
 - `$ref`, `$defs` and `$id`
 
 yet.
-

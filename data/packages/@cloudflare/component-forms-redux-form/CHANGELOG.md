@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.52
+
+### Patch Changes
+
+- @cloudflare/component-forms@6.1.40
+
 ## 6.0.51
 
 ### Patch Changes
