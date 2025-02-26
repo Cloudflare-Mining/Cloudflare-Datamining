@@ -351,9 +351,6 @@
 	"cloudflare-calls": {
 		"enabled": false
 	},
-	"cni-self-service-cloud-google": {
-		"enabled": true
-	},
 	"combined-add-site-page-with-dns-transfer-options": {
 		"enabled": true,
 		"branches": [
@@ -934,6 +931,9 @@
 	"magic-cf-site": {
 		"enabled": true
 	},
+	"magic-cni-self-service-cloud-google": {
+		"enabled": true
+	},
 	"magic-firewall-rate-limit": {
 		"enabled": true
 	},
@@ -1099,6 +1099,13 @@
 		]
 	},
 	"prg-atm-result-on-argo-page": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-banner-color-experiment": {
 		"enabled": false,
 		"branches": [
 			"baseline",
