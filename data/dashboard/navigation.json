@@ -510,9 +510,6 @@
 				{
 					"title": "navigation.account.workers.containers",
 					"url": "/workers/containers",
-					"labels": [
-						"beta"
-					],
 					"hasPermission": null
 				},
 				{
@@ -620,12 +617,6 @@
 					"title": "navigation.account.workers.queues",
 					"url": "/workers/queues",
 					"testId": "sidenav-queues-link"
-				},
-				{
-					"title": "navigation.account.workers.clipboard",
-					"url": "/workers/clipboards",
-					"testId": "sidenav-clipboard-link",
-					"hasPermission": null
 				}
 			]
 		},
@@ -1106,12 +1097,6 @@
 					"title": "navigation.zone.security.asset_management",
 					"navigationType": "version",
 					"url": "/security/application-mapping",
-					"hasPermission": null
-				},
-				{
-					"title": "navigation.zone.security_rules",
-					"navigationType": "version",
-					"url": "/security/security-rules",
 					"hasPermission": null
 				},
 				{
