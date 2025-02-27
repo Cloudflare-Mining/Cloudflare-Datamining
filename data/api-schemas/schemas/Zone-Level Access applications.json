@@ -1447,7 +1447,8 @@
 																					"client_secret": {
 																						"description": "The application client secret, only returned on POST request.",
 																						"example": "oidc client secret",
-																						"type": "string"
+																						"type": "string",
+																						"x-sensitive": true
 																					},
 																					"created_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
@@ -5789,7 +5790,8 @@
 																				"client_secret": {
 																					"description": "The application client secret, only returned on POST request.",
 																					"example": "oidc client secret",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -10368,7 +10370,8 @@
 															"client_secret": {
 																"description": "The application client secret, only returned on POST request.",
 																"example": "oidc client secret",
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -14558,7 +14561,8 @@
 																						"client_secret": {
 																							"description": "The application client secret, only returned on POST request.",
 																							"example": "oidc client secret",
-																							"type": "string"
+																							"type": "string",
+																							"x-sensitive": true
 																						},
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -18675,7 +18679,8 @@
 																				"client_secret": {
 																					"description": "The application client secret, only returned on POST request.",
 																					"example": "oidc client secret",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -23115,7 +23120,8 @@
 															"client_secret": {
 																"description": "The application client secret, only returned on POST request.",
 																"example": "oidc client secret",
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -27305,7 +27311,8 @@
 																						"client_secret": {
 																							"description": "The application client secret, only returned on POST request.",
 																							"example": "oidc client secret",
-																							"type": "string"
+																							"type": "string",
+																							"x-sensitive": true
 																						},
 																						"created_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -31422,7 +31429,8 @@
 																				"client_secret": {
 																					"description": "The application client secret, only returned on POST request.",
 																					"example": "oidc client secret",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"created_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",

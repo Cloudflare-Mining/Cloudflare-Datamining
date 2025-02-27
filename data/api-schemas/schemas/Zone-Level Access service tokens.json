@@ -950,7 +950,8 @@
 												"client_secret": {
 													"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
 													"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
