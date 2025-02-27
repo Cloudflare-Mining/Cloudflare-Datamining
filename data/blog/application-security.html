@@ -56,7 +56,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare proxies ~32 million HTTP requests per second on average, with more than ~44 million HTTP requests per second at peak. Overall, ~2.5 million requests per second are mitigated by our global network and never reach our caches or the origin servers, ensuring our customers’ bandwidth and compute power is only used for clean traffic.</p>
+	<p>Cloudflare's proxies ~32 million HTTP requests per second on average, with more than ~44 million HTTP requests per second at peak. Overall, ~2.5 million requests per second are mitigated by our global network and never reach our caches or the origin servers, ensuring our customers’ bandwidth and compute power is only used for clean traffic.</p>
 	<p>Site owners using Cloudflare gain access to tools to mitigate unwanted or malicious traffic and allow access to their applications only when a request is deemed clean. This can be done both using fully managed features, such as our <a href="https://www.cloudflare.com/ddos">DDoS mitigation</a>, <a href="https://www.cloudflare.com/waf">WAF</a> managed ruleset or schema validation, as well as custom rules that allow users to define their own filters for blocking traffic.</p>
 	<p>If we look at the top five Cloudflare features (sources) that mitigated traffic, we get a clear picture of how much each Cloudflare feature is contributing towards helping keep customer sites and applications online and secure:</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,20 +64,58 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GWHpYk7S1KnFnbZZ6vYx2/c391a8d56983ccc3dac9595edad660a7/image7-1.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
-	<p>Tabular format for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Source</p>
-	<p>Percentage %</p>
-	<p>Layer 7 DDoS mitigation</p>
-	<p>66.0%</p>
-	<p>Custom WAF Rules</p>
-	<p>19.0%</p>
-	<p>Rate Limiting</p>
-	<p>10.5%</p>
-	<p>IP Threat Reputation</p>
-	<p>2.5%</p>
-	<p>Managed WAF Rules</p>
-	<p>1.5%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Source</b></p>
+				</td>
+				<td>
+					<p><b>Percentage %</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Layer 7 DDoS mitigation</p>
+				</td>
+				<td>
+					<p>66.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Custom WAF Rules</p>
+				</td>
+				<td>
+					<p>19.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Rate Limiting</p>
+				</td>
+				<td>
+					<p>10.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>IP Threat Reputation</p>
+				</td>
+				<td>
+					<p>2.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Managed WAF Rules</p>
+				</td>
+				<td>
+					<p>1.5%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Looking at each mitigation source individually:</p>
 	<ul>
 		<li>
@@ -107,19 +145,58 @@
 	<p>If we drill into Managed WAF Rules, we get a clear picture of what type of attack vectors malicious users are attempting against the Internet properties we protect.</p>
 	<p>The vast majority (over 54%) of HTTP requests blocked by our Managed WAF Rules contain HTTP anomalies, such as malformed method names, null byte characters in headers, non-standard ports or content length of zero with a <code>POST</code> request.</p>
 	<p>Common attack types in this category are shown below. These have been grouped when relevant:</p>
-	<p>table { width: 100%; }</p>
-	<p>Rule Type</p>
-	<p>Description</p>
-	<p>Missing User Agent</p>
-	<p>These rules will block any request without a <code>User-Agent</code> header. All browsers and legitimate crawlers present this header when connecting to a site. Not having a user agent is a common signal of a malicious request.</p>
-	<p>Not <code>GET</code>, <code>POST</code> or <code>HEAD</code> Method</p>
-	<p>Most applications only allow standard <code>GET</code> or <code>POST</code> requests (normally used for viewing pages or submitting forms). <code>HEAD</code> requests are also often sent from browsers for security purposes. Customers using our Managed Rules can easily block any other method - which normally results in blocking a large number of vulnerability scanners.</p>
-	<p>Missing Referer</p>
-	<p>When users navigate applications, browsers use the <code>Referer</code> header to indicate where they are coming from. Some applications expect this header to always be present.</p>
-	<p>Non-standard port</p>
-	<p>Customers can configure Cloudflare Managed Rules to block HTTP requests trying to access non-standard ports (such as 80 and 443). This is activity normally seen by vulnerability scanners.</p>
-	<p>Invalid UTF-8 encoding</p>
-	<p>It is common for attackers to attempt to break an application server by sending “special” characters that are not valid in UTF-8 encoding.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Rule Type</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Missing User Agent</p>
+				</td>
+				<td>
+					<p>These rules will block any request without a <code>User-Agent </code>header. All browsers and legitimate crawlers present this header when connecting to a site. Not having a user agent is a common signal of a malicious request.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Not <code>GET</code>, ⁣<code>POST </code>or <code>HEAD </code>Method</p>
+				</td>
+				<td>
+					<p>Most applications only allow standard <code>GET </code>or <code>POST </code>requests (normally used for viewing pages or submitting forms). <code>HEAD </code>requests are also often sent from browsers for security purposes. Customers using our Managed Rules can easily block any other method - which normally results in blocking a large number of vulnerability scanners.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Missing Referer</p>
+				</td>
+				<td>
+					<p>When users navigate applications, browsers use the <code>Referer </code>header to indicate where they are coming from. Some applications expect this header to always be present.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Non-standard port</p>
+				</td>
+				<td>
+					<p>Customers can configure Cloudflare Managed Rules to block HTTP requests trying to access non-standard ports (such as 80 and 443). This is activity normally seen by vulnerability scanners.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Invalid UTF-8 encoding</p>
+				</td>
+				<td>
+					<p>It is common for attackers to attempt to break an application server by sending “special” characters that are not valid in UTF-8 encoding.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>More commonly known and referenced attack vectors such as <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting">XSS</a> and SQLi only contribute to about 13% of total mitigated requests. More interestingly, attacks aimed at information disclosure are third most popular (10%) and software-specific CVE-based attacks account for about 12% of mitigated requests (more than SQLi alone) highlighting both the importance of needing to patch software quickly, and the likelihood of CVE proof-of-concepts (PoCs) being used to compromise applications, such as with the recent <a href="https://blog.cloudflare.com/tag/log4j">Log4J</a> vulnerability. The top 10 attack vectors by percentage of mitigated requests are shown below:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -127,29 +204,98 @@
 
 	</figure>
 	<p>Tabular format for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Source</p>
-	<p>Percentage %</p>
-	<p>HTTP Anomaly</p>
-	<p>54.5%</p>
-	<p>Vendor Specific CVE</p>
-	<p>11.8%</p>
-	<p>Information Disclosure</p>
-	<p>10.4%</p>
-	<p>SQLi</p>
-	<p>7.0%</p>
-	<p>XSS</p>
-	<p>6.1%</p>
-	<p>File Inclusion</p>
-	<p>3.3%</p>
-	<p>Fake Bots</p>
-	<p>3.0%</p>
-	<p>Command Injection</p>
-	<p>2.7%</p>
-	<p>Open Redirects</p>
-	<p>0.1%</p>
-	<p>Other</p>
-	<p>1.5%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Source</b></p>
+				</td>
+				<td>
+					<p><b>Percentage %</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>HTTP Anomaly</p>
+				</td>
+				<td>
+					<p>54.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vendor Specific CVE</p>
+				</td>
+				<td>
+					<p>11.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Information Disclosure</p>
+				</td>
+				<td>
+					<p>10.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SQLi</p>
+				</td>
+				<td>
+					<p>7.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>XSS</p>
+				</td>
+				<td>
+					<p>6.1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>File Inclusion</p>
+				</td>
+				<td>
+					<p>3.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fake Bots</p>
+				</td>
+				<td>
+					<p>3.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Command Injection</p>
+				</td>
+				<td>
+					<p>2.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Open Redirects</p>
+				</td>
+				<td>
+					<p>0.1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Other</p>
+				</td>
+				<td>
+					<p>1.5%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="businesses-still-rely-on-ip-address-based-access-lists-to-protect-their-assets">Businesses still rely on IP address-based access lists to protect their assets</h3>
 		<a href="https://blog.cloudflare.com/#businesses-still-rely-on-ip-address-based-access-lists-to-protect-their-assets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -168,29 +314,98 @@
 
 	</figure>
 	<p>Tabular format for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Field name</p>
-	<p>Used in % of rules</p>
-	<p>ip</p>
-	<p>64.9%</p>
-	<p>ip_geoip_country</p>
-	<p>27.3%</p>
-	<p>http_request_uri</p>
-	<p>24.1%</p>
-	<p>http_user_agent</p>
-	<p>21.8%</p>
-	<p>http_request_uri_path</p>
-	<p>17.8%</p>
-	<p>http_referer</p>
-	<p>8.6%</p>
-	<p>cf_client_bot</p>
-	<p>8.3%</p>
-	<p>http_host</p>
-	<p>7.8%</p>
-	<p>ip_geoip_asnum</p>
-	<p>5.8%</p>
-	<p>cf_threat_score</p>
-	<p>4.4%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Field name</b></p>
+				</td>
+				<td>
+					<p><b>Used in % of rules</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ip</p>
+				</td>
+				<td>
+					<p>64.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ip_geoip_country</p>
+				</td>
+				<td>
+					<p>27.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>http_request_uri</p>
+				</td>
+				<td>
+					<p>24.1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>http_user_agent</p>
+				</td>
+				<td>
+					<p>21.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>http_request_uri_path</p>
+				</td>
+				<td>
+					<p>17.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>http_referer</p>
+				</td>
+				<td>
+					<p>8.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf_client_bot</p>
+				</td>
+				<td>
+					<p>8.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>http_host</p>
+				</td>
+				<td>
+					<p>7.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ip_geoip_asnum</p>
+				</td>
+				<td>
+					<p>5.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf_threat_score</p>
+				</td>
+				<td>
+					<p>4.4%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Beyond IP addresses, standard HTTP request fields (<code>URI</code>, <code>User-Agent</code>, <code>Path</code>, <code>Referer</code>) tend to be the most popular. Note, also, that across the entire rule corpus, the average rule combines at least three independent fields.</p>
 	<div class="flex anchor relative">
 		<h2 id="bot-traffic-insights">Bot Traffic Insights</h2>
@@ -217,19 +432,58 @@
 
 	</figure>
 	<p>Tabular data for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Action on all bot traffic</p>
-	<p>Percentage %</p>
-	<p>allow</p>
-	<p>40.9%</p>
-	<p>log</p>
-	<p>31.9%</p>
-	<p>bypass</p>
-	<p>19.0%</p>
-	<p>block</p>
-	<p>6.4%</p>
-	<p>jschallenge</p>
-	<p>0.5%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Action on all bot traffic</b></p>
+				</td>
+				<td>
+					<p><b>Percentage %</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>allow</p>
+				</td>
+				<td>
+					<p>40.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>log</p>
+				</td>
+				<td>
+					<p>31.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>bypass</p>
+				</td>
+				<td>
+					<p>19.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>block</p>
+				</td>
+				<td>
+					<p>6.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>jschallenge</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="more-than-a-third-of-non-verified-bot-http-traffic-is-mitigated">More than a third of non-verified bot HTTP traffic is mitigated</h3>
 		<a href="https://blog.cloudflare.com/#more-than-a-third-of-non-verified-bot-http-traffic-is-mitigated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -245,19 +499,58 @@
 
 	</figure>
 	<p>Tabular data for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Action on non-verified bot traffic</p>
-	<p>Percentage %</p>
-	<p>block</p>
-	<p>34.0%</p>
-	<p>log</p>
-	<p>28.6%</p>
-	<p>allow</p>
-	<p>14.5%</p>
-	<p>bypass</p>
-	<p>13.2%</p>
-	<p>managed_challenge</p>
-	<p>3.7%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Action on non-verified bot traffic</b></p>
+				</td>
+				<td>
+					<p><b>Percentage %</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>block</p>
+				</td>
+				<td>
+					<p>34.0%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>log</p>
+				</td>
+				<td>
+					<p>28.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>allow</p>
+				</td>
+				<td>
+					<p>14.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>bypass</p>
+				</td>
+				<td>
+					<p>13.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>managed_challenge</p>
+				</td>
+				<td>
+					<p>3.7%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>You’ll notice that almost 30% of customers log traffic rather than take immediate action. We find that many enterprise customers choose to not immediately block bot traffic, so they don’t give a feedback signal to attackers. Rather, they prefer to tag and monitor this traffic, and either drop at a later time or redirect to alternate content. As targeted attack vectors have evolved, responses to those attacks have had to evolve and become more sophisticated as well. Additionally, nearly 3% of non-verified bot traffic is automatically mitigated by our DDoS protection (<code>connection_close</code>). These requests tend to be part of botnets used to attack customer applications.</p>
 	<div class="flex anchor relative">
 		<h2 id="api-traffic-insights">API Traffic Insights</h2>
@@ -297,29 +590,98 @@
 
 	</figure>
 	<p>Tabular data for reference:</p>
-	<p>table { width: 100%; }</p>
-	<p>Source</p>
-	<p>Percentage %</p>
-	<p>SQLi</p>
-	<p>34.5%</p>
-	<p>HTTP Anomaly</p>
-	<p>18.2%</p>
-	<p>Vendor Specific CVE</p>
-	<p>14.5%</p>
-	<p>Command Injection</p>
-	<p>14.3%</p>
-	<p>XSS</p>
-	<p>7.3%</p>
-	<p>Fake Bots</p>
-	<p>5.8%</p>
-	<p>File Inclusion</p>
-	<p>2.3%</p>
-	<p>Deserialization</p>
-	<p>1.2%</p>
-	<p>Information Disclosure</p>
-	<p>0.6%</p>
-	<p>Other</p>
-	<p>1.3%</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Source</b></p>
+				</td>
+				<td>
+					<p><b>Percentage %</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SQLi</p>
+				</td>
+				<td>
+					<p>34.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>HTTP Anomaly</p>
+				</td>
+				<td>
+					<p>18.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vendor Specific CVE</p>
+				</td>
+				<td>
+					<p>14.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Command Injection</p>
+				</td>
+				<td>
+					<p>14.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>XSS</p>
+				</td>
+				<td>
+					<p>7.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fake Bots</p>
+				</td>
+				<td>
+					<p>5.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>File Inclusion</p>
+				</td>
+				<td>
+					<p>2.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Deserialization</p>
+				</td>
+				<td>
+					<p>1.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Information Disclosure</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Other</p>
+				</td>
+				<td>
+					<p>1.3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h2 id="looking-ahead">Looking ahead</h2>
 		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">

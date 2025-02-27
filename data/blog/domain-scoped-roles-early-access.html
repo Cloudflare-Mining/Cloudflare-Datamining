@@ -77,7 +77,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In addition to manually creating inclusion or exclusion lists per user, account owners can also create Domain Groups to allow granting one or more users to a group of domains. Domain Groups can be created from the member invite flow or directly from Account Configurations -&gt; <a href="https://dash.cloudflare.com/?account=configurations%2Flists">Lists</a>. When creating a domain group, the user selects the domains to include and, from that point on, the group can be used when inviting a user to the account.</p>
+	<p>In addition to manually creating inclusion or exclusion lists per user, account owners can also create Domain Groups to allow granting one or more users to a group of domains. Domain Groups can be created from the member invite flow or directly from Account Configurations → <a href="https://dash.cloudflare.com/?account=configurations%2Flists">Lists</a>. When creating a domain group, the user selects the domains to include and, from that point on, the group can be used when inviting a user to the account.</p>
 	<h4>Domain Group Creation Screen</h4>
 	<figure class="kg-card kg-image-card ">
 
@@ -101,24 +101,89 @@
 	<p>Domain Scoped Roles is possible because of a new permission system called Bach. Bach provides a policy based system for defining authorization to Cloudflare’s control plane. Authorization defines what someone can do in a system. Bach has been powering API Tokens, but going forward all authorization will use Bach. This gives customers the ability to define more granular permissions and resource scoping. Resources can be any object a user interacts with whether that be accounts, zones, worker environments, or DNS records to name a few.. Whereas before Cloudflare’s <a href="https://blog.cloudflare.com/domain-scoped-roles-early-access/edit">RBAC system</a> relied on assigning a set of roles in which each role defined broad permissions that applied to an entire account, Bach’s policies allow for deeper permission grants that can be scoped to sets of resources.</p>
 	<p>Let’s take a look at the legacy system and how it compares to what Bach supports. Typically, user’s permissions are defined by the ‘roles’ that they are assigned to. These included: ‘Super Administrator’, ‘Administrator’, ‘Cloudflare for Teams’, and ‘Cloudflare Workers Admin’ to name a few. In the legacy system, each of these maps to an explicit set of simple permissions like ‘workers:read’, ‘workers:edit’ or ‘zones:edit’. When requests get made either via the Cloudflare API or the Cloudflare dashboard, Cloudflare’s API Gateway would check to see if, for the endpoint requested, an actor had the correct permissions to perform the action. In order to change a zone setting, the actor would need to have the ‘zone:edit’ permission – which could be granted from one of many roles. Below is what a user with only ‘DNS’ permissions is granted in the legacy system:</p>
 	<h4>Legacy DNS User Role Permissions</h4>
-	<p>Permission</p>
-	<p>Edit</p>
-	<p>Read</p>
-	<p>dns_records</p>
-	<p>✔</p>
-	<p>✔</p>
-	<p>legal</p>
-	<p>✔</p>
-	<p>account</p>
-	<p>✔</p>
-	<p>subscription</p>
-	<p>✔</p>
-	<p>zone</p>
-	<p>✔</p>
-	<p>zone_settings</p>
-	<p>✔</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Permission</b></p>
+				</td>
+				<td>
+					<p><b>Edit</b></p>
+				</td>
+				<td>
+					<p><b>Read</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>dns_records</p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>legal</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>account</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>subscription</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>zone</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>zone_settings</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>✔</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>While straightforward, this had many drawbacks. First, this meant the inability to define limits on the resources the permissions applied to, whether that be a set of resources or attributes of resources. Second, permissions for a given ‘resource’ were simply read or edit, where edit included creating and deleting. These don’t fully capture the needs that may exist – for example, limiting deletions while allowing edits.</p>
-	<p>With Bach we have an expanded capability to define granular permissions for authorization. An example policy defining the aforementioned ‘DNS’ member’s access would look like this:</p>
+	<p>With Bach, we have an expanded capability to define granular permissions for authorization. An example policy defining the aforementioned ‘DNS’ member’s access would look like this:</p>
 	<div class="flex anchor relative">
 		<h3 id="bach-dns-user-role-policy">Bach DNS User Role Policy</h3>
 		<a href="https://blog.cloudflare.com/#bach-dns-user-role-policy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -253,5 +318,5 @@ policies:
 			</svg>
 		</a>
 	</div>
-	<p>If you are an enterprise customer and interested in getting started with Domain Scoped Roles, please contact your CSM to get enabled for the Early Access period. This announcement represents a significant milestone in our migration to Bach, an authorization system built for Coudflare’s scale. This will allow us to expand these same capabilities to more products in the future and to create an authorization system that puts customers more in control of their team’s access across all of Cloudflare’s services. Stay tuned as we are just getting started!</p>
+	<p>If you are an enterprise customer and interested in getting started with Domain Scoped Roles, please contact your CSM to get enabled for the Early Access period. This announcement represents a significant milestone in our migration to Bach, an authorization system built for Cloudflare’s scale. This will allow us to expand these same capabilities to more products in the future and to create an authorization system that puts customers more in control of their team’s access across all of Cloudflare’s services. Stay tuned as we are just getting started!</p>
 </div>

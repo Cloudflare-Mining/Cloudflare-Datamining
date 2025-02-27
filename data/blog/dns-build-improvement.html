@@ -129,28 +129,98 @@
 	</figure>
 	<p>From there, our records are propagated to our global network through Quicksilver.</p>
 	<p>The 150x improvement above is with respect to averages, but what about that 4000x that I mentioned at the start? As you can imagine, as the size of the zone increases, the difference between full build time and per-record build time also increases. I used a test zone of one million records and ran several per-record builds, followed by several full builds. The results are shown in the table below:</p>
-	<p>Build Type</p>
-	<p>Build Time (ms)</p>
-	<p>Per Record #1</p>
-	<p>6</p>
-	<p>Per Record #2</p>
-	<p>7</p>
-	<p>Per Record #3</p>
-	<p>6</p>
-	<p>Per Record #4</p>
-	<p>8</p>
-	<p>Per Record #5</p>
-	<p>6</p>
-	<p>Full #1</p>
-	<p>34032</p>
-	<p>Full #2</p>
-	<p>33953</p>
-	<p>Full #3</p>
-	<p>34271</p>
-	<p>Full #4</p>
-	<p>34121</p>
-	<p>Full #5</p>
-	<p>34093</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Build Type</b></p>
+				</td>
+				<td>
+					<p><b>Build Time (ms)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Per Record #1</p>
+				</td>
+				<td>
+					<p>6</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Per Record #2</p>
+				</td>
+				<td>
+					<p>7</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Per Record #3</p>
+				</td>
+				<td>
+					<p>6</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Per Record #4</p>
+				</td>
+				<td>
+					<p>8</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Per Record #5</p>
+				</td>
+				<td>
+					<p>6</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full #1</p>
+				</td>
+				<td>
+					<p>34032</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full #2</p>
+				</td>
+				<td>
+					<p>33953</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full #3</p>
+				</td>
+				<td>
+					<p>34271</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full #4</p>
+				</td>
+				<td>
+					<p>34121</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full #5</p>
+				</td>
+				<td>
+					<p>34093</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>We can see that, given five per-record builds, the build time was no more than 8ms. When running a full build however, the build time lasted on average 34 seconds. That is a build time reduction of <b>4250x</b>!</p>
 	<p>Given the full build times for both average-sized zones and large zones, it is apparent that all Cloudflare customers are benefitting from this improved performance, and the benefits only improve as the size of the zone increases. In addition, our Zone Builder uses less database and Quicksilver resources meaning other Cloudflare systems are able to operate at increased capacity.</p>
 	<div class="flex anchor relative">

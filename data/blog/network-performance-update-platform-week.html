@@ -156,67 +156,219 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wL9DyjkpfxlbYQIsPcEKw/d26c3f5e67165cdee85aa69e42e5aec5/image3-30.png" alt="" class="kg-image" width="1998" height="900" loading="lazy">
 
 	</figure>
-	<p>Test</p>
-	<p>95th percentile TTFB (ms)</p>
-	<p>Cloudflare JS no-op</p>
-	<p>469</p>
-	<p>Fastly JS no-op</p>
-	<p>596</p>
-	<p>Cloudflare JS hard</p>
-	<p>481</p>
-	<p>Fastly JS hard</p>
-	<p>631</p>
-	<p>Cloudflare Rust hard</p>
-	<p>493</p>
-	<p>Fastly Rust hard</p>
-	<p>577</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Test</b></p>
+				</td>
+				<td>
+					<p><b>95th percentile TTFB (ms)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS no-op</p>
+				</td>
+				<td>
+					<p>469</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS no-op</p>
+				</td>
+				<td>
+					<p>596</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS hard</p>
+				</td>
+				<td>
+					<p>481</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS hard</p>
+				</td>
+				<td>
+					<p>631</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare Rust hard</p>
+				</td>
+				<td>
+					<p>493</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly Rust hard</p>
+				</td>
+				<td>
+					<p>577</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Cloudflare is significantly faster at all tests compared to Fastly. But let’s dig into why that is. Looking at p95 Wait, we can see that Cloudflare does have an edge in most tests related to compute on-box:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qBIGm4DLEPbKZU6MgeFI/2b927f1f93cfa81a32829063736a8820/image10-1.png" alt="" class="kg-image" width="1982" height="912" loading="lazy">
 
 	</figure>
-	<p>Test</p>
-	<p>95th Percentile Wait (ms)</p>
-	<p>Cloudflare JS no-op</p>
-	<p>123</p>
-	<p>Fastly JS no-op</p>
-	<p>123</p>
-	<p>Cloudflare JS hard</p>
-	<p>136</p>
-	<p>Fastly JS hard</p>
-	<p>170</p>
-	<p>Cloudflare Rust hard</p>
-	<p>160</p>
-	<p>Fastly Rust hard</p>
-	<p>121</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Test</b></p>
+				</td>
+				<td>
+					<p><b>95th Percentile Wait (ms)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS no-op</p>
+				</td>
+				<td>
+					<p>123</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS no-op</p>
+				</td>
+				<td>
+					<p>123</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS hard</p>
+				</td>
+				<td>
+					<p>136</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS hard</p>
+				</td>
+				<td>
+					<p>170</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare Rust hard</p>
+				</td>
+				<td>
+					<p>160</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly Rust hard</p>
+				</td>
+				<td>
+					<p>121</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Looking at the Wait times, you can see that Cloudflare does have a significant edge in on-box performance, except in Rust, where Fastly claims their workloads are the most optimized. This data backs up that claim. But why is Fastly so much slower on Time to First Byte? The answer lies in the rest of the request. While latency spent in compute matters, it only matters in conjunction with the rest of the network performance. And Cloudflare has an advantage over Fastly in Connect times and SSL establishment times:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fC76Hvccza62kgiuAQLJI/c0b14e9db28a17b38c0477cd132895eb/image4-24.png" alt="" class="kg-image" width="1982" height="1370" loading="lazy">
 
 	</figure>
-	<p>Test</p>
-	<p>95th Percentile Connect (ms)</p>
-	<p>95th Percentile SSL (ms)</p>
-	<p>Cloudflare JS no-op</p>
-	<p>81</p>
-	<p>289</p>
-	<p>Fastly JS no-op</p>
-	<p>88</p>
-	<p>293</p>
-	<p>Cloudflare JS hard</p>
-	<p>81</p>
-	<p>286</p>
-	<p>Fastly JS hard</p>
-	<p>88</p>
-	<p>291</p>
-	<p>Cloudflare Rust hard</p>
-	<p>81</p>
-	<p>288</p>
-	<p>Fastly Rust hard</p>
-	<p>88</p>
-	<p>295</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Test</b></p>
+				</td>
+				<td>
+					<p><b>95th Percentile Connect (ms)</b></p>
+				</td>
+				<td>
+					<p><b>95th Percentile SSL (ms)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS no-op</p>
+				</td>
+				<td>
+					<p>81</p>
+				</td>
+				<td>
+					<p>289</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS no-op</p>
+				</td>
+				<td>
+					<p>88</p>
+				</td>
+				<td>
+					<p>293</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare JS hard</p>
+				</td>
+				<td>
+					<p>81</p>
+				</td>
+				<td>
+					<p>286</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly JS hard</p>
+				</td>
+				<td>
+					<p>88</p>
+				</td>
+				<td>
+					<p>291</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare Rust hard</p>
+				</td>
+				<td>
+					<p>81</p>
+				</td>
+				<td>
+					<p>288</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Fastly Rust hard</p>
+				</td>
+				<td>
+					<p>88</p>
+				</td>
+				<td>
+					<p>295</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Cloudflare’s hyper-optimized web stack allows us to process all requests faster, meaning that Workers code gets started faster. Having that extra head start in Connect and SSL allows us to further increase the distance between us and Compute@Edge.</p>
 	<p>To verify these results, we compared the Catchpoint results to our own data set. Here is the p95 TTFB for the JavaScript and Rust hard loops for both Fastly and Cloudflare from our data:</p>
 	<figure class="kg-card kg-image-card ">

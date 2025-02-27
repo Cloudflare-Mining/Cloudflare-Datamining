@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K9ML9RdjOIFgWZdFdrLg7/35b77f333580363855da9235ca3b46ce/image6-10.png" alt="blog post about the services at Cloudflare that are migrating to post-quantum." class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
-	<p>Theoretically, there is no impediment to adding <a href="https://blog.cloudflare.com/post-quantum-taxonomy">post-quantum cryptography</a> to any system. But the reality is harder. In the middle of last year, we posed ourselves a big challenge: <b>to change all</b> <b><i>internal connections</i></b> <b>at Cloudflare to use post-quantum cryptography</b>. We call this, in a cheeky way, “post-quantum-ifying” our services. Theoretically, this should be simple: swap algorithms for post-quantum ones and move along. But with dozens of different services in various programming languages (as we have at Cloudflare), it is not so simple. The challenge is big but we are here and up for the task! In this blog post, we will look at what our plan was, where we are now, and what we have learned so far. Welcome to the first announcement of a post-quantum future at Cloudflare: our connections are going to be quantum-secure!</p>
+	<p>Theoretically, there is no impediment to adding <a href="https://blog.cloudflare.com/post-quantum-taxonomy">post-quantum cryptography</a> to any system. But the reality is harder. In the middle of last year, we posed ourselves a big challenge: <b>to change all</b> <b><i>internal connections</i></b> <b>at Cloudflare to use post-quantum cryptography</b>. We call this, in a cheeky way, “post-quantum-ifying” our services. Theoretically, this should be simple: swap algorithms for post-quantum ones and move along. But with dozens of different services in various programming languages (as we have at Cloudflare), it is not so simple. The challenge is big, but we are here and up for the task! In this blog post, we will look at what our plan was, where we are now, and what we have learned so far. Welcome to the first announcement of a post-quantum future at Cloudflare: our connections are going to be quantum-secure!</p>
 	<div class="flex anchor relative">
 		<h3 id="what-are-we-doing">What are we doing?</h3>
 		<a href="https://blog.cloudflare.com/#what-are-we-doing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -50,7 +50,7 @@
 	<p>One of the most used security protocols is Transport Layer Security (TLS). It is the vital protocol that protects most of the data that flows over the Internet today. Many of Cloudflare’s internal services also rely on TLS for security. It seemed natural that, for our migration to post-quantum cryptography, we would start with this protocol.</p>
 	<p>The protocol provides three security properties: integrity, authentication, and confidentiality. The algorithms used to provide the first property, integrity, seem to not be <a href="https://research.kudelskisecurity.com/2017/02/01/defeating-quantum-algorithms-with-hash-functions">quantum-threatened</a> (there is <a href="https://eprint.iacr.org/2012/606.pdf">some research</a> on the matter). The second property, authentication, is under quantum threat, but we will not focus on it for reasons detailed later. The third property, confidentiality, is the one that we are interested in protecting as it is urgent to do this now.</p>
 	<p>Confidentiality assures that no one other than the intended receiver and sender of a message can read the transmitted message. Confidentiality is especially threatened by quantum computers as an attacker can record traffic now and decrypt it in the future (when they get access to a quantum computer): this means that all past and current traffic, not just future traffic, is vulnerable to be read by anyone who obtains a quantum computer (and has stored the encrypted traffic captured today).</p>
-	<p>At Cloudflare, to protect many of our connections, we use TLS. We mainly use the latest version of the protocol, TLS 1.3, but we do sometimes still use TLS 1.2 (as seen in the image, though, it only shows the connections between websites to our network). &nbsp;As we are a company that pushes for innovation, this means that we are intent on using this time of migration to post-quantum cryptography as an opportunity to also update TLS handshakes to 1.3 and be assured that we are using TLS in the right way (by, for example, ensuring that we are not using deprecated features of TLS).</p>
+	<p>At Cloudflare, to protect many of our connections, we use TLS. We mainly use the latest version of the protocol, TLS 1.3, but we sometimes do still use TLS 1.2 (as seen in the image, though, it only shows the connections between websites to our network). &nbsp;As we are a company that pushes for innovation, this means that we are intent on using this time of migration to post-quantum cryptography as an opportunity to also update TLS handshakes to 1.3 and be assured that we are using TLS in the right way (by, for example, ensuring that we are not using deprecated features of TLS).</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5toLKjOnOcTdY4jkqTodFb/80452cac0010e2311e76e31c0a138820/image2-24.png" alt="Image of Cloudflare’s TLS and QUIC usage taken on the 17/02/2022 and showing the last 7 days." class="kg-image" width="1224" height="482" loading="lazy">
@@ -64,8 +64,8 @@
 
 	</figure>
 	<p>The TLS 1.3 handshake</p>
-	<p>In <a href="https://datatracker.ietf.org/doc/html/rfc8446">TLS 1.3</a>, there will always be two parties: a client and a server. A client is a party that wants the server to “serve” them something, which could be a website, emails, chat messages, voice messages, and more. The handshake is the process by which the server and client attempt to agree on a shared secret, which will be used to encrypt the subsequent exchange of data (this shared secret is called the “master secret”). The client selects their favorite key exchange algorithms and submits one or more “key shares” to the server (they send both the name of the key share and its public key parameter). The server picks one of the key exchange algorithms (assuming that it supports one of them), and replies back with their own key share. Both the server and the client then combine the key shares to compute a shared secret (the “master secret”), which is used to protect the remainder of the connection. If the client only chooses algorithms that the server does not support, the server instead replies with the algorithms that it does support and asks the client to try again. During this initial conversation, the client and server also agree on authentication methods and the parameters for encryption, but we can leave that aside for today in this blog post. This description is also simplified to focus only in the “key exchange” phase.</p>
-	<p>There is a mechanism to add post-quantum cryptography to this procedure: you advertise post-quantum algorithms in the list of key shares, so the final derived shared key (the “master secret”) is quantum secure. But there are requirements we had to take into account when doing this with our connections: the security of much post-quantum cryptography is still under debate and we need to respect our <a href="https://www.cloudflare.com/en-gb/trust-hub/compliance-resources">compliance efforts</a>. The solution to these requirements is to use a <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-hybrid-design">“hybrid” mechanism</a>.</p>
+	<p>In <a href="https://datatracker.ietf.org/doc/html/rfc8446">TLS 1.3</a>, there will always be two parties: a client and a server. A client is a party that wants the server to “serve” them something, which could be a website, emails, chat messages, voice messages, and more. The handshake is the process by which the server and client attempt to agree on a shared secret, which will be used to encrypt the subsequent exchange of data (this shared secret is called the “master secret”). The client selects their favorite key exchange algorithms and submits one or more “key shares” to the server (they send both the name of the key share and its public key parameter). The server picks one of the key exchange algorithms (assuming that it supports one of them), and replies with their own key share. Both the server and the client then combine the key shares to compute a shared secret (the “master secret”), which is used to protect the remainder of the connection. If the client only chooses algorithms that the server does not support, the server instead replies with the algorithms that it does support and asks the client to try again. During this initial conversation, the client and server also agree on authentication methods and the parameters for encryption, but we can leave that aside for today in this blog post. This description is also simplified to focus only in the “key exchange” phase.</p>
+	<p>There is a mechanism to add post-quantum cryptography to this procedure: you advertise post-quantum algorithms in the list of key shares, so the final derived shared key (the “master secret”) is quantum secure. But there are requirements we had to take into account when doing this with our connections: the security of much post-quantum cryptography is still under debate, and we need to respect our <a href="https://www.cloudflare.com/en-gb/trust-hub/compliance-resources">compliance efforts</a>. The solution to these requirements is to use a <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-hybrid-design">“hybrid” mechanism</a>.</p>
 	<p>A “hybrid” mechanism means to use both a “pre-quantum” or “classical” algorithm and a “post-quantum” algorithm, and mixing both generated shared secrets into the derivation of the “master secret”. The combination of both shared secrets is of the form \Z′ = Z || T\ (for TLS and with the fixed size shared secrets, simple concatenation is secure. In other cases, you have to be a bit more careful). This procedure is a concatenation consisting of:</p>
 	<ul>
 		<li>
@@ -76,22 +76,62 @@
 		</li>
 	</ul>
 	<p>The usage of a “hybrid” approach allows us to safeguard our connections in case the security of the post-quantum algorithm fails. It also results in a suitable-for-FIPS secret, as it is approved in the <a href="https://csrc.nist.gov/publications/detail/sp/800-56c/rev-2/final">“Recommendation for Key-Derivation Methods in Key-Establishment Schemes”</a> (SP 800-56C Rev. 2), which is listed in the <a href="https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402annexd.pdf">Annex D</a>, as an approved key establishing technique for FIPS 140-2.</p>
-	<p>At Cloudflare, we are using different TLS libraries. We decided to add post-quantum cryptography to those, specifically, to the <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3318"><i>BoringCrypto</i></a> library or the compiled version of <a href="https://github.com/golang/go/tree/dev.boringcrypto.go1.8">Golang with <i>BoringCrypto</i></a>. We added <a href="https://github.com/cloudflare/circl/tree/master/kem/kyber">our implementation</a> of the <a href="https://pq-crystals.org/kyber/resources.shtml">Kyber-512</a> algorithm (this algorithm can be eventually swapped by another one; we’re not picking any here. We are using it for our testing phase) to those libraries and implemented the “hybrid” mechanism as part of the TLS handshake. For the “classical” algorithm we used <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">curve P-256</a>. We then compiled certain services with these new TLS libraries.</p>
-	<p>Name of algorithm</p>
-	<p>Number of times loop executed</p>
-	<p>Average runtime per operation</p>
-	<p>Number of bytes required per operation</p>
-	<p>Number of allocations</p>
-	<p>Curve P-256</p>
-	<p>23,056</p>
-	<p>52,204 ns/op</p>
-	<p>256 B/op</p>
-	<p>5 allocs/op</p>
-	<p>Kyber-512</p>
-	<p>100,977</p>
-	<p>11,793 ns/op</p>
-	<p>832 B/op</p>
-	<p>3 allocs/op</p>
+	<p>At Cloudflare, we are using different TLS libraries. We decided to add post-quantum cryptography to those, specifically, to the <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3318"><i>BoringCrypto</i></a> library or the compiled version of <a href="https://github.com/golang/go/tree/dev.boringcrypto.go1.8">Golang with <i>BoringCrypto</i></a>. We added <a href="https://github.com/cloudflare/circl/tree/master/kem/kyber">our implementation</a> of the <a href="https://pq-crystals.org/kyber/resources.shtml">Kyber-512</a> algorithm (this algorithm can be eventually swapped by another one; we’re not picking any here. Not only that, but we are using it for our testing phase) to those libraries and implemented the “hybrid” mechanism as part of the TLS handshake. For the “classical” algorithm we used <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">curve P-256</a>. We then compiled certain services with these new TLS libraries.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Name of algorithm</b></p>
+				</td>
+				<td>
+					<p><b>Number of times loop executed</b></p>
+				</td>
+				<td>
+					<p><b>Average runtime per operation</b></p>
+				</td>
+				<td>
+					<p><b>Number of bytes required per operation</b></p>
+				</td>
+				<td>
+					<p><b>Number of allocations</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Curve P-256</p>
+				</td>
+				<td>
+					<p>23,056</p>
+				</td>
+				<td>
+					<p>52,204 ns/op</p>
+				</td>
+				<td>
+					<p>256™p</p>
+				</td>
+				<td>
+					<p>5 allocs/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Kyber-512</p>
+				</td>
+				<td>
+					<p>100,977</p>
+				</td>
+				<td>
+					<p>11,793 ns/op</p>
+				</td>
+				<td>
+					<p>832 B/op</p>
+				</td>
+				<td>
+					<p>3 allocs/op</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Table 1: Benchmarks of the “key share” operation of Curve P-256 and Kyber-512: Scalar Multiplication and Encapsulation respectively. Benchmarks ran on Darwin, amd64, Intel(R) Core(TM) i7-9750H CPU @ 2.60 GHz.</p>
 	<p>Note that as TLS supports the described “negotiation” mechanism for the key exchange, the client and server have a way of mutually deciding what algorithms they want to use. This means that it is not required that both a client or a server support or even prefer the exact same algorithms: they just need to share support for a single algorithm for a handshake to succeed. In turn, herewith, even if we advertise post-quantum cryptography and a server/client does not support it, they will not fail but rather agree on some other algorithm they share.</p>
 	<p>A note on a matter we left on hold above: why are we not migrating the authentication phase of TLS to post-quantum? Certificate-based authentication in TLS, which is the one we commonly use at Cloudflare, also depends on systems on the wider Internet. Thus, changes to authentication require a coordinated and much wider effort to change. Certificates are attested as proofs of identity by outside parties: migrating authentication means coordinating a ceremony of migration with these outside parties. Note though that at Cloudflare we use a <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">PKI with internally-hosted Certificate Authorities (CAs)</a>, which means that we can more easily change our algorithms. This will still need careful planning. We will not do this today, but we will in the near future.</p>
@@ -113,7 +153,7 @@
 		</a>
 	</div>
 	<p><a href="https://blog.cloudflare.com/more-data-more-data">Logfwdr</a> is an internal service, written in Golang, that handles structured logs, and sends them from our servers for processing (to a subservice called ‘Logreceiver’) where they write them to Kafka. The connection between Logfwdr and Logreceiver is protected by TLS. The same goes for the connection between Logreceiver and <a href="https://kafka.apache.org">Kafka</a> in core. Logfwdr pushes its logs through “streams” for processing.</p>
-	<p>This service seemed an ideal candidate for migrating to post-quantum cryptography as its architecture is simple, it has long-lived connections, and it handles a lot of traffic. In order to first test the viability of using post-quantum cryptography, we created our own instance of Logreceiver and deployed it. We also created our own stream (the “pq-stream”), which is basically a copy of a HTTP stream (which was remarkably easy to add). We then compiled these services with the modified TLS library and we got a post-quantum protected Logfwdr.</p>
+	<p>This service seemed an ideal candidate for migrating to post-quantum cryptography as its architecture is simple, it has long-lived connections, and it handles a lot of traffic. In order to first test the viability of using post-quantum cryptography, and, we created our own instance of Logreceiver and deployed it. We also created our own stream (the “pq-stream”), which is basically a copy of a HTTP stream (which was remarkably easy to add). We then compiled these services with the modified TLS library, and we got a post-quantum protected Logfwdr.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YlRJqczYHpPshoEZzpu9b/160d794b37b407bb09fd345b889101c7/image7-5.png" alt="Graph showing the TLS latency of Logfwdr for selected servers." class="kg-image" width="517" height="343" loading="lazy">
@@ -140,7 +180,7 @@
 		</a>
 	</div>
 	<p><a href="https://blog.cloudflare.com/going-keyless-everywhere"><i>gokeyless</i></a> is our own way to separate servers and TLS long-term private keys. With it, private keys are kept on a specialized key server operated by customers on their own architecture or, if using <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, in selected Cloudflare locations. We also use it for Cloudflare-held private keys with a service creatively known as <i>gokeyless-internal</i>. The final piece of this architecture is another service called <a href="https://blog.cloudflare.com/scaling-geo-key-manager"><i>Keynotto</i></a>. Keynotto is a service written in Rust that only mints RSA and <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a> key signatures (that are executed with the stored private key).</p>
-	<p>How does the overall architecture of gokeyless work? Let’s start with a request. The request arrives at the Cloudflare network and we perform TLS termination. Any signing request is forwarded to Keynotto. A small portion of requests (specifically from GeoKDL or external gokeyless) cannot be handled by Keynotto directly, and are instead forwarded to gokeyless-internal. gokeyless-internal also acts as a key server proxy, as it redirects connections to the customer’s keyservers (external gokeyless). <a href="https://github.com/cloudflare/gokeyless">External gokeyless</a> is both the server that a customer runs and the client that will be used to contact it. The architecture can be seen in Figure 3.</p>
+	<p>How does the overall architecture of gokeyless work? Let’s start with a request. The request arrives at the Cloudflare network, and we perform TLS termination. Any signing request is forwarded to Keynotto. A small portion of requests (specifically from GeoKDL or external gokeyless) cannot be handled by Keynotto directly, and are instead forwarded to gokeyless-internal. gokeyless-internal also acts as a key server proxy, as it redirects connections to the customer’s keyservers (external gokeyless). <a href="https://github.com/cloudflare/gokeyless">External gokeyless</a> is both the server that a customer runs and the client that will be used to contact it. The architecture can be seen in Figure 3.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c2XtFKTmHLgy9XNmAfJsh/496e49511e6aea34309abbae92b846f5/image5-10.png" alt="Diagram of the life of a gokeyless request." class="kg-image" width="1801" height="525" loading="lazy">

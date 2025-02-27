@@ -30,7 +30,7 @@
 		</a>
 	</div>
 	<p>The new <a href="https://github.com/wintercg">Web-interoperable Runtimes Community Group</a> (or "WinterCG") operates under the established processes of the <a href="https://www.w3.org/community/about">W3C</a>.</p>
-	<p>The naming of this group is something that took us a while to settle on because it is critical to understanding the goals the group is trying to achieve (and what it is <i>not</i>). The key element is the phrase "web-interoperable".</p>
+	<p>The naming of this group is something that took us a while to settle on because it is critical to understand the goals the group is trying to achieve (and what it is <i>not</i>). The key element is the phrase "web-interoperable".</p>
 	<p>We use "web" in exactly the same sense that the W3C and WHATWG communities use the term – precisely: <i>web browsers</i>. The term "web-interoperable", then, means implementing features in a manner that is <i>either identical or at least as consistent as possible</i> with the way those features are implemented in web browsers. For instance, the way that the new URL() constructor works in browsers is exactly how the new URL() constructor should work in Node.js, in Deno, and in Cloudflare Workers.</p>
 	<p>It is important, however, to acknowledge the fact that Node.js, Deno, and Cloudflare Workers are explicitly <b>not</b> web browsers. While this point should be obvious, it is important to call out because the differences between the various JavaScript environments can greatly impact the design decisions of standardized APIs. Node.js and Deno, for instance, each provide full access to the local file system. Cloudflare Workers, in contrast, has no local file system; and web browsers necessarily restrict applications from manipulating the local file system. Likewise, while web browsers inherently include a concept of a website's "origin" and implement mechanisms such as <a href="https://fetch.spec.whatwg.org/#http-cors-protocol">CORS</a> to protect users against a variety of security threats, there is no equivalent concept of "origins" on the server-side where Node.js, Deno, and Cloudflare Workers operate.</p>
 	<p>Up to now, the W3C and WHATWG have concerned themselves strictly with the needs of web browsers. The new Web-interoperable Runtimes Community Group is explicitly addressing and advocating for the needs of everyone else.</p>
@@ -59,164 +59,571 @@
 	</blockquote>
 	<p>Or put another way: It is a minimal set of <i>existing</i> web APIs that will be implemented consistently and correctly in Node.js, Deno, and Cloudflare Workers. Most of the APIs, with some exceptions and nuances, already exist in these environments, so the bulk of the work remaining is to ensure that those implementations are conformant to their relative specifications and portable across environments.</p>
 	<p>The table below lists all the APIs currently included in this subset (along with an indication of whether the API is currently or likely soon to be supported by Node.js, Deno, and Cloudflare Workers):</p>
-	<p>Node.js</p>
-	<p>Deno</p>
-	<p>Cloudflare Workers</p>
-	<p><a href="https://dom.spec.whatwg.org/#abortcontroller">AbortController</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://dom.spec.whatwg.org/#abortsignal">AbortSignal</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#bytelengthqueuingstrategy">ByteLengthQueueingStrategy</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://wicg.github.io/compression/#compression-stream">CompressionStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#countqueuingstrategy">CountQueueingStrategy</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://w3c.github.io/webcrypto/#dfn-Crypto">Crypto</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://w3c.github.io/webcrypto/#dfn-CryptoKey">CryptoKey</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://wicg.github.io/compression/#decompression-stream">DecompressionStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://webidl.spec.whatwg.org/#idl-DOMException">DOMException</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://dom.spec.whatwg.org/#event">Event</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablebytestreamcontroller">ReadableByteStreamController</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablestream">ReadableStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablestreambyobreader">ReadableStreamBYOBReader</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablestreambyobrequest">ReadableStreamBYOBRequest</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablestreamdefaultcontroller">ReadableStreamDefaultController</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#readablestreamdefaultreader">ReadableStreamDefaultReader</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://w3c.github.io/webcrypto/#dfn-SubtleCrypto">SubtleCrypto</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://encoding.spec.whatwg.org/#textdecoder">TextDecoder</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://encoding.spec.whatwg.org/#textdecoderstream">TextDecoderStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>(soon)</p>
-	<p><a href="https://encoding.spec.whatwg.org/#textencoder">TextEncoder</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://encoding.spec.whatwg.org/#textencoderstream">TextEncoderStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#transformstream">TransformStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#transformstreamdefaultcontroller">TransformStreamDefaultController</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>(soon)</p>
-	<p><a href="https://url.spec.whatwg.org/#url">URL</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://wicg.github.io/urlpattern/#urlpattern-class">URLPattern</a></p>
-	<p>?</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://url.spec.whatwg.org/#urlsearchparams">URLSearchParams</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#writablestream">WritableStream</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p><a href="https://streams.spec.whatwg.org/#writablestreamdefaultcontroller">WritableStreamDefaultController</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/window-object.html#dom-self">self</a></p>
-	<p>?</p>
-	<p>✔️</p>
-	<p>(soon)</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob">atob()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa">btoa()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://console.spec.whatwg.org/#namespacedef-console">console</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto">crypto</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.navigator.<a href="https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-useragent">userAgent</a></p>
-	<p>?</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask">queueMicrotask()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">setTimeout()</a> / globalthis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout">clearTimeout()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval">setInterval()</a> / globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval">clearInterval()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>globalThis.<a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone">structuredClone()</a></p>
-	<p>✔️</p>
-	<p>✔️</p>
-	<p>✔️</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><b>Node.js</b></p>
+				</td>
+				<td>
+					<p><b>Deno</b></p>
+				</td>
+				<td>
+					<p><b>Cloudflare Workers</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://dom.spec.whatwg.org/#abortcontroller">AbortController</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://dom.spec.whatwg.org/#abortsignal">AbortSignal</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#bytelengthqueuingstrategy">ByteLengthQueueingStrategy</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://wicg.github.io/compression/#compression-stream">CompressionStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#countqueuingstrategy">CountQueueingStrategy</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://w3c.github.io/webcrypto/#dfn-Crypto">Crypto</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://w3c.github.io/webcrypto/#dfn-CryptoKey">CryptoKey</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://wicg.github.io/compression/#decompression-stream">DecompressionStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://webidl.spec.whatwg.org/#idl-DOMException">DOMException</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://dom.spec.whatwg.org/#event">Event</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://dom.spec.whatwg.org/#eventtarget">EventTarget</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablebytestreamcontroller">ReadableByteStreamController</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablestream">ReadableStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablestreambyobreader">ReadableStreamBYOBReader</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablestreambyobrequest">ReadableStreamBYOBRequest</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablestreamdefaultcontroller">ReadableStreamDefaultController</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#readablestreamdefaultreader">ReadableStreamDefaultReader</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://w3c.github.io/webcrypto/#dfn-SubtleCrypto">SubtleCrypto</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://encoding.spec.whatwg.org/#textdecoder">TextDecoder</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://encoding.spec.whatwg.org/#textdecoderstream">TextDecoderStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>(soon)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://encoding.spec.whatwg.org/#textencoder">TextEncoder</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://encoding.spec.whatwg.org/#textencoderstream">TextEncoderStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#transformstream">TransformStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#transformstreamdefaultcontroller">TransformStreamDefaultController</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>(soon)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://url.spec.whatwg.org/#url">URL</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://wicg.github.io/urlpattern/#urlpattern-class">URLPattern</a></p>
+				</td>
+				<td>
+					<p>?</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://url.spec.whatwg.org/#urlsearchparams">URLSearchParams</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#writablestream">WritableStream</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20230801055012/https://streams.spec.whatwg.org/#writablestreamdefaultcontroller">WritableStreamDefaultController</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/window-object.html#dom-self">self</a></p>
+				</td>
+				<td>
+					<p>?</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>(soon)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob">atob()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa">btoa()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://console.spec.whatwg.org/#namespacedef-console">console</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto">crypto</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.navigator.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-useragent">userAgent</a></p>
+				</td>
+				<td>
+					<p>?</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask">queueMicrotask()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">setTimeout()</a>/ globalthis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout">clearTimeout()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval">setInterval()</a>/ globalThis.<a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval">clearInterval()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>globalThis.</p>
+					<p><a href="http://web.archive.org/web/20230801055012/https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone">structuredClone()</a></p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+				<td>
+					<p>✔️</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Whenever one of the environments diverges from the standardized definition of the API (such as Node.js implementation of setTimeout() and setInterval()), clear documentation describing the differences will be made available. Such differences should only exist for backwards compatibility with existing code.</p>
 	<div class="flex anchor relative">
 		<h3 id="web-cryptography-streams">Web Cryptography Streams</h3>
@@ -239,7 +646,7 @@
 	<p>With the recent release of version 18.0.0, <a href="https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch">Node.js has joined</a> the collection of JavaScript environments that provide an implementation of the WHATWG standardized fetch() API. There are, however, a number of important differences between the way Node.js, Deno, and Cloudflare Workers implement fetch() versus the way it is implemented in web browsers.</p>
 	<p>For one, server environments do not have a concept of "origin" like a web browser does. Features such as CORS intended to protect against cross-site scripting vulnerabilities are simply irrelevant on the server. Likewise, where web browsers are generally used by one individual user at a time and have a concept of a globally-scoped cookie store, server and serverless applications can be used by millions of users simultaneously and a globally-scoped cookie store that potentially contains session and authentication details would be both impractical and dangerous.</p>
 	<p>Because of the acute differences in the environments, it is often difficult to reason about, and gain consensus on, proposed changes in the fetch standard. Some proposed new API, for instance, might be fantastically relevant to fetch users on a server but completely useless to fetch users in a web browser. Some set of security concerns that are relevant to the Browser might have no impact whatsoever on the server.</p>
-	<p>To address this issue, and to make it easier for non-web browser environments to implement fetch in a consistent way, WinterCG is <a href="https://github.com/wintercg/fetch">working on documenting a subset of the fetch</a> standard that deals specifically with those different requirements and constraints.</p>
+	<p>To address this issue, and to make it easier for non-web browser environments to implement fetch consistently, WinterCG is <a href="http://web.archive.org/web/20230801055012/https://github.com/wintercg/fetch">working on documenting a subset of the fetch</a> standard that deals specifically with those different requirements and constraints.</p>
 	<p>Critically, this subset will be fully compatible with the fetch standard; and is being cooperatively developed by the same folks who have worked on fetch in Node.js, Deno, and Cloudflare Workers. It is not intended that this will become a competing definition of the fetch standard, but rather a set of documented guidelines on how to implement fetch correctly in these other environments.</p>
 	<div class="flex anchor relative">
 		<h2 id="were-just-getting-started">We're just getting started</h2>

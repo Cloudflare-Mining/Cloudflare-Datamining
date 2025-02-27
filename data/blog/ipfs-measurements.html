@@ -69,25 +69,78 @@
 	<p>The first one is when users fetch popular content which has a high probability of being found in our cache already. During our experiment, we measured a response time for such content is around 116ms.</p>
 	<p>The second one is the case where the users create and upload the content to the IPFS network, such as via the integration between <a href="https://blog.cloudflare.com/cloudflare-pages-on-ipfs">Cloudflare Pages and IPFS</a>. This scenario is a lot slower than the first because the content is not in our cache yet, and it takes some time to discover the content. The content that we upload during this measurement is a random piece of 32-byte content.</p>
 	<p>The last measurement is when users try to download content that does not exist. This one is the slowest. Because of the nature of content routing of IPFS, there is no indication that tells us that content doesn't exist. So, setting the timeout is the only way to tell if the content exists or not. Currently, the Cloudflare IPFS gateway has a timeout of around five minutes.</p>
-	<p>Scenarios</p>
-	<p>Min (s)</p>
-	<p>Max (s)</p>
-	<p>Avg (s)</p>
-	<p>1</p>
-	<p>ipfs/newly-created-content</p>
-	<p>0.276</p>
-	<p>343</p>
-	<p>44.4</p>
-	<p>2</p>
-	<p>ipfs/in-cache-content</p>
-	<p>0.0825</p>
-	<p>0.539</p>
-	<p>0.116</p>
-	<p>3</p>
-	<p>ipfs/unavailable-cid</p>
-	<p>90</p>
-	<p>341</p>
-	<p>279</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b></b></p>
+				</td>
+				<td>
+					<p><b>Scenario</b></p>
+				</td>
+				<td>
+					<p><b>Min (s)</b></p>
+				</td>
+				<td>
+					<p><b>Max (s)</b></p>
+				</td>
+				<td>
+					<p><b>Avg (s)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>ipfs/newly-created-content</p>
+				</td>
+				<td>
+					<p>0.276</p>
+				</td>
+				<td>
+					<p>343</p>
+				</td>
+				<td>
+					<p>44.4</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>ipfs/in-cache-content</p>
+				</td>
+				<td>
+					<p>0.0825</p>
+				</td>
+				<td>
+					<p>0.539</p>
+				</td>
+				<td>
+					<p>0.116</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>ipfs/unavailable-cid</p>
+				</td>
+				<td>
+					<p>90</p>
+				</td>
+				<td>
+					<p>341</p>
+				</td>
+				<td>
+					<p>279</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="second-scenarios-gateway-to-serve-mutable-ipns-named-contents">Second scenarios: Gateway to serve mutable IPNS named contents</h3>
 		<a href="https://blog.cloudflare.com/#second-scenarios-gateway-to-serve-mutable-ipns-named-contents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -105,35 +158,112 @@
 	<p>Since IPFS contents are immutable, when users want to change the content, the only way to do so is to create new content and distribute the new CID to other users. Sometimes distributing the new CID is hard, and is out of scope of IPFS. The InterPlanetary Naming System (IPNS) tries to solve this. IPNS is a naming system that — instead of locating the content using the CID — allows users to locate the content using the IPNS name instead. This name is a hash of a user's public key. Internally, IPNS maintains a section of the IPFS DHT which maps from a name to a CID. Therefore, when the users want to download the contents using names through the gateway, the gateway has to first resolve the name to get the CID, then use the CID to query the IPFS content as usual.</p>
 	<p>The example for fetching the IPNS named content is at ipns://k51qzi5uqu5diu2krtwp4jbt9u824cid3a4gbdybhgoekmcz4zhd5ivntan5ey</p>
 	<p>We measured many scenarios for IPNS as shown in the table below. Three scenarios are similar to the ones involving IPFS contents. There are two more scenarios added: the first one is measuring the response time when users query the gateway using an existing IPNS name, and the second one is measuring the response time when users query the gateway immediately after new content is published under the name.</p>
-	<p>Scenarios</p>
-	<p>Min (s)</p>
-	<p>Max (s)</p>
-	<p>Avg (s)</p>
-	<p>1</p>
-	<p>ipns/newly-created-name</p>
-	<p>5.50</p>
-	<p>110</p>
-	<p>33.7</p>
-	<p>2</p>
-	<p>ipns/existing-name</p>
-	<p>7.19</p>
-	<p>113</p>
-	<p>28.0</p>
-	<p>3</p>
-	<p>ipns/republished-name</p>
-	<p>5.62</p>
-	<p>80.4</p>
-	<p>43.8</p>
-	<p>4</p>
-	<p>ipns/in-cache-content</p>
-	<p>0.0353</p>
-	<p>0.0886</p>
-	<p>0.0503</p>
-	<p>5</p>
-	<p>ipns/unavailable-name</p>
-	<p>60.0</p>
-	<p>146</p>
-	<p>81.0</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><b>Scenarios</b></p>
+				</td>
+				<td>
+					<p><b>Min (s)</b></p>
+				</td>
+				<td>
+					<p><b>Max (s)</b></p>
+				</td>
+				<td>
+					<p><b>Avg (s)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>ipns/newly-created-name</p>
+				</td>
+				<td>
+					<p>5.50</p>
+				</td>
+				<td>
+					<p>110</p>
+				</td>
+				<td>
+					<p>33.7</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>ipns/existing-name</p>
+				</td>
+				<td>
+					<p>7.19</p>
+				</td>
+				<td>
+					<p>113</p>
+				</td>
+				<td>
+					<p>28.0</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>ipns/republished-name</p>
+				</td>
+				<td>
+					<p>5.62</p>
+				</td>
+				<td>
+					<p>80.4</p>
+				</td>
+				<td>
+					<p>43.8</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>ipns/in-cache-content</p>
+				</td>
+				<td>
+					<p>0.0353</p>
+				</td>
+				<td>
+					<p>0.0886</p>
+				</td>
+				<td>
+					<p>0.0503</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5</p>
+				</td>
+				<td>
+					<p>ipns/unavailable-name</p>
+				</td>
+				<td>
+					<p>60.0</p>
+				</td>
+				<td>
+					<p>146</p>
+				</td>
+				<td>
+					<p>81.0</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="third-scenarios-gateway-to-serve-dnslink-websites">Third scenarios: Gateway to serve DNSLink websites</h3>
 		<a href="https://blog.cloudflare.com/#third-scenarios-gateway-to-serve-dnslink-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -144,30 +274,95 @@
 	</div>
 	<p>Even though users can use IPNS to provide others a stable address to fetch the content, the address can still be hard to remember. This is what DNSLink is for. Users can address their content using DNSLink, which is just a normal <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a> in the Domain Name System (DNS). As a domain owner, you only have to create a TXT record with the value dnslink=/ipfs/baf…1, and your domain can be fetched from a gateway.</p>
 	<p>There are two ways to access the DNSLink websites using the gateway. The first way is to access the website using the domain name as a URL hostname, for example, <a href="https://ipfs.example.com">https://ipfs.example.com</a>. The second way is to put the domain name as a URL path, for example, <a href="https://cloudflare-ipfs.com/ipns/ipfs.example.com">https://cloudflare-ipfs.com/ipns/ipfs.example.com</a>.</p>
-	<p>Scenarios</p>
-	<p>Min (s)</p>
-	<p>Max (s)</p>
-	<p>Avg (s)</p>
-	<p>1</p>
-	<p>dnslink/ipfs-domain-as-url-hostname</p>
-	<p>0.251</p>
-	<p>18.6</p>
-	<p>0.831</p>
-	<p>2</p>
-	<p>dnslink/ipfs-domain-as-url-path</p>
-	<p>0.148</p>
-	<p>1.70</p>
-	<p>0.346</p>
-	<p>3</p>
-	<p>dnslink/ipns-domain-as-url-hostname</p>
-	<p>7.87</p>
-	<p>44.2</p>
-	<p>21.0</p>
-	<p>4</p>
-	<p>dnslink/ipns-domain-as-url-path</p>
-	<p>6.87</p>
-	<p>72.6</p>
-	<p>19.0</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><b>Scenarios</b></p>
+				</td>
+				<td>
+					<p><b>Min (s)</b></p>
+				</td>
+				<td>
+					<p><b>Max (s)</b></p>
+				</td>
+				<td>
+					<p><b>Avg (s)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>dnslink/ipfs-domain-as-url-hostname</p>
+				</td>
+				<td>
+					<p>0.251</p>
+				</td>
+				<td>
+					<p>18.6</p>
+				</td>
+				<td>
+					<p>0.831</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>dnslink/ipfs-domain-as-url-path</p>
+				</td>
+				<td>
+					<p>0.148</p>
+				</td>
+				<td>
+					<p>1.70</p>
+				</td>
+				<td>
+					<p>0.346</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>dnslink/ipns-domain-as-url-hostname</p>
+				</td>
+				<td>
+					<p>7.87</p>
+				</td>
+				<td>
+					<p>44.2</p>
+				</td>
+				<td>
+					<p>21.0</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>dnslink/ipns-domain-as-url-path</p>
+				</td>
+				<td>
+					<p>6.87</p>
+				</td>
+				<td>
+					<p>72.6</p>
+				</td>
+				<td>
+					<p>19.0</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h2 id="what-does-this-mean-for-regular-ipfs-users">What does this mean for regular IPFS users?</h2>
 		<a href="https://blog.cloudflare.com/#what-does-this-mean-for-regular-ipfs-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">

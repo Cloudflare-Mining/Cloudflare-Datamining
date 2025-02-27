@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lEUZwzoGeTleyCGdkKCki/6bc32f064deaa2cd9e4db3c0a12cdd75/image7-9.png" alt="MPLS to Zero Trust in 30 days." class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<p>Employees returning to the office are experiencing that their corporate networks are much slower compared to what they’ve been using at home. It’s partly due to outdated line speeds, and also partly due to security requirements that force all traffic to get backhauled through centralized data centers. While 44% of the US currently has access to fiber-based broadband Internet with speeds reaching 1 Gbps, many MPLS sites are still on old 1.5 Mbps circuits. This is a reality check and a reminder that the current MPLS based networks are unable to support the shift from centralized applications in the datacenter to a distributed SaaS and hybrid multi-cloud world.</p>
+	<p>Employees returning to the office are experiencing that their corporate networks are much slower compared to what they’ve been using at home. It’s partly due to outdated line speeds, and also partly due to security requirements that force all traffic to get back hauled through centralized data centers. While 44% of the US currently has access to fiber-based broadband Internet with speeds reaching 1 Gbps, many MPLS sites are still on old 1.5 Mbps circuits. This is a reality check and a reminder that the current MPLS based networks are unable to support the shift from centralized applications in the datacenter to a distributed SaaS and hybrid multi-cloud world.</p>
 	<p>In this post, we are going to outline the steps required to take your network from MPLS to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>. But, before we do — a little about how we ended up in this situation.</p>
 	<div class="flex anchor relative">
 		<h3 id="enterprise-networks-today">Enterprise networks today</h3>
@@ -83,67 +83,236 @@
 	</div>
 	<p>Planning leads to awareness, while preparation leads to readiness.</p>
 	<p>MPLS to Zero Trust transformation is a team effort. Traditionally, network managers are responsible for the WAN; security managers for the security perimeter &amp; policies; infrastructure team for the cloud; application teams for application development. Future transformed state has built-in security for seamless on-demand, secured and reliable distributed application access.</p>
-	<ol>
-		<li>
-			<p>Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below</p>
-		</li>
-	</ol>
-	<p>Current state</p>
-	<p>Future state</p>
-	<p>Applications</p>
-	<p>List</p>
-	<p>Example: 1600 apps</p>
-	<p>Example: 2400 apps</p>
-	<p>Location</p>
-	<p>Local: 300, DC: 600, Public cloud: 400, Private cloud:100, SaaS: 200</p>
-	<p>TBD</p>
-	<p>Regional application needs</p>
-	<p>Local File servers</p>
-	<p>Cloud</p>
-	<p>Location/branch</p>
-	<p># of branch locations</p>
-	<p>80</p>
-	<p>85</p>
-	<p>Availability</p>
-	<p>Example: Platinum 99%, Gold 95%, Silver: 90%, bronze: best effort</p>
-	<p>Platinum 100%, Gold 99%, Silver: 95%, bronze: best effort</p>
-	<p>Current set up</p>
-	<p>Platinum: Dual MPLS, Gold: MPLS + Internet etc</p>
-	<p>Platinum: 2 x 1G DIA, Gold: 2 x 1G DIA etc</p>
-	<p>Bandwidth</p>
-	<p>Platinum: 100M, Gold 50M etc</p>
-	<p>Platinum 1G, Gold 500M etc</p>
-	<p>CSP with location</p>
-	<p>Azure/GCP/AWS</p>
-	<p>1G ExpressRoute 1G Direct Connect</p>
-	<p>10G 10G</p>
-	<p>Internet breakout</p>
-	<p>Capacity</p>
-	<p>500M</p>
-	<p>On demand</p>
-	<p>DC: XXX Firewall HA</p>
-	<p>Cloud based local break out</p>
-	<p>Features</p>
-	<p>Limited security control</p>
-	<p>Identity based granular ZT based policies</p>
-	<p>Remote Access</p>
-	<p>Quantity</p>
-	<p>1000 seats</p>
-	<p>2000 seats</p>
-	<p>Technology</p>
-	<p>SSL VPN</p>
-	<p>Zero Trust Network Access</p>
-	<p>Cloud security</p>
-	<p>None</p>
-	<p>CASB, RBI</p>
-	<p>Device posture</p>
-	<p>None</p>
-	<p>Yes</p>
-	<ol>
-		<li>
-			<p>Conduct transformation workshop to</p>
-		</li>
-	</ol>
+	<p>1. Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><b>Current state</b></p>
+				</td>
+				<td>
+					<p><b>Future state</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Applications</p>
+				</td>
+				<td>
+					<p>List</p>
+				</td>
+				<td>
+					<p>Example: 1600 apps</p>
+				</td>
+				<td>
+					<p>Example: 2400 apps</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Location</p>
+				</td>
+				<td>
+					<p>Local: 300, DC: 600, Public cloud: 400, Private cloud:100, SaaS: 200</p>
+				</td>
+				<td>
+					<p>TBD</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Regional application needs</p>
+				</td>
+				<td>
+					<p>Local File servers</p>
+				</td>
+				<td>
+					<p>Cloud</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Location/branch</p>
+				</td>
+				<td>
+					<p># of branch locations</p>
+				</td>
+				<td>
+					<p>80</p>
+				</td>
+				<td>
+					<p>85</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Availability</p>
+				</td>
+				<td>
+					<p>Example: Platinum 99%, Gold 95%, Silver: 90%, bronze: best effort</p>
+				</td>
+				<td>
+					<p>Platinum 100%, Gold 99%, Silver: 95%, bronze: best effort</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Current set up</p>
+				</td>
+				<td>
+					<p>Platinum: Dual MPLS, Gold: MPLS + Internet etc</p>
+				</td>
+				<td>
+					<p>Platinum: 2 x 1G DIA, Gold: 2 x 1G DIA etc</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Bandwidth</p>
+				</td>
+				<td>
+					<p>Platinum: 100M, Gold 50M etc</p>
+				</td>
+				<td>
+					<p>Platinum 1G, Gold 500M etc</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CSP with location</p>
+				</td>
+				<td>
+					<p>Azure/GCP/AWS</p>
+				</td>
+				<td>
+					<p>1G ExpressRoute 1G Direct Connect</p>
+				</td>
+				<td>
+					<p>10G 10G</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Internet breakout</p>
+				</td>
+				<td>
+					<p>Capacity</p>
+				</td>
+				<td>
+					<p>500M</p>
+				</td>
+				<td>
+					<p>On demand</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>DC: XXX Firewall HA</p>
+				</td>
+				<td>
+					<p>Cloud based local break out</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Features</p>
+				</td>
+				<td>
+					<p>Limited security control</p>
+				</td>
+				<td>
+					<p>Identity based granular ZT based policies</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Remote Access</p>
+				</td>
+				<td>
+					<p>Quantity</p>
+				</td>
+				<td>
+					<p>1000 seats</p>
+				</td>
+				<td>
+					<p>2000 seats</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Technology</p>
+				</td>
+				<td>
+					<p>SSL VPN</p>
+				</td>
+				<td>
+					<p>Zero Trust Network Access</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloud security</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>None</p>
+				</td>
+				<td>
+					<p>CASB, RBI</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Device posture</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>None</p>
+				</td>
+				<td>
+					<p>Yes</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>2. Conduct transformation workshop to:</p>
 	<ul>
 		<li>
 			<p>Map all combinations of future traffic flows: Device Type - User profile - Application - Enforcement technology - Zero Trust rules</p>
