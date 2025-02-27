@@ -257,6 +257,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -396,6 +398,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -637,6 +641,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -776,6 +782,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -1523,6 +1531,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -1662,6 +1672,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -1903,6 +1915,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -2042,6 +2056,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -2555,6 +2571,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -2694,6 +2712,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -2977,6 +2997,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -3116,6 +3138,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -3499,6 +3523,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -3638,6 +3664,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -3879,6 +3907,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -4018,6 +4048,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -5747,9 +5779,23 @@
 				"in": "query",
 				"name": "tun_types",
 				"schema": {
-					"description": "The types of tunnels to filter separated by a comma.",
+					"description": "The types of tunnels to filter by, separated by commas.",
 					"example": "cfd_tunnel,warp_connector",
-					"type": "string"
+					"items": {
+						"description": "The type of tunnel.",
+						"enum": [
+							"cfd_tunnel",
+							"warp_connector",
+							"warp",
+							"magic",
+							"ip_sec",
+							"gre",
+							"cni"
+						],
+						"example": "cfd_tunnel",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -6047,6 +6093,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -6186,6 +6234,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -6469,6 +6519,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -6608,6 +6660,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -7127,6 +7181,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -7266,6 +7322,8 @@
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
+																	"warp",
+																	"magic",
 																	"ip_sec",
 																	"gre",
 																	"cni"
@@ -7549,6 +7607,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -7688,6 +7748,8 @@
 																		"enum": [
 																			"cfd_tunnel",
 																			"warp_connector",
+																			"warp",
+																			"magic",
 																			"ip_sec",
 																			"gre",
 																			"cni"
@@ -8069,6 +8131,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -8208,6 +8272,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -8449,6 +8515,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -8588,6 +8656,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -9325,6 +9395,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -9464,6 +9536,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -9705,6 +9779,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -9844,6 +9920,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -10244,6 +10322,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -10383,6 +10463,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -10624,6 +10706,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -10763,6 +10847,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -11162,6 +11248,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -11301,6 +11389,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -11542,6 +11632,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -11681,6 +11773,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -12427,6 +12521,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -12566,6 +12662,8 @@
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
+																"warp",
+																"magic",
 																"ip_sec",
 																"gre",
 																"cni"
@@ -12807,6 +12905,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
@@ -12946,6 +13046,8 @@
 																	"enum": [
 																		"cfd_tunnel",
 																		"warp_connector",
+																		"warp",
+																		"magic",
 																		"ip_sec",
 																		"gre",
 																		"cni"
