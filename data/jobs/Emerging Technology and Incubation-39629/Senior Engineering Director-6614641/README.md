@@ -5,39 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
-<p><strong>About the Role</strong></p>
-<p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
-<p>This role will be based out of our Austin or London office</p>
-<p><strong>What you'll do</strong></p>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
-<p><strong>Responsibilities include</strong></p>
+<h4><strong>Available Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></h4>
+<h4><strong>What you'll do</strong></h4>
+<p>You will lead the engineering and people behind Cloudflare's storage and transactional data products. This is an organization consisting of numerous teams that design, build, and operate the foundational building blocks that enable developers to build stateful applications on Cloudflare. You will play an active part in shaping both the product, and design of these systems. You will mentor, grow, and challenge managers, and engineers of all levels of seniority.&nbsp;</p>
+<p>You excel at understanding how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering a wide array of software from scalable distributed systems all the way to client side libraries. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
-	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
-	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
-	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
-	<li>Mentoring and guiding developers in the Trust and Safety Engineering team to help build collective knowledge and technical expertise</li>
-</ul>
-<p><strong>Desirable skills and experience</strong></p>
-<ul>
-	<li>At least 3 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
-	<li>Prior experience working with Go or Rust</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
-</ul>
-<p><strong>Bonus</strong></p>
-<p>(Relevant but not required - we love to learn on the job!)</p>
-<ul>
-	<li>Prior experience working in the Trust &amp; Safety domain space or building abuse detection systems</li>
-	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
-	<li>Expertise in web security issues and industry standards for access control</li>
+	<li>Excel at building high performing teams, recruit top talent, and retain key engineers and managers</li>
+	<li>Strong technical background in systems engineering, including hands-on experience building storage and data systems</li>
+	<li>Skilled at strategic planning, overseeing execution of complex projects that span many teams, and commitment to delivering results on tight deadlines</li>
+	<li>Obsessed with building products that customers love</li>
+	<li>Demonstrated ability to implement tools, processes, and internal systems which enable your teams to remove blockages and deliver reliable software predictably</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Establishes and upholds high-performance standards by identifying KPIs, setting ambitious yet achievable goals, delivering continuous feedback, and fostering a culture of accountability.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

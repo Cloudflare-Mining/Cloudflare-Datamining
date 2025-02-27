@@ -28,8 +28,8 @@
 <h4><strong>Bonus Points</strong></h4>
 <ul>
 	<li>Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
-	<li>Data-fluency - there is no team of analysts at CloudFlare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At CloudFlare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+	<li>Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
