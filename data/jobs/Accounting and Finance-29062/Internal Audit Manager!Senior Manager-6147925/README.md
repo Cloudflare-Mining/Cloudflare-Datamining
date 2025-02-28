@@ -5,7 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Job Locations: Austin, TX, Dallas, TX, Houston, TX, San Antonio, TX San Francisco, CA</h4>
+<h4>Available Job Locations: Austin, TX, Dallas, TX, Houston, TX, San Antonio, TX</h4>
+<p><strong>Level:</strong> We are open to hiring this position at the Manager or Senior Manager level, depending on the candidates experience.</p>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key business risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
 <p>We are seeking a highly motivated, strategic, and solution-focused candidate to lead and manage Cloudflare’s operational audit plan to evaluate the effectiveness of risk management, control, and governance processes. The ideal candidate will bring a deep understanding of risk management, business and operations, and best-in-class audit practices. This role will report to the Senior Director, Internal Audit.</p>
@@ -25,7 +26,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>8+<strong>&nbsp;</strong>years of&nbsp;experience in internal audit, risk management, or related field with at least 3 years in a leadership role.</li>
+	<li>5+<strong>&nbsp;</strong>years of experience in internal audit, risk management, or related field with at least 2 years in a leadership role.</li>
 	<li>Strong knowledge and proven track record in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing.</li>
 	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
 	<li>Exceptional written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
@@ -38,13 +39,6 @@
 <ul>
 	<li>Experience in leading or executing SOX testing programs, with a strong understanding of both business process controls and ITGCs.&nbsp;</li>
 	<li>Experience in enterprise risk management activities, participating in programs that would assess, monitor and report on risks across the enterprise, and help shape our annual Internal Audit Plan and approach.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual salary of $172,000 - $210,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $239,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $251,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
