@@ -22,16 +22,16 @@
 		<tbody>
 			<tr>
 				<td>
-					<p></p>
+					<p><b>between</b></p>
 				</td>
 				<td>
-					<p>between</p>
+					<p><b></b></p>
 				</td>
 				<td>
-					<p>avoid user-space memory</p>
+					<p><b>avoid user-space memory</b></p>
 				</td>
 				<td>
-					<p>zerocopy</p>
+					<p><b>zerocopy</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -201,7 +201,7 @@ int _prog_verdict(struct __sk_buff *skb)
 	uint32_t idx = 0;
 	return bpf_sk_redirect_map(skb, &amp;sock_map, idx, 0);
 }</code></pre>
-	<p>Side note: for the purposes of this test program, I wrote a minimal eBPF loader. It has no dependencies (neither bcc, libelf, or libbpf) and can do basic relocations (like resolving the <code>sock_map</code> symbol mentioned above). <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/tbpf.c">See the code</a>.</p>
+	<p>Side note: for the purposes of this test program, I wrote a minimal eBPF loader. It has no dependencies (neither bcc, libelf, nor libbpf) and can do basic relocations (like resolving the <code>sock_map</code> symbol mentioned above). <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/tbpf.c">See the code</a>.</p>
 	<p>The call to <code>bpf_sk_redirect_map</code> is doing all the work. It tells the kernel: for the received packet, please oh please <i>redirect</i> it from a receive queue of some socket, to a transmit queue of the socket living in sock_map under index 0. In our case, these are the same sockets! Here we achieved exactly what the echo server is supposed to do, but purely in eBPF.</p>
 	<p>This technology has multiple benefits. First, the data is never copied to userspace. Secondly, we never need to wake up the userspace program. All the action is done in the kernel. Quite cool, isn't it?</p>
 	<p>We need one more piece of code, to hang the userspace program until the socket is closed. This is best done with good old <code>poll(2)</code>:</p>
@@ -254,13 +254,13 @@ poll(fds, 1, -1);</code></pre>
 					<p></p>
 				</td>
 				<td>
-					<p>syscall cost</p>
+					<p><b>syscall cost</b></p>
 				</td>
 				<td>
-					<p>waking up userspace</p>
+					<p><b>waking up userspace</b></p>
 				</td>
 				<td>
-					<p>copying cost</p>
+					<p><b>copying cost</b></p>
 				</td>
 			</tr>
 			<tr>

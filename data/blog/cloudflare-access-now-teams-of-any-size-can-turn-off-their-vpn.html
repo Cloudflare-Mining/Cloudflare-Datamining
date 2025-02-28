@@ -39,7 +39,7 @@
 	</div>
 	<p>Cloudflare <a href="https://www.cloudflare.com/products/cloudflare-access">Access</a> controls who can reach your internal resources. You don’t need to change your hosting or add new components to your site to integrate with an identity provider. Access does the work for you.</p>
 	<p>Before any requests reach your origin, Access checks to make sure they are approved based on policies you configure. We integrate with popular identity providers, like GSuite and Okta, so that you don’t have to manage a new set of credentials.</p>
-	<p>When your team members need to get to their tools and documents behind Access, they will login with the identity provider credentials managed by your organization. Once authorized, they’ll be able to access those protected resources for a duration that you define.</p>
+	<p>When your team members need to get to their tools and documents behind Access, they will log in with the identity provider credentials managed by your organization. Once authorized, they’ll be able to access those protected resources for a duration that you define.</p>
 	<p>Your team can use your self-hosted tools as if they were a SaaS deployment. Cloudflare’s global network of 150+ data centers puts those resources closer to your end users, regardless of their location. Your administrators can control groups that should or shouldn’t be able to reach certain materials and review an audit log of account logins.</p>
 	<div class="flex anchor relative">
 		<h2 id="beyondcorp-for-yourcorp">BeyondCorp for YourCorp</h2>
@@ -61,7 +61,7 @@
 		</a>
 	</div>
 	<p>Access works by requiring that users authenticate with their identity provider credentials to reach your site, or sections of it. However, sometimes you need to open paths for external services or outside groups of users.</p>
-	<p>As part of today’s release, you can create policies based on IP addresses. For example, if you have a secure office network, you can allowlist the office’s IP. Users outside of the office will be required to authenticate with their IdP. Or you can require that a user both authenticate against the IdP and be using a specific IP address.</p>
+	<p>As part of today’s release, you can create policies based on IP addresses. For example, if you have a secure office network, you can allowlist the office’s IP. Users outside the office will be required to authenticate with their IdP. Or you can require that a user both authenticate against the IdP and be using a specific IP address.</p>
 	<p>You can also build a detour to allow traffic to a specified path or subdomain to bypass Access. When enabled, Access will not check requests to that destination for authorization tokens. Traffic will still be protected by your standard Cloudflare features, like DDoS mitigation and SSL encryption.</p>
 	<p>This is helpful when third-party services need to reach your site. Say you manage a WordPress site where you want to control who can access protected resources. WordPress can provide additional functionality by creating a connection between the browser and the server using AJAX. To do so, WordPress needs to reach a particular endpoint. With Bypass, you can allow traffic to reach that endpoint while protecting the rest of your site.</p>
 	<div class="flex anchor relative">

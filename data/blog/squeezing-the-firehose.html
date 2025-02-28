@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/t9WBSpTQg6vusR59gNAiR/32a251d7ef1329c81f6a32a74ba0621a/squeezing-the-firehose.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>We at Cloudflare are long time <a href="https://kafka.apache.org">Kafka</a> users, first mentions of it date back to beginning of 2014 when the most recent version was 0.8.0. We use Kafka as a log to power analytics (both HTTP and DNS), <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDOS mitigation</a>, logging and metrics.</p>
+	<p>We at Cloudflare are long time <a href="https://kafka.apache.org">Kafka</a> users, first mentions of it date back to beginning of 2014 when the most recent version was 0.8.0. We use Kafka as a log to power analytics (both HTTP and DNS), <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDoS mitigation</a>, logging and metrics.</p>
 	<p>While the idea of unifying abstraction of the log remained the same since then (<a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">read this classic blog post</a> from Jay Kreps if you haven't), Kafka evolved in other areas since then. One of these improved areas was compression support. Back in the old days we've tried enabling it a few times and ultimately gave up on the idea because of <a href="https://github.com/Shopify/sarama/issues/805">unresolved</a> <a href="https://issues.apache.org/jira/browse/KAFKA-1718">issues</a> in the protocol.</p>
 	<div class="flex anchor relative">
 		<h3 id="kafka-compression-overview">Kafka compression overview</h3>
@@ -104,16 +104,16 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Compression</p>
+					<p><b>Compression</b></p>
 				</td>
 				<td>
-					<p>Messages consumed</p>
+					<p><b>Messages consumed</b></p>
 				</td>
 				<td>
-					<p>Disk usage</p>
+					<p><b>Disk usage</b></p>
 				</td>
 				<td>
-					<p>Average message size</p>
+					<p><b>Average message size</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -174,7 +174,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>Gzip sounded too expensive from the beginning (especially in Go), but Snappy should have been able to keep up. We profiled our producer and it was spending just 2.4% of CPU time in Snappy compression, never saturating a single core:</p>
+	<p>Gzip sounded too expensive from the beginning (especially in Go), but Snappy should have been able to keep up. We profiled our producer, and it was spending just 2.4% of CPU time in Snappy compression, never saturating a single core:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/6.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X1yjXYICcPKzHxKKdQ76K/73278df1829440a7456f32d574d93f1a/6.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
@@ -315,28 +315,28 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 		<tbody>
 			<tr>
 				<td>
-					<p>Compression</p>
+					<p><b>Compression</b></p>
 				</td>
 				<td>
-					<p>User time</p>
+					<p><b>User time</b></p>
 				</td>
 				<td>
-					<p>Messages</p>
+					<p><b>Messages</b></p>
 				</td>
 				<td>
-					<p>Time per 1m</p>
+					<p><b>Time per 1m</b></p>
 				</td>
 				<td>
-					<p>CPU ratio</p>
+					<p><b>CPU ratio</b></p>
 				</td>
 				<td>
-					<p>Disk usage</p>
+					<p><b>Disk usage</b></p>
 				</td>
 				<td>
-					<p>Avg message size</p>
+					<p><b>Avg. message size</b></p>
 				</td>
 				<td>
-					<p>Compression ratio</p>
+					<p><b>Compression ratio</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -454,7 +454,7 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 			</svg>
 		</a>
 	</div>
-	<p>In production we started small with Java based consumers and producers. Our first production topic was just 1Mbps and 600rps of nginx error logs. Messages there were very repetitive and we were able to get whopping 8x decrease in size with batching records for just 1 second across 2 partitions.</p>
+	<p>In production, we started small with Java based consumers and producers. Our first production topic was just 1Mbps and 600rps of nginx error logs. Messages there were very repetitive, and we were able to get whopping 8x decrease in size with batching records for just 1 second across 2 partitions.</p>
 	<p>This gave us some confidence to move onto next topic with <code>journald</code> logs encoded with JSON. Here we were able to reduce ingress from 300Mbps to just 50Mbps (yellow line on the graph):</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/8.png">
@@ -552,16 +552,16 @@ zstd 1.3.3 -5             154 MB/s   891 MB/s      226798  23.04</code></pre>
 		<tbody>
 			<tr>
 				<td>
-					<p>Compressor name</p>
+					<p><b>Compressor name</b></p>
 				</td>
 				<td>
-					<p>Ratio</p>
+					<p><b>Ratio</b></p>
 				</td>
 				<td>
-					<p>Compression</p>
+					<p><b>Compression</b></p>
 				</td>
 				<td>
-					<p>Decompression</p>
+					<p><b>Decompression</b></p>
 				</td>
 			</tr>
 			<tr>

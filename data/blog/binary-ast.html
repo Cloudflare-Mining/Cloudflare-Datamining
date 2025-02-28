@@ -13,7 +13,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://www.cloudflare.com/application-services/products">performance of applications</a> on the web platform is becoming increasingly bottlenecked by the startup (load) time. Large amounts of JavaScript code are required to create rich web experiences that we’ve become used to. When we look at the total size of JavaScript requested on mobile devices from <a href="https://httparchive.org/reports/state-of-javascript#bytesJs">HTTPArchive</a>, we see that an average page loads 350KB of JavaScript, while 10% of pages go over the 1MB threshold. The rise of more complex applications can push these numbers even higher.</p>
+	<p>The <a href="https://www.cloudflare.com/application-services/products">performance of applications</a> on the web platform is becoming increasingly bottle necked by the startup (load) time. Large amounts of JavaScript code are required to create rich web experiences that we’ve become used to. When we look at the total size of JavaScript requested on mobile devices from <a href="https://httparchive.org/reports/state-of-javascript#bytesJs">HTTPArchive</a>, we see that an average page loads 350KB of JavaScript, while 10% of pages go over the 1MB threshold. The rise of more complex applications can push these numbers even higher.</p>
 	<p>While caching helps, popular websites regularly release new code, which makes cold start (first load) times particularly important. With browsers moving to separate caches for different domains to <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html">prevent cross-site leaks</a>, the importance of cold starts is growing even for popular subresources served from CDNs, as they can no longer be safely shared.</p>
 	<p>Usually, when talking about the cold start performance, the primary factor considered is a raw download speed. However, on modern interactive pages one of the other big contributors to cold starts is JavaScript parsing time. This might seem surprising at first, but makes sense - before starting to execute the code, the engine has to first parse the fetched JavaScript, make sure it doesn’t contain any syntax errors and then compile it to the initial bytecode. As networks become faster, parsing and compilation of JavaScript could become the dominant factor.</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,7 +64,7 @@
 
 	</figure>
 	<p>Parsing JavaScript is not an easy task; no matter which optimisations you apply, it still requires reading the entire text file char by char, while tracking extra context for syntactic analysis.</p>
-	<p>The goal of the BinaryAST is to reduce the complexity and the amount of work the browser parser has to do overall by providing an additional information and context by the time and place where the parser needs it.</p>
+	<p>The goal of the BinaryAST is to reduce the complexity and the amount of work the browser parser has to do overall by providing additional information and context by the time and place where the parser needs it.</p>
 	<p>To execute JavaScript delivered as BinaryAST the only steps required are:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -141,10 +141,10 @@ function g() {
 	<p>These heuristics significantly improve the performance of the initial parsing and cold starts, but they’re not completely reliable or trivial to implement.</p>
 	<p>One of the reasons is the same as in the previous section - even with lazy parsing, you still need to read the contents, analyse them and store an additional scope information for the declarations.</p>
 	<p>Another reason is that the JavaScript specification requires reporting any syntax errors immediately during load time, and not when the code is actually executed. A class of these errors, called early errors, is checking for mistakes like usage of the reserved words in invalid contexts, strict mode violations, variable name clashes and more. All of these checks require not only lexing JavaScript source, but also tracking extra state even during the lazy parsing.</p>
-	<p>Having to do such extra work means you need to be careful about marking functions as lazy too eagerly, especially if they actually end up being executed during the page load. Otherwise you’re making cold start costs even worse, as now every function that is erroneously marked as lazy, needs to be parsed twice - once by the lazy parser and then again by the full one.</p>
+	<p>Having to do such extra work means you need to be careful about marking functions as lazy too eagerly, especially if they actually end up being executed during the page load. Otherwise, you’re making cold start costs even worse, as now every function that is erroneously marked as lazy, needs to be parsed twice - once by the lazy parser and then again by the full one.</p>
 	<p>Because BinaryAST is meant to be an output format of other tools such as Babel, TypeScript and bundlers such as Webpack, the browser parser can rely on the JavaScript being already analysed and verified by the initial parser. This allows it to skip function bodies completely, making lazy parsing essentially free.</p>
-	<p>It reduces the cost of a completely unused code - while including it is still a problem in terms of the network bandwidth (don’t do this!), at least it’s not affecting parsing times anymore. These benefits apply equally to the code that is used later in the page lifecycle (for example, invoked in response to user actions), but is not required during the startup.</p>
-	<p>Last but not least important benefit of such approach is that BinaryAST encodes lazy annotations as part of the format, giving tools and developers direct and full control over the heuristics. For example, a tool targeting the Web platform or a framework CLI can use its domain-specific knowledge to mark some event handlers as lazy or eager depending on the context and the event type.</p>
+	<p>It reduces the cost of a completely unused code - while including it is still a problem in terms of the network bandwidth (don’t do this!), at least it’s not affecting parsing times any more. These benefits apply equally to the code that is used later in the page lifecycle (for example, invoked in response to user actions), but is not required during the startup.</p>
+	<p>Last but not the least important benefit of such approach is that BinaryAST encodes lazy annotations as part of the format, giving tools and developers direct and full control over the heuristics. For example, a tool targeting the Web platform or a framework CLI can use its domain-specific knowledge to mark some event handlers as lazy or eager depending on the context and the event type.</p>
 	<div class="flex anchor relative">
 		<h3 id="avoiding-ambiguity-in-parsing">Avoiding ambiguity in parsing</h3>
 		<a href="https://blog.cloudflare.com/#avoiding-ambiguity-in-parsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -227,7 +227,7 @@ function g() {
 		</a>
 	</div>
 	<p>The next logical step is to reduce the overhead of data transfer. JSON worked fine for communication between separate processes, but with a single process we should be able to retrieve the required bits directly from the JavaScript-based AST.</p>
-	<p>To attempt this, first of all, we needed to move away from the direct JSON usage to something more generic that would allow us to support various import formats. The Rust ecosystem already has an amazing serialisation framework for that - <a href="https://serde.rs">Serde</a>.</p>
+	<p>To attempt this, first, we needed to move away from the direct JSON usage to something more generic that would allow us to support various import formats. The Rust ecosystem already has an amazing serialisation framework for that - <a href="https://serde.rs">Serde</a>.</p>
 	<p>Aside from allowing us to be more flexible in regard to the inputs, rewriting to Serde helped an existing native use case too. Now, instead of parsing JSON into an intermediate representation and then walking through it, all the native typed AST structures can be deserialized directly from the stdout pipe of the Node.js process in a streaming manner. This significantly improved both the CPU usage and memory pressure.</p>
 	<p>But there is one more thing we can do: instead of serializing and deserializing from an intermediate format (let alone, a text format like JSON), we should be able to operate [almost] directly on JavaScript values, saving memory and repetitive work.</p>
 	<p>How is this possible? wasm-bindgen provides a type called <code>JsValue</code> that stores a handle to an arbitrary value on the JavaScript side. This handle internally contains an index into a predefined array.</p>
@@ -239,9 +239,9 @@ function g() {
 
 	</figure>
 	<p>At first, we got a much worse performance out of this due to the overhead of more frequent calls between 1) Wasm and JavaScript - SpiderMonkey has improved these recently, but other engines still lag behind and 2) JavaScript and C++, which also can’t be optimised well in most engines.</p>
-	<p>The JavaScript &lt;-&gt; C++ overhead comes from the usage of <code>TextEncoder</code> to pass strings between JavaScript and Wasm in wasm-bindgen, and, indeed, it showed up as the highest in the benchmark profiles. This wasn’t surprising - after all, strings can appear not only in the value payloads, but also in property names, which have to be serialized and sent between JavaScript and Wasm over and over when using a generic JSON-like structure.</p>
-	<p>Luckily, because our deserializer doesn’t have to be compatible with JSON anymore, we can use our knowledge of Rust types and cache all the serialized property names as JavaScript value handles just once, and then keep reusing them for further property accesses.</p>
-	<p>This, combined with some changes to wasm-bindgen which we have upstreamed, allows our deserializer to be up to 3.5x faster in benchmarks than the original Serde support in wasm-bindgen, while saving ~33% off the resulting code size. Note that for string-heavy data structures it might still be slower than the current JSON-based integration, but situation is expected to improve over time when <a href="https://github.com/WebAssembly/reference-types">reference types</a> proposal lands natively in Wasm.</p>
+	<p>The JavaScript ↔ C++ overhead comes from the usage of <code>TextEncoder</code> to pass strings between JavaScript and Wasm in wasm-bindgen, and, indeed, it showed up as the highest in the benchmark profiles. This wasn’t surprising - after all, strings can appear not only in the value payloads, but also in property names, which have to be serialized and sent between JavaScript and Wasm over and over when using a generic JSON-like structure.</p>
+	<p>Luckily, because our deserializer doesn’t have to be compatible with JSON any more, we can use our knowledge of Rust types and cache all the serialized property names as JavaScript value handles just once, and then keep reusing them for further property accesses.</p>
+	<p>This, combined with some changes to wasm-bindgen which we have up streamed, allows our deserializer to be up to 3.5x faster in benchmarks than the original Serde support in wasm-bindgen, while saving ~33% off the resulting code size. Note that for string-heavy data structures it might still be slower than the current JSON-based integration, but situation is expected to improve over time when <a href="https://github.com/WebAssembly/reference-types">reference types</a> proposal lands natively in Wasm.</p>
 	<p>After implementing and integrating this deserializer, we used the <a href="https://github.com/wasm-tool/wasm-pack-plugin">wasm-pack plugin for Webpack</a> to build a Worker with both Rust and JavaScript parts combined and shipped it to some test zones.</p>
 	<div class="flex anchor relative">
 		<h3 id="show-me-the-numbers">Show me the numbers</h3>
@@ -259,19 +259,19 @@ function g() {
 		<tbody>
 			<tr>
 				<td>
-					<p>Name</p>
+					<p><b>Name</b></p>
 				</td>
 				<td>
-					<p>Source size (kb)</p>
+					<p><b>Source size (kb)</b></p>
 				</td>
 				<td>
-					<p>JavaScript Parse time (average ms)</p>
+					<p><b>JavaScript Parse time (average ms)</b></p>
 				</td>
 				<td>
-					<p>BinaryAST parse time (average ms)</p>
+					<p><b>BinaryAST parse time (average ms)</b></p>
 				</td>
 				<td>
-					<p>Diff (%)</p>
+					<p><b>Diff (%)</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -401,19 +401,19 @@ function g() {
 		<tbody>
 			<tr>
 				<td>
-					<p>Name</p>
+					<p><b>Name</b></p>
 				</td>
 				<td>
-					<p>Source size (kb)</p>
+					<p><b>Source size (kb)</b></p>
 				</td>
 				<td>
-					<p>Parse time (average ms)</p>
+					<p><b>Parse time (average ms)</b></p>
 				</td>
 				<td>
-					<p>BinaryAST parse time (average ms)</p>
+					<p><b>BinaryAST parse time (average ms)</b></p>
 				</td>
 				<td>
-					<p>Diff (%)</p>
+					<p><b>Diff (%)</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -544,13 +544,13 @@ function g() {
 		<tbody>
 			<tr>
 				<td>
-					<p>Device</p>
+					<p><b>Device</b></p>
 				</td>
 				<td>
-					<p>JavaScript</p>
+					<p><b>JavaScript</b></p>
 				</td>
 				<td>
-					<p>BinaryAST</p>
+					<p><b>BinaryAST</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -593,7 +593,7 @@ function g() {
 		</a>
 	</div>
 	<p>We’ve open-sourced our Worker so that it could be installed on any Cloudflare zone: <a href="https://github.com/binast/binjs-ref/tree/cf-wasm">https://github.com/binast/binjs-ref/tree/cf-wasm</a>.</p>
-	<p>One thing to be currently wary of is that, even though the result gets stored in the cache, the initial encoding is still an expensive process, and might easily hit CPU limits on any non-trivial JavaScript files and fall back to the unencoded variant. We are working to improve this situation by releasing BinaryAST encoder as a separate feature with more relaxed limits in the following few days.</p>
+	<p>One thing to be currently wary of is that, even though the result gets stored in the cache, the initial encoding is still an expensive process, and might easily hit CPU limits on any non-trivial JavaScript files and fall back to the un-encoded variant. We are working to improve this situation by releasing BinaryAST encoder as a separate feature with more relaxed limits in the following few days.</p>
 	<p>Meanwhile, if you want to play with BinaryAST on larger real-world scripts, an alternative option is to use a static <code>binjs_encode</code> tool from <a href="https://github.com/binast/binjs-ref">https://github.com/binast/binjs-ref</a> to pre-encode JavaScript files ahead of time. Then, you can use a Worker from <a href="https://github.com/cloudflare/binast-cf-worker">https://github.com/cloudflare/binast-cf-worker</a> to serve the resulting BinaryAST assets when supported and requested by the browser.</p>
 	<p>On the client side, you’ll currently need to download <a href="https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly">Firefox Nightly</a>, go to <code>about:config</code> and enable unrestricted BinaryAST support via the following options:</p>
 	<figure class="kg-card kg-image-card ">

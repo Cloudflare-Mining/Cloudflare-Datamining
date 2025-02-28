@@ -142,9 +142,9 @@ return new Response('', {
 			</svg>
 		</a>
 	</div>
-	<p>Cloudflare workers run <i>very fast</i>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
+	<p>Cloudflare's workers run <i>very fast</i>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
 	<p>The stack behind redirection.io is also very efficient, able to manage a similar level of traffic without any latency nor slowdown. However, there can be an occasional network slowdown, which could hurt the perceived performance of your web application. There are several ways to mitigate this possible impact.</p>
-	<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a url of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>
+	<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a URL of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>
 	<p>Another approach is possible, to define the maximum timing overhead using redirection.io will add: we can simply define a timeout to the <code>fetch()</code> calls made by our Service Worker! Just nest the <code>fetch()</code> call inside a <code>Promise.race()</code>:</p>
 	<pre class="language-js"><code class="language-js">response = await fetch('https://proxy.redirection.io/' + options.token + '/get', {
     method: 'POST',
@@ -165,13 +165,13 @@ return new Response('', {
 		<tbody>
 			<tr>
 				<td>
-					<p>Cloudflare enabled</p>
+					<p><b>Cloudflare enabled</b></p>
 				</td>
 				<td>
-					<p>Workers enabled</p>
+					<p><b>Workers enabled</b></p>
 				</td>
 				<td>
-					<p>Request timing</p>
+					<p><b>Request timing</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -209,5 +209,5 @@ return new Response('', {
 			</tr>
 		</tbody>
 	</table>
-	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's api are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> today, and report back!</p>
+	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's API are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> today, and report back!</p>
 </div>

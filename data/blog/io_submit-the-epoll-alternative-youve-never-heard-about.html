@@ -24,7 +24,7 @@
 	<p>To work around this problem, applications use one of the three approaches:</p>
 	<p>(1) Use thread pools and offload blocking syscalls to worker threads. This is what glibc POSIX AIO (not to be confused with Linux AIO) wrapper does. (See: <a href="https://www.ibm.com/developerworks/linux/library/l-async">IBM's documentation</a>). This is also what we ended up doing in our application at Cloudflare - <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">we offloaded read() and open() calls to a thread pool</a>.</p>
 	<p>(2) Pre-warm the disk cache with <code>posix_fadvise(2)</code> and hope for the best.</p>
-	<p>(3) Use Linux AIO with XFS filesystem, <a href="https://lwn.net/Articles/671649">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems">avoid the undocumented pitfalls</a>.</p>
+	<p>(3) Use Linux AIO with XFS file system, <a href="https://lwn.net/Articles/671649">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems">avoid the undocumented pitfalls</a>.</p>
 	<p>None of these methods is perfect. Even the Linux AIO if used carelessly, could still block in the <code>io_submit()</code> call. This was recently mentioned <a href="https://lwn.net/Articles/724198">in another LWN article</a>:</p>
 	<blockquote>
 		<p>The Linux asynchronous I/O (AIO) layer tends to have many critics and few defenders, but most people at least expect it to actually be asynchronous. In truth, an AIO operation can block in the kernel for a number of reasons, making AIO difficult to use in situations where the calling thread truly cannot afford to block.</p>
@@ -136,10 +136,10 @@ io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824,
 					<p></p>
 				</td>
 				<td>
-					<p>One buffer</p>
+					<p><b>One buffer</b></p>
 				</td>
 				<td>
-					<p>Multiple buffers</p>
+					<p><b>Multiple buffers</b></p>
 				</td>
 			</tr>
 			<tr>
