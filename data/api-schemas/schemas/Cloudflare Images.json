@@ -12,7 +12,8 @@
 					"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -50,10 +52,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -71,10 +75,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -106,7 +112,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -165,10 +172,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -186,10 +195,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -221,7 +232,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -269,10 +281,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -301,10 +315,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -332,7 +348,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -381,7 +398,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -420,10 +438,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -441,10 +461,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -476,7 +498,8 @@
 												true
 											],
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -499,14 +522,16 @@
 																"example": "logo.png",
 																"maxLength": 255,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Image unique identifier.",
 																"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"meta": {
 																"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -519,14 +544,16 @@
 																"default": false,
 																"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"uploaded": {
 																"description": "When the media item was uploaded.",
 																"example": "2014-01-02T02:20:00.123Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"variants": {
 																"description": "Object specifying available variants for an image.",
@@ -542,21 +569,24 @@
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "URI to hero variant for an image.",
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "URI to original variant for an image.",
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																},
@@ -594,10 +624,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -615,10 +647,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -650,7 +684,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -673,14 +708,16 @@
 																		"example": "logo.png",
 																		"maxLength": 255,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Image unique identifier.",
 																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"meta": {
 																		"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -693,14 +730,16 @@
 																		"default": false,
 																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"uploaded": {
 																		"description": "When the media item was uploaded.",
 																		"example": "2014-01-02T02:20:00.123Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"variants": {
 																		"description": "Object specifying available variants for an image.",
@@ -716,21 +755,24 @@
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "URI to hero variant for an image.",
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "URI to original variant for an image.",
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
@@ -759,10 +801,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -791,10 +835,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -822,7 +868,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -871,7 +918,8 @@
 					"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -883,7 +931,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -903,10 +952,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -924,10 +975,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -959,7 +1012,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -996,14 +1050,16 @@
 													"example": "logo.png",
 													"maxLength": 255,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Image unique identifier.",
 													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -1016,14 +1072,16 @@
 													"default": false,
 													"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "When the media item was uploaded.",
 													"example": "2014-01-02T02:20:00.123Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"variants": {
 													"description": "Object specifying available variants for an image.",
@@ -1039,21 +1097,24 @@
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to hero variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to original variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -1088,10 +1149,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1109,10 +1172,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1144,7 +1209,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1181,14 +1247,16 @@
 															"example": "logo.png",
 															"maxLength": 255,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Image unique identifier.",
 															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"meta": {
 															"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -1201,14 +1269,16 @@
 															"default": false,
 															"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"uploaded": {
 															"description": "When the media item was uploaded.",
 															"example": "2014-01-02T02:20:00.123Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"variants": {
 															"description": "Object specifying available variants for an image.",
@@ -1224,21 +1294,24 @@
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to hero variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to original variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -1262,10 +1335,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1294,10 +1369,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1325,7 +1402,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1374,7 +1452,8 @@
 					"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1386,7 +1465,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1428,10 +1508,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1460,10 +1542,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1491,7 +1575,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1540,7 +1625,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1560,10 +1646,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1581,10 +1669,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1616,7 +1706,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1654,13 +1745,15 @@
 															"description": "Cloudflare Images allowed usage.",
 															"example": 100000,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"current": {
 															"description": "Cloudflare Images current usage.",
 															"example": 1000,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1693,10 +1786,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1714,10 +1809,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1749,7 +1846,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1787,13 +1885,15 @@
 																	"description": "Cloudflare Images allowed usage.",
 																	"example": 100000,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"current": {
 																	"description": "Cloudflare Images current usage.",
 																	"example": 1000,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1815,10 +1915,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1847,10 +1949,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1878,7 +1982,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1927,7 +2032,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1980,10 +2086,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2001,10 +2109,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2036,7 +2146,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2057,7 +2168,8 @@
 															"maxLength": 32,
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2079,14 +2191,16 @@
 																"example": "logo.png",
 																"maxLength": 255,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Image unique identifier.",
 																"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"meta": {
 																"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -2099,14 +2213,16 @@
 																"default": false,
 																"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"uploaded": {
 																"description": "When the media item was uploaded.",
 																"example": "2014-01-02T02:20:00.123Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"variants": {
 																"description": "Object specifying available variants for an image.",
@@ -2122,21 +2238,24 @@
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "URI to hero variant for an image.",
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "URI to original variant for an image.",
 																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																			"format": "uri",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																},
@@ -2176,10 +2295,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2197,10 +2318,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2232,7 +2355,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2253,7 +2377,8 @@
 																	"maxLength": 32,
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2275,14 +2400,16 @@
 																		"example": "logo.png",
 																		"maxLength": 255,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Image unique identifier.",
 																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"meta": {
 																		"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -2295,14 +2422,16 @@
 																		"default": false,
 																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"uploaded": {
 																		"description": "When the media item was uploaded.",
 																		"example": "2014-01-02T02:20:00.123Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"variants": {
 																		"description": "Object specifying available variants for an image.",
@@ -2318,21 +2447,24 @@
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "URI to hero variant for an image.",
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "URI to original variant for an image.",
 																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																					"format": "uri",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
@@ -2361,10 +2493,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2393,10 +2527,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2424,7 +2560,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2473,7 +2610,8 @@
 					"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2485,7 +2623,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2501,7 +2640,8 @@
 							"requireSignedURLs": {
 								"description": "Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2526,10 +2666,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2547,10 +2689,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2582,7 +2726,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2619,14 +2764,16 @@
 													"example": "logo.png",
 													"maxLength": 255,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Image unique identifier.",
 													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -2639,14 +2786,16 @@
 													"default": false,
 													"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "When the media item was uploaded.",
 													"example": "2014-01-02T02:20:00.123Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"variants": {
 													"description": "Object specifying available variants for an image.",
@@ -2662,21 +2811,24 @@
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to hero variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to original variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -2711,10 +2863,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2732,10 +2886,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2767,7 +2923,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2804,14 +2961,16 @@
 															"example": "logo.png",
 															"maxLength": 255,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Image unique identifier.",
 															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"meta": {
 															"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -2824,14 +2983,16 @@
 															"default": false,
 															"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"uploaded": {
 															"description": "When the media item was uploaded.",
 															"example": "2014-01-02T02:20:00.123Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"variants": {
 															"description": "Object specifying available variants for an image.",
@@ -2847,21 +3008,24 @@
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to hero variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to original variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -2885,10 +3049,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2917,10 +3083,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2948,7 +3116,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2996,7 +3165,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3007,7 +3177,8 @@
 						"properties": {
 							"file": {
 								"description": "An image binary data. Only needed when type is uploading a file.",
-								"format": "binary"
+								"format": "binary",
+								"x-auditable": true
 							},
 							"metadata": {
 								"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
@@ -3017,12 +3188,14 @@
 								"default": false,
 								"description": "Indicates whether the image requires a signature token for the access.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"url": {
 								"description": "A URL to fetch an image from origin. Only needed when type is uploading from a URL.",
 								"example": "https://example.com/path/to/logo.png",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -3047,10 +3220,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3068,10 +3243,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3103,7 +3280,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3140,14 +3318,16 @@
 													"example": "logo.png",
 													"maxLength": 255,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Image unique identifier.",
 													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -3160,14 +3340,16 @@
 													"default": false,
 													"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "When the media item was uploaded.",
 													"example": "2014-01-02T02:20:00.123Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"variants": {
 													"description": "Object specifying available variants for an image.",
@@ -3183,21 +3365,24 @@
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to hero variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "URI to original variant for an image.",
 																"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																"format": "uri",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													},
@@ -3232,10 +3417,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3253,10 +3440,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3288,7 +3477,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3325,14 +3515,16 @@
 															"example": "logo.png",
 															"maxLength": 255,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Image unique identifier.",
 															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"meta": {
 															"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
@@ -3345,14 +3537,16 @@
 															"default": false,
 															"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"uploaded": {
 															"description": "When the media item was uploaded.",
 															"example": "2014-01-02T02:20:00.123Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"variants": {
 															"description": "Object specifying available variants for an image.",
@@ -3368,21 +3562,24 @@
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to hero variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "URI to original variant for an image.",
 																		"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
 																		"format": "uri",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -3406,10 +3603,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3438,10 +3637,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3469,7 +3670,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -3517,7 +3719,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3531,13 +3734,15 @@
 								"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
 								"example": "2021-01-02T02:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.",
 								"example": "this/is/my-customid",
 								"maxLength": 1024,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"metadata": {
 								"description": "User modifiable key-value store. Can be used for keeping references to another system of record, for managing images.",
@@ -3547,7 +3752,8 @@
 								"default": false,
 								"description": "Indicates whether the image requires a signature token to be accessed.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -3572,10 +3778,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3593,10 +3801,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3628,7 +3838,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3665,12 +3876,14 @@
 													"example": "e22e9e6b-c02b-42fd-c405-6c32af5fe600",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"uploadURL": {
 													"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
 													"example": "https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -3699,10 +3912,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3720,10 +3935,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3755,7 +3972,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3792,12 +4010,14 @@
 															"example": "e22e9e6b-c02b-42fd-c405-6c32af5fe600",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"uploadURL": {
 															"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
 															"example": "https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -3815,10 +4035,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3847,10 +4069,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3878,7 +4102,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [

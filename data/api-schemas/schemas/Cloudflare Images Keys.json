@@ -11,7 +11,8 @@
 					"example": "someKey",
 					"maxLength": 20,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -41,10 +43,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -62,10 +66,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -97,7 +103,8 @@
 												true
 											],
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -119,13 +126,15 @@
 																"description": "Key name.",
 																"example": "default",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -158,10 +167,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -179,10 +190,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -214,7 +227,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -236,13 +250,15 @@
 																		"description": "Key name.",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -266,10 +282,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -298,10 +316,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -329,7 +349,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -374,7 +395,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -392,10 +414,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -413,10 +437,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -448,7 +474,8 @@
 												true
 											],
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -470,13 +497,15 @@
 																"description": "Key name.",
 																"example": "default",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -509,10 +538,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -530,10 +561,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -565,7 +598,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -587,13 +621,15 @@
 																		"description": "Key name.",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -617,10 +653,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -649,10 +687,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -680,7 +720,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -728,7 +769,8 @@
 					"example": "someKey",
 					"maxLength": 20,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -740,7 +782,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -758,10 +801,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -779,10 +824,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -814,7 +861,8 @@
 												true
 											],
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -836,13 +884,15 @@
 																"description": "Key name.",
 																"example": "default",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -875,10 +925,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -896,10 +948,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -931,7 +985,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -953,13 +1008,15 @@
 																		"description": "Key name.",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -983,10 +1040,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1015,10 +1074,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1046,7 +1107,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [

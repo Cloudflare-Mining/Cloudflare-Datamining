@@ -11,7 +11,8 @@
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -49,10 +51,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -70,10 +74,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -105,7 +111,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -164,10 +171,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -185,10 +194,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -220,7 +231,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -268,10 +280,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -300,10 +314,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -331,7 +347,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -379,7 +396,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -397,10 +415,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -418,10 +438,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -453,7 +475,8 @@
 												true
 											],
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -476,13 +499,15 @@
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
 																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
@@ -497,13 +522,15 @@
 																				"pad"
 																			],
 																			"example": "scale-down",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
@@ -513,13 +540,15 @@
 																				"none"
 																			],
 																			"example": "none",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -566,10 +595,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -587,10 +618,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -622,7 +655,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -645,13 +679,15 @@
 																			"example": "hero",
 																			"maxLength": 99,
 																			"pattern": "^[a-zA-Z0-9]$",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"neverRequireSignedURLs": {
 																			"default": false,
 																			"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"options": {
 																			"description": "Allows you to define image resizing sizes for different use cases.",
@@ -666,13 +702,15 @@
 																						"pad"
 																					],
 																					"example": "scale-down",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"height": {
 																					"description": "Maximum height in image pixels.",
 																					"example": 768,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"metadata": {
 																					"description": "What EXIF data should be preserved in the output image.",
@@ -682,13 +720,15 @@
 																						"none"
 																					],
 																					"example": "none",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"width": {
 																					"description": "Maximum width in image pixels.",
 																					"example": 1366,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -726,10 +766,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -758,10 +800,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -789,7 +833,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -837,7 +882,8 @@
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -849,7 +895,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -869,10 +916,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -890,10 +939,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -925,7 +976,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -963,13 +1015,15 @@
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
 															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
@@ -984,13 +1038,15 @@
 																		"pad"
 																	],
 																	"example": "scale-down",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
@@ -1000,13 +1056,15 @@
 																		"none"
 																	],
 																	"example": "none",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1052,10 +1110,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1073,10 +1133,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1108,7 +1170,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1146,13 +1209,15 @@
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
 																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
@@ -1167,13 +1232,15 @@
 																				"pad"
 																			],
 																			"example": "scale-down",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
@@ -1183,13 +1250,15 @@
 																				"none"
 																			],
 																			"example": "none",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1224,10 +1293,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1256,10 +1327,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1287,7 +1360,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1335,7 +1409,8 @@
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1347,7 +1422,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1360,7 +1436,8 @@
 								"default": false,
 								"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"options": {
 								"description": "Allows you to define image resizing sizes for different use cases.",
@@ -1375,13 +1452,15 @@
 											"pad"
 										],
 										"example": "scale-down",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"height": {
 										"description": "Maximum height in image pixels.",
 										"example": 768,
 										"minimum": 1,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"metadata": {
 										"description": "What EXIF data should be preserved in the output image.",
@@ -1391,13 +1470,15 @@
 											"none"
 										],
 										"example": "none",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"width": {
 										"description": "Maximum width in image pixels.",
 										"example": 1366,
 										"minimum": 1,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -1434,10 +1515,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1455,10 +1538,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1490,7 +1575,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1528,13 +1614,15 @@
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
 															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
@@ -1549,13 +1637,15 @@
 																		"pad"
 																	],
 																	"example": "scale-down",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
@@ -1565,13 +1655,15 @@
 																		"none"
 																	],
 																	"example": "none",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1617,10 +1709,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1638,10 +1732,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -1673,7 +1769,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1711,13 +1808,15 @@
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
 																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
@@ -1732,13 +1831,15 @@
 																				"pad"
 																			],
 																			"example": "scale-down",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
@@ -1748,13 +1849,15 @@
 																				"none"
 																			],
 																			"example": "none",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1789,10 +1892,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1821,10 +1926,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1852,7 +1959,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1900,7 +2008,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1913,13 +2022,15 @@
 								"example": "hero",
 								"maxLength": 99,
 								"pattern": "^[a-zA-Z0-9]$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"neverRequireSignedURLs": {
 								"default": false,
 								"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"options": {
 								"description": "Allows you to define image resizing sizes for different use cases.",
@@ -1934,13 +2045,15 @@
 											"pad"
 										],
 										"example": "scale-down",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"height": {
 										"description": "Maximum height in image pixels.",
 										"example": 768,
 										"minimum": 1,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"metadata": {
 										"description": "What EXIF data should be preserved in the output image.",
@@ -1950,13 +2063,15 @@
 											"none"
 										],
 										"example": "none",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"width": {
 										"description": "Maximum width in image pixels.",
 										"example": 1366,
 										"minimum": 1,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -1994,10 +2109,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2015,10 +2132,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2050,7 +2169,8 @@
 														true
 													],
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2088,13 +2208,15 @@
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
 															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
@@ -2109,13 +2231,15 @@
 																		"pad"
 																	],
 																	"example": "scale-down",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
@@ -2125,13 +2249,15 @@
 																		"none"
 																	],
 																	"example": "none",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2177,10 +2303,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2198,10 +2326,12 @@
 																"properties": {
 																	"code": {
 																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2233,7 +2363,8 @@
 																true
 															],
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2271,13 +2402,15 @@
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
 																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
@@ -2292,13 +2425,15 @@
 																				"pad"
 																			],
 																			"example": "scale-down",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
@@ -2308,13 +2443,15 @@
 																				"none"
 																			],
 																			"example": "none",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -2349,10 +2486,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2381,10 +2520,12 @@
 														"properties": {
 															"code": {
 																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2412,7 +2553,8 @@
 												false
 											],
 											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
