@@ -11854,6 +11854,219 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-guard-3-8b": {
+		"operationId": "workers-ai-post-run-cf-meta-llama-guard-3-8b",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"max_tokens": {
+								"default": 256,
+								"description": "The maximum number of tokens to generate in the response.",
+								"type": "integer"
+							},
+							"messages": {
+								"description": "An array of message objects representing the conversation history.",
+								"items": {
+									"properties": {
+										"content": {
+											"description": "The content of the message as a string.",
+											"type": "string"
+										},
+										"role": {
+											"description": "The role of the message sender must alternate between 'user' and 'assistant'.",
+											"enum": [
+												"user",
+												"assistant"
+											]
+										}
+									},
+									"required": [
+										"role",
+										"content"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"response_format": {
+								"description": "Dictate the output format of the generated response.",
+								"properties": {
+									"type": {
+										"description": "Set to json_object to process and output generated text as JSON.",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"temperature": {
+								"default": 0.6,
+								"description": "Controls the randomness of the output; higher values produce more random results.",
+								"maximum": 5,
+								"minimum": 0,
+								"type": "number"
+							}
+						},
+						"required": [
+							"messages"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"response": {
+											"oneOf": [
+												{
+													"description": "The generated text response from the model.",
+													"type": "string"
+												},
+												{
+													"description": "The json response parsed from the generated text response from the model.",
+													"properties": {
+														"categories": {
+															"description": "A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.",
+															"items": {
+																"description": "Hazard category classname, from S1 to S14.",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"safe": {
+															"description": "Whether the conversation is safe or not.",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										"usage": {
+											"description": "Usage statistics for the inference request",
+											"properties": {
+												"completion_tokens": {
+													"default": 0,
+													"description": "Total number of tokens in output",
+													"type": "number"
+												},
+												"prompt_tokens": {
+													"default": 0,
+													"description": "Total number of tokens in input",
+													"type": "number"
+												},
+												"total_tokens": {
+													"default": 0,
+													"description": "Total number of input and output tokens",
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"applications/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/llama-guard-3-8b model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/microsoft/phi-2": {
 		"operationId": "workers-ai-post-run-cf-microsoft-phi-2",
 		"parameters": [
