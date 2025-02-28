@@ -117,31 +117,68 @@
 
 	</figure>
 	<p>Handshake times for TLS with X25519 (control), NTRU-HRSS (CECPQ2) and SIKE (CECPQ2b). Both post-quantum KEMs were combined with a X25519 key agreement.</p>
-	<p>In this experiment we used a combination (a <i>hybrid</i>) of the post-quantum KEM and X25519. Thus NTRU-HRSS couldn’t benefit from its speed compared to X25519. Even with this disadvantage, the difference in performance is very small. Thus we expect that switching to a hybrid of Kyber and X25519 will have little performance impact.</p>
+	<p>In this experiment we used a combination (a <i>hybrid</i>) of the post-quantum KEM and X25519. Thus, NTRU-HRSS couldn’t benefit from its speed compared to X25519. Even with this disadvantage, the difference in performance is very small. Thus, we expect that switching to a hybrid of Kyber and X25519 will have little performance impact.</p>
 	<p>So can we switch to post-quantum TLS today? We would love to. However, we have to be a bit careful: some TLS implementations are brittle and crash on the larger <i>KeyShare</i> message that contains the bigger post-quantum keys. We will work hard to find ways to mitigate these issues, as was done <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">to deploy TLS 1.3</a>. Stay tuned!</p>
 	<h5>The other finalists</h5>
 	<p>It’s interesting to have a look at the KEMs that didn’t make the cut. NIST intends to standardize some of these in a fourth round. One reason is to increase the diversity in security assumptions in case there is a breakthrough in attacks on structured lattices on which Kyber is based. Another reason is that some of these schemes have specialized, but very useful applications. Finally, some of these schemes might be standardized outside of NIST.</p>
-	<p>Structured lattices</p>
-	<p>Backup</p>
-	<p>Specialists</p>
-	<p><a href="https://ntru.org">NTRU</a></p>
-	<p><a href="https://bikesuite.org">BIKE</a> 4️⃣</p>
-	<p><a href="https://classic.mceliece.org">Classic McEliece</a> 4️⃣</p>
-	<p><a href="https://ntruprime.cr.yp.to">NTRU Prime</a></p>
-	<p><a href="https://pqc-hqc.org">HQC</a> 4️⃣</p>
-	<p><a href="https://sike.org">SIKE</a> 4️⃣</p>
-	<p><a href="https://www.esat.kuleuven.be/cosic/pqcrypto/saber">SABER</a></p>
-	<p><a href="https://frodokem.org">FrodoKEM</a></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Structured lattices</b></p>
+				</td>
+				<td>
+					<p><b>Backup</b></p>
+				</td>
+				<td>
+					<p><b>Specialists</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://ntru.org">NTRU</a></p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://bikesuite.org">BIKE</a> 4️⃣</p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://classic.mceliece.org">Classic McEliece</a> 4️⃣</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://ntruprime.cr.yp.to">NTRU Prime</a></p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://pqc-hqc.org">HQC</a> 4️⃣</p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://sike.org">SIKE</a> 4️⃣</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://www.esat.kuleuven.be/cosic/pqcrypto/saber">SABER</a></p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20221018220946/https://frodokem.org">FrodoKEM</a></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>The finalists and candidates of the third round of the competition. The ones marked with 4️⃣ are proceeding to a fourth round and might yet be standardized.</p>
 	<h6><i>The structured lattice generalists</i></h6>
 	<p>Just like Kyber, the KEMs <b>SABER</b>, <b>NTRU</b> and <b>NTRU Prime</b> are all structured lattice schemes that are very similar in performance to Kyber. There are some finer differences, but any one of these KEMs would’ve been a great pick. And they still are: OpenSSH 9.0 <a href="https://www.openssh.com/txt/release-9.0">chose to implement</a> NTRU Prime.</p>
 	<h6><i>The backup generalists</i></h6>
-	<p><b>BIKE</b>, <b>HQC</b> and <b>FrodoKEM</b> are also balanced KEMs, but they’re based on three different underlying hard problems. Unfortunately they’re noticeably less efficient, both in key sizes and computation. A breakthrough in the cryptanalysis of structured lattices is possible, though, and in that case it’s nice to have backups. Thus NIST is advancing BIKE and HQC to a fourth round.</p>
+	<p><b>BIKE</b>, <b>HQC</b> and <b>FrodoKEM</b> are also balanced KEMs, but they’re based on three different underlying hard problems. Unfortunately they’re noticeably less efficient, both in key sizes and computation. A breakthrough in the cryptanalysis of structured lattices is possible, though, and in that case it’s nice to have backups. Thus, NIST is advancing BIKE and HQC to a fourth round.</p>
 	<p>While NIST chose not to advance FrodoKEM, which is based on unstructured lattices, Germany’s BSI <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Crypto/Migration_to_Post_Quantum_Cryptography.pdf?__blob=publicationFile&amp;v=2">prefers</a> it.</p>
 	<h6><i>The specialists</i></h6>
 	<p>The last group of post-quantum cryptographic algorithms under NIST’s consideration are the specialists. We’re happy that both are advancing to the fourth round as they can be of great value in just the right application.</p>
 	<p>First up is <b>Classic McEliece</b>: it has rather unbalanced performance characteristics with its large public key (261kB) and small ciphertexts (128 bytes). This makes McEliece unsuitable for the ephemeral key exchange of TLS, where we need to transmit the public key. On the other hand, McEliece is ideal when the public key is distributed out-of-band anyway, as is often the case in applications and mobile apps that pin certificates. To use McEliece in this way, we need to change TLS a bit. Normally the server authenticates itself by sending a signature on the handshake. Instead, the client can encrypt a challenge to the KEM public key of the server. Being able to decrypt it is an implicit authentication. This variation of TLS is known as <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">KEMTLS</a> and also works great with Kyber when the public key isn’t known beforehand.</p>
-	<p>Finally, there is <b>SIKE,</b> which is based on supersingular isogenies. It has very small key and ciphertext sizes. Unfortunately, it is computationally more expensive than the other contenders.</p>
+	<p>Finally, there is <b>SIKE,</b> which is based on super singular isogenies. It has very small key and ciphertext sizes. Unfortunately, it is computationally more expensive than the other contenders.</p>
 	<div class="flex anchor relative">
 		<h3 id="digital-signatures">Digital signatures</h3>
 		<a href="https://blog.cloudflare.com/#digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -162,9 +199,9 @@
 	<p>Let’s break that down. <b>Constant time</b> means that the time the operation takes does not depend on the data processed. If the time to create a signature depends on the private key, then the private key can often be recovered by <a href="https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf">measuring</a> how long it takes to create a signature. Writing constant-time code is hard, but over the years cryptographers have got it figured out for integer arithmetic.</p>
 	<p>Falcon, crucially, is the first big cryptographic algorithm to use <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double-precision floating-point</a> arithmetic. Initially it wasn’t clear at all whether Falcon could be implemented in constant-time, but impressively, Falcon was implemented in constant-time for <a href="https://eprint.iacr.org/2019/893.pdf">several different CPUs</a>, which required several <a href="https://falcon-sign.info/impl/fpr.h.html">clever workarounds</a> for certain CPU instructions.</p>
 	<p>Despite this achievement, Falcon’s constant-timeness is built on shaky grounds. The next generation of Intel CPUs might add an optimization that breaks Falcon’s constant-timeness. Also, <a href="https://eprint.iacr.org/2022/405.pdf">many CPUs</a> today do not even have fast constant-time double-precision operations. And then still, there might be an <a href="https://twitter.com/bwesterb/status/1509583201848672258">obscure bug</a> that has been overlooked.</p>
-	<p>In time it might be figured out how to do constant-time arithmetic on the FPU robustly, but we feel it’s too early to deploy Falcon where the timing of signature minting can be measured. Notwithstanding, Falcon is a great choice for offline signatures such as those in certificates.</p>
+	<p>In time, it might be figured out how to do constant-time arithmetic on the FPU robustly, but we feel it’s too early to deploy Falcon where the timing of signature minting can be measured. Notwithstanding, Falcon is a great choice for offline signatures such as those in certificates.</p>
 	<h4>Dilithium’s size</h4>
-	<p>This brings us to <b>Dilithium</b>. Compared to Falcon it’s easy to implement safely and has better signing performance to boot. Its signatures and public keys are much larger though, which is problematic. For example, to each browser visiting this very page, we sent six signatures and two public keys. If we’d replace them all with Dilithium2 we would be looking at <b>17kB of additional data</b>. Last year, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we ran an experiment</a> to see the impact of additional data in the TLS handshake:</p>
+	<p>This brings us to <b>Dilithium</b>. Compared to Falcon it’s easy to implement safely and has better signing performance to boot. Its signatures and public keys are much larger though, which is problematic. For example, to each browser visiting this very page, we sent six signatures and two public keys. If we’d replace them all with Dilithium2 we would be looking at <b>17KB of additional data</b>. Last year, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we ran an experiment</a> to see the impact of additional data in the TLS handshake:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75kLinYj12cYdK8eHQvRx8/d880e06a52625cb0fc8f681ddc3b6cfc/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
@@ -192,7 +229,7 @@
 	<p>However, to everyone’s surprise, NIST <b>picked both</b>! NIST chose to standardize Dilithium, Falcon <i>and</i> SPHINCS+. This is a very pleasant surprise for the Internet: it means that post-quantum authentication will be much simpler to adopt.</p>
 	<h4>SPHINCS+, the conservative choice</h4>
 	<p>In the excitement of the fight between Dilithium and Falcon, we could almost forget about SPHINCS+, a stateless hash-based signature. Its big advantage is that its security is based on the second-preimage resistance of the underlying hash-function, which is well understood. It is not a stretch to say that SPHINCS+ is the most conservative choice for a signature scheme, post-quantum or otherwise. But even as a co-submitter of SPHINCS+, I have to admit that its performance isn’t that great.</p>
-	<p>There is a lot of flexibility in the parameter choices for SPHINCS+: there are tradeoffs between signature size, signing time, verification time and the maximum number of signatures that can be minted. Of the current parameter sets, the “s” are optimized for size and “f” for signing speed; both chosen to allow 264 &nbsp;signatures. NIST has hinted at reducing the signature limit, which would improve performance. A custom choice of parameters for a particular application would improve it even more, but would still trail Dilithium.</p>
+	<p>There is a lot of flexibility in the parameter choices for SPHINCS+: there are tradeoffs between signature size, signing time, verification time and the maximum number of signatures that can be minted. Of the current parameter sets, the “s” are optimized for size and “f” for signing speed; both chosen to allow 264 signatures. NIST has hinted at reducing the signature limit, which would improve performance. A custom choice of parameters for a particular application would improve it even more, but would still trail Dilithium.</p>
 	<p>Having discussed NIST choices, let’s have a look at those that were left out.</p>
 	<h4>The other finalists</h4>
 	<p>There were three other finalists: GeMSS, Picnic and Rainbow. None of these are progressing to a fourth round.</p>
@@ -225,7 +262,7 @@
 	<h4>Start experimenting with Kyber today</h4>
 	<p>Now is a good time for you to try out Kyber in your software stacks. We were lucky to correctly guess Kyber would be picked and have experience running it internally. Our tests so far show it performs great. Your requirements might differ, so try it out yourself.</p>
 	<p>The <a href="https://github.com/pq-crystals/kyber">reference implementation</a> in C is excellent. The Open Quantum Safe project <a href="https://openquantumsafe.org/applications/tls.html">integrates</a> it with various TLS libraries, but beware: the algorithm identifiers and scheme might still change, so be ready to migrate.</p>
-	<p>Our <a href="https://github.com/cloudflare/circl">CIRCL</a> library has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/main/kem">Kyber in Go</a>. We implemented Kyber ourselves so that we could help tease out any implementation bugs or subtle underspecification.</p>
+	<p>Our <a href="https://github.com/cloudflare/circl">CIRCL</a> library has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/main/kem">Kyber in Go</a>. We implemented Kyber ourselves so that we could help tease out any implementation bugs or subtle under specification.</p>
 	<h4>Experimenting with post-quantum signatures</h4>
 	<p>Post-quantum signatures are not as urgent, but might require more engineering to get right. First off, which signature scheme to pick?</p>
 	<ul>
@@ -265,19 +302,59 @@
 			</svg>
 		</a>
 	</div>
-	<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till &nbsp;now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p>
-	<p>Level</p>
-	<p>Definition, as least as hard to break as …</p>
-	<p>1</p>
-	<p>To recover the key of AES-128 by exhaustive search</p>
-	<p>2</p>
-	<p>To find a collision in SHA256 by exhaustive search</p>
-	<p>3</p>
-	<p>To recover the key of AES-192 by exhaustive search</p>
-	<p>4</p>
-	<p>To find a collision in SHA384 by exhaustive search</p>
-	<p>5</p>
-	<p>To recover the key of AES-256 by exhaustive search</p>
+	<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Level</b></p>
+				</td>
+				<td>
+					<p><b>Definition, as least as hard to break as…</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>To recover the key of AES-128 by exhaustive search</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>To find a collision in SHA256 by exhaustive search</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>To recover the key of AES-192 by exhaustive search</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>To find a collision in SHA384 by exhaustive search</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5</p>
+				</td>
+				<td>
+					<p>To recover the key of AES-256 by exhaustive search</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>So which security level should we pick? Is level 1 good enough? We’d need to understand how hard it is for a quantum computer to crack AES-128.</p>
 	<h4>Grover’s algorithm</h4>
 	<p>In 1996, two years after Shor’s paper, Lov Grover <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.79.325">published</a> his <b>quantum search algorithm</b>. With it, you can find the AES-128 key (given known plain and ciphertext) with only 264 executions of the cipher <i>in superposition</i>. That sounds much faster than the 2127 tries on average for a classical brute-force attempt. In fact, it sounds like security level 1 isn’t that secure at all. Don’t be alarmed: level 1 is much more secure than it sounds, but it requires some context.</p>
@@ -304,7 +381,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>We already mentioned CIRCL a few times, it’s our optimized crypto-library for Go whose <a href="https://blog.cloudflare.com/introducing-circl">development we started</a> in 2019. CIRCL already contains support for several post-quantum algorithms such as the KEMs Kyber and SIKE and signature schemes Dilithium and Frodo. The code is up to date and compliant with test vectors from the third round. CIRCL is readily usable in Go programs either as a library or natively as part of Go using <a href="https://github.com/cloudflare/go">this fork</a>.</p>
+	<p>We already mentioned CIRCL a few times, it’s our optimized crypto-library for Go whose <a href="https://blog.cloudflare.com/introducing-circl">development we started</a> in 2019. CIRCL already contains support for several post-quantum algorithms such as the KEMs Kyber and SIKE and signature schemes Dilithium and Frodo. The code is up-to-date and compliant with test vectors from the third round. CIRCL is readily usable in Go programs either as a library or natively as part of Go using <a href="https://github.com/cloudflare/go">this fork</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13Yr1CAgGUVkNU48YQcowR/0e79dde272e73143135795d2cb78b521/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
@@ -367,4 +444,5 @@ Errors: &lt;nil&gt;</code></pre>
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/2386e5712753504c4306cf41de1633fb?poster=https%3A%2F%2Fcloudflarestream.com%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D19s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

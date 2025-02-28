@@ -41,30 +41,78 @@
 			</svg>
 		</a>
 	</div>
-	<p>Now, the hard part: how can we translate bot challenges into a specific number of trees that should be planted? Fortunately, we can use a series of unit conversions, similar to those we use to calculate Cloudflare’s total GHG emissions.</p>
+	<p>Now, the hard part: how can we translate bot challenges into a specific number of trees that should be planted? Fortunately, we can use a series of unit conversions, similar to those we used to calculate Cloudflare’s total GHG emissions.</p>
 	<p>We started with the following assumptions.</p>
 	<p>Table 1.</p>
-	<p>Measure</p>
-	<p>Quantity</p>
-	<p>Scaled</p>
-	<p>Source</p>
-	<p>Energy used by a standard server</p>
-	<p>1,760.3 kWh / year</p>
-	<p>To hours (0.2 kWh / hour)</p>
-	<p><a href="https://www.goclimate.com/about">Go Climate</a></p>
-	<p>Emissions factor</p>
-	<p>0.33852 kgCO2e / kWh</p>
-	<p>To grams (338.52 gCO2e / kWh)</p>
-	<p><a href="https://www.goclimate.com/about">Go Climate</a></p>
-	<p>CO2 absorbed by a mature tree</p>
-	<p>48 lbsCO2e / year</p>
-	<p>To kilograms (21 kgCO2e / year)</p>
-	<p><a href="https://onetreeplanted.org/pages/carbon-footprint">One Tree Planted</a></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Measure</b></p>
+				</td>
+				<td>
+					<p><b>Quantity</b></p>
+				</td>
+				<td>
+					<p><b>Scaled</b></p>
+				</td>
+				<td>
+					<p><b>Source</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Energy used by a standard server</p>
+				</td>
+				<td>
+					<p>1,760.3 kWh / year</p>
+				</td>
+				<td>
+					<p>To hours (0.2 kWh / hour)</p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20230401003729/https://www.goclimate.com/about">Go Climate</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Emissions factor</p>
+				</td>
+				<td>
+					<p>0.33852 kgCO2e / kWh</p>
+				</td>
+				<td>
+					<p>To grams (338.52 gCO2e / kWh)</p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20230401003729/https://www.goclimate.com/about">Go Climate</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CO2 absorbed by a mature tree</p>
+				</td>
+				<td>
+					<p>48 lbsCO2e / year</p>
+				</td>
+				<td>
+					<p>To kilograms (21 kgCO2e / year)</p>
+				</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20230401003729/https://onetreeplanted.org/pages/carbon-footprint">One Tree Planted</a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Next, we selected a high-traffic day to model the rate and duration of bot challenges on our network. On May 23, 2021, Bot Fight Mode issued 2,878,622 challenges, which lasted an average of 50 seconds each. In total, bots spent 39,981 hours engaging with our network defenses, or more than four years of challenges in a single day!</p>
 	<p>We then converted that time value into kilowatt-hours (kWh) of energy based on the rate of power consumed by our generic server listed in Table 1 above.</p>
-	<p>39,981 (hours) x .2 (kWh/hour) = 7,996 (kWh)</p>
+	<blockquote>
+		<p>39,981 (hours) x .2 (kWh/hour) = 7,996 (kWh)</p>
+	</blockquote>
 	<p>Once we knew the total amount of energy consumed by bad bot servers, we used an emissions factor (the amount of greenhouse gasses emitted per unit of energy consumed) to determine total emissions.</p>
-	<p>7,996 (kwh) x 338.52 (gCO2e/kwh) = 2,706,805 (gCO2e)</p>
+	<blockquote>
+		<p>7,996 (kwh) x 338.52 (gCO2e/kwh) = 2,706,805 (gCO2e)</p>
+	</blockquote>
 	<p>If you have made it this far, clearly you like to geek out like we do, so for the sake of completeness, the unit commonly used in emissions calculations is carbon dioxide <i>equivalent</i> (CO2e), which is a composite unit for all six GHGs listed in the Kyoto Protocol weighted by <a href="https://www.epa.gov/ghgemissions/understanding-global-warming-potentials">Global Warming Potential</a>.</p>
 	<p>The last conversion we needed was from emissions to trees. Our partners at OTP found that a mature tree absorbs roughly 21 kgCO2e per year. Based on our total emissions that translates to roughly 47,000 trees per server, or 840 trees per CPU core. However, in our original post, we also noted that given the time it takes for a newly planted tree to reach maturity, we would multiply our donation by a factor of 25.</p>
 	<p>In the end, over the first two years of the program, we calculated that we would need approximately 42,000 trees to account for all the individual CPU cores engaged in Bot Fight Mode. For good measure, we rounded up to an even 50,000.</p>

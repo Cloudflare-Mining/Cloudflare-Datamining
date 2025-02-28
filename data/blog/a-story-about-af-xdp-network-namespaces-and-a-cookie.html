@@ -35,26 +35,80 @@
 	<p>The interactions and synchronization between the kernel and userspace happen via a set of queues (circular buffers) as well as a socket from the AF_XDP family.</p>
 	<p>Most of the work is about managing the ownership of the descriptors. Which descriptors the kernel owns and which descriptors the userspace owns.</p>
 	<p>The interface provided for the ownership management are a set of queues:</p>
-	<p>Queue</p>
-	<p>User space</p>
-	<p>Kernel space</p>
-	<p>Content description</p>
-	<p>COMPLETION</p>
-	<p>Consumes</p>
-	<p>Produces</p>
-	<p>Frame descriptors that have successfully been transmitted</p>
-	<p>FILL</p>
-	<p>Produces</p>
-	<p>Consumes</p>
-	<p>Frame descriptors ready to get new packet bytes written to</p>
-	<p>RX</p>
-	<p>Consumes</p>
-	<p>Produces</p>
-	<p>Frame descriptors of a newly received packet</p>
-	<p>TX</p>
-	<p>Produces</p>
-	<p>Consumes</p>
-	<p>Frame descriptors to be transmitted</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Queue</b></p>
+				</td>
+				<td>
+					<p><b>User space</b></p>
+				</td>
+				<td>
+					<p><b>Kernel space</b></p>
+				</td>
+				<td>
+					<p><b>Content description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>COMPLETION</p>
+				</td>
+				<td>
+					<p>Consumes</p>
+				</td>
+				<td>
+					<p>Produces</p>
+				</td>
+				<td>
+					<p>Frame descriptors that have successfully been transmitted</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>FILL</p>
+				</td>
+				<td>
+					<p>Produces</p>
+				</td>
+				<td>
+					<p>Consumes</p>
+				</td>
+				<td>
+					<p>Frame descriptors ready to get new packet bytes written to</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>RX</p>
+				</td>
+				<td>
+					<p>Consumes</p>
+				</td>
+				<td>
+					<p>Produces</p>
+				</td>
+				<td>
+					<p>Frame descriptors of a newly received packet</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TX</p>
+				</td>
+				<td>
+					<p>Produces</p>
+				</td>
+				<td>
+					<p>Consumes</p>
+				</td>
+				<td>
+					<p>Frame descriptors to be transmitted</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>When the UMEM is created, a FILL and a COMPLETION queue are associated with it.</p>
 	<p>An RX and a TX queue are associated with the AF_XDP socket (abbreviated <b>Xsk</b>) at its creation. This particular socket is bound to a network device queue id. The userspace can then <code>poll()</code> on the socket to know when new descriptors are ready to be consumed from the RX queue and to let the kernel deal with the descriptors that were set on the TX queue by the application.</p>
 	<p>The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html">function</a>) to a specific socket that we created in userspace:</p>
@@ -132,7 +186,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace</c
 
 	</figure>
 	<p>Here is what we do: we enter the network namespace where the interface sits, load and attach the BPF program and for each queue of the interface, we create a socket. The UMEM and the config parameters are the same with the ingress Xsk creation. Only the ingress_veth and egress_veth are different.</p>
-	<p>This is what the code to create an Xsk looks like:</p>
+	<p>This is what the code to create a Xsk looks like:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xd6YfIKTsCJOEq9OHGYfW/2b06a4be3d9ab9d64842d99b68b998c6/image3-6.png" alt="Rust Xsk creation code snippet" class="kg-image" width="1354" height="1168" loading="lazy">
@@ -257,192 +311,186 @@ struct sockaddr_xdp {
         /* size: 16, cachelines: 1, members: 5 */
         /* last cacheline: 16 bytes */
 };</code></pre>
-	<p>Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		.tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg .tg-xzvm {
-			background-color: #FFF;
-			color: #36393A;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: middle
-		}
-
-		.tg .tg-jf6t {
-			background-color: #FFF;
-			color: #36393A;
-			text-align: left;
-			vertical-align: middle
-		}
-
-		.tg .tg-rvy2 {
-			background-color: #FFF;
-			color: #0051C3;
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg" width="100%">
-		<thead>
-			<tr>
-				<th class="tg-xzvm">Struct member</th>
-				<th class="tg-xzvm">Big Endian value</th>
-				<th class="tg-xzvm">Decimal</th>
-				<th class="tg-xzvm">Meaning</th>
-				<th class="tg-xzvm">Observation</th>
-			</tr>
-		</thead>
+	<p>Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p>
+	<table>
 		<tbody>
 			<tr>
-				<td class="tg-rvy2"><a href="https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15"><span style="text-decoration:none;color:#0051C3;background-color:transparent">sxdp_flags</span></a></td>
-				<td class="tg-jf6t">\x08\x00</td>
-				<td class="tg-jf6t">8</td>
-				<td class="tg-jf6t">XDP_USE_NEED_WAKEUP</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p><b>Struct member</b></p>
+				</td>
+				<td>
+					<p><b>Big Endian value</b></p>
+				</td>
+				<td>
+					<p><b>Decimal</b></p>
+				</td>
+				<td>
+					<p><b>Meaning</b></p>
+				</td>
+				<td>
+					<p><b>Observation</b></p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_ifindex</td>
-				<td class="tg-jf6t">\x92\x10\x00\x00</td>
-				<td class="tg-jf6t">4242</td>
-				<td class="tg-jf6t">The network interface index</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15">sxdp_flags</a></p>
+				</td>
+				<td>
+					<p>\x08\x00</p>
+				</td>
+				<td>
+					<p>8</p>
+				</td>
+				<td>
+					<p>XDP_USE_NEED_WAKEUP</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_queue_id</td>
-				<td class="tg-jf6t">\x00\x00\x00\x00</td>
-				<td class="tg-jf6t">0</td>
-				<td class="tg-jf6t">The network interface queue id</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p>sxdp_ifindex</p>
+				</td>
+				<td>
+					<p>\x92\x10\x00\x00</p>
+				</td>
+				<td>
+					<p>4242</p>
+				</td>
+				<td>
+					<p>The network interface index</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_shared_umem_fd</td>
-				<td class="tg-jf6t">\x00\x00\x00\x00</td>
-				<td class="tg-jf6t">0</td>
-				<td class="tg-jf6t">The umem is not shared yet</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p>sxdp_queue_id</p>
+				</td>
+				<td>
+					<p>\x00\x00\x00\x00</p>
+				</td>
+				<td>
+					<p>0</p>
+				</td>
+				<td>
+					<p>The network interface queue </p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sxdp_shared_umem_fd</p>
+				</td>
+				<td>
+					<p>\x00\x00\x00\x00</p>
+				</td>
+				<td>
+					<p>0</p>
+				</td>
+				<td>
+					<p>The umem is not shared yet</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Second <code>bind()</code> call:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		.tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg .tg-xzvm {
-			background-color: #FFF;
-			color: #36393A;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: middle
-		}
-
-		.tg .tg-jf6t {
-			background-color: #FFF;
-			color: #36393A;
-			text-align: left;
-			vertical-align: middle
-		}
-
-		.tg .tg-rvy2 {
-			background-color: #FFF;
-			color: #0051C3;
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg" width="100%">
-		<thead>
-			<tr>
-				<th class="tg-xzvm">Struct member</th>
-				<th class="tg-xzvm">Big Endian value</th>
-				<th class="tg-xzvm">Decimal</th>
-				<th class="tg-xzvm">Meaning</th>
-				<th class="tg-xzvm">Observation</th>
-			</tr>
-		</thead>
+	</table>
+	<p>Second <code>bind()</code>call:</p>
+	<table>
 		<tbody>
 			<tr>
-				<td class="tg-rvy2"><a href="https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15"><span style="text-decoration:none;color:#0051C3;background-color:transparent">sxdp_flags</span></a></td>
-				<td class="tg-jf6t">\x01\x00</td>
-				<td class="tg-jf6t">1</td>
-				<td class="tg-jf6t">XDP_SHARED_UMEM</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p>Struct member</p>
+				</td>
+				<td>
+					<p>Big Endian value</p>
+				</td>
+				<td>
+					<p>Decimal</p>
+				</td>
+				<td>
+					<p>Meaning</p>
+				</td>
+				<td>
+					<p>Observation</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_ifindex</td>
-				<td class="tg-jf6t">\x92\x10\x00\x00</td>
-				<td class="tg-jf6t">4242</td>
-				<td class="tg-jf6t">The network interface index</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p><a href="http://web.archive.org/web/20220814030152/https://elixir.bootlin.com/linux/v5.15/source/include/uapi/linux/if_xdp.h#L15">sxdp_flags</a></p>
+				</td>
+				<td>
+					<p>\x01\x00</p>
+				</td>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>XDP_SHARED_UMEM</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_queue_id</td>
-				<td class="tg-jf6t">\x00\x00\x00\x00</td>
-				<td class="tg-jf6t">0</td>
-				<td class="tg-jf6t">The network interface queue id</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p>sxdp_ifindex</p>
+				</td>
+				<td>
+					<p>\x92\x10\x00\x00</p>
+				</td>
+				<td>
+					<p>4242</p>
+				</td>
+				<td>
+					<p>The network interface index</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="tg-jf6t">sxdp_shared_umem_fd</td>
-				<td class="tg-jf6t">\x09\x00\x00\x00</td>
-				<td class="tg-jf6t">9</td>
-				<td class="tg-jf6t">File descriptor of the first AF_XDP socket associated to the UMEM</td>
-				<td class="tg-jf6t">expected</td>
+				<td>
+					<p>sxdp_queue_id</p>
+				</td>
+				<td>
+					<p>\x00\x00\x00\x00</p>
+				</td>
+				<td>
+					<p>0</p>
+				</td>
+				<td>
+					<p>The network interface queue id</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>sxdp_shared_umem_fd</p>
+				</td>
+				<td>
+					<p>\x09\x00\x00\x00</p>
+				</td>
+				<td>
+					<p>9</p>
+				</td>
+				<td>
+					<p>File descriptor of the first AF_XDP socket associated to the UMEM</p>
+				</td>
+				<td>
+					<p>expected</p>
+				</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
+	</table>
 	<p>The arguments look good...</p>
 	<p>We could statically try to infer where the EINVAL was returned looking at the source code. But this analysis has its limits and can be error-prone.</p>
 	<p>Overall, it seems that the network namespaces are not taken into account somewhere because it seems that there is some confusion with the interface indexes.</p>
@@ -475,7 +523,7 @@ struct sockaddr_xdp {
 		</li>
 	</ul>
 	<p>We could have used <a href="https://buildroot.org">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
-	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and a ssh server selected in the installation wizard):</p>
+	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and an ssh server selected in the installation wizard):</p>
 	<pre class="language-bash"><code class="language-bash">qemu-img create -f qcow2 ubuntu-21.10-live-server-amd64.qcow2 20G
  
 qemu-system-x86_64 \
@@ -490,7 +538,7 @@ qemu-system-x86_64 \
 	<p>And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel">link</a>) with the following changes in the menuconfig:</p>
 	<ul>
 		<li>
-			<p>Cryptographic API -&gt; Certificates for signature checking -&gt; Provide system-wide ring of trusted keys</p>
+			<p>Cryptographic API → Certificates for signature checking → Provide system-wide ring of trusted keys</p>
 			<ul>
 				<li>
 					<p>change the additional string to be EMPTY ("")</p>
@@ -498,7 +546,7 @@ qemu-system-x86_64 \
 			</ul>
 		</li>
 		<li>
-			<p>Device drivers -&gt; Network device support -&gt; Virtio network driver</p>
+			<p>Device drivers → Network device support → Virtio network driver</p>
 			<ul>
 				<li>
 					<p>Set to Enable</p>
@@ -506,7 +554,7 @@ qemu-system-x86_64 \
 			</ul>
 		</li>
 		<li>
-			<p>Device Drivers -&gt; Network device support -&gt; Virtual ethernet pair device</p>
+			<p>Device Drivers → Network device support → Virtual ethernet pair device</p>
 			<ul>
 				<li>
 					<p>Set to Enable</p>
@@ -514,7 +562,7 @@ qemu-system-x86_64 \
 			</ul>
 		</li>
 		<li>
-			<p>Device drivers -&gt; Block devices -&gt; Virtio block driver</p>
+			<p>Device drivers → Block devices → Virtio block driver</p>
 			<ul>
 				<li>
 					<p>Set to Enable</p>
@@ -558,7 +606,7 @@ make -j$(nproc) bzImage</code></pre>
 	</figure>
 	<p>In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
 	<p>Something is definitely going wrong in libbpf because the FILL queue and COMPLETION queue pointers are missing.</p>
-	<p>Back to the libbpf <code>xsk_socket__create_shared()</code> function to check where the queues are set for the socket and we quickly notice two functions that interact with the FILL and COMPLETION queues:</p>
+	<p>Back to the libbpf <code>xsk_socket__create_shared()</code> function to check where the queues are set for the socket, and we quickly notice two functions that interact with the FILL and COMPLETION queues:</p>
 	<p>The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879"><code>xsk_get_ctx()</code></a>:</p>
 	<figure class="kg-card kg-image-card ">
 

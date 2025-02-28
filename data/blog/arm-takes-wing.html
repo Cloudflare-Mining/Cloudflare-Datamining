@@ -2,10 +2,10 @@
 <div class="post-content lh-copy gray1">
 	<p>One of the nicer perks I have here at Cloudflare is access to the latest hardware, long before it even reaches the market.</p>
 	<p>Until recently I mostly played with Intel hardware. For example Intel supplied us with an engineering sample of their Skylake based Purley platform back in August 2016, to give us time to evaluate it and optimize our software. As a former Intel Architect, who did a lot of work on Skylake (as well as Sandy Bridge, Ivy Bridge and Icelake), I really enjoy that.</p>
-	<p>Our previous generation of servers was based on the Intel Broadwell micro-architecture. Our configuration includes dual-socket Xeons E5-2630 v4, with 10 cores each, running at 2.2GHz, with a 3.1GHz turbo boost and hyper-threading enabled, for a total of 40 threads per server.</p>
+	<p>Our previous generation of servers was based on the Intel Broadwell micro-architecture. Our configuration includes dual-socket Xeons E5-2630 v4, with 10 cores each, running at 2.2GHz, with a 3.1GHz turboboost and hyper-threading enabled, for a total of 40 threads per server.</p>
 	<p>Since Intel was, and still is, the undisputed leader of the server CPU market with greater than 98% market share, our upgrade process until now was pretty straightforward: every year Intel releases a new generation of CPUs, and every year we buy them. In the process we usually get two extra cores per socket, and all the extra architectural features such upgrade brings: hardware AES and CLMUL in Westmere, AVX in Sandy Bridge, AVX2 in Haswell, etc.</p>
-	<p>In the current upgrade cycle, our next server processor ought to be the Xeon Silver 4116, also in a dual-socket configuration. In fact, we have already purchased a significant number of them. Each CPU has 12 cores, but it runs at a lower frequency of 2.1GHz, with 3.0GHz turbo boost. It also has smaller last level cache: 1.375&nbsp;MiB/core, compared to 2.5&nbsp;MiB the Broadwell processors had. In addition, the Skylake based platform supports 6 memory channels and the AVX-512 instruction set.</p>
-	<p>As we head into 2018, however, change is in the air. For the first time in a while, Intel has serious competition in the server market: Qualcomm and Cavium both have new server platforms based on the ARMv8 64-bit architecture (aka aarch64 or arm64). Qualcomm has the Centriq platform (codename Amberwing), based on the Falkor core, and Cavium has the ThunderX2 platform, based on the ahm ... ThunderX2 core?</p>
+	<p>In the current upgrade cycle, our next server processor ought to be the Xeon Silver 4116, also in a dual-socket configuration. In fact, we have already purchased a significant number of them. Each CPU has 12 cores, but it runs at a lower frequency of 2.1GHz, with 3.0GHz turboboost. It also has smaller last level cache: 1.375&nbsp;MiB/core, compared to 2.5&nbsp;MiB the Broadwell processors had. In addition, the Skylake based platform supports 6 memory channels and the AVX-512 instruction set.</p>
+	<p>As we head into 2018, however, change is in the air. For the first time in a while, Intel has serious competition in the server market: Qualcomm and Cavium both have new server platforms based on the ARMv8 64-bit architecture (aka aarch64 or arm64). Qualcomm has the Centriq platform (code name Amberwing), based on the Falkor core, and Cavium has the ThunderX2 platform, based on the ahm ... ThunderX2 core?</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OerKvEoy4NXTwjEpDA1tY/d8d9c4dad28ab5bc7100710b3dcf644e/25704115174_061e907e57_o.jpg" alt="" class="kg-image" width="1705" height="1262" loading="lazy">
@@ -32,19 +32,19 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Platform</p>
+					<p><b>Platform</b></p>
 				</td>
 				<td>
-					<p>Grantley
-						(Intel)</p>
+					<p><b>Grantley
+							(Intel)</b></p>
 				</td>
 				<td>
-					<p>Purley
-						(Intel)</p>
+					<p><b>Purley
+							(Intel)</b></p>
 				</td>
 				<td>
-					<p>Centriq
-						(Qualcomm)</p>
+					<p><b>Centriq
+							(Qualcomm)</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -342,7 +342,7 @@
 	</figure>
 	<p>Gzip performance is pretty good. The single core Falkor performance is way below both Intel processors, but at the system level it manages to outperform Broadwell, and lags behind Skylake. Since we already know that Falkor outperforms both when C is used, it can only mean that Go’s backend for ARMv8 is still pretty immature compared to gcc.</p>
 	<h4>Go regexp</h4>
-	<p>Regexp is widely used in a variety of tasks, so its performance is quite important too. I ran the builtin benchmarks on 32KB strings.</p>
+	<p>Regexp is widely used in a variety of tasks, so its performance is quite important too. I ran the built-in benchmarks on 32KB strings.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AhmqRQhO37Z03KXfz9PUk/9b39646f7e800c9a7c8565134d516815/go_regexp_easy_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -366,7 +366,7 @@
 	<p>Go regexp performance is not very good on Falkor. In the medium and hard tests it takes second place, thanks to the higher core count, but Skylake is significantly faster still.</p>
 	<p>Doing some profiling shows that a lot of the time is spent in the function bytes.IndexByte. This function has an assembly implementation for amd64 (runtime.indexbytebody), but generic implementation for Go. The easy regexp tests spend most time in this function, which explains the even wider gap.</p>
 	<h4>Go strings</h4>
-	<p>Another important library for a webserver is the Go strings library. I only tested the basic Replacer class here.</p>
+	<p>Another important library for a web server is the Go strings library. I only tested the basic Replacer class here.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/G20n7Ru5izVdUBOMM8af7/9a257ef47b5a38e3f745a22da7f36da5/go_str_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
@@ -399,7 +399,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ohY0uFyotdk0eJt9lU725/472f32803de7ecd6e2d95f27948aa85a/luajit_all_cores.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
-	<p>With the exception of the binary_trees benchmark, the performance of LuaJIT on ARM is very competitive. It wins two benchmarks, and is in almost a tie in a third one.</p>
+	<p>Except for the binary_trees benchmark, the performance of LuaJIT on ARM is very competitive. It wins two benchmarks, and is in almost a tie in a third one.</p>
 	<p>That being said, binary_trees is a very important benchmark, because it triggers many memory allocations and garbage collection cycles. It will require deeper investigation in the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="nginx">NGINX</h3>

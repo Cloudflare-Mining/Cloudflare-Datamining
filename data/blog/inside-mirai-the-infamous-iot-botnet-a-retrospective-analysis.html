@@ -101,7 +101,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MPhfLTL6E6WUAS4xdlaJK/df41e701b5a6a815da33b075dbe96d96/mirai-infection-process.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
-	<p>The replication module is responsible for growing the botnet size by enslaving as many vulnerable IoT devices as possible. It accomplishes this by (randomly) scanning the entire Internet for viable targets and attacking. Once it compromises a vulnerable device, the module reports it to the C&amp;C servers so it can be infected with the latest Mirai payload, as the diagram above illustrates.</p>
+	<p>The replication module is responsible for growing the botnet size by enslaving as many vulnerable IoT devices as possible. It accomplishes this by (randomly) scanning the entire Internet for viable targets and attacking. Once it compromises a vulnerable device, the module reports it to the C&amp;C servers, so it can be infected with the latest Mirai payload, as the diagram above illustrates.</p>
 	<p>To compromise devices, the initial version of Mirai relied exclusively on a fixed set of 64 well-known default login/password combinations commonly used by IoT devices. While this attack was very low tech, it proved extremely effective and led to the compromise of over 600,000 devices. For more information about DDoS techniques, read this <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Cloudflare primer</a>.</p>
 	<h4>Attack module</h4>
 	<figure class="kg-card kg-image-card ">
@@ -124,7 +124,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QDBF6lY3eznSnre1Tllhn/bc842612f4050a94a5a1ae151845c170/krebs-on-security-timeline.png" alt="" class="kg-image" width="1200" height="750" loading="lazy">
 
 	</figure>
-	<p><a href="https://krebsonsecurity.com">Krebs on Security</a> is Brian Krebs’ blog. Krebs is a widely known independent journalist who specializes in cyber-crime. Given Brian’s line of work, his blog has been targeted, unsurprisingly, by many DDoS attacks launched by the cyber-criminals he exposes. According to his telemetry (thanks for sharing, Brian!), his blog suffered 269 DDOS attacks between July 2012 and September 2016. As seen in the chart above, the Mirai assault was by far the largest, topping out at 623 Gbps.</p>
+	<p><a href="https://krebsonsecurity.com">Krebs on Security</a> is Brian Krebs’ blog. Krebs is a widely known independent journalist who specializes in cyber-crime. Given Brian’s line of work, his blog has been targeted, unsurprisingly, by many DDoS attacks launched by the cyber-criminals he exposes. According to his telemetry (thanks for sharing, Brian!), his blog suffered 269 DDoS attacks between July 2012 and September 2016. As seen in the chart above, the Mirai assault was by far the largest, topping out at 623 Gbps.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Kh8i6bd0zsu6DiCbd2J13/b44383857ee07cbb5c36baa519774a32/mirai-top-countries.png" alt="" class="kg-image" width="1200" height="720" loading="lazy">
@@ -222,10 +222,10 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Cluster</p>
+					<p><b>Cluster</b></p>
 				</td>
 				<td>
-					<p>Notes</p>
+					<p><b>Notes</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -259,16 +259,16 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Target</p>
+					<p><b>Target</b></p>
 				</td>
 				<td>
-					<p>Attacks</p>
+					<p><b>Attacks</b></p>
 				</td>
 				<td>
-					<p>Clusters</p>
+					<p><b>Clusters</b></p>
 				</td>
 				<td>
-					<p>Notes</p>
+					<p><b>Notes</b></p>
 				</td>
 			</tr>
 			<tr>
@@ -508,7 +508,7 @@
 	</figure>
 	<p>Ironically, this outage was not due to yet another Mirai DDoS attack but instead due to a particularly innovative and buggy version of Mirai that knocked these devices offline while attempting to compromise them. This variant also affected thousands of <a href="https://motherboard.vice.com/en_us/article/nz7ky7/hackers-say-knocking-thousands-of-brits-offline-was-an-accident-mirai">TalkTalk routers</a>.</p>
 	<p>What allowed this variant to infect so many routers was the addition to its replication module of a router exploit targeting at the <a href="https://en.wikipedia.org/wiki/TR-069">CPE WAN Management Protocol (CWMP)</a>. The CWMP protocol is an HTTP-based protocol used by many Internet providers to autoconfigure and remotely manage home routers, modems, and other customer-on-premises (CPE) equipment.</p>
-	<p>Beside its scale, this incident is significant because it demonstrates how the weaponization of more complex IoT vulnerabilities by hackers can lead to very potent botnets. We hope the Deutsche Telekom event acts as a wake-up call and push toward making IoT auto-update mandatory. This is much needed to curb the significant risk posed by vulnerable IoT device given the poor track record of Internet users manually patching their IoT devices.</p>
+	<p>Beside its scale, this incident is significant because it demonstrates how the weaponizations of more complex IoT vulnerabilities by hackers can lead to very potent botnets. We hope the Deutsche Telekom event acts as a wake-up call and push toward making IoT auto-update mandatory. This is much needed to curb the significant risk posed by vulnerable IoT device given the poor track record of Internet users manually patching their IoT devices.</p>
 	<div class="flex anchor relative">
 		<h3 id="mirai-original-author-outed">Mirai original author outed?</h3>
 		<a href="https://blog.cloudflare.com/#mirai-original-author-outed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -527,11 +527,11 @@
 		</a>
 	</div>
 	<p>In November 2016, Daniel Kaye (aka BestBuy) the author of the Mirai botnet variant that brought down Deutsche Telekom was arrested at the <a href="http://www.bbc.com/news/technology-37510502">Luton airport</a>. Prior to Mirai, a 29-year-old British citizen was infamous for selling his hacking services on various dark web markets.</p>
-	<p>In July 2017 a few months after being extradited to Germany Daniel Kaye <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware">plead guilty</a> and was sentenced to a one year and a half imprisonment with suspension. During the trial, Daniel admitted that he never intended for the routers to cease functioning. He only wanted to silently control them so he can use them as part of a DDoS botnet to increase his botnet firepower. As discussed earlier he also confessed being paid by competitors to takedown Lonestar.</p>
+	<p>In July 2017 a few months after being extradited to Germany Daniel Kaye <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware">plead guilty</a> and was sentenced to a one year and a half imprisonment with suspension. During the trial, Daniel admitted that he never intended for the routers to cease functioning. He only wanted to silently control them, so he can use them as part of a DDoS botnet to increase his botnet firepower. As discussed earlier he also confessed being paid by competitors to takedown Lonestar.</p>
 	<p>In Aug 2017 Daniel was <a href="https://www.theguardian.com/uk-news/2017/aug/30/alleged-mastermind-daniel-kaye-lloyds-bank-cyber-attacks-extradited-uk">extradited back to the UK to face extortion charges</a> after attempting to blackmail Lloyds and Barclays banks. According to press reports, he asked the Lloyds to pay about £75,000 in bitcoins for the attack to be called off.</p>
 	<div class="flex anchor relative">
-		<h2 id="takeways">Takeways</h2>
-		<a href="https://blog.cloudflare.com/#takeways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="takeaways">Takeaways</h2>
+		<a href="https://blog.cloudflare.com/#takeaways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
