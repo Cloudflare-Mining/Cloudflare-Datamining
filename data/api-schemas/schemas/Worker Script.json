@@ -778,8 +778,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"ai"
+																		],
+																		"example": "ai"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -801,8 +832,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"analytics_engine"
+																		],
+																		"example": "analytics_engine"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -820,8 +882,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"assets"
+																		],
+																		"example": "assets"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -838,8 +931,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"browser_rendering"
+																		],
+																		"example": "browser_rendering"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -861,8 +985,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"d1"
+																		],
+																		"example": "d1"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -913,8 +1068,39 @@
 																"type": "object"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"dispatch_namespace"
+																		],
+																		"example": "dispatch_namespace"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -953,8 +1139,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"durable_object_namespace"
+																		],
+																		"example": "durable_object_namespace"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -977,8 +1194,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"hyperdrive"
+																		],
+																		"example": "hyperdrive"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1000,8 +1248,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"json"
+																		],
+																		"example": "json"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1025,8 +1304,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"kv_namespace"
+																		],
+																		"example": "kv_namespace"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1049,8 +1359,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"mtls_certificate"
+																		],
+																		"example": "mtls_certificate"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1073,8 +1414,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"plain_text"
+																		],
+																		"example": "plain_text"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1097,8 +1469,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"queue"
+																		],
+																		"example": "queue"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1121,8 +1524,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"r2_bucket"
+																		],
+																		"example": "r2_bucket"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1145,8 +1579,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"secret_text"
+																		],
+																		"example": "secret_text"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1174,8 +1639,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"service"
+																		],
+																		"example": "service"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1199,8 +1695,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"tail_consumer"
+																		],
+																		"example": "tail_consumer"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1223,8 +1750,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"vectorize"
+																		],
+																		"example": "vectorize"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -1242,8 +1800,39 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The kind of resource that the binding provides.",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The kind of resource that the binding provides.",
+																		"enum": [
+																			"ai",
+																			"analytics_engine",
+																			"assets",
+																			"browser_rendering",
+																			"d1",
+																			"dispatch_namespace",
+																			"durable_object_namespace",
+																			"hyperdrive",
+																			"json",
+																			"kv_namespace",
+																			"mtls_certificate",
+																			"plain_text",
+																			"queue",
+																			"r2_bucket",
+																			"secret_text",
+																			"service",
+																			"tail_consumer",
+																			"vectorize",
+																			"version_metadata"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"enum": [
+																			"version_metadata"
+																		],
+																		"example": "version_metadata"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -2196,8 +2785,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"ai"
+																				],
+																				"example": "ai"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2219,8 +2839,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"analytics_engine"
+																				],
+																				"example": "analytics_engine"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2238,8 +2889,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"assets"
+																				],
+																				"example": "assets"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2256,8 +2938,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"browser_rendering"
+																				],
+																				"example": "browser_rendering"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2279,8 +2992,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"d1"
+																				],
+																				"example": "d1"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2331,8 +3075,39 @@
 																		"type": "object"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"dispatch_namespace"
+																				],
+																				"example": "dispatch_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2371,8 +3146,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"durable_object_namespace"
+																				],
+																				"example": "durable_object_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2395,8 +3201,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"hyperdrive"
+																				],
+																				"example": "hyperdrive"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2418,8 +3255,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"json"
+																				],
+																				"example": "json"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2443,8 +3311,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"kv_namespace"
+																				],
+																				"example": "kv_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2467,8 +3366,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"mtls_certificate"
+																				],
+																				"example": "mtls_certificate"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2491,8 +3421,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"plain_text"
+																				],
+																				"example": "plain_text"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2515,8 +3476,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"queue"
+																				],
+																				"example": "queue"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2539,8 +3531,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"r2_bucket"
+																				],
+																				"example": "r2_bucket"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2563,8 +3586,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"secret_text"
+																				],
+																				"example": "secret_text"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2592,8 +3646,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"service"
+																				],
+																				"example": "service"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2617,8 +3702,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"tail_consumer"
+																				],
+																				"example": "tail_consumer"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2641,8 +3757,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"vectorize"
+																				],
+																				"example": "vectorize"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -2660,8 +3807,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"version_metadata"
+																				],
+																				"example": "version_metadata"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -3883,8 +5061,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"ai"
+																	],
+																	"example": "ai"
+																}
+															]
 														}
 													},
 													"required": [
@@ -3906,8 +5115,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"analytics_engine"
+																	],
+																	"example": "analytics_engine"
+																}
+															]
 														}
 													},
 													"required": [
@@ -3925,8 +5165,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"assets"
+																	],
+																	"example": "assets"
+																}
+															]
 														}
 													},
 													"required": [
@@ -3943,8 +5214,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"browser_rendering"
+																	],
+																	"example": "browser_rendering"
+																}
+															]
 														}
 													},
 													"required": [
@@ -3966,8 +5268,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"d1"
+																	],
+																	"example": "d1"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4018,8 +5351,39 @@
 															"type": "object"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"dispatch_namespace"
+																	],
+																	"example": "dispatch_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4058,8 +5422,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"durable_object_namespace"
+																	],
+																	"example": "durable_object_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4082,8 +5477,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"hyperdrive"
+																	],
+																	"example": "hyperdrive"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4105,8 +5531,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"json"
+																	],
+																	"example": "json"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4130,8 +5587,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"kv_namespace"
+																	],
+																	"example": "kv_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4154,8 +5642,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"mtls_certificate"
+																	],
+																	"example": "mtls_certificate"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4178,8 +5697,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"plain_text"
+																	],
+																	"example": "plain_text"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4202,8 +5752,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"queue"
+																	],
+																	"example": "queue"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4226,8 +5807,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"r2_bucket"
+																	],
+																	"example": "r2_bucket"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4250,8 +5862,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"secret_text"
+																	],
+																	"example": "secret_text"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4279,8 +5922,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"service"
+																	],
+																	"example": "service"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4304,8 +5978,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"tail_consumer"
+																	],
+																	"example": "tail_consumer"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4328,8 +6033,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"vectorize"
+																	],
+																	"example": "vectorize"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4347,8 +6083,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"version_metadata"
+																	],
+																	"example": "version_metadata"
+																}
+															]
 														}
 													},
 													"required": [
@@ -4768,8 +6535,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"ai"
+																				],
+																				"example": "ai"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4791,8 +6589,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"analytics_engine"
+																				],
+																				"example": "analytics_engine"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4810,8 +6639,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"assets"
+																				],
+																				"example": "assets"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4828,8 +6688,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"browser_rendering"
+																				],
+																				"example": "browser_rendering"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4851,8 +6742,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"d1"
+																				],
+																				"example": "d1"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4903,8 +6825,39 @@
 																		"type": "object"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"dispatch_namespace"
+																				],
+																				"example": "dispatch_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4943,8 +6896,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"durable_object_namespace"
+																				],
+																				"example": "durable_object_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4967,8 +6951,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"hyperdrive"
+																				],
+																				"example": "hyperdrive"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -4990,8 +7005,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"json"
+																				],
+																				"example": "json"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5015,8 +7061,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"kv_namespace"
+																				],
+																				"example": "kv_namespace"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5039,8 +7116,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"mtls_certificate"
+																				],
+																				"example": "mtls_certificate"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5063,8 +7171,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"plain_text"
+																				],
+																				"example": "plain_text"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5087,8 +7226,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"queue"
+																				],
+																				"example": "queue"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5111,8 +7281,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"r2_bucket"
+																				],
+																				"example": "r2_bucket"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5135,8 +7336,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"secret_text"
+																				],
+																				"example": "secret_text"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5164,8 +7396,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"service"
+																				],
+																				"example": "service"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5189,8 +7452,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"tail_consumer"
+																				],
+																				"example": "tail_consumer"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5213,8 +7507,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"vectorize"
+																				],
+																				"example": "vectorize"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -5232,8 +7557,39 @@
 																		"type": "string"
 																	},
 																	"type": {
-																		"description": "The kind of resource that the binding provides.",
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ai",
+																					"analytics_engine",
+																					"assets",
+																					"browser_rendering",
+																					"d1",
+																					"dispatch_namespace",
+																					"durable_object_namespace",
+																					"hyperdrive",
+																					"json",
+																					"kv_namespace",
+																					"mtls_certificate",
+																					"plain_text",
+																					"queue",
+																					"r2_bucket",
+																					"secret_text",
+																					"service",
+																					"tail_consumer",
+																					"vectorize",
+																					"version_metadata"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"version_metadata"
+																				],
+																				"example": "version_metadata"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -6520,8 +8876,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"ai"
+																	],
+																	"example": "ai"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6543,8 +8930,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"analytics_engine"
+																	],
+																	"example": "analytics_engine"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6562,8 +8980,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"assets"
+																	],
+																	"example": "assets"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6580,8 +9029,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"browser_rendering"
+																	],
+																	"example": "browser_rendering"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6603,8 +9083,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"d1"
+																	],
+																	"example": "d1"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6655,8 +9166,39 @@
 															"type": "object"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"dispatch_namespace"
+																	],
+																	"example": "dispatch_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6695,8 +9237,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"durable_object_namespace"
+																	],
+																	"example": "durable_object_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6719,8 +9292,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"hyperdrive"
+																	],
+																	"example": "hyperdrive"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6742,8 +9346,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"json"
+																	],
+																	"example": "json"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6767,8 +9402,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"kv_namespace"
+																	],
+																	"example": "kv_namespace"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6791,8 +9457,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"mtls_certificate"
+																	],
+																	"example": "mtls_certificate"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6815,8 +9512,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"plain_text"
+																	],
+																	"example": "plain_text"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6839,8 +9567,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"queue"
+																	],
+																	"example": "queue"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6863,8 +9622,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"r2_bucket"
+																	],
+																	"example": "r2_bucket"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6887,8 +9677,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"secret_text"
+																	],
+																	"example": "secret_text"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6916,8 +9737,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"service"
+																	],
+																	"example": "service"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6941,8 +9793,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"tail_consumer"
+																	],
+																	"example": "tail_consumer"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6965,8 +9848,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"vectorize"
+																	],
+																	"example": "vectorize"
+																}
+															]
 														}
 													},
 													"required": [
@@ -6984,8 +9898,39 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ai",
+																		"analytics_engine",
+																		"assets",
+																		"browser_rendering",
+																		"d1",
+																		"dispatch_namespace",
+																		"durable_object_namespace",
+																		"hyperdrive",
+																		"json",
+																		"kv_namespace",
+																		"mtls_certificate",
+																		"plain_text",
+																		"queue",
+																		"r2_bucket",
+																		"secret_text",
+																		"service",
+																		"tail_consumer",
+																		"vectorize",
+																		"version_metadata"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"version_metadata"
+																	],
+																	"example": "version_metadata"
+																}
+															]
 														}
 													},
 													"required": [
