@@ -1,0 +1,416 @@
+{
+	"alias": "to-do-list-kv-template",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "template",
+			"build": "./",
+			"files": [
+				".eslintrc.js",
+				".gitignore",
+				"README.md",
+				"load-context.ts",
+				"package-lock.json",
+				"package.json",
+				"postcss.config.js",
+				"server.ts",
+				"tailwind.config.ts",
+				"tsconfig.json",
+				"vite.config.ts",
+				"vitest.config.ts",
+				"worker-configuration.d.ts",
+				"wrangler.json",
+				"app/entry.client.tsx",
+				"app/entry.server.tsx",
+				"app/root.tsx",
+				"app/tailwind.css",
+				"app/to-do-manager.ts",
+				"public/.assetsignore",
+				"test/env.ts",
+				"test/to-do-manager.test.ts",
+				"test/tsconfig.json",
+				"app/routes/$id.tsx",
+				"app/routes/_index.tsx"
+			],
+			"replacements": {
+				"to-do-list-kv-template": {
+					"$ref": "values://target/worker/name"
+				},
+				"cf8aa41453dc4be09ff86530895773e1": {
+					"$ref": "values://resources/TO_DO_LISTKVNamespace/result/id"
+				}
+			}
+		}
+	],
+	"category": "templates",
+	"description": "A simple to-do list app built with Cloudflare Workers Assets and Remix.",
+	"docs_url": "https://developers.cloudflare.com/kv/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "To-Do List App",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create KV Namespace",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "TO_DO_LISTKVNamespaceName",
+					"label": "Name your KV namespace",
+					"required": true
+				}
+			],
+			"resources": [
+				{
+					"name": "TO_DO_LISTKVNamespace",
+					"type": "kv_namespace",
+					"params": {
+						"title": {
+							"$ref": "values://data/TO_DO_LISTKVNamespaceName"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-git-connected-worker",
+			"label": "To-Do List App",
+			"products": [
+				"Workers",
+				"KV"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/42c025ab-20bc-4bfe-2e7c-8660fba01600/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/5ca0ca32-e897-4699-d4c1-6b680512f000/public"
+			],
+			"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/923473bc-a285-487c-93db-e0ddea3d3700/public",
+			"deploy_resources": [
+				{
+					"name": "template-worker",
+					"type": "git-connected-worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"files": [
+							{
+								"filename": ".eslintrc.js",
+								"content": {
+									"$ref": "assets://template/files/.eslintrc.js"
+								}
+							},
+							{
+								"filename": ".gitignore",
+								"content": {
+									"$ref": "assets://template/files/.gitignore"
+								}
+							},
+							{
+								"filename": "README.md",
+								"content": {
+									"$ref": "assets://template/files/README.md"
+								}
+							},
+							{
+								"filename": "load-context.ts",
+								"content": {
+									"$ref": "assets://template/files/load-context.ts"
+								}
+							},
+							{
+								"filename": "package-lock.json",
+								"content": {
+									"$ref": "assets://template/files/package-lock.json"
+								}
+							},
+							{
+								"filename": "package.json",
+								"content": {
+									"$ref": "assets://template/files/package.json"
+								}
+							},
+							{
+								"filename": "postcss.config.js",
+								"content": {
+									"$ref": "assets://template/files/postcss.config.js"
+								}
+							},
+							{
+								"filename": "server.ts",
+								"content": {
+									"$ref": "assets://template/files/server.ts"
+								}
+							},
+							{
+								"filename": "tailwind.config.ts",
+								"content": {
+									"$ref": "assets://template/files/tailwind.config.ts"
+								}
+							},
+							{
+								"filename": "tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/tsconfig.json"
+								}
+							},
+							{
+								"filename": "vite.config.ts",
+								"content": {
+									"$ref": "assets://template/files/vite.config.ts"
+								}
+							},
+							{
+								"filename": "vitest.config.ts",
+								"content": {
+									"$ref": "assets://template/files/vitest.config.ts"
+								}
+							},
+							{
+								"filename": "worker-configuration.d.ts",
+								"content": {
+									"$ref": "assets://template/files/worker-configuration.d.ts"
+								}
+							},
+							{
+								"filename": "wrangler.json",
+								"content": {
+									"$ref": "assets://template/files/wrangler.json"
+								}
+							},
+							{
+								"filename": "app/entry.client.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/entry.client.tsx"
+								}
+							},
+							{
+								"filename": "app/entry.server.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/entry.server.tsx"
+								}
+							},
+							{
+								"filename": "app/root.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/root.tsx"
+								}
+							},
+							{
+								"filename": "app/tailwind.css",
+								"content": {
+									"$ref": "assets://template/files/app/tailwind.css"
+								}
+							},
+							{
+								"filename": "app/to-do-manager.ts",
+								"content": {
+									"$ref": "assets://template/files/app/to-do-manager.ts"
+								}
+							},
+							{
+								"filename": "public/.assetsignore",
+								"content": {
+									"$ref": "assets://template/files/public/.assetsignore"
+								}
+							},
+							{
+								"filename": "test/env.ts",
+								"content": {
+									"$ref": "assets://template/files/test/env.ts"
+								}
+							},
+							{
+								"filename": "test/to-do-manager.test.ts",
+								"content": {
+									"$ref": "assets://template/files/test/to-do-manager.test.ts"
+								}
+							},
+							{
+								"filename": "test/tsconfig.json",
+								"content": {
+									"$ref": "assets://template/files/test/tsconfig.json"
+								}
+							},
+							{
+								"filename": "app/routes/$id.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/routes/$id.tsx"
+								}
+							},
+							{
+								"filename": "app/routes/_index.tsx",
+								"content": {
+									"$ref": "assets://template/files/app/routes/_index.tsx"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": ".eslintrc.js",
+					"content": {
+						"$ref": "assets://template/files/.eslintrc.js"
+					}
+				},
+				{
+					"filename": ".gitignore",
+					"content": {
+						"$ref": "assets://template/files/.gitignore"
+					}
+				},
+				{
+					"filename": "README.md",
+					"content": {
+						"$ref": "assets://template/files/README.md"
+					}
+				},
+				{
+					"filename": "load-context.ts",
+					"content": {
+						"$ref": "assets://template/files/load-context.ts"
+					}
+				},
+				{
+					"filename": "package-lock.json",
+					"content": {
+						"$ref": "assets://template/files/package-lock.json"
+					}
+				},
+				{
+					"filename": "package.json",
+					"content": {
+						"$ref": "assets://template/files/package.json"
+					}
+				},
+				{
+					"filename": "postcss.config.js",
+					"content": {
+						"$ref": "assets://template/files/postcss.config.js"
+					}
+				},
+				{
+					"filename": "server.ts",
+					"content": {
+						"$ref": "assets://template/files/server.ts"
+					}
+				},
+				{
+					"filename": "tailwind.config.ts",
+					"content": {
+						"$ref": "assets://template/files/tailwind.config.ts"
+					}
+				},
+				{
+					"filename": "tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/tsconfig.json"
+					}
+				},
+				{
+					"filename": "vite.config.ts",
+					"content": {
+						"$ref": "assets://template/files/vite.config.ts"
+					}
+				},
+				{
+					"filename": "vitest.config.ts",
+					"content": {
+						"$ref": "assets://template/files/vitest.config.ts"
+					}
+				},
+				{
+					"filename": "worker-configuration.d.ts",
+					"content": {
+						"$ref": "assets://template/files/worker-configuration.d.ts"
+					}
+				},
+				{
+					"filename": "wrangler.json",
+					"content": {
+						"$ref": "assets://template/files/wrangler.json"
+					}
+				},
+				{
+					"filename": "app/entry.client.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/entry.client.tsx"
+					}
+				},
+				{
+					"filename": "app/entry.server.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/entry.server.tsx"
+					}
+				},
+				{
+					"filename": "app/root.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/root.tsx"
+					}
+				},
+				{
+					"filename": "app/tailwind.css",
+					"content": {
+						"$ref": "assets://template/files/app/tailwind.css"
+					}
+				},
+				{
+					"filename": "app/to-do-manager.ts",
+					"content": {
+						"$ref": "assets://template/files/app/to-do-manager.ts"
+					}
+				},
+				{
+					"filename": "public/.assetsignore",
+					"content": {
+						"$ref": "assets://template/files/public/.assetsignore"
+					}
+				},
+				{
+					"filename": "test/env.ts",
+					"content": {
+						"$ref": "assets://template/files/test/env.ts"
+					}
+				},
+				{
+					"filename": "test/to-do-manager.test.ts",
+					"content": {
+						"$ref": "assets://template/files/test/to-do-manager.test.ts"
+					}
+				},
+				{
+					"filename": "test/tsconfig.json",
+					"content": {
+						"$ref": "assets://template/files/test/tsconfig.json"
+					}
+				},
+				{
+					"filename": "app/routes/$id.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/routes/$id.tsx"
+					}
+				},
+				{
+					"filename": "app/routes/_index.tsx",
+					"content": {
+						"$ref": "assets://template/files/app/routes/_index.tsx"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "38.0.0"
+}
