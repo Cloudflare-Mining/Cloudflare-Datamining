@@ -6076,6 +6076,690 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
+			},
+			"createSign": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createVerify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"sign": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"verify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Sign": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"_write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"update": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"sign": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"cork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"uncork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setDefaultEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_writev": {},
+					"end": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_undestroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"emit": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"addListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"on": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"once": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependOnceListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"off": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeAllListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"listeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"rawListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"listenerCount": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"eventNames": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					}
+				},
+				"WritableState": "function",
+				"fromWeb": "function",
+				"toWeb": "function",
+				"Stream": "function",
+				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
+				"_uint8ArrayToBuffer": "function",
+				"addAbortSignal": "function",
+				"compose": "function",
+				"destroy": "function",
+				"finished": "function",
+				"isReadable": "function",
+				"isWritable": "function",
+				"isErrored": "function",
+				"isDisturbed": "function",
+				"pipeline": "function",
+				"Writable": "function",
+				"Readable": "function",
+				"Duplex": "function",
+				"Transform": "function",
+				"PassThrough": "function",
+				"promises": {
+					"pipeline": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					},
+					"finished": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					}
+				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
+				"on": "function",
+				"once": "function",
+				"getEventListeners": "function",
+				"getMaxListeners": "function",
+				"setMaxListeners": "function",
+				"listenerCount": "function",
+				"EventEmitter": "function",
+				"usingDomains": "boolean",
+				"captureRejectionSymbol": "symbol",
+				"errorMonitor": "symbol",
+				"EventEmitterAsyncResource": "function",
+				"captureRejections": "boolean",
+				"defaultMaxListeners": "number",
+				"init": "function",
+				"addAbortListener": "function"
+			},
+			"Verify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"_write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"update": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"verify": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"cork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"uncork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setDefaultEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_writev": {},
+					"end": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_undestroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"emit": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"addListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"on": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"once": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependOnceListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"off": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeAllListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"listeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"rawListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"listenerCount": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"eventNames": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					}
+				},
+				"WritableState": "function",
+				"fromWeb": "function",
+				"toWeb": "function",
+				"Stream": "function",
+				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
+				"_uint8ArrayToBuffer": "function",
+				"addAbortSignal": "function",
+				"compose": "function",
+				"destroy": "function",
+				"finished": "function",
+				"isReadable": "function",
+				"isWritable": "function",
+				"isErrored": "function",
+				"isDisturbed": "function",
+				"pipeline": "function",
+				"Writable": "function",
+				"Readable": "function",
+				"Duplex": "function",
+				"Transform": "function",
+				"PassThrough": "function",
+				"promises": {
+					"pipeline": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					},
+					"finished": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					}
+				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
+				"on": "function",
+				"once": "function",
+				"getEventListeners": "function",
+				"getMaxListeners": "function",
+				"setMaxListeners": "function",
+				"listenerCount": "function",
+				"EventEmitter": "function",
+				"usingDomains": "boolean",
+				"captureRejectionSymbol": "symbol",
+				"errorMonitor": "symbol",
+				"EventEmitterAsyncResource": "function",
+				"captureRejections": "boolean",
+				"defaultMaxListeners": "number",
+				"init": "function",
+				"addAbortListener": "function"
 			}
 		},
 		"diagnostics_channel": {
