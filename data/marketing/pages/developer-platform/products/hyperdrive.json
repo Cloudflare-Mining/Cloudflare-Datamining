@@ -1131,6 +1131,42 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "73mGWAXzivnFPcSOYHf5Vq",
+								"title": "Support Postgres named prepared statements with Hyperdrive",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements.",
+								"learnMoreUrl": "https://blog.cloudflare.com/postgres-named-prepared-statements-supported-hyperdrive",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -1148,7 +1184,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "34gITgPCu19hVAj8oAI9kc",
+							"elementName": "Get started - Hyperdrive",
+							"standardText": null,
+							"text": "Get started",
+							"url": "https://developers.cloudflare.com/hyperdrive/get-started/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
