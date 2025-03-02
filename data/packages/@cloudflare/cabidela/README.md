@@ -180,9 +180,78 @@ example, using this schema:
 - The payload `{ moon: 10}` will be modified to `{ sun: 9000, moon: 10 }`.
 - The payload `{ saturn: 10}` will throw an error because no condition is met.
 
+### $id, $ref, $defs
+
+The keywords [$id](https://json-schema.org/understanding-json-schema/structuring#id), [$ref](https://json-schema.org/understanding-json-schema/structuring#dollarref) and [$defs](https://json-schema.org/understanding-json-schema/structuring#defs) can be used to build and maintain complex schemas where the reusable parts are defined in separate schemas.
+
+The following is the main schema and a `customer` sub-schema that defines the `contacts` and `address` properties.
+
+```js
+import { Cabidela } from "@cloudflare/cabidela";
+
+const schema = {
+  $id: "http://example.com/schemas/main",
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    contacts: { $ref: "customer#/contacts" },
+    address: { $ref: "customer#/address" },
+    balance: { $ref: "$defs#/balance" },
+  },
+  required: ["name", "contacts", "address"],
+  "$defs": {
+    "balance": {
+      type: "object",
+      prope      properties: {
+        currency: { type: "string" },
+        amount: { type: "number" },
+      },
+    }
+  }
+};
+
+const contactSchema = {
+  $id: "http://example.com/schemas/customer",
+  contacts: {
+    type: "object",
+    properties: {
+      email: { type: "string" },
+      phone: { type: "string" },
+    },
+    required: ["email", "phone"],
+  },
+  address: {
+    type: "object",
+    properties: {
+      street: { type: "string" },
+      city: { type: "string" },
+      zip: { type: "string" },
+      country: { type: "string" },
+    },
+    required: ["street", "city", "zip", "country"],
+  },
+};
+
+const cabidela = new Cabidela(schema, { subSchemas: [contactSchema] });
+
+cabidela.validate({
+  name: "John",
+  contacts: {
+    email: "john@example.com",
+    phone: "+123456789",
+  },
+  address: {
+    street: "123 Main St",
+    city: "San Francisco",
+    zip: "94105",
+    country: "USA",
+  },
+});
+```
+
 ## Custom errors
 
-If the new instance options has the  `errorMessages` flag set to true, you can use the property `errorMessage` in the schema to define custom error messages.
+If the new instance options has the `errorMessages` flag set to true, you can use the property `errorMessage` in the schema to define custom error messages.
 
 ```js
 const schema = {
@@ -204,7 +273,7 @@ const payload = {
 
 cabidela.validate(payload);
 // throws "Error: prompt required"
-````
+```
 
 ## Tests
 
@@ -262,7 +331,7 @@ Here are some results:
     59.75x faster than Ajv
 
   Cabidela - benchmarks/80-big-ops.bench.js > allOf, two properties
-    1701.95x faster than Ajv
+   1701.95x faster than Ajv
 
   Cabidela - benchmarks/80-big-ops.bench.js > allOf, two objects
     1307.04x faster than Ajv
@@ -285,10 +354,7 @@ npm run benchmark
 Cabidela supports most of JSON Schema specification, and should be useful for many applications, but it's not complete. **Currently** we do not support:
 
 - Multiple (array of) types `{ "type": ["number", "string"] }`
-- Regular expressions
 - Pattern properties
-- `not`
 - `dependentRequired`, `dependentSchemas`, `If-Then-Else`
-- `$ref`, `$defs` and `$id`
 
 yet.

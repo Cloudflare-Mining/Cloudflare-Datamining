@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2025-02-26
+
+### Added
+
+- Added support for $id, $ref and $defs - https://json-schema.org/understanding-json-schema/structuring
+- Added support for not - https://json-schema.org/understanding-json-schema/reference/combining#not
+
 ## [0.0.19] - 2025-02-26
 
 ### Added
