@@ -128,6 +128,22 @@
 		]
 	},
 	{
+		"id": "b8b7514ce5364cd8ac0455f3eb16eb5f",
+		"name": "Access: Policy Test Read",
+		"description": "Grants read access to Cloudflare Access Policy Tests",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "6d23f290472f4e6fad5c4398c057c356",
+		"name": "Access: Policy Test Write",
+		"description": "Grants full access to Cloudflare Access Policy Tests",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "de99c87e48d642ce8c985d027905b475",
 		"name": "Access: Population Read",
 		"description": "Grants read access to Cloudflare Access Populations",
@@ -1401,16 +1417,16 @@
 	},
 	{
 		"id": "967ecf860a244dd1911a0331a0af582a",
-		"name": "Magic Transit Prefix Read",
-		"description": "Grants read access to manage a user's Magic Transit prefixes,",
+		"name": "Magic Transit Read",
+		"description": "Grants read access to Magic Transit",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
 		"id": "0bc09a3cd4b54605990df4e307f138e1",
-		"name": "Magic Transit Prefix Write",
-		"description": "Grants write access to manage a user's Magic Transit prefixes,",
+		"name": "Magic Transit Write",
+		"description": "Grants write access to Magic Transit",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
