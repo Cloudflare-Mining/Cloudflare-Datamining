@@ -1,4 +1,5 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iHBIzAkLrDyr0Gc4NAtK3/6c26fa93870ea112c62a791a30bcf705/image1.png" alt="">
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/searching-for-the-cause-of-hung-tasks-in-the-linux-kernel">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/searching-for-the-cause-of-hung-tasks-in-the-linux-kernel">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iHBIzAkLrDyr0Gc4NAtK3/6c26fa93870ea112c62a791a30bcf705/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Depending on your configuration, the Linux kernel can produce a hung task warning message in its log. Searching the Internet and the kernel documentation, you can find a brief explanation that the kernel process is stuck in the uninterruptable state and hasn’t been scheduled on the CPU for an unexpectedly long period of time. That explains the warning’s meaning, but doesn’t provide the reason it occurred. In this blog post we’re going to explore how the hung task warning works, why it happens, whether it is a bug in the Linux kernel or application itself, and whether it is worth monitoring at all.</p>
 	<div class="flex anchor relative">
