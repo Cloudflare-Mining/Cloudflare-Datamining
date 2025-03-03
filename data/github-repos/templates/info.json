@@ -19,9 +19,11 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "main",
+	"default_branch": "staging",
 	"branches": [
 		"main",
-		"staging"
+		"staging",
+		"staging-main-merge",
+		"typo-fix"
 	]
 }
