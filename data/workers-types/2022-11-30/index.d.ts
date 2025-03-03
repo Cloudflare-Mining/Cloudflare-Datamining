@@ -1595,6 +1595,7 @@ declare abstract class Body {
 declare var Response: {
   prototype: Response;
   new (body?: BodyInit | null, init?: ResponseInit): Response;
+  error(): Response;
   redirect(url: string, status?: number): Response;
   json(any: any, maybeInit?: ResponseInit | Response): Response;
 };
@@ -1620,6 +1621,8 @@ interface Response extends Body {
   url: string;
   webSocket: WebSocket | null;
   cf: any | undefined;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/type) */
+  type: "default" | "error";
 }
 interface ResponseInit {
   status?: number;
@@ -2464,6 +2467,8 @@ interface TraceItem {
   readonly outcome: string;
   readonly executionModel: string;
   readonly truncated: boolean;
+  readonly cpuTime: number;
+  readonly wallTime: number;
 }
 interface TraceItemAlarmEventInfo {
   readonly scheduledTime: Date;
@@ -3471,6 +3476,7 @@ interface Container {
 interface ContainerStartupOptions {
   entrypoint?: string[];
   enableInternet: boolean;
+  env?: Record<string, string>;
 }
 type AiImageClassificationInput = {
   image: number[];
@@ -3618,6 +3624,10 @@ type AiTextGenerationFunctionsInput = {
   name: string;
   code: string;
 };
+type AiTextGenerationResponseFormat = {
+  type: string;
+  json_schema?: any;
+};
 type AiTextGenerationInput = {
   prompt?: string;
   raw?: boolean;
@@ -3631,6 +3641,7 @@ type AiTextGenerationInput = {
   frequency_penalty?: number;
   presence_penalty?: number;
   messages?: RoleScopedChatInput[];
+  response_format?: AiTextGenerationResponseFormat;
   tools?:
     | AiTextGenerationToolInput[]
     | AiTextGenerationToolLegacyInput[]
@@ -4152,6 +4163,73 @@ declare abstract class Base_Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct {
   inputs: Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Input;
   postProcessedOutputs: Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Output;
 }
+interface Ai_Cf_Meta_Llama_Guard_3_8B_Input {
+  /**
+   * An array of message objects representing the conversation history.
+   */
+  messages: {
+    /**
+     * The role of the message sender must alternate between 'user' and 'assistant'.
+     */
+    role: "user" | "assistant";
+    /**
+     * The content of the message as a string.
+     */
+    content: string;
+  }[];
+  /**
+   * The maximum number of tokens to generate in the response.
+   */
+  max_tokens?: number;
+  /**
+   * Controls the randomness of the output; higher values produce more random results.
+   */
+  temperature?: number;
+  /**
+   * Dictate the output format of the generated response.
+   */
+  response_format?: {
+    /**
+     * Set to json_object to process and output generated text as JSON.
+     */
+    type?: string;
+  };
+}
+interface Ai_Cf_Meta_Llama_Guard_3_8B_Output {
+  response?:
+    | string
+    | {
+        /**
+         * Whether the conversation is safe or not.
+         */
+        safe?: boolean;
+        /**
+         * A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.
+         */
+        categories?: string[];
+      };
+  /**
+   * Usage statistics for the inference request
+   */
+  usage?: {
+    /**
+     * Total number of tokens in input
+     */
+    prompt_tokens?: number;
+    /**
+     * Total number of tokens in output
+     */
+    completion_tokens?: number;
+    /**
+     * Total number of input and output tokens
+     */
+    total_tokens?: number;
+  };
+}
+declare abstract class Base_Ai_Cf_Meta_Llama_Guard_3_8B {
+  inputs: Ai_Cf_Meta_Llama_Guard_3_8B_Input;
+  postProcessedOutputs: Ai_Cf_Meta_Llama_Guard_3_8B_Output;
+}
 interface AiModels {
   "@cf/huggingface/distilbert-sst-2-int8": BaseAiTextClassification;
   "@cf/stabilityai/stable-diffusion-xl-base-1.0": BaseAiTextToImage;
@@ -4214,6 +4292,7 @@ interface AiModels {
   "@cf/openai/whisper-large-v3-turbo": Base_Ai_Cf_Openai_Whisper_Large_V3_Turbo;
   "@cf/black-forest-labs/flux-1-schnell": Base_Ai_Cf_Black_Forest_Labs_Flux_1_Schnell;
   "@cf/meta/llama-3.2-11b-vision-instruct": Base_Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct;
+  "@cf/meta/llama-guard-3-8b": Base_Ai_Cf_Meta_Llama_Guard_3_8B;
 }
 type AiOptions = {
   gateway?: GatewayOptions;
