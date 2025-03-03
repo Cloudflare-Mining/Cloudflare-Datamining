@@ -33,6 +33,8 @@
 	<li>Excellent written and verbal skills, including the ability to collaborate cross-functionally with all stakeholders, including sales ops, marketing ops, marketing, and sales leadership.</li>
 	<li>Deep curiosity with an ability to quickly learn technical concepts and terms; excellent listening and empathy, with an ability to get things done in a collaborative team environment.</li>
 	<li>Strategic thinker who is able to get to work quickly and execute independently.</li>
+	<li>Local to the Austin, TX area.</li>
+	<li>&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
