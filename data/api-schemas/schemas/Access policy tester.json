@@ -272,6 +272,10 @@
 		"summary": "Get the current status of a given Access policy test",
 		"tags": [
 			"Access policy tester"
+		],
+		"x-api-token-group": [
+			"Access: Policy Test Write",
+			"Access: Policy Test Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/policy-tests/{policy_test_id}/users": {
@@ -530,6 +534,10 @@
 		"summary": "Get an Access policy test users page",
 		"tags": [
 			"Access policy tester"
+		],
+		"x-api-token-group": [
+			"Access: Policy Test Write",
+			"Access: Policy Test Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/policy-tests": {
@@ -2550,6 +2558,9 @@
 		"summary": "Start Access policy test",
 		"tags": [
 			"Access policy tester"
+		],
+		"x-api-token-group": [
+			"Access: Policy Test Write"
 		]
 	}
 }
