@@ -174,8 +174,8 @@
   "errors": [],
   "messages": []
 }</code></pre>
-	<p>Capture the value of “id”, as this is the list id we will then add URL redirects to.</p>
-	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p>
+	<p>Capture the value of “id”, as this is the list ID we will then add URL redirects to.</p>
+	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the ID we captured previously - with our URL redirects in the body:</p>
 	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists/&lt;LIST_ID&gt;/items' \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
@@ -215,7 +215,7 @@
 }</code></pre>
 	<p>In step 3 we enable this list by creating a new mass redirect rule within the mass redirect account-level ruleset.</p>
 	<p><b>Note</b>, if this is the first time you are creating a redirect rule you will need to use a different API call to create the ruleset. See the documentation <a href="https://developers.cloudflare.com/rules/bulk-redirects/create-api">here</a> for more details. All subsequent updates to the rulesets are made by calls similar to below.</p>
-	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p>
+	<p>Firstly, we need to find our account-level rulesets ID. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p>
 	<pre class="language-bash"><code class="language-bash">curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \

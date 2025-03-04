@@ -21,7 +21,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Let us be clear: isolates are the best way to do edge compute, period. The Workers platform is designed to allow developers to treat our global network as one big computer. This has been a long-held dream of generations of engineers, inspiring slogans like "The Network is the Computer" — a trademark which, incidentally, we <a href="https://blog.cloudflare.com/the-network-is-the-computer">now own</a>. Isolates and Durable Objects are finally making that vision possible.</p>
+	<p>Let us be clear: isolates are the best way to do edge compute, period. The Worker's platform is designed to allow developers to treat our global network as one big computer. This has been a long-held dream of generations of engineers, inspiring slogans like "The Network is the Computer" — a trademark which, incidentally, we <a href="https://blog.cloudflare.com/the-network-is-the-computer">now own</a>. Isolates and Durable Objects are finally making that vision possible.</p>
 	<p>In short, isolates excel at distributed systems. They are perfect for treating the network as one big computer.</p>
 	<p>Isolates are great for distributed systems because, by being extremely lightweight, they enable us to reduce the unit of compute to a very fine granularity. That in turn allows work to be more effectively distributed across a large network. It is completely reasonable and efficient (takes just a few milliseconds, <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">less than a TLS handshake</a>) to spin up an isolated to handle one single HTTP request on the edge, which means we can choose the ideal location for each request to be processed. In contrast, because containers and virtual machines are heavier weight, it's necessary to centralize traffic on a few instances to achieve economies of scale.</p>
 	<div class="flex anchor relative">
@@ -38,10 +38,10 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Isolates</p>
+					<p><b>Isolates</b></p>
 				</td>
 				<td>
-					<p>Containers</p>
+					<p><b>Containers</b></p>
 				</td>
 			</tr>
 			<tr>

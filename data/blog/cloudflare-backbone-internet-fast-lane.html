@@ -35,7 +35,7 @@
 	<p>As we grow our global infrastructure, it’s important that we analyze our network to quantify the impact we’re having on performance.</p>
 	<p>Here’s a simple, real-world test we’ve used to validate that our backbone helps speed up our global network. We deployed a simple API service hosted on a public cloud provider, located in Chicago, Illinois. Once placed behind Cloudflare, we performed benchmarks from various geographic locations with the backbone disabled and enabled to measure the change in performance.</p>
 	<p>Instead of comparing the difference in latency our backbone creates, it is important that our experiment captures a real-world performance gain that an API service or website would experience. To validate this, our primary metric is measuring the average request time when accessing an API service from Miami, Seattle, San Jose, São Paulo, and Tokyo. To capture the response of the network itself, we disabled caching on the Cloudflare dashboard and sent 100 requests from each testing location, both while forcing traffic through our backbone, and through the public Internet.</p>
-	<p>Now, before we claim our backbone solves all Internet problems, you can probably notice that for some tests (Seattle, WA and San Jose, CA), there was actually an increase in response time when we forced traffic through the backbone. Since latency is directly proportional to the distance of fiber optic cables, and since we have over 9,800 direct connections with other Internet networks, there is a possibility that an uncongested path on the public Internet might be geographically shorter, causing this speedup compared to our backbone.</p>
+	<p>Now, before we claim our backbone solves all Internet problems, you can probably notice that for some tests (Seattle, WA and San Jose, CA), there was actually an increase in response time when we forced traffic through the backbone. Since latency is directly proportional to the distance of fiber optic cables, and since we have over 9,800 direct connections with other Internet networks, there is a possibility that an uncongested path on the public Internet might be geographically shorter, causing this speed up compared to our backbone.</p>
 	<p>Luckily for us, we have technologies like <a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Smart Routing</a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Argo Tiered Caching</a>, <a href="https://1.1.1.1">WARP+</a>, and most recently announced <a href="https://blog.cloudflare.com/orpheus">Orpheus</a>, which dynamically calculates the performance of each route at our data centers, choosing the fastest healthy route at that time. What might be the fastest path during this test may not be the fastest at the time you are reading this.</p>
 	<p>With that disclaimer out of the way, now onto the test.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -50,19 +50,19 @@
 		<tbody>
 			<tr>
 				<td>
-					<p>Visitor Location</p>
+					<p><b>Visitor Location</b></p>
 				</td>
 				<td>
-					<p>Distance to Chicago</p>
+					<p><b>Distance to Chicago</b></p>
 				</td>
 				<td>
-					<p>Avg. response time using public Internet (ms)</p>
+					<p><b>Avg. response time using public Internet (ms)</b></p>
 				</td>
 				<td>
-					<p>Avg. response using backbone (ms)</p>
+					<p><b>Avg. response using backbone (ms)</b></p>
 				</td>
 				<td>
-					<p>Change in response time</p>
+					<p><b>Change in response time</b></p>
 				</td>
 			</tr>
 			<tr>
