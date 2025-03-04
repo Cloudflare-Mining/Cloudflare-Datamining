@@ -49,7 +49,7 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write",
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
@@ -224,8 +224,8 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read",
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
@@ -370,8 +370,8 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read",
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
@@ -576,7 +576,7 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write",
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
@@ -814,7 +814,7 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write",
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	}
 }

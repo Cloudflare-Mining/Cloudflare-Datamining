@@ -160,8 +160,8 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read",
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
@@ -267,8 +267,8 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read",
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	}
 }

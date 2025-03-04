@@ -55,8 +55,8 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read",
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"PUT /accounts/{account_id}/cni/settings": {
@@ -132,7 +132,7 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write",
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	}
 }

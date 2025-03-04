@@ -337,7 +337,7 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
@@ -490,8 +490,8 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write"
+			"Magic Transit Read",
+			"Magic Transit Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
@@ -1016,8 +1016,8 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write",
+			"Magic Transit Read",
+			"Magic Transit Write",
 			"IP Prefixes: Write",
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
@@ -1494,8 +1494,8 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Read",
-			"Magic Transit Prefix Write",
+			"Magic Transit Read",
+			"Magic Transit Write",
 			"IP Prefixes: Write",
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
@@ -1993,7 +1993,7 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Write",
+			"Magic Transit Write",
 			"IP Prefixes: Write"
 		]
 	},
@@ -2395,7 +2395,7 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Prefix Write"
+			"Magic Transit Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
