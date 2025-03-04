@@ -106,11 +106,11 @@ for (const js of javascripts) {
 const htmlCssUrls = [
 	{
 		name: 'normal',
-		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/fbE/new/normal/auto/`,
 	},
 	{
 		name: 'compact',
-		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/fbE/new/compact/auto/`,
 	},
 ];
 for (const htmlCss of htmlCssUrls) {
@@ -149,6 +149,6 @@ await tryAndPush(
 	],
 	`${prefix} - Product: Turnstile Data was updated! [skip ci]`,
 	'CFData - Product: Turnstile Data Update',
-	'Pushed Product: Turnstile Data: ' + prefix + ' (<@922118393178517545>)',
+	'Pushed Product: Turnstile Data: ' + prefix,
 	'DISCORD_WEBHOOK_PRODUCT_TURNSTILE',
 );
