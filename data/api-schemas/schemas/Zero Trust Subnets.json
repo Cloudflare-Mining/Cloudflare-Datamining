@@ -105,9 +105,10 @@
 				"schema": {
 					"description": "If set, the types of subnets to include, separated by comma.",
 					"enum": [
-						"cloudflare_source"
+						"cloudflare_source",
+						"warp"
 					],
-					"example": "cloudflare_source",
+					"example": "cloudflare_source,warp",
 					"type": "string"
 				}
 			},
@@ -281,7 +282,6 @@
 														"type": "string"
 													},
 													"is_default_network": {
-														"default": true,
 														"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 														"type": "boolean"
 													},
@@ -467,7 +467,6 @@
 																"type": "string"
 															},
 															"is_default_network": {
-																"default": true,
 																"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 																"type": "boolean"
 															},
@@ -777,7 +776,6 @@
 													"type": "string"
 												},
 												"is_default_network": {
-													"default": true,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean"
 												},
@@ -921,7 +919,6 @@
 															"type": "string"
 														},
 														"is_default_network": {
-															"default": true,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean"
 														},
