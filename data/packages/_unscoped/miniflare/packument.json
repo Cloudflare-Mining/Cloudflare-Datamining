@@ -4,8 +4,8 @@
 		"latest-2": "2.14.4",
 		"next": "0.0.0-6657b80ca",
 		"v4-rc": "4.20250214.0-rc.0",
-		"beta": "0.0.0-3f475e54b",
-		"latest": "3.20250214.2"
+		"latest": "3.20250214.2",
+		"beta": "0.0.0-2d409892f"
 	},
 	"versions": {
 		"0.1.0": {
@@ -72706,6 +72706,81 @@
 			"name": "miniflare",
 			"version": "0.0.0-3f475e54b",
 			"dependencies": {
+				"ws": "8.18.0",
+				"zod": "3.22.3",
+				"acorn": "8.14.0",
+				"youch": "3.2.3",
+				"undici": "^5.28.5",
+				"workerd": "1.20250214.0",
+				"exit-hook": "2.2.1",
+				"stoppable": "1.1.0",
+				"acorn-walk": "8.3.2",
+				"glob-to-regexp": "0.4.1",
+				"@cspotcode/source-map-support": "0.8.1"
+			},
+			"devDependencies": {
+				"ava": "^6.0.1",
+				"mime": "^3.0.0",
+				"kleur": "^4.1.5",
+				"which": "^2.0.2",
+				"eslint": "^8.57.1",
+				"rimraf": "^5.0.10",
+				"devalue": "^4.3.0",
+				"esbuild": "0.17.19",
+				"heap-js": "^2.5.0",
+				"capnp-es": "^0.0.7",
+				"@types/ws": "^8.5.7",
+				"source-map": "^0.6.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"@types/node": "^18.19.75",
+				"expect-type": "^0.15.0",
+				"@types/debug": "^4.1.7",
+				"@types/which": "^2.0.1",
+				"concurrently": "^8.2.2",
+				"pretty-bytes": "^6.0.0",
+				"@types/estree": "^1.0.0",
+				"@ava/typescript": "^4.1.0",
+				"@types/stoppable": "^1.1.1",
+				"eslint-plugin-es": "^4.1.0",
+				"devtools-protocol": "^0.0.1182435",
+				"http-cache-semantics": "^4.1.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-prettier": "^5.0.1",
+				"@microsoft/api-extractor": "7.49.1",
+				"@cloudflare/workers-types": "^4.20250214.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-shared": "0.0.0-3f475e54b",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@cloudflare/kv-asset-handler": "0.3.4",
+				"@cloudflare/workflows-shared": "0.2.3",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"shasum": "9cce480eb32c9bd6b556f5215efdcb775585da3d",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-3f475e54b.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-marXEW6+WIxNb8sIhyG9Oko2JUAVvBCqbKE/arTitV3VYjmK2u5+mPUW4pn833kLaAiVFTBbwUrsUZvmecNNeg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDwRqrUWBaxMe79ryLD9q2nKNzYSTziHKl3YPUbGfX5OgIhAJaRS63kCDM0Hf/5eRAA5y0Y2Jrl8IPGeD0rAI/9xPJn",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2839871
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"0.0.0-2d409892f": {
+			"name": "miniflare",
+			"version": "0.0.0-2d409892f",
+			"dependencies": {
 				"@cspotcode/source-map-support": "0.8.1",
 				"acorn": "8.14.0",
 				"acorn-walk": "8.3.2",
@@ -72754,22 +72829,22 @@
 				"typescript": "^5.7.2",
 				"which": "^2.0.2",
 				"@cloudflare/kv-asset-handler": "0.3.4",
-				"@cloudflare/workers-shared": "0.0.0-3f475e54b",
+				"@cloudflare/workers-shared": "0.0.0-2d409892f",
 				"@cloudflare/workflows-shared": "0.2.3"
 			},
 			"bin": {
 				"miniflare": "bootstrap.js"
 			},
 			"dist": {
-				"integrity": "sha512-marXEW6+WIxNb8sIhyG9Oko2JUAVvBCqbKE/arTitV3VYjmK2u5+mPUW4pn833kLaAiVFTBbwUrsUZvmecNNeg==",
-				"shasum": "9cce480eb32c9bd6b556f5215efdcb775585da3d",
-				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-3f475e54b.tgz",
+				"integrity": "sha512-9nYs5uyYPzoTYMiV1ODEgtWNUCuyPM/qxIGb+MVFi8Qwj2eTDvgVtBgdJCkuXfACF8Pb/vSwZJt0xe+zpCBoRg==",
+				"shasum": "8d31955cc7600a506b536888a3f8f981448f2c1d",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-2d409892f.tgz",
 				"fileCount": 42,
-				"unpackedSize": 2839871,
+				"unpackedSize": 2841315,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDwRqrUWBaxMe79ryLD9q2nKNzYSTziHKl3YPUbGfX5OgIhAJaRS63kCDM0Hf/5eRAA5y0Y2Jrl8IPGeD0rAI/9xPJn"
+						"sig": "MEQCIFF867MThsBQzC3ao4Wv+J/Wh0rhogDZvbG4ir+VlpCQAiAR5l9tdBJpXOy6/PFPmS72fWNWAwmofojOTIwvKvRiew=="
 					}
 				]
 			},
