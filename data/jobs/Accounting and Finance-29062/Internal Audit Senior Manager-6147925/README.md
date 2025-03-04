@@ -5,41 +5,68 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Location: Mexico City, MX</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>Do you like solving complex problems? Are you great at helping a team grow to surpass their potential together? Do you enjoy interacting with people at all levels and roles?</p>
-<p>As a <strong>Technical Support Manager</strong> at Cloudflare you will:</p>
-<p><strong>Provide World-Class Support to our Millions of Customers</strong> - You enjoy taking customer escalations from team members, triaging and answering high priority tickets from both top partners and free customers, and understand our customers needs and problems, in depth, in order to report on them to the company and solve them.</p>
-<p><strong>Manage Technical Support Engineers</strong> - Coach the team to excel at their jobs, manage individual and team projects to on-time completion, have regular one-on-ones with everyone on your technical support engineering team, encourage professional development, help with training and QA, manage the support hiring process, and keep team morale high.</p>
-<p><strong>Help Manage and Improve Tools and Processes - </strong>Managers will manage and continuously improve our processes for helping customers, managing the team, and working with the rest of the company. They will also help to manage all of our support tools and software.</p>
-<p><strong>Work Cross-Functionally With Other Teams</strong> - Managers will work with other teams to guide projects that help the support team, customers and the company. They will act as the Voice of the Customer to communicate clearly the requests and problems our customers are reporting to the rest of the company through to resolution.</p>
+<h4>Available Job Locations: Austin, TX, Dallas, TX, Houston, TX, San Antonio, TX</h4>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key business risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
+<p>We are seeking a highly motivated, strategic, and solution-focused candidate to lead and manage Cloudflare’s operational audit plan to evaluate the effectiveness of risk management, control, and governance processes. The ideal candidate will bring a deep understanding of risk management, business and operations, and best-in-class audit practices. This role will report to the Senior Director, Internal Audit.</p>
+<p><strong>What you'll do</strong></p>
+<ul>
+	<li>Design and execute a portfolio of operational audits, with concurrent oversight and execution of multiple projects.&nbsp;</li>
+	<li>Lead integrated audits that address a combination of financial, operational or technology objectives.&nbsp;</li>
+	<li>Conduct risk assessments to identify and prioritize areas for audit focus.</li>
+	<li>Prepare clear, concise and high impact audit reports with actionable recommendations for improvements.</li>
+	<li>Ensure audits are completed on time, within scope, and in accordance with professional and department standards.</li>
+	<li>Communicate audit findings and recommendations to all levels of the company, including senior executives.&nbsp;</li>
+	<li>Act as a trusted advisor to the business, providing insights and recommendations on risk management and control improvements.</li>
+	<li>Leverage data analytics and other innovative tools to improve audit insights and effectiveness.&nbsp;</li>
+	<li>Identify opportunities to enhance the efficiency and effectiveness of internal audit processes and methodologies.</li>
+	<li>Stay current with industry trends, regulatory changes, and best practices in internal auditing.</li>
+	<li>Mentor and provide guidance to internal audit team members, fostering a culture of continuous learning and professional development.</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum of 5 years technical support experience</li>
-	<li>Minimum of 3 years of team lead or management experience, with teams of 4 or more people</li>
-	<li>Experience managing a team to meet and exceed their individual, team, and company goals</li>
-	<li>Experience managing Support Engineers' performance and development</li>
-	<li>Strong experience at hiring, coaching, and training Support Engineers</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)&nbsp;</li>
-	<li>Strong understanding in DNS, SSL/TLS, HTTP, and network related issues</li>
-	<li>Familiarity with command line and command line tools including curl, dig, and traceroute</li>
-	<li>Strong communication skills, both verbal and written</li>
-	<li>Past experience or interest in working at a fast-paced and high-growth company</li>
-	<li>Experience providing global support that follows the sun 24x7x365</li>
-	<li>Ability and willingness to work occasional weekends, holidays, and after hours</li>
-	<li>Flexible to work PST hours</li>
+	<li>8+<strong>&nbsp;</strong>years of experience in internal audit, risk management, or related field with at least 3 years in a leadership role.</li>
+	<li>Strong knowledge and proven track record in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing.</li>
+	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
+	<li>Exceptional written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
+	<li>Proven ability to build and maintain effective working relationships with stakeholders at all levels.</li>
+	<li>High level of integrity, professionalism, and attention to detail.</li>
+	<li>Familiarity with data analytics and continuous auditing techniques.</li>
+	<li>Professional certifications such as: CIA, CPA, CFE, etc.</li>
+</ul>
+<p><strong>Nice-to-have skills</strong></p>
+<ul>
+	<li>Experience in leading or executing SOX testing programs, with a strong understanding of both business process controls and ITGCs.&nbsp;</li>
+	<li>Experience in enterprise risk management activities, participating in programs that would assess, monitor and report on risks across the enterprise, and help shape our annual Internal Audit Plan and approach.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
 <p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
