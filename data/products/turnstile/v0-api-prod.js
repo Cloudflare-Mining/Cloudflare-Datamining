@@ -376,7 +376,7 @@
 				isModeratelyVerbose: s,
 				isVerboseLanguage: v,
 				isSmallerFeedback: c
-			}) : c && v ? "630px" : c && s ? "620px" : c ? "600px" : v ? "690px" : "680px"
+			}) : c && v ? "520px" : c && s ? "500px" : c ? "480px" : v ? "580px" : "570px"
 		},
 		Fr = function(e) {
 			var t = e.isVerboseLanguage,
@@ -538,7 +538,7 @@
 	}
 	var It = function(e, t, a) {
 			var o = Tt(t.params, !1),
-				c = "h/".concat("g", "/"),
+				c = "h/".concat("b", "/"),
 				l, v, h = "".concat(o, "/cdn-cgi/challenge-platform/").concat(c, "feedback-reports/").concat(Xe(e), "/").concat(t.displayLanguage, "/").concat((v = t.params.theme) !== null && v !== void 0 ? v : t.theme, "/").concat(a);
 			t.wrapper.parentNode || g("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			var s = document.createElement("div");
@@ -961,7 +961,7 @@
 					(!m || !w) && g("Widget ".concat(r, " to reset was not found."), 3330), u.params.appearance === Q.InteractionOnly && xr(w), u.params.sitekey === null && g("Unexpected Error: Sitekey is null", 3347);
 					var E = w.cloneNode(),
 						S;
-					E.src = Rt(r, u.params.sitekey, u.params, (S = u.rcV) !== null && S !== void 0 ? S : K, !1, "g", n, _t(u)), (d = w.parentNode) === null || d === void 0 || d.replaceChild(E, w), Nt(m), u.retryTimeout && window.clearTimeout(u.retryTimeout)
+					E.src = Rt(r, u.params.sitekey, u.params, (S = u.rcV) !== null && S !== void 0 ? S : K, !1, "b", n, _t(u)), (d = w.parentNode) === null || d === void 0 || d.replaceChild(E, w), Nt(m), u.retryTimeout && window.clearTimeout(u.retryTimeout)
 				} else g("Widget ".concat(r, " to reset was not found."), 3331)
 			},
 			A = function(n) {
@@ -1097,7 +1097,7 @@
 							isOverrunning: !1
 						})), Ot(y);
 						var et = y.widgetMap.get(Ae);
-						et || g("Turnstile Initialization Error ", 3606), H.style.display = "none", H.style.border = "none", H.style.overflow = "hidden", H.setAttribute("src", Rt(Ae, j, f, K, !1, "g", z.New, _t(et))), H.onerror = function() {
+						et || g("Turnstile Initialization Error ", 3606), H.style.display = "none", H.style.border = "none", H.style.overflow = "hidden", H.setAttribute("src", Rt(Ae, j, f, K, !1, "b", z.New, _t(et))), H.onerror = function() {
 							if (Y) {
 								Y == null || Y(String(Yt.code));
 								return
@@ -1158,7 +1158,7 @@
 					switch (f.label) {
 						case 0:
 							if (u = b.params.sitekey, d = wr(), !d) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(b, n, !1), [2];
-							m = "h/".concat("g", "/"), w = new URL(d), E = "https", S = "", D = "".concat(E, "://").concat(w.host, "/cdn-cgi/challenge-platform/").concat(m, "rc/").concat(r).concat(S), f.label = 1;
+							m = "h/".concat("b", "/"), w = new URL(d), E = "https", S = "", D = "".concat(E, "://").concat(w.host, "/cdn-cgi/challenge-platform/").concat(m, "rc/").concat(r).concat(S), f.label = 1;
 						case 1:
 							return f.trys.push([1, 6, , 7]), [4, fetch(D, {
 								method: "POST",
@@ -1375,7 +1375,7 @@
 								cData: r.cData,
 								chlPageData: r.chlPageData,
 								rcV: r.rcV,
-								ch: "f3b948d8acb8",
+								ch: "b0e4a89976ce",
 								au: y.scriptUrl,
 								url: wr(),
 								retry: r.params.retry,
