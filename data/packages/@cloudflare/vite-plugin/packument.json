@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/vite-plugin",
 	"dist-tags": {
-		"latest": "0.1.7",
-		"beta": "0.0.0-00cf67c53"
+		"beta": "0.0.0-3f475e54b",
+		"latest": "0.1.8"
 	},
 	"versions": {
 		"0.0.0-ce165ff11": {
@@ -9561,11 +9561,99 @@
 			"name": "@cloudflare/vite-plugin",
 			"version": "0.0.0-00cf67c53",
 			"dependencies": {
+				"ws": "8.18.0",
+				"unenv": "2.0.0-rc.1",
+				"miniflare": "0.0.0-00cf67c53",
+				"@hattip/adapter-node": "^0.0.49",
+				"@cloudflare/unenv-preset": "1.1.1"
+			},
+			"devDependencies": {
+				"mlly": "^1.7.4",
+				"tsup": "8.3.0",
+				"vite": "^6.1.0",
+				"undici": "^5.28.5",
+				"vitest": "~3.0.5",
+				"wrangler": "0.0.0-00cf67c53",
+				"@types/ws": "^8.5.13",
+				"typescript": "^5.7.2",
+				"@types/node": "^22.10.1",
+				"magic-string": "^0.30.12",
+				"@cloudflare/workers-types": "^4.20250214.0",
+				"@cloudflare/workers-shared": "0.0.0-00cf67c53",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.1.0",
+				"wrangler": "^3.101.0"
+			},
+			"dist": {
+				"shasum": "edf33cdeb3abc027419d896ce2be2e12259bc114",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-0.0.0-00cf67c53.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-3zR/Aleh2rweDiVRBvoB3WsiwaQDNw+ts/VXdCvSzJwQgkF1DURFxNi1kRZK57GEleKQXxQWKW36nWT3R+RVpg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHfI+YMhJwc9QrCoJ1/p58a+7mecqYaEDkFeTMdLQOB7AiEAsxJQIZRWXtn6xqjNLMhL2Aa0wY1mLX7BLU0Jiie3PvA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 576874
+			}
+		},
+		"0.1.8": {
+			"name": "@cloudflare/vite-plugin",
+			"version": "0.1.8",
+			"dependencies": {
+				"ws": "8.18.0",
+				"unenv": "2.0.0-rc.1",
+				"miniflare": "3.20250214.2",
+				"@hattip/adapter-node": "^0.0.49",
+				"@cloudflare/unenv-preset": "1.1.1"
+			},
+			"devDependencies": {
+				"mlly": "^1.7.4",
+				"tsup": "8.3.0",
+				"vite": "^6.1.0",
+				"undici": "^5.28.5",
+				"vitest": "~3.0.5",
+				"wrangler": "3.112.0",
+				"@types/ws": "^8.5.13",
+				"typescript": "^5.7.2",
+				"@types/node": "^22.10.1",
+				"magic-string": "^0.30.12",
+				"@cloudflare/workers-types": "^4.20250214.0",
+				"@cloudflare/workers-shared": "0.14.4",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.1.0",
+				"wrangler": "^3.101.0"
+			},
+			"dist": {
+				"shasum": "af67cb05a6d3f36ddfe82cea4ca3179efd19b43e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-0.1.8.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-fGEXjWRcqxp8u4Aog82PlE0wbsxONeosFhUAGEDVerYHuwsiIVAVAI8oYU/KwfBN0xF2qy2hnWnShafpwHBZjg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCKAh+Pd9OKxM3ItTJaAeXEKHEVT9J4D1uOOGW7gdFomgIgGsbcpZy6p9WKSwcoDnmPnfbUhpgfMvIKuzd5CYUgqrI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 576844
+			}
+		},
+		"0.0.0-3f475e54b": {
+			"name": "@cloudflare/vite-plugin",
+			"version": "0.0.0-3f475e54b",
+			"dependencies": {
 				"@cloudflare/unenv-preset": "1.1.1",
 				"@hattip/adapter-node": "^0.0.49",
 				"unenv": "2.0.0-rc.1",
 				"ws": "8.18.0",
-				"miniflare": "0.0.0-00cf67c53"
+				"miniflare": "0.0.0-3f475e54b"
 			},
 			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20250214.0",
@@ -9578,25 +9666,25 @@
 				"undici": "^5.28.5",
 				"vite": "^6.1.0",
 				"vitest": "~3.0.5",
-				"@cloudflare/mock-npm-registry": "0.0.0",
-				"@cloudflare/workers-shared": "0.0.0-00cf67c53",
 				"@cloudflare/workers-tsconfig": "0.0.0",
-				"wrangler": "0.0.0-00cf67c53"
+				"@cloudflare/workers-shared": "0.0.0-3f475e54b",
+				"@cloudflare/mock-npm-registry": "0.0.0",
+				"wrangler": "0.0.0-3f475e54b"
 			},
 			"peerDependencies": {
 				"vite": "^6.1.0",
 				"wrangler": "^3.101.0"
 			},
 			"dist": {
-				"integrity": "sha512-3zR/Aleh2rweDiVRBvoB3WsiwaQDNw+ts/VXdCvSzJwQgkF1DURFxNi1kRZK57GEleKQXxQWKW36nWT3R+RVpg==",
-				"shasum": "edf33cdeb3abc027419d896ce2be2e12259bc114",
-				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-0.0.0-00cf67c53.tgz",
+				"integrity": "sha512-WULovPztRGJsORkYZSgmp+rymEHJxPMifoqnyQfZon2JgDf0guIzdhezbbJF4FIIWIviXM9RGUfaHZsZeUlMnA==",
+				"shasum": "93ce8af6c3125a345ff4aae71b0dfff74fc4674b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-0.0.0-3f475e54b.tgz",
 				"fileCount": 7,
 				"unpackedSize": 576874,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHfI+YMhJwc9QrCoJ1/p58a+7mecqYaEDkFeTMdLQOB7AiEAsxJQIZRWXtn6xqjNLMhL2Aa0wY1mLX7BLU0Jiie3PvA="
+						"sig": "MEUCIHtuSuXdOazjXDl+EweljszZMnNEQsnF3XWco2CgSPluAiEA84znx302x6LFI2aJmzmLCJCsQ1HOre8hbBoH5iDQtRo="
 					}
 				]
 			}
