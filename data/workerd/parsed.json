@@ -2840,6 +2840,13 @@
 						"experimental": "true",
 						"neededByFl": "true"
 					}
+				},
+				{
+					"name": "disableImportableEnv",
+					"annotations": {
+						"compatDisableFlag": "allow_importable_env",
+						"compatEnableFlag": "disallow_importable_env"
+					}
 				}
 			]
 		},
