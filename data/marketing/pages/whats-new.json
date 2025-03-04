@@ -310,22 +310,6 @@
 				{
 					"contentType": "product",
 					"date": "2024-05-01",
-					"description": "Cloudflare's Data Loss Prevention (DLP) service now offers the ability to detect and prevent sensitive data leaks in Dropbox. ",
-					"id": "137d140d-540e-5ef2-a5b2-fc7ca1ffda8c",
-					"pageUrl": null,
-					"relatedContentBlogPost": null,
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/dropbox/",
-					"relatedContentProductPageLabel": "Developer docs",
-					"relatedProduct": "DLP",
-					"title": "Cloudflare DLP: Prevent data loss in Dropbox",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
-					"contentType": "product",
-					"date": "2024-05-01",
 					"description": "Cloudflare CASB now integrates with Bitbucket Cloud, enabling IT and security teams to detect data loss risks, account misconfigurations, and user security risks.",
 					"id": "a3e65fd8-3075-5888-8012-000d93a90623",
 					"pageUrl": null,
@@ -338,6 +322,22 @@
 					"title": "Cloudflare CASB: Scan Bitbucket Cloud for security issues",
 					"locale": "en-US",
 					"useCase": null
+				},
+				{
+					"contentType": "product",
+					"date": "2024-05-01",
+					"description": "Cloudflare's Data Loss Prevention (DLP) service now offers the ability to detect and prevent sensitive data leaks in Dropbox. ",
+					"id": "137d140d-540e-5ef2-a5b2-fc7ca1ffda8c",
+					"pageUrl": null,
+					"relatedContentBlogPost": null,
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/dropbox/",
+					"relatedContentProductPageLabel": "Developer docs",
+					"relatedProduct": "DLP",
+					"title": "Cloudflare DLP: Prevent data loss in Dropbox",
+					"locale": "en-US",
+					"useCase": "security"
 				},
 				{
 					"contentType": "analysts",
@@ -1654,6 +1654,22 @@
 				{
 					"contentType": "blog",
 					"date": "2022-03-18",
+					"description": "Now, traffic from devices with our Zero Trust client installed can route automatically to any network connected with an IP-layer on-ramp, e.g., Anycast GRE, IPsec, or CNI. This option increases the flexibility you have to connect existing network infrastructure and serves as another way to help you transition away from a traditional VPN architecture over time.",
+					"id": "0c648ad3-faed-5020-821d-f055e9d78b9e",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/bridge-to-zero-trust/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": null,
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": "Cloudflare Zero Trust",
+					"title": "New on-ramp available via Zero Trust device client and Magic IP-layer tunnels",
+					"locale": "en-US",
+					"useCase": "security"
+				},
+				{
+					"contentType": "blog",
+					"date": "2022-03-18",
 					"description": "Secure Shell Protocol (SSH) command logging is now in closed beta, and we will be opening this feature up to users in the coming weeks. It provides a full replay of all commands run during an SSH session to help paint a clear picture in the event of an accident, suspected breach, or attack. As an extension of Cloudflare's secure Web Gateway, it provides SSH visibility at a network layer. All commands are automatically captured without complex logging software installed on individual remote machines.",
 					"id": "f99793db-af70-582d-8102-982e40f0990a",
 					"pageUrl": null,
@@ -1696,22 +1712,6 @@
 					"relatedContentProductPageLabel": null,
 					"relatedProduct": "Cloudflare Access",
 					"title": "Zero Trust: Client-based sessions now generally available",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
-					"contentType": "blog",
-					"date": "2022-03-18",
-					"description": "Now, traffic from devices with our Zero Trust client installed can route automatically to any network connected with an IP-layer on-ramp, e.g., Anycast GRE, IPsec, or CNI. This option increases the flexibility you have to connect existing network infrastructure and serves as another way to help you transition away from a traditional VPN architecture over time.",
-					"id": "0c648ad3-faed-5020-821d-f055e9d78b9e",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/bridge-to-zero-trust/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": null,
-					"relatedContentProductPageLabel": null,
-					"relatedProduct": "Cloudflare Zero Trust",
-					"title": "New on-ramp available via Zero Trust device client and Magic IP-layer tunnels",
 					"locale": "en-US",
 					"useCase": "security"
 				},
@@ -4564,22 +4564,6 @@
 					"useCase": null
 				},
 				{
-					"contentType": "feature",
-					"date": "2018-04-12",
-					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
-					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
-					"pageUrl": null,
-					"relatedContentBlogPost": null,
-					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
-					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
-					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
-					"relatedContentProductPageLabel": "Help Center article",
-					"relatedProduct": "SSL for SaaS",
-					"title": "Support full SSL (Strict) mode validation for CNAME domains",
-					"locale": "en-US",
-					"useCase": null
-				},
-				{
 					"contentType": "product",
 					"date": "2018-04-12",
 					"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network. \n",
@@ -4594,6 +4578,22 @@
 					"title": "Cloudflare Spectrum",
 					"locale": "en-US",
 					"useCase": "performance"
+				},
+				{
+					"contentType": "feature",
+					"date": "2018-04-12",
+					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
+					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
+					"pageUrl": null,
+					"relatedContentBlogPost": null,
+					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
+					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
+					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
+					"relatedContentProductPageLabel": "Help Center article",
+					"relatedProduct": "SSL for SaaS",
+					"title": "Support full SSL (Strict) mode validation for CNAME domains",
+					"locale": "en-US",
+					"useCase": null
 				},
 				{
 					"contentType": "feature",
