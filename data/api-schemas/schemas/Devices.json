@@ -195,11 +195,6 @@
 														"example": true,
 														"type": "boolean"
 													},
-													"doh_in_tunnel": {
-														"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-														"example": true,
-														"type": "boolean"
-													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"example": true,
@@ -562,11 +557,6 @@
 															},
 															"disable_auto_fallback": {
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-																"example": true,
-																"type": "boolean"
-															},
-															"doh_in_tunnel": {
-																"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -2762,11 +2752,6 @@
 														"example": true,
 														"type": "boolean"
 													},
-													"doh_in_tunnel": {
-														"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-														"example": true,
-														"type": "boolean"
-													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"example": true,
@@ -3129,11 +3114,6 @@
 															},
 															"disable_auto_fallback": {
 																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-																"example": true,
-																"type": "boolean"
-															},
-															"doh_in_tunnel": {
-																"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -3591,11 +3571,6 @@
 													"example": true,
 													"type": "boolean"
 												},
-												"doh_in_tunnel": {
-													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-													"example": true,
-													"type": "boolean"
-												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -3882,11 +3857,6 @@
 														},
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-															"example": true,
-															"type": "boolean"
-														},
-														"doh_in_tunnel": {
-															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -4310,11 +4280,6 @@
 													"example": true,
 													"type": "boolean"
 												},
-												"doh_in_tunnel": {
-													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-													"example": true,
-													"type": "boolean"
-												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"example": true,
@@ -4656,11 +4621,6 @@
 														},
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-															"example": true,
-															"type": "boolean"
-														},
-														"doh_in_tunnel": {
-															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -7979,11 +7939,6 @@
 								"example": true,
 								"type": "boolean"
 							},
-							"doh_in_tunnel": {
-								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-								"example": true,
-								"type": "boolean"
-							},
 							"exclude_office_ips": {
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
@@ -8168,11 +8123,6 @@
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-													"example": true,
-													"type": "boolean"
-												},
-												"doh_in_tunnel": {
-													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -8462,11 +8412,6 @@
 														},
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-															"example": true,
-															"type": "boolean"
-														},
-														"doh_in_tunnel": {
-															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -8783,11 +8728,6 @@
 								"example": true,
 								"type": "boolean"
 							},
-							"doh_in_tunnel": {
-								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-								"example": true,
-								"type": "boolean"
-							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"example": true,
@@ -9000,11 +8940,6 @@
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-													"example": true,
-													"type": "boolean"
-												},
-												"doh_in_tunnel": {
-													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -9349,11 +9284,6 @@
 														},
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-															"example": true,
-															"type": "boolean"
-														},
-														"doh_in_tunnel": {
-															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -10059,11 +9989,6 @@
 								"example": true,
 								"type": "boolean"
 							},
-							"doh_in_tunnel": {
-								"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
-								"example": true,
-								"type": "boolean"
-							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"example": true,
@@ -10291,11 +10216,6 @@
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-													"example": true,
-													"type": "boolean"
-												},
-												"doh_in_tunnel": {
-													"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -10640,11 +10560,6 @@
 														},
 														"disable_auto_fallback": {
 															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
-															"example": true,
-															"type": "boolean"
-														},
-														"doh_in_tunnel": {
-															"description": "Determines how the WARP client sends DNS requests to Cloudflare Gateway. When `true`, DNS traffic is sent over DoH inside the WARP tunnel. When `false`, the DoH connection operates outside of the WARP tunnel.",
 															"example": true,
 															"type": "boolean"
 														},
