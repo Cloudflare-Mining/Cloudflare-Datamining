@@ -30,7 +30,7 @@
 <p>&nbsp;</p>
 <p>Examples of desirable skills, knowledge and experience</p>
 <ul>
-	<li>Management Information Systems, Computer Science, Data Analytics,, Engineering, major/minor preferred</li>
+	<li>Management Information Systems, Computer Science, Data Analytics, or Engineering major/minor preferred</li>
 	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
 	<li>Time management skills and ability to plan and prioritize effectively</li>
 	<li>Ability to work effectively in a team environment</li>
