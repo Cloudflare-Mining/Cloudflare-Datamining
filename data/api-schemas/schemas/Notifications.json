@@ -1,0 +1,147 @@
+{
+	"POST /notification": {
+		"operationId": "post_NotificationPublish",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"defaultAlert": {
+									"properties": {
+										"$typeName": {
+											"example": "alerting.AlertEventV2",
+											"type": "string"
+										},
+										"accountId": {
+											"type": "number"
+										},
+										"accountTag": {
+											"example": "abcd",
+											"type": "string"
+										},
+										"alertContext": {
+											"properties": {
+												"case": {
+													"example": "openPortScanAlert",
+													"type": "string"
+												},
+												"value": {
+													"properties": {
+														"$typeName": {
+															"example": "cloudforce_one.PortScanAlert",
+															"type": "string"
+														},
+														"accountTag": {
+															"example": "abcd",
+															"type": "string"
+														},
+														"ports": {
+															"items": {
+																"properties": {
+																	"$typeName": {
+																		"example": "cloudforce_one.PortScanAlert.PortInfo",
+																		"type": "string"
+																	},
+																	"ip": {
+																		"example": "127.0.0.1",
+																		"type": "string"
+																	},
+																	"number": {
+																		"example": 8080,
+																		"type": "number"
+																	},
+																	"status": {
+																		"example": 2,
+																		"type": "number"
+																	}
+																},
+																"required": [
+																	"$typeName",
+																	"ip",
+																	"number",
+																	"status"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"$typeName",
+														"ports",
+														"accountTag"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"case",
+												"value"
+											],
+											"type": "object"
+										},
+										"alertType": {
+											"example": 78,
+											"type": "number"
+										},
+										"policyId": {
+											"type": "string"
+										},
+										"severity": {
+											"example": 4,
+											"type": "number"
+										},
+										"source": {
+											"example": "ans-producer-worker",
+											"type": "string"
+										},
+										"zoneId": {
+											"type": "number"
+										},
+										"zoneTag": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"$typeName",
+										"accountTag",
+										"accountId",
+										"zoneTag",
+										"zoneId",
+										"alertType",
+										"policyId",
+										"severity",
+										"source",
+										"alertContext"
+									],
+									"type": "object"
+								},
+								"message": {
+									"example": "successfully dispatched alert",
+									"type": "string"
+								}
+							},
+							"required": [
+								"message",
+								"defaultAlert"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully published notification to ANS"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Publish to ANS",
+		"tags": [
+			"Notifications"
+		]
+	}
+}

@@ -1,0 +1,102 @@
+{
+	"GET /configs": {
+		"operationId": "get_ConfigList",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "query",
+				"name": "account_id",
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Page number",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Page Size",
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"description": "Page Size",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"account_id": {
+												"example": "0",
+												"type": "string"
+											},
+											"frequency": {
+												"type": "number"
+											},
+											"id": {
+												"type": "number"
+											},
+											"ips": {
+												"items": {
+													"example": "1.1.1.1",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"name": {
+												"example": "my config",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"account_id",
+											"name",
+											"ips",
+											"frequency"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of configs"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Configs",
+		"tags": [
+			"Configs"
+		]
+	}
+}

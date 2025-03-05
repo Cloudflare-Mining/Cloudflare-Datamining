@@ -1,0 +1,501 @@
+{
+	"DELETE /{account_id}/scans/config": {
+		"operationId": "delete_DeleteScans",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete the Scan Config for an Account"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete the Scan Config for an Account",
+		"tags": [
+			"Scans"
+		]
+	},
+	"GET /{account_id}/scans/config": {
+		"operationId": "get_ConfigFetch",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"account_id": {
+											"example": "abcd1234abcd1234abcd1234abcd1234",
+											"type": "string"
+										},
+										"frequency": {
+											"example": 1,
+											"type": "number"
+										},
+										"ips": {
+											"items": {
+												"example": "1.1.1.1",
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"account_id",
+										"ips",
+										"frequency"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Scan Config for an Account"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get the Scan Config for An Account",
+		"tags": [
+			"Scans"
+		]
+	},
+	"GET /{account_id}/scans/results": {
+		"operationId": "get_GetOpenPorts",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"1.1.1.1": {
+											"items": {
+												"properties": {
+													"number": {
+														"example": 8080,
+														"type": "number"
+													},
+													"proto": {
+														"example": "tcp",
+														"type": "string"
+													},
+													"status": {
+														"example": "open",
+														"type": "string"
+													}
+												},
+												"required": [
+													"number",
+													"proto",
+													"status"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"1.1.1.1"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns Current Open Ports"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get the Latest Scan Result",
+		"tags": [
+			"Scans"
+		]
+	},
+	"GET /scans": {
+		"operationId": "get_GetScans",
+		"parameters": [
+			{
+				"description": "Toggle IP Authorization",
+				"in": "query",
+				"name": "verifyIPs",
+				"schema": {
+					"description": "Toggle IP Authorization",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"account_id": {
+											"example": "abcd1234abcd1234abcd1234abcd1234",
+											"type": "string"
+										},
+										"ips": {
+											"items": {
+												"example": "1.1.1.1",
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"account_id",
+										"ips"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns All Due Scans"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Fetches All Due Scans",
+		"tags": [
+			"Scans"
+		]
+	},
+	"POST /{account_id}/scans": {
+		"operationId": "post_ConfigCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"frequency": {
+								"example": 1,
+								"type": "number"
+							},
+							"ips": {
+								"items": {
+									"example": "1.1.1.1",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"ips",
+							"frequency"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"account_id": {
+											"example": "abcd1234abcd1234abcd1234abcd1234",
+											"type": "string"
+										},
+										"frequency": {
+											"example": 1,
+											"type": "number"
+										},
+										"ips": {
+											"items": {
+												"example": "1.1.1.1",
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"account_id",
+										"ips",
+										"frequency"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created config"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Scan Config",
+		"tags": [
+			"Scans"
+		]
+	},
+	"POST /scans": {
+		"operationId": "post_RetryScans",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"account_id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"account_id"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created config"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Mark a Scan for Retry",
+		"tags": [
+			"Scans"
+		]
+	}
+}
