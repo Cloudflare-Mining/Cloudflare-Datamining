@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.25.0
+
+### Minor Changes
+
+- 85969262f7: add security-waf-outline, cloudflare-ruleset-engine , cloud-security, code-api-outline and ddos-attack-outline icons
+
 ## 12.24.0
 
 ### Minor Changes

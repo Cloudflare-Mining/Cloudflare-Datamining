@@ -1,47 +1,47 @@
 {
 	"name": "@cloudflare/privacypass-ts",
 	"dist-tags": {
-		"latest": "0.6.0"
+		"latest": "0.7.0-beta.0"
 	},
 	"versions": {
 		"0.2.1": {
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.2.1",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.1.0",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/blindrsa-ts": "0.1.0"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.2",
-				"@types/jest": "29.5.3",
-				"@typescript-eslint/eslint-plugin": "6.2.1",
-				"@typescript-eslint/parser": "6.2.1",
-				"benchmark": "2.1.4",
+				"jest": "29.6.2",
 				"eslint": "8.46.0",
-				"eslint-config-prettier": "8.9.0",
+				"rimraf": "5.0.1",
+				"prettier": "3.0.0",
+				"benchmark": "2.1.4",
+				"typescript": "5.1.6",
+				"@types/jest": "29.5.3",
+				"@types/benchmark": "2.1.2",
 				"eslint-plugin-jest": "27.2.3",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "8.9.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.6.2",
-				"prettier": "3.0.0",
-				"rimraf": "5.0.1",
-				"typescript": "5.1.6"
+				"@typescript-eslint/parser": "6.2.1",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.2.1"
 			},
 			"dist": {
-				"integrity": "sha512-FAbwSC08DZHa8C5vmcfYqRC1RP1lrsh3eA2mwRh4P7MCADT/nXALOwt+oSFO+WWlV+o940HLyzufMuzUuOTyMQ==",
 				"shasum": "284aa287933e15a8096ded08a7b1706967ef5fc8",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.2.1.tgz",
 				"fileCount": 23,
-				"unpackedSize": 57148,
+				"integrity": "sha512-FAbwSC08DZHa8C5vmcfYqRC1RP1lrsh3eA2mwRh4P7MCADT/nXALOwt+oSFO+WWlV+o940HLyzufMuzUuOTyMQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIG7HImoio0IquDLqv7KVRgMRDiL1D7UB5FGnmd8Wci9LAiAJhZdNX8ZdqR1cWqSTBHaJ4xF6CcSnxliYBjfAtYltBw=="
+						"sig": "MEQCIG7HImoio0IquDLqv7KVRgMRDiL1D7UB5FGnmd8Wci9LAiAJhZdNX8ZdqR1cWqSTBHaJ4xF6CcSnxliYBjfAtYltBw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 57148
 			},
 			"engines": {
 				"node": ">=18"
@@ -51,40 +51,40 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.3.0",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.1.0",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/blindrsa-ts": "0.1.0"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.2",
-				"@types/jest": "29.5.3",
-				"@typescript-eslint/eslint-plugin": "6.2.1",
-				"@typescript-eslint/parser": "6.2.1",
-				"benchmark": "2.1.4",
+				"jest": "29.6.2",
 				"eslint": "8.46.0",
-				"eslint-config-prettier": "8.9.0",
+				"rimraf": "5.0.1",
+				"prettier": "3.0.0",
+				"benchmark": "2.1.4",
+				"typescript": "5.1.6",
+				"@types/jest": "29.5.3",
+				"@types/benchmark": "2.1.2",
 				"eslint-plugin-jest": "27.2.3",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "8.9.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.6.2",
-				"prettier": "3.0.0",
-				"rimraf": "5.0.1",
-				"typescript": "5.1.6"
+				"@typescript-eslint/parser": "6.2.1",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.2.1"
 			},
 			"dist": {
-				"integrity": "sha512-pW3bcAEFiAqdew0+CUBZCSgiEbAq6UOZGfzoXSH9ZZ4ptGCQDIJlhdlfqD6jp98WIefJ74LzxmzIcCDrHS35zQ==",
 				"shasum": "0b657083bd820cac549759a2bf34282c648a0ec7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.3.0.tgz",
 				"fileCount": 27,
-				"unpackedSize": 61760,
+				"integrity": "sha512-pW3bcAEFiAqdew0+CUBZCSgiEbAq6UOZGfzoXSH9ZZ4ptGCQDIJlhdlfqD6jp98WIefJ74LzxmzIcCDrHS35zQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDV4mtIPAyH4hAEnFGbeCfvM4yxhWjhkhU/m/Jj6ETWLAiEAqdp/9M8H9TBgvexzPVkBntZ84vd0gT80DM9e0Nlq+Lw="
+						"sig": "MEUCIDV4mtIPAyH4hAEnFGbeCfvM4yxhWjhkhU/m/Jj6ETWLAiEAqdp/9M8H9TBgvexzPVkBntZ84vd0gT80DM9e0Nlq+Lw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 61760
 			},
 			"engines": {
 				"node": ">=18"
@@ -94,40 +94,40 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.4.0",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.1.0",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/blindrsa-ts": "0.1.0"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.2",
-				"@types/jest": "29.5.3",
-				"@typescript-eslint/eslint-plugin": "6.2.1",
-				"@typescript-eslint/parser": "6.2.1",
-				"benchmark": "2.1.4",
+				"jest": "29.6.2",
 				"eslint": "8.46.0",
-				"eslint-config-prettier": "8.9.0",
+				"rimraf": "5.0.1",
+				"prettier": "3.0.0",
+				"benchmark": "2.1.4",
+				"typescript": "5.1.6",
+				"@types/jest": "29.5.3",
+				"@types/benchmark": "2.1.2",
 				"eslint-plugin-jest": "27.2.3",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "8.9.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.6.2",
-				"prettier": "3.0.0",
-				"rimraf": "5.0.1",
-				"typescript": "5.1.6"
+				"@typescript-eslint/parser": "6.2.1",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.2.1"
 			},
 			"dist": {
-				"integrity": "sha512-z4a6yxQb5fy8hpPBcScPe/InxppQY7omxzYXT8YIXpYDU0LU15N6I30isKMmaJ5zyLXU3liwPN6vEInxdA2oTg==",
 				"shasum": "ea09bb782b4d7026bf59277a77f2b31d4f7f6236",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.4.0.tgz",
 				"fileCount": 27,
-				"unpackedSize": 70003,
+				"integrity": "sha512-z4a6yxQb5fy8hpPBcScPe/InxppQY7omxzYXT8YIXpYDU0LU15N6I30isKMmaJ5zyLXU3liwPN6vEInxdA2oTg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHbWoudhaxbHS+VMIhSqawtzf7QkHUpeMJDVOkiLmmYRAiAsDHU+CE0S0XG6WJEm575rd4nhOIEBWYOsR7/owqDg5A=="
+						"sig": "MEQCIHbWoudhaxbHS+VMIhSqawtzf7QkHUpeMJDVOkiLmmYRAiAsDHU+CE0S0XG6WJEm575rd4nhOIEBWYOsR7/owqDg5A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 70003
 			},
 			"engines": {
 				"node": ">=18"
@@ -137,41 +137,41 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.5.0",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.3.2",
-				"@cloudflare/voprf-ts": "0.21.2",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/voprf-ts": "0.21.2",
+				"@cloudflare/blindrsa-ts": "0.3.2"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-BveinpeIDZ7UeTNyAxRz11561pFQcGhR7ncmFwub4JBBcH3kdeUKfFJEK5GveprUMFBQtpUfB58OEdfUreEZWA==",
 				"shasum": "094d770081c901974091fa34939714cf808ab59d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.5.0.tgz",
 				"fileCount": 31,
-				"unpackedSize": 98744,
+				"integrity": "sha512-BveinpeIDZ7UeTNyAxRz11561pFQcGhR7ncmFwub4JBBcH3kdeUKfFJEK5GveprUMFBQtpUfB58OEdfUreEZWA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICsXI2FaDPTjm3FQIqSxnqfE+csTafS7ZmQ0bfGKhgFtAiAN/5/eHM7Bz+yEBHrWUe6u9YhijxYkc9Vww0bnU+ddSQ=="
+						"sig": "MEQCICsXI2FaDPTjm3FQIqSxnqfE+csTafS7ZmQ0bfGKhgFtAiAN/5/eHM7Bz+yEBHrWUe6u9YhijxYkc9Vww0bnU+ddSQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 98744
 			},
 			"engines": {
 				"node": ">=18"
@@ -181,41 +181,41 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.5.1",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.3.2",
-				"@cloudflare/voprf-ts": "0.21.2",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/voprf-ts": "0.21.2",
+				"@cloudflare/blindrsa-ts": "0.3.2"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-YVYmn2C3NlmZ6xQhirlLBZb4Ds13c6L2WMseK73+PpAiiXoGKtHYidvhyg1IVjCAPVPHUPD6SYBm3PftPh0NqA==",
 				"shasum": "bb9500f221d3c8e79f1de93e62f6a51fcb23e26c",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.5.1.tgz",
 				"fileCount": 31,
-				"unpackedSize": 99112,
+				"integrity": "sha512-YVYmn2C3NlmZ6xQhirlLBZb4Ds13c6L2WMseK73+PpAiiXoGKtHYidvhyg1IVjCAPVPHUPD6SYBm3PftPh0NqA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEp41as/VyJE0aAc+q5/MHblwaiW61EH+nVgGc2RI1QMAiEA3e2Hc6yLv+roEQKrB/5rA1J5/SDmvn9quRYg1/nqafc="
+						"sig": "MEUCIEp41as/VyJE0aAc+q5/MHblwaiW61EH+nVgGc2RI1QMAiEA3e2Hc6yLv+roEQKrB/5rA1J5/SDmvn9quRYg1/nqafc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 99112
 			},
 			"engines": {
 				"node": ">=18"
@@ -225,39 +225,83 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.6.0",
 			"dependencies": {
-				"@cloudflare/blindrsa-ts": "0.4.2",
-				"@cloudflare/voprf-ts": "0.21.2",
-				"asn1-parser": "1.1.8",
 				"asn1js": "3.0.5",
-				"rfc4648": "1.5.2"
+				"rfc4648": "1.5.2",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/voprf-ts": "0.21.2",
+				"@cloudflare/blindrsa-ts": "0.4.2"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-FrhQFazWjxhNCr/JMpmNqw6TD8dEi4iAkB6tqF28O5Umrwx3SJZRgUmjU8UxwqlVNKGGDdjedEtFbXJKulyxmw==",
 				"shasum": "e39860b32687e848c1527f62e89f6b2301cdc355",
 				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.6.0.tgz",
 				"fileCount": 31,
-				"unpackedSize": 126030,
+				"integrity": "sha512-FrhQFazWjxhNCr/JMpmNqw6TD8dEi4iAkB6tqF28O5Umrwx3SJZRgUmjU8UxwqlVNKGGDdjedEtFbXJKulyxmw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDYqWNAqUwBrmF+n+3pS0DF29TTIcrWMmXmAJlx304QbgIhAM7nAXHGz/EDzT3XEcXfy/pbAplkBIi4Tna77EKI46UD"
+						"sig": "MEYCIQDYqWNAqUwBrmF+n+3pS0DF29TTIcrWMmXmAJlx304QbgIhAM7nAXHGz/EDzT3XEcXfy/pbAplkBIi4Tna77EKI46UD",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 126030
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.7.0-beta.0": {
+			"name": "@cloudflare/privacypass-ts",
+			"version": "0.7.0-beta.0",
+			"dependencies": {
+				"@cloudflare/blindrsa-ts": "0.4.2",
+				"@cloudflare/voprf-ts": "1.0.0",
+				"asn1-parser": "1.1.8",
+				"asn1js": "3.0.5",
+				"quicvarint": "0.1.4",
+				"rfc4648": "1.5.3"
+			},
+			"devDependencies": {
+				"@eslint/js": "9.9.1",
+				"@types/benchmark": "2.1.5",
+				"@types/jest": "29.5.12",
+				"benchmark": "2.1.4",
+				"eslint": "9.9.1",
+				"eslint-config-prettier": "9.1.0",
+				"eslint-plugin-jest": "28.8.1",
+				"eslint-plugin-prettier": "5.2.1",
+				"eslint-plugin-security": "3.0.1",
+				"jest": "29.7.0",
+				"prettier": "3.3.3",
+				"rimraf": "6.0.1",
+				"typescript": "5.5.4",
+				"typescript-eslint": "8.3.0"
+			},
+			"dist": {
+				"integrity": "sha512-4udK/l5ERrefzVHu7y3wH3HsWM62KWIqwHCsu6U5SJispE+0rxojqMnMpcrRMjpoJVyyXu15796LRJutTlSgYw==",
+				"shasum": "70aa1ac5ebb1a719dd4b8fd1bfc1f098663944d6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.7.0-beta.0.tgz",
+				"fileCount": 35,
+				"unpackedSize": 150274,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIDXvs/SlEjK6HtdwMXmeD19E8YfqTd/GFVEyoUaR4gucAiEA7+JkuyP/sBzOJyux7Wc8emSgewKe4M0yjkDgO3r8eTA="
 					}
 				]
 			},
