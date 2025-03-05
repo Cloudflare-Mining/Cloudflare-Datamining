@@ -768,14 +768,6 @@
 		]
 	},
 	{
-		"id": "f5d857f67f144e3c8bacea88c17d4a13",
-		"name": "Cloudflare Zero Trust PII Read",
-		"description": "Can access Cloudflare Zero Trust PII.",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "cf9353ed7978436e8fb20c03fce26449",
 		"name": "Cloudforce One Read",
 		"description": "Grants read access to Cloudforce One",
@@ -1768,30 +1760,6 @@
 		]
 	},
 	{
-		"id": "3f376c8e6f764a938b848bd01c8995c4",
-		"name": "Teams Read",
-		"description": "Grants read access to teams (Zero Trust)",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "efb81b5cd37d49f3be1da9363a6d7a19",
-		"name": "Teams Report",
-		"description": "Grants reporting access to teams (Zero Trust)",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "b33f02c6f7284e05a6f20741c0bb0567",
-		"name": "Teams Write",
-		"description": "Grants write access to teams (Zero Trust)",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "a9a99455bf3245f6a5a244f909d74830",
 		"name": "Transform Rules Read",
 		"description": "Grants read access to transform rules",
@@ -2061,6 +2029,38 @@
 		"description": "Grants read access to Zaraz settings.",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "3f376c8e6f764a938b848bd01c8995c4",
+		"name": "Zero Trust Read",
+		"description": "Grants read access to Cloudflare Zero Trust resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "efb81b5cd37d49f3be1da9363a6d7a19",
+		"name": "Zero Trust Report",
+		"description": "Grants reporting access to Cloudflare Zero Trust",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "b33f02c6f7284e05a6f20741c0bb0567",
+		"name": "Zero Trust Write",
+		"description": "Grants write access to Cloudflare Zero Trust resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "f5d857f67f144e3c8bacea88c17d4a13",
+		"name": "Zero Trust: PII Read",
+		"description": "Grants read access to Cloudflare Zero Trust PII.",
+		"scopes": [
+			"com.cloudflare.api.account"
 		]
 	},
 	{
