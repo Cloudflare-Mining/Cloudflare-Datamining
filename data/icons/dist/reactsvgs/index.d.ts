@@ -1,7 +1,6 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -36,19 +35,23 @@ declare const _default: {
     'cloud-internet-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-internet': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloud-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-dex': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-email-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-magic-wan': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloudflare-ruleset-engine': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-application': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-network': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-zero-trust': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'code-api-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'code-edit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     connector: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'ddos-attack-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ddos-attack': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'device-desktop': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'device-laptop': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -145,6 +148,7 @@ declare const _default: {
     script: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'security-waf-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'server-origin': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     shield: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -162,6 +166,7 @@ declare const _default: {
     'thumbs-up-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-up-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

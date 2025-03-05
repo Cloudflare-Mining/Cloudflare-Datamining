@@ -1,5 +1,4 @@
 import Dlp from './Dlp';
-import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -34,19 +33,23 @@ import Clipboard from './Clipboard';
 import CloudInternetSolid from './CloudInternetSolid';
 import CloudInternet from './CloudInternet';
 import CloudMulti from './CloudMulti';
+import CloudSecurity from './CloudSecurity';
 import CloudflareAccess from './CloudflareAccess';
 import CloudflareDex from './CloudflareDex';
 import CloudflareEmailSecurity from './CloudflareEmailSecurity';
 import CloudflareMagicWan from './CloudflareMagicWan';
+import CloudflareRulesetEngine from './CloudflareRulesetEngine';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
 import CloudflareZeroTrust from './CloudflareZeroTrust';
+import CodeApiOutline from './CodeApiOutline';
 import CodeEdit from './CodeEdit';
 import Code from './Code';
 import Connector from './Connector';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
 import D1 from './D1';
+import DdosAttackOutline from './DdosAttackOutline';
 import DdosAttack from './DdosAttack';
 import DeviceDesktop from './DeviceDesktop';
 import DeviceLaptop from './DeviceLaptop';
@@ -143,6 +146,7 @@ import Router from './Router';
 import Script from './Script';
 import Search from './Search';
 import SecurityBots from './SecurityBots';
+import SecurityWafSolid from './SecurityWafSolid';
 import SecurityWaf from './SecurityWaf';
 import ServerOrigin from './ServerOrigin';
 import Shield from './Shield';
@@ -160,6 +164,7 @@ import ThumbsDownSolid from './ThumbsDownSolid';
 import ThumbsUpOutline from './ThumbsUpOutline';
 import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
+import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -193,7 +198,6 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
-  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -228,19 +232,23 @@ export default {
   'cloud-internet-solid': CloudInternetSolid,
   'cloud-internet': CloudInternet,
   'cloud-multi': CloudMulti,
+  'cloud-security': CloudSecurity,
   'cloudflare-access': CloudflareAccess,
   'cloudflare-dex': CloudflareDex,
   'cloudflare-email-security': CloudflareEmailSecurity,
   'cloudflare-magic-wan': CloudflareMagicWan,
+  'cloudflare-ruleset-engine': CloudflareRulesetEngine,
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
   'cloudflare-zero-trust': CloudflareZeroTrust,
+  'code-api-outline': CodeApiOutline,
   'code-edit': CodeEdit,
   code: Code,
   connector: Connector,
   copy: Copy,
   'credit-card': CreditCard,
   d1: D1,
+  'ddos-attack-outline': DdosAttackOutline,
   'ddos-attack': DdosAttack,
   'device-desktop': DeviceDesktop,
   'device-laptop': DeviceLaptop,
@@ -337,6 +345,7 @@ export default {
   script: Script,
   search: Search,
   'security-bots': SecurityBots,
+  'security-waf-solid': SecurityWafSolid,
   'security-waf': SecurityWaf,
   'server-origin': ServerOrigin,
   shield: Shield,
@@ -354,6 +363,7 @@ export default {
   'thumbs-up-outline': ThumbsUpOutline,
   'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
+  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
