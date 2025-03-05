@@ -310,22 +310,6 @@
 				{
 					"contentType": "product",
 					"date": "2024-05-01",
-					"description": "Cloudflare CASB now integrates with Bitbucket Cloud, enabling IT and security teams to detect data loss risks, account misconfigurations, and user security risks.",
-					"id": "a3e65fd8-3075-5888-8012-000d93a90623",
-					"pageUrl": null,
-					"relatedContentBlogPost": null,
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/bitbucket-cloud/",
-					"relatedContentProductPageLabel": "Developer docs",
-					"relatedProduct": "CASB",
-					"title": "Cloudflare CASB: Scan Bitbucket Cloud for security issues",
-					"locale": "en-US",
-					"useCase": null
-				},
-				{
-					"contentType": "product",
-					"date": "2024-05-01",
 					"description": "Cloudflare's Data Loss Prevention (DLP) service now offers the ability to detect and prevent sensitive data leaks in Dropbox. ",
 					"id": "137d140d-540e-5ef2-a5b2-fc7ca1ffda8c",
 					"pageUrl": null,
@@ -338,6 +322,22 @@
 					"title": "Cloudflare DLP: Prevent data loss in Dropbox",
 					"locale": "en-US",
 					"useCase": "security"
+				},
+				{
+					"contentType": "product",
+					"date": "2024-05-01",
+					"description": "Cloudflare CASB now integrates with Bitbucket Cloud, enabling IT and security teams to detect data loss risks, account misconfigurations, and user security risks.",
+					"id": "a3e65fd8-3075-5888-8012-000d93a90623",
+					"pageUrl": null,
+					"relatedContentBlogPost": null,
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/bitbucket-cloud/",
+					"relatedContentProductPageLabel": "Developer docs",
+					"relatedProduct": "CASB",
+					"title": "Cloudflare CASB: Scan Bitbucket Cloud for security issues",
+					"locale": "en-US",
+					"useCase": null
 				},
 				{
 					"contentType": "analysts",
@@ -4564,22 +4564,6 @@
 					"useCase": null
 				},
 				{
-					"contentType": "product",
-					"date": "2018-04-12",
-					"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network. \n",
-					"id": "6cf6154c-e1fc-5a2c-96ba-a5ce212bb891",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/spectrum/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://www.cloudflare.com/products/cloudflare-spectrum/",
-					"relatedContentProductPageLabel": "Learn More About Spectrum",
-					"relatedProduct": null,
-					"title": "Cloudflare Spectrum",
-					"locale": "en-US",
-					"useCase": "performance"
-				},
-				{
 					"contentType": "feature",
 					"date": "2018-04-12",
 					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
@@ -4594,6 +4578,22 @@
 					"title": "Support full SSL (Strict) mode validation for CNAME domains",
 					"locale": "en-US",
 					"useCase": null
+				},
+				{
+					"contentType": "product",
+					"date": "2018-04-12",
+					"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network. \n",
+					"id": "6cf6154c-e1fc-5a2c-96ba-a5ce212bb891",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/spectrum/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://www.cloudflare.com/products/cloudflare-spectrum/",
+					"relatedContentProductPageLabel": "Learn More About Spectrum",
+					"relatedProduct": null,
+					"title": "Cloudflare Spectrum",
+					"locale": "en-US",
+					"useCase": "performance"
 				},
 				{
 					"contentType": "feature",
