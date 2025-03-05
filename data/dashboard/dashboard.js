@@ -2,14 +2,14 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "73c92de3-b7b6-5d04-ba06-48ef09483ec7")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "d8e31b4e-e3f1-51b4-9af7-e897a31f7f67")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
 	[44410, 34254, 78770], {
-		"../flags.ts": function(x, v, n) {
+		"../flags.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				J8: function() {
 					return a
 				},
@@ -17,124 +17,124 @@
 					return c
 				},
 				QY: function() {
-					return g
+					return f
 				},
 				Qw: function() {
 					return i
 				},
 				ki: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/utils/url.ts"),
 				s = n("../../../../node_modules/query-string/query-string.js"),
 				p = n.n(s),
-				l = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
+				u = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				m;
-			const i = () => Object.keys(l.Z).reduce((f, A) => (A.indexOf("cf_beta.") === 0 && l.Z.get(A) === "true" && f.push(A.split(".").slice(1).join(".")), f), []),
-				u = () => {
-					var f, A, h;
-					return ((f = window) === null || f === void 0 || (A = f.bootstrap) === null || A === void 0 || (h = A.data) === null || h === void 0 ? void 0 : h.user) && Array.isArray(window.bootstrap.data.user.betas) && window.bootstrap.data.user.betas.length > 0 ? window.bootstrap.data.user.betas : []
+			const i = () => Object.keys(u.Z).reduce((_, h) => (h.indexOf("cf_beta.") === 0 && u.Z.get(h) === "true" && _.push(h.split(".").slice(1).join(".")), _), []),
+				d = () => {
+					var _, h, A;
+					return ((_ = window) === null || _ === void 0 || (h = _.bootstrap) === null || h === void 0 || (A = h.data) === null || A === void 0 ? void 0 : A.user) && Array.isArray(window.bootstrap.data.user.betas) && window.bootstrap.data.user.betas.length > 0 ? window.bootstrap.data.user.betas : []
 				};
-			if (((m = window) === null || m === void 0 ? void 0 : m.location) && l.Z) {
-				const f = p().parse(window.location.search);
-				f.beta_on && l.Z.set(`cf_beta.${f.beta_on}`, !0), f.beta_off && l.Z.set(`cf_beta.${f.beta_off}`, !1)
+			if (((m = window) === null || m === void 0 ? void 0 : m.location) && u.Z) {
+				const _ = p().parse(window.location.search);
+				_.beta_on && u.Z.set(`cf_beta.${_.beta_on}`, !0), _.beta_off && u.Z.set(`cf_beta.${_.beta_off}`, !1)
 			}
-			const _ = {},
-				t = f => {
-					var A, h, T;
-					return Object.prototype.hasOwnProperty.call(_, f) ? _[f] : ((A = window) === null || A === void 0 || (h = A.bootstrap) === null || h === void 0 || (T = h.data) === null || T === void 0 ? void 0 : T.user) && Array.isArray(window.bootstrap.data.user.betas) && window.bootstrap.data.user.betas.some(M => M === f) ? (_[f] = !0, !0) : (_[f] = !1, !1)
+			const g = {},
+				t = _ => {
+					var h, A, T;
+					return Object.prototype.hasOwnProperty.call(g, _) ? g[_] : ((h = window) === null || h === void 0 || (A = h.bootstrap) === null || A === void 0 || (T = A.data) === null || T === void 0 ? void 0 : T.user) && Array.isArray(window.bootstrap.data.user.betas) && window.bootstrap.data.user.betas.some(M => M === _) ? (g[_] = !0, !0) : (g[_] = !1, !1)
 				},
-				r = f => l.Z ? l.Z.get(`cf_beta.${f}`) === !0 : !1,
-				a = f => r(f) || t(f),
-				d = () => !0,
+				r = _ => u.Z ? u.Z.get(`cf_beta.${_}`) === !0 : !1,
+				a = _ => r(_) || t(_),
+				l = () => !0,
 				c = () => {
-					var f, A, h;
-					return ((f = window) === null || f === void 0 || (A = f.bootstrap) === null || A === void 0 || (h = A.data) === null || h === void 0 ? void 0 : h.user) && /@cloudflare\.com$/.test(window.bootstrap.data.user.email)
+					var _, h, A;
+					return ((_ = window) === null || _ === void 0 || (h = _.bootstrap) === null || h === void 0 || (A = h.data) === null || A === void 0 ? void 0 : A.user) && /@cloudflare\.com$/.test(window.bootstrap.data.user.email)
 				},
-				g = f => {
-					const A = (0, e.uF)(f),
-						h = (A == null ? void 0 : A.roles) || [];
-					return (0, o.qR)(location.pathname) && h.length === 1 && h.some(T => T === "Administrator Read Only")
+				f = _ => {
+					const h = (0, e.uF)(_),
+						A = (h == null ? void 0 : h.roles) || [];
+					return (0, o.qR)(location.pathname) && A.length === 1 && A.some(T => T === "Administrator Read Only")
 				}
 		},
-		"../init.ts": function(x, v, n) {
+		"../init.ts": function(x, E, n) {
 			"use strict";
-			n.r(v);
+			n.r(E);
 			var e = n("../../../../node_modules/regenerator-runtime/runtime.js"),
 				o = n("../../../../node_modules/url-search-params-polyfill/index.js"),
 				s = n("../libs/init/initGlobal.ts"),
 				p = n("../node_modules/isomorphic-fetch/fetch-npm-browserify.js"),
-				l = n("../../../../node_modules/fetch-intercept/lib/browser.js");
+				u = n("../../../../node_modules/fetch-intercept/lib/browser.js");
 
-			function m(R) {
+			function m(N) {
 				for (var j = 1; j < arguments.length; j++) {
-					var J = arguments[j] != null ? Object(arguments[j]) : {},
-						ie = Object.keys(J);
-					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(J).filter(function(ye) {
-						return Object.getOwnPropertyDescriptor(J, ye).enumerable
+					var ee = arguments[j] != null ? Object(arguments[j]) : {},
+						ie = Object.keys(ee);
+					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(ee).filter(function(ye) {
+						return Object.getOwnPropertyDescriptor(ee, ye).enumerable
 					})), ie.forEach(function(ye) {
-						i(R, ye, J[ye])
+						i(N, ye, ee[ye])
 					})
 				}
-				return R
+				return N
 			}
 
-			function i(R, j, J) {
-				return j = u(j), j in R ? Object.defineProperty(R, j, {
-					value: J,
+			function i(N, j, ee) {
+				return j = d(j), j in N ? Object.defineProperty(N, j, {
+					value: ee,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : R[j] = J, R
+				}) : N[j] = ee, N
 			}
 
-			function u(R) {
-				var j = _(R, "string");
+			function d(N) {
+				var j = g(N, "string");
 				return typeof j == "symbol" ? j : String(j)
 			}
 
-			function _(R, j) {
-				if (typeof R != "object" || R === null) return R;
-				var J = R[Symbol.toPrimitive];
-				if (J !== void 0) {
-					var ie = J.call(R, j || "default");
+			function g(N, j) {
+				if (typeof N != "object" || N === null) return N;
+				var ee = N[Symbol.toPrimitive];
+				if (ee !== void 0) {
+					var ie = ee.call(N, j || "default");
 					if (typeof ie != "object") return ie;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (j === "string" ? String : Number)(R)
+				return (j === "string" ? String : Number)(N)
 			}
-			const t = R => {
-				const j = R && R.headers || {},
-					J = new Headers(j);
-				return J.append("X-Cross-Site-Security", "dash"), m({}, R, {
-					headers: J
+			const t = N => {
+				const j = N && N.headers || {},
+					ee = new Headers(j);
+				return ee.append("X-Cross-Site-Security", "dash"), m({}, N, {
+					headers: ee
 				})
 			};
-			(0, l.register)({
-				request: (R, j) => {
+			(0, u.register)({
+				request: (N, j) => {
 					try {
-						return new URL(R), R === "https://cdn.cookielaw.org/logos/static/ot_guard_logo.svg" ? ["/static/vendor/onetrust/logos/ot_guard_logo.svg", j] : [R, j]
+						return new URL(N), N === "https://cdn.cookielaw.org/logos/static/ot_guard_logo.svg" ? ["/static/vendor/onetrust/logos/ot_guard_logo.svg", j] : [N, j]
 					} catch {
-						return [R, t(j)]
+						return [N, t(j)]
 					}
 				}
 			});
 			var r = n("../../../../node_modules/@sentry/core/esm/exports.js"),
 				a = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js"),
-				d = n("../react/app/providers/storeContainer.js");
+				l = n("../react/app/providers/storeContainer.js");
 			let c = "";
-			const g = 61;
+			const f = 61;
 
-			function f(R) {
-				const j = R.substr(1);
+			function _(N) {
+				const j = N.substr(1);
 				if (j && c !== j) {
-					const J = document.getElementById(j);
-					if (J) {
-						const ie = J.getBoundingClientRect().top;
+					const ee = document.getElementById(j);
+					if (ee) {
+						const ie = ee.getBoundingClientRect().top;
 						if (ie > 0) {
-							const ye = ie - g;
+							const ye = ie - f;
 							document.documentElement.scrollTop = ye
 						}
 					}
@@ -142,26 +142,26 @@
 				c = j
 			}
 
-			function A(R) {
-				R.listen(j => f(j.hash))
+			function h(N) {
+				N.listen(j => _(j.hash))
 			}
-			var h = n("../../../../node_modules/cookie/index.js"),
+			var A = n("../../../../node_modules/cookie/index.js"),
 				T = n("../../../../node_modules/@cloudflare/style-const/es/index.js");
 			const M = "CF_dash_version",
 				C = "cf_fv_preview",
 				y = "cf_pv",
-				N = "current",
+				S = "current",
 				L = "hash",
-				P = "deploymentPreview",
-				I = "fragmentPreview",
-				O = R => R === N ? S() : B(),
-				S = () => new Date("Thu, 01 Jan 1970 00:00:00 UTC"),
-				B = (R = 72) => {
+				b = "deploymentPreview",
+				P = "fragmentPreview",
+				O = N => N === S ? D() : B(),
+				D = () => new Date("Thu, 01 Jan 1970 00:00:00 UTC"),
+				B = (N = 72) => {
 					const j = 36e5;
-					return new Date(Date.now() + R * j)
+					return new Date(Date.now() + N * j)
 				},
-				U = R => {
-					switch (R) {
+				U = N => {
+					switch (N) {
 						case 429:
 							return {
 								title: "Rate Limit Exceeded", description: 'This IP address has been rate limited. Please wait one minute and then <a href="">reload this page</a> to try again. If the issue persists, please visit the <a href="https://cloudflarestatus.com">Cloudflare Status page</a> for up-to-date information regarding any ongoing issues.'
@@ -176,9 +176,9 @@
 							}
 					}
 				},
-				Z = (R, j = !1) => {
-					var J;
-					const ie = U(R),
+				Z = (N, j = !1) => {
+					var ee;
+					const ie = U(N),
 						ye = `
   <style type="text/css">
     #loading-state {
@@ -225,7 +225,7 @@
     <p id="error-description">${ie.description}</p>
   </div>
   `,
-						Me = j ? `
+						De = j ? `
     <style>
     .preview-banner {
       width: 680px;
@@ -240,104 +240,104 @@
     }
     </style>
     <div class="preview-banner">
-      <p>You are currently on a preview for branch: <span class="preview-banner-branch">${(J=window.build)===null||J===void 0?void 0:J.branch}</span>.</p>
+      <p>You are currently on a preview for branch: <span class="preview-banner-branch">${(ee=window.build)===null||ee===void 0?void 0:ee.branch}</span>.</p>
       <a href="${window.location.href}?deploymentPreview=current">Click here to go to the live dashboard deployment</a>
     </div>` : "";
-					return ye + Me
+					return ye + De
 				},
-				ae = R => {
+				ae = N => {
 					var j;
-					const J = document.getElementById(R);
-					!J || (j = J.parentNode) === null || j === void 0 || j.removeChild(J)
+					const ee = document.getElementById(N);
+					!ee || (j = ee.parentNode) === null || j === void 0 || j.removeChild(ee)
 				};
 
-			function Ee() {
-				const R = document.getElementById("loading-state");
-				R == null || R.classList.add("hide"), R == null || R.addEventListener("transitionend", () => {
+			function _e() {
+				const N = document.getElementById("loading-state");
+				N == null || N.classList.add("hide"), N == null || N.addEventListener("transitionend", () => {
 					["loading-state", "loading-styles", "loading-script-dark-mode", "loading-script-i18n"].forEach(ae)
 				})
 			}
 
-			function de(R) {
+			function de(N) {
 				var j;
-				const J = document.getElementById("loading-state"),
-					ie = !!((j = h.parse(document.cookie)) === null || j === void 0 ? void 0 : j[M]);
-				!J || (J.innerHTML = Z(R == null ? void 0 : R.code, ie))
+				const ee = document.getElementById("loading-state"),
+					ie = !!((j = A.parse(document.cookie)) === null || j === void 0 ? void 0 : j[M]);
+				!ee || (ee.innerHTML = Z(N == null ? void 0 : N.code, ie))
 			}
 			var ue = n("../utils/initStyles.ts"),
-				V = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs"),
-				Y = n("../../../../node_modules/@sentry/react/esm/sdk.js"),
-				G = n("../react/common/selectors/languagePreferenceSelector.ts"),
-				b = n("../flags.ts"),
+				K = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs"),
+				Q = n("../../../../node_modules/@sentry/react/esm/sdk.js"),
+				H = n("../react/common/selectors/languagePreferenceSelector.ts"),
+				I = n("../flags.ts"),
 				F = n("../utils/getDashVersion.ts");
-			const te = "https://a32e52f8871f439f850537cab9b0645a@sentry10.cfdata.org/218",
+			const ne = "https://a32e52f8871f439f850537cab9b0645a@sentry10.cfdata.org/218",
 				ce = !0,
-				K = [/cloudflare\.com/, /staging\.cloudflare\.com/, /cloudflare\.lol/, /127\.0\.0\.1/, /webpack/, /localhost/],
-				q = ["top.GLOBALS", "originalCreateNotification", "canvas.contentDocument", "MyApp_RemoveAllHighlights", "http://tt.epicplay.com", "Can't find variable: ZiteReader", "jigsaw is not defined", "ComboSearch is not defined", "http://loading.retry.widdit.com/", "atomicFindClose", "fb_xd_fragment", "bmi_SafeAddOnload", "EBCallBackMessageReceived", "conduitPage", "Script error.", "Failed to construct 'Worker'", "sendBeacon", "ResizeObserver loop limit exceeded", "ResizeObserver loop completed with undelivered notifications.", /Cannot read properties of undefined \(reading '(setCurrentPosition|setDefaultPosition|setMaxSize|setScreenSize|fireEvent|fireReadyEvent|audioVolumeChange|fireChangeEvent)'\)/, "NetworkError when attempting to fetch resource", "Failed to fetch", "Load failed", "The user aborted a request"];
-			var $ = n("../utils/sentry/lastSentEventId.ts"),
-				X = n("../../../../node_modules/@sentry/core/esm/transports/base.js"),
-				W = n("../../../../node_modules/@sentry/utils/esm/syncpromise.js");
-			const ne = R => {
-				const j = async J => {
+				G = [/cloudflare\.com/, /staging\.cloudflare\.com/, /cloudflare\.lol/, /127\.0\.0\.1/, /webpack/, /localhost/],
+				J = ["top.GLOBALS", "originalCreateNotification", "canvas.contentDocument", "MyApp_RemoveAllHighlights", "http://tt.epicplay.com", "Can't find variable: ZiteReader", "jigsaw is not defined", "ComboSearch is not defined", "http://loading.retry.widdit.com/", "atomicFindClose", "fb_xd_fragment", "bmi_SafeAddOnload", "EBCallBackMessageReceived", "conduitPage", "Script error.", "Failed to construct 'Worker'", "sendBeacon", "ResizeObserver loop limit exceeded", "ResizeObserver loop completed with undelivered notifications.", /Cannot read properties of undefined \(reading '(setCurrentPosition|setDefaultPosition|setMaxSize|setScreenSize|fireEvent|fireReadyEvent|audioVolumeChange|fireChangeEvent)'\)/, "NetworkError when attempting to fetch resource", "Failed to fetch", "Load failed", "The user aborted a request"];
+			var W = n("../utils/sentry/lastSentEventId.ts"),
+				q = n("../../../../node_modules/@sentry/core/esm/transports/base.js"),
+				$ = n("../../../../node_modules/@sentry/utils/esm/syncpromise.js");
+			const te = N => {
+				const j = async ee => {
 					var ie, ye;
-					const Me = {
-						envelope: J.body,
-						url: R.url,
+					const De = {
+						envelope: ee.body,
+						url: N.url,
 						isPreviewDeploy: (ie = window) === null || ie === void 0 || (ye = ie.build) === null || ye === void 0 ? void 0 : ye.isPreviewDeploy,
 						release: (0, F.t)()
 					};
 					try {
-						const Le = await fetch("https://platform.dash.cloudflare.com/sentry/envelope", {
+						const Se = await fetch("https://platform.dash.cloudflare.com/sentry/envelope", {
 							method: "POST",
 							headers: {
 								Accept: "*/*",
 								"Content-Type": "application/json"
 							},
-							body: JSON.stringify(Me)
+							body: JSON.stringify(De)
 						});
 						return {
-							statusCode: Le.status,
+							statusCode: Se.status,
 							headers: {
-								"x-sentry-rate-limits": Le.headers.get("X-Sentry-Rate-Limits"),
-								"retry-after": Le.headers.get("Retry-After")
+								"x-sentry-rate-limits": Se.headers.get("X-Sentry-Rate-Limits"),
+								"retry-after": Se.headers.get("Retry-After")
 							}
 						}
-					} catch (Le) {
-						return console.log(Le), (0, W.$2)(Le)
+					} catch (Se) {
+						return console.log(Se), (0, $.$2)(Se)
 					}
 				};
-				return X.q(R, j)
+				return q.q(N, j)
 			};
-			var ve = n("../../../../node_modules/@sentry/tracing/esm/index.js"),
+			var Ee = n("../../../../node_modules/@sentry/tracing/esm/index.js"),
 				Te = n("../../../../node_modules/history/esm/history.js"),
-				Ue = (0, Te.lX)(),
-				$e = n("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
+				ke = (0, Te.lX)(),
+				xe = n("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
 				Ke = n("../react/utils/url.ts");
-			const Ie = (0, $e.Rf)();
-			let Q;
+			const Le = (0, xe.Rf)();
+			let X;
 
-			function re(R) {
-				return me(R, "react-router-v5")
+			function re(N) {
+				return me(N, "react-router-v5")
 			}
 
-			function me(R, j) {
-				return (J, ie = !0, ye = !0) => {
-					ie && Ie && Ie.location && (Q = J({
-						name: (0, Ke.Fl)(Ie.location.pathname),
+			function me(N, j) {
+				return (ee, ie = !0, ye = !0) => {
+					ie && Le && Le.location && (X = ee({
+						name: (0, Ke.Fl)(Le.location.pathname),
 						op: "pageload",
 						tags: {
 							"routing.instrumentation": j
 						}
-					})), ye && R.listen && R.listen((Me, Le) => {
-						if (Le && (Le === "PUSH" || Le === "POP")) {
-							Q && Q.finish();
-							const tt = {
+					})), ye && N.listen && N.listen((De, Se) => {
+						if (Se && (Se === "PUSH" || Se === "POP")) {
+							X && X.finish();
+							const ot = {
 								"routing.instrumentation": j
 							};
-							Q = J({
-								name: (0, Ke.Fl)(Me.pathname),
+							X = ee({
+								name: (0, Ke.Fl)(De.pathname),
 								op: "navigation",
-								tags: tt
+								tags: ot
 							})
 						}
 					})
@@ -345,45 +345,45 @@
 			}
 			var k = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				pe = n.n(k),
-				Se = n("../../../common/intl/intl-core/src/errors.ts"),
-				Re = n("../../../../node_modules/@sentry/utils/esm/object.js"),
+				Ie = n("../../../common/intl/intl-core/src/errors.ts"),
+				Be = n("../../../../node_modules/@sentry/utils/esm/object.js"),
 				ze = n("../react/common/middleware/sparrow/errors.ts");
 
-			function be(R, j, J) {
-				return j = ke(j), j in R ? Object.defineProperty(R, j, {
-					value: J,
+			function be(N, j, ee) {
+				return j = Re(j), j in N ? Object.defineProperty(N, j, {
+					value: ee,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : R[j] = J, R
+				}) : N[j] = ee, N
 			}
 
-			function ke(R) {
-				var j = Fe(R, "string");
+			function Re(N) {
+				var j = je(N, "string");
 				return typeof j == "symbol" ? j : String(j)
 			}
 
-			function Fe(R, j) {
-				if (typeof R != "object" || R === null) return R;
-				var J = R[Symbol.toPrimitive];
-				if (J !== void 0) {
-					var ie = J.call(R, j || "default");
+			function je(N, j) {
+				if (typeof N != "object" || N === null) return N;
+				var ee = N[Symbol.toPrimitive];
+				if (ee !== void 0) {
+					var ie = ee.call(N, j || "default");
 					if (typeof ie != "object") return ie;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (j === "string" ? String : Number)(R)
+				return (j === "string" ? String : Number)(N)
 			}
 			class We {
 				constructor() {
 					be(this, "name", We.id)
 				}
 				setupOnce() {
-					n.g.console && (0, Re.hl)(n.g.console, "error", j => (...J) => {
-						const ie = J.find(ye => ye instanceof Error);
-						if (te && ie) {
-							let ye, Me = !0;
+					n.g.console && (0, Be.hl)(n.g.console, "error", j => (...ee) => {
+						const ie = ee.find(ye => ye instanceof Error);
+						if (ne && ie) {
+							let ye, De = !0;
 							if (ie instanceof ze.ez) {
-								const Le = ie instanceof ze.oV ? ie.invalidProperties : void 0;
+								const Se = ie instanceof ze.oV ? ie.invalidProperties : void 0;
 								ye = {
 									tags: {
 										"sparrow.eventName": ie.eventName
@@ -391,11 +391,11 @@
 									extra: {
 										sparrow: {
 											eventName: ie.eventName,
-											invalidProperties: Le
+											invalidProperties: Se
 										}
 									},
 									fingerprint: [ie.name ? ie.name : "SparrowValidationError"]
-								}, Me = !1
+								}, De = !1
 							} else if (ie instanceof k.SparrowIdCookieError) ye = {
 								extra: {
 									sparrowIdCookie: ie.cookie
@@ -412,255 +412,255 @@
 										chunkUrl: ie.request
 									}
 								} catch {}
-							} else ie instanceof Se.YB && (ye = {
+							} else ie instanceof Ie.YB && (ye = {
 								fingerprint: ["TranslatorError", ie.translationKey]
 							});
-							Me && r.Tb(ie, ye)
+							De && r.Tb(ie, ye)
 						}
-						typeof j == "function" && j.apply(n.g.console, J)
+						typeof j == "function" && j.apply(n.g.console, ee)
 					})
 				}
 			}
 			be(We, "id", "ConsoleErrorIntegration");
-			var Ye = null;
-			const H = () => {
-					if (te && ce) {
-						var R, j, J, ie, ye, Me, Le, tt, vt, Je;
+			var Xe = null;
+			const V = () => {
+					if (ne && ce) {
+						var N, j, ee, ie, ye, De, Se, ot, vt, qe;
 						let wt = "production";
-						((R = window) === null || R === void 0 || (j = R.build) === null || j === void 0 ? void 0 : j.isPreviewDeploy) && (wt += "-preview"), Y.S({
-							dsn: te,
+						((N = window) === null || N === void 0 || (j = N.build) === null || j === void 0 ? void 0 : j.isPreviewDeploy) && (wt += "-preview"), Q.S({
+							dsn: ne,
 							release: (0, F.t)(),
 							environment: wt,
-							ignoreErrors: q,
-							allowUrls: K,
+							ignoreErrors: J,
+							allowUrls: G,
 							autoSessionTracking: !1,
-							integrations: yt => [...yt.filter(qt => qt.name !== "GlobalHandlers" && qt.name !== "TryCatch"), new We, new ve.jK.BrowserTracing({
-								routingInstrumentation: re(Ue)
+							integrations: yt => [...yt.filter(qt => qt.name !== "GlobalHandlers" && qt.name !== "TryCatch"), new We, new Ee.jK.BrowserTracing({
+								routingInstrumentation: re(ke)
 							})],
 							tracesSampleRate: 0,
-							transport: ne,
-							beforeSend: yt => ($.e.setEventId(yt.event_id), yt)
+							transport: te,
+							beforeSend: yt => (W.e.setEventId(yt.event_id), yt)
 						});
-						const It = (0, d.bh)().getState();
+						const bt = (0, l.bh)().getState();
 						r.rJ({
-							LOCAL_STORAGE_FLAGS: (0, b.Qw)(),
-							USER_BETA_FLAGS: (0, b.ki)(),
+							LOCAL_STORAGE_FLAGS: (0, I.Qw)(),
+							USER_BETA_FLAGS: (0, I.ki)(),
 							meta: {
 								connection: {
-									type: (J = window) === null || J === void 0 || (ie = J.navigator) === null || ie === void 0 || (ye = ie.connection) === null || ye === void 0 ? void 0 : ye.effectiveType,
-									bandwidth: (Me = window) === null || Me === void 0 || (Le = Me.navigator) === null || Le === void 0 || (tt = Le.connection) === null || tt === void 0 ? void 0 : tt.downlink
+									type: (ee = window) === null || ee === void 0 || (ie = ee.navigator) === null || ie === void 0 || (ye = ie.connection) === null || ye === void 0 ? void 0 : ye.effectiveType,
+									bandwidth: (De = window) === null || De === void 0 || (Se = De.navigator) === null || Se === void 0 || (ot = Se.connection) === null || ot === void 0 ? void 0 : ot.downlink
 								},
-								languagePreference: (0, G.r)(It),
-								isPreviewDeploy: (vt = window) === null || vt === void 0 || (Je = vt.build) === null || Je === void 0 ? void 0 : Je.isPreviewDeploy
+								languagePreference: (0, H.r)(bt),
+								isPreviewDeploy: (vt = window) === null || vt === void 0 || (qe = vt.build) === null || qe === void 0 ? void 0 : qe.isPreviewDeploy
 							},
-							utilGates: (0, V.T2)(It)
+							utilGates: (0, K.T2)(bt)
 						}), window.addEventListener("unhandledrejection", function(yt) {})
 					}
 				},
-				se = R => {
-					R ? r.av({
-						id: R
+				se = N => {
+					N ? r.av({
+						id: N
 					}) : r.av(null)
 				};
-			var fe = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
-				Ne = () => {
-					let R;
+			var ge = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
+				we = () => {
+					let N;
 					try {
-						R = decodeURIComponent(window.location.search)
+						N = decodeURIComponent(window.location.search)
 					} catch {
-						console.log("Could not decode query string. Using non-decoded value."), R = window.location.search
+						console.log("Could not decode query string. Using non-decoded value."), N = window.location.search
 					}
-					if (!R.includes("remote[")) return;
-					const j = new URLSearchParams(R),
-						J = {};
-					for (let [ie, ye] of j) ie.includes("remote") && (J[ie.replace(/remote\[|\]/g, "")] = ye);
-					fe.Z.set("mfe-remotes", JSON.stringify(J))
+					if (!N.includes("remote[")) return;
+					const j = new URLSearchParams(N),
+						ee = {};
+					for (let [ie, ye] of j) ie.includes("remote") && (ee[ie.replace(/remote\[|\]/g, "")] = ye);
+					ge.Z.set("mfe-remotes", JSON.stringify(ee))
 				},
-				Be = n("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs"),
-				Qe = n("../node_modules/uuid/dist/esm-browser/v4.js");
+				Ne = n("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs"),
+				Ye = n("../node_modules/uuid/dist/esm-browser/v4.js");
 			const rt = "ANON_USER_ID";
 
-			function lt() {
-				var R, j, J, ie;
-				let ye = (R = n.g) === null || R === void 0 || (j = R.bootstrap) === null || j === void 0 || (J = j.data) === null || J === void 0 || (ie = J.user) === null || ie === void 0 ? void 0 : ie.id;
+			function ut() {
+				var N, j, ee, ie;
+				let ye = (N = n.g) === null || N === void 0 || (j = N.bootstrap) === null || j === void 0 || (ee = j.data) === null || ee === void 0 || (ie = ee.user) === null || ie === void 0 ? void 0 : ie.id;
 				if (!ye) {
-					let Me = fe.Z.get(rt);
-					if (!Me) {
-						let Le = (0, Qe.Z)();
-						fe.Z.set(rt, Le), Me = Le
+					let De = ge.Z.get(rt);
+					if (!De) {
+						let Se = (0, Ye.Z)();
+						ge.Z.set(rt, Se), De = Se
 					}
-					return Me
+					return De
 				}
 				return ye
 			}
 			async function st() {
-				const R = (0, d.bh)();
-				R.dispatch((0, Be.nM)({
+				const N = (0, l.bh)();
+				N.dispatch((0, Ne.nM)({
 					apiKey: "a23ecf39a767418a832c8f8a5a902a8c",
 					environment: "production"
-				})), await R.dispatch((0, V.UL)({
-					userId: lt()
+				})), await N.dispatch((0, K.UL)({
+					userId: ut()
 				}))
 			}
-			class pt extends Error {
-				constructor(j, J) {
-					super(J);
-					this.name = `${j} ${J}`
+			class gt extends Error {
+				constructor(j, ee) {
+					super(ee);
+					this.name = `${j} ${ee}`
 				}
 			}
-			const mt = () => {
+			const ft = () => {
 					document.cookie.split(";").forEach(j => {
-						const [J] = j.trim().split("=");
-						document.cookie = `${J}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;`
+						const [ee] = j.trim().split("=");
+						document.cookie = `${ee}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;`
 					})
 				},
-				ut = async () => {
-					let R = await fetch("/api/v4/system/bootstrap", {
+				dt = async () => {
+					let N = await fetch("/api/v4/system/bootstrap", {
 						credentials: "same-origin"
 					});
-					if (!R.ok) throw R.headers.get("content-type") === "text/html" && (await R.text()).toLowerCase().includes("cookie too large") && (r.$e(function(ye) {
+					if (!N.ok) throw N.headers.get("content-type") === "text/html" && (await N.text()).toLowerCase().includes("cookie too large") && (r.$e(function(ye) {
 						ye.setTag("init", "cookieTooLarge"), r.Tb("Request Header Or Cookie Too Large in Bootstrap request")
-					}), mt(), window.location.reload()), new pt("Bootstrap API Failure", R == null ? void 0 : R.status);
-					return (await R.json()).result.data
+					}), ft(), window.location.reload()), new gt("Bootstrap API Failure", N == null ? void 0 : N.status);
+					return (await N.json()).result.data
 				};
 			var Ge = n("webpack/sharing/consume/default/react/react"),
 				Ae = n.n(Ge),
-				Xe = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
-				gt = n("webpack/sharing/consume/default/react-dom/react-dom"),
-				it = n("webpack/sharing/consume/default/react-redux/react-redux"),
-				ft = n("../../../../node_modules/swr/core/dist/index.mjs"),
+				Qe = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
+				pt = n("webpack/sharing/consume/default/react-dom/react-dom"),
+				ct = n("webpack/sharing/consume/default/react-redux/react-redux"),
+				_t = n("../../../../node_modules/swr/core/dist/index.mjs"),
 				z = n("../../../../node_modules/@cloudflare/component-modals/es/index.js"),
 				le = n("../../../../node_modules/svg-classlist-polyfill/polyfill.js"),
 				Ce = n("../react/shims/focus-visible.js"),
 				Oe = n("../react/app/components/DeepLink/index.ts"),
-				je = n("../../../../node_modules/prop-types/index.js"),
-				ge = n.n(je),
-				w = n("../react/utils/translator.tsx"),
-				ee = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
+				Fe = n("../../../../node_modules/prop-types/index.js"),
+				Ve = n.n(Fe),
+				R = n("../react/utils/translator.tsx"),
+				Y = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				oe = n("../../../dash/intl/intl-translations/src/index.ts"),
-				he = n("../../../../node_modules/query-string/query-string.js"),
-				De = n.n(he),
-				Ve = n("../react/common/actions/userActions.ts"),
-				nt = n("../react/common/selectors/userSelectors.ts"),
-				Ze = n("../react/utils/i18n.ts"),
-				ot = n("../react/utils/bootstrap.ts");
+				ve = n("../../../../node_modules/query-string/query-string.js"),
+				he = n.n(ve),
+				$e = n("../react/common/actions/userActions.ts"),
+				et = n("../react/common/selectors/userSelectors.ts"),
+				Je = n("../react/utils/i18n.ts"),
+				tt = n("../react/utils/bootstrap.ts");
 
-			function _t(R) {
+			function at(N) {
 				for (var j = 1; j < arguments.length; j++) {
-					var J = arguments[j] != null ? Object(arguments[j]) : {},
-						ie = Object.keys(J);
-					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(J).filter(function(ye) {
-						return Object.getOwnPropertyDescriptor(J, ye).enumerable
+					var ee = arguments[j] != null ? Object(arguments[j]) : {},
+						ie = Object.keys(ee);
+					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(ee).filter(function(ye) {
+						return Object.getOwnPropertyDescriptor(ee, ye).enumerable
 					})), ie.forEach(function(ye) {
-						Ct(R, ye, J[ye])
+						mt(N, ye, ee[ye])
 					})
 				}
-				return R
+				return N
 			}
 
-			function Ct(R, j, J) {
-				return j = dt(j), j in R ? Object.defineProperty(R, j, {
-					value: J,
+			function mt(N, j, ee) {
+				return j = Ct(j), j in N ? Object.defineProperty(N, j, {
+					value: ee,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : R[j] = J, R
+				}) : N[j] = ee, N
 			}
 
-			function dt(R) {
-				var j = qe(R, "string");
+			function Ct(N) {
+				var j = it(N, "string");
 				return typeof j == "symbol" ? j : String(j)
 			}
 
-			function qe(R, j) {
-				if (typeof R != "object" || R === null) return R;
-				var J = R[Symbol.toPrimitive];
-				if (J !== void 0) {
-					var ie = J.call(R, j || "default");
+			function it(N, j) {
+				if (typeof N != "object" || N === null) return N;
+				var ee = N[Symbol.toPrimitive];
+				if (ee !== void 0) {
+					var ie = ee.call(N, j || "default");
 					if (typeof ie != "object") return ie;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (j === "string" ? String : Number)(R)
+				return (j === "string" ? String : Number)(N)
 			}
-			let at = De().parse(location.search);
-			const Nt = R => {
-					const j = (0, ot.$8)() ? [(0, oe.Fy)(oe.if.changes), (0, oe.Fy)(oe.if.common), (0, oe.Fy)(oe.if.navigation), (0, oe.Fy)(oe.if.overview), (0, oe.Fy)(oe.if.onboarding), (0, oe.Fy)(oe.if.invite), (0, oe.Fy)(oe.if.login), (0, oe.Fy)(oe.if.dns), (0, oe.Fy)(oe.n4.ssl_tls), (0, oe.Fy)(oe.if.message_inbox), (0, oe.Fy)(oe.if.welcome)] : [(0, oe.Fy)(oe.if.common), (0, oe.Fy)(oe.if.invite), (0, oe.Fy)(oe.if.login), (0, oe.Fy)(oe.if.onboarding)];
-					at.lang ? $t(R) : fe.Z.get(Ze.th) && Rt(R, (0, Ze.Kd)());
-					const J = async ie => (await Promise.all(j.map(Me => Me(ie)))).reduce((Me, Le) => _t({}, Me, Le), {});
-					return Ae().createElement(ee.LocaleContext.Provider, {
-						value: R.languagePreference
-					}, Ae().createElement(ee.I18nProvider, {
-						translator: w.Vb,
-						locale: R.languagePreference
-					}, Ae().createElement(ee.I18nLoader, {
-						loadPhrases: J
-					}, R.children)))
+			let He = he().parse(location.search);
+			const Rt = N => {
+					const j = (0, tt.$8)() ? [(0, oe.Fy)(oe.if.changes), (0, oe.Fy)(oe.if.common), (0, oe.Fy)(oe.if.navigation), (0, oe.Fy)(oe.if.overview), (0, oe.Fy)(oe.if.onboarding), (0, oe.Fy)(oe.if.invite), (0, oe.Fy)(oe.if.login), (0, oe.Fy)(oe.if.dns), (0, oe.Fy)(oe.n4.ssl_tls), (0, oe.Fy)(oe.if.message_inbox), (0, oe.Fy)(oe.if.welcome)] : [(0, oe.Fy)(oe.if.common), (0, oe.Fy)(oe.if.invite), (0, oe.Fy)(oe.if.login), (0, oe.Fy)(oe.if.onboarding)];
+					He.lang ? $t(N) : ge.Z.get(Je.th) && Nt(N, (0, Je.Kd)());
+					const ee = async ie => (await Promise.all(j.map(De => De(ie)))).reduce((De, Se) => at({}, De, Se), {});
+					return Ae().createElement(Y.LocaleContext.Provider, {
+						value: N.languagePreference
+					}, Ae().createElement(Y.I18nProvider, {
+						translator: R.Vb,
+						locale: N.languagePreference
+					}, Ae().createElement(Y.I18nLoader, {
+						loadPhrases: ee
+					}, N.children)))
 				},
-				$t = async R => {
-					let j = at.lang.substring(0, at.lang.length - 2) + at.lang.substring(at.lang.length - 2, at.lang.length).toUpperCase();
-					if (!(0, G.v)(j)) {
-						console.warn(`${j} is not a supported locale.`), delete at.lang, R.history.replace({
-							search: De().stringify(at)
+				$t = async N => {
+					let j = He.lang.substring(0, He.lang.length - 2) + He.lang.substring(He.lang.length - 2, He.lang.length).toUpperCase();
+					if (!(0, H.v)(j)) {
+						console.warn(`${j} is not a supported locale.`), delete He.lang, N.history.replace({
+							search: he().stringify(He)
 						});
 						return
-					}(0, Ze.i_)(j), delete at.lang, Rt(R, j), R.isAuthenticated || R.history.replace({
-						search: De().stringify(at)
+					}(0, Je.i_)(j), delete He.lang, Nt(N, j), N.isAuthenticated || N.history.replace({
+						search: he().stringify(He)
 					})
-				}, Rt = async (R, j) => {
-					if (R.isAuthenticated) try {
-						await R.setUserCommPreferences({
+				}, Nt = async (N, j) => {
+					if (N.isAuthenticated) try {
+						await N.setUserCommPreferences({
 							"language-locale": j
 						}, {
 							hideErrorAlert: !0
-						}), fe.Z.remove(Ze.th), R.history.replace({
-							search: De().stringify(at)
+						}), ge.Z.remove(Je.th), N.history.replace({
+							search: he().stringify(He)
 						})
-					} catch (J) {
-						fe.Z.set(Ze.th, !0), console.error(J)
-					} else fe.Z.set(Ze.th, !0)
-				}, kt = R => {
-					const j = (0, nt.PR)(R);
+					} catch (ee) {
+						ge.Z.set(Je.th, !0), console.error(ee)
+					} else ge.Z.set(Je.th, !0)
+				}, kt = N => {
+					const j = (0, et.PR)(N);
 					return {
 						isAuthenticated: !!(j && j.id),
-						languagePreference: (0, Ze.Kd)() || (0, G.r)(R)
+						languagePreference: (0, Je.Kd)() || (0, H.r)(N)
 					}
 				}, Wt = {
-					setUserCommPreferences: Ve.V_
+					setUserCommPreferences: $e.V_
 				};
-			var zt = (0, Xe.withRouter)((0, it.connect)(kt, Wt)(Nt));
-			Nt.propTypes = {
-				history: ge().object,
-				languagePreference: ge().string.isRequired,
-				children: ge().node.isRequired,
-				isAuthenticated: ge().bool,
-				setUserCommPreferences: ge().func.isRequired
+			var zt = (0, Qe.withRouter)((0, ct.connect)(kt, Wt)(Rt));
+			Rt.propTypes = {
+				history: Ve().object,
+				languagePreference: Ve().string.isRequired,
+				children: Ve().node.isRequired,
+				isAuthenticated: Ve().bool,
+				setUserCommPreferences: Ve().func.isRequired
 			};
 			var Gt = n("../../../../node_modules/@cloudflare/style-provider/es/StyleProvider.js"),
 				Kt = n("../../../../node_modules/@cloudflare/style-provider/es/createRenderer.js");
-			let E;
-			const D = ({
-				selectorPrefix: R = "c_"
-			} = {}) => (E || (E = (0, Kt.Z)({
+			let v;
+			const w = ({
+				selectorPrefix: N = "c_"
+			} = {}) => (v || (v = (0, Kt.Z)({
 				dev: !1,
-				selectorPrefix: R
-			})), E);
-			var _e = n("../react/common/components/ModalManager.tsx"),
+				selectorPrefix: N
+			})), v);
+			var fe = n("../react/common/components/ModalManager.tsx"),
 				Pe = n("../react/app/components/ErrorBoundary.tsx"),
-				He = n("../react/common/actions/notificationsActions.ts");
+				Ze = n("../react/common/actions/notificationsActions.ts");
 			const Tt = (n.g.bootstrap || {}).data || {};
 			class At extends Ae().Component {
 				componentDidMount() {
 					Tt.messages && this.dispatchNotificationActions(Tt.messages)
 				}
 				dispatchNotificationActions(j) {
-					j.forEach(J => {
+					j.forEach(ee => {
 						const {
 							type: ie,
 							message: ye,
-							persist: Me
-						} = J;
-						["success", "info", "warn", "error"].includes(ie) && this.props.notifyAdd(ie, (0, w.ZP)(ye), {
-							persist: !!Me
+							persist: De
+						} = ee;
+						["success", "info", "warn", "error"].includes(ie) && this.props.notifyAdd(ie, (0, R.ZP)(ye), {
+							persist: !!De
 						})
 					})
 				}
@@ -668,64 +668,64 @@
 					return null
 				}
 			}
-			var Pt = (0, Xe.withRouter)((0, it.connect)(null, {
-				notifyAdd: He.add
+			var Pt = (0, Qe.withRouter)((0, ct.connect)(null, {
+				notifyAdd: Ze.add
 			})(At));
 			At.propTypes = {
-				notifyAdd: ge().func.isRequired
+				notifyAdd: Ve().func.isRequired
 			};
-			var ct = n("../react/app/redux/index.ts");
+			var lt = n("../react/app/redux/index.ts");
 
 			function Lt() {
-				var R;
-				const j = (0, ct.p4)(nt.PR),
-					J = (j == null || (R = j.email) === null || R === void 0 ? void 0 : R.endsWith("@cloudflare.com")) ? "cf-internal-employee" : "regular-user",
-					ie = (0, Be.Yc)();
+				var N;
+				const j = (0, lt.p4)(et.PR),
+					ee = (j == null || (N = j.email) === null || N === void 0 ? void 0 : N.endsWith("@cloudflare.com")) ? "cf-internal-employee" : "regular-user",
+					ie = (0, Ne.Yc)();
 				(0, Ge.useEffect)(() => {
 					ie({
-						userType: J
+						userType: ee
 					})
-				}, [J, ie])
+				}, [ee, ie])
 			}
 			var Ot = n("../react/common/selectors/entitlementsSelectors.ts"),
-				bt = n("../react/common/selectors/accountSelectors.ts");
+				It = n("../react/common/selectors/accountSelectors.ts");
 			const St = ["accountId", "is_ent"];
 
 			function Dt() {
-				const R = (0, Be.f7)(),
-					j = (0, Xe.useHistory)(),
-					J = (0, Ke.uW)(j.location.pathname),
-					ie = (0, Be.Yc)(),
-					ye = (0, Be.O$)(),
-					Me = (0, ct.p4)(Ot.u1),
-					Le = !Me.isRequesting && !!Me.data,
-					tt = (0, ct.p4)(Ot.p1),
-					vt = (0, ct.p4)(bt.Xu),
-					Je = (0, ct.p4)(bt.uF),
+				const N = (0, Ne.f7)(),
+					j = (0, Qe.useHistory)(),
+					ee = (0, Ke.uW)(j.location.pathname),
+					ie = (0, Ne.Yc)(),
+					ye = (0, Ne.O$)(),
+					De = (0, lt.p4)(Ot.u1),
+					Se = !De.isRequesting && !!De.data,
+					ot = (0, lt.p4)(Ot.p1),
+					vt = (0, lt.p4)(It.Xu),
+					qe = (0, lt.p4)(It.uF),
 					wt = !vt.isRequesting && !!vt.data;
 				(0, Ge.useEffect)(() => {
-					if (J && wt && Je && Le && J === Je.account.id) {
-						var It, yt, Ft;
+					if (ee && wt && qe && Se && ee === qe.account.id) {
+						var bt, yt, Ft;
 						ie({
-							accountId: Je.account.id,
-							is_ent: tt,
-							is_free_account: !tt && !(Je == null || (It = Je.account.meta) === null || It === void 0 ? void 0 : It.has_business_zones) && !(Je == null || (yt = Je.account.meta) === null || yt === void 0 ? void 0 : yt.has_pro_zones) && !(Je == null || (Ft = Je.account.meta) === null || Ft === void 0 ? void 0 : Ft.has_enterprise_zones)
+							accountId: qe.account.id,
+							is_ent: ot,
+							is_free_account: !ot && !(qe == null || (bt = qe.account.meta) === null || bt === void 0 ? void 0 : bt.has_business_zones) && !(qe == null || (yt = qe.account.meta) === null || yt === void 0 ? void 0 : yt.has_pro_zones) && !(qe == null || (Ft = qe.account.meta) === null || Ft === void 0 ? void 0 : Ft.has_enterprise_zones)
 						})
-					} else(!J || J in R && R.accountId !== J) && ye(St)
-				}, [wt, Je, ie, ye, Le, tt, J, R])
+					} else(!ee || ee in N && N.accountId !== ee) && ye(St)
+				}, [wt, qe, ie, ye, Se, ot, ee, N])
 			}
-			var et = n("../react/common/selectors/zoneSelectors.ts");
+			var nt = n("../react/common/selectors/zoneSelectors.ts");
 
 			function Vt() {
-				const R = (0, ct.p4)(et.nA),
-					j = (0, Be.Yc)();
+				const N = (0, lt.p4)(nt.nA),
+					j = (0, Ne.Yc)();
 				(0, Ge.useEffect)(() => {
-					var J;
+					var ee;
 					j({
-						zone_id: R == null ? void 0 : R.id,
-						zone_plan: R == null || (J = R.plan) === null || J === void 0 ? void 0 : J.legacy_id
+						zone_id: N == null ? void 0 : N.id,
+						zone_plan: N == null || (ee = N.plan) === null || ee === void 0 ? void 0 : ee.legacy_id
 					})
-				}, [R, j])
+				}, [N, j])
 			}
 			const Ut = () => (Lt(), Dt(), Vt(), null);
 			var en = n("../react/app/components/Persistence/index.tsx"),
@@ -733,11 +733,11 @@
 				nn = n("../react/app/components/LoadingSuspense.tsx");
 			const on = Ae().lazy(() => Promise.all([n.e(39074), n.e(16691), n.e(19341), n.e(12174), n.e(57062), n.e(22952), n.e(5668), n.e(8924), n.e(77216), n.e(40517), n.e(39760), n.e(60734), n.e(25390), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var rn = () => Ae().createElement(nn.Z, null, Ae().createElement(on, null));
-			const an = () => (Ge.useEffect(() => Ee, []), null);
+			const an = () => (Ge.useEffect(() => _e, []), null);
 			var sn = n("../../../../node_modules/moment/moment.js"),
 				Ht = n.n(sn);
-			const cn = R => {
-					switch (R) {
+			const cn = N => {
+					switch (N) {
 						case "en-US":
 						case "es-ES":
 						case "de-DE":
@@ -745,123 +745,123 @@
 						case "it-IT":
 						case "ja-JP":
 						case "ko-KR":
-							return R.slice(0, 2);
+							return N.slice(0, 2);
 						case "es-MX":
 						case "es-CL":
 						case "es-EC":
 						case "pt-BR":
 						case "zh-CN":
 						case "zh-TW":
-							return R.toLowerCase();
+							return N.toLowerCase();
 						default:
 							return "en"
 					}
 				},
 				ln = () => {
-					const R = (0, ct.p4)(G.r);
+					const N = (0, lt.p4)(H.r);
 					(0, Ge.useEffect)(() => {
-						const j = cn(R);
-						j !== Ht().locale() && Ht().locale(j), document.documentElement.lang = R
-					}, [R])
+						const j = cn(N);
+						j !== Ht().locale() && Ht().locale(j), document.documentElement.lang = N
+					}, [N])
 				},
 				un = () => {
 					(0, Ge.useEffect)(() => {
-						async function R() {
-							var j, J;
+						async function N() {
+							var j, ee;
 							let ie;
-							if (((j = window) === null || j === void 0 || (J = j.build) === null || J === void 0 ? void 0 : J.isPreviewDeploy) && (ie = "cookie"), !!ie) try {
+							if (((j = window) === null || j === void 0 || (ee = j.build) === null || ee === void 0 ? void 0 : ee.isPreviewDeploy) && (ie = "cookie"), !!ie) try {
 								const ye = document.head.querySelector("link[rel=icon]");
 								ye && (ye.href = (await n("../react/app/assets lazy recursive ^\\.\\/favicon\\-.*\\.ico$")(`./favicon-${ie}.ico`)).default)
 							} catch {}
 						}
-						R()
+						N()
 					}, [])
 				};
 			var dn = n("../react/common/constants/constants.ts");
 			const pn = () => {
-					var R;
-					const j = (0, Xe.useLocation)(),
-						[J, ie] = (0, Ge.useState)(((R = window) === null || R === void 0 ? void 0 : R.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true");
+					var N;
+					const j = (0, Qe.useLocation)(),
+						[ee, ie] = (0, Ge.useState)(((N = window) === null || N === void 0 ? void 0 : N.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true");
 					return (0, Ge.useEffect)(() => {
-						const ye = De().parse(j.search);
-						if (ye.pt && fe.Z.set(dn.sJ, ye.pt), ye == null ? void 0 : ye.devPanel) {
-							var Me, Le;
-							(Me = window) === null || Me === void 0 || (Le = Me.localStorage) === null || Le === void 0 || Le.setItem("gates_devtools_ui_gates_controller_enabled", "true"), ie(!0)
+						const ye = he().parse(j.search);
+						if (ye.pt && ge.Z.set(dn.sJ, ye.pt), ye == null ? void 0 : ye.devPanel) {
+							var De, Se;
+							(De = window) === null || De === void 0 || (Se = De.localStorage) === null || Se === void 0 || Se.setItem("gates_devtools_ui_gates_controller_enabled", "true"), ie(!0)
 						}
 					}, [j.search]), {
-						devPanelEnabled: J
+						devPanelEnabled: ee
 					}
 				},
 				mn = ({
-					id: R,
+					id: N,
 					customDataLayer: j = [],
-					dataLayerName: J = "dataLayer"
+					dataLayerName: ee = "dataLayer"
 				}) => {
-					const ie = `<iframe src="https://www.googletagmanager.com/ns.html?id=${R}>m_auth=Bw0h3fTQa4XI3NcjmogT9g>m_preview=env-463>m_cookies_win=x"height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-						ye = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window, document, 'script', '${J}', '${R}')`,
-						Me = `
-    window.${J} = window.${J} || [];
-    window.${J}.push(${JSON.stringify(j)})
+					const ie = `<iframe src="https://www.googletagmanager.com/ns.html?id=${N}>m_auth=Bw0h3fTQa4XI3NcjmogT9g>m_preview=env-463>m_cookies_win=x"height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+						ye = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window, document, 'script', '${ee}', '${N}')`,
+						De = `
+    window.${ee} = window.${ee} || [];
+    window.${ee}.push(${JSON.stringify(j)})
   `;
 					return {
 						iframe: ie,
 						script: ye,
-						dataLayerHTML: Me
+						dataLayerHTML: De
 					}
 				},
-				gn = R => {
+				gn = N => {
 					const j = document.createElement("script");
-					return j.innerHTML = R, j.async = !0, j
+					return j.innerHTML = N, j.async = !0, j
 				},
-				fn = R => {
+				fn = N => {
 					const j = document.createElement("noscript");
-					return j.innerHTML = R, j
+					return j.innerHTML = N, j
 				},
-				Zt = R => {
+				Zt = N => {
 					const j = document.createElement("script");
-					return j.innerHTML = R, j
+					return j.innerHTML = N, j
 				},
-				Rn = ({
-					dataLayer: R,
+				Nn = ({
+					dataLayer: N,
 					dataLayerName: j
 				}) => {
-					if (window[j]) return window[j].push(R);
-					const J = `
+					if (window[j]) return window[j].push(N);
+					const ee = `
       window.${j} = window.${j} || [];
-      window.${j}.push(${JSON.stringify(R)})`,
-						ie = Zt(J);
+      window.${j}.push(${JSON.stringify(N)})`,
+						ie = Zt(ee);
 					document.head.insertBefore(ie, document.head.childNodes[0])
 				},
 				_n = ({
-					containerId: R,
+					containerId: N,
 					customDataLayer: j,
-					gtmFeatureFlag: J = !0
+					gtmFeatureFlag: ee = !0
 				}) => {
 					(0, Ge.useEffect)(() => {
 						(() => {
-							if (!J) return null;
+							if (!ee) return null;
 							const {
 								iframe: ye,
-								script: Me,
-								dataLayerHTML: Le
+								script: De,
+								dataLayerHTML: Se
 							} = mn({
-								id: R,
+								id: N,
 								customDataLayer: j
 							});
-							document.head.insertBefore(Zt(Le), document.head.childNodes[0]), document.head.insertBefore(gn(Me), document.head.childNodes[0]), document.body.insertBefore(fn(ye), document.body.childNodes[0])
+							document.head.insertBefore(Zt(Se), document.head.childNodes[0]), document.head.insertBefore(gn(De), document.head.childNodes[0]), document.body.insertBefore(fn(ye), document.body.childNodes[0])
 						})()
 					}, [])
 				};
 			var Yt = n("../react/common/hooks/useGate.ts");
 			const En = ({
-				isDev: R,
+				isDev: N,
 				gtmFeatureFlag: j
 			}) => {
 				(0, Ge.useEffect)(() => {
 					(() => {
 						if (!j) return null;
 						let ie;
-						R ? ie = "https://assets.adobedtm.com/f597f8065f97/fa05fa784ee2/launch-c9d8b2cd06a5-development.min.js" : ie = "https://assets.adobedtm.com/f597f8065f97/fa05fa784ee2/launch-9b52828fbb9f.min.js";
+						N ? ie = "https://assets.adobedtm.com/f597f8065f97/fa05fa784ee2/launch-c9d8b2cd06a5-development.min.js" : ie = "https://assets.adobedtm.com/f597f8065f97/fa05fa784ee2/launch-9b52828fbb9f.min.js";
 						const ye = document.createElement("script");
 						ye.async = !0, ye.src = ie, document.head.insertBefore(ye, document.head.childNodes[0])
 					})()
@@ -869,10 +869,10 @@
 			};
 			var vn = n("../react/utils/useDomainConnectRedirect.ts");
 			const yn = "GTM-NDGPDFZ",
-				Cn = Ae().lazy(() => Promise.all([n.e(39074), n.e(16691), n.e(19341), n.e(12174), n.e(57062), n.e(22952), n.e(51436), n.e(3292), n.e(47386), n.e(27003), n.e(8924), n.e(77216), n.e(40517), n.e(39760), n.e(60734), n.e(25390), n.e(32036), n.e(87940), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Cn = Ae().lazy(() => Promise.all([n.e(39074), n.e(16691), n.e(19341), n.e(12174), n.e(57062), n.e(22952), n.e(51436), n.e(3292), n.e(47386), n.e(70618), n.e(11945), n.e(8924), n.e(77216), n.e(40517), n.e(39760), n.e(60734), n.e(25390), n.e(32036), n.e(87940), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				hn = Ae().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(39074), n.e(57062), n.e(3292), n.e(60734), n.e(69088), n.e(32036), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var Tn = ({
-					userIsAuthed: R
+					userIsAuthed: N
 				}) => {
 					ln(), un(), (0, vn.y)();
 					const {
@@ -886,10 +886,10 @@
 						gtmFeatureFlag: !!(0, Yt.Z)("dx-enable-google-tag-manager")
 					}), Ae().createElement(Ge.Suspense, {
 						fallback: Ae().createElement(an, null)
-					}, Ae().createElement(Xe.Switch, null, !R && !0 && Ae().createElement(Xe.Route, {
+					}, Ae().createElement(Qe.Switch, null, !N && !0 && Ae().createElement(Qe.Route, {
 						exact: !0,
 						path: ["/", "/login"]
-					}, Ae().createElement(hn, null)), Ae().createElement(Xe.Route, {
+					}, Ae().createElement(hn, null)), Ae().createElement(Qe.Route, {
 						render: () => Ae().createElement(tn.ZC, {
 							minHeight: "100vh"
 						}, Ae().createElement(Cn, null))
@@ -898,127 +898,127 @@
 				jt = n("../../../../node_modules/yup/es/index.js"),
 				An = n("../../../common/util/types/src/utils/index.ts");
 			const Qt = {
-				cfEmail: () => jt.Z_().email((0, w.ZP)("common.validation.email")).required((0, w.ZP)("common.validation.email")),
-				cfPassword: () => jt.Z_().required((0, w.ZP)("common.validation.required"))
+				cfEmail: () => jt.Z_().email((0, R.ZP)("common.validation.email")).required((0, R.ZP)("common.validation.email")),
+				cfPassword: () => jt.Z_().required((0, R.ZP)("common.validation.required"))
 			};
-			(0, An.Yd)(Qt).forEach(R => {
-				jt.kM(jt.Z_, R, Qt[R])
+			(0, An.Yd)(Qt).forEach(N => {
+				jt.kM(jt.Z_, N, Qt[N])
 			});
 			const Xt = Ae().lazy(() => Promise.all([n.e(16691), n.e(12174), n.e(6368), n.e(51436), n.e(44264), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))),
 				On = () => {
-					const R = (0, ot.$8)(),
-						[j, J] = (0, Ge.useState)(R ? Xt : Ae().Fragment),
+					const N = (0, tt.$8)(),
+						[j, ee] = (0, Ge.useState)(N ? Xt : Ae().Fragment),
 						[ie, ye] = (0, Ge.useState)((0, T.Yc)());
 					(0, Ge.useEffect)(() => {
 						(0, T.fF)(() => ye((0, T.Yc)()))
 					}, []);
-					const Me = Le => {
-						ye(Le), (0, T.C8)(Le), document.cookie = `dark-mode=${Le};Path=/;Max-Age=31536000`
+					const De = Se => {
+						ye(Se), (0, T.C8)(Se), document.cookie = `dark-mode=${Se};Path=/;Max-Age=31536000`
 					};
 					return (0, Ge.useEffect)(() => {
-						J(R ? Xt : Ae().Fragment)
-					}, [R]), (0, Ge.useEffect)(() => {
-						const Le = () => Me(localStorage.getItem("dark-mode"));
-						return window.addEventListener("storage", Le), () => {
-							window.removeEventListener("storage", Le)
+						ee(N ? Xt : Ae().Fragment)
+					}, [N]), (0, Ge.useEffect)(() => {
+						const Se = () => De(localStorage.getItem("dark-mode"));
+						return window.addEventListener("storage", Se), () => {
+							window.removeEventListener("storage", Se)
 						}
 					}, []), Ae().createElement(Ge.Suspense, {
 						fallback: null
-					}, Ae().createElement(it.Provider, {
-						store: (0, d.bh)()
-					}, Ae().createElement(Xe.Router, {
-						history: Ue
+					}, Ae().createElement(ct.Provider, {
+						store: (0, l.bh)()
+					}, Ae().createElement(Qe.Router, {
+						history: ke
 					}, Ae().createElement(j, null, Ae().createElement(Gt.Z, {
-						renderer: D()
+						renderer: w()
 					}, Ae().createElement(zt, null, Ae().createElement(Pe.S, {
 						sentryTag: "Root"
-					}, Ae().createElement(ft.J$, {
+					}, Ae().createElement(_t.J$, {
 						value: {
-							fetcher: Le => fetch(Le).then(tt => tt.json())
+							fetcher: Se => fetch(Se).then(ot => ot.json())
 						}
 					}, Ae().createElement(Ut, null), Ae().createElement(Pt, null), Ae().createElement(en.Z_, {
-						onDarkModeChangeCb: Me
+						onDarkModeChangeCb: De
 					}, Ae().createElement(Oe.ZP, null, Ae().createElement(Tn, {
-						userIsAuthed: R
-					}))), Ae().createElement(_e.ZP, null), Ae().createElement(z.F0, null)))))))))
+						userIsAuthed: N
+					}))), Ae().createElement(fe.ZP, null), Ae().createElement(z.F0, null)))))))))
 				},
-				bn = () => {
-					(0, gt.render)(Ae().createElement(On, null), document.getElementById("react-app"))
+				In = () => {
+					(0, pt.render)(Ae().createElement(On, null), document.getElementById("react-app"))
 				};
 			var ht = n("../utils/initSparrow.ts"),
 				Mt = n("../utils/zaraz.ts");
-			const In = () => {
-					const R = (0, nt.PR)((0, d.bh)().getState());
-					Pn(), (0, ht.Ug)(), (0, Mt.bM)(), (R == null ? void 0 : R.id) && pe().setUserId(R == null ? void 0 : R.id), (0, ht.yV)(), !(0, ht.Wi)() && (0, ht.IM)(), R ? (0, Mt.yn)(R) : (0, Mt.Ro)()
+			const bn = () => {
+					const N = (0, et.PR)((0, l.bh)().getState());
+					Pn(), (0, ht.Ug)(), (0, Mt.bM)(), (N == null ? void 0 : N.id) && pe().setUserId(N == null ? void 0 : N.id), (0, ht.yV)(), !(0, ht.Wi)() && (0, ht.IM)(), N ? (0, Mt.yn)(N) : (0, Mt.Ro)()
 				},
 				Pn = () => {
-					var R, j;
-					(R = window) === null || R === void 0 || (j = R.OneTrust) === null || j === void 0 || j.OnConsentChanged(() => {
-						const J = (0, nt.PR)((0, d.bh)().getState());
-						(0, ht.Wi)() ? (pe().setEnabled(!0), (J == null ? void 0 : J.id) ? (pe().setUserId(J.id), (0, Mt.yn)(J)) : (0, Mt.Ro)(), (0, ht.yV)()) : (pe().setEnabled(!1), (0, ht.IM)())
+					var N, j;
+					(N = window) === null || N === void 0 || (j = N.OneTrust) === null || j === void 0 || j.OnConsentChanged(() => {
+						const ee = (0, et.PR)((0, l.bh)().getState());
+						(0, ht.Wi)() ? (pe().setEnabled(!0), (ee == null ? void 0 : ee.id) ? (pe().setUserId(ee.id), (0, Mt.yn)(ee)) : (0, Mt.Ro)(), (0, ht.yV)()) : (pe().setEnabled(!1), (0, ht.IM)())
 					})
 				};
 
-			function Ln(R) {
+			function Ln(N) {
 				for (var j = 1; j < arguments.length; j++) {
-					var J = arguments[j] != null ? Object(arguments[j]) : {},
-						ie = Object.keys(J);
-					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(J).filter(function(ye) {
-						return Object.getOwnPropertyDescriptor(J, ye).enumerable
+					var ee = arguments[j] != null ? Object(arguments[j]) : {},
+						ie = Object.keys(ee);
+					typeof Object.getOwnPropertySymbols == "function" && ie.push.apply(ie, Object.getOwnPropertySymbols(ee).filter(function(ye) {
+						return Object.getOwnPropertyDescriptor(ee, ye).enumerable
 					})), ie.forEach(function(ye) {
-						Sn(R, ye, J[ye])
+						Sn(N, ye, ee[ye])
 					})
 				}
-				return R
+				return N
 			}
 
-			function Sn(R, j, J) {
-				return j = Dn(j), j in R ? Object.defineProperty(R, j, {
-					value: J,
+			function Sn(N, j, ee) {
+				return j = Dn(j), j in N ? Object.defineProperty(N, j, {
+					value: ee,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : R[j] = J, R
+				}) : N[j] = ee, N
 			}
 
-			function Dn(R) {
-				var j = Mn(R, "string");
+			function Dn(N) {
+				var j = Mn(N, "string");
 				return typeof j == "symbol" ? j : String(j)
 			}
 
-			function Mn(R, j) {
-				if (typeof R != "object" || R === null) return R;
-				var J = R[Symbol.toPrimitive];
-				if (J !== void 0) {
-					var ie = J.call(R, j || "default");
+			function Mn(N, j) {
+				if (typeof N != "object" || N === null) return N;
+				var ee = N[Symbol.toPrimitive];
+				if (ee !== void 0) {
+					var ie = ee.call(N, j || "default");
 					if (typeof ie != "object") return ie;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (j === "string" ? String : Number)(R)
+				return (j === "string" ? String : Number)(N)
 			}
 			const wn = "init",
-				Jt = (R, j) => {
-					r.$e(function(J) {
-						J.setTag(wn, j), r.Tb(R)
-					}), de(R)
+				Jt = (N, j) => {
+					r.$e(function(ee) {
+						ee.setTag(wn, j), r.Tb(N)
+					}), de(N)
 				},
-				xt = async (R, j) => {
+				xt = async (N, j) => {
 					try {
-						return await R(), !0
-					} catch (J) {
-						return Jt(J, j), !1
+						return await N(), !0
+					} catch (ee) {
+						return Jt(ee, j), !1
 					}
 				};
 			(async () => {
 				try {
-					var R, j, J;
+					var N, j, ee;
 					n.g.build = Ln({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "a39b01d7f131985881cb05f5268c05ee70eccde4",
-						dashVersion: "31454900",
+						commit: "165794b3fda4e44f3f20d41edf07e083a099f337",
+						dashVersion: "31515213",
 						env: "production",
-						builtAt: 1741026575070,
+						builtAt: 1741203407210,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -1027,31 +1027,31 @@
 						}
 					}, {
 						isPreviewDeploy: (0, F.p)()
-					}), H();
+					}), V();
 					const ie = [{
 						fn: () => n.e(4374).then(n.bind(n, "../react/utils/api.ts")),
 						tag: "utils/api"
 					}, {
-						fn: () => A(Ue),
+						fn: () => h(ke),
 						tag: "hashScroll"
 					}, {
 						fn: ue.Z,
 						tag: "styles"
 					}, {
-						fn: Ne,
+						fn: we,
 						tag: "mfePreviewData"
 					}];
 					for (const vt of ie)
 						if (!await xt(vt.fn, vt.tag)) return;
 					let ye;
 					if (!await xt(async () => {
-							ye = await ut()
+							ye = await dt()
 						}, "bootstrap")) return;
-					const Me = (0, d.bh)(),
-						Le = ((R = ye) === null || R === void 0 ? void 0 : R.data) || {};
-					Me.dispatch((0, a.mW)("user", Le == null ? void 0 : Le.user));
-					const tt = (j = ye) === null || j === void 0 || (J = j.data) === null || J === void 0 ? void 0 : J.user;
-					return n.g.bootstrap = ye, tt && tt.id && se(tt.id), !await xt(st, "gates") || !await xt(In, "tracking") ? void 0 : bn()
+					const De = (0, l.bh)(),
+						Se = ((N = ye) === null || N === void 0 ? void 0 : N.data) || {};
+					De.dispatch((0, a.mW)("user", Se == null ? void 0 : Se.user));
+					const ot = (j = ye) === null || j === void 0 || (ee = j.data) === null || ee === void 0 ? void 0 : ee.user;
+					return n.g.bootstrap = ye, ot && ot.id && se(ot.id), !await xt(st, "gates") || !await xt(bn, "tracking") ? void 0 : In()
 				} catch (ie) {
 					Jt(ie, "global")
 				}
@@ -1060,159 +1060,190 @@
 		"../libs/init/initGlobal.ts": function() {
 			window.global || (window.global = window)
 		},
-		"../react/app/HoCs/withEntities.tsx": function(x, v, n) {
+		"../react/app/HoCs/withEntities.tsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../react/app/redux/index.ts"),
 				p = n("../react/common/selectors/userSelectors.ts"),
-				l = n("../react/common/selectors/zoneSelectors.ts"),
+				u = n("../react/common/selectors/zoneSelectors.ts"),
 				m = n("../react/common/selectors/accountSelectors.ts"),
 				i = n("../react/common/utils/isGuards.ts"),
-				u = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
-				_ = n.n(u);
+				d = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
+				g = n.n(d);
 
 			function t() {
-				return t = Object.assign ? Object.assign.bind() : function(d) {
+				return t = Object.assign ? Object.assign.bind() : function(l) {
 					for (var c = 1; c < arguments.length; c++) {
-						var g = arguments[c];
-						for (var f in g) Object.prototype.hasOwnProperty.call(g, f) && (d[f] = g[f])
+						var f = arguments[c];
+						for (var _ in f) Object.prototype.hasOwnProperty.call(f, _) && (l[_] = f[_])
 					}
-					return d
+					return l
 				}, t.apply(this, arguments)
 			}
-			const r = d => {
-				function c(g) {
-					const f = (0, s.UM)(),
-						A = (0, u.useHistory)(),
-						h = (0, u.useLocation)(),
-						T = (0, u.useRouteMatch)("/:accountId([0-9a-f]{32})?/:zoneName?/:app?/:tab?"),
+			const r = l => {
+				function c(f) {
+					const _ = (0, s.UM)(),
+						h = (0, d.useHistory)(),
+						A = (0, d.useLocation)(),
+						T = (0, d.useRouteMatch)("/:accountId([0-9a-f]{32})?/:zoneName?/:app?/:tab?"),
 						M = (0, s.p4)(p.PR) || null,
-						C = (0, s.p4)(l.nA) || null,
+						C = (0, s.p4)(u.nA) || null,
 						y = (0, s.p4)(m.uF),
-						N = y ? y.account : null;
+						S = y ? y.account : null;
 					if (!T) return null;
 					const {
 						accountId: L,
-						app: P,
-						tab: I
+						app: b,
+						tab: P
 					} = T.params, O = T.params.zoneName && ((0, i.v5)(T.params.zoneName) || T.params.zoneName.indexOf(".") > 0) ? T.params.zoneName : void 0;
-					return o().createElement(d, t({
-						dispatch: f,
-						history: A,
-						location: h,
+					return o().createElement(l, t({
+						dispatch: _,
+						history: h,
+						location: A,
 						match: T,
 						user: M,
 						membership: L ? y : null,
-						account: L ? N : null,
+						account: L ? S : null,
 						accountId: L || null,
 						zone: O ? C : null,
 						zoneName: O || null,
-						app: O ? P : null,
-						tab: O ? I : null
-					}, g))
+						app: O ? b : null,
+						tab: O ? P : null
+					}, f))
 				}
-				return c.displayName = `withEntities(${a(d)})`, c
+				return c.displayName = `withEntities(${a(l)})`, c
 			};
 
-			function a(d) {
-				return d.displayName || d.name || "Component"
+			function a(l) {
+				return l.displayName || l.name || "Component"
 			}
-			v.Z = r
+			E.Z = r
 		},
-		"../react/app/components/AccountHome/tracking.ts": function(x, v, n) {
+		"../react/app/components/AccountHome/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$$: function() {
-					return g
+					return T
+				},
+				KV: function() {
+					return C
+				},
+				OX: function() {
+					return y
 				},
 				QV: function() {
-					return c
+					return A
 				},
 				Yt: function() {
-					return a
-				},
-				bA: function() {
-					return d
-				},
-				gX: function() {
 					return _
 				},
+				bA: function() {
+					return h
+				},
+				gX: function() {
+					return l
+				},
 				o1: function() {
-					return f
+					return M
 				},
 				tw: function() {
-					return t
+					return c
 				},
 				xD: function() {
-					return r
+					return f
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				o = n.n(e);
 			const s = "projects table click",
 				p = "click create application",
-				l = "account home dev plat - product card click",
+				u = "account home dev plat - product card click",
 				m = "account home dev plat - empty state CTA click",
 				i = "account home dev plat - view all projects click",
-				u = "select task",
-				_ = {
+				d = "select task",
+				g = "account home zero trust - link card click",
+				t = "account home zero trust - onboarding card click",
+				r = "account home zero trust - analytics link click",
+				l = {
 					SPARROW_PROJECTS_TABLE_CLICK: s,
 					SPARROW_CREATE_PROJECT_CLICK: p,
-					SPARROW_PRODUCT_CARD_CLICK: l,
+					SPARROW_PRODUCT_CARD_CLICK: u,
 					SPARROW_EMPTY_STATE_CTA_CLICK: m,
 					SPARROW_VIEW_ALL_PROJECTS_CLICK: i,
-					SPARROW_SELECT_ZERO_TRUST_TASK: u
+					SPARROW_SELECT_ZERO_TRUST_TASK: d,
+					SPARROW_ZERO_TRUST_LINK_CARD_CLICK: g,
+					SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK: t,
+					SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK: r,
+					SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK: "account home zero trust - product card click"
 				},
-				t = A => {
+				c = S => {
 					o().sendEvent(s, {
-						component: A
+						component: S
 					})
 				},
-				r = A => {
+				f = S => {
 					o().sendEvent(s, {
 						component: "menu",
-						subcomponent: A
+						subcomponent: S
 					})
 				},
-				a = () => {
+				_ = () => {
 					o().sendEvent(p, {
 						category: "Projects Table"
 					})
 				},
-				d = ({
-					category: A,
-					product: h
+				h = ({
+					category: S,
+					product: L
 				}) => {
-					o().sendEvent(l, {
-						category: A,
-						product: h
+					o().sendEvent(u, {
+						category: S,
+						product: L
 					})
 				},
-				c = () => {
+				A = () => {
 					o().sendEvent(m)
 				},
-				g = () => {
+				T = () => {
 					o().sendEvent(i)
 				},
-				f = A => {
-					o().sendEvent(u, {
-						product: `zero-trust - ${A}`,
+				M = S => {
+					o().sendEvent(d, {
+						product: `zero-trust - ${S}`,
 						category: "onboarding"
+					})
+				},
+				C = ({
+					category: S,
+					href: L
+				}) => {
+					o().sendEvent(g, {
+						category: S,
+						href: L
+					})
+				},
+				y = ({
+					category: S,
+					href: L
+				}) => {
+					o().sendEvent(r, {
+						category: S,
+						href: L
 					})
 				}
 		},
-		"../react/app/components/DeepLink/actions.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/actions.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				BQ: function() {
-					return u
+					return d
 				},
 				Bh: function() {
 					return m
 				},
 				CM: function() {
-					return _
+					return g
 				},
 				MF: function() {
 					return o
@@ -1221,7 +1252,7 @@
 					return a
 				},
 				WF: function() {
-					return l
+					return u
 				},
 				Wz: function() {
 					return t
@@ -1252,39 +1283,39 @@
 					DELETE_FILTERED_ACCOUNT_IDS: "deepLink/DELETE_FILTERED_ACCOUNT_IDS",
 					SELECT_WORKER: "deepLink/SELECT_WORKER"
 				},
-				s = (0, e.R)(o.ADD_SITE, d => ({
-					payload: d
+				s = (0, e.R)(o.ADD_SITE, l => ({
+					payload: l
 				})),
 				p = (0, e.R)(o.RESOLVING_START),
-				l = (0, e.R)(o.RESOLVING_COMPLETE),
-				m = (0, e.R)(o.SELECT_ZONE, d => ({
-					payload: d
+				u = (0, e.R)(o.RESOLVING_COMPLETE),
+				m = (0, e.R)(o.SELECT_ZONE, l => ({
+					payload: l
 				})),
-				i = (0, e.R)(o.SELECT_ACCOUNT, d => ({
-					payload: d
+				i = (0, e.R)(o.SELECT_ACCOUNT, l => ({
+					payload: l
 				})),
-				u = (0, e.R)(o.SELECT_PAGES_PROJECT, d => ({
-					payload: d
+				d = (0, e.R)(o.SELECT_PAGES_PROJECT, l => ({
+					payload: l
 				})),
-				_ = (0, e.R)(o.SELECT_PAGES_DEPLOYMENT, d => ({
-					payload: d
+				g = (0, e.R)(o.SELECT_PAGES_DEPLOYMENT, l => ({
+					payload: l
 				})),
-				t = (0, e.R)(o.SET_FILTERED_ACCOUNT_IDS, d => ({
-					accountIds: d
+				t = (0, e.R)(o.SET_FILTERED_ACCOUNT_IDS, l => ({
+					accountIds: l
 				})),
 				r = (0, e.R)(o.DELETE_FILTERED_ACCOUNT_IDS),
-				a = (0, e.R)(o.SELECT_WORKER, d => ({
-					payload: d
+				a = (0, e.R)(o.SELECT_WORKER, l => ({
+					payload: l
 				}))
 		},
-		"../react/app/components/DeepLink/constants.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				BV: function() {
 					return e
 				},
 				Dz: function() {
-					return _
+					return g
 				},
 				Fj: function() {
 					return p
@@ -1293,7 +1324,7 @@
 					return m
 				},
 				O5: function() {
-					return l
+					return u
 				},
 				Tc: function() {
 					return o
@@ -1312,24 +1343,24 @@
 				o = "_gl",
 				s = "freeTrial",
 				p = "deepLinkQueryParams",
-				l = "resolvedDeepLinkQueryParams",
+				u = "resolvedDeepLinkQueryParams",
 				m = "add",
 				i = "multiSkuProducts",
-				u = "/:account/billing/checkout",
-				_ = "/:account/:zone/billing/checkout",
+				d = "/:account/billing/checkout",
+				g = "/:account/:zone/billing/checkout",
 				t = new RegExp("^/(:account|[a-fA-F0-9]{32})(/(:zone|[^/.]+\\.[^/.]+))?/billing/checkout$")
 		},
-		"../react/app/components/DeepLink/index.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				ZP: function() {
-					return I
+					return P
 				},
 				U: function() {
-					return P.U
+					return b.U
 				},
 				dd: function() {
-					return P.dd
+					return b.dd
 				},
 				bk: function() {
 					return m.bk
@@ -1342,14 +1373,14 @@
 				o = n("../react/app/redux/index.ts"),
 				s = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
 				p = n("../react/app/components/DeepLink/utils.ts"),
-				l = n("../react/utils/bootstrap.ts"),
+				u = n("../react/utils/bootstrap.ts"),
 				m = n("../react/app/components/DeepLink/actions.ts"),
 				i = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				u = n.n(i);
+				d = n.n(i);
 
-			function _(O) {
-				for (var S = 1; S < arguments.length; S++) {
-					var B = arguments[S] != null ? Object(arguments[S]) : {},
+			function g(O) {
+				for (var D = 1; D < arguments.length; D++) {
+					var B = arguments[D] != null ? Object(arguments[D]) : {},
 						U = Object.keys(B);
 					typeof Object.getOwnPropertySymbols == "function" && U.push.apply(U, Object.getOwnPropertySymbols(B).filter(function(Z) {
 						return Object.getOwnPropertyDescriptor(B, Z).enumerable
@@ -1360,32 +1391,32 @@
 				return O
 			}
 
-			function t(O, S, B) {
-				return S = r(S), S in O ? Object.defineProperty(O, S, {
+			function t(O, D, B) {
+				return D = r(D), D in O ? Object.defineProperty(O, D, {
 					value: B,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : O[S] = B, O
+				}) : O[D] = B, O
 			}
 
 			function r(O) {
-				var S = a(O, "string");
-				return typeof S == "symbol" ? S : String(S)
+				var D = a(O, "string");
+				return typeof D == "symbol" ? D : String(D)
 			}
 
-			function a(O, S) {
+			function a(O, D) {
 				if (typeof O != "object" || O === null) return O;
 				var B = O[Symbol.toPrimitive];
 				if (B !== void 0) {
-					var U = B.call(O, S || "default");
+					var U = B.call(O, D || "default");
 					if (typeof U != "object") return U;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (S === "string" ? String : Number)(O)
+				return (D === "string" ? String : Number)(O)
 			}
-			class d {
-				constructor(S, B) {
+			class l {
+				constructor(D, B) {
 					t(this, "deepLink", void 0), t(this, "legacyDeepLink", void 0), t(this, "resolvers", void 0), t(this, "startTime", Date.now()), t(this, "endTime", Date.now()), t(this, "_done", !1), t(this, "resolverStart", U => {
 						this.resolvers.set(U, {
 							name: U,
@@ -1410,20 +1441,20 @@
 								startTime: 0
 							};
 						return {
-							start: (Ee = Z) => {
+							start: (_e = Z) => {
 								const de = this.resolvers.get(U);
-								ae.actionType = Ee, ae.startTime = Date.now(), de && de.userActions.push(ae)
+								ae.actionType = _e, ae.startTime = Date.now(), de && de.userActions.push(ae)
 							},
-							finish: (Ee = Z) => {
-								ae.actionType = Ee, ae.endTime = Date.now()
+							finish: (_e = Z) => {
+								ae.actionType = _e, ae.endTime = Date.now()
 							},
-							cancel: (Ee = Z) => {
-								ae.actionType = Ee, ae.endTime = Date.now(), this.resolverCancel(U)
+							cancel: (_e = Z) => {
+								ae.actionType = _e, ae.endTime = Date.now(), this.resolverCancel(U)
 							}
 						}
-					}), this.deepLink = S, this.legacyDeepLink = B, this.resolvers = new Map
+					}), this.deepLink = D, this.legacyDeepLink = B, this.resolvers = new Map
 				}
-				track(S) {
+				track(D) {
 					try {
 						if (this._done) return;
 						this._done = !0;
@@ -1436,49 +1467,49 @@
 								totalCpuTime: c(this.startTime, this.endTime)
 							},
 							U = this.resolvers.size === 0 ? B : Array.from(this.resolvers.values()).reduce((Z, ae) => {
-								const Ee = c(ae.startTime, ae.endTime),
-									de = ae.userActions.reduce((V, Y) => {
-										const G = c(Y.startTime, Y.endTime);
+								const _e = c(ae.startTime, ae.endTime),
+									de = ae.userActions.reduce((K, Q) => {
+										const H = c(Q.startTime, Q.endTime);
 										return {
-											totalTime: V.totalTime + G,
-											actions: V.actions.set(Y.actionType, G)
+											totalTime: K.totalTime + H,
+											actions: K.actions.set(Q.actionType, H)
 										}
 									}, {
 										totalTime: 0,
 										actions: new Map
 									}),
-									ue = Ee - de.totalTime;
-								return _({}, Z, {
-									totalTime: Z.totalTime + Ee,
+									ue = _e - de.totalTime;
+								return g({}, Z, {
+									totalTime: Z.totalTime + _e,
 									totalUserActionsTime: Z.totalUserActionsTime + de.totalTime,
 									totalCpuTime: Z.totalCpuTime + ue,
-									[`${ae.name}ResolverTotalTime`]: Ee,
+									[`${ae.name}ResolverTotalTime`]: _e,
 									[`${ae.name}ResolverTotalCpuTime`]: ue,
 									[`${ae.name}ResolverTotalUserActionsTime`]: de.totalTime
-								}, Array.from(de.actions.keys()).reduce((V, Y) => _({}, V, {
-									[`${ae.name}Resolver/${Y}`]: de.actions.get(Y)
+								}, Array.from(de.actions.keys()).reduce((K, Q) => g({}, K, {
+									[`${ae.name}Resolver/${Q}`]: de.actions.get(Q)
 								}), {}))
-							}, _({}, B, {
+							}, g({}, B, {
 								totalTime: 0,
 								totalCpuTime: 0
 							}));
-						u().sendEvent(S, U)
+						d().sendEvent(D, U)
 					} catch (B) {
 						console.error(B)
 					}
 				}
 			}
 
-			function c(O = Date.now(), S = Date.now()) {
-				return (S - O) / 1e3
+			function c(O = Date.now(), D = Date.now()) {
+				return (D - O) / 1e3
 			}
-			var g = n("../react/app/components/DeepLink/constants.ts"),
-				f = n("../react/common/hooks/useCachedState.ts"),
-				A = n("../react/common/hooks/usePrevious.ts");
+			var f = n("../react/app/components/DeepLink/constants.ts"),
+				_ = n("../react/common/hooks/useCachedState.ts"),
+				h = n("../react/common/hooks/usePrevious.ts");
 
-			function h(O) {
-				for (var S = 1; S < arguments.length; S++) {
-					var B = arguments[S] != null ? Object(arguments[S]) : {},
+			function A(O) {
+				for (var D = 1; D < arguments.length; D++) {
+					var B = arguments[D] != null ? Object(arguments[D]) : {},
 						U = Object.keys(B);
 					typeof Object.getOwnPropertySymbols == "function" && U.push.apply(U, Object.getOwnPropertySymbols(B).filter(function(Z) {
 						return Object.getOwnPropertyDescriptor(B, Z).enumerable
@@ -1489,92 +1520,92 @@
 				return O
 			}
 
-			function T(O, S, B) {
-				return S = M(S), S in O ? Object.defineProperty(O, S, {
+			function T(O, D, B) {
+				return D = M(D), D in O ? Object.defineProperty(O, D, {
 					value: B,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : O[S] = B, O
+				}) : O[D] = B, O
 			}
 
 			function M(O) {
-				var S = C(O, "string");
-				return typeof S == "symbol" ? S : String(S)
+				var D = C(O, "string");
+				return typeof D == "symbol" ? D : String(D)
 			}
 
-			function C(O, S) {
+			function C(O, D) {
 				if (typeof O != "object" || O === null) return O;
 				var B = O[Symbol.toPrimitive];
 				if (B !== void 0) {
-					var U = B.call(O, S || "default");
+					var U = B.call(O, D || "default");
 					if (typeof U != "object") return U;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (S === "string" ? String : Number)(O)
+				return (D === "string" ? String : Number)(O)
 			}
-			var N = ({
+			var S = ({
 					children: O
 				}) => {
-					const S = (0, o.TZ)(),
+					const D = (0, o.TZ)(),
 						B = (0, s.useHistory)(),
-						U = (0, A.Z)(B.location.pathname),
+						U = (0, h.Z)(B.location.pathname),
 						[Z, ae] = (0, e.useState)(!0),
-						[Ee, de] = (0, f.j)(void 0, {
-							key: g.Fj
+						[_e, de] = (0, _.j)(void 0, {
+							key: f.Fj
 						}),
-						[ue, V] = (0, f.j)(void 0, {
-							key: g.O5
+						[ue, K] = (0, _.j)(void 0, {
+							key: f.O5
 						}),
-						[Y, G] = (0, f.j)(void 0, {
-							key: g.s$
+						[Q, H] = (0, _.j)(void 0, {
+							key: f.s$
 						}),
-						b = (0, l.$8)();
+						I = (0, u.$8)();
 					let F = new URLSearchParams(B.location.search);
-					const te = (0, p.mL)(B.location.pathname, F);
+					const ne = (0, p.mL)(B.location.pathname, F);
 					let ce = null,
-						K = null;
-					if (F.has(g.Tc) && F.delete(g.Tc), F.get(g.BV)) ce = F.get(g.BV), B.location.hash && (K = B.location.hash);
-					else if (Ee) {
-						const $ = new URLSearchParams(Ee);
-						$.get(g.BV) && (ce = $.get(g.BV), F = $)
-					} else te && (F.set(g.BV, te), ce = te);
-					if (ce && g._h.test(ce)) {
-						const $ = F.getAll(g.Kt),
-							X = JSON.stringify($);
-						$.length && X !== Y && G(X), F.has(g.Tc) && F.delete(g.Tc), F.delete(g.Kt)
-					}!b && Ee === void 0 && ce && de(F.toString());
-					const q = async () => {
+						G = null;
+					if (F.has(f.Tc) && F.delete(f.Tc), F.get(f.BV)) ce = F.get(f.BV), B.location.hash && (G = B.location.hash);
+					else if (_e) {
+						const W = new URLSearchParams(_e);
+						W.get(f.BV) && (ce = W.get(f.BV), F = W)
+					} else ne && (F.set(f.BV, ne), ce = ne);
+					if (ce && f._h.test(ce)) {
+						const W = F.getAll(f.Kt),
+							q = JSON.stringify(W);
+						W.length && q !== Q && H(q), F.has(f.Tc) && F.delete(f.Tc), F.delete(f.Kt)
+					}!I && _e === void 0 && ce && de(F.toString());
+					const J = async () => {
 						try {
-							if ((0, p.I3)(ce) && b) {
-								Ee && de(void 0), S.dispatch((0, m.r4)()), ae(!0), ce && ce !== ue && V(ce);
-								const $ = await (0, p.py)(ce, ae, S, B, U, new d(ce, te ? `${B.location.pathname}${B.location.search}` : void 0));
-								F.delete(g.BV);
-								const X = F.toString();
-								B.replace(h({}, B.location, {
-									pathname: $,
-									search: X
-								}, K ? {
-									hash: K
-								} : {})), S.dispatch((0, m.WF)())
+							if ((0, p.I3)(ce) && I) {
+								_e && de(void 0), D.dispatch((0, m.r4)()), ae(!0), ce && ce !== ue && K(ce);
+								const W = await (0, p.py)(ce, ae, D, B, U, new l(ce, ne ? `${B.location.pathname}${B.location.search}` : void 0));
+								F.delete(f.BV);
+								const q = F.toString();
+								B.replace(A({}, B.location, {
+									pathname: W,
+									search: q
+								}, G ? {
+									hash: G
+								} : {})), D.dispatch((0, m.WF)())
 							}
-						} catch ($) {
-							S.dispatch((0, m.WF)()), console.error($)
+						} catch (W) {
+							D.dispatch((0, m.WF)()), console.error(W)
 						} finally {
 							ae(!1)
 						}
 					};
 					return (0, e.useEffect)(() => {
-						q()
-					}, [B.location.pathname, B.location.search]), (Z || (0, p.I3)(ce)) && b ? null : O
+						J()
+					}, [B.location.pathname, B.location.search]), (Z || (0, p.I3)(ce)) && I ? null : O
 				},
 				L = n("../react/app/components/DeepLink/reducer.ts"),
-				P = n("../react/app/components/DeepLink/selectors.ts"),
-				I = N
+				b = n("../react/app/components/DeepLink/selectors.ts"),
+				P = S
 		},
-		"../react/app/components/DeepLink/reducer.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/reducer.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				E: function() {
 					return p
 				},
@@ -1586,36 +1617,36 @@
 				o = n.n(e),
 				s = n("../react/app/components/DeepLink/actions.ts");
 			const p = null,
-				l = o().from({
+				u = o().from({
 					lastAction: p,
 					isResolving: !1,
 					filteredAccountIds: void 0
 				});
 
-			function m(i = l, u) {
-				if (u.type === s.MF.RESOLVING_COMPLETE) return l;
-				if (u.type === s.MF.RESOLVING_START) return i.set("isResolving", !0);
+			function m(i = u, d) {
+				if (d.type === s.MF.RESOLVING_COMPLETE) return u;
+				if (d.type === s.MF.RESOLVING_START) return i.set("isResolving", !0);
 				if (i.isResolving) {
-					if (u.type === s.MF.RESOLVING_COMPLETE) return i.set("isResolving", !1);
-					if (u.type === s.MF.SET_FILTERED_ACCOUNT_IDS) return i.set("filteredAccountIds", u.accountIds);
-					if (u.type === s.MF.DELETE_FILTERED_ACCOUNT_IDS) return i.set("filteredAccountIds", void 0);
+					if (d.type === s.MF.RESOLVING_COMPLETE) return i.set("isResolving", !1);
+					if (d.type === s.MF.SET_FILTERED_ACCOUNT_IDS) return i.set("filteredAccountIds", d.accountIds);
+					if (d.type === s.MF.DELETE_FILTERED_ACCOUNT_IDS) return i.set("filteredAccountIds", void 0);
 					{
-						let _ = i;
+						let g = i;
 						try {
-							_ = i.set("lastAction", u)
+							g = i.set("lastAction", d)
 						} catch {
-							_ = i.set("lastAction", {
-								type: u.type
+							g = i.set("lastAction", {
+								type: d.type
 							})
 						}
-						return _
+						return g
 					}
 				} else return i
 			}
 		},
-		"../react/app/components/DeepLink/selectors.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				U: function() {
 					return s
 				},
@@ -1630,27 +1661,27 @@
 				o = p => p.deepLink.isResolving,
 				s = p => p.deepLink.filteredAccountIds
 		},
-		"../react/app/components/DeepLink/utils.ts": function(x, v, n) {
+		"../react/app/components/DeepLink/utils.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				I3: function() {
-					return d
+					return l
 				},
 				X1: function() {
 					return r
 				},
 				mL: function() {
-					return h
+					return A
 				},
 				py: function() {
-					return A
+					return h
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-en-garde/es/index.js"),
 				o = n("../react/app/components/DeepLink/reducer.ts"),
 				s = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
 			const p = T => T.replace(s.default.endsWithSlash, ""),
-				l = T => {
+				u = T => {
 					const M = p(T).split("/").slice(3);
 					return M.length ? "/" + M.join("/") : ""
 				},
@@ -1659,32 +1690,32 @@
 					return M.length ? `apps/${M.join("/")}` : "apps"
 				};
 			var i = n("../react/app/components/DeepLink/selectors.ts"),
-				u = n("../react/app/components/DeepLink/constants.ts"),
-				_ = n("../react/common/validators/index.js"),
+				d = n("../react/app/components/DeepLink/constants.ts"),
+				g = n("../react/common/validators/index.js"),
 				t = n("../react/common/utils/isGuards.ts");
-			const r = T => (0, _.Lb)(T) && (T.split(".").length > 1 || (0, t.v5)(T)),
+			const r = T => (0, g.Lb)(T) && (T.split(".").length > 1 || (0, t.v5)(T)),
 				a = e.eg.union([e.eg.literal("zone"), e.eg.literal("account"), e.eg.literal("pages-project"), e.eg.literal("pages-deployment"), e.eg.literal("worker")]),
-				d = T => typeof T == "string" && T.startsWith("/"),
-				c = (T, M) => C => new Promise((y, N) => {
+				l = T => typeof T == "string" && T.startsWith("/"),
+				c = (T, M) => C => new Promise((y, S) => {
 					M.start();
 					const L = T.subscribe(() => {
-						const P = (0, i.yI)(T.getState());
-						P === o.E ? (M.cancel(), L(), N("DeepLink: waitForAction out of context.")) : C(P) && (M.finish(P.type), L(), y(P))
+						const b = (0, i.yI)(T.getState());
+						b === o.E ? (M.cancel(), L(), S("DeepLink: waitForAction out of context.")) : C(b) && (M.finish(b.type), L(), y(b))
 					})
 				}),
-				g = (T, M, C) => (y, N) => new Promise((L, P) => {
+				f = (T, M, C) => (y, S) => new Promise((L, b) => {
 					C.start();
-					const I = M.location.pathname;
-					y = new URL(y, window.location.href).pathname, I !== y && (C.cancel(), P(`DeepLink: waitForPageAction didn't execute on pageToAwaitActionOn: "${y}", but on "${I}". You need to redirect to "${y}", and unblockRouter in your Resolver, before you use this function.`));
+					const P = M.location.pathname;
+					y = new URL(y, window.location.href).pathname, P !== y && (C.cancel(), b(`DeepLink: waitForPageAction didn't execute on pageToAwaitActionOn: "${y}", but on "${P}". You need to redirect to "${y}", and unblockRouter in your Resolver, before you use this function.`));
 					const O = T.subscribe(() => {
-						const S = (0, i.yI)(T.getState()),
+						const D = (0, i.yI)(T.getState()),
 							B = M.location.pathname,
-							Z = new URLSearchParams(M.location.search).get(u.BV);
-						(B !== y || !!Z) && (C.cancel(), O(), P(`DeepLink: waitForPageAction user navigated away from "${y}" to "${B}${Z?M.location.search:""}"`)), S === o.E ? (C.cancel(), O(), P("DeepLink: waitForPageAction out of context.")) : N(S) && (C.finish(S.type), O(), L(S))
+							Z = new URLSearchParams(M.location.search).get(d.BV);
+						(B !== y || !!Z) && (C.cancel(), O(), b(`DeepLink: waitForPageAction user navigated away from "${y}" to "${B}${Z?M.location.search:""}"`)), D === o.E ? (C.cancel(), O(), b("DeepLink: waitForPageAction out of context.")) : S(D) && (C.finish(D.type), O(), L(D))
 					})
 				});
 
-			function f(T) {
+			function _(T) {
 				const M = [],
 					C = T.split("?")[0].split("/");
 				for (let y of C) y.length !== 0 && (y.startsWith(":") ? M.push({
@@ -1696,13 +1727,13 @@
 				}));
 				return M
 			}
-			async function A(T, M, C, y, N, L) {
+			async function h(T, M, C, y, S, L) {
 				L.start();
-				const P = f(T),
+				const b = _(T),
 					O = await (await Promise.all([n.e(32375), n.e(78839), n.e(40517), n.e(8756)]).then(n.bind(n, "../react/app/components/DeepLink/resolvers/index.ts"))).default(),
-					S = {};
+					D = {};
 				let B = "";
-				for (const [U, Z] of P.entries())
+				for (const [U, Z] of b.entries())
 					if (Z.type === "static") B = [B, Z.value].join("/");
 					else if (Z.type === "dynamic" && a.is(Z.value) && Z.value in O) {
 					L.resolverStart(Z.value);
@@ -1711,34 +1742,34 @@
 						blockRouter: () => M(!0),
 						unblockRouter: () => M(!1),
 						routerHistory: y,
-						resolvedValues: S,
+						resolvedValues: D,
 						store: C,
-						referringRoute: N,
+						referringRoute: S,
 						uri: {
 							currentPartIdx: U,
-							parts: P
+							parts: b
 						},
 						waitForAction: c(C, L.createUserActionTracker(Z.value)),
-						waitForPageAction: g(C, y, L.createUserActionTracker(Z.value))
+						waitForPageAction: f(C, y, L.createUserActionTracker(Z.value))
 					});
-					L.resolverDone(Z.value), B = [B, ae].join("/"), S[Z.value] = ae
+					L.resolverDone(Z.value), B = [B, ae].join("/"), D[Z.value] = ae
 				} else throw L.cancel(), new Error(`DeepLink: Resolver with name '${Z.value}' is not supported.`);
 				return L.done(), B
 			}
 
-			function h(T, M) {
+			function A(T, M) {
 				const C = ":account",
 					y = ":zone",
-					N = M.get("zone");
-				if (N) return M.delete("zone"), `/${C}/${y}/${N}`;
+					S = M.get("zone");
+				if (S) return M.delete("zone"), `/${C}/${y}/${S}`;
 				const L = M.get("account");
 				if (L) return M.delete("account"), `/${C}/${L}`;
 				if (T === "/overview") return `/${C}/${y}`;
 				if (T === "/apps") return `/${C}/${y}/${m(T)}`;
-				const P = ["/analytics", "/dns", "/spectrum", "/crypto", "/firewall", "/access", "/performance", "/caching", "/workers", "/page-rules", "/network", "/traffic", "/stream", "/customization", "/content-protection", "/rules", "/email"];
-				for (const I of P) {
-					const O = I.length;
-					if (T.startsWith(I) && (T.length === O || T[O] === "/")) return `/${C}/${y}${T}`
+				const b = ["/analytics", "/dns", "/spectrum", "/crypto", "/firewall", "/access", "/performance", "/caching", "/workers", "/page-rules", "/network", "/traffic", "/stream", "/customization", "/content-protection", "/rules", "/email"];
+				for (const P of b) {
+					const O = P.length;
+					if (T.startsWith(P) && (T.length === O || T[O] === "/")) return `/${C}/${y}${T}`
 				}
 				switch (T) {
 					case "/account/billing":
@@ -1754,35 +1785,35 @@
 				}
 			}
 		},
-		"../react/app/components/ErrorBoundary.tsx": function(x, v, n) {
+		"../react/app/components/ErrorBoundary.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				S: function() {
-					return f
+					return _
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@sentry/react/esm/errorboundary.js"),
 				p = n("../react/app/components/SomethingWrong.jsx"),
-				l = n("../utils/sentry/lastSentEventId.ts"),
+				u = n("../utils/sentry/lastSentEventId.ts"),
 				m = n("../react/utils/zaraz.ts"),
 				i = n("../react/utils/url.ts"),
-				u = n("../node_modules/@cloudflare/elements/es/index.js"),
-				_ = n("../node_modules/@cloudflare/component-button/es/index.js"),
+				d = n("../node_modules/@cloudflare/elements/es/index.js"),
+				g = n("../node_modules/@cloudflare/component-button/es/index.js"),
 				t = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				r = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				a = n.n(r),
-				d = n("../react/common/components/Page.tsx"),
+				l = n("../react/common/components/Page.tsx"),
 				c = "data:image/svg+xml;base64,PHN2ZyBhcmlhLWxhYmVsbGVkYnk9InJlbG9hZC1wYWdlLWJ3cC1zdmctZGVzYyIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMTUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVzYyBpZD0icmVsb2FkLXBhZ2UtYndwLXN2Zy1kZXNjIj5SZWZyZXNoIG1hc2NvdCAtIFNoZWV0IG9mIHBhcGVyIHdpdGggYSBoYXBweSBmYWNlPC9kZXNjPgogICAgPHBhdGgKICAgICAgICBkPSJNMTkwLjQ2OSAxMDcuMTM0SDkuNDc4di44OTFoMTgwLjk5MXYtLjg5MVpNNjMuMDQgOTguNDI3SDM3LjY4M3YuODlINjMuMDR2LS44OVpNMjguMjM1IDk4LjQyN0gtLjAyN3YuODloMjguMjYydi0uODlaTTE1Ni4wMjIgOTguNDI3aC0xNi42NTZ2Ljg5aDE2LjY1NnYtLjg5Wk0yMDAuMDI3IDk4LjQyN2gtMzcuMDQ0di44OWgzNy4wNDR2LS44OVoiCiAgICAgICAgZmlsbD0iIzAwNTFDMyIgLz4KICAgIDxwYXRoIGQ9Ik0xMzkuMzY2IDEwNy41OEg2MC41OFY3LjAwNmg2Mi41MjNsMTYuMjYzIDE2LjI2MnY4NC4zMTJaIiBmaWxsPSIjQUNFMkYwIiAvPgogICAgPHBhdGgKICAgICAgICBkPSJNMTM5LjgxMiAxMDguMDI1SDYwLjEzNFY2LjU2MWg2My4xNTRsMTYuNTI0IDE2LjUyM3Y4NC45NDFabS03OC43ODctLjg5MWg3Ny44OTZWMjMuNDUzTDEyMi45MTkgNy40NUg2MS4wMjV2OTkuNjgzWiIKICAgICAgICBmaWxsPSIjMDA1MEU0IiAvPgogICAgPHBhdGggZD0iTTY1LjIyMyAxMDIuOTM2VjExLjY0OWg2Mi41MjRsNi45NzYgNi45NzZ2ODQuMzExaC02OS41WiIgZmlsbD0iI2ZmZiIgLz4KICAgIDxwYXRoCiAgICAgICAgZD0iTTg2Ljg1NSA0MS40MzhhNC4wMTQgNC4wMTQgMCAwIDEgNC4wMSA0LjAwOWgtLjg5MmEzLjEyMSAzLjEyMSAwIDAgMC0zLjExOC0zLjExOCAzLjEyMSAzLjEyMSAwIDAgMC0zLjExOCAzLjExOGgtLjg5YTQuMDE0IDQuMDE0IDAgMCAxIDQuMDA4LTQuMDA5Wk0xMTMuMDkxIDQxLjQzOGE0LjAxMyA0LjAxMyAwIDAgMSA0LjAwOSA0LjAwOWgtLjg5MWEzLjEyMiAzLjEyMiAwIDAgMC0zLjExOC0zLjExOCAzLjEyMiAzLjEyMiAwIDAgMC0zLjExOCAzLjExOGgtLjg5MWE0LjAxMyA0LjAxMyAwIDAgMSA0LjAwOS00LjAwOVpNMTEyLjg0MSA1My4zNTJsLjQ4NC43NDhjLTguMjI0IDUuMzI1LTE4LjY0IDUuMzU3LTI3LjE4Ni4wODNsLjQ2OS0uNzU4YzguMjQ5IDUuMDkxIDE4LjMgNS4wNjQgMjYuMjMzLS4wNzNaIgogICAgICAgIGZpbGw9IiMwMDUxQzMiIC8+CiAgICA8cGF0aCBkPSJNMTM5LjM2NiAyMy4yNjhoLTE2LjI2MlY3LjAwNiIgZmlsbD0iIzAwMzY4MiIgLz4KICAgIDxwYXRoIGQ9Ik0xMzkuMzY2IDIzLjcxNGgtMTYuNzA4VjcuMDA2aC44OTF2MTUuODE3aDE1LjgxN3YuODlaIiBmaWxsPSIjMDA1MUMzIiAvPgogICAgPHBhdGggZD0ibTEyMy40MTggNi42OTItLjYzLjYzIDE2LjI2MiAxNi4yNjMuNjMtLjYzLTE2LjI2Mi0xNi4yNjNaIiBmaWxsPSIjMDA1MEU0IiAvPgogICAgPHBhdGgKICAgICAgICBkPSJtODYuNjMzIDMyLjUzLTYuNjYgMy43My40MzYuNzc3IDYuNjU5LTMuNzMtLjQzNS0uNzc3Wk0xMTMuMDE5IDMyLjUzNmwtLjQzNS43NzcgNi42NiAzLjcyOS40MzUtLjc3Ny02LjY2LTMuNzNaTTM1Ljk5OCA0M2MxLjUzMSAwIDMuMDA1LjU4NiA0LjExNyAxLjYzOGwtLjMxNy0yLjA4OC45ODktLjE1LjU1NyAzLjY2NC0zLjY2NS41NTctLjE1LS45ODkgMS44ODItLjI4NWE0Ljk4MSA0Ljk4MSAwIDEgMCAxLjQ2IDIuNTI4bC45NzUtLjIyNUE2IDYgMCAxIDEgMzUuOTk4IDQzWk0xNjMuOTk4IDQzYTUuOTkgNS45OSAwIDAgMSA0LjExNyAxLjYzOGwtLjMxNy0yLjA4OC45ODktLjE1LjU1NyAzLjY2NC0zLjY2NS41NTctLjE1LS45ODkgMS44ODItLjI4NWE0Ljk4MyA0Ljk4MyAwIDAgMC03LjcwOSA2LjEzNyA0Ljk4MiA0Ljk4MiAwIDAgMCA5LjE2OS0zLjYwOWwuOTc1LS4yMjVhNS45OTggNS45OTggMCAwIDEtNi4xNzIgNy4zNDEgNS45OTggNS45OTggMCAwIDEtNS4zMzktNy45NjhBNS45OTcgNS45OTcgMCAwIDEgMTYzLjk5OCA0M1pNMTYuOTk4IDU4YzEuNTMxIDAgMy4wMDUuNTg2IDQuMTE3IDEuNjM4bC0uMzE3LTIuMDg4Ljk4OS0uMTUuNTU3IDMuNjY0LTMuNjY1LjU1Ny0uMTUtLjk4OSAxLjg4Mi0uMjg1YTQuOTgxIDQuOTgxIDAgMSAwIDEuNDYgMi41MjhsLjk3NS0uMjI1QTYgNiAwIDEgMSAxNi45OTggNThaTTE4MS45OTggNThhNS45OSA1Ljk5IDAgMCAxIDQuMTE3IDEuNjM4bC0uMzE3LTIuMDg4Ljk4OS0uMTUuNTU3IDMuNjY0LTMuNjY1LjU1Ny0uMTUtLjk4OSAxLjg4Mi0uMjg1YTQuOTgzIDQuOTgzIDAgMCAwLTcuNzA5IDYuMTM3IDQuOTgyIDQuOTgyIDAgMCAwIDkuMTY5LTMuNjA5bC45NzUtLjIyNWE1Ljk5OCA1Ljk5OCAwIDAgMS02LjE3MiA3LjM0MSA1Ljk5OCA1Ljk5OCAwIDAgMS01LjMzOS03Ljk2OEE1Ljk5NyA1Ljk5NyAwIDAgMSAxODEuOTk4IDU4Wk00OC45OTggNjdjMS41MzEgMCAzLjAwNS41ODYgNC4xMTcgMS42MzhsLS4zMTctMi4wODguOTg5LS4xNS41NTcgMy42NjQtMy42NjUuNTU3LS4xNS0uOTg5IDEuODgyLS4yODVhNC45ODEgNC45ODEgMCAxIDAgMS40NiAyLjUyOGwuOTc1LS4yMjVBNiA2IDAgMSAxIDQ4Ljk5OCA2N1pNMTUxLjk5OCA2N2E1Ljk5IDUuOTkgMCAwIDEgNC4xMTcgMS42MzhsLS4zMTctMi4wODguOTg5LS4xNS41NTcgMy42NjQtMy42NjUuNTU3LS4xNS0uOTg5IDEuODgyLS4yODVhNC45ODMgNC45ODMgMCAwIDAtNy43MDkgNi4xMzcgNC45ODIgNC45ODIgMCAwIDAgOS4xNjktMy42MDlsLjk3NS0uMjI1YTUuOTk4IDUuOTk4IDAgMCAxLTYuMTcyIDcuMzQxIDUuOTk4IDUuOTk4IDAgMCAxLTUuMzM5LTcuOTY4QTUuOTk3IDUuOTk3IDAgMCAxIDE1MS45OTggNjdaIgogICAgICAgIGZpbGw9IiNBQ0UyRjAiIC8+Cjwvc3ZnPg==";
 
-			function g() {
+			function f() {
 				return (0, e.useEffect)(() => {
 					a().sendEvent("new page available refresh cta")
-				}, []), o().createElement(d.Z, {
+				}, []), o().createElement(l.Z, {
 					type: "narrow",
 					textAlign: "center",
-					title: o().createElement(u.ZC, {
+					title: o().createElement(d.ZC, {
 						textAlign: "center",
 						fontSize: 5,
 						fontWeight: 400
@@ -1792,11 +1823,11 @@
 					description: o().createElement(t.Trans, {
 						id: "error.new_page_version_available.description"
 					})
-				}, o().createElement(u.ZC, null, o().createElement(u.Ei, {
+				}, o().createElement(d.ZC, null, o().createElement(d.Ei, {
 					height: 116,
 					src: c,
 					"aria-hidden": !0
-				})), o().createElement(_.zx, {
+				})), o().createElement(g.zx, {
 					mt: 3,
 					type: "primary",
 					iconType: "refresh",
@@ -1805,9 +1836,9 @@
 					id: "common.refresh"
 				})))
 			}
-			const f = ({
-				sentryTag: A,
-				children: h
+			const _ = ({
+				sentryTag: h,
+				children: A
 			}) => o().createElement(s.SV, {
 				beforeCapture: T => {
 					m.tg === null || m.tg === void 0 || m.tg.track("page-error", {
@@ -1825,47 +1856,47 @@
 					eventId: M
 				}) => {
 					var C;
-					const y = l.e.getEventId() || M;
-					return (T == null || (C = T.message) === null || C === void 0 ? void 0 : C.includes("Loading chunk")) ? (console.warn("New release is available, refresh to update the app"), o().createElement(g, null)) : o().createElement(p.Z, {
+					const y = u.e.getEventId() || M;
+					return (T == null || (C = T.message) === null || C === void 0 ? void 0 : C.includes("Loading chunk")) ? (console.warn("New release is available, refresh to update the app"), o().createElement(f, null)) : o().createElement(p.Z, {
 						type: "page",
 						error: T,
 						eventId: y,
-						sentryTag: A
+						sentryTag: h
 					})
 				}
-			}, h)
+			}, A)
 		},
-		"../react/app/components/Footer.tsx": function(x, v, n) {
+		"../react/app/components/Footer.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Z: function() {
-					return G
+					return H
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
 				p = n("../node_modules/@cloudflare/elements/es/index.js"),
-				l = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
+				u = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				m = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
 				i = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				u = n.n(i),
-				_ = n("../../../../node_modules/@cloudflare/util-responsive/es/index.js"),
+				d = n.n(i),
+				g = n("../../../../node_modules/@cloudflare/util-responsive/es/index.js"),
 				t = n("../react/common/components/Apple/utils.tsx"),
 				r = n("../react/utils/translator.tsx"),
 				a = n("../../../../node_modules/moment/moment.js"),
-				d = n.n(a);
+				l = n.n(a);
 			const c = () => {
-					const b = d()().format("YYYY"),
-						F = te => {
-							u().sendEvent("follower icloud footer link", {
+					const I = l()().format("YYYY"),
+						F = ne => {
+							d().sendEvent("follower icloud footer link", {
 								category: "icloud registrar",
-								link: te
+								link: ne
 							})
 						};
-					return o().createElement(g, {
+					return o().createElement(f, {
 						marginTop: "auto"
-					}, o().createElement(f, null, o().createElement(A, null, o().createElement(h, null, "\xA9 ", b, " Cloudflare, Inc."), o().createElement(h, null, o().createElement(T, null, o().createElement(M, {
+					}, o().createElement(_, null, o().createElement(h, null, o().createElement(A, null, "\xA9 ", I, " Cloudflare, Inc."), o().createElement(A, null, o().createElement(T, null, o().createElement(M, {
 						showOnDeskTop: !1
 					}, o().createElement(C, {
 						fontWeight: 600,
@@ -1905,8 +1936,8 @@
 						id: "apple.footer.icanns"
 					}))))))))
 				},
-				g = (0, l.createComponent)(({
-					theme: b,
+				f = (0, u.createComponent)(({
+					theme: I,
 					marginTop: F
 				}) => ({
 					backgroundColor: "#1F1F1F",
@@ -1914,27 +1945,27 @@
 					minHeight: "143px",
 					marginTop: F
 				})),
-				f = (0, l.createComponent)(() => ({
+				_ = (0, u.createComponent)(() => ({
 					margin: "0 auto",
 					maxWidth: "1000px"
 				})),
-				A = (0, l.createComponent)(({
-					theme: b
+				h = (0, u.createComponent)(({
+					theme: I
 				}) => ({
 					desktop: {
 						marginLeft: "70px",
 						padding: "33px 0 0 0"
 					},
 					mobile: {
-						padding: `33px ${b.space[3]}px`
+						padding: `33px ${I.space[3]}px`
 					}
 				})),
-				h = (0, l.createComponent)(({
-					theme: b
+				A = (0, u.createComponent)(({
+					theme: I
 				}) => ({
 					width: "100%",
-					color: b.colors.white,
-					fontSize: b.fontSizes[1],
+					color: I.colors.white,
+					fontSize: I.fontSizes[1],
 					display: "flex",
 					justifyContent: "space-between",
 					flexDirection: "column",
@@ -1945,24 +1976,24 @@
 						flexDirection: "row"
 					}
 				})),
-				T = (0, l.createComponent)(({
-					theme: b
+				T = (0, u.createComponent)(({
+					theme: I
 				}) => ({
 					display: "flex",
 					flexWrap: "wrap",
-					marginTop: b.space[3],
+					marginTop: I.space[3],
 					desktop: {
 						flexWrap: "nowrap"
 					}
 				})),
-				M = (0, l.createComponent)(({
-					showOnDeskTop: b = !0,
+				M = (0, u.createComponent)(({
+					showOnDeskTop: I = !0,
 					theme: F
 				}) => ({
 					color: F.colors.white,
 					fontSize: F.fontSizes[1],
 					height: "20px",
-					display: b ? "flex" : "none",
+					display: I ? "flex" : "none",
 					alignItems: "center",
 					desktop: {
 						display: "flex",
@@ -1990,30 +2021,30 @@
 						}
 					}
 				})),
-				C = (0, l.createStyledComponent)(({
-					theme: b
+				C = (0, u.createStyledComponent)(({
+					theme: I
 				}) => ({
 					textDecoration: "none",
-					color: b.colors.white,
+					color: I.colors.white,
 					"&:hover": {
-						color: b.colors.white,
+						color: I.colors.white,
 						textDecoration: "underline"
 					}
 				}), "a");
 			var y = c,
-				N = n("../react/pages/welcome/routes.ts"),
+				S = n("../react/pages/welcome/routes.ts"),
 				L = n("../react/utils/cookiePreferences.ts"),
-				P = "data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMCAxNCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzAgMTQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qxe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6IzAwNjZGRjt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qze2ZpbGw6IzAwNjZGRjt9Cjwvc3R5bGU+CgkJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyNzUgLTIwMCkiPgoJCQk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjc1IDIwMCkiPgoJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0ibTcuNCAxMi44aDYuOGwzLjEtMTEuNmgtOS45Yy0zLjIgMC01LjggMi42LTUuOCA1LjhzMi42IDUuOCA1LjggNS44eiIvPgoJCQk8L2c+CgkJPC9nPgoJCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjc1IC0yMDApIj4KCQkJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3NSAyMDApIj4KCQkJCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Im0yMi42IDBoLTE1LjJjLTMuOSAwLTcgMy4xLTcgN3MzLjEgNyA3IDdoMTUuMmMzLjkgMCA3LTMuMSA3LTdzLTMuMi03LTctN3ptLTIxIDdjMC0zLjIgMi42LTUuOCA1LjgtNS44aDkuOWwtMy4xIDExLjZoLTYuOGMtMy4yIDAtNS44LTIuNi01LjgtNS44eiIvPgoJCQkJPHBhdGggY2xhc3M9InN0MiIgZD0ibTI0LjYgNGMwLjIgMC4yIDAuMiAwLjYgMCAwLjhsLTIuMSAyLjIgMi4yIDIuMmMwLjIgMC4yIDAuMiAwLjYgMCAwLjhzLTAuNiAwLjItMC44IDBsLTIuMi0yLjItMi4yIDIuMmMtMC4yIDAuMi0wLjYgMC4yLTAuOCAwcy0wLjItMC42IDAtMC44bDIuMS0yLjItMi4yLTIuMmMtMC4yLTAuMi0wLjItMC42IDAtMC44czAuNi0wLjIgMC44IDBsMi4yIDIuMiAyLjItMi4yYzAuMi0wLjIgMC42LTAuMiAwLjggMHoiLz4KCQkJCTxwYXRoIGNsYXNzPSJzdDMiIGQ9Im0xMi43IDQuMWMwLjIgMC4yIDAuMyAwLjYgMC4xIDAuOGwtNC4yIDQuOWMtMC4xIDAuMS0wLjIgMC4yLTAuMyAwLjItMC4yIDAuMS0wLjUgMC4xLTAuNy0wLjFsLTIuMi0yLjJjLTAuMi0wLjItMC4yLTAuNiAwLTAuOHMwLjYtMC4yIDAuOCAwbDEuOCAxLjcgMy44LTQuNWMwLjItMC4yIDAuNi0wLjIgMC45IDB6Ii8+CgkJCTwvZz4KCQk8L2c+Cjwvc3ZnPg==",
+				b = "data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMCAxNCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzAgMTQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qxe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6IzAwNjZGRjt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qze2ZpbGw6IzAwNjZGRjt9Cjwvc3R5bGU+CgkJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyNzUgLTIwMCkiPgoJCQk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjc1IDIwMCkiPgoJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0ibTcuNCAxMi44aDYuOGwzLjEtMTEuNmgtOS45Yy0zLjIgMC01LjggMi42LTUuOCA1LjhzMi42IDUuOCA1LjggNS44eiIvPgoJCQk8L2c+CgkJPC9nPgoJCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjc1IC0yMDApIj4KCQkJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI3NSAyMDApIj4KCQkJCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Im0yMi42IDBoLTE1LjJjLTMuOSAwLTcgMy4xLTcgN3MzLjEgNyA3IDdoMTUuMmMzLjkgMCA3LTMuMSA3LTdzLTMuMi03LTctN3ptLTIxIDdjMC0zLjIgMi42LTUuOCA1LjgtNS44aDkuOWwtMy4xIDExLjZoLTYuOGMtMy4yIDAtNS44LTIuNi01LjgtNS44eiIvPgoJCQkJPHBhdGggY2xhc3M9InN0MiIgZD0ibTI0LjYgNGMwLjIgMC4yIDAuMiAwLjYgMCAwLjhsLTIuMSAyLjIgMi4yIDIuMmMwLjIgMC4yIDAuMiAwLjYgMCAwLjhzLTAuNiAwLjItMC44IDBsLTIuMi0yLjItMi4yIDIuMmMtMC4yIDAuMi0wLjYgMC4yLTAuOCAwcy0wLjItMC42IDAtMC44bDIuMS0yLjItMi4yLTIuMmMtMC4yLTAuMi0wLjItMC42IDAtMC44czAuNi0wLjIgMC44IDBsMi4yIDIuMiAyLjItMi4yYzAuMi0wLjIgMC42LTAuMiAwLjggMHoiLz4KCQkJCTxwYXRoIGNsYXNzPSJzdDMiIGQ9Im0xMi43IDQuMWMwLjIgMC4yIDAuMyAwLjYgMC4xIDAuOGwtNC4yIDQuOWMtMC4xIDAuMS0wLjIgMC4yLTAuMyAwLjItMC4yIDAuMS0wLjUgMC4xLTAuNy0wLjFsLTIuMi0yLjJjLTAuMi0wLjItMC4yLTAuNiAwLTAuOHMwLjYtMC4yIDAuOCAwbDEuOCAxLjcgMy44LTQuNWMwLjItMC4yIDAuNi0wLjIgMC45IDB6Ii8+CgkJCTwvZz4KCQk8L2c+Cjwvc3ZnPg==",
 				O = () => {
-					const [b, F] = (0, e.useState)(!1), te = (0, L.wV)(), ce = () => {
+					const [I, F] = (0, e.useState)(!1), ne = (0, L.wV)(), ce = () => {
 						F(!0)
-					}, K = () => {
+					}, G = () => {
 						F(!1)
-					}, q = te && te === "US" ? (0, r.ZP)("footer.cpra_cta.privacy_choices") : (0, r.ZP)("footer.cpra_cta.cookie_preferences"), $ = {
+					}, J = ne && ne === "US" ? (0, r.ZP)("footer.cpra_cta.privacy_choices") : (0, r.ZP)("footer.cpra_cta.cookie_preferences"), W = {
 						background: "transparent",
 						borderRadius: "none",
-						color: b ? (0, m.Yc)() ? "#ee730a" : "#003681" : (0, m.Yc)() ? "#4693ff" : "#0051c3",
-						textDecoration: b ? "underline" : "none",
+						color: I ? (0, m.Yc)() ? "#ee730a" : "#003681" : (0, m.Yc)() ? "#4693ff" : "#0051c3",
+						textDecoration: I ? "underline" : "none",
 						textUnderlineOffset: "4px",
 						cursor: "pointer",
 						transitionProperty: "color",
@@ -2035,47 +2066,47 @@
 					return o().createElement(p.zx, {
 						id: "ot-sdk-btn",
 						className: "ot-sdk-show-settings",
-						style: $,
+						style: W,
 						onMouseEnter: ce,
-						onMouseLeave: K
+						onMouseLeave: G
 					}, o().createElement(p.Ei, {
 						height: 15,
-						src: P,
+						src: b,
 						mr: 2,
-						alt: q
-					}), q)
+						alt: J
+					}), J)
 				};
 
-			function S() {
-				return S = Object.assign ? Object.assign.bind() : function(b) {
+			function D() {
+				return D = Object.assign ? Object.assign.bind() : function(I) {
 					for (var F = 1; F < arguments.length; F++) {
-						var te = arguments[F];
-						for (var ce in te) Object.prototype.hasOwnProperty.call(te, ce) && (b[ce] = te[ce])
+						var ne = arguments[F];
+						for (var ce in ne) Object.prototype.hasOwnProperty.call(ne, ce) && (I[ce] = ne[ce])
 					}
-					return b
-				}, S.apply(this, arguments)
+					return I
+				}, D.apply(this, arguments)
 			}
 
-			function B(b, F) {
-				if (b == null) return {};
-				var te = U(b, F),
-					ce, K;
+			function B(I, F) {
+				if (I == null) return {};
+				var ne = U(I, F),
+					ce, G;
 				if (Object.getOwnPropertySymbols) {
-					var q = Object.getOwnPropertySymbols(b);
-					for (K = 0; K < q.length; K++) ce = q[K], !(F.indexOf(ce) >= 0) && (!Object.prototype.propertyIsEnumerable.call(b, ce) || (te[ce] = b[ce]))
+					var J = Object.getOwnPropertySymbols(I);
+					for (G = 0; G < J.length; G++) ce = J[G], !(F.indexOf(ce) >= 0) && (!Object.prototype.propertyIsEnumerable.call(I, ce) || (ne[ce] = I[ce]))
 				}
-				return te
+				return ne
 			}
 
-			function U(b, F) {
-				if (b == null) return {};
-				var te = {},
-					ce = Object.keys(b),
-					K, q;
-				for (q = 0; q < ce.length; q++) K = ce[q], !(F.indexOf(K) >= 0) && (te[K] = b[K]);
-				return te
+			function U(I, F) {
+				if (I == null) return {};
+				var ne = {},
+					ce = Object.keys(I),
+					G, J;
+				for (J = 0; J < ce.length; J++) G = ce[J], !(F.indexOf(G) >= 0) && (ne[G] = I[G]);
+				return ne
 			}
-			const Z = (0, l.createStyledComponent)(() => ({
+			const Z = (0, u.createStyledComponent)(() => ({
 					borderBottom: "1.5px solid transparent",
 					paddingBottom: "1.25px",
 					textDecoration: "none",
@@ -2083,54 +2114,54 @@
 						borderBottom: `1.5px solid ${(0,m.Yc)()?m.rS.colors.orange[6]:m.rS.colors.blue[4]}`
 					}
 				}), p.A),
-				ae = (0, l.createStyledComponent)(({
-					theme: b
+				ae = (0, u.createStyledComponent)(({
+					theme: I
 				}) => ({
-					color: b.colors.gray[4],
+					color: I.colors.gray[4],
 					textDecoration: "none",
-					marginTop: (0, _.tq)() ? "8px" : 0,
+					marginTop: (0, g.tq)() ? "8px" : 0,
 					":hover, :focus": {
-						color: b.colors.gray[4]
+						color: I.colors.gray[4]
 					}
 				}), p.A),
-				Ee = b => {
+				_e = I => {
 					let {
 						onClick: F
-					} = b, te = B(b, ["onClick"]);
-					return React.createElement(Z, S({
+					} = I, ne = B(I, ["onClick"]);
+					return React.createElement(Z, D({
 						onClick: ce => {
 							sparrow.sendEvent("navigate footer nav", {
-								destinationPage: te.href
+								destinationPage: ne.href
 							}), F && F(ce)
 						}
-					}, te))
+					}, ne))
 				},
-				de = b => {
+				de = I => {
 					let {
 						children: F,
-						target: te,
+						target: ne,
 						rel: ce
-					} = b, K = B(b, ["children", "target", "rel"]);
-					return o().createElement(ae, S({
-						target: te || "_blank",
+					} = I, G = B(I, ["children", "target", "rel"]);
+					return o().createElement(ae, D({
+						target: ne || "_blank",
 						rel: ce || "noopener noreferrer"
-					}, K), F)
+					}, G), F)
 				},
-				ue = (0, l.createStyledComponent)(({
-					theme: b
+				ue = (0, u.createStyledComponent)(({
+					theme: I
 				}) => ({
 					margin: 0,
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
 					flexWrap: "wrap",
-					gap: (0, _.tq)() ? "8px" : "16px",
+					gap: (0, g.tq)() ? "8px" : "16px",
 					"& > li": {
 						listStyleType: "none",
 						"& > a": {
-							fontSize: b.fontSizes[2],
+							fontSize: I.fontSizes[2],
 							borderLeft: "1px solid",
-							borderLeftColor: b.colors.gray[4],
+							borderLeftColor: I.colors.gray[4],
 							paddingLeft: "16px"
 						},
 						"&:first-child > a": {
@@ -2138,21 +2169,21 @@
 						}
 					}
 				}), p.Ul),
-				V = (0, l.createStyledComponent)(() => ({
+				K = (0, u.createStyledComponent)(() => ({
 					display: "flex",
-					flexDirection: (0, _.tq)() ? "column" : "row",
+					flexDirection: (0, g.tq)() ? "column" : "row",
 					justifyContent: "center",
 					paddingBottom: "16px"
 				}), p.ZC);
-			var G = () => {
-				const b = [N.d.root.pattern].some(te => (0, s.matchPath)(location.pathname, {
-					path: te
+			var H = () => {
+				const I = [S.d.root.pattern].some(ne => (0, s.matchPath)(location.pathname, {
+					path: ne
 				}));
 				if ((0, t.PP)()) return o().createElement(y, null);
-				if (b) return null;
+				if (I) return null;
 				const F = new Date().getFullYear();
 				return o().createElement(p.$_, {
-					height: (0, _.tq)() ? "auto" : 60,
+					height: (0, g.tq)() ? "auto" : 60,
 					bg: "background",
 					borderTop: "1px solid",
 					borderColor: "gray.8",
@@ -2160,7 +2191,7 @@
 					pb: 0,
 					px: [4, 3, 3],
 					mt: "auto"
-				}, o().createElement(V, null, o().createElement(ue, null, o().createElement(p.Li, null, o().createElement(de, {
+				}, o().createElement(K, null, o().createElement(ue, null, o().createElement(p.Li, null, o().createElement(de, {
 					href: "https://support.cloudflare.com"
 				}, (0, r.ZP)("common.support"))), o().createElement(p.Li, null, o().createElement(de, {
 					href: "https://www.cloudflarestatus.com"
@@ -2180,41 +2211,41 @@
 				}, "\xA9 ", F, " Cloudflare, Inc.")))))
 			}
 		},
-		"../react/app/components/Forbidden.jsx": function(x, v, n) {
+		"../react/app/components/Forbidden.jsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../react/app/components/ErrorStatus.tsx"),
 				p = n("../react/utils/translator.tsx");
-			const l = m => o().createElement(s.Z, m, (0, p.ZP)("error.forbidden"));
-			v.Z = l
+			const u = m => o().createElement(s.Z, m, (0, p.ZP)("error.forbidden"));
+			E.Z = u
 		},
-		"../react/app/components/GlobalHeader/AddProductDropdown/index.tsx": function(x, v, n) {
+		"../react/app/components/GlobalHeader/AddProductDropdown/index.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				S: function() {
-					return f
+					return _
 				},
 				Z: function() {
-					return q
+					return J
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/component-icon/es/index.js"),
 				p = n("../node_modules/@cloudflare/elements/es/index.js"),
-				l = n("../node_modules/@cloudflare/component-button/es/index.js"),
+				u = n("../node_modules/@cloudflare/component-button/es/index.js"),
 				m = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
 				i = n("../../../../node_modules/@cloudflare/util-responsive/es/index.js"),
-				u = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				_ = n.n(u),
+				d = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
+				g = n.n(d),
 				t = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				r = n("../react/common/components/AccessControl/index.js"),
 				a = n("../react/common/components/ButtonWithDropdown.tsx"),
-				d = n("../react/common/components/Dropdown/index.tsx"),
+				l = n("../react/common/components/Dropdown/index.tsx"),
 				c = n("../react/utils/translator.tsx"),
-				g = n("../react/common/hooks/useGate.ts");
-			const f = {
+				f = n("../react/common/hooks/useGate.ts");
+			const _ = {
 					ACCOUNT_MEMBERS: "add account members",
 					EXISTING_DOMAIN: "add domain",
 					NEW_DOMAIN: "register domain",
@@ -2223,13 +2254,13 @@
 					WAF_RULESET: "add waf ruleset",
 					WORKERS: "add workers"
 				},
-				A = () => {
-					const $ = (0, g.Z)("super-add-button-copy-change"),
-						X = [{
+				h = () => {
+					const W = (0, f.Z)("super-add-button-copy-change"),
+						q = [{
 							title: {
 								id: "onboarding.add_product.new_domain.title"
 							},
-							trackingEvent: f.NEW_DOMAIN,
+							trackingEvent: _.NEW_DOMAIN,
 							icon: "globe",
 							url: "?to=/:account/registrar/register",
 							description: {
@@ -2239,7 +2270,7 @@
 							title: {
 								id: "apps.workers"
 							},
-							trackingEvent: f.WORKERS,
+							trackingEvent: _.WORKERS,
 							icon: "edgeworker",
 							url: "?to=/:account/workers-and-pages/create",
 							description: {
@@ -2249,7 +2280,7 @@
 							title: {
 								id: "apps.pages"
 							},
-							trackingEvent: f.PAGES,
+							trackingEvent: _.PAGES,
 							icon: "workers-pages",
 							url: "?to=/:account/workers-and-pages/create/pages",
 							description: {
@@ -2259,7 +2290,7 @@
 							title: {
 								id: "onboarding.add_product.r2.title"
 							},
-							trackingEvent: f.R2,
+							trackingEvent: _.R2,
 							icon: "r2",
 							url: "?to=/:account/r2/new",
 							description: {
@@ -2269,7 +2300,7 @@
 							title: {
 								id: "onboarding.add_product.waf_ruleset.title"
 							},
-							trackingEvent: f.WAF_RULESET,
+							trackingEvent: _.WAF_RULESET,
 							icon: "cloudflare-security-application",
 							url: "?to=/:account/application-security/waf/custom/create",
 							description: {
@@ -2279,7 +2310,7 @@
 							title: {
 								id: "onboarding.add_product.account_member.title"
 							},
-							trackingEvent: f.ACCOUNT_MEMBERS,
+							trackingEvent: _.ACCOUNT_MEMBERS,
 							icon: "user-outline",
 							url: "?to=/:account/members/invite",
 							description: {
@@ -2287,78 +2318,78 @@
 							},
 							permissionCheck: "#member:edit"
 						}];
-					switch ($) {
+					switch (W) {
 						case "existing-website-app":
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title.gated.existing_website_app"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
 									id: "onboarding.add_product.existing_domain.description.fast_and_secure"
 								},
 								disableOn: "isZoneVersionLocked"
-							}, ...X];
+							}, ...q];
 						case "existing-site-app":
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title.gated.existing_site_app"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
 									id: "onboarding.add_product.existing_domain.description.fast_and_secure"
 								},
 								disableOn: "isZoneVersionLocked"
-							}, ...X];
+							}, ...q];
 						case "existing-site":
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title.gated.existing_site"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
 									id: "onboarding.add_product.existing_domain.description.fast_and_secure"
 								},
 								disableOn: "isZoneVersionLocked"
-							}, ...X];
+							}, ...q];
 						case "your-website-app":
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title.gated.your_website_app"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
 									id: "onboarding.add_product.existing_domain.description.fast_and_secure"
 								},
 								disableOn: "isZoneVersionLocked"
-							}, ...X];
+							}, ...q];
 						case "your-site-app":
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title.gated.your_site_app"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
 									id: "onboarding.add_product.existing_domain.description.fast_and_secure"
 								},
 								disableOn: "isZoneVersionLocked"
-							}, ...X];
+							}, ...q];
 						default:
 							return [{
 								title: {
 									id: "onboarding.add_product.existing_domain.title"
 								},
-								trackingEvent: f.EXISTING_DOMAIN,
+								trackingEvent: _.EXISTING_DOMAIN,
 								icon: "internet-browser",
 								url: "?to=/:account/add-site",
 								description: {
@@ -2369,7 +2400,7 @@
 								title: {
 									id: "onboarding.add_product.new_domain.title"
 								},
-								trackingEvent: f.NEW_DOMAIN,
+								trackingEvent: _.NEW_DOMAIN,
 								icon: "globe",
 								url: "?to=/:account/registrar/register",
 								description: {
@@ -2379,7 +2410,7 @@
 								title: {
 									id: "onboarding.add_product.waf_ruleset.title"
 								},
-								trackingEvent: f.WAF_RULESET,
+								trackingEvent: _.WAF_RULESET,
 								icon: "cloudflare-security-application",
 								url: "?to=/:account/application-security/waf/custom/create",
 								description: {
@@ -2389,7 +2420,7 @@
 								title: {
 									id: "apps.workers"
 								},
-								trackingEvent: f.WORKERS,
+								trackingEvent: _.WORKERS,
 								icon: "edgeworker",
 								url: "?to=/:account/workers-and-pages/create",
 								description: {
@@ -2399,7 +2430,7 @@
 								title: {
 									id: "apps.pages"
 								},
-								trackingEvent: f.PAGES,
+								trackingEvent: _.PAGES,
 								icon: "workers-pages",
 								url: "?to=/:account/workers-and-pages/create/pages",
 								description: {
@@ -2409,7 +2440,7 @@
 								title: {
 									id: "onboarding.add_product.r2.title"
 								},
-								trackingEvent: f.R2,
+								trackingEvent: _.R2,
 								icon: "r2",
 								url: "?to=/:account/r2/new",
 								description: {
@@ -2419,7 +2450,7 @@
 								title: {
 									id: "onboarding.add_product.account_member.title"
 								},
-								trackingEvent: f.ACCOUNT_MEMBERS,
+								trackingEvent: _.ACCOUNT_MEMBERS,
 								icon: "user-outline",
 								url: "?to=/:account/members/invite",
 								description: {
@@ -2429,11 +2460,11 @@
 							}]
 					}
 				},
-				h = [{
+				A = [{
 					title: {
 						id: "onboarding.add_product.existing_domain.title"
 					},
-					trackingEvent: f.EXISTING_DOMAIN,
+					trackingEvent: _.EXISTING_DOMAIN,
 					icon: "internet-browser",
 					url: "?to=/:account/add-site",
 					description: {
@@ -2444,7 +2475,7 @@
 					title: {
 						id: "onboarding.add_product.new_domain.title"
 					},
-					trackingEvent: f.NEW_DOMAIN,
+					trackingEvent: _.NEW_DOMAIN,
 					icon: "globe",
 					url: "?to=/:account/registrar/register",
 					description: {
@@ -2454,7 +2485,7 @@
 					title: {
 						id: "onboarding.add_product.waf_ruleset.title"
 					},
-					trackingEvent: f.WAF_RULESET,
+					trackingEvent: _.WAF_RULESET,
 					icon: "cloudflare-security-application",
 					url: "?to=/:account/application-security/waf/custom/create",
 					description: {
@@ -2464,7 +2495,7 @@
 					title: {
 						id: "apps.workers"
 					},
-					trackingEvent: f.WORKERS,
+					trackingEvent: _.WORKERS,
 					icon: "edgeworker",
 					url: "?to=/:account/workers-and-pages/create",
 					description: {
@@ -2474,7 +2505,7 @@
 					title: {
 						id: "apps.pages"
 					},
-					trackingEvent: f.PAGES,
+					trackingEvent: _.PAGES,
 					icon: "workers-pages",
 					url: "?to=/:account/workers-and-pages/create/pages",
 					description: {
@@ -2484,7 +2515,7 @@
 					title: {
 						id: "onboarding.add_product.r2.title"
 					},
-					trackingEvent: f.R2,
+					trackingEvent: _.R2,
 					icon: "r2",
 					url: "?to=/:account/r2/new",
 					description: {
@@ -2494,7 +2525,7 @@
 					title: {
 						id: "onboarding.add_product.account_member.title"
 					},
-					trackingEvent: f.ACCOUNT_MEMBERS,
+					trackingEvent: _.ACCOUNT_MEMBERS,
 					icon: "user-outline",
 					url: "?to=/:account/members/invite",
 					description: {
@@ -2504,95 +2535,95 @@
 				}];
 			var T = n("webpack/sharing/consume/default/react-router-dom/react-router-dom");
 
-			function M($) {
-				for (var X = 1; X < arguments.length; X++) {
-					var W = arguments[X] != null ? Object(arguments[X]) : {},
-						ne = Object.keys(W);
-					typeof Object.getOwnPropertySymbols == "function" && ne.push.apply(ne, Object.getOwnPropertySymbols(W).filter(function(ve) {
-						return Object.getOwnPropertyDescriptor(W, ve).enumerable
-					})), ne.forEach(function(ve) {
-						C($, ve, W[ve])
+			function M(W) {
+				for (var q = 1; q < arguments.length; q++) {
+					var $ = arguments[q] != null ? Object(arguments[q]) : {},
+						te = Object.keys($);
+					typeof Object.getOwnPropertySymbols == "function" && te.push.apply(te, Object.getOwnPropertySymbols($).filter(function(Ee) {
+						return Object.getOwnPropertyDescriptor($, Ee).enumerable
+					})), te.forEach(function(Ee) {
+						C(W, Ee, $[Ee])
 					})
+				}
+				return W
+			}
+
+			function C(W, q, $) {
+				return q = y(q), q in W ? Object.defineProperty(W, q, {
+					value: $,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : W[q] = $, W
+			}
+
+			function y(W) {
+				var q = S(W, "string");
+				return typeof q == "symbol" ? q : String(q)
+			}
+
+			function S(W, q) {
+				if (typeof W != "object" || W === null) return W;
+				var $ = W[Symbol.toPrimitive];
+				if ($ !== void 0) {
+					var te = $.call(W, q || "default");
+					if (typeof te != "object") return te;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (q === "string" ? String : Number)(W)
+			}
+
+			function L() {
+				return L = Object.assign ? Object.assign.bind() : function(W) {
+					for (var q = 1; q < arguments.length; q++) {
+						var $ = arguments[q];
+						for (var te in $) Object.prototype.hasOwnProperty.call($, te) && (W[te] = $[te])
+					}
+					return W
+				}, L.apply(this, arguments)
+			}
+
+			function b(W, q) {
+				if (W == null) return {};
+				var $ = P(W, q),
+					te, Ee;
+				if (Object.getOwnPropertySymbols) {
+					var Te = Object.getOwnPropertySymbols(W);
+					for (Ee = 0; Ee < Te.length; Ee++) te = Te[Ee], !(q.indexOf(te) >= 0) && (!Object.prototype.propertyIsEnumerable.call(W, te) || ($[te] = W[te]))
 				}
 				return $
 			}
 
-			function C($, X, W) {
-				return X = y(X), X in $ ? Object.defineProperty($, X, {
-					value: W,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : $[X] = W, $
+			function P(W, q) {
+				if (W == null) return {};
+				var $ = {},
+					te = Object.keys(W),
+					Ee, Te;
+				for (Te = 0; Te < te.length; Te++) Ee = te[Te], !(q.indexOf(Ee) >= 0) && ($[Ee] = W[Ee]);
+				return $
 			}
-
-			function y($) {
-				var X = N($, "string");
-				return typeof X == "symbol" ? X : String(X)
-			}
-
-			function N($, X) {
-				if (typeof $ != "object" || $ === null) return $;
-				var W = $[Symbol.toPrimitive];
-				if (W !== void 0) {
-					var ne = W.call($, X || "default");
-					if (typeof ne != "object") return ne;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (X === "string" ? String : Number)($)
-			}
-
-			function L() {
-				return L = Object.assign ? Object.assign.bind() : function($) {
-					for (var X = 1; X < arguments.length; X++) {
-						var W = arguments[X];
-						for (var ne in W) Object.prototype.hasOwnProperty.call(W, ne) && ($[ne] = W[ne])
-					}
-					return $
-				}, L.apply(this, arguments)
-			}
-
-			function P($, X) {
-				if ($ == null) return {};
-				var W = I($, X),
-					ne, ve;
-				if (Object.getOwnPropertySymbols) {
-					var Te = Object.getOwnPropertySymbols($);
-					for (ve = 0; ve < Te.length; ve++) ne = Te[ve], !(X.indexOf(ne) >= 0) && (!Object.prototype.propertyIsEnumerable.call($, ne) || (W[ne] = $[ne]))
-				}
-				return W
-			}
-
-			function I($, X) {
-				if ($ == null) return {};
-				var W = {},
-					ne = Object.keys($),
-					ve, Te;
-				for (Te = 0; Te < ne.length; Te++) ve = ne[Te], !(X.indexOf(ve) >= 0) && (W[ve] = $[ve]);
-				return W
-			}
-			const O = $ => {
+			const O = W => {
 					let {
-						title: X,
-						trackingEvent: W,
-						icon: ne,
-						url: ve,
+						title: q,
+						trackingEvent: $,
+						icon: te,
+						url: Ee,
 						description: Te,
-						disabled: xe
-					} = $, Ue = P($, ["title", "trackingEvent", "icon", "url", "description", "disabled"]);
-					return o().createElement(S, L({
-						to: !xe && ve || "#",
-						"aria-disabled": xe,
+						disabled: Ue
+					} = W, ke = b(W, ["title", "trackingEvent", "icon", "url", "description", "disabled"]);
+					return o().createElement(D, L({
+						to: !Ue && Ee || "#",
+						"aria-disabled": Ue,
 						onClick: () => {
-							_().sendEvent(W, {
+							g().sendEvent($, {
 								category: "Onboarding",
 								component: "Global add dropdown"
 							})
 						}
-					}, Ue), o().createElement(p.ZC, {
+					}, ke), o().createElement(p.ZC, {
 						display: "flex"
 					}, o().createElement(s.J, {
-						type: ne,
+						type: te,
 						size: 24,
 						mr: 2
 					}), o().createElement(p.ZC, {
@@ -2600,38 +2631,38 @@
 						flexDirection: "column"
 					}, o().createElement(p.ZC, {
 						fontSize: 3
-					}, o().createElement(c.cC, X)), o().createElement(p.ZC, {
+					}, o().createElement(c.cC, q)), o().createElement(p.ZC, {
 						fontSize: 2,
 						color: "gray.4"
 					}, o().createElement(c.cC, Te)))))
 				},
-				S = (0, t.createStyledComponent)(({
-					theme: $
+				D = (0, t.createStyledComponent)(({
+					theme: W
 				}) => {
-					const X = {
+					const q = {
 						cursor: "pointer",
-						backgroundColor: (0, m.Yc)() ? $.colors.gray[8] : $.colors.gray[9],
-						color: $.colors.gray[2]
+						backgroundColor: (0, m.Yc)() ? W.colors.gray[8] : W.colors.gray[9],
+						color: W.colors.gray[2]
 					};
 					return {
 						display: "block",
 						width: "100%",
 						px: 16,
 						py: 8,
-						background: $.colors.background,
-						color: $.colors.gray[2],
-						fontSize: $.fontSizes[2],
+						background: W.colors.background,
+						color: W.colors.gray[2],
+						fontSize: W.fontSizes[2],
 						userSelect: "none",
 						textDecoration: "none",
 						textAlign: "left",
 						borderRadius: "1px",
-						':hover, :focus, :focus-within, :hover:not([aria-disabled="true"])': X,
-						':focus-within:not([aria-disabled="true"])': M({}, X, {
+						':hover, :focus, :focus-within, :hover:not([aria-disabled="true"])': q,
+						':focus-within:not([aria-disabled="true"])': M({}, q, {
 							boxShadow: "none",
 							borderRadius: 0
 						}),
 						':is([aria-disabled="true"])': {
-							color: $.colors.gray[6],
+							color: W.colors.gray[6],
 							cursor: "not-allowed",
 							pointerEvents: "none",
 							opacity: .5
@@ -2641,86 +2672,86 @@
 			var B = O;
 
 			function U() {
-				return U = Object.assign ? Object.assign.bind() : function($) {
-					for (var X = 1; X < arguments.length; X++) {
-						var W = arguments[X];
-						for (var ne in W) Object.prototype.hasOwnProperty.call(W, ne) && ($[ne] = W[ne])
+				return U = Object.assign ? Object.assign.bind() : function(W) {
+					for (var q = 1; q < arguments.length; q++) {
+						var $ = arguments[q];
+						for (var te in $) Object.prototype.hasOwnProperty.call($, te) && (W[te] = $[te])
 					}
-					return $
+					return W
 				}, U.apply(this, arguments)
 			}
 
-			function Z($) {
-				for (var X = 1; X < arguments.length; X++) {
-					var W = arguments[X] != null ? Object(arguments[X]) : {},
-						ne = Object.keys(W);
-					typeof Object.getOwnPropertySymbols == "function" && ne.push.apply(ne, Object.getOwnPropertySymbols(W).filter(function(ve) {
-						return Object.getOwnPropertyDescriptor(W, ve).enumerable
-					})), ne.forEach(function(ve) {
-						ae($, ve, W[ve])
+			function Z(W) {
+				for (var q = 1; q < arguments.length; q++) {
+					var $ = arguments[q] != null ? Object(arguments[q]) : {},
+						te = Object.keys($);
+					typeof Object.getOwnPropertySymbols == "function" && te.push.apply(te, Object.getOwnPropertySymbols($).filter(function(Ee) {
+						return Object.getOwnPropertyDescriptor($, Ee).enumerable
+					})), te.forEach(function(Ee) {
+						ae(W, Ee, $[Ee])
 					})
+				}
+				return W
+			}
+
+			function ae(W, q, $) {
+				return q = _e(q), q in W ? Object.defineProperty(W, q, {
+					value: $,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : W[q] = $, W
+			}
+
+			function _e(W) {
+				var q = de(W, "string");
+				return typeof q == "symbol" ? q : String(q)
+			}
+
+			function de(W, q) {
+				if (typeof W != "object" || W === null) return W;
+				var $ = W[Symbol.toPrimitive];
+				if ($ !== void 0) {
+					var te = $.call(W, q || "default");
+					if (typeof te != "object") return te;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (q === "string" ? String : Number)(W)
+			}
+
+			function ue(W, q) {
+				if (W == null) return {};
+				var $ = K(W, q),
+					te, Ee;
+				if (Object.getOwnPropertySymbols) {
+					var Te = Object.getOwnPropertySymbols(W);
+					for (Ee = 0; Ee < Te.length; Ee++) te = Te[Ee], !(q.indexOf(te) >= 0) && (!Object.prototype.propertyIsEnumerable.call(W, te) || ($[te] = W[te]))
 				}
 				return $
 			}
 
-			function ae($, X, W) {
-				return X = Ee(X), X in $ ? Object.defineProperty($, X, {
-					value: W,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : $[X] = W, $
+			function K(W, q) {
+				if (W == null) return {};
+				var $ = {},
+					te = Object.keys(W),
+					Ee, Te;
+				for (Te = 0; Te < te.length; Te++) Ee = te[Te], !(q.indexOf(Ee) >= 0) && ($[Ee] = W[Ee]);
+				return $
 			}
-
-			function Ee($) {
-				var X = de($, "string");
-				return typeof X == "symbol" ? X : String(X)
-			}
-
-			function de($, X) {
-				if (typeof $ != "object" || $ === null) return $;
-				var W = $[Symbol.toPrimitive];
-				if (W !== void 0) {
-					var ne = W.call($, X || "default");
-					if (typeof ne != "object") return ne;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (X === "string" ? String : Number)($)
-			}
-
-			function ue($, X) {
-				if ($ == null) return {};
-				var W = V($, X),
-					ne, ve;
-				if (Object.getOwnPropertySymbols) {
-					var Te = Object.getOwnPropertySymbols($);
-					for (ve = 0; ve < Te.length; ve++) ne = Te[ve], !(X.indexOf(ne) >= 0) && (!Object.prototype.propertyIsEnumerable.call($, ne) || (W[ne] = $[ne]))
-				}
-				return W
-			}
-
-			function V($, X) {
-				if ($ == null) return {};
-				var W = {},
-					ne = Object.keys($),
-					ve, Te;
-				for (Te = 0; Te < ne.length; Te++) ve = ne[Te], !(X.indexOf(ve) >= 0) && (W[ve] = $[ve]);
-				return W
-			}
-			const Y = "GLOBAL_ADD_DROPDOWN",
-				G = (0, t.createStyledComponent)(({
-					theme: $
+			const Q = "GLOBAL_ADD_DROPDOWN",
+				H = (0, t.createStyledComponent)(({
+					theme: W
 				}) => ({
-					"background-color": $.colors.blue[5]
-				}), l.zx),
-				b = ({
-					disableProducts: $
+					"background-color": W.colors.blue[5]
+				}), u.zx),
+				I = ({
+					disableProducts: W
 				}) => {
-					const X = A();
-					return (0, e.useEffect)(() => (_().sendEvent("open add product dropdown", {
+					const q = h();
+					return (0, e.useEffect)(() => (g().sendEvent("open add product dropdown", {
 						category: "add product dropdown"
 					}), () => {
-						_().sendEvent("close add product dropdown", {
+						g().sendEvent("close add product dropdown", {
 							category: "add product dropdown"
 						})
 					}), []), o().createElement(a.v2, {
@@ -2732,50 +2763,50 @@
 						p: "8px 0",
 						bottom: "auto",
 						zIndex: 1200
-					}, X.map(W => {
-						const ne = W || {},
+					}, q.map($ => {
+						const te = $ || {},
 							{
-								disableOn: ve,
+								disableOn: Ee,
 								permissionCheck: Te
-							} = ne,
-							xe = ue(ne, ["disableOn", "permissionCheck"]),
-							Ue = ve && $[ve],
-							$e = Z({}, xe, {
-								disabled: Ue
+							} = te,
+							Ue = ue(te, ["disableOn", "permissionCheck"]),
+							ke = Ee && W[Ee],
+							xe = Z({}, Ue, {
+								disabled: ke
 							});
 						return Te ? o().createElement(r.Z, {
-							key: W.title.id,
+							key: $.title.id,
 							edit: Te
 						}, ({
 							isEditable: Ke
-						}) => Ke && o().createElement(B, $e)) : o().createElement(B, U({
-							key: W.url
-						}, $e))
+						}) => Ke && o().createElement(B, xe)) : o().createElement(B, U({
+							key: $.url
+						}, xe))
 					}))
 				},
 				F = ({
-					disableProducts: $,
-					topNavType: X
+					disableProducts: W,
+					topNavType: q
 				}) => {
-					const W = () => (0, i.tq)() || X === "icon-only" ? o().createElement(p.ZC, {
+					const $ = () => (0, i.tq)() || q === "icon-only" ? o().createElement(p.ZC, {
 						display: "flex",
 						alignItems: "center",
 						mr: 3
-					}, o().createElement(G, {
+					}, o().createElement(H, {
 						type: "plain",
 						iconType: "plus",
 						iconSize: 24,
 						padding: 1,
 						color: "white"
-					})) : X === "text-icon" || X === "icon-only-with-add-button" ? o().createElement(l.zx, {
+					})) : q === "text-icon" || q === "icon-only-with-add-button" ? o().createElement(u.zx, {
 						type: "primary",
-						mr: X === "icon-only-with-add-button" ? 3 : 0
+						mr: q === "icon-only-with-add-button" ? 3 : 0
 					}, o().createElement(o().Fragment, null, o().createElement(s.J, {
 						label: "plus",
 						type: "plus"
 					}), " ", o().createElement(c.cC, {
 						id: "common.add"
-					}))) : o().createElement(l.zx, {
+					}))) : o().createElement(u.zx, {
 						type: "primary"
 					}, o().createElement(c.cC, {
 						id: "common.add"
@@ -2783,11 +2814,11 @@
 						label: "arrow",
 						type: "caret-down"
 					}));
-					return o().createElement(te, {
+					return o().createElement(ne, {
 						role: "group",
-						"data-testid": Y
-					}, o().createElement(d.Lt, {
-						trigger: X === "baseline" ? o().createElement(ce, null, o().createElement(s.J, {
+						"data-testid": Q
+					}, o().createElement(l.Lt, {
+						trigger: q === "baseline" ? o().createElement(ce, null, o().createElement(s.J, {
 							label: "plus",
 							type: "plus"
 						}), !(0, i.tq)() && o().createElement(o().Fragment, null, o().createElement(c.cC, {
@@ -2795,20 +2826,20 @@
 						}), " ", o().createElement(s.J, {
 							label: "arrow",
 							type: "caret-down"
-						}))) : W(),
-						menu: o().createElement(b, {
-							disableProducts: $
+						}))) : $(),
+						menu: o().createElement(I, {
+							disableProducts: W
 						})
 					}))
 				},
-				te = (0, t.createStyledComponent)(() => ({
+				ne = (0, t.createStyledComponent)(() => ({
 					height: "100%",
 					position: "relative",
 					display: "flex",
 					alignItems: "center"
 				})),
 				ce = (0, t.createStyledComponent)(({
-					theme: $
+					theme: W
 				}) => ({
 					lineHeight: 1,
 					pr: 2,
@@ -2818,50 +2849,50 @@
 					alignItems: "center",
 					gap: 1,
 					borderRadius: 4,
-					borderColor: $.colors.gray[6],
+					borderColor: W.colors.gray[6],
 					borderWidth: 1,
 					borderStyle: "solid",
-					color: (0, m.Yc)() ? $.colors.gray[1] : $.colors.gray[4],
+					color: (0, m.Yc)() ? W.colors.gray[1] : W.colors.gray[4],
 					cursor: "pointer",
 					whiteSpace: "nowrap",
 					backgroundColor: "transparent",
 					mr: 1,
 					padding: 2,
 					"&:hover": {
-						backgroundColor: (0, m.Yc)() ? $.colors.gray[8] : $.colors.gray[9]
+						backgroundColor: (0, m.Yc)() ? W.colors.gray[8] : W.colors.gray[9]
 					}
 				}), p.zx);
-			var K = F,
-				q = K
+			var G = F,
+				J = G
 		},
-		"../react/app/components/LoadingSuspense.tsx": function(x, v, n) {
+		"../react/app/components/LoadingSuspense.tsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/component-loading/es/index.js"),
 				p = n("../node_modules/@cloudflare/elements/es/index.js"),
-				l = n("../react/utils/translator.tsx"),
+				u = n("../react/utils/translator.tsx"),
 				m = n("../react/app/components/ErrorStatus.tsx"),
 				i = n("../react/common/components/EmptyPage.jsx"),
-				u = n("../react/common/hooks/suspenseHelpers.ts");
+				d = n("../react/common/hooks/suspenseHelpers.ts");
 
-			function _(a) {
-				const [d, c] = (0, e.useState)(!1);
+			function g(a) {
+				const [l, c] = (0, e.useState)(!1);
 				return (0, e.useEffect)(() => {
-					const g = window.setTimeout(() => c(!0), a);
-					return () => window.clearTimeout(g)
-				}, []), d
+					const f = window.setTimeout(() => c(!0), a);
+					return () => window.clearTimeout(f)
+				}, []), l
 			}
 			const t = ({
 					loadingTimeout: a = 1e3,
-					stillLoadingTimeout: d = 9e3
+					stillLoadingTimeout: l = 9e3
 				}) => {
-					const c = _(a),
-						g = _(d);
-					if ((0, u.nW)(), !c && !g) return o().createElement(i.Z, null);
-					const f = g ? o().createElement(l.cC, {
+					const c = g(a),
+						f = g(l);
+					if ((0, d.nW)(), !c && !f) return o().createElement(i.Z, null);
+					const _ = f ? o().createElement(u.cC, {
 						id: "common.still_loading"
-					}) : c ? o().createElement(l.cC, {
+					}) : c ? o().createElement(u.cC, {
 						id: "common.loading"
 					}) : null;
 					return o().createElement(m.Z, {
@@ -2870,23 +2901,26 @@
 						mr: 3
 					}, o().createElement(s.g, {
 						size: "2x"
-					})), f)
+					})), _)
 				},
 				r = ({
 					children: a
 				}) => o().createElement(e.Suspense, {
 					fallback: o().createElement(t, null)
 				}, a);
-			v.Z = r
+			E.Z = r
 		},
-		"../react/app/components/Persistence/api.ts": function(x, v, n) {
+		"../react/app/components/Persistence/api.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				C8: function() {
-					return u
+					return d
+				},
+				Sp: function() {
+					return r
 				},
 				dr: function() {
-					return l
+					return u
 				},
 				lt: function() {
 					return m
@@ -2895,7 +2929,7 @@
 					return t
 				},
 				n: function() {
-					return _
+					return g
 				},
 				yl: function() {
 					return p
@@ -2909,82 +2943,102 @@
 						return await (await e.get(s, {
 							hideErrorAlert: !0
 						})).body
-					} catch (r) {
-						console.error(r)
-					}
-				}, l = async r => {
-					try {
-						return await (await e.get(`/accounts/${r}/organizations`, {
-							hideErrorAlert: !0
-						})).body
 					} catch (a) {
 						console.error(a)
 					}
-				}, m = async (r, a) => {
+				}, u = async a => {
+					try {
+						return await (await e.get(`/accounts/${a}/organizations`, {
+							hideErrorAlert: !0
+						})).body
+					} catch (l) {
+						console.error(l)
+					}
+				}, m = async (a, l) => {
 					try {
 						return await (await e.post(`${s}/favorites`, {
 							body: JSON.stringify({
 								type: "zone",
-								name: r,
-								accountId: a
+								name: a,
+								accountId: l
 							}),
 							hideErrorAlert: !0
 						})).body
-					} catch (d) {
-						return console.error(d), []
+					} catch (c) {
+						return console.error(c), []
 					}
-				}, i = async (r, a) => {
+				}, i = async (a, l) => {
 					try {
-						return await http.post(`/accounts/${r}/support/help_form/statusPage/subscribe`, {
+						return await http.post(`/accounts/${a}/support/help_form/statusPage/subscribe`, {
 							body: JSON.stringify({
-								incidentId: a
+								incidentId: l
 							}),
 							hideErrorAlert: !0
 						}), !0
-					} catch (d) {
-						return console.error(d), !1
+					} catch (c) {
+						return console.error(c), !1
 					}
-				}, u = async r => {
+				}, d = async a => {
 					try {
 						return await (await e.post(s, {
 							body: JSON.stringify({
-								darkMode: r
+								darkMode: a
 							})
 						})).body
-					} catch (a) {
-						console.error(a)
+					} catch (l) {
+						console.error(l)
 					}
-				}, _ = async r => {
+				}, g = async a => {
 					try {
 						return await (await e.post(`${s}/recents`, {
-							body: JSON.stringify(r),
+							body: JSON.stringify(a),
 							hideErrorAlert: !0
 						})).body
-					} catch (a) {
-						console.error(a)
+					} catch (l) {
+						console.error(l)
 					}
-				}, t = async r => {
+				}, t = async a => {
 					try {
 						return await (await e.post(`${s}/viewed-changes`, {
-							body: JSON.stringify(r),
+							body: JSON.stringify(a),
 							hideErrorAlert: !0
 						})).body
-					} catch (a) {
-						throw console.error(a), a
+					} catch (l) {
+						throw console.error(l), l
+					}
+				}, r = async a => {
+					try {
+						return await (await e.post(s + "/flags", {
+							body: JSON.stringify(a)
+						})).body
+					} catch (l) {
+						throw console.error(l), l
 					}
 				}
 		},
-		"../react/app/components/Persistence/index.tsx": function(x, v, n) {
+		"../react/app/components/Persistence/hooks.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
+				y: function() {
+					return p
+				}
+			});
+			var e = n("webpack/sharing/consume/default/react/react"),
+				o = n.n(e),
+				s = n("../react/app/components/Persistence/index.tsx");
+			const p = () => (0, e.useContext)(s.lp)
+		},
+		"../react/app/components/Persistence/index.tsx": function(x, E, n) {
+			"use strict";
+			n.d(E, {
 				Wl: function() {
-					return _
+					return g
 				},
 				lp: function() {
-					return f
+					return _
 				},
 				Z_: function() {
-					return h
+					return A
 				},
 				r7: function() {
 					return O
@@ -2993,64 +3047,67 @@
 					return ue
 				},
 				yZ: function() {
-					return T
+					return T.y
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../react/app/redux/index.ts"),
 				p = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				l = n.n(p),
+				u = n.n(p),
 				m = n("../react/utils/bootstrap.ts"),
 				i = n("../react/common/selectors/zoneSelectors.ts"),
-				u = n("../react/app/components/Persistence/api.ts");
-			const _ = 10;
+				d = n("../react/app/components/Persistence/api.ts");
+			const g = 10;
 
-			function t(V) {
-				for (var Y = 1; Y < arguments.length; Y++) {
-					var G = arguments[Y] != null ? Object(arguments[Y]) : {},
-						b = Object.keys(G);
-					typeof Object.getOwnPropertySymbols == "function" && b.push.apply(b, Object.getOwnPropertySymbols(G).filter(function(F) {
-						return Object.getOwnPropertyDescriptor(G, F).enumerable
-					})), b.forEach(function(F) {
-						r(V, F, G[F])
+			function t(K) {
+				for (var Q = 1; Q < arguments.length; Q++) {
+					var H = arguments[Q] != null ? Object(arguments[Q]) : {},
+						I = Object.keys(H);
+					typeof Object.getOwnPropertySymbols == "function" && I.push.apply(I, Object.getOwnPropertySymbols(H).filter(function(F) {
+						return Object.getOwnPropertyDescriptor(H, F).enumerable
+					})), I.forEach(function(F) {
+						r(K, F, H[F])
 					})
 				}
-				return V
+				return K
 			}
 
-			function r(V, Y, G) {
-				return Y = a(Y), Y in V ? Object.defineProperty(V, Y, {
-					value: G,
+			function r(K, Q, H) {
+				return Q = a(Q), Q in K ? Object.defineProperty(K, Q, {
+					value: H,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : V[Y] = G, V
+				}) : K[Q] = H, K
 			}
 
-			function a(V) {
-				var Y = d(V, "string");
-				return typeof Y == "symbol" ? Y : String(Y)
+			function a(K) {
+				var Q = l(K, "string");
+				return typeof Q == "symbol" ? Q : String(Q)
 			}
 
-			function d(V, Y) {
-				if (typeof V != "object" || V === null) return V;
-				var G = V[Symbol.toPrimitive];
-				if (G !== void 0) {
-					var b = G.call(V, Y || "default");
-					if (typeof b != "object") return b;
+			function l(K, Q) {
+				if (typeof K != "object" || K === null) return K;
+				var H = K[Symbol.toPrimitive];
+				if (H !== void 0) {
+					var I = H.call(K, Q || "default");
+					if (typeof I != "object") return I;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (Y === "string" ? String : Number)(V)
+				return (Q === "string" ? String : Number)(K)
 			}
 			const c = {
 					darkMode: "off",
 					emailVerificationRequest: "",
 					favorites: [],
 					recents: {},
-					viewedChanges: []
+					viewedChanges: [],
+					flags: {
+						hasEnabledSecurityNavigation: !1
+					}
 				},
-				g = t({}, c, {
+				f = t({}, c, {
 					isLoading: !0,
 					remainingStarSlots: 10,
 					actions: {
@@ -3059,101 +3116,117 @@
 						isZoneStarred: () => !1,
 						canAccountStarZone: () => !0,
 						logRouteVisited: () => null,
-						viewChange: () => null
+						viewChange: () => null,
+						toggleSecurityNavigation: () => null
 					}
 				}),
-				f = (0, e.createContext)(g),
-				A = f.Consumer,
-				h = ({
-					children: V,
-					onDarkModeChangeCb: Y
+				_ = (0, e.createContext)(f),
+				h = _.Consumer,
+				A = ({
+					children: K,
+					onDarkModeChangeCb: Q
 				}) => {
-					const [G, b] = (0, e.useState)(c), [F, te] = (0, e.useState)(g.isLoading), ce = (0, m.$8)(), K = (0, s.p4)(W => (0, i.wH)(W));
+					const [H, I] = (0, e.useState)(c), [F, ne] = (0, e.useState)(f.isLoading), ce = (0, m.$8)(), G = (0, s.p4)($ => (0, i.wH)($));
 					(0, e.useEffect)(() => {
-						ce ? (0, u.yl)().then(W => {
-							W && (b(W), Y(W.darkMode))
-						}).finally(() => te(!1)) : te(!1)
+						ce ? (0, d.yl)().then($ => {
+							$ && (I($), u().identify({
+								hasEnabledSecurityNavigation: $.flags.hasEnabledSecurityNavigation
+							}), Q($.darkMode))
+						}).finally(() => ne(!1)) : ne(!1)
 					}, [ce]);
-					const q = (W, ne) => !!G.favorites.find(ve => ve.type === "zone" && ve.name === W && ve.accountId === ne),
-						$ = _ - G.favorites.length,
-						X = W => G.favorites.filter(ve => ve.type === "zone" && ve.accountId === W).length < _;
-					return o().createElement(f.Provider, {
-						value: t({}, G, {
+					const J = ($, te) => !!H.favorites.find(Ee => Ee.type === "zone" && Ee.name === $ && Ee.accountId === te),
+						W = g - H.favorites.length,
+						q = $ => H.favorites.filter(Ee => Ee.type === "zone" && Ee.accountId === $).length < g;
+					return o().createElement(_.Provider, {
+						value: t({}, H, {
 							isLoading: F,
-							remainingStarSlots: $,
+							remainingStarSlots: W,
 							actions: {
-								canAccountStarZone: X,
-								isZoneStarred: q,
-								starZone: async (W, ne) => {
-									var ve;
-									const Te = !q(W, ne),
-										xe = X(ne);
-									if (Te && !xe) {
+								canAccountStarZone: q,
+								isZoneStarred: J,
+								starZone: async ($, te) => {
+									var Ee;
+									const Te = !J($, te),
+										Ue = q(te);
+									if (Te && !Ue) {
 										console.log("can not star zone - account is at limit");
 										return
 									}
-									const Ue = await (0, u.lt)(W, ne);
-									l().sendEvent("click star zone", {
+									const ke = await (0, d.lt)($, te);
+									u().sendEvent("click star zone", {
 										isStarring: Te,
-										totalStarredZones: Ue.filter($e => $e.accountId === ne && $e.type === "zone").length,
-										totalZones: K == null || (ve = K.paginationData) === null || ve === void 0 ? void 0 : ve.info.total_count
-									}), b(t({}, G, {
-										favorites: Ue
+										totalStarredZones: ke.filter(xe => xe.accountId === te && xe.type === "zone").length,
+										totalZones: G == null || (Ee = G.paginationData) === null || Ee === void 0 ? void 0 : Ee.info.total_count
+									}), I(t({}, H, {
+										favorites: ke
 									}))
 								},
-								setDarkMode: async W => {
-									const ne = await (0, u.C8)(W);
-									b(ne), Y(ne.darkMode)
+								toggleSecurityNavigation: async $ => {
+									var te;
+									const Ee = H.flags.hasEnabledSecurityNavigation;
+									await (0, d.Sp)({
+										hasEnabledSecurityNavigation: (te = $) !== null && te !== void 0 ? te : !Ee
+									}), u().identify({
+										hasEnabledSecurityNavigation: !Ee
+									}), I(t({}, H, {
+										flags: {
+											hasEnabledSecurityNavigation: !Ee
+										}
+									}))
 								},
-								logRouteVisited: async W => {
-									var ne;
-									const ve = await (0, u.n)(W);
-									b((ne = ve) !== null && ne !== void 0 ? ne : t({}, G))
+								setDarkMode: async $ => {
+									const te = await (0, d.C8)($);
+									I(te), Q(te.darkMode)
 								},
-								viewChange: async W => {
-									const ne = await (0, u.m6)(W);
-									b(t({}, G, {
-										viewedChanges: ne
+								logRouteVisited: async $ => {
+									var te;
+									const Ee = await (0, d.n)($);
+									I((te = Ee) !== null && te !== void 0 ? te : t({}, H))
+								},
+								viewChange: async $ => {
+									const te = await (0, d.m6)($);
+									I(t({}, H, {
+										viewedChanges: te
 									}))
 								}
 							}
 						})
-					}, V)
-				},
-				T = () => (0, e.useContext)(f);
-			var M = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
+					}, K)
+				};
+			var T = n("../react/app/components/Persistence/hooks.ts"),
+				M = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
 				C = n("../../../../node_modules/@cloudflare/component-icon/es/index.js");
 
 			function y() {
-				return y = Object.assign ? Object.assign.bind() : function(V) {
-					for (var Y = 1; Y < arguments.length; Y++) {
-						var G = arguments[Y];
-						for (var b in G) Object.prototype.hasOwnProperty.call(G, b) && (V[b] = G[b])
+				return y = Object.assign ? Object.assign.bind() : function(K) {
+					for (var Q = 1; Q < arguments.length; Q++) {
+						var H = arguments[Q];
+						for (var I in H) Object.prototype.hasOwnProperty.call(H, I) && (K[I] = H[I])
 					}
-					return V
+					return K
 				}, y.apply(this, arguments)
 			}
 
-			function N(V, Y) {
-				if (V == null) return {};
-				var G = L(V, Y),
-					b, F;
+			function S(K, Q) {
+				if (K == null) return {};
+				var H = L(K, Q),
+					I, F;
 				if (Object.getOwnPropertySymbols) {
-					var te = Object.getOwnPropertySymbols(V);
-					for (F = 0; F < te.length; F++) b = te[F], !(Y.indexOf(b) >= 0) && (!Object.prototype.propertyIsEnumerable.call(V, b) || (G[b] = V[b]))
+					var ne = Object.getOwnPropertySymbols(K);
+					for (F = 0; F < ne.length; F++) I = ne[F], !(Q.indexOf(I) >= 0) && (!Object.prototype.propertyIsEnumerable.call(K, I) || (H[I] = K[I]))
 				}
-				return G
+				return H
 			}
 
-			function L(V, Y) {
-				if (V == null) return {};
-				var G = {},
-					b = Object.keys(V),
-					F, te;
-				for (te = 0; te < b.length; te++) F = b[te], !(Y.indexOf(F) >= 0) && (G[F] = V[F]);
-				return G
+			function L(K, Q) {
+				if (K == null) return {};
+				var H = {},
+					I = Object.keys(K),
+					F, ne;
+				for (ne = 0; ne < I.length; ne++) F = I[ne], !(Q.indexOf(F) >= 0) && (H[F] = K[F]);
+				return H
 			}
-			const P = {
+			const b = {
 				light: {
 					gold: "gold.6",
 					gray: "gray.6"
@@ -3163,58 +3236,58 @@
 					gray: "gray.4"
 				}
 			};
-			var O = V => {
+			var O = K => {
 					let {
-						isStarred: Y,
-						size: G = 16
-					} = V, b = N(V, ["isStarred", "size"]);
-					const F = P[(0, M.Yc)() ? "dark" : "light"];
+						isStarred: Q,
+						size: H = 16
+					} = K, I = S(K, ["isStarred", "size"]);
+					const F = b[(0, M.Yc)() ? "dark" : "light"];
 					return o().createElement(C.J, y({
-						type: Y ? "star" : "star-outline",
-						color: Y ? F.gold : F.gray,
-						size: G
-					}, b))
+						type: Q ? "star" : "star-outline",
+						color: Q ? F.gold : F.gray,
+						size: H
+					}, I))
 				},
-				S = n("../node_modules/@cloudflare/elements/es/index.js");
+				D = n("../node_modules/@cloudflare/elements/es/index.js");
 
-			function B(V) {
-				for (var Y = 1; Y < arguments.length; Y++) {
-					var G = arguments[Y] != null ? Object(arguments[Y]) : {},
-						b = Object.keys(G);
-					typeof Object.getOwnPropertySymbols == "function" && b.push.apply(b, Object.getOwnPropertySymbols(G).filter(function(F) {
-						return Object.getOwnPropertyDescriptor(G, F).enumerable
-					})), b.forEach(function(F) {
-						U(V, F, G[F])
+			function B(K) {
+				for (var Q = 1; Q < arguments.length; Q++) {
+					var H = arguments[Q] != null ? Object(arguments[Q]) : {},
+						I = Object.keys(H);
+					typeof Object.getOwnPropertySymbols == "function" && I.push.apply(I, Object.getOwnPropertySymbols(H).filter(function(F) {
+						return Object.getOwnPropertyDescriptor(H, F).enumerable
+					})), I.forEach(function(F) {
+						U(K, F, H[F])
 					})
 				}
-				return V
+				return K
 			}
 
-			function U(V, Y, G) {
-				return Y = Z(Y), Y in V ? Object.defineProperty(V, Y, {
-					value: G,
+			function U(K, Q, H) {
+				return Q = Z(Q), Q in K ? Object.defineProperty(K, Q, {
+					value: H,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : V[Y] = G, V
+				}) : K[Q] = H, K
 			}
 
-			function Z(V) {
-				var Y = ae(V, "string");
-				return typeof Y == "symbol" ? Y : String(Y)
+			function Z(K) {
+				var Q = ae(K, "string");
+				return typeof Q == "symbol" ? Q : String(Q)
 			}
 
-			function ae(V, Y) {
-				if (typeof V != "object" || V === null) return V;
-				var G = V[Symbol.toPrimitive];
-				if (G !== void 0) {
-					var b = G.call(V, Y || "default");
-					if (typeof b != "object") return b;
+			function ae(K, Q) {
+				if (typeof K != "object" || K === null) return K;
+				var H = K[Symbol.toPrimitive];
+				if (H !== void 0) {
+					var I = H.call(K, Q || "default");
+					if (typeof I != "object") return I;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (Y === "string" ? String : Number)(V)
+				return (Q === "string" ? String : Number)(K)
 			}
-			const Ee = {
+			const _e = {
 				light: {
 					default: {
 						border: "gray.8",
@@ -3249,16 +3322,16 @@
 				}
 			};
 			var ue = (0, e.forwardRef)(({
-				featurePreview: V = !1,
-				isStarred: Y,
-				onClickFn: G,
-				isDisabled: b,
+				featurePreview: K = !1,
+				isStarred: Q,
+				onClickFn: H,
+				isDisabled: I,
 				testId: F,
-				buttonText: te,
+				buttonText: ne,
 				size: ce = "large",
-				variant: K = "pill"
-			}, q) => {
-				const [$, X] = (0, e.useState)(!1), W = Ee[(0, M.Yc)() ? "dark" : "light"][Y && !V ? "active" : "default"], ne = B({}, ce === "large" && {
+				variant: G = "pill"
+			}, J) => {
+				const [W, q] = (0, e.useState)(!1), $ = _e[(0, M.Yc)() ? "dark" : "light"][Q && !K ? "active" : "default"], te = B({}, ce === "large" && {
 					starIconSize: 16,
 					fontSize: 3,
 					height: "auto",
@@ -3276,59 +3349,59 @@
 					height: "1.5rem",
 					paddingLeft: "6px",
 					paddingRight: 2
-				}), ve = {
+				}), Ee = {
 					pill: "50vh",
 					button: 4
 				};
-				return o().createElement(S.zx, {
-					onMouseEnter: () => X(!0),
-					onMouseLeave: () => X(!1),
-					innerRef: q,
+				return o().createElement(D.zx, {
+					onMouseEnter: () => q(!0),
+					onMouseLeave: () => q(!1),
+					innerRef: J,
 					display: "inline-flex",
 					alignItems: "center",
 					py: 2,
-					pr: ne.paddingRight,
+					pr: te.paddingRight,
 					gap: 1,
-					pl: ne.paddingLeft,
+					pl: te.paddingLeft,
 					pointerEvents: "inherit",
-					borderRadius: ve[K],
+					borderRadius: Ee[G],
 					border: "1px solid",
-					cursor: V || b ? "default" : "pointer",
-					backgroundColor: $ ? W.bgHover : W.bg,
-					color: W.text,
-					borderColor: W.border,
-					onClick: G,
-					opacity: b ? .5 : 1,
-					disabled: b,
-					fontSize: ne.fontSize,
-					height: ne.height,
+					cursor: K || I ? "default" : "pointer",
+					backgroundColor: W ? $.bgHover : $.bg,
+					color: $.text,
+					borderColor: $.border,
+					onClick: H,
+					opacity: I ? .5 : 1,
+					disabled: I,
+					fontSize: te.fontSize,
+					height: te.height,
 					"data-testid": F
 				}, o().createElement(O, {
-					isStarred: V ? !1 : Y,
-					size: ne.starIconSize
-				}), te)
+					isStarred: K ? !1 : Q,
+					size: te.starIconSize
+				}), ne)
 			})
 		},
-		"../react/app/components/SidebarNav/permissions.ts": function(x, v, n) {
+		"../react/app/components/SidebarNav/permissions.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$n: function() {
-					return d
+					return l
 				},
 				IU: function() {
-					return g
+					return f
 				},
 				Wq: function() {
-					return N
+					return S
 				},
 				dL: function() {
-					return f
+					return _
 				},
 				fO: function() {
 					return y
 				},
 				gw: function() {
-					return P
+					return b
 				},
 				hv: function() {
 					return c
@@ -3337,7 +3410,7 @@
 					return r
 				},
 				jq: function() {
-					return I
+					return P
 				},
 				o_: function() {
 					return T
@@ -3356,98 +3429,98 @@
 				o = n("../react/common/selectors/entitlementsSelectors.ts"),
 				s = n("../react/common/selectors/zoneSelectors.ts"),
 				p = n("../react/common/selectors/accountSelectors.ts"),
-				l = n("../react/utils/zoneLevelAccess.ts"),
+				u = n("../react/utils/zoneLevelAccess.ts"),
 				m = n("../react/pages/stream/selectors.ts"),
 				i = n("../react/pages/home/domain-registration/selectors.ts"),
-				u = n("../react/pages/images/selectors.ts"),
-				_ = n("../react/pages/r2/selectors.ts");
-			const t = O => !!(0, l.b)(O),
+				d = n("../react/pages/images/selectors.ts"),
+				g = n("../react/pages/r2/selectors.ts");
+			const t = O => !!(0, u.b)(O),
 				r = O => t(O) ? (0, e.hT)(O) : !0,
-				a = (O, S, B, U = "read") => {
+				a = (O, D, B, U = "read") => {
 					const Z = (0, s.nA)(O);
-					return t(O) ? (0, e.WL)(O, (0, e.W9)(B, e.ZZ[U]), (0, e.j)(Z == null ? void 0 : Z.id)) : (0, p.Yj)(O)(S)[U]
+					return t(O) ? (0, e.WL)(O, (0, e.W9)(B, e.ZZ[U]), (0, e.j)(Z == null ? void 0 : Z.id)) : (0, p.Yj)(O)(D)[U]
 				},
-				d = (O, S, B, U = "read") => {
+				l = (O, D, B, U = "read") => {
 					const Z = (0, s.nA)(O),
 						ae = e.zs.includes(B);
-					return t(O) ? (0, e.WL)(O, ae ? B : (0, e.my)(B, e.ZZ[U === "edit" ? "update" : U]), (0, e.j)(Z == null ? void 0 : Z.id)) : (0, p.Yj)(O)(S)[U === "update" ? "edit" : U]
+					return t(O) ? (0, e.WL)(O, ae ? B : (0, e.my)(B, e.ZZ[U === "edit" ? "update" : U]), (0, e.j)(Z == null ? void 0 : Z.id)) : (0, p.Yj)(O)(D)[U === "update" ? "edit" : U]
 				},
 				c = O => !!(0, m._Q)(O),
-				g = O => (0, u.pT)(O),
-				f = O => (0, u.pT)(O) && (0, u.GH)(O),
-				A = O => sourcingKitEnabledSelector(O),
-				h = O => !!r2EnabledSelector(O),
-				T = O => (0, _.Mv)(O),
+				f = O => (0, d.pT)(O),
+				_ = O => (0, d.pT)(O) && (0, d.GH)(O),
+				h = O => sourcingKitEnabledSelector(O),
+				A = O => !!r2EnabledSelector(O),
+				T = O => (0, g.Mv)(O),
 				M = O => (0, o.$f)(O, "rulesets.magic_transit_allowed"),
 				C = O => (0, o.$f)(O, "flowtrackd.magic_custom_config_allowed"),
 				y = O => (0, o.$f)(O, "rulesets.fw_global_rulesets_execute_ddos_l4_allowed"),
-				N = O => (0, p.Le)(O, "ddos_protection", "l4_rulesets"),
+				S = O => (0, p.Le)(O, "ddos_protection", "l4_rulesets"),
 				L = O => hasAccountEntitlements(O, ["rulesets.owning_root_rulesets_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed"]),
-				P = O => (0, i.HO)(O),
-				I = O => !(0, o.yD)(O) && !!d(O, "ssl", "ssl.cert")
+				b = O => (0, i.HO)(O),
+				P = O => !(0, o.yD)(O) && !!l(O, "ssl", "ssl.cert")
 		},
-		"../react/app/components/SomethingWrong.jsx": function(x, v, n) {
+		"../react/app/components/SomethingWrong.jsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
 				p = n.n(s),
-				l = n("../../../../node_modules/prop-types/index.js"),
-				m = n.n(l),
+				u = n("../../../../node_modules/prop-types/index.js"),
+				m = n.n(u),
 				i = n("webpack/sharing/consume/default/react-redux/react-redux"),
-				u = n.n(i),
-				_ = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
-				t = n.n(_),
+				d = n.n(i),
+				g = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
+				t = n.n(g),
 				r = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				a = n("../node_modules/@cloudflare/component-button/es/index.js"),
-				d = n("../../../../node_modules/@sentry/react/node_modules/@sentry/browser/esm/sdk.js"),
+				l = n("../../../../node_modules/@sentry/react/node_modules/@sentry/browser/esm/sdk.js"),
 				c = n("../../../../node_modules/@sentry/core/esm/exports.js"),
-				g = n("../../../../node_modules/@cloudflare/component-header/es/index.js"),
-				f = n("../../../../node_modules/@cloudflare/component-logo/es/index.js"),
-				A = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				h = n.n(A),
+				f = n("../../../../node_modules/@cloudflare/component-header/es/index.js"),
+				_ = n("../../../../node_modules/@cloudflare/component-logo/es/index.js"),
+				h = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
+				A = n.n(h),
 				T = n("../react/common/actions/membershipActions.ts"),
 				M = n("../react/utils/url.ts"),
 				C = n("../react/app/components/Footer.tsx");
 
 			function y(ue) {
-				for (var V = 1; V < arguments.length; V++) {
-					var Y = arguments[V] != null ? Object(arguments[V]) : {},
-						G = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && G.push.apply(G, Object.getOwnPropertySymbols(Y).filter(function(b) {
-						return Object.getOwnPropertyDescriptor(Y, b).enumerable
-					})), G.forEach(function(b) {
-						N(ue, b, Y[b])
+				for (var K = 1; K < arguments.length; K++) {
+					var Q = arguments[K] != null ? Object(arguments[K]) : {},
+						H = Object.keys(Q);
+					typeof Object.getOwnPropertySymbols == "function" && H.push.apply(H, Object.getOwnPropertySymbols(Q).filter(function(I) {
+						return Object.getOwnPropertyDescriptor(Q, I).enumerable
+					})), H.forEach(function(I) {
+						S(ue, I, Q[I])
 					})
 				}
 				return ue
 			}
 
-			function N(ue, V, Y) {
-				return V = L(V), V in ue ? Object.defineProperty(ue, V, {
-					value: Y,
+			function S(ue, K, Q) {
+				return K = L(K), K in ue ? Object.defineProperty(ue, K, {
+					value: Q,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : ue[V] = Y, ue
+				}) : ue[K] = Q, ue
 			}
 
 			function L(ue) {
-				var V = P(ue, "string");
-				return typeof V == "symbol" ? V : String(V)
+				var K = b(ue, "string");
+				return typeof K == "symbol" ? K : String(K)
 			}
 
-			function P(ue, V) {
+			function b(ue, K) {
 				if (typeof ue != "object" || ue === null) return ue;
-				var Y = ue[Symbol.toPrimitive];
-				if (Y !== void 0) {
-					var G = Y.call(ue, V || "default");
-					if (typeof G != "object") return G;
+				var Q = ue[Symbol.toPrimitive];
+				if (Q !== void 0) {
+					var H = Q.call(ue, K || "default");
+					if (typeof H != "object") return H;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (V === "string" ? String : Number)(ue)
+				return (K === "string" ? String : Number)(ue)
 			}
-			const I = (0, r.createComponent)(({
+			const P = (0, r.createComponent)(({
 					type: ue
 				}) => ({
 					height: ue !== "fullscreen" ? 451 : "75vh",
@@ -3457,19 +3530,19 @@
 				})),
 				O = (0, r.createComponent)(({
 					theme: ue,
-					margin: V,
-					size: Y = 6
+					margin: K,
+					size: Q = 6
 				}) => ({
 					display: "flex",
 					flexFlow: "column",
 					color: ue.colors.gray[3],
-					height: V ? "auto" : "100%",
-					padding: V ? 0 : ue.space[Y > 1 ? Y - 2 : 0],
-					margin: V,
+					height: K ? "auto" : "100%",
+					padding: K ? 0 : ue.space[Q > 1 ? Q - 2 : 0],
+					margin: K,
 					justifyContent: "center",
 					alignItems: "center"
 				})),
-				S = (0, r.createComponent)(() => ({
+				D = (0, r.createComponent)(() => ({
 					textAlign: "left"
 				})),
 				B = (0, r.createComponent)(() => ({
@@ -3490,7 +3563,7 @@
 				}) => ({
 					fontSize: ue.fontSizes[3]
 				})),
-				Ee = (0, r.createComponent)(({
+				_e = (0, r.createComponent)(({
 					theme: ue
 				}) => ({
 					width: "100%",
@@ -3499,23 +3572,23 @@
 					padding: ue.space[2]
 				}), "textarea");
 			class de extends o().Component {
-				constructor(...V) {
-					super(...V);
-					N(this, "state", {
+				constructor(...K) {
+					super(...K);
+					S(this, "state", {
 						value: "",
 						submitted: !1
-					}), N(this, "handleTextareaChange", Y => {
+					}), S(this, "handleTextareaChange", Q => {
 						this.setState({
-							value: Y.target.value
+							value: Q.target.value
 						})
-					}), N(this, "sendErrToSentry10", async () => {
+					}), S(this, "sendErrToSentry10", async () => {
 						try {
-							var Y, G, b, F;
-							const te = ((Y = window) === null || Y === void 0 || (G = Y.bootstrap) === null || G === void 0 || (b = G.data) === null || b === void 0 || (F = b.user) === null || F === void 0 ? void 0 : F.id) || "Unknown",
-								ce = this.props.eventId || d.eW(),
-								K = {
-									name: te,
-									email: `${te}@userid.com`,
+							var Q, H, I, F;
+							const ne = ((Q = window) === null || Q === void 0 || (H = Q.bootstrap) === null || H === void 0 || (I = H.data) === null || I === void 0 || (F = I.user) === null || F === void 0 ? void 0 : F.id) || "Unknown",
+								ce = this.props.eventId || l.eW(),
+								G = {
+									name: ne,
+									email: `${ne}@userid.com`,
 									comments: this.state.value,
 									eventId: ce,
 									url: window.location.href,
@@ -3530,69 +3603,69 @@
 									Accept: "*/*",
 									"Content-Type": "application/json"
 								},
-								body: JSON.stringify(K)
+								body: JSON.stringify(G)
 							})).ok && this.setState({
 								submitted: !0,
 								value: ""
 							}, () => {
 								setTimeout(() => window.location.href = "/", 5 * 1e3)
 							})
-						} catch (te) {
-							console.error(te)
+						} catch (ne) {
+							console.error(ne)
 						}
-					}), N(this, "handleSubmit", () => {
+					}), S(this, "handleSubmit", () => {
 						this.state.value !== "" && this.sendErrToSentry10()
-					}), N(this, "renderContent", Y => o().createElement(_.I18n, null, G => o().createElement(I, {
-						type: Y
-					}, o().createElement(O, null, o().createElement(S, null, o().createElement(U, null, G.t("error.internal_issues")), o().createElement(Z, null, G.t("error.help_us")), o().createElement(Ee, {
+					}), S(this, "renderContent", Q => o().createElement(g.I18n, null, H => o().createElement(P, {
+						type: Q
+					}, o().createElement(O, null, o().createElement(D, null, o().createElement(U, null, H.t("error.internal_issues")), o().createElement(Z, null, H.t("error.help_us")), o().createElement(_e, {
 						name: "comment",
 						value: this.state.textareaValue,
-						onChange: b => this.handleTextareaChange(b),
+						onChange: I => this.handleTextareaChange(I),
 						disabled: this.state.submitted,
-						placeholder: G.t("error.give_feedback")
+						placeholder: H.t("error.give_feedback")
 					}), o().createElement(B, null, !this.state.submitted && o().createElement(a.zx, {
 						onClick: this.handleSubmit,
 						type: "primary"
-					}, G.t("common.submit")), this.state.submitted && o().createElement(ae, null, G.t("error.feedback_sent"))))))))
+					}, H.t("common.submit")), this.state.submitted && o().createElement(ae, null, H.t("error.feedback_sent"))))))))
 				}
 				async componentDidMount() {
 					const {
-						error: V,
-						sentryTag: Y,
-						membershipsList: G
+						error: K,
+						sentryTag: Q,
+						membershipsList: H
 					} = this.props;
-					console.error(`SomethingWrong: ${V}`);
-					let b = "";
+					console.error(`SomethingWrong: ${K}`);
+					let I = "";
 					const F = (0, M.e1)();
 					if (F) {
-						var te;
-						const K = await G({
+						var ne;
+						const G = await H({
 								parameters: {
 									status: "accepted"
 								}
 							}),
-							q = K == null || (te = K.find($ => $.id === F)) === null || te === void 0 ? void 0 : te.roles;
-						q && q.length && (b = q.join(", "))
+							J = G == null || (ne = G.find(W => W.id === F)) === null || ne === void 0 ? void 0 : ne.roles;
+						J && J.length && (I = J.join(", "))
 					}
-					const ce = `ErrorBoundary - ${V}`;
+					const ce = `ErrorBoundary - ${K}`;
 					c.Tb(ce, {
 						tags: {
-							errorBoundary: Y,
+							errorBoundary: Q,
 							normalizedPath: (0, M.Fl)(window.location.pathname),
-							roles: b.length ? b : void 0
+							roles: I.length ? I : void 0
 						}
-					}), h().sendEvent("something wrong", {
-						error: V,
-						roles: b.length ? b : void 0
+					}), A().sendEvent("something wrong", {
+						error: K,
+						roles: I.length ? I : void 0
 					})
 				}
 				render() {
 					const {
-						type: V
+						type: K
 					} = this.props;
-					return V === "fullscreen" ? o().createElement("div", null, o().createElement(g.h4, null, o().createElement(s.Link, {
+					return K === "fullscreen" ? o().createElement("div", null, o().createElement(f.h4, null, o().createElement(s.Link, {
 						to: "/"
-					}, o().createElement(f.TR, null))), this.renderContent(V), o().createElement(C.Z, null)) : this.renderContent(V)
+					}, o().createElement(_.TR, null))), this.renderContent(K), o().createElement(C.Z, null)) : this.renderContent(K)
 				}
 			}
 			de.propTypes = {
@@ -3601,13 +3674,13 @@
 				eventId: m().string,
 				sentryTag: m().string,
 				membershipsList: m().func
-			}, v.Z = (0, i.connect)(() => ({}), {
+			}, E.Z = (0, i.connect)(() => ({}), {
 				membershipsList: T.YT
 			})(de)
 		},
-		"../react/app/providers/storeContainer.js": function(x, v, n) {
+		"../react/app/providers/storeContainer.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				bh: function() {
 					return B
 				}
@@ -3616,27 +3689,27 @@
 				o = n("../../../../node_modules/redux-logger/dist/redux-logger.js"),
 				s = n.n(o),
 				p = n("../../../../node_modules/redux-thunk/es/index.js"),
-				l = n("../../../../node_modules/redux-persist/es/index.js"),
+				u = n("../../../../node_modules/redux-persist/es/index.js"),
 				m = n("../../../../node_modules/redux-persist/lib/storage/index.js"),
 				i = n("../react/app/rootReducer.js"),
-				u = n("../react/app/redux/normalizer.js"),
-				_ = n("../../../../node_modules/@sentry/react/esm/redux.js"),
+				d = n("../react/app/redux/normalizer.js"),
+				g = n("../../../../node_modules/@sentry/react/esm/redux.js"),
 				t = n("../react/app/providers/sentryTransformer.js"),
 				r = n("../react/app/reducerRegistry.js"),
 				a = n("../../../../node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js"),
-				d = n("../react/common/sagas/index.js"),
+				l = n("../react/common/sagas/index.js"),
 				c = n("../react/app/redux/processActionMiddleware.js"),
-				g = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js"),
-				f = n("../../../../node_modules/is-promise/index.js"),
-				A = n.n(f);
+				f = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js"),
+				_ = n("../../../../node_modules/is-promise/index.js"),
+				h = n.n(_);
 
-			function h(U) {
+			function A(U) {
 				for (var Z = 1; Z < arguments.length; Z++) {
 					var ae = arguments[Z] != null ? Object(arguments[Z]) : {},
-						Ee = Object.keys(ae);
-					typeof Object.getOwnPropertySymbols == "function" && Ee.push.apply(Ee, Object.getOwnPropertySymbols(ae).filter(function(de) {
+						_e = Object.keys(ae);
+					typeof Object.getOwnPropertySymbols == "function" && _e.push.apply(_e, Object.getOwnPropertySymbols(ae).filter(function(de) {
 						return Object.getOwnPropertyDescriptor(ae, de).enumerable
-					})), Ee.forEach(function(de) {
+					})), _e.forEach(function(de) {
 						T(U, de, ae[de])
 					})
 				}
@@ -3661,8 +3734,8 @@
 				if (typeof U != "object" || U === null) return U;
 				var ae = U[Symbol.toPrimitive];
 				if (ae !== void 0) {
-					var Ee = ae.call(U, Z || "default");
-					if (typeof Ee != "object") return Ee;
+					var _e = ae.call(U, Z || "default");
+					if (typeof _e != "object") return _e;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (Z === "string" ? String : Number)(U)
@@ -3672,42 +3745,42 @@
 					storage: m.Z,
 					whitelist: ["accountAccess", "invite"]
 				},
-				N = (0, a.ZP)(),
-				P = [({
+				S = (0, a.ZP)(),
+				b = [({
 					dispatch: U
-				}) => Z => ae => A()(ae) ? ae.then(Ee => U(Ee)) : Z(ae), N, p.Z, c.Z, u.qR],
-				I = U => (0, l.Wq)(y, h({}, i.Z, U));
+				}) => Z => ae => h()(ae) ? ae.then(_e => U(_e)) : Z(ae), S, p.Z, c.Z, d.qR],
+				P = U => (0, u.Wq)(y, A({}, i.Z, U));
 
 			function O() {
 				const U = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__,
-					ae = e.compose((0, e.applyMiddleware)(...P), _.w({
+					ae = e.compose((0, e.applyMiddleware)(...b), g.w({
 						actionTransformer: t.b,
 						stateTransformer: t.O
 					})),
-					Ee = {},
-					de = (0, e.createStore)(I(r.Z.getReducers()), Ee, ae);
-				N.run(d.Z), (0, l.p5)(de);
-				const V = (n.g.bootstrap || {}).data || {};
-				return de.dispatch((0, g.mW)("user", V.user)), de
+					_e = {},
+					de = (0, e.createStore)(P(r.Z.getReducers()), _e, ae);
+				S.run(l.Z), (0, u.p5)(de);
+				const K = (n.g.bootstrap || {}).data || {};
+				return de.dispatch((0, f.mW)("user", K.user)), de
 			}
-			let S;
+			let D;
 			r.Z.setChangeListener(U => {
 				var Z;
-				S && ((Z = S) === null || Z === void 0 ? void 0 : Z.replaceReducer) && (S.replaceReducer(I(U)), (0, l.p5)(S))
+				D && ((Z = D) === null || Z === void 0 ? void 0 : Z.replaceReducer) && (D.replaceReducer(P(U)), (0, u.p5)(D))
 			});
 
 			function B() {
-				return S || (S = O()), S
+				return D || (D = O()), D
 			}
 		},
-		"../react/app/redux/index.ts": function(x, v, n) {
+		"../react/app/redux/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				TZ: function() {
 					return s
 				},
 				UM: function() {
-					return l
+					return u
 				},
 				ZS: function() {
 					return p
@@ -3720,12 +3793,12 @@
 				o = n.n(e);
 			const s = () => (0, e.useStore)(),
 				p = () => s().getState(),
-				l = () => (0, e.useDispatch)(),
+				u = () => (0, e.useDispatch)(),
 				m = e.useSelector
 		},
-		"../react/app/redux/makeAction.js": function(x, v, n) {
+		"../react/app/redux/makeAction.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$J: function() {
 					return a
 				},
@@ -3733,10 +3806,10 @@
 					return r
 				},
 				SC: function() {
-					return _
+					return g
 				},
 				ZP: function() {
-					return d
+					return l
 				},
 				dJ: function() {
 					return t
@@ -3747,85 +3820,85 @@
 				s = n.n(o);
 
 			function p(c) {
-				for (var g = 1; g < arguments.length; g++) {
-					var f = arguments[g] != null ? Object(arguments[g]) : {},
-						A = Object.keys(f);
-					typeof Object.getOwnPropertySymbols == "function" && A.push.apply(A, Object.getOwnPropertySymbols(f).filter(function(h) {
-						return Object.getOwnPropertyDescriptor(f, h).enumerable
-					})), A.forEach(function(h) {
-						l(c, h, f[h])
+				for (var f = 1; f < arguments.length; f++) {
+					var _ = arguments[f] != null ? Object(arguments[f]) : {},
+						h = Object.keys(_);
+					typeof Object.getOwnPropertySymbols == "function" && h.push.apply(h, Object.getOwnPropertySymbols(_).filter(function(A) {
+						return Object.getOwnPropertyDescriptor(_, A).enumerable
+					})), h.forEach(function(A) {
+						u(c, A, _[A])
 					})
 				}
 				return c
 			}
 
-			function l(c, g, f) {
-				return g = m(g), g in c ? Object.defineProperty(c, g, {
-					value: f,
+			function u(c, f, _) {
+				return f = m(f), f in c ? Object.defineProperty(c, f, {
+					value: _,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : c[g] = f, c
+				}) : c[f] = _, c
 			}
 
 			function m(c) {
-				var g = i(c, "string");
-				return typeof g == "symbol" ? g : String(g)
+				var f = i(c, "string");
+				return typeof f == "symbol" ? f : String(f)
 			}
 
-			function i(c, g) {
+			function i(c, f) {
 				if (typeof c != "object" || c === null) return c;
-				var f = c[Symbol.toPrimitive];
-				if (f !== void 0) {
-					var A = f.call(c, g || "default");
-					if (typeof A != "object") return A;
+				var _ = c[Symbol.toPrimitive];
+				if (_ !== void 0) {
+					var h = _.call(c, f || "default");
+					if (typeof h != "object") return h;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (g === "string" ? String : Number)(c)
+				return (f === "string" ? String : Number)(c)
 			}
-			const u = p({}, o),
-				_ = (c, g, f, A = {}) => {
-					const h = c === "delete" ? "del" : c.toLowerCase();
-					return f && h !== "del" && (A.body = f), u[h](g, A)
+			const d = p({}, o),
+				g = (c, f, _, h = {}) => {
+					const A = c === "delete" ? "del" : c.toLowerCase();
+					return _ && A !== "del" && (h.body = _), d[A](f, h)
 				},
-				t = (c, g) => (c.meta.params = g, c),
-				r = (c, g, f, A, {
-					body: h = {}
+				t = (c, f) => (c.meta.params = f, c),
+				r = (c, f, _, h, {
+					body: A = {}
 				}) => {
 					const {
 						result: T,
 						messages: M,
 						result_info: C
-					} = h, y = Object.values(g);
+					} = A, y = Object.values(f);
 					if (c.meta.method === "delete") {
-						const N = y[y.length - 1];
-						c.meta.id = typeof N == "object" ? N.id : N
+						const S = y[y.length - 1];
+						c.meta.id = typeof S == "object" ? S.id : S
 					}
-					return c.payload = T, M && (c.meta.messages = M), y.length && (c.meta.params = g), C && (c.meta.paginationData = {
+					return c.payload = T, M && (c.meta.messages = M), y.length && (c.meta.params = f), C && (c.meta.paginationData = {
 						info: C,
 						actionParameters: y,
-						options: f[0],
+						options: _[0],
 						insertionOffset: 0
 					}), c
 				},
-				a = (c, g, f, A, h) => (c.payload = h && h.body && h.body.errors, c.meta.messages = h && h.body && h.body.messages, c.meta.params = g, c.apiError = h, c);
+				a = (c, f, _, h, A) => (c.payload = A && A.body && A.body.errors, c.meta.messages = A && A.body && A.body.messages, c.meta.params = f, c.apiError = A, c);
 
-			function d(c, g, f, A) {
-				const h = (0, e.RM)(c, g, f, A).apiFetch(_).on("start", t).on("success", r).on("error", a),
-					T = h.mock;
-				return h.mock = M => (T((...C) => {
+			function l(c, f, _, h) {
+				const A = (0, e.RM)(c, f, _, h).apiFetch(g).on("start", t).on("success", r).on("error", a),
+					T = A.mock;
+				return A.mock = M => (T((...C) => {
 					const y = M(...C);
 					return y && typeof y == "object" && "result" in y ? y : {
 						result: y
 					}
-				}), h), h
+				}), A), A
 			}
 		},
-		"../react/app/redux/normalizer.js": function(x, v, n) {
+		"../react/app/redux/normalizer.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				P1: function() {
-					return _
+					return g
 				},
 				jQ: function() {
 					return i
@@ -3834,16 +3907,16 @@
 					return t
 				},
 				uc: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../react/pages/home/alerts/config.tsx"),
 				o = n("../react/pages/workers/entityTypes.ts"),
 				s = n("../react/pages/email/types.ts"),
 				p = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js"),
-				l = n("../../../../node_modules/seamless-immutable/seamless-immutable.production.min.js"),
-				m = n.n(l);
-			const i = l.static.from([{
+				u = n("../../../../node_modules/seamless-immutable/seamless-immutable.production.min.js"),
+				m = n.n(u);
+			const i = u.static.from([{
 					entityType: "accessOrganization"
 				}, {
 					entityType: "access-temp-data"
@@ -4619,13 +4692,13 @@
 					entityType: s.BB.zone,
 					idProp: "tag"
 				}]),
-				u = r => r.entities,
-				_ = (...r) => (0, p.P1)(i, u, ...r),
+				d = r => r.entities,
+				g = (...r) => (0, p.P1)(i, d, ...r),
 				t = (0, p.QB)(i)
 		},
-		"../react/app/redux/utils.ts": function(x, v, n) {
+		"../react/app/redux/utils.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				F: function() {
 					return s
 				},
@@ -4634,17 +4707,17 @@
 				}
 			});
 			var e = n("../react/app/redux/makeAction.js");
-			const o = p => (l, m, i) => (0, e.SC)(l, m, i, {
+			const o = p => (u, m, i) => (0, e.SC)(u, m, i, {
 					hideErrorAlert: !0
 				}).catch(p),
-				s = p => l => {
-					if (l.status === p) return l;
-					throw l
+				s = p => u => {
+					if (u.status === p) return u;
+					throw u
 				}
 		},
-		"../react/common/actionTypes.ts": function(x, v, n) {
+		"../react/common/actionTypes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Cm: function() {
 					return m
 				},
@@ -4655,7 +4728,7 @@
 					return i
 				},
 				Li: function() {
-					return _
+					return g
 				},
 				Ng: function() {
 					return e
@@ -4670,34 +4743,34 @@
 					return p
 				},
 				lV: function() {
-					return l
+					return u
 				},
 				s1: function() {
-					return u
+					return d
 				}
 			});
 			const e = "NOTIFICATION_OPEN",
 				o = "NOTIFICATION_CLOSE",
 				s = "MODAL_OPEN",
 				p = "MODAL_CLOSE",
-				l = "TOGGLE_ON",
+				u = "TOGGLE_ON",
 				m = "TOGGLE_OFF",
 				i = "SET_ACTIVE",
-				u = "CLEAR_ACTIVE",
-				_ = "UPDATE_ACCOUNT_ACCESS",
+				d = "CLEAR_ACTIVE",
+				g = "UPDATE_ACCOUNT_ACCESS",
 				t = "UPDATE_LANGUAGE_PREFERENCE";
 			let r = function(a) {
 				return a.APIKEY = "APIKEY_CAPTCHA_CHALLENGE", a.APITOKEN = "APITOKEN_CAPTCHA_CHALLENGE", a.BILLING_PRE_VERIFICATION = "BILLING_PRE_CC_VERIFICATION_CAPTCHA_CHALLENGE", a.DELETE_USER = "DELETE_USER_CAPTCHA_CHALLENGE", a.EMAIL_ROLLBACK = "EMAIL_ROLLBACK_CAPTCHA_CHALLENGE", a.FORGOT_PASS = "FORGOT_PASS_CAPTCHA_CHALLENGE", a.LOGIN = "LOGIN_CAPTCHA_CHALLENGE", a.ORIGIN_CA_KEY = "ORIGIN_CA_KEY_CHALLENGE", a.SIGNUP = "SIGNUP_CAPTCHA_CHALLENGE", a
 			}({})
 		},
-		"../react/common/actions/membershipActions.ts": function(x, v, n) {
+		"../react/common/actions/membershipActions.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AX: function() {
 					return a
 				},
 				YT: function() {
-					return _
+					return g
 				},
 				ct: function() {
 					return i
@@ -4712,73 +4785,73 @@
 			var e = n("../react/app/redux/makeActionCreator.ts"),
 				o = n("../react/common/constants/index.ts");
 
-			function s(d) {
+			function s(l) {
 				for (var c = 1; c < arguments.length; c++) {
-					var g = arguments[c] != null ? Object(arguments[c]) : {},
-						f = Object.keys(g);
-					typeof Object.getOwnPropertySymbols == "function" && f.push.apply(f, Object.getOwnPropertySymbols(g).filter(function(A) {
-						return Object.getOwnPropertyDescriptor(g, A).enumerable
-					})), f.forEach(function(A) {
-						p(d, A, g[A])
+					var f = arguments[c] != null ? Object(arguments[c]) : {},
+						_ = Object.keys(f);
+					typeof Object.getOwnPropertySymbols == "function" && _.push.apply(_, Object.getOwnPropertySymbols(f).filter(function(h) {
+						return Object.getOwnPropertyDescriptor(f, h).enumerable
+					})), _.forEach(function(h) {
+						p(l, h, f[h])
 					})
 				}
-				return d
+				return l
 			}
 
-			function p(d, c, g) {
-				return c = l(c), c in d ? Object.defineProperty(d, c, {
-					value: g,
+			function p(l, c, f) {
+				return c = u(c), c in l ? Object.defineProperty(l, c, {
+					value: f,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : d[c] = g, d
+				}) : l[c] = f, l
 			}
 
-			function l(d) {
-				var c = m(d, "string");
+			function u(l) {
+				var c = m(l, "string");
 				return typeof c == "symbol" ? c : String(c)
 			}
 
-			function m(d, c) {
-				if (typeof d != "object" || d === null) return d;
-				var g = d[Symbol.toPrimitive];
-				if (g !== void 0) {
-					var f = g.call(d, c || "default");
-					if (typeof f != "object") return f;
+			function m(l, c) {
+				if (typeof l != "object" || l === null) return l;
+				var f = l[Symbol.toPrimitive];
+				if (f !== void 0) {
+					var _ = f.call(l, c || "default");
+					if (typeof _ != "object") return _;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (c === "string" ? String : Number)(d)
+				return (c === "string" ? String : Number)(l)
 			}
-			const i = d => {
-					const c = d.payload.map(g => s({}, g, {
-						membershipId: g.id,
-						id: g.account.id
+			const i = l => {
+					const c = l.payload.map(f => s({}, f, {
+						membershipId: f.id,
+						id: f.account.id
 					}));
-					return s({}, d, {
+					return s({}, l, {
 						payload: c
 					})
 				},
-				u = d => {
-					const c = i(d);
-					return Array.isArray(c.payload) ? s({}, d, {
+				d = l => {
+					const c = i(l);
+					return Array.isArray(c.payload) ? s({}, l, {
 						payload: c.payload[0]
-					}) : s({}, d, {
+					}) : s({}, l, {
 						payload: null
 					})
 				},
-				_ = (0, e.C)("memberships").get`/memberships?no-permissions=1`.on("success", i),
+				g = (0, e.C)("memberships").get`/memberships?no-permissions=1`.on("success", i),
 				t = (0, e.C)("memberships").delete`/memberships/${"id"}`,
-				r = (...d) => ({
+				r = (...l) => ({
 					type: o.UM.MEMBERSHIPS_ROOT_REQUESTED,
 					entityType: "filteredMemberships",
 					url: "/memberships?no-permissions=1",
-					params: d
+					params: l
 				}),
-				a = (0, e.C)("membership").get`/memberships?no-permissions=1`.on("success", u)
+				a = (0, e.C)("membership").get`/memberships?no-permissions=1`.on("success", d)
 		},
-		"../react/common/actions/modalActions.ts": function(x, v, n) {
+		"../react/common/actions/modalActions.ts": function(x, E, n) {
 			"use strict";
-			n.r(v), n.d(v, {
+			n.r(E), n.d(E, {
 				closeModal: function() {
 					return p
 				},
@@ -4791,34 +4864,34 @@
 				replace: !0
 			};
 
-			function s(l, m, i = o) {
+			function s(u, m, i = o) {
 				return {
 					type: e.Np,
 					payload: {
-						ModalComponent: l,
+						ModalComponent: u,
 						props: m
 					},
 					options: i
 				}
 			}
 
-			function p(l) {
+			function p(u) {
 				return {
 					type: e.gM,
 					payload: {
-						ModalComponent: l
+						ModalComponent: u
 					}
 				}
 			}
 		},
-		"../react/common/actions/notificationsActions.ts": function(x, v, n) {
+		"../react/common/actions/notificationsActions.ts": function(x, E, n) {
 			"use strict";
-			n.r(v), n.d(v, {
+			n.r(E), n.d(E, {
 				add: function() {
-					return l
+					return u
 				},
 				error: function() {
-					return _
+					return g
 				},
 				info: function() {
 					return i
@@ -4827,7 +4900,7 @@
 					return m
 				},
 				warn: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../react/common/actionTypes.ts");
@@ -4847,11 +4920,11 @@
 			}
 			let p = 0;
 
-			function l(t, r, a = {}) {
+			function u(t, r, a = {}) {
 				return a = a || {},
-					function(d) {
+					function(l) {
 						let c = p++,
-							g = {
+							f = {
 								id: c,
 								type: t,
 								message: r,
@@ -4859,49 +4932,49 @@
 								persist: a.persist === void 0 ? !1 : a.persist,
 								closable: a.closable === void 0 ? !0 : a.closable,
 								onClose() {
-									d(s(c)), a.onClose && a.onClose.apply(null, arguments)
+									l(s(c)), a.onClose && a.onClose.apply(null, arguments)
 								}
 							};
-						d(o(g))
+						l(o(f))
 					}
 			}
 
 			function m(t, r) {
-				return l("success", t, r)
+				return u("success", t, r)
 			}
 
 			function i(t, r) {
-				return l("info", t, r)
+				return u("info", t, r)
 			}
 
-			function u(t, r) {
-				return l("warning", t, r)
+			function d(t, r) {
+				return u("warning", t, r)
 			}
 
-			function _(t, r) {
-				return l("error", t, r)
+			function g(t, r) {
+				return u("error", t, r)
 			}
 		},
-		"../react/common/actions/userActions.ts": function(x, v, n) {
+		"../react/common/actions/userActions.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				BT: function() {
 					return i
 				},
 				Ut: function() {
-					return A
-				},
-				V_: function() {
 					return h
 				},
+				V_: function() {
+					return A
+				},
 				Y9: function() {
-					return g
+					return f
 				},
 				Z0: function() {
 					return M
 				},
 				mp: function() {
-					return f
+					return _
 				},
 				r3: function() {
 					return T
@@ -4915,96 +4988,96 @@
 
 			function s(C) {
 				for (var y = 1; y < arguments.length; y++) {
-					var N = arguments[y] != null ? Object(arguments[y]) : {},
-						L = Object.keys(N);
-					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(N).filter(function(P) {
-						return Object.getOwnPropertyDescriptor(N, P).enumerable
-					})), L.forEach(function(P) {
-						p(C, P, N[P])
+					var S = arguments[y] != null ? Object(arguments[y]) : {},
+						L = Object.keys(S);
+					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(S).filter(function(b) {
+						return Object.getOwnPropertyDescriptor(S, b).enumerable
+					})), L.forEach(function(b) {
+						p(C, b, S[b])
 					})
 				}
 				return C
 			}
 
-			function p(C, y, N) {
-				return y = l(y), y in C ? Object.defineProperty(C, y, {
-					value: N,
+			function p(C, y, S) {
+				return y = u(y), y in C ? Object.defineProperty(C, y, {
+					value: S,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : C[y] = N, C
+				}) : C[y] = S, C
 			}
 
-			function l(C) {
+			function u(C) {
 				var y = m(C, "string");
 				return typeof y == "symbol" ? y : String(y)
 			}
 
 			function m(C, y) {
 				if (typeof C != "object" || C === null) return C;
-				var N = C[Symbol.toPrimitive];
-				if (N !== void 0) {
-					var L = N.call(C, y || "default");
+				var S = C[Symbol.toPrimitive];
+				if (S !== void 0) {
+					var L = S.call(C, y || "default");
 					if (typeof L != "object") return L;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (y === "string" ? String : Number)(C)
 			}
 			const i = (0, e.C)("user").get`/user`,
-				u = (0, e.C)("user").patch`/user`,
-				_ = (0, e.C)("user").post`/user/create`,
+				d = (0, e.C)("user").patch`/user`,
+				g = (0, e.C)("user").post`/user/create`,
 				t = (0, e.C)("user").put`/user/password`,
 				r = (0, e.C)("user").post`/user/two_factor_authentication`,
 				a = (0, e.C)("user").put`/user/two_factor_authentication`,
-				d = (0, e.C)("user").delete`/user/two_factor_authentication`,
+				l = (0, e.C)("user").delete`/user/two_factor_authentication`,
 				c = (0, e.C)("user").put`/user/email`;
 
-			function g(...C) {
+			function f(...C) {
 				return c(...C)
 			}
-			const f = (0, e.C)("userCommPreferences").get`/user/communication_preferences`,
-				A = (0, e.C)("userCommPreferences").get`/user/communication_preferences`.apiFetch((0, o._)(C => s({}, C, {
+			const _ = (0, e.C)("userCommPreferences").get`/user/communication_preferences`,
+				h = (0, e.C)("userCommPreferences").get`/user/communication_preferences`.apiFetch((0, o._)(C => s({}, C, {
 					body: s({}, C.body, {
 						result: {}
 					})
 				}))),
-				h = (0, e.C)("userCommPreferences").put`/user/communication_preferences`,
+				A = (0, e.C)("userCommPreferences").put`/user/communication_preferences`,
 				T = (0, e.C)("userDetails").get`/user/details`,
 				M = (0, e.C)("userDetails").get`/user/details/two-factor-recovery`
 		},
-		"../react/common/components/AccessCheck/AccessCheck.tsx": function(x, v, n) {
+		"../react/common/components/AccessCheck/AccessCheck.tsx": function(x, E, n) {
 			"use strict";
 			var e = n("../react/common/components/AccessCheck/useAccessCheck.ts"),
 				o = n("../react/utils/zoneLevelAccess.ts");
 			const s = ({
 				legacyPermission: p,
-				canAccess: l,
+				canAccess: u,
 				children: m,
 				render: i
 			}) => {
-				const u = !!(0, o.P)();
-				let _;
-				typeof l == "boolean" && l !== void 0 && u ? _ = {
-					read: l,
-					list: l,
-					create: l,
-					update: l,
-					delete: l,
-					sign: l
-				} : _ = (0, e.Z)(p);
+				const d = !!(0, o.P)();
+				let g;
+				typeof u == "boolean" && u !== void 0 && d ? g = {
+					read: u,
+					list: u,
+					create: u,
+					update: u,
+					delete: u,
+					sign: u
+				} : g = (0, e.Z)(p);
 				const t = i || m;
-				return t ? t(_) : null
+				return t ? t(g) : null
 			};
-			v.Z = s
+			E.Z = s
 		},
-		"../react/common/components/AccessCheck/constants.ts": function(x, v, n) {
+		"../react/common/components/AccessCheck/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				L8: function() {
 					return t
 				},
 				W9: function() {
-					return _
+					return g
 				},
 				ZZ: function() {
 					return m
@@ -5016,32 +5089,32 @@
 					return i
 				},
 				my: function() {
-					return u
+					return d
 				},
 				u1: function() {
 					return e
 				},
 				zs: function() {
-					return l
+					return u
 				}
 			});
 			const e = "com.cloudflare.api.account",
 				o = "com.cloudflare.api.account.",
 				s = "com.cloudflare.edge.",
 				p = "com.cloudflare.api.account.zone.",
-				l = ["com.cloudflare.api.app.manage"];
+				u = ["com.cloudflare.api.app.manage"];
 			let m = function(a) {
 				return a.read = "read", a.list = "list", a.create = "create", a.update = "update", a.delete = "delete", a.sign = "sign", a.refresh = "refresh", a
 			}({});
-			const i = (a, d) => `${o}${a?a+".":""}${d}`,
-				u = (a, d) => `${p}${a?a+".":""}${d}`,
-				_ = (a, d) => `${s}${a}.${d}`,
+			const i = (a, l) => `${o}${a?a+".":""}${l}`,
+				d = (a, l) => `${p}${a?a+".":""}${l}`,
+				g = (a, l) => `${s}${a}.${l}`,
 				t = (a = "") => `${o}${a}`,
 				r = (a = "") => `${p}${a}`
 		},
-		"../react/common/components/AccessCheck/index.ts": function(x, v, n) {
+		"../react/common/components/AccessCheck/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				L8: function() {
 					return p.L8
 				},
@@ -5081,61 +5154,61 @@
 				s = n("../react/common/components/AccessCheck/useAccessResolver.ts"),
 				p = n("../react/common/components/AccessCheck/constants.ts")
 		},
-		"../react/common/components/AccessCheck/useAccessCheck.ts": function(x, v, n) {
+		"../react/common/components/AccessCheck/useAccessCheck.ts": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../react/app/redux/index.ts"),
 				p = n("../react/common/selectors/accountSelectors.ts"),
-				l = n("../react/pages/zone-versioning/selectors.ts");
+				u = n("../react/pages/zone-versioning/selectors.ts");
 
 			function m(i) {
 				const {
-					read: u,
-					edit: _
+					read: d,
+					edit: g
 				} = (0, s.p4)(p.Yj)(i);
-				let t = _;
+				let t = g;
 				if (i != "zone_versioning") {
-					const a = (0, s.p4)(l.G);
+					const a = (0, s.p4)(u.G);
 					(a == null ? void 0 : a.isLocked) && (t = !1)
 				}
 				return (0, e.useMemo)(() => ({
-					read: u,
-					list: u,
+					read: d,
+					list: d,
 					create: t,
 					update: t,
 					delete: t,
 					sign: t
-				}), [u, t])
+				}), [d, t])
 			}
-			v.Z = m
+			E.Z = m
 		},
-		"../react/common/components/AccessCheck/useAccessResolver.ts": function(x, v, n) {
+		"../react/common/components/AccessCheck/useAccessResolver.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				WL: function() {
 					return a
 				},
 				hT: function() {
-					return g
+					return f
 				}
 			});
 			var e = n("../../../../node_modules/lodash-es/set.js"),
 				o = n("../react/common/selectors/accountSelectors.ts"),
 				s = n("../react/pages/home/members/utils.ts"),
 				p = n("../react/common/components/AccessCheck/constants.ts"),
-				l = n("../react/pages/zone-versioning/selectors.ts");
+				u = n("../react/pages/zone-versioning/selectors.ts");
 			const m = {
 					allow: "allow",
 					deny: "deny"
 				},
 				i = 0,
-				u = 1,
-				_ = 2,
+				d = 1,
+				g = 2,
 				t = 3;
 
-			function r(y, N, L, P) {
-				let I = {
+			function r(y, S, L, b) {
+				let P = {
 						read: !1,
 						update: !1,
 						create: !1,
@@ -5145,116 +5218,116 @@
 						refresh: !1
 					},
 					O;
-				for (O in I) I[O] = a(y, `${N}.${O}`, L, P);
-				return I
+				for (O in P) P[O] = a(y, `${S}.${O}`, L, b);
+				return P
 			}
 
-			function a(y, N, L, P) {
-				var I;
-				if (d(N) && !c(N)) {
-					const Z = (0, l.G)(y);
+			function a(y, S, L, b) {
+				var P;
+				if (l(S) && !c(S)) {
+					const Z = (0, u.G)(y);
 					if (Z == null ? void 0 : Z.isLocked) return !1
 				}
-				const O = (I = (0, o.D0)(y)) === null || I === void 0 ? void 0 : I.id,
-					S = O ? [`com.cloudflare.api.account.${O}`] : void 0,
+				const O = (P = (0, o.D0)(y)) === null || P === void 0 ? void 0 : P.id,
+					D = O ? [`com.cloudflare.api.account.${O}`] : void 0,
 					B = (0, s.vq)(O);
-				return !!f(y, B, N, L, P || S)
+				return !!_(y, B, S, L, b || D)
 			}
 
-			function d(y) {
-				return ![p.ZZ.read, p.ZZ.list].some(N => y.endsWith(N))
+			function l(y) {
+				return ![p.ZZ.read, p.ZZ.list].some(S => y.endsWith(S))
 			}
 
 			function c(y) {
 				return y.includes("zone.versioning")
 			}
 
-			function g(y) {
-				const N = (0, o.Ko)(y);
+			function f(y) {
+				const S = (0, o.Ko)(y);
 				let L = !1;
-				return N == null || N.forEach(P => {
-					P.access === m.allow && P.permission_groups.forEach(I => {
+				return S == null || S.forEach(b => {
+					b.access === m.allow && b.permission_groups.forEach(P => {
 						var O;
-						(I == null || (O = I.meta) === null || O === void 0 ? void 0 : O.scopes) === p.u1 && (L = !0)
+						(P == null || (O = P.meta) === null || O === void 0 ? void 0 : O.scopes) === p.u1 && (L = !0)
 					})
 				}), L
 			}
 
-			function f(y, N, L, P, I) {
+			function _(y, S, L, b, P) {
 				const O = (0, o.Ko)(y),
-					S = {};
+					D = {};
 				O == null || O.forEach(ae => {
-					var Ee;
+					var _e;
 					const de = ae.access;
 					let ue = i;
-					if (L && ae.permission_groups.forEach(V => {
-							var Y, G;
-							N == null || (Y = N.find(b => b.id === V.id)) === null || Y === void 0 || (G = Y.permissions) === null || G === void 0 || G.forEach(b => {
-								ue = Math.max(ue, A(b, L))
+					if (L && ae.permission_groups.forEach(K => {
+							var Q, H;
+							S == null || (Q = S.find(I => I.id === K.id)) === null || Q === void 0 || (H = Q.permissions) === null || H === void 0 || H.forEach(I => {
+								ue = Math.max(ue, h(I, L))
 							})
-						}), ue !== i && !!P) {
-						let V = i;
-						ae.resource_groups.forEach(Y => {
-							V = Math.max(V, T(Y.scope, P, I))
-						}), ue = V === i ? V : ue + V
-					}(S == null || (Ee = S[de]) === null || Ee === void 0 ? void 0 : Ee[ue]) || (0, e.Z)(S, [de, ue], []), S[de][ue].push(ae)
+						}), ue !== i && !!b) {
+						let K = i;
+						ae.resource_groups.forEach(Q => {
+							K = Math.max(K, T(Q.scope, b, P))
+						}), ue = K === i ? K : ue + K
+					}(D == null || (_e = D[de]) === null || _e === void 0 ? void 0 : _e[ue]) || (0, e.Z)(D, [de, ue], []), D[de][ue].push(ae)
 				});
-				const B = S[m.allow] && Object.keys(S[m.allow]).map(ae => parseInt(ae)),
-					U = S[m.deny] && Object.keys(S[m.deny]).map(ae => parseInt(ae)),
+				const B = D[m.allow] && Object.keys(D[m.allow]).map(ae => parseInt(ae)),
+					U = D[m.deny] && Object.keys(D[m.deny]).map(ae => parseInt(ae)),
 					Z = Math.max.apply(Math, B);
-				return Z === i || Math.max.apply(Math, U) >= Z ? null : S[m.allow][Z]
+				return Z === i || Math.max.apply(Math, U) >= Z ? null : D[m.allow][Z]
 			}
 
-			function A(y, N) {
-				if (y.key === N || h(y.key, N)) return t;
+			function h(y, S) {
+				if (y.key === S || A(y.key, S)) return t;
 				for (const L of (y == null ? void 0 : y.implies) || []) {
-					let P = A(L, N);
-					if (P > i) return P
+					let b = h(L, S);
+					if (b > i) return b
 				}
 				return i
 			}
 
-			function h(y, N) {
-				const L = N == null ? void 0 : N.lastIndexOf(".");
-				return L === -1 ? !1 : (N == null ? void 0 : N.substring(0, L)) + ".*" === y
+			function A(y, S) {
+				const L = S == null ? void 0 : S.lastIndexOf(".");
+				return L === -1 ? !1 : (S == null ? void 0 : S.substring(0, L)) + ".*" === y
 			}
 
-			function T(y, N, L) {
-				var P;
-				let I = i;
-				if (y == null || (P = y.objects) === null || P === void 0 || P.forEach(O => {
-						I = Math.max(I, C(O, N))
-					}), I === i) return I;
+			function T(y, S, L) {
+				var b;
+				let P = i;
+				if (y == null || (b = y.objects) === null || b === void 0 || b.forEach(O => {
+						P = Math.max(P, C(O, S))
+					}), P === i) return P;
 				if (y.key !== "*") switch (!0) {
 					case M(y.key, L) > i:
-					case (!(L == null ? void 0 : L.length) && I === t):
+					case (!(L == null ? void 0 : L.length) && P === t):
 						break;
-					case (I === u && M(y.key, [N]) > i):
-						I = M(y.key, [N]);
+					case (P === d && M(y.key, [S]) > i):
+						P = M(y.key, [S]);
 						break;
 					default:
 						return i
 				}
 				for (const O of y.subset_of || [])
 					if (M(O.key, L) === i) return i;
-				return I
+				return P
 			}
 
-			function M(y, N = []) {
-				for (const L of N || []) {
+			function M(y, S = []) {
+				for (const L of S || []) {
 					if (y === L) return t;
-					if (h(y, L)) return _
+					if (A(y, L)) return g
 				}
 				return i
 			}
 
-			function C(y, N) {
-				return y.key === N ? t : y.key === "*" ? u : h(y.key, N) ? _ : i
+			function C(y, S) {
+				return y.key === S ? t : y.key === "*" ? d : A(y.key, S) ? g : i
 			}
 		},
-		"../react/common/components/AccessControl/SAAConnect.js": function(x, v, n) {
+		"../react/common/components/AccessControl/SAAConnect.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				a: function() {
 					return p
 				}
@@ -5271,89 +5344,89 @@
 						value: i[1]
 					}
 				},
-				l = (m, i) => {
+				u = (m, i) => {
 					const {
-						resourceId: u,
-						accountId: _,
+						resourceId: d,
+						accountId: g,
 						legacyPermission: t
 					} = i;
 					let {
 						read: r,
 						edit: a
 					} = i;
-					const d = {};
+					const l = {};
 					t && (a = `#${t}:edit`, r = `#${t}:read`);
-					const c = u || _;
+					const c = d || g;
 					if (r) {
-						const g = Array.isArray(r) ? r : [r];
-						d.isReadable = g.some(f => {
-							const A = p(f);
-							return (0, s.DT)(m, c, h => !!(h[A.key] && h[A.key][A.value]))
+						const f = Array.isArray(r) ? r : [r];
+						l.isReadable = f.some(_ => {
+							const h = p(_);
+							return (0, s.DT)(m, c, A => !!(A[h.key] && A[h.key][h.value]))
 						})
 					}
 					if (a) {
-						const g = Array.isArray(a) ? a : [a];
-						d.isEditable = g.some(f => {
-							const A = p(f);
-							return (0, s.DT)(m, c, h => !!(h[A.key] && h[A.key][A.value]))
+						const f = Array.isArray(a) ? a : [a];
+						l.isEditable = f.some(_ => {
+							const h = p(_);
+							return (0, s.DT)(m, c, A => !!(A[h.key] && A[h.key][h.value]))
 						})
 					}
-					return d
+					return l
 				};
-			v.Z = (0, e.connect)(l)
+			E.Z = (0, e.connect)(u)
 		},
-		"../react/common/components/AccessControl/index.js": function(x, v, n) {
+		"../react/common/components/AccessControl/index.js": function(x, E, n) {
 			"use strict";
 			var e = n("../../../../node_modules/prop-types/index.js"),
 				o = n.n(e),
 				s = n("../react/app/HoCs/withEntities.tsx"),
 				p = n("../react/common/components/AccessControl/SAAConnect.js");
 
-			function l(r) {
+			function u(r) {
 				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						c = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(d).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(d, g).enumerable
-					})), c.forEach(function(g) {
-						m(r, g, d[g])
+					var l = arguments[a] != null ? Object(arguments[a]) : {},
+						c = Object.keys(l);
+					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(l).filter(function(f) {
+						return Object.getOwnPropertyDescriptor(l, f).enumerable
+					})), c.forEach(function(f) {
+						m(r, f, l[f])
 					})
 				}
 				return r
 			}
 
-			function m(r, a, d) {
+			function m(r, a, l) {
 				return a = i(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
+					value: l,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : r[a] = d, r
+				}) : r[a] = l, r
 			}
 
 			function i(r) {
-				var a = u(r, "string");
+				var a = d(r, "string");
 				return typeof a == "symbol" ? a : String(a)
 			}
 
-			function u(r, a) {
+			function d(r, a) {
 				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var c = d.call(r, a || "default");
+				var l = r[Symbol.toPrimitive];
+				if (l !== void 0) {
+					var c = l.call(r, a || "default");
 					if (typeof c != "object") return c;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (a === "string" ? String : Number)(r)
 			}
 
-			function _(r) {
-				const d = ["isReadable", "isEditable"].reduce((c, g) => r.hasOwnProperty(g) ? l({}, c, {
-					[g]: r[g]
+			function g(r) {
+				const l = ["isReadable", "isEditable"].reduce((c, f) => r.hasOwnProperty(f) ? u({}, c, {
+					[f]: r[f]
 				}) : c, {});
-				return r.children(d)
+				return r.children(l)
 			}
-			_.propTypes = {
+			g.propTypes = {
 				resourceType: o().string,
 				resourceId: o().string,
 				read: o().oneOfType([o().string, o().array]),
@@ -5363,12 +5436,12 @@
 				isEditable: o().bool,
 				children: o().func
 			};
-			const t = (0, s.Z)((0, p.Z)(_));
-			t.displayName = "AccessControl", v.Z = t
+			const t = (0, s.Z)((0, p.Z)(g));
+			t.displayName = "AccessControl", E.Z = t
 		},
-		"../react/common/components/Apple/utils.tsx": function(x, v, n) {
+		"../react/common/components/Apple/utils.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				PP: function() {
 					return r
 				},
@@ -5383,122 +5456,122 @@
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				p = n("../react/pages/onboarding/components/AppleLogin/constants.ts"),
-				l = n("../../../../node_modules/@cloudflare/style-const/es/index.js");
-			const m = () => u.test(window.location.pathname) || s.E.has(p.Qq),
+				u = n("../../../../node_modules/@cloudflare/style-const/es/index.js");
+			const m = () => d.test(window.location.pathname) || s.E.has(p.Qq),
 				i = () => s.E.get(p.Qq),
-				u = /^\/login\/apple(\/)?/,
-				t = [u, /^\/[a-zA-Z0-9]+\/registrar\/register\/checkout$/, /^\/$/, /^\/email-verification-info(\/)?/],
+				d = /^\/login\/apple(\/)?/,
+				t = [d, /^\/[a-zA-Z0-9]+\/registrar\/register\/checkout$/, /^\/$/, /^\/email-verification-info(\/)?/],
 				r = () => {
-					let d = !1;
-					t.forEach(g => {
-						if (g.test(window.location.pathname)) {
-							d = !0;
+					let l = !1;
+					t.forEach(f => {
+						if (f.test(window.location.pathname)) {
+							l = !0;
 							return
 						}
 					});
-					const c = m() && d;
-					return c && (0, l.C8)(l.LF.OFF), c
+					const c = m() && l;
+					return c && (0, u.C8)(u.LF.OFF), c
 				},
-				a = d => {
-					d && o().sendEvent("launch icloud registrar onboarding", {
+				a = l => {
+					l && o().sendEvent("launch icloud registrar onboarding", {
 						category: "icloud registrar",
 						method: "iCloud SSO"
 					});
 					let c = "https://oidc.iam.cfapi.net/api/v1/sso/init?client=apple&env=production";
-					d && (c = c + `&jwt=${d}`), window.location.href = c
+					l && (c = c + `&jwt=${l}`), window.location.href = c
 				}
 		},
-		"../react/common/components/ButtonWithDropdown.tsx": function(x, v, n) {
+		"../react/common/components/ButtonWithDropdown.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				oG: function() {
 					return c
 				},
 				sN: function() {
-					return u.sN
+					return d.sN
 				},
 				v2: function() {
-					return u.v2
+					return d.v2
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../node_modules/@cloudflare/component-button/es/index.js"),
 				p = n("../../../../node_modules/@cloudflare/component-icon/es/index.js"),
-				l = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
-				m = n.n(l),
+				u = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
+				m = n.n(u),
 				i = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
-				u = n("../react/common/components/Dropdown/index.tsx"),
-				_ = n("../../../../node_modules/@cloudflare/style-const/es/index.js");
+				d = n("../react/common/components/Dropdown/index.tsx"),
+				g = n("../../../../node_modules/@cloudflare/style-const/es/index.js");
 
 			function t() {
-				return t = Object.assign ? Object.assign.bind() : function(g) {
-					for (var f = 1; f < arguments.length; f++) {
-						var A = arguments[f];
-						for (var h in A) Object.prototype.hasOwnProperty.call(A, h) && (g[h] = A[h])
+				return t = Object.assign ? Object.assign.bind() : function(f) {
+					for (var _ = 1; _ < arguments.length; _++) {
+						var h = arguments[_];
+						for (var A in h) Object.prototype.hasOwnProperty.call(h, A) && (f[A] = h[A])
 					}
-					return g
+					return f
 				}, t.apply(this, arguments)
 			}
 
-			function r(g, f) {
-				if (g == null) return {};
-				var A = a(g, f),
-					h, T;
+			function r(f, _) {
+				if (f == null) return {};
+				var h = a(f, _),
+					A, T;
 				if (Object.getOwnPropertySymbols) {
-					var M = Object.getOwnPropertySymbols(g);
-					for (T = 0; T < M.length; T++) h = M[T], !(f.indexOf(h) >= 0) && (!Object.prototype.propertyIsEnumerable.call(g, h) || (A[h] = g[h]))
+					var M = Object.getOwnPropertySymbols(f);
+					for (T = 0; T < M.length; T++) A = M[T], !(_.indexOf(A) >= 0) && (!Object.prototype.propertyIsEnumerable.call(f, A) || (h[A] = f[A]))
 				}
-				return A
+				return h
 			}
 
-			function a(g, f) {
-				if (g == null) return {};
-				var A = {},
-					h = Object.keys(g),
+			function a(f, _) {
+				if (f == null) return {};
+				var h = {},
+					A = Object.keys(f),
 					T, M;
-				for (M = 0; M < h.length; M++) T = h[M], !(f.indexOf(T) >= 0) && (A[T] = g[T]);
-				return A
+				for (M = 0; M < A.length; M++) T = A[M], !(_.indexOf(T) >= 0) && (h[T] = f[T]);
+				return h
 			}
-			const d = (0, i.createStyledComponent)(({
-				theme: g
+			const l = (0, i.createStyledComponent)(({
+				theme: f
 			}) => ({
 				display: "inline-flex",
 				"& > button:first-child": {
-					borderRadius: `${g.radii[2]}px 0 0 ${g.radii[2]}px`,
-					borderRight: `1px solid ${g.colors.gray[8]}`
+					borderRadius: `${f.radii[2]}px 0 0 ${f.radii[2]}px`,
+					borderRight: `1px solid ${f.colors.gray[8]}`
 				},
 				"& > :last-child": {
 					display: "flex"
 				},
 				"& > :last-child > button": {
-					borderRadius: `0 ${g.radii[2]}px ${g.radii[2]}px 0`,
-					paddingRight: g.space[2],
-					paddingLeft: g.space[2]
+					borderRadius: `0 ${f.radii[2]}px ${f.radii[2]}px 0`,
+					paddingRight: f.space[2],
+					paddingLeft: f.space[2]
 				},
 				"& button": {
-					color: (0, _.Yc)() ? g.colors.text : void 0
+					color: (0, g.Yc)() ? f.colors.text : void 0
 				},
 				"& button:hover": {
-					color: (0, _.Yc)() ? g.colors.text : void 0
+					color: (0, g.Yc)() ? f.colors.text : void 0
 				}
 			}));
 
-			function c(g) {
+			function c(f) {
 				let {
-					menu: f,
-					containerProps: A,
-					disabled: h,
-					disabledDropdown: T = h
-				} = g, M = r(g, ["menu", "containerProps", "disabled", "disabledDropdown"]);
+					menu: _,
+					containerProps: h,
+					disabled: A,
+					disabledDropdown: T = A
+				} = f, M = r(f, ["menu", "containerProps", "disabled", "disabledDropdown"]);
 				const {
 					t: C
-				} = (0, l.useI18n)();
-				return o().createElement(d, t({}, A, {
+				} = (0, u.useI18n)();
+				return o().createElement(l, t({}, h, {
 					role: "group"
 				}), o().createElement(s.zx, t({}, M, {
-					disabled: h
-				})), o().createElement(u.Lt, {
+					disabled: A
+				})), o().createElement(d.Lt, {
 					trigger: o().createElement(s.zx, {
 						type: M.type,
 						"aria-haspopup": "menu",
@@ -5508,13 +5581,13 @@
 						label: C("common.more"),
 						size: 12
 					})),
-					menu: f
+					menu: _
 				}))
 			}
 		},
-		"../react/common/components/Dropdown/Menu.tsx": function(x, v, n) {
+		"../react/common/components/Dropdown/Menu.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				v: function() {
 					return i
 				}
@@ -5523,43 +5596,43 @@
 				o = n.n(e),
 				s = n("../node_modules/@cloudflare/elements/es/index.js"),
 				p = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
-				l = n("../react/common/hooks/useIntersectionObserver.ts");
+				u = n("../react/common/hooks/useIntersectionObserver.ts");
 
 			function m() {
-				return m = Object.assign ? Object.assign.bind() : function(u) {
-					for (var _ = 1; _ < arguments.length; _++) {
-						var t = arguments[_];
-						for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && (u[r] = t[r])
+				return m = Object.assign ? Object.assign.bind() : function(d) {
+					for (var g = 1; g < arguments.length; g++) {
+						var t = arguments[g];
+						for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && (d[r] = t[r])
 					}
-					return u
+					return d
 				}, m.apply(this, arguments)
 			}
 
-			function i(u) {
-				const _ = (0, e.useRef)(null),
+			function i(d) {
+				const g = (0, e.useRef)(null),
 					[t, r] = (0, e.useState)(!1);
 				(0, e.useLayoutEffect)(() => {
-					const d = _.current;
-					if (d) {
+					const l = g.current;
+					if (l) {
 						const {
 							bottom: c
-						} = d.getBoundingClientRect();
+						} = l.getBoundingClientRect();
 						c > window.innerHeight && r(!0)
 					}
 				}, []);
-				const a = (0, l.S)(d => {
-					for (const c of d) c.intersectionRatio < 1 && r(!0)
+				const a = (0, u.S)(l => {
+					for (const c of l) c.intersectionRatio < 1 && r(!0)
 				}, {
 					threshold: [0, 1]
 				});
 				return (0, e.useEffect)(() => {
-					const d = _.current;
-					if (d && a) return a.observe(d), () => {
-						a.unobserve(d)
+					const l = g.current;
+					if (l && a) return a.observe(l), () => {
+						a.unobserve(l)
 					}
 				}, [a]), o().createElement(s.ZC, m({
 					role: "menu",
-					innerRef: _,
+					innerRef: g,
 					position: "absolute",
 					right: "0",
 					backgroundColor: p.rS.colors.background,
@@ -5581,168 +5654,168 @@
 				}, {
 					zIndex: 1e3,
 					minWidth: 170
-				}, u))
+				}, d))
 			}
 		},
-		"../react/common/components/Dropdown/MenuItem.tsx": function(x, v, n) {
+		"../react/common/components/Dropdown/MenuItem.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				s: function() {
-					return f
+					return _
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				p = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
-				l = n.n(p);
+				u = n.n(p);
 
 			function m() {
-				return m = Object.assign ? Object.assign.bind() : function(A) {
-					for (var h = 1; h < arguments.length; h++) {
-						var T = arguments[h];
-						for (var M in T) Object.prototype.hasOwnProperty.call(T, M) && (A[M] = T[M])
+				return m = Object.assign ? Object.assign.bind() : function(h) {
+					for (var A = 1; A < arguments.length; A++) {
+						var T = arguments[A];
+						for (var M in T) Object.prototype.hasOwnProperty.call(T, M) && (h[M] = T[M])
 					}
-					return A
+					return h
 				}, m.apply(this, arguments)
 			}
 
-			function i(A, h) {
-				if (A == null) return {};
-				var T = u(A, h),
+			function i(h, A) {
+				if (h == null) return {};
+				var T = d(h, A),
 					M, C;
 				if (Object.getOwnPropertySymbols) {
-					var y = Object.getOwnPropertySymbols(A);
-					for (C = 0; C < y.length; C++) M = y[C], !(h.indexOf(M) >= 0) && (!Object.prototype.propertyIsEnumerable.call(A, M) || (T[M] = A[M]))
+					var y = Object.getOwnPropertySymbols(h);
+					for (C = 0; C < y.length; C++) M = y[C], !(A.indexOf(M) >= 0) && (!Object.prototype.propertyIsEnumerable.call(h, M) || (T[M] = h[M]))
 				}
 				return T
 			}
 
-			function u(A, h) {
-				if (A == null) return {};
+			function d(h, A) {
+				if (h == null) return {};
 				var T = {},
-					M = Object.keys(A),
+					M = Object.keys(h),
 					C, y;
-				for (y = 0; y < M.length; y++) C = M[y], !(h.indexOf(C) >= 0) && (T[C] = A[C]);
+				for (y = 0; y < M.length; y++) C = M[y], !(A.indexOf(C) >= 0) && (T[C] = h[C]);
 				return T
 			}
 
-			function _(A) {
-				for (var h = 1; h < arguments.length; h++) {
-					var T = arguments[h] != null ? Object(arguments[h]) : {},
+			function g(h) {
+				for (var A = 1; A < arguments.length; A++) {
+					var T = arguments[A] != null ? Object(arguments[A]) : {},
 						M = Object.keys(T);
 					typeof Object.getOwnPropertySymbols == "function" && M.push.apply(M, Object.getOwnPropertySymbols(T).filter(function(C) {
 						return Object.getOwnPropertyDescriptor(T, C).enumerable
 					})), M.forEach(function(C) {
-						t(A, C, T[C])
+						t(h, C, T[C])
 					})
 				}
-				return A
+				return h
 			}
 
-			function t(A, h, T) {
-				return h = r(h), h in A ? Object.defineProperty(A, h, {
+			function t(h, A, T) {
+				return A = r(A), A in h ? Object.defineProperty(h, A, {
 					value: T,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[h] = T, A
+				}) : h[A] = T, h
 			}
 
-			function r(A) {
-				var h = a(A, "string");
-				return typeof h == "symbol" ? h : String(h)
+			function r(h) {
+				var A = a(h, "string");
+				return typeof A == "symbol" ? A : String(A)
 			}
 
-			function a(A, h) {
-				if (typeof A != "object" || A === null) return A;
-				var T = A[Symbol.toPrimitive];
+			function a(h, A) {
+				if (typeof h != "object" || h === null) return h;
+				var T = h[Symbol.toPrimitive];
 				if (T !== void 0) {
-					var M = T.call(A, h || "default");
+					var M = T.call(h, A || "default");
 					if (typeof M != "object") return M;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (h === "string" ? String : Number)(A)
+				return (A === "string" ? String : Number)(h)
 			}
-			const d = ({
-					theme: A
+			const l = ({
+					theme: h
 				}) => {
-					const h = {
+					const A = {
 						cursor: "pointer",
-						background: A.colors.gray[9],
-						color: A.colors.gray[0]
+						background: h.colors.gray[9],
+						color: h.colors.gray[0]
 					};
 					return {
 						display: "block",
 						width: "100%",
-						padding: A.space[2],
-						background: A.colors.background,
-						color: A.colors.gray[3],
-						fontSize: A.fontSizes[2],
+						padding: h.space[2],
+						background: h.colors.background,
+						color: h.colors.gray[3],
+						fontSize: h.fontSizes[2],
 						userSelect: "none",
 						textDecoration: "none",
 						textAlign: "left",
 						borderRadius: "1px",
-						'&:hover:not(:disabled):not([aria-disabled="true"])': h,
-						'&:focus-within:not(:disabled):not([aria-disabled="true"])': _({}, h, {
+						'&:hover:not(:disabled):not([aria-disabled="true"])': A,
+						'&:focus-within:not(:disabled):not([aria-disabled="true"])': g({}, A, {
 							boxShadow: "none",
 							borderRadius: 0
 						}),
 						'&:is(:disabled, [aria-disabled="true"])': {
-							color: A.colors.gray[6],
+							color: h.colors.gray[6],
 							cursor: "not-allowed",
 							opacity: .5
 						}
 					}
 				},
-				c = (0, s.createComponent)(d, "a"),
-				g = (0, s.createComponent)(d, "button");
+				c = (0, s.createComponent)(l, "a"),
+				f = (0, s.createComponent)(l, "button");
 
-			function f(A) {
+			function _(h) {
 				let {
-					disabled: h = !1
-				} = A, T = i(A, ["disabled"]);
+					disabled: A = !1
+				} = h, T = i(h, ["disabled"]);
 				const M = (0, p.useHistory)(),
 					C = {
 						role: "menuitem"
 					};
 				if ("href" in T && typeof T.href == "string") return o().createElement(c, m({
-					"aria-disabled": h
+					"aria-disabled": A
 				}, C, T, {
-					href: h ? void 0 : T.href,
-					onClick: N => {
+					href: A ? void 0 : T.href,
+					onClick: S => {
 						var L;
-						if (h) return N.stopPropagation();
-						N.preventDefault(), (L = T.onClick) === null || L === void 0 || L.call(T, N), M.push(T.href)
+						if (A) return S.stopPropagation();
+						S.preventDefault(), (L = T.onClick) === null || L === void 0 || L.call(T, S), M.push(T.href)
 					}
 				}));
 				var y;
-				return o().createElement(g, m({
+				return o().createElement(f, m({
 					type: (y = T.type) !== null && y !== void 0 ? y : "button"
 				}, C, T, {
-					disabled: h
+					disabled: A
 				}))
 			}
 		},
-		"../react/common/components/EmptyPage.jsx": function(x, v, n) {
+		"../react/common/components/EmptyPage.jsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/prop-types/index.js"),
 				p = n.n(s),
-				l = n("../../../../node_modules/@cloudflare/component-box/es/index.js");
+				u = n("../../../../node_modules/@cloudflare/component-box/es/index.js");
 			const m = ({
 				children: i
-			}) => o().createElement(l.xu, {
+			}) => o().createElement(u.xu, {
 				height: 411
 			}, i);
 			m.propTypes = {
 				children: p().node
-			}, v.Z = m
+			}, E.Z = m
 		},
-		"../react/common/components/ModalManager.tsx": function(x, v, n) {
+		"../react/common/components/ModalManager.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				ZP: function() {
 					return c
 				},
@@ -5756,43 +5829,43 @@
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("webpack/sharing/consume/default/react-redux/react-redux");
-			const p = g => g.application.modals;
-			var l = n("../react/common/actions/modalActions.ts"),
+			const p = f => f.application.modals;
+			var u = n("../react/common/actions/modalActions.ts"),
 				m = n("../../../../node_modules/swr/core/dist/index.mjs"),
 				i = n("../react/pages/zoneless-workers/utils/swrConfig.ts");
 
-			function u() {
-				return u = Object.assign ? Object.assign.bind() : function(g) {
-					for (var f = 1; f < arguments.length; f++) {
-						var A = arguments[f];
-						for (var h in A) Object.prototype.hasOwnProperty.call(A, h) && (g[h] = A[h])
+			function d() {
+				return d = Object.assign ? Object.assign.bind() : function(f) {
+					for (var _ = 1; _ < arguments.length; _++) {
+						var h = arguments[_];
+						for (var A in h) Object.prototype.hasOwnProperty.call(h, A) && (f[A] = h[A])
 					}
-					return g
-				}, u.apply(this, arguments)
+					return f
+				}, d.apply(this, arguments)
 			}
-			const _ = o().createContext(null);
+			const g = o().createContext(null);
 			class t extends o().Component {
 				render() {
 					const {
-						modals: f,
-						closeModal: A
+						modals: _,
+						closeModal: h
 					} = this.props;
-					return o().createElement(o().Fragment, null, f.map(({
-						ModalComponent: h,
+					return o().createElement(o().Fragment, null, _.map(({
+						ModalComponent: A,
 						props: T = {},
 						id: M
 					}) => {
 						const C = () => {
-							typeof T.onClose == "function" && T.onClose(), A(h)
+							typeof T.onClose == "function" && T.onClose(), h(A)
 						};
-						return o().createElement(_.Provider, {
+						return o().createElement(g.Provider, {
 							key: M,
 							value: {
 								closeModal: C
 							}
 						}, o().createElement(m.J$, {
 							value: i.ZP
-						}, o().createElement(h, u({}, T, {
+						}, o().createElement(A, d({}, T, {
 							isOpen: !0,
 							closeModal: C
 						}))))
@@ -5801,29 +5874,29 @@
 			}
 
 			function r() {
-				const g = o().useContext(_);
-				if (!g) throw new Error("useModalContext must be used within a ModalContext");
-				return g
+				const f = o().useContext(g);
+				if (!f) throw new Error("useModalContext must be used within a ModalContext");
+				return f
 			}
 
 			function a() {
-				const g = (0, s.useDispatch)();
+				const f = (0, s.useDispatch)();
 				return {
-					openModal: (0, e.useCallback)(function(...f) {
-						return g(l.openModal(...f))
-					}, [g]),
-					closeModal: (0, e.useCallback)(function(...f) {
-						return g(l.closeModal(...f))
-					}, [g])
+					openModal: (0, e.useCallback)(function(..._) {
+						return f(u.openModal(..._))
+					}, [f]),
+					closeModal: (0, e.useCallback)(function(..._) {
+						return f(u.closeModal(..._))
+					}, [f])
 				}
 			}
-			var c = (0, s.connect)(g => ({
-				modals: p(g)
-			}), l)(t)
+			var c = (0, s.connect)(f => ({
+				modals: p(f)
+			}), u)(t)
 		},
-		"../react/common/components/Page.tsx": function(x, v, n) {
+		"../react/common/components/Page.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Z: function() {
 					return p
 				}
@@ -5832,21 +5905,21 @@
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/component-page/es/index.js");
 
-			function p(l) {
-				return o().createElement(s.T3, l)
+			function p(u) {
+				return o().createElement(s.T3, u)
 			}
 		},
-		"../react/common/components/analytics/AnalyticsReport/constants.ts": function(x, v, n) {
+		"../react/common/components/analytics/AnalyticsReport/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				BQ: function() {
 					return t
 				},
 				Gn: function() {
-					return u
+					return d
 				},
 				JR: function() {
-					return _
+					return g
 				},
 				Wl: function() {
 					return e
@@ -5855,7 +5928,7 @@
 					return m
 				},
 				ZI: function() {
-					return l
+					return u
 				},
 				if: function() {
 					return o
@@ -5874,10 +5947,10 @@
 				o = "time-window",
 				s = "date-from",
 				p = "date-to",
-				l = "from",
+				u = "from",
 				m = "to",
 				i = "all",
-				u = {
+				d = {
 					equals: "eq",
 					notEquals: "neq",
 					greaterThanOrEqual: "geq",
@@ -5899,21 +5972,21 @@
 					in: "in",
 					notIn: "!in"
 				};
-			let _ = function(r) {
+			let g = function(r) {
 					return r.ADD_FILTER = "Add filter", r.EDIT_FILTER = "Edit filter", r.REMOVE_FILTER = "Remove filter", r.CHANGE_TIME = "Change time window", r.FEED_PAGE_FORWARD = "Activity feed next page", r.FEED_PAGE_BACKWARD = "Activity feed previous page", r.FEED_EXPAND_EVENT = "Activity feed expand event", r.FEED_CLOSE_EVENT = "Activity feed close event", r.FEED_EXPAND_MATCHES = "Activity feed expand matches", r.OPEN_DOWNLOAD_MODAL = "Activity feed open download modal", r.CANCEL_DOWNLOAD_MODAL = "Activity feed cancel download modal", r.DOWNLOAD_FROM_DOWNLOAD_MODAL = "Activity feed download from modal", r.DOWNLOAD_FEED = "Activity feed download", r.CLICK_ADAPTIVE_SAMPLING = 'Click on "adaptive sampling"', r.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'Click on "Go to Log Explorer" in the description', r.CLICK_TO_LOG_EXPLORER_BANNER = 'Click on "Go to Log Explorer" in the banner"', r.CLICK_SWITCH_TO_RAW_LOGS = 'Click on "Switch to raw logs"', r.CLICK_SWITCH_TO_SAMPLED_LOGS = 'Click on "Switch back to sampled logs"', r
 				}({}),
 				t = function(r) {
 					return r.TIMESERIES = "Timeseries Chart", r.DISTRIBUTION = "Source Distribution Chart", r.TOP_N = "Top N", r.FILTER_BAR = "Filter Bar", r.SCORES_DISTRIBUTIONS = "Scores Distributions", r.INSIGHTS = "Insights", r.RL_HISTOGRAM = "Rate Limit Histogram", r
 				}({})
 		},
-		"../react/common/components/api-tokens/sparrowEvents.ts": function(x, v, n) {
+		"../react/common/components/api-tokens/sparrowEvents.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Cf: function() {
-					return _
+					return g
 				},
 				hJ: function() {
-					return u
+					return d
 				},
 				ys: function() {
 					return i
@@ -5925,10 +5998,10 @@
 			function s(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						p(t, c, a[c])
 					})
 				}
@@ -5936,7 +6009,7 @@
 			}
 
 			function p(t, r, a) {
-				return r = l(r), r in t ? Object.defineProperty(t, r, {
+				return r = u(r), r in t ? Object.defineProperty(t, r, {
 					value: a,
 					enumerable: !0,
 					configurable: !0,
@@ -5944,7 +6017,7 @@
 				}) : t[r] = a, t
 			}
 
-			function l(t) {
+			function u(t) {
 				var r = m(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
@@ -5953,8 +6026,8 @@
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -5962,20 +6035,20 @@
 			let i = function(t) {
 				return t.USER_CREATE_TOKEN = "click user api token create button", t.USER_TEMPLATE_USED = "click user api token template", t.USER_CUSTOM_TEMPLATE_USED = "click user api token custom template", t.USER_API_TOKEN_CREATE_CANCEL = "click cancel create user api token", t.USER_API_TOKEN_CREATE_SUMMARY = "click continue to summary user api tokens", t.USER_API_TOKEN_CREATE_BACK_TO_EDIT = "click back to edit user api token", t.USER_TOKEN_CREATED = "create user api token", t.ACCOUNT_CREATE_TOKEN = "click account api token create button", t.ACCOUNT_TEMPLATE_USED = "click account api token template", t.ACCOUNT_API_TOKEN_CREATE_CANCEL = "click cancel account api token create", t.ACCOUNT_API_TOKEN_CREATE_SUMMARY = "click continue to summary account api tokens", t.ACCOUNT_API_TOKEN_CREATE_BACK_TO_EDIT = "click back to edit account api token", t.ACCOUNT_CUSTOM_TEMPLATE_USED = "click account api token custom template", t.ACCOUNT_TOKEN_CREATED = "create account api token", t
 			}({});
-			const u = ({
+			const d = ({
 					name: t,
 					additionalData: r = {}
 				}) => {
 					o().sendEvent(t, s({}, r || {}))
 				},
-				_ = () => {
+				g = () => {
 					var t;
 					return (t = Object.values(i)) === null || t === void 0 ? void 0 : t.flat()
 				}
 		},
-		"../react/common/components/filter-editor/constants/userJourney.ts": function(x, v, n) {
+		"../react/common/components/filter-editor/constants/userJourney.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				v: function() {
 					return e
 				}
@@ -5984,9 +6057,9 @@
 				return o.FIELD = "change field", o.OPERATOR = "change operator", o
 			}({})
 		},
-		"../react/common/constants/analytics/botScoreSrc.ts": function(x, v, n) {
+		"../react/common/constants/analytics/botScoreSrc.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				EG: function() {
 					return s
 				},
@@ -5994,7 +6067,7 @@
 					return m
 				},
 				Vv: function() {
-					return l
+					return u
 				},
 				sk: function() {
 					return p
@@ -6014,9 +6087,9 @@
 					[s.VERIFIED_BOT]: "Verified Bot",
 					[s.CLOUDFLARE_SERVICE]: "Cloudflare Service"
 				},
-				l = i => Array.isArray(i) ? i.map(u => {
-					var _;
-					return (_ = p[u]) !== null && _ !== void 0 ? _ : u
+				u = i => Array.isArray(i) ? i.map(d => {
+					var g;
+					return (g = p[d]) !== null && g !== void 0 ? g : d
 				}) : p[i],
 				m = {
 					label: "analytics.http.filters.labels.botScoreSrcName",
@@ -6027,9 +6100,9 @@
 					rawLogField: "BotScoreSrc"
 				}
 		},
-		"../react/common/constants/billing/index.ts": function(x, v, n) {
+		"../react/common/constants/billing/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Gq: function() {
 					return p
 				},
@@ -6040,25 +6113,25 @@
 					return e
 				},
 				E0: function() {
-					return _
+					return g
 				},
 				Hw: function() {
 					return m
 				},
 				Ed: function() {
-					return l
+					return u
 				},
 				bi: function() {
 					return o
 				},
 				Gs: function() {
-					return d
+					return l
 				},
 				hQ: function() {
 					return i
 				},
 				SP: function() {
-					return u
+					return d
 				}
 			});
 			let e = function(c) {
@@ -6076,7 +6149,7 @@
 					ubb_price: .1,
 					ubb_unit: "gigabyte"
 				},
-				l = {
+				u = {
 					address: "Address Line 1 NA",
 					city: "City NA",
 					state: "State NA",
@@ -6098,7 +6171,7 @@
 					ubb_frequency: 1e4,
 					ubb_price: .05
 				},
-				u = {
+				d = {
 					price: 0,
 					currency: "USD",
 					frequency: "monthly",
@@ -6108,7 +6181,7 @@
 					ubb_streaming_price: 1,
 					ubb_unit: "minute"
 				},
-				_ = {
+				g = {
 					price: 0,
 					currency: "USD",
 					frequency: "monthly",
@@ -6123,16 +6196,16 @@
 			var t = n("../react/common/constants/billing/tax.ts"),
 				r = n("../react/common/constants/billing/tracking.ts"),
 				a = n("../react/common/constants/billing/workers.ts");
-			const d = ["free", "lite", "pro", "pro_plus", "business", "enterprise"]
+			const l = ["free", "lite", "pro", "pro_plus", "business", "enterprise"]
 		},
-		"../react/common/constants/billing/tracking.ts": function(x, v, n) {
+		"../react/common/constants/billing/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				FP: function() {
 					return e
 				},
 				Nl: function() {
-					return l
+					return u
 				},
 				SO: function() {
 					return s
@@ -6157,15 +6230,15 @@
 					EMAIL: "email",
 					PHONE: "phone"
 				},
-				l = {
+				u = {
 					BILLING_SYSTEM_UPGRADE: "Billing System Upgrade"
 				}
 		},
-		"../react/common/constants/constants.ts": function(x, v, n) {
+		"../react/common/constants/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Dk: function() {
-					return d
+					return l
 				},
 				Dy: function() {
 					return c
@@ -6174,28 +6247,28 @@
 					return m
 				},
 				Lv: function() {
-					return g
+					return f
 				},
 				S4: function() {
-					return l
+					return u
 				},
 				UM: function() {
 					return t
 				},
 				Xf: function() {
-					return _
+					return g
 				},
 				Y1: function() {
 					return i
 				},
 				p6: function() {
-					return u
+					return d
 				},
 				q0: function() {
 					return p
 				},
 				rg: function() {
-					return f
+					return _
 				},
 				sJ: function() {
 					return a
@@ -6205,11 +6278,11 @@
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js");
 			const p = "healthy",
-				l = "degraded",
+				u = "degraded",
 				m = "critical",
 				i = "unknown",
-				u = "not-monitored",
-				_ = o().from({
+				d = "not-monitored",
+				g = o().from({
 					FREE: "free",
 					PRO: "pro",
 					BIZ: "business",
@@ -6223,23 +6296,23 @@
 					ACCOUNT_MEMBERS_REQUESTED: "account_members_requested"
 				},
 				r = {
-					f: _.FREE,
-					p: _.PRO,
-					b: _.BIZ
+					f: g.FREE,
+					p: g.PRO,
+					b: g.BIZ
 				},
 				a = "marketing-pt",
-				d = () => {
-					const h = s.Z.get(a);
-					if (!!h) return r[h]
+				l = () => {
+					const A = s.Z.get(a);
+					if (!!A) return r[A]
 				},
 				c = ["gov"],
-				g = ["graphql_api_v2.enabled_network_analytics_magic_transit", "graphql_api_v2.enabled_network_analytics_spectrum", "graphql_api_v2.enabled_network_analytics_cdn"],
-				f = "banner-notification-interactions",
-				A = null
+				f = ["graphql_api_v2.enabled_network_analytics_magic_transit", "graphql_api_v2.enabled_network_analytics_spectrum", "graphql_api_v2.enabled_network_analytics_cdn"],
+				_ = "banner-notification-interactions",
+				h = null
 		},
-		"../react/common/constants/index.ts": function(x, v, n) {
+		"../react/common/constants/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Dk: function() {
 					return e.Dk
 				},
@@ -6289,9 +6362,9 @@
 			var e = n("../react/common/constants/constants.ts"),
 				o = n("../react/common/constants/billing/index.ts")
 		},
-		"../react/common/constants/roles.ts": function(x, v, n) {
+		"../react/common/constants/roles.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				V: function() {
 					return e
 				}
@@ -6300,9 +6373,9 @@
 				return o.SUPER_ADMINISTRATOR_ALL_PRIVILEGES = "Super Administrator - All Privileges", o.CLOUDFLARE_ACCESS = "Cloudflare Access", o.CLOUDFLARE_ACCESS_APP_ADMIN = "Cloudflare Access App Admin", o.CLOUDFLARE_ACCESS_IDENTITY_PROVIDER_ADMIN = "Cloudflare Access Identity Provider Admin", o.ADMINISTRATOR = "Administrator", o.ADMINISTRATOR_READ_ONLY = "Administrator Read Only", o.ANALYTICS = "Analytics", o.API_GATEWAY = "API Gateway", o.API_GATEWAY_READ = "API Gateway Read", o.AUDIT_LOGS_VIEWER = "Audit Logs Viewer", o.BILLING = "Billing", o.BOT_MANAGEMENT = "Bot Management", o.BOT_MANAGEMENT_ACCOUNT_WIDE = "Bot Management (Account-Wide)", o.CACHE_DOMAIN_PURGE = "Cache Domain Purge", o.CACHE_PURGE = "Cache Purge", o.SSL_TLS_CACHING_PERFORMANCE_PAGE_RULES_AND_CUSTOMIZATION = "SSL/TLS, Caching, Performance, Page Rules, and Customization", o.EMAIL_CONFIGURATION_ADMIN = "Email Configuration Admin", o.EMAIL_INTEGRATION_ADMIN = "Email Integration Admin", o.EMAIL_SECURITY_ANALYST = "Email Security Analyst", o.EMAIL_SECURITY_READONLY = "Email Security Readonly", o.EMAIL_SECURITY_REPORTING = "Email Security Reporting", o.CLOUDFORCE_ONE_ADMIN = "Cloudforce One Admin", o.CLOUDFORCE_ONE_READ = "Cloudforce One Read", o.DNS = "DNS", o.DOMAIN_ADMINISTRATOR = "Domain Administrator", o.DOMAIN_ADMINISTRATOR_READ_ONLY = "Domain Administrator Read Only", o.DOMAIN_API_GATEWAY = "Domain API Gateway", o.DOMAIN_API_GATEWAY_READ = "Domain API Gateway Read", o.DOMAIN_DNS = "Domain DNS", o.DOMAIN_PAGE_SHIELD = "Domain Page Shield", o.DOMAIN_PAGE_SHIELD_READ = "Domain Page Shield Read", o.MAGIC_NETWORK_MONITORING_ADMIN = "Magic Network Monitoring Admin", o.MAGIC_NETWORK_MONITORING = "Magic Network Monitoring", o.MAGIC_NETWORK_MONITORING_READ_ONLY = "Magic Network Monitoring Read-Only", o.CLOUDFLARE_GATEWAY = "Cloudflare Gateway", o.CLOUDFLARE_WORKER_ADMIN = "Cloudflare Worker Admin", o.HTTP_APPLICATIONS = "HTTP Applications", o.HTTP_APPLICATIONS_READ = "HTTP Applications Read", o.CLOUDFLARE_IMAGES = "Cloudflare Images", o.LOAD_BALANCER = "Load Balancer", o.LOG_SHARE = "Log Share", o.NETWORK_SERVICES_WRITE_MAGIC = "Network Services Write (Magic)", o.NETWORK_SERVICES_READ_MAGIC = "Network Services Read (Magic)", o.MINIMAL_ACCOUNT_ACCESS = "Minimal Account Access", o.PAGE_SHIELD = "Page Shield", o.PAGE_SHIELD_READ = "Page Shield Read", o.HYPERDRIVE_ADMIN = "Hyperdrive Admin", o.HYPERDRIVE_READONLY = "Hyperdrive Readonly", o.CLOUDFLARE_R2_ADMIN = "Cloudflare R2 Admin", o.CLOUDFLARE_R2_READ = "Cloudflare R2 Read", o.LOG_SHARE_READER = "Log Share Reader", o.CLOUDFLARE_SNIPPETS_ADMIN = "Cloudflare Snippets Admin", o.CLOUDFLARE_STREAM = "Cloudflare Stream", o.CLOUDFLARE_ZERO_TRUST = "Cloudflare Zero Trust", o.CLOUDFLARE_DEX = "Cloudflare DEX", o.CLOUDFLARE_ZERO_TRUST_PII = "Cloudflare Zero Trust PII", o.CLOUDFLARE_ZERO_TRUST_READ_ONLY = "Cloudflare Zero Trust Read Only", o.CLOUDFLARE_ZERO_TRUST_REPORTING = "Cloudflare Zero Trust Reporting", o.TRANSFORM_RULES = "Transform Rules", o.TRUST_AND_SAFETY = "Trust and Safety", o.TURNSTILE = "Turnstile", o.TURNSTILE_READ = "Turnstile Read", o.VECTORIZE_ADMIN = "Vectorize Admin", o.VECTORIZE_READONLY = "Vectorize Readonly", o.FIREWALL = "Firewall", o.WAITING_ROOM_ADMIN = "Waiting Room Admin", o.WAITING_ROOM_READ = "Waiting Room Read", o.WORKERS_ADMIN = "Workers Admin", o.ZARAZ_ADMIN = "Zaraz Admin", o.ZARAZ_EDIT = "Zaraz Edit", o.ZARAZ_READONLY = "Zaraz Readonly", o.ZONE_VERSIONING = "Zone Versioning", o.ZONE_VERSIONING_ACCOUNT_WIDE = "Zone Versioning (Account-Wide)", o.ZONE_VERSIONING_READ = "Zone Versioning Read", o.ZONE_VERSIONING_READ_ACCOUNT_WIDE = "Zone Versioning Read (Account-Wide)", o.DOMAIN_WAITING_ROOM_ADMIN = "Domain Waiting Room Admin", o.DOMAIN_WAITING_ROOM_READ = "Domain Waiting Room Read", o.BRAND_PROTECTION = "Brand Protection", o
 			}({})
 		},
-		"../react/common/hooks/rulesets/resources/tracking.tsx": function(x, v, n) {
+		"../react/common/hooks/rulesets/resources/tracking.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				QK: function() {
 					return e
 				},
@@ -6316,8 +6389,8 @@
 					return p
 				}
 			});
-			let e = function(l) {
-				return l.DELETE = "delete", l.CREATE = "create", l.GET = "get", l.UPDATE = "update", l
+			let e = function(u) {
+				return u.DELETE = "delete", u.CREATE = "create", u.GET = "get", u.UPDATE = "update", u
 			}({});
 			const o = {
 					http_config_settings: "configuration",
@@ -6332,26 +6405,26 @@
 					http_request_firewall_custom: "custom",
 					http_request_firewall_managed: "managed"
 				},
-				s = (l, m, i = !1) => {
-					var u;
-					return `${m} ${(u=o[l])!==null&&u!==void 0?u:l} ${i?"ruleset":"rule"}${m===e.GET?"s":""}`
+				s = (u, m, i = !1) => {
+					var d;
+					return `${m} ${(d=o[u])!==null&&d!==void 0?d:u} ${i?"ruleset":"rule"}${m===e.GET?"s":""}`
 				},
 				p = () => {
-					var l;
-					return (l = Object.keys(o).reduce((m, i) => {
-						const u = Object.values(e).reduce((_, t) => (_.push(s(i, t)), _.push(s(i, t, !0)), _), []);
-						return m.concat(u)
-					}, [])) === null || l === void 0 ? void 0 : l.flat()
+					var u;
+					return (u = Object.keys(o).reduce((m, i) => {
+						const d = Object.values(e).reduce((g, t) => (g.push(s(i, t)), g.push(s(i, t, !0)), g), []);
+						return m.concat(d)
+					}, [])) === null || u === void 0 ? void 0 : u.flat()
 				}
 		},
-		"../react/common/hooks/suspenseHelpers.ts": function(x, v, n) {
+		"../react/common/hooks/suspenseHelpers.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				bt: function() {
 					return i
 				},
 				nW: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
@@ -6359,40 +6432,40 @@
 				s = n("../../../../node_modules/@cloudflare/component-listener/es/index.js");
 			const p = "suspenseComplete";
 
-			function l() {
+			function u() {
 				(0, e.useEffect)(() => () => {
 					window.dispatchEvent(new Event(p))
 				}, [])
 			}
 
-			function m(u) {
+			function m(d) {
 				(0, s.OR)(p, () => {
-					window.setTimeout(u, 0)
+					window.setTimeout(d, 0)
 				}, {
 					target: window
 				})
 			}
 
-			function i(...u) {
-				const [_, t] = u;
-				o().useLayoutEffect(_, t), m(_)
+			function i(...d) {
+				const [g, t] = d;
+				o().useLayoutEffect(g, t), m(g)
 			}
 		},
-		"../react/common/hooks/useAccountEntitlement.ts": function(x, v, n) {
+		"../react/common/hooks/useAccountEntitlement.ts": function(x, E, n) {
 			"use strict";
 			var e = n("../react/app/redux/index.ts"),
 				o = n("../react/common/selectors/entitlementsSelectors.ts");
 
 			function s(p) {
-				return (0, e.p4)(l => (0, o.BF)(l, p))
+				return (0, e.p4)(u => (0, o.BF)(u, p))
 			}
-			v.Z = s
+			E.Z = s
 		},
-		"../react/common/hooks/useAccountId.ts": function(x, v, n) {
+		"../react/common/hooks/useAccountId.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				F: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../react/app/redux/index.ts"),
@@ -6400,18 +6473,18 @@
 				s = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
 				p = n.n(s);
 
-			function l() {
+			function u() {
 				var m;
 				const {
 					accountId: i
-				} = (0, s.useParams)(), u = (0, e.p4)(o.D0);
-				if (i === void 0 && !u) throw new Error("Account ID not found in URL params");
-				return (m = i) !== null && m !== void 0 ? m : u == null ? void 0 : u.id
+				} = (0, s.useParams)(), d = (0, e.p4)(o.D0);
+				if (i === void 0 && !d) throw new Error("Account ID not found in URL params");
+				return (m = i) !== null && m !== void 0 ? m : d == null ? void 0 : d.id
 			}
 		},
-		"../react/common/hooks/useCachedState.ts": function(x, v, n) {
+		"../react/common/hooks/useCachedState.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				j: function() {
 					return p
 				}
@@ -6420,31 +6493,31 @@
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js");
 
-			function p(l, {
+			function p(u, {
 				key: m,
 				cache: i = s.E,
-				ttl: u
+				ttl: d
 			} = {}) {
-				var _;
+				var g;
 				const t = m !== void 0 && i.get(m),
-					[r, a] = (0, e.useState)((_ = t) !== null && _ !== void 0 ? _ : l);
+					[r, a] = (0, e.useState)((g = t) !== null && g !== void 0 ? g : u);
 				return [r, c => {
-					a(g => (c instanceof Function && (c = c(g)), m !== void 0 && i.set(m, c, u), c))
+					a(f => (c instanceof Function && (c = c(f)), m !== void 0 && i.set(m, c, d), c))
 				}]
 			}
 		},
-		"../react/common/hooks/useGate.ts": function(x, v, n) {
+		"../react/common/hooks/useGate.ts": function(x, E, n) {
 			"use strict";
 			var e = n("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs");
 
 			function o(s) {
 				return (0, e.qf)(s)
 			}
-			v.Z = o
+			E.Z = o
 		},
-		"../react/common/hooks/useIntersectionObserver.ts": function(x, v, n) {
+		"../react/common/hooks/useIntersectionObserver.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				S: function() {
 					return s
 				}
@@ -6453,57 +6526,57 @@
 				o = n.n(e);
 
 			function s(p, {
-				root: l,
+				root: u,
 				rootMargin: m,
 				threshold: i
 			} = {}) {
-				const u = (0, e.useRef)(null);
+				const d = (0, e.useRef)(null);
 
-				function _() {
-					return u.current === null && (u.current = new IntersectionObserver(p, {
-						root: l,
+				function g() {
+					return d.current === null && (d.current = new IntersectionObserver(p, {
+						root: u,
 						rootMargin: m,
 						threshold: i
-					})), u.current
+					})), d.current
 				}
-				return (0, e.useEffect)(() => (u.current = new IntersectionObserver(p, {
-					root: l,
+				return (0, e.useEffect)(() => (d.current = new IntersectionObserver(p, {
+					root: u,
 					rootMargin: m,
 					threshold: i
 				}), () => {
 					var t;
-					(t = u.current) === null || t === void 0 || t.disconnect()
-				}), [p, l, m, i]), _()
+					(t = d.current) === null || t === void 0 || t.disconnect()
+				}), [p, u, m, i]), g()
 			}
 		},
-		"../react/common/hooks/usePrevious.ts": function(x, v, n) {
+		"../react/common/hooks/usePrevious.ts": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e);
 
 			function s(p) {
-				const l = (0, e.useRef)(p);
+				const u = (0, e.useRef)(p);
 				return (0, e.useEffect)(() => {
-					l.current = p
-				}, [p]), l.current
+					u.current = p
+				}, [p]), u.current
 			}
-			v.Z = s
+			E.Z = s
 		},
-		"../react/common/hooks/useZoneEntitlement.ts": function(x, v, n) {
+		"../react/common/hooks/useZoneEntitlement.ts": function(x, E, n) {
 			"use strict";
 			var e = n("../react/app/redux/index.ts"),
 				o = n("../react/common/selectors/entitlementsSelectors.ts");
 
 			function s(p) {
-				return (0, e.p4)(l => (0, o.rV)(l, p))
+				return (0, e.p4)(u => (0, o.rV)(u, p))
 			}
-			v.Z = s
+			E.Z = s
 		},
-		"../react/common/middleware/sparrow/errors.ts": function(x, v, n) {
+		"../react/common/middleware/sparrow/errors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Uh: function() {
-					return l
+					return u
 				},
 				ez: function() {
 					return p
@@ -6513,52 +6586,52 @@
 				}
 			});
 
-			function e(i, u, _) {
-				return u = o(u), u in i ? Object.defineProperty(i, u, {
-					value: _,
+			function e(i, d, g) {
+				return d = o(d), d in i ? Object.defineProperty(i, d, {
+					value: g,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : i[u] = _, i
+				}) : i[d] = g, i
 			}
 
 			function o(i) {
-				var u = s(i, "string");
-				return typeof u == "symbol" ? u : String(u)
+				var d = s(i, "string");
+				return typeof d == "symbol" ? d : String(d)
 			}
 
-			function s(i, u) {
+			function s(i, d) {
 				if (typeof i != "object" || i === null) return i;
-				var _ = i[Symbol.toPrimitive];
-				if (_ !== void 0) {
-					var t = _.call(i, u || "default");
+				var g = i[Symbol.toPrimitive];
+				if (g !== void 0) {
+					var t = g.call(i, d || "default");
 					if (typeof t != "object") return t;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (u === "string" ? String : Number)(i)
+				return (d === "string" ? String : Number)(i)
 			}
 			class p extends Error {
-				constructor(u, _) {
-					super(_);
-					e(this, "eventName", void 0), this.eventName = u, this.name = "SparrowValidationError"
+				constructor(d, g) {
+					super(g);
+					e(this, "eventName", void 0), this.eventName = d, this.name = "SparrowValidationError"
 				}
 			}
-			class l extends p {
-				constructor(u) {
-					super(u, `Event not allowed: "${u}"`);
+			class u extends p {
+				constructor(d) {
+					super(d, `Event not allowed: "${d}"`);
 					this.name = "SparrowEventNotAllowedError"
 				}
 			}
 			class m extends p {
-				constructor(u, _) {
-					super(u, `Found invalid properties on event: "${u}"`);
-					e(this, "invalidProperties", void 0), this.name = "SparrowInvalidPropertiesError", this.invalidProperties = _
+				constructor(d, g) {
+					super(d, `Found invalid properties on event: "${d}"`);
+					e(this, "invalidProperties", void 0), this.name = "SparrowInvalidPropertiesError", this.invalidProperties = g
 				}
 			}
 		},
-		"../react/common/selectors/accountSelectors.ts": function(x, v, n) {
+		"../react/common/selectors/accountSelectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AC: function() {
 					return be
 				},
@@ -6569,61 +6642,61 @@
 					return re
 				},
 				B3: function() {
-					return Se
+					return Ie
 				},
 				BG: function() {
 					return L
 				},
 				Bp: function() {
-					return Xe
+					return Qe
 				},
 				CV: function() {
-					return ft
+					return _t
 				},
 				D0: function() {
 					return M
 				},
 				DT: function() {
-					return $
-				},
-				EL: function() {
-					return te
-				},
-				EU: function() {
 					return W
 				},
+				EL: function() {
+					return ne
+				},
+				EU: function() {
+					return $
+				},
 				GE: function() {
-					return mt
+					return ft
 				},
 				Ko: function() {
-					return q
+					return J
 				},
 				Kx: function() {
 					return O
 				},
 				Le: function() {
-					return S
+					return D
 				},
 				O4: function() {
-					return Re
+					return Be
 				},
 				Ou: function() {
-					return Y
+					return Q
 				},
 				Py: function() {
-					return ke
+					return Re
 				},
 				QI: function() {
 					return st
 				},
 				RO: function() {
-					return Ie
+					return Le
 				},
 				T3: function() {
-					return Ye
+					return Xe
 				},
 				T8: function() {
-					return N
+					return S
 				},
 				UX: function() {
 					return F
@@ -6638,91 +6711,91 @@
 					return de
 				},
 				Yi: function() {
-					return gt
+					return pt
 				},
 				Yj: function() {
-					return K
+					return G
 				},
 				Zu: function() {
 					return ce
 				},
 				bC: function() {
-					return ne
+					return te
 				},
 				f8: function() {
 					return Z
 				},
 				hI: function() {
-					return it
+					return ct
 				},
 				hN: function() {
-					return I
+					return P
 				},
 				hX: function() {
-					return Q
+					return X
 				},
 				iq: function() {
 					return pe
 				},
 				nE: function() {
-					return P
+					return b
 				},
 				oD: function() {
-					return b
+					return I
 				},
 				oI: function() {
 					return U
 				},
 				oJ: function() {
-					return H
+					return V
 				},
 				tM: function() {
-					return G
+					return H
 				},
 				uF: function() {
 					return ue
 				},
 				ut: function() {
-					return Fe
+					return je
 				},
 				vU: function() {
-					return ut
+					return dt
 				},
 				wQ: function() {
-					return xe
+					return Ue
 				}
 			});
 			var e = n("../../../../node_modules/lodash-es/memoize.js"),
 				o = n("../../../../node_modules/lodash/get.js"),
 				s = n.n(o),
 				p = n("../../../../node_modules/seamless-immutable/seamless-immutable.production.min.js"),
-				l = n.n(p),
+				u = n.n(p),
 				m = n("../../../../node_modules/reselect/lib/index.js"),
 				i = n("../../../../node_modules/moment/moment.js"),
-				u = n.n(i),
-				_ = n("../react/common/utils/formatDate.ts"),
+				d = n.n(i),
+				g = n("../react/common/utils/formatDate.ts"),
 				t = n("../react/app/redux/normalizer.js"),
 				r = n("../react/common/selectors/userSelectors.ts"),
 				a = n("../react/common/selectors/entitlementsSelectors.ts"),
-				d = n("../react/app/components/DeepLink/selectors.ts"),
+				l = n("../react/app/components/DeepLink/selectors.ts"),
 				c = n("../react/common/constants/roles.ts"),
-				g = n("../react/common/utils/hasRole.ts");
+				f = n("../react/common/utils/hasRole.ts");
 
-			function f(z) {
+			function _(z) {
 				for (var le = 1; le < arguments.length; le++) {
 					var Ce = arguments[le] != null ? Object(arguments[le]) : {},
 						Oe = Object.keys(Ce);
-					typeof Object.getOwnPropertySymbols == "function" && Oe.push.apply(Oe, Object.getOwnPropertySymbols(Ce).filter(function(je) {
-						return Object.getOwnPropertyDescriptor(Ce, je).enumerable
-					})), Oe.forEach(function(je) {
-						A(z, je, Ce[je])
+					typeof Object.getOwnPropertySymbols == "function" && Oe.push.apply(Oe, Object.getOwnPropertySymbols(Ce).filter(function(Fe) {
+						return Object.getOwnPropertyDescriptor(Ce, Fe).enumerable
+					})), Oe.forEach(function(Fe) {
+						h(z, Fe, Ce[Fe])
 					})
 				}
 				return z
 			}
 
-			function A(z, le, Ce) {
-				return le = h(le), le in z ? Object.defineProperty(z, le, {
+			function h(z, le, Ce) {
+				return le = A(le), le in z ? Object.defineProperty(z, le, {
 					value: Ce,
 					enumerable: !0,
 					configurable: !0,
@@ -6730,7 +6803,7 @@
 				}) : z[le] = Ce, z
 			}
 
-			function h(z) {
+			function A(z) {
 				var le = T(z, "string");
 				return typeof le == "symbol" ? le : String(le)
 			}
@@ -6758,63 +6831,63 @@
 					return {}
 				},
 				y = z => z.accountsDetailed,
-				N = (0, t.P1)("accountsDetailed", y),
+				S = (0, t.P1)("accountsDetailed", y),
 				L = z => z.memberships,
-				P = (0, m.P1)((0, t.P1)("memberships", L), d.U, (z, le) => !!le && !!z ? z.filter(Ce => le.includes(Ce.id)) : z),
-				I = z => z.accountFlags && z.accountFlags.data,
+				b = (0, m.P1)((0, t.P1)("memberships", L), l.U, (z, le) => !!le && !!z ? z.filter(Ce => le.includes(Ce.id)) : z),
+				P = z => z.accountFlags && z.accountFlags.data,
 				O = z => z.accountFlags,
-				S = (z, le, Ce) => {
-					const Oe = I(z);
+				D = (z, le, Ce) => {
+					const Oe = P(z);
 					return !Oe || !Oe[le] ? null : Oe[le][Ce]
 				},
 				B = z => z.accountFlags.isRequesting,
 				U = (z, ...le) => s()(z, ["accountFlagsChanges", "data", ...le]),
 				Z = z => z.accountFlagsChanges.isRequesting,
-				ae = (0, m.P1)(I, O, (z, le) => ({
+				ae = (0, m.P1)(P, O, (z, le) => ({
 					data: z,
 					meta: le
 				})),
-				Ee = (z, le, Ce) => !!(isEnterpriseSSEnabledSelector(z) && S(z, le, Ce)),
+				_e = (z, le, Ce) => !!(isEnterpriseSSEnabledSelector(z) && D(z, le, Ce)),
 				de = z => z.membership,
 				ue = (0, t.P1)("membership", de),
-				V = (0, m.P1)(ue, de, (z, le) => ({
+				K = (0, m.P1)(ue, de, (z, le) => ({
 					data: z,
 					meta: le
 				})),
-				Y = z => {
+				Q = z => {
 					const {
 						roles: le = []
 					} = ue(z) || {};
 					return Boolean(le.find(Ce => Ce === "Super Administrator - All Privileges" || Ce === "Billing"))
 				},
-				G = z => {
+				H = z => {
 					const le = [c.V.SUPER_ADMINISTRATOR_ALL_PRIVILEGES];
-					return (0, g.n)(z, le)
+					return (0, f.n)(z, le)
 				},
-				b = z => {
+				I = z => {
 					const le = C(z),
-						Ce = Ae.getMemberships(z) ? l().asMutable(Ae.getMemberships(z)) : [];
-					if (!!Ce) return l().from(Ce.map(Oe => f({}, Oe, {
+						Ce = Ae.getMemberships(z) ? u().asMutable(Ae.getMemberships(z)) : [];
+					if (!!Ce) return u().from(Ce.map(Oe => _({}, Oe, {
 						lastSeen: le[Oe.account.id] ? le[Oe.account.id].lastSeen : null
-					})).sort((Oe, je) => Oe.lastSeen && je.lastSeen ? je.lastSeen - Oe.lastSeen : 0))
+					})).sort((Oe, Fe) => Oe.lastSeen && Fe.lastSeen ? Fe.lastSeen - Oe.lastSeen : 0))
 				},
 				F = z => z.filteredMemberships,
-				te = (0, t.P1)("filteredMemberships", F),
+				ne = (0, t.P1)("filteredMemberships", F),
 				ce = (0, m.P1)(ue, z => z == null ? void 0 : z.permissions),
-				K = (0, m.P1)(ce, z => (0, e.Z)(le => {
+				G = (0, m.P1)(ce, z => (0, e.Z)(le => {
 					var Ce;
 					return (Ce = z == null ? void 0 : z[le]) !== null && Ce !== void 0 ? Ce : {
 						read: !1,
 						edit: !1
 					}
 				})),
-				q = (0, m.P1)(ue, z => z == null ? void 0 : z.policies),
-				$ = (z, le, Ce) => {
+				J = (0, m.P1)(ue, z => z == null ? void 0 : z.policies),
+				W = (z, le, Ce) => {
 					let Oe = Ae.getMembership(z);
 					if (!Oe) {
-						const je = Ae.getMemberships(z);
-						if (!je || !le) return !1;
-						Oe = je.find(ge => ge.account.id === le)
+						const Fe = Ae.getMemberships(z);
+						if (!Fe || !le) return !1;
+						Oe = Fe.find(Ve => Ve.account.id === le)
 					}
 					if (!Oe || !Ce) return !1;
 					try {
@@ -6823,16 +6896,16 @@
 						return !1
 					}
 				},
-				X = z => {
+				q = z => {
 					var le, Ce;
 					return (le = (Ce = M(z)) === null || Ce === void 0 ? void 0 : Ce.meta.has_pro_zones) !== null && le !== void 0 ? le : !1
 				},
-				W = z => {
+				$ = z => {
 					var le, Ce;
 					return (le = (Ce = M(z)) === null || Ce === void 0 ? void 0 : Ce.meta.has_business_zones) !== null && le !== void 0 ? le : !1
 				},
-				ne = z => W(z) || X(z),
-				ve = (z, le) => {
+				te = z => $(z) || q(z),
+				Ee = (z, le) => {
 					const Ce = Te(z, le);
 					return !!Ce && !!Ce.enabled
 				},
@@ -6841,100 +6914,100 @@
 						Oe = Ce && Ce.account;
 					return Oe && Oe.legacy_flags && Oe.legacy_flags[le]
 				},
-				xe = z => ve(z, "custom_pages"),
-				Ue = z => !!z && z["webhooks.webhooks.enabled"],
-				$e = z => S(z, "bots", "enabled"),
-				Ke = z => S(z, "billing", "annual_subscriptions_enable"),
-				Ie = z => z ? Boolean(S(z, "ConstellationAI", "v2_ui")) : !1,
-				Q = z => z ? Boolean(S(z, "ConstellationAI", "ai-emergency-waitlist")) : !1,
-				re = z => z ? Boolean(S(z, "AIgateway", "enabled")) : !1,
+				Ue = z => Ee(z, "custom_pages"),
+				ke = z => !!z && z["webhooks.webhooks.enabled"],
+				xe = z => D(z, "bots", "enabled"),
+				Ke = z => D(z, "billing", "annual_subscriptions_enable"),
+				Le = z => z ? Boolean(D(z, "ConstellationAI", "v2_ui")) : !1,
+				X = z => z ? Boolean(D(z, "ConstellationAI", "ai-emergency-waitlist")) : !1,
+				re = z => z ? Boolean(D(z, "AIgateway", "enabled")) : !1,
 				me = z => Te(z, "enterprise_zone_quota"),
 				k = z => {
 					const le = me(z);
 					return !le || !le.available ? -1 : le.available
 				},
 				pe = z => z.accountMembers,
-				Se = (0, t.P1)("accountMembers", pe),
-				Re = z => z.accountMember && z.accountMember.isRequesting,
+				Ie = (0, t.P1)("accountMembers", pe),
+				Be = z => z.accountMember && z.accountMember.isRequesting,
 				ze = z => z.accountRoles,
 				be = (0, t.P1)("accountRoles", ze),
-				ke = (z, le) => {
+				Re = (z, le) => {
 					const Ce = Ae.getMemberships(z),
-						Oe = Ce && Ce.find(w => w.account.id === le);
+						Oe = Ce && Ce.find(R => R.account.id === le);
 					if (Oe) return Oe.account.name.replace(" Account", " account");
-					const je = Ae.getMembership(z),
-						ge = je && je.account;
-					return ge && ge.id === le ? ge.name : null
+					const Fe = Ae.getMembership(z),
+						Ve = Fe && Fe.account;
+					return Ve && Ve.id === le ? Ve.name : null
 				},
-				Fe = (z, le) => {
+				je = (z, le) => {
 					const Ce = Ae.getMemberships(z),
-						Oe = Ce && Ce.find(w => w.account.id === le);
+						Oe = Ce && Ce.find(R => R.account.id === le);
 					if (Oe) return Oe.account.settings.access_approval_expiry;
-					const je = Ae.getMembership(z),
-						ge = je && je.account;
-					return ge && ge.id === le ? ge.settings.access_approval_expiry : null
+					const Fe = Ae.getMembership(z),
+						Ve = Fe && Fe.account;
+					return Ve && Ve.id === le ? Ve.settings.access_approval_expiry : null
 				},
 				We = (z, le) => {
-					const Ce = Fe(z, le);
-					return Ce ? u().utc(Ce).isAfter() : !1
+					const Ce = je(z, le);
+					return Ce ? d().utc(Ce).isAfter() : !1
 				},
-				Ye = (z, le, Ce) => {
-					const Oe = Fe(z, le);
-					let je = Oe ? u().utc(Oe) : null;
-					return !je || !je.isAfter() ? "" : je && je.year() === 3e3 ? Ce("account.access_approval.card_expiration_forever") : Ce("account.access_approval.card_expiration_text", {
-						expiryTimestamp: je.local().format(_.U.DateTime)
+				Xe = (z, le, Ce) => {
+					const Oe = je(z, le);
+					let Fe = Oe ? d().utc(Oe) : null;
+					return !Fe || !Fe.isAfter() ? "" : Fe && Fe.year() === 3e3 ? Ce("account.access_approval.card_expiration_forever") : Ce("account.access_approval.card_expiration_text", {
+						expiryTimestamp: Fe.local().format(g.U.DateTime)
 					})
 				},
-				H = z => z && z.member && z.member.edit,
+				V = z => z && z.member && z.member.edit,
 				se = (z, le) => {
 					const Ce = Ae.getMembership(z),
 						Oe = Ce && Ce.account;
 					return Oe ? Oe.id !== le : !1
 				},
-				fe = z => z.dpa,
-				we = (0, t.P1)("dpa", fe),
-				Ne = z => z.webhook,
-				Be = z => z.webhooks,
-				Qe = (0, t.P1)("webhook", Be),
+				ge = z => z.dpa,
+				Me = (0, t.P1)("dpa", ge),
+				we = z => z.webhook,
+				Ne = z => z.webhooks,
+				Ye = (0, t.P1)("webhook", Ne),
 				rt = z => z.accountLegoContract,
-				lt = (0, t.P1)("accountLegoContract", rt),
+				ut = (0, t.P1)("accountLegoContract", rt),
 				st = z => {
-					const le = lt(z);
+					const le = ut(z);
 					return (le == null ? void 0 : le.lego_state) ? le.lego_state : ""
 				},
-				pt = z => st(z) === "signed",
-				mt = z => rt(z).isRequesting,
-				ut = z => {
-					const le = lt(z);
+				gt = z => st(z) === "signed",
+				ft = z => rt(z).isRequesting,
+				dt = z => {
+					const le = ut(z);
 					return le && le.subscription_type ? le.subscription_type : ""
 				},
-				Ge = z => ut(z) !== "",
+				Ge = z => dt(z) !== "",
 				Ae = {
 					getMembership: ue,
-					getMemberships: P,
-					getFilteredMemberships: te,
-					getAccountMembers: Se,
+					getMemberships: b,
+					getFilteredMemberships: ne,
+					getAccountMembers: Ie,
 					getAccountRoles: be
 				},
-				Xe = z => z.accountSingle,
-				gt = (0, t.P1)("accountSingle", Xe),
-				it = z => {
+				Qe = z => z.accountSingle,
+				pt = (0, t.P1)("accountSingle", Qe),
+				ct = z => {
 					const le = [c.V.SUPER_ADMINISTRATOR_ALL_PRIVILEGES, c.V.ADMINISTRATOR];
-					return (0, g.n)(z, le)
+					return (0, f.n)(z, le)
 				},
-				ft = z => (0, g.n)(z, [c.V.BRAND_PROTECTION])
+				_t = z => (0, f.n)(z, [c.V.BRAND_PROTECTION])
 		},
-		"../react/common/selectors/entitlementsSelectors.ts": function(x, v, n) {
+		"../react/common/selectors/entitlementsSelectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$f: function() {
 					return c
 				},
 				AD: function() {
-					return l
+					return u
 				},
 				BF: function() {
-					return d
+					return l
 				},
 				Bs: function() {
 					return M
@@ -6943,49 +7016,49 @@
 					return ce
 				},
 				DA: function() {
-					return Q
+					return X
 				},
 				E6: function() {
 					return a
 				},
 				Gy: function() {
-					return $e
-				},
-				Hq: function() {
-					return Ue
-				},
-				Ms: function() {
-					return N
-				},
-				Nb: function() {
 					return xe
 				},
+				Hq: function() {
+					return ke
+				},
+				Ms: function() {
+					return S
+				},
+				Nb: function() {
+					return Ue
+				},
 				Pj: function() {
-					return Ie
+					return Le
 				},
 				Q2: function() {
 					return m
 				},
 				Qq: function() {
-					return ne
+					return te
 				},
 				Td: function() {
-					return h
+					return A
 				},
 				Z: function() {
-					return $
+					return W
 				},
 				a: function() {
 					return T
 				},
 				a5: function() {
-					return W
+					return $
 				},
 				c7: function() {
-					return ve
+					return Ee
 				},
 				du: function() {
-					return u
+					return d
 				},
 				ec: function() {
 					return Z
@@ -6994,10 +7067,10 @@
 					return Te
 				},
 				hL: function() {
-					return X
+					return q
 				},
 				ji: function() {
-					return K
+					return G
 				},
 				jo: function() {
 					return L
@@ -7009,7 +7082,7 @@
 					return p
 				},
 				p1: function() {
-					return f
+					return _
 				},
 				pK: function() {
 					return Ke
@@ -7018,19 +7091,19 @@
 					return t
 				},
 				qR: function() {
-					return A
+					return h
 				},
 				rV: function() {
 					return i
 				},
 				u1: function() {
-					return _
+					return g
 				},
 				w4: function() {
 					return r
 				},
 				yD: function() {
-					return q
+					return J
 				}
 			});
 			var e = n("../react/utils/url.ts");
@@ -7044,136 +7117,136 @@
 				return k.entitlements.zone
 			}
 
-			function l(k) {
+			function u(k) {
 				return p(k).data
 			}
 			const m = k => {
-				var pe, Se;
-				return ((pe = p(k).paginationData) === null || pe === void 0 || (Se = pe.options) === null || Se === void 0 ? void 0 : Se.editedDate) || {}
+				var pe, Ie;
+				return ((pe = p(k).paginationData) === null || pe === void 0 || (Ie = pe.options) === null || Ie === void 0 ? void 0 : Ie.editedDate) || {}
 			};
 
 			function i(k, pe) {
-				const Se = l(k);
-				return Se ? o(Se, pe) : void 0
+				const Ie = u(k);
+				return Ie ? o(Ie, pe) : void 0
 			}
-			const u = (k, pe) => i(k, pe) === !0;
+			const d = (k, pe) => i(k, pe) === !0;
 
-			function _(k) {
+			function g(k) {
 				return k.entitlements.account
 			}
 
 			function t(k) {
-				return _(k).data
+				return g(k).data
 			}
 			const r = k => {
-				var pe, Se;
-				return ((pe = _(k).paginationData) === null || pe === void 0 || (Se = pe.options) === null || Se === void 0 ? void 0 : Se.editedDate) || {}
+				var pe, Ie;
+				return ((pe = g(k).paginationData) === null || pe === void 0 || (Ie = pe.options) === null || Ie === void 0 ? void 0 : Ie.editedDate) || {}
 			};
 
 			function a(k) {
-				return !_(k).isRequesting
+				return !g(k).isRequesting
 			}
 
-			function d(k, pe) {
-				const Se = t(k);
-				return Se ? o(Se, pe) : void 0
+			function l(k, pe) {
+				const Ie = t(k);
+				return Ie ? o(Ie, pe) : void 0
 			}
 
 			function c(k, pe) {
-				return d(k, pe) === !0
+				return l(k, pe) === !0
 			}
 
-			function g(k, pe) {
-				return pe.every(Se => c(k, Se))
+			function f(k, pe) {
+				return pe.every(Ie => c(k, Ie))
 			}
 
-			function f(k) {
+			function _(k) {
 				return c(k, "contract.customer_enabled")
 			}
 
-			function A(k) {
+			function h(k) {
 				return c(k, "contract.self_service_allowed")
 			}
 
-			function h(k) {
+			function A(k) {
 				return c(k, "billing.partners_managed")
 			}
-			const T = k => f(k) && A(k),
+			const T = k => _(k) && h(k),
 				M = k => c(k, "enterprise.ecp_allowed");
 
 			function C(k) {
 				return y(k) || c(k, "argo.allow_smart_routing") || c(k, "argo.allow_tiered_caching") || c(k, "rate_limiting.enabled") || c(k, "ctm.enabled") || c(k, "workers.enabled") || c(k, "workers.kv_store.enabled") || c(k, "stream.enabled")
 			}
-			const y = k => u(k, "argo.allow_smart_routing") || u(k, "argo.allow_tiered_caching"),
-				N = k => c(k, "zone.cname_setup_allowed") || c(k, "zone.partial_setup_allowed") || u(k, "zone.partial_setup_allowed"),
-				L = k => c(k, "argo.allow_smart_routing") || u(k, "argo.allow_smart_routing"),
-				P = k => c(k, "argo.allow_tiered_caching") || u(k, "argo.allow_tiered_caching"),
-				I = k => L(k) || P(k),
+			const y = k => d(k, "argo.allow_smart_routing") || d(k, "argo.allow_tiered_caching"),
+				S = k => c(k, "zone.cname_setup_allowed") || c(k, "zone.partial_setup_allowed") || d(k, "zone.partial_setup_allowed"),
+				L = k => c(k, "argo.allow_smart_routing") || d(k, "argo.allow_smart_routing"),
+				b = k => c(k, "argo.allow_tiered_caching") || d(k, "argo.allow_tiered_caching"),
+				P = k => L(k) || b(k),
 				O = k => c(k, "ctm.enabled"),
-				S = k => {
-					const pe = d(k, "ctm.load_balancers");
+				D = k => {
+					const pe = l(k, "ctm.load_balancers");
 					return typeof pe == "number" ? pe : 0
 				},
 				B = k => {
-					const pe = d(k, "ctm.pools");
+					const pe = l(k, "ctm.pools");
 					return typeof pe == "number" ? pe : 0
 				},
 				U = k => {
-					const pe = d(k, "ctm.origins");
+					const pe = l(k, "ctm.origins");
 					return typeof pe == "number" ? pe : 0
 				},
 				Z = k => c(k, "workers.enabled"),
 				ae = k => c(k, "stream.enabled"),
-				Ee = k => {
-					const pe = d(k, "access.users_allowed");
+				_e = k => {
+					const pe = l(k, "access.users_allowed");
 					return typeof pe == "number" ? pe : 0
 				},
-				de = k => Ee(k) > 0,
+				de = k => _e(k) > 0,
 				ue = k => {
 					const pe = i(k, "dedicated_certificates");
 					return typeof pe == "number" ? pe : 0
 				},
-				V = k => ue(k) > 0,
-				Y = k => {
+				K = k => ue(k) > 0,
+				Q = k => {
 					const pe = i(k, "rate_limiting.max_rules");
 					return typeof pe == "number" ? pe : 0
 				},
-				G = k => c(k, "rate_limiting.enabled"),
-				b = k => {
+				H = k => c(k, "rate_limiting.enabled"),
+				I = k => {
 					const pe = i(k, "page_rules");
 					return typeof pe == "number" ? pe : 0
 				},
-				F = k => b(k) > 0,
-				te = k => {
-					const pe = d(k, "dns_firewall.max_clusters_allowed");
+				F = k => I(k) > 0,
+				ne = k => {
+					const pe = l(k, "dns_firewall.max_clusters_allowed");
 					return typeof pe == "number" ? pe : 0
 				},
-				ce = k => te(k) > 0,
-				K = k => u(k, "zone.advanced_certificate_manager") || c(k, "zone.advanced_certificate_manager"),
-				q = k => i(k, "authoritative_dns.proxy_record_allowed") === !1 || d(k, "authoritative_dns.proxy_record_allowed") === !1,
-				$ = k => c(k, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
-				X = k => i(k, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
-				W = k => {
+				ce = k => ne(k) > 0,
+				G = k => d(k, "zone.advanced_certificate_manager") || c(k, "zone.advanced_certificate_manager"),
+				J = k => i(k, "authoritative_dns.proxy_record_allowed") === !1 || l(k, "authoritative_dns.proxy_record_allowed") === !1,
+				W = k => c(k, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
+				q = k => i(k, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
+				$ = k => {
 					const pe = i(k, "authoritative_dns.min_record_ttl_allowed");
 					return typeof pe == "number" && pe > 1 ? pe : 60
 				},
-				ne = k => c(k, "foundation_dns.advanced_nameservers_allowed") || u(k, "foundation_dns.advanced_nameservers_allowed"),
-				ve = k => c(k, "account_custom_ns.allowed"),
-				Te = (k, pe) => ((0, e.el)(window.location.pathname) ? i : d)(k, pe),
-				xe = k => ((0, e.el)(window.location.pathname) ? l : t)(k),
-				Ue = k => c(k, "authoritative_dns.multi_provider_allowed") || u(k, "authoritative_dns.multi_provider_allowed"),
-				$e = k => u(k, "authoritative_dns.cname_flattening_allowed"),
-				Ke = k => c(k, "secondary_dns.secondary_overrides") || u(k, "secondary_dns.secondary_overrides"),
-				Ie = k => c(k, "authoritative_dns.custom_soa_allowed") || u(k, "authoritative_dns.custom_soa_allowed"),
-				Q = k => c(k, "authoritative_dns.custom_ns_ttl_allowed") || u(k, "authoritative_dns.custom_ns_ttl_allowed"),
+				te = k => c(k, "foundation_dns.advanced_nameservers_allowed") || d(k, "foundation_dns.advanced_nameservers_allowed"),
+				Ee = k => c(k, "account_custom_ns.allowed"),
+				Te = (k, pe) => ((0, e.el)(window.location.pathname) ? i : l)(k, pe),
+				Ue = k => ((0, e.el)(window.location.pathname) ? u : t)(k),
+				ke = k => c(k, "authoritative_dns.multi_provider_allowed") || d(k, "authoritative_dns.multi_provider_allowed"),
+				xe = k => d(k, "authoritative_dns.cname_flattening_allowed"),
+				Ke = k => c(k, "secondary_dns.secondary_overrides") || d(k, "secondary_dns.secondary_overrides"),
+				Le = k => c(k, "authoritative_dns.custom_soa_allowed") || d(k, "authoritative_dns.custom_soa_allowed"),
+				X = k => c(k, "authoritative_dns.custom_ns_ttl_allowed") || d(k, "authoritative_dns.custom_ns_ttl_allowed"),
 				re = k => c(k, "secondary.create_zone"),
-				me = k => ne(k) || ve(k) || Ue(k) || re(k) || Ke(k) || Ie(k) || Q(k)
+				me = k => te(k) || Ee(k) || ke(k) || re(k) || Ke(k) || Le(k) || X(k)
 		},
-		"../react/common/selectors/languagePreferenceSelector.ts": function(x, v, n) {
+		"../react/common/selectors/languagePreferenceSelector.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				r: function() {
-					return l
+					return u
 				},
 				v: function() {
 					return m
@@ -7183,30 +7256,30 @@
 				o = n("../../../common/intl/intl-types/src/index.ts"),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				p = n("../react/utils/bootstrap.ts");
-			const l = i => {
+			const u = i => {
 				if ((0, p.gm)()) return s.Z.set(e.ly, e.ZW), e.ZW;
-				const u = i.userCommPreferences.data;
-				if (u == null ? void 0 : u["language-locale"]) return (0, e.i_)(u["language-locale"]), u["language-locale"];
+				const d = i.userCommPreferences.data;
+				if (d == null ? void 0 : d["language-locale"]) return (0, e.i_)(d["language-locale"]), d["language-locale"];
 				{
 					(0, e.Kd)() || (0, e.i_)(e.ZW);
-					const _ = (0, e.Kd)();
-					return m(_) ? _ : e.ZW
+					const g = (0, e.Kd)();
+					return m(g) ? g : e.ZW
 				}
 			};
 
 			function m(i) {
-				const u = Object.keys(o.Q).find(_ => o.Q[_] === i);
-				return !!i && typeof i == "string" && u != null && (0, e.S8)(u)
+				const d = Object.keys(o.Q).find(g => o.Q[g] === i);
+				return !!i && typeof i == "string" && d != null && (0, e.S8)(d)
 			}
 		},
-		"../react/common/selectors/userSelectors.ts": function(x, v, n) {
+		"../react/common/selectors/userSelectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$8: function() {
-					return l
+					return u
 				},
 				BG: function() {
-					return _
+					return g
 				},
 				BY: function() {
 					return T
@@ -7221,19 +7294,19 @@
 					return s
 				},
 				h$: function() {
-					return A
+					return h
 				},
 				h8: function() {
 					return t
 				},
 				kk: function() {
-					return f
+					return _
 				},
 				l8: function() {
 					return i
 				},
 				mV: function() {
-					return g
+					return f
 				},
 				vW: function() {
 					return m
@@ -7246,7 +7319,7 @@
 					var y;
 					return (y = s(C)) === null || y === void 0 ? void 0 : y.email.endsWith("@cloudflare.com")
 				},
-				l = C => {
+				u = C => {
 					var y;
 					return !!((y = s(C)) === null || y === void 0 ? void 0 : y.id)
 				},
@@ -7258,71 +7331,71 @@
 					const y = s(C);
 					return y && y.has_enterprise_zones
 				},
-				u = C => C.userCommPreferences,
-				_ = (0, e.P1)("userCommPreferences", u),
+				d = C => C.userCommPreferences,
+				g = (0, e.P1)("userCommPreferences", d),
 				t = C => {
 					const y = s(C);
 					return y && y.email_verified
 				},
 				r = C => {
-					const y = _(C);
+					const y = g(C);
 					return y && y.preferences.marketing_communication
 				},
 				a = C => C.userDetails,
-				d = (0, e.P1)("userDetails", a),
+				l = (0, e.P1)("userDetails", a),
 				c = C => {
-					const y = d(C);
+					const y = l(C);
 					return y && y["2FA-RECOVERY"] === "scheduled"
 				},
-				g = C => {
-					const y = d(C);
+				f = C => {
+					const y = l(C);
 					return y && y["2FA-RECOVERY"] === "interrupted"
 				},
-				f = C => {
-					const y = d(C);
+				_ = C => {
+					const y = l(C);
 					return y == null ? void 0 : y["NEW-USER-EMAIL"]
 				},
-				A = C => C.gates.assignments,
-				h = (C, y) => C && C[y];
+				h = C => C.gates.assignments,
+				A = (C, y) => C && C[y];
 
 			function T(C, y) {
-				const N = A(C);
-				return N ? h(N, y) : void 0
+				const S = h(C);
+				return S ? A(S, y) : void 0
 			}
 			const M = (C, y) => T(C, y) === !0
 		},
-		"../react/common/selectors/zoneSelectors.ts": function(x, v, n) {
+		"../react/common/selectors/zoneSelectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$4: function() {
-					return N
+					return S
 				},
 				$t: function() {
 					return be
 				},
 				A4: function() {
-					return f
+					return _
 				},
 				Cu: function() {
-					return A
+					return h
 				},
 				DQ: function() {
-					return ne
+					return te
 				},
 				Ej: function() {
-					return P
+					return b
 				},
 				FH: function() {
 					return T
 				},
 				ID: function() {
-					return G
+					return H
 				},
 				Ko: function() {
-					return Ie
+					return Le
 				},
 				Le: function() {
-					return xe
+					return Ue
 				},
 				Ly: function() {
 					return ce
@@ -7334,7 +7407,7 @@
 					return k
 				},
 				NY: function() {
-					return X
+					return q
 				},
 				Ns: function() {
 					return F
@@ -7343,64 +7416,64 @@
 					return We
 				},
 				P4: function() {
-					return I
+					return P
 				},
 				RO: function() {
-					return V
+					return K
 				},
 				Tr: function() {
 					return Ke
 				},
 				U: function() {
-					return h
+					return A
 				},
 				Ug: function() {
 					return C
 				},
 				V6: function() {
-					return Se
+					return Ie
 				},
 				WR: function() {
-					return Ye
+					return Xe
 				},
 				Xg: function() {
-					return g
+					return f
 				},
 				ZB: function() {
 					return Te
 				},
 				_y: function() {
-					return b
+					return I
 				},
 				cU: function() {
-					return Q
+					return X
 				},
 				cg: function() {
-					return W
+					return $
 				},
 				d2: function() {
 					return ae
 				},
 				il: function() {
-					return te
+					return ne
 				},
 				jN: function() {
-					return S
+					return D
 				},
 				jg: function() {
-					return q
+					return J
 				},
 				kC: function() {
 					return L
 				},
 				kf: function() {
-					return Re
+					return Be
 				},
 				ko: function() {
 					return ue
 				},
 				mK: function() {
-					return ke
+					return Re
 				},
 				nA: function() {
 					return c
@@ -7409,10 +7482,10 @@
 					return O
 				},
 				qM: function() {
-					return Ue
+					return ke
 				},
 				rq: function() {
-					return $
+					return W
 				},
 				tS: function() {
 					return y
@@ -7421,7 +7494,7 @@
 					return U
 				},
 				vB: function() {
-					return Fe
+					return je
 				},
 				vM: function() {
 					return B
@@ -7430,16 +7503,16 @@
 					return M
 				},
 				wn: function() {
-					return ve
+					return Ee
 				},
 				xU: function() {
 					return Z
 				},
 				xw: function() {
-					return $e
+					return xe
 				},
 				z5: function() {
-					return Y
+					return Q
 				},
 				zO: function() {
 					return re
@@ -7448,250 +7521,250 @@
 					return ze
 				},
 				zh: function() {
-					return Ee
+					return _e
 				}
 			});
 			var e = n("../../../../node_modules/reselect/lib/index.js"),
 				o = n("../react/app/redux/normalizer.js"),
 				s = n("../../../../node_modules/lodash/get.js"),
 				p = n.n(s),
-				l = n("../../../../node_modules/moment/moment.js"),
-				m = n.n(l),
+				u = n("../../../../node_modules/moment/moment.js"),
+				m = n.n(u),
 				i = n("../react/common/constants/billing/index.ts");
 
-			function u(H) {
+			function d(V) {
 				for (var se = 1; se < arguments.length; se++) {
-					var fe = arguments[se] != null ? Object(arguments[se]) : {},
-						we = Object.keys(fe);
-					typeof Object.getOwnPropertySymbols == "function" && we.push.apply(we, Object.getOwnPropertySymbols(fe).filter(function(Ne) {
-						return Object.getOwnPropertyDescriptor(fe, Ne).enumerable
-					})), we.forEach(function(Ne) {
-						_(H, Ne, fe[Ne])
+					var ge = arguments[se] != null ? Object(arguments[se]) : {},
+						Me = Object.keys(ge);
+					typeof Object.getOwnPropertySymbols == "function" && Me.push.apply(Me, Object.getOwnPropertySymbols(ge).filter(function(we) {
+						return Object.getOwnPropertyDescriptor(ge, we).enumerable
+					})), Me.forEach(function(we) {
+						g(V, we, ge[we])
 					})
 				}
-				return H
+				return V
 			}
 
-			function _(H, se, fe) {
-				return se = t(se), se in H ? Object.defineProperty(H, se, {
-					value: fe,
+			function g(V, se, ge) {
+				return se = t(se), se in V ? Object.defineProperty(V, se, {
+					value: ge,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : H[se] = fe, H
+				}) : V[se] = ge, V
 			}
 
-			function t(H) {
-				var se = r(H, "string");
+			function t(V) {
+				var se = r(V, "string");
 				return typeof se == "symbol" ? se : String(se)
 			}
 
-			function r(H, se) {
-				if (typeof H != "object" || H === null) return H;
-				var fe = H[Symbol.toPrimitive];
-				if (fe !== void 0) {
-					var we = fe.call(H, se || "default");
-					if (typeof we != "object") return we;
+			function r(V, se) {
+				if (typeof V != "object" || V === null) return V;
+				var ge = V[Symbol.toPrimitive];
+				if (ge !== void 0) {
+					var Me = ge.call(V, se || "default");
+					if (typeof Me != "object") return Me;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (se === "string" ? String : Number)(H)
+				return (se === "string" ? String : Number)(V)
 			}
-			const a = (0, o.P1)("zone", H => H.zone),
-				d = H => {
+			const a = (0, o.P1)("zone", V => V.zone),
+				l = V => {
 					var se;
-					return (se = H.zoneVersioning) === null || se === void 0 ? void 0 : se.zoneVersionSelector
+					return (se = V.zoneVersioning) === null || se === void 0 ? void 0 : se.zoneVersionSelector
 				},
-				c = (0, e.P1)(a, d, (H, se) => {
-					var fe, we, Ne;
-					let Be;
-					if (Array.isArray(H) && H.length === 1 ? Be = H[0] : H && !Array.isArray(H) && (Be = H), !Be) return;
-					const Qe = !!(se == null ? void 0 : se.enabled);
-					return u({}, Be, Be.name && {
-						name: Qe ? se.rootZoneName : Be.name
+				c = (0, e.P1)(a, l, (V, se) => {
+					var ge, Me, we;
+					let Ne;
+					if (Array.isArray(V) && V.length === 1 ? Ne = V[0] : V && !Array.isArray(V) && (Ne = V), !Ne) return;
+					const Ye = !!(se == null ? void 0 : se.enabled);
+					return d({}, Ne, Ne.name && {
+						name: Ye ? se.rootZoneName : Ne.name
 					}, {
 						versioning: {
-							enabled: Qe,
-							isRoot: !((fe = Be.name) === null || fe === void 0 ? void 0 : fe.endsWith(".config.cfdata.org")),
-							version: Qe ? se.selectedVersion : 0,
-							rootZoneId: Qe ? se.rootZoneId : (we = (Ne = Be) === null || Ne === void 0 ? void 0 : Ne.id) !== null && we !== void 0 ? we : ""
+							enabled: Ye,
+							isRoot: !((ge = Ne.name) === null || ge === void 0 ? void 0 : ge.endsWith(".config.cfdata.org")),
+							version: Ye ? se.selectedVersion : 0,
+							rootZoneId: Ye ? se.rootZoneId : (Me = (we = Ne) === null || we === void 0 ? void 0 : we.id) !== null && Me !== void 0 ? Me : ""
 						}
 					})
 				}),
-				g = H => H.zone,
-				f = (0, e.P1)(c, g, (H, se) => ({
-					data: H,
+				f = V => V.zone,
+				_ = (0, e.P1)(c, f, (V, se) => ({
+					data: V,
 					meta: se
 				})),
-				A = H => {
-					var se, fe;
-					return (se = (fe = c(H)) === null || fe === void 0 ? void 0 : fe.id) !== null && se !== void 0 ? se : ""
+				h = V => {
+					var se, ge;
+					return (se = (ge = c(V)) === null || ge === void 0 ? void 0 : ge.id) !== null && se !== void 0 ? se : ""
 				},
-				h = H => H.zones,
-				T = H => H.zonesRoot,
-				M = H => H.zonesAccount,
-				C = (0, o.P1)("zones", h),
+				A = V => V.zones,
+				T = V => V.zonesRoot,
+				M = V => V.zonesAccount,
+				C = (0, o.P1)("zones", A),
 				y = (0, o.P1)("zonesRoot", T),
-				N = (0, o.P1)("zonesAccount", M);
+				S = (0, o.P1)("zonesAccount", M);
 
-			function L(H) {
-				const se = c(H);
+			function L(V) {
+				const se = c(V);
 				return se ? se.created_on : null
 			}
 
-			function P(H, se, fe) {
-				const we = L(H);
-				if (!we) return;
-				const Ne = m().duration(se, fe),
-					Be = new Date(we),
-					Qe = new Date(new Date().getTime() - Ne.asMilliseconds());
-				return Be.getTime() > Qe.getTime()
+			function b(V, se, ge) {
+				const Me = L(V);
+				if (!Me) return;
+				const we = m().duration(se, ge),
+					Ne = new Date(Me),
+					Ye = new Date(new Date().getTime() - we.asMilliseconds());
+				return Ne.getTime() > Ye.getTime()
 			}
 
-			function I(H) {
-				const se = c(H);
+			function P(V) {
+				const se = c(V);
 				return se ? se.status : null
 			}
 
-			function O(H) {
-				const se = c(H);
+			function O(V) {
+				const se = c(V);
 				return se ? se.type : null
 			}
 
-			function S(H) {
-				return H.plan_pending ? H.plan_pending : H.plan
+			function D(V) {
+				return V.plan_pending ? V.plan_pending : V.plan
 			}
 
-			function B(H) {
-				const se = c(H);
+			function B(V) {
+				const se = c(V);
 				if (!se) return;
-				const fe = S(se);
-				return fe && fe.legacy_id
+				const ge = D(se);
+				return ge && ge.legacy_id
 			}
 
-			function U(H, se) {
-				const fe = S(H);
-				return !!fe && i.Gs.indexOf(fe.legacy_id) >= i.Gs.indexOf(se)
+			function U(V, se) {
+				const ge = D(V);
+				return !!ge && i.Gs.indexOf(ge.legacy_id) >= i.Gs.indexOf(se)
 			}
 
-			function Z(H) {
-				return !!H && H.status === "initializing"
+			function Z(V) {
+				return !!V && V.status === "initializing"
 			}
 
-			function ae(H) {
-				return !!H && H.status === "pending"
+			function ae(V) {
+				return !!V && V.status === "pending"
 			}
 
-			function Ee(H) {
-				return !!H && H.status === "active"
+			function _e(V) {
+				return !!V && V.status === "active"
 			}
 
-			function de(H, se) {
-				if (!H) return !1;
-				const fe = S(H);
-				return !!fe && fe.legacy_id === se
+			function de(V, se) {
+				if (!V) return !1;
+				const ge = D(V);
+				return !!ge && ge.legacy_id === se
 			}
 
-			function ue(H) {
-				return de(H, "enterprise")
+			function ue(V) {
+				return de(V, "enterprise")
 			}
-			const V = H => ue(c(H));
+			const K = V => ue(c(V));
 
-			function Y(H) {
-				return de(H, "business")
+			function Q(V) {
+				return de(V, "business")
 			}
-			const G = H => Y(c(H));
+			const H = V => Q(c(V));
 
-			function b(H) {
-				return de(H, "pro")
-			}
-
-			function F(H) {
-				return de(H, "free")
-			}
-			const te = H => F(c(H));
-
-			function ce(H) {
-				return !ue(H)
+			function I(V) {
+				return de(V, "pro")
 			}
 
-			function K(H) {
-				return H && H.owner
+			function F(V) {
+				return de(V, "free")
+			}
+			const ne = V => F(c(V));
+
+			function ce(V) {
+				return !ue(V)
 			}
 
-			function q(H, se) {
-				const fe = K(se);
-				return !!fe && fe.type === "user" && fe.id === H.id
+			function G(V) {
+				return V && V.owner
 			}
 
-			function $(H) {
-				const se = c(H);
+			function J(V, se) {
+				const ge = G(se);
+				return !!ge && ge.type === "user" && ge.id === V.id
+			}
+
+			function W(V) {
+				const se = c(V);
 				return !!se && se.type === "partial"
 			}
 
-			function X(H) {
-				const se = c(H);
+			function q(V) {
+				const se = c(V);
 				return !!se && se.type === "secondary"
 			}
-			const W = H => {
+			const $ = V => {
 					var se;
-					const fe = c(H);
-					return !!(fe == null ? void 0 : fe.host) && !!((se = fe.plan) === null || se === void 0 ? void 0 : se.externally_managed)
+					const ge = c(V);
+					return !!(ge == null ? void 0 : ge.host) && !!((se = ge.plan) === null || se === void 0 ? void 0 : se.externally_managed)
 				},
-				ne = H => {
-					const se = C(H);
+				te = V => {
+					const se = C(V);
 					return se && se.some(ue)
 				},
-				ve = (H, se) => {
-					const fe = c(H);
-					return fe && fe.betas ? fe.betas.includes(se) : !1
+				Ee = (V, se) => {
+					const ge = c(V);
+					return ge && ge.betas ? ge.betas.includes(se) : !1
 				},
-				Te = (H, ...se) => p()(H, ["zoneFlags", "data", ...se]),
-				xe = (H, ...se) => p()(H, ["accountFlags", "data", ...se]),
-				Ue = H => H.accountFlags.isRequesting,
-				$e = H => H.zoneFlags.isRequesting,
-				Ke = (H, ...se) => p()(H, ["zoneFlagsChanges", "data", ...se]),
-				Ie = H => H.zoneFlagsChanges.isRequesting,
-				Q = H => H.zoneFlags && H.zoneFlags.data,
-				re = H => H.zoneFlags,
-				me = (0, e.P1)(Q, re, (H, se) => ({
-					data: H,
+				Te = (V, ...se) => p()(V, ["zoneFlags", "data", ...se]),
+				Ue = (V, ...se) => p()(V, ["accountFlags", "data", ...se]),
+				ke = V => V.accountFlags.isRequesting,
+				xe = V => V.zoneFlags.isRequesting,
+				Ke = (V, ...se) => p()(V, ["zoneFlagsChanges", "data", ...se]),
+				Le = V => V.zoneFlagsChanges.isRequesting,
+				X = V => V.zoneFlags && V.zoneFlags.data,
+				re = V => V.zoneFlags,
+				me = (0, e.P1)(X, re, (V, se) => ({
+					data: V,
 					meta: se
 				})),
-				k = (0, o.P1)("abuseUrls", H => H.overview.abuseUrls),
-				pe = H => {
-					const se = c(H);
+				k = (0, o.P1)("abuseUrls", V => V.overview.abuseUrls),
+				pe = V => {
+					const se = c(V);
 					return se ? `/${se.account.id}/${se.name}` : null
 				},
-				Se = H => H.zoneMarketingCampaigns,
-				Re = H => H.overview.zoneBlocks.data,
-				ze = H => H.overview.zoneBlocks.isRequesting,
-				be = H => H.overview.zoneBlocks.hasData,
-				ke = H => {
-					var se, fe;
-					return (H == null || (se = H.overview.zoneBlocks) === null || se === void 0 || (fe = se.paginationData) === null || fe === void 0 ? void 0 : fe.info) || {
+				Ie = V => V.zoneMarketingCampaigns,
+				Be = V => V.overview.zoneBlocks.data,
+				ze = V => V.overview.zoneBlocks.isRequesting,
+				be = V => V.overview.zoneBlocks.hasData,
+				Re = V => {
+					var se, ge;
+					return (V == null || (se = V.overview.zoneBlocks) === null || se === void 0 || (ge = se.paginationData) === null || ge === void 0 ? void 0 : ge.info) || {
 						page: 1,
 						count: 0,
 						total_pages: 0,
 						per_page: 10
 					}
 				},
-				Fe = H => H.overview.zoneBlocksReview.isRequesting,
-				We = H => H.overview.zoneHold,
-				Ye = (0, o.P1)("zoneHold", We)
+				je = V => V.overview.zoneBlocksReview.isRequesting,
+				We = V => V.overview.zoneHold,
+				Xe = (0, o.P1)("zoneHold", We)
 		},
-		"../react/common/utils/formatDate.ts": function(x, v, n) {
+		"../react/common/utils/formatDate.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				U: function() {
 					return e.pN
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-formatters/es/index.js");
-			v.Z = (o, s, p = !1) => (0, e.p6)(o, s, p)
+			E.Z = (o, s, p = !1) => (0, e.p6)(o, s, p)
 		},
-		"../react/common/utils/hasRole.ts": function(x, v, n) {
+		"../react/common/utils/hasRole.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				n: function() {
 					return o
 				}
@@ -7699,14 +7772,14 @@
 			var e = n("../react/common/selectors/accountSelectors.ts");
 			const o = (s, p) => {
 				const {
-					roles: l = []
+					roles: u = []
 				} = (0, e.uF)(s) || {};
-				return p.some(m => l.includes(m))
+				return p.some(m => u.includes(m))
 			}
 		},
-		"../react/common/utils/isGuards.ts": function(x, v, n) {
+		"../react/common/utils/isGuards.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Q$: function() {
 					return s
 				},
@@ -7717,19 +7790,19 @@
 					return p
 				},
 				zE: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../react/common/constants/index.ts"),
 				o = n("../node_modules/uuid/dist/esm-browser/validate.js");
-			const s = i => i ? ["page", "per_page", "count", "total_count"].every(_ => _ in i && i[_]) : !1,
+			const s = i => i ? ["page", "per_page", "count", "total_count"].every(g => g in i && i[g]) : !1,
 				p = (i = "") => e.Dy.includes(i.toLowerCase()),
-				l = i => i !== null && typeof i == "object" && "name" in i && "size" in i && "type" in i && typeof i.slice == "function",
+				u = i => i !== null && typeof i == "object" && "name" in i && "size" in i && "type" in i && typeof i.slice == "function",
 				m = i => (0, o.Z)(i)
 		},
-		"../react/common/utils/useQueryCache.ts": function(x, v, n) {
+		"../react/common/utils/useQueryCache.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				o: function() {
 					return m
 				}
@@ -7737,119 +7810,119 @@
 			var e = n("../../../../node_modules/react-query/es/index.js");
 
 			function o(i) {
-				for (var u = 1; u < arguments.length; u++) {
-					var _ = arguments[u] != null ? Object(arguments[u]) : {},
-						t = Object.keys(_);
-					typeof Object.getOwnPropertySymbols == "function" && t.push.apply(t, Object.getOwnPropertySymbols(_).filter(function(r) {
-						return Object.getOwnPropertyDescriptor(_, r).enumerable
+				for (var d = 1; d < arguments.length; d++) {
+					var g = arguments[d] != null ? Object(arguments[d]) : {},
+						t = Object.keys(g);
+					typeof Object.getOwnPropertySymbols == "function" && t.push.apply(t, Object.getOwnPropertySymbols(g).filter(function(r) {
+						return Object.getOwnPropertyDescriptor(g, r).enumerable
 					})), t.forEach(function(r) {
-						s(i, r, _[r])
+						s(i, r, g[r])
 					})
 				}
 				return i
 			}
 
-			function s(i, u, _) {
-				return u = p(u), u in i ? Object.defineProperty(i, u, {
-					value: _,
+			function s(i, d, g) {
+				return d = p(d), d in i ? Object.defineProperty(i, d, {
+					value: g,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : i[u] = _, i
+				}) : i[d] = g, i
 			}
 
 			function p(i) {
-				var u = l(i, "string");
-				return typeof u == "symbol" ? u : String(u)
+				var d = u(i, "string");
+				return typeof d == "symbol" ? d : String(d)
 			}
 
-			function l(i, u) {
+			function u(i, d) {
 				if (typeof i != "object" || i === null) return i;
-				var _ = i[Symbol.toPrimitive];
-				if (_ !== void 0) {
-					var t = _.call(i, u || "default");
+				var g = i[Symbol.toPrimitive];
+				if (g !== void 0) {
+					var t = g.call(i, d || "default");
 					if (typeof t != "object") return t;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (u === "string" ? String : Number)(i)
+				return (d === "string" ? String : Number)(i)
 			}
 			const m = i => {
-				const u = (0, e.useQueryClient)(),
-					_ = T => {
+				const d = (0, e.useQueryClient)(),
+					g = T => {
 						var M;
-						return u.getQueriesData((M = T) !== null && M !== void 0 ? M : i)
+						return d.getQueriesData((M = T) !== null && M !== void 0 ? M : i)
 					},
 					t = T => {
 						var M;
-						return u.getQueryData((M = T) !== null && M !== void 0 ? M : i)
+						return d.getQueryData((M = T) !== null && M !== void 0 ? M : i)
 					},
 					r = T => {
 						var M;
-						return u.getQueriesData({
+						return d.getQueriesData({
 							queryKey: (M = T) !== null && M !== void 0 ? M : i,
 							stale: !0
 						})
 					},
 					a = (T, M) => {
 						var C;
-						u.setQueryData((C = M) !== null && C !== void 0 ? C : i, T)
+						d.setQueryData((C = M) !== null && C !== void 0 ? C : i, T)
 					},
-					d = async T => {
+					l = async T => {
 						var M;
-						await u.refetchQueries((M = T) !== null && M !== void 0 ? M : i)
+						await d.refetchQueries((M = T) !== null && M !== void 0 ? M : i)
 					}, c = async (T, M) => {
 						var C, y;
-						await u.invalidateQueries((C = T) !== null && C !== void 0 ? C : i, o({
+						await d.invalidateQueries((C = T) !== null && C !== void 0 ? C : i, o({
 							refetchActive: !1
 						}, (y = M) !== null && y !== void 0 ? y : {}))
-					}, g = async (T, M) => {
+					}, f = async (T, M) => {
 						const C = T || (y => {
-							var N;
-							return (y == null || (N = y.queryKey) === null || N === void 0 ? void 0 : N[0]) === i
+							var S;
+							return (y == null || (S = y.queryKey) === null || S === void 0 ? void 0 : S[0]) === i
 						});
-						await u.invalidateQueries(o({
+						await d.invalidateQueries(o({
 							predicate: C,
 							refetchActive: !1,
 							refetchInactive: !1
 						}, M))
 					};
 				return {
-					refetch: d,
+					refetch: l,
 					cancelData: async () => {
-						await u.cancelQueries(i)
+						await d.cancelQueries(i)
 					},
 					invalidate: c,
 					setData: a,
 					getDataStale: r,
-					getData: _,
+					getData: g,
 					prefetchQuery: (T, M) => {
 						var C;
-						return u.prefetchQuery((C = M) !== null && C !== void 0 ? C : i, T)
+						return d.prefetchQuery((C = M) !== null && C !== void 0 ? C : i, T)
 					},
 					getQueryData: t,
-					predicateInvalidate: g,
+					predicateInvalidate: f,
 					batchInvalidate: async ({
 						queryKeysToInvalidate: T = [],
 						queryKeysToPredicateInvalidate: M = [],
 						refetchActive: C = !1,
 						refetchInactive: y = !1
 					}) => {
-						const N = T.map(P => c(P)),
-							L = M.map(P => g(I => {
+						const S = T.map(b => c(b)),
+							L = M.map(b => f(P => {
 								var O;
-								return (I == null || (O = I.queryKey) === null || O === void 0 ? void 0 : O[0]) === P
+								return (P == null || (O = P.queryKey) === null || O === void 0 ? void 0 : O[0]) === b
 							}, {
 								refetchActive: C,
 								refetchInactive: y
 							}));
-						await Promise.all([...N, ...L])
+						await Promise.all([...S, ...L])
 					}
 				}
 			}
 		},
-		"../react/common/validators/index.js": function(x, v, n) {
+		"../react/common/validators/index.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				K2: function() {
 					return o
 				},
@@ -7860,32 +7933,32 @@
 					return p
 				},
 				bK: function() {
-					return u
+					return d
 				},
 				jk: function() {
 					return i
 				},
 				wb: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
-			const o = _ => /^https?:\/\/(.*)/.test(_),
-				s = _ => e.default.hostname.test(_),
-				p = _ => /^([_a-zA-Z0-9][-_a-zA-Z0-9]*\.)+[-a-zA-Z0-9]{2,20}:(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/.test(_),
-				l = _ => /^[!-~]+$/.test(_),
+			const o = g => /^https?:\/\/(.*)/.test(g),
+				s = g => e.default.hostname.test(g),
+				p = g => /^([_a-zA-Z0-9][-_a-zA-Z0-9]*\.)+[-a-zA-Z0-9]{2,20}:(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/.test(g),
+				u = g => /^[!-~]+$/.test(g),
 				m = /^(?:(?:[A-Za-z0-9](?:[A-Za-z0-9\-\_]{0,61}[A-Za-z0-9])?)\.)*(?:[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?)?$/,
-				i = _ => m.test(_),
-				u = _ => !!_ && !!_.length && /^[ -~]+$/.test(_)
+				i = g => m.test(g),
+				d = g => !!g && !!g.length && /^[ -~]+$/.test(g)
 		},
-		"../react/pages/analytics/common/utils/gqlUtils.js": function(x, v, n) {
+		"../react/pages/analytics/common/utils/gqlUtils.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				DZ: function() {
 					return p
 				},
 				GA: function() {
-					return _
+					return g
 				},
 				hT: function() {
 					return m
@@ -7894,17 +7967,17 @@
 					return s
 				},
 				qc: function() {
-					return l
+					return u
 				},
 				w9: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../../../../node_modules/moment/moment.js"),
 				o = n.n(e);
 			const s = a => o().utc(a).format("YYYY-MM-DD"),
 				p = a => o().utc(a).format(),
-				l = a => o().utc(a).startOf("minute").format(),
+				u = a => o().utc(a).startOf("minute").format(),
 				m = a => new Date(a),
 				i = {
 					0: "datetimeMinute",
@@ -7913,11 +7986,11 @@
 					48: "datetimeHour",
 					240: "date"
 				},
-				u = a => {
-					const d = a / 60 / 60 / 1e3;
-					return i[Object.keys(i).sort((c, g) => g - c).find(c => d >= c)]
+				d = a => {
+					const l = a / 60 / 60 / 1e3;
+					return i[Object.keys(i).sort((c, f) => f - c).find(c => l >= c)]
 				},
-				_ = (a, d = c => c.avg && c.avg.sampleInterval ? c.avg.sampleInterval : 1) => a.length === 0 ? 1 : a.reduce((c, g) => c + d(g), 0) / a.length,
+				g = (a, l = c => c.avg && c.avg.sampleInterval ? c.avg.sampleInterval : 1) => a.length === 0 ? 1 : a.reduce((c, f) => c + l(f), 0) / a.length,
 				t = {
 					datetimeMinute: 60 * 1e3,
 					datetimeFiveMinutes: 5 * 60 * 1e3,
@@ -7927,14 +8000,14 @@
 				},
 				r = a => t[a]
 		},
-		"../react/pages/apps/marketplace/config/initialState.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/config/initialState.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Jz: function() {
-					return _
+					return g
 				},
 				OK: function() {
-					return l
+					return u
 				},
 				_Y: function() {
 					return i
@@ -7943,7 +8016,7 @@
 					return r
 				},
 				h_: function() {
-					return u
+					return d
 				},
 				w6: function() {
 					return a
@@ -7954,61 +8027,61 @@
 			});
 
 			function e(c) {
-				for (var g = 1; g < arguments.length; g++) {
-					var f = arguments[g] != null ? Object(arguments[g]) : {},
-						A = Object.keys(f);
-					typeof Object.getOwnPropertySymbols == "function" && A.push.apply(A, Object.getOwnPropertySymbols(f).filter(function(h) {
-						return Object.getOwnPropertyDescriptor(f, h).enumerable
-					})), A.forEach(function(h) {
-						o(c, h, f[h])
+				for (var f = 1; f < arguments.length; f++) {
+					var _ = arguments[f] != null ? Object(arguments[f]) : {},
+						h = Object.keys(_);
+					typeof Object.getOwnPropertySymbols == "function" && h.push.apply(h, Object.getOwnPropertySymbols(_).filter(function(A) {
+						return Object.getOwnPropertyDescriptor(_, A).enumerable
+					})), h.forEach(function(A) {
+						o(c, A, _[A])
 					})
 				}
 				return c
 			}
 
-			function o(c, g, f) {
-				return g = s(g), g in c ? Object.defineProperty(c, g, {
-					value: f,
+			function o(c, f, _) {
+				return f = s(f), f in c ? Object.defineProperty(c, f, {
+					value: _,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : c[g] = f, c
+				}) : c[f] = _, c
 			}
 
 			function s(c) {
-				var g = p(c, "string");
-				return typeof g == "symbol" ? g : String(g)
+				var f = p(c, "string");
+				return typeof f == "symbol" ? f : String(f)
 			}
 
-			function p(c, g) {
+			function p(c, f) {
 				if (typeof c != "object" || c === null) return c;
-				var f = c[Symbol.toPrimitive];
-				if (f !== void 0) {
-					var A = f.call(c, g || "default");
-					if (typeof A != "object") return A;
+				var _ = c[Symbol.toPrimitive];
+				if (_ !== void 0) {
+					var h = _.call(c, f || "default");
+					if (typeof h != "object") return h;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (g === "string" ? String : Number)(c)
+				return (f === "string" ? String : Number)(c)
 			}
-			let l = function(c) {
+			let u = function(c) {
 					return c.Sending = "sending", c.Success = "success", c.Failed = "failed", c.Latent = "latent", c
 				}({}),
 				m = function(c) {
 					return c[c.Success = 200] = "Success", c[c.BadRequest = 400] = "BadRequest", c
 				}({});
 			const i = {
-					status: l.Latent,
+					status: u.Latent,
 					statusCode: void 0
 				},
-				u = {
-					status: l.Sending
+				d = {
+					status: u.Sending
 				},
-				_ = {
-					status: l.Success,
+				g = {
+					status: u.Success,
 					statusCode: m.Success
 				},
 				t = {
-					status: l.Failed,
+					status: u.Failed,
 					statusCode: m.BadRequest
 				},
 				r = {
@@ -8041,16 +8114,16 @@
 						value: []
 					}, i)
 				},
-				d = {}
+				l = {}
 		},
-		"../react/pages/apps/marketplace/libraries/helpers.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/libraries/helpers.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Ux: function() {
 					return r
 				},
 				cz: function() {
-					return d
+					return l
 				},
 				im: function() {
 					return i
@@ -8064,82 +8137,82 @@
 			});
 			var e = n("../react/pages/apps/marketplace/libraries/constants.ts");
 
-			function o(f) {
-				for (var A = 1; A < arguments.length; A++) {
-					var h = arguments[A] != null ? Object(arguments[A]) : {},
-						T = Object.keys(h);
-					typeof Object.getOwnPropertySymbols == "function" && T.push.apply(T, Object.getOwnPropertySymbols(h).filter(function(M) {
-						return Object.getOwnPropertyDescriptor(h, M).enumerable
+			function o(_) {
+				for (var h = 1; h < arguments.length; h++) {
+					var A = arguments[h] != null ? Object(arguments[h]) : {},
+						T = Object.keys(A);
+					typeof Object.getOwnPropertySymbols == "function" && T.push.apply(T, Object.getOwnPropertySymbols(A).filter(function(M) {
+						return Object.getOwnPropertyDescriptor(A, M).enumerable
 					})), T.forEach(function(M) {
-						s(f, M, h[M])
+						s(_, M, A[M])
 					})
 				}
-				return f
+				return _
 			}
 
-			function s(f, A, h) {
-				return A = p(A), A in f ? Object.defineProperty(f, A, {
-					value: h,
+			function s(_, h, A) {
+				return h = p(h), h in _ ? Object.defineProperty(_, h, {
+					value: A,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : f[A] = h, f
+				}) : _[h] = A, _
 			}
 
-			function p(f) {
-				var A = l(f, "string");
-				return typeof A == "symbol" ? A : String(A)
+			function p(_) {
+				var h = u(_, "string");
+				return typeof h == "symbol" ? h : String(h)
 			}
 
-			function l(f, A) {
-				if (typeof f != "object" || f === null) return f;
-				var h = f[Symbol.toPrimitive];
-				if (h !== void 0) {
-					var T = h.call(f, A || "default");
+			function u(_, h) {
+				if (typeof _ != "object" || _ === null) return _;
+				var A = _[Symbol.toPrimitive];
+				if (A !== void 0) {
+					var T = A.call(_, h || "default");
 					if (typeof T != "object") return T;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (A === "string" ? String : Number)(f)
+				return (h === "string" ? String : Number)(_)
 			}
-			const m = f => f.test(window.location.hostname),
+			const m = _ => _.test(window.location.hostname),
 				i = () => m(e.j9),
-				u = () => m(MARKETPLACE_LOCAL_URL_REGEXP),
-				_ = (f, A) => {
-					const h = random(0, 1) ? -1 : 1;
-					return f.points === A.points || f.points >= APP_POINTS_THRESHOLD && A.points >= APP_POINTS_THRESHOLD ? h : f.points < 0 || A.points < 0 || f.points >= APP_POINTS_THRESHOLD || A.points >= APP_POINTS_THRESHOLD ? A.points - f.points : h
+				d = () => m(MARKETPLACE_LOCAL_URL_REGEXP),
+				g = (_, h) => {
+					const A = random(0, 1) ? -1 : 1;
+					return _.points === h.points || _.points >= APP_POINTS_THRESHOLD && h.points >= APP_POINTS_THRESHOLD ? A : _.points < 0 || h.points < 0 || _.points >= APP_POINTS_THRESHOLD || h.points >= APP_POINTS_THRESHOLD ? h.points - _.points : A
 				},
-				t = (f, A, h) => {
-					const T = get(A, h),
-						M = get(f, h);
+				t = (_, h, A) => {
+					const T = get(h, A),
+						M = get(_, A);
 					return T && !isEqual(T, M)
 				},
 				r = {
 					transformers: {
-						transformAppIdsToApps: (f, A) => A.map(h => f.find(T => T.id === h)),
-						addAppVersionInfo: (f, A) => o({}, A, {
-							currentVersion: A.versions.find(h => h.tag === f.versionTag),
-							latestVersion: A.versions.find(h => h.tag === A.infoVersion)
+						transformAppIdsToApps: (_, h) => h.map(A => _.find(T => T.id === A)),
+						addAppVersionInfo: (_, h) => o({}, h, {
+							currentVersion: h.versions.find(A => A.tag === _.versionTag),
+							latestVersion: h.versions.find(A => A.tag === h.infoVersion)
 						}),
-						addCurrentSiteInstall: (f, A) => o({}, A, {
-							currentSiteInstall: f.find(h => h.appId === A.id)
+						addCurrentSiteInstall: (_, h) => o({}, h, {
+							currentSiteInstall: _.find(A => A.appId === h.id)
 						})
 					}
 				},
-				a = (f, A, h) => o({}, f, A, h ? {
-					value: h
+				a = (_, h, A) => o({}, _, h, A ? {
+					value: A
 				} : {}),
-				d = f => f.map(A => A.status),
-				c = f => f.apps ? f.apps : f,
-				g = f => {
-					let A = ["by-cloudflare"];
-					return f.filter(h => !A.includes(h.id) && h.visible).sort((h, T) => h.points < T.points ? 1 : 0)
+				l = _ => _.map(h => h.status),
+				c = _ => _.apps ? _.apps : _,
+				f = _ => {
+					let h = ["by-cloudflare"];
+					return _.filter(A => !h.includes(A.id) && A.visible).sort((A, T) => A.points < T.points ? 1 : 0)
 				}
 		},
-		"../react/pages/apps/marketplace/marketplace.translations.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/marketplace.translations.ts": function(x, E, n) {
 			"use strict";
-			n.r(v), n.d(v, {
+			n.r(E), n.d(E, {
 				categorySlugTranslationKey: function() {
-					return l
+					return u
 				},
 				keys: function() {
 					return o
@@ -8321,14 +8394,14 @@
 				installed_apps_no_apps_insatlled_site: "You haven't installed any apps on your site yet."
 			});
 
-			function l(m) {
+			function u(m) {
 				const i = m.replace(/-/g, "_");
 				return Object.keys(o).includes(i) ? i : void 0
 			}
 		},
-		"../react/pages/apps/marketplace/requests/Requester.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/requests/Requester.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				L: function() {
 					return a
 				}
@@ -8338,67 +8411,67 @@
 				s = n("../../../../node_modules/lodash-es/defaults.js"),
 				p = n("../react/pages/apps/marketplace/libraries/helpers.ts");
 
-			function l(d) {
+			function u(l) {
 				for (var c = 1; c < arguments.length; c++) {
-					var g = arguments[c] != null ? Object(arguments[c]) : {},
-						f = Object.keys(g);
-					typeof Object.getOwnPropertySymbols == "function" && f.push.apply(f, Object.getOwnPropertySymbols(g).filter(function(A) {
-						return Object.getOwnPropertyDescriptor(g, A).enumerable
-					})), f.forEach(function(A) {
-						u(d, A, g[A])
+					var f = arguments[c] != null ? Object(arguments[c]) : {},
+						_ = Object.keys(f);
+					typeof Object.getOwnPropertySymbols == "function" && _.push.apply(_, Object.getOwnPropertySymbols(f).filter(function(h) {
+						return Object.getOwnPropertyDescriptor(f, h).enumerable
+					})), _.forEach(function(h) {
+						d(l, h, f[h])
 					})
 				}
-				return d
+				return l
 			}
 
-			function m(d, c) {
-				if (d == null) return {};
-				var g = i(d, c),
-					f, A;
+			function m(l, c) {
+				if (l == null) return {};
+				var f = i(l, c),
+					_, h;
 				if (Object.getOwnPropertySymbols) {
-					var h = Object.getOwnPropertySymbols(d);
-					for (A = 0; A < h.length; A++) f = h[A], !(c.indexOf(f) >= 0) && (!Object.prototype.propertyIsEnumerable.call(d, f) || (g[f] = d[f]))
+					var A = Object.getOwnPropertySymbols(l);
+					for (h = 0; h < A.length; h++) _ = A[h], !(c.indexOf(_) >= 0) && (!Object.prototype.propertyIsEnumerable.call(l, _) || (f[_] = l[_]))
 				}
-				return g
+				return f
 			}
 
-			function i(d, c) {
-				if (d == null) return {};
-				var g = {},
-					f = Object.keys(d),
-					A, h;
-				for (h = 0; h < f.length; h++) A = f[h], !(c.indexOf(A) >= 0) && (g[A] = d[A]);
-				return g
+			function i(l, c) {
+				if (l == null) return {};
+				var f = {},
+					_ = Object.keys(l),
+					h, A;
+				for (A = 0; A < _.length; A++) h = _[A], !(c.indexOf(h) >= 0) && (f[h] = l[h]);
+				return f
 			}
 
-			function u(d, c, g) {
-				return c = _(c), c in d ? Object.defineProperty(d, c, {
-					value: g,
+			function d(l, c, f) {
+				return c = g(c), c in l ? Object.defineProperty(l, c, {
+					value: f,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : d[c] = g, d
+				}) : l[c] = f, l
 			}
 
-			function _(d) {
-				var c = t(d, "string");
+			function g(l) {
+				var c = t(l, "string");
 				return typeof c == "symbol" ? c : String(c)
 			}
 
-			function t(d, c) {
-				if (typeof d != "object" || d === null) return d;
-				var g = d[Symbol.toPrimitive];
-				if (g !== void 0) {
-					var f = g.call(d, c || "default");
-					if (typeof f != "object") return f;
+			function t(l, c) {
+				if (typeof l != "object" || l === null) return l;
+				var f = l[Symbol.toPrimitive];
+				if (f !== void 0) {
+					var _ = f.call(l, c || "default");
+					if (typeof _ != "object") return _;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (c === "string" ? String : Number)(d)
+				return (c === "string" ? String : Number)(l)
 			}
 			class r {
 				constructor(c) {
-					u(this, "token", void 0), u(this, "options", void 0), u(this, "setAuthHeader", g => {
-						this.token = g
+					d(this, "token", void 0), d(this, "options", void 0), d(this, "setAuthHeader", f => {
+						this.token = f
 					}), this.token = "", this.options = (0, s.Z)(c, r.defaults)
 				}
 				getAuthHeaders() {
@@ -8406,101 +8479,101 @@
 						Authorization: `Bearer ${this.token}`
 					}
 				}
-				async request(c = "GET", g, f = {}) {
+				async request(c = "GET", f, _ = {}) {
 					const {
-						body: A
-					} = f, h = m(f, ["body"]);
-					return fetch(o()(this.options.baseUrl, g), l({
+						body: h
+					} = _, A = m(_, ["body"]);
+					return fetch(o()(this.options.baseUrl, f), u({
 						method: c
-					}, h, A ? {
-						body: JSON.stringify(A)
+					}, A, h ? {
+						body: JSON.stringify(h)
 					} : {}, {
 						credentials: "same-origin",
-						headers: new Headers(l({
+						headers: new Headers(u({
 							Accept: "application/json, text/plain, */*"
-						}, f.headers, this.getAuthHeaders()))
+						}, _.headers, this.getAuthHeaders()))
 					}))
 				}
-				async fetchJSON(c, g = {}) {
-					const f = await this.request("GET", c, g);
-					return this.parseJSONResponse(f)
+				async fetchJSON(c, f = {}) {
+					const _ = await this.request("GET", c, f);
+					return this.parseJSONResponse(_)
 				}
-				async postJSON(c, g = {}) {
-					const f = await this.request("POST", c, l({}, g, {
-						headers: l({}, g.headers, {
+				async postJSON(c, f = {}) {
+					const _ = await this.request("POST", c, u({}, f, {
+						headers: u({}, f.headers, {
 							"Content-Type": "application/json"
 						})
 					}));
-					return this.parseJSONResponse(f)
+					return this.parseJSONResponse(_)
 				}
 				parseJSONResponse(c) {
 					return c.json()
 				}
 			}
-			u(r, "defaults", {
+			d(r, "defaults", {
 				baseUrl: (0, p.im)() ? "https://api-staging.appstore.cfdata.org" : "https://api.cloudflareapps.com"
 			});
 			const a = new r
 		},
-		"../react/pages/apps/marketplace/requests/common.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/requests/common.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				JX: function() {
-					return _
+					return g
 				},
 				Jb: function() {
 					return r
 				},
 				RX: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../../../../node_modules/lodash-es/upperFirst.js"),
 				o = n("../../../../node_modules/lodash-es/isEmpty.js"),
 				s = n("../../../../node_modules/query-string/query-string.js"),
 				p = n.n(s),
-				l = n("../../../../node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js"),
+				u = n("../../../../node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js"),
 				m = n("../react/pages/apps/marketplace/requests/Requester.ts"),
 				i = n("../react/pages/apps/marketplace/libraries/resource.ts");
 
-			function* u(c, g, f, A) {
-				const h = (0, e.Z)(g),
-					[T, M, C] = [`get${h}Sending`, `get${h}Success`, `get${h}Failed`];
+			function* d(c, f, _, h) {
+				const A = (0, e.Z)(f),
+					[T, M, C] = [`get${A}Sending`, `get${A}Success`, `get${A}Failed`];
 				try {
-					yield(0, l.gz)(c[T]());
-					const y = yield(0, l.RE)(a, f);
-					let N = y;
-					if (N.error) {
-						yield(0, l.gz)(c[C]());
+					yield(0, u.gz)(c[T]());
+					const y = yield(0, u.RE)(a, _);
+					let S = y;
+					if (S.error) {
+						yield(0, u.gz)(c[C]());
 						return
 					}
-					return A && (N = yield A(y)), yield(0, l.gz)(c[M](N)), N
+					return h && (S = yield h(y)), yield(0, u.gz)(c[M](S)), S
 				} catch {
-					yield(0, l.gz)(c[C]())
+					yield(0, u.gz)(c[C]())
 				}
 			}
 
-			function* _(c, g, f, A) {
-				const h = (0, e.Z)(g),
-					T = `get${h}Sending`,
-					M = `get${h}Success`,
-					C = `get${h}Failed`;
+			function* g(c, f, _, h) {
+				const A = (0, e.Z)(f),
+					T = `get${A}Sending`,
+					M = `get${A}Success`,
+					C = `get${A}Failed`;
 				try {
-					yield(0, l.gz)(c[T]());
-					const y = yield(0, l.RE)(d, {
-						url: f,
-						data: A
+					yield(0, u.gz)(c[T]());
+					const y = yield(0, u.RE)(l, {
+						url: _,
+						data: h
 					});
-					return yield(0, l.gz)(c[M](y)), y
+					return yield(0, u.gz)(c[M](y)), y
 				} catch {
-					yield(0, l.gz)(c[C]())
+					yield(0, u.gz)(c[C]())
 				}
 			}
 			const t = c => (0, o.Z)(c) ? "" : `?${s.stringify(c)}`,
 				r = {
 					app: new i.c({
 						name: "app",
-						url: (c, g) => `apps/${c}${t(g)}`
+						url: (c, f) => `apps/${c}${t(f)}`
 					}),
 					apps: new i.c({
 						name: "apps",
@@ -8549,21 +8622,21 @@
 						url: c => `user/${c}/apps`
 					})
 				},
-				a = async c => m.L.fetchJSON(c), d = async c => {
+				a = async c => m.L.fetchJSON(c), l = async c => {
 					const {
-						url: g,
-						data: f
+						url: f,
+						data: _
 					} = c;
-					return m.L.postJSON(g, {
-						body: f
+					return m.L.postJSON(f, {
+						body: _
 					})
 				}
 		},
-		"../react/pages/apps/marketplace/state/auth.reducer.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/state/auth.reducer.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Nw: function() {
-					return u
+					return d
 				},
 				U4: function() {
 					return i
@@ -8572,7 +8645,7 @@
 					return m
 				},
 				ZP: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("../react/pages/apps/marketplace/config/initialState.ts");
@@ -8580,10 +8653,10 @@
 			function o(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						s(t, c, a[c])
 					})
 				}
@@ -8600,16 +8673,16 @@
 			}
 
 			function p(t) {
-				var r = l(t, "string");
+				var r = u(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
 
-			function l(t, r) {
+			function u(t, r) {
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -8620,7 +8693,7 @@
 				i = function(t) {
 					return t.InitSaga = "MARKETPLACE/AUTH/LOADED_SAGA", t.SetZone = "MARKETPLACE/AUTH/SET_ZONE", t.SetToken = "MARKETPLACE/AUTH/SET_TOKEN", t.ClearToken = "MARKETPLACE/AUTH/CLEAR_TOKEN", t.SetTokenValid = "MARKETPLACE/AUTH/VALID_TOKEN", t.CurrentUserSaga = "MARKETPLACE/AUTH/CURRENT_USER_SAGA", t.CurrentUserSending = "MARKETPLACE/AUTH/CURRENT_USER_SENDING", t.CurrentUserSuccess = "MARKETPLACE/AUTH/CURRENT_USER_SUCCESS", t.CurrentUserFailed = "MARKETPLACE/AUTH/CURRENT_USER_FAILED", t.ResetState = "MARKETPLACE/AUTH/RESET_STATE", t
 				}({});
-			const u = {
+			const d = {
 				resetState: () => ({
 					type: i.ResetState
 				}),
@@ -8658,7 +8731,7 @@
 				})
 			};
 
-			function _(t = e.fD, r) {
+			function g(t = e.fD, r) {
 				switch (r.type) {
 					case i.ResetState:
 						return o({}, e.fD);
@@ -8675,10 +8748,10 @@
 						return o({}, t);
 					case i.SetZone:
 						const {
-							zone: d
+							zone: l
 						} = r;
 						return o({}, t, {
-							zone: d
+							zone: l
 						});
 					case i.SetToken:
 						const {
@@ -8693,24 +8766,24 @@
 						});
 					case i.SetTokenValid:
 						const {
-							isTokenValid: g
+							isTokenValid: f
 						} = r;
 						return o({}, t, {
-							isTokenValid: g
+							isTokenValid: f
 						});
 					default:
 						return t
 				}
 			}
 		},
-		"../react/pages/apps/marketplace/state/common.reducer.ts": function(x, v, n) {
+		"../react/pages/apps/marketplace/state/common.reducer.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Nw: function() {
-					return _
+					return g
 				},
 				U4: function() {
-					return u
+					return d
 				},
 				ZP: function() {
 					return t
@@ -8724,36 +8797,36 @@
 
 			function s(r) {
 				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						c = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(d).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(d, g).enumerable
-					})), c.forEach(function(g) {
-						p(r, g, d[g])
+					var l = arguments[a] != null ? Object(arguments[a]) : {},
+						c = Object.keys(l);
+					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(l).filter(function(f) {
+						return Object.getOwnPropertyDescriptor(l, f).enumerable
+					})), c.forEach(function(f) {
+						p(r, f, l[f])
 					})
 				}
 				return r
 			}
 
-			function p(r, a, d) {
-				return a = l(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
+			function p(r, a, l) {
+				return a = u(a), a in r ? Object.defineProperty(r, a, {
+					value: l,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : r[a] = d, r
+				}) : r[a] = l, r
 			}
 
-			function l(r) {
+			function u(r) {
 				var a = m(r, "string");
 				return typeof a == "symbol" ? a : String(a)
 			}
 
 			function m(r, a) {
 				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var c = d.call(r, a || "default");
+				var l = r[Symbol.toPrimitive];
+				if (l !== void 0) {
+					var c = l.call(r, a || "default");
 					if (typeof c != "object") return c;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
@@ -8762,269 +8835,269 @@
 			let i = function(r) {
 					return r.CloudflareZoneChangeStart = "zone.start", r
 				}({}),
-				u = function(r) {
+				d = function(r) {
 					return r.GetHomePageAssetsSaga = "MARKETPLACE/COMMON/GET_HOME_PAGE_ASSETS_SAGA", r.GetInstalledAppsAssetsSaga = "MARKETPLACE/COMMON/GET_INSTALLED_APPS_ASSETS_SAGA", r.GetDevelopedAppsAssetsSaga = "MARKETPLACE/COMMON/GET_DEVELOPED_APPS_ASSETS_SAGA", r.GetDevelopedAppsSending = "MARKETPLACE/COMMON/GET_DEVELOPED_APPS_SENDING", r.GetDevelopedAppsSuccess = "MARKETPLACE/COMMON/GET_DEVELOPED_APPS_SUCCESS", r.GetDevelopedAppsFailed = "MARKETPLACE/COMMON/GET_DEVELOPED_APPS_FAILED", r.GetAppInfoAssetsSaga = "MARKETPLACE/COMMON/GET_APP_INFO_ASSETS_SAGA", r.SetUpdatableInstalls = "MARKETPLACE/COMMON/SET_UPDATABLE_INSTALLS", r.GetAppSaga = "MARKETPLACE/COMMON/GET_APP_SAGA", r.GetAppSending = "MARKETPLACE/COMMON/GET_APP_SENDING", r.GetAppSuccess = "MARKETPLACE/COMMON/GET_APP_SUCCESS", r.GetAppFailed = "MARKETPLACE/COMMON/GET_APP_FAILED", r.ClearApp = "MARKETPLACE/COMMON/CLEAR_APP", r.GetAppsSaga = "MARKETPLACE/COMMON/GET_APPS_SAGA", r.GetAppsSending = "MARKETPLACE/COMMON/GET_APPS_SENDING", r.GetAppsSuccess = "MARKETPLACE/COMMON/GET_APPS_SUCCESS", r.GetAppsFailed = "MARKETPLACE/COMMON/GET_APPS_FAILED", r.GetInstallsSaga = "MARKETPLACE/COMMON/GET_INSTALLS_SAGA", r.GetInstallsSending = "MARKETPLACE/COMMON/GET_INSTALLS_SENDING", r.GetInstallsSuccess = "MARKETPLACE/COMMON/GET_INSTALLS_SUCCESS", r.GetInstallsFailed = "MARKETPLACE/COMMON/GET_INSTALLS_FAILED", r.GetCategoriesSaga = "MARKETPLACE/COMMON/GET_CATEGORIES_SAGA", r.GetCategoriesSending = "MARKETPLACE/COMMON/GET_CATEGORIES_SENDING", r.GetCategoriesSuccess = "MARKETPLACE/COMMON/GET_CATEGORIES_SUCCESS", r.GetCategoriesFailed = "MARKETPLACE/COMMON/GET_CATEGORIES_FAILED", r.GetMetadataSaga = "MARKETPLACE/COMMON/GET_METADATA_SAGA", r.GetMetadataSending = "MARKETPLACE/COMMON/GET_METADATA_SENDING", r.GetMetadataSuccess = "MARKETPLACE/COMMON/GET_METADATA_SUCCESS", r.GetMetadataFailed = "MARKETPLACE/COMMON/GET_METADATA_FAILED", r.PostMetadataSaga = "MARKETPLACE/COMMON/POST_METADATA_SAGA", r.PostMetadataSending = "MARKETPLACE/COMMON/POST_METADATA_SENDING", r.PostMetadataSuccess = "MARKETPLACE/COMMON/POST_METADATA_SUCCESS", r.PostMetadataFailed = "MARKETPLACE/COMMON/POST_METADATA_FAILED", r.GetRecommendedAppsSaga = "MARKETPLACE/COMMON/GET_RECOMMENDED_APPS_SAGA", r.GetRecommendedAppsSending = "MARKETPLACE/COMMON/GET_RECOMMENDED_APPS_SENDING", r.GetRecommendedAppsSuccess = "MARKETPLACE/COMMON/GET_RECOMMENDED_APPS_SUCCESS", r.GetRecommendedAppsFailed = "MARKETPLACE/COMMON/GET_RECOMMENDED_APPS_FAILED", r.ZoneChangedSaga = "MARKETPLACE/COMMON/ZONE_CHANGED_SAGA", r.ResetState = "MARKETPLACE/COMMON/RESET_STATE", r
 				}({});
-			const _ = {
+			const g = {
 				resetState: () => ({
-					type: u.ResetState
+					type: d.ResetState
 				}),
 				zoneChangedSaga: () => ({
-					type: u.ZoneChangedSaga
+					type: d.ZoneChangedSaga
 				}),
 				getHomePageAssetsSaga: (r, a) => ({
-					type: u.GetHomePageAssetsSaga,
+					type: d.GetHomePageAssetsSaga,
 					zoneId: r,
 					currentResources: a
 				}),
 				getInstalledAppsAssetsSaga: r => ({
-					type: u.GetInstalledAppsAssetsSaga,
+					type: d.GetInstalledAppsAssetsSaga,
 					zoneId: r
 				}),
 				getDevelopedAppsAssetsSaga: (r, a) => ({
-					type: u.GetDevelopedAppsAssetsSaga,
+					type: d.GetDevelopedAppsAssetsSaga,
 					userId: r,
 					zoneId: a
 				}),
 				getDevelopedAppsSending: () => ({
-					type: u.GetDevelopedAppsSending
+					type: d.GetDevelopedAppsSending
 				}),
 				getDevelopedAppsSuccess: r => ({
-					type: u.GetDevelopedAppsSuccess,
+					type: d.GetDevelopedAppsSuccess,
 					developedApps: r
 				}),
 				getDevelopedAppsFailed: () => ({
-					type: u.GetDevelopedAppsFailed
+					type: d.GetDevelopedAppsFailed
 				}),
-				getAppInfoAssetsSaga: (r, a, d) => ({
-					type: u.GetAppInfoAssetsSaga,
+				getAppInfoAssetsSaga: (r, a, l) => ({
+					type: d.GetAppInfoAssetsSaga,
 					appIdentifier: r,
 					zoneId: a,
-					version: d
+					version: l
 				}),
 				setUpdatableInstalls: r => ({
-					type: u.SetUpdatableInstalls,
+					type: d.SetUpdatableInstalls,
 					updatableInstallsList: r
 				}),
 				getAppSaga: r => ({
-					type: u.GetAppSaga,
+					type: d.GetAppSaga,
 					appIdentifier: r
 				}),
 				getAppSending: () => ({
-					type: u.GetAppSending
+					type: d.GetAppSending
 				}),
 				getAppSuccess: r => ({
-					type: u.GetAppSuccess,
+					type: d.GetAppSuccess,
 					app: r
 				}),
 				getAppFailed: () => ({
-					type: u.GetAppFailed
+					type: d.GetAppFailed
 				}),
 				clearApp: () => ({
-					type: u.ClearApp
+					type: d.ClearApp
 				}),
 				getAppsSaga: () => ({
-					type: u.GetAppsSaga
+					type: d.GetAppsSaga
 				}),
 				getAppsSending: () => ({
-					type: u.GetAppsSending
+					type: d.GetAppsSending
 				}),
 				getAppsSuccess: r => ({
-					type: u.GetAppsSuccess,
+					type: d.GetAppsSuccess,
 					appsList: r
 				}),
 				getAppsFailed: () => ({
-					type: u.GetAppsFailed
+					type: d.GetAppsFailed
 				}),
 				getInstallsSaga: r => ({
-					type: u.GetInstallsSaga,
+					type: d.GetInstallsSaga,
 					zoneId: r
 				}),
 				getInstallsSending: () => ({
-					type: u.GetInstallsSending
+					type: d.GetInstallsSending
 				}),
 				getInstallsSuccess: r => ({
-					type: u.GetInstallsSuccess,
+					type: d.GetInstallsSuccess,
 					installsList: r
 				}),
 				getInstallsFailed: () => ({
-					type: u.GetInstallsFailed
+					type: d.GetInstallsFailed
 				}),
 				getCategoriesSaga: r => ({
-					type: u.GetCategoriesSaga,
+					type: d.GetCategoriesSaga,
 					queryParams: r
 				}),
 				getCategoriesSending: () => ({
-					type: u.GetCategoriesSending
+					type: d.GetCategoriesSending
 				}),
 				getCategoriesSuccess: r => ({
-					type: u.GetCategoriesSuccess,
+					type: d.GetCategoriesSuccess,
 					categoriesList: r
 				}),
 				getCategoriesFailed: () => ({
-					type: u.GetCategoriesFailed
+					type: d.GetCategoriesFailed
 				}),
 				getMetadataSaga: r => ({
-					type: u.GetMetadataSaga,
+					type: d.GetMetadataSaga,
 					zoneId: r
 				}),
 				getMetadataSending: () => ({
-					type: u.GetMetadataSending
+					type: d.GetMetadataSending
 				}),
 				getMetadataSuccess: r => ({
-					type: u.GetMetadataSuccess,
+					type: d.GetMetadataSuccess,
 					metadata: r
 				}),
 				getMetadataFailed: () => ({
-					type: u.GetMetadataFailed
+					type: d.GetMetadataFailed
 				}),
 				postMetadataSaga: (r, a) => ({
-					type: u.PostMetadataSaga,
+					type: d.PostMetadataSaga,
 					zoneId: r,
 					data: a
 				}),
 				postMetadataSending: () => ({
-					type: u.PostMetadataSending
+					type: d.PostMetadataSending
 				}),
 				postMetadataSuccess: r => ({
-					type: u.PostMetadataSuccess,
+					type: d.PostMetadataSuccess,
 					metadata: r
 				}),
 				postMetadataFailed: () => ({
-					type: u.PostMetadataFailed
+					type: d.PostMetadataFailed
 				}),
-				getRecommendedAppsSaga: (r, a, d) => ({
-					type: u.GetRecommendedAppsSaga,
+				getRecommendedAppsSaga: (r, a, l) => ({
+					type: d.GetRecommendedAppsSaga,
 					appsList: r,
 					installsList: a,
-					metadata: d
+					metadata: l
 				}),
 				getRecommendedAppsSending: () => ({
-					type: u.GetRecommendedAppsSending
+					type: d.GetRecommendedAppsSending
 				}),
 				getRecommendedAppsSuccess: r => ({
-					type: u.GetRecommendedAppsSuccess,
+					type: d.GetRecommendedAppsSuccess,
 					recommendedAppsList: r
 				}),
 				getRecommendedAppsFailed: () => ({
-					type: u.GetRecommendedAppsFailed
+					type: d.GetRecommendedAppsFailed
 				})
 			};
 
 			function t(r = e.w6, a) {
 				switch (a.type) {
-					case u.ResetState:
+					case d.ResetState:
 						return s({}, e.w6);
-					case u.ZoneChangedSaga:
+					case d.ZoneChangedSaga:
 						return s({}, r, {
 							installsList: s({}, e.w6.installsList),
 							recommendedAppsList: s({}, e.w6.recommendedAppsList),
 							metadata: s({}, e.w6.metadata)
 						});
-					case u.GetAppsSending:
+					case d.GetAppsSending:
 						return s({}, r, {
 							appsList: s({}, (0, o.pG)(r.appsList, e.h_))
 						});
-					case u.GetAppsSuccess:
+					case d.GetAppsSuccess:
 						return s({}, r, {
 							appsList: s({}, (0, o.pG)(r.appsList, e.Jz, a.appsList))
 						});
-					case u.GetAppsFailed:
+					case d.GetAppsFailed:
 						return s({}, r, {
 							appsList: s({}, (0, o.pG)(r.appsList, e.yc))
 						});
-					case u.GetInstallsSending:
+					case d.GetInstallsSending:
 						return s({}, r, {
 							installsList: s({}, (0, o.pG)(r.installsList, e.h_))
 						});
-					case u.GetInstallsSuccess:
+					case d.GetInstallsSuccess:
 						return s({}, r, {
 							installsList: s({}, (0, o.pG)(r.installsList, e.Jz, a.installsList))
 						});
-					case u.GetInstallsFailed:
+					case d.GetInstallsFailed:
 						return s({}, r, {
 							installsList: s({}, (0, o.pG)(r.installsList, e.yc))
 						});
-					case u.GetCategoriesSending:
+					case d.GetCategoriesSending:
 						return s({}, r, {
 							categoriesList: s({}, (0, o.pG)(r.categoriesList, e.h_))
 						});
-					case u.GetCategoriesSuccess:
+					case d.GetCategoriesSuccess:
 						return s({}, r, {
 							categoriesList: s({}, (0, o.pG)(r.categoriesList, e.Jz, a.categoriesList))
 						});
-					case u.GetCategoriesFailed:
+					case d.GetCategoriesFailed:
 						return s({}, r, {
 							categoriesList: s({}, (0, o.pG)(r.categoriesList, e.yc))
 						});
-					case u.GetMetadataSending:
+					case d.GetMetadataSending:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.h_))
 						});
-					case u.GetMetadataSuccess:
+					case d.GetMetadataSuccess:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.Jz, a.metadata))
 						});
-					case u.GetMetadataFailed:
+					case d.GetMetadataFailed:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.yc))
 						});
-					case u.PostMetadataSending:
+					case d.PostMetadataSending:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.h_))
 						});
-					case u.PostMetadataSuccess:
+					case d.PostMetadataSuccess:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.Jz, a.metadata))
 						});
-					case u.PostMetadataFailed:
+					case d.PostMetadataFailed:
 						return s({}, r, {
 							metadata: s({}, (0, o.pG)(r.metadata, e.yc))
 						});
-					case u.GetRecommendedAppsSending:
+					case d.GetRecommendedAppsSending:
 						return s({}, r, {
 							recommendedAppsList: s({}, (0, o.pG)(r.recommendedAppsList, e.h_))
 						});
-					case u.GetRecommendedAppsSuccess:
+					case d.GetRecommendedAppsSuccess:
 						return s({}, r, {
 							recommendedAppsList: s({}, (0, o.pG)(r.recommendedAppsList, e.Jz, a.recommendedAppsList))
 						});
-					case u.GetRecommendedAppsFailed:
+					case d.GetRecommendedAppsFailed:
 						return s({}, r, {
 							recommendedAppsList: s({}, (0, o.pG)(r.recommendedAppsList, e.yc))
 						});
-					case u.GetAppSending:
+					case d.GetAppSending:
 						return s({}, r, {
 							app: s({}, (0, o.pG)(r.app, e.h_))
 						});
-					case u.GetAppSuccess:
+					case d.GetAppSuccess:
 						return s({}, r, {
 							app: s({}, (0, o.pG)(r.app, e.Jz, a.app))
 						});
-					case u.GetAppFailed:
+					case d.GetAppFailed:
 						return s({}, r, {
 							app: s({}, (0, o.pG)(r.app, e.yc))
 						});
-					case u.ClearApp:
+					case d.ClearApp:
 						return s({}, r, {
 							app: {
 								value: null,
 								status: e._Y.status
 							}
 						});
-					case u.SetUpdatableInstalls:
+					case d.SetUpdatableInstalls:
 						return s({}, r, {
 							updatableInstallsList: a.updatableInstallsList
 						});
-					case u.GetDevelopedAppsSending:
+					case d.GetDevelopedAppsSending:
 						return s({}, r, {
 							developedApps: s({}, (0, o.pG)(r.developedApps, e.h_))
 						});
-					case u.GetDevelopedAppsSuccess:
+					case d.GetDevelopedAppsSuccess:
 						return s({}, r, {
 							developedApps: s({}, (0, o.pG)(r.developedApps, e.Jz, a.developedApps))
 						});
-					case u.GetDevelopedAppsFailed:
+					case d.GetDevelopedAppsFailed:
 						return s({}, r, {
 							developedApps: s({}, (0, o.pG)(r.developedApps, e.yc))
 						});
@@ -9033,9 +9106,9 @@
 				}
 			}
 		},
-		"../react/pages/caching/tracking.tsx": function(x, v, n) {
+		"../react/pages/caching/tracking.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				N: function() {
 					return e
 				}
@@ -9044,9 +9117,9 @@
 				return o.CACHE_PURGE = "submit custom purge", o.TIERED_CACHE = "select tiered cache topology", o.CACHE_ANALYTICS = "load cache analytics data", o
 			}({})
 		},
-		"../react/pages/d1/routes.ts": function(x, v, n) {
+		"../react/pages/d1/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				H: function() {
 					return s
 				},
@@ -9085,9 +9158,9 @@
 					restoreBookmark: (0, e.BC)`/accounts/${"accountId"}/d1/database/${"databaseId"}/time_travel/restore`
 				}
 		},
-		"../react/pages/dns/dns-records/tracking.ts": function(x, v, n) {
+		"../react/pages/dns/dns-records/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				U: function() {
 					return e
 				},
@@ -9104,9 +9177,9 @@
 				delete: e.DNS_RECORD_DELETE
 			}
 		},
-		"../react/pages/email/types.ts": function(x, v, n) {
+		"../react/pages/email/types.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				BB: function() {
 					return o
 				},
@@ -9117,8 +9190,8 @@
 					return e
 				}
 			});
-			let e = function(l) {
-				return l.ROOT = "root", l.DSTADDRS_CARD = "dstaddrs_card", l.RULES_CARD = "rules_card", l.CATCHALL_CARD = "catchall_card", l.SETTINGS_PAGE = "settings_page", l.WORKERS_PAGE = "workers_page", l
+			let e = function(u) {
+				return u.ROOT = "root", u.DSTADDRS_CARD = "dstaddrs_card", u.RULES_CARD = "rules_card", u.CATCHALL_CARD = "catchall_card", u.SETTINGS_PAGE = "settings_page", u.WORKERS_PAGE = "workers_page", u
 			}({});
 			const o = {
 				zone: "emailRoutingZone",
@@ -9130,21 +9203,21 @@
 				dnsRecord: "emailRoutingDnsRecord",
 				dnsRecords: "emailRoutingDnsRecords"
 			};
-			let s = function(l) {
-				return l[l.Verified = 0] = "Verified", l[l.Pending = 1] = "Pending", l[l.Missing = 2] = "Missing", l[l.WorkerNotFound = 3] = "WorkerNotFound", l[l.Unknown = 4] = "Unknown", l[l.Loading = 5] = "Loading", l
+			let s = function(u) {
+				return u[u.Verified = 0] = "Verified", u[u.Pending = 1] = "Pending", u[u.Missing = 2] = "Missing", u[u.WorkerNotFound = 3] = "WorkerNotFound", u[u.Unknown = 4] = "Unknown", u[u.Loading = 5] = "Loading", u
 			}({});
 			const p = {
 				dmarcReports: "emailSecurityDmarcReports"
 			}
 		},
-		"../react/pages/home/alerts/config.tsx": function(x, v, n) {
+		"../react/pages/home/alerts/config.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				jk: function() {
-					return A
+					return h
 				},
 				w8: function() {
-					return h
+					return A
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-routes/es/index.js"),
@@ -9152,14 +9225,14 @@
 				s = n("../react/pages/home/alerts/integrations/webhooks/routes.ts"),
 				p = n("../react/pages/home/alerts/integrations/redux/entities.ts");
 
-			function l(T) {
+			function u(T) {
 				for (var M = 1; M < arguments.length; M++) {
 					var C = arguments[M] != null ? Object(arguments[M]) : {},
 						y = Object.keys(C);
-					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(C).filter(function(N) {
-						return Object.getOwnPropertyDescriptor(C, N).enumerable
-					})), y.forEach(function(N) {
-						m(T, N, C[N])
+					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(C).filter(function(S) {
+						return Object.getOwnPropertyDescriptor(C, S).enumerable
+					})), y.forEach(function(S) {
+						m(T, S, C[S])
 					})
 				}
 				return T
@@ -9175,11 +9248,11 @@
 			}
 
 			function i(T) {
-				var M = u(T, "string");
+				var M = d(T, "string");
 				return typeof M == "symbol" ? M : String(M)
 			}
 
-			function u(T, M) {
+			function d(T, M) {
 				if (typeof T != "object" || T === null) return T;
 				var C = T[Symbol.toPrimitive];
 				if (C !== void 0) {
@@ -9189,23 +9262,23 @@
 				}
 				return (M === "string" ? String : Number)(T)
 			}
-			const _ = "Notifications",
+			const g = "Notifications",
 				t = "notification",
 				r = (0, e.BC)`/${"accountId"}`,
 				a = (0, e.BC)`${r}/notifications`,
-				d = (0, e.BC)`${a}/destinations`,
+				l = (0, e.BC)`${a}/destinations`,
 				c = (0, e.BC)`${a}/create`,
-				g = (0, e.BC)`${c}/${"alertType"}`,
-				f = (0, e.BC)`${a}/edit/${"alertId"}`,
-				A = l({
+				f = (0, e.BC)`${c}/${"alertType"}`,
+				_ = (0, e.BC)`${a}/edit/${"alertId"}`,
+				h = u({
 					account: r,
 					alerts: a,
-					destinations: d,
+					destinations: l,
 					createAlert: c,
-					createAlertWithSelection: g,
-					editAlert: f
+					createAlertWithSelection: f,
+					editAlert: _
 				}, o._j, s._j),
-				h = l({
+				A = u({
 					alert: "accountAlert",
 					alerts: "accountAlerts",
 					availableAlerts: "availableAlerts",
@@ -9213,9 +9286,9 @@
 					alertsHistory: "accountAlertsHistory"
 				}, p.w)
 		},
-		"../react/pages/home/alerts/integrations/pagerduty/routes.ts": function(x, v, n) {
+		"../react/pages/home/alerts/integrations/pagerduty/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				_j: function() {
 					return m
 				}
@@ -9224,17 +9297,17 @@
 			const o = (0, e.BC)`/${"accountId"}/notifications`,
 				s = (0, e.BC)`${o}/pagerduty/connect`,
 				p = (0, e.BC)`${o}/pagerduty/register`,
-				l = (0, e.BC)`${o}/pagerduty`,
+				u = (0, e.BC)`${o}/pagerduty`,
 				m = {
 					pagerDutyConnect: s,
 					pagerDutyRegister: p,
-					pagerDutyList: l
+					pagerDutyList: u
 				};
 			var i = null
 		},
-		"../react/pages/home/alerts/tracking.ts": function(x, v, n) {
+		"../react/pages/home/alerts/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				y: function() {
 					return e
 				}
@@ -9243,9 +9316,9 @@
 				return o.SECONDARY_DNS_NOTIFICATION_CREATE = "create secondary dns error notification", o.SECONDARY_DNS_NOTIFICATION_UPDATE = "update secondary dns error notification", o.SECONDARY_DNS_NOTIFICATION_DELETE = "delete secondary dns error notification", o
 			}({})
 		},
-		"../react/pages/home/configurations/dns-settings/tracking.ts": function(x, v, n) {
+		"../react/pages/home/configurations/dns-settings/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Y: function() {
 					return e
 				}
@@ -9254,9 +9327,9 @@
 				return o.PEER_DNS_CREATE = "create peer server", o.PEER_DNS_UPDATE = "update peer server", o.PEER_DNS_DELETE = "delete peer server", o.ZONE_TRANSFER_ENABLE = "enable outgoing zone transfer", o.ZONE_TRANSFER_DISABLE = "disable outgoing zone transfer", o.ZONE_TRANSFER_SUCCESS = "successful outgoing zone transfer", o
 			}({})
 		},
-		"../react/pages/home/configurations/lists/tracking.ts": function(x, v, n) {
+		"../react/pages/home/configurations/lists/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				y: function() {
 					return e
 				}
@@ -9265,32 +9338,32 @@
 				return o.CREATE_LIST = "create list", o.DELETE_LIST = "delete list", o.ADD_LIST_ITEM = "add list item", o.DELETE_LIST_ITEM = "delete list item", o
 			}({})
 		},
-		"../react/pages/home/domain-registration/bulk-transfer-util.ts": function(x, v, n) {
+		"../react/pages/home/domain-registration/bulk-transfer-util.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AA: function() {
-					return X
+					return q
 				},
 				AN: function() {
-					return it
+					return ct
 				},
 				AY: function() {
 					return Ce
 				},
 				Ac: function() {
-					return he
+					return ve
 				},
 				Am: function() {
-					return A
+					return h
 				},
 				B2: function() {
-					return G
+					return H
 				},
 				BB: function() {
-					return P
+					return b
 				},
 				BF: function() {
-					return Be
+					return Ne
 				},
 				BQ: function() {
 					return Ae
@@ -9299,19 +9372,19 @@
 					return z
 				},
 				Fl: function() {
-					return je
+					return Fe
 				},
 				Fu: function() {
-					return S
+					return D
 				},
 				Gc: function() {
 					return st
 				},
 				Hc: function() {
-					return dt
+					return Ct
 				},
 				IO: function() {
-					return Xe
+					return Qe
 				},
 				JK: function() {
 					return k
@@ -9323,13 +9396,13 @@
 					return Ge
 				},
 				LX: function() {
-					return we
+					return Me
 				},
 				L_: function() {
 					return ze
 				},
 				Ly: function() {
-					return Ve
+					return $e
 				},
 				MR: function() {
 					return F
@@ -9338,127 +9411,124 @@
 					return ce
 				},
 				NB: function() {
-					return Ze
+					return Je
 				},
 				Oe: function() {
-					return Rt
+					return Nt
 				},
 				Or: function() {
-					return q
+					return J
 				},
 				P5: function() {
-					return nt
+					return et
 				},
 				PE: function() {
 					return Ke
 				},
 				Pd: function() {
-					return ot
+					return tt
 				},
 				Pk: function() {
-					return Q
+					return X
 				},
 				Pp: function() {
-					return Fe
+					return je
 				},
 				Q1: function() {
 					return O
 				},
 				Qr: function() {
-					return Ne
+					return we
 				},
 				Qv: function() {
-					return Ie
+					return Le
 				},
 				Rp: function() {
-					return De
+					return he
 				},
 				S7: function() {
-					return qe
+					return it
 				},
 				Sh: function() {
-					return ge
+					return Ve
 				},
 				Sl: function() {
 					return $t
 				},
 				TZ: function() {
-					return $
+					return W
 				},
 				Tg: function() {
 					return pe
 				},
 				Tp: function() {
-					return lt
+					return ut
 				},
 				Uy: function() {
-					return Ct
+					return mt
 				},
 				Vw: function() {
 					return U
 				},
 				W3: function() {
-					return H
+					return V
 				},
 				WR: function() {
-					return gt
+					return pt
 				},
 				WX: function() {
 					return Te
 				},
 				XF: function() {
-					return ft
+					return _t
 				},
 				Xb: function() {
-					return W
-				},
-				ZB: function() {
-					return I
+					return $
 				},
 				Zs: function() {
-					return Re
+					return Be
 				},
 				_f: function() {
-					return Qe
+					return Ye
 				},
 				b4: function() {
-					return ve
+					return Ee
 				},
 				bc: function() {
 					return Kt
 				},
 				c2: function() {
-					return b
+					return I
 				},
 				cE: function() {
 					return oe
 				},
 				dh: function() {
-					return ke
+					return Re
 				},
 				fE: function() {
 					return be
 				},
 				g7: function() {
-					return $e
+					return xe
 				},
 				hO: function() {
-					return Ye
+					return Xe
 				},
 				hV: function() {
-					return _t
+					return at
 				},
 				hk: function() {
-					return h
+					return A
 				},
 				hr: function() {
-					return ne
+					return te
 				},
 				it: function() {
 					return We
 				},
 				j3: function() {
-					return at
+					return He
 				},
 				jN: function() {
 					return me
@@ -9467,19 +9537,19 @@
 					return Wt
 				},
 				k3: function() {
-					return Nt
+					return Rt
 				},
 				m8: function() {
 					return ue
 				},
 				nm: function() {
-					return w
+					return R
 				},
 				oW: function() {
 					return le
 				},
 				pH: function() {
-					return V
+					return K
 				},
 				pi: function() {
 					return de
@@ -9488,19 +9558,19 @@
 					return Gt
 				},
 				rI: function() {
-					return te
+					return ne
 				},
 				s7: function() {
-					return pt
+					return gt
 				},
 				sg: function() {
-					return ee
+					return Y
 				},
 				tB: function() {
-					return g
+					return f
 				},
 				tN: function() {
-					return Ue
+					return ke
 				},
 				u_: function() {
 					return zt
@@ -9516,147 +9586,147 @@
 				o = n.n(e),
 				s = n("../../../../node_modules/moment/moment.js"),
 				p = n.n(s),
-				l = n("../../../common/util/types/src/api/domain.ts"),
+				u = n("../../../common/util/types/src/api/domain.ts"),
 				m = n("../../../../node_modules/@cloudflare/util-regex/es/index.js"),
 				i = n("../react/utils/url.ts"),
-				u = n("../react/pages/home/domain-registration/config.ts"),
-				_ = n("../react/pages/home/domain-registration/registrar.translations.ts"),
+				d = n("../react/pages/home/domain-registration/config.ts"),
+				g = n("../react/pages/home/domain-registration/registrar.translations.ts"),
 				t = n("../react/pages/home/domain-registration/types.ts");
 
-			function r(E) {
-				for (var D = 1; D < arguments.length; D++) {
-					var _e = arguments[D] != null ? Object(arguments[D]) : {},
-						Pe = Object.keys(_e);
-					typeof Object.getOwnPropertySymbols == "function" && Pe.push.apply(Pe, Object.getOwnPropertySymbols(_e).filter(function(He) {
-						return Object.getOwnPropertyDescriptor(_e, He).enumerable
-					})), Pe.forEach(function(He) {
-						a(E, He, _e[He])
+			function r(v) {
+				for (var w = 1; w < arguments.length; w++) {
+					var fe = arguments[w] != null ? Object(arguments[w]) : {},
+						Pe = Object.keys(fe);
+					typeof Object.getOwnPropertySymbols == "function" && Pe.push.apply(Pe, Object.getOwnPropertySymbols(fe).filter(function(Ze) {
+						return Object.getOwnPropertyDescriptor(fe, Ze).enumerable
+					})), Pe.forEach(function(Ze) {
+						a(v, Ze, fe[Ze])
 					})
 				}
-				return E
+				return v
 			}
 
-			function a(E, D, _e) {
-				return D = d(D), D in E ? Object.defineProperty(E, D, {
-					value: _e,
+			function a(v, w, fe) {
+				return w = l(w), w in v ? Object.defineProperty(v, w, {
+					value: fe,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : E[D] = _e, E
+				}) : v[w] = fe, v
 			}
 
-			function d(E) {
-				var D = c(E, "string");
-				return typeof D == "symbol" ? D : String(D)
+			function l(v) {
+				var w = c(v, "string");
+				return typeof w == "symbol" ? w : String(w)
 			}
 
-			function c(E, D) {
-				if (typeof E != "object" || E === null) return E;
-				var _e = E[Symbol.toPrimitive];
-				if (_e !== void 0) {
-					var Pe = _e.call(E, D || "default");
+			function c(v, w) {
+				if (typeof v != "object" || v === null) return v;
+				var fe = v[Symbol.toPrimitive];
+				if (fe !== void 0) {
+					var Pe = fe.call(v, w || "default");
 					if (typeof Pe != "object") return Pe;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (D === "string" ? String : Number)(E)
+				return (w === "string" ? String : Number)(v)
 			}
 
-			function g(E) {
-				return E.filter(D => D.isSelected).reduce((D, {
-					name: _e,
+			function f(v) {
+				return v.filter(w => w.isSelected).reduce((w, {
+					name: fe,
 					fees: Pe,
-					isZoneEntitlementPresent: He
-				}) => He || !(0, e.isNumber)(Pe == null ? void 0 : Pe.transfer_fee) ? D : he(_e) ? D + (Pe == null ? void 0 : Pe.transfer_fee) * 2 : D + (Pe == null ? void 0 : Pe.transfer_fee), 0)
+					isZoneEntitlementPresent: Ze
+				}) => Ze || !(0, e.isNumber)(Pe == null ? void 0 : Pe.transfer_fee) ? w : ve(fe) ? w + (Pe == null ? void 0 : Pe.transfer_fee) * 2 : w + (Pe == null ? void 0 : Pe.transfer_fee), 0)
 			}
 
-			function f(E) {
-				return E.filter(D => D.registrar.toLowerCase() === "godaddy")
+			function _(v) {
+				return v.filter(w => w.registrar.toLowerCase() === "godaddy")
 			}
-			const A = "MMM D, YYYY";
+			const h = "MMM D, YYYY";
 
-			function h(E, D, _e, Pe) {
-				var He, Et, Tt, At, Bt, Pt, ct, Lt, Ot, bt, St, Dt;
-				const et = E[D.name],
-					Vt = () => he(D.name) ? p()(D.expires_at).add(2, "years").format(A) : p()(D.expires_at).add(1, "year").format(A);
+			function A(v, w, fe, Pe) {
+				var Ze, Et, Tt, At, Bt, Pt, lt, Lt, Ot, It, St, Dt;
+				const nt = v[w.name],
+					Vt = () => ve(w.name) ? p()(w.expires_at).add(2, "years").format(h) : p()(w.expires_at).add(1, "year").format(h);
 				return r({
-					name: D.name,
-					zone: et,
-					entitlements: _e,
+					name: w.name,
+					zone: nt,
+					entitlements: fe,
 					registryCheck: Pe,
-					nameservers: D.name_servers,
-					isAvailable: D.available,
-					lastKnownStatus: D.last_known_status,
-					authCode: D.auth_code,
-					isEnterpriseZone: (et == null || (He = et.plan) === null || He === void 0 ? void 0 : He.legacy_id) === "enterprise",
-					isActiveZone: (et == null ? void 0 : et.status) === "active",
-					corResponsesPending: D.cor_responses_pending,
-					isCorLocked: D.cor_locked,
-					corLockedUntil: D.cor_locked_until ? p()(D.cor_locked_until).format(A) : null,
-					isFullZone: (et == null ? void 0 : et.type) == t.xd.Full,
-					isLocked: D.locked,
-					registrar: D.current_registrar || u.JM,
-					zoneId: et == null ? void 0 : et.id,
-					currentExpiration: p()(D.expires_at).format(A),
+					nameservers: w.name_servers,
+					isAvailable: w.available,
+					lastKnownStatus: w.last_known_status,
+					authCode: w.auth_code,
+					isEnterpriseZone: (nt == null || (Ze = nt.plan) === null || Ze === void 0 ? void 0 : Ze.legacy_id) === "enterprise",
+					isActiveZone: (nt == null ? void 0 : nt.status) === "active",
+					corResponsesPending: w.cor_responses_pending,
+					isCorLocked: w.cor_locked,
+					corLockedUntil: w.cor_locked_until ? p()(w.cor_locked_until).format(h) : null,
+					isFullZone: (nt == null ? void 0 : nt.type) == t.xd.Full,
+					isLocked: w.locked,
+					registrar: w.current_registrar || d.JM,
+					zoneId: nt == null ? void 0 : nt.id,
+					currentExpiration: p()(w.expires_at).format(h),
 					newExpiration: Vt(),
-					lastEntitledAt: D.last_entitled_at ? new Date(D.last_entitled_at) : null,
-					isZoneEntitlementPresent: Array.isArray(_e) && !!_e.find(Ut => Ut.id === u.g5 && Ut.allocation.value === !0),
+					lastEntitledAt: w.last_entitled_at ? new Date(w.last_entitled_at) : null,
+					isZoneEntitlementPresent: Array.isArray(fe) && !!fe.find(Ut => Ut.id === d.g5 && Ut.allocation.value === !0),
 					transferAuthCode: "",
-					authCodeStatus: D.transfer_in && C(D.transfer_in) || t.BJ.Pending,
+					authCodeStatus: w.transfer_in && C(w.transfer_in) || t.BJ.Pending,
 					autoTransferStatus: t._n.Pending,
-					transferConditions: D.transfer_conditions,
+					transferConditions: w.transfer_conditions,
 					transferApiCallStatus: t.Yh.Pending,
-					transferIn: D.transfer_in,
-					transferOut: D.transfer_out,
-					autoRenew: D.auto_renew === !0,
-					lastTransferredAt: D.last_transferred_at,
-					createdAt: D.created_at,
-					paymentExpiresAt: p()(D.payment_expires_at).isValid() ? p()(D.payment_expires_at) : p()(D.expires_at).isValid() ? p()(D.expires_at) : "",
+					transferIn: w.transfer_in,
+					transferOut: w.transfer_out,
+					autoRenew: w.auto_renew === !0,
+					lastTransferredAt: w.last_transferred_at,
+					createdAt: w.created_at,
+					paymentExpiresAt: p()(w.payment_expires_at).isValid() ? p()(w.payment_expires_at) : p()(w.expires_at).isValid() ? p()(w.expires_at) : "",
 					contactIds: {
-						[t.l2.Administrator]: (Et = D.contacts) === null || Et === void 0 || (Tt = Et.administrator) === null || Tt === void 0 ? void 0 : Tt.id,
-						[t.l2.Billing]: (At = D.contacts) === null || At === void 0 || (Bt = At.billing) === null || Bt === void 0 ? void 0 : Bt.id,
-						[t.l2.Registrant]: (Pt = D.contacts) === null || Pt === void 0 || (ct = Pt.registrant) === null || ct === void 0 ? void 0 : ct.id,
-						[t.l2.Technical]: (Lt = D.contacts) === null || Lt === void 0 || (Ot = Lt.technical) === null || Ot === void 0 ? void 0 : Ot.id
+						[t.l2.Administrator]: (Et = w.contacts) === null || Et === void 0 || (Tt = Et.administrator) === null || Tt === void 0 ? void 0 : Tt.id,
+						[t.l2.Billing]: (At = w.contacts) === null || At === void 0 || (Bt = At.billing) === null || Bt === void 0 ? void 0 : Bt.id,
+						[t.l2.Registrant]: (Pt = w.contacts) === null || Pt === void 0 || (lt = Pt.registrant) === null || lt === void 0 ? void 0 : lt.id,
+						[t.l2.Technical]: (Lt = w.contacts) === null || Lt === void 0 || (Ot = Lt.technical) === null || Ot === void 0 ? void 0 : Ot.id
 					},
-					landing: D.landing,
-					privacy: D.privacy,
-					whois: D.whois,
-					emailVerified: D.email_verified,
-					materialChanges: N(D.material_changes),
-					corChanges: D.cor_changes ? P(Object.assign(r({}, M), D.cor_changes)) : {},
-					registryStatuses: D.registry_statuses ? D.registry_statuses.split(",") : null,
+					landing: w.landing,
+					privacy: w.privacy,
+					whois: w.whois,
+					emailVerified: w.email_verified,
+					materialChanges: S(w.material_changes),
+					corChanges: w.cor_changes ? b(Object.assign(r({}, M), w.cor_changes)) : {},
+					registryStatuses: w.registry_statuses ? w.registry_statuses.split(",") : null,
 					domainProtectionServices: {
-						status: (bt = D.domain_protection_services) === null || bt === void 0 ? void 0 : bt.status
+						status: (It = w.domain_protection_services) === null || It === void 0 ? void 0 : It.status
 					},
 					deletion: {
-						isDeletable: D == null || (St = D.deletion) === null || St === void 0 ? void 0 : St.is_deletable
+						isDeletable: w == null || (St = w.deletion) === null || St === void 0 ? void 0 : St.is_deletable
 					},
-					premiumType: D == null ? void 0 : D.premium_type,
-					fees: D == null ? void 0 : D.fees
-				}, D.domain_move && {
+					premiumType: w == null ? void 0 : w.premium_type,
+					fees: w == null ? void 0 : w.fees
+				}, w.domain_move && {
 					domainMove: {
-						ineligibilityReasons: (Dt = D.domain_move) === null || Dt === void 0 ? void 0 : Dt.ineligibility_reasons
+						ineligibilityReasons: (Dt = w.domain_move) === null || Dt === void 0 ? void 0 : Dt.ineligibility_reasons
 					}
-				}, D.actionable_metadata && {
-					actionableMetadata: T(D.actionable_metadata)
-				}, D.policies && {
-					policies: r({}, D.policies.suspension && {
+				}, w.actionable_metadata && {
+					actionableMetadata: T(w.actionable_metadata)
+				}, w.policies && {
+					policies: r({}, w.policies.suspension && {
 						suspension: {
-							parked: D.policies.suspension.parked,
-							parkingReason: D.policies.suspension.parking_reason,
-							paymentExpired: D.policies.suspension.payment_expired
+							parked: w.policies.suspension.parked,
+							parkingReason: w.policies.suspension.parking_reason,
+							paymentExpired: w.policies.suspension.payment_expired
 						}
 					})
 				})
 			}
 
-			function T(E) {
-				return E.map(D => ({
-					accountContext: D.account_context,
-					createdAt: D.created_at,
-					expiresAt: D.expires_at,
-					sentAt: D.sent_at,
-					status: D.status,
-					type: D.type
+			function T(v) {
+				return v.map(w => ({
+					accountContext: w.account_context,
+					createdAt: w.created_at,
+					expiresAt: w.expires_at,
+					sentAt: w.sent_at,
+					status: w.status,
+					type: w.type
 				}))
 			}
 			const M = {
@@ -9677,8 +9747,8 @@
 				extensions: {}
 			};
 
-			function C(E) {
-				switch (E.enter_auth_code) {
+			function C(v) {
+				switch (v.enter_auth_code) {
 					case t.lW.OK:
 						return t.BJ.Valid;
 					case t.lW.NEEDED:
@@ -9693,40 +9763,40 @@
 				return t.BJ.Pending
 			}
 
-			function y(E) {
-				let D = E.extensions;
-				(D == null ? void 0 : D.application_purpose) && (D == null ? void 0 : D.nexus_category) && (E.extensions = {
-					nexusCategory: D.nexus_category,
-					applicationPurpose: D.application_purpose
+			function y(v) {
+				let w = v.extensions;
+				(w == null ? void 0 : w.application_purpose) && (w == null ? void 0 : w.nexus_category) && (v.extensions = {
+					nexusCategory: w.nexus_category,
+					applicationPurpose: w.application_purpose
 				});
-				let _e = r({}, typeof E.id == "string" ? {
-					id: E.id
+				let fe = r({}, typeof v.id == "string" ? {
+					id: v.id
 				} : {}, {
-					first_name: E.firstName,
-					organization: E.organization,
-					address: E.address1,
-					city: E.city,
-					state: E.state || "N/A",
-					zip: E.zip,
-					country: E.country,
-					phone: E.phone,
-					email: E.email,
+					first_name: v.firstName,
+					organization: v.organization,
+					address: v.address1,
+					city: v.city,
+					state: v.state || "N/A",
+					zip: v.zip,
+					country: v.country,
+					phone: v.phone,
+					email: v.email,
 					fax: "",
-					last_name: E.lastName,
-					address2: E.address2,
-					email_verified: E.emailVerified
-				}, E.extensions ? {
+					last_name: v.lastName,
+					address2: v.address2,
+					email_verified: v.emailVerified
+				}, v.extensions ? {
 					extensions: {
-						nexus_category: E.extensions.nexusCategory,
-						application_purpose: E.extensions.applicationPurpose
+						nexus_category: v.extensions.nexusCategory,
+						application_purpose: v.extensions.applicationPurpose
 					}
 				} : {});
-				return Se(_e)
+				return Ie(fe)
 			}
 
-			function N(E) {
-				let D = [];
-				const _e = {
+			function S(v) {
+				let w = [];
+				const fe = {
 					id: "",
 					first_name: "firstName",
 					organization: "organization",
@@ -9743,45 +9813,45 @@
 					email_verified: "emailVerified",
 					extensions: null
 				};
-				for (const Pe in E) {
-					const He = E[Pe],
-						Et = _e[He];
-					D.push(Et)
+				for (const Pe in v) {
+					const Ze = v[Pe],
+						Et = fe[Ze];
+					w.push(Et)
 				}
-				return D
+				return w
 			}
-			const L = E => {
-				if (!E) return null;
-				let D = E;
-				return E.includes("C31") && (D = "C31"), E.includes("C32") && (D = "C32"), D
+			const L = v => {
+				if (!v) return null;
+				let w = v;
+				return v.includes("C31") && (w = "C31"), v.includes("C32") && (w = "C32"), w
 			};
 
-			function P(E) {
-				return r({}, typeof E.id == "string" ? {
-					id: E.id
+			function b(v) {
+				return r({}, typeof v.id == "string" ? {
+					id: v.id
 				} : {}, {
-					firstName: E.first_name,
-					organization: E.organization,
-					address1: E.address,
-					city: E.city,
-					state: E.state,
-					zip: E.zip,
-					country: E.country,
-					phone: E.phone.trim(),
-					email: E.email.trim(),
-					lastName: E.last_name,
-					address2: E.address2,
-					emailVerified: E.email_verified
-				}, E.extensions ? {
+					firstName: v.first_name,
+					organization: v.organization,
+					address1: v.address,
+					city: v.city,
+					state: v.state,
+					zip: v.zip,
+					country: v.country,
+					phone: v.phone.trim(),
+					email: v.email.trim(),
+					lastName: v.last_name,
+					address2: v.address2,
+					emailVerified: v.email_verified
+				}, v.extensions ? {
 					extensions: {
-						nexusCategory: L(E.extensions.nexus_category),
-						applicationPurpose: E.extensions.application_purpose
+						nexusCategory: L(v.extensions.nexus_category),
+						applicationPurpose: v.extensions.application_purpose
 					}
 				} : {})
 			}
 
-			function I(E = {}) {
-				const D = {
+			function P(v = {}) {
+				const w = {
 					name: "",
 					zoneId: "",
 					zone: r({
@@ -9799,9 +9869,9 @@
 							can_subscribe: !0,
 							legacy_discount: !1,
 							externally_managed: !1
-						}, E.zone && E.zone.plan || {}),
-						type: t.xd.Full
-					}, E.zone || {}),
+						}, v.zone && v.zone.plan || {}),
+						type: EZoneType.Full
+					}, v.zone || {}),
 					emailVerified: !1,
 					nameservers: [],
 					isCorLocked: !1,
@@ -9818,10 +9888,10 @@
 					lastEntitledAt: null,
 					isZoneEntitlementPresent: null,
 					registrar: "",
-					autoTransferStatus: t._n.Pending,
+					autoTransferStatus: EDomainAutoTransferStatus.Pending,
 					transferAuthCode: "",
-					authCodeStatus: t.BJ.Pending,
-					transferApiCallStatus: t.Yh.Pending,
+					authCodeStatus: EAuthCodeStatus.Pending,
+					transferApiCallStatus: ETransferDomainStatus.Pending,
 					transferConditions: r({
 						eligible: !0,
 						exists: !0,
@@ -9830,15 +9900,15 @@
 						not_started: !0,
 						not_waiting: !0,
 						supported_tld: !0
-					}, E.transferConditions || {}),
+					}, v.transferConditions || {}),
 					transferIn: r({
-						unlock_domain: t.lW.UNKNOWN,
-						disable_privacy: t.lW.UNKNOWN,
-						enter_auth_code: t.lW.UNKNOWN,
-						approve_transfer: t.lW.UNKNOWN,
-						accept_foa: t.lW.UNKNOWN,
+						unlock_domain: EApiTransferStatus.UNKNOWN,
+						disable_privacy: EApiTransferStatus.UNKNOWN,
+						enter_auth_code: EApiTransferStatus.UNKNOWN,
+						approve_transfer: EApiTransferStatus.UNKNOWN,
+						accept_foa: EApiTransferStatus.UNKNOWN,
 						can_cancel_transfer: !1
-					}, E.transferIn || {}),
+					}, v.transferIn || {}),
 					lastTransferredAt: "",
 					paymentExpiresAt: "",
 					contactIds: {},
@@ -9856,7 +9926,7 @@
 					deletion: {
 						isDeletable: !1
 					},
-					premiumType: t.Vs.Not_Premium,
+					premiumType: DomainPremiumType.Not_Premium,
 					fees: null,
 					policies: {
 						suspension: {
@@ -9866,10 +9936,10 @@
 						}
 					}
 				};
-				return Object.assign(D, E)
+				return Object.assign(w, v)
 			}
 
-			function O(E = {}) {
+			function O(v = {}) {
 				return Object.assign({
 					firstName: "",
 					lastName: "",
@@ -9884,166 +9954,166 @@
 					email: "",
 					emailVerified: !1,
 					extensions: void 0
-				}, E)
+				}, v)
 			}
 
-			function S(E) {
-				const D = u.Py.concat(u.ui).reduce((_e, Pe) => r({}, _e, {
+			function D(v) {
+				const w = d.Py.concat(d.ui).reduce((fe, Pe) => r({}, fe, {
 					[Pe]: []
 				}), {});
-				return E.forEach(_e => {
-					let Pe = B(_e.registrar);
-					Pe in D || (Pe = u.ui), ee(_e.name) && (Pe = "uk"), D[Pe].push(_e)
-				}), Object.keys(D).sort((_e, Pe) => _e.localeCompare(Pe)).map(_e => ({
-					registrar: _e,
-					domains: D[_e]
-				})).filter(_e => _e.domains.length > 0)
+				return v.forEach(fe => {
+					let Pe = B(fe.registrar);
+					Pe in w || (Pe = d.ui), Y(fe.name) && (Pe = "uk"), w[Pe].push(fe)
+				}), Object.keys(w).sort((fe, Pe) => fe.localeCompare(Pe)).map(fe => ({
+					registrar: fe,
+					domains: w[fe]
+				})).filter(fe => fe.domains.length > 0)
 			}
 
-			function B(E) {
-				return E == null ? void 0 : E.toLowerCase().replace(/\s|,|\./g, "")
+			function B(v) {
+				return v == null ? void 0 : v.toLowerCase().replace(/\s|,|\./g, "")
 			}
 
-			function U(E) {
-				if (!E || !E.registrar) return "unknown";
-				if (ee(E.name)) return "uk";
-				const D = B(E.registrar);
-				return D in u.gM ? D : "unknown"
+			function U(v) {
+				if (!v || !v.registrar) return "unknown";
+				if (Y(v.name)) return "uk";
+				const w = B(v.registrar);
+				return w in d.gM ? w : "unknown"
 			}
 			const Z = [];
 
-			function ae(E) {
-				return Z.some(D => E.endsWith("." + D))
+			function ae(v) {
+				return Z.some(w => v.endsWith("." + w))
 			}
 
-			function Ee(E) {
-				return !E.isEnterpriseZone || !Array.isArray(E.entitlements) ? !1 : !!E.entitlements.find(({
-					id: D,
-					allocation: _e
-				}) => D === u.g5 && _e.value === !0)
+			function _e(v) {
+				return !v.isEnterpriseZone || !Array.isArray(v.entitlements) ? !1 : !!v.entitlements.find(({
+					id: w,
+					allocation: fe
+				}) => w === d.g5 && fe.value === !0)
 			}
 
-			function de(E) {
-				var D;
-				const _e = [t.rj.CLIENT_HOLD, t.rj.SERVER_HOLD, t.rj.SERVER_TRANSFER_PROHIBITED, t.rj.PENDING_DELETE, t.rj.PENDING_TRANSFER, t.rj.CLIENT_TRANSFER_PROHIBITED];
+			function de(v) {
+				var w;
+				const fe = [t.rj.CLIENT_HOLD, t.rj.SERVER_HOLD, t.rj.SERVER_TRANSFER_PROHIBITED, t.rj.PENDING_DELETE, t.rj.PENDING_TRANSFER, t.rj.CLIENT_TRANSFER_PROHIBITED];
 				let Pe = !1,
-					He = null;
-				return (D = E.registryStatuses) === null || D === void 0 || D.some(Et => {
-					_e.includes(Et) && (He = Et, Pe = !0)
-				}), [Pe, He]
+					Ze = null;
+				return (w = v.registryStatuses) === null || w === void 0 || w.some(Et => {
+					fe.includes(Et) && (Ze = Et, Pe = !0)
+				}), [Pe, Ze]
 			}
 
-			function ue(E, D = !1) {
-				if (!E) return [!1, _.keys.cannot_transfer_default];
-				if (E.zone.status !== "active") return [!1, _.keys.cannot_transfer_zone_not_active];
-				if (!E.isFullZone && !Ee(E)) return [!1, _.keys.cannot_transfer_zone_not_eligible];
-				if (E.registrar === "Cloudflare") return [!1, _.keys.cannot_transfer_domain_on_cf];
-				if (E.isAvailable) return [!1, _.keys.cannot_transfer_domain_available];
-				if (!E.transferConditions) return [!1, _.keys.cannot_transfer_domain_transfer_conditions];
-				if (!D && Ct(E == null ? void 0 : E.premiumType)) return [!1, _.keys.cannot_transfer_domain_premium];
-				if (V(E)) return [!1, _.keys.cannot_transfer_domain_transfer_in_progress];
-				let _e;
-				for (_e in E.transferConditions)
-					if (_e !== "not_premium" && !E.transferConditions[_e]) return [!1, _.keys.cannot_transfer_domain_transfer_conditions];
-				if (ae(E.name)) return [!1, _.keys.cannot_transfer_domain_tld_not_supported];
-				const [Pe, He] = de(E);
-				return Pe && He ? [!1, _.keys.cannot_transfer_domain_registry_status[He]] : [!0, ""]
+			function ue(v, w = !1) {
+				if (!v) return [!1, g.keys.cannot_transfer_default];
+				if (v.zone.status !== "active") return [!1, g.keys.cannot_transfer_zone_not_active];
+				if (!v.isFullZone && !_e(v)) return [!1, g.keys.cannot_transfer_zone_not_eligible];
+				if (v.registrar === "Cloudflare") return [!1, g.keys.cannot_transfer_domain_on_cf];
+				if (v.isAvailable) return [!1, g.keys.cannot_transfer_domain_available];
+				if (!v.transferConditions) return [!1, g.keys.cannot_transfer_domain_transfer_conditions];
+				if (!w && mt(v == null ? void 0 : v.premiumType)) return [!1, g.keys.cannot_transfer_domain_premium];
+				if (K(v)) return [!1, g.keys.cannot_transfer_domain_transfer_in_progress];
+				let fe;
+				for (fe in v.transferConditions)
+					if (fe !== "not_premium" && !v.transferConditions[fe]) return [!1, g.keys.cannot_transfer_domain_transfer_conditions];
+				if (ae(v.name)) return [!1, g.keys.cannot_transfer_domain_tld_not_supported];
+				const [Pe, Ze] = de(v);
+				return Pe && Ze ? [!1, g.keys.cannot_transfer_domain_registry_status[Ze]] : [!0, ""]
 			}
 
-			function V(E) {
-				var D, _e;
-				return !!E.transferIn && !((D = E.transferConditions) === null || D === void 0 ? void 0 : D.not_started) && !!(ee(E.name) || ((_e = E.registryStatuses) === null || _e === void 0 ? void 0 : _e.includes(t.rj.PENDING_TRANSFER)))
+			function K(v) {
+				var w, fe;
+				return !!v.transferIn && !((w = v.transferConditions) === null || w === void 0 ? void 0 : w.not_started) && !!(Y(v.name) || ((fe = v.registryStatuses) === null || fe === void 0 ? void 0 : fe.includes(t.rj.PENDING_TRANSFER)))
 			}
 
-			function Y(E) {
-				return !!E.registrar && !!E.currentExpiration
+			function Q(v) {
+				return !!v.registrar && !!v.currentExpiration
 			}
 
-			function G(E, D = !1) {
-				const [_e] = ue(E, D);
-				return Y(E) ? xe(E) ? t.M5.InProgressOrOnCF : _e ? t.M5.Supported : t.M5.Unsupported : t.M5.Unknown
+			function H(v, w = !1) {
+				const [fe] = ue(v, w);
+				return Q(v) ? Ue(v) ? t.M5.InProgressOrOnCF : fe ? t.M5.Supported : t.M5.Unsupported : t.M5.Unknown
 			}
 
-			function b(E) {
-				return E.transferIn && [t.lW.REJECTED, t.lW.NEEDED].includes(E.transferIn.enter_auth_code) || !1
+			function I(v) {
+				return v.transferIn && [t.lW.REJECTED, t.lW.NEEDED].includes(v.transferIn.enter_auth_code) || !1
 			}
 
-			function F(E) {
-				return E.registrar === "Cloudflare"
+			function F(v) {
+				return v.registrar === "Cloudflare"
 			}
 
-			function te(E) {
-				return !!(E == null ? void 0 : E.includes(t.rj.AUTO_RENEW_PERIOD))
+			function ne(v) {
+				return !!(v == null ? void 0 : v.includes(t.rj.AUTO_RENEW_PERIOD))
 			}
 
-			function ce(E) {
-				return !!(E == null ? void 0 : E.includes(t.rj.PENDING_TRANSFER))
+			function ce(v) {
+				return !!(v == null ? void 0 : v.includes(t.rj.PENDING_TRANSFER))
 			}
-			const K = "Invalid date";
+			const G = "Invalid date";
 
-			function q(E) {
-				return E.newExpiration === K ? "Unavailable" : E.newExpiration
-			}
-
-			function $(E) {
-				return E.currentExpiration === K ? "Unavailable" : E.currentExpiration
+			function J(v) {
+				return v.newExpiration === G ? "Unavailable" : v.newExpiration
 			}
 
-			function X(E) {
-				return E.substring(E.indexOf("."))
+			function W(v) {
+				return v.currentExpiration === G ? "Unavailable" : v.currentExpiration
 			}
 
-			function W(E = "") {
-				return E.indexOf(".") !== -1 ? E.substring(0, E.indexOf(".")) : E
+			function q(v) {
+				return v.substring(v.indexOf("."))
 			}
 
-			function ne(E) {
-				return E.map(D => D.name).map(D => X(D)).filter((D, _e, Pe) => !Pe.includes(D, _e + 1))
+			function $(v = "") {
+				return v.indexOf(".") !== -1 ? v.substring(0, v.indexOf(".")) : v
 			}
 
-			function ve(E) {
-				if (u.no) return [!0, ""];
-				if (!F(E)) return [!1, t.ok.NotOnCF];
-				if (E.isCorLocked) return [!1, E.corLockedUntil ? t.ok.CorLockedUntil : t.ok.CorLock];
-				if (E.lastTransferredAt) {
-					const D = p()(E.lastTransferredAt),
-						_e = p().duration(p()().diff(D)).as("days"),
-						Pe = ee(E.name);
-					if (_e < (Pe ? 1 : 60)) return [!1, Pe ? t.ok.RecentTransferUK : t.ok.RecentTransfer]
+			function te(v) {
+				return v.map(w => w.name).map(w => q(w)).filter((w, fe, Pe) => !Pe.includes(w, fe + 1))
+			}
+
+			function Ee(v) {
+				if (d.no) return [!0, ""];
+				if (!F(v)) return [!1, t.ok.NotOnCF];
+				if (v.isCorLocked) return [!1, v.corLockedUntil ? t.ok.CorLockedUntil : t.ok.CorLock];
+				if (v.lastTransferredAt) {
+					const w = p()(v.lastTransferredAt),
+						fe = p().duration(p()().diff(w)).as("days"),
+						Pe = Y(v.name);
+					if (fe < (Pe ? 1 : 60)) return [!1, Pe ? t.ok.RecentTransferUK : t.ok.RecentTransfer]
 				}
-				if (E.createdAt) {
-					const D = p()(E.createdAt);
-					if (p().duration(p()().diff(D)).as("days") < 60) return [!1, t.ok.RecentCreation]
+				if (v.createdAt) {
+					const w = p()(v.createdAt);
+					if (p().duration(p()().diff(w)).as("days") < 60) return [!1, t.ok.RecentCreation]
 				}
 				return [!0, ""]
 			}
 
-			function Te(E) {
-				return !!(u.Bc || E.transferOut)
+			function Te(v) {
+				return !!(d.Bc || v.transferOut)
 			}
 
-			function xe(E) {
-				return $e(E) || F(E)
+			function Ue(v) {
+				return xe(v) || F(v)
 			}
 
-			function Ue(E) {
-				return !$e(E) && F(E)
+			function ke(v) {
+				return !xe(v) && F(v)
 			}
 
-			function $e(E) {
-				return !E || E.lastKnownStatus === "pendingTransfer" || E.lastKnownStatus === "transferFOAPending" || !F(E) && E.transferConditions && !E.transferConditions.not_started || !1
+			function xe(v) {
+				return !v || v.lastKnownStatus === "pendingTransfer" || v.lastKnownStatus === "transferFOAPending" || !F(v) && v.transferConditions && !v.transferConditions.not_started || !1
 			}
 
-			function Ke(E) {
-				return !(ae(E.name) || E.transferConditions && !E.transferConditions.supported_tld)
+			function Ke(v) {
+				return !(ae(v.name) || v.transferConditions && !v.transferConditions.supported_tld)
 			}
 
-			function Ie(E) {
-				return (E == null ? void 0 : E.includes("/")) ? !0 : E.split("").some(D => D.charCodeAt(0) > 123)
+			function Le(v) {
+				return (v == null ? void 0 : v.includes("/")) ? !0 : v.split("").some(w => w.charCodeAt(0) > 123)
 			}
 
-			function Q(E) {
-				switch (E) {
+			function X(v) {
+				switch (v) {
 					case "1&1internetse":
 						return "1&1 Ionos";
 					case "enom":
@@ -10059,78 +10129,78 @@
 				}
 			}
 
-			function re(E) {
-				return p()(E.paymentExpiresAt).isBefore(p()())
+			function re(v) {
+				return p()(v.paymentExpiresAt).isBefore(p()())
 			}
 
-			function me(E) {
-				return E.transferIn && E.transferIn.enter_auth_code === t.lW.REJECTED || !1
+			function me(v) {
+				return v.transferIn && v.transferIn.enter_auth_code === t.lW.REJECTED || !1
 			}
 
-			function k(E) {
-				const D = ["CU", "KP", "IR", "SY"];
-				return E.filter(_e => !D.includes(_e.code))
+			function k(v) {
+				const w = ["CU", "KP", "IR", "SY"];
+				return v.filter(fe => !w.includes(fe.code))
 			}
 
-			function pe(E) {
-				if (!!E) return `${E.charAt(0).toUpperCase()}${E.slice(1)}${E.charAt(E.length-1)==="."?"":"."}`
+			function pe(v) {
+				if (!!v) return `${v.charAt(0).toUpperCase()}${v.slice(1)}${v.charAt(v.length-1)==="."?"":"."}`
 			}
 
-			function Se(E) {
-				const D = {};
-				for (const [_e, Pe] of Object.entries(E)) {
+			function Ie(v) {
+				const w = {};
+				for (const [fe, Pe] of Object.entries(v)) {
 					if (Pe && typeof Pe == "string") {
-						Object.assign(D, {
-							[_e]: Pe.trim()
+						Object.assign(w, {
+							[fe]: Pe.trim()
 						});
 						continue
 					}
-					Object.assign(D, {
-						[_e]: Pe
+					Object.assign(w, {
+						[fe]: Pe
 					})
 				}
-				return D
+				return w
 			}
 
-			function Re(E) {
-				return p()(E).add(40, "days")
+			function Be(v) {
+				return p()(v).add(40, "days")
 			}
 
-			function ze(E) {
-				const D = E.paymentExpiresAt || E.payment_expires_at,
-					_e = Re(D);
-				return p()().isBetween(D, _e)
+			function ze(v) {
+				const w = v.paymentExpiresAt || v.payment_expires_at,
+					fe = Be(w);
+				return p()().isBetween(w, fe)
 			}
 
-			function be(E) {
-				var D;
-				return !(E == null ? void 0 : E.registryStatuses) || !Array.isArray(E == null ? void 0 : E.registryStatuses) && !(0, e.isString)(E == null ? void 0 : E.registryStatuses) ? !1 : (D = E.registryStatuses) === null || D === void 0 ? void 0 : D.includes(t.rj.REDEMPTION_PERIOD)
+			function be(v) {
+				var w;
+				return !(v == null ? void 0 : v.registryStatuses) || !Array.isArray(v == null ? void 0 : v.registryStatuses) && !(0, e.isString)(v == null ? void 0 : v.registryStatuses) ? !1 : (w = v.registryStatuses) === null || w === void 0 ? void 0 : w.includes(t.rj.REDEMPTION_PERIOD)
 			}
 
-			function ke(E) {
-				var D;
-				return !(E == null ? void 0 : E.registryStatuses) || !Array.isArray(E == null ? void 0 : E.registryStatuses) && !(0, e.isString)(E == null ? void 0 : E.registryStatuses) ? !1 : (D = E.registryStatuses) === null || D === void 0 ? void 0 : D.includes(t.rj.PENDING_DELETE)
+			function Re(v) {
+				var w;
+				return !(v == null ? void 0 : v.registryStatuses) || !Array.isArray(v == null ? void 0 : v.registryStatuses) && !(0, e.isString)(v == null ? void 0 : v.registryStatuses) ? !1 : (w = v.registryStatuses) === null || w === void 0 ? void 0 : w.includes(t.rj.PENDING_DELETE)
 			}
 
-			function Fe(E) {
-				return [".us"].includes(E)
+			function je(v) {
+				return [".us"].includes(v)
 			}
 
-			function We(E) {
-				return [".us"].includes(E)
+			function We(v) {
+				return [".us"].includes(v)
 			}
 
-			function Ye(E) {
-				switch (E) {
+			function Xe(v) {
+				switch (v) {
 					case ".us":
-						return fe();
+						return ge();
 					default:
 						return []
 				}
 			}
 
-			function H(E) {
-				switch (E) {
+			function V(v) {
+				switch (v) {
 					case ".us":
 						return se;
 					default:
@@ -10141,13 +10211,13 @@
 				[t.A9.P3]: [t.Fi.C11]
 			};
 
-			function fe() {
+			function ge() {
 				return [{
 					name: t.IP.application_purpose,
 					label: t.rb.application_purpose,
-					options: Object.entries(t.A9).map(([E, D]) => ({
-						value: E,
-						label: D
+					options: Object.entries(t.A9).map(([v, w]) => ({
+						value: v,
+						label: w
 					})),
 					display: {
 						columns: 3,
@@ -10156,156 +10226,156 @@
 				}, {
 					name: t.IP.nexus_category,
 					label: t.rb.nexus_category,
-					options: Object.entries(t.Fi).map(([E, D]) => ({
-						value: E,
-						label: D
+					options: Object.entries(t.Fi).map(([v, w]) => ({
+						value: v,
+						label: w
 					}))
 				}]
 			}
 
-			function we(E, D, _e) {
-				return D[D.length - 1][_e] === E[_e]
+			function Me(v, w, fe) {
+				return w[w.length - 1][fe] === v[fe]
 			}
 
-			function Ne(E) {
-				return Boolean(Object.keys(E).length === 0)
+			function we(v) {
+				return Boolean(Object.keys(v).length === 0)
 			}
 
-			function Be(E) {
-				return p()().add(E, "year").format(A)
+			function Ne(v) {
+				return p()().add(v, "year").format(h)
 			}
 
-			function Qe({
-				accountName: E
+			function Ye({
+				accountName: v
 			}) {
-				var D;
-				const _e = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+/;
-				return ((D = E.toLowerCase().match(_e)) === null || D === void 0 ? void 0 : D[0]) || ""
+				var w;
+				const fe = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+/;
+				return ((w = v.toLowerCase().match(fe)) === null || w === void 0 ? void 0 : w[0]) || ""
 			}
 
-			function rt(E) {
-				return !!E.match(m.default.email)
+			function rt(v) {
+				return !!v.match(m.default.email)
 			}
 
-			function lt(E) {
-				return E === l.W7.PENDING_UPDATE
+			function ut(v) {
+				return v === u.W7.PENDING_UPDATE
 			}
 
-			function st(E) {
-				return E ? Object.values(l.wR).filter(D => D !== l.wR.OFFBOARDED).includes(E) : !1
+			function st(v) {
+				return v ? Object.values(u.wR).filter(w => w !== u.wR.OFFBOARDED).includes(v) : !1
 			}
 
-			function pt(E) {
-				return E ? [l.wR.LOCKED, l.wR.ONBOARDED, l.wR.ONBOARDING_INITIATED, l.wR.PENDING_REGISTRY_LOCK, l.wR.PENDING_REGISTRY_UNLOCK, l.wR.PENDING_UNLOCK_APPROVAL].includes(E) : !1
+			function gt(v) {
+				return v ? [u.wR.LOCKED, u.wR.ONBOARDED, u.wR.ONBOARDING_INITIATED, u.wR.PENDING_REGISTRY_LOCK, u.wR.PENDING_REGISTRY_UNLOCK, u.wR.PENDING_UNLOCK_APPROVAL].includes(v) : !1
 			}
 
-			function mt(E) {
-				return E ? l.wR.UNLOCKED === E : !1
+			function ft(v) {
+				return v ? u.wR.UNLOCKED === v : !1
 			}
 
-			function ut(E) {
-				return E ? l.wR.LOCKED === E : !1
+			function dt(v) {
+				return v ? u.wR.LOCKED === v : !1
 			}
 
-			function Ge(E) {
-				return E ? l.wR.PENDING_REGISTRY_LOCK === E : !1
+			function Ge(v) {
+				return v ? u.wR.PENDING_REGISTRY_LOCK === v : !1
 			}
 
-			function Ae(E) {
-				return E ? [l.wR.PENDING_REGISTRY_UNLOCK, l.wR.PENDING_UNLOCK_APPROVAL].includes(E) : !1
+			function Ae(v) {
+				return v ? [u.wR.PENDING_REGISTRY_UNLOCK, u.wR.PENDING_UNLOCK_APPROVAL].includes(v) : !1
 			}
 
-			function Xe(E) {
-				var D;
+			function Qe(v) {
+				var w;
 				return !1
 			}
 
-			function gt(E) {
-				var D;
+			function pt(v) {
+				var w;
 				return !1
 			}
 
-			function it(E) {
-				var D;
+			function ct(v) {
+				var w;
 				return !1
 			}
 
-			function ft(E) {
-				var D;
+			function _t(v) {
+				var w;
 				return !1
 			}
 
-			function z(E) {
-				var D;
+			function z(v) {
+				var w;
 				return !1
 			}
 
-			function le(E) {
-				return Object.keys(l.wR).find(D => l.wR[D].toLowerCase() === E.toLowerCase())
+			function le(v) {
+				return Object.keys(u.wR).find(w => u.wR[w].toLowerCase() === v.toLowerCase())
 			}
 
-			function Ce(E) {
-				var D;
-				const _e = (D = le(E)) === null || D === void 0 ? void 0 : D.toLowerCase();
-				return _e ? _.keys.protection_status[_e] : _.keys.protection_status.unknown
+			function Ce(v) {
+				var w;
+				const fe = (w = le(v)) === null || w === void 0 ? void 0 : w.toLowerCase();
+				return fe ? g.keys.protection_status[fe] : g.keys.protection_status.unknown
 			}
 
-			function Oe(E) {
-				return ["com", "net"].includes(E)
+			function Oe(v) {
+				return ["com", "net"].includes(v)
 			}
 
-			function je(E) {
-				const D = (0, i.pu)(E);
-				return Oe(D) ? l.wR.PENDING_REGISTRY_LOCK : l.wR.LOCKED
+			function Fe(v) {
+				const w = (0, i.pu)(v);
+				return Oe(w) ? u.wR.PENDING_REGISTRY_LOCK : u.wR.LOCKED
 			}
 
-			function ge(E) {
-				return (0, i.pu)(E) === "co" ? 5 : 10
+			function Ve(v) {
+				return (0, i.pu)(v) === "co" ? 5 : 10
 			}
 
-			function w(E, D) {
-				return D ? 1 : (0, i.pu)(E) === "co" ? 5 : (0, i.pu)(E) === "org" ? 1 : 10
+			function R(v, w) {
+				return w ? 1 : (0, i.pu)(v) === "co" ? 5 : (0, i.pu)(v) === "org" ? 1 : 10
 			}
 
-			function ee(E) {
-				return (0, i.pu)(E) === "uk"
+			function Y(v) {
+				return (0, i.pu)(v) === "uk"
 			}
 
-			function oe(E) {
-				return (0, i.pu)(E) === "us"
+			function oe(v) {
+				return (0, i.pu)(v) === "us"
 			}
 
-			function he(E) {
-				return (0, i.pu)(E) === "ai"
+			function ve(v) {
+				return (0, i.pu)(v) === "ai"
 			}
 
-			function De(E) {
-				return p()(E).isValid()
+			function he(v) {
+				return p()(v).isValid()
 			}
 
-			function Ve(E) {
-				return ["app", "boo", "channel", "dad", "day", "dev", "esq", "foo", "how", "mov", "new", "nexus", "page", "phd", "prof", "rsvp", "soy"].includes(E)
+			function $e(v) {
+				return ["app", "boo", "channel", "dad", "day", "dev", "esq", "foo", "how", "mov", "new", "nexus", "page", "phd", "prof", "rsvp", "soy"].includes(v)
 			}
 
-			function nt(E) {
-				return !!(E == null ? void 0 : E.id)
+			function et(v) {
+				return !!(v == null ? void 0 : v.id)
 			}
 
-			function Ze(E) {
-				return E ? ["restorationPending", "restorationAuthFailure", "restorationFailure", "restorationSuccess", "restorationRenewPending", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess", "restorationPendingZoneCreate", "restorationPendingZoneActivate", "restorationFailedZoneCreate", "restorationFailedZoneActivate", "restorationZoneCreateSuccess", "restorationZoneActivateSuccess", "restorationSuccessWithoutReport"].includes(E) : !1
+			function Je(v) {
+				return v ? ["restorationPending", "restorationAuthFailure", "restorationFailure", "restorationSuccess", "restorationRenewPending", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess", "restorationPendingZoneCreate", "restorationPendingZoneActivate", "restorationFailedZoneCreate", "restorationFailedZoneActivate", "restorationZoneCreateSuccess", "restorationZoneActivateSuccess", "restorationSuccessWithoutReport"].includes(v) : !1
 			}
 
-			function ot(E) {
-				return E ? ["restorationAuthFailure", "restorationFailure", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess"].includes(E) : !1
+			function tt(v) {
+				return v ? ["restorationAuthFailure", "restorationFailure", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess"].includes(v) : !1
 			}
 
-			function _t(E) {
-				var D;
-				return (E == null ? void 0 : E.lastKnownStatus) ? (D = E.lastKnownStatus) === null || D === void 0 ? void 0 : D.includes("deletionIrredeemable") : !1
+			function at(v) {
+				var w;
+				return (v == null ? void 0 : v.lastKnownStatus) ? (w = v.lastKnownStatus) === null || w === void 0 ? void 0 : w.includes("deletionIrredeemable") : !1
 			}
 
-			function Ct(E) {
-				switch (E) {
+			function mt(v) {
+				switch (v) {
 					case t.Vs.NonStandard_NonStandard:
 					case t.Vs.NonStandard_Standard:
 					case t.Vs.Standard_Standard:
@@ -10317,113 +10387,110 @@
 				}
 			}
 
-			function dt(E) {
-				if (!E || !E.message) return t.OJ.DEFAULT;
+			function Ct(v) {
+				if (!v || !v.message) return t.OJ.DEFAULT;
 				const {
-					message: D
-				} = E;
+					message: w
+				} = v;
 				switch (!0) {
-					case D.includes("feature disabled"):
+					case w.includes("feature disabled"):
 						return t.OJ.FEATURE_DISABLED;
-					case D.includes("email unverified"):
+					case w.includes("email unverified"):
 						return t.OJ.EMAIL_UNVERIFIED;
-					case D.includes("account blocked"):
+					case w.includes("account blocked"):
 						return t.OJ.ACCOUNT_BLOCKED;
 					default:
 						return t.OJ.DEFAULT
 				}
 			}
 
-			function qe(E) {
-				var D, _e;
-				return !!(((D = E.policies) === null || D === void 0 || (_e = D.suspension) === null || _e === void 0 ? void 0 : _e.parked) && E.policies.suspension.parkingReason)
+			function it(v) {
+				var w, fe;
+				return !!(((w = v.policies) === null || w === void 0 || (fe = w.suspension) === null || fe === void 0 ? void 0 : fe.parked) && v.policies.suspension.parkingReason)
 			}
 
-			function at(E) {
-				var D, _e;
-				return qe(E) && ((D = E.policies) === null || D === void 0 || (_e = D.suspension) === null || _e === void 0 ? void 0 : _e.parkingReason) === t.qK.EMAIL_VERIFICATION
+			function He(v) {
+				var w, fe;
+				return it(v) && ((w = v.policies) === null || w === void 0 || (fe = w.suspension) === null || fe === void 0 ? void 0 : fe.parkingReason) === t.qK.EMAIL_VERIFICATION
 			}
 
-			function Nt(E) {
-				var D, _e;
-				return qe(E) && ((D = E.policies) === null || D === void 0 || (_e = D.suspension) === null || _e === void 0 ? void 0 : _e.parkingReason) === t.qK.TRUST_AND_SAFETY
+			function Rt(v) {
+				var w, fe;
+				return it(v) && ((w = v.policies) === null || w === void 0 || (fe = w.suspension) === null || fe === void 0 ? void 0 : fe.parkingReason) === t.qK.TRUST_AND_SAFETY
 			}
 
-			function $t(E) {
-				var D;
-				return !((D = E.domainMove) === null || D === void 0 ? void 0 : D.ineligibilityReasons.length)
+			function $t(v) {
+				var w;
+				return !((w = v.domainMove) === null || w === void 0 ? void 0 : w.ineligibilityReasons.length)
 			}
 
-			function Rt(E) {
-				var D, _e;
-				return !!((D = E.domainMove) === null || D === void 0 || (_e = D.ineligibilityReasons) === null || _e === void 0 ? void 0 : _e.includes(t.Ah.DOMAIN_EXISTING_PENDING_REQUEST))
+			function Nt(v) {
+				var w, fe;
+				return !!((w = v.domainMove) === null || w === void 0 || (fe = w.ineligibilityReasons) === null || fe === void 0 ? void 0 : fe.includes(t.Ah.DOMAIN_EXISTING_PENDING_REQUEST))
 			}
 
-			function kt(E) {
-				var D;
-				return (D = E.actionableMetadata) === null || D === void 0 ? void 0 : D.find(_e => _e.type === t.wg.DOMAIN_MOVE)
+			function kt(v) {
+				var w;
+				return (w = v.actionableMetadata) === null || w === void 0 ? void 0 : w.find(fe => fe.type === t.wg.DOMAIN_MOVE)
 			}
 
-			function Wt(E) {
-				const D = kt(E);
-				return (D == null ? void 0 : D.status) === "pending" && D.accountContext === t._5.GAINING
+			function Wt(v) {
+				const w = kt(v);
+				return (w == null ? void 0 : w.status) === "pending" && w.accountContext === t._5.GAINING
 			}
 
-			function zt(E) {
-				const D = kt(E);
-				return (D == null ? void 0 : D.status) === "pending" && D.accountContext === t._5.LOSING
+			function zt(v) {
+				const w = kt(v);
+				return (w == null ? void 0 : w.status) === "pending" && w.accountContext === t._5.LOSING
 			}
 
-			function Gt(E) {
-				const D = X(E.name);
-				return !u.Pf.includes(D)
+			function Gt(v) {
+				const w = q(v.name);
+				return !d.Pf.includes(w)
 			}
 
-			function Kt(E) {
-				return u.QZ.includes(E)
+			function Kt(v) {
+				return d.QZ.includes(v)
 			}
 		},
-		"../react/pages/home/domain-registration/config.ts": function(x, v, n) {
+		"../react/pages/home/domain-registration/config.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Bc: function() {
-					return _
+					return d
 				},
 				HG: function() {
-					return Ke
+					return xe
 				},
 				Hv: function() {
-					return Ie
+					return Ke
 				},
 				JM: function() {
 					return s
 				},
 				Pf: function() {
-					return c
+					return l
 				},
 				Py: function() {
 					return m
 				},
 				QZ: function() {
-					return g
+					return c
 				},
 				WK: function() {
-					return r
+					return t
 				},
 				g5: function() {
-					return a
+					return r
 				},
 				gM: function() {
-					return l
-				},
-				gf: function() {
 					return u
 				},
 				jk: function() {
-					return $e
+					return ke
 				},
 				no: function() {
-					return t
+					return g
 				},
 				uY: function() {
 					return i
@@ -10436,7 +10503,7 @@
 				o = n("../flags.ts");
 			const s = "Unknown",
 				p = "unknown",
-				l = {
+				u = {
 					godaddycomllc: "godaddycomllc",
 					namecheap: "namecheap",
 					enom: "enom",
@@ -10444,105 +10511,104 @@
 					"1&1internetse": "1&1internetse",
 					uk: "uk"
 				},
-				m = Object.keys(l),
+				m = Object.keys(u),
 				i = !0,
-				u = (0, o.J8)("registrar_mock_data") || !1,
-				_ = (0, o.J8)("registrar_mock_transfer_out") || !1,
-				t = (0, o.J8)("registrar_show_unlock_ui") || !1,
-				r = 250,
-				a = "cf_registrar.enabled",
-				d = "@abcABC1234567890123456",
-				c = [".us"],
-				g = [".travel", ".us", ".ong", ".ngo"],
+				d = (0, o.J8)("registrar_mock_transfer_out") || !1,
+				g = (0, o.J8)("registrar_show_unlock_ui") || !1,
+				t = 250,
+				r = "cf_registrar.enabled",
+				a = "@abcABC1234567890123456",
+				l = [".us"],
+				c = [".travel", ".us", ".ong", ".ngo"],
 				f = (0, e.BC)`/${"accountId"}`,
-				A = (0, e.BC)`${f}/add-site`,
+				_ = (0, e.BC)`${f}/add-site`,
 				h = (0, e.BC)`${f}/registrar`,
-				T = (0, e.BC)`${h}/domains`,
-				M = (0, e.BC)`${h}/action-center`,
-				C = (0, e.BC)`${h}/domain/${"zoneName"}`,
-				y = (0, e.BC)`${C}/configuration`,
-				N = (0, e.BC)`${C}/contacts`,
-				L = (0, e.BC)`${h}/pricing`,
-				P = (0, e.BC)`${h}/protection`,
-				I = (0, e.BC)`${h}/register`,
-				O = (0, e.BC)`${I}/checkout`,
-				S = (0, e.BC)`${I}/checkout/${"token"}`,
-				B = (0, e.BC)`${I}/success`,
-				U = (0, e.BC)`${h}/tlds`,
-				Z = (0, e.BC)`${h}/transfer`,
-				ae = (0, e.BC)`${h}/transfer/${"zoneName"}`,
-				Ee = (0, e.BC)`/registrar/accounts/verify_email`,
-				de = (0, e.BC)`/registrar/domains/verify_email`,
-				ue = (0, e.BC)`/sign-up/registrar`,
-				V = (0, e.BC)`${h}/verify-email`,
-				Y = (0, e.BC)`${f}/${"zoneName"}`,
-				G = (0, e.BC)`${f}/domains`,
-				b = (0, e.BC)`${G}/action-center`,
-				F = (0, e.BC)`${G}/${"zoneName"}`,
-				te = (0, e.BC)`${F}/configuration`,
-				ce = (0, e.BC)`${F}/contacts`,
-				K = (0, e.BC)`${G}/pricing`,
-				q = (0, e.BC)`${G}/protection`,
-				$ = (0, e.BC)`${G}/register`,
-				X = (0, e.BC)`${$}/checkout`,
-				W = (0, e.BC)`${$}/checkout/${"token"}`,
-				ne = (0, e.BC)`${$}/success`,
-				ve = (0, e.BC)`${G}/tlds`,
-				Te = (0, e.BC)`${G}/transfer`,
-				xe = (0, e.BC)`${G}/transfer/${"zoneName"}`,
-				Ue = (0, e.BC)`${G}/verify-email`,
-				$e = {
-					addSite: A,
-					domains: T,
-					domainsActionCenter: M,
-					domainsDomain: C,
-					domainsDomainConfiguration: y,
-					domainsDomainContacts: N,
-					domainsPricing: L,
-					domainsProtection: P,
-					domainsRegister: I,
-					domainsRegisterCheckout: O,
-					domainsRegisterCheckoutToken: S,
-					domainsRegisterSuccess: B,
-					domainsTlds: U,
-					domainsTransfer: Z,
-					domainsTransferZone: ae,
+				A = (0, e.BC)`${h}/domains`,
+				T = (0, e.BC)`${h}/action-center`,
+				M = (0, e.BC)`${h}/domain/${"zoneName"}`,
+				C = (0, e.BC)`${M}/configuration`,
+				y = (0, e.BC)`${M}/contacts`,
+				S = (0, e.BC)`${h}/pricing`,
+				L = (0, e.BC)`${h}/protection`,
+				b = (0, e.BC)`${h}/register`,
+				P = (0, e.BC)`${b}/checkout`,
+				O = (0, e.BC)`${b}/checkout/${"token"}`,
+				D = (0, e.BC)`${b}/success`,
+				B = (0, e.BC)`${h}/tlds`,
+				U = (0, e.BC)`${h}/transfer`,
+				Z = (0, e.BC)`${h}/transfer/${"zoneName"}`,
+				ae = (0, e.BC)`/registrar/accounts/verify_email`,
+				_e = (0, e.BC)`/registrar/domains/verify_email`,
+				de = (0, e.BC)`/sign-up/registrar`,
+				ue = (0, e.BC)`${h}/verify-email`,
+				K = (0, e.BC)`${f}/${"zoneName"}`,
+				Q = (0, e.BC)`${f}/domains`,
+				H = (0, e.BC)`${Q}/action-center`,
+				I = (0, e.BC)`${Q}/${"zoneName"}`,
+				F = (0, e.BC)`${I}/configuration`,
+				ne = (0, e.BC)`${I}/contacts`,
+				ce = (0, e.BC)`${Q}/pricing`,
+				G = (0, e.BC)`${Q}/protection`,
+				J = (0, e.BC)`${Q}/register`,
+				W = (0, e.BC)`${J}/checkout`,
+				q = (0, e.BC)`${J}/checkout/${"token"}`,
+				$ = (0, e.BC)`${J}/success`,
+				te = (0, e.BC)`${Q}/tlds`,
+				Ee = (0, e.BC)`${Q}/transfer`,
+				Te = (0, e.BC)`${Q}/transfer/${"zoneName"}`,
+				Ue = (0, e.BC)`${Q}/verify-email`,
+				ke = {
+					addSite: _,
+					domains: A,
+					domainsActionCenter: T,
+					domainsDomain: M,
+					domainsDomainConfiguration: C,
+					domainsDomainContacts: y,
+					domainsPricing: S,
+					domainsProtection: L,
+					domainsRegister: b,
+					domainsRegisterCheckout: P,
+					domainsRegisterCheckoutToken: O,
+					domainsRegisterSuccess: D,
+					domainsTlds: B,
+					domainsTransfer: U,
+					domainsTransferZone: Z,
 					registrar: h,
-					registrarAccountsVerifyEmail: Ee,
-					registrarDomainsVerifyEmail: de,
-					signup: ue,
-					verifyEmail: V,
-					zone: Y
+					registrarAccountsVerifyEmail: ae,
+					registrarDomainsVerifyEmail: _e,
+					signup: de,
+					verifyEmail: ue,
+					zone: K
 				},
-				Ke = {
-					LEGACY_domains: G,
-					LEGACY_domainsActionCenter: b,
-					LEGACY_domainsDomain: F,
-					LEGACY_domainsDomainConfiguration: te,
-					LEGACY_domainsDomainContacts: ce,
-					LEGACY_domainsPricing: K,
-					LEGACY_domainsProtection: q,
-					LEGACY_domainsRegister: $,
-					LEGACY_domainsRegisterCheckout: X,
-					LEGACY_domainsRegisterCheckoutToken: W,
-					LEGACY_domainsRegisterSuccess: ne,
-					LEGACY_domainsTlds: ve,
-					LEGACY_domainsTransfer: Te,
-					LEGACY_domainsTransferZone: xe,
+				xe = {
+					LEGACY_domains: Q,
+					LEGACY_domainsActionCenter: H,
+					LEGACY_domainsDomain: I,
+					LEGACY_domainsDomainConfiguration: F,
+					LEGACY_domainsDomainContacts: ne,
+					LEGACY_domainsPricing: ce,
+					LEGACY_domainsProtection: G,
+					LEGACY_domainsRegister: J,
+					LEGACY_domainsRegisterCheckout: W,
+					LEGACY_domainsRegisterCheckoutToken: q,
+					LEGACY_domainsRegisterSuccess: $,
+					LEGACY_domainsTlds: te,
+					LEGACY_domainsTransfer: Ee,
+					LEGACY_domainsTransferZone: Te,
 					LEGACY_verifyEmail: Ue
 				},
-				Ie = {
+				Ke = {
 					domains: (0, e.BC)`/accounts/${"accountId"}/registrar/domains/${"domainName"}`
 				}
 		},
-		"../react/pages/home/domain-registration/selectors.ts": function(x, v, n) {
+		"../react/pages/home/domain-registration/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				HO: function() {
 					return i
 				},
 				NW: function() {
-					return u
+					return d
 				},
 				ZQ: function() {
 					return p
@@ -10553,28 +10619,28 @@
 			});
 			var e = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/common/selectors/entitlementsSelectors.ts");
-			const s = _ => {
-					const t = _ && _.accountFlags && _.accountFlags.data && _.accountFlags.data.registrar && _.accountFlags.data.registrar.canary_tlds;
+			const s = g => {
+					const t = g && g.accountFlags && g.accountFlags.data && g.accountFlags.data.registrar && g.accountFlags.data.registrar.canary_tlds;
 					return t ? t.split(",").map(r => r.trim()) : []
 				},
-				p = _ => {
+				p = g => {
 					var t, r, a;
-					return ((t = _.accountFlags) === null || t === void 0 || (r = t.data) === null || r === void 0 || (a = r.registrar) === null || a === void 0 ? void 0 : a["registrar-managed"]) || !1
+					return ((t = g.accountFlags) === null || t === void 0 || (r = t.data) === null || r === void 0 || (a = r.registrar) === null || a === void 0 ? void 0 : a["registrar-managed"]) || !1
 				},
-				l = _ => _.account ? _.account.email : "",
-				m = _ => !1,
-				i = _ => m(_) && (0, e.oJ)((0, e.Zu)(_)),
-				u = _ => {
+				u = g => g.account ? g.account.email : "",
+				m = g => !1,
+				i = g => m(g) && (0, e.oJ)((0, e.Zu)(g)),
+				d = g => {
 					const {
 						hasTrademarkClaim: t,
 						trademarkNoticeAgreement: r
-					} = _.registrar.registrations;
+					} = g.registrar.registrations;
 					return t && !(r.accepted_date || r.id || r.not_after)
 				}
 		},
-		"../react/pages/home/domain-registration/tracking.ts": function(x, v, n) {
+		"../react/pages/home/domain-registration/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				J: function() {
 					return r
 				},
@@ -10586,69 +10652,69 @@
 				o = n.n(e),
 				s = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				p = n.n(s),
-				l = n("../react/pages/home/domain-registration/bulk-transfer-util.ts");
+				u = n("../react/pages/home/domain-registration/bulk-transfer-util.ts");
 
 			function m(a) {
-				for (var d = 1; d < arguments.length; d++) {
-					var c = arguments[d] != null ? Object(arguments[d]) : {},
-						g = Object.keys(c);
-					typeof Object.getOwnPropertySymbols == "function" && g.push.apply(g, Object.getOwnPropertySymbols(c).filter(function(f) {
-						return Object.getOwnPropertyDescriptor(c, f).enumerable
-					})), g.forEach(function(f) {
-						i(a, f, c[f])
+				for (var l = 1; l < arguments.length; l++) {
+					var c = arguments[l] != null ? Object(arguments[l]) : {},
+						f = Object.keys(c);
+					typeof Object.getOwnPropertySymbols == "function" && f.push.apply(f, Object.getOwnPropertySymbols(c).filter(function(_) {
+						return Object.getOwnPropertyDescriptor(c, _).enumerable
+					})), f.forEach(function(_) {
+						i(a, _, c[_])
 					})
 				}
 				return a
 			}
 
-			function i(a, d, c) {
-				return d = u(d), d in a ? Object.defineProperty(a, d, {
+			function i(a, l, c) {
+				return l = d(l), l in a ? Object.defineProperty(a, l, {
 					value: c,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : a[d] = c, a
+				}) : a[l] = c, a
 			}
 
-			function u(a) {
-				var d = _(a, "string");
-				return typeof d == "symbol" ? d : String(d)
+			function d(a) {
+				var l = g(a, "string");
+				return typeof l == "symbol" ? l : String(l)
 			}
 
-			function _(a, d) {
+			function g(a, l) {
 				if (typeof a != "object" || a === null) return a;
 				var c = a[Symbol.toPrimitive];
 				if (c !== void 0) {
-					var g = c.call(a, d || "default");
-					if (typeof g != "object") return g;
+					var f = c.call(a, l || "default");
+					if (typeof f != "object") return f;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (d === "string" ? String : Number)(a)
+				return (l === "string" ? String : Number)(a)
 			}
 			let t = function(a) {
 				return a.REGISTER_DOMAIN_SEARCH_SUBMIT = "search domain", a.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN = "select domain from search", a.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION = "select payment option", a.REGISTER_DOMAIN_CHECKOUT_PURCHASE = "click complete purchase button", a.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT = "purchase attempt", a.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED = "purchase completed", a.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT = "Billing address country select toggle", a.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS = "verify address", a.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD = "select payment method", a.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS = "domain on cart has trademark claims", a.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS = "click expand trademark claims button", a.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE = "click disagree trademark claims button", a.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE = "click agree trademark claims button", a.REGISTER_DOMAIN_CHECKOUT_ERROR = "error registering domain", a.TRANSFER_DOMAIN_CHANGE_STEP = "Transfer Step", a.RENEW_DOMAIN_COMPLETED = "domain renewal completed", a.RESTORE_DOMAIN_INIT = "click to open domain restore modal", a.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL = "click to close domain restore modal", a.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL = "open domain restore add payment method modal", a.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL = "close domain restore add payment method modal", a.RESTORE_DOMAIN_FAILURE = "domain restore failed", a.RESTORE_DOMAIN_COMPLETED = "domain restore completed", a.DOMAIN_DELETE_INIT = "click to begin domain delete", a.DOMAIN_DELETE_COMPLETED = "domain deletion completed sucessfully", a.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS = "domain deletion failed because user does not have permissions", a.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE = "domain deletion failed because user submitted invalid confirmation code", a.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON = "domain deletion failed for unknown reason", a.DOMAIN_DELETE_CONFIRM_DELETE = "click to delete domain", a.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL = "click cancel and closes confirm modal", a.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE = "click to re-send confirmation code", a.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL = "click cancel and closes verification modal", a.DOMAIN_DELETE_WARNING_MODAL_CONTINUE = "click to continue with domain deletion", a.DOMAIN_DELETE_CLOSE_WARNING_MODAL = "click cancel and closes warning modal", a.DOMAIN_MOVE_START_FLOW = "Start domain move flow", a.DOMAIN_MOVE_OPEN_DOCS = "Open domain move docs", a.DOMAIN_MOVE_CLOSE_FLOW = "Close domain move flow", a.DOMAIN_MOVE_PROGRESS_FLOW = "Progress domain move flow", a.DOMAIN_MOVE_SUBMIT = "Submit domain move", a.DOMAIN_MOVE_INITIATE_SUCCESS = "Domain move initiate success", a.DOMAIN_MOVE_INITIATE_ERROR = "Domain move initiate error", a.DOMAIN_MOVE_CANCEL = "Domain move cancel", a.DOMAIN_MOVE_CANCEL_SUCCESS = "Domain move cancel success", a.DOMAIN_MOVE_CANCEL_ERROR = "Domain move cancel error", a.ACTION_CENTER_NAVIGATE = "Navigate to actions center", a.ACTION_CENTER_DOMAIN_MOVE_DECISION = "Domain move decision applied", a.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS = "Domain move decision success", a.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR = "Domain move decision error", a
 			}({});
 
-			function r(a, d, c) {
-				if (!(d == null ? void 0 : d.name)) return null;
+			function r(a, l, c) {
+				if (!(l == null ? void 0 : l.name)) return null;
 				p().sendEvent(a, m({
 					domain: {
-						name: d.name,
-						premium: (0, l.Uy)(d == null ? void 0 : d.premiumType),
-						paymentExpiresAt: o()(d == null ? void 0 : d.paymentExpiresAt).format()
+						name: l.name,
+						premium: (0, u.Uy)(l == null ? void 0 : l.premiumType),
+						paymentExpiresAt: o()(l == null ? void 0 : l.paymentExpiresAt).format()
 					},
 					category: "registrar"
 				}, c))
 			}
 		},
-		"../react/pages/home/members/actions/advancedAuthzActions.ts": function(x, v, n) {
+		"../react/pages/home/members/actions/advancedAuthzActions.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				HX: function() {
 					return s
 				},
 				hX: function() {
-					return u
+					return d
 				},
 				s_: function() {
 					return p
@@ -10656,8 +10722,8 @@
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-en-garde/es/index.js"),
 				o = n("../react/app/redux/makeAction.js");
-			let s = function(_) {
-				return _.WORKERS = "workers", _
+			let s = function(g) {
+				return g.WORKERS = "workers", g
 			}({});
 			const p = [{
 					value: s.WORKERS,
@@ -10665,18 +10731,18 @@
 					scopeKeyPrefix: "com.cloudflare.edge.worker.script",
 					scopeSubsetOfPrefix: "com.cloudflare.api.account"
 				}],
-				l = e.eg.object({
+				u = e.eg.object({
 					id: e.eg.string,
 					name: e.eg.string,
 					description: e.eg.string
 				}),
 				m = (0, o.ZP)("granularResources", "get", "/accounts/(accountId)/demoproducts"),
 				i = (0, o.ZP)("noop", "get", ""),
-				u = (_, t) => t == s.WORKERS ? m(_, {}) : i()
+				d = (g, t) => t == s.WORKERS ? m(g, {}) : i()
 		},
-		"../react/pages/home/members/constants.ts": function(x, v, n) {
+		"../react/pages/home/members/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Ey: function() {
 					return i
 				},
@@ -10684,7 +10750,7 @@
 					return c
 				},
 				Fq: function() {
-					return A
+					return h
 				},
 				Go: function() {
 					return r
@@ -10693,7 +10759,7 @@
 					return C
 				},
 				Np: function() {
-					return _
+					return g
 				},
 				Rl: function() {
 					return t
@@ -10711,39 +10777,39 @@
 					return y
 				},
 				Uw: function() {
-					return f
+					return _
 				},
 				Zl: function() {
-					return g
+					return f
 				},
 				jk: function() {
-					return h
+					return A
 				},
 				r6: function() {
-					return d
+					return l
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
 			const o = (0, e.BC)`/${"accountId"}`,
 				s = (0, e.BC)`${o}/members`,
 				p = (0, e.BC)`${s}/invite`,
-				l = (0, e.BC)`${s}/invite/${"memberId"}`,
+				u = (0, e.BC)`${s}/invite/${"memberId"}`,
 				m = (0, e.BC)`${s}/add-policy/${"memberId"}`,
 				i = "com.cloudflare.api.account",
-				_ = i + "." + "zone",
-				t = _ + ".",
+				g = i + "." + "zone",
+				t = g + ".",
 				r = 100,
 				a = 200,
-				d = 5,
+				l = 5,
 				c = 300,
-				g = "INVITE_TOAST",
-				f = "00000000000000000000000000000000",
-				A = "usergroups-ui",
-				h = {
+				f = "INVITE_TOAST",
+				_ = "00000000000000000000000000000000",
+				h = "usergroups-ui",
+				A = {
 					account: o,
 					members: s,
 					inviteMembers: p,
-					editMember: l,
+					editMember: u,
 					addPolicy: m
 				},
 				T = {
@@ -10773,32 +10839,32 @@
 					granularProduct: ""
 				}
 		},
-		"../react/pages/home/members/utils.ts": function(x, v, n) {
+		"../react/pages/home/members/utils.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AX: function() {
 					return T
 				},
 				Co: function() {
-					return A
+					return h
 				},
 				JP: function() {
-					return h
+					return A
 				},
 				Ld: function() {
 					return a
 				},
 				YW: function() {
-					return u
-				},
-				_k: function() {
 					return d
 				},
+				_k: function() {
+					return l
+				},
 				c$: function() {
-					return _
+					return g
 				},
 				rC: function() {
-					return N
+					return S
 				},
 				vq: function() {
 					return y
@@ -10809,92 +10875,92 @@
 				s = n("../react/pages/home/members/constants.ts");
 
 			function p(L) {
-				for (var P = 1; P < arguments.length; P++) {
-					var I = arguments[P] != null ? Object(arguments[P]) : {},
-						O = Object.keys(I);
-					typeof Object.getOwnPropertySymbols == "function" && O.push.apply(O, Object.getOwnPropertySymbols(I).filter(function(S) {
-						return Object.getOwnPropertyDescriptor(I, S).enumerable
-					})), O.forEach(function(S) {
-						l(L, S, I[S])
+				for (var b = 1; b < arguments.length; b++) {
+					var P = arguments[b] != null ? Object(arguments[b]) : {},
+						O = Object.keys(P);
+					typeof Object.getOwnPropertySymbols == "function" && O.push.apply(O, Object.getOwnPropertySymbols(P).filter(function(D) {
+						return Object.getOwnPropertyDescriptor(P, D).enumerable
+					})), O.forEach(function(D) {
+						u(L, D, P[D])
 					})
 				}
 				return L
 			}
 
-			function l(L, P, I) {
-				return P = m(P), P in L ? Object.defineProperty(L, P, {
-					value: I,
+			function u(L, b, P) {
+				return b = m(b), b in L ? Object.defineProperty(L, b, {
+					value: P,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : L[P] = I, L
+				}) : L[b] = P, L
 			}
 
 			function m(L) {
-				var P = i(L, "string");
-				return typeof P == "symbol" ? P : String(P)
+				var b = i(L, "string");
+				return typeof b == "symbol" ? b : String(b)
 			}
 
-			function i(L, P) {
+			function i(L, b) {
 				if (typeof L != "object" || L === null) return L;
-				var I = L[Symbol.toPrimitive];
-				if (I !== void 0) {
-					var O = I.call(L, P || "default");
+				var P = L[Symbol.toPrimitive];
+				if (P !== void 0) {
+					var O = P.call(L, b || "default");
 					if (typeof O != "object") return O;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (P === "string" ? String : Number)(L)
+				return (b === "string" ? String : Number)(L)
 			}
-			const u = () => p({}, s.Ti),
-				_ = () => p({}, s.Lc, {
-					scopes: [u()],
+			const d = () => p({}, s.Ti),
+				g = () => p({}, s.Lc, {
+					scopes: [d()],
 					emails: [],
 					auto_accept: !1,
 					permission_groups: []
 				}),
-				t = L => L.map(P => ({
+				t = L => L.map(b => ({
 					scope: {
-						key: P,
+						key: b,
 						objects: [{
 							key: "*"
 						}]
 					}
 				})),
-				r = (L, P, I) => {
+				r = (L, b, P) => {
 					var O;
-					let S = [],
+					let D = [],
 						B = [];
 					const U = [],
 						Z = [];
 					L.scopes.forEach(de => {
-						if (de.mode === s.Sw.all) I ? S.push({
-							id: I
-						}) : S.push({
+						if (de.mode === s.Sw.all) P ? D.push({
+							id: P
+						}) : D.push({
 							scope: {
-								key: `com.cloudflare.api.account.${P}`,
+								key: `com.cloudflare.api.account.${b}`,
 								objects: [{
 									key: "*"
 								}]
 							}
 						});
 						else if (de.mode === s.Sw.domain_group) {
-							const Y = {
+							const Q = {
 								id: de.resourceGroupId
 							};
-							de.effect === s.Sz.allow ? S.push(Y) : B.push(Y)
+							de.effect === s.Sz.allow ? D.push(Q) : B.push(Q)
 						} else if (de.mode === s.Sw.zone) {
-							const Y = `${s.Rl}${de.zoneId}`;
-							de.effect === s.Sz.allow ? U.push(Y) : Z.push(Y)
+							const Q = `${s.Rl}${de.zoneId}`;
+							de.effect === s.Sz.allow ? U.push(Q) : Z.push(Q)
 						} else if (de.mode === s.Sw.granular && de.granularResourceId) {
-							var ue, V;
-							const Y = de.granularProduct,
-								b = `${(ue=o.s_.find(ce=>ce.value==Y))===null||ue===void 0?void 0:ue.scopeKeyPrefix}.${de.granularResourceId}`,
-								te = `${(V=o.s_.find(ce=>ce.value===Y))===null||V===void 0?void 0:V.scopeSubsetOfPrefix}.${P}`;
-							S.push({
+							var ue, K;
+							const Q = de.granularProduct,
+								I = `${(ue=o.s_.find(ce=>ce.value==Q))===null||ue===void 0?void 0:ue.scopeKeyPrefix}.${de.granularResourceId}`,
+								ne = `${(K=o.s_.find(ce=>ce.value===Q))===null||K===void 0?void 0:K.scopeSubsetOfPrefix}.${b}`;
+							D.push({
 								scope: {
-									key: `${b}`,
+									key: `${I}`,
 									subset_of: [{
-										key: `${te}`
+										key: `${ne}`
 									}],
 									objects: [{
 										key: "*"
@@ -10902,29 +10968,29 @@
 								}
 							})
 						}
-					}), U.length && (S = S.concat(t(U))), Z.length && (B = B.concat(t(Z)));
+					}), U.length && (D = D.concat(t(U))), Z.length && (B = B.concat(t(Z)));
 					const ae = (O = L.permission_groups) === null || O === void 0 ? void 0 : O.map(de => ({
 							id: de
 						})),
-						Ee = [];
-					return Ee.push({
+						_e = [];
+					return _e.push({
 						access: s.Sz.allow,
 						permission_groups: ae,
-						resource_groups: S
-					}), B.length && Ee.push({
+						resource_groups: D
+					}), B.length && _e.push({
 						access: s.Sz.deny,
 						permission_groups: ae,
 						resource_groups: B
-					}), Ee
+					}), _e
 				},
-				a = L => L.map(P => {
-					var I;
+				a = L => L.map(b => {
+					var P;
 					return {
-						access: P.access,
-						permission_groups: P.permission_groups.map(O => ({
+						access: b.access,
+						permission_groups: b.permission_groups.map(O => ({
 							id: O.id
 						})),
-						resource_groups: (I = P.resource_groups) === null || I === void 0 ? void 0 : I.map(O => ({
+						resource_groups: (P = b.resource_groups) === null || P === void 0 ? void 0 : P.map(O => ({
 							scope: {
 								key: O.scope.key,
 								objects: O.scope.objects
@@ -10933,51 +10999,51 @@
 						}))
 					}
 				}),
-				d = (L, P, I, O) => {
-					const S = L.auto_accept;
+				l = (L, b, P, O) => {
+					const D = L.auto_accept;
 					let B = [];
-					return B = B.concat(r(L, P, I)), O && (B = B.concat(a(O))), {
-						auto_accept: S,
-						status: S ? "accepted" : "pending",
+					return B = B.concat(r(L, b, P)), O && (B = B.concat(a(O))), {
+						auto_accept: D,
+						status: D ? "accepted" : "pending",
 						policies: B
 					}
 				},
 				c = L => {
-					const P = L.split(".");
-					return P[P.length - 1]
+					const b = L.split(".");
+					return b[b.length - 1]
 				},
-				g = L => {
-					var P, I;
+				f = L => {
+					var b, P;
 					const O = L == null ? void 0 : L.access;
-					let S = [],
-						B = L == null || (P = L.resource_groups) === null || P === void 0 ? void 0 : P.map(U => {
+					let D = [],
+						B = L == null || (b = L.resource_groups) === null || b === void 0 ? void 0 : b.map(U => {
 							var Z;
-							const ae = f(U);
+							const ae = _(U);
 							if ((U == null || (Z = U.meta) === null || Z === void 0 ? void 0 : Z.editable) === "false") return {
 								effect: O,
 								mode: s.Sw.all,
 								accountId: c(U.id)
 							};
 							if (ae) {
-								var Ee;
-								const de = U == null || (Ee = U.scope) === null || Ee === void 0 ? void 0 : Ee.key.split(".").pop();
+								var _e;
+								const de = U == null || (_e = U.scope) === null || _e === void 0 ? void 0 : _e.key.split(".").pop();
 								return {
 									effect: O,
 									mode: s.Sw.granular,
 									granularProduct: ae.value,
 									granularResourceId: de
 								}
-							} else if (!U.name) U.scope.key.startsWith(s.Rl) ? S.push({
+							} else if (!U.name) U.scope.key.startsWith(s.Rl) ? D.push({
 								key: U.scope.key
-							}) : S = S.concat(U.scope.objects);
+							}) : D = D.concat(U.scope.objects);
 							else return {
 								effect: O,
 								mode: s.Sw.domain_group,
 								resourceGroupId: c(U.id)
 							}
 						}).filter(U => U);
-					if ((I = S) === null || I === void 0 ? void 0 : I.length) {
-						let U = S.map(Z => {
+					if ((P = D) === null || P === void 0 ? void 0 : P.length) {
+						let U = D.map(Z => {
 							const ae = c(Z.key);
 							return {
 								effect: O,
@@ -10989,52 +11055,52 @@
 					}
 					return B
 				},
-				f = L => {
-					var P, I, O, S;
-					const B = L == null || (P = L.scope) === null || P === void 0 ? void 0 : P.key.split(".").slice(0, -1).join("."),
-						U = L == null || (I = L.scope) === null || I === void 0 || (O = I.subset_of) === null || O === void 0 || (S = O[0]) === null || S === void 0 ? void 0 : S.key.split(".").slice(0, -1).join(".");
+				_ = L => {
+					var b, P, O, D;
+					const B = L == null || (b = L.scope) === null || b === void 0 ? void 0 : b.key.split(".").slice(0, -1).join("."),
+						U = L == null || (P = L.scope) === null || P === void 0 || (O = P.subset_of) === null || O === void 0 || (D = O[0]) === null || D === void 0 ? void 0 : D.key.split(".").slice(0, -1).join(".");
 					return o.s_.find(Z => Z.scopeKeyPrefix === B && Z.scopeSubsetOfPrefix === U)
-				},
-				A = L => {
-					if (!(L == null ? void 0 : L.length)) return [];
-					const P = [];
-					return L.forEach(I => {
-						var O;
-						(O = I.resource_groups) === null || O === void 0 || O.forEach(S => {
-							var B, U;
-							((B = S.scope) === null || B === void 0 || (U = B.key) === null || U === void 0 ? void 0 : U.startsWith(s.Rl)) && P.push(c(S.scope.key))
-						})
-					}), P
 				},
 				h = L => {
 					if (!(L == null ? void 0 : L.length)) return [];
-					const P = [];
-					return L.forEach(I => {
+					const b = [];
+					return L.forEach(P => {
 						var O;
-						(O = I.resource_groups) === null || O === void 0 || O.forEach(S => {
+						(O = P.resource_groups) === null || O === void 0 || O.forEach(D => {
 							var B, U;
-							if (!((B = S.scope) === null || B === void 0 || (U = B.key) === null || U === void 0 ? void 0 : U.startsWith(s.Rl))) {
+							((B = D.scope) === null || B === void 0 || (U = B.key) === null || U === void 0 ? void 0 : U.startsWith(s.Rl)) && b.push(c(D.scope.key))
+						})
+					}), b
+				},
+				A = L => {
+					if (!(L == null ? void 0 : L.length)) return [];
+					const b = [];
+					return L.forEach(P => {
+						var O;
+						(O = P.resource_groups) === null || O === void 0 || O.forEach(D => {
+							var B, U;
+							if (!((B = D.scope) === null || B === void 0 || (U = B.key) === null || U === void 0 ? void 0 : U.startsWith(s.Rl))) {
 								var Z;
-								const Ee = (Z = S.scope) === null || Z === void 0 ? void 0 : Z.objects;
-								for (let de = 0; de < (Ee == null ? void 0 : Ee.length) && de < s.r6; de++) {
+								const _e = (Z = D.scope) === null || Z === void 0 ? void 0 : Z.objects;
+								for (let de = 0; de < (_e == null ? void 0 : _e.length) && de < s.r6; de++) {
 									var ae;
-									((ae = Ee[de].key) === null || ae === void 0 ? void 0 : ae.startsWith(s.Rl)) && P.push(c(Ee[de].key))
+									((ae = _e[de].key) === null || ae === void 0 ? void 0 : ae.startsWith(s.Rl)) && b.push(c(_e[de].key))
 								}
 							}
 						})
-					}), P
+					}), b
 				},
 				T = L => {
-					var P;
+					var b;
 					if (!(L == null ? void 0 : L.length)) return null;
-					const I = (P = L[0]) === null || P === void 0 ? void 0 : P.permission_groups.map(U => U.id);
-					let O, S;
+					const P = (b = L[0]) === null || b === void 0 ? void 0 : b.permission_groups.map(U => U.id);
+					let O, D;
 					L == null || L.forEach(U => {
-						U.access === s.Sz.allow && (O = U), U.access === s.Sz.deny && (S = U)
+						U.access === s.Sz.allow && (O = U), U.access === s.Sz.deny && (D = U)
 					});
 					let B = [];
-					return O && (B = g(O)), S && (B = B.concat(g(S))), {
-						permission_groups: I,
+					return O && (B = f(O)), D && (B = B.concat(f(D))), {
+						permission_groups: P,
 						scopes: B
 					}
 				},
@@ -11042,23 +11108,23 @@
 				C = new Map,
 				y = L => {
 					if (!L) return [];
-					const P = C.get(L);
-					if (P) return P;
-					const I = e.E.get(`${M}${L}`);
-					return C.set(L, I), I
+					const b = C.get(L);
+					if (b) return b;
+					const P = e.E.get(`${M}${L}`);
+					return C.set(L, P), P
 				},
-				N = (L, P) => {
-					const I = [];
+				S = (L, b) => {
+					const P = [];
 					for (let O = 0; O < sessionStorage.length; O++) {
-						const S = sessionStorage.key(O);
-						(S == null ? void 0 : S.startsWith(M)) && I.push(S)
+						const D = sessionStorage.key(O);
+						(D == null ? void 0 : D.startsWith(M)) && P.push(D)
 					}
-					return I.length >= 5 && e.E.remove(I[0]), e.E.set(`${M}${L}`, P)
+					return P.length >= 5 && e.E.remove(P[0]), e.E.set(`${M}${L}`, b)
 				}
 		},
-		"../react/pages/home/rulesets/account-ruleset-builder/labels.tsx": function(x, v, n) {
+		"../react/pages/home/rulesets/account-ruleset-builder/labels.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				g: function() {
 					return o
 				}
@@ -11115,9 +11181,9 @@
 				}
 			}
 		},
-		"../react/pages/home/rulesets/ddos/tracking.ts": function(x, v, n) {
+		"../react/pages/home/rulesets/ddos/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				F: function() {
 					return e
 				}
@@ -11126,9 +11192,9 @@
 				return o.TOGGLE_TCP_PROTECTION = "toggle advanced tcp protection", o.GET_TCP_PROTECTION_PREFIXES = "view tcp protection prefixes list", o.CREATE_TCP_PROTECTION_PREFIXES = "bulk create tcp protection prefixes", o.CREATE_TCP_PROTECTION_PREFIX = "create tcp protection prefix", o.UPDATE_TCP_PROTECTION_PREFIX = "update tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIX = "delete tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIXES = "bulk delete tcp protection prefixes", o.GET_TCP_PROTECTION_ALLOWLIST = "view prefixes in tcp protection allowlist", o.CREATE_TCP_PROTECTION_ALLOWLIST = "add prefix to tcp protection allowlist", o.UPDATE_TCP_PROTECTION_ALLOWLIST = "update tcp protection allowlist", o.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST = "delete prefix from tcp protection allowlist", o.DELETE_TCP_PROTECTION_ALLOWLIST = "delete all prefixes from tcp protection allowlist", o.GET_SYN_PROTECTION_RULE = "view syn protection rules list", o.GET_SYN_PROTECTION_RULES = "view syn protection rule", o.CREATE_SYN_PROTECTION_RULE = "create syn protection rule", o.UPDATE_SYN_PROTECTION_RULE = "update syn protection rule", o.DELETE_SYN_PROTECTION_RULE = "delete syn protection rule", o.GET_SYN_PROTECTION_FILTERS = "view syn protection filter list", o.GET_SYN_PROTECTION_FILTER = "view syn protection filter", o.CREATE_SYN_PROTECTION_FILTER = "create syn protection filter", o.UPDATE_SYN_PROTECTION_FILTER = "update syn protection filter", o.DELETE_SYN_PROTECTION_FILTER = "delete syn protection filter", o.GET_TCP_FLOW_PROTECTION_RULES = "view tcp flow protection rules list", o.GET_TCP_FLOW_PROTECTION_RULE = "view tcp flow protection rule", o.CREATE_TCP_FLOW_PROTECTION_RULE = "create tcp flow protection rule", o.UPDATE_TCP_FLOW_PROTECTION_RULE = "update tcp flow protection rule", o.DELETE_TCP_FLOW_PROTECTION_RULE = "delete tcp flow protection rule", o.GET_TCP_FLOW_PROTECTION_FILTERS = "view tcp flow protection filters list", o.GET_TCP_FLOW_PROTECTION_FILTER = "view tcp flow protection filter", o.CREATE_TCP_FLOW_PROTECTION_FILTER = "create tcp flow protection filter", o.UPDATE_TCP_FLOW_PROTECTION_FILTER = "update tcp flow protection filter", o.DELETE_TCP_FLOW_PROTECTION_FILTER = "delete tcp flow protection filter", o.GET_DNS_PROTECTION_RULES = "view dns protection rules list", o.GET_DNS_PROTECTION_RULE = "view dns protection rule", o.CREATE_DNS_PROTECTION_RULE = "create dns protection rule", o.UPDATE_DNS_PROTECTION_RULE = "update dns protection rule", o.DELETE_DNS_PROTECTION_RULE = "delete dns protection rule", o
 			}({})
 		},
-		"../react/pages/hyperdrive/tracking.ts": function(x, v, n) {
+		"../react/pages/hyperdrive/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				KO: function() {
 					return i
 				},
@@ -11136,10 +11202,10 @@
 					return t
 				},
 				N3: function() {
-					return _
+					return g
 				},
 				zE: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -11147,36 +11213,36 @@
 
 			function s(r) {
 				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						c = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(d).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(d, g).enumerable
-					})), c.forEach(function(g) {
-						p(r, g, d[g])
+					var l = arguments[a] != null ? Object(arguments[a]) : {},
+						c = Object.keys(l);
+					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(l).filter(function(f) {
+						return Object.getOwnPropertyDescriptor(l, f).enumerable
+					})), c.forEach(function(f) {
+						p(r, f, l[f])
 					})
 				}
 				return r
 			}
 
-			function p(r, a, d) {
-				return a = l(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
+			function p(r, a, l) {
+				return a = u(a), a in r ? Object.defineProperty(r, a, {
+					value: l,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : r[a] = d, r
+				}) : r[a] = l, r
 			}
 
-			function l(r) {
+			function u(r) {
 				var a = m(r, "string");
 				return typeof a == "symbol" ? a : String(a)
 			}
 
 			function m(r, a) {
 				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var c = d.call(r, a || "default");
+				var l = r[Symbol.toPrimitive];
+				if (l !== void 0) {
+					var c = l.call(r, a || "default");
 					if (typeof c != "object") return c;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
@@ -11185,10 +11251,10 @@
 			let i = function(r) {
 					return r.PURCHASE_WORKERS_PAID = "navigate to workers plan page", r.LIST_CONFIGS = "list hyperdrive configs", r.SEARCH_CONFIGS = "search hyperdrive configs", r.CREATE_HYPERDRIVE_CONFIG = "create hyperdrive config", r.VIEW_CONFIG_DETAILS = "view hyperdrive config details", r.UPDATE_CACHING_SETTINGS = "update hyperdrive config caching settings", r.DELETE_HYPERDRIVE_CONFIG = "delete hyperdrive config", r.CLICK_HYPERDRIVE_DOCUMENTATION = "click hyperdrive documentation", r.CLICK_GET_STARTED_GUIDE = "click hyperdrive get started guide", r.CLICK_CONNECTIVITY_GUIDES = "click hyperdrive connectivity guides", r.CLICK_QUICK_LINK = "click hyperdrive quick link", r.CLICK_DISCORD = "click hyperdrive discord", r.CLICK_COMMUNITY = "click hyperdrive community", r
 				}({}),
-				u = function(r) {
+				d = function(r) {
 					return r[r["connection string"] = 0] = "connection string", r[r.manual = 1] = "manual", r
 				}({}),
-				_ = function(r) {
+				g = function(r) {
 					return r[r.success = 0] = "success", r[r.failure = 1] = "failure", r
 				}({});
 			const t = (r, a = {}) => {
@@ -11197,9 +11263,9 @@
 				}))
 			}
 		},
-		"../react/pages/images/selectors.ts": function(x, v, n) {
+		"../react/pages/images/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$4: function() {
 					return p
 				},
@@ -11216,68 +11282,68 @@
 					return m
 				},
 				ib: function() {
-					return g
+					return f
 				},
 				lW: function() {
-					return A
+					return h
 				},
 				pT: function() {
 					return r
 				},
 				po: function() {
-					return d
+					return l
 				}
 			});
 			var e = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/common/selectors/entitlementsSelectors.ts"),
 				s = n("../react/common/selectors/zoneSelectors.ts");
 			const p = "sourcing_kit_enabled",
-				l = "sourcing_kit_waitlist",
+				u = "sourcing_kit_waitlist",
 				m = "images",
 				i = "unified_images_enabled",
-				u = "c2pa_polish",
-				_ = "CloudflareImages",
-				t = h => !!(0, o.BF)(h, "images.transformations_enabled"),
-				r = h => Boolean((0, o.BF)(h, "images.enabled")),
-				a = h => {
-					const T = (0, o.BF)(h, "images.storage");
+				d = "c2pa_polish",
+				g = "CloudflareImages",
+				t = A => !!(0, o.BF)(A, "images.transformations_enabled"),
+				r = A => Boolean((0, o.BF)(A, "images.enabled")),
+				a = A => {
+					const T = (0, o.BF)(A, "images.storage");
 					return typeof T == "number" && T > 0
 				},
-				d = h => Boolean((0, o.BF)(h, "contract.customer_enabled")),
-				c = h => Boolean((0, e.oI)(h, m, p)),
-				g = h => Boolean((0, s.Le)(h, _, p)),
-				f = h => Boolean(getAccountFlipperFlag(h, _, i)),
-				A = h => Boolean((0, s.Le)(h, _, u))
+				l = A => Boolean((0, o.BF)(A, "contract.customer_enabled")),
+				c = A => Boolean((0, e.oI)(A, m, p)),
+				f = A => Boolean((0, s.Le)(A, g, p)),
+				_ = A => Boolean(getAccountFlipperFlag(A, g, i)),
+				h = A => Boolean((0, s.Le)(A, g, d))
 		},
-		"../react/pages/magic/constants.ts": function(x, v, n) {
+		"../react/pages/magic/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				GF: function() {
-					return d
+					return l
 				},
 				H3: function() {
 					return i
 				},
 				H8: function() {
-					return l
-				},
-				J: function() {
-					return g
-				},
-				Nz: function() {
 					return u
 				},
+				J: function() {
+					return f
+				},
+				Nz: function() {
+					return d
+				},
 				UQ: function() {
-					return A
+					return h
 				},
 				Up: function() {
 					return p
 				},
 				W8: function() {
-					return _
+					return g
 				},
 				Ws: function() {
-					return h
+					return A
 				},
 				Xg: function() {
 					return r
@@ -11292,7 +11358,7 @@
 					return c
 				},
 				jS: function() {
-					return f
+					return _
 				},
 				rF: function() {
 					return m
@@ -11424,7 +11490,7 @@
 					value: "OC",
 					label: (0, o.ZP)("common.regions.oceania")
 				}],
-				l = T => [{
+				u = T => [{
 					value: "low",
 					label: T("setting.low")
 				}, {
@@ -11448,16 +11514,16 @@
 					value: "bidirectional",
 					label: T("account.magic_transit.configuration.tunnels.table.health_check.direction.bidirectional")
 				}],
-				u = "magic-transit",
-				_ = "magic-wan",
+				d = "magic-transit",
+				g = "magic-wan",
 				t = "gre_tunnel",
 				r = "ipsec_tunnel",
 				a = "interconnect",
-				d = 64,
+				l = 64,
 				c = 1476,
-				g = "mid",
-				f = "reply",
-				A = T => [{
+				f = "mid",
+				_ = "reply",
+				h = T => [{
 					value: void 0,
 					label: T("account.magic_transit.configuration.tunnels.table.filters.all.default")
 				}, {
@@ -11467,7 +11533,7 @@
 					value: "mpls",
 					label: T("account.magic_transit.configuration.interconnects.mpls_tunnels")
 				}],
-				h = T => [{
+				A = T => [{
 					value: "all",
 					label: T("account.magic_transit.configuration.tunnels.table.filters.all.default")
 				}, {
@@ -11478,9 +11544,9 @@
 					label: T("account.magic_transit.configuration.ipsec_tunnels")
 				}]
 		},
-		"../react/pages/magic/network-monitoring/constants.ts": function(x, v, n) {
+		"../react/pages/magic/network-monitoring/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				_u: function() {
 					return o
 				},
@@ -11504,9 +11570,9 @@
 				o = "Magic network monitoring",
 				s = "user journey"
 		},
-		"../react/pages/magic/overview/tracking.ts": function(x, v, n) {
+		"../react/pages/magic/overview/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				VZ: function() {
 					return p
 				},
@@ -11517,7 +11583,7 @@
 					return o
 				},
 				uB: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../react/pages/magic/constants.ts");
@@ -11532,15 +11598,15 @@
 					CREATE_STATIC_ROUTE: "create new route",
 					CREATE_TUNNEL: "create new tunnel"
 				},
-				l = {
+				u = {
 					MAGIC_WAN: e.W8,
 					MAGIC_TRANSIT: e.Nz,
 					MAGIC_OVERVIEW: "Magic overview"
 				}
 		},
-		"../react/pages/magic/packet-captures/constants.ts": function(x, v, n) {
+		"../react/pages/magic/packet-captures/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				W_: function() {
 					return o
 				},
@@ -11565,9 +11631,9 @@
 				o = "Magic packet captures",
 				s = "user journey"
 		},
-		"../react/pages/onboarding/components/AppleLogin/Images/Graphics.tsx": function(x, v, n) {
+		"../react/pages/onboarding/components/AppleLogin/Images/Graphics.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				gb: function() {
 					return t
 				},
@@ -11575,10 +11641,10 @@
 					return L
 				},
 				xL: function() {
-					return h
+					return A
 				},
 				rD: function() {
-					return I
+					return P
 				},
 				oT: function() {
 					return c
@@ -11590,7 +11656,7 @@
 					return m
 				},
 				lW: function() {
-					return u
+					return d
 				},
 				UA: function() {
 					return y
@@ -11602,17 +11668,17 @@
 					return M
 				},
 				PJ: function() {
-					return P
+					return b
 				},
 				bK: function() {
-					return f
+					return _
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				p = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOwAAACGCAYAAADevGYoAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAABQKSURBVHgB7Z1djBzVlcdPdfeMxx2jDB7YxWBkY9mOyEMWg8co2l2zBgWCtKs1Jo5AK+KxRaJ9AWOUiIXd1Y4/WPZhZeywD/nYDY4deUb+SKxoMXkC40ghH048TpCtOBD3YAQEPJ7GY8/0TE/XzT3Vfbtu13RXV3dVdd26dX5Sa6q73ePxuP99zz3nf841AFl/urc7a24FBgMAbCkQBKEYLDczlVmVwcvu+aXXuVjvAIIg1KRkbINjq/KpeV/+1VP8LomVIBSFAeydObT6GF5nzLSxyag88e8PL4J/e/hmIAiilvy1WRi9NANnRqfgTG4S3v24fD16aRpahTGDizDNr1L8VoKUUXL707lPTWUG85V7Rvejp5h4avrgXUAQSSZIYfb1ZuCWm7qhpycN83syMDmVgp/9pggGzEIqNcO/lsAwmOv3SLH0bYXhVTlxP8PFnuev6cU7J89OwNrPXgcEoTs5LsAzuSl4l4sz99E0/JaL8rejk5CfLLX8vYQwF16fgcU3zbOu+/j1/J6U9fxkwYTjr12BX4x8AplUY5EuuaHb+rCoYrDthSFbrNZDXY+e2sND4q3igcfW9lmh8ZIb5wFBxB1ZmLhi4mr57sfTbQtz+dIeS5h9vV1zhCmDIv3duWvwi9NX4b0PZ2CK36/H2tsXwD18kUTdfWHXeRj9WAiWZ4WH+m9z/vlMmhX3mEb3P4pyzoGTY9YN97JfWbuQhEvEgqCEmeXiW1hZMRcv4qumJMxmtCNSoa+dRz+oihWj3rSZWVfvtVa+qeeRN5eakB4EI7VJfnLJjd3wxBf/Ep548C+AIKJG3l+OcjHiG/zk2att7S/9CFPGj0gFb5ybgPt3nq/e5ympbdND/XvqfR9DvpN55Fd/lzJSLzvNEyjc8orbBwQRNkEmflCYKMRbuCgxpG1XmDJBiFSAHzw1oTAz9s0M37W50d9t1Huw65FTA4Zh/AcJlwiTMDKyjRI/fglSpDKPfytnbUHLsFyKZdbJWWEnhts3ayTctbdfB//92GL4q6VZIIhmdDIjGyRhiVSAQkXBCnhtdqA4tOr7bq9xFazFwOne7sLsU+X9ba1wKaNMyESVkQ2SsEUqaDUUFjQXbIVGiSmEhJssVMjIBkmnRCqzcfc78ONTwr/EctmpzKr8sVX5Zq/zLFiBm3CpFKQPKmZkgyQKkQpe+slH8PX9F6v3TcbWzQ73n/Dy2pYFK7CEy7pehBSslx+nUlC8UD0jGyRRilSAH35rnj1nRyMG2z5zsH/Q6+vbFqyASkHxIE4Z2SBRQaQyK7f+rqmbyQ3fghVQKUgN4pqRDRLVRCpAN9Ouo+9X7zuN/V4ITLACt1LQ//7zEtrfBoQOGdkgUVWkAgyFV259y36gxVC4+jIIAyoFBYZuGdkgUV2kAtyOrHnunO0VZnCiOLx6XTvfKxzBVqBSkDd0z8gGSVxEKvP1A+/BS6/+qXKvuZvJjVAFK6BSUJkkZWSDJI4iFbTjZnKjI4IVuJWCdEpMJTUjGyRxFqmgXTeTGx0VrECXUhBlZINFB5HKtGrs90IkghXEpRREGdnw0E2kAmcoDCV4SEw+9EOkghWoUgqijGxn0FWkAqebCceUFodWPwUBoIRgLTpUCqKMbDToLlKZ/mfPWtujMt6N/V5QR7AVgioFUUY2epIkUkEQbiY3lBOswGspiDKyapFEkQqCcjO5oaxgBY1KQb3ZtPWVMrLRk2SRyvg19ntB+ZiuMPz5HP/ykLMU1EyoGMaiAOWMLF5n56dImAFAIq3F65hSvyi/wjpxZpTxnBJcHVcsnUeJn5AhkdanlTGlfomdYAWpL7+1j0H3JsZS8Pf39cA/3DcfiOAhkboThpvJjdguQybrPsFlayWkxsZNIIKDROodORS23EyQ3g4hEuO4sWsE7SPIex+0nngiaiGRto441kbAIDMYZAmnHvEVbLqQh1KXdUkrbHuQSNsHQ+GdUr0VQ+HicPtdOF6Jr2CHb8/BxrfRPdI7WWCAt2xPbLfkHYNEGgzY4yqHwtlCetsMhE/cU6mWYPFi7LIJ2ZvTQMyFRBosOKbUnimMiyt7KCjrYTPiLVgGIzzPvRQvL344C7eSYKuQSMMBQ2F5pjC6mYoH14xAh4i7YEdFYWpqikHSIZGGD5ZwbFguaOthM+ItWIPlRCn5YkIzxSTSzlFbwkFjfzhuJjdivsIauSSusCTSzoOhsNyFg6FwYSjcEk494i3YruKIKO1c/FDvFZZEGh3YESaHwtaY0qHOhsKCeAu20JOHrrJQdazFkkjVYNcPP6wp4aQhs7kI0RBvwR67Lc9rsTl+tRTvomj7ro93Jw6JVC3QyWTPFO6Mm8mN+Le0MF6LrexjMfEUR8GSSNUkKjeTGxr0oJlneL7uDryaLMQnLCaRqk+njf1e0ECwPFNcQfXSDok0PjiN/VAythUORRcKC+IvWKkWq2Jph0QaP5xuJmtMaQAzhYNAgxVWvTY7Emm8+dLud6QRRCzHSziBzBQOgvgLtgg5KJdiIy3tkEj1APet9kzhaNxMbsRfsOXSTiRtdiRSvVDFzeSGHpPKGKBF0coUh91mRyLVl6iN/V7QZbRgjt8swYbRZkci1Z9OjSn1iy4rbLXNLqh9LIk0OeCY0trjNXgoPKxWKCzQQ7Apk2eKyw6nIAR7+JUJ+OVIHgrTs3WfJ5HqA+5bvyofC8mMfdPDq0OZKRwEeozAN1PV8Rxjef+CfZd/2E5cy0LJ7Kn7PIqUxKoHc91MqcjdTG7oIVhss6sQxAqL34PxXw0Kdv3fLoIH7v50zfPogMEEBf5nE/ElijGlftFDsDhBsUIggpVW6a0be+Ff/ulmGBpcDncsz1Yfx09l3PfgAUj7ZQsbEQvqGvuHojX2e0GnU6Fy4sKPaOXXLuqzs803LeyCF59cAs9w8eK1AIWLeyASbryYO6Y0tQ1igD6CxQmKFfw0AVySBHtT39zy0Bd5eIyrbSPhfmHneevTm1CXKMeU+kWjFdb8RFyNjbcv2MvSaxe4HEsphLvpwRtrhHuSlwjwUN/HuXhJuOoR9ZhSv2gkWKP6S7/kI1Msv3bFrc2rXgMP3mCFyvUSUyhcfHOQcNUhDm4mN/QRrMGqIc3ly8HsYRfM9/brwRVWJKacwsXwC98ktL+NHhXGlPpFoxW2y97D+pigKAt2xa1d0ApCuN99ZhklphSjrrFf8RJOPfQRbNHOEvtpZJ8q2K+9rs2un+W3zHNNTKFw0Q5HdIZ6Y0rjFgoL9BEsttmVD8eyWuzaLe3UlHVu8NdE4JZRvp9nkykx1RnmjilNh3ZCetjoVIctt9lVmGxjlRX9tAjuX73uYZuBwsXEFGaUZURiioQbHqqNKfWLXoK1JiiWwTa7VmlkmggCXGExo1wvMYVvqjXPniOrY8DE1c3khmYrrNQE0EZILNdvF2TDmVohZ5T/+nPXVR/HGUJkdQyWuBn7vaCXYK02uzLtCdYOo1fc0lqGuFVQuLseX2ztbxc1SEx9/40xoEM02wPLaXPGlMY4FBboJVipza6dCYpj+fBXWCe4vz1YSUw5hfu1b+es5FTuo2kSbgtYJZwjdiiMY0pnFBlT6he9BCu12U0WWn+Lyz7iFYvDXWGdCOFiYmqRw+r4mafeslZdEq435o4pXa3MmFK/6CVYR5tdq6KV67cLstH8ajAxtbtidZTXeAzvULjf2H/REi5RH9XHlPpFsyyxRU5ctGqgqMkSLwxv8mIzRGLqYCWjLAsX92b3P38evvnqR2gAICR0cTO5oZ9gfbTZyY3rQZd12kEI9zvPLONJMHscDe5vv3HgIl9xK4kpEq5F3I39XtBRsKPispU2uzBrsH5BqyOKtlFiCoV74uxEove3zjGluoXCAv0Eax2OVaaVNrtmjesq4JZRfoCvLklNTJ2I0ZhSv2i4wtrHT7bSZue1cV0FULi7K1bHeokpIdwkkOP71q85x5QO9Ss7ptQv+glWKu200mbXauN61AirY73EFAr37ufOwQ4eJo5fVfvMXL/sPFLjZrqgg5vJDf0EW+hpy57YTuO6CsgZZbQ6CuFiHfJ5Hibe/a9ntU1MoYXzBz+tGVOqbSgs0E+w5Ta7nLjrVbR+GtdVQFgdd/Bbo8SUTlbHnLOEw4yX427s94KOdVj8qK2usl5LO0E0rqvA3/BVVnerI0YLX/3WaE0onC2knoYEoKdgpTa7yULrK6zfxnUVEBnlh+/p429w+7857lZH/HnRPHJSmtjBDLYhLmNK/aKpYO1MsZcVNqzG9SjBf82h167B/79pwmxpAZhmt3jYIq4ZZfxZ0TRSgcVtTKlf9BSsVIv1Yk9U2TTRDleumfDNI1dgL79NTDLrnKBZMzs+W8o+DczcBw7hxsXqiD/fA8/XuJku6OhmckPTFdaeoOilza4Tjeud4v1LJXhy72VrdZW4AMXineahz+6ZGV6zOcWKy/h7/zRUhBsHqyP+SI4xpSzFMvdBwtBTsOlCS6WdTjauhwX+C944U4At//Ux/OG9ov0wrqjFiTvhmN3JVBj+PLac3cmFuYWHIxdAEq6qVkcMhZ//YY2xf4fuJZx66CnYcptddYJisza7KBrXgwRXRAyBn/v2uBUCVxjnTzwNR1ZuhgYJmeLw6n0zQ3ctk4RroZrVcfzqbE0ozH/e15MWCgs0DYkt7FW2iUUxysZ1v7w/VoIn9o7NDYHBvBeOrPBk0UPhptjMvVwJ6BJSKjGFH0aOMaUX0pDeAglFX8HKbXZNJiiq0LjeDr/+/TQ8uWcMTp+393VgwI+sEPjwypYypxgmzwz3D+L+tl5iCoWLVsdOCxf/7v/5SXVMKYv7mFK/6CzYaptds0yxKo3rXsFV53uvTFjJpQ/GquE8s0LgQ8s3gI+aZFm45cSUU7hodcSMcqcSU/jhsMvet7LKmNL9kGD0FaxU2mlWi1Wtcd0NLNlgCPx/r1yVH77AFeQ5BPaCEK6J37dBYgq9vGHpFj8Q6owp3QEJR+MV1jZPuK2wcarBnr9Y5FngS3IIjDJ6nZdsUKwnIARmh/tPNEpM4d42DKujcDNJxn5m8r8/yaGwQF/Bemyzi0PjunAtbX7hkjME3g5Hlt8rl2zCAhNTXDbLyokpW7hhWB1HsYRjG/txsd2LHxxAaCxYxwTFRqjeuI4hMJZr0LUkMV4JgQehg/CkFHqmBssZZRM7Y+pnlH2cE4Tq3PhizZjSC7xmvA0IC53LOkhOXDQSrcqN6yIEPnmmID3KTqNrKawQuBl8b2vtb1NQGqgkpuYI935ew8X9Z6uJKeFmksaUJtLN5EZiBNso8aRi47oIgZ/kyaWaENg098DhFXd2IgRuhlO4eOYqSIkp7FWtJqY8CtfhZmI6jin1i96CZWbTCYqqNa47jfsVxvltCxxdqVxoKITLL9fVszpiiIzC/fGpvOv+toGxX+txL+2g+QprZ4obTVBUqXEdjfsYAte6lioh8OHl+0BheFLKSkwxxupmlDfufqdhYspp7GcGjFMoXB+9BSvVYhtNUFShcR3fsMffnLSM+3NC4OLVe1UIgb2Cwk1D0ZPVkVWefOPsRE0orPOYUr+oPx7QF9hmVxbAWJ0VVoXGdcu4f/SK0wuMWeAdPASO5bhODJM5uZ5H3hzkitxnQnoQjNRX+GNWCIPCxdtja/vgc0uyNdZDa0zp8Oq9QNRFb8EWedKpsi2tlyWO2jSBIfBz3xmX2+EQNO5vgCMrYz9FQRLuALDSYD3h8v8F6RXoZkon3s3kht4hcXmCYsM2uygb19G437B39XD8xSojElMmGANOq2MFhkkmnM1EobA7mofEgG+FHP88vwMvsc0ue7O9kkbRuI4h8MvHJ5xeYFbpXdV2Yj0yO9yPX06kHz21jH9dnzHhHmYYn+ab1pFPTWb2J2WQmh/0F6w1QTFlCRbb7G6VBdvhxnXsXf3PA/laL7BGIbBXSkOr8csx/tuvnopOSvVGAlbYVF6Mw3fuYzvZuI4h8As/+ETOApeN+7MTvtrhiGShv2BT5ojYqjsF24nGdQyBD79+zekFZlYWuMNeYCL+6C9Yk6+wFS06JyiG3bhuGfe/Oz43BGZsS1ReYCLe6C9YbLMrlcPdOVniEBvX0biPJZu5IXBxS5yMEIRa6C9YbLPb+LZ1iSsqijbbY4RWg8WPhMOv1QmBTXOvil5gIl4kIEtskeO3pXiB+1YUbBiN6xgCv3T0Chz/+ZT88DiYpS1w9DPHgCB8kgzB4gRFoyxYbLPruz4VeON6eeL+WG0IbBn3ZzdQCEwERUJWWPMTO1OMguoKrHFdhMDfOz4ht8OVQ+DSte1UsiGCJCGCNdCUsAmvhFCDaFzHEPjlV6/ONe4DPM33q/uAIAImGYI1WL7iN6+22fltXG9o3McJhhQCEyGRkBXWbrMTExTbbVzHV+GMpRcO5GtDYJxtNHttG4XARJgkQ7BSm51wN7XTuO7au6q5cZ9QA92HsJVxtNmh46nVxnUMgf0eOkUQfkmGYBEmTVB83y69eDFNiN7VIA6dIgg/JMU4AXKb3cg529vr1lbn2rt6mFZVovMkSLD2BMXzf7SPn2zUuE7GfUJFkiNYa4JieTWVmwDqrbCNe1fJuE9ES4JWWLu0IyM3rjc07lPvKqEIyRFsupAXbXYyonEdQ2BcVWvPsbFKNhsoBCZUITlZ4vJpdnNMDdi4ruKhUwRRjwSFxBYo2F75gZ9ykdY17lPvKqEg0R4m02m+9PaP+L94vcufKBv3FT/HhkguyVphGYw2/oii3lVCfZKzh0Wkw7EkYnnoFJFMErbCGjnHChvrQ6eI5JEswUoTFCGBE/eJ+JOskLjQg1libQ+dIgj92Pj2ABBETPkz3wbhzpWGUaIAAAAASUVORK5CYII=",
-				l = n("../node_modules/@cloudflare/elements/es/index.js");
+				u = n("../node_modules/@cloudflare/elements/es/index.js");
 			const m = () => o().createElement(i, null, o().createElement("svg", {
 					width: "94",
 					height: "5",
@@ -11641,7 +11707,7 @@
 					strokeLinecap: "square"
 				}))),
 				i = (0, s.createComponent)(({
-					theme: S
+					theme: D
 				}) => ({
 					position: "absolute",
 					display: "none",
@@ -11652,7 +11718,7 @@
 						right: "85%"
 					}
 				})),
-				u = () => o().createElement(_, null, o().createElement("svg", {
+				d = () => o().createElement(g, null, o().createElement("svg", {
 					width: "211",
 					height: "71",
 					viewBox: "0 0 211 71",
@@ -11689,8 +11755,8 @@
 					strokeWidth: "4",
 					strokeLinecap: "square"
 				}))),
-				_ = (0, s.createComponent)(({
-					theme: S
+				g = (0, s.createComponent)(({
+					theme: D
 				}) => ({
 					position: "absolute",
 					top: "20px",
@@ -11702,13 +11768,13 @@
 						right: "78%"
 					}
 				})),
-				t = () => o().createElement(r, null, o().createElement(l.Ei, {
+				t = () => o().createElement(r, null, o().createElement(u.Ei, {
 					alt: "airplane",
 					src: p,
 					width: "85%"
 				})),
 				r = (0, s.createComponent)(({
-					theme: S
+					theme: D
 				}) => ({
 					position: "absolute",
 					width: "90px",
@@ -11720,7 +11786,7 @@
 						width: "235px"
 					}
 				})),
-				a = () => o().createElement(d, null, o().createElement("svg", {
+				a = () => o().createElement(l, null, o().createElement("svg", {
 					width: "104",
 					height: "23",
 					viewBox: "0 0 104 23",
@@ -11754,8 +11820,8 @@
 					strokeWidth: "4",
 					strokeLinecap: "square"
 				}))),
-				d = (0, s.createComponent)(({
-					theme: S
+				l = (0, s.createComponent)(({
+					theme: D
 				}) => ({
 					position: "absolute",
 					display: "none",
@@ -11766,7 +11832,7 @@
 						right: "12%"
 					}
 				})),
-				c = () => o().createElement(g, null, o().createElement("svg", {
+				c = () => o().createElement(f, null, o().createElement("svg", {
 					width: "13",
 					height: "13",
 					viewBox: "0 0 13 13",
@@ -11779,8 +11845,8 @@
 					ry: "6.34376",
 					fill: "#086FFF"
 				}))),
-				g = (0, s.createComponent)(({
-					theme: S
+				f = (0, s.createComponent)(({
+					theme: D
 				}) => ({
 					position: "absolute",
 					top: "90px",
@@ -11792,7 +11858,7 @@
 						right: "77%"
 					}
 				})),
-				f = () => o().createElement(A, null, o().createElement("svg", {
+				_ = () => o().createElement(h, null, o().createElement("svg", {
 					width: "15",
 					height: "15",
 					viewBox: "0 0 15 15",
@@ -11802,8 +11868,8 @@
 					d: "M7.05981 -0.000243833L0 7.05957L7.05981 14.1194L14.1196 7.05957L7.05981 -0.000243833Z",
 					fill: "#6ECCE5"
 				}))),
-				A = (0, s.createComponent)(({
-					theme: S
+				h = (0, s.createComponent)(({
+					theme: D
 				}) => ({
 					position: "absolute",
 					top: "38px",
@@ -11815,7 +11881,7 @@
 						right: "56%"
 					}
 				})),
-				h = () => o().createElement(T, null, o().createElement("svg", {
+				A = () => o().createElement(T, null, o().createElement("svg", {
 					width: "22",
 					height: "22",
 					viewBox: "0 0 22 22",
@@ -11835,7 +11901,7 @@
 					fill: "#C5EBF5"
 				}))),
 				T = (0, s.createComponent)(({
-					theme: S
+					theme: D
 				}) => ({
 					position: "absolute",
 					display: "none",
@@ -11866,7 +11932,7 @@
 					fill: "#FBAD41"
 				}))),
 				C = (0, s.createComponent)(({
-					theme: S
+					theme: D
 				}) => ({
 					position: "absolute",
 					display: "none",
@@ -11877,7 +11943,7 @@
 						right: "30%"
 					}
 				})),
-				y = () => o().createElement(N, null, o().createElement("svg", {
+				y = () => o().createElement(S, null, o().createElement("svg", {
 					width: "48",
 					height: "15",
 					viewBox: "0 0 48 15",
@@ -11892,8 +11958,8 @@
 					strokeWidth: "4",
 					strokeLinecap: "square"
 				}))),
-				N = (0, s.createComponent)(({
-					theme: S
+				S = (0, s.createComponent)(({
+					theme: D
 				}) => ({
 					position: "absolute",
 					display: "none",
@@ -11917,7 +11983,7 @@
 					d: "M47.5646 24.0049L41.5646 18.0049L35.6471 24.0049L37.7846 26.1124L40.0346 23.8624C39.1898 27.4009 37.1992 30.561 34.3725 32.851C31.5458 35.1411 28.0415 36.4328 24.4048 36.5252C20.768 36.6176 17.2027 35.5055 14.2634 33.3619C11.5162 31.3585 9.45991 28.559 8.36721 25.3515L7.54721 25.6183L6.37385 26.0001L5.5 26.2845C6.79997 30.1536 9.28442 33.5247 12.6114 35.9135C16.1663 38.4659 20.4765 39.7483 24.8486 39.5544C29.2206 39.3605 33.4003 37.7015 36.7153 34.8443C40.0303 31.9872 42.2878 28.098 43.1246 23.8024L45.4346 26.1199L47.5646 24.0049Z",
 					fill: "#C5EBF5"
 				})),
-				P = () => o().createElement("svg", {
+				b = () => o().createElement("svg", {
 					width: "50",
 					height: "46",
 					viewBox: "0 0 39 41",
@@ -11939,7 +12005,7 @@
 					d: "M22.9371 31.3399C22.1161 30.5273 21.4749 29.5512 21.055 28.475C20.6351 27.3988 20.4459 26.2464 20.4996 25.0924H17.4996C17.4514 26.6502 17.7256 28.2012 18.3051 29.648C18.8846 31.0948 19.7568 32.4062 20.8671 33.4999C23.4992 35.8335 26.9209 37.0778 30.4371 36.9799C30.7071 36.9799 30.9846 36.9799 31.2546 36.9799L31.1121 33.9799C27.8421 34.1299 24.8571 33.1699 22.9371 31.3399Z",
 					fill: "#C5EBF5"
 				})),
-				I = () => o().createElement("svg", {
+				P = () => o().createElement("svg", {
 					width: "50",
 					height: "46",
 					viewBox: "0 0 48 28",
@@ -11975,14 +12041,14 @@
 					fill: "#C5EBF5"
 				}))
 		},
-		"../react/pages/onboarding/components/AppleLogin/constants.ts": function(x, v, n) {
+		"../react/pages/onboarding/components/AppleLogin/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				A2: function() {
 					return i
 				},
 				He: function() {
-					return l
+					return u
 				},
 				N$: function() {
 					return m
@@ -12003,18 +12069,18 @@
 				},
 				s = "login-apple-jwt",
 				p = "cf-test",
-				l = {
+				u = {
 					"1": "https://gateway.icloud.com/maildomainws/v1/ios/domain/purchaseAdd",
 					"2": "https://gateway.icloud.com/maildomainws/v1/domain/purchaseAdd"
 				},
-				m = u => [{
+				m = d => [{
 					title: "apple.sign_in_with_apple.automatic_setup.title",
 					description: "apple.sign_in_with_apple.automatic_setup.description",
 					icon: e.iP
 				}, {
-					title: u ? "apple.sign_in_with_apple.customers_first.title" : "apple.sign_in_with_apple.privacy.title",
-					description: u ? "apple.sign_in_with_apple.customers_first.description" : "apple.sign_in_with_apple.privacy.description",
-					icon: u ? e.rD : e.PJ
+					title: d ? "apple.sign_in_with_apple.customers_first.title" : "apple.sign_in_with_apple.privacy.title",
+					description: d ? "apple.sign_in_with_apple.customers_first.description" : "apple.sign_in_with_apple.privacy.description",
+					icon: d ? e.rD : e.PJ
 				}, {
 					title: "apple.sign_in_with_apple.impact.title",
 					description: "apple.sign_in_with_apple.impact.description",
@@ -12025,9 +12091,9 @@
 					cf: "cfjwt"
 				}
 		},
-		"../react/pages/page-rules/tracking.ts": function(x, v, n) {
+		"../react/pages/page-rules/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				_: function() {
 					return s
 				},
@@ -12037,48 +12103,48 @@
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				o = n.n(e);
-			let s = function(l) {
-				return l.TEMPLATE_SELECTED = "template selected", l.TEMPLATE_PRODUCT_SELECTED = "template product selected", l.TEMPLATE_SAVE_DRAFT = "template save draft", l.TEMPLATE_CANCEL = "template cancel", l.TEMPLATE_DEPLOY = "template deploy", l
+			let s = function(u) {
+				return u.TEMPLATE_SELECTED = "template selected", u.TEMPLATE_PRODUCT_SELECTED = "template product selected", u.TEMPLATE_SAVE_DRAFT = "template save draft", u.TEMPLATE_CANCEL = "template cancel", u.TEMPLATE_DEPLOY = "template deploy", u
 			}({});
-			const p = (l, m) => o().sendEvent(l, {
+			const p = (u, m) => o().sendEvent(u, {
 				template_name: m
 			})
 		},
-		"../react/pages/pages/constants.ts": function(x, v, n) {
+		"../react/pages/pages/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				A: function() {
-					return f
+					return _
 				},
 				C1: function() {
-					return _
+					return g
 				},
 				Dp: function() {
 					return U
 				},
 				GF: function() {
-					return I
+					return P
 				},
 				HD: function() {
 					return T
 				},
 				IK: function() {
-					return l
+					return u
 				},
 				L7: function() {
 					return s
 				},
 				Li: function() {
-					return g
+					return f
 				},
 				Ni: function() {
-					return N
+					return S
 				},
 				OG: function() {
 					return ue
 				},
 				QF: function() {
-					return Ee
+					return _e
 				},
 				QV: function() {
 					return y
@@ -12095,6 +12161,9 @@
 				aP: function() {
 					return i
 				},
+				bA: function() {
+					return D
+				},
 				eO: function() {
 					return a
 				},
@@ -12102,7 +12171,7 @@
 					return c
 				},
 				fQ: function() {
-					return A
+					return h
 				},
 				fR: function() {
 					return e
@@ -12114,7 +12183,7 @@
 					return Z
 				},
 				iS: function() {
-					return h
+					return A
 				},
 				ku: function() {
 					return B
@@ -12126,16 +12195,16 @@
 					return p
 				},
 				wJ: function() {
-					return u
+					return d
 				},
 				wp: function() {
-					return d
+					return l
 				},
 				yu: function() {
 					return t
 				},
 				zF: function() {
-					return P
+					return b
 				},
 				zG: function() {
 					return L
@@ -12209,7 +12278,7 @@
 					feedbackSurvey: "https://forms.gle/dfM8YfpzY4aV3gv56"
 				},
 				p = "Allow Members - Cloudflare Pages",
-				l = 58,
+				u = 58,
 				m = {
 					free: {
 						concurrentBuilds: 1,
@@ -12228,18 +12297,18 @@
 					}
 				},
 				i = "production",
-				u = 2e3,
-				_ = 100,
+				d = 2e3,
+				g = 100,
 				t = 350,
 				r = 1e7,
 				a = ["Success:", "Error:", "Failed:"],
-				d = 10,
+				l = 10,
 				c = "_headers",
-				g = "_redirects",
-				f = "_routes.json",
-				A = "_worker.js",
-				h = "do-a-barrel-roll",
-				T = [c, g, f, A],
+				f = "_redirects",
+				_ = "_routes.json",
+				h = "_worker.js",
+				A = "do-a-barrel-roll",
+				T = [c, f, _, h],
 				M = 1024 * 1024 * 25,
 				C = 1e3,
 				y = {
@@ -12277,25 +12346,25 @@
 					toggledPagesSmartPlacement: "toggle pages smart placement",
 					downloadDemoProject: "download demo project"
 				},
-				N = 1e5,
+				S = 1e5,
 				L = 75e3,
-				P = 2e5,
-				I = 15e4,
+				b = 2e5,
+				P = 15e4,
 				O = 3e3,
-				S = 2250,
+				D = 2250,
 				B = "workers",
 				U = "cloudflare_pages_build_caching",
 				Z = 2;
-			let ae = function(V) {
-				return V[V.REPO_NOT_AUTHORIZED_FOR_INSTALLATION = 8000004] = "REPO_NOT_AUTHORIZED_FOR_INSTALLATION", V[V.INSTALLATION_NOT_FOUND = 8000008] = "INSTALLATION_NOT_FOUND", V[V.INSTALLATION_UNAUTHORIZED = 8000010] = "INSTALLATION_UNAUTHORIZED", V[V.INSTALLATION_LINK_NOT_FOUND = 8000011] = "INSTALLATION_LINK_NOT_FOUND", V[V.REPO_NOT_FOUND = 8000012] = "REPO_NOT_FOUND", V[V.INSTALLATION_SUSPENDED = 8000084] = "INSTALLATION_SUSPENDED", V
+			let ae = function(K) {
+				return K[K.REPO_NOT_AUTHORIZED_FOR_INSTALLATION = 8000004] = "REPO_NOT_AUTHORIZED_FOR_INSTALLATION", K[K.INSTALLATION_NOT_FOUND = 8000008] = "INSTALLATION_NOT_FOUND", K[K.INSTALLATION_UNAUTHORIZED = 8000010] = "INSTALLATION_UNAUTHORIZED", K[K.INSTALLATION_LINK_NOT_FOUND = 8000011] = "INSTALLATION_LINK_NOT_FOUND", K[K.REPO_NOT_FOUND = 8000012] = "REPO_NOT_FOUND", K[K.INSTALLATION_SUSPENDED = 8000084] = "INSTALLATION_SUSPENDED", K
 			}({});
-			const Ee = 1,
+			const _e = 1,
 				de = 2,
 				ue = 2
 		},
-		"../react/pages/pages/routes.ts": function(x, v, n) {
+		"../react/pages/pages/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Hv: function() {
 					return s
 				},
@@ -12303,7 +12372,7 @@
 					return o
 				},
 				zE: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
@@ -12404,7 +12473,7 @@
 					compatibilityDates: "https://developers.cloudflare.com/workers/platform/compatibility-dates.json"
 				},
 				p = m => `${m.subdomain}.pages.dev`,
-				l = {
+				u = {
 					installation: {
 						github: {
 							user: (0, e.BC)`https://github.com/settings/installations/${"installation_id"}`,
@@ -12414,14 +12483,14 @@
 					}
 				}
 		},
-		"../react/pages/pipelines/tracking.ts": function(x, v, n) {
+		"../react/pages/pipelines/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				KO: function() {
 					return i
 				},
 				L9: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -12430,10 +12499,10 @@
 			function s(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						p(t, c, a[c])
 					})
 				}
@@ -12441,7 +12510,7 @@
 			}
 
 			function p(t, r, a) {
-				return r = l(r), r in t ? Object.defineProperty(t, r, {
+				return r = u(r), r in t ? Object.defineProperty(t, r, {
 					value: a,
 					enumerable: !0,
 					configurable: !0,
@@ -12449,7 +12518,7 @@
 				}) : t[r] = a, t
 			}
 
-			function l(t) {
+			function u(t) {
 				var r = m(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
@@ -12458,8 +12527,8 @@
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -12467,18 +12536,18 @@
 			let i = function(t) {
 					return t.LIST_PIPELINES = "list pipelines", t.CREATE_PIPELINE = "create pipeline", t.VIEW_PIPELINE = "view pipeline details", t.DELETE_PIPELINE = "delete pipeline", t.CLICK_PIPELINE_DOCUMENTATION = "click pipeline documentation", t.CLICK_GET_STARTED_GUIDE = "click pipeline get started guide", t.CLICK_QUICK_LINK = "click pipeline quick link", t
 				}({}),
-				u = function(t) {
+				d = function(t) {
 					return t[t.success = 0] = "success", t[t.failure = 1] = "failure", t
 				}({});
-			const _ = (t, r = {}) => {
+			const g = (t, r = {}) => {
 				o().sendEvent(t, s({}, r, {
 					category: "Pipelines"
 				}))
 			}
 		},
-		"../react/pages/r2/routes.ts": function(x, v, n) {
+		"../react/pages/r2/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Hv: function() {
 					return s
 				},
@@ -12489,7 +12558,7 @@
 					return o
 				},
 				vF: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
@@ -12542,25 +12611,25 @@
 					zones: (0, e.BC)`/zones`
 				},
 				p = i => {
-					const u = "r2.cloudflarestorage.com";
+					const d = "r2.cloudflarestorage.com";
 					switch (i) {
 						case "default":
-							return u;
+							return d;
 						case "eu":
-							return `eu.${u}`;
+							return `eu.${d}`;
 						case "fedramp":
-							return `fedramp.${u}`
+							return `fedramp.${d}`
 					}
 				},
-				l = (i, u) => {
-					const _ = p(u);
-					return `https://${i}.${_}`
+				u = (i, d) => {
+					const g = p(d);
+					return `https://${i}.${g}`
 				},
-				m = (i, u, _) => `${l(i,u)}/${_}`
+				m = (i, d, g) => `${u(i,d)}/${g}`
 		},
-		"../react/pages/r2/selectors.ts": function(x, v, n) {
+		"../react/pages/r2/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Mv: function() {
 					return t
 				}
@@ -12569,22 +12638,22 @@
 				o = n("../react/common/selectors/entitlementsSelectors.ts"),
 				s = n("../react/common/selectors/zoneSelectors.ts");
 			const p = "r2_migrator_waitlist",
-				l = "r2migrator",
+				u = "r2migrator",
 				m = "r2",
 				i = "r2_storage_migrator",
-				u = "r2_storage_migrator",
-				_ = a => getAccountEntitlement(a, "r2.enabled"),
+				d = "r2_storage_migrator",
+				g = a => getAccountEntitlement(a, "r2.enabled"),
 				t = a => Boolean((0, s.Le)(a, i, p)),
-				r = a => Boolean(getAccountFlipperFlagsChanges(a, u, l))
+				r = a => Boolean(getAccountFlipperFlagsChanges(a, d, u))
 		},
-		"../react/pages/security-center/BlockedContent/constants.ts": function(x, v, n) {
+		"../react/pages/security-center/BlockedContent/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Gk: function() {
 					return a
 				},
 				LA: function() {
-					return _
+					return g
 				},
 				Wk: function() {
 					return r
@@ -12596,57 +12665,57 @@
 					return t
 				},
 				om: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../react/pages/security-center/BlockedContent/types.ts"),
 				o = n("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
 
-			function s(d) {
+			function s(l) {
 				for (var c = 1; c < arguments.length; c++) {
-					var g = arguments[c] != null ? Object(arguments[c]) : {},
-						f = Object.keys(g);
-					typeof Object.getOwnPropertySymbols == "function" && f.push.apply(f, Object.getOwnPropertySymbols(g).filter(function(A) {
-						return Object.getOwnPropertyDescriptor(g, A).enumerable
-					})), f.forEach(function(A) {
-						p(d, A, g[A])
+					var f = arguments[c] != null ? Object(arguments[c]) : {},
+						_ = Object.keys(f);
+					typeof Object.getOwnPropertySymbols == "function" && _.push.apply(_, Object.getOwnPropertySymbols(f).filter(function(h) {
+						return Object.getOwnPropertyDescriptor(f, h).enumerable
+					})), _.forEach(function(h) {
+						p(l, h, f[h])
 					})
 				}
-				return d
+				return l
 			}
 
-			function p(d, c, g) {
-				return c = l(c), c in d ? Object.defineProperty(d, c, {
-					value: g,
+			function p(l, c, f) {
+				return c = u(c), c in l ? Object.defineProperty(l, c, {
+					value: f,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : d[c] = g, d
+				}) : l[c] = f, l
 			}
 
-			function l(d) {
-				var c = m(d, "string");
+			function u(l) {
+				var c = m(l, "string");
 				return typeof c == "symbol" ? c : String(c)
 			}
 
-			function m(d, c) {
-				if (typeof d != "object" || d === null) return d;
-				var g = d[Symbol.toPrimitive];
-				if (g !== void 0) {
-					var f = g.call(d, c || "default");
-					if (typeof f != "object") return f;
+			function m(l, c) {
+				if (typeof l != "object" || l === null) return l;
+				var f = l[Symbol.toPrimitive];
+				if (f !== void 0) {
+					var _ = f.call(l, c || "default");
+					if (typeof _ != "object") return _;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (c === "string" ? String : Number)(d)
+				return (c === "string" ? String : Number)(l)
 			}
 			const i = "blocked-content-table-tooltip",
-				u = {
+				d = {
 					active: "red",
 					in_review: "gray",
 					pending: "orange",
 					canceled: "gray"
 				},
-				_ = ["phishing_interstitial", "malware_interstitial", "legal_block"],
+				g = ["phishing_interstitial", "malware_interstitial", "legal_block"],
 				t = {
 					[e.$E.Active]: [e.M3.Active, e.M3.InReview],
 					[e.$E.Pending]: [e.M3.Pending, e.M3.Canceled]
@@ -12666,17 +12735,17 @@
 						autoFillFilterValues: !0,
 						filtersAsArray: Object.values(e.GH)
 					},
-					filters: Object.values(e.GH).reduce((d, c) => s({}, d, {
+					filters: Object.values(e.GH).reduce((l, c) => s({}, l, {
 						[c]: c
 					}), {})
 				};
-			let a = function(d) {
-				return d.COPY_URL = "copy blocked content url", d.REQUEST_REVIEW = "request blocked content review", d.ADD_FILTER = "Add filter", d.REMOVE_FILTER = "Remove filter", d
+			let a = function(l) {
+				return l.COPY_URL = "copy blocked content url", l.REQUEST_REVIEW = "request blocked content review", l.ADD_FILTER = "Add filter", l.REMOVE_FILTER = "Remove filter", l
 			}({})
 		},
-		"../react/pages/security-center/BlockedContent/types.ts": function(x, v, n) {
+		"../react/pages/security-center/BlockedContent/types.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$E: function() {
 					return e
 				},
@@ -12702,13 +12771,13 @@
 				p = function(m) {
 					return m.EnforcementDate = "enforcementDate", m.BlockType = "blockType", m.Hostname = "hostname", m.Status = "status", m
 				}({}),
-				l = function(m) {
+				u = function(m) {
 					return m.Removed = "removed", m.Misclassified = "misclassified", m
 				}({})
 		},
-		"../react/pages/security-center/tracking.ts": function(x, v, n) {
+		"../react/pages/security-center/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Ev: function() {
 					return s
 				},
@@ -12736,9 +12805,9 @@
 				return p.LOAD_THREAT_EVENTS = "load threat events", p.THREAT_EVENT_MORE_DETAILS_CLICK = "click on threat event more details", p.THREAT_EVENTS_FILTERS = "threat events filters applied", p
 			}({})
 		},
-		"../react/pages/security/analytics/resources/labels.ts": function(x, v, n) {
+		"../react/pages/security/analytics/resources/labels.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AU: function() {
 					return s
 				},
@@ -12838,9 +12907,9 @@
 					[s.BOT_MANAGEMENT]: "firewall.analytics.services.labels.botManagement"
 				}
 		},
-		"../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts": function(x, v, n) {
+		"../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AS: function() {
 					return m
 				},
@@ -12854,10 +12923,10 @@
 					return a
 				},
 				nT: function() {
-					return u
+					return d
 				},
 				o4: function() {
-					return d
+					return l
 				},
 				oY: function() {
 					return p
@@ -12873,15 +12942,15 @@
 				o = n("../react/common/constants/analytics/botScoreSrc.ts");
 			const s = ["block", "challenge", "jschallenge", "managedChallenge"],
 				p = ["miss", "expired", "bypass", "dynamic"],
-				l = c => Object.fromEntries(Object.entries(c).map(([g, f]) => [f, g])),
+				u = c => Object.fromEntries(Object.entries(c).map(([f, _]) => [_, f])),
 				m = {
 					block: "block",
 					challenge: "challenge",
 					jschallenge: "jschallenge",
 					managed_challenge: "managedChallenge"
 				},
-				i = l(m),
-				u = {
+				i = u(m),
+				d = {
 					asn: e.AU.ASN,
 					country: e.AU.COUNTRY,
 					ip: e.AU.IP,
@@ -12906,30 +12975,30 @@
 					botManagement: e.AU.BOT_MANAGEMENT,
 					uaBlock: e.AU.UA_BLOCK
 				},
-				_ = l(u),
-				t = l(o.EG);
+				g = u(d),
+				t = u(o.EG);
 			let r = function(c) {
 				return c.SAMPLED = "sampled", c.RAW = "raw", c
 			}({});
 			const a = "security-analytics-log-explorer";
-			let d = function(c) {
+			let l = function(c) {
 				return c.CLICK_ADAPTIVE_SAMPLING = 'click on "adaptive sampling"', c.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'click on "Go to Log Explorer" in the description', c.CLICK_TO_LOG_EXPLORER_BANNER = 'click on "Go to Log Explorer" in the banner"', c.CLICK_SWITCH_TO_RAW_LOGS = 'click on "Switch to raw logs"', c.CLICK_SWITCH_TO_SAMPLED_LOGS = 'click on "Switch back to sampled logs"', c
 			}({})
 		},
-		"../react/pages/security/api-shield/constants.ts": function(x, v, n) {
+		"../react/pages/security/api-shield/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AB: function() {
 					return t
 				},
 				API_SHIELD_TOAST: function() {
-					return A
+					return h
 				},
 				CR: function() {
-					return f
+					return _
 				},
 				Cg: function() {
-					return u
+					return d
 				},
 				L8: function() {
 					return a
@@ -12938,16 +13007,16 @@
 					return i
 				},
 				_i: function() {
-					return _
+					return g
 				},
 				ac: function() {
 					return s
 				},
 				k1: function() {
-					return l
+					return u
 				},
 				k2: function() {
-					return g
+					return f
 				},
 				mU: function() {
 					return c
@@ -12966,7 +13035,7 @@
 			const o = ["log", "block"],
 				s = [...o, "disable"],
 				p = 10,
-				l = "header",
+				u = "header",
 				m = {
 					root: (0, e.BC)`/${"accountId"}/${"zoneName"}/security/api-shield`,
 					addEndpoints: (0, e.BC)`/${"accountId"}/${"zoneName"}/security/api-shield/add-endpoints`,
@@ -12990,33 +13059,33 @@
 					upgrade: (0, e.BC)`/${"accountId"}/${"zoneName"}/security/api-shield/upgrade`
 				},
 				i = "sess_ids_last_updated",
-				u = "all";
-			let _ = function(h) {
-				return h.DISCOVERY_FILTER = "discovery-filter-state", h.ADD_JWT_RULES_FILTER = "add-jwt-rules-state", h.ENDPOINT_MANAGEMENT_FILTER = "endpoint-management-filter-cache-key", h
+				d = "all";
+			let g = function(A) {
+				return A.DISCOVERY_FILTER = "discovery-filter-state", A.ADD_JWT_RULES_FILTER = "add-jwt-rules-state", A.ENDPOINT_MANAGEMENT_FILTER = "endpoint-management-filter-cache-key", A
 			}({});
 			const t = 63,
 				r = 0,
 				a = 10,
-				d = {
+				l = {
 					id: "method",
 					desc: !0
 				};
-			let c = function(h) {
-				return h.JWT_CONFIGURATIONS = "API_SHIELD_JWT_CONFIGURATIONS", h
+			let c = function(A) {
+				return A.JWT_CONFIGURATIONS = "API_SHIELD_JWT_CONFIGURATIONS", A
 			}({});
-			const g = {
+			const f = {
 					METHOD: "method.listbox_filter",
 					HOSTNAME: "hostname.listbox_filter",
 					LABELS: "labels.listbox_filter"
 				},
-				f = "api-shield-schema-validation-for-all-customers";
-			let A = function(h) {
-				return h.UPLOAD_SCHEMA = "schemaName", h.ADDED_ENDPOINT = "addedEndpoint", h.DEPLOYED_ROUTE = "deployedRoute", h.DELETED_ROUTE = "deletedRoute", h.UPDATED_LABELS_SINGLE_ENDPOINT = "updateLabelsSingle", h.UPDATED_LABELS_MULTI_ENDPOINT = "updateLabelsMulti", h
+				_ = "api-shield-schema-validation-for-all-customers";
+			let h = function(A) {
+				return A.UPLOAD_SCHEMA = "schemaName", A.ADDED_ENDPOINT = "addedEndpoint", A.DEPLOYED_ROUTE = "deployedRoute", A.DELETED_ROUTE = "deletedRoute", A.UPDATED_LABELS_SINGLE_ENDPOINT = "updateLabelsSingle", A.UPDATED_LABELS_MULTI_ENDPOINT = "updateLabelsMulti", A
 			}({})
 		},
-		"../react/pages/security/api-shield/entitlements.tsx": function(x, v, n) {
+		"../react/pages/security/api-shield/entitlements.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$0: function() {
 					return r
 				},
@@ -13024,10 +13093,10 @@
 					return t
 				},
 				DM: function() {
-					return Ee
+					return _e
 				},
 				DN: function() {
-					return S
+					return D
 				},
 				Dc: function() {
 					return de
@@ -13048,37 +13117,37 @@
 					return i
 				},
 				St: function() {
-					return A
+					return h
 				},
 				UG: function() {
 					return a
 				},
 				Wy: function() {
-					return d
+					return l
 				},
 				iU: function() {
 					return L
 				},
 				jI: function() {
-					return l
+					return u
 				},
 				qK: function() {
 					return O
 				},
 				qN: function() {
-					return _
+					return g
 				},
 				r6: function() {
 					return ue
 				},
 				sK: function() {
-					return g
+					return f
 				},
 				t1: function() {
 					return C
 				},
 				yk: function() {
-					return u
+					return d
 				},
 				yo: function() {
 					return ae
@@ -13094,7 +13163,7 @@
 				o = n("../react/common/hooks/useZoneEntitlement.ts"),
 				s = n("../react/common/hooks/useAccountEntitlement.ts"),
 				p = n("../react/pages/security/api-shield/settings/constants.tsx");
-			const l = {
+			const u = {
 					[e.H.CONFIGURATION]: {
 						maxApiShields: "rulesets.max_api_shields",
 						centralEndpointsListAllowed: "central_endpoint_list.allowed",
@@ -13140,59 +13209,59 @@
 					sequencesAllowed: "rulesets.sequences_allowed",
 					contractEnabled: "contract.customer_enabled"
 				},
-				i = l[e.H.DISCOVERY],
-				u = () => !!(0, o.Z)(i.discoveryAllowed),
-				_ = () => !!(0, o.Z)(i.discoveryThresholdsAllowed),
-				t = l[e.H.JWT],
+				i = u[e.H.DISCOVERY],
+				d = () => !!(0, o.Z)(i.discoveryAllowed),
+				g = () => !!(0, o.Z)(i.discoveryThresholdsAllowed),
+				t = u[e.H.JWT],
 				r = () => !!(0, o.Z)(t.tokenValidationAllowed),
 				a = () => (0, o.Z)(t.maxTokenValidationRules),
-				d = () => (0, o.Z)(t.maxTokenValidationConfigs),
-				c = l[e.H.SEQUENCE],
-				g = () => !!(0, o.Z)(c.sequenceAllowed),
-				f = l[e.H.SEQUENCE_RULES],
-				A = () => (0, o.Z)(f.maxSequenceRules),
-				h = l[e.H.OPERATIONS],
-				T = () => (0, o.Z)(h.maxOperationsAllowed),
-				M = l[e.H.USER_SCHEMAS],
+				l = () => (0, o.Z)(t.maxTokenValidationConfigs),
+				c = u[e.H.SEQUENCE],
+				f = () => !!(0, o.Z)(c.sequenceAllowed),
+				_ = u[e.H.SEQUENCE_RULES],
+				h = () => (0, o.Z)(_.maxSequenceRules),
+				A = u[e.H.OPERATIONS],
+				T = () => (0, o.Z)(A.maxOperationsAllowed),
+				M = u[e.H.USER_SCHEMAS],
 				C = () => {
-					const V = (0, o.Z)(M.maxUserSchemasAllowed);
-					return typeof V == "number" ? V : p.Hs
+					const K = (0, o.Z)(M.maxUserSchemasAllowed);
+					return typeof K == "number" ? K : p.Hs
 				},
 				y = () => {
-					const V = (0, o.Z)(M.maxSchemaBytesAllowed);
-					return typeof V == "number" ? V : p.x5
+					const K = (0, o.Z)(M.maxSchemaBytesAllowed);
+					return typeof K == "number" ? K : p.x5
 				},
-				N = l[e.H.LEARNED_SCHEMAS],
-				L = () => (0, o.Z)(N.maxLearnedSchemasAllowed),
-				P = l[e.H.SCHEMA_VALIDATION],
-				I = () => useZoneEntitlement(P.schemaValidationAllowed),
-				O = () => (0, o.Z)(P.maxSchemaBytes),
-				S = l[e.H.CONFIGURATION],
-				B = () => (0, o.Z)(S.maxApiShields),
-				U = () => (0, o.Z)(S.apiRouting),
-				Z = () => (0, o.Z)(S.centralEndpointsListAllowed),
+				S = u[e.H.LEARNED_SCHEMAS],
+				L = () => (0, o.Z)(S.maxLearnedSchemasAllowed),
+				b = u[e.H.SCHEMA_VALIDATION],
+				P = () => useZoneEntitlement(b.schemaValidationAllowed),
+				O = () => (0, o.Z)(b.maxSchemaBytes),
+				D = u[e.H.CONFIGURATION],
+				B = () => (0, o.Z)(D.maxApiShields),
+				U = () => (0, o.Z)(D.apiRouting),
+				Z = () => (0, o.Z)(D.centralEndpointsListAllowed),
 				ae = () => !!(0, o.Z)(m.logAllowed),
-				Ee = () => !!(0, o.Z)(m.regexOperatorAllowed),
+				_e = () => !!(0, o.Z)(m.regexOperatorAllowed),
 				de = () => !!(0, o.Z)(m.dlpAllowed),
 				ue = () => !!(0, s.Z)(m.sequencesAllowed)
 		},
-		"../react/pages/security/api-shield/settings/constants.tsx": function(x, v, n) {
+		"../react/pages/security/api-shield/settings/constants.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Cl: function() {
 					return t
 				},
 				Hs: function() {
-					return u
+					return d
 				},
 				PD: function() {
-					return d
+					return l
 				},
 				Sk: function() {
 					return c
 				},
 				TD: function() {
-					return _
+					return g
 				},
 				Ye: function() {
 					return m
@@ -13207,15 +13276,15 @@
 					return i
 				},
 				y$: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../react/utils/translator.tsx"),
 				p = n("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
-			let l = function(f) {
-				return f.JWT_SECTION = "JWT_SECTION", f.ENDPOINT_SETTINGS = "ENDPOINT_SETTINGS", f.SCHEMA_SETTINGS = "SCHEMA_SETTINGS", f
+			let u = function(_) {
+				return _.JWT_SECTION = "JWT_SECTION", _.ENDPOINT_SETTINGS = "ENDPOINT_SETTINGS", _.SCHEMA_SETTINGS = "SCHEMA_SETTINGS", _
 			}({});
 			const m = {
 					page: 1,
@@ -13223,8 +13292,8 @@
 					totalCount: 0
 				},
 				i = 2e5,
-				u = 5,
-				_ = {
+				d = 5,
+				g = {
 					name: "created_at",
 					direction: p.Sr.desc
 				},
@@ -13252,7 +13321,7 @@
 						id: "api_shield.schema_validation_v2.settings.new.table.sessionIdentifiers.empty.description"
 					})
 				},
-				d = {
+				l = {
 					MENUBOX_WRAPPER: "menuBox.wrapper",
 					JWT_INFOBOX: "settings.infobox.jwt",
 					ENDPOINT_INFOBOX: "settings.infobox.endpoint",
@@ -13286,7 +13355,7 @@
 					TEMPLATE_MODAL_CANCEL_BUTTON: "fallthroughSection.template_modal.button.cancel",
 					TEMPLATE_MODAL_REDIRECT_BUTTON: "fallthroughSection.template_modal.button.redirect"
 				},
-				g = {
+				f = {
 					DEVELOPER_PORTAL: "Mocked DeveloperPortalSection",
 					JWT_CONFIGURATION: "Mocked JWTConfigurationSection",
 					MTLS: "Mocked MTLSSection",
@@ -13300,17 +13369,17 @@
 					FALLTHROUGH_RULES: "Mocked Fallthrough Rules"
 				}
 		},
-		"../react/pages/security/api-shield/tracking.ts": function(x, v, n) {
+		"../react/pages/security/api-shield/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Fj: function() {
-					return u
+					return d
 				},
 				kq: function() {
 					return i
 				},
 				xr: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -13319,10 +13388,10 @@
 			function s(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						p(t, c, a[c])
 					})
 				}
@@ -13330,7 +13399,7 @@
 			}
 
 			function p(t, r, a) {
-				return r = l(r), r in t ? Object.defineProperty(t, r, {
+				return r = u(r), r in t ? Object.defineProperty(t, r, {
 					value: a,
 					enumerable: !0,
 					configurable: !0,
@@ -13338,7 +13407,7 @@
 				}) : t[r] = a, t
 			}
 
-			function l(t) {
+			function u(t) {
 				var r = m(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
@@ -13347,8 +13416,8 @@
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -13356,7 +13425,7 @@
 			let i = function(t) {
 				return t.MAIN = "API Shield", t.SCHEMA_VALIDATION = "Schema Validation", t.JWT_VALIDATION = "JWT Validation", t.SEQUENCE_ANALYTICS = "Sequence Analytics", t.SEQUENCE_RULES = "Sequence Rules", t.ENDPOINT_MANAGEMENT = "Endpoint Management", t.API_DISCOVERY = "API Discovery", t.SETTINGS = "Settings", t
 			}({});
-			const u = {
+			const d = {
 					[i.ENDPOINT_MANAGEMENT]: {
 						listOfEndpoints: "view a page of endpoints",
 						deleteEndpoint: "delete an endpoint",
@@ -13411,23 +13480,23 @@
 						redirectToCustomRules: "redirect to custom rules from create fallthrough template"
 					}
 				},
-				_ = ({
+				g = ({
 					name: t,
 					category: r = "user journey",
 					product: a = i.MAIN,
-					productName: d,
+					productName: l,
 					additionalData: c
 				}) => {
 					o().sendEvent(t, s({
 						category: r,
 						product: a,
-						productName: d
+						productName: l
 					}, c || {}))
 				}
 		},
-		"../react/pages/security/api-shield/types.ts": function(x, v, n) {
+		"../react/pages/security/api-shield/types.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				H: function() {
 					return o
 				}
@@ -13439,9 +13508,9 @@
 					return s.OPERATIONS = "operations", s.JWT = "jwt", s.SCHEMA_VALIDATION = "schemaValidation", s.USER_SCHEMAS = "userSchemas", s.LEARNED_SCHEMAS = "learnedSchemas", s.DISCOVERY = "discovery", s.CONFIGURATION = "configuration", s.SEQUENCE = "sequence", s.SEQUENCE_RULES = "sequenceRules", s.FALLTHROUGH_RULES = "fallThroughRules", s
 				}({})
 		},
-		"../react/pages/security/api-shield/utils/useApiShield.tsx": function(x, v, n) {
+		"../react/pages/security/api-shield/utils/useApiShield.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				R: function() {
 					return i
 				}
@@ -13450,35 +13519,35 @@
 				o = n("../react/pages/security/api-shield/constants.ts"),
 				s = n("../react/common/hooks/useGate.ts");
 			const p = () => !!(0, s.Z)(o.CR);
-			var l = n("../react/common/selectors/zoneSelectors.ts"),
+			var u = n("../react/common/selectors/zoneSelectors.ts"),
 				m = n("../react/app/redux/index.ts");
 			const i = () => {
-				const u = ((0, e.FV)() || 0) > 0,
-					_ = p(),
+				const d = ((0, e.FV)() || 0) > 0,
+					g = p(),
 					t = (0, e.yk)(),
 					r = (0, e.yo)(),
-					a = (0, m.p4)(l.nA),
-					d = (0, l.Ns)(a),
-					c = (0, l._y)(a),
-					g = (0, l.z5)(a),
-					f = (0, l.ko)(a);
+					a = (0, m.p4)(u.nA),
+					l = (0, u.Ns)(a),
+					c = (0, u._y)(a),
+					f = (0, u.z5)(a),
+					_ = (0, u.ko)(a);
 				return {
-					isFreeZone: d,
+					isFreeZone: l,
 					isProZone: c,
-					isBiz: g,
-					isEnterpriseZone: f,
+					isBiz: f,
+					isEnterpriseZone: _,
 					hasLogAction: r,
-					hasApiShields: u,
+					hasApiShields: d,
 					hasApiDiscovery: t,
-					hasFreeTier: _ && !u,
-					hasApiShieldsAndApiDiscovery: t && u,
-					isEnableFreeTier: _
+					hasFreeTier: g && !d,
+					hasApiShieldsAndApiDiscovery: t && d,
+					isEnableFreeTier: g
 				}
 			}
 		},
-		"../react/pages/security/bots/tracking.ts": function(x, v, n) {
+		"../react/pages/security/bots/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				N3: function() {
 					return e
 				},
@@ -13497,29 +13566,29 @@
 				}({});
 			const s = "user journey"
 		},
-		"../react/pages/security/page-shield/resources/index.ts": function(x, v, n) {
+		"../react/pages/security/page-shield/resources/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				CP: function() {
-					return b
+					return I
 				},
 				Ks: function() {
-					return xe
+					return Ue
 				},
 				sV: function() {
 					return F
 				},
 				SI: function() {
-					return ve
+					return Ee
 				},
 				v5: function() {
-					return N
+					return S
 				},
 				xg: function() {
-					return q
+					return J
 				},
 				YC: function() {
-					return K
+					return G
 				},
 				MC: function() {
 					return L
@@ -13528,10 +13597,10 @@
 					return r
 				},
 				u8: function() {
-					return I
+					return P
 				},
 				Oq: function() {
-					return G
+					return H
 				},
 				VT: function() {
 					return O
@@ -13546,7 +13615,7 @@
 					return Te
 				},
 				k2: function() {
-					return f
+					return _
 				},
 				$g: function() {
 					return c
@@ -13555,13 +13624,13 @@
 					return U
 				},
 				KH: function() {
-					return Y
+					return Q
 				},
 				Mq: function() {
-					return V
+					return K
 				},
 				FV: function() {
-					return W
+					return $
 				},
 				j$: function() {
 					return Z
@@ -13570,19 +13639,19 @@
 					return t
 				},
 				Wq: function() {
-					return d
+					return l
 				},
 				jf: function() {
 					return a
 				},
 				sW: function() {
-					return ne
+					return te
 				},
 				Uq: function() {
 					return C
 				},
 				yd: function() {
-					return Ee
+					return _e
 				},
 				QM: function() {
 					return de
@@ -13591,13 +13660,13 @@
 					return ue
 				},
 				R$: function() {
-					return g
+					return f
 				},
 				pG: function() {
 					return ze
 				},
 				Ar: function() {
-					return Re
+					return Be
 				},
 				Sk: function() {
 					return ce
@@ -13606,13 +13675,13 @@
 					return be
 				},
 				SE: function() {
-					return Ue
+					return ke
 				},
 				m: function() {
 					return re
 				},
 				xP: function() {
-					return Q
+					return X
 				},
 				CI: function() {
 					return k
@@ -13621,31 +13690,31 @@
 					return pe
 				},
 				xl: function() {
-					return Ie
+					return Le
 				},
 				Tb: function() {
 					return Ke
 				},
 				h3: function() {
-					return ke
+					return Re
 				},
 				xq: function() {
-					return ge
+					return Ve
 				},
 				SQ: function() {
-					return ft
+					return _t
 				},
 				C0: function() {
 					return z
 				},
 				av: function() {
-					return H
+					return V
 				},
 				W3: function() {
 					return We
 				},
 				WO: function() {
-					return Ne
+					return we
 				},
 				Dk: function() {
 					return st
@@ -13654,34 +13723,34 @@
 					return Ge
 				},
 				Yt: function() {
-					return gt
+					return pt
 				},
 				ex: function() {
-					return Xe
+					return Qe
 				},
 				E1: function() {
 					return Ae
 				},
 				e0: function() {
-					return mt
+					return ft
 				},
 				UH: function() {
-					return Be
+					return Ne
 				},
 				Qt: function() {
-					return ut
+					return dt
 				},
 				K$: function() {
-					return Qe
+					return Ye
 				},
 				dm: function() {
-					return fe
+					return ge
 				},
 				oK: function() {
 					return rt
 				},
 				qZ: function() {
-					return it
+					return ct
 				},
 				_4: function() {
 					return le
@@ -13690,57 +13759,57 @@
 					return Ce
 				},
 				CB: function() {
-					return $e
+					return xe
 				},
 				ti: function() {
-					return Se
+					return Ie
 				}
 			});
 			var e = n("../react/app/redux/makeAction.js"),
 				o = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				s = n.n(o),
 				p = n("../../../common/component/component-filter-bar/src/index.js"),
-				l = n("../react/common/components/analytics/AnalyticsReport/constants.ts");
+				u = n("../react/common/components/analytics/AnalyticsReport/constants.ts");
 
-			function m(w) {
-				for (var ee = 1; ee < arguments.length; ee++) {
-					var oe = arguments[ee] != null ? Object(arguments[ee]) : {},
-						he = Object.keys(oe);
-					typeof Object.getOwnPropertySymbols == "function" && he.push.apply(he, Object.getOwnPropertySymbols(oe).filter(function(De) {
-						return Object.getOwnPropertyDescriptor(oe, De).enumerable
-					})), he.forEach(function(De) {
-						i(w, De, oe[De])
+			function m(R) {
+				for (var Y = 1; Y < arguments.length; Y++) {
+					var oe = arguments[Y] != null ? Object(arguments[Y]) : {},
+						ve = Object.keys(oe);
+					typeof Object.getOwnPropertySymbols == "function" && ve.push.apply(ve, Object.getOwnPropertySymbols(oe).filter(function(he) {
+						return Object.getOwnPropertyDescriptor(oe, he).enumerable
+					})), ve.forEach(function(he) {
+						i(R, he, oe[he])
 					})
 				}
-				return w
+				return R
 			}
 
-			function i(w, ee, oe) {
-				return ee = u(ee), ee in w ? Object.defineProperty(w, ee, {
+			function i(R, Y, oe) {
+				return Y = d(Y), Y in R ? Object.defineProperty(R, Y, {
 					value: oe,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : w[ee] = oe, w
+				}) : R[Y] = oe, R
 			}
 
-			function u(w) {
-				var ee = _(w, "string");
-				return typeof ee == "symbol" ? ee : String(ee)
+			function d(R) {
+				var Y = g(R, "string");
+				return typeof Y == "symbol" ? Y : String(Y)
 			}
 
-			function _(w, ee) {
-				if (typeof w != "object" || w === null) return w;
-				var oe = w[Symbol.toPrimitive];
+			function g(R, Y) {
+				if (typeof R != "object" || R === null) return R;
+				var oe = R[Symbol.toPrimitive];
 				if (oe !== void 0) {
-					var he = oe.call(w, ee || "default");
-					if (typeof he != "object") return he;
+					var ve = oe.call(R, Y || "default");
+					if (typeof ve != "object") return ve;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (ee === "string" ? String : Number)(w)
+				return (Y === "string" ? String : Number)(R)
 			}
-			let t = function(w) {
-				return w.BASE_URI = "base-uri", w.CHILD = "child-src", w.CONNECT = "connect-src", w.DEFAULT = "default-src", w.FONT = "font-src", w.FORM_ACTION = "form-action", w.FRAME = "frame-src", w.FRAME_ANCESTORS = "frame-ancestors", w.IMAGE = "img-src", w.MANIFEST = "manifest-src", w.MEDIA = "media-src", w.OBJECT = "object-src", w.SCRIPT = "script-src", w.STYLE = "style-src", w.WORKER = "worker-src", w.UPGRADE_INSECURE_REQUESTS = "upgrade-insecure-requests", w
+			let t = function(R) {
+				return R.BASE_URI = "base-uri", R.CHILD = "child-src", R.CONNECT = "connect-src", R.DEFAULT = "default-src", R.FONT = "font-src", R.FORM_ACTION = "form-action", R.FRAME = "frame-src", R.FRAME_ANCESTORS = "frame-ancestors", R.IMAGE = "img-src", R.MANIFEST = "manifest-src", R.MEDIA = "media-src", R.OBJECT = "object-src", R.SCRIPT = "script-src", R.STYLE = "style-src", R.WORKER = "worker-src", R.UPGRADE_INSECURE_REQUESTS = "upgrade-insecure-requests", R
 			}({});
 			const r = m({}, t, {
 				BLOCK_ALL_MIXED_CONTENT: "block-all-mixed-content",
@@ -13758,75 +13827,75 @@
 				TRUSTED_TYPES: "trusted-types",
 				WEBRTC: "webrtc"
 			});
-			let a = function(w) {
-					return w.MONITOR = "monitor", w.POLICIES = "policies", w.SETTINGS = "settings", w
+			let a = function(R) {
+					return R.MONITOR = "monitor", R.POLICIES = "policies", R.SETTINGS = "settings", R
 				}({}),
-				d = function(w) {
-					return w.SCRIPT_MONITOR = "script", w.CONNECTION_MONITOR = "connection", w.COOKIE_MONITOR = "cookie", w
+				l = function(R) {
+					return R.SCRIPT_MONITOR = "script", R.CONNECTION_MONITOR = "connection", R.COOKIE_MONITOR = "cookie", R
 				}({}),
-				c = function(w) {
-					return w.CryptominingScore = "cryptomining_score", w.MalwareScore = "malware_score", w.MagecartScore = "magecart_score", w
+				c = function(R) {
+					return R.CryptominingScore = "cryptomining_score", R.MalwareScore = "malware_score", R.MagecartScore = "magecart_score", R
 				}({}),
-				g = function(w) {
-					return w.DataflowScore = "dataflow_score", w.ObfuscationScore = "obfuscation_score", w
+				f = function(R) {
+					return R.DataflowScore = "dataflow_score", R.ObfuscationScore = "obfuscation_score", R
 				}({}),
-				f = function(w) {
-					return w.DomainMalicious = "domain_reported_malicious", w.UrlMalicious = "url_reported_malicious", w
+				_ = function(R) {
+					return R.DomainMalicious = "domain_reported_malicious", R.UrlMalicious = "url_reported_malicious", R
 				}({});
 
-			function A(w) {
-				for (var ee = 1; ee < arguments.length; ee++) {
-					var oe = arguments[ee] != null ? Object(arguments[ee]) : {},
-						he = Object.keys(oe);
-					typeof Object.getOwnPropertySymbols == "function" && he.push.apply(he, Object.getOwnPropertySymbols(oe).filter(function(De) {
-						return Object.getOwnPropertyDescriptor(oe, De).enumerable
-					})), he.forEach(function(De) {
-						h(w, De, oe[De])
+			function h(R) {
+				for (var Y = 1; Y < arguments.length; Y++) {
+					var oe = arguments[Y] != null ? Object(arguments[Y]) : {},
+						ve = Object.keys(oe);
+					typeof Object.getOwnPropertySymbols == "function" && ve.push.apply(ve, Object.getOwnPropertySymbols(oe).filter(function(he) {
+						return Object.getOwnPropertyDescriptor(oe, he).enumerable
+					})), ve.forEach(function(he) {
+						A(R, he, oe[he])
 					})
 				}
-				return w
+				return R
 			}
 
-			function h(w, ee, oe) {
-				return ee = T(ee), ee in w ? Object.defineProperty(w, ee, {
+			function A(R, Y, oe) {
+				return Y = T(Y), Y in R ? Object.defineProperty(R, Y, {
 					value: oe,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : w[ee] = oe, w
+				}) : R[Y] = oe, R
 			}
 
-			function T(w) {
-				var ee = M(w, "string");
-				return typeof ee == "symbol" ? ee : String(ee)
+			function T(R) {
+				var Y = M(R, "string");
+				return typeof Y == "symbol" ? Y : String(Y)
 			}
 
-			function M(w, ee) {
-				if (typeof w != "object" || w === null) return w;
-				var oe = w[Symbol.toPrimitive];
+			function M(R, Y) {
+				if (typeof R != "object" || R === null) return R;
+				var oe = R[Symbol.toPrimitive];
 				if (oe !== void 0) {
-					var he = oe.call(w, ee || "default");
-					if (typeof he != "object") return he;
+					var ve = oe.call(R, Y || "default");
+					if (typeof ve != "object") return ve;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (ee === "string" ? String : Number)(w)
+				return (Y === "string" ? String : Number)(R)
 			}
 			const C = 50,
 				y = 9,
-				N = "copy script url page shield",
+				S = "copy script url page shield",
 				L = "disable page shield",
-				P = "click documentation link",
-				I = "enable page shield",
+				b = "click documentation link",
+				P = "enable page shield",
 				O = "filter search page shield",
-				S = "filter search view all page shield",
+				D = "filter search view all page shield",
 				B = "hover score tooltip page shield",
 				U = "open alert modal page shield",
 				Z = "change pagination page shield",
 				ae = "close script modal page shield",
-				Ee = "open script modal page shield",
+				_e = "open script modal page shield",
 				de = "select alert type page shield",
 				ue = "sort column page shield",
-				V = {
+				K = {
 					CLICK_CREATE_POLICY: "click create policy form link",
 					CLICK_ENABLE_POLICY_TOGGLE: "enable policy toggle",
 					CLICK_EDIT_POLICY: "click edit policy",
@@ -13839,49 +13908,49 @@
 					DEPLOY_POLICY: "deploy policy",
 					DELETE_POLICY: "delete policy"
 				},
-				Y = {
-					STARTS_WITH: l.Gn.startsWith,
-					ENDS_WITH: l.Gn.endsWith,
-					EQUALS: l.Gn.equals,
-					CONTAINS: l.Gn.contains,
-					DOES_NOT_CONTAIN: l.Gn.notContains,
+				Q = {
+					STARTS_WITH: u.Gn.startsWith,
+					ENDS_WITH: u.Gn.endsWith,
+					EQUALS: u.Gn.equals,
+					CONTAINS: u.Gn.contains,
+					DOES_NOT_CONTAIN: u.Gn.notContains,
 					INCLUDES: "includes",
-					IS_IN: l.Gn.in
+					IS_IN: u.Gn.in
 				},
-				G = {
+				H = {
 					status: {
 						example: "active",
 						type: p.kE.select,
 						options: ["active", "inactive", "infrequent"],
 						label: "common.status",
 						urlParam: "status",
-						operators: [Y.EQUALS]
+						operators: [Q.EQUALS]
 					},
 					urls: {
 						example: "malware.js",
 						type: p.kE.string,
 						options: ["true", "false"],
-						operators: [Y.CONTAINS, Y.DOES_NOT_CONTAIN],
+						operators: [Q.CONTAINS, Q.DOES_NOT_CONTAIN],
 						label: "firewall.page_shield.script",
 						urlParam: "urls"
 					},
 					hosts: {
 						example: "hostname.com",
-						operators: [Y.EQUALS],
+						operators: [Q.EQUALS],
 						type: p.kE.string,
 						label: "firewall.page_shield.host",
 						urlParam: "hosts"
 					},
 					page_url: {
 						type: p.kE.string,
-						operators: [Y.INCLUDES, Y.ENDS_WITH, Y.STARTS_WITH],
+						operators: [Q.INCLUDES, Q.ENDS_WITH, Q.STARTS_WITH],
 						example: "/cart",
 						label: "firewall.page_shield.page",
 						urlParam: "page_url"
 					}
 				},
-				b = A({}, G, {
-					urls: A({}, G.urls, {
+				I = h({}, H, {
+					urls: h({}, H.urls, {
 						label: "firewall.page_shield.connection"
 					})
 				}),
@@ -13892,56 +13961,56 @@
 						options: ["first_party", "unknown"],
 						label: "common.type",
 						urlParam: "type",
-						operators: [l.Gn.equals]
+						operators: [u.Gn.equals]
 					},
 					name: {
 						example: "cookie_1",
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.string,
 						label: "firewall.page_shield.name",
 						urlParam: "name"
 					},
 					domain: {
 						example: "hostname.com",
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.string,
 						label: "firewall.page_shield.domain",
 						urlParam: "domain"
 					},
 					path: {
 						example: "/",
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.string,
 						label: "firewall.page_shield.path",
 						urlParam: "path"
 					},
 					same_site: {
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.select,
 						options: ["lax", "strict", "none"],
 						label: "firewall.page_shield.same_site",
 						urlParam: "same_site"
 					},
 					http_only: {
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.select,
 						options: ["true", "false"],
 						label: "firewall.page_shield.http_only",
 						urlParam: "http_only"
 					},
 					secure: {
-						operators: [l.Gn.equals],
+						operators: [u.Gn.equals],
 						type: p.kE.select,
 						options: ["true", "false"],
 						label: "firewall.page_shield.secure",
 						urlParam: "secure"
 					}
 				};
-			let te = function(w) {
-				return w.SECURITY_THREATS = "Security Threats", w.C2_BOTNET = "C2 & Botnet", w.CRYPTOMINING = "Cryptomining", w.MALWARE = "Malware", w.PHISHING = "Phishing", w.SPYWARE = "Spyware", w.DGA_DOMAINS = "DGA Domains", w.TYPOSQUATTING_IMPERSONATION = "Typosquatting & Impersonation", w
+			let ne = function(R) {
+				return R.SECURITY_THREATS = "Security Threats", R.C2_BOTNET = "C2 & Botnet", R.CRYPTOMINING = "Cryptomining", R.MALWARE = "Malware", R.PHISHING = "Phishing", R.SPYWARE = "Spyware", R.DGA_DOMAINS = "DGA Domains", R.TYPOSQUATTING_IMPERSONATION = "Typosquatting & Impersonation", R
 			}({});
 			const ce = "https://www.cloudflare.com/plans/enterprise/contact/",
-				K = {
+				G = {
 					[t.BASE_URI]: "page_shield.policies.form.base_uri",
 					[t.CHILD]: "page_shield.policies.form.child",
 					[t.CONNECT]: "page_shield.policies.form.connections",
@@ -13959,7 +14028,7 @@
 					[t.UPGRADE_INSECURE_REQUESTS]: "page_shield.policies.form.upgrade_insecure_requests",
 					[t.WORKER]: "page_shield.policies.form.worker"
 				},
-				q = {
+				J = {
 					[t.BASE_URI]: "firewall.page_shield.policies.table.base_uri",
 					[t.CHILD]: "firewall.page_shield.policies.table.child",
 					[t.CONNECT]: "firewall.page_shield.policies.table.connections",
@@ -13977,18 +14046,18 @@
 					[t.UPGRADE_INSECURE_REQUESTS]: "firewall.page_shield.policies.table.upgrade_insecure_requests",
 					[t.WORKER]: "firewall.page_shield.policies.table.worker"
 				},
-				$ = {
+				W = {
 					[c.CryptominingScore]: "firewall.page_shield.malicious.cryptomining.label",
 					[c.MalwareScore]: "firewall.page_shield.malicious.malware.label",
 					[c.MagecartScore]: "firewall.page_shield.malicious.magecart.label",
-					[g.ObfuscationScore]: "firewall.page_shield.malicious.obfuscation_score.label",
-					[g.DataflowScore]: "firewall.page_shield.malicious.dataflow_score.label"
+					[f.ObfuscationScore]: "firewall.page_shield.malicious.obfuscation_score.label",
+					[f.DataflowScore]: "firewall.page_shield.malicious.dataflow_score.label"
 				},
-				X = {
-					[f.DomainMalicious]: "firewall.page_shield.malicious.domain_reported_malicious.label",
-					[f.UrlMalicious]: "firewall.page_shield.malicious.url_reported_malicious.label"
+				q = {
+					[_.DomainMalicious]: "firewall.page_shield.malicious.domain_reported_malicious.label",
+					[_.UrlMalicious]: "firewall.page_shield.malicious.url_reported_malicious.label"
 				},
-				W = {
+				$ = {
 					CONFIGURE_PAGE_SHIELD: "configure page shield",
 					VIEW_PAGE_SHIELD_SETTINGS: "view page shield settings",
 					VIEW_DETECTED_SCRIPTS: "view detected scripts",
@@ -13999,144 +14068,144 @@
 					SHOW_MUTABLE_VERSION_TOOLTIP: "show mutable version warning tooltip",
 					OPEN_MUTABLE_VERSION_TOOLTIP: "open mutable version warning tooltip"
 				},
-				ne = {
+				te = {
 					lax: "firewall.page_shield.same_site.lax",
 					strict: "firewall.page_shield.same_site.strict",
 					none: "firewall.page_shield.same_site.none"
 				},
-				ve = {
+				Ee = {
 					first_party: "firewall.page_shield.cookie.type.first_party",
 					unknown: "firewall.page_shield.cookie.type.unknown"
 				},
 				Te = {
-					[d.SCRIPT_MONITOR]: "firewall.page_shield.script_details",
-					[d.CONNECTION_MONITOR]: "firewall.page_shield.connection_details",
-					[d.COOKIE_MONITOR]: "firewall.page_shield.cookie_details"
+					[l.SCRIPT_MONITOR]: "firewall.page_shield.script_details",
+					[l.CONNECTION_MONITOR]: "firewall.page_shield.connection_details",
+					[l.COOKIE_MONITOR]: "firewall.page_shield.cookie_details"
 				},
-				xe = {
-					[d.SCRIPT_MONITOR]: "script_monitor.description",
-					[d.CONNECTION_MONITOR]: "connection_monitor.description",
-					[d.COOKIE_MONITOR]: "cookie_monitor.description"
+				Ue = {
+					[l.SCRIPT_MONITOR]: "script_monitor.description",
+					[l.CONNECTION_MONITOR]: "connection_monitor.description",
+					[l.COOKIE_MONITOR]: "cookie_monitor.description"
 				},
-				Ue = (0, e.ZP)("pageShieldConfig", "get", "/zones/(zoneId)/page_shield").on("success", w => (s().sendEvent(W.VIEW_PAGE_SHIELD_SETTINGS, {
+				ke = (0, e.ZP)("pageShieldConfig", "get", "/zones/(zoneId)/page_shield").on("success", R => (s().sendEvent($.VIEW_PAGE_SHIELD_SETTINGS, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
-				$e = (0, e.ZP)("pageShieldConfig", "put", "/zones/(zoneId)/page_shield").on("success", w => (s().sendEvent(W.CONFIGURE_PAGE_SHIELD, {
+				}), R)),
+				xe = (0, e.ZP)("pageShieldConfig", "put", "/zones/(zoneId)/page_shield").on("success", R => (s().sendEvent($.CONFIGURE_PAGE_SHIELD, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
-				Ke = (0, e.ZP)("pageShieldScripts", "get", "/zones/(zoneId)/page_shield/scripts").on("success", w => (s().sendEvent(W.VIEW_DETECTED_SCRIPTS, {
+				}), R)),
+				Ke = (0, e.ZP)("pageShieldScripts", "get", "/zones/(zoneId)/page_shield/scripts").on("success", R => (s().sendEvent($.VIEW_DETECTED_SCRIPTS, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
-				Ie = (0, e.ZP)("pageShieldScript", "get", "/zones/(zoneId)/page_shield/scripts/(scriptId)"),
-				Q = (0, e.ZP)("pageShieldConnections", "get", "/zones/(zoneId)/page_shield/connections").on("success", w => (s().sendEvent(W.VIEW_DETECTED_CONNECTIONS, {
+				}), R)),
+				Le = (0, e.ZP)("pageShieldScript", "get", "/zones/(zoneId)/page_shield/scripts/(scriptId)"),
+				X = (0, e.ZP)("pageShieldConnections", "get", "/zones/(zoneId)/page_shield/connections").on("success", R => (s().sendEvent($.VIEW_DETECTED_CONNECTIONS, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
+				}), R)),
 				re = (0, e.ZP)("pageShieldConnection", "get", "/zones/(zoneId)/page_shield/connections/(connectionId)"),
-				me = (0, e.ZP)("pageShieldCookies", "get", "/zones/(zoneId)/page_shield/cookies").on("success", w => (s().sendEvent(W.VIEW_DETECTED_COOKIES, {
+				me = (0, e.ZP)("pageShieldCookies", "get", "/zones/(zoneId)/page_shield/cookies").on("success", R => (s().sendEvent($.VIEW_DETECTED_COOKIES, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
-				k = (0, e.ZP)("pageShieldPolicies", "get", "/zones/(zoneId)/page_shield/policies").on("success", w => (s().sendEvent(W.VIEW_PAGE_SHIELD_POLICIES, {
+				}), R)),
+				k = (0, e.ZP)("pageShieldPolicies", "get", "/zones/(zoneId)/page_shield/policies").on("success", R => (s().sendEvent($.VIEW_PAGE_SHIELD_POLICIES, {
 					category: "user journey",
 					product: "Page shield"
-				}), w)),
+				}), R)),
 				pe = (0, e.ZP)("pageShieldPolicy", "get", "/zones/(zoneId)/page_shield/policies/(policiesId)"),
-				Se = (0, e.ZP)("pageShieldPolicy", "put", "/zones/(zoneId)/page_shield/policies/(policiesId)").on("success", w => (s().sendEvent(W.MANAGE_PAGE_SHIELD_POLICY, {
+				Ie = (0, e.ZP)("pageShieldPolicy", "put", "/zones/(zoneId)/page_shield/policies/(policiesId)").on("success", R => (s().sendEvent($.MANAGE_PAGE_SHIELD_POLICY, {
 					category: "user journey",
 					product: "Page shield",
 					updateType: "update"
-				}), w)),
-				Re = (0, e.ZP)("pageShieldPolicy", "delete", "/zones/(zoneId)/page_shield/policies/(policiesId)").on("success", w => (s().sendEvent(W.MANAGE_PAGE_SHIELD_POLICY, {
+				}), R)),
+				Be = (0, e.ZP)("pageShieldPolicy", "delete", "/zones/(zoneId)/page_shield/policies/(policiesId)").on("success", R => (s().sendEvent($.MANAGE_PAGE_SHIELD_POLICY, {
 					category: "user journey",
 					product: "Page shield",
 					updateType: "delete"
-				}), w)),
-				ze = (0, e.ZP)("pageShieldPolicy", "post", "/zones/(zoneId)/page_shield/policies").on("success", w => (s().sendEvent(W.MANAGE_PAGE_SHIELD_POLICY, {
+				}), R)),
+				ze = (0, e.ZP)("pageShieldPolicy", "post", "/zones/(zoneId)/page_shield/policies").on("success", R => (s().sendEvent($.MANAGE_PAGE_SHIELD_POLICY, {
 					category: "user journey",
 					product: "Page shield",
 					updateType: "create"
-				}), w)),
+				}), R)),
 				be = (0, e.ZP)("pageShieldMonitorDomainDetails", "get", "/accounts/(accountId)/intel/domain?domain=(urlID)"),
-				ke = (0, e.ZP)("pageShieldMonitorWhoIsRecord", "get", "/accounts/(accountId)/intel/whois?domain=(urlID)");
-			var Fe = n("../react/app/redux/normalizer.js");
-			const We = w => w.pageShield.configuration,
-				Ye = w => {
-					var ee;
-					return (ee = w.pageShield.configuration.data) === null || ee === void 0 ? void 0 : ee.enabled
+				Re = (0, e.ZP)("pageShieldMonitorWhoIsRecord", "get", "/accounts/(accountId)/intel/whois?domain=(urlID)");
+			var je = n("../react/app/redux/normalizer.js");
+			const We = R => R.pageShield.configuration,
+				Xe = R => {
+					var Y;
+					return (Y = R.pageShield.configuration.data) === null || Y === void 0 ? void 0 : Y.enabled
 				},
-				H = w => {
-					var ee;
-					return (ee = We(w)) === null || ee === void 0 ? void 0 : ee.data
+				V = R => {
+					var Y;
+					return (Y = We(R)) === null || Y === void 0 ? void 0 : Y.data
 				},
-				se = w => w.pageShield.scripts,
-				fe = w => w.pageShield.script,
-				we = w => w.pageShield.connections,
-				Ne = w => w.pageShield.connection,
-				Be = w => w.pageShield.policies,
-				Qe = w => w.pageShield.policy,
-				rt = (0, Fe.P1)("pageShieldScripts", se),
-				lt = (0, Fe.P1)("pageShieldScript", fe),
-				st = (0, Fe.P1)("pageShieldConnections", we),
-				pt = (0, Fe.P1)("pageShieldConnection", Ne),
-				mt = (0, Fe.P1)("pageShieldPolicies", Be),
-				ut = (0, Fe.P1)("pageShieldPolicy", Qe),
-				Ge = (w, ee) => w === d.SCRIPT_MONITOR ? rt(ee) || [] : st(ee) || [],
-				Ae = (w, ee) => w === d.SCRIPT_MONITOR ? se(ee) || [] : we(ee) || [],
-				Xe = (w, ee) => w === d.SCRIPT_MONITOR ? lt(ee) : pt(ee),
-				gt = w => w.pageShield.domainIntel,
-				it = w => w.pageShield.whoIsRecord,
-				ft = (w, ee, oe) => {
-					var he;
-					const De = Object.values(oe).map(Ve => ({
-						key: Ve,
-						label: $[Ve],
-						score: w[Ve]
-					})).filter(Ve => Ve.score !== void 0 && Ve.score <= ee);
-					return ee === y && De.length === 0 && ((he = w.js_integrity_score) !== null && he !== void 0 ? he : 100) <= ee && De.push({
+				se = R => R.pageShield.scripts,
+				ge = R => R.pageShield.script,
+				Me = R => R.pageShield.connections,
+				we = R => R.pageShield.connection,
+				Ne = R => R.pageShield.policies,
+				Ye = R => R.pageShield.policy,
+				rt = (0, je.P1)("pageShieldScripts", se),
+				ut = (0, je.P1)("pageShieldScript", ge),
+				st = (0, je.P1)("pageShieldConnections", Me),
+				gt = (0, je.P1)("pageShieldConnection", we),
+				ft = (0, je.P1)("pageShieldPolicies", Ne),
+				dt = (0, je.P1)("pageShieldPolicy", Ye),
+				Ge = (R, Y) => R === l.SCRIPT_MONITOR ? rt(Y) || [] : st(Y) || [],
+				Ae = (R, Y) => R === l.SCRIPT_MONITOR ? se(Y) || [] : Me(Y) || [],
+				Qe = (R, Y) => R === l.SCRIPT_MONITOR ? ut(Y) : gt(Y),
+				pt = R => R.pageShield.domainIntel,
+				ct = R => R.pageShield.whoIsRecord,
+				_t = (R, Y, oe) => {
+					var ve;
+					const he = Object.values(oe).map($e => ({
+						key: $e,
+						label: W[$e],
+						score: R[$e]
+					})).filter($e => $e.score !== void 0 && $e.score <= Y);
+					return Y === y && he.length === 0 && ((ve = R.js_integrity_score) !== null && ve !== void 0 ? ve : 100) <= Y && he.push({
 						key: null,
 						label: "script_monitor.malicious",
 						score: 0
-					}), De
+					}), he
 				},
-				z = (w, ee) => Object.values(ee).filter(oe => w[oe] === !0).map(oe => X[oe]),
-				le = w => w === !1 ? "firewall.page_shield.malicious_content.not_present" : "firewall.page_shield.malicious_content.not_available",
-				Ce = (w, ee) => w[c.MagecartScore] !== void 0 && w[c.MagecartScore] <= ee || w[c.MalwareScore] !== void 0 && w[c.MalwareScore] <= ee || w[c.CryptominingScore] !== void 0 && w[c.CryptominingScore] <= ee || w.js_integrity_score !== void 0 && w.js_integrity_score <= ee,
+				z = (R, Y) => Object.values(Y).filter(oe => R[oe] === !0).map(oe => q[oe]),
+				le = R => R === !1 ? "firewall.page_shield.malicious_content.not_present" : "firewall.page_shield.malicious_content.not_available",
+				Ce = (R, Y) => R[c.MagecartScore] !== void 0 && R[c.MagecartScore] <= Y || R[c.MalwareScore] !== void 0 && R[c.MalwareScore] <= Y || R[c.CryptominingScore] !== void 0 && R[c.CryptominingScore] <= Y || R.js_integrity_score !== void 0 && R.js_integrity_score <= Y,
 				Oe = ["cdn.jsdelivr.net", "unpkg.com"],
-				je = [/^((?!(@)).)*$/, /(?<!(\/))@[a-zA-Z]+(?=\/|$)/, /@\^[0-9]+(\.[0-9]+){0,2}(?=\/|$)/, /@[0-9]+(\.[0-9]+)?(?=\/|$)/],
-				ge = w => {
-					if (w.includes("@latest")) {
-						const oe = w.split("@latest");
+				Fe = [/^((?!(@)).)*$/, /(?<!(\/))@[a-zA-Z]+(?=\/|$)/, /@\^[0-9]+(\.[0-9]+){0,2}(?=\/|$)/, /@[0-9]+(\.[0-9]+)?(?=\/|$)/],
+				Ve = R => {
+					if (R.includes("@latest")) {
+						const oe = R.split("@latest");
 						if (oe.length != 2) return;
-						const he = oe[0].length,
-							De = he + "@latest".length;
-						return [he, De]
+						const ve = oe[0].length,
+							he = ve + "@latest".length;
+						return [ve, he]
 					}
-					if (!!Oe.some(oe => w.includes(oe)))
-						for (const oe of je) {
-							const he = w.match(oe);
-							if (!he) continue;
-							const De = he.index;
-							if (De === 0) return null;
-							const Ve = De + he[0].length;
-							return [De, Ve]
+					if (!!Oe.some(oe => R.includes(oe)))
+						for (const oe of Fe) {
+							const ve = R.match(oe);
+							if (!ve) continue;
+							const he = ve.index;
+							if (he === 0) return null;
+							const $e = he + ve[0].length;
+							return [he, $e]
 						}
 				}
 		},
-		"../react/pages/security/resources/constants.tsx": function(x, v, n) {
+		"../react/pages/security/resources/constants.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				_C: function() {
-					return d
+					return l
 				},
 				_R: function() {
 					return c
 				},
 				dY: function() {
-					return f
+					return _
 				},
 				fy: function() {
 					return T
@@ -14145,109 +14214,109 @@
 					return a
 				},
 				pR: function() {
-					return g
+					return f
 				},
 				pV: function() {
 					return M
 				},
 				rj: function() {
-					return h
+					return A
 				},
 				yR: function() {
 					return C
 				},
 				zf: function() {
-					return A
+					return h
 				}
 			});
 			var e = n("../node_modules/@cloudflare/component-link/es/index.js"),
 				o = n("../../../common/util/types/src/api/phases/fields.tsx"),
 				s = n("webpack/sharing/consume/default/react/react"),
 				p = n.n(s),
-				l = n("../react/utils/translator.tsx"),
+				u = n("../react/utils/translator.tsx"),
 				m = n("../react/pages/security/resources/types.ts"),
 				i = n("../react/pages/home/rulesets/account-ruleset-builder/labels.tsx");
 
-			function u(y) {
-				for (var N = 1; N < arguments.length; N++) {
-					var L = arguments[N] != null ? Object(arguments[N]) : {},
-						P = Object.keys(L);
-					typeof Object.getOwnPropertySymbols == "function" && P.push.apply(P, Object.getOwnPropertySymbols(L).filter(function(I) {
-						return Object.getOwnPropertyDescriptor(L, I).enumerable
-					})), P.forEach(function(I) {
-						_(y, I, L[I])
+			function d(y) {
+				for (var S = 1; S < arguments.length; S++) {
+					var L = arguments[S] != null ? Object(arguments[S]) : {},
+						b = Object.keys(L);
+					typeof Object.getOwnPropertySymbols == "function" && b.push.apply(b, Object.getOwnPropertySymbols(L).filter(function(P) {
+						return Object.getOwnPropertyDescriptor(L, P).enumerable
+					})), b.forEach(function(P) {
+						g(y, P, L[P])
 					})
 				}
 				return y
 			}
 
-			function _(y, N, L) {
-				return N = t(N), N in y ? Object.defineProperty(y, N, {
+			function g(y, S, L) {
+				return S = t(S), S in y ? Object.defineProperty(y, S, {
 					value: L,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : y[N] = L, y
+				}) : y[S] = L, y
 			}
 
 			function t(y) {
-				var N = r(y, "string");
-				return typeof N == "symbol" ? N : String(N)
+				var S = r(y, "string");
+				return typeof S == "symbol" ? S : String(S)
 			}
 
-			function r(y, N) {
+			function r(y, S) {
 				if (typeof y != "object" || y === null) return y;
 				var L = y[Symbol.toPrimitive];
 				if (L !== void 0) {
-					var P = L.call(y, N || "default");
-					if (typeof P != "object") return P;
+					var b = L.call(y, S || "default");
+					if (typeof b != "object") return b;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (N === "string" ? String : Number)(y)
+				return (S === "string" ? String : Number)(y)
 			}
 			const a = 10;
-			let d = function(y) {
+			let l = function(y) {
 					return y.MTLS_ACCESS = "mTLS-enforced authentication", y.ZONE_LOCKDOWN = "Zone lockdown", y.USER_AGENT = "User agent blocking", y.EMAIL_VALIDITY = "Disposable email checks", y.IP_BASED = "IP-based rule", y.GEOGRAPHY_BASE = "Geography-based rule", y
 				}({}),
 				c = function(y) {
 					return y.LEAKED_CREDENTIALS = "Leaked Credentials Checks", y
 				}({});
-			const g = {
+			const f = {
 					CLICK_GEOGRAPHICAL_TEMPLATE: "click geographical rule template from tools",
 					CLICK_IP_TEMPLATE: "click IP rule template from tools",
 					CLICK_USER_AGENT_TEMPLATE: "click user agent rule template from tools",
 					CLICK_ZONE_LOCKDOWN_TEMPLATE: "click zone lockdown rule template from tools"
 				},
-				f = [{
+				_ = [{
 					title: "firewall.tools.toast.geography",
 					type: "ip",
-					template: d.GEOGRAPHY_BASE,
-					trackedEvent: g.CLICK_GEOGRAPHICAL_TEMPLATE
+					template: l.GEOGRAPHY_BASE,
+					trackedEvent: f.CLICK_GEOGRAPHICAL_TEMPLATE
 				}, {
 					title: "firewall.tools.toast.ip",
 					type: "ip",
-					template: d.IP_BASED,
-					trackedEvent: g.CLICK_IP_TEMPLATE
+					template: l.IP_BASED,
+					trackedEvent: f.CLICK_IP_TEMPLATE
 				}, {
 					title: "firewall.tools.toast.user_agent",
 					type: "ua",
-					template: d.USER_AGENT,
-					trackedEvent: g.CLICK_USER_AGENT_TEMPLATE
+					template: l.USER_AGENT,
+					trackedEvent: f.CLICK_USER_AGENT_TEMPLATE
 				}, {
 					title: "firewall.tools.toast.zone_lockdown",
 					type: "zone_lockdown",
-					template: d.ZONE_LOCKDOWN,
-					trackedEvent: g.CLICK_ZONE_LOCKDOWN_TEMPLATE
+					template: l.ZONE_LOCKDOWN,
+					trackedEvent: f.CLICK_ZONE_LOCKDOWN_TEMPLATE
 				}],
-				A = {
+				h = {
 					[m.X.UI_SECTION]: y => ({
-						[d.MTLS_ACCESS]: {
-							ruleName: d.MTLS_ACCESS,
+						[l.MTLS_ACCESS]: {
+							ruleName: l.MTLS_ACCESS,
 							capability: "security_rules.rules.capability.waf",
-							displayName: p().createElement(l.cC, {
+							displayName: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.mtls_access.name"
 							}),
-							wafRulesOverview: p().createElement(l.cC, {
+							wafRulesOverview: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.mtls_access.wafRulesOverview",
 								Components: [e.QV],
 								componentProps: [{
@@ -14255,13 +14324,13 @@
 								}]
 							})
 						},
-						[d.ZONE_LOCKDOWN]: {
-							ruleName: d.ZONE_LOCKDOWN,
-							displayName: p().createElement(l.cC, {
+						[l.ZONE_LOCKDOWN]: {
+							ruleName: l.ZONE_LOCKDOWN,
+							displayName: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.zone_lockdown.name"
 							}),
 							capability: "security_rules.rules.capability.waf",
-							wafRulesOverview: p().createElement(l.cC, {
+							wafRulesOverview: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.zone_lockdown.wafRulesOverview",
 								Components: [e.QV],
 								componentProps: [{
@@ -14269,13 +14338,13 @@
 								}]
 							})
 						},
-						[d.USER_AGENT]: {
-							ruleName: d.USER_AGENT,
-							displayName: p().createElement(l.cC, {
+						[l.USER_AGENT]: {
+							ruleName: l.USER_AGENT,
+							displayName: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.user_agent.name"
 							}),
 							capability: "security_rules.rules.capability.client_side_security",
-							wafRulesOverview: p().createElement(l.cC, {
+							wafRulesOverview: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.user_agent.wafRulesOverview",
 								Components: [e.QV],
 								componentProps: [{
@@ -14283,20 +14352,20 @@
 								}]
 							})
 						},
-						[d.EMAIL_VALIDITY]: {
-							ruleName: d.EMAIL_VALIDITY,
+						[l.EMAIL_VALIDITY]: {
+							ruleName: l.EMAIL_VALIDITY,
 							capability: "security_rules.rules.capability.fraud",
-							displayName: p().createElement(l.cC, {
+							displayName: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.disposable_email.name"
 							}),
-							wafRulesOverview: p().createElement(l.cC, {
+							wafRulesOverview: p().createElement(u.cC, {
 								id: "custom-rules.templates.rule.disposable_email.wafRulesOverview"
 							}),
 							hasWafPermission: !0
 						}
 					}),
 					[m.X.WAF_RULES]: {
-						[d.MTLS_ACCESS]: {
+						[l.MTLS_ACCESS]: {
 							description: "custom-rules.templates.rule.mtls_access.name",
 							expression: '(not cf.tls_client_auth.cert_verified and http.request.uri.path in {""})',
 							helper: {
@@ -14306,7 +14375,7 @@
 							defaultAction: "block",
 							emptySelectValue: !0
 						},
-						[d.ZONE_LOCKDOWN]: {
+						[l.ZONE_LOCKDOWN]: {
 							description: "custom-rules.templates.rule.zone_lockdown.name",
 							expression: '(not ip.src in $0 and http.request.uri.path in {""})',
 							helper: {
@@ -14316,7 +14385,7 @@
 							defaultAction: "block",
 							emptySelectValue: !0
 						},
-						[d.USER_AGENT]: {
+						[l.USER_AGENT]: {
 							description: "custom-rules.templates.rule.user_agent.name",
 							expression: '(http.user_agent eq "BadBot/1.0.2 (+http://bad.bot))"',
 							helper: {
@@ -14326,19 +14395,19 @@
 							defaultAction: "block",
 							emptySelectValue: !0
 						},
-						[d.EMAIL_VALIDITY]: {
+						[l.EMAIL_VALIDITY]: {
 							description: "custom-rules.templates.rule.disposable_email.name",
 							expression: "(cf.fraud_detection.disposable_email)",
 							defaultAction: "block",
 							emptySelectValue: !0
 						},
-						[d.GEOGRAPHY_BASE]: {
+						[l.GEOGRAPHY_BASE]: {
 							description: "custom-rules.templates.rule.geography.name",
 							expression: '(ip.src.asnum eq "") or (ip.src.country eq "") or (ip.src.continent eq "")',
 							defaultAction: "block",
 							emptySelectValue: !0
 						},
-						[d.IP_BASED]: {
+						[l.IP_BASED]: {
 							description: "firewall.tools.toast.ip",
 							expression: '(ip.src eq "")',
 							defaultAction: "block",
@@ -14346,7 +14415,7 @@
 						}
 					}
 				},
-				h = {
+				A = {
 					[m.X.WAF_RULES]: {
 						[c.LEAKED_CREDENTIALS]: {
 							ruleName: c.LEAKED_CREDENTIALS,
@@ -14366,10 +14435,10 @@
 					[m.X.UI_SECTION]: {
 						[c.LEAKED_CREDENTIALS]: {
 							ruleName: c.LEAKED_CREDENTIALS,
-							displayName: p().createElement(l.cC, {
+							displayName: p().createElement(u.cC, {
 								id: "rules.template.rate-limiting.lcc"
 							}),
-							wafRulesOverview: p().createElement(l.cC, {
+							wafRulesOverview: p().createElement(u.cC, {
 								id: "rules.template.rate-limiting.lcc.description"
 							})
 						}
@@ -14378,15 +14447,15 @@
 			let T = function(y) {
 				return y.DISCOVERY = "discovery", y.SEQUENCES = "sequences", y.SCHEMA_VALIDATION = "schema-validation", y.SETTINGS = "settings", y.API_RULES = "api-rules", y.UPGRADE = "upgrade", y
 			}({});
-			const M = u({}, i.g, {
-				[o.df.HttpRequestFirewallManaged]: u({}, i.g[o.df.HttpRequestFirewallManaged], {
+			const M = d({}, i.g, {
+				[o.df.HttpRequestFirewallManaged]: d({}, i.g[o.df.HttpRequestFirewallManaged], {
 					EXCEPTION_DOC_DESCRIPTION: "rule.exception.doc_description"
 				}),
-				[o.df.HttpRequestFirewallCustom]: u({}, i.g[o.df.HttpRequestFirewallCustom], {
+				[o.df.HttpRequestFirewallCustom]: d({}, i.g[o.df.HttpRequestFirewallCustom], {
 					DOC_DESCRIPTION: "custom-rules.card.doc_description",
 					DOC_LINK_CREATE: "https://developers.cloudflare.com/waf/custom-rules/create-dashboard/"
 				}),
-				[o.df.HttpRateLimit]: u({}, i.g[o.df.HttpRateLimit], {
+				[o.df.HttpRateLimit]: d({}, i.g[o.df.HttpRateLimit], {
 					DOC_DESCRIPTION: "rate-limiting.doc.description",
 					DOC_LINK_CREATE: "https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/"
 				}),
@@ -14410,9 +14479,9 @@
 				return y.APP_SEC_MVP = "app-security-navigation-mvp", y
 			}({})
 		},
-		"../react/pages/security/resources/types.ts": function(x, v, n) {
+		"../react/pages/security/resources/types.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				X: function() {
 					return e
 				}
@@ -14421,23 +14490,80 @@
 				return o.UI_SECTION = "UI_SECTION", o.WAF_RULES = "WAF_RULES", o
 			}({})
 		},
-		"../react/pages/security/settings/hooks/index.ts": function(x, v, n) {
+		"../react/pages/security/security-rules/resources/sparrowEvents.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
+				j: function() {
+					return d
+				},
+				y: function() {
+					return i
+				}
+			});
+			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
+				o = n.n(e);
+
+			function s(g) {
+				for (var t = 1; t < arguments.length; t++) {
+					var r = arguments[t] != null ? Object(arguments[t]) : {},
+						a = Object.keys(r);
+					typeof Object.getOwnPropertySymbols == "function" && a.push.apply(a, Object.getOwnPropertySymbols(r).filter(function(l) {
+						return Object.getOwnPropertyDescriptor(r, l).enumerable
+					})), a.forEach(function(l) {
+						p(g, l, r[l])
+					})
+				}
+				return g
+			}
+
+			function p(g, t, r) {
+				return t = u(t), t in g ? Object.defineProperty(g, t, {
+					value: r,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : g[t] = r, g
+			}
+
+			function u(g) {
+				var t = m(g, "string");
+				return typeof t == "symbol" ? t : String(t)
+			}
+
+			function m(g, t) {
+				if (typeof g != "object" || g === null) return g;
+				var r = g[Symbol.toPrimitive];
+				if (r !== void 0) {
+					var a = r.call(g, t || "default");
+					if (typeof a != "object") return a;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (t === "string" ? String : Number)(g)
+			}
+			let i = function(g) {
+				return g.CLICK_OPT_IN = "click opt in security navigation", g.CLICK_OPT_IN_BUTTON = "click opt in button", g.CLICK_OPT_OUT_BUTTON = "click opt out button", g.CLICK_NEXT_STEP = "click opt in next step", g.CLICK_DISMISS_INELIGIBILITY = "click dismiss ineligible zone", g
+			}({});
+			const d = (g, t = {}) => {
+				o().sendEvent(g, s({}, t || {}))
+			}
+		},
+		"../react/pages/security/settings/hooks/index.ts": function(x, E, n) {
+			"use strict";
+			n.d(E, {
 				Xu: function() {
 					return de
 				},
 				Io: function() {
-					return K
+					return G
 				},
 				FQ: function() {
-					return Ie
+					return Le
 				},
 				vU: function() {
-					return Ee
+					return _e
 				},
 				M: function() {
-					return V
+					return K
 				},
 				d7: function() {
 					return ue
@@ -14446,16 +14572,16 @@
 					return ce
 				},
 				Np: function() {
-					return Ue
+					return ke
 				},
 				WR: function() {
-					return P
+					return b
 				},
 				vE: function() {
 					return U
 				},
 				bE: function() {
-					return $e
+					return xe
 				},
 				u_: function() {
 					return ae
@@ -14464,103 +14590,103 @@
 					return Z
 				},
 				pf: function() {
-					return q
+					return J
 				}
 			});
 			var e = n("../../../../node_modules/react-query/es/index.js"),
 				o = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http");
-			const s = async Q => {
+			const s = async X => {
 				var re, me;
-				const k = await (0, o.get)(`/zones/${Q}/content-upload-scan/settings`, {
+				const k = await (0, o.get)(`/zones/${X}/content-upload-scan/settings`, {
 					hideErrorAlert: !0
 				});
 				return ((re = k == null ? void 0 : k.body) === null || re === void 0 || (me = re.result) === null || me === void 0 ? void 0 : me.value) === "enabled"
-			}, p = async (Q, re) => (await (0, o.post)(`/zones/${Q}/content-upload-scan/${re?"enable":"disable"}`, {
+			}, p = async (X, re) => (await (0, o.post)(`/zones/${X}/content-upload-scan/${re?"enable":"disable"}`, {
 				hideErrorAlert: !0
-			}), re), l = async Q => {
+			}), re), u = async X => {
 				var re;
-				const me = await (0, o.get)(`/zones/${Q}/content-upload-scan/payloads`, {
+				const me = await (0, o.get)(`/zones/${X}/content-upload-scan/payloads`, {
 					hideErrorAlert: !0
 				});
 				return ((re = me == null ? void 0 : me.body) === null || re === void 0 ? void 0 : re.result) || []
-			}, m = async (Q, re) => {
+			}, m = async (X, re) => {
 				var me;
-				const k = await (0, o.post)(`/zones/${Q}/content-upload-scan/payloads`, {
+				const k = await (0, o.post)(`/zones/${X}/content-upload-scan/payloads`, {
 					body: [re]
 				});
 				return (me = k == null ? void 0 : k.body) === null || me === void 0 ? void 0 : me.result
-			}, i = async (Q, re) => (await (0, o.del)(`/zones/${Q}/content-upload-scan/payloads/${re}`, {
+			}, i = async (X, re) => (await (0, o.del)(`/zones/${X}/content-upload-scan/payloads/${re}`, {
 				hideErrorAlert: !0
-			}), re), u = async Q => {
+			}), re), d = async X => {
 				var re, me;
-				const k = await (0, o.get)(`/zones/${Q}/leaked-credential-checks`, {
+				const k = await (0, o.get)(`/zones/${X}/leaked-credential-checks`, {
 					hideErrorAlert: !0
 				});
 				return !!((re = k == null ? void 0 : k.body) === null || re === void 0 || (me = re.result) === null || me === void 0 ? void 0 : me.enabled)
-			}, _ = async (Q, re) => {
+			}, g = async (X, re) => {
 				var me, k;
-				const pe = await (0, o.post)(`/zones/${Q}/leaked-credential-checks`, {
+				const pe = await (0, o.post)(`/zones/${X}/leaked-credential-checks`, {
 					body: {
 						enabled: re
 					}
 				});
 				return !!((me = pe == null ? void 0 : pe.body) === null || me === void 0 || (k = me.result) === null || k === void 0 ? void 0 : k.enabled)
-			}, t = async Q => {
+			}, t = async X => {
 				var re;
-				const me = await (0, o.get)(`/zones/${Q}/leaked-credential-checks/detections`, {
+				const me = await (0, o.get)(`/zones/${X}/leaked-credential-checks/detections`, {
 					hideErrorAlert: !0
 				});
 				return (re = me == null ? void 0 : me.body) === null || re === void 0 ? void 0 : re.result
-			}, r = async (Q, re) => {
+			}, r = async (X, re) => {
 				var me;
-				const k = await (0, o.post)(`/zones/${Q}/leaked-credential-checks/detections`, {
+				const k = await (0, o.post)(`/zones/${X}/leaked-credential-checks/detections`, {
 					body: re
 				});
 				return (me = k == null ? void 0 : k.body) === null || me === void 0 ? void 0 : me.result
-			}, a = async (Q, re) => (await (0, o.del)(`/zones/${Q}/leaked-credential-checks/detections/${re}`, {
+			}, a = async (X, re) => (await (0, o.del)(`/zones/${X}/leaked-credential-checks/detections/${re}`, {
 				hideErrorAlert: !0
-			}), re), d = async (Q, re) => {
-				await (0, o.put)(`/zones/${Q}/security-center/securitytxt`, {
+			}), re), l = async (X, re) => {
+				await (0, o.put)(`/zones/${X}/security-center/securitytxt`, {
 					body: re
 				})
-			}, c = async Q => {
-				await (0, o.del)(`/zones/${Q}/security-center/securitytxt`)
-			}, g = async Q => (await (0, o.get)(`/zones/${Q}/security-center/securitytxt`)).body;
-			var f = n("webpack/sharing/consume/default/react/react"),
-				A = n("webpack/sharing/consume/default/react-redux/react-redux"),
-				h = n("../react/pages/security/settings/resources/index.ts"),
+			}, c = async X => {
+				await (0, o.del)(`/zones/${X}/security-center/securitytxt`)
+			}, f = async X => (await (0, o.get)(`/zones/${X}/security-center/securitytxt`)).body;
+			var _ = n("webpack/sharing/consume/default/react/react"),
+				h = n("webpack/sharing/consume/default/react-redux/react-redux"),
+				A = n("../react/pages/security/settings/resources/index.ts"),
 				T = n("../react/common/hooks/useZoneEntitlement.ts"),
 				M = n("../react/common/hooks/useGate.ts"),
 				C = n("../react/pages/security/api-shield/utils/useApiShield.tsx"),
 				y = n("../react/pages/security/api-shield/entitlements.tsx"),
-				N = n("../../../../node_modules/yup/es/index.js"),
+				S = n("../../../../node_modules/yup/es/index.js"),
 				L = n("../react/utils/translator.tsx");
-			const P = () => (0, A.useSelector)(h.ui),
-				I = "central_endpoint_list.endpoint_labels_allowed",
+			const b = () => (0, h.useSelector)(A.ui),
+				P = "central_endpoint_list.endpoint_labels_allowed",
 				O = "system-and-user-generated-labels",
-				S = () => !!(0, M.Z)(O),
-				B = () => !!(0, T.Z)(I),
+				D = () => !!(0, M.Z)(O),
+				B = () => !!(0, T.Z)(P),
 				U = () => {
-					const Q = S(),
+					const X = D(),
 						re = B();
 					return {
-						isLabelsGateOpen: Q,
+						isLabelsGateOpen: X,
 						hasEndpointLabelsEntitlement: re,
-						hasLabels: Q && re
+						hasLabels: X && re
 					}
 				},
 				Z = () => {
 					const {
-						hasApiShields: Q
+						hasApiShields: X
 					} = (0, C.R)(), {
 						hasLabels: re
 					} = U(), me = (0, y.Dg)();
-					return re && me && Q
+					return re && me && X
 				},
 				ae = () => {
 					const {
-						t: Q
-					} = (0, L.QT)(), re = N.Z_().required(Q("common.field_is_required")).max(24, Q("labels.apply.form.name.error.max_characters")).matches(h.DG, Q("labels.apply.form.name.error.special_characters")).test("no-cf-prefix", Q("labels.apply.form.name.error.cf_forbidden"), pe => !h.aW.test(pe)), me = {
+						t: X
+					} = (0, L.QT)(), re = S.Z_().required(X("common.field_is_required")).max(24, X("labels.apply.form.name.error.max_characters")).matches(A.DG, X("labels.apply.form.name.error.special_characters")).test("no-cf-prefix", X("labels.apply.form.name.error.cf_forbidden"), pe => !A.aW.test(pe)), me = {
 						NAMES: {
 							CREATE: "labels-create-form",
 							EDIT: "labels-edit-form",
@@ -14570,19 +14696,19 @@
 							name: "",
 							description: ""
 						},
-						VALIDATION_SCHEMA: pe => N.Ry().shape({
-							[h.n5.NAME]: pe ? N.Z_() : re,
-							[h.n5.DESCRIPTION]: pe ? N.Z_().optional() : N.Z_().max(150, Q("labels.apply.form.description.error.max_characters"))
+						VALIDATION_SCHEMA: pe => S.Ry().shape({
+							[A.n5.NAME]: pe ? S.Z_() : re,
+							[A.n5.DESCRIPTION]: pe ? S.Z_().optional() : S.Z_().max(150, X("labels.apply.form.description.error.max_characters"))
 						})
 					}, k = {
 						NAME: "edit-labels-modal-form",
 						INITIAL_VALUES: {
-							[h.N2.NAME]: "",
-							[h.N2.SOURCE]: h.W3,
-							[h.N2.NEW_LABEL_NAME]: ""
+							[A.N2.NAME]: "",
+							[A.N2.SOURCE]: A.W3,
+							[A.N2.NEW_LABEL_NAME]: ""
 						},
-						VALIDATION_SCHEMA: () => N.Ry().shape({
-							[h.N2.NEW_LABEL_NAME]: re
+						VALIDATION_SCHEMA: () => S.Ry().shape({
+							[A.N2.NEW_LABEL_NAME]: re
 						})
 					};
 					return {
@@ -14590,67 +14716,67 @@
 						EDIT_LABELS_MODAL_FORM: k
 					}
 				},
-				Ee = ({
-					modalHeaderFixedHeight: Q = 62,
+				_e = ({
+					modalHeaderFixedHeight: X = 62,
 					modalDefaultPaddings: re = 16
 				} = {}) => {
-					const me = (0, f.useRef)(null),
-						k = (0, f.useRef)(null),
-						[pe, Se] = (0, f.useState)(0),
-						[Re, ze] = (0, f.useState)(0),
-						be = `calc(100vh - ${pe}px - ${Re}px - ${re}px)`,
-						[ke, Fe] = (0, f.useState)("");
-					return (0, f.useEffect)(() => {
+					const me = (0, _.useRef)(null),
+						k = (0, _.useRef)(null),
+						[pe, Ie] = (0, _.useState)(0),
+						[Be, ze] = (0, _.useState)(0),
+						be = `calc(100vh - ${pe}px - ${Be}px - ${re}px)`,
+						[Re, je] = (0, _.useState)("");
+					return (0, _.useEffect)(() => {
 						const We = () => {
-							var Ye, H, se, fe;
-							const we = me == null || (Ye = me.current) === null || Ye === void 0 ? void 0 : Ye.offsetHeight,
-								Ne = k == null || (H = k.current) === null || H === void 0 ? void 0 : H.offsetHeight,
-								Be = ((se = we) !== null && se !== void 0 ? se : 0) + Q,
-								Qe = (fe = Ne) !== null && fe !== void 0 ? fe : 0;
-							Se(Be), ze(Qe)
+							var Xe, V, se, ge;
+							const Me = me == null || (Xe = me.current) === null || Xe === void 0 ? void 0 : Xe.offsetHeight,
+								we = k == null || (V = k.current) === null || V === void 0 ? void 0 : V.offsetHeight,
+								Ne = ((se = Me) !== null && se !== void 0 ? se : 0) + X,
+								Ye = (ge = we) !== null && ge !== void 0 ? ge : 0;
+							Ie(Ne), ze(Ye)
 						};
 						return We(), window.addEventListener("resize", We), () => window.removeEventListener("resize", We)
 					}, []), {
-						searchTerm: ke,
-						setSearchTerm: Fe,
+						searchTerm: Re,
+						setSearchTerm: je,
 						scrollableSectionMaxHeight: be,
 						topMenuRef: me,
 						bottomMenuRef: k
 					}
 				},
-				de = Q => {
-					const re = P(),
+				de = X => {
+					const re = b(),
 						me = (0, e.useQueryClient)(),
 						k = (0, e.useQuery)({
-							queryKey: `content-scanning-enabled-${Q}`,
-							queryFn: () => s(Q),
+							queryKey: `content-scanning-enabled-${X}`,
+							queryFn: () => s(X),
 							enabled: re
 						}),
 						pe = (0, e.useQuery)({
-							queryKey: `content-scanning-detections-${Q}`,
-							queryFn: () => l(Q),
+							queryKey: `content-scanning-detections-${X}`,
+							queryFn: () => u(X),
 							enabled: re && !!(k == null ? void 0 : k.data)
 						}),
-						Se = (0, e.useMutation)({
+						Ie = (0, e.useMutation)({
 							mutationFn: async ({
 								enabled: be
-							}) => await p(Q, be),
+							}) => await p(X, be),
 							onSuccess: be => {
-								me.setQueryData([`content-scanning-enabled-${Q}`], be)
+								me.setQueryData([`content-scanning-enabled-${X}`], be)
 							}
 						}),
-						Re = (0, e.useMutation)({
-							mutationFn: be => m(Q, be),
+						Be = (0, e.useMutation)({
+							mutationFn: be => m(X, be),
 							onSuccess: be => {
-								me.setQueryData([`content-scanning-detections-${Q}`], be)
+								me.setQueryData([`content-scanning-detections-${X}`], be)
 							}
 						}),
 						ze = (0, e.useMutation)({
-							mutationFn: be => i(Q, be),
+							mutationFn: be => i(X, be),
 							onSuccess: be => {
-								var ke;
-								const Fe = (ke = me.getQueryData(`content-scanning-detections-${Q}`)) !== null && ke !== void 0 ? ke : [];
-								me.setQueryData([`content-scanning-detections-${Q}`], Fe.filter(({
+								var Re;
+								const je = (Re = me.getQueryData(`content-scanning-detections-${X}`)) !== null && Re !== void 0 ? Re : [];
+								me.setQueryData([`content-scanning-detections-${X}`], je.filter(({
 									id: We
 								}) => We !== be))
 							}
@@ -14661,65 +14787,65 @@
 						error: k.isError || pe.isError,
 						enabled: {
 							data: k.data,
-							isToggling: Se.isLoading,
-							toggleEnabled: async be => Se.mutateAsync({
+							isToggling: Ie.isLoading,
+							toggleEnabled: async be => Ie.mutateAsync({
 								enabled: be
 							})
 						},
 						detections: {
 							data: pe.data,
-							add: Re.mutateAsync,
+							add: Be.mutateAsync,
 							delete: ze.mutateAsync,
-							loading: Re.isLoading || ze.isLoading
+							loading: Be.isLoading || ze.isLoading
 						}
 					}
 				},
 				ue = () => {
-					const Q = (0, A.useSelector)(h.cN),
-						re = (0, A.useSelector)(h.bH),
-						me = (0, A.useSelector)(h.P3),
-						k = (0, A.useSelector)(h.Ri);
+					const X = (0, h.useSelector)(A.cN),
+						re = (0, h.useSelector)(A.bH),
+						me = (0, h.useSelector)(A.P3),
+						k = (0, h.useSelector)(A.Ri);
 					return {
-						hasEditPermission: Q,
+						hasEditPermission: X,
 						isEnabled: me && (re.hasSimilarLeaked || re.hasUsernameAndPasswordLeaked || k)
 					}
 				},
-				V = Q => {
+				K = X => {
 					const re = ue(),
 						me = (0, e.useQueryClient)(),
 						k = (0, e.useQuery)({
-							queryKey: `leaked-credentials-enabled-${Q}`,
-							queryFn: () => u(Q),
+							queryKey: `leaked-credentials-enabled-${X}`,
+							queryFn: () => d(X),
 							enabled: !!re.isEnabled,
 							retry: 1
 						}),
 						pe = (0, e.useQuery)({
-							queryKey: `leaked-credentials-detections-${Q}`,
-							queryFn: () => t(Q),
+							queryKey: `leaked-credentials-detections-${X}`,
+							queryFn: () => t(X),
 							enabled: !!re.isEnabled && !!(k == null ? void 0 : k.data)
 						}),
-						Se = (0, e.useMutation)({
+						Ie = (0, e.useMutation)({
 							mutationFn: ({
 								enabled: be
-							}) => _(Q, be),
+							}) => g(X, be),
 							onSuccess: be => {
-								me.setQueryData([`leaked-credentials-enabled-${Q}`], be)
+								me.setQueryData([`leaked-credentials-enabled-${X}`], be)
 							}
 						}),
-						Re = (0, e.useMutation)({
-							mutationFn: async be => await r(Q, be),
+						Be = (0, e.useMutation)({
+							mutationFn: async be => await r(X, be),
 							onSuccess: be => {
-								var ke;
-								const Fe = (ke = me.getQueryData(`leaked-credentials-detections-${Q}`)) !== null && ke !== void 0 ? ke : [];
-								me.setQueryData([`leaked-credentials-detections-${Q}`], [...Fe, be])
+								var Re;
+								const je = (Re = me.getQueryData(`leaked-credentials-detections-${X}`)) !== null && Re !== void 0 ? Re : [];
+								me.setQueryData([`leaked-credentials-detections-${X}`], [...je, be])
 							}
 						}),
 						ze = (0, e.useMutation)({
-							mutationFn: be => a(Q, be),
+							mutationFn: be => a(X, be),
 							onSuccess: be => {
-								var ke;
-								const Fe = (ke = me.getQueryData(`leaked-credentials-detections-${Q}`)) !== null && ke !== void 0 ? ke : [];
-								me.setQueryData([`leaked-credentials-detections-${Q}`], Fe.filter(({
+								var Re;
+								const je = (Re = me.getQueryData(`leaked-credentials-detections-${X}`)) !== null && Re !== void 0 ? Re : [];
+								me.setQueryData([`leaked-credentials-detections-${X}`], je.filter(({
 									id: We
 								}) => We !== be))
 							}
@@ -14731,44 +14857,44 @@
 						error: k.isError || k.isError,
 						enabled: {
 							data: k.data,
-							isToggling: Se.isLoading,
-							toggleEnabled: async be => Se.mutateAsync({
+							isToggling: Ie.isLoading,
+							toggleEnabled: async be => Ie.mutateAsync({
 								enabled: be
 							})
 						},
 						detections: {
 							data: pe.data,
-							add: Re.mutateAsync,
+							add: Be.mutateAsync,
 							delete: ze.mutateAsync,
-							loading: Re.isLoading || ze.isLoading
+							loading: Be.isLoading || ze.isLoading
 						}
 					}
 				};
-			var Y = n("../react/common/selectors/zoneSelectors.ts"),
-				G = n("../react/common/utils/useQueryCache.ts"),
-				b = n("../react/app/redux/index.ts");
+			var Q = n("../react/common/selectors/zoneSelectors.ts"),
+				H = n("../react/common/utils/useQueryCache.ts"),
+				I = n("../react/app/redux/index.ts");
 			const F = "security-txt",
-				te = {
+				ne = {
 					securityTxt: ({
-						zoneId: Q
-					}) => [F, Q]
+						zoneId: X
+					}) => [F, X]
 				},
-				ce = Q => (0, e.useQuery)({
-					queryKey: te.securityTxt({
-						zoneId: Q
+				ce = X => (0, e.useQuery)({
+					queryKey: ne.securityTxt({
+						zoneId: X
 					}),
-					queryFn: () => g(Q),
+					queryFn: () => f(X),
 					select: re => re.result
 				}),
-				K = () => {
-					const Q = (0, b.p4)(Y.Cu),
+				G = () => {
+					const X = (0, I.p4)(Q.Cu),
 						{
 							invalidate: re
-						} = (0, G.o)(te.securityTxt({
-							zoneId: Q
+						} = (0, H.o)(ne.securityTxt({
+							zoneId: X
 						}));
 					return (0, e.useMutation)({
-						mutationFn: () => c(Q),
+						mutationFn: () => c(X),
 						onSuccess: async () => {
 							await re(void 0, {
 								exact: !1,
@@ -14777,14 +14903,14 @@
 						}
 					})
 				},
-				q = Q => {
+				J = X => {
 					const {
 						invalidate: re
-					} = (0, G.o)(te.securityTxt({
-						zoneId: Q
+					} = (0, H.o)(ne.securityTxt({
+						zoneId: X
 					}));
 					return (0, e.useMutation)({
-						mutationFn: me => d(Q, me),
+						mutationFn: me => l(X, me),
 						onSuccess: async () => {
 							await re(void 0, {
 								exact: !1,
@@ -14793,266 +14919,266 @@
 						}
 					})
 				};
-			var $ = n("../../../../node_modules/lodash/isEqual.js"),
-				X = n.n($),
-				W = n("../react/pages/security/settings/pages/labels/api/helpers.ts");
+			var W = n("../../../../node_modules/lodash/isEqual.js"),
+				q = n.n(W),
+				$ = n("../react/pages/security/settings/pages/labels/api/helpers.ts");
 
-			function ne(Q) {
+			function te(X) {
 				for (var re = 1; re < arguments.length; re++) {
 					var me = arguments[re] != null ? Object(arguments[re]) : {},
 						k = Object.keys(me);
 					typeof Object.getOwnPropertySymbols == "function" && k.push.apply(k, Object.getOwnPropertySymbols(me).filter(function(pe) {
 						return Object.getOwnPropertyDescriptor(me, pe).enumerable
 					})), k.forEach(function(pe) {
-						ve(Q, pe, me[pe])
+						Ee(X, pe, me[pe])
 					})
 				}
-				return Q
+				return X
 			}
 
-			function ve(Q, re, me) {
-				return re = Te(re), re in Q ? Object.defineProperty(Q, re, {
+			function Ee(X, re, me) {
+				return re = Te(re), re in X ? Object.defineProperty(X, re, {
 					value: me,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : Q[re] = me, Q
+				}) : X[re] = me, X
 			}
 
-			function Te(Q) {
-				var re = xe(Q, "string");
+			function Te(X) {
+				var re = Ue(X, "string");
 				return typeof re == "symbol" ? re : String(re)
 			}
 
-			function xe(Q, re) {
-				if (typeof Q != "object" || Q === null) return Q;
-				var me = Q[Symbol.toPrimitive];
+			function Ue(X, re) {
+				if (typeof X != "object" || X === null) return X;
+				var me = X[Symbol.toPrimitive];
 				if (me !== void 0) {
-					var k = me.call(Q, re || "default");
+					var k = me.call(X, re || "default");
 					if (typeof k != "object") return k;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (re === "string" ? String : Number)(Q)
+				return (re === "string" ? String : Number)(X)
 			}
-			const Ue = Q => {
+			const ke = X => {
 					const {
 						queryKey: re,
 						zoneId: me
-					} = (0, W.hL)(Q), {
+					} = (0, $.hL)(X), {
 						isLoading: k,
 						isError: pe,
-						isSuccess: Se,
-						data: Re,
+						isSuccess: Ie,
+						data: Be,
 						refetch: ze,
 						isRefetching: be
 					} = (0, e.useQuery)({
 						queryKey: re,
-						queryFn: () => W.Mi.getLabels(ne({
+						queryFn: () => $.Mi.getLabels(te({
 							zoneId: me
-						}, Q)),
+						}, X)),
 						onSuccess: () => {
-							var ke;
-							const Fe = Q == null || (ke = Q.filters) === null || ke === void 0 ? void 0 : ke.source;
-							(Fe === h.LABEL_SOURCES.MANAGED || Fe === h.LABEL_SOURCES.USER) && (0, h.Tf)({
-								name: h.QJ.FILTER_USER_MANAGED_LABELS,
-								product: h.Iv.SECURITY_SETTINGS,
-								pageName: h.R.LABELS_LIST,
-								type: Fe
+							var Re;
+							const je = X == null || (Re = X.filters) === null || Re === void 0 ? void 0 : Re.source;
+							(je === A.LABEL_SOURCES.MANAGED || je === A.LABEL_SOURCES.USER) && (0, A.Tf)({
+								name: A.QJ.FILTER_USER_MANAGED_LABELS,
+								product: A.Iv.SECURITY_SETTINGS,
+								pageName: A.R.LABELS_LIST,
+								type: je
 							})
 						}
 					});
 					return {
-						data: Re == null ? void 0 : Re.result,
-						errors: Re == null ? void 0 : Re.errors,
-						paginationData: Re == null ? void 0 : Re.result_info,
+						data: Be == null ? void 0 : Be.result,
+						errors: Be == null ? void 0 : Be.errors,
+						paginationData: Be == null ? void 0 : Be.result_info,
 						isLoading: k,
 						isError: pe,
-						isSuccess: Se,
+						isSuccess: Ie,
 						refetch: ze,
 						isRefetching: be
 					}
 				},
-				$e = ({
-					labels: Q,
+				xe = ({
+					labels: X,
 					preselectedLabels: re
 				}) => {
 					const {
 						USER: me,
 						MANAGED: k
-					} = h.LABEL_SOURCES, [pe, Se] = (0, f.useState)({
+					} = A.LABEL_SOURCES, [pe, Ie] = (0, _.useState)({
 						[me]: [],
 						[k]: []
-					}), [Re, ze] = (0, f.useState)(new Set), be = Re.size > 0, [ke, Fe] = (0, f.useState)(!1), We = fe => {
-						ze(we => {
-							const Ne = new Set(we);
-							return Ne.has(fe.name) ? Ne.delete(fe.name) : Ne.add(fe.name), Ne
+					}), [Be, ze] = (0, _.useState)(new Set), be = Be.size > 0, [Re, je] = (0, _.useState)(!1), We = ge => {
+						ze(Me => {
+							const we = new Set(Me);
+							return we.has(ge.name) ? we.delete(ge.name) : we.add(ge.name), we
 						})
-					}, Ye = fe => Re.has(fe.name), H = (fe, we) => {
-						const Ne = Ye(fe) ? 1 : 0;
-						return (Ye(we) ? 1 : 0) - Ne
-					}, se = fe => {
-						Se(we => ({
-							[me]: [...fe ? fe[me] : we[me]].sort(H),
-							[k]: [...fe ? fe[k] : we[k]].sort(H)
+					}, Xe = ge => Be.has(ge.name), V = (ge, Me) => {
+						const we = Xe(ge) ? 1 : 0;
+						return (Xe(Me) ? 1 : 0) - we
+					}, se = ge => {
+						Ie(Me => ({
+							[me]: [...ge ? ge[me] : Me[me]].sort(V),
+							[k]: [...ge ? ge[k] : Me[k]].sort(V)
 						}))
 					};
-					return (0, f.useEffect)(() => {
-						if (Q && !ke) {
+					return (0, _.useEffect)(() => {
+						if (X && !Re) {
 							if (re) {
-								const fe = new Set;
-								Q.forEach(we => {
-									re.some(Ne => X()(Ne, we)) && fe.add(we.name)
-								}), ze(fe)
+								const ge = new Set;
+								X.forEach(Me => {
+									re.some(we => q()(we, Me)) && ge.add(Me.name)
+								}), ze(ge)
 							}
-							Fe(!0)
+							je(!0)
 						}
-					}, [Q, re, ke]), (0, f.useEffect)(() => {
-						if (Q && ke) {
-							const fe = Q.reduce((Ne, Be) => (Be.source === me ? Ne[me].push(Be) : Be.source === k && Ne[k].push(Be), Ne), {
+					}, [X, re, Re]), (0, _.useEffect)(() => {
+						if (X && Re) {
+							const ge = X.reduce((we, Ne) => (Ne.source === me ? we[me].push(Ne) : Ne.source === k && we[k].push(Ne), we), {
 									[me]: [],
 									[k]: []
 								}),
-								we = {
-									[me]: fe[me].sort(H),
-									[k]: fe[k].sort(H)
+								Me = {
+									[me]: ge[me].sort(V),
+									[k]: ge[k].sort(V)
 								};
-							Se(we)
+							Ie(Me)
 						}
-					}, [me, k, Q, ke]), {
+					}, [me, k, X, Re]), {
 						userAndManagedLabels: pe,
-						setUserAndManagedLabels: Se,
+						setUserAndManagedLabels: Ie,
 						toggleSelectedLabel: We,
-						isLabelSelected: Ye,
+						isLabelSelected: Xe,
 						sortLabelsBySelectedStatus: se,
 						hasLabelsSelected: be
 					}
 				};
 			var Ke = n("../react/pages/security/settings/resources/selectors.ts");
-			const Ie = (Q = "") => {
-				const re = (0, b.p4)(Ke.Xs),
-					me = re && (Q == null ? void 0 : Q.includes("cf.threat_score"));
+			const Le = (X = "") => {
+				const re = (0, I.p4)(Ke.Xs),
+					me = re && (X == null ? void 0 : X.includes("cf.threat_score"));
 				return {
 					isSecurityLevelDeprecated: re,
 					hasDeprecatedParameter: me
 				}
 			}
 		},
-		"../react/pages/security/settings/index.tsx": function(x, v, n) {
+		"../react/pages/security/settings/index.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				FQ: function() {
-					return u.FQ
+					return d.FQ
 				},
 				Io: function() {
-					return u.Io
+					return d.Io
 				},
 				Iv: function() {
-					return _.Iv
+					return g.Iv
 				},
 				M: function() {
-					return u.M
+					return d.M
 				},
 				Np: function() {
-					return u.Np
+					return d.Np
 				},
 				Oz: function() {
-					return u.Oz
+					return d.Oz
 				},
 				QJ: function() {
-					return _.QJ
+					return g.QJ
 				},
 				R: function() {
-					return _.R
+					return g.R
 				},
 				Tf: function() {
-					return _.Tf
+					return g.Tf
 				},
 				WR: function() {
-					return u.WR
+					return d.WR
 				},
 				Xs: function() {
-					return _.Xs
+					return g.Xs
 				},
 				Xu: function() {
-					return u.Xu
+					return d.Xu
 				},
 				ZF: function() {
-					return _.ZF
+					return g.ZF
 				},
 				bE: function() {
-					return u.bE
+					return d.bE
 				},
 				bH: function() {
-					return _.bH
+					return g.bH
 				},
 				dC: function() {
-					return _.dC
+					return g.dC
 				},
 				eC: function() {
-					return _.eC
+					return g.eC
 				},
 				kU: function() {
-					return u.kU
+					return d.kU
 				},
 				m8: function() {
-					return _.m8
+					return g.m8
 				},
 				pf: function() {
-					return u.pf
+					return d.pf
 				},
 				ui: function() {
-					return _.ui
+					return g.ui
 				},
 				vE: function() {
-					return u.vE
+					return d.vE
 				},
 				vc: function() {
-					return _.vc
+					return g.vc
 				},
 				zF: function() {
-					return _.zF
+					return g.zF
 				}
 			});
 			var e = n("../react/common/components/AccessCheck/index.ts"),
 				o = n("../react/app/components/Forbidden.jsx"),
 				s = n("webpack/sharing/consume/default/react/react"),
 				p = n.n(s),
-				l = n("../../../../node_modules/@cloudflare/component-page/es/index.js"),
+				u = n("../../../../node_modules/@cloudflare/component-page/es/index.js"),
 				m = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				i = n.n(m),
-				u = n("../react/pages/security/settings/hooks/index.ts"),
-				_ = n("../react/pages/security/settings/resources/index.ts");
-			const t = p().lazy(() => Promise.all([n.e(37800), n.e(39074), n.e(16691), n.e(19341), n.e(12174), n.e(57062), n.e(22952), n.e(4e4), n.e(51436), n.e(75136), n.e(68204), n.e(2515), n.e(8924), n.e(77216), n.e(40517), n.e(39760), n.e(65022), n.e(60734), n.e(25390), n.e(95472), n.e(9147), n.e(68665), n.e(87940), n.e(42185)]).then(n.bind(n, "../react/pages/security/settings/SettingsRoute.tsx"))),
+				d = n("../react/pages/security/settings/hooks/index.ts"),
+				g = n("../react/pages/security/settings/resources/index.ts");
+			const t = p().lazy(() => Promise.all([n.e(37800), n.e(39074), n.e(16691), n.e(19341), n.e(12174), n.e(57062), n.e(22952), n.e(4e4), n.e(51436), n.e(70618), n.e(68204), n.e(2515), n.e(8924), n.e(77216), n.e(40517), n.e(39760), n.e(65022), n.e(60734), n.e(25390), n.e(95472), n.e(9147), n.e(68665), n.e(87940), n.e(42185)]).then(n.bind(n, "../react/pages/security/settings/SettingsRoute.tsx"))),
 				r = () => {
 					const {
 						t: a
-					} = (0, m.useI18n)(), d = (0, e.xk)("waf");
-					return p().createElement(l.T3, {
+					} = (0, m.useI18n)(), l = (0, e.xk)("waf");
+					return p().createElement(u.T3, {
 						parentPageLabel: a("navigation.zone.security"),
 						title: a("navigation.zone.security.settings"),
 						type: "narrow"
-					}, d.read ? p().createElement(t, null) : p().createElement(o.Z, null))
+					}, l.read ? p().createElement(t, null) : p().createElement(o.Z, null))
 				};
-			v.ZP = r
+			E.ZP = r
 		},
-		"../react/pages/security/settings/pages/labels/api/helpers.ts": function(x, v, n) {
+		"../react/pages/security/settings/pages/labels/api/helpers.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Mi: function() {
 					return T
 				},
 				hL: function() {
-					return h
+					return A
 				}
 			});
 			var e = n("../react/app/redux/index.ts"),
 				o = n("../react/common/selectors/zoneSelectors.ts"),
 				s = n("../react/common/utils/useQueryCache.ts"),
 				p = n("../react/pages/security/settings/resources/constants.ts"),
-				l = n("../react/common/hooks/useAccountId.ts"),
+				u = n("../react/common/hooks/useAccountId.ts"),
 				m = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
 				i = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
-			const u = {
+			const d = {
 				labels: (0, i.BC)`/zones/${"zoneId"}/api_gateway/labels`,
 				userLabel: (0, i.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}`,
 				userLabels: (0, i.BC)`/zones/${"zoneId"}/api_gateway/labels/user`,
@@ -15062,105 +15188,105 @@
 				userLabelOperations: (0, i.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}/resources/operation`,
 				managedLabelOperations: (0, i.BC)`/zones/${"zoneId"}/api_gateway/labels/managed/${"labelName"}/resources/operation`
 			};
-			var _ = n("../../../../node_modules/lodash/lodash.js"),
+			var g = n("../../../../node_modules/lodash/lodash.js"),
 				t = n("../react/pages/security/settings/resources/utils.ts"),
 				r = n("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
 
 			function a(C, y) {
 				if (C == null) return {};
-				var N = d(C, y),
-					L, P;
+				var S = l(C, y),
+					L, b;
 				if (Object.getOwnPropertySymbols) {
-					var I = Object.getOwnPropertySymbols(C);
-					for (P = 0; P < I.length; P++) L = I[P], !(y.indexOf(L) >= 0) && (!Object.prototype.propertyIsEnumerable.call(C, L) || (N[L] = C[L]))
+					var P = Object.getOwnPropertySymbols(C);
+					for (b = 0; b < P.length; b++) L = P[b], !(y.indexOf(L) >= 0) && (!Object.prototype.propertyIsEnumerable.call(C, L) || (S[L] = C[L]))
 				}
-				return N
+				return S
 			}
 
-			function d(C, y) {
+			function l(C, y) {
 				if (C == null) return {};
-				var N = {},
+				var S = {},
 					L = Object.keys(C),
-					P, I;
-				for (I = 0; I < L.length; I++) P = L[I], !(y.indexOf(P) >= 0) && (N[P] = C[P]);
-				return N
+					b, P;
+				for (P = 0; P < L.length; P++) b = L[P], !(y.indexOf(b) >= 0) && (S[b] = C[b]);
+				return S
 			}
 
 			function c(C) {
 				for (var y = 1; y < arguments.length; y++) {
-					var N = arguments[y] != null ? Object(arguments[y]) : {},
-						L = Object.keys(N);
-					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(N).filter(function(P) {
-						return Object.getOwnPropertyDescriptor(N, P).enumerable
-					})), L.forEach(function(P) {
-						g(C, P, N[P])
+					var S = arguments[y] != null ? Object(arguments[y]) : {},
+						L = Object.keys(S);
+					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(S).filter(function(b) {
+						return Object.getOwnPropertyDescriptor(S, b).enumerable
+					})), L.forEach(function(b) {
+						f(C, b, S[b])
 					})
 				}
 				return C
 			}
 
-			function g(C, y, N) {
-				return y = f(y), y in C ? Object.defineProperty(C, y, {
-					value: N,
+			function f(C, y, S) {
+				return y = _(y), y in C ? Object.defineProperty(C, y, {
+					value: S,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : C[y] = N, C
+				}) : C[y] = S, C
 			}
 
-			function f(C) {
-				var y = A(C, "string");
+			function _(C) {
+				var y = h(C, "string");
 				return typeof y == "symbol" ? y : String(y)
 			}
 
-			function A(C, y) {
+			function h(C, y) {
 				if (typeof C != "object" || C === null) return C;
-				var N = C[Symbol.toPrimitive];
-				if (N !== void 0) {
-					var L = N.call(C, y || "default");
+				var S = C[Symbol.toPrimitive];
+				if (S !== void 0) {
+					var L = S.call(C, y || "default");
 					if (typeof L != "object") return L;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (y === "string" ? String : Number)(C)
 			}
-			const h = C => {
+			const A = C => {
 					const y = (0, e.p4)(o.Cu),
-						N = (0, l.F)(),
+						S = (0, u.F)(),
 						L = M.labels(c({
-							accountId: N,
+							accountId: S,
 							zoneId: y
 						}, C ? c({}, C) : {})),
-						P = (0, s.o)(L);
+						b = (0, s.o)(L);
 					return c({
 						zoneId: y,
 						queryKey: L,
 						batchInvalidateLabels: async () => {
-							await P.batchInvalidate({
+							await b.batchInvalidate({
 								queryKeysToPredicateInvalidate: [p.IQ.LABELS],
 								refetchActive: !0,
 								refetchInactive: !0
 							})
 						}
-					}, P)
+					}, b)
 				},
 				T = {
 					getLabels: async C => {
-						var y, N, L, P;
+						var y, S, L, b;
 						let {
-							zoneId: I,
+							zoneId: P,
 							hideErrorAlert: O = !0
-						} = C, S = a(C, ["zoneId", "hideErrorAlert"]);
-						return (await m.get(u.labels.toUrl({
-							zoneId: I
+						} = C, D = a(C, ["zoneId", "hideErrorAlert"]);
+						return (await m.get(d.labels.toUrl({
+							zoneId: P
 						}), {
 							parameters: {
-								page: S == null ? void 0 : S.page,
-								per_page: S == null ? void 0 : S.per_page,
-								with_mapped_resource_counts: S == null ? void 0 : S.with_mapped_resource_counts,
-								filter: S == null || (y = S.filters) === null || y === void 0 ? void 0 : y.search,
-								source: (0, t.sQ)(S == null || (N = S.filters) === null || N === void 0 ? void 0 : N.source),
-								order: S == null || (L = S.sort) === null || L === void 0 ? void 0 : L.id,
-								direction: (S == null ? void 0 : S.sort) ? (S == null || (P = S.sort) === null || P === void 0 ? void 0 : P.desc) ? r.Sr.desc : r.Sr.asc : void 0
+								page: D == null ? void 0 : D.page,
+								per_page: D == null ? void 0 : D.per_page,
+								with_mapped_resource_counts: D == null ? void 0 : D.with_mapped_resource_counts,
+								filter: D == null || (y = D.filters) === null || y === void 0 ? void 0 : y.search,
+								source: (0, t.sQ)(D == null || (S = D.filters) === null || S === void 0 ? void 0 : S.source),
+								order: D == null || (L = D.sort) === null || L === void 0 ? void 0 : L.id,
+								direction: (D == null ? void 0 : D.sort) ? (D == null || (b = D.sort) === null || b === void 0 ? void 0 : b.desc) ? r.Sr.desc : r.Sr.asc : void 0
 							},
 							hideErrorAlert: O
 						})).body
@@ -15168,19 +15294,19 @@
 					getLabel: async C => {
 						let {
 							zoneId: y,
-							labelName: N,
+							labelName: S,
 							hideErrorAlert: L = !0
-						} = C, P = a(C, ["zoneId", "labelName", "hideErrorAlert"]);
-						const I = (0, t.mm)(N) ? u.managedLabel.toUrl({
+						} = C, b = a(C, ["zoneId", "labelName", "hideErrorAlert"]);
+						const P = (0, t.mm)(S) ? d.managedLabel.toUrl({
 							zoneId: y,
-							labelName: N
-						}) : u.userLabel.toUrl({
+							labelName: S
+						}) : d.userLabel.toUrl({
 							zoneId: y,
-							labelName: N
+							labelName: S
 						});
-						return (await m.get(I, {
+						return (await m.get(P, {
 							parameters: {
-								with_mapped_resource_counts: P == null ? void 0 : P.with_mapped_resource_counts
+								with_mapped_resource_counts: b == null ? void 0 : b.with_mapped_resource_counts
 							},
 							hideErrorAlert: L
 						})).body
@@ -15188,54 +15314,54 @@
 					editLabel: async ({
 						zoneId: C,
 						label: y,
-						replace: N
+						replace: S
 					}) => {
 						const {
 							name: L
-						} = y, P = a(y, ["name"]);
-						return (await (N ? m.put : m.patch)(u.userLabel.toUrl({
+						} = y, b = a(y, ["name"]);
+						return (await (S ? m.put : m.patch)(d.userLabel.toUrl({
 							zoneId: C,
 							labelName: y.name
 						}), {
-							body: P
+							body: b
 						})).body
 					},
 					deleteLabel: async ({
 						zoneId: C,
 						labelName: y
-					}) => (await m.del(u.userLabel.toUrl({
+					}) => (await m.del(d.userLabel.toUrl({
 						zoneId: C,
 						labelName: y
 					}))).body,
 					createLabel: async C => {
 						let {
 							zoneId: y
-						} = C, N = a(C, ["zoneId"]);
+						} = C, S = a(C, ["zoneId"]);
 						const {
 							product: L
-						} = N, P = a(N, ["product"]);
-						return (await m.post(u.userLabels.toUrl({
+						} = S, b = a(S, ["product"]);
+						return (await m.post(d.userLabels.toUrl({
 							zoneId: y
 						}), {
-							body: [P]
+							body: [b]
 						})).body
 					},
 					bulkApplyLabelsToOperation: async ({
 						zoneId: C,
 						user: y,
-						managed: N,
+						managed: S,
 						operationIds: L,
-						replace: P
-					}) => (await (P ? m.put : m.post)(u.operationsLinkedToLabels.toUrl({
+						replace: b
+					}) => (await (b ? m.put : m.post)(d.operationsLinkedToLabels.toUrl({
 						zoneId: C
 					}), {
 						body: c({}, y ? {
 							user: {
 								labels: y
 							}
-						} : {}, N ? {
+						} : {}, S ? {
 							managed: {
-								labels: N
+								labels: S
 							}
 						} : {}, {
 							selector: {
@@ -15248,12 +15374,12 @@
 					bulkApplyOperationsToLabel: async ({
 						zoneId: C,
 						labelName: y,
-						operationIds: N
+						operationIds: S
 					}) => {
-						const L = (0, t.mm)(y) ? u.managedLabelOperations.toUrl({
+						const L = (0, t.mm)(y) ? d.managedLabelOperations.toUrl({
 							zoneId: C,
 							labelName: y
-						}) : u.userLabelOperations.toUrl({
+						}) : d.userLabelOperations.toUrl({
 							zoneId: C,
 							labelName: y
 						});
@@ -15261,7 +15387,7 @@
 							body: {
 								selector: {
 									include: {
-										operation_ids: N
+										operation_ids: S
 									}
 								}
 							}
@@ -15272,23 +15398,23 @@
 					labels: C => {
 						let {
 							accountId: y,
-							zoneId: N
+							zoneId: S
 						} = C, L = a(C, ["accountId", "zoneId"]);
-						return [p.IQ.LABELS, y, N, ...(0, _.isEmpty)(L) ? [] : [L]]
+						return [p.IQ.LABELS, y, S, ...(0, g.isEmpty)(L) ? [] : [L]]
 					}
 				}
 		},
-		"../react/pages/security/settings/resources/constants.ts": function(x, v, n) {
+		"../react/pages/security/settings/resources/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				DG: function() {
-					return f
+					return _
 				},
 				EDIT_LABELS_MODAL_FORM_PROPERTIES: function() {
 					return i
 				},
 				GE: function() {
-					return N
+					return S
 				},
 				IQ: function() {
 					return p
@@ -15297,10 +15423,10 @@
 					return m
 				},
 				LABELS_LIST_TOASTS: function() {
-					return d
+					return l
 				},
 				LABEL_SOURCES: function() {
-					return l
+					return u
 				},
 				QH: function() {
 					return c
@@ -15318,25 +15444,25 @@
 					return C
 				},
 				aW: function() {
-					return A
+					return h
 				},
 				dC: function() {
-					return P
+					return b
 				},
 				gY: function() {
 					return y
 				},
 				j8: function() {
-					return u
+					return d
 				},
 				jz: function() {
-					return g
+					return f
 				},
 				n5: function() {
-					return h
+					return A
 				},
 				om: function() {
-					return _
+					return g
 				},
 				w: function() {
 					return o
@@ -15346,27 +15472,27 @@
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
-			let o = function(I) {
-				return I.EXPOSED_CREDENTIALS = "exposed_credentials", I.CONTENT_SCANNING = "content_scanning", I
+			let o = function(P) {
+				return P.EXPOSED_CREDENTIALS = "exposed_credentials", P.CONTENT_SCANNING = "content_scanning", P
 			}({});
 			const s = "all";
-			let p = function(I) {
-					return I.LABELS = "labels", I
+			let p = function(P) {
+					return P.LABELS = "labels", P
 				}({}),
-				l = function(I) {
-					return I.USER = "user", I.MANAGED = "managed", I
+				u = function(P) {
+					return P.USER = "user", P.MANAGED = "managed", P
 				}({}),
-				m = function(I) {
-					return I.SOURCE = "source", I
+				m = function(P) {
+					return P.SOURCE = "source", P
 				}({}),
-				i = function(I) {
-					return I.NAME = "name", I.SOURCE = "source", I.NEW_LABEL_NAME = "newLabelName", I
+				i = function(P) {
+					return P.NAME = "name", P.SOURCE = "source", P.NEW_LABEL_NAME = "newLabelName", P
 				}({}),
-				u = function(I) {
-					return I.ENDPOINT = "endpoint", I.METHOD = "method", I.OPERATION_ID = "operationId", I
+				d = function(P) {
+					return P.ENDPOINT = "endpoint", P.METHOD = "method", P.OPERATION_ID = "operationId", P
 				}({}),
-				_ = function(I) {
-					return I.NAME = "name", I.MAPPED_RESOURCES = "mapped_resources.operations", I.SOURCE = "source", I.APPLY = "apply", I
+				g = function(P) {
+					return P.NAME = "name", P.MAPPED_RESOURCES = "mapped_resources.operations", P.SOURCE = "source", P.APPLY = "apply", P
 				}({});
 			const a = {
 				initialPaginationState: {
@@ -15374,7 +15500,7 @@
 					perPage: 10
 				},
 				initialSortState: {
-					name: _.NAME,
+					name: g.NAME,
 					direction: e.Sr.asc
 				},
 				initialToolbarState: {
@@ -15390,21 +15516,21 @@
 					autoClearQs: !0
 				}
 			};
-			let d = function(I) {
-				return I.CREATED_LABEL = "createdLabel", I.CREATED_AND_APPLIED_LABEL = "createdAndAppliedLabel", I.DELETED_LABEL = "deletedLabel", I.APPLIED_LABEL = "appliedLabel", I.EDITED_LABEL = "editedLabel", I.EDITED_AND_APPLIED_LABEL = "editedAndAppliedLabel", I
+			let l = function(P) {
+				return P.CREATED_LABEL = "createdLabel", P.CREATED_AND_APPLIED_LABEL = "createdAndAppliedLabel", P.DELETED_LABEL = "deletedLabel", P.APPLIED_LABEL = "appliedLabel", P.EDITED_LABEL = "editedLabel", P.EDITED_AND_APPLIED_LABEL = "editedAndAppliedLabel", P
 			}({});
 			const c = "650px",
-				g = {
+				f = {
 					SECURITY_LABEL: "https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/"
 				},
-				f = /^[A-Za-z0-9-]+$/,
-				A = /^cf-/;
-			let h = function(I) {
-				return I.NAME = "name", I.DESCRIPTION = "description", I
+				_ = /^[A-Za-z0-9-]+$/,
+				h = /^cf-/;
+			let A = function(P) {
+				return P.NAME = "name", P.DESCRIPTION = "description", P
 			}({});
 			const T = "all";
-			let M = function(I) {
-				return I.METHOD = "method", I.HOSTNAME = "hostname", I
+			let M = function(P) {
+				return P.METHOD = "method", P.HOSTNAME = "hostname", P
 			}({});
 			const C = {
 				initialPaginationState: {
@@ -15424,10 +15550,10 @@
 				},
 				filters: M
 			};
-			let y = function(I) {
-				return I.TITLE = "title", I.DESCRIPTION = "description", I.SUBMIT = "submit", I
+			let y = function(P) {
+				return P.TITLE = "title", P.DESCRIPTION = "description", P.SUBMIT = "submit", P
 			}({});
-			const N = 1e3,
+			const S = 1e3,
 				L = {
 					LIST_TABLE_WRAPPER: "labels.list.main.table.wrapper",
 					LIST_TABLE_CELL_NAME: "labels.list.main.table.cell.name",
@@ -15462,16 +15588,16 @@
 					SIDE_MODAL_SELECTED_OPERATIONS_COUNT: "labels.side_modal.selected_operations_count",
 					SIDE_MODAL_BULK_OVERWRITE_TOGGLE: "labels.side_modal.bulk.overwrite.toggle"
 				},
-				P = "exposed-credentials-module"
+				b = "exposed-credentials-module"
 		},
-		"../react/pages/security/settings/resources/index.ts": function(x, v, n) {
+		"../react/pages/security/settings/resources/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				DG: function() {
 					return e.DG
 				},
 				tR: function() {
-					return d
+					return l
 				},
 				aW: function() {
 					return e.aW
@@ -15498,7 +15624,7 @@
 					return e.zF
 				},
 				QJ: function() {
-					return g
+					return f
 				},
 				R: function() {
 					return t
@@ -15525,7 +15651,7 @@
 					return a
 				},
 				Xs: function() {
-					return h.Xs
+					return A.Xs
 				},
 				wG: function() {
 					return s.N2
@@ -15537,28 +15663,28 @@
 					return s.Wv
 				},
 				bH: function() {
-					return h.bH
+					return A.bH
 				},
 				Mb: function() {
 					return s.Mb
 				},
 				ui: function() {
-					return h.ui
+					return A.ui
 				},
 				P3: function() {
-					return h.P3
+					return A.P3
 				},
 				Ri: function() {
-					return h.Ri
+					return A.Ri
 				},
 				cN: function() {
-					return h.cN
+					return A.cN
 				},
 				m8: function() {
-					return A
+					return h
 				},
 				Tf: function() {
-					return f
+					return _
 				},
 				$E: function() {
 					return s.$E
@@ -15568,23 +15694,23 @@
 				o = n("../react/pages/security/settings/resources/types.ts"),
 				s = n("../react/pages/security/settings/resources/utils.ts"),
 				p = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				l = n.n(p);
+				u = n.n(p);
 
 			function m(T) {
 				for (var M = 1; M < arguments.length; M++) {
 					var C = arguments[M] != null ? Object(arguments[M]) : {},
 						y = Object.keys(C);
-					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(C).filter(function(N) {
-						return Object.getOwnPropertyDescriptor(C, N).enumerable
-					})), y.forEach(function(N) {
-						i(T, N, C[N])
+					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(C).filter(function(S) {
+						return Object.getOwnPropertyDescriptor(C, S).enumerable
+					})), y.forEach(function(S) {
+						i(T, S, C[S])
 					})
 				}
 				return T
 			}
 
 			function i(T, M, C) {
-				return M = u(M), M in T ? Object.defineProperty(T, M, {
+				return M = d(M), M in T ? Object.defineProperty(T, M, {
 					value: C,
 					enumerable: !0,
 					configurable: !0,
@@ -15592,12 +15718,12 @@
 				}) : T[M] = C, T
 			}
 
-			function u(T) {
-				var M = _(T, "string");
+			function d(T) {
+				var M = g(T, "string");
 				return typeof M == "symbol" ? M : String(M)
 			}
 
-			function _(T, M) {
+			function g(T, M) {
 				if (typeof T != "object" || T === null) return T;
 				var C = T[Symbol.toPrimitive];
 				if (C !== void 0) {
@@ -15616,53 +15742,53 @@
 				a = function(T) {
 					return T.OPERATIONS_TABLE_TOOLBAR = "Operations table toolbar", T.OPERATIONS_TABLE_OVERFLOW = "Operations table overflow", T.OPERATIONS_TABLE_ROW = "Operations table row", T.OPERATION_DETAILS_PAGE = "Operation details page", T
 				}({}),
-				d = function(T) {
+				l = function(T) {
 					return T.UPSERT = "upsert", T.OVERWRITE = "overwrite", T
 				}({}),
 				c = function(T) {
 					return T.SINGLE = "single", T.MULTIPLE = "multiple", T
 				}({}),
-				g = function(T) {
+				f = function(T) {
 					return T.DISPLAY_LABELS_LIST_PAGE = "show a list of labels in the settings page", T.DELETE_LABEL = "delete a user label in the settings page", T.FILTER_USER_MANAGED_LABELS = "filter user/managed labels in the settings page", T.CREATE_LABEL_CLICKED = "click create label button in the settings page", T.BULK_APPLY_CLICKED = "click bulk apply button in the settings page", T.CONNECTED_ENDPOINTS_CLICKED = "click connected endpoints link in the settings page", T.DISPLAY_APPLY_LABELS_PAGE = "show the apply labels page", T.CLICK_LABELS_DOCUMENTATION_LINK = "click documentation link in the apply labels page", T.APPLY_OPERATIONS_TO_LABEL = "apply operations to label in the apply labels page", T.OPEN_LABELS_SIDE_MODAL = "open labels side modal", T.APPLY_LABELS_TO_OPERATION = "apply labels to operation(s) in the labels side modal", T.CREATE_NEW_LABEL = "create a new label", T
 				}({});
-			const f = ({
+			const _ = ({
 					name: T,
 					product: M,
 					category: C = "user journey",
 					pageName: y,
-					from: N,
+					from: S,
 					write_strategy: L,
-					type: P,
-					target: I
+					type: b,
+					target: P
 				}) => {
-					l().sendEvent(T, m({
+					u().sendEvent(T, m({
 						category: C,
 						pageName: y,
 						product: M
-					}, N ? {
-						from: N
+					}, S ? {
+						from: S
 					} : {}, L ? {
 						write_strategy: L
+					} : {}, b ? {
+						type: b
 					} : {}, P ? {
-						type: P
-					} : {}, I ? {
-						target: I
+						target: P
 					} : {}))
 				},
-				A = () => {
+				h = () => {
 					var T;
-					return (T = Object.values(g)) === null || T === void 0 ? void 0 : T.flat()
+					return (T = Object.values(f)) === null || T === void 0 ? void 0 : T.flat()
 				};
-			var h = n("../react/pages/security/settings/resources/selectors.ts")
+			var A = n("../react/pages/security/settings/resources/selectors.ts")
 		},
-		"../react/pages/security/settings/resources/selectors.ts": function(x, v, n) {
+		"../react/pages/security/settings/resources/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				P3: function() {
-					return u
+					return d
 				},
 				Ri: function() {
-					return _
+					return g
 				},
 				Xs: function() {
 					return r
@@ -15681,17 +15807,17 @@
 				o = n("../react/utils/url.ts"),
 				s = n("../react/common/selectors/entitlementsSelectors.ts"),
 				p = n("../react/pages/security/settings/resources/constants.ts"),
-				l = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs");
+				u = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs");
 			const m = a => {
-					const d = (0, e.RO)(a),
+					const l = (0, e.RO)(a),
 						c = !!(0, s.rV)(a, "rulesets.file_upload_scan_allowed"),
-						g = !!(0, s.BF)(a, "rulesets.file_upload_scan_allowed");
-					return (0, o.el)(window.location.pathname) ? d && (c || g) : g
+						f = !!(0, s.BF)(a, "rulesets.file_upload_scan_allowed");
+					return (0, o.el)(window.location.pathname) ? l && (c || f) : f
 				},
 				i = a => Number((0, s.rV)(a, "rulesets.max_leaked_credential_checks_custom_detections")) > 0,
-				u = a => (0, s.rV)(a, "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed"),
-				_ = a => (0, s.rV)(a, "rulesets.leaked_credential_checks_allowed"),
-				t = a => (0, l.z1)(p.dC)(a) ? {
+				d = a => (0, s.rV)(a, "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed"),
+				g = a => (0, s.rV)(a, "rulesets.leaked_credential_checks_allowed"),
+				t = a => (0, u.z1)(p.dC)(a) ? {
 					hasPasswordLeaked: !0,
 					hasUsernameAndPasswordLeaked: !!(0, s.rV)(a, "rulesets.leaked_credential_checks_exact_allowed"),
 					hasSimilarLeaked: !!(0, s.rV)(a, "rulesets.leaked_credential_checks_similar_allowed")
@@ -15700,11 +15826,11 @@
 					hasUsernameAndPasswordLeaked: !1,
 					hasSimilarLeaked: !1
 				},
-				r = a => !!(0, l.z1)("deprecate-security-level")(a)
+				r = a => !!(0, u.z1)("deprecate-security-level")(a)
 		},
-		"../react/pages/security/settings/resources/types.ts": function(x, v, n) {
+		"../react/pages/security/settings/resources/types.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				T: function() {
 					return o
 				}
@@ -15714,26 +15840,26 @@
 				return s.ENABLED = "enabled", s.CONTACT = "contact", s.EXPIRES = "expires", s.ENCRYPTION = "encryption", s.ACKNOWLEDGMENTS = "acknowledgments", s.CANONICAL = "canonical", s.HIRING = "hiring", s.POLICY = "policy", s.PREFERRED_LANGUAGES = "preferred_languages", s
 			}({})
 		},
-		"../react/pages/security/settings/resources/utils.ts": function(x, v, n) {
+		"../react/pages/security/settings/resources/utils.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$E: function() {
 					return a
 				},
 				Mb: function() {
-					return d
+					return l
 				},
 				N2: function() {
 					return M
 				},
 				Q4: function() {
-					return g
+					return f
 				},
 				QF: function() {
 					return r
 				},
 				Vy: function() {
-					return A
+					return h
 				},
 				Wv: function() {
 					return c
@@ -15742,126 +15868,126 @@
 					return T
 				},
 				sQ: function() {
-					return h
+					return A
 				},
 				vc: function() {
-					return f
+					return _
 				}
 			});
 			var e = n("../../../../node_modules/yup/es/index.js"),
 				o = n("../../../../node_modules/@cloudflare/util-http-file/es/index.js"),
 				s = n("../react/pages/security/settings/routes.tsx"),
 				p = n("../react/pages/security/settings/resources/constants.ts"),
-				l = n("../react/pages/security/settings/resources/types.ts"),
+				u = n("../react/pages/security/settings/resources/types.ts"),
 				m = n("../react/pages/analytics/common/utils/gqlUtils.js");
 
 			function i(C) {
 				for (var y = 1; y < arguments.length; y++) {
-					var N = arguments[y] != null ? Object(arguments[y]) : {},
-						L = Object.keys(N);
-					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(N).filter(function(P) {
-						return Object.getOwnPropertyDescriptor(N, P).enumerable
-					})), L.forEach(function(P) {
-						u(C, P, N[P])
+					var S = arguments[y] != null ? Object(arguments[y]) : {},
+						L = Object.keys(S);
+					typeof Object.getOwnPropertySymbols == "function" && L.push.apply(L, Object.getOwnPropertySymbols(S).filter(function(b) {
+						return Object.getOwnPropertyDescriptor(S, b).enumerable
+					})), L.forEach(function(b) {
+						d(C, b, S[b])
 					})
 				}
 				return C
 			}
 
-			function u(C, y, N) {
-				return y = _(y), y in C ? Object.defineProperty(C, y, {
-					value: N,
+			function d(C, y, S) {
+				return y = g(y), y in C ? Object.defineProperty(C, y, {
+					value: S,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : C[y] = N, C
+				}) : C[y] = S, C
 			}
 
-			function _(C) {
+			function g(C) {
 				var y = t(C, "string");
 				return typeof y == "symbol" ? y : String(y)
 			}
 
 			function t(C, y) {
 				if (typeof C != "object" || C === null) return C;
-				var N = C[Symbol.toPrimitive];
-				if (N !== void 0) {
-					var L = N.call(C, y || "default");
+				var S = C[Symbol.toPrimitive];
+				if (S !== void 0) {
+					var L = S.call(C, y || "default");
 					if (typeof L != "object") return L;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (y === "string" ? String : Number)(C)
 			}
 			const r = {
-					[l.T.ENABLED]: !0,
-					[l.T.CONTACT]: [""],
-					[l.T.EXPIRES]: ""
+					[u.T.ENABLED]: !0,
+					[u.T.CONTACT]: [""],
+					[u.T.EXPIRES]: ""
 				},
 				a = {
-					[l.T.CONTACT]: {
+					[u.T.CONTACT]: {
 						label: "security_txt.fields.contact",
 						tooltip: "security_txt.fields.contact.description",
 						placeholder: "security_txt.fields.contact.placeholder"
 					},
-					[l.T.EXPIRES]: {
+					[u.T.EXPIRES]: {
 						label: "security_txt.fields.expires",
 						tooltip: "security_txt.fields.expires.description",
 						placeholder: "security_txt.fields.expires.placeholder"
 					},
-					[l.T.ENCRYPTION]: {
+					[u.T.ENCRYPTION]: {
 						label: "security_txt.fields.encryption",
 						tooltip: "security_txt.fields.encryption.description",
 						placeholder: "security_txt.fields.encryption.placeholder"
 					},
-					[l.T.ACKNOWLEDGMENTS]: {
+					[u.T.ACKNOWLEDGMENTS]: {
 						label: "security_txt.fields.acknowledgements",
 						tooltip: "security_txt.fields.acknowledgements.description",
 						placeholder: "security_txt.fields.acknowledgements.placeholder"
 					},
-					[l.T.CANONICAL]: {
+					[u.T.CANONICAL]: {
 						label: "security_txt.fields.canonical",
 						tooltip: "security_txt.fields.canonical.description",
 						placeholder: "security_txt.fields.canonical.placeholder"
 					},
-					[l.T.POLICY]: {
+					[u.T.POLICY]: {
 						label: "security_txt.fields.policy",
 						tooltip: "security_txt.fields.policy.description",
 						placeholder: "security_txt.fields.policy.placeholder"
 					},
-					[l.T.HIRING]: {
+					[u.T.HIRING]: {
 						label: "security_txt.fields.hiring",
 						tooltip: "security_txt.fields.hiring.description",
 						placeholder: "security_txt.fields.hiring.placeholder"
 					},
-					[l.T.PREFERRED_LANGUAGES]: {
+					[u.T.PREFERRED_LANGUAGES]: {
 						label: "security_txt.fields.preferred_languages",
 						tooltip: "security_txt.fields.preferred_languages.description",
 						placeholder: "security_txt.fields.preferred_languages.placeholder"
 					}
 				},
-				d = C => e.Ry({
-					[l.T.CONTACT]: e.IX().of(e.Z_().required(C("common.required")).matches(/^((https:\/\/)|(tel:)|(mailto:))/, C("security_txt.fields.contact.format_error"))),
-					[l.T.EXPIRES]: e.hT().required(C("common.required")).min(new Date, C("security_txt.fields.expires.min_error"))
+				l = C => e.Ry({
+					[u.T.CONTACT]: e.IX().of(e.Z_().required(C("common.required")).matches(/^((https:\/\/)|(tel:)|(mailto:))/, C("security_txt.fields.contact.format_error"))),
+					[u.T.EXPIRES]: e.hT().required(C("common.required")).min(new Date, C("security_txt.fields.expires.min_error"))
 				}),
 				c = C => {
 					const y = {};
-					for (const N in C) y[N] = Array.isArray(C[N]) ? C[N].filter(L => !!L) : C[N];
+					for (const S in C) y[S] = Array.isArray(C[S]) ? C[S].filter(L => !!L) : C[S];
 					return i({}, y, {
 						expires: (0, m.DZ)(C.expires)
 					})
 				},
-				g = (C, y, N) => {
-					const L = [...new Set([l.T.CONTACT, l.T.EXPIRES, ...Object.values(l.T)])],
-						P = Object.entries(C).sort(([I], [O]) => L.indexOf(I) - L.indexOf(O)).filter(([I, O]) => !!a[I] && !!O && (!Array.isArray(O) || !!O.length)).map(([I, O]) => Array.isArray(O) ? O.map(S => `${N(a[I].label)}: ${S}`).join(`
-`) : `${N(a[I].label)}: ${O}`).join(`
+				f = (C, y, S) => {
+					const L = [...new Set([u.T.CONTACT, u.T.EXPIRES, ...Object.values(u.T)])],
+						b = Object.entries(C).sort(([P], [O]) => L.indexOf(P) - L.indexOf(O)).filter(([P, O]) => !!a[P] && !!O && (!Array.isArray(O) || !!O.length)).map(([P, O]) => Array.isArray(O) ? O.map(D => `${S(a[P].label)}: ${D}`).join(`
+`) : `${S(a[P].label)}: ${O}`).join(`
 `);
-					(0, o.yH)(`Cloudflare_${y}_security.txt`, P, "text/plain;charset=utf-8")
+					(0, o.yH)(`Cloudflare_${y}_security.txt`, b, "text/plain;charset=utf-8")
 				};
-			let f = function(C) {
+			let _ = function(C) {
 				return C.CREATED = "created security.txt", C.ENABLED = "enabled security.txt", C.DISABLED = "disabled security.txt", C.DOWNLOADED = "downloaded security.txt", C.UPDATED = "updated security.txt", C.DELETED = "deleted security.txt", C
 			}({});
-			const A = C => (C == null ? void 0 : C.source) === p.LABEL_SOURCES.USER ? "labels.list.table.columns.type.user" : (C == null ? void 0 : C.source) === p.LABEL_SOURCES.MANAGED ? "labels.list.table.columns.type.managed" : "common.unknown",
-				h = C => C === p.W3 ? void 0 : C,
+			const h = C => (C == null ? void 0 : C.source) === p.LABEL_SOURCES.USER ? "labels.list.table.columns.type.user" : (C == null ? void 0 : C.source) === p.LABEL_SOURCES.MANAGED ? "labels.list.table.columns.type.managed" : "common.unknown",
+				A = C => C === p.W3 ? void 0 : C,
 				T = C => p.aW.test(C),
 				M = C => {
 					switch (C) {
@@ -15872,9 +15998,9 @@
 					}
 				}
 		},
-		"../react/pages/security/settings/routes.tsx": function(x, v, n) {
+		"../react/pages/security/settings/routes.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				ROUTES: function() {
 					return o
 				}
@@ -15890,11 +16016,11 @@
 				SECURITY_TXT: (0, e.BC)`/${"accountId"}/${"zoneName"}/security/settings/security-txt`
 			}
 		},
-		"../react/pages/security/waf/managed-rules/resources/tracking.ts": function(x, v, n) {
+		"../react/pages/security/waf/managed-rules/resources/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Sb: function() {
-					return _
+					return g
 				},
 				Vj: function() {
 					return i
@@ -15906,10 +16032,10 @@
 			function s(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						p(t, c, a[c])
 					})
 				}
@@ -15917,7 +16043,7 @@
 			}
 
 			function p(t, r, a) {
-				return r = l(r), r in t ? Object.defineProperty(t, r, {
+				return r = u(r), r in t ? Object.defineProperty(t, r, {
 					value: a,
 					enumerable: !0,
 					configurable: !0,
@@ -15925,7 +16051,7 @@
 				}) : t[r] = a, t
 			}
 
-			function l(t) {
+			function u(t) {
 				var r = m(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
@@ -15934,8 +16060,8 @@
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -15946,26 +16072,26 @@
 					CLICK_LCC_DOCUMENTATION: "click link to Leaked credentials detection documentation",
 					CLICK_LCC_UPGRADE_GUIDE: "click link to Leaked credentials detection upgrade guide"
 				},
-				u = {
+				d = {
 					product: "WAF Managed Rules"
 				},
-				_ = ({
+				g = ({
 					event: t,
 					category: r = "user journey",
 					product: a = "waf",
-					productName: d = "Managed Rules",
+					productName: l = "Managed Rules",
 					additionalData: c
 				}) => {
 					o().sendEvent(t, s({
 						category: r,
 						product: a,
-						productName: d
+						productName: l
 					}, c || {}))
 				}
 		},
-		"../react/pages/shared-config/sparrowEvents.tsx": function(x, v, n) {
+		"../react/pages/shared-config/sparrowEvents.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				D: function() {
 					return e
 				}
@@ -15974,9 +16100,9 @@
 				return o.CLICK_MENU_ITEM_SHARE = "click on share item", o.CLICK_ON_CONFIGURE_SHARE_BUTTON = "click on configure share button", o.CLICK_ON_GO_TO_SOURCE_ACCOUNT = "click on go to source account", o.CLICK_ON_EDIT_SHARE_PERMISSION = "click on edit share permission", o.CLICK_ON_CLOSE_SHARE_MODAL = "click on close share modal", o.CLICK_ON_CANCEL_SHARE_MODAL = "click on cancel share modal", o.CLICK_ON_SHARE_BUTTON_SHARE_MODAL = "click on share button share modal", o.CLICK_GO_BACK_SHARE_MODAL = "click go back share modal", o.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL = "click on deploy button share modal", o.CLICK_ON_DELETE_RULESET = "click on delete ruleset", o.CLICK_ON_SHARE_TABLE_ROW = "click on share table row", o
 			}({})
 		},
-		"../react/pages/spectrum/tracking.tsx": function(x, v, n) {
+		"../react/pages/spectrum/tracking.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				N: function() {
 					return e
 				}
@@ -15985,9 +16111,9 @@
 				return o.IP_ADDRESS = "create spectrum app using IP address", o.CNAME = "create spectrum app using cname record", o.LB = "create spectrum app using load balancer", o.UPDATE_IP_ADDRESS = "update spectrum app using IP address", o.UPDATE_CNAME = "update spectrum app using cname record", o.UPDATE_LB = "update spectrum app using load balancer", o.DISABLE = "disable spectrum app", o
 			}({})
 		},
-		"../react/pages/stream/actionTypes.ts": function(x, v, n) {
+		"../react/pages/stream/actionTypes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				U: function() {
 					return e
 				}
@@ -15996,14 +16122,14 @@
 				return o.ReplaceVideos = "stream.replace_videos", o.PrependVideo = "stream.prepend_video", o.UpdateVideo = "stream.update_video", o.UpdateVideoPending = "steam.update_video_pending", o.RemoveVideos = "stream.remove_videos", o.StoreUploader = "stream.store_uploader", o.UpsertUploads = "stream.upsert_uploads", o.RemoveUploads = "stream.remove_uploads", o.UpdateUploadProgress = "stream.update_upload_progress", o.UploadViaUrl = "stream.upload_via_url", o.SetLoading = "stream.set_loading", o.SetStorageLoading = "stream.set_storage_loading", o.SetStorage = "stream.set_storage", o.SetPage = "stream.set_page", o.SetPausedUploads = "stream.set_paused_uploads", o.RemovePausedUpload = "stream.remove_paused_upload", o.SetRequestTimestamp = "stream.set_request_timestamp", o.ResetState = "stream.reset_state", o
 			}({})
 		},
-		"../react/pages/stream/reducer.ts": function(x, v, n) {
+		"../react/pages/stream/reducer.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				ZP: function() {
 					return t
 				},
 				nY: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-exhausted-reducers/es/index.js"),
@@ -16012,24 +16138,24 @@
 
 			function p(r) {
 				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						c = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(d).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(d, g).enumerable
-					})), c.forEach(function(g) {
-						l(r, g, d[g])
+					var l = arguments[a] != null ? Object(arguments[a]) : {},
+						c = Object.keys(l);
+					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(l).filter(function(f) {
+						return Object.getOwnPropertyDescriptor(l, f).enumerable
+					})), c.forEach(function(f) {
+						u(r, f, l[f])
 					})
 				}
 				return r
 			}
 
-			function l(r, a, d) {
+			function u(r, a, l) {
 				return a = m(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
+					value: l,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : r[a] = d, r
+				}) : r[a] = l, r
 			}
 
 			function m(r) {
@@ -16039,16 +16165,16 @@
 
 			function i(r, a) {
 				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var c = d.call(r, a || "default");
+				var l = r[Symbol.toPrimitive];
+				if (l !== void 0) {
+					var c = l.call(r, a || "default");
 					if (typeof c != "object") return c;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (a === "string" ? String : Number)(r)
 			}
-			const u = "stream",
-				_ = {
+			const d = "stream",
+				g = {
 					loading: !0,
 					storageLoading: !1,
 					videos: [],
@@ -16056,16 +16182,16 @@
 					videoUpdateStatuses: {}
 				};
 
-			function t(r = _, a) {
+			function t(r = g, a) {
 				switch (a.type) {
 					case o.U.ResetState:
-						return _;
+						return g;
 					case o.U.SetStorageLoading:
 						const {
-							storageLoading: d
+							storageLoading: l
 						} = a;
 						return p({}, r, {
-							storageLoading: d
+							storageLoading: l
 						});
 					case o.U.SetStorage:
 						return p({}, r, {
@@ -16077,7 +16203,7 @@
 						});
 					case o.U.PrependVideo:
 						return p({}, r, {
-							videos: [a.video, ...r.videos].filter((c, g) => g < s.FJ)
+							videos: [a.video, ...r.videos].filter((c, f) => f < s.FJ)
 						});
 					case o.U.UpdateVideo:
 						return p({}, r, {
@@ -16108,9 +16234,9 @@
 				}
 			}
 		},
-		"../react/pages/stream/selectors.ts": function(x, v, n) {
+		"../react/pages/stream/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Id: function() {
 					return p
 				},
@@ -16118,13 +16244,13 @@
 					return t
 				},
 				Pf: function() {
-					return l
-				},
-				QL: function() {
 					return u
 				},
+				QL: function() {
+					return d
+				},
 				_A: function() {
-					return g
+					return f
 				},
 				_Q: function() {
 					return r
@@ -16139,41 +16265,41 @@
 					return a
 				},
 				bm: function() {
-					return d
+					return l
 				},
 				mX: function() {
-					return f
+					return _
 				},
 				pW: function() {
 					return m
 				},
 				xW: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/common/selectors/entitlementsSelectors.ts"),
 				s = n("../react/pages/stream/reducer.ts");
-			const p = A => A[s.nY],
-				l = A => p(A).videos,
-				m = A => p(A).videoUpdateStatuses,
-				i = A => p(A).loading,
-				u = A => p(A).requestTimestamp,
-				_ = A => p(A).storageLoading,
-				t = A => p(A).storage,
-				r = A => (0, o.BF)(A, "stream.enabled") || (0, e.bC)(A),
-				a = A => (0, e.Le)(A, "stream", "connect"),
-				d = A => (0, e.Le)(A, "stream", "stream-4371"),
-				c = A => (0, e.Le)(A, "stream", "public-details-enabled"),
-				g = A => !!(0, e.Le)(A, "stream", "llhls"),
-				f = A => {
-					const h = t(A);
-					return h !== void 0 && h.limitMins > h.currentMins
+			const p = h => h[s.nY],
+				u = h => p(h).videos,
+				m = h => p(h).videoUpdateStatuses,
+				i = h => p(h).loading,
+				d = h => p(h).requestTimestamp,
+				g = h => p(h).storageLoading,
+				t = h => p(h).storage,
+				r = h => (0, o.BF)(h, "stream.enabled") || (0, e.bC)(h),
+				a = h => (0, e.Le)(h, "stream", "connect"),
+				l = h => (0, e.Le)(h, "stream", "stream-4371"),
+				c = h => (0, e.Le)(h, "stream", "public-details-enabled"),
+				f = h => !!(0, e.Le)(h, "stream", "llhls"),
+				_ = h => {
+					const A = t(h);
+					return A !== void 0 && A.limitMins > A.currentMins
 				}
 		},
-		"../react/pages/stream/util/pager.ts": function(x, v, n) {
+		"../react/pages/stream/util/pager.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				FJ: function() {
 					return e
 				},
@@ -16186,27 +16312,27 @@
 			});
 			const e = 30;
 
-			function o(p, l, m) {
+			function o(p, u, m) {
 				const i = {
 					search: m,
 					limit: e.toString()
 				};
-				return l !== void 0 && (i.end = l), i
+				return u !== void 0 && (i.end = u), i
 			}
 
-			function s(p, l, m) {
+			function s(p, u, m) {
 				return {
 					limit: e.toString(),
 					search: m,
 					asc: "true",
 					start_comp: "gt",
-					start: l
+					start: u
 				}
 			}
 		},
-		"../react/pages/traffic/argo/tracking.ts": function(x, v, n) {
+		"../react/pages/traffic/argo/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				V: function() {
 					return e
 				}
@@ -16215,9 +16341,9 @@
 				return o.ARGO_ENABLEMENT = "change argo enablement", o.ARGO_GEO_ANALYTICS_FETCH = "get argo geo analytics", o.ARGO_GLOBAL_ANALYTICS_FETCH = "get argo global analytics", o
 			}({})
 		},
-		"../react/pages/traffic/load-balancing/resources/tracking.ts": function(x, v, n) {
+		"../react/pages/traffic/load-balancing/resources/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Z: function() {
 					return e
 				}
@@ -16226,9 +16352,9 @@
 				return o.CREATE_AND_DEPLOY = "create load balancer", o.ANALYTICS = "read analytics", o.LOAD_BALANCING_TABLE = "click on expandable row on load balancing", o.POOL_TABLE = "click on expandable row on pool", o.CREATE_MONITOR_LINK = "click on create a monitor", o.EDIT_MONITOR_LINK = "click on edit a monitor", o.EDIT_MONITOR = "edit monitor", o.CREATE_MONITOR = "create monitor", o.CREATE_POOL_LINK = "click on create a pool", o.EDIT_POOL_LINK = "click on edit a pool", o.EDIT_POOL = "edit pool", o.CREATE_POOL = "create pool", o
 			}({})
 		},
-		"../react/pages/traffic/waiting-rooms/tracking.tsx": function(x, v, n) {
+		"../react/pages/traffic/waiting-rooms/tracking.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				N: function() {
 					return s
 				},
@@ -16238,27 +16364,27 @@
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				o = n.n(e);
-			let s = function(l) {
-				return l.CREATE = "create waiting room", l.UPDATE = "update waiting room", l.EVENTS = "view waiting rooms events", l.ANALYTICS = "view waiting room analytics", l.GENERATE_PREVIEW = "generate waiting room preview link", l
+			let s = function(u) {
+				return u.CREATE = "create waiting room", u.UPDATE = "update waiting room", u.EVENTS = "view waiting rooms events", u.ANALYTICS = "view waiting room analytics", u.GENERATE_PREVIEW = "generate waiting room preview link", u
 			}({});
-			const p = async l => {
-				await o().sendEvent(l, {
+			const p = async u => {
+				await o().sendEvent(u, {
 					category: "user journey",
 					product: "waiting room"
 				})
 			}
 		},
-		"../react/pages/turnstile/tracking.ts": function(x, v, n) {
+		"../react/pages/turnstile/tracking.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				N3: function() {
-					return u
+					return d
 				},
 				P: function() {
 					return t
 				},
 				Xh: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -16266,71 +16392,71 @@
 
 			function s(r) {
 				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						c = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(d).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(d, g).enumerable
-					})), c.forEach(function(g) {
-						p(r, g, d[g])
+					var l = arguments[a] != null ? Object(arguments[a]) : {},
+						c = Object.keys(l);
+					typeof Object.getOwnPropertySymbols == "function" && c.push.apply(c, Object.getOwnPropertySymbols(l).filter(function(f) {
+						return Object.getOwnPropertyDescriptor(l, f).enumerable
+					})), c.forEach(function(f) {
+						p(r, f, l[f])
 					})
 				}
 				return r
 			}
 
-			function p(r, a, d) {
-				return a = l(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
+			function p(r, a, l) {
+				return a = u(a), a in r ? Object.defineProperty(r, a, {
+					value: l,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : r[a] = d, r
+				}) : r[a] = l, r
 			}
 
-			function l(r) {
+			function u(r) {
 				var a = m(r, "string");
 				return typeof a == "symbol" ? a : String(a)
 			}
 
 			function m(r, a) {
 				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var c = d.call(r, a || "default");
+				var l = r[Symbol.toPrimitive];
+				if (l !== void 0) {
+					var c = l.call(r, a || "default");
 					if (typeof c != "object") return c;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (a === "string" ? String : Number)(r)
 			}
 			const i = "TURNSTILE";
-			let u = function(r) {
+			let d = function(r) {
 				return r.OVERVIEW_PAGE = "view the overview page", r.LIST_OF_WIDGETS = "list of widgets", r.SOLVE_EVENTS = "list solve events", r.REDIRECT_TO_ADD_WIDGET = "redirect to Add Widget page", r.REDIRECT_TO_ANALYTICS = "redirect to Analytics page", r.REDIRECT_TO_EDIT_PAGE = "redirect to Edit page", r.OPEN_DELETE_MODAL = "view the delete modal for one widget", r.OPEN_DELETE_MODAL_MULTIPLE = "view the delete modal for multiple widgets", r.DELETE_WIDGET = "delete successfully widgets", r.LIST_OF_HOSTNAMES = "list hostnames", r.OPEN_ADD_WIDGET_PAGE = "view page to add widget", r.FEEDBACK_ADD = "view Feedback Add", r.SAVE_WIDGET = "save widget", r.ROTATE_KEYS = "rotate keys", r.OPEN_ROTATE_KEYS_MODAL = "view the rotate keys modal", r.GET_WIDGETS = "get widget details", r.OPEN_ANALYTICS_PAGE = "view analytics page", r.ANALYTICS_DATA = "list the analytics data", r
 			}({});
-			const _ = ({
+			const g = ({
 					name: r,
 					product: a = i,
-					category: d = "user journey",
+					category: l = "user journey",
 					page: c,
-					additionalData: g = {}
+					additionalData: f = {}
 				}) => {
 					o().sendEvent(r, s({
-						category: d,
+						category: l,
 						page: c,
 						product: a
-					}, g || {}))
+					}, f || {}))
 				},
 				t = () => {
 					var r;
-					return (r = Object.values(u)) === null || r === void 0 ? void 0 : r.flat()
+					return (r = Object.values(d)) === null || r === void 0 ? void 0 : r.flat()
 				}
 		},
-		"../react/pages/user-groups/sparrowEvents.ts": function(x, v, n) {
+		"../react/pages/user-groups/sparrowEvents.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				E: function() {
-					return u
+					return d
 				},
 				Ky: function() {
-					return _
+					return g
 				},
 				RJ: function() {
 					return i
@@ -16342,10 +16468,10 @@
 			function s(t) {
 				for (var r = 1; r < arguments.length; r++) {
 					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(c) {
+						l = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && l.push.apply(l, Object.getOwnPropertySymbols(a).filter(function(c) {
 						return Object.getOwnPropertyDescriptor(a, c).enumerable
-					})), d.forEach(function(c) {
+					})), l.forEach(function(c) {
 						p(t, c, a[c])
 					})
 				}
@@ -16353,7 +16479,7 @@
 			}
 
 			function p(t, r, a) {
-				return r = l(r), r in t ? Object.defineProperty(t, r, {
+				return r = u(r), r in t ? Object.defineProperty(t, r, {
 					value: a,
 					enumerable: !0,
 					configurable: !0,
@@ -16361,7 +16487,7 @@
 				}) : t[r] = a, t
 			}
 
-			function l(t) {
+			function u(t) {
 				var r = m(t, "string");
 				return typeof r == "symbol" ? r : String(r)
 			}
@@ -16370,8 +16496,8 @@
 				if (typeof t != "object" || t === null) return t;
 				var a = t[Symbol.toPrimitive];
 				if (a !== void 0) {
-					var d = a.call(t, r || "default");
-					if (typeof d != "object") return d;
+					var l = a.call(t, r || "default");
+					if (typeof l != "object") return l;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (r === "string" ? String : Number)(t)
@@ -16379,20 +16505,20 @@
 			let i = function(t) {
 				return t.CREATE_GROUP_BUTTON = "click create user group button", t.GROUP_CREATE = "create user group", t.GROUP_UPDATE = "group name updated", t.CREATE_GROUP_CANCEL = "click cancel create group", t.GROUP_DETAIL = "click view user group details", t.GROUP_EDIT_BUTTON = "click edit user group name button", t.GROUP_EDIT_CANCEL = "click cancel edit user group name", t.GROUP_DELETE_BUTTON = "click group delete button", t.GROUP_DELETE = "delete user group", t.GROUP_DELETE_CANCEL = "click cancel delete group", t.GROUP_SEARCH = "search for user group", t.GROUP_TAB_NAVIGATE = "nagivate group tab", t.BACK_BUTTON = "clicked back from user group detail", t.ADD_MEMBER_BUTTON = "click add member button", t.MEMBER_DETAIL_MENU = "click user group member detail menu", t.MEMBER_DETAIL_VIEW = "click view in user group member detail menu", t.MEMBER_DETAIL_EDIT = "click edit in user group member detail menu", t.MEMBER_DETAIL_DELETE = "click delete in user group member detail menu", t.MEMBER_DELETE = "delete user group member", t.MEMBER_DETAIL_DELETE_CANCEL = "click cancel delete user group member", t.ADD_POLICY_BUTTON = "click add user group policy button", t
 			}({});
-			const u = ({
+			const d = ({
 					name: t,
 					additionalData: r = {}
 				}) => {
 					o().sendEvent(t, s({}, r || {}))
 				},
-				_ = () => {
+				g = () => {
 					var t;
 					return (t = Object.values(i)) === null || t === void 0 ? void 0 : t.flat()
 				}
 		},
-		"../react/pages/welcome/routes.ts": function(x, v, n) {
+		"../react/pages/welcome/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				d: function() {
 					return o
 				}
@@ -16406,11 +16532,11 @@
 				websites: (0, e.BC)`/${"accountId"}/websites`
 			}
 		},
-		"../react/pages/zone-versioning/selectors.ts": function(x, v, n) {
+		"../react/pages/zone-versioning/selectors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$e: function() {
-					return N
+					return S
 				},
 				$h: function() {
 					return T
@@ -16419,25 +16545,25 @@
 					return y
 				},
 				M3: function() {
-					return P
+					return b
 				},
 				Tr: function() {
-					return A
+					return h
 				},
 				UY: function() {
-					return g
+					return f
 				},
 				bH: function() {
 					return r
 				},
 				fv: function() {
-					return I
+					return P
 				},
 				hF: function() {
 					return M
 				},
 				iw: function() {
-					return d
+					return l
 				},
 				m7: function() {
 					return t
@@ -16453,11 +16579,11 @@
 				o = n("../../../../node_modules/reselect/lib/index.js"),
 				s = n("../react/common/selectors/zoneSelectors.ts"),
 				p = n("../react/app/components/SidebarNav/permissions.ts"),
-				l = n("../react/common/selectors/entitlementsSelectors.ts");
+				u = n("../react/common/selectors/entitlementsSelectors.ts");
 
 			function m(O) {
-				for (var S = 1; S < arguments.length; S++) {
-					var B = arguments[S] != null ? Object(arguments[S]) : {},
+				for (var D = 1; D < arguments.length; D++) {
+					var B = arguments[D] != null ? Object(arguments[D]) : {},
 						U = Object.keys(B);
 					typeof Object.getOwnPropertySymbols == "function" && U.push.apply(U, Object.getOwnPropertySymbols(B).filter(function(Z) {
 						return Object.getOwnPropertyDescriptor(B, Z).enumerable
@@ -16468,41 +16594,41 @@
 				return O
 			}
 
-			function i(O, S, B) {
-				return S = u(S), S in O ? Object.defineProperty(O, S, {
+			function i(O, D, B) {
+				return D = d(D), D in O ? Object.defineProperty(O, D, {
 					value: B,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : O[S] = B, O
+				}) : O[D] = B, O
 			}
 
-			function u(O) {
-				var S = _(O, "string");
-				return typeof S == "symbol" ? S : String(S)
+			function d(O) {
+				var D = g(O, "string");
+				return typeof D == "symbol" ? D : String(D)
 			}
 
-			function _(O, S) {
+			function g(O, D) {
 				if (typeof O != "object" || O === null) return O;
 				var B = O[Symbol.toPrimitive];
 				if (B !== void 0) {
-					var U = B.call(O, S || "default");
+					var U = B.call(O, D || "default");
 					if (typeof U != "object") return U;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (S === "string" ? String : Number)(O)
+				return (D === "string" ? String : Number)(O)
 			}
-			const t = O => (0, s.nA)(O) ? (0, l.p1)(O) && (0, p.$n)(O, "zone_versioning", "versioning") : !1,
+			const t = O => (0, s.nA)(O) ? (0, u.p1)(O) && (0, p.$n)(O, "zone_versioning", "versioning") : !1,
 				r = O => O.zoneVersioning.zoneApplications,
 				a = (0, e.P1)("zoneApplications", r),
-				d = O => O.zoneVersioning.zoneVersions,
-				c = (0, e.P1)("zoneVersions", d),
-				g = (0, o.P1)(c, O => {
-					if (O) return O.filter(S => S.status == "V")
+				l = O => O.zoneVersioning.zoneVersions,
+				c = (0, e.P1)("zoneVersions", l),
+				f = (0, o.P1)(c, O => {
+					if (O) return O.filter(D => D.status == "V")
 				}),
-				f = O => O.zoneVersioning.environments,
-				A = O => O.zoneVersioning.environments.isRequesting,
-				h = (0, e.P1)("environments", f),
+				_ = O => O.zoneVersioning.environments,
+				h = O => O.zoneVersioning.environments.isRequesting,
+				A = (0, e.P1)("environments", _),
 				T = (0, o.P1)(a, O => {
 					if (O) {
 						if (O.length === 1) return O[0];
@@ -16510,34 +16636,34 @@
 					}
 					return null
 				}),
-				M = (0, o.P1)(h, O => O ? O.environments : []),
+				M = (0, o.P1)(A, O => O ? O.environments : []),
 				C = O => {
-					var S;
-					return (S = O.zoneVersioning) === null || S === void 0 ? void 0 : S.zoneVersionSelector
+					var D;
+					return (D = O.zoneVersioning) === null || D === void 0 ? void 0 : D.zoneVersionSelector
 				},
-				y = (0, o.P1)(C, c, (O, S) => {
-					if (!(O == null ? void 0 : O.isVersion) || !S) return null;
-					const B = S.find(U => {
+				y = (0, o.P1)(C, c, (O, D) => {
+					if (!(O == null ? void 0 : O.isVersion) || !D) return null;
+					const B = D.find(U => {
 						if (U.version === O.selectedVersion && U.locked) return !0
 					});
 					return B ? m({}, B, {
 						isLocked: !0
 					}) : null
 				}),
-				N = (0, o.P1)(c, M, (O, S) => !S || !O ? [] : O.map(B => {
+				S = (0, o.P1)(c, M, (O, D) => !D || !O ? [] : O.map(B => {
 					const U = [];
-					for (const Z in S) S[Z].version === B.version && U.push(S[Z]);
+					for (const Z in D) D[Z].version === B.version && U.push(D[Z]);
 					return m({}, B, {
 						environments: U
 					})
 				})),
 				L = O => O.zoneVersioning.WAFMigrationStatus,
-				P = (0, e.P1)("WAFMigrationStatus", L),
-				I = O => O.zoneVersioning.enableVersioning
+				b = (0, e.P1)("WAFMigrationStatus", L),
+				P = O => O.zoneVersioning.enableVersioning
 		},
-		"../react/pages/zoneless-workers/constants.ts": function(x, v, n) {
+		"../react/pages/zoneless-workers/constants.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$2: function() {
 					return L
 				},
@@ -16548,7 +16674,7 @@
 					return i
 				},
 				L7: function() {
-					return l
+					return u
 				},
 				Lt: function() {
 					return c
@@ -16557,25 +16683,25 @@
 					return a
 				},
 				QV: function() {
-					return g
+					return f
 				},
 				X$: function() {
 					return M
 				},
 				X6: function() {
-					return _
+					return g
 				},
 				d4: function() {
-					return d
+					return l
 				},
 				fE: function() {
-					return u
+					return d
 				},
 				im: function() {
-					return h
+					return A
 				},
 				lv: function() {
-					return f
+					return _
 				},
 				rL: function() {
 					return t
@@ -16585,44 +16711,44 @@
 				}
 			});
 
-			function e(P) {
-				for (var I = 1; I < arguments.length; I++) {
-					var O = arguments[I] != null ? Object(arguments[I]) : {},
-						S = Object.keys(O);
-					typeof Object.getOwnPropertySymbols == "function" && S.push.apply(S, Object.getOwnPropertySymbols(O).filter(function(B) {
+			function e(b) {
+				for (var P = 1; P < arguments.length; P++) {
+					var O = arguments[P] != null ? Object(arguments[P]) : {},
+						D = Object.keys(O);
+					typeof Object.getOwnPropertySymbols == "function" && D.push.apply(D, Object.getOwnPropertySymbols(O).filter(function(B) {
 						return Object.getOwnPropertyDescriptor(O, B).enumerable
-					})), S.forEach(function(B) {
-						o(P, B, O[B])
+					})), D.forEach(function(B) {
+						o(b, B, O[B])
 					})
 				}
-				return P
+				return b
 			}
 
-			function o(P, I, O) {
-				return I = s(I), I in P ? Object.defineProperty(P, I, {
+			function o(b, P, O) {
+				return P = s(P), P in b ? Object.defineProperty(b, P, {
 					value: O,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : P[I] = O, P
+				}) : b[P] = O, b
 			}
 
-			function s(P) {
-				var I = p(P, "string");
-				return typeof I == "symbol" ? I : String(I)
+			function s(b) {
+				var P = p(b, "string");
+				return typeof P == "symbol" ? P : String(P)
 			}
 
-			function p(P, I) {
-				if (typeof P != "object" || P === null) return P;
-				var O = P[Symbol.toPrimitive];
+			function p(b, P) {
+				if (typeof b != "object" || b === null) return b;
+				var O = b[Symbol.toPrimitive];
 				if (O !== void 0) {
-					var S = O.call(P, I || "default");
-					if (typeof S != "object") return S;
+					var D = O.call(b, P || "default");
+					if (typeof D != "object") return D;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (I === "string" ? String : Number)(P)
+				return (P === "string" ? String : Number)(b)
 			}
-			const l = {
+			const u = {
 					documentation: {
 						configFile: "https://developers.cloudflare.com/pages/functions/wrangler-configuration/",
 						workersAPI: "https://developers.cloudflare.com/api/operations/worker-script-list-workers",
@@ -16746,7 +16872,7 @@
 				},
 				m = 800,
 				i = "40rem",
-				u = {
+				d = {
 					pricing: {
 						requests: .15,
 						duration: 12.5,
@@ -16758,7 +16884,7 @@
 						currency: "USD"
 					}
 				},
-				_ = {
+				g = {
 					d1_included_capacity: 5e9,
 					d1_included_read_count: 25e9,
 					d1_included_write_count: 5e7,
@@ -16836,7 +16962,7 @@
 						cpuTimeMilliseconds: 30
 					}
 				},
-				d = {
+				l = {
 					free: {
 						events: 1e5,
 						retention: 3
@@ -16855,7 +16981,7 @@
 						minutes: 6e3
 					}
 				},
-				g = {
+				f = {
 					enableWorkers: "enable workers",
 					setupSubdomain: "set up subdomain",
 					selectPlan: "select workers plan",
@@ -16956,7 +17082,7 @@
 					reauthenticateGithubModalShown: "reauthenticate github modal shown",
 					updateGithubPermissionsClicked: "update github permissions clicked"
 				},
-				f = {
+				_ = {
 					insufficientData: "insufficient data to create/update trigger",
 					createRepoConnectionError: "error creating repo connection",
 					createTokenError: "error creating token",
@@ -16965,8 +17091,8 @@
 					createWorkerError: "error creating worker",
 					buildWorkerError: "error building worker"
 				},
-				A = "workers.dev",
-				h = "YYYY-MM-DD HH:mm:SS ZZ",
+				h = "workers.dev",
+				A = "YYYY-MM-DD HH:mm:SS ZZ",
 				T = "active",
 				M = ["bundled", "unbound", "standard"],
 				C = null,
@@ -16976,14 +17102,14 @@
 					workersBuildsSCMStatusGitHub: "workers-builds-scm-status-github",
 					workersBuildsSCMStatusGitLab: "workers-builds-scm-status-gitlab"
 				};
-			let N = function(P) {
-				return P[P.NONE = 0] = "NONE", P[P.MISS = 1] = "MISS", P[P.EXPIRED = 2] = "EXPIRED", P[P.UPDATING = 3] = "UPDATING", P[P.STALE = 4] = "STALE", P[P.HIT = 5] = "HIT", P[P.IGNORED = 6] = "IGNORED", P[P.BYPASS = 7] = "BYPASS", P[P.REVALIDATED = 8] = "REVALIDATED", P[P.DYNAMIC = 9] = "DYNAMIC", P[P.STREAM_HIT = 10] = "STREAM_HIT", P[P.DEFERRED = 11] = "DEFERRED", P
+			let S = function(b) {
+				return b[b.NONE = 0] = "NONE", b[b.MISS = 1] = "MISS", b[b.EXPIRED = 2] = "EXPIRED", b[b.UPDATING = 3] = "UPDATING", b[b.STALE = 4] = "STALE", b[b.HIT = 5] = "HIT", b[b.IGNORED = 6] = "IGNORED", b[b.BYPASS = 7] = "BYPASS", b[b.REVALIDATED = 8] = "REVALIDATED", b[b.DYNAMIC = 9] = "DYNAMIC", b[b.STREAM_HIT = 10] = "STREAM_HIT", b[b.DEFERRED = 11] = "DEFERRED", b
 			}({});
-			const L = [N.HIT, N.STREAM_HIT]
+			const L = [S.HIT, S.STREAM_HIT]
 		},
-		"../react/pages/zoneless-workers/routes.ts": function(x, v, n) {
+		"../react/pages/zoneless-workers/routes.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Hv: function() {
 					return i
 				},
@@ -16994,17 +17120,17 @@
 					return p
 				},
 				_j: function() {
-					return l
+					return u
 				},
 				ky: function() {
 					return o
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
-			const o = u => `${u}.workers.dev`,
-				s = (u, _, t) => `${t?`${t}.`:""}${u}.${o(_)}`,
-				p = (u, _, t) => `https://${s(u,_,t)}`,
-				l = {
+			const o = d => `${d}.workers.dev`,
+				s = (d, g, t) => `${t?`${t}.`:""}${d}.${o(g)}`,
+				p = (d, g, t) => `https://${s(d,g,t)}`,
+				u = {
 					workersOverview: (0, e.BC)`/${"accountId"}/workers/overview`,
 					zoneRoot: (0, e.BC)`/${"accountId"}/${"zoneName"}/workers`,
 					root: (0, e.BC)`/${"accountId"}/workers`,
@@ -17189,14 +17315,14 @@
 					zones: (0, e.BC)`/zones`
 				}
 		},
-		"../react/pages/zoneless-workers/utils/swrConfig.ts": function(x, v, n) {
+		"../react/pages/zoneless-workers/utils/swrConfig.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				MN: function() {
 					return s
 				},
 				Yg: function() {
-					return l
+					return u
 				},
 				i$: function() {
 					return p
@@ -17207,25 +17333,25 @@
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
 				o = n.n(e);
-			const s = async ([i, u]) => (await e.post("/graphql", {
+			const s = async ([i, d]) => (await e.post("/graphql", {
 				headers: {
 					"content-type": "application/json"
 				},
 				body: JSON.stringify({
 					query: i,
-					variables: u
+					variables: d
 				})
-			})).body, p = async (...i) => (await e.get(...i)).body, l = i => async (u, _) => {
-				const t = await fetch(u, _).then(r => r.json());
+			})).body, p = async (...i) => (await e.get(...i)).body, u = i => async (d, g) => {
+				const t = await fetch(d, g).then(r => r.json());
 				return i.assertDecode(t)
 			}, m = async (...i) => (await p(...i)).result;
-			v.ZP = {
+			E.ZP = {
 				fetcher: i => Array.isArray(i) ? m(...i) : m(i)
 			}
 		},
 		"../react/shims/focus-visible.js": function() {
-			(function(x, v) {
-				v()
+			(function(x, E) {
+				E()
 			})(this, function() {
 				"use strict";
 
@@ -17249,73 +17375,73 @@
 							"datetime-local": !0
 						};
 
-					function p(f) {
-						return !!(f && f !== document && f.nodeName !== "HTML" && f.nodeName !== "BODY" && "classList" in f && "contains" in f.classList)
+					function p(_) {
+						return !!(_ && _ !== document && _.nodeName !== "HTML" && _.nodeName !== "BODY" && "classList" in _ && "contains" in _.classList)
 					}
 
-					function l(f) {
-						var A = f.type,
-							h = f.tagName;
-						return !!(h == "INPUT" && s[A] && !f.readOnly || h == "TEXTAREA" && !f.readOnly || f.isContentEditable)
+					function u(_) {
+						var h = _.type,
+							A = _.tagName;
+						return !!(A == "INPUT" && s[h] && !_.readOnly || A == "TEXTAREA" && !_.readOnly || _.isContentEditable)
 					}
 
-					function m(f) {
-						f.getAttribute("is-focus-visible") !== "" && f.setAttribute("is-focus-visible", "")
+					function m(_) {
+						_.getAttribute("is-focus-visible") !== "" && _.setAttribute("is-focus-visible", "")
 					}
 
-					function i(f) {
-						f.getAttribute("is-focus-visible") === "" && f.removeAttribute("is-focus-visible")
+					function i(_) {
+						_.getAttribute("is-focus-visible") === "" && _.removeAttribute("is-focus-visible")
 					}
 
-					function u(f) {
+					function d(_) {
 						p(document.activeElement) && m(document.activeElement), n = !0
 					}
 
-					function _(f) {
+					function g(_) {
 						n = !1
 					}
 
-					function t(f) {
-						!p(f.target) || (n || l(f.target)) && m(f.target)
+					function t(_) {
+						!p(_.target) || (n || u(_.target)) && m(_.target)
 					}
 
-					function r(f) {
-						!p(f.target) || f.target.hasAttribute("is-focus-visible") && (e = !0, window.clearTimeout(o), o = window.setTimeout(function() {
+					function r(_) {
+						!p(_.target) || _.target.hasAttribute("is-focus-visible") && (e = !0, window.clearTimeout(o), o = window.setTimeout(function() {
 							e = !1, window.clearTimeout(o)
-						}, 100), i(f.target))
+						}, 100), i(_.target))
 					}
 
-					function a(f) {
-						document.visibilityState == "hidden" && (e && (n = !0), d())
+					function a(_) {
+						document.visibilityState == "hidden" && (e && (n = !0), l())
 					}
 
-					function d() {
-						document.addEventListener("mousemove", g), document.addEventListener("mousedown", g), document.addEventListener("mouseup", g), document.addEventListener("pointermove", g), document.addEventListener("pointerdown", g), document.addEventListener("pointerup", g), document.addEventListener("touchmove", g), document.addEventListener("touchstart", g), document.addEventListener("touchend", g)
+					function l() {
+						document.addEventListener("mousemove", f), document.addEventListener("mousedown", f), document.addEventListener("mouseup", f), document.addEventListener("pointermove", f), document.addEventListener("pointerdown", f), document.addEventListener("pointerup", f), document.addEventListener("touchmove", f), document.addEventListener("touchstart", f), document.addEventListener("touchend", f)
 					}
 
 					function c() {
-						document.removeEventListener("mousemove", g), document.removeEventListener("mousedown", g), document.removeEventListener("mouseup", g), document.removeEventListener("pointermove", g), document.removeEventListener("pointerdown", g), document.removeEventListener("pointerup", g), document.removeEventListener("touchmove", g), document.removeEventListener("touchstart", g), document.removeEventListener("touchend", g)
+						document.removeEventListener("mousemove", f), document.removeEventListener("mousedown", f), document.removeEventListener("mouseup", f), document.removeEventListener("pointermove", f), document.removeEventListener("pointerdown", f), document.removeEventListener("pointerup", f), document.removeEventListener("touchmove", f), document.removeEventListener("touchstart", f), document.removeEventListener("touchend", f)
 					}
 
-					function g(f) {
-						f.target.nodeName.toLowerCase() !== "html" && (n = !1, c())
+					function f(_) {
+						_.target.nodeName.toLowerCase() !== "html" && (n = !1, c())
 					}
-					document.addEventListener("keydown", u, !0), document.addEventListener("mousedown", _, !0), document.addEventListener("pointerdown", _, !0), document.addEventListener("touchstart", _, !0), document.addEventListener("focus", t, !0), document.addEventListener("blur", r, !0), document.addEventListener("visibilitychange", a, !0), d(), document.documentElement.setAttribute("js-focus-visible-polyfill-available", "")
+					document.addEventListener("keydown", d, !0), document.addEventListener("mousedown", g, !0), document.addEventListener("pointerdown", g, !0), document.addEventListener("touchstart", g, !0), document.addEventListener("focus", t, !0), document.addEventListener("blur", r, !0), document.addEventListener("visibilitychange", a, !0), l(), document.documentElement.setAttribute("js-focus-visible-polyfill-available", "")
 				}
 
-				function v(n) {
+				function E(n) {
 					var e;
 
 					function o() {
 						e || (e = !0, n())
 					} ["interactive", "complete"].indexOf(document.readyState) >= 0 ? n() : (e = !1, document.addEventListener("DOMContentLoaded", o, !1), window.addEventListener("load", o, !1))
 				}
-				typeof document != "undefined" && v(x)
+				typeof document != "undefined" && E(x)
 			})
 		},
-		"../react/utils/bootstrap.ts": function(x, v, n) {
+		"../react/utils/bootstrap.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				$8: function() {
 					return o
 				},
@@ -17330,25 +17456,25 @@
 				}
 			});
 			const e = () => {
-					var l, m, i;
-					return (l = window) === null || l === void 0 || (m = l.bootstrap) === null || m === void 0 || (i = m.data) === null || i === void 0 ? void 0 : i.security_token
+					var u, m, i;
+					return (u = window) === null || u === void 0 || (m = u.bootstrap) === null || m === void 0 || (i = m.data) === null || i === void 0 ? void 0 : i.security_token
 				},
 				o = () => {
-					var l, m, i;
-					return !!((l = n.g.bootstrap) === null || l === void 0 || (m = l.data) === null || m === void 0 || (i = m.user) === null || i === void 0 ? void 0 : i.id)
+					var u, m, i;
+					return !!((u = n.g.bootstrap) === null || u === void 0 || (m = u.data) === null || m === void 0 || (i = m.user) === null || i === void 0 ? void 0 : i.id)
 				},
 				s = () => {
-					var l, m;
-					return !!((l = n.g.bootstrap) === null || l === void 0 || (m = l.data) === null || m === void 0 ? void 0 : m.is_kendo)
+					var u, m;
+					return !!((u = n.g.bootstrap) === null || u === void 0 || (m = u.data) === null || m === void 0 ? void 0 : m.is_kendo)
 				},
 				p = () => {
-					var l, m, i, u;
-					return (l = window) === null || l === void 0 || (m = l.bootstrap) === null || m === void 0 || (i = m.data) === null || i === void 0 || (u = i.user) === null || u === void 0 ? void 0 : u.primary_account_tag
+					var u, m, i, d;
+					return (u = window) === null || u === void 0 || (m = u.bootstrap) === null || m === void 0 || (i = m.data) === null || i === void 0 || (d = i.user) === null || d === void 0 ? void 0 : d.primary_account_tag
 				}
 		},
-		"../react/utils/cookiePreferences.ts": function(x, v, n) {
+		"../react/utils/cookiePreferences.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				O5: function() {
 					return p
 				},
@@ -17359,7 +17485,7 @@
 					return i
 				},
 				wV: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("../../../../node_modules/cookie/index.js");
@@ -17369,22 +17495,22 @@
 				},
 				s = () => (o() || "").indexOf("C0002") !== -1,
 				p = () => (o() || "").indexOf("C0003") !== -1,
-				l = () => (o() || "").indexOf("C0004") !== -1,
+				u = () => (o() || "").indexOf("C0004") !== -1,
 				m = () => (o() || "").indexOf("C0005") !== -1,
 				i = t => {
 					const r = ".cloudflare.com";
 					document.cookie = `${t}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;domain=${r}`
 				},
-				u = () => {
+				d = () => {
 					var t;
 					const r = (t = window.OneTrust) === null || t === void 0 ? void 0 : t.getGeolocationData();
 					return (r == null ? void 0 : r.country) || ""
 				},
-				_ = () => parse(document.cookie)
+				g = () => parse(document.cookie)
 		},
-		"../react/utils/i18n.ts": function(x, v, n) {
+		"../react/utils/i18n.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				AI: function() {
 					return M
 				},
@@ -17395,7 +17521,7 @@
 					return T
 				},
 				ZW: function() {
-					return u
+					return d
 				},
 				ay: function() {
 					return C
@@ -17420,52 +17546,52 @@
 				o = n.n(e),
 				s = n("../../../common/intl/intl-types/src/index.ts"),
 				p = n("../../../common/util/types/src/utils/index.ts"),
-				l = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
+				u = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				m = n("../../../../node_modules/cookie/index.js");
 			const i = "cf-sync-locale-with-cps",
-				u = s.Q.en_US,
-				_ = "en_US",
+				d = s.Q.en_US,
+				g = "en_US",
 				t = "cf-locale";
 
 			function r() {
-				const P = (0, m.parse)(document.cookie);
-				return l.Z.get(t) || P[t] || null
+				const b = (0, m.parse)(document.cookie);
+				return u.Z.get(t) || b[t] || null
 			}
 
-			function a(P) {
-				document.cookie = (0, m.serialize)(t, P, {
+			function a(b) {
+				document.cookie = (0, m.serialize)(t, b, {
 					path: "/",
 					maxAge: 31536e3
-				}), l.Z.set(t, P)
+				}), u.Z.set(t, b)
 			}
 
-			function d() {
+			function l() {
 				document.cookie = serializeCookie(t, "", {
 					path: "/",
 					maxAge: 0
 				}), cache.remove(t)
 			}
-			const c = P => (0, p.Yd)(s.Q).find(I => s.Q[I] === P) || _,
-				g = [],
+			const c = b => (0, p.Yd)(s.Q).find(P => s.Q[P] === b) || g,
 				f = [],
-				A = [s.Q.de_DE, s.Q.en_US, s.Q.es_ES, s.Q.fr_FR, s.Q.it_IT, s.Q.pt_BR, s.Q.ko_KR, s.Q.ja_JP, s.Q.zh_CN, s.Q.zh_TW],
-				h = {
-					test: [...A, ...f, ...g],
-					development: [...A, ...f, ...g],
-					staging: [...A, ...f, ...g],
-					production: [...A, ...f]
+				_ = [],
+				h = [s.Q.de_DE, s.Q.en_US, s.Q.es_ES, s.Q.fr_FR, s.Q.it_IT, s.Q.pt_BR, s.Q.ko_KR, s.Q.ja_JP, s.Q.zh_CN, s.Q.zh_TW],
+				A = {
+					test: [...h, ..._, ...f],
+					development: [...h, ..._, ...f],
+					staging: [...h, ..._, ...f],
+					production: [...h, ..._]
 				},
-				T = P => {
-					const I = s.Q[P];
-					return h.production.includes(I)
+				T = b => {
+					const P = s.Q[b];
+					return A.production.includes(P)
 				},
-				M = () => Object.keys(s.Q).filter(P => T(P)),
-				C = P => {
-					const I = s.Q[P];
-					return f.includes(I)
+				M = () => Object.keys(s.Q).filter(b => T(b)),
+				C = b => {
+					const P = s.Q[b];
+					return _.includes(P)
 				},
-				y = P => N[P],
-				N = {
+				y = b => S[b],
+				S = {
 					de_DE: "Deutsch",
 					en_US: "English",
 					es_CL: "Espa\xF1ol",
@@ -17524,14 +17650,14 @@
 				}
 			}), o().locale(L)
 		},
-		"../react/utils/translator.tsx": function(x, v, n) {
+		"../react/utils/translator.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				QT: function() {
 					return c
 				},
 				Vb: function() {
-					return u
+					return d
 				},
 				Yi: function() {
 					return t
@@ -17546,54 +17672,54 @@
 					return a
 				},
 				oc: function() {
-					return d
+					return l
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-markdown/es/index.js"),
 				o = n("../../../common/intl/intl-core/src/Translator.ts"),
 				s = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				p = n.n(s),
-				l = n("../flags.ts");
+				u = n("../flags.ts");
 			const m = new o.Z({
-				pseudoLoc: (0, l.J8)("is_pseudo_loc")
+				pseudoLoc: (0, u.J8)("is_pseudo_loc")
 			});
 
-			function i(g, ...f) {
-				return m.t(g, ...f)
+			function i(f, ..._) {
+				return m.t(f, ..._)
 			}
-			const u = m;
+			const d = m;
 
-			function _(g, ...f) {
-				return markdown(i(g, f))
+			function g(f, ..._) {
+				return markdown(i(f, _))
 			}
 
-			function t(g) {
-				if (Number(g) !== 0) {
-					if (g % 86400 == 0) return i("time.num_days", {
-						smart_count: g / 86400
+			function t(f) {
+				if (Number(f) !== 0) {
+					if (f % 86400 == 0) return i("time.num_days", {
+						smart_count: f / 86400
 					});
-					if (g % 3600 == 0) return i("time.num_hours", {
-						smart_count: g / 3600
+					if (f % 3600 == 0) return i("time.num_hours", {
+						smart_count: f / 3600
 					});
-					if (g % 60 == 0) return i("time.num_minutes", {
-						smart_count: g / 60
+					if (f % 60 == 0) return i("time.num_minutes", {
+						smart_count: f / 60
 					})
 				}
 				return i("time.num_seconds", {
-					smart_count: g
+					smart_count: f
 				})
 			}
 
-			function r(g, f) {
-				return g in f ? f[g] : void 0
+			function r(f, _) {
+				return f in _ ? _[f] : void 0
 			}
 			const a = s.Trans,
-				d = s.I18n,
+				l = s.I18n,
 				c = s.useI18n
 		},
-		"../react/utils/url.ts": function(x, v, n) {
+		"../react/utils/url.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Ct: function() {
 					return C
 				},
@@ -17604,19 +17730,19 @@
 					return ce
 				},
 				NF: function() {
-					return f
+					return _
 				},
 				Nw: function() {
 					return T
 				},
 				Pd: function() {
-					return h
+					return A
 				},
 				Uh: function() {
-					return Y
+					return Q
 				},
 				Y_: function() {
-					return g
+					return f
 				},
 				e1: function() {
 					return M
@@ -17628,157 +17754,157 @@
 					return Z
 				},
 				pu: function() {
-					return te
+					return ne
 				},
 				qR: function() {
-					return S
+					return D
 				},
 				td: function() {
-					return A
+					return h
 				},
 				uW: function() {
-					return Ee
+					return _e
 				}
 			});
 			var e = n("../../../../node_modules/query-string/query-string.js"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-regex/es/index.js"),
 				p = n("../react/pages/stream/routes.ts"),
-				l = n("../react/pages/r2/routes.ts"),
+				u = n("../react/pages/r2/routes.ts"),
 				m = n("../react/pages/zoneless-workers/routes.ts"),
 				i = n("../react/pages/pages/routes.ts"),
-				u = n("../react/pages/d1/routes.ts");
+				d = n("../react/pages/d1/routes.ts");
 
-			function _(K) {
-				for (var q = 1; q < arguments.length; q++) {
-					var $ = arguments[q] != null ? Object(arguments[q]) : {},
-						X = Object.keys($);
-					typeof Object.getOwnPropertySymbols == "function" && X.push.apply(X, Object.getOwnPropertySymbols($).filter(function(W) {
-						return Object.getOwnPropertyDescriptor($, W).enumerable
-					})), X.forEach(function(W) {
-						t(K, W, $[W])
+			function g(G) {
+				for (var J = 1; J < arguments.length; J++) {
+					var W = arguments[J] != null ? Object(arguments[J]) : {},
+						q = Object.keys(W);
+					typeof Object.getOwnPropertySymbols == "function" && q.push.apply(q, Object.getOwnPropertySymbols(W).filter(function($) {
+						return Object.getOwnPropertyDescriptor(W, $).enumerable
+					})), q.forEach(function($) {
+						t(G, $, W[$])
 					})
 				}
-				return K
+				return G
 			}
 
-			function t(K, q, $) {
-				return q = r(q), q in K ? Object.defineProperty(K, q, {
-					value: $,
+			function t(G, J, W) {
+				return J = r(J), J in G ? Object.defineProperty(G, J, {
+					value: W,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : K[q] = $, K
+				}) : G[J] = W, G
 			}
 
-			function r(K) {
-				var q = a(K, "string");
-				return typeof q == "symbol" ? q : String(q)
+			function r(G) {
+				var J = a(G, "string");
+				return typeof J == "symbol" ? J : String(J)
 			}
 
-			function a(K, q) {
-				if (typeof K != "object" || K === null) return K;
-				var $ = K[Symbol.toPrimitive];
-				if ($ !== void 0) {
-					var X = $.call(K, q || "default");
-					if (typeof X != "object") return X;
+			function a(G, J) {
+				if (typeof G != "object" || G === null) return G;
+				var W = G[Symbol.toPrimitive];
+				if (W !== void 0) {
+					var q = W.call(G, J || "default");
+					if (typeof q != "object") return q;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (q === "string" ? String : Number)(K)
+				return (J === "string" ? String : Number)(G)
 			}
 			const {
-				endsWithSlash: d
-			} = s.default, c = (K, q) => {
-				const $ = K.replace(d, "").split("/");
-				return $.slice(0, 2).concat([q]).concat($.slice(3)).join("/")
-			}, g = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), f = K => `/${K.replace(d,"").replace(/^\//,"")}`, A = K => T("add-site", K), h = K => T("billing", K), T = (K, q) => q ? `/${q}${K?`/${K}`:""}` : `/?to=/:account/${K}`, M = () => {
-				const K = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
-				return K ? K[1] : null
-			}, C = (K, q) => o().stringify(_({}, o().parse(K), q)), y = (K = "") => K.toString().replace(/([\/]{1,})$/, ""), N = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/password-reset", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], L = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, P = /^\/(\w{32,})(\/[^.]*)?/, I = K => N.includes(K), O = K => !I(K), S = K => !I(K) && P.test(K), B = K => !I(K) && L.test(K), U = K => L.exec(K), Z = K => {
-				if (B(K)) return K.split("/").filter(q => q.length > 0)[1]
-			}, ae = K => P.exec(K), Ee = K => {
-				if (S(K)) {
-					const q = ae(K);
-					if (q) return q[1]
+				endsWithSlash: l
+			} = s.default, c = (G, J) => {
+				const W = G.replace(l, "").split("/");
+				return W.slice(0, 2).concat([J]).concat(W.slice(3)).join("/")
+			}, f = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), _ = G => `/${G.replace(l,"").replace(/^\//,"")}`, h = G => T("add-site", G), A = G => T("billing", G), T = (G, J) => J ? `/${J}${G?`/${G}`:""}` : `/?to=/:account/${G}`, M = () => {
+				const G = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
+				return G ? G[1] : null
+			}, C = (G, J) => o().stringify(g({}, o().parse(G), J)), y = (G = "") => G.toString().replace(/([\/]{1,})$/, ""), S = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/password-reset", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], L = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, b = /^\/(\w{32,})(\/[^.]*)?/, P = G => S.includes(G), O = G => !P(G), D = G => !P(G) && b.test(G), B = G => !P(G) && L.test(G), U = G => L.exec(G), Z = G => {
+				if (B(G)) return G.split("/").filter(J => J.length > 0)[1]
+			}, ae = G => b.exec(G), _e = G => {
+				if (D(G)) {
+					const J = ae(G);
+					if (J) return J[1]
 				}
-			}, de = K => S(K) && K.split("/")[2] === "register-domain", ue = K => de(K) ? K.split("/") : null, V = K => {
-				if (B(K)) {
-					const [, , , q, $, X, W, ne] = K.split("/");
-					return q === "traffic" && $ === "load-balancing" && X === "pools" && W === "edit" && ne
+			}, de = G => D(G) && G.split("/")[2] === "register-domain", ue = G => de(G) ? G.split("/") : null, K = G => {
+				if (B(G)) {
+					const [, , , J, W, q, $, te] = G.split("/");
+					return J === "traffic" && W === "load-balancing" && q === "pools" && $ === "edit" && te
 				}
-			}, Y = K => {
-				const q = ue(K);
-				if (q) return q[3]
-			}, G = (K, q) => {
-				var $, X;
-				return (($ = K.pattern.match(/\:/g)) !== null && $ !== void 0 ? $ : []).length - ((X = q.pattern.match(/\:/g)) !== null && X !== void 0 ? X : []).length
-			}, b = [...Object.values(p.C), ...Object.values(l._j), ...Object.values(m._j), ...Object.values(i._j), ...Object.values(u._)].sort(G);
+			}, Q = G => {
+				const J = ue(G);
+				if (J) return J[3]
+			}, H = (G, J) => {
+				var W, q;
+				return ((W = G.pattern.match(/\:/g)) !== null && W !== void 0 ? W : []).length - ((q = J.pattern.match(/\:/g)) !== null && q !== void 0 ? q : []).length
+			}, I = [...Object.values(p.C), ...Object.values(u._j), ...Object.values(m._j), ...Object.values(i._j), ...Object.values(d._)].sort(H);
 
-			function F(K) {
-				if (!O(K)) return K;
-				for (const ne of b)
-					if (ne.expression.test(K)) return ne.pattern;
-				const q = ue(K);
+			function F(G) {
+				if (!O(G)) return G;
+				for (const te of I)
+					if (te.expression.test(G)) return te.pattern;
+				const J = ue(G);
+				if (J) {
+					const [, , te, , ...Ee] = J;
+					return `/:accountId/${te}/:domainName/${Ee.join("/")}`
+				}
+				if (K(G)) return "/:accountId/:zoneName/traffic/load-balancing/pools/edit/:poolId";
+				const q = U(G);
 				if (q) {
-					const [, , ne, , ...ve] = q;
-					return `/:accountId/${ne}/:domainName/${ve.join("/")}`
+					const [, , , , te] = q;
+					return `/:accountId/:zoneName${te||""}`
 				}
-				if (V(K)) return "/:accountId/:zoneName/traffic/load-balancing/pools/edit/:poolId";
-				const X = U(K);
-				if (X) {
-					const [, , , , ne] = X;
-					return `/:accountId/:zoneName${ne||""}`
+				const $ = ae(G);
+				if ($) {
+					const [, , te] = $;
+					return `/:accountId${te||""}`
 				}
-				const W = ae(K);
-				if (W) {
-					const [, , ne] = W;
-					return `/:accountId${ne||""}`
-				}
-				return K
+				return G
 			}
 
-			function te(K) {
-				if (!!K) try {
-					const $ = K.split(".").pop();
-					if ($ && $.length > 0) return $
+			function ne(G) {
+				if (!!G) try {
+					const W = G.split(".").pop();
+					if (W && W.length > 0) return W
 				} catch {}
 			}
 
-			function ce(K, q = document.location.href) {
+			function ce(G, J = document.location.href) {
 				try {
-					const $ = new URL(K),
-						X = new URL(q);
-					if ($.origin === X.origin) return `${$.pathname}${$.search}${$.hash}`
+					const W = new URL(G),
+						q = new URL(J);
+					if (W.origin === q.origin) return `${W.pathname}${W.search}${W.hash}`
 				} catch {}
 			}
 		},
-		"../react/utils/useDomainConnectRedirect.ts": function(x, v, n) {
+		"../react/utils/useDomainConnectRedirect.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				r: function() {
 					return i
 				},
 				y: function() {
-					return u
+					return d
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				p = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
-				l = n.n(p);
+				u = n.n(p);
 			const m = /^\/domainconnect\/v2\/domaintemplates\//i,
 				i = "domain-connect-redirect",
-				u = () => {
-					const _ = (0, p.useLocation)();
+				d = () => {
+					const g = (0, p.useLocation)();
 					(0, e.useEffect)(() => {
-						m.test(_.pathname) && s.Z.set(i, _, 60 * 1e3)
+						m.test(g.pathname) && s.Z.set(i, g, 60 * 1e3)
 					}, [])
 				}
 		},
-		"../react/utils/zaraz.ts": function(x, v, n) {
+		"../react/utils/zaraz.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				tg: function() {
 					return e.tg
 				},
@@ -17788,22 +17914,22 @@
 			});
 			var e = n("../utils/zaraz.ts")
 		},
-		"../react/utils/zoneLevelAccess.ts": function(x, v, n) {
+		"../react/utils/zoneLevelAccess.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				P: function() {
 					return p
 				},
 				b: function() {
-					return l
+					return u
 				}
 			});
 			var e = n("../react/common/hooks/useGate.ts"),
 				o = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs");
 
 			function s() {
-				var m, i, u, _, t, r;
-				return (m = window) === null || m === void 0 || (i = m.bootstrap) === null || i === void 0 || (u = i.data) === null || u === void 0 || (_ = u.user) === null || _ === void 0 || (t = _.betas) === null || t === void 0 || (r = t.some) === null || r === void 0 ? void 0 : r.call(t, a => a === "zone_level_access_beta")
+				var m, i, d, g, t, r;
+				return (m = window) === null || m === void 0 || (i = m.bootstrap) === null || i === void 0 || (d = i.data) === null || d === void 0 || (g = d.user) === null || g === void 0 || (t = g.betas) === null || t === void 0 || (r = t.some) === null || r === void 0 ? void 0 : r.call(t, a => a === "zone_level_access_beta")
 			}
 
 			function p() {
@@ -17811,14 +17937,14 @@
 				return s() || m
 			}
 
-			function l(m) {
+			function u(m) {
 				const i = !!(0, o.z1)("zone-level-access")(m);
 				return s() || i
 			}
 		},
-		"../utils/getDashVersion.ts": function(x, v, n) {
+		"../utils/getDashVersion.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				p: function() {
 					return s
 				},
@@ -17828,140 +17954,140 @@
 			});
 			var e = n("../../../../node_modules/cookie/index.js");
 			const o = () => {
-					var p, l;
-					return (p = window) === null || p === void 0 || (l = p.build) === null || l === void 0 ? void 0 : l.dashVersion
+					var p, u;
+					return (p = window) === null || p === void 0 || (u = p.build) === null || u === void 0 ? void 0 : u.dashVersion
 				},
 				s = () => {
 					var p;
 					return ((0, e.parse)((p = document) === null || p === void 0 ? void 0 : p.cookie) || {}).CF_dash_version !== void 0
 				}
 		},
-		"../utils/initSparrow.ts": function(x, v, n) {
+		"../utils/initSparrow.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Wi: function() {
-					return je
+					return Ve
 				},
 				IM: function() {
-					return Oe
+					return Fe
 				},
 				yV: function() {
-					return le
+					return Ce
 				},
 				Ug: function() {
-					return z
+					return le
 				},
 				v_: function() {
-					return Ce
+					return Oe
 				}
 			});
 			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				o = n.n(e),
 				s = n("../react/utils/bootstrap.ts"),
 				p = n("../react/app/providers/storeContainer.js"),
-				l = n("../react/common/selectors/languagePreferenceSelector.ts"),
+				u = n("../react/common/selectors/languagePreferenceSelector.ts"),
 				m = n("../flags.ts"),
 				i = n("../../../../node_modules/cookie/index.js"),
-				u = n("../react/utils/url.ts"),
-				_ = n("../react/common/selectors/zoneSelectors.ts"),
+				d = n("../react/utils/url.ts"),
+				g = n("../react/common/selectors/zoneSelectors.ts"),
 				t = n("../../../../node_modules/@cloudflare/util-en-garde/es/index.js"),
 				r = n("../../../../node_modules/lodash-es/memoize.js"),
 				a = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs"),
-				d = n("../utils/getDashVersion.ts"),
+				l = n("../utils/getDashVersion.ts"),
 				c = n("../react/common/selectors/accountSelectors.ts"),
-				g = n("../react/common/selectors/entitlementsSelectors.ts");
+				f = n("../react/common/selectors/entitlementsSelectors.ts");
 
-			function f(ge) {
-				for (var w = 1; w < arguments.length; w++) {
-					var ee = arguments[w] != null ? Object(arguments[w]) : {},
-						oe = Object.keys(ee);
-					typeof Object.getOwnPropertySymbols == "function" && oe.push.apply(oe, Object.getOwnPropertySymbols(ee).filter(function(he) {
-						return Object.getOwnPropertyDescriptor(ee, he).enumerable
-					})), oe.forEach(function(he) {
-						A(ge, he, ee[he])
+			function _(R) {
+				for (var Y = 1; Y < arguments.length; Y++) {
+					var oe = arguments[Y] != null ? Object(arguments[Y]) : {},
+						ve = Object.keys(oe);
+					typeof Object.getOwnPropertySymbols == "function" && ve.push.apply(ve, Object.getOwnPropertySymbols(oe).filter(function(he) {
+						return Object.getOwnPropertyDescriptor(oe, he).enumerable
+					})), ve.forEach(function(he) {
+						h(R, he, oe[he])
 					})
 				}
-				return ge
+				return R
 			}
 
-			function A(ge, w, ee) {
-				return w = h(w), w in ge ? Object.defineProperty(ge, w, {
-					value: ee,
+			function h(R, Y, oe) {
+				return Y = A(Y), Y in R ? Object.defineProperty(R, Y, {
+					value: oe,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : ge[w] = ee, ge
+				}) : R[Y] = oe, R
 			}
 
-			function h(ge) {
-				var w = T(ge, "string");
-				return typeof w == "symbol" ? w : String(w)
+			function A(R) {
+				var Y = T(R, "string");
+				return typeof Y == "symbol" ? Y : String(Y)
 			}
 
-			function T(ge, w) {
-				if (typeof ge != "object" || ge === null) return ge;
-				var ee = ge[Symbol.toPrimitive];
-				if (ee !== void 0) {
-					var oe = ee.call(ge, w || "default");
-					if (typeof oe != "object") return oe;
+			function T(R, Y) {
+				if (typeof R != "object" || R === null) return R;
+				var oe = R[Symbol.toPrimitive];
+				if (oe !== void 0) {
+					var ve = oe.call(R, Y || "default");
+					if (typeof ve != "object") return ve;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (w === "string" ? String : Number)(ge)
+				return (Y === "string" ? String : Number)(R)
 			}
 			const M = t.eg.exact(t.eg.object({
 					_ga: t.eg.string.optional,
 					"AMCV_8AD56F28618A50850A495FB6%40AdobeOrg": t.eg.string.optional
 				})),
-				C = (0, r.Z)(ge => {
+				C = (0, r.Z)(R => {
 					try {
-						return M.assertDecode((0, i.parse)(ge))
-					} catch (w) {
-						return console.error(w), {}
+						return M.assertDecode((0, i.parse)(R))
+					} catch (Y) {
+						return console.error(Y), {}
 					}
 				}),
-				y = ge => (w, ee, oe) => {
+				y = R => (Y, oe, ve) => {
 					try {
-						const Ze = window.location.pathname,
-							ot = (0, p.bh)().getState(),
-							_t = C(document.cookie),
-							Ct = f({
-								page: (0, u.Fl)(oe.page || window.location.pathname),
-								dashVersion: (0, d.t)()
-							}, _t);
-						if (w === "identify") {
-							var he, De;
-							const dt = {
-								gates: (0, a.T2)(ot) || {},
-								country: (he = n.g) === null || he === void 0 || (De = he.bootstrap) === null || De === void 0 ? void 0 : De.ip_country
+						const tt = window.location.pathname,
+							at = (0, p.bh)().getState(),
+							mt = C(document.cookie),
+							Ct = _({
+								page: (0, d.Fl)(ve.page || window.location.pathname),
+								dashVersion: (0, l.t)()
+							}, mt);
+						if (Y === "identify") {
+							var he, $e;
+							const it = {
+								gates: (0, a.T2)(at) || {},
+								country: (he = n.g) === null || he === void 0 || ($e = he.bootstrap) === null || $e === void 0 ? void 0 : $e.ip_country
 							};
-							return ge(w, ee, f({}, Ct, dt, oe))
+							return R(Y, oe, _({}, Ct, it, ve))
 						} else {
-							const dt = {
-								accountId: (0, u.uW)(Ze),
-								zoneName: (0, u.hW)(Ze),
-								domainName: (0, u.Uh)(Ze)
+							const it = {
+								accountId: (0, d.uW)(tt),
+								zoneName: (0, d.hW)(tt),
+								domainName: (0, d.Uh)(tt)
 							};
-							if ((0, u.qR)(Ze)) {
-								var Ve;
-								const qe = (0, c.D0)(ot);
-								dt.isEntAccount = !!(qe == null || (Ve = qe.meta) === null || Ve === void 0 ? void 0 : Ve.has_enterprise_zones) || (0, g.p1)(ot)
+							if ((0, d.qR)(tt)) {
+								var et;
+								const He = (0, c.D0)(at);
+								it.isEntAccount = !!(He == null || (et = He.meta) === null || et === void 0 ? void 0 : et.has_enterprise_zones) || (0, f.p1)(at)
 							}
-							if ((0, u.el)(Ze)) {
-								var nt;
-								const qe = (0, _.nA)(ot);
-								dt.zoneId = qe == null ? void 0 : qe.id, dt.plan = qe == null || (nt = qe.plan) === null || nt === void 0 ? void 0 : nt.legacy_id
+							if ((0, d.el)(tt)) {
+								var Je;
+								const He = (0, g.nA)(at);
+								it.zoneId = He == null ? void 0 : He.id, it.plan = He == null || (Je = He.plan) === null || Je === void 0 ? void 0 : Je.legacy_id
 							}
-							return ge(w, ee, f({}, Ct, dt, oe))
+							return R(Y, oe, _({}, Ct, it, ve))
 						}
-					} catch (Ze) {
-						return console.error(Ze), ge(w, ee, oe)
+					} catch (tt) {
+						return console.error(tt), R(Y, oe, ve)
 					}
 				},
-				N = ge => async (w, ee, oe) => {
+				S = R => async (Y, oe, ve) => {
 					try {
-						return await ge(w, ee, oe)
+						return await R(Y, oe, ve)
 					} catch (he) {
-						if (console.error(he), !Ce()) throw he;
+						if (console.error(he), !Oe()) throw he;
 						return {
 							status: "rejected",
 							reason: he
@@ -17969,44 +18095,45 @@
 					}
 				};
 			var L = n("../react/app/components/GlobalHeader/AddProductDropdown/index.tsx"),
-				P = n("../react/common/components/filter-editor/constants/userJourney.ts"),
-				I = n("../react/common/hooks/rulesets/resources/tracking.tsx"),
+				b = n("../react/common/components/filter-editor/constants/userJourney.ts"),
+				P = n("../react/common/hooks/rulesets/resources/tracking.tsx"),
 				O = n("../react/common/middleware/sparrow/errors.ts"),
-				S = n("../react/pages/caching/tracking.tsx"),
+				D = n("../react/pages/caching/tracking.tsx"),
 				B = n("../react/pages/home/domain-registration/tracking.ts"),
 				U = n("../react/pages/home/rulesets/ddos/tracking.ts"),
 				Z = n("../react/pages/hyperdrive/tracking.ts"),
 				ae = n("../react/pages/magic/overview/tracking.ts"),
-				Ee = n("../react/pages/magic/packet-captures/constants.ts"),
+				_e = n("../react/pages/magic/packet-captures/constants.ts"),
 				de = n("../react/pages/page-rules/tracking.ts"),
 				ue = n("../react/pages/pages/constants.ts"),
-				V = n("../react/pages/pipelines/tracking.ts"),
-				Y = n("../react/pages/security-center/BlockedContent/constants.ts"),
-				G = n("../react/pages/security-center/tracking.ts"),
-				b = n("../react/pages/security/api-shield/tracking.ts"),
+				K = n("../react/pages/pipelines/tracking.ts"),
+				Q = n("../react/pages/security-center/BlockedContent/constants.ts"),
+				H = n("../react/pages/security-center/tracking.ts"),
+				I = n("../react/pages/security/api-shield/tracking.ts"),
 				F = n("../react/pages/security/bots/tracking.ts"),
-				te = n("../react/pages/security/resources/constants.tsx"),
+				ne = n("../react/pages/security/resources/constants.tsx"),
 				ce = n("../react/pages/security/page-shield/resources/index.ts"),
-				K = n("../react/pages/home/configurations/lists/tracking.ts"),
-				q = n("../react/pages/traffic/load-balancing/resources/tracking.ts"),
-				$ = n("../react/pages/home/alerts/tracking.ts"),
-				X = n("../react/pages/dns/dns-records/tracking.ts"),
-				W = n("../react/pages/magic/network-monitoring/constants.ts"),
-				ne = n("../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts"),
-				ve = n("../react/pages/security/settings/index.tsx"),
+				G = n("../react/pages/home/configurations/lists/tracking.ts"),
+				J = n("../react/pages/traffic/load-balancing/resources/tracking.ts"),
+				W = n("../react/pages/home/alerts/tracking.ts"),
+				q = n("../react/pages/dns/dns-records/tracking.ts"),
+				$ = n("../react/pages/magic/network-monitoring/constants.ts"),
+				te = n("../react/pages/security/analytics/security-analytics/components/logs/resources/constants.ts"),
+				Ee = n("../react/pages/security/settings/index.tsx"),
 				Te = n("../react/pages/shared-config/sparrowEvents.tsx"),
-				xe = n("../react/pages/spectrum/tracking.tsx"),
-				Ue = n("../react/pages/traffic/argo/tracking.ts"),
-				$e = n("../react/pages/traffic/waiting-rooms/tracking.tsx"),
+				Ue = n("../react/pages/spectrum/tracking.tsx"),
+				ke = n("../react/pages/traffic/argo/tracking.ts"),
+				xe = n("../react/pages/traffic/waiting-rooms/tracking.tsx"),
 				Ke = n("../react/pages/turnstile/tracking.ts"),
-				Ie = n("../react/pages/zoneless-workers/constants.ts"),
-				Q = n("../react/app/components/AccountHome/tracking.ts"),
+				Le = n("../react/pages/zoneless-workers/constants.ts"),
+				X = n("../react/app/components/AccountHome/tracking.ts"),
 				re = n("../react/pages/security/waf/managed-rules/resources/tracking.ts"),
 				me = n("../react/pages/home/configurations/dns-settings/tracking.ts"),
 				k = n("../react/pages/user-groups/sparrowEvents.ts"),
-				pe = n("../react/common/components/api-tokens/sparrowEvents.ts");
-			const Re = ((ge, w, ...ee) => t.eg.union([t.eg.literal(ge), t.eg.literal(w), ...ee.map(oe => t.eg.literal(oe))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click feedback link", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", Q.gX.SPARROW_PROJECTS_TABLE_CLICK, Q.gX.SPARROW_EMPTY_STATE_CTA_CLICK, Q.gX.SPARROW_PRODUCT_CARD_CLICK, Q.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, "clicked sidebar Discord link", "clicked sidebar Community Forum link", Ie.QV.clickedDownloadAnalytics, Ie.QV.clickedPrintAnalytics, Ie.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", Ie.QV.addWCITriggerToExistingWorker, Ie.QV.updateWCITrigger, Ie.QV.deleteWCITrigger, Ie.QV.addWCITriggerToNewWorker, Ie.QV.createWCIBuildForNewWorker, Ie.QV.completedWCIBuildForNewWorker, Ie.QV.changedDefaultConfigurations, ue.QV.toggledPagesSmartPlacement, ue.QV.downloadDemoProject, Ie.QV.clickCreateWorkerFromRepoNextStep, Ie.QV.clickCreateWorkerFromRepoPreviousStep, Ie.QV.clickCreateNewSCMConnection, Ie.QV.redirectFromSCMOAuth, Ie.QV.clickSubmitError, Ie.QV.selectTemplate, Ie.QV.templateStubWorkerCreated, Ie.QV.templateStubWorkerCreationFailed, Ie.QV.templateRepositoryCreated, Ie.QV.templateRepositoryCreationFailed, Ie.QV.copyTemplateC3Command, Ie.QV.templateDeployClick, Ie.QV.reauthenticateGithubModalShown, Ie.QV.updateGithubPermissionsClicked, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", F.N3.INITIAL_FETCH_SCORES, F.N3.FETCH_CONFIGURATION, F.N3.INITIAL_FETCH_TIME_SERIES, F.N3.INITIAL_FETCH_ATTRIBUTES, F.N3.UPDATE_SETTINGS, F.N3.DELETE_RULE, F.N3.UPDATE_RULE, F.N3.FETCH_RULES, F.N3.CONFIGURE_BOT_MANAGEMENT, F.N3.WAF_RULES_REDIRECT, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, ce.FV.MANAGE_PAGE_SHIELD_POLICY, ce.FV.CONFIGURE_PAGE_SHIELD, ce.FV.VIEW_DETECTED_CONNECTIONS, ce.FV.VIEW_DETECTED_SCRIPTS, ce.FV.VIEW_PAGE_SHIELD_POLICIES, ce.FV.VIEW_PAGE_SHIELD_SETTINGS, ce.FV.OPEN_MUTABLE_VERSION_TOOLTIP, ce.FV.SHOW_MUTABLE_VERSION_TOOLTIP, K.y.CREATE_LIST, K.y.DELETE_LIST, K.y.ADD_LIST_ITEM, K.y.DELETE_LIST_ITEM, Z.KO.PURCHASE_WORKERS_PAID, Z.KO.LIST_CONFIGS, Z.KO.CREATE_HYPERDRIVE_CONFIG, Z.KO.VIEW_CONFIG_DETAILS, Z.KO.UPDATE_CACHING_SETTINGS, Z.KO.DELETE_HYPERDRIVE_CONFIG, Z.KO.CLICK_HYPERDRIVE_DOCUMENTATION, Z.KO.CLICK_GET_STARTED_GUIDE, Z.KO.CLICK_CONNECTIVITY_GUIDES, Z.KO.CLICK_QUICK_LINK, xe.N.CNAME, xe.N.IP_ADDRESS, xe.N.LB, xe.N.UPDATE_CNAME, xe.N.UPDATE_IP_ADDRESS, xe.N.UPDATE_LB, xe.N.DISABLE, S.N.TIERED_CACHE, S.N.CACHE_PURGE, S.N.CACHE_ANALYTICS, ...(0, Ke.P)(), ...(0, I.x4)(), ...(0, ve.m8)(), ...(0, k.Ky)(), ...(0, pe.Cf)(), $e.N.CREATE, $e.N.EVENTS, $e.N.ANALYTICS, $e.N.UPDATE, $e.N.GENERATE_PREVIEW, G.RY.INITIATE_URL_SCAN, G.RY.LOAD_SCAN_INFO, G.Ev.LOAD_THREAT_EVENTS, G.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, G.Ev.THREAT_EVENTS_FILTERS, G.v9.EXPAND_INSIGHT_ROW, G.v9.ONE_CLICK_RESOLVE_BUTTON, G.v9.FOLLOW_RESOLVE_URL, G.v9.MANAGE_INSIGHT, G.v9.CLICK_SCAN_NOW, G.v9.CLICK_EXPORT_INSIGHTS, G.v9.BULK_ARCHIVE, G.v9.CLICK_DETAILS_BUTTON, b.Fj[b.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, b.Fj[b.kq.ENDPOINT_MANAGEMENT].detailedMetrics, b.Fj[b.kq.ENDPOINT_MANAGEMENT].createEndpoint, b.Fj[b.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, b.Fj[b.kq.ENDPOINT_MANAGEMENT].deployRouting, b.Fj[b.kq.ENDPOINT_MANAGEMENT].deleteRouting, b.Fj[b.kq.API_DISCOVERY].viewDiscoveredEndpoints, b.Fj[b.kq.API_DISCOVERY].saveDiscoveredEndpoint, b.Fj[b.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, b.Fj[b.kq.SCHEMA_VALIDATION].viewSchemasList, b.Fj[b.kq.SCHEMA_VALIDATION].uploadSchema, b.Fj[b.kq.SCHEMA_VALIDATION].viewSchemaAdoption, b.Fj[b.kq.SCHEMA_VALIDATION].downloadSchema, b.Fj[b.kq.SCHEMA_VALIDATION].deleteSchema, b.Fj[b.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, b.Fj[b.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, b.Fj[b.kq.SEQUENCE_ANALYTICS].viewSequencesPage, b.Fj[b.kq.JWT_VALIDATION].viewJWTRules, b.Fj[b.kq.JWT_VALIDATION].addJWTRule, b.Fj[b.kq.JWT_VALIDATION].editJWTRule, b.Fj[b.kq.JWT_VALIDATION].deleteJWTRule, b.Fj[b.kq.JWT_VALIDATION].reprioritizeJWTRule, b.Fj[b.kq.JWT_VALIDATION].viewJWTConfigs, b.Fj[b.kq.JWT_VALIDATION].addJWTConfig, b.Fj[b.kq.JWT_VALIDATION].editJWTConfig, b.Fj[b.kq.JWT_VALIDATION].deleteJWTConfig, b.Fj[b.kq.SETTINGS].redirectToFirewallRulesTemplate, b.Fj[b.kq.SETTINGS].redirectToPages, b.Fj[b.kq.SETTINGS].listSessionIdentifiers, b.Fj[b.kq.SETTINGS].listRequestsContainingSessionIdentifiers, b.Fj[b.kq.SETTINGS].addOrRemoveSessionIdentifiers, b.Fj[b.kq.SETTINGS].redirectToCustomRules, b.Fj[b.kq.SETTINGS].listAllFallthroughSchemas, b.Fj[b.kq.SEQUENCE_RULES].listSequenceRules, b.Fj[b.kq.SEQUENCE_RULES].deleteSequenceRule, b.Fj[b.kq.SEQUENCE_RULES].reorderSequenceRule, b.Fj[b.kq.SEQUENCE_RULES].createSequenceRule, b.Fj[b.kq.SEQUENCE_RULES].editSequenceRule, q.Z.ANALYTICS, q.Z.CREATE_AND_DEPLOY, q.Z.CREATE_MONITOR_LINK, q.Z.CREATE_MONITOR, q.Z.CREATE_POOL_LINK, q.Z.CREATE_POOL, q.Z.EDIT_MONITOR, q.Z.EDIT_POOL, q.Z.LOAD_BALANCING_TABLE, q.Z.POOL_TABLE, q.Z.EDIT_MONITOR_LINK, q.Z.EDIT_POOL_LINK, $.y.SECONDARY_DNS_NOTIFICATION_CREATE, $.y.SECONDARY_DNS_NOTIFICATION_UPDATE, $.y.SECONDARY_DNS_NOTIFICATION_DELETE, X.U.ZONE_TRANSFER_SUCCESS, X.U.DNS_RECORD_CREATE, X.U.DNS_RECORD_UPDATE, X.U.DNS_RECORD_DELETE, me.Y.PEER_DNS_CREATE, me.Y.PEER_DNS_UPDATE, me.Y.PEER_DNS_DELETE, me.Y.ZONE_TRANSFER_ENABLE, me.Y.ZONE_TRANSFER_DISABLE, Ue.V.ARGO_ENABLEMENT, Ue.V.ARGO_GEO_ANALYTICS_FETCH, Ue.V.ARGO_GLOBAL_ANALYTICS_FETCH, Ee.X.VIEW_BUCKETS_LIST, Ee.X.CREATE_BUCKET, Ee.X.VALIDATE_BUCKET, Ee.X.DELETE_BUCKET, Ee.X.VIEW_CAPTURES_LIST, Ee.X.CREATE_SIMPLE_CAPTURE, Ee.X.CREATE_FULL_CAPTURE, Ee.X.VIEW_FULL_CAPTURE, Ee.X.DOWNLOAD_SIMPLE_CAPTURE, W.bK.VIEW_RULES, W.bK.CREATE_RULE, W.bK.UPDATE_RULE, W.bK.DELETE_RULE, W.bK.VIEW_CONFIGURATION, W.bK.CREATE_CONFIGURATION, W.bK.UPDATE_CONFIGURATION, W.bK.DELETE_CONFIGURATION, ae.r8.VIEW_ALERTS, ae.r8.VIEW_ALERTS_HISTORY, ae.r8.MAGIC_OVERVIEW_ANALYTICS, ae.VZ.CREATE_SITE, ae.VZ.CREATE_TUNNEL, ae.VZ.CREATE_STATIC_ROUTE, ne.o4.CLICK_ADAPTIVE_SAMPLING, ne.o4.CLICK_TO_LOG_EXPLORER_BANNER, ne.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, ne.o4.CLICK_SWITCH_TO_RAW_LOGS, ne.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", B.U.REGISTER_DOMAIN_SEARCH_SUBMIT, B.U.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, B.U.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, B.U.REGISTER_DOMAIN_CHECKOUT_ERROR, B.U.TRANSFER_DOMAIN_CHANGE_STEP, B.U.RENEW_DOMAIN_COMPLETED, B.U.RESTORE_DOMAIN_INIT, B.U.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, B.U.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, B.U.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, B.U.RESTORE_DOMAIN_FAILURE, B.U.RESTORE_DOMAIN_COMPLETED, B.U.DOMAIN_DELETE_INIT, B.U.DOMAIN_DELETE_COMPLETED, B.U.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, B.U.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, B.U.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, B.U.DOMAIN_DELETE_CONFIRM_DELETE, B.U.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, B.U.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, B.U.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, B.U.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, B.U.DOMAIN_DELETE_CLOSE_WARNING_MODAL, B.U.DOMAIN_MOVE_START_FLOW, B.U.DOMAIN_MOVE_OPEN_DOCS, B.U.DOMAIN_MOVE_CLOSE_FLOW, B.U.DOMAIN_MOVE_PROGRESS_FLOW, B.U.DOMAIN_MOVE_SUBMIT, B.U.DOMAIN_MOVE_INITIATE_SUCCESS, B.U.DOMAIN_MOVE_INITIATE_ERROR, B.U.DOMAIN_MOVE_CANCEL, B.U.DOMAIN_MOVE_CANCEL_SUCCESS, B.U.DOMAIN_MOVE_CANCEL_ERROR, B.U.ACTION_CENTER_NAVIGATE, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, V.KO.CLICK_GET_STARTED_GUIDE, V.KO.CLICK_PIPELINE_DOCUMENTATION, V.KO.CLICK_QUICK_LINK, V.KO.CREATE_PIPELINE, V.KO.DELETE_PIPELINE, V.KO.LIST_PIPELINES, V.KO.VIEW_PIPELINE, L.S.EXISTING_DOMAIN, L.S.NEW_DOMAIN, L.S.WAF_RULESET, L.S.WORKERS, L.S.PAGES, L.S.R2, L.S.ACCOUNT_MEMBERS, de._.TEMPLATE_PRODUCT_SELECTED, de._.TEMPLATE_SELECTED, de._.TEMPLATE_SAVE_DRAFT, de._.TEMPLATE_CANCEL, de._.TEMPLATE_DEPLOY, Te.D.CLICK_GO_BACK_SHARE_MODAL, Te.D.CLICK_MENU_ITEM_SHARE, Te.D.CLICK_ON_CANCEL_SHARE_MODAL, Te.D.CLICK_ON_CLOSE_SHARE_MODAL, Te.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, Te.D.CLICK_ON_DELETE_RULESET, Te.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, Te.D.CLICK_ON_EDIT_SHARE_PERMISSION, Te.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, Te.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, Te.D.CLICK_ON_SHARE_TABLE_ROW, te.pR.CLICK_GEOGRAPHICAL_TEMPLATE, te.pR.CLICK_IP_TEMPLATE, te.pR.CLICK_USER_AGENT_TEMPLATE, te.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, ve.vc.CREATED, ve.vc.ENABLED, ve.vc.DISABLED, ve.vc.DELETED, ve.vc.UPDATED, ve.vc.DOWNLOADED, Y.Gk.REQUEST_REVIEW, Y.Gk.COPY_URL, P.v.FIELD, P.v.OPERATOR, re.Vj.SHOW_LCC_MIGRATION_BANNER, re.Vj.CLICK_LCC_DOCUMENTATION, re.Vj.CLICK_LCC_UPGRADE_GUIDE, re.Vj.SHOW_LCC_MIGRATION_WARNING),
-				ze = t.eg.exactStrict(t.eg.object({
+				pe = n("../react/common/components/api-tokens/sparrowEvents.ts"),
+				Ie = n("../react/pages/security/security-rules/resources/sparrowEvents.ts");
+			const ze = ((R, Y, ...oe) => t.eg.union([t.eg.literal(R), t.eg.literal(Y), ...oe.map(ve => t.eg.literal(ve))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "next tooltip step", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "previous tooltip step", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click feedback link", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", X.gX.SPARROW_PROJECTS_TABLE_CLICK, X.gX.SPARROW_EMPTY_STATE_CTA_CLICK, X.gX.SPARROW_PRODUCT_CARD_CLICK, X.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, X.gX.SPARROW_ZERO_TRUST_LINK_CARD_CLICK, X.gX.SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK, X.gX.SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK, X.gX.SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK, "clicked sidebar Discord link", "clicked sidebar Community Forum link", Le.QV.clickedDownloadAnalytics, Le.QV.clickedPrintAnalytics, Le.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", Le.QV.addWCITriggerToExistingWorker, Le.QV.updateWCITrigger, Le.QV.deleteWCITrigger, Le.QV.addWCITriggerToNewWorker, Le.QV.createWCIBuildForNewWorker, Le.QV.completedWCIBuildForNewWorker, Le.QV.changedDefaultConfigurations, ue.QV.toggledPagesSmartPlacement, ue.QV.downloadDemoProject, Le.QV.clickCreateWorkerFromRepoNextStep, Le.QV.clickCreateWorkerFromRepoPreviousStep, Le.QV.clickCreateNewSCMConnection, Le.QV.redirectFromSCMOAuth, Le.QV.clickSubmitError, Le.QV.selectTemplate, Le.QV.templateStubWorkerCreated, Le.QV.templateStubWorkerCreationFailed, Le.QV.templateRepositoryCreated, Le.QV.templateRepositoryCreationFailed, Le.QV.copyTemplateC3Command, Le.QV.templateDeployClick, Le.QV.reauthenticateGithubModalShown, Le.QV.updateGithubPermissionsClicked, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", F.N3.INITIAL_FETCH_SCORES, F.N3.FETCH_CONFIGURATION, F.N3.INITIAL_FETCH_TIME_SERIES, F.N3.INITIAL_FETCH_ATTRIBUTES, F.N3.UPDATE_SETTINGS, F.N3.DELETE_RULE, F.N3.UPDATE_RULE, F.N3.FETCH_RULES, F.N3.CONFIGURE_BOT_MANAGEMENT, F.N3.WAF_RULES_REDIRECT, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, ce.FV.MANAGE_PAGE_SHIELD_POLICY, ce.FV.CONFIGURE_PAGE_SHIELD, ce.FV.VIEW_DETECTED_CONNECTIONS, ce.FV.VIEW_DETECTED_SCRIPTS, ce.FV.VIEW_PAGE_SHIELD_POLICIES, ce.FV.VIEW_PAGE_SHIELD_SETTINGS, ce.FV.OPEN_MUTABLE_VERSION_TOOLTIP, ce.FV.SHOW_MUTABLE_VERSION_TOOLTIP, G.y.CREATE_LIST, G.y.DELETE_LIST, G.y.ADD_LIST_ITEM, G.y.DELETE_LIST_ITEM, Z.KO.PURCHASE_WORKERS_PAID, Z.KO.LIST_CONFIGS, Z.KO.SEARCH_CONFIGS, Z.KO.CREATE_HYPERDRIVE_CONFIG, Z.KO.VIEW_CONFIG_DETAILS, Z.KO.UPDATE_CACHING_SETTINGS, Z.KO.DELETE_HYPERDRIVE_CONFIG, Z.KO.CLICK_HYPERDRIVE_DOCUMENTATION, Z.KO.CLICK_GET_STARTED_GUIDE, Z.KO.CLICK_CONNECTIVITY_GUIDES, Z.KO.CLICK_QUICK_LINK, Z.KO.CLICK_DISCORD, Z.KO.CLICK_COMMUNITY, Ue.N.CNAME, Ue.N.IP_ADDRESS, Ue.N.LB, Ue.N.UPDATE_CNAME, Ue.N.UPDATE_IP_ADDRESS, Ue.N.UPDATE_LB, Ue.N.DISABLE, D.N.TIERED_CACHE, D.N.CACHE_PURGE, D.N.CACHE_ANALYTICS, ...(0, Ke.P)(), ...(0, P.x4)(), ...(0, Ee.m8)(), ...(0, k.Ky)(), ...(0, pe.Cf)(), xe.N.CREATE, xe.N.EVENTS, xe.N.ANALYTICS, xe.N.UPDATE, xe.N.GENERATE_PREVIEW, H.RY.INITIATE_URL_SCAN, H.RY.LOAD_SCAN_INFO, H.Ev.LOAD_THREAT_EVENTS, H.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, H.Ev.THREAT_EVENTS_FILTERS, H.v9.EXPAND_INSIGHT_ROW, H.v9.ONE_CLICK_RESOLVE_BUTTON, H.v9.FOLLOW_RESOLVE_URL, H.v9.MANAGE_INSIGHT, H.v9.CLICK_SCAN_NOW, H.v9.CLICK_EXPORT_INSIGHTS, H.v9.BULK_ARCHIVE, H.v9.CLICK_DETAILS_BUTTON, I.Fj[I.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, I.Fj[I.kq.ENDPOINT_MANAGEMENT].detailedMetrics, I.Fj[I.kq.ENDPOINT_MANAGEMENT].createEndpoint, I.Fj[I.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, I.Fj[I.kq.ENDPOINT_MANAGEMENT].deployRouting, I.Fj[I.kq.ENDPOINT_MANAGEMENT].deleteRouting, I.Fj[I.kq.API_DISCOVERY].viewDiscoveredEndpoints, I.Fj[I.kq.API_DISCOVERY].saveDiscoveredEndpoint, I.Fj[I.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, I.Fj[I.kq.SCHEMA_VALIDATION].viewSchemasList, I.Fj[I.kq.SCHEMA_VALIDATION].uploadSchema, I.Fj[I.kq.SCHEMA_VALIDATION].viewSchemaAdoption, I.Fj[I.kq.SCHEMA_VALIDATION].downloadSchema, I.Fj[I.kq.SCHEMA_VALIDATION].deleteSchema, I.Fj[I.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, I.Fj[I.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, I.Fj[I.kq.SEQUENCE_ANALYTICS].viewSequencesPage, I.Fj[I.kq.JWT_VALIDATION].viewJWTRules, I.Fj[I.kq.JWT_VALIDATION].addJWTRule, I.Fj[I.kq.JWT_VALIDATION].editJWTRule, I.Fj[I.kq.JWT_VALIDATION].deleteJWTRule, I.Fj[I.kq.JWT_VALIDATION].reprioritizeJWTRule, I.Fj[I.kq.JWT_VALIDATION].viewJWTConfigs, I.Fj[I.kq.JWT_VALIDATION].addJWTConfig, I.Fj[I.kq.JWT_VALIDATION].editJWTConfig, I.Fj[I.kq.JWT_VALIDATION].deleteJWTConfig, I.Fj[I.kq.SETTINGS].redirectToFirewallRulesTemplate, I.Fj[I.kq.SETTINGS].redirectToPages, I.Fj[I.kq.SETTINGS].listSessionIdentifiers, I.Fj[I.kq.SETTINGS].listRequestsContainingSessionIdentifiers, I.Fj[I.kq.SETTINGS].addOrRemoveSessionIdentifiers, I.Fj[I.kq.SETTINGS].redirectToCustomRules, I.Fj[I.kq.SETTINGS].listAllFallthroughSchemas, I.Fj[I.kq.SEQUENCE_RULES].listSequenceRules, I.Fj[I.kq.SEQUENCE_RULES].deleteSequenceRule, I.Fj[I.kq.SEQUENCE_RULES].reorderSequenceRule, I.Fj[I.kq.SEQUENCE_RULES].createSequenceRule, I.Fj[I.kq.SEQUENCE_RULES].editSequenceRule, J.Z.ANALYTICS, J.Z.CREATE_AND_DEPLOY, J.Z.CREATE_MONITOR_LINK, J.Z.CREATE_MONITOR, J.Z.CREATE_POOL_LINK, J.Z.CREATE_POOL, J.Z.EDIT_MONITOR, J.Z.EDIT_POOL, J.Z.LOAD_BALANCING_TABLE, J.Z.POOL_TABLE, J.Z.EDIT_MONITOR_LINK, J.Z.EDIT_POOL_LINK, W.y.SECONDARY_DNS_NOTIFICATION_CREATE, W.y.SECONDARY_DNS_NOTIFICATION_UPDATE, W.y.SECONDARY_DNS_NOTIFICATION_DELETE, q.U.ZONE_TRANSFER_SUCCESS, q.U.DNS_RECORD_CREATE, q.U.DNS_RECORD_UPDATE, q.U.DNS_RECORD_DELETE, me.Y.PEER_DNS_CREATE, me.Y.PEER_DNS_UPDATE, me.Y.PEER_DNS_DELETE, me.Y.ZONE_TRANSFER_ENABLE, me.Y.ZONE_TRANSFER_DISABLE, ke.V.ARGO_ENABLEMENT, ke.V.ARGO_GEO_ANALYTICS_FETCH, ke.V.ARGO_GLOBAL_ANALYTICS_FETCH, _e.X.VIEW_BUCKETS_LIST, _e.X.CREATE_BUCKET, _e.X.VALIDATE_BUCKET, _e.X.DELETE_BUCKET, _e.X.VIEW_CAPTURES_LIST, _e.X.CREATE_SIMPLE_CAPTURE, _e.X.CREATE_FULL_CAPTURE, _e.X.VIEW_FULL_CAPTURE, _e.X.DOWNLOAD_SIMPLE_CAPTURE, $.bK.VIEW_RULES, $.bK.CREATE_RULE, $.bK.UPDATE_RULE, $.bK.DELETE_RULE, $.bK.VIEW_CONFIGURATION, $.bK.CREATE_CONFIGURATION, $.bK.UPDATE_CONFIGURATION, $.bK.DELETE_CONFIGURATION, ae.r8.VIEW_ALERTS, ae.r8.VIEW_ALERTS_HISTORY, ae.r8.MAGIC_OVERVIEW_ANALYTICS, ae.VZ.CREATE_SITE, ae.VZ.CREATE_TUNNEL, ae.VZ.CREATE_STATIC_ROUTE, te.o4.CLICK_ADAPTIVE_SAMPLING, te.o4.CLICK_TO_LOG_EXPLORER_BANNER, te.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, te.o4.CLICK_SWITCH_TO_RAW_LOGS, te.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", B.U.REGISTER_DOMAIN_SEARCH_SUBMIT, B.U.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, B.U.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, B.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, B.U.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, B.U.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, B.U.REGISTER_DOMAIN_CHECKOUT_ERROR, B.U.TRANSFER_DOMAIN_CHANGE_STEP, B.U.RENEW_DOMAIN_COMPLETED, B.U.RESTORE_DOMAIN_INIT, B.U.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, B.U.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, B.U.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, B.U.RESTORE_DOMAIN_FAILURE, B.U.RESTORE_DOMAIN_COMPLETED, B.U.DOMAIN_DELETE_INIT, B.U.DOMAIN_DELETE_COMPLETED, B.U.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, B.U.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, B.U.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, B.U.DOMAIN_DELETE_CONFIRM_DELETE, B.U.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, B.U.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, B.U.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, B.U.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, B.U.DOMAIN_DELETE_CLOSE_WARNING_MODAL, B.U.DOMAIN_MOVE_START_FLOW, B.U.DOMAIN_MOVE_OPEN_DOCS, B.U.DOMAIN_MOVE_CLOSE_FLOW, B.U.DOMAIN_MOVE_PROGRESS_FLOW, B.U.DOMAIN_MOVE_SUBMIT, B.U.DOMAIN_MOVE_INITIATE_SUCCESS, B.U.DOMAIN_MOVE_INITIATE_ERROR, B.U.DOMAIN_MOVE_CANCEL, B.U.DOMAIN_MOVE_CANCEL_SUCCESS, B.U.DOMAIN_MOVE_CANCEL_ERROR, B.U.ACTION_CENTER_NAVIGATE, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, B.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, K.KO.CLICK_GET_STARTED_GUIDE, K.KO.CLICK_PIPELINE_DOCUMENTATION, K.KO.CLICK_QUICK_LINK, K.KO.CREATE_PIPELINE, K.KO.DELETE_PIPELINE, K.KO.LIST_PIPELINES, K.KO.VIEW_PIPELINE, L.S.EXISTING_DOMAIN, L.S.NEW_DOMAIN, L.S.WAF_RULESET, L.S.WORKERS, L.S.PAGES, L.S.R2, L.S.ACCOUNT_MEMBERS, de._.TEMPLATE_PRODUCT_SELECTED, de._.TEMPLATE_SELECTED, de._.TEMPLATE_SAVE_DRAFT, de._.TEMPLATE_CANCEL, de._.TEMPLATE_DEPLOY, Te.D.CLICK_GO_BACK_SHARE_MODAL, Te.D.CLICK_MENU_ITEM_SHARE, Te.D.CLICK_ON_CANCEL_SHARE_MODAL, Te.D.CLICK_ON_CLOSE_SHARE_MODAL, Te.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, Te.D.CLICK_ON_DELETE_RULESET, Te.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, Te.D.CLICK_ON_EDIT_SHARE_PERMISSION, Te.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, Te.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, Te.D.CLICK_ON_SHARE_TABLE_ROW, ne.pR.CLICK_GEOGRAPHICAL_TEMPLATE, ne.pR.CLICK_IP_TEMPLATE, ne.pR.CLICK_USER_AGENT_TEMPLATE, ne.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, Ee.vc.CREATED, Ee.vc.ENABLED, Ee.vc.DISABLED, Ee.vc.DELETED, Ee.vc.UPDATED, Ee.vc.DOWNLOADED, Q.Gk.REQUEST_REVIEW, Q.Gk.COPY_URL, b.v.FIELD, b.v.OPERATOR, re.Vj.SHOW_LCC_MIGRATION_BANNER, re.Vj.CLICK_LCC_DOCUMENTATION, re.Vj.CLICK_LCC_UPGRADE_GUIDE, re.Vj.SHOW_LCC_MIGRATION_WARNING, Ie.y.CLICK_DISMISS_INELIGIBILITY, Ie.y.CLICK_NEXT_STEP, Ie.y.CLICK_OPT_IN, Ie.y.CLICK_OPT_IN_BUTTON, Ie.y.CLICK_OPT_OUT_BUTTON),
+				be = t.eg.exactStrict(t.eg.object({
 					".agency": t.eg.any.optional,
 					".auction": t.eg.any.optional,
 					".bet": t.eg.any.optional,
@@ -18173,6 +18300,7 @@
 					hasSidebarNav: t.eg.boolean.optional,
 					"hasTest2019-06-03": t.eg.any.optional,
 					hCaptchaDisplayed: t.eg.any.optional,
+					hasEnabledSecurityNavigation: t.eg.any.optional,
 					header_modification: t.eg.any.optional,
 					hostname_count: t.eg.any.optional,
 					hostParam: t.eg.any.optional,
@@ -18493,204 +18621,204 @@
 					isECCEnabled: t.eg.boolean.optional,
 					tabName: t.eg.any.optional
 				})),
-				be = (ge, w) => {
-					const [ee, oe] = ke(w);
-					let he, De;
-					return (0, t.nM)(Re.decode(ge)) && (he = new O.Uh(ge)), oe && oe.length > 0 && (De = new O.oV(ge, oe)), [ee, he, De]
+				Re = (R, Y) => {
+					const [oe, ve] = je(Y);
+					let he, $e;
+					return (0, t.nM)(ze.decode(R)) && (he = new O.Uh(R)), ve && ve.length > 0 && ($e = new O.oV(R, ve)), [oe, he, $e]
 				},
-				ke = ge => {
-					const w = ze.decode(ge);
-					if ((0, t.nM)(w)) {
-						const ee = w.left.map(({
-							context: oe
-						}) => oe.map(({
+				je = R => {
+					const Y = be.decode(R);
+					if ((0, t.nM)(Y)) {
+						const oe = Y.left.map(({
+							context: ve
+						}) => ve.map(({
 							key: he
-						}) => he)).reduce((oe, he) => oe.concat(he), []).filter(oe => oe in ge);
-						return [Fe(ee, ge), ee]
+						}) => he)).reduce((ve, he) => ve.concat(he), []).filter(ve => ve in R);
+						return [We(oe, R), oe]
 					}
-					return [ge, []]
+					return [R, []]
 				},
-				Fe = (ge, w) => Object.entries(w).reduce((ee, [oe, he]) => (ge.includes(oe) || (ee[oe] = he), ee), {}),
-				We = ge => (w, ee, oe) => {
-					const [he, De, Ve] = be(ee, oe);
-					if (De) throw De;
-					return Ve && console.error(Ve), ge(w, ee, he)
+				We = (R, Y) => Object.entries(Y).reduce((oe, [ve, he]) => (R.includes(ve) || (oe[ve] = he), oe), {}),
+				Xe = R => (Y, oe, ve) => {
+					const [he, $e, et] = Re(oe, ve);
+					if ($e) throw $e;
+					return et && console.error(et), R(Y, oe, he)
 				};
-			var Ye = n("../react/utils/zaraz.ts");
-			const H = {
+			var V = n("../react/utils/zaraz.ts");
+			const se = {
 					identify: !0
 				},
-				se = ge => (w, ee, oe) => (H[ee] || Ye.tg === null || Ye.tg === void 0 || Ye.tg.track(ee, oe), ge(w, ee, oe));
-			var fe = n("../react/common/selectors/userSelectors.ts");
+				ge = R => (Y, oe, ve) => (se[oe] || V.tg === null || V.tg === void 0 || V.tg.track(oe, ve), R(Y, oe, ve));
+			var Me = n("../react/common/selectors/userSelectors.ts");
 			const we = "pageview",
 				Ne = "create zone",
-				Be = "create user",
-				Qe = {
+				Ye = "create user",
+				rt = {
 					[we]: !0,
 					[Ne]: !0,
-					[Be]: !0
+					[Ye]: !0
 				},
-				rt = ge => {
-					var w;
-					return !!((w = ge.gates.assignments) === null || w === void 0 ? void 0 : w["dx-enable-google-tag-manager"])
+				ut = R => {
+					var Y;
+					return !!((Y = R.gates.assignments) === null || Y === void 0 ? void 0 : Y["dx-enable-google-tag-manager"])
 				},
-				lt = ge => {
-					const w = /\|MCMID\|([0-9]+)\|/,
-						ee = ge.match(w);
-					return ee ? ee[1] : void 0
+				st = R => {
+					const Y = /\|MCMID\|([0-9]+)\|/,
+						oe = R.match(Y);
+					return oe ? oe[1] : void 0
 				},
-				st = ge => {
-					var w;
+				gt = R => {
+					var Y;
 					const {
-						deviceViewport: ee,
-						page: oe,
+						deviceViewport: oe,
+						page: ve,
 						previousPage: he,
-						pageName: De,
-						utm_campaign: Ve,
-						_ga: nt,
-						"AMCV_8AD56F28618A50850A495FB6%40AdobeOrg": Ze
-					} = ge, {
-						origin: ot
-					} = window.location, _t = (0, fe.PR)((0, p.bh)().getState());
+						pageName: $e,
+						utm_campaign: et,
+						_ga: Je,
+						"AMCV_8AD56F28618A50850A495FB6%40AdobeOrg": tt
+					} = R, {
+						origin: at
+					} = window.location, mt = (0, Me.PR)((0, p.bh)().getState());
 					return {
-						event: he !== void 0 && oe !== he ? "virtual_page_view" : "page_load",
-						device_type: ee,
-						hostname: ot,
+						event: he !== void 0 && ve !== he ? "virtual_page_view" : "page_load",
+						device_type: oe,
+						hostname: at,
 						language: navigator.language,
-						locale: (0, l.r)((0, p.bh)().getState()),
-						page_location: oe ? `${ot}${oe}` : "[redacted]",
-						page_path: oe ? `${oe}` : "[redacted]",
-						page_referrer: he ? `${ot}/${he}` : "[redacted]",
+						locale: (0, u.r)((0, p.bh)().getState()),
+						page_location: ve ? `${at}${ve}` : "[redacted]",
+						page_path: ve ? `${ve}` : "[redacted]",
+						page_referrer: he ? `${at}/${he}` : "[redacted]",
 						page_timestamp: new Date().toISOString(),
-						page_title: De || "[redacted]",
-						page_url: oe ? `${ot}${oe}` : "[redacted]",
-						query: Ve ? `?utm_campaign=${Ve}` : "[redacted]",
+						page_title: $e || "[redacted]",
+						page_url: ve ? `${at}${ve}` : "[redacted]",
+						query: et ? `?utm_campaign=${et}` : "[redacted]",
 						user_properties: {
-							ga_client_id: (w = nt) !== null && w !== void 0 ? w : void 0,
-							ga_client_id_s: nt ? `s${nt}` : void 0,
-							user_id: je() ? _t == null ? void 0 : _t.id : void 0,
-							ecid: Ze ? lt(Ze) : void 0
+							ga_client_id: (Y = Je) !== null && Y !== void 0 ? Y : void 0,
+							ga_client_id_s: Je ? `s${Je}` : void 0,
+							user_id: Ve() ? mt == null ? void 0 : mt.id : void 0,
+							ecid: tt ? st(tt) : void 0
 						}
 					}
 				},
-				pt = () => ({
+				ft = () => ({
 					event: "zone_create",
 					page_timestamp: new Date().toISOString(),
 					currency: "USD",
 					value: 0
 				}),
-				mt = ge => {
+				dt = R => {
 					const {
-						status: w
-					} = ge;
-					return w === "success" ? {
+						status: Y
+					} = R;
+					return Y === "success" ? {
 						event: "new_user_create",
 						page_timestamp: new Date().toISOString(),
 						currency: "USD",
 						value: 0
 					} : void 0
 				},
-				ut = (ge, w) => {
-					switch (ge) {
+				Ge = (R, Y) => {
+					switch (R) {
 						case "pageview":
-							return st(w);
+							return gt(Y);
 						case "create zone":
-							return pt();
+							return ft();
 						case "create user":
-							return mt(w);
+							return dt(Y);
 						default:
 							return
 					}
 				},
-				Ge = ge => (w, ee, oe) => {
-					if (Qe[ee]) {
+				Ae = R => (Y, oe, ve) => {
+					if (rt[oe]) {
 						var he;
-						const De = ut(ee, oe);
-						De && ((he = window.dataLayer) === null || he === void 0 || he.push(De))
+						const $e = Ge(oe, ve);
+						$e && ((he = window.dataLayer) === null || he === void 0 || he.push($e))
 					}
-					return ge(w, ee, oe)
+					return R(Y, oe, ve)
 				};
-			var Ae = n("../react/utils/cookiePreferences.ts");
+			var Qe = n("../react/utils/cookiePreferences.ts");
 
-			function Xe(ge) {
-				for (var w = 1; w < arguments.length; w++) {
-					var ee = arguments[w] != null ? Object(arguments[w]) : {},
-						oe = Object.keys(ee);
-					typeof Object.getOwnPropertySymbols == "function" && oe.push.apply(oe, Object.getOwnPropertySymbols(ee).filter(function(he) {
-						return Object.getOwnPropertyDescriptor(ee, he).enumerable
-					})), oe.forEach(function(he) {
-						gt(ge, he, ee[he])
+			function pt(R) {
+				for (var Y = 1; Y < arguments.length; Y++) {
+					var oe = arguments[Y] != null ? Object(arguments[Y]) : {},
+						ve = Object.keys(oe);
+					typeof Object.getOwnPropertySymbols == "function" && ve.push.apply(ve, Object.getOwnPropertySymbols(oe).filter(function(he) {
+						return Object.getOwnPropertyDescriptor(oe, he).enumerable
+					})), ve.forEach(function(he) {
+						ct(R, he, oe[he])
 					})
 				}
-				return ge
+				return R
 			}
 
-			function gt(ge, w, ee) {
-				return w = it(w), w in ge ? Object.defineProperty(ge, w, {
-					value: ee,
+			function ct(R, Y, oe) {
+				return Y = _t(Y), Y in R ? Object.defineProperty(R, Y, {
+					value: oe,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : ge[w] = ee, ge
+				}) : R[Y] = oe, R
 			}
 
-			function it(ge) {
-				var w = ft(ge, "string");
-				return typeof w == "symbol" ? w : String(w)
+			function _t(R) {
+				var Y = z(R, "string");
+				return typeof Y == "symbol" ? Y : String(Y)
 			}
 
-			function ft(ge, w) {
-				if (typeof ge != "object" || ge === null) return ge;
-				var ee = ge[Symbol.toPrimitive];
-				if (ee !== void 0) {
-					var oe = ee.call(ge, w || "default");
-					if (typeof oe != "object") return oe;
+			function z(R, Y) {
+				if (typeof R != "object" || R === null) return R;
+				var oe = R[Symbol.toPrimitive];
+				if (oe !== void 0) {
+					var ve = oe.call(R, Y || "default");
+					if (typeof ve != "object") return ve;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (w === "string" ? String : Number)(ge)
+				return (Y === "string" ? String : Number)(R)
 			}
-			const z = ge => {
-					const w = rt((0, p.bh)().getState());
-					o().init(Xe({
+			const le = R => {
+					const Y = ut((0, p.bh)().getState());
+					o().init(pt({
 						sourceKey: "ca633f741e204a5291e02fcb6c591020",
 						debug: !1,
 						url: "https://sparrow.cloudflare.com",
-						enabled: Ce() && !(0, s.gm)() && je(),
-						middlewares: [N, We, y, se, ...w ? [Ge] : []]
-					}, ge))
+						enabled: Oe() && !(0, s.gm)() && Ve(),
+						middlewares: [S, Xe, y, ge, ...Y ? [Ae] : []]
+					}, R))
 				},
-				le = () => {
-					o().identify(Xe({}, (0, e.getAttribution)(), {
-						locale: (0, l.r)((0, p.bh)().getState()),
+				Ce = () => {
+					o().identify(pt({}, (0, e.getAttribution)(), {
+						locale: (0, u.r)((0, p.bh)().getState()),
 						isCloudflare: !!(0, m.Jd)(),
 						isE2e: Boolean(void 0)
 					}))
 				},
-				Ce = () => !0,
-				Oe = () => {
-					(0, Ae.kT)("sparrow_id")
+				Oe = () => !0,
+				Fe = () => {
+					(0, Qe.kT)("sparrow_id")
 				},
-				je = () => (0, Ae.Xm)()
+				Ve = () => (0, Qe.Xm)()
 		},
-		"../utils/initStyles.ts": function(x, v, n) {
+		"../utils/initStyles.ts": function(x, E, n) {
 			"use strict";
 			var e = n("../../../../node_modules/@cloudflare/style-const/es/index.js"),
 				o = n("../react/app/providers/storeContainer.js");
 			const s = "cfBaseStyles",
 				p = document.head || document.getElementsByTagName("head")[0],
-				l = i => {
-					const u = [];
-					for (let _ in i.colors) {
-						const t = i.colors[_];
-						if (Array.isArray(t) && _ !== "categorical")
-							for (let r = 0; r < t.length; ++r) u.push(`--cf-${_}-${r}:${t[r]};`)
+				u = i => {
+					const d = [];
+					for (let g in i.colors) {
+						const t = i.colors[g];
+						if (Array.isArray(t) && g !== "categorical")
+							for (let r = 0; r < t.length; ++r) d.push(`--cf-${g}-${r}:${t[r]};`)
 					}
-					return u.join(`
+					return d.join(`
 `)
 				},
 				m = () => {
 					const i = (0, e.Yc)(),
-						u = `
+						d = `
     * {
       box-sizing: border-box;
     }
@@ -18886,7 +19014,7 @@
     :root {
       --cf-white: ${e.Rl.colors.white};
       --cf-black: ${e.Rl.colors.black};
-      ${l(e.Rl)}
+      ${u(e.Rl)}
     }
     
     .mode-transition *,
@@ -18914,16 +19042,16 @@
       cursor: grabbing !important;
     }
   `;
-					let _ = document.getElementById(s);
-					_ ? _.innerText = "" : (_ = document.createElement("style"), _.id = s, p.appendChild(_)), _.appendChild(document.createTextNode(u)), (0, o.bh)().dispatch({
+					let g = document.getElementById(s);
+					g ? g.innerText = "" : (g = document.createElement("style"), g.id = s, p.appendChild(g)), g.appendChild(document.createTextNode(d)), (0, o.bh)().dispatch({
 						type: "cfForceUpdate"
 					})
 				};
-			(0, e.fF)(m), v.Z = m
+			(0, e.fF)(m), E.Z = m
 		},
-		"../utils/sentry/lastSentEventId.ts": function(x, v, n) {
+		"../utils/sentry/lastSentEventId.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				e: function() {
 					return o
 				}
@@ -18936,14 +19064,14 @@
 				}
 			})()
 		},
-		"../utils/zaraz.ts": function(x, v, n) {
+		"../utils/zaraz.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Ro: function() {
 					return r
 				},
 				bM: function() {
-					return u
+					return d
 				},
 				tg: function() {
 					return i
@@ -18954,186 +19082,186 @@
 			});
 
 			function e(a) {
-				for (var d = 1; d < arguments.length; d++) {
-					var c = arguments[d] != null ? Object(arguments[d]) : {},
-						g = Object.keys(c);
-					typeof Object.getOwnPropertySymbols == "function" && g.push.apply(g, Object.getOwnPropertySymbols(c).filter(function(f) {
-						return Object.getOwnPropertyDescriptor(c, f).enumerable
-					})), g.forEach(function(f) {
-						o(a, f, c[f])
+				for (var l = 1; l < arguments.length; l++) {
+					var c = arguments[l] != null ? Object(arguments[l]) : {},
+						f = Object.keys(c);
+					typeof Object.getOwnPropertySymbols == "function" && f.push.apply(f, Object.getOwnPropertySymbols(c).filter(function(_) {
+						return Object.getOwnPropertyDescriptor(c, _).enumerable
+					})), f.forEach(function(_) {
+						o(a, _, c[_])
 					})
 				}
 				return a
 			}
 
-			function o(a, d, c) {
-				return d = s(d), d in a ? Object.defineProperty(a, d, {
+			function o(a, l, c) {
+				return l = s(l), l in a ? Object.defineProperty(a, l, {
 					value: c,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : a[d] = c, a
+				}) : a[l] = c, a
 			}
 
 			function s(a) {
-				var d = p(a, "string");
-				return typeof d == "symbol" ? d : String(d)
+				var l = p(a, "string");
+				return typeof l == "symbol" ? l : String(l)
 			}
 
-			function p(a, d) {
+			function p(a, l) {
 				if (typeof a != "object" || a === null) return a;
 				var c = a[Symbol.toPrimitive];
 				if (c !== void 0) {
-					var g = c.call(a, d || "default");
-					if (typeof g != "object") return g;
+					var f = c.call(a, l || "default");
+					if (typeof f != "object") return f;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (d === "string" ? String : Number)(a)
+				return (l === "string" ? String : Number)(a)
 			}
-			const l = {
-					track: (a, d) => null,
-					set: (a, d) => console.log(`zaraz.set(${a}, ${d})`)
+			const u = {
+					track: (a, l) => null,
+					set: (a, l) => console.log(`zaraz.set(${a}, ${l})`)
 				},
 				m = {
-					track: (a, d) => {
+					track: (a, l) => {
 						var c;
-						(c = window.zaraz) === null || c === void 0 || c.track(a, e({}, d, {
+						(c = window.zaraz) === null || c === void 0 || c.track(a, e({}, l, {
 							OnetrustActiveGroups: window.OnetrustActiveGroups
 						}))
 					},
-					set: (a, d) => {
+					set: (a, l) => {
 						var c;
-						return (c = window.zaraz) === null || c === void 0 ? void 0 : c.set(a, d)
+						return (c = window.zaraz) === null || c === void 0 ? void 0 : c.set(a, l)
 					}
 				};
 			let i;
-			const u = () => {
+			const d = () => {
 					window.zaraz, i = m
 				},
-				_ = ["email", "first_name", "last_name"],
+				g = ["email", "first_name", "last_name"],
 				t = a => {
-					_.forEach(d => {
+					g.forEach(l => {
 						var c;
-						(c = i) === null || c === void 0 || c.set(d, a[d])
+						(c = i) === null || c === void 0 || c.set(l, a[l])
 					})
 				},
 				r = () => {
 					t({})
 				}
 		},
-		"../../../common/component/component-filter-bar/src/FilterBuilder.jsx": function(x, v, n) {
+		"../../../common/component/component-filter-bar/src/FilterBuilder.jsx": function(x, E, n) {
 			"use strict";
 			var e = n("webpack/sharing/consume/default/react/react"),
 				o = n.n(e),
 				s = n("../../../common/component/component-filter-bar/node_modules/prop-types/index.js"),
 				p = n.n(s),
-				l = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
+				u = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				m = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				i = n.n(m),
-				u = n("../../../../node_modules/@cloudflare/component-input/es/index.js"),
-				_ = n("../../../common/component/component-filter-bar/node_modules/@cloudflare/component-button/es/index.js"),
+				d = n("../../../../node_modules/@cloudflare/component-input/es/index.js"),
+				g = n("../../../common/component/component-filter-bar/node_modules/@cloudflare/component-button/es/index.js"),
 				t = n("../../../../node_modules/@cloudflare/component-icon/es/index.js"),
 				r = n("../../../common/component/component-filter-bar/node_modules/@cloudflare/component-arrow-swivel/es/index.js"),
 				a = n("../../../../node_modules/@cloudflare/component-forms/es/index.js"),
-				d = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
+				l = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				c = n("../../../common/component/component-filter-bar/src/MultiSelect.js"),
-				g = n("../../../common/component/component-filter-bar/src/ViewMoreLink.jsx"),
-				f = n("../../../common/component/component-filter-bar/src/EditFilterDropdown.jsx"),
-				A = n("../../../common/component/component-filter-bar/src/constants.js"),
-				h = n("../../../common/component/component-filter-bar/src/utils.js");
+				f = n("../../../common/component/component-filter-bar/src/ViewMoreLink.jsx"),
+				_ = n("../../../common/component/component-filter-bar/src/EditFilterDropdown.jsx"),
+				h = n("../../../common/component/component-filter-bar/src/constants.js"),
+				A = n("../../../common/component/component-filter-bar/src/utils.js");
 
 			function T() {
-				return T = Object.assign ? Object.assign.bind() : function(G) {
-					for (var b = 1; b < arguments.length; b++) {
-						var F = arguments[b];
-						for (var te in F) Object.prototype.hasOwnProperty.call(F, te) && (G[te] = F[te])
+				return T = Object.assign ? Object.assign.bind() : function(H) {
+					for (var I = 1; I < arguments.length; I++) {
+						var F = arguments[I];
+						for (var ne in F) Object.prototype.hasOwnProperty.call(F, ne) && (H[ne] = F[ne])
 					}
-					return G
+					return H
 				}, T.apply(this, arguments)
 			}
 
-			function M(G) {
-				for (var b = 1; b < arguments.length; b++) {
-					var F = arguments[b] != null ? Object(arguments[b]) : {},
-						te = Object.keys(F);
-					typeof Object.getOwnPropertySymbols == "function" && te.push.apply(te, Object.getOwnPropertySymbols(F).filter(function(ce) {
+			function M(H) {
+				for (var I = 1; I < arguments.length; I++) {
+					var F = arguments[I] != null ? Object(arguments[I]) : {},
+						ne = Object.keys(F);
+					typeof Object.getOwnPropertySymbols == "function" && ne.push.apply(ne, Object.getOwnPropertySymbols(F).filter(function(ce) {
 						return Object.getOwnPropertyDescriptor(F, ce).enumerable
-					})), te.forEach(function(ce) {
-						C(G, ce, F[ce])
+					})), ne.forEach(function(ce) {
+						C(H, ce, F[ce])
 					})
 				}
-				return G
+				return H
 			}
 
-			function C(G, b, F) {
-				return b = y(b), b in G ? Object.defineProperty(G, b, {
+			function C(H, I, F) {
+				return I = y(I), I in H ? Object.defineProperty(H, I, {
 					value: F,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : G[b] = F, G
+				}) : H[I] = F, H
 			}
 
-			function y(G) {
-				var b = N(G, "string");
-				return typeof b == "symbol" ? b : String(b)
+			function y(H) {
+				var I = S(H, "string");
+				return typeof I == "symbol" ? I : String(I)
 			}
 
-			function N(G, b) {
-				if (typeof G != "object" || G === null) return G;
-				var F = G[Symbol.toPrimitive];
+			function S(H, I) {
+				if (typeof H != "object" || H === null) return H;
+				var F = H[Symbol.toPrimitive];
 				if (F !== void 0) {
-					var te = F.call(G, b || "default");
-					if (typeof te != "object") return te;
+					var ne = F.call(H, I || "default");
+					if (typeof ne != "object") return ne;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (b === "string" ? String : Number)(G)
+				return (I === "string" ? String : Number)(H)
 			}
 			const L = 70,
-				P = (0, l.createStyledComponent)(({
-					showOverflow: G
+				b = (0, u.createStyledComponent)(({
+					showOverflow: H
 				}) => M({
 					position: "relative",
 					display: "flex",
 					flexDirection: "row",
 					flexWrap: "wrap",
 					width: "100%"
-				}, G ? {} : {
+				}, H ? {} : {
 					maxHeight: L,
 					overflow: "hidden"
 				})),
-				I = (0, l.createStyledComponent)(() => ({
+				P = (0, u.createStyledComponent)(() => ({
 					marginBottom: ".25rem",
 					"&:not(:last-child)": {
 						marginRight: ".25rem"
 					}
 				})),
-				O = (0, l.createStyledComponent)(({
-					theme: G
+				O = (0, u.createStyledComponent)(({
+					theme: H
 				}) => ({
-					backgroundColor: G.colors.background,
+					backgroundColor: H.colors.background,
 					py: 1,
 					px: 2,
-					borderRadius: G.radii[2],
-					border: `1px solid ${G.colors.gray[7]}`,
-					fontSize: G.fontSizes[2],
+					borderRadius: H.radii[2],
+					border: `1px solid ${H.colors.gray[7]}`,
+					fontSize: H.fontSizes[2],
 					position: "relative",
 					cursor: "pointer",
 					transition: "border-color 120ms ease-out",
 					":hover": {
-						borderColor: G.colors.gray[4]
+						borderColor: H.colors.gray[4]
 					}
 				}), "div"),
-				S = (0, l.createStyledComponent)(() => ({
+				D = (0, u.createStyledComponent)(() => ({
 					mr: 1
 				}), "span"),
-				B = (0, l.createStyledComponent)(({
-					theme: G
+				B = (0, u.createStyledComponent)(({
+					theme: H
 				}) => ({
-					color: G.colors.gray[4],
+					color: H.colors.gray[4],
 					mr: 1
 				}), "span"),
-				U = (0, l.createStyledComponent)(() => ({
+				U = (0, u.createStyledComponent)(() => ({
 					mr: 2,
 					maxWidth: 180,
 					whiteSpace: "nowrap",
@@ -19145,8 +19273,8 @@
 						marginRight: 0
 					}
 				}), "span"),
-				Z = (0, l.createStyledComponent)(({
-					buttonStyle: G
+				Z = (0, u.createStyledComponent)(({
+					buttonStyle: H
 				}) => M({
 					display: "inline-flex",
 					alignItems: "center",
@@ -19160,8 +19288,8 @@
 					"@media print": {
 						display: "none"
 					}
-				}, G), _.zx),
-				ae = (0, l.createStyledComponent)(() => ({
+				}, H), g.zx),
+				ae = (0, u.createStyledComponent)(() => ({
 					mr: 2,
 					fontSize: 2,
 					display: "none",
@@ -19169,29 +19297,29 @@
 						display: "initial"
 					}
 				}), "h4"),
-				Ee = (0, l.createStyledComponent)(({
-					theme: G
+				_e = (0, u.createStyledComponent)(({
+					theme: H
 				}) => ({
 					backgroundColor: "transparent",
 					borderColor: "transparent",
 					p: 0,
 					lineHeight: 1,
 					display: "inline-block",
-					color: G.colors.gray[4],
+					color: H.colors.gray[4],
 					transition: "color 120ms ease-out",
 					cursor: "pointer",
 					":hover": {
-						color: G.colors.gray[1],
+						color: H.colors.gray[1],
 						backgroundColor: "transparent",
 						borderColor: "transparent"
 					},
 					":active": {
-						color: G.colors.gray[1],
+						color: H.colors.gray[1],
 						backgroundColor: "transparent",
 						borderColor: "transparent"
 					},
 					":focus": {
-						color: G.colors.gray[1],
+						color: H.colors.gray[1],
 						backgroundColor: "transparent",
 						borderColor: "transparent"
 					},
@@ -19199,49 +19327,49 @@
 						display: "none"
 					}
 				}), "button"),
-				de = (0, l.createStyledComponent)(() => ({
+				de = (0, u.createStyledComponent)(() => ({
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "start",
 					width: "100%",
 					flexWrap: "wrap"
 				})),
-				ue = G => G.current ? [...G.current.children].reduce((b, F) => (F.offsetTop >= L && b++, b), 0) : 0;
-			let V = 0;
-			class Y extends e.Component {
+				ue = H => H.current ? [...H.current.children].reduce((I, F) => (F.offsetTop >= L && I++, I), 0) : 0;
+			let K = 0;
+			class Q extends e.Component {
 				constructor() {
 					super();
-					C(this, "overflowWrapper", (0, e.createRef)()), C(this, "hasOverflowed", b => {
+					C(this, "overflowWrapper", (0, e.createRef)()), C(this, "hasOverflowed", I => {
 						const F = ue(this.overflowWrapper);
-						b.scrollHeight > L && F >= 1 && !this.state.hasOverflowed ? this.setState({
+						I.scrollHeight > L && F >= 1 && !this.state.hasOverflowed ? this.setState({
 							hasOverflowed: !0
-						}) : (b.scrollHeight < L || F === 0) && this.state.hasOverflowed === !0 && this.setState({
+						}) : (I.scrollHeight < L || F === 0) && this.state.hasOverflowed === !0 && this.setState({
 							hasOverflowed: !1
 						})
 					}), C(this, "addNewFilter", () => {
 						const {
-							filterDefinitions: b
-						} = this.props, F = (0, h.TE)(b), te = Object.keys(F)[0];
+							filterDefinitions: I
+						} = this.props, F = (0, A.TE)(I), ne = Object.keys(F)[0];
 						this.setState({
 							openFilter: this.props.filters.length + 1,
 							filterChanges: {
-								key: te,
-								operator: (0, h.uv)(te, F),
-								value: (0, h.TT)(te, F)
+								key: ne,
+								operator: (0, A.uv)(ne, F),
+								value: (0, A.TT)(ne, F)
 							}
 						})
-					}), C(this, "handleOpenFilterEdit", b => {
+					}), C(this, "handleOpenFilterEdit", I => {
 						this.setState({
-							openFilter: b,
-							filterChanges: M({}, this.props.filters[b])
+							openFilter: I,
+							filterChanges: M({}, this.props.filters[I])
 						})
-					}), C(this, "handleRemoveFilterClick", (b, F) => {
-						b.stopPropagation(), this.removeFilter(F)
-					}), C(this, "removeFilter", b => {
+					}), C(this, "handleRemoveFilterClick", (I, F) => {
+						I.stopPropagation(), this.removeFilter(F)
+					}), C(this, "removeFilter", I => {
 						const {
 							handleFiltersChange: F
-						} = this.props, te = [...this.props.filters], ce = te[b];
-						te.splice(b, 1), F(te), this.closeOpenFilterChanges(), this.props.onRemoveFilter({
+						} = this.props, ne = [...this.props.filters], ce = ne[I];
+						ne.splice(I, 1), F(ne), this.closeOpenFilterChanges(), this.props.onRemoveFilter({
 							field: ce.key,
 							operator: ce.operator,
 							value: ce.value
@@ -19252,29 +19380,29 @@
 							openFilter: null,
 							filterChanges: null
 						})
-					}), C(this, "handleFilterSubmit", b => {
+					}), C(this, "handleFilterSubmit", I => {
 						const {
 							filterDefinitions: F
 						} = this.props;
-						b.preventDefault();
+						I.preventDefault();
 						const {
-							filterChanges: te
-						} = this.state, ce = typeof F[te.key].parse == "function" ? Array.isArray(te.value) ? te.value.map(F[te.key].parse) : F[te.key].parse(te.value) : te.value;
-						if (F[te.key].validate && (Array.isArray(ce) ? !ce.every(F[te.key].validate) : !F[te.key].validate(ce))) return this.setState({
+							filterChanges: ne
+						} = this.state, ce = typeof F[ne.key].parse == "function" ? Array.isArray(ne.value) ? ne.value.map(F[ne.key].parse) : F[ne.key].parse(ne.value) : ne.value;
+						if (F[ne.key].validate && (Array.isArray(ce) ? !ce.every(F[ne.key].validate) : !F[ne.key].validate(ce))) return this.setState({
 							invalid: !0
 						});
-						const K = [...this.props.filters],
-							q = M({}, te, {
+						const G = [...this.props.filters],
+							J = M({}, ne, {
 								value: ce
 							}),
-							$ = !K[this.state.openFilter];
-						$ ? K.push(q) : K[this.state.openFilter] = M({}, te), this.props.handleFiltersChange(K, q), ($ ? this.props.onAddFilter : this.props.onEditFilter)({
-							field: q.key,
-							operator: q.operator,
-							value: q.value
+							W = !G[this.state.openFilter];
+						W ? G.push(J) : G[this.state.openFilter] = M({}, ne), this.props.handleFiltersChange(G, J), (W ? this.props.onAddFilter : this.props.onEditFilter)({
+							field: J.key,
+							operator: J.operator,
+							value: J.value
 						}), this.closeOpenFilterChanges()
 					}), C(this, "handlePendingKeyChange", ({
-						value: b
+						value: I
 					}) => {
 						const {
 							filterDefinitions: F
@@ -19282,33 +19410,33 @@
 						this.setState({
 							invalid: !1,
 							filterChanges: {
-								key: b,
-								operator: (0, h.uv)(b, F),
-								value: (0, h.TT)(b, F)
+								key: I,
+								operator: (0, A.uv)(I, F),
+								value: (0, A.TT)(I, F)
 							}
 						})
 					}), C(this, "handlePendingOperatorChange", ({
-						value: b
+						value: I
 					}) => {
 						let F = M({}, this.state.filterChanges, {
-							operator: b
+							operator: I
 						});
-						if ((0, h.dr)(b)) {
-							var te, ce;
-							((te = this.state.filterChanges) === null || te === void 0 ? void 0 : te.value) && !Array.isArray((ce = this.state.filterChanges) === null || ce === void 0 ? void 0 : ce.value) && (F.value = [this.state.filterChanges.value])
+						if ((0, A.dr)(I)) {
+							var ne, ce;
+							((ne = this.state.filterChanges) === null || ne === void 0 ? void 0 : ne.value) && !Array.isArray((ce = this.state.filterChanges) === null || ce === void 0 ? void 0 : ce.value) && (F.value = [this.state.filterChanges.value])
 						} else {
-							var K, q, $;
-							((K = this.state.filterChanges) === null || K === void 0 ? void 0 : K.value) && Array.isArray((q = this.state.filterChanges) === null || q === void 0 ? void 0 : q.value) && (($ = this.state.filterChanges) === null || $ === void 0 ? void 0 : $.value.length) > 0 && (F.value = this.state.filterChanges.value[0])
+							var G, J, W;
+							((G = this.state.filterChanges) === null || G === void 0 ? void 0 : G.value) && Array.isArray((J = this.state.filterChanges) === null || J === void 0 ? void 0 : J.value) && ((W = this.state.filterChanges) === null || W === void 0 ? void 0 : W.value.length) > 0 && (F.value = this.state.filterChanges.value[0])
 						}
 						this.setState({
 							invalid: !1,
 							filterChanges: F
 						})
-					}), C(this, "handlePendingValueChange", b => {
+					}), C(this, "handlePendingValueChange", I => {
 						this.setState({
 							invalid: !1,
 							filterChanges: M({}, this.state.filterChanges, {
-								value: b
+								value: I
 							})
 						})
 					}), C(this, "handleShowOverflow", () => {
@@ -19322,111 +19450,111 @@
 						filterChanges: null,
 						hasOverflowed: !1,
 						showOverflow: !1,
-						id: ++V
+						id: ++K
 					}, this.renderPendingChangeValue = this.renderPendingChangeValue.bind(this), this.handleFilterSubmit = this.handleFilterSubmit.bind(this), this.handlePendingKeyChange = this.handlePendingKeyChange.bind(this), this.handlePendingOperatorChange = this.handlePendingOperatorChange.bind(this)
 				}
 				componentDidMount() {
 					this.hasOverflowed(this.overflowWrapper.current)
 				}
-				componentDidUpdate(b) {
-					b.filters !== this.props.filters && this.closeOpenFilterChanges(), this.hasOverflowed(this.overflowWrapper.current)
+				componentDidUpdate(I) {
+					I.filters !== this.props.filters && this.closeOpenFilterChanges(), this.hasOverflowed(this.overflowWrapper.current)
 				}
-				renderPendingChangeValue(b) {
+				renderPendingChangeValue(I) {
 					const {
 						formatLabel: F,
-						filterDefinitions: te
+						filterDefinitions: ne
 					} = this.props, {
 						operator: ce
-					} = this.state.filterChanges, K = te[this.state.filterChanges.key], q = this.state.filterChanges.value, $ = W => Array.isArray(W) ? W.map(ne => ne.value) : (W == null ? void 0 : W.value) || null;
-					if (K.renderValueComponent) return K.renderValueComponent({
+					} = this.state.filterChanges, G = ne[this.state.filterChanges.key], J = this.state.filterChanges.value, W = $ => Array.isArray($) ? $.map(te => te.value) : ($ == null ? void 0 : $.value) || null;
+					if (G.renderValueComponent) return G.renderValueComponent({
 						value: this.state.filterChanges.value,
 						onChange: this.handlePendingValueChange
 					});
-					switch (K.type) {
-						case A.k.custom: {
-							var X;
-							return o().createElement(K.CustomComponent, T({
+					switch (G.type) {
+						case h.k.custom: {
+							var q;
+							return o().createElement(G.CustomComponent, T({
 								value: this.state.filterChanges.value,
 								onChange: this.handlePendingValueChange
-							}, (X = K == null ? void 0 : K.customProps) !== null && X !== void 0 ? X : {}))
+							}, (q = G == null ? void 0 : G.customProps) !== null && q !== void 0 ? q : {}))
 						}
-						case A.k.select:
-							return (0, h.dr)(ce) ? o().createElement(c.Z, {
+						case h.k.select:
+							return (0, A.dr)(ce) ? o().createElement(c.Z, {
 								searchable: !0,
 								multi: !0,
-								creatable: !K.options,
-								value: typeof q.split == "function" ? q == null ? void 0 : q.split(",") : Array.isArray(q) ? q : [],
-								options: K.options ? K.options.map(W => ({
-									value: W.value || W,
-									label: W.label || F(this.state.filterChanges.key, W, b)
-								})) : q ? (Array.isArray(q) ? q : q.split(",")).map(W => ({
-									label: W,
-									value: W
+								creatable: !G.options,
+								value: typeof J.split == "function" ? J == null ? void 0 : J.split(",") : Array.isArray(J) ? J : [],
+								options: G.options ? G.options.map($ => ({
+									value: $.value || $,
+									label: $.label || F(this.state.filterChanges.key, $, I)
+								})) : J ? (Array.isArray(J) ? J : J.split(",")).map($ => ({
+									label: $,
+									value: $
 								})) : [],
 								noOptionsMessage: () => null,
 								placeholder: o().createElement(m.Trans, {
-									id: K.options ? "filter_editor.value_in_select_placeholder" : "filter_editor.value_in_creatable_placeholder",
-									_: K.options ? "Select multiple values" : "Enter multiple values"
+									id: G.options ? "filter_editor.value_in_select_placeholder" : "filter_editor.value_in_creatable_placeholder",
+									_: G.options ? "Select multiple values" : "Enter multiple values"
 								}),
-								onChange: W => {
-									this.handlePendingValueChange($(W))
+								onChange: $ => {
+									this.handlePendingValueChange(W($))
 								},
-								isValidNewOption: W => {
-									const ne = K.validate;
-									return !ne && W || W && ne([W])
+								isValidNewOption: $ => {
+									const te = G.validate;
+									return !te && $ || $ && te([$])
 								},
-								getNewOptionData: (W, ne) => ({
-									value: W,
-									label: ne
+								getNewOptionData: ($, te) => ({
+									value: $,
+									label: te
 								})
 							}) : o().createElement(a.hQ, {
 								hideLabel: !0,
-								value: q,
-								options: K.options.map(W => ({
-									value: W,
-									label: F(this.state.filterChanges.key, W, b)
+								value: J,
+								options: G.options.map($ => ({
+									value: $,
+									label: F(this.state.filterChanges.key, $, I)
 								})),
 								onChange: ({
-									value: W
-								}) => this.handlePendingValueChange(W)
+									value: $
+								}) => this.handlePendingValueChange($)
 							});
-						case A.k.string:
+						case h.k.string:
 						default:
-							return (0, h.dr)(ce) ? o().createElement(c.Z, {
+							return (0, A.dr)(ce) ? o().createElement(c.Z, {
 								searchable: !0,
 								multi: !0,
 								creatable: !0,
-								value: typeof q.split == "function" ? q == null ? void 0 : q.split(",") : Array.isArray(q) ? q : [],
-								options: q ? (Array.isArray(q) ? q : q.split(",")).map(W => ({
-									label: W,
-									value: W
+								value: typeof J.split == "function" ? J == null ? void 0 : J.split(",") : Array.isArray(J) ? J : [],
+								options: J ? (Array.isArray(J) ? J : J.split(",")).map($ => ({
+									label: $,
+									value: $
 								})) : [],
 								noOptionsMessage: () => null,
-								placeholder: b.t("analytics.report.filters.labels.placeholder", {
-									example: te[this.state.filterChanges.key].example,
+								placeholder: I.t("analytics.report.filters.labels.placeholder", {
+									example: ne[this.state.filterChanges.key].example,
 									_: ""
 								}),
-								onChange: W => {
-									this.handlePendingValueChange($(W))
+								onChange: $ => {
+									this.handlePendingValueChange(W($))
 								},
-								isValidNewOption: W => {
-									const ne = K.validate;
-									return !ne && W || W && ne([W])
+								isValidNewOption: $ => {
+									const te = G.validate;
+									return !te && $ || $ && te([$])
 								},
-								getNewOptionData: (W, ne) => ({
-									value: W,
-									label: ne
+								getNewOptionData: ($, te) => ({
+									value: $,
+									label: te
 								}),
-								formatCreateLabel: W => b.t("filter_editor.value_create_label", {
-									value: W
+								formatCreateLabel: $ => I.t("filter_editor.value_create_label", {
+									value: $
 								})
-							}) : o().createElement(m.I18n, null, W => o().createElement(u.I, {
+							}) : o().createElement(m.I18n, null, $ => o().createElement(d.I, {
 								value: this.state.filterChanges.value,
-								onChange: ne => this.handlePendingValueChange(ne.target.value),
+								onChange: te => this.handlePendingValueChange(te.target.value),
 								mb: 0,
 								name: "custom-value",
-								placeholder: W.t("analytics.report.filters.labels.placeholder", {
-									example: te[this.state.filterChanges.key].example,
+								placeholder: $.t("analytics.report.filters.labels.placeholder", {
+									example: ne[this.state.filterChanges.key].example,
 									_: ""
 								})
 							}))
@@ -19434,13 +19562,13 @@
 				}
 				render() {
 					const {
-						formatLabel: b,
+						formatLabel: I,
 						filterDefinitions: F,
-						modalStyles: te,
+						modalStyles: ne,
 						filterIconType: ce,
-						buttonStyle: K
-					} = this.props, q = ue(this.overflowWrapper), $ = `filterPanel${this.state.id}`, X = this.state.openFilter !== null;
-					return o().createElement(m.I18n, null, W => o().createElement(d.ZC, {
+						buttonStyle: G
+					} = this.props, J = ue(this.overflowWrapper), W = `filterPanel${this.state.id}`, q = this.state.openFilter !== null;
+					return o().createElement(m.I18n, null, $ => o().createElement(l.ZC, {
 						display: "flex",
 						flexDirection: "row",
 						flexWrap: "wrap",
@@ -19449,14 +19577,14 @@
 					}, o().createElement(de, null, o().createElement(Z, {
 						type: "primary",
 						onClick: this.addNewFilter,
-						"aria-expanded": X,
-						"aria-controls": $,
+						"aria-expanded": q,
+						"aria-controls": W,
 						inverted: !0,
-						buttonStyle: K
+						buttonStyle: G
 					}, o().createElement(t.J, {
 						type: ce || "add",
 						mr: 1,
-						label: W.t("common.add", {
+						label: $.t("common.add", {
 							_: "Add"
 						})
 					}), o().createElement(m.Trans, {
@@ -19465,34 +19593,34 @@
 					})), this.props.filters.length > 0 && o().createElement(ae, null, o().createElement(m.Trans, {
 						id: "analytics.report.filters.labels.filters",
 						_: "Filters:"
-					})), this.props.children), o().createElement(P, {
+					})), this.props.children), o().createElement(b, {
 						innerRef: this.overflowWrapper,
 						overflowLimit: L,
 						showOverflow: this.state.showOverflow
-					}, this.props.filters.map((ne, ve) => {
+					}, this.props.filters.map((te, Ee) => {
 						const {
 							key: Te,
-							operator: xe,
-							value: Ue
-						} = ne, $e = F[Te].ignoreLabelTranslation ? F[Te].label : W.t(F[Te].label), Ke = W.t(`analytics.report.filters.operators.${xe}`), Ie = Array.isArray(Ue) ? Ue.map(re => b(Te, re, W)).join(", ") : b(Te, Ue, W), Q = `${$e} ${Ke} ${Ie}`;
-						return o().createElement(I, {
-							key: `${Te}-${xe}-${Ue}`,
-							title: Q
+							operator: Ue,
+							value: ke
+						} = te, xe = F[Te].ignoreLabelTranslation ? F[Te].label : $.t(F[Te].label), Ke = $.t(`analytics.report.filters.operators.${Ue}`), Le = Array.isArray(ke) ? ke.map(re => I(Te, re, $)).join(", ") : I(Te, ke, $), X = `${xe} ${Ke} ${Le}`;
+						return o().createElement(P, {
+							key: `${Te}-${Ue}-${ke}`,
+							title: X
 						}, o().createElement(O, {
-							onClick: () => this.handleOpenFilterEdit(ve)
-						}, o().createElement(d.ZC, {
+							onClick: () => this.handleOpenFilterEdit(Ee)
+						}, o().createElement(l.ZC, {
 							display: "flex"
-						}, o().createElement(S, null, $e), o().createElement(B, null, Ke), o().createElement(U, null, Ie), (0, h.oN)(ne, F) ? o().createElement(r.OE, {
+						}, o().createElement(D, null, xe), o().createElement(B, null, Ke), o().createElement(U, null, Le), (0, A.oN)(te, F) ? o().createElement(r.OE, {
 							startAngle: 90,
 							color: "gray.4"
-						}) : o().createElement(Ee, {
-							onClick: re => this.handleRemoveFilterClick(re, ve),
+						}) : o().createElement(_e, {
+							onClick: re => this.handleRemoveFilterClick(re, Ee),
 							"aria-label": "remove"
 						}, o().createElement(t.J, {
 							type: "remove"
 						})))))
-					})), X && o().createElement(f.Z, {
-						id: $,
+					})), q && o().createElement(_.Z, {
+						id: W,
 						filterDefinitions: F,
 						closeOpenFilterChanges: this.closeOpenFilterChanges,
 						handleFilterSubmit: this.handleFilterSubmit,
@@ -19500,19 +19628,19 @@
 						handlePendingOperatorChange: this.handlePendingOperatorChange,
 						renderPendingChangeValue: this.renderPendingChangeValue,
 						isNew: this.state.openFilter > this.props.filters.length,
-						isPersistent: (0, h.oN)(this.state.filterChanges, F),
+						isPersistent: (0, A.oN)(this.state.filterChanges, F),
 						filterChanges: this.state.filterChanges,
 						invalid: this.state.invalid,
-						formatLabel: b,
-						modalStyles: te
-					}), this.state.hasOverflowed && o().createElement(g.Z, {
-						count: q,
+						formatLabel: I,
+						modalStyles: ne
+					}), this.state.hasOverflowed && o().createElement(f.Z, {
+						count: J,
 						showOverflow: this.state.showOverflow,
 						onClick: this.handleShowOverflow
 					})))
 				}
 			}
-			C(Y, "propTypes", {
+			C(Q, "propTypes", {
 				filterDefinitions: p().shape({}),
 				filters: p().arrayOf(p().shape({
 					key: p().string,
@@ -19528,11 +19656,11 @@
 				modalStyles: p().object,
 				filterIconType: p().string,
 				buttonStyle: p().object
-			}), v.Z = Y
+			}), E.Z = Q
 		},
-		"../../../common/component/component-filter-bar/src/index.js": function(x, v, n) {
+		"../../../common/component/component-filter-bar/src/index.js": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				ME: function() {
 					return o.Z
 				},
@@ -19550,62 +19678,62 @@
 				o = n("../../../common/component/component-filter-bar/src/FilterBuilder.jsx"),
 				s = n("../../../common/component/component-filter-bar/src/constants.js"),
 				p = n("../../../common/component/component-filter-bar/src/utils.js"),
-				l = n("../../../common/component/component-filter-bar/src/TimerangeSelect.jsx")
+				u = n("../../../common/component/component-filter-bar/src/TimerangeSelect.jsx")
 		},
-		"../../../common/intl/intl-core/src/errors.ts": function(x, v, n) {
+		"../../../common/intl/intl-core/src/errors.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				OZ: function() {
-					return l
+					return u
 				},
 				YB: function() {
 					return p
 				}
 			});
 
-			function e(i, u, _) {
-				return u = o(u), u in i ? Object.defineProperty(i, u, {
-					value: _,
+			function e(i, d, g) {
+				return d = o(d), d in i ? Object.defineProperty(i, d, {
+					value: g,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : i[u] = _, i
+				}) : i[d] = g, i
 			}
 
 			function o(i) {
-				var u = s(i, "string");
-				return typeof u == "symbol" ? u : String(u)
+				var d = s(i, "string");
+				return typeof d == "symbol" ? d : String(d)
 			}
 
-			function s(i, u) {
+			function s(i, d) {
 				if (typeof i != "object" || i === null) return i;
-				var _ = i[Symbol.toPrimitive];
-				if (_ !== void 0) {
-					var t = _.call(i, u || "default");
+				var g = i[Symbol.toPrimitive];
+				if (g !== void 0) {
+					var t = g.call(i, d || "default");
 					if (typeof t != "object") return t;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (u === "string" ? String : Number)(i)
+				return (d === "string" ? String : Number)(i)
 			}
 			class p extends Error {
-				constructor(u, _) {
-					super(_);
-					e(this, "translationKey", void 0), this.translationKey = u, this.name = "TranslatorError"
+				constructor(d, g) {
+					super(g);
+					e(this, "translationKey", void 0), this.translationKey = d, this.name = "TranslatorError"
 				}
 			}
-			class l extends p {
-				constructor(u) {
-					super(u, `Translation key not found: ${u}`);
+			class u extends p {
+				constructor(d) {
+					super(d, `Translation key not found: ${d}`);
 					this.name = "TranslatorKeyNotFoundError"
 				}
 			}
 			var m = null
 		},
-		"../../../common/util/types/src/api/domain.ts": function(x, v, n) {
+		"../../../common/util/types/src/api/domain.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Aw: function() {
-					return N
+					return S
 				},
 				Ib: function() {
 					return C
@@ -19617,22 +19745,22 @@
 					return y
 				},
 				PN: function() {
-					return g
+					return f
 				},
 				Pp: function() {
 					return p
 				},
 				Q3: function() {
-					return d
+					return l
 				},
 				TS: function() {
 					return c
 				},
 				W7: function() {
-					return h
+					return A
 				},
 				dN: function() {
-					return P
+					return b
 				},
 				eF: function() {
 					return M
@@ -19641,7 +19769,7 @@
 					return t
 				},
 				wR: function() {
-					return _
+					return g
 				}
 			});
 			var e = n("../../../../node_modules/@cloudflare/util-en-garde/es/index.js");
@@ -19668,7 +19796,7 @@
 					state: e.eg.string,
 					zip: e.eg.string
 				}),
-				l = e.eg.object({
+				u = e.eg.object({
 					exists: e.eg.boolean,
 					not_premium: e.eg.boolean,
 					not_secure: e.eg.boolean,
@@ -19688,15 +19816,15 @@
 					contacts: m.optional,
 					years: e.eg.number
 				}),
-				u = e.eg.object({
+				d = e.eg.object({
 					icann_fee: e.eg.number,
 					redemption_fee: e.eg.number,
 					registration_fee: e.eg.number,
 					renewal_fee: e.eg.number,
 					transfer_fee: e.eg.number
 				});
-			let _ = function(I) {
-				return I.ONBOARDING_INITIATED = "Onboarding Initiated", I.ONBOARDED = "Onboarded", I.PENDING_REGISTRY_LOCK = "Pending Registry Lock", I.PENDING_REGISTRY_UNLOCK = "Pending Registry Unlock", I.REGISTRY_UNLOCKED = "Registry Unlocked", I.LOCKED = "Locked", I.FAILED_TO_LOCK = "Failed To Lock", I.PENDING_UNLOCK_APPROVAL = "Pending Unlock Approval", I.UNLOCKED = "Unlocked", I.OFFBOARDED = "Offboarded", I
+			let g = function(P) {
+				return P.ONBOARDING_INITIATED = "Onboarding Initiated", P.ONBOARDED = "Onboarded", P.PENDING_REGISTRY_LOCK = "Pending Registry Lock", P.PENDING_REGISTRY_UNLOCK = "Pending Registry Unlock", P.REGISTRY_UNLOCKED = "Registry Unlocked", P.LOCKED = "Locked", P.FAILED_TO_LOCK = "Failed To Lock", P.PENDING_UNLOCK_APPROVAL = "Pending Unlock Approval", P.UNLOCKED = "Unlocked", P.OFFBOARDED = "Offboarded", P
 			}({});
 			const t = e.eg.object({
 					administrator_contact_id: e.eg.union([e.eg.number, e.eg.null]).optional,
@@ -19716,13 +19844,13 @@
 					created_registrar: e.eg.string.optional,
 					current_registrar: e.eg.string.optional,
 					domain_protection_services: e.eg.object({
-						status: e.eg.enum(_).optional
+						status: e.eg.enum(g).optional
 					}).optional,
 					dns: e.eg.array(e.eg.any).optional,
 					ds_records: e.eg.array(e.eg.any).optional,
 					email_verified: e.eg.boolean.optional,
 					expires_at: e.eg.string.optional,
-					fees: u.optional,
+					fees: d.optional,
 					landing: e.eg.union([s, e.eg.boolean]).optional,
 					last_known_status: e.eg.union([e.eg.string, e.eg.null]).optional,
 					locked: e.eg.boolean.optional,
@@ -19742,7 +19870,7 @@
 					supported_tld: e.eg.boolean.optional,
 					tags: e.eg.array(e.eg.string).optional,
 					technical_contact_id: e.eg.union([e.eg.number, e.eg.null]).optional,
-					transfer_conditions: l.optional,
+					transfer_conditions: u.optional,
 					updated_at: e.eg.union([e.eg.string, e.eg.null]).optional,
 					updated_registrar: e.eg.string.optional,
 					using_created_registrar_nameservers: e.eg.boolean.optional,
@@ -19766,7 +19894,7 @@
 					messages: e.eg.array(e.eg.string),
 					success: e.eg.boolean
 				}),
-				d = e.eg.object({
+				l = e.eg.object({
 					check_result: e.eg.union([e.eg.null, e.eg.object({
 						name: e.eg.string,
 						supported_tld: e.eg.boolean,
@@ -19798,42 +19926,42 @@
 					premium: e.eg.union([e.eg.boolean, e.eg.null]),
 					available: e.eg.union([e.eg.boolean, e.eg.null])
 				});
-			let g = function(I) {
-				return I.PENDING = "pending", I.VERIFIED = "verified", I.REJECTED = "rejected", I.PENDING_DELETE = "pending_delete", I.DELETED = "deleted", I
+			let f = function(P) {
+				return P.PENDING = "pending", P.VERIFIED = "verified", P.REJECTED = "rejected", P.PENDING_DELETE = "pending_delete", P.DELETED = "deleted", P
 			}({});
-			const f = e.eg.object({
+			const _ = e.eg.object({
 					email: e.eg.string,
-					status: e.eg.enum(g),
+					status: e.eg.enum(f),
 					first_name: e.eg.union([e.eg.null, e.eg.string]).optional,
 					last_name: e.eg.union([e.eg.null, e.eg.string]).optional,
 					phone_number: e.eg.union([e.eg.null, e.eg.string]).optional
 				}),
-				A = e.eg.object({
-					designated_approvers: e.eg.array(f)
+				h = e.eg.object({
+					designated_approvers: e.eg.array(_)
 				});
-			let h = function(I) {
-				return I.PENDING = "pending", I.PENDING_UPDATE = "pending_update", I.ENABLED = "enabled", I.DISABLED = "disabled", I
+			let A = function(P) {
+				return P.PENDING = "pending", P.PENDING_UPDATE = "pending_update", P.ENABLED = "enabled", P.DISABLED = "disabled", P
 			}({});
 			const T = e.eg.object({
 					auto_relock_after: e.eg.number,
 					number_of_designated_approvers: e.eg.number,
-					status: e.eg.enum(h)
+					status: e.eg.enum(A)
 				}),
-				M = e.eg.intersection([T, A]),
+				M = e.eg.intersection([T, h]),
 				C = e.eg.object({
 					status: e.eg.number,
 					message: e.eg.string
 				});
-			let y = function(I) {
-				return I.UNLOCK_APPROVAL = "UnlockApprovalRequest", I.CONFIGURATION_UPDATE = "ConfigurationUpdateRequest", I.APPROVER_EMAIL_VERIFICATION = "DesignatedApproverVerificationRequest", I.APPROVER_REMOVAL = "DesignatedApproverRemovalRequest", I
+			let y = function(P) {
+				return P.UNLOCK_APPROVAL = "UnlockApprovalRequest", P.CONFIGURATION_UPDATE = "ConfigurationUpdateRequest", P.APPROVER_EMAIL_VERIFICATION = "DesignatedApproverVerificationRequest", P.APPROVER_REMOVAL = "DesignatedApproverRemovalRequest", P
 			}({});
-			const N = e.eg.object({
+			const S = e.eg.object({
 					tlds: e.eg.array(e.eg.string)
 				}),
 				L = e.eg.object({
 					message: e.eg.string
 				}),
-				P = e.eg.object({
+				b = e.eg.object({
 					result: e.eg.object({
 						entry: e.eg.object({
 							address2: e.eg.string,
@@ -19855,9 +19983,9 @@
 					})
 				})
 		},
-		"../../../common/util/types/src/api/phases/fields.tsx": function(x, v, n) {
+		"../../../common/util/types/src/api/phases/fields.tsx": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				df: function() {
 					return o
 				},
@@ -19865,7 +19993,7 @@
 					return s
 				},
 				fG: function() {
-					return l
+					return u
 				},
 				jI: function() {
 					return p
@@ -19889,16 +20017,16 @@
 				p = function(i) {
 					return i.ZONE_LOCKDOWN = "zoneLockdown", i.UA_BLOCK = "uaBlock", i.BIC = "bic", i.HOT = "hot", i.SECURITY_LEVEL = "securityLevel", i.RATE_LIMIT = "rateLimit", i.WAF = "waf", i
 				}({}),
-				l = function(i) {
+				u = function(i) {
 					return i.DEFAULT = "default", i.MEDIUM = "medium", i.LOW = "low", i.EOFF = "eoff", i.HIGH = "high", i.VERY_HIGH = "very_high", i
 				}({}),
 				m = function(i) {
 					return i.DEFAULT = "", i.XML = "text/xml", i.JSON = "application/json", i.TEXT = "text/plain", i.HTML = "text/html", i
 				}({})
 		},
-		"../../../common/util/types/src/utils/index.ts": function(x, v, n) {
+		"../../../common/util/types/src/utils/index.ts": function(x, E, n) {
 			"use strict";
-			n.d(v, {
+			n.d(E, {
 				Yd: function() {
 					return e
 				},
@@ -19915,7 +20043,7 @@
 				return p
 			}
 		},
-		"../react/app/assets lazy recursive ^\\.\\/favicon\\-.*\\.ico$": function(x, v, n) {
+		"../react/app/assets lazy recursive ^\\.\\/favicon\\-.*\\.ico$": function(x, E, n) {
 			var e = {
 				"./favicon-cookie.ico": ["../react/app/assets/favicon-cookie.ico", 48837],
 				"./favicon-dev.ico": ["../react/app/assets/favicon-dev.ico", 81377],
@@ -19929,9 +20057,9 @@
 					throw m.code = "MODULE_NOT_FOUND", m
 				});
 				var p = e[s],
-					l = p[0];
+					u = p[0];
 				return n.e(p[1]).then(function() {
-					return n.t(l, 1 | 16)
+					return n.t(u, 1 | 16)
 				})
 			}
 			o.keys = function() {
@@ -19941,4 +20069,4 @@
 	}
 ]);
 
-//# debugId=73c92de3-b7b6-5d04-ba06-48ef09483ec7
+//# debugId=d8e31b4e-e3f1-51b4-9af7-e897a31f7f67

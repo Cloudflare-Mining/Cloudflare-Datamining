@@ -22,6 +22,8 @@
 	"containers.settings": "Settings",
 	"containers.logs": "Logs",
 	"containers.metrics": "Metrics",
+	"containers.metrics.aggregate.tooltip": "Aggregate metrics",
+	"containers.metrics.aggregate.disabled.tooltip": "Metrics aggregation cannot be disabled when there are more than %{limit} instances",
 	"containers.metrics.summary": "Summary",
 	"containers.metrics.summary.image": "Image",
 	"containers.metrics.summary.configuration": "Configuration",
@@ -39,10 +41,11 @@
 	"containers.metrics.charts.txBandwidth": "TX bandwidth",
 	"containers.metrics.charts.rxBytes": "Received bytes",
 	"containers.metrics.charts.txBytes": "Transmitted bytes",
-	"containers.metrics.charts.network.traffic": "Network traffic",
 	"containers.metrics.charts.network.bandwidth": "Network bandwidth",
 	"containers.metrics.charts.memory.tooltip": "Memory usage",
 	"containers.metrics.charts.cpu.tooltip": "CPU load",
-	"containers.metrics.charts.network.traffic.tooltip": "Network traffic",
-	"containers.metrics.charts.network.bandwidth.tooltip": "Network bandwidth"
+	"containers.metrics.charts.network.bandwidth.tooltip": "Network bandwidth",
+	"containers.metrics.charts.memory.average.tooltip": "Average memory usage across %{instances} instances",
+	"containers.metrics.charts.cpu.average.tooltip": "Average CPU load across %{instances} instances",
+	"containers.metrics.charts.network.bandwidth.average.tooltip": "Average network bandwidth across %{instances} instances"
 }
