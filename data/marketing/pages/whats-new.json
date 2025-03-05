@@ -4564,22 +4564,6 @@
 					"useCase": null
 				},
 				{
-					"contentType": "feature",
-					"date": "2018-04-12",
-					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
-					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
-					"pageUrl": null,
-					"relatedContentBlogPost": null,
-					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
-					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
-					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
-					"relatedContentProductPageLabel": "Help Center article",
-					"relatedProduct": "SSL for SaaS",
-					"title": "Support full SSL (Strict) mode validation for CNAME domains",
-					"locale": "en-US",
-					"useCase": null
-				},
-				{
 					"contentType": "product",
 					"date": "2018-04-12",
 					"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network. \n",
@@ -4594,6 +4578,22 @@
 					"title": "Cloudflare Spectrum",
 					"locale": "en-US",
 					"useCase": "performance"
+				},
+				{
+					"contentType": "feature",
+					"date": "2018-04-12",
+					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
+					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
+					"pageUrl": null,
+					"relatedContentBlogPost": null,
+					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
+					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
+					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
+					"relatedContentProductPageLabel": "Help Center article",
+					"relatedProduct": "SSL for SaaS",
+					"title": "Support full SSL (Strict) mode validation for CNAME domains",
+					"locale": "en-US",
+					"useCase": null
 				},
 				{
 					"contentType": "feature",
