@@ -5,37 +5,20 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location(s): Austin, TX</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p><strong>About the Role</strong></p>
-<p>As an intern on the Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s Operational Audits, as well as testing of internal controls (SOX), as deemed necessary.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<ul>
-	<li>Assist in executing the Internal Audit plan under the supervision of an IA Manager. This includes operational audit planning, risk assessment, fieldwork, issues validation, and reporting.</li>
-	<li>Execute operational audits in accordance with department and professional standards, and complete assignments timely in an efficient manner.</li>
-	<li>Help design testing procedures relevant to risk and test objectives.</li>
-	<li>Identify and document operational audit processes, risks, and controls.</li>
-	<li>Prepare audit work papers and reports with direct supervision.</li>
-	<li>Build relationships with key stakeholders and business owners.</li>
-	<li>Execute test of design and operating effectiveness for internal controls (SOX), as deemed necessary.</li>
-	<li>Document all Internal Audit work in the AuditBoard tool.</li>
-	<li>Report to an IA Manager.</li>
-	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
-	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
-	<li>Present your project to the entire company at the end of the internship.</li>
-	<li>Get direct access to our executives and leadership team, including our co-founders.</li>
-</ul>
+<h4>About the department</h4>
+<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
+<h4>What you'll do</h4>
+<p>At most companies, you build applications “in” the Cloud - here at Cloudflare we’re building a Cloud; a uniquely performant, globally distributed and highly available Cloud. In this role, you will lead a team of passionate and talented engineers that are building the internal Control Plane used by our SREs to manage our internal IaaS platform.&nbsp; You will be responsible for tools that support the management of a growing, globally distributed fleet of servers, storage, and network gear spread across a thousand colos worldwide.&nbsp; You will play an active part in shaping the future of the infrastructure that propels Cloudflare’s scale and growth.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment. You build great relationships with your stakeholders and deeply understand their needs.&nbsp; Most importantly</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Accounting, Finance, Business, Economics, Data Analytics major preferred</li>
-	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
-	<li>Time management skills and ability to plan and prioritize effectively</li>
-	<li>Proficiency in Microsoft Excel/Google Sheets required&nbsp;</li>
-	<li>Ability to work effectively in a team environment</li>
-	<li>Critical thinking decision making/problem solving skills</li>
-	<li>Curious mindset &amp; initiative</li>
+	<li>At least two years of engineering management experience</li>
+	<li>At least 5 years of hands on software development experience on meaningfully complex systems</li>
+	<li>Strong technical foundation: large distributed system design and operations, being comfortable interacting deeply with data (SQL, Prometheus) about how your systems are operating.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

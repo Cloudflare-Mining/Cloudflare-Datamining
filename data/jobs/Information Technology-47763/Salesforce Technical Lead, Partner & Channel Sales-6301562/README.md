@@ -36,13 +36,6 @@
 	<li>Experience leading teams in Agile development environments with a focus on scalable, high-performance Salesforce solutions.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
-<ul>
-	<li style="font-weight: 400;"><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $131,000 - $161,000.</span></li>
-	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $147,000 - $179,000.</span></li>
-	<li style="font-weight: 400;"><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $155,000 - $189,000</span></li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

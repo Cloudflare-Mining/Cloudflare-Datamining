@@ -8,11 +8,9 @@
 <p><strong>Available Location(s): Austin, TX</strong></p>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
 <p>As an intern on the Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s IT &amp; Cybersecurity Audits, as well as testing of IT internal controls (SOX), as deemed necessary.&nbsp;</p>
-<p>&nbsp;</p>
-<p>What you'll do</p>
+<p><strong>What you'll do</strong></p>
 <ul>
 	<li>Assist in executing the Internal Audit plan under the supervision of an IA IT Audit Manager. This includes IT audit planning, risk assessment, fieldwork, issues validation, and reporting.</li>
 	<li>Execute operational audits in accordance with department and professional standards (for example; Detection/Response, Security and Asset Management), and complete assignments timely in an efficient manner.</li>
@@ -27,8 +25,7 @@
 	<li>Present your project to the entire company at the end of the internship.</li>
 	<li>Get direct access to our executives and leadership team including our co-founders.</li>
 </ul>
-<p>&nbsp;</p>
-<p>Examples of desirable skills, knowledge and experience</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Management Information Systems, Computer Science, Data Analytics, or Engineering major/minor preferred</li>
 	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
