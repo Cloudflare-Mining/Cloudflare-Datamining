@@ -3074,7 +3074,27 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Even within the category of Internet infrastructure, different types of services have different abilities to address abusive content. While a hosting provider may be able to effectively remove particular content from a website, other services involved in the transmission of content generally cannot. In addition to being ineffective, attempts to address abuse through cybersecurity services can have unintended consequences and make the broader Internet less secure. Laws like the United States' Digital Millennium Copyright Act and the EU's Ecommerce Directive reflect this reality by creating a framework for addressing abuse that distinguishes among hosting services, caching services, and mere conduit services.",
+													"value": "Even within the category of Internet infrastructure, different types of services have different abilities to address abusive content. While a hosting provider may be able to effectively remove particular content from a website, other services involved in the transmission of content generally cannot. In addition to being ineffective, attempts to address abuse through cybersecurity services can have unintended consequences and make the broader Internet less secure. Laws like the United States' Digital Millennium Copyright Act and the EU's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Digital Services Act",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " reflect this reality by creating a framework for addressing abuse that distinguishes among hosting services, caching services, and mere conduit services.",
 													"marks": [],
 													"content": null
 												}
@@ -3211,7 +3231,7 @@
 								"contentfulId": "1crMDvv0unCgjXYXwtPbh6",
 								"title": null,
 								"heading": "Hosting services",
-								"copy": "A small minority of abuse reports we receive relate to content definitively stored through Cloudflare Stream, Cloudflare Pages, Cloudflare Workers, Cloudflare Workers KV, or Cloudflare Images such that Cloudflare might qualify as the origin hosting provider. If your abuse report pertains to content that we host and that we believe violates the applicable \nsupplemental terms of service, we will remove or disable access to that content. If we disable access or remove content in response to an abuse report, we generally also notify the website operator of our action and we may make the content available again if appropriate based on the website operator's response."
+								"copy": "A small minority of abuse reports we receive relate to content definitively stored through Cloudflare Stream, Cloudflare Pages, Cloudflare Workers, Cloudflare Workers KV, or Cloudflare Images such that Cloudflare might qualify as the origin hosting provider. If your abuse report pertains to content that we host and that we believe violates the applicable \nsupplemental terms of service, we will remove or disable access to that content. If we disable access or remove content in response to an abuse report, we generally also notify the website operator of our action and we may make the content available again if appropriate based on the website operator's response. For certain abuse categories, including copyright and trademark, we follow the notice-and-takedown process set forth in the Digital Millennium Copyright Act. Cloudflare provides notice to the user of steps to remove or limit access to the content. If the user submits a valid counter notice and the abuse reporter fails to initiate a lawsuit, Cloudflare will restore access to the content. \n\nOur [Transparency Report](https://www.cloudflare.com/transparency/) includes details on the requests we receive to disable access to content stored on our network, described as \"hosted content.\""
 							},
 							{
 								"contentTypeId": "elementColumnContent",
@@ -3329,11 +3349,7 @@
 																"uri": null
 															},
 															"value": "registrar-abuse process",
-															"marks": [
-																{
-																	"type": "underline"
-																}
-															],
+															"marks": [],
 															"content": null
 														}
 													]
@@ -3345,6 +3361,16 @@
 														"uri": null
 													},
 													"value": " to investigate and act on reports of such abuse submitted through our abuse page. Concerns that a particular domain name violates a trademark should be directed to the domain name registrant using the WHOIS lookup process. ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " Cloudflare follows ICANN's Uniform Domain-Name Dispute Resolution Policy (UDRP) for trademark-based domain name disputes. Consistent with ICANN requirements, Cloudflare takes action to mitigate technical abuse like phishing by domains using our registrar services. ",
 													"marks": [],
 													"content": null
 												}
