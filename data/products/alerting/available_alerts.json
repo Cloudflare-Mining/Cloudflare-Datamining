@@ -126,6 +126,20 @@
 			]
 		}
 	],
+	"Cloudforce One": [
+		{
+			"display_name": "Cloudflare Closed Port Scan Alert",
+			"type": "closed_port_scan_alert",
+			"description": "Get notifications when Cloudflare detects newly closed ports",
+			"filter_options": []
+		},
+		{
+			"display_name": "Cloudflare Open Port Scan Alert",
+			"type": "open_port_scan_alert",
+			"description": "Get notifications when Cloudflare detects newly open ports",
+			"filter_options": []
+		}
+	],
 	"DoS Protection": [
 		{
 			"display_name": "HTTP DDoS Attack Alert",
