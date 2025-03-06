@@ -1,5 +1,5 @@
 {
-	"DELETE /{account_id}/scans/config": {
+	"DELETE /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "delete_DeleteScans",
 		"parameters": [
 			{
@@ -60,9 +60,12 @@
 		"summary": "Delete the Scan Config for an Account",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
-	"GET /{account_id}/scans/config": {
+	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
 		"parameters": [
 			{
@@ -145,9 +148,13 @@
 		"summary": "Get the Scan Config for An Account",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"GET /{account_id}/scans/results": {
+	"GET /accounts/{account_id}/cloudforce-one/scans/results": {
 		"operationId": "get_GetOpenPorts",
 		"parameters": [
 			{
@@ -238,6 +245,10 @@
 		"summary": "Get the Latest Scan Result",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"GET /scans": {
@@ -319,7 +330,7 @@
 			"Scans"
 		]
 	},
-	"POST /{account_id}/scans/config": {
+	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
 		"parameters": [
 			{
@@ -428,6 +439,9 @@
 		"summary": "Create a new Scan Config",
 		"tags": [
 			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /scans": {
