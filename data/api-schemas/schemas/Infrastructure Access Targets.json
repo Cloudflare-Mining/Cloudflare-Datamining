@@ -136,7 +136,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
@@ -290,7 +290,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
@@ -810,8 +810,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -1106,8 +1106,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
@@ -1450,7 +1450,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -1806,7 +1806,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
@@ -2082,7 +2082,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

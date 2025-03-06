@@ -211,7 +211,7 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles": {
@@ -1612,8 +1612,8 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
@@ -3012,8 +3012,8 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
@@ -4412,8 +4412,8 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
@@ -5812,8 +5812,8 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/custom": {
@@ -8883,7 +8883,7 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
@@ -10527,7 +10527,7 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
@@ -12003,7 +12003,7 @@
 			"DLP Profiles"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

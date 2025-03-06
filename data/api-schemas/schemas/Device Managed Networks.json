@@ -500,7 +500,7 @@
 			"Device Managed Networks"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks": {
@@ -987,8 +987,8 @@
 			"Device Managed Networks"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
@@ -1444,8 +1444,8 @@
 			"Device Managed Networks"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/networks": {
@@ -1947,7 +1947,7 @@
 			"Device Managed Networks"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
@@ -2455,7 +2455,7 @@
 			"Device Managed Networks"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

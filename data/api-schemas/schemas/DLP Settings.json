@@ -210,8 +210,8 @@
 			"DLP Settings"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
@@ -428,8 +428,8 @@
 			"DLP Settings"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/patterns/validate": {
@@ -669,7 +669,7 @@
 			"DLP Settings"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
@@ -903,7 +903,7 @@
 			"DLP Settings"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

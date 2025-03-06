@@ -301,7 +301,7 @@
 			"Zero Trust Gateway locations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
@@ -1015,8 +1015,8 @@
 			"Zero Trust Gateway locations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
@@ -1675,8 +1675,8 @@
 			"Zero Trust Gateway locations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/locations": {
@@ -2479,7 +2479,7 @@
 			"Zero Trust Gateway locations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
@@ -3291,7 +3291,7 @@
 			"Zero Trust Gateway locations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

@@ -304,7 +304,7 @@
 			"Zero Trust Gateway proxy endpoints"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
@@ -664,8 +664,8 @@
 			"Zero Trust Gateway proxy endpoints"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
@@ -1101,8 +1101,8 @@
 			"Zero Trust Gateway proxy endpoints"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
@@ -1497,7 +1497,7 @@
 			"Zero Trust Gateway proxy endpoints"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
@@ -1887,7 +1887,7 @@
 			"Zero Trust Gateway proxy endpoints"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

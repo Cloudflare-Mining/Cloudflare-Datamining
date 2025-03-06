@@ -332,8 +332,8 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed": {
@@ -669,7 +669,7 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
@@ -1025,7 +1025,7 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

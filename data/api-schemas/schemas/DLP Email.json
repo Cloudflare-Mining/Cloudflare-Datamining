@@ -314,7 +314,7 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/account_mapping": {
@@ -567,8 +567,8 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules": {
@@ -881,8 +881,8 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
@@ -1200,8 +1200,8 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/dlp/email/rules": {
@@ -1535,7 +1535,7 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/account_mapping": {
@@ -1843,7 +1843,7 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/email/rules": {
@@ -2247,7 +2247,7 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
@@ -2660,7 +2660,7 @@
 			"DLP Email"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

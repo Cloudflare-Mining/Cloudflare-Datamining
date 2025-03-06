@@ -211,7 +211,7 @@
 			"DLP Entries"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries": {
@@ -722,8 +722,8 @@
 			"DLP Entries"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -1240,8 +1240,8 @@
 			"DLP Entries"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries": {
@@ -1552,7 +1552,7 @@
 			"DLP Entries"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/entries/{entry_id}": {
@@ -2165,7 +2165,7 @@
 			"DLP Entries"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

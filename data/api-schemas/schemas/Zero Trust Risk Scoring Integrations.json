@@ -210,7 +210,7 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -465,8 +465,8 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
@@ -727,8 +727,8 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}": {
@@ -988,8 +988,8 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/integrations": {
@@ -1273,7 +1273,7 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
@@ -1565,7 +1565,7 @@
 			"Zero Trust Risk Scoring Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

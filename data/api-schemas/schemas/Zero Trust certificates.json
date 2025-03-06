@@ -444,7 +444,7 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates": {
@@ -940,8 +940,8 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates/{certificate_id}": {
@@ -1384,8 +1384,8 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates": {
@@ -1833,7 +1833,7 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/activate": {
@@ -2281,7 +2281,7 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate": {
@@ -2730,7 +2730,7 @@
 			"Zero Trust certificates"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

@@ -856,7 +856,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices": {
@@ -1505,8 +1505,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
@@ -2122,8 +2122,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
@@ -2569,8 +2569,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policies": {
@@ -3413,8 +3413,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy": {
@@ -4105,8 +4105,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -4918,8 +4918,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -5361,8 +5361,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -5810,8 +5810,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -6253,8 +6253,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
@@ -6685,8 +6685,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -7123,8 +7123,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
@@ -7555,8 +7555,8 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
@@ -8660,7 +8660,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -9581,7 +9581,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
@@ -10857,7 +10857,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
@@ -11198,7 +11198,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
@@ -11539,7 +11539,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -12016,7 +12016,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -12502,7 +12502,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -12979,7 +12979,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
@@ -13445,7 +13445,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -13920,7 +13920,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
@@ -14386,7 +14386,7 @@
 			"Devices"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

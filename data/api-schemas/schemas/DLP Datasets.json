@@ -129,7 +129,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets": {
@@ -459,8 +459,8 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
@@ -796,8 +796,8 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets": {
@@ -1190,7 +1190,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
@@ -1463,7 +1463,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}": {
@@ -1821,7 +1821,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}": {
@@ -2136,7 +2136,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}": {
@@ -2409,7 +2409,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
@@ -2768,7 +2768,7 @@
 			"DLP Datasets"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

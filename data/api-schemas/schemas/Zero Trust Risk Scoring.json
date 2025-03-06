@@ -301,7 +301,7 @@
 			"Zero Trust Risk Scoring"
 		],
 		"x-api-token-group": [
-			"Cloudflare Zero Trust PII Read"
+			"Zero Trust: PII Read"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
@@ -541,8 +541,8 @@
 			"Zero Trust Risk Scoring"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
@@ -822,7 +822,7 @@
 			"Zero Trust Risk Scoring"
 		],
 		"x-api-token-group": [
-			"Cloudflare Zero Trust PII Read"
+			"Zero Trust: PII Read"
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
@@ -1036,7 +1036,7 @@
 			"Zero Trust Risk Scoring"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {
@@ -1308,7 +1308,7 @@
 			"Zero Trust Risk Scoring"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }

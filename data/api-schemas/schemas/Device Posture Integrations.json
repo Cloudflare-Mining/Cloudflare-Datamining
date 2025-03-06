@@ -360,7 +360,7 @@
 			"Device Posture Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
@@ -887,8 +887,8 @@
 			"Device Posture Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -1384,8 +1384,8 @@
 			"Device Posture Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
+			"Zero Trust Read",
+			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -2147,7 +2147,7 @@
 			"Device Posture Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {
@@ -2904,7 +2904,7 @@
 			"Device Posture Integrations"
 		],
 		"x-api-token-group": [
-			"Teams Write"
+			"Zero Trust Write"
 		]
 	}
 }
