@@ -11,7 +11,8 @@
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -121,7 +123,8 @@
 													"description": "Optional remark describing the virtual network.",
 													"example": "Staging VPC for data science",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -139,18 +142,21 @@
 													"description": "UUID of the virtual network.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_default_network": {
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
 													"example": "us-east-1-vpc",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -261,7 +267,8 @@
 															"description": "Optional remark describing the virtual network.",
 															"example": "Staging VPC for data science",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -279,18 +286,21 @@
 															"description": "UUID of the virtual network.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_default_network": {
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
 															"example": "us-east-1-vpc",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -431,7 +441,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -441,7 +452,8 @@
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -451,7 +463,8 @@
 					"description": "A user-friendly name for the virtual network.",
 					"example": "us-east-1-vpc",
 					"maxLength": 256,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -600,7 +613,8 @@
 														"description": "Optional remark describing the virtual network.",
 														"example": "Staging VPC for data science",
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_at": {
 														"description": "Timestamp of when the resource was created.",
@@ -618,18 +632,21 @@
 														"description": "UUID of the virtual network.",
 														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"is_default_network": {
 														"description": "If `true`, this virtual network is the default for the account.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "A user-friendly name for the virtual network.",
 														"example": "us-east-1-vpc",
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -782,7 +799,8 @@
 																"description": "Optional remark describing the virtual network.",
 																"example": "Staging VPC for data science",
 																"maxLength": 256,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_at": {
 																"description": "Timestamp of when the resource was created.",
@@ -800,18 +818,21 @@
 																"description": "UUID of the virtual network.",
 																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_default_network": {
 																"description": "If `true`, this virtual network is the default for the account.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "A user-friendly name for the virtual network.",
 																"example": "us-east-1-vpc",
 																"maxLength": 256,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -956,7 +977,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -967,7 +989,8 @@
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -980,18 +1003,21 @@
 								"description": "Optional remark describing the virtual network.",
 								"example": "Staging VPC for data science",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_default_network": {
 								"description": "If `true`, this virtual network is the default for the account.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
 								"example": "us-east-1-vpc",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1089,7 +1115,8 @@
 													"description": "Optional remark describing the virtual network.",
 													"example": "Staging VPC for data science",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -1107,18 +1134,21 @@
 													"description": "UUID of the virtual network.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_default_network": {
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
 													"example": "us-east-1-vpc",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1229,7 +1259,8 @@
 															"description": "Optional remark describing the virtual network.",
 															"example": "Staging VPC for data science",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -1247,18 +1278,21 @@
 															"description": "UUID of the virtual network.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_default_network": {
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
 															"example": "us-east-1-vpc",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1395,7 +1429,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1406,7 +1441,8 @@
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1419,18 +1455,21 @@
 								"description": "Optional remark describing the virtual network.",
 								"example": "Staging VPC for data science",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_default_network": {
 								"description": "If `true`, this virtual network is the default for the account.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
 								"example": "us-east-1-vpc",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1528,7 +1567,8 @@
 													"description": "Optional remark describing the virtual network.",
 													"example": "Staging VPC for data science",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -1546,18 +1586,21 @@
 													"description": "UUID of the virtual network.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_default_network": {
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
 													"example": "us-east-1-vpc",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1668,7 +1711,8 @@
 															"description": "Optional remark describing the virtual network.",
 															"example": "Staging VPC for data science",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -1686,18 +1730,21 @@
 															"description": "UUID of the virtual network.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_default_network": {
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
 															"example": "us-east-1-vpc",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1838,7 +1885,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1851,18 +1899,21 @@
 								"description": "Optional remark describing the virtual network.",
 								"example": "Staging VPC for data science",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"is_default": {
 								"description": "If `true`, this virtual network is the default for the account.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
 								"example": "us-east-1-vpc",
 								"maxLength": 256,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1963,7 +2014,8 @@
 													"description": "Optional remark describing the virtual network.",
 													"example": "Staging VPC for data science",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -1981,18 +2033,21 @@
 													"description": "UUID of the virtual network.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_default_network": {
 													"description": "If `true`, this virtual network is the default for the account.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A user-friendly name for the virtual network.",
 													"example": "us-east-1-vpc",
 													"maxLength": 256,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2103,7 +2158,8 @@
 															"description": "Optional remark describing the virtual network.",
 															"example": "Staging VPC for data science",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -2121,18 +2177,21 @@
 															"description": "UUID of the virtual network.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_default_network": {
 															"description": "If `true`, this virtual network is the default for the account.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A user-friendly name for the virtual network.",
 															"example": "us-east-1-vpc",
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

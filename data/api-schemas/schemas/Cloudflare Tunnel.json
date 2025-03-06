@@ -11,7 +11,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -130,7 +132,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -142,7 +145,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -160,7 +164,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -188,7 +193,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -224,7 +230,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -239,7 +246,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -264,7 +272,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -276,7 +285,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -288,7 +298,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -306,7 +317,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -334,7 +346,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -370,7 +383,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -405,7 +419,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -514,7 +529,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -526,7 +542,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -544,7 +561,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -572,7 +590,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -608,7 +627,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -623,7 +643,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -648,7 +669,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -660,7 +682,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -672,7 +695,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -690,7 +714,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -718,7 +743,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -754,7 +780,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -789,7 +816,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -926,7 +954,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -939,7 +968,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -951,7 +981,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1285,7 +1316,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1298,7 +1330,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1404,7 +1437,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1416,7 +1450,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -1434,7 +1469,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -1462,7 +1498,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -1498,7 +1535,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -1513,7 +1551,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -1538,7 +1577,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1550,7 +1590,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1562,7 +1603,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -1580,7 +1622,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -1608,7 +1651,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -1644,7 +1688,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -1679,7 +1724,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1788,7 +1834,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1800,7 +1847,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -1818,7 +1866,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -1846,7 +1895,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -1882,7 +1932,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -1897,7 +1948,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -1922,7 +1974,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1934,7 +1987,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1946,7 +2000,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -1964,7 +2019,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -1992,7 +2048,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -2028,7 +2085,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -2063,7 +2121,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2199,7 +2258,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2239,7 +2299,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2444,7 +2505,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -2456,7 +2518,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -2474,7 +2537,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -2502,7 +2566,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -2538,7 +2603,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -2553,7 +2619,8 @@
 															"remote_config": {
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -2578,7 +2645,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2590,7 +2658,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -2602,7 +2671,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -2620,7 +2690,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -2648,7 +2719,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -2684,7 +2756,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -2719,7 +2792,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2870,7 +2944,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -2882,7 +2957,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -2900,7 +2976,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -2928,7 +3005,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -2964,7 +3042,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -2979,7 +3058,8 @@
 																	"remote_config": {
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3004,7 +3084,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3016,7 +3097,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3028,7 +3110,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -3046,7 +3129,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -3074,7 +3158,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -3110,7 +3195,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -3145,7 +3231,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -3287,7 +3374,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3300,7 +3388,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3396,7 +3485,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3408,7 +3498,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -3426,7 +3517,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -3454,7 +3546,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -3490,7 +3583,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -3505,7 +3599,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3530,7 +3625,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3542,7 +3638,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3554,7 +3651,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -3572,7 +3670,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -3600,7 +3699,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -3636,7 +3736,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -3671,7 +3772,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3780,7 +3882,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3792,7 +3895,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -3810,7 +3914,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -3838,7 +3943,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -3874,7 +3980,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -3889,7 +3996,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3914,7 +4022,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3926,7 +4035,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3938,7 +4048,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -3956,7 +4067,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -3984,7 +4096,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -4020,7 +4133,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -4055,7 +4169,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4195,7 +4310,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4208,7 +4324,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4357,7 +4474,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"client_version": {
 																	"description": "The cloudflared version used to establish this connection.",
@@ -4375,7 +4493,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"is_pending_reconnect": {
 																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -4403,7 +4522,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -4423,7 +4543,8 @@
 														"format": "uuid",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"run_at": {
 														"description": "Timestamp of when the tunnel connection was started.",
@@ -4596,7 +4717,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -4614,7 +4736,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -4642,7 +4765,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -4662,7 +4786,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"run_at": {
 																"description": "Timestamp of when the tunnel connection was started.",
@@ -4813,7 +4938,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4826,7 +4952,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4839,7 +4966,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4948,7 +5076,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"client_version": {
 																"description": "The cloudflared version used to establish this connection.",
@@ -4966,7 +5095,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_pending_reconnect": {
 																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -4994,7 +5124,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -5014,7 +5145,8 @@
 													"format": "uuid",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"run_at": {
 													"description": "Timestamp of when the tunnel connection was started.",
@@ -5145,7 +5277,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -5163,7 +5296,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -5191,7 +5325,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -5211,7 +5346,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"run_at": {
 															"description": "Timestamp of when the tunnel connection was started.",
@@ -5360,7 +5496,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5373,7 +5510,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -5698,7 +5836,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5738,7 +5877,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5793,7 +5933,8 @@
 							"cni"
 						],
 						"example": "cfd_tunnel",
-						"type": "string"
+						"type": "string",
+						"x-auditable": true
 					},
 					"type": "array"
 				}
@@ -5966,7 +6107,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -5978,7 +6120,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -5996,7 +6139,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -6024,7 +6168,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -6060,7 +6205,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -6075,7 +6221,8 @@
 															"remote_config": {
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -6100,7 +6247,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -6112,7 +6260,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -6124,7 +6273,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -6142,7 +6292,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -6170,7 +6321,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -6206,7 +6358,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -6241,7 +6394,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -6392,7 +6546,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -6404,7 +6559,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -6422,7 +6578,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -6450,7 +6607,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -6486,7 +6644,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -6501,7 +6660,8 @@
 																	"remote_config": {
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -6526,7 +6686,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6538,7 +6699,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -6550,7 +6712,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -6568,7 +6731,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -6596,7 +6760,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -6632,7 +6797,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -6667,7 +6833,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -6809,7 +6976,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6849,7 +7017,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -7054,7 +7223,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7066,7 +7236,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -7084,7 +7255,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -7112,7 +7284,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -7148,7 +7321,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -7163,7 +7337,8 @@
 															"remote_config": {
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -7188,7 +7363,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7200,7 +7376,8 @@
 																"description": "Cloudflare account ID",
 																"example": "699d98642c564d2e855e9661899b7252",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"connections": {
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7212,7 +7389,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"client_version": {
 																			"description": "The cloudflared version used to establish this connection.",
@@ -7230,7 +7408,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -7258,7 +7437,8 @@
 																			"format": "uuid",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -7294,7 +7474,8 @@
 																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"description": "Metadata associated with the tunnel.",
@@ -7329,7 +7510,8 @@
 																	"cni"
 																],
 																"example": "cfd_tunnel",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -7480,7 +7662,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7492,7 +7675,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -7510,7 +7694,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -7538,7 +7723,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -7574,7 +7760,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -7589,7 +7776,8 @@
 																	"remote_config": {
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -7614,7 +7802,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -7626,7 +7815,8 @@
 																		"description": "Cloudflare account ID",
 																		"example": "699d98642c564d2e855e9661899b7252",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"connections": {
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7638,7 +7828,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"client_version": {
 																					"description": "The cloudflared version used to establish this connection.",
@@ -7656,7 +7847,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
 																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -7684,7 +7876,8 @@
 																					"format": "uuid",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			}
 																		},
@@ -7720,7 +7913,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"description": "Metadata associated with the tunnel.",
@@ -7755,7 +7949,8 @@
 																			"cni"
 																		],
 																		"example": "cfd_tunnel",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -7895,7 +8090,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -7908,7 +8104,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -8004,7 +8201,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8016,7 +8214,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -8034,7 +8233,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -8062,7 +8262,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -8098,7 +8299,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -8113,7 +8315,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -8138,7 +8341,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -8150,7 +8354,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8162,7 +8367,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -8180,7 +8386,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -8208,7 +8415,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -8244,7 +8452,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -8279,7 +8488,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -8388,7 +8598,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8400,7 +8611,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -8418,7 +8630,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -8446,7 +8659,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -8482,7 +8696,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -8497,7 +8712,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -8522,7 +8738,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8534,7 +8751,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8546,7 +8764,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -8564,7 +8783,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -8592,7 +8812,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -8628,7 +8849,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -8663,7 +8885,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8801,7 +9024,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8814,7 +9038,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9139,7 +9364,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -9150,7 +9376,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -9268,7 +9495,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -9280,7 +9508,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -9298,7 +9527,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -9326,7 +9556,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -9362,7 +9593,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -9377,7 +9609,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -9402,7 +9635,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -9414,7 +9648,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -9426,7 +9661,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -9444,7 +9680,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -9472,7 +9709,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -9508,7 +9746,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -9543,7 +9782,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -9652,7 +9892,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -9664,7 +9905,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -9682,7 +9924,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -9710,7 +9953,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -9746,7 +9990,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -9761,7 +10006,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -9786,7 +10032,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -9798,7 +10045,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -9810,7 +10058,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -9828,7 +10077,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -9856,7 +10106,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -9892,7 +10143,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -9927,7 +10179,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -10064,7 +10317,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -10077,7 +10331,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -10195,7 +10450,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10207,7 +10463,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -10225,7 +10482,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -10253,7 +10511,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -10289,7 +10548,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -10304,7 +10564,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -10329,7 +10590,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -10341,7 +10603,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10353,7 +10616,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -10371,7 +10635,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -10399,7 +10664,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -10435,7 +10701,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -10470,7 +10737,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -10579,7 +10847,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10591,7 +10860,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -10609,7 +10879,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -10637,7 +10908,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -10673,7 +10945,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -10688,7 +10961,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -10713,7 +10987,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -10725,7 +11000,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10737,7 +11013,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -10755,7 +11032,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -10783,7 +11061,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -10819,7 +11098,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -10854,7 +11134,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -10990,7 +11271,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -11121,7 +11403,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11133,7 +11416,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -11151,7 +11435,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -11179,7 +11464,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -11215,7 +11501,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -11230,7 +11517,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -11255,7 +11543,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -11267,7 +11556,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11279,7 +11569,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -11297,7 +11588,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -11325,7 +11617,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -11361,7 +11654,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -11396,7 +11690,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -11505,7 +11800,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11517,7 +11813,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -11535,7 +11832,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -11563,7 +11861,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -11599,7 +11898,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -11614,7 +11914,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -11639,7 +11940,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -11651,7 +11953,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11663,7 +11966,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -11681,7 +11985,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -11709,7 +12014,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -11745,7 +12051,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -11780,7 +12087,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -11917,7 +12225,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -11930,7 +12239,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -12278,7 +12588,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -12394,7 +12705,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -12406,7 +12718,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -12424,7 +12737,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -12452,7 +12766,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -12488,7 +12803,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -12503,7 +12819,8 @@
 														"remote_config": {
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -12528,7 +12845,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -12540,7 +12858,8 @@
 															"description": "Cloudflare account ID",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"connections": {
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -12552,7 +12871,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"client_version": {
 																		"description": "The cloudflared version used to establish this connection.",
@@ -12570,7 +12890,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -12598,7 +12919,8 @@
 																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -12634,7 +12956,8 @@
 															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"description": "Metadata associated with the tunnel.",
@@ -12669,7 +12992,8 @@
 																"cni"
 															],
 															"example": "cfd_tunnel",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -12778,7 +13102,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -12790,7 +13115,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -12808,7 +13134,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -12836,7 +13163,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -12872,7 +13200,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -12887,7 +13216,8 @@
 																"remote_config": {
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -12912,7 +13242,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -12924,7 +13255,8 @@
 																	"description": "Cloudflare account ID",
 																	"example": "699d98642c564d2e855e9661899b7252",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"connections": {
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -12936,7 +13268,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"client_version": {
 																				"description": "The cloudflared version used to establish this connection.",
@@ -12954,7 +13287,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_pending_reconnect": {
 																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
@@ -12982,7 +13316,8 @@
 																				"format": "uuid",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -13018,7 +13353,8 @@
 																	"format": "uuid",
 																	"maxLength": 36,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "Metadata associated with the tunnel.",
@@ -13053,7 +13389,8 @@
 																		"cni"
 																	],
 																	"example": "cfd_tunnel",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"

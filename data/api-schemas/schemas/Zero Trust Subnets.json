@@ -11,7 +11,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -261,7 +262,8 @@
 													"comment": {
 														"description": "An optional description of the subnet.",
 														"example": "example comment",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_at": {
 														"description": "Timestamp of when the resource was created.",
@@ -279,21 +281,25 @@
 														"description": "The UUID of the subnet.",
 														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"is_default_network": {
 														"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "A user-friendly name for the subnet.",
 														"example": "IPv4 Cloudflare Source IPs",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"network": {
 														"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
 														"example": "100.64.0.0/12",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"subnet_type": {
 														"description": "The type of subnet.",
@@ -301,7 +307,8 @@
 															"cloudflare_source"
 														],
 														"example": "cloudflare_source",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -446,7 +453,8 @@
 															"comment": {
 																"description": "An optional description of the subnet.",
 																"example": "example comment",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_at": {
 																"description": "Timestamp of when the resource was created.",
@@ -464,21 +472,25 @@
 																"description": "The UUID of the subnet.",
 																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_default_network": {
 																"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "A user-friendly name for the subnet.",
 																"example": "IPv4 Cloudflare Source IPs",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"network": {
 																"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
 																"example": "100.64.0.0/12",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"subnet_type": {
 																"description": "The type of subnet.",
@@ -486,7 +498,8 @@
 																	"cloudflare_source"
 																],
 																"example": "cloudflare_source",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -622,7 +635,8 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -648,17 +662,20 @@
 							"comment": {
 								"description": "An optional description of the subnet.",
 								"example": "example comment",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the subnet.",
 								"example": "IPv4 Cloudflare Source IPs",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"network": {
 								"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
 								"example": "100.64.0.0/12",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -755,7 +772,8 @@
 												"comment": {
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -773,21 +791,25 @@
 													"description": "The UUID of the subnet.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_default_network": {
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
 													"example": "IPv4 Cloudflare Source IPs",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
 													"example": "100.64.0.0/12",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"subnet_type": {
 													"description": "The type of subnet.",
@@ -795,7 +817,8 @@
 														"cloudflare_source"
 													],
 													"example": "cloudflare_source",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -898,7 +921,8 @@
 														"comment": {
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -916,21 +940,25 @@
 															"description": "The UUID of the subnet.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_default_network": {
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",
 															"example": "IPv4 Cloudflare Source IPs",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
 															"example": "100.64.0.0/12",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"subnet_type": {
 															"description": "The type of subnet.",
@@ -938,7 +966,8 @@
 																"cloudflare_source"
 															],
 															"example": "cloudflare_source",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
