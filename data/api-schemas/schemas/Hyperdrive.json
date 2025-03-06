@@ -565,7 +565,8 @@
 																						"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 																						"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																						"type": "string",
-																						"writeOnly": true
+																						"writeOnly": true,
+																						"x-sensitive": true
 																					},
 																					"host": {
 																						"description": "The host (hostname or IP) of your origin database.",
@@ -1038,7 +1039,8 @@
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																					"type": "string",
-																					"writeOnly": true
+																					"writeOnly": true,
+																					"x-sensitive": true
 																				},
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
@@ -1355,7 +1357,8 @@
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 														"type": "string",
-														"writeOnly": true
+														"writeOnly": true,
+														"x-sensitive": true
 													},
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
@@ -1662,7 +1665,8 @@
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																					"type": "string",
-																					"writeOnly": true
+																					"writeOnly": true,
+																					"x-sensitive": true
 																				},
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
@@ -2044,7 +2048,8 @@
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 														"type": "string",
-														"writeOnly": true
+														"writeOnly": true,
+														"x-sensitive": true
 													},
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
@@ -2361,7 +2366,8 @@
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																					"type": "string",
-																					"writeOnly": true
+																					"writeOnly": true,
+																					"x-sensitive": true
 																				},
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
@@ -2755,7 +2761,8 @@
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 														"type": "string",
-														"writeOnly": true
+														"writeOnly": true,
+														"x-sensitive": true
 													},
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
@@ -3072,7 +3079,8 @@
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
 																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																					"type": "string",
-																					"writeOnly": true
+																					"writeOnly": true,
+																					"x-sensitive": true
 																				},
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
