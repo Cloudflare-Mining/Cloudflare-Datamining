@@ -202,7 +202,7 @@
 		"false": 100
 	},
 	"data-one-click-logpush-r2": {
-		"false": 100
+		"true": 100
 	},
 	"ddos-rulesets-l7-override-all-allowed": {
 		"true": 100
@@ -463,7 +463,8 @@
 		"baseline": 50
 	},
 	"prg-deep-link-prompt-optimization": {
-		"baseline": 100
+		"experiment": 50,
+		"baseline": 50
 	},
 	"prg-domain-success-page-experiment": {
 		"experiment": 50,
@@ -523,9 +524,6 @@
 	},
 	"ps-javascript-malicious-details": {
 		"true": 100
-	},
-	"query-builder": {
-		"false": 100
 	},
 	"queues-clipboard": {
 		"false": 100
