@@ -1,0 +1,3077 @@
+{
+	"DELETE /{accountId}/events/{eventId}": {
+		"operationId": "delete_EventDelete",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid of the deleted event"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Deletes an event",
+		"tags": [
+			"Event"
+		]
+	},
+	"DELETE /{accountId}/events/{eventId}/insight/{insightId}": {
+		"operationId": "delete_EventInsightDelete",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Insight UUID",
+				"in": "path",
+				"name": "insightId",
+				"required": true,
+				"schema": {
+					"description": "Insight UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Deletes an event insight",
+		"tags": [
+			"Event"
+		]
+	},
+	"DELETE /{accountId}/events/relate/{eventId}": {
+		"operationId": "delete_EventReferenceDelete",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"events": {
+								"items": {
+									"example": "88888888-4444-4444-4444-121212121212",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"events"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Removes an event refence",
+		"tags": [
+			"Event"
+		]
+	},
+	"DELETE /{accountId}/events/tag/{eventId}": {
+		"operationId": "delete_EventTagDelete",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"tags": {
+								"items": {
+									"example": "malware",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"tags"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Removes a tag from an event",
+		"tags": [
+			"Event"
+		]
+	},
+	"GET /{accountId}/events/{eventId}": {
+		"operationId": "get_EventRead",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": 1234,
+									"type": "number"
+								},
+								"attacker": {
+									"example": "Flying Yeti",
+									"type": "string"
+								},
+								"attackerCountry": {
+									"example": "CN",
+									"type": "string"
+								},
+								"category": {
+									"example": "Domain Resolution",
+									"type": "string"
+								},
+								"categoryId": {
+									"example": 1,
+									"type": "number"
+								},
+								"date": {
+									"example": "2022-04-01T00:00:00Z",
+									"type": "string"
+								},
+								"event": {
+									"example": "An attacker registered the domain domain.com",
+									"type": "string"
+								},
+								"id": {
+									"example": 1223,
+									"type": "number"
+								},
+								"indicator": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorType": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
+								},
+								"insight": {
+									"type": "string"
+								},
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"numReferenced": {
+									"type": "number"
+								},
+								"numReferences": {
+									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
+								},
+								"referenced": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencedIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"references": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencesIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
+								},
+								"tags": {
+									"items": {
+										"example": "malware",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"targetCountry": {
+									"example": "US",
+									"type": "string"
+								},
+								"targetIndustry": {
+									"example": "Agriculture",
+									"type": "string"
+								},
+								"tlp": {
+									"example": "amber",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"uuid",
+								"accountId",
+								"date",
+								"categoryId",
+								"targetCountry",
+								"attacker",
+								"attackerCountry",
+								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
+								"event",
+								"numReferenced",
+								"numReferences",
+								"tlp",
+								"category",
+								"indicatorType",
+								"referenced",
+								"references",
+								"tags",
+								"killChain",
+								"mitreAttack",
+								"referencedIds",
+								"referencesIds"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns an event"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads an event",
+		"tags": [
+			"Event"
+		]
+	},
+	"GET /{accountId}/events/{eventId}/insight/{insightId}": {
+		"operationId": "get_EventInsightRead",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Insight UUID",
+				"in": "path",
+				"name": "insightId",
+				"required": true,
+				"schema": {
+					"description": "Insight UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"content": {
+											"example": "Here is some context _in markdown_",
+											"type": "string"
+										},
+										"uuid": {
+											"example": "sdfsd56af-43469-3c23-646345dsffd2",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"content"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads an event insight",
+		"tags": [
+			"Event"
+		]
+	},
+	"GET /{accountId}/events/{eventId}/raw/{rawId}": {
+		"operationId": "get_EventRawRead",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Raw Event UUID",
+				"in": "path",
+				"name": "rawId",
+				"required": true,
+				"schema": {
+					"description": "Raw Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": 1234,
+									"type": "number"
+								},
+								"created": {
+									"example": "1970-01-01",
+									"type": "string"
+								},
+								"data": {
+									"type": "object"
+								},
+								"id": {
+									"example": "1234",
+									"type": "string"
+								},
+								"source": {
+									"example": "https://example.com",
+									"type": "string"
+								},
+								"tlp": {
+									"example": "amber",
+									"type": "string"
+								}
+							},
+							"required": [
+								"accountId",
+								"created",
+								"data",
+								"id",
+								"source",
+								"tlp"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the raw event"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads data for a raw event",
+		"tags": [
+			"Event"
+		]
+	},
+	"GET /{accountId}/events/raw/{datasetId}/{eventId}": {
+		"operationId": "get_EventRawReadDS",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event ID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset name",
+				"in": "path",
+				"name": "datasetId",
+				"required": true,
+				"schema": {
+					"description": "Dataset name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": 1234,
+									"type": "number"
+								},
+								"created": {
+									"example": "1970-01-01",
+									"type": "string"
+								},
+								"data": {
+									"type": "object"
+								},
+								"id": {
+									"example": "1234",
+									"type": "string"
+								},
+								"source": {
+									"example": "https://example.com",
+									"type": "string"
+								},
+								"tlp": {
+									"example": "amber",
+									"type": "string"
+								}
+							},
+							"required": [
+								"accountId",
+								"created",
+								"data",
+								"id",
+								"source",
+								"tlp"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the raw event"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads data for a raw event",
+		"tags": [
+			"Event"
+		]
+	},
+	"GET /{accountId}/version": {
+		"operationId": "get_Version",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"version": {
+									"example": "1.2.0",
+									"type": "string"
+								}
+							},
+							"required": [
+								"version"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the current version"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Version",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events": {
+		"operationId": "post_EventList",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"datasetId": {
+								"items": {
+									"example": "7632a037-fdef-4899-9b12-148470aae772",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"order": {
+								"enum": [
+									"asc",
+									"desc"
+								],
+								"type": "string"
+							},
+							"orderBy": {
+								"example": "created",
+								"type": "string"
+							},
+							"page": {
+								"example": 1,
+								"type": "number"
+							},
+							"pageSize": {
+								"example": 100,
+								"type": "number"
+							},
+							"search": {
+								"items": {
+									"properties": {
+										"field": {
+											"example": "attackerCountry",
+											"type": "string"
+										},
+										"op": {
+											"example": "equals",
+											"type": "string"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"example": "usa",
+													"type": "string"
+												},
+												{
+													"example": 1,
+													"type": "number"
+												}
+											]
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"accountId": {
+										"example": 1234,
+										"type": "number"
+									},
+									"attacker": {
+										"example": "Flying Yeti",
+										"type": "string"
+									},
+									"attackerCountry": {
+										"example": "CN",
+										"type": "string"
+									},
+									"category": {
+										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"categoryId": {
+										"example": 1,
+										"type": "number"
+									},
+									"date": {
+										"example": "2022-04-01T00:00:00Z",
+										"type": "string"
+									},
+									"event": {
+										"example": "An attacker registered the domain domain.com",
+										"type": "string"
+									},
+									"id": {
+										"example": 1223,
+										"type": "number"
+									},
+									"indicator": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorType": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
+									},
+									"referenced": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencedIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"references": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencesIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"items": {
+											"example": "malware",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"targetCountry": {
+										"example": "US",
+										"type": "string"
+									},
+									"targetIndustry": {
+										"example": "Agriculture",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"uuid",
+									"accountId",
+									"date",
+									"categoryId",
+									"targetCountry",
+									"attacker",
+									"attackerCountry",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"referencedIds",
+									"referencesIds"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of events"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Filter and list events",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/{eventId}": {
+		"operationId": "post_EventUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"attacker": {
+								"example": "Flying Yeti",
+								"type": "string"
+							},
+							"attackerCountry": {
+								"example": "CN",
+								"type": "string"
+							},
+							"category": {
+								"example": "Domain Resolution",
+								"type": "string"
+							},
+							"date": {
+								"example": "2022-04-01T00:00:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"event": {
+								"example": "An attacker registered the domain domain.com",
+								"type": "string"
+							},
+							"indicator": {
+								"example": "domain2.com",
+								"type": "string"
+							},
+							"indicatorType": {
+								"example": "sha256",
+								"type": "string"
+							},
+							"targetCountry": {
+								"example": "US",
+								"type": "string"
+							},
+							"targetIndustry": {
+								"example": "Insurance",
+								"type": "string"
+							},
+							"tlp": {
+								"example": "amber",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": 1234,
+									"type": "number"
+								},
+								"attacker": {
+									"example": "Flying Yeti",
+									"type": "string"
+								},
+								"attackerCountry": {
+									"example": "CN",
+									"type": "string"
+								},
+								"category": {
+									"example": "Domain Resolution",
+									"type": "string"
+								},
+								"categoryId": {
+									"example": 1,
+									"type": "number"
+								},
+								"date": {
+									"example": "2022-04-01T00:00:00Z",
+									"type": "string"
+								},
+								"event": {
+									"example": "An attacker registered the domain domain.com",
+									"type": "string"
+								},
+								"id": {
+									"example": 1223,
+									"type": "number"
+								},
+								"indicator": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorType": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
+								},
+								"insight": {
+									"type": "string"
+								},
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"numReferenced": {
+									"type": "number"
+								},
+								"numReferences": {
+									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
+								},
+								"referenced": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencedIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"references": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencesIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
+								},
+								"tags": {
+									"items": {
+										"example": "malware",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"targetCountry": {
+									"example": "US",
+									"type": "string"
+								},
+								"targetIndustry": {
+									"example": "Agriculture",
+									"type": "string"
+								},
+								"tlp": {
+									"example": "amber",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"uuid",
+								"accountId",
+								"date",
+								"categoryId",
+								"targetCountry",
+								"attacker",
+								"attackerCountry",
+								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
+								"event",
+								"numReferenced",
+								"numReferences",
+								"tlp",
+								"category",
+								"indicatorType",
+								"referenced",
+								"references",
+								"tags",
+								"killChain",
+								"mitreAttack",
+								"referencedIds",
+								"referencesIds"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated event"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Updates an event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/{eventId}/insight/{insightId}": {
+		"operationId": "post_EventInsightUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Insight UUID",
+				"in": "path",
+				"name": "insightId",
+				"required": true,
+				"schema": {
+					"description": "Insight UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"content": {
+								"example": "Updated: Here is some additional context _in markdown_",
+								"type": "string"
+							}
+						},
+						"required": [
+							"content"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"content": {
+											"example": "Updated: Here is some additional context _in markdown_",
+											"type": "string"
+										},
+										"uuid": {
+											"example": "sdfsd56af-43469-3c23-646345dsffd2",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"content"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Updates an event insight",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/{eventId}/insight/create": {
+		"operationId": "post_EventInsightCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"content": {
+								"example": "Here is some additional context _in markdown_",
+								"type": "string"
+							}
+						},
+						"required": [
+							"content"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"content": {
+											"example": "Here is some context _in markdown_",
+											"type": "string"
+										},
+										"uuid": {
+											"example": "sdfsd56af-43469-3c23-646345dsffd2",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"content"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Adds an insight to an event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/{eventId}/raw/{rawId}": {
+		"operationId": "post_EventRawUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Raw Event UUID",
+				"in": "path",
+				"name": "rawId",
+				"required": true,
+				"schema": {
+					"description": "Raw Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"type": "object"
+							},
+							"source": {
+								"example": "example.com",
+								"type": "string"
+							},
+							"tlp": {
+								"example": "amber",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"type": "object"
+								},
+								"id": {
+									"example": "1234",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid of the updated raw event and its data"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Updates a raw event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/create": {
+		"operationId": "post_EventCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"accountId": {
+								"example": 123456,
+								"type": "number"
+							},
+							"attacker": {
+								"example": "Flying Yeti",
+								"type": "string"
+							},
+							"attackerCountry": {
+								"example": "CN",
+								"type": "string"
+							},
+							"category": {
+								"example": "Domain Resolution",
+								"type": "string"
+							},
+							"datasetId": {
+								"example": "durableObjectName",
+								"type": "string"
+							},
+							"date": {
+								"example": "2022-04-01T00:00:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"event": {
+								"example": "An attacker registered the domain domain.com",
+								"type": "string"
+							},
+							"indicator": {
+								"example": "domain.com",
+								"type": "string"
+							},
+							"indicatorType": {
+								"example": "domain",
+								"type": "string"
+							},
+							"raw": {
+								"properties": {
+									"data": {},
+									"source": {
+										"example": "example.com",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"tags": {
+								"items": {
+									"example": "malware",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"targetCountry": {
+								"example": "US",
+								"type": "string"
+							},
+							"targetIndustry": {
+								"example": "Agriculture",
+								"type": "string"
+							},
+							"tlp": {
+								"example": "amber",
+								"type": "string"
+							}
+						},
+						"required": [
+							"date",
+							"category",
+							"attacker",
+							"attackerCountry",
+							"indicatorType",
+							"event",
+							"tlp",
+							"raw"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": 1234,
+									"type": "number"
+								},
+								"attacker": {
+									"example": "Flying Yeti",
+									"type": "string"
+								},
+								"attackerCountry": {
+									"example": "CN",
+									"type": "string"
+								},
+								"category": {
+									"example": "Domain Resolution",
+									"type": "string"
+								},
+								"categoryId": {
+									"example": 1,
+									"type": "number"
+								},
+								"date": {
+									"example": "2022-04-01T00:00:00Z",
+									"type": "string"
+								},
+								"event": {
+									"example": "An attacker registered the domain domain.com",
+									"type": "string"
+								},
+								"id": {
+									"example": 1223,
+									"type": "number"
+								},
+								"indicator": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorType": {
+									"example": "domain",
+									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
+								},
+								"insight": {
+									"type": "string"
+								},
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"numReferenced": {
+									"type": "number"
+								},
+								"numReferences": {
+									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
+								},
+								"referenced": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencedIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"references": {
+									"items": {
+										"example": " ",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"referencesIds": {
+									"items": {
+										"type": "number"
+									},
+									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
+								},
+								"tags": {
+									"items": {
+										"example": "malware",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"targetCountry": {
+									"example": "US",
+									"type": "string"
+								},
+								"targetIndustry": {
+									"example": "Agriculture",
+									"type": "string"
+								},
+								"tlp": {
+									"example": "amber",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"uuid",
+								"accountId",
+								"date",
+								"categoryId",
+								"targetCountry",
+								"attacker",
+								"attackerCountry",
+								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
+								"event",
+								"numReferenced",
+								"numReferences",
+								"tlp",
+								"category",
+								"indicatorType",
+								"referenced",
+								"references",
+								"tags",
+								"killChain",
+								"mitreAttack",
+								"referencedIds",
+								"referencesIds"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created event. "
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Creates a new event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/create/bulk": {
+		"operationId": "post_EventCreateBulk",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"items": {
+									"properties": {
+										"accountId": {
+											"example": 123456,
+											"type": "number"
+										},
+										"attacker": {
+											"example": "Flying Yeti",
+											"type": "string"
+										},
+										"attackerCountry": {
+											"example": "CN",
+											"type": "string"
+										},
+										"category": {
+											"example": "Domain Resolution",
+											"type": "string"
+										},
+										"datasetId": {
+											"example": "durableObjectName",
+											"type": "string"
+										},
+										"date": {
+											"example": "2022-04-01T00:00:00Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"event": {
+											"example": "An attacker registered the domain domain.com",
+											"type": "string"
+										},
+										"indicator": {
+											"example": "domain.com",
+											"type": "string"
+										},
+										"indicatorType": {
+											"example": "domain",
+											"type": "string"
+										},
+										"raw": {
+											"properties": {
+												"data": {},
+												"source": {
+													"example": "example.com",
+													"type": "string"
+												},
+												"tlp": {
+													"example": "amber",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"tags": {
+											"items": {
+												"example": "malware",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"targetCountry": {
+											"example": "US",
+											"type": "string"
+										},
+										"targetIndustry": {
+											"example": "Agriculture",
+											"type": "string"
+										},
+										"tlp": {
+											"example": "amber",
+											"type": "string"
+										}
+									},
+									"required": [
+										"date",
+										"category",
+										"attacker",
+										"attackerCountry",
+										"indicatorType",
+										"event",
+										"tlp",
+										"raw"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"datasetId": {
+								"example": "durableObjectName",
+								"type": "string"
+							}
+						},
+						"required": [
+							"data",
+							"datasetId"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"accountId": {
+										"example": 1234,
+										"type": "number"
+									},
+									"attacker": {
+										"example": "Flying Yeti",
+										"type": "string"
+									},
+									"attackerCountry": {
+										"example": "CN",
+										"type": "string"
+									},
+									"category": {
+										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"categoryId": {
+										"example": 1,
+										"type": "number"
+									},
+									"date": {
+										"example": "2022-04-01T00:00:00Z",
+										"type": "string"
+									},
+									"event": {
+										"example": "An attacker registered the domain domain.com",
+										"type": "string"
+									},
+									"id": {
+										"example": 1223,
+										"type": "number"
+									},
+									"indicator": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorType": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
+									},
+									"referenced": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencedIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"references": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencesIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"items": {
+											"example": "malware",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"targetCountry": {
+										"example": "US",
+										"type": "string"
+									},
+									"targetIndustry": {
+										"example": "Agriculture",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"uuid",
+									"accountId",
+									"date",
+									"categoryId",
+									"targetCountry",
+									"attacker",
+									"attackerCountry",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"referencedIds",
+									"referencesIds"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns the created event. "
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Creates a new event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/relate/{eventId}": {
+		"operationId": "post_EventReferenceCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"events": {
+								"items": {
+									"example": "88888888-4444-4444-4444-121212121212",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"events"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Creates event references for a event",
+		"tags": [
+			"Event"
+		]
+	},
+	"POST /{accountId}/events/tag/{eventId}": {
+		"operationId": "post_EventTagCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID",
+				"in": "path",
+				"name": "eventId",
+				"required": true,
+				"schema": {
+					"description": "Event UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"tags": {
+								"items": {
+									"example": "botnet",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"tags"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns success if operation succeeded"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Adds a tag to an event",
+		"tags": [
+			"Event"
+		]
+	}
+}

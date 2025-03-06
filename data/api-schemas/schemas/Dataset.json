@@ -1,0 +1,465 @@
+{
+	"GET /{accountId}/events/dataset": {
+		"operationId": "get_DatasetList",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"isPublic": {
+										"example": true,
+										"type": "boolean"
+									},
+									"name": {
+										"example": "friendly dataset name",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"isPublic"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of dataset in an account"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Lists all datasets in an account",
+		"tags": [
+			"Dataset"
+		]
+	},
+	"GET /{accountId}/events/dataset/{datasetId}": {
+		"operationId": "get_DatasetRead",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset name",
+				"in": "path",
+				"name": "datasetId",
+				"required": true,
+				"schema": {
+					"description": "Dataset name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"isPublic": {
+									"example": true,
+									"type": "boolean"
+								},
+								"name": {
+									"example": "friendly dataset name",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"isPublic"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a dataset"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads a dataset",
+		"tags": [
+			"Dataset"
+		]
+	},
+	"POST /{accountId}/events/dataset/{datasetId}": {
+		"operationId": "post_DatasetUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset name",
+				"in": "path",
+				"name": "datasetId",
+				"required": true,
+				"schema": {
+					"description": "Dataset name",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"isPublic": {
+								"description": "If true, then anyone can search the dataset. If false, then its limited to the account. ",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Used to describe the dataset within the account context",
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"isPublic"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"isPublic": {
+									"example": true,
+									"type": "boolean"
+								},
+								"name": {
+									"example": "friendly dataset name",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"isPublic"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns dataset information"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Updates an existing dataset",
+		"tags": [
+			"Dataset"
+		]
+	},
+	"POST /{accountId}/events/dataset/create": {
+		"operationId": "post_DatasetCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"isPublic": {
+								"description": "If true, then anyone can search the dataset. If false, then its limited to the account. ",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Used to describe the dataset within the account context",
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"isPublic"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"isPublic": {
+									"example": true,
+									"type": "boolean"
+								},
+								"name": {
+									"example": "friendly dataset name",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"isPublic"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns dataset information"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Creates a dataset",
+		"tags": [
+			"Dataset"
+		]
+	}
+}

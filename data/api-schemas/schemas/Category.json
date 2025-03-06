@@ -1,0 +1,617 @@
+{
+	"DELETE /{accountId}/events/categories/{categoryId}": {
+		"operationId": "delete_CategoryDelete",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID",
+				"in": "path",
+				"name": "categoryId",
+				"required": true,
+				"schema": {
+					"description": "Category UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid of the deleted category"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Deletes a category",
+		"tags": [
+			"Category"
+		]
+	},
+	"GET /{accountId}/events/categories": {
+		"operationId": "get_CategoryList",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": "T1234",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"name": {
+										"example": "name",
+										"type": "string"
+									},
+									"shortname": {
+										"example": "shortname",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"killChain"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of categories"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Lists categories",
+		"tags": [
+			"Category"
+		]
+	},
+	"GET /{accountId}/events/categories/{categoryId}": {
+		"operationId": "get_CategoryRead",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID",
+				"in": "path",
+				"name": "categoryId",
+				"required": true,
+				"schema": {
+					"description": "Category UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a category"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reads a category",
+		"tags": [
+			"Category"
+		]
+	},
+	"POST /{accountId}/events/categories/{categoryId}": {
+		"operationId": "post_CategoryUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID",
+				"in": "path",
+				"name": "categoryId",
+				"required": true,
+				"schema": {
+					"description": "Category UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"example": "name",
+								"type": "string"
+							},
+							"shortname": {
+								"example": "shortname",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated category"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Updates a category",
+		"tags": [
+			"Category"
+		]
+	},
+	"POST /{accountId}/events/categories/create": {
+		"operationId": "post_CategoryCreate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"example": "name",
+								"type": "string"
+							},
+							"shortname": {
+								"example": "shortname",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"killChain"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created category"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Creates a new category",
+		"tags": [
+			"Category"
+		]
+	}
+}
