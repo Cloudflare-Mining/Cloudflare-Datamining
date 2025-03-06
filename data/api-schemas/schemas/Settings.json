@@ -21,10 +21,12 @@
 								"default_asn": {
 									"format": "int32",
 									"minimum": 0,
-									"nullable": true,
 									"type": "integer"
 								}
 							},
+							"required": [
+								"default_asn"
+							],
 							"type": "object"
 						}
 					}
@@ -99,10 +101,12 @@
 								"default_asn": {
 									"format": "int32",
 									"minimum": 0,
-									"nullable": true,
 									"type": "integer"
 								}
 							},
+							"required": [
+								"default_asn"
+							],
 							"type": "object"
 						}
 					}
