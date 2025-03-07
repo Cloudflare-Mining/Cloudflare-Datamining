@@ -16,20 +16,18 @@
 <p><strong>Responsibilities include</strong></p>
 <ul>
 	<li>Designing, building, running and scaling tools and services that support Legal Response efforts</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
 	<li>Collaborating with Trust &amp; Safety, Legal and Product teams to understand goals and develop robust and scalable solutions.</li>
 	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance services</li>
 	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
 </ul>
 <p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>At least 3 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
+	<li>1 to 3 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>Understanding of RESTful and/or gRPC APIs and how to access data between separate systems using APIs</li>
 	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
 	<li>Prior experience writing production ready code in Go and/or Typescript</li>
-	<li>Familiarity with Rust&nbsp;</li>
 	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
+	<li>Familiarity with testing concepts and frameworks</li>
 </ul>
 <p><strong>Bonus</strong></p>
 <p>(Relevant but not required - we love to learn on the job!)</p>

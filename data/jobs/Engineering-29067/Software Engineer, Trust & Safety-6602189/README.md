@@ -12,7 +12,7 @@
 <p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
 <p>This role will be based out of our Austin or London office</p>
 <p><strong>What you'll do</strong></p>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
+<p>While the majority of our services are now written in Golang, you will also work with technologies such as Typescript, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
 <p><strong>Responsibilities include</strong></p>
 <ul>
 	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
@@ -25,12 +25,12 @@
 </ul>
 <p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>At least 3 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>1 - 3 years of experience building large-scale software applications, preferably distributed systems</li>
 	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
 	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
-	<li>Prior experience working with Go or Rust</li>
+	<li>Prior experience working with Go</li>
 	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
+	<li>Experience in writing well tested code</li>
 </ul>
 <p><strong>Bonus</strong></p>
 <p>(Relevant but not required - we love to learn on the job!)</p>
