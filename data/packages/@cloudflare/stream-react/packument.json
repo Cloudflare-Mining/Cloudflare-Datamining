@@ -2,7 +2,7 @@
 	"name": "@cloudflare/stream-react",
 	"dist-tags": {
 		"next": "1.7.0-rc1",
-		"latest": "1.9.2"
+		"latest": "1.9.3"
 	},
 	"versions": {
 		"0.1.2": {
@@ -1033,6 +1033,54 @@
 			"name": "@cloudflare/stream-react",
 			"version": "1.9.2",
 			"devDependencies": {
+				"tsdx": "^0.13.1",
+				"husky": "^4.2.3",
+				"react": "^16.13.1",
+				"tslib": "^1.11.1",
+				"prettier": "^2.0.4",
+				"react-is": "^16.13.1",
+				"react-dom": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@babel/core": "^7.9.0",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"babel-loader": "^8.1.0",
+				"@storybook/react": "^5.3.18",
+				"@types/react-dom": "^16.9.6",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"react-docgen-typescript-loader": "^3.7.2"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"shasum": "18ee42e20df0c82cd610245efee7fea85d12b9a2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.9.2.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-VDheZPb7O1Gkzl8yiStIkwQrAqaFsjOk/5F6Qh+ePV0SAN1+V2KsO/buuxZX7B2LvfBJhy0HAOJ/OJQuoYNAzQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAMVAl3xlnZwFeiCZAyCZZfCIXh/hvJIXSdsyJ+EHPJwIgF5Sfdm/ugdOH3ICtMsyTaohhcZ9vZe/wWCZYwMDOUx4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 137308
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.9.3": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.9.3",
+			"devDependencies": {
 				"@babel/core": "^7.9.0",
 				"@storybook/addon-actions": "^5.3.18",
 				"@storybook/addon-docs": "^5.3.18",
@@ -1061,15 +1109,15 @@
 				"react": ">=16"
 			},
 			"dist": {
-				"integrity": "sha512-VDheZPb7O1Gkzl8yiStIkwQrAqaFsjOk/5F6Qh+ePV0SAN1+V2KsO/buuxZX7B2LvfBJhy0HAOJ/OJQuoYNAzQ==",
-				"shasum": "18ee42e20df0c82cd610245efee7fea85d12b9a2",
-				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.9.2.tgz",
+				"integrity": "sha512-ocr7B+zHk/jq0r/wgtFeyoz7Hr+v3Qn0Ho6yUBkWT07ahr/0GU1dhliYJESwNXMuMYCU1sZ02sFH9pW5r1/BIA==",
+				"shasum": "c82f76f9998debf0ef1c448f3a99c0b23a2f69db",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.9.3.tgz",
 				"fileCount": 22,
-				"unpackedSize": 137308,
+				"unpackedSize": 137363,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDAMVAl3xlnZwFeiCZAyCZZfCIXh/hvJIXSdsyJ+EHPJwIgF5Sfdm/ugdOH3ICtMsyTaohhcZ9vZe/wWCZYwMDOUx4="
+						"sig": "MEYCIQCzZavkX20NZiOwjtuGAHtpcjqk4HWmldYZ16Z5e/mDjgIhAOYMO2+WJRzsVZAIRKYUDjW3u+5qYnMtjZtXXFaftKeS"
 					}
 				]
 			},
