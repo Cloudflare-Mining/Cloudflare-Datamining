@@ -2757,6 +2757,14 @@
 													},
 													"type": "array"
 												},
+												"ha_state": {
+													"description": "Name of high availability state",
+													"type": "string"
+												},
+												"ha_value": {
+													"description": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
+													"type": "number"
+												},
 												"io_pressure_full_10s": {
 													"description": "Percentage of time over a 10 second window that all tasks were stalled",
 													"type": "number"
