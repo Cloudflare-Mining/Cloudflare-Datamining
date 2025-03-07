@@ -49,7 +49,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -246,7 +247,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -417,7 +419,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -553,7 +556,7 @@
 			"R2 Bucket"
 		]
 	},
-	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain_name}": {
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Remove custom domain registration from an existing R2 bucket",
 		"operationId": "r2-delete-custom-domain",
 		"parameters": [
@@ -583,7 +586,7 @@
 			},
 			{
 				"in": "path",
-				"name": "domain_name",
+				"name": "domain",
 				"required": true,
 				"schema": {
 					"description": "Name of the custom domain",
@@ -602,7 +605,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -797,7 +801,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -988,7 +993,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -1384,7 +1390,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -1484,7 +1491,8 @@
 																	"eeur",
 																	"enam",
 																	"weur",
-																	"wnam"
+																	"wnam",
+																	"oc"
 																],
 																"type": "string"
 															},
@@ -1635,7 +1643,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -1708,7 +1717,8 @@
 														"eeur",
 														"enam",
 														"weur",
-														"wnam"
+														"wnam",
+														"oc"
 													],
 													"type": "string"
 												},
@@ -1855,7 +1865,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -2106,7 +2117,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -2352,7 +2364,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain_name}": {
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Get the configuration for a custom domain on an existing R2 bucket.",
 		"operationId": "r2-get-custom-domain-settings",
 		"parameters": [
@@ -2382,7 +2394,7 @@
 			},
 			{
 				"in": "path",
-				"name": "domain_name",
+				"name": "domain",
 				"required": true,
 				"schema": {
 					"description": "Name of the custom domain",
@@ -2401,7 +2413,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -2665,7 +2678,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -2875,7 +2889,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -3511,7 +3526,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -3734,7 +3750,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -3751,7 +3768,8 @@
 									"eeur",
 									"enam",
 									"weur",
-									"wnam"
+									"wnam",
+									"oc"
 								],
 								"type": "string"
 							},
@@ -3851,7 +3869,8 @@
 														"eeur",
 														"enam",
 														"weur",
-														"wnam"
+														"wnam",
+														"oc"
 													],
 													"type": "string"
 												},
@@ -3996,7 +4015,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -4366,11 +4386,13 @@
 												},
 												"secretAccessKey": {
 													"description": "Secret access key",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"sessionToken": {
 													"description": "Security token",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"
@@ -4504,7 +4526,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -4740,7 +4763,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -4957,7 +4981,7 @@
 			"R2 Bucket"
 		]
 	},
-	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain_name}": {
+	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Edit the configuration for a custom domain on an existing R2 bucket.",
 		"operationId": "r2-edit-custom-domain-settings",
 		"parameters": [
@@ -4987,7 +5011,7 @@
 			},
 			{
 				"in": "path",
-				"name": "domain_name",
+				"name": "domain",
 				"required": true,
 				"schema": {
 					"description": "Name of the custom domain",
@@ -5006,7 +5030,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -5252,7 +5277,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -5484,7 +5510,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -6122,7 +6149,8 @@
 						"eu",
 						"fedramp"
 					],
-					"type": "string"
+					"type": "string",
+					"x-stainless-param": "jurisdiction"
 				}
 			}
 		],
@@ -6148,7 +6176,8 @@
 											},
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"type": "object"
@@ -6176,7 +6205,8 @@
 											},
 											"secretAccessKey": {
 												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"type": "object"
@@ -6200,7 +6230,8 @@
 											},
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"type": "object"
@@ -6218,7 +6249,8 @@
 											},
 											"privateKey": {
 												"description": "Private Key of an IAM credential (ideally scoped to a single GCS bucket)",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"provider": {
 												"enum": [

@@ -1,5 +1,5 @@
 {
-	"GET /{accountId}/events/targetIndustries": {
+	"GET /accounts/{accountId}/cloudforce-one/events/targetIndustries": {
 		"operationId": "get_TargetIndustryList",
 		"parameters": [
 			{
@@ -98,6 +98,10 @@
 		"summary": "Lists all target industries",
 		"tags": [
 			"Target Industry"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

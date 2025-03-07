@@ -1,5 +1,5 @@
 {
-	"GET /{accountId}/events/attackers": {
+	"GET /accounts/{accountId}/cloudforce-one/events/attackers": {
 		"operationId": "get_AttackerList",
 		"parameters": [
 			{
@@ -98,6 +98,10 @@
 		"summary": "Lists attackers",
 		"tags": [
 			"Attacker"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

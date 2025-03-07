@@ -1,5 +1,5 @@
 {
-	"POST /{accountId}/events/tags/create": {
+	"POST /accounts/{accountId}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
 		"parameters": [
 			{
@@ -108,6 +108,10 @@
 		"summary": "Creates a new tag",
 		"tags": [
 			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

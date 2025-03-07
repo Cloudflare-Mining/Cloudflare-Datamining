@@ -1,5 +1,5 @@
 {
-	"GET /{accountId}/events/cron": {
+	"GET /accounts/{accountId}/cloudforce-one/events/cron": {
 		"operationId": "get_CronUpdateRead",
 		"parameters": [
 			{
@@ -85,9 +85,13 @@
 		"summary": "Reads the last cron update time",
 		"tags": [
 			"Cron"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/cron": {
+	"POST /accounts/{accountId}/cloudforce-one/events/cron": {
 		"operationId": "post_CronUpdate",
 		"parameters": [
 			{
@@ -178,6 +182,10 @@
 		"summary": "Reads the last cron update time",
 		"tags": [
 			"Cron"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"DELETE /{accountId}/events/{eventId}": {
+	"DELETE /accounts/{accountId}/cloudforce-one/events/{eventId}": {
 		"operationId": "delete_EventDelete",
 		"parameters": [
 			{
@@ -95,9 +95,12 @@
 		"summary": "Deletes an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
-	"DELETE /{accountId}/events/{eventId}/insight/{insightId}": {
+	"DELETE /accounts/{accountId}/cloudforce-one/events/{eventId}/insight/{insightId}": {
 		"operationId": "delete_EventInsightDelete",
 		"parameters": [
 			{
@@ -216,9 +219,12 @@
 		"summary": "Deletes an event insight",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
-	"DELETE /{accountId}/events/relate/{eventId}": {
+	"DELETE /accounts/{accountId}/cloudforce-one/events/relate/{eventId}": {
 		"operationId": "delete_EventReferenceDelete",
 		"parameters": [
 			{
@@ -348,9 +354,12 @@
 		"summary": "Removes an event refence",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
-	"DELETE /{accountId}/events/tag/{eventId}": {
+	"DELETE /accounts/{accountId}/cloudforce-one/events/tag/{eventId}": {
 		"operationId": "delete_EventTagDelete",
 		"parameters": [
 			{
@@ -480,9 +489,12 @@
 		"summary": "Removes a tag from an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
-	"GET /{accountId}/events/{eventId}": {
+	"GET /accounts/{accountId}/cloudforce-one/events/{eventId}": {
 		"operationId": "get_EventRead",
 		"parameters": [
 			{
@@ -717,9 +729,13 @@
 		"summary": "Reads an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"GET /{accountId}/events/{eventId}/insight/{insightId}": {
+	"GET /accounts/{accountId}/cloudforce-one/events/{eventId}/insight/{insightId}": {
 		"operationId": "get_EventInsightRead",
 		"parameters": [
 			{
@@ -843,9 +859,13 @@
 		"summary": "Reads an event insight",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"GET /{accountId}/events/{eventId}/raw/{rawId}": {
+	"GET /accounts/{accountId}/cloudforce-one/events/{eventId}/raw/{rawId}": {
 		"operationId": "get_EventRawRead",
 		"parameters": [
 			{
@@ -975,9 +995,13 @@
 		"summary": "Reads data for a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"GET /{accountId}/events/raw/{datasetId}/{eventId}": {
+	"GET /accounts/{accountId}/cloudforce-one/events/raw/{datasetId}/{eventId}": {
 		"operationId": "get_EventRawReadDS",
 		"parameters": [
 			{
@@ -1054,56 +1078,6 @@
 					}
 				},
 				"description": "Returns the raw event"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Reads data for a raw event",
-		"tags": [
-			"Event"
-		]
-	},
-	"GET /{accountId}/version": {
-		"operationId": "get_Version",
-		"parameters": [
-			{
-				"description": "Account ID",
-				"in": "path",
-				"name": "accountId",
-				"required": true,
-				"schema": {
-					"description": "Account ID",
-					"type": "number"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"version": {
-									"example": "1.2.0",
-									"type": "string"
-								}
-							},
-							"required": [
-								"version"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns the current version"
 			},
 			"400": {
 				"content": {
@@ -1154,12 +1128,16 @@
 				"api_key": []
 			}
 		],
-		"summary": "Version",
+		"summary": "Reads data for a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events": {
+	"POST /accounts/{accountId}/cloudforce-one/events": {
 		"operationId": "post_EventList",
 		"parameters": [
 			{
@@ -1224,6 +1202,19 @@
 												{
 													"example": 1,
 													"type": "number"
+												},
+												{
+													"items": {
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"type": "array"
 												}
 											]
 										}
@@ -1452,9 +1443,13 @@
 		"summary": "Filter and list events",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/{eventId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/{eventId}": {
 		"operationId": "post_EventUpdate",
 		"parameters": [
 			{
@@ -1741,9 +1736,13 @@
 		"summary": "Updates an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/{eventId}/insight/{insightId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/{eventId}/insight/{insightId}": {
 		"operationId": "post_EventInsightUpdate",
 		"parameters": [
 			{
@@ -1885,9 +1884,13 @@
 		"summary": "Updates an event insight",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/{eventId}/insight/create": {
+	"POST /accounts/{accountId}/cloudforce-one/events/{eventId}/insight/create": {
 		"operationId": "post_EventInsightCreate",
 		"parameters": [
 			{
@@ -2019,9 +2022,13 @@
 		"summary": "Adds an insight to an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/{eventId}/raw/{rawId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/{eventId}/raw/{rawId}": {
 		"operationId": "post_EventRawUpdate",
 		"parameters": [
 			{
@@ -2153,9 +2160,13 @@
 		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/create": {
+	"POST /accounts/{accountId}/cloudforce-one/events/create": {
 		"operationId": "post_EventCreate",
 		"parameters": [
 			{
@@ -2471,9 +2482,13 @@
 		"summary": "Creates a new event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/create/bulk": {
+	"POST /accounts/{accountId}/cloudforce-one/events/create/bulk": {
 		"operationId": "post_EventCreateBulk",
 		"parameters": [
 			{
@@ -2808,9 +2823,13 @@
 		"summary": "Creates a new event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/relate/{eventId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/relate/{eventId}": {
 		"operationId": "post_EventReferenceCreate",
 		"parameters": [
 			{
@@ -2940,9 +2959,13 @@
 		"summary": "Creates event references for a event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/tag/{eventId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/tag/{eventId}": {
 		"operationId": "post_EventTagCreate",
 		"parameters": [
 			{
@@ -3072,6 +3095,10 @@
 		"summary": "Adds a tag to an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

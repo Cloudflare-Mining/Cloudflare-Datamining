@@ -1,5 +1,5 @@
 {
-	"GET /{accountId}/events/dataset": {
+	"GET /accounts/{accountId}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
 		"parameters": [
 			{
@@ -98,9 +98,13 @@
 		"summary": "Lists all datasets in an account",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"GET /{accountId}/events/dataset/{datasetId}": {
+	"GET /accounts/{accountId}/cloudforce-one/events/dataset/{datasetId}": {
 		"operationId": "get_DatasetRead",
 		"parameters": [
 			{
@@ -206,9 +210,13 @@
 		"summary": "Reads a dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/dataset/{datasetId}": {
+	"POST /accounts/{accountId}/cloudforce-one/events/dataset/{datasetId}": {
 		"operationId": "post_DatasetUpdate",
 		"parameters": [
 			{
@@ -338,9 +346,13 @@
 		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
-	"POST /{accountId}/events/dataset/create": {
+	"POST /accounts/{accountId}/cloudforce-one/events/dataset/create": {
 		"operationId": "post_DatasetCreate",
 		"parameters": [
 			{
@@ -460,6 +472,10 @@
 		"summary": "Creates a dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }

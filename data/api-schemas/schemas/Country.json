@@ -1,5 +1,5 @@
 {
-	"GET /{accountId}/events/countries": {
+	"GET /accounts/{accountId}/cloudforce-one/events/countries": {
 		"operationId": "get_CountryRead",
 		"parameters": [
 			{
@@ -109,6 +109,10 @@
 		"summary": "Retrieves countries information for all countries",
 		"tags": [
 			"Country"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }
