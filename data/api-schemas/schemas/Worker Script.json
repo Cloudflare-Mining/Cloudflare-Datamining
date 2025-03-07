@@ -729,7 +729,8 @@
 												},
 												"jwt": {
 													"description": "Token provided upon successful upload of all files from a registered manifest.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"
@@ -1576,7 +1577,8 @@
 															"text": {
 																"description": "The secret value to use.",
 																"example": "My secret.",
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															},
 															"type": {
 																"allOf": [
@@ -3583,7 +3585,8 @@
 																	"text": {
 																		"description": "The secret value to use.",
 																		"example": "My secret.",
-																		"type": "string"
+																		"type": "string",
+																		"x-sensitive": true
 																	},
 																	"type": {
 																		"allOf": [
@@ -5859,7 +5862,8 @@
 														"text": {
 															"description": "The secret value to use.",
 															"example": "My secret.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"type": {
 															"allOf": [
@@ -7333,7 +7337,8 @@
 																	"text": {
 																		"description": "The secret value to use.",
 																		"example": "My secret.",
-																		"type": "string"
+																		"type": "string",
+																		"x-sensitive": true
 																	},
 																	"type": {
 																		"allOf": [
@@ -8105,7 +8110,8 @@
 											"properties": {
 												"jwt": {
 													"description": "A \"completion\" JWT which can be redeemed when creating a Worker version.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											}
 										}
@@ -8347,7 +8353,8 @@
 												},
 												"jwt": {
 													"description": "A JWT to use as authentication for uploading assets.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											}
 										}
@@ -8444,7 +8451,8 @@
 														},
 														"jwt": {
 															"description": "A JWT to use as authentication for uploading assets.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													}
 												}
@@ -8827,7 +8835,8 @@
 											},
 											"jwt": {
 												"description": "Token provided upon successful upload of all files from a registered manifest.",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"type": "object"
@@ -9674,7 +9683,8 @@
 														"text": {
 															"description": "The secret value to use.",
 															"example": "My secret.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"type": {
 															"allOf": [

@@ -1699,7 +1699,8 @@
 														"text": {
 															"description": "The secret value to use.",
 															"example": "My secret.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"type": {
 															"allOf": [

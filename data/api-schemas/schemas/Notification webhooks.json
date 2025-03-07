@@ -501,7 +501,9 @@
 													},
 													"secret": {
 														"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-														"type": "string"
+														"type": "string",
+														"writeOnly": true,
+														"x-sensitive": true
 													},
 													"type": {
 														"description": "Type of webhook endpoint.",
@@ -678,7 +680,9 @@
 															},
 															"secret": {
 																"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-																"type": "string"
+																"type": "string",
+																"writeOnly": true,
+																"x-sensitive": true
 															},
 															"type": {
 																"description": "Type of webhook endpoint.",
@@ -961,7 +965,9 @@
 												},
 												"secret": {
 													"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-													"type": "string"
+													"type": "string",
+													"writeOnly": true,
+													"x-sensitive": true
 												},
 												"type": {
 													"description": "Type of webhook endpoint.",
@@ -1106,7 +1112,9 @@
 														},
 														"secret": {
 															"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-															"type": "string"
+															"type": "string",
+															"writeOnly": true,
+															"x-sensitive": true
 														},
 														"type": {
 															"description": "Type of webhook endpoint.",
@@ -1272,7 +1280,9 @@
 							},
 							"secret": {
 								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-								"type": "string"
+								"type": "string",
+								"writeOnly": true,
+								"x-sensitive": true
 							},
 							"url": {
 								"description": "The POST endpoint to call when dispatching a notification.",
@@ -1625,7 +1635,9 @@
 							},
 							"secret": {
 								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-								"type": "string"
+								"type": "string",
+								"writeOnly": true,
+								"x-sensitive": true
 							},
 							"url": {
 								"description": "The POST endpoint to call when dispatching a notification.",

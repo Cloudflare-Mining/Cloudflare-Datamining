@@ -2269,7 +2269,8 @@
 															"text": {
 																"description": "The secret value to use.",
 																"example": "My secret.",
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															},
 															"type": {
 																"allOf": [
@@ -4172,7 +4173,8 @@
 																	"text": {
 																		"description": "The secret value to use.",
 																		"example": "My secret.",
-																		"type": "string"
+																		"type": "string",
+																		"x-sensitive": true
 																	},
 																	"type": {
 																		"allOf": [
@@ -5922,7 +5924,8 @@
 														"text": {
 															"description": "The secret value to use.",
 															"example": "My secret.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"type": {
 															"allOf": [
@@ -7396,7 +7399,8 @@
 																	"text": {
 																		"description": "The secret value to use.",
 																		"example": "My secret.",
-																		"type": "string"
+																		"type": "string",
+																		"x-sensitive": true
 																	},
 																	"type": {
 																		"allOf": [
@@ -8436,7 +8440,8 @@
 												},
 												"jwt": {
 													"description": "A JWT to use as authentication for uploading assets.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											}
 										}
@@ -8533,7 +8538,8 @@
 														},
 														"jwt": {
 															"description": "A JWT to use as authentication for uploading assets.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													}
 												}
@@ -8764,7 +8770,8 @@
 											},
 											"jwt": {
 												"description": "Token provided upon successful upload of all files from a registered manifest.",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"type": "object"
@@ -9611,7 +9618,8 @@
 														"text": {
 															"description": "The secret value to use.",
 															"example": "My secret.",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"type": {
 															"allOf": [
@@ -11072,7 +11080,8 @@
 							"text": {
 								"description": "The value of the secret.",
 								"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							},
 							"type": {
 								"description": "The type of secret to put.",
