@@ -1,6 +1,6 @@
 {
-	"GET /accounts/{accountId}/cloudforce-one/events/countries": {
-		"operationId": "get_CountryRead",
+	"GET /accounts/{accountId}/cloudforce-one/events/indicatorTypes": {
+		"operationId": "get_IndicatorTypesList",
 		"parameters": [
 			{
 				"description": "Account ID",
@@ -18,44 +18,33 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"items": {
-								"properties": {
-									"result": {
-										"items": {
-											"properties": {
-												"alpha3": {
-													"example": "AF",
-													"type": "string"
-												},
-												"name": {
-													"example": "Afghanistan",
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"alpha3"
-											],
-											"type": "object"
-										},
-										"type": "array"
+							"properties": {
+								"items": {
+									"properties": {
+										"type": {
+											"example": "string",
+											"type": "string"
+										}
 									},
-									"success": {
-										"example": "true",
-										"type": "string"
-									}
+									"required": [
+										"type"
+									],
+									"type": "object"
 								},
-								"required": [
-									"success",
-									"result"
-								],
-								"type": "object"
+								"type": {
+									"example": "array",
+									"type": "string"
+								}
 							},
-							"type": "array"
+							"required": [
+								"type",
+								"items"
+							],
+							"type": "object"
 						}
 					}
 				},
-				"description": "Returns the long and short country code for every country."
+				"description": "Returns a list of indicator types"
 			},
 			"400": {
 				"content": {
@@ -101,9 +90,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves countries information for all countries",
+		"summary": "Lists all indicator types",
 		"tags": [
-			"Country"
+			"Indicator Types"
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write",
