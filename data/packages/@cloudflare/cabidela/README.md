@@ -71,6 +71,8 @@ Cabidela takes a JSON-Schema and optional configuration flags:
 - `applyDefaults`: boolean - If true, the validator will apply default values to the input object. Default is false.
 - `errorMessages`: boolean - If true, the validator will use custom `errorMessage` messages from the schema. Default is false.
 - `fullErrors`: boolean - If true, the validator will be more verbose when throwing errors for complex schemas (example: anyOf, oneOf's), set to false for shorter exceptions. Default is true.
+- `useMerge`: boolean - Set to true if you want to use the `$merge` keyword. Default is false. See below for more information.
+- `subSchemas`: any[] - An optional array of sub-schemas that can be used with `$id` and `$ref`. See below for more information.
 
 Returns a validation object.
 
@@ -247,6 +249,49 @@ cabidela.validate({
     country: "USA",
   },
 });
+```
+
+## Combined schemas and $merge
+
+The standard way of combining and extending schemas is by using the [`allOf`](https://json-schema.org/understanding-json-schema/reference/combining#allOf) (AND), [`anyOf`](https://json-schema.org/understanding-json-schema/reference/combining#anyOf) (OR), [`oneOf`](https://json-schema.org/understanding-json-schema/reference/combining#oneOf) (XOR) and [`not`](https://json-schema.org/understanding-json-schema/reference/combining#not) keywords, all supported by this library.
+
+Cabidela supports an additional keyword `$merge` (inspired by [Ajv](https://ajv.js.org/guide/combining-schemas.html#merge-and-patch-keywords)) that allows you to merge two objects. This is useful when you want to extend a schema with additional properties and `allOf`` is not enough.
+
+Here's how it works:
+
+```json
+{
+  "$merge": {
+    "source": {
+      "type": "object",
+      "properties": { "p": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "with": {
+      "properties": { "q": { "type": "number" } }
+    }
+  }
+}
+```
+
+Resolves to:
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "q": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
+```
+
+To use `$merge` set the `useMerge` flag to true when creating the instance.
+
+```js
+new Cabidela(schema, { useMerge: true });
 ```
 
 ## Custom errors
