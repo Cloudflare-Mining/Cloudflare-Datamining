@@ -500,6 +500,15 @@
 	"deployment-rollbacks": {
 		"enabled": true
 	},
+	"deprecate-classic-schema-validation": {
+		"enabled": false,
+		"branches": [
+			"phase-1",
+			"phase-2",
+			"phase-3",
+			"current"
+		]
+	},
 	"deprecate-security-level": {
 		"enabled": true
 	},
