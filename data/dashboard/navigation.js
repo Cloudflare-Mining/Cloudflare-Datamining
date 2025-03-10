@@ -523,7 +523,7 @@ const navigation = {
 			hasPermission: A => !!(0, e.B)(A)
 		}, {
 			title: "navigation.account.workers.ai.ai-rag",
-			url: "/ai/ai-rag",
+			url: "/ai/autorag",
 			labels: ["beta"],
 			hasPermission: A => !!(0, o.z1)("ai-auto-rag")(A)
 		}]
@@ -1103,10 +1103,10 @@ const navigation = {
 			url: "/rules/page-rules",
 			navigationType: "version"
 		}, {
-			title: "navigation.zone.rules.url_normalization",
-			url: "/rules/url-normalization",
+			title: "navigation.zone.rules.settings",
+			url: "/rules/settings",
 			navigationType: "version",
-			hasPermission: A => !(0, o.z1)("rules-overview")(A) && (0, g.$n)(A, "waf", "page-rule", "read")
+			tabs: I.od
 		}]
 	}, {
 		title: "navigation.zone.network",
