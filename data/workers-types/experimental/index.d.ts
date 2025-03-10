@@ -3993,7 +3993,7 @@ interface Ai_Cf_Openai_Whisper_Large_V3_Turbo_Output {
        */
       end?: number;
     }[];
-  };
+  }[];
   /**
    * The transcription in WebVTT format, which includes timing and text information for use in subtitles.
    */
@@ -4383,6 +4383,13 @@ type AiOptions = {
   prefix?: string;
   extraHeaders?: object;
 };
+type ConversionResponse = {
+  name: string;
+  mimeType: string;
+  format: "markdown";
+  tokens: number;
+  data: string;
+};
 type AiModelsSearchParams = {
   author?: string;
   hide_experimental?: boolean;
@@ -4426,6 +4433,24 @@ declare abstract class Ai<AiModelList extends AiModelListType = AiModels> {
       : AiModelList[Name]["postProcessedOutputs"]
   >;
   public models(params?: AiModelsSearchParams): Promise<AiModelsSearchObject[]>;
+  public toMarkdown(
+    files: {
+      name: string;
+      blob: Blob;
+    }[],
+    options?: {
+      gateway?: GatewayOptions;
+    },
+  ): Promise<ConversionResponse[]>;
+  public toMarkdown(
+    files: {
+      name: string;
+      blob: Blob;
+    },
+    options?: {
+      gateway?: GatewayOptions;
+    },
+  ): Promise<ConversionResponse>;
 }
 type GatewayOptions = {
   id: string;
@@ -5917,6 +5942,8 @@ interface RateLimit {
    */
   limit(options: RateLimitOptions): Promise<RateLimitOutcome>;
 }
+// Extend this in your apps to properly type Env
+interface Env {}
 // Namespace for RPC utility types. Unfortunately, we can't use a `module` here as these types need
 // to referenced by `Fetcher`. This is included in the "importable" version of the types which
 // strips all `module` blocks.
@@ -6175,6 +6202,7 @@ declare module "cloudflare:workers" {
       step: WorkflowStep,
     ): Promise<unknown>;
   }
+  export const env: Env;
 }
 declare module "cloudflare:sockets" {
   function _connect(
