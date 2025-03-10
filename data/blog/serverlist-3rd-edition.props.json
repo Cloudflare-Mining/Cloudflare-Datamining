@@ -21,10 +21,10 @@
 				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rqJ3G9jaSryZquSGJlhWW/719d5d6f39539620de040356c89bd65b/AJF-Headshot.avif"
 			}
 		],
-		"excerpt": "Check out our third edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
-		"feature_image": "https:undefined",
+		"excerpt": "Get the latest scoop on the serverless space with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wt4uZDU12E0DqAC8vT7wp/71616fe28808cf7b5f251eb13af15483/serverlist-19th-edition.png",
 		"featured": false,
-		"html": "<p>Check out our third edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.</p><p>Sign up below to have The Serverlist sent directly to your mailbox.</p><!--kg-card-begin: html--><style>\n    iframe[seamless]{\n        background-color: transparent;\n        border: 0 none transparent;\n        padding: 0;\n        overflow: hidden;\n    }\n</style>\n<iframe id=\"magic\" style=\"visbility: hidden;\" seamless></iframe>\n<script>\n    const magic = document.getElementById('magic')\n  \n \n    function resizeIframe() {\n        const iframeDoc = magic.contentDocument\n        const iframeWindow = magic.contentWindow\n        magic.height = iframeDoc.body.clientHeight\n        magic.width = \"100%\"\n\n        const injectedStyle = iframeDoc.createElement('style')\n\n        injectedStyle.innerHTML = `\n            body {\n                background: white !important;\n            }\n        `\n\n        magic.contentDocument.head.appendChild(injectedStyle)\n        \n        function onFinish() {\n            setTimeout(() => {\n            \tmagic.style.visibility = ''\n            }, 80)\n        }\n        \n        if (iframeDoc.readyState === 'loading') {\n            iframeWindow.addEventListener('load', onFinish)\n        } else {\n            onFinish()\n        }\n    }\n\n    async function fetchURL(url) {\n      magic.addEventListener('load', resizeIframe)\n  \n        const call = await fetch(`https://streamblog.website/proxy?domain=${url}`)\n        const text = await call.text()\n        const divie = document.createElement(\"div\")\n        divie.innerHTML = text\n        const listie = divie.getElementsByTagName(\"a\")\n        for (var i = 0; i < listie.length; i++) {\n            listie[i].setAttribute(\"target\", \"_blank\")\n\t\t}\n        magic.scrolling = \"no\"\n        magic.srcdoc = divie.innerHTML\n    }\n    fetchURL(\"https://mailchi.mp/cloudflare/theserverlistnewsletter-e03\")\n\n</script>\n<!--kg-card-end: html-->",
+		"html": "<p>Check out our third edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.</p><p>Sign up below to have The Serverlist sent directly to your mailbox.</p><!--kg-card-begin: html--><style>\n    iframe[seamless]{\n        background-color: transparent;\n        border: 0 none transparent;\n        padding: 0;\n        overflow: hidden;\n    }\n</style>\n<iframe id=\"magic\" style=\"visbility: hidden;\" seamless></iframe>\n<script>\n    const magic = document.getElementById('magic')\n  \n \n    function resizeIframe() {\n        const iframeDoc = magic.contentDocument\n        const iframeWindow = magic.contentWindow\n        magic.height = iframeDoc.body.clientHeight\n        magic.width = \"100%\"\n\n        const injectedStyle = iframeDoc.createElement('style')\n\n        injectedStyle.innerHTML = `\n            body {\n                background: white !important;\n            }\n        `\n\n        magic.contentDocument.head.appendChild(injectedStyle)\n        \n        function onFinish() {\n            setTimeout(() => {\n            \tmagic.style.visibility = ''\n            }, 80)\n        }\n        \n        if (iframeDoc.readyState === 'loading') {\n            iframeWindow.addEventListener('load', onFinish)\n        } else {\n            onFinish()\n        }\n    }\n\n    async function fetchURL(url) {\n      magic.addEventListener('load', resizeIframe)\n  \n        const call = await fetch(`https://streamblog.website/proxy?domain=${url}`)\n        const text = await call.text()\n        const divie = document.createElement(\"div\")\n        divie.innerHTML = text\n        const listie = divie.getElementsByTagName(\"a\")\n        for (var i = 0; i < listie.length; i++) {\n            listie[i].setAttribute(\"target\", \"_blank\")\n\t\t}\n        magic.scrolling = \"no\"\n        magic.srcdoc = divie.innerHTML\n    }\n    fetchURL(\"https://mailchi.mp/cloudflare/theserverlistnewsletter-e03\")\n\n</script>\n<!--kg-card-end: html--><p></p>",
 		"id": "1V5M0Z5nNn6g0DFlAt7e7w",
 		"localeList": {
 			"name": "The Serverlist: Benchmarks, Workers.dev, security implications of serverless, and more Config",
@@ -58,7 +58,7 @@
 			"etEE": "No Page for Locale",
 			"ltLT": "No Page for Locale"
 		},
-		"meta_description": null,
+		"meta_description": "Get the latest scoop on the serverless space with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
 		"metadata": {
 			"imgPreview": ""
 		},
@@ -98,7 +98,7 @@
 			}
 		],
 		"title": "The Serverlist: Benchmarks, Workers.dev, security implications of serverless, and more",
-		"updated_at": "2024-10-10T00:32:16.859Z",
+		"updated_at": "2025-03-10T04:33:23.871Z",
 		"url": "https://blog.cloudflare.com/serverlist-3rd-edition"
 	},
 	"translations": {

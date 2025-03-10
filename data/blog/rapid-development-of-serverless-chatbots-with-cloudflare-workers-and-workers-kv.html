@@ -12,7 +12,6 @@ x 260 work days
 = 1300 mins 
 / 60 mins 
 = 20 person hours per year</code></pre>
-	<p></p>
 	<p>So a 20-hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
 	<div class="flex anchor relative">
 		<h3 id="enter-cloudflare-workers-workers-kv">Enter Cloudflare Workers + Workers KV</h3>
@@ -356,7 +355,6 @@ function process(request) {
 		</li>
 	</ul>
 	<p>In <b>Part 2</b> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
-	<hr>
 	<ol>
 		<li>
 			<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>

@@ -7,7 +7,14 @@
 	<p>There are various methods and locations DNS filtering can be enabled, whether it’s on your entire laptop, each of your individual browsers and devices or your entire home network. With DNS filtering front of mind, including DoH, I explored each model. The model you choose ultimately depends on your objective.</p>
 	<p>But first, let’s review what DNS and DNS over HTTPS are.</p>
 	<p>DNS is the protocol used to resolve hostnames (like <a href="https://www.cloudflare.com">www.cloudflare.com</a>) into IP addresses, so computers can talk to each other. DNS is an unencrypted clear text protocol, meaning that any eavesdropper or machine between the client and DNS server can see the contents of the DNS request. DNS over HTTPS adds security to DNS and encrypt DNS queries using HTTPS (the protocol we use to encrypt the web).</p>
-	<h4>Let’s get started</h4>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-started">Let’s get started</h3>
+		<a href="https://blog.cloudflare.com/#lets-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Navigate to <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com</a>. If you don’t already have an account, the sign-up process only takes a few minutes.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -33,7 +40,14 @@
 		</li>
 	</ol>
 	<p>Let’s discuss each option.</p>
-	<h4>DNS over HTTPS</h4>
+	<div class="flex anchor relative">
+		<h3 id="dns-over-https">DNS over HTTPS</h3>
+		<a href="https://blog.cloudflare.com/#dns-over-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first attempt to match DNS requests to a location is pointing your traffic to a unique DNS over HTTPS hostname. After you configure your first location, you are given a unique destination IPv6 address and a unique DoH endpoint as shown below. Take note of the hostname as you will need it shortly. I’ll first discuss deploying Gateway in a browser and then to your entire network.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -41,7 +55,14 @@
 
 	</figure>
 	<p>DNS over HTTPS is my favorite method for deploying Gateway and securing DNS queries at the same time. Enabling DoH prevents anyone but the DNS server of your choosing from seeing your <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a>.</p>
-	<h4>Enabling DNS over HTTPS in browsers</h4>
+	<div class="flex anchor relative">
+		<h3 id="enabling-dns-over-https-in-browsers">Enabling DNS over HTTPS in browsers</h3>
+		<a href="https://blog.cloudflare.com/#enabling-dns-over-https-in-browsers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By enabling it in a browser, only queries issued in that browser are affected. It’s available in most browsers and there are quite a few tutorials online to show you how to turn it on.</p>
 	<table>
 		<tbody>
@@ -162,9 +183,16 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>* Chromium based browser. Same support as Chrome.
-		** Most recent version of <a href="https://support.microsoft.com/en-us/help/4501095/download-the-new-microsoft-edge-based-on-chromium">Edge is built on Chromium</a>.</p>
-	<h4>Chromium based browsers</h4>
+	<p>* Chromium based browser. Same support as Chrome.</p>
+	<p>** Most recent version of <a href="https://support.microsoft.com/en-us/help/4501095/download-the-new-microsoft-edge-based-on-chromium">Edge is built on Chromium</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="chromium-based-browsers">Chromium based browsers</h3>
+		<a href="https://blog.cloudflare.com/#chromium-based-browsers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using Chrome as an example on behalf of all the Chromium-based browsers, enabling DNS over HTTPS is straightforward, but as you can see in the table above, there is one issue: Chrome does not currently support custom servers. So while it is great that a user can protect their DNS queries, they cannot choose the provider, including Gateway.</p>
 	<p>Here is how to enable DoH in Chromium based browsers:</p>
 	<p>Navigate to <code>chrome://flags</code> and toggle the beta flag to enable.</p>
@@ -173,7 +201,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7q6IpMHlqqtv5xDY1VxNsp/2fcea3020dfae12c74f0b4ecae52c464/4.png" alt="" class="kg-image" width="1590" height="280" loading="lazy">
 
 	</figure>
-	<h4>Firefox</h4>
+	<div class="flex anchor relative">
+		<h3 id="firefox">Firefox</h3>
+		<a href="https://blog.cloudflare.com/#firefox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Firefox is the exception to the rule because they support both DNS over HTTPS and the ability to define a custom server. Mozilla provides detailed instructions about how to <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https#w_manually-enabling-and-disabling-dns-over-https">get started</a>.</p>
 	<p>Once enabled, navigate to Preferences → General → Network Security and select ‘Settings’. Scroll to the section ‘Enable DNS over HTTPS’, select ‘Custom’ and input your Gateway DoH address, as shown below:</p>
 	<figure class="kg-card kg-image-card ">
@@ -183,7 +218,14 @@
 	</figure>
 	<p>Optionally, you can enable Encrypted SNI (ESNI), which is an <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni">IETF draft</a> for encrypting the SNI headers, by toggling the ‘network.security.esni.enabled’ preference in about:config to ‘true’. <a href="https://blog.cloudflare.com/encrypt-that-sni-firefox-edition">Read more</a> about how Cloudflare is one of the few providers that supports ESNI by default.</p>
 	<p>Congratulations, you’ve configured Gateway using DNS over HTTPS! Keep in mind that only queries issued from the configured browser will be secured. Any other device connected to your network such as your mobile devices, gaming platforms, or smart TVs will still use your network's default DNS server, likely assigned by your ISP.</p>
-	<h4>Configuring Gateway for your entire home or business network</h4>
+	<div class="flex anchor relative">
+		<h3 id="configuring-gateway-for-your-entire-home-or-business-network">Configuring Gateway for your entire home or business network</h3>
+		<a href="https://blog.cloudflare.com/#configuring-gateway-for-your-entire-home-or-business-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Deploying Gateway at the router level allows you to secure every device on your network without needing to configure each one individually.</p>
 	<p>Requirements include:</p>
 	<ul>
@@ -199,7 +241,14 @@
 	</ul>
 	<p>There aren't any consumer routers on the market that natively support DoH custom servers and likely few that natively support DoH at all. A newer router I purchased, the Netgear R7800, does not support either, but it is one of the most popular routers for flashing <a href="https://dd-wrt.com">dd-wrt</a> or <a href="https://openwrt.org">open-wrt</a>, which both support DoH. Unfortunately, neither of these popular firm wares support custom servers.</p>
 	<p>While it’s rare to find a router that supports DoH out of the box, DoH with custom servers, or has potential to be flashed, it’s common for a router to support DHCP forwarding (dd-wrt and open-wrt both support DHCP forwarding). So, I installed Pi-hole on my Raspberry Pi and used it as my home network’s DNS and DHCP server.</p>
-	<h4>Getting started with Pi-hole and dnscrypt-proxy</h4>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-pi-hole-and-dnscrypt-proxy">Getting started with Pi-hole and dnscrypt-proxy</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-pi-hole-and-dnscrypt-proxy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If your Raspberry Pi is new and hasn’t been configured yet, follow their <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">guide</a> to get started. (Note: by default, <a href="https://www.raspberrypi.org/documentation/remote-access/ssh">ssh is disabled</a>, so you will need a keyboard and/or mouse to access your box in your terminal.)</p>
 	<p>Once your Raspberry Pi has been initialized, assign it a static IP address in the same network as your router. I hard-coded my router's LAN address to <code>192.168.1.2</code></p>
 	<p>Using vim:<code>sudo vi /etc/dhcpcd.conf</code></p>
@@ -316,7 +365,7 @@
 	<p>Another option for matching requests in Gateway is to configure your DNS server to point to a unique IPv6 address provided to you by Cloudflare. Any DNS query pointed to this address will be matched properly on our edge.</p>
 	<p>This might be a good option if you want to use Cloudflare Gateway on your entire laptop by setting your local DNS resolution to this address. However, if your home router or ISP does not support IPv6, DNS resolution won’t work.</p>
 	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
+		<h3 id="conclusion">Conclusion</h3>
 		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>

@@ -1,24 +1,68 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RdnhNAtJacuWQ4LBWWeQX/6b8095dcf9cbce198c29ef6018cefd90/image3-36.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests">Worker Recipes</a> further.</p>
 	<p>I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
 	<p>OK, here we go...</p>
 	<p>My API will look like this:</p>
-	<p>Verb</p>
-	<p>Path</p>
-	<p>Description</p>
-	<p>GET</p>
-	<p><code>/api/ping</code></p>
-	<p>Check the Worker is up</p>
-	<p>GET</p>
-	<p><code>/api/all/spot/:symbol</code></p>
-	<p>Aggregate the responses from all our configured gateways</p>
-	<p>GET</p>
-	<p><code>/api/race/spot/:symbol</code></p>
-	<p>Return the response of the provider who responds fastest</p>
-	<p>GET</p>
-	<p><code>/api/direct/:exchange/spot/:symbol</code></p>
-	<p>Pass through the request to the gateway. E.g. gdax or bitfinex</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Verb</p>
+				</td>
+				<td>
+					<p>Path</p>
+				</td>
+				<td>
+					<p>Description</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET</p>
+				</td>
+				<td>
+					<p><code>/api/ping</code></p>
+				</td>
+				<td>
+					<p>Check the Worker is up</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET</p>
+				</td>
+				<td>
+					<p><code>/api/all/spot/:symbol</code></p>
+				</td>
+				<td>
+					<p>Aggregate the responses from all our configured gateways</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET</p>
+				</td>
+				<td>
+					<p><code>/api/race/spot/:symbol</code></p>
+				</td>
+				<td>
+					<p>Return the response of the provider who responds fastest</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET</p>
+				</td>
+				<td>
+					<p><code>/api/direct/:exchange/spot/:symbol</code></p>
+				</td>
+				<td>
+					<p>Pass through the request to the gateway. E.g. gdax or bitfinex</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="flex anchor relative">
 		<h3 id="the-framework">The Framework</h3>
 		<a href="https://blog.cloudflare.com/#the-framework" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -248,6 +292,5 @@ pong</code></pre>
 		</li>
 	</ul>
 	<p>Stay tuned for more, and PRs welcome, particularly for more providers.</p>
-	<hr>
 	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

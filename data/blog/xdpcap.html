@@ -250,7 +250,6 @@ reading from file -, link-type EN10MB (Ethernet)
 	</div>
 	<p>Matching packets, as well as the original action taken for them, need to be exposed to userspace. Once again, such a mechanism is already part of our <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/#packet-sampling">XDP based DoS mitigation pipeline</a>!</p>
 	<p>Another eBPF helper, <code>perf_event_output</code>, allows an XDP program to generate a perf event containing, amongst some metadata, the packet. As xdpcap generates one filter per XDP action, the filter program can include the action taken in the metadata. A userspace program can create a perf event ring buffer to receive events into, obtaining both the action and the packet.</p>
-	<hr>
 	<ol>
 		<li>
 			<p>This is true of the original cBPF, but Linux implements a number of extensions, one of which allows the length of the input packet to be retrieved. <a href="https://blog.cloudflare.com/xdpcap/#fnref1">↩︎</a></p>
