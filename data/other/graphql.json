@@ -399,20 +399,28 @@
 	},
 	"AccountAiInferenceAdaptive": {
 		"__description": "AI Inference logs with adaptive sampling",
+		"audioSeconds": "Audio seconds",
 		"costMetricName1": "Name for cost metric 1",
 		"costMetricName2": "Name for cost metric 2",
 		"costMetricValue1": "Value for cost metric 1",
 		"costMetricValue2": "Value for cost metric 2",
 		"datetime": "The date when inferance was triggered",
 		"errorCode": "Error code",
+		"inferenceSteps": "Inference steps",
 		"inferenceTimeMs": "Inference time ms",
+		"inputLength": "Input length",
+		"inputTokens": "Input tokens",
 		"modelId": "ModelId that was trigger to inference",
 		"modelIsBeta": "Model that was trigger to inference is Beta",
 		"neurons": "Monetization unit",
+		"outputTokens": "Output tokens",
+		"processedPixels": "Processed pixels",
+		"processedTiles": "Processed tiles",
 		"requestBytesIn": "Request size in bytes",
 		"requestBytesOut": "Request size out bytes",
 		"requestSource": "Source who triggered (worker binding, pages binding, rest api)",
-		"sampleInterval": "ABR sample interval"
+		"sampleInterval": "ABR sample interval",
+		"totalTiles": "Total tiles"
 	},
 	"AccountAiInferenceAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -451,12 +459,20 @@
 	},
 	"AccountAiInferenceAdaptiveGroupsSum": {
 		"__description": "",
+		"totalAudioSeconds": "Total audio seconds",
 		"totalCostMetricValue1": "Total value for cost metric 1",
 		"totalCostMetricValue2": "Total value for cost metric 2",
+		"totalInferenceSteps": "Total inference steps",
 		"totalInferenceTimeMs": "Total inference time ms",
+		"totalInputLength": "Total input length",
+		"totalInputTokens": "Total input tokens",
 		"totalNeurons": "Total neurons",
+		"totalOutputTokens": "Total output tokens",
+		"totalProcessedPixels": "Total processed pixels",
+		"totalProcessedTiles": "Total processed tiles",
 		"totalRequestBytesIn": "Total bytes in per request",
-		"totalRequestBytesOut": "Total bytes out per request"
+		"totalRequestBytesOut": "Total bytes out per request",
+		"totalTiles": "Total tiles"
 	},
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
@@ -726,7 +742,8 @@
 		"avg": "The average value of a metric per dimension",
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
-		"max": "Maximum value of a metric per dimension"
+		"max": "Maximum value of a metric per dimension",
+		"quantiles": "Quantiles of a metric per dimension"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -765,6 +782,24 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountCloudchamberMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"cpuLoadP50": "CPU load (50th percentile)",
+		"cpuLoadP90": "CPU load (90th percentile)",
+		"cpuLoadP99": "CPU load (99th percentile)",
+		"gpuMemoryP50": "GPU memory usage (50th percentile)",
+		"gpuMemoryP90": "GPU memory usage (90th percentile)",
+		"gpuMemoryP99": "GPU memory usage (99th percentile)",
+		"memoryP50": "Memory usage (50th percentile)",
+		"memoryP90": "Memory usage (90th percentile)",
+		"memoryP99": "Memory usage (99th percentile)",
+		"rxBandwidthP50": "RX bandwidth (50th percentile)",
+		"rxBandwidthP90": "RX bandwidth (90th percentile)",
+		"rxBandwidthP99": "RX bandwidth (99th percentile)",
+		"txBandwidthP50": "TX bandwidth (50th percentile)",
+		"txBandwidthP90": "TX bandwidth (90th percentile)",
+		"txBandwidthP99": "TX bandwidth (99th percentile)"
 	},
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
@@ -3318,6 +3353,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"kind": "Event kind"
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroupsFilter_InputObject": {
@@ -3338,6 +3374,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"kind": "Event kind"
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsFilter_InputObject": {
@@ -3360,6 +3397,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"name": "Device name"
 	},
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsFilter_InputObject": {
@@ -3401,6 +3439,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"name": "Device name"
 	},
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsFilter_InputObject": {
@@ -3441,6 +3480,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"fileSystem": "File system on disk (EXT4, NTFS, etc.)",
 		"kind": "Kind of disk (HDD, SSD, etc.)",
 		"mountPoint": "Path where disk is mounted",
@@ -3472,6 +3512,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"fileSystem": "File system on disk (EXT4, NTFS, etc.)",
 		"kind": "Kind of disk (HDD, SSD, etc.)",
 		"mountPoint": "Path where disk is mounted",
@@ -3503,6 +3544,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"name": "Name of the network device"
 	},
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsFilter_InputObject": {
@@ -3543,6 +3585,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"name": "Name of the network device"
 	},
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsFilter_InputObject": {
@@ -3583,6 +3626,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"label": "Sensor identifier for the component"
 	},
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsFilter_InputObject": {
@@ -3610,6 +3654,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"label": "Sensor identifier for the component"
 	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsFilter_InputObject": {
@@ -3637,6 +3682,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"version": "Version"
 	},
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsFilter_InputObject": {
@@ -3645,6 +3691,7 @@
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsMax": {
 		"__description": "",
 		"cpuCount": "Count of processors/cores",
+		"haValue": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
 		"kernelBtime": "Boot time (seconds since Unix epoch)",
 		"kernelProcessesRunning": "Number of processes in runnable state",
 		"loadAverage15m": "The fifteen-minute load average",
@@ -3674,6 +3721,7 @@
 		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"version": "Version"
 	},
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsFilter_InputObject": {
@@ -3682,6 +3730,7 @@
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsMax": {
 		"__description": "",
 		"cpuCount": "Count of processors/cores",
+		"haValue": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
 		"kernelBtime": "Boot time (seconds since Unix epoch)",
 		"kernelProcessesRunning": "Number of processes in runnable state",
 		"loadAverage15m": "The fifteen-minute load average",
@@ -5237,6 +5286,8 @@
 	},
 	"AccountWorkerPlacementAdaptiveGroupsDimensions": {
 		"__description": "",
+		"clientColoCode": "IATA airport code for the Cloudflare datacenter where the request entered Cloudflare's network.",
+		"coloCode": "IATA airport code for the Cloudflare datacenter where the script ran.",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
 		"datetimeFifteenMinutes": "Request timestamp, truncated to fifteen minutes",
