@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/blindrsa-ts",
 	"dist-tags": {
-		"latest": "0.4.2"
+		"latest": "0.4.3"
 	},
 	"versions": {
 		"0.1.0": {
@@ -11,34 +11,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.2",
-				"@types/jest": "29.5.3",
-				"@typescript-eslint/eslint-plugin": "5.60.0",
-				"@typescript-eslint/parser": "5.60.0",
-				"benchmark": "2.1.4",
+				"jest": "29.6.1",
 				"eslint": "8.44.0",
-				"eslint-config-prettier": "8.8.0",
+				"rimraf": "5.0.1",
+				"prettier": "3.0.0",
+				"benchmark": "2.1.4",
+				"typescript": "5.1.6",
+				"@types/jest": "29.5.3",
+				"@types/benchmark": "2.1.2",
 				"eslint-plugin-jest": "27.2.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "8.8.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.6.1",
-				"prettier": "3.0.0",
-				"rimraf": "5.0.1",
-				"typescript": "5.1.6"
+				"@typescript-eslint/parser": "5.60.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-Tl1EPjVip5STWKMpEuRNiMB868UC2cg5qwzUEkM7w+isuwVWd3GQ55JrjFuGgwQXV0lTSaN5b46ASdBqBmvCGQ==",
 				"shasum": "741eaa43df6825de8de9fa22b3e57b5cbb3fb713",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.1.0.tgz",
 				"fileCount": 16,
-				"unpackedSize": 136403,
+				"integrity": "sha512-Tl1EPjVip5STWKMpEuRNiMB868UC2cg5qwzUEkM7w+isuwVWd3GQ55JrjFuGgwQXV0lTSaN5b46ASdBqBmvCGQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCOyVqXetGXJsYTJC3J2PJNBhoc6PFy1ssJk4lyVows2wIgZY1+UB/xP7mWco5G1ERAPYeMXvGbnmZj+8sUh9leJ2Y="
+						"sig": "MEUCIQCOyVqXetGXJsYTJC3J2PJNBhoc6PFy1ssJk4lyVows2wIgZY1+UB/xP7mWco5G1ERAPYeMXvGbnmZj+8sUh9leJ2Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 136403
 			},
 			"engines": {
 				"node": ">=18"
@@ -51,34 +51,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.2",
-				"@types/jest": "29.5.3",
-				"@typescript-eslint/eslint-plugin": "5.60.0",
-				"@typescript-eslint/parser": "5.60.0",
-				"benchmark": "2.1.4",
+				"jest": "29.6.1",
 				"eslint": "8.44.0",
-				"eslint-config-prettier": "8.8.0",
+				"rimraf": "5.0.1",
+				"prettier": "3.0.0",
+				"benchmark": "2.1.4",
+				"typescript": "5.1.6",
+				"@types/jest": "29.5.3",
+				"@types/benchmark": "2.1.2",
 				"eslint-plugin-jest": "27.2.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "8.8.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.6.1",
-				"prettier": "3.0.0",
-				"rimraf": "5.0.1",
-				"typescript": "5.1.6"
+				"@typescript-eslint/parser": "5.60.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-+w1TO2+ekG7Iga2yLEvyf+XsqUhB0ats77hIkpHJTFM/6YEUfCiAIuOFRuKENTp9UrSMmaXB4XmUmonHfWlUKg==",
 				"shasum": "c080eb8e321b27b5332215076b8148a0affcf08f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.1.2.tgz",
 				"fileCount": 16,
-				"unpackedSize": 136379,
+				"integrity": "sha512-+w1TO2+ekG7Iga2yLEvyf+XsqUhB0ats77hIkpHJTFM/6YEUfCiAIuOFRuKENTp9UrSMmaXB4XmUmonHfWlUKg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIEPvUGS04oOwLeGEOSFqW0TIADW9nsHEfHyNPt/UTjPUAiA7TKvO323ORhcpxA4ej1xxizLFWz9AbFZHYxBxO1pZTQ=="
+						"sig": "MEQCIEPvUGS04oOwLeGEOSFqW0TIADW9nsHEfHyNPt/UTjPUAiA7TKvO323ORhcpxA4ej1xxizLFWz9AbFZHYxBxO1pZTQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 136379
 			},
 			"engines": {
 				"node": ">=18"
@@ -91,34 +91,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-rc0tamvqNl9Fq9AHHb5KGPi+maLl/e6oI106r5GOY67Q/6S0t2lUW3sDaOTPOHfev2zQa9QrzZBrDzE7bMn8KA==",
 				"shasum": "41f5bbdd9d9a77fb29ca8471ea370dcca578c4ac",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.2.0.tgz",
 				"fileCount": 16,
-				"unpackedSize": 142040,
+				"integrity": "sha512-rc0tamvqNl9Fq9AHHb5KGPi+maLl/e6oI106r5GOY67Q/6S0t2lUW3sDaOTPOHfev2zQa9QrzZBrDzE7bMn8KA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIFey8s5ReT5O7n2Sk4A/3BjK3L18Ey5KmCY0iyWZHDxNAiEA+CNMfYxoTU9m1OrULL8BGON9EeOXzVD6Wy4rIITeHW4="
+						"sig": "MEUCIFey8s5ReT5O7n2Sk4A/3BjK3L18Ey5KmCY0iyWZHDxNAiEA+CNMfYxoTU9m1OrULL8BGON9EeOXzVD6Wy4rIITeHW4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 142040
 			},
 			"engines": {
 				"node": ">=18"
@@ -131,34 +131,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-wapJDOpilW1/BQQn8grd8tNfTMLdB7XP4xWx1v46NUV5tnoUvZPdcbNVe3zB9b5ElHXcUi4zt96yrwGjzWE6bg==",
 				"shasum": "dd7690d8156b9dacc94820c4463674ee7723d70b",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.3.1.tgz",
 				"fileCount": 16,
-				"unpackedSize": 145037,
+				"integrity": "sha512-wapJDOpilW1/BQQn8grd8tNfTMLdB7XP4xWx1v46NUV5tnoUvZPdcbNVe3zB9b5ElHXcUi4zt96yrwGjzWE6bg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDd3KCEhk91aPsQwUeRV0ST8WX+cBBQSfPXQoSZgZQtUwIhAJNPYjGnAqMIk9IRC0fJiAyFLqet4SZXkeltqbsZTab+"
+						"sig": "MEYCIQDd3KCEhk91aPsQwUeRV0ST8WX+cBBQSfPXQoSZgZQtUwIhAJNPYjGnAqMIk9IRC0fJiAyFLqet4SZXkeltqbsZTab+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 145037
 			},
 			"engines": {
 				"node": ">=18"
@@ -171,34 +171,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.3",
-				"@types/jest": "29.5.5",
-				"@typescript-eslint/eslint-plugin": "6.7.4",
-				"@typescript-eslint/parser": "6.7.4",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.51.0",
-				"eslint-config-prettier": "9.0.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.0.3",
+				"benchmark": "2.1.4",
+				"typescript": "5.2.2",
+				"@types/jest": "29.5.5",
+				"@types/benchmark": "2.1.3",
 				"eslint-plugin-jest": "27.4.2",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.0.0",
 				"eslint-plugin-prettier": "5.0.0",
 				"eslint-plugin-security": "1.7.1",
-				"jest": "29.7.0",
-				"prettier": "3.0.3",
-				"rimraf": "5.0.5",
-				"typescript": "5.2.2"
+				"@typescript-eslint/parser": "6.7.4",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
 			},
 			"dist": {
-				"integrity": "sha512-JWV+LH2ZB1RSZsinesVFK5rrStPevw3/lMmNdhbKlQsTXQXqCXUFxwuYlFwyDxVzQyl/rdB/vUIgxc7PXit/TQ==",
 				"shasum": "4e700b07d39b394907b7fa5349915f3dd14b9af6",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.3.2.tgz",
 				"fileCount": 16,
-				"unpackedSize": 145083,
+				"integrity": "sha512-JWV+LH2ZB1RSZsinesVFK5rrStPevw3/lMmNdhbKlQsTXQXqCXUFxwuYlFwyDxVzQyl/rdB/vUIgxc7PXit/TQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCIUO8xDYSykRZRvboTx4lJN7X5pnGApypARLzAI4/HgAIgU7ggg4J0+CQ3vB6Jx7k/xkLKkc554oysM7X/Grugdds="
+						"sig": "MEUCIQCIUO8xDYSykRZRvboTx4lJN7X5pnGApypARLzAI4/HgAIgU7ggg4J0+CQ3vB6Jx7k/xkLKkc554oysM7X/Grugdds=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 145083
 			},
 			"engines": {
 				"node": ">=18"
@@ -211,34 +211,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.5",
-				"@types/jest": "29.5.12",
-				"@typescript-eslint/eslint-plugin": "7.2.0",
-				"@typescript-eslint/parser": "7.2.0",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.57.0",
-				"eslint-config-prettier": "9.1.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.2.5",
+				"benchmark": "2.1.4",
+				"typescript": "5.4.2",
+				"@types/jest": "29.5.12",
+				"@types/benchmark": "2.1.5",
 				"eslint-plugin-jest": "27.9.0",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.1.0",
 				"eslint-plugin-prettier": "5.1.3",
 				"eslint-plugin-security": "2.1.1",
-				"jest": "29.7.0",
-				"prettier": "3.2.5",
-				"rimraf": "5.0.5",
-				"typescript": "5.4.2"
+				"@typescript-eslint/parser": "7.2.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "7.2.0"
 			},
 			"dist": {
-				"integrity": "sha512-LcxbbufPbwCF7KyauLEho5l3aLo0ecYbDpWd/LaF4RB02fWVhtMFD5gd865DXiSXxMAUkurqGJgtN75vthSLFw==",
 				"shasum": "b06c06cd5d9666ddc8368b38ab71607909443af0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.0.tgz",
 				"fileCount": 24,
-				"unpackedSize": 196983,
+				"integrity": "sha512-LcxbbufPbwCF7KyauLEho5l3aLo0ecYbDpWd/LaF4RB02fWVhtMFD5gd865DXiSXxMAUkurqGJgtN75vthSLFw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIApRe5ESrWHewzm/YNIiDhkgzaAsiVvUmZw8uC9RW4T8AiEA2QFzgWHITItlW1lasSMIuSJxC06ZzdwvIiuuhJWnk44="
+						"sig": "MEUCIApRe5ESrWHewzm/YNIiDhkgzaAsiVvUmZw8uC9RW4T8AiEA2QFzgWHITItlW1lasSMIuSJxC06ZzdwvIiuuhJWnk44=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 196983
 			},
 			"engines": {
 				"node": ">=18"
@@ -251,34 +251,34 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.5",
-				"@types/jest": "29.5.12",
-				"@typescript-eslint/eslint-plugin": "7.2.0",
-				"@typescript-eslint/parser": "7.2.0",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.57.0",
-				"eslint-config-prettier": "9.1.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.2.5",
+				"benchmark": "2.1.4",
+				"typescript": "5.4.2",
+				"@types/jest": "29.5.12",
+				"@types/benchmark": "2.1.5",
 				"eslint-plugin-jest": "27.9.0",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.1.0",
 				"eslint-plugin-prettier": "5.1.3",
 				"eslint-plugin-security": "2.1.1",
-				"jest": "29.7.0",
-				"prettier": "3.2.5",
-				"rimraf": "5.0.5",
-				"typescript": "5.4.2"
+				"@typescript-eslint/parser": "7.2.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "7.2.0"
 			},
 			"dist": {
-				"integrity": "sha512-viLyf2dH90s41ko4rrH3sFNTGeAwHDS85duwv7ZLNVe19ss0615tFfFVJTv/YBU3yv6wJUdrdHkTVjNIHb8XRg==",
 				"shasum": "5f98018db445bc275621bb674ad045482ddec83d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.1.tgz",
 				"fileCount": 25,
-				"unpackedSize": 243715,
+				"integrity": "sha512-viLyf2dH90s41ko4rrH3sFNTGeAwHDS85duwv7ZLNVe19ss0615tFfFVJTv/YBU3yv6wJUdrdHkTVjNIHb8XRg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDWmMtW9kBN4zf82/cfsCFFm9edXxJLu1V3uqmj+FNqBAIhAIOOiZiC9RDFOUchNXHXRMEWGX/N1DWJpP6L6h6kPcdI"
+						"sig": "MEYCIQDWmMtW9kBN4zf82/cfsCFFm9edXxJLu1V3uqmj+FNqBAIhAIOOiZiC9RDFOUchNXHXRMEWGX/N1DWJpP6L6h6kPcdI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 243715
 			},
 			"engines": {
 				"node": ">=18"
@@ -291,37 +291,76 @@
 				"sjcl": "1.0.8"
 			},
 			"devDependencies": {
-				"@types/benchmark": "2.1.5",
-				"@types/jest": "29.5.12",
-				"@typescript-eslint/eslint-plugin": "7.2.0",
-				"@typescript-eslint/parser": "7.2.0",
-				"benchmark": "2.1.4",
+				"jest": "29.7.0",
 				"eslint": "8.57.0",
-				"eslint-config-prettier": "9.1.0",
+				"rimraf": "5.0.5",
+				"prettier": "3.2.5",
+				"benchmark": "2.1.4",
+				"typescript": "5.4.2",
+				"@types/jest": "29.5.12",
+				"@types/benchmark": "2.1.5",
 				"eslint-plugin-jest": "27.9.0",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.1.0",
 				"eslint-plugin-prettier": "5.1.3",
 				"eslint-plugin-security": "2.1.1",
-				"jest": "29.7.0",
-				"prettier": "3.2.5",
-				"rimraf": "5.0.5",
-				"typescript": "5.4.2"
+				"@typescript-eslint/parser": "7.2.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"@typescript-eslint/eslint-plugin": "7.2.0"
 			},
 			"dist": {
-				"integrity": "sha512-2ehbGsHWCdeCvl4HqGlcDdfKp3eXsUfqTurmrxbKyuHR3p8zjTK4yR7LbBaDV6fwZTB+bjPBqEhJUPXL3CCYsg==",
 				"shasum": "da380334bbfe03c1fe0453bb186e2850a9d996f1",
 				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.2.tgz",
 				"fileCount": 25,
-				"unpackedSize": 244069,
+				"integrity": "sha512-2ehbGsHWCdeCvl4HqGlcDdfKp3eXsUfqTurmrxbKyuHR3p8zjTK4yR7LbBaDV6fwZTB+bjPBqEhJUPXL3CCYsg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIDUKnREC97qH+Pn1O5tXTJ3Gadoeq1hhBgBDcZaxXme6AiAOjvRCR9jsJShh6oKB2perbdIAD4Fw1bYl5EKQlMd7NA=="
+						"sig": "MEQCIDUKnREC97qH+Pn1O5tXTJ3Gadoeq1hhBgBDcZaxXme6AiAOjvRCR9jsJShh6oKB2perbdIAD4Fw1bYl5EKQlMd7NA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 244069
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.4.3": {
+			"name": "@cloudflare/blindrsa-ts",
+			"version": "0.4.3",
+			"dependencies": {
+				"sjcl": "1.0.8"
+			},
+			"devDependencies": {
+				"@eslint/js": "9.11.1",
+				"@types/benchmark": "2.1.5",
+				"@vitest/coverage-v8": "3.0.7",
+				"benchmark": "2.1.4",
+				"eslint": "9.11.1",
+				"eslint-config-prettier": "9.1.0",
+				"eslint-plugin-prettier": "5.2.1",
+				"eslint-plugin-security": "3.0.1",
+				"eslint-plugin-vitest": "0.5.4",
+				"prettier": "3.3.3",
+				"rimraf": "6.0.1",
+				"typescript": "5.6.2",
+				"typescript-eslint": "8.8.0",
+				"vitest": "3.0.7"
+			},
+			"dist": {
+				"integrity": "sha512-D42aXmXq61ppm8Lz4mBjJw11gh/60WLC94QkGdUovfIogsjJUIwnrg/k8VPW9GVmDw1Awx8RR5WE/gNNZYkLSg==",
+				"shasum": "dd35a062a95dd74e5e8fb000199bdcf7de41c48e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.3.tgz",
+				"fileCount": 25,
+				"unpackedSize": 218798,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCEvA+YfHtaUUVyDiK6HgnbNyH+CXvjnvXvGIT6bniREwIhAOlhLgKkFAnYZ82g4C72IRkRAzgoW2UxvQsHUhRPuVjO"
 					}
 				]
 			},
 			"engines": {
-				"node": ">=18"
+				"node": ">=20"
 			}
 		}
 	}
