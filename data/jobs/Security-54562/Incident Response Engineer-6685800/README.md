@@ -54,7 +54,7 @@
 </ul>
 <p><strong>Must-Have Qualifications</strong></p>
 <ul>
-	<li>7+ years of experience in incident response, security operations, and forensic analysis, with 5+ years leading teams.</li>
+	<li>3+ years of experience in incident response, security operations, and forensic analysis.</li>
 	<li>Proven ability to lead crisis situations, make data-driven security decisions, and drive technical and operational improvements.</li>
 	<li>Strong expertise in incident management, root cause analysis, and forensic investigation methodologies.</li>
 	<li>Hands-on experience with SIEM (SQL, ELK, etc), SOAR, and EDR (CrowdStrike,) for real-time security monitoring and response.</li>
