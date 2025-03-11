@@ -531,7 +531,7 @@
 									"max_upload_records": 1000,
 									"name": "example.com",
 									"output_options": {
-										"CVE-2021-4428": false,
+										"CVE-2021-44228": false,
 										"batch_prefix": "",
 										"batch_suffix": "",
 										"field_delimiter": ",",
@@ -732,7 +732,7 @@
 														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 														"nullable": true,
 														"properties": {
-															"CVE-2021-4428": {
+															"CVE-2021-44228": {
 																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
@@ -998,7 +998,7 @@
 									"max_upload_records": 1000,
 									"name": "example.com",
 									"output_options": {
-										"CVE-2021-4428": false,
+										"CVE-2021-44228": false,
 										"batch_prefix": "",
 										"batch_suffix": "",
 										"field_delimiter": ",",
@@ -1199,7 +1199,7 @@
 														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 														"nullable": true,
 														"properties": {
-															"CVE-2021-4428": {
+															"CVE-2021-44228": {
 																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
@@ -1474,7 +1474,7 @@
 								"max_upload_records": 1000,
 								"name": "example.com",
 								"output_options": {
-									"CVE-2021-4428": false,
+									"CVE-2021-44228": false,
 									"batch_prefix": "",
 									"batch_suffix": "",
 									"field_delimiter": ",",
@@ -1678,7 +1678,7 @@
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 													"nullable": true,
 													"properties": {
-														"CVE-2021-4428": {
+														"CVE-2021-44228": {
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
@@ -1933,7 +1933,7 @@
 						"max_upload_records": 1000,
 						"name": "example.com",
 						"output_options": {
-							"CVE-2021-4428": false,
+							"CVE-2021-44228": false,
 							"batch_prefix": "",
 							"batch_suffix": "",
 							"field_delimiter": ",",
@@ -2043,7 +2043,7 @@
 								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 								"nullable": true,
 								"properties": {
-									"CVE-2021-4428": {
+									"CVE-2021-44228": {
 										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
@@ -2173,7 +2173,7 @@
 								"max_upload_records": 1000,
 								"name": "example.com",
 								"output_options": {
-									"CVE-2021-4428": false,
+									"CVE-2021-44228": false,
 									"batch_prefix": "",
 									"batch_suffix": "",
 									"field_delimiter": ",",
@@ -2377,7 +2377,7 @@
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 													"nullable": true,
 													"properties": {
-														"CVE-2021-4428": {
+														"CVE-2021-44228": {
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
@@ -3891,7 +3891,7 @@
 						"max_upload_interval_seconds": 30,
 						"max_upload_records": 1000,
 						"output_options": {
-							"CVE-2021-4428": false,
+							"CVE-2021-44228": false,
 							"batch_prefix": "",
 							"batch_suffix": "",
 							"field_delimiter": ",",
@@ -3993,7 +3993,7 @@
 								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 								"nullable": true,
 								"properties": {
-									"CVE-2021-4428": {
+									"CVE-2021-44228": {
 										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
@@ -4120,7 +4120,7 @@
 								"max_upload_records": 1000,
 								"name": "example.com",
 								"output_options": {
-									"CVE-2021-4428": false,
+									"CVE-2021-44228": false,
 									"batch_prefix": "",
 									"batch_suffix": "",
 									"field_delimiter": ",",
@@ -4324,7 +4324,7 @@
 													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
 													"nullable": true,
 													"properties": {
-														"CVE-2021-4428": {
+														"CVE-2021-44228": {
 															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
