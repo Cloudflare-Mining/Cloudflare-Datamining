@@ -38,6 +38,17 @@
 				}
 			},
 			{
+				"description": "Filters results by the specified date.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Filters results by the specified date.",
+					"example": "2024-09-19",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",

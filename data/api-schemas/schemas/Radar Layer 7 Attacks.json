@@ -2127,28 +2127,6 @@
 				}
 			},
 			{
-				"description": "This field is deprecated, please use the new `mitigationProduct`.",
-				"in": "query",
-				"name": "attack",
-				"schema": {
-					"deprecated": true,
-					"description": "This field is deprecated, please use the new `mitigationProduct`.",
-					"items": {
-						"enum": [
-							"DDOS",
-							"WAF",
-							"BOT_MANAGEMENT",
-							"ACCESS_RULES",
-							"IP_REPUTATION",
-							"API_SHIELD",
-							"DATA_LOSS_PREVENTION"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
@@ -5717,102 +5695,6 @@
 				}
 			},
 			{
-				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-				"in": "query",
-				"name": "ipVersion",
-				"schema": {
-					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-					"example": "IPv4",
-					"items": {
-						"enum": [
-							"IPv4",
-							"IPv6"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Filters results by HTTP version.",
-				"in": "query",
-				"name": "httpVersion",
-				"schema": {
-					"description": "Filters results by HTTP version.",
-					"example": "HTTPv1",
-					"items": {
-						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Filters results by HTTP method.",
-				"in": "query",
-				"name": "httpMethod",
-				"schema": {
-					"description": "Filters results by HTTP method.",
-					"example": "GET",
-					"items": {
-						"enum": [
-							"GET",
-							"POST",
-							"DELETE",
-							"PUT",
-							"HEAD",
-							"PURGE",
-							"OPTIONS",
-							"PROPFIND",
-							"MKCOL",
-							"PATCH",
-							"ACL",
-							"BCOPY",
-							"BDELETE",
-							"BMOVE",
-							"BPROPFIND",
-							"BPROPPATCH",
-							"CHECKIN",
-							"CHECKOUT",
-							"CONNECT",
-							"COPY",
-							"LABEL",
-							"LOCK",
-							"MERGE",
-							"MKACTIVITY",
-							"MKWORKSPACE",
-							"MOVE",
-							"NOTIFY",
-							"ORDERPATCH",
-							"POLL",
-							"PROPPATCH",
-							"REPORT",
-							"SEARCH",
-							"SUBSCRIBE",
-							"TRACE",
-							"UNCHECKOUT",
-							"UNLOCK",
-							"UNSUBSCRIBE",
-							"UPDATE",
-							"VERSIONCONTROL",
-							"BASELINECONTROL",
-							"XMSENUMATTS",
-							"RPC_OUT_DATA",
-							"RPC_IN_DATA",
-							"JSON",
-							"COOK",
-							"TRACK"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Array of L7 mitigation products.",
 				"in": "query",
 				"name": "mitigationProduct",
@@ -5859,11 +5741,11 @@
 				}
 			},
 			{
-				"description": "Attack magnitude can be defined by total requests mitigated or by total zones attacked.",
+				"description": "This parameter is deprecated. In the future, we will only support attack magnitude defined by the total number of mitigated requests (MITIGATED_REQUESTS).",
 				"in": "query",
 				"name": "magnitude",
 				"schema": {
-					"description": "Attack magnitude can be defined by total requests mitigated or by total zones attacked.",
+					"description": "This parameter is deprecated. In the future, we will only support attack magnitude defined by the total number of mitigated requests (MITIGATED_REQUESTS).",
 					"enum": [
 						"AFFECTED_ZONES",
 						"MITIGATED_REQUESTS"
@@ -7008,102 +6890,6 @@
 					"description": "Comma-separated list of continents (alpha-2 continent codes). Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 					"example": "EU,NA",
 					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-				"in": "query",
-				"name": "ipVersion",
-				"schema": {
-					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-					"example": "IPv4",
-					"items": {
-						"enum": [
-							"IPv4",
-							"IPv6"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Filters results by HTTP version.",
-				"in": "query",
-				"name": "httpVersion",
-				"schema": {
-					"description": "Filters results by HTTP version.",
-					"example": "HTTPv1",
-					"items": {
-						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Filters results by HTTP method.",
-				"in": "query",
-				"name": "httpMethod",
-				"schema": {
-					"description": "Filters results by HTTP method.",
-					"example": "GET",
-					"items": {
-						"enum": [
-							"GET",
-							"POST",
-							"DELETE",
-							"PUT",
-							"HEAD",
-							"PURGE",
-							"OPTIONS",
-							"PROPFIND",
-							"MKCOL",
-							"PATCH",
-							"ACL",
-							"BCOPY",
-							"BDELETE",
-							"BMOVE",
-							"BPROPFIND",
-							"BPROPPATCH",
-							"CHECKIN",
-							"CHECKOUT",
-							"CONNECT",
-							"COPY",
-							"LABEL",
-							"LOCK",
-							"MERGE",
-							"MKACTIVITY",
-							"MKWORKSPACE",
-							"MOVE",
-							"NOTIFY",
-							"ORDERPATCH",
-							"POLL",
-							"PROPPATCH",
-							"REPORT",
-							"SEARCH",
-							"SUBSCRIBE",
-							"TRACE",
-							"UNCHECKOUT",
-							"UNLOCK",
-							"UNSUBSCRIBE",
-							"UPDATE",
-							"VERSIONCONTROL",
-							"BASELINECONTROL",
-							"XMSENUMATTS",
-							"RPC_OUT_DATA",
-							"RPC_IN_DATA",
-							"JSON",
-							"COOK",
-							"TRACK"
-						],
 						"type": "string"
 					},
 					"type": "array"

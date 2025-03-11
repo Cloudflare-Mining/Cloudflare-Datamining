@@ -27,11 +27,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the ranking.",
+				"description": "Array of dates to filter the results.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the ranking.",
+					"description": "Array of dates to filter the results.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",
@@ -457,11 +457,11 @@
 				}
 			},
 			{
-				"description": "Array of dates to filter the ranking.",
+				"description": "Array of dates to filter the results.",
 				"in": "query",
 				"name": "date",
 				"schema": {
-					"description": "Array of dates to filter the ranking.",
+					"description": "Array of dates to filter the results.",
 					"example": "2022-09-19",
 					"items": {
 						"format": "date",

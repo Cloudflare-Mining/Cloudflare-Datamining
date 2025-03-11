@@ -211,6 +211,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -628,6 +647,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -1065,6 +1103,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -1482,6 +1539,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -1919,6 +1995,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -2332,6 +2427,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -2781,6 +2895,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -3196,6 +3329,25 @@
 							"CHROMEOS",
 							"LINUX",
 							"SMART_TV"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -3690,6 +3842,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -4137,6 +4308,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -4511,6 +4701,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -5282,6 +5491,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -5653,6 +5881,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -6009,6 +6256,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -6387,6 +6653,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -6739,6 +7024,25 @@
 							"TLSv1_2",
 							"TLSv1_3",
 							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
@@ -7127,6 +7431,25 @@
 				}
 			},
 			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -7483,6 +7806,25 @@
 							"CHROMEOS",
 							"LINUX",
 							"SMART_TV"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by browser family.",
+				"in": "query",
+				"name": "browserFamily",
+				"schema": {
+					"description": "Filters results by browser family.",
+					"example": "CHROME",
+					"items": {
+						"enum": [
+							"CHROME",
+							"EDGE",
+							"FIREFOX",
+							"SAFARI"
 						],
 						"type": "string"
 					},
