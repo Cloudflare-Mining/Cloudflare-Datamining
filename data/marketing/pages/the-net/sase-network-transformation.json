@@ -39,7 +39,7 @@
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "theNET | Accelerating the journey to SASE",
-					"metaDescription": "Integrating a comprehensive SASE architecture is arduous but worth while — with an end goal of reducing security gaps and enabling the future of work.",
+					"metaDescription": "Integrating a comprehensive SASE architecture as part of a network transformation can help reduce security gaps and enable the future of work.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -632,7 +632,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SASE is often a complete transformation of an organization's approach to security and networking. It involves combining a variety of security and networking services — including firewalls, zero trust network access, ",
+													"value": "SASE is often a complete transformation of an organization's approach to security and networking. It involves combining a variety of security and networking services — including firewalls, Zero Trust Network Access, ",
 													"marks": [],
 													"content": null
 												},
@@ -694,7 +694,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " — onto a single cloud-based platform. With SASE, corporate data centers are no longer the central location for network controls. Instead, controls move to the cloud edge, thereby closer to users, wherever they are.",
+													"value": " — onto a single cloud-based platform. With SASE, corporate data centers are no longer the central location for network controls. Instead, controls move to the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network-edge/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "cloud edge",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", thereby closer to users, wherever they are.",
 													"marks": [],
 													"content": null
 												}
@@ -715,38 +746,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "According to ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.gartner.com/en/documents/3999828-2021-strategic-roadmap-for-sase-convergence"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Gartner",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ", completing the implementation of the SASE security model can take years and involves implicating decisions around the integration of existing providers and how to stitch together patchwork ",
+													"value": "Completing the implementation of the SASE security model can take years, and it involves implicating decisions around the integration of existing providers and how to stitch together patchwork ",
 													"marks": [],
 													"content": null
 												},
@@ -798,7 +798,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This planning and consensus-building activity can seem daunting and often inhibit organizations from taking small yet significant steps. Getting left behind on this journey to network transformation means confronting greater risks for data loss, insider threats, and network attacks, both today and in the future.",
+													"value": "This planning and consensus-building activity can seem daunting and often inhibit organizations from taking small yet significant steps. Getting left behind on this journey to ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/last-cloud-transformation/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "network transformation",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " means confronting greater risks for data loss, insider threats, and network attacks, both today and in the future.",
 													"marks": [],
 													"content": null
 												}
@@ -840,7 +871,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To simplify the process, here are four key questions organizations can ask on the road to adoption.",
+													"value": "To simplify the process, here are four key questions organizations can ask before or during their network transformation.",
 													"marks": [],
 													"content": null
 												}
@@ -990,7 +1021,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" of these legacy solutions adds latency and unnecessary complexity, looking at a map to see where traffic is being processed around the globe — and where users are located — can illuminate potential quick wins for enhancements.",
+													"value": "\" of these legacy solutions adds latency and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/building-cyber-resilience/security-complexity/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "unnecessary complexity",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", looking at a map to see where traffic is being processed around the globe — and where users are located — can illuminate potential quick wins for enhancements.",
 													"marks": [],
 													"content": null
 												}
@@ -1327,7 +1389,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Starting small can be a way to gain momentum and increase support from stakeholders, improving the likelihood of buy-in for larger projects in the future. To this end, consider starting with a SASE pilot program.",
+													"value": "Starting small can be a way to gain momentum and increase support from stakeholders, improving the likelihood of ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/security-boardroom/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "buy-in for larger projects",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " in the future. To this end, consider starting with a SASE pilot program.",
 													"marks": [],
 													"content": null
 												}
@@ -1528,7 +1621,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In discussions of SASE, it is natural for technological matters to dominate the conversation. Keep in mind that transformational shifts around people, processes, and budgets will also be pivotal for success.",
+													"value": "In discussions of SASE, it is natural for technological matters to dominate the conversation. Keep in mind that transformational shifts around ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/security-first-culture/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "people",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", processes, and budgets will also be pivotal for success.",
 													"marks": [],
 													"content": null
 												}
@@ -2153,7 +2277,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "",
+																	"value": " ",
 																	"marks": [],
 																	"content": null
 																},
@@ -2161,7 +2285,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/lp/ema-sase-report/"
+																		"uri": "https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2172,7 +2296,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "EMA Report: Availability and Buying Options in the Emerging SASE Market",
+																			"value": "Gartner Magic Quadrant™ for Single-Vendor SASE",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2224,7 +2348,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://blog.cloudflare.com/introducing-cloudflare-one/"
+																		"uri": "https://www.cloudflare.com/the-net/top-of-mind-technology/last-cloud-transformation/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2235,7 +2359,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Blog: Introducing Cloudflare One",
+																			"value": "The last frontier of cloud transformation",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2287,7 +2411,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/"
+																		"uri": "https://www.cloudflare.com/the-net/building-cyber-resilience/security-complexity/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2298,7 +2422,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "What is Zero Trust security?",
+																			"value": " Complexity might be your greatest risk",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2442,7 +2566,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To see how Cloudflare One stacks up against eight other SASE vendors, get the ",
+													"value": "Learn why Cloudflare was recognized for the ability to execute and completeness of vision in the ",
 													"marks": [],
 													"content": null
 												},
@@ -2450,7 +2574,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/lp/ema-sase-report/"
+														"uri": "https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/"
 													},
 													"value": null,
 													"marks": null,
@@ -2461,13 +2585,10 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Availability and Buying Options in the Emerging SASE Market",
+															"value": "2024 Gartner Magic Quadrant™ for Single-Vendor SASE",
 															"marks": [
 																{
 																	"type": "italic"
-																},
-																{
-																	"type": "underline"
 																}
 															],
 															"content": null
@@ -2480,7 +2601,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " report from EMA.",
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
@@ -2506,8 +2627,8 @@
 															"contentfulId": "1lROESdRnLVxOGK7rQdJNf",
 															"elementName": "Insights - SASE Network Transformation- Dive Deeper - left - button",
 															"standardText": null,
-															"text": "Get the report",
-															"url": "/lp/ema-sase-report/",
+															"text": "Get the report!",
+															"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/",
 															"loggedInUrl": null,
 															"buttonModal": null,
 															"openInNewTab": true,
