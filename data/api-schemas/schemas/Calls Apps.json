@@ -766,7 +766,8 @@
 													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
 													"maxLength": 64,
 													"minLength": 64,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",

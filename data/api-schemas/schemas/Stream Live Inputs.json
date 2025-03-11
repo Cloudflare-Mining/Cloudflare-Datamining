@@ -580,7 +580,8 @@
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
@@ -596,7 +597,8 @@
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
@@ -612,7 +614,8 @@
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
@@ -633,7 +636,8 @@
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
@@ -1300,7 +1304,8 @@
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
@@ -1316,7 +1321,8 @@
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
@@ -1332,7 +1338,8 @@
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
@@ -1353,7 +1360,8 @@
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
@@ -2059,7 +2067,8 @@
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
@@ -2075,7 +2084,8 @@
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
@@ -2091,7 +2101,8 @@
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
@@ -2112,7 +2123,8 @@
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
