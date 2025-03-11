@@ -4,6 +4,7 @@ import AddMember from './AddMember';
 import Add from './Add';
 import AiAudit from './AiAudit';
 import AnalyticsData from './AnalyticsData';
+import AnalyticsSearch from './AnalyticsSearch';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
 import Applications from './Applications';
@@ -203,6 +204,7 @@ export default {
   add: Add,
   'ai-audit': AiAudit,
   'analytics-data': AnalyticsData,
+  'analytics-search': AnalyticsSearch,
   'api-security': ApiSecurity,
   api: Api,
   applications: Applications,

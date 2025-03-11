@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.26.0
+
+### Minor Changes
+
+- c6192e03df: Add analytics-search icon
+
 ## 12.25.0
 
 ### Minor Changes

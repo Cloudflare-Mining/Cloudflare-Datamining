@@ -6,6 +6,7 @@ declare const _default: {
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ai-audit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'analytics-data': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'analytics-search': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
