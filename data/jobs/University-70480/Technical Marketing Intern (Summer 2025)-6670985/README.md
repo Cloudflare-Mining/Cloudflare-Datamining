@@ -1,0 +1,42 @@
+<div class="content-intro">
+	<div><strong>About Us</strong></div>
+	<div>
+		<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
+	</div>
+</div>
+<p><strong>Available Location(s): Austin, TX</strong></p>
+<p><strong>About The Team</strong></p>
+<p>Technical marketing works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.</p>
+<p><strong>About The Internship</strong></p>
+<p>As a Technical Marketing Intern, you will help accelerate our plans to improve the content and tools we build for technical sales, partners and customers. You will be tasked with gathering feedback from the field, defining what customers are looking to understand and then helping build the videos, demonstrations and other technical assets. Your work will be key to improving our ability to explain to customers the complex technical details which will lead to an increase in sales.</p>
+<p>The ideal candidate has a hands on mindset, a get-it-done attitude and is not afraid of challenging the status quo. You should feel comfortable facing a brand new technology and having to read documentation and being hands on with servers, scripts and APIs.</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
+<ul>
+	<li>Gain experience with all of Cloudflare's amazing technology and work with the people that build it.</li>
+	<li>Understand complex technologies and explain them in simple terms and align solutions to customer problems.</li>
+	<li>Identify inefficiencies and implement automation to reduce the time it takes for technical sales to learn our solutions.</li>
+	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful content.</li>
+	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
+</ul>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>Currently pursuing a degree in Computer Science, Marketing, or a related field.</li>
+	<li>Strong communication skills. Ability to explain complex concepts in a manner that's understandable without dumbing down the content.</li>
+	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
+	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
+	<li>Previous experience in technical &amp; product marketing/product management is a plus</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company</li>
+</ul>
+<div class="content-conclusion">
+	<p><strong>What Makes Cloudflare Special?</strong></p>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
