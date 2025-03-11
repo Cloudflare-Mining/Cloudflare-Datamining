@@ -447,7 +447,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -487,7 +488,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -573,7 +575,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -613,7 +616,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -979,7 +983,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1019,7 +1024,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1105,7 +1111,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1145,7 +1152,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1708,7 +1716,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1748,7 +1757,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1834,7 +1844,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -1874,7 +1885,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2253,7 +2265,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2293,7 +2306,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2379,7 +2393,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2419,7 +2434,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2798,7 +2814,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2838,7 +2855,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2924,7 +2942,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -2964,7 +2983,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3248,7 +3268,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3288,7 +3309,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3374,7 +3396,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3414,7 +3437,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3698,7 +3722,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3738,7 +3763,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3824,7 +3850,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -3864,7 +3891,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4148,7 +4176,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4188,7 +4217,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4274,7 +4304,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4314,7 +4345,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4790,7 +4822,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4830,7 +4863,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4916,7 +4950,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -4956,7 +4991,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -5322,7 +5358,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -5362,7 +5399,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -5448,7 +5486,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -5488,7 +5527,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6051,7 +6091,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6091,7 +6132,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6177,7 +6219,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6217,7 +6260,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6596,7 +6640,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6636,7 +6681,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6722,7 +6768,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -6762,7 +6809,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7141,7 +7189,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7181,7 +7230,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7267,7 +7317,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7307,7 +7358,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7591,7 +7643,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7631,7 +7684,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7717,7 +7771,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -7757,7 +7812,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8041,7 +8097,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8081,7 +8138,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8167,7 +8225,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8207,7 +8266,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8491,7 +8551,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8531,7 +8592,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8617,7 +8679,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -8657,7 +8720,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9370,7 +9434,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9410,7 +9475,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9496,7 +9562,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9536,7 +9603,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9902,7 +9970,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -9942,7 +10011,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10028,7 +10098,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10068,7 +10139,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10631,7 +10703,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10671,7 +10744,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10757,7 +10831,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -10797,7 +10872,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11176,7 +11252,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11216,7 +11293,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11302,7 +11380,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11342,7 +11421,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11721,7 +11801,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11761,7 +11842,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11847,7 +11929,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -11887,7 +11970,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12171,7 +12255,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12211,7 +12296,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12297,7 +12383,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12337,7 +12424,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12621,7 +12709,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12661,7 +12750,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12747,7 +12837,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -12787,7 +12878,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13071,7 +13163,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13111,7 +13204,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13197,7 +13291,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13237,7 +13332,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13561,7 +13657,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13601,7 +13698,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13687,7 +13785,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -13727,7 +13826,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14093,7 +14193,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14133,7 +14234,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14219,7 +14321,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14259,7 +14362,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14822,7 +14926,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14862,7 +14967,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14948,7 +15054,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -14988,7 +15095,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15367,7 +15475,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15407,7 +15516,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15493,7 +15603,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15533,7 +15644,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15912,7 +16024,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -15952,7 +16065,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16038,7 +16152,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16078,7 +16193,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16362,7 +16478,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16402,7 +16519,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16488,7 +16606,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16528,7 +16647,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16812,7 +16932,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16852,7 +16973,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16938,7 +17060,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -16978,7 +17101,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17262,7 +17386,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17302,7 +17427,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17388,7 +17514,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17428,7 +17555,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17679,7 +17807,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17719,7 +17848,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17805,7 +17935,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -17845,7 +17976,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18211,7 +18343,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18251,7 +18384,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18337,7 +18471,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18377,7 +18512,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18940,7 +19076,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -18980,7 +19117,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19066,7 +19204,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19106,7 +19245,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19485,7 +19625,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19525,7 +19666,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19611,7 +19753,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -19651,7 +19794,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20030,7 +20174,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20070,7 +20215,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20156,7 +20302,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20196,7 +20343,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20480,7 +20628,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20520,7 +20669,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20606,7 +20756,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20646,7 +20797,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20930,7 +21082,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -20970,7 +21123,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21056,7 +21210,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21096,7 +21251,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21380,7 +21536,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21420,7 +21577,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21506,7 +21664,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -21546,7 +21705,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22120,7 +22280,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22160,7 +22321,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22246,7 +22408,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22286,7 +22449,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22652,7 +22816,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22692,7 +22857,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22778,7 +22944,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -22818,7 +22985,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23381,7 +23549,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23421,7 +23590,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23507,7 +23677,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23547,7 +23718,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23926,7 +24098,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -23966,7 +24139,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24052,7 +24226,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24092,7 +24267,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24471,7 +24647,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24511,7 +24688,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24597,7 +24775,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24637,7 +24816,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24921,7 +25101,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -24961,7 +25142,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25047,7 +25229,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25087,7 +25270,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25371,7 +25555,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25411,7 +25596,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25497,7 +25683,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25537,7 +25724,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25821,7 +26009,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25861,7 +26050,8 @@
 																			},
 																			"client_secret": {
 																				"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																				"type": "string"
+																				"type": "string",
+																				"x-sensitive": true
 																			},
 																			"scheme": {
 																				"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25947,7 +26137,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -25987,7 +26178,8 @@
 																				},
 																				"client_secret": {
 																					"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																					"type": "string"
+																					"type": "string",
+																					"x-sensitive": true
 																				},
 																				"scheme": {
 																					"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26311,7 +26503,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26351,7 +26544,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26437,7 +26631,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26477,7 +26672,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26843,7 +27039,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26883,7 +27080,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -26969,7 +27167,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -27009,7 +27208,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -27572,7 +27772,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -27612,7 +27813,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -27698,7 +27900,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -27738,7 +27941,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28117,7 +28321,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28157,7 +28362,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28243,7 +28449,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28283,7 +28490,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28662,7 +28870,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28702,7 +28911,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28788,7 +28998,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -28828,7 +29039,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29112,7 +29324,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29152,7 +29365,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29238,7 +29452,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29278,7 +29493,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29562,7 +29778,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29602,7 +29819,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29688,7 +29906,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -29728,7 +29947,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30012,7 +30232,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30052,7 +30273,8 @@
 																										},
 																										"client_secret": {
 																											"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																											"type": "string"
+																											"type": "string",
+																											"x-sensitive": true
 																										},
 																										"scheme": {
 																											"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30138,7 +30360,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30178,7 +30401,8 @@
 																											},
 																											"client_secret": {
 																												"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																												"type": "string"
+																												"type": "string",
+																												"x-sensitive": true
 																											},
 																											"scheme": {
 																												"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30429,7 +30653,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30469,7 +30694,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30555,7 +30781,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30595,7 +30822,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -30961,7 +31189,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31001,7 +31230,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31087,7 +31317,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31127,7 +31358,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31690,7 +31922,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31730,7 +31963,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31816,7 +32050,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -31856,7 +32091,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32235,7 +32471,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32275,7 +32512,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32361,7 +32599,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32401,7 +32640,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32780,7 +33020,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32820,7 +33061,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32906,7 +33148,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -32946,7 +33189,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33230,7 +33474,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33270,7 +33515,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33356,7 +33602,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33396,7 +33643,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33680,7 +33928,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33720,7 +33969,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33806,7 +34056,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -33846,7 +34097,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -34130,7 +34382,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -34170,7 +34423,8 @@
 																								},
 																								"client_secret": {
 																									"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																									"type": "string"
+																									"type": "string",
+																									"x-sensitive": true
 																								},
 																								"scheme": {
 																									"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -34256,7 +34510,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
@@ -34296,7 +34551,8 @@
 																									},
 																									"client_secret": {
 																										"description": "Client secret of the Access service token used to authenticate with the remote service.",
-																										"type": "string"
+																										"type": "string",
+																										"x-sensitive": true
 																									},
 																									"scheme": {
 																										"description": "The authentication scheme to use when making SCIM requests to this application.",
