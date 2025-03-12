@@ -5,36 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Position Location: Austin, TX | Lisbon, Portugal | London, UK</strong></h3>
-<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p class="diff-block-context"></p>
-<p class="diff-block-context">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p class="diff-context-placeholder">...</p>
-<p class="diff-block-context">The Workers Onboarding &amp; Integrations team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
-<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-Whatyouwilldo" class="diff-block-target"><strong><span id="changed-diff-5" class="diff-html-changed">What you will do</span></strong></h3>
-<p class="diff-block-context">As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Go, JavaScript, Typescript, SQL, GraphQL, Rust, and C++.</p>
-<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-RequisiteSkills" class="diff-block-target diff-block-context"><strong><span id="changed-diff-6" class="diff-html-changed">Requisite Skills</span></strong></h3>
-<ul class="diff-block-target diff-block-context">
-	<li><span id="removed-diff-0" class="diff-html-removed">2+ years professional software engineering experience</span></li>
-	<li><span class="diff-html-removed">Experience using </span><span id="added-diff-0" class="diff-html-added">Cloudflare Workers or Pages</span></li>
-	<li>Must have strong experience with Javascript and Typescript</li>
-	<li>Experience working in frontend frameworks such as React</li>
-	<li>Experience with SQL and common relational database systems such as PostgreSQL</li>
-	<li>Experience with Kubernetes or similar deployment tools</li>
-	<li>Product mindset and comfortable talking to customers and partners</li>
-	<li>Experience delivering projects end-to-end – gathering requirements, writing technical specifications, implementing, testing, and releasing</li>
-	<li>Comfortable managing multiple projects simultaneously</li>
-	<li>Able to participate in on an oncall shift</li>
+<h4>Available Locations: Lisbon, Portugal</h4>
+<h4>About the Role</h4>
+<p>We are looking for a dynamic and results-driven Capacity Planning Engineer to join our Infrastructure Capacity Engineering team.&nbsp;</p>
+<p>In this role, you will be responsible for aligning Cloudflare’s supply planning strategy with infrastructure capacity needs. You will ensure the right amount of compute, networking, and storage resources are available at the right time and in the right locations to support Cloudflare’s global infrastructure expansion. This is an excellent opportunity to contribute to the scaling of Cloudflare's infrastructure and services.</p>
+<p>You will collaborate cross-functionally with teams from Supply Chain, Network Engineering, Infrastructure Operations, Finance, and Procurement to drive operational excellence, reduce costs, and ensure that Cloudflare continues to deliver performance at scale.</p>
+<p><strong>Key Responsibilities</strong></p>
+<ul>
+	<li>Lead supply planning strategies to optimize inventory levels, reduce lead times, and ensure that supplier commitments align with Cloudflare’s global expansion</li>
+	<li>Manage capacity planning efforts, ensuring efficient hardware deployments that meet performance, cost, and timeline targets.</li>
+	<li>Partner with procurement teams to develop sourcing strategies that mitigate supply chain risks and align with Cloudflare’s business objectives and budget constraints.</li>
+	<li>Work with Infrastructure Operations and Data Center teams to streamline deployment timelines, optimize workflows, and ensure on-time delivery of critical infrastructure.</li>
+	<li>Develop and maintain models to anticipate and plan infrastructure demand, aligning with business growth, traffic trends, and customer needs.</li>
+	<li>Contribute to the scaling of the team’s level of sophistication and automation, implementing new tools and methodologies to enhance the planning and deployment process, and driving continuous improvements in efficiency.</li>
+	<li>Identify and mitigate risks related to supply chain disruptions, capacity constraints, and long lead-times, while maintaining continuity of scaling.</li>
+	<li>Provide data-driven insights and actionable recommendations to senior leadership, enhancing planning processes and optimizing resource allocation.</li>
 </ul>
-<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-BonusPoints" class="diff-block-target diff-block-context"><strong><span id="changed-diff-7" class="diff-html-changed">Bonus Points</span></strong></h3>
-<ul class="diff-block-target diff-block-context">
-	<li><span class="diff-html-added">Experience with Go, C++, or Rust</span></li>
-	<li>Experience with metrics and observability tools such as Prometheus, Grafana</li>
-	<li>Experience scaling systems to meet increasing performance and usability demands</li>
-	<li>Knowledge of OAuth and building integrations with third-parties</li>
-	<li>Has managed interns or mentored junior engineers</li>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>5+ years of experience in supply planning, capacity planning, demand planning, or a related field</li>
+	<li>Strong analytical skills with a track record of supply planning, supply chain optimization, and scenario modeling in complex environments.</li>
+	<li>Proficiency in data analysis tools such as Excel, SQL, and experience working with ERP or planning software (e.g., SAP, Oracle, or similar).</li>
+	<li>Exceptional cross-functional collaboration and stakeholder management skills, with the ability to engage teams across multiple functions and geographies.</li>
+	<li>Ability to work in a fast-paced environment, managing multiple priorities and driving continuous improvement in processes and tools.</li>
+	<li>Strong communication skills, both written and verbal, with the ability to convey complex ideas clearly and concisely to stakeholders at all levels of the organization.</li>
 </ul>
-<p class="diff-block-context"></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
