@@ -80,6 +80,10 @@
 		"name": "Email Security Readonly",
 		"description": "Read access to all of CES, cannot see Raw Email, take action on emails, or make Submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -110,10 +114,6 @@
 				"read": true,
 				"edit": false
 			},
-			"teams": {
-				"read": true,
-				"edit": false
-			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -129,6 +129,10 @@
 		"name": "Email Security Analyst",
 		"description": "Write acccess to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -161,10 +165,6 @@
 				"read": true,
 				"edit": true
 			},
-			"teams": {
-				"read": true,
-				"edit": false
-			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -180,6 +180,10 @@
 		"name": "Email Configuration Admin",
 		"description": "Write acccess to all of CES, CASB, DLP, Gateway and Tunnels, except Mail Preview, Raw Email, on-demand reports, actions on emails, and Submissions, Submission Transparency. (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": true
@@ -205,10 +209,6 @@
 				"read": true,
 				"edit": true
 			},
-			"teams": {
-				"read": true,
-				"edit": true
-			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -224,15 +224,15 @@
 		"name": "Email Integration Admin",
 		"description": "Write acccess to CES account integration only, CASB, DLP, Gateway and Tunnels",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": true
 			},
 			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"teams": {
 				"read": true,
 				"edit": true
 			},
@@ -945,6 +945,11 @@
 		"name": "Cloudflare Gateway",
 		"description": "Can edit Cloudflare Gateway and read Access.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -952,11 +957,6 @@
 			"ssl": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"zone": {
 				"read": true,
@@ -1013,14 +1013,14 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
-			"cds": {
-				"read": true,
-				"edit": false
-			},
 			"teams": {
 				"read": true,
 				"edit": false,
 				"report": true
+			},
+			"cds": {
+				"read": true,
+				"edit": false
 			},
 			"dex": {
 				"read": true,
@@ -1057,6 +1057,11 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"cds": {
 				"read": true,
 				"edit": true
@@ -1064,11 +1069,6 @@
 			"ces_submissions": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"ces_integration": {
 				"read": true,
@@ -1149,6 +1149,12 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"pii": true,
+				"report": true
+			},
 			"waitingroom": {
 				"read": true,
 				"edit": true
@@ -1200,12 +1206,6 @@
 			"waf": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"pii": true,
-				"report": true
 			},
 			"dns_records": {
 				"read": true,
@@ -1629,6 +1629,11 @@
 		"name": "Cloudflare Access",
 		"description": "Can edit Cloudflare Access.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"access": {
 				"read": true,
 				"edit": true
@@ -1636,11 +1641,6 @@
 			"ssl": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"zone": {
 				"read": true,
@@ -1769,6 +1769,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"waitingroom": {
 				"read": true,
 				"edit": false
@@ -1812,11 +1817,6 @@
 			"worker": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"dns_records": {
 				"read": true,
@@ -1956,6 +1956,11 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"waitingroom": {
 				"read": true,
 				"edit": true
@@ -2007,11 +2012,6 @@
 			"waf": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"dns_records": {
 				"read": true,
