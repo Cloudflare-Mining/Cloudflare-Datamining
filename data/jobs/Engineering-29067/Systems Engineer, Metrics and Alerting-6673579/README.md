@@ -5,30 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Department</strong></h3>
-<p>Media Platform is part of the Emerging Technologies &amp; Incubation (ETI) organization, where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization. Media Platform is focused on images, video and Cloudflare TV.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>We are looking for an Engineering Manager to join our team. You will lead a team of passionate, talented engineers that are building innovative products for the next generation of media products, such as images and video. You will be shipping products that reduce developer agony and help developers bring their ideas to market faster. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals.&nbsp; You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Available Locations: London or Lisbon&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
+<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
+<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behaviour is and we are capable of determining and exposing anomalous behaviour.</p>
+<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>In this role, you can expect to:</strong></p>
 <ul>
-	<li>Experience leading a team.</li>
-	<li>Comfortable managing backend and frontend teams.</li>
-	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems.</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Demonstrate a track record of managing a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
-	<li>Comfortable managing teams/projects with tight deadlines and short release cycles.</li>
+	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
+	<li>Solve scaling bottlenecks in critical services in our Metrics &amp; Alerting pipeline</li>
+	<li>Work on highly distributed and scalable systems</li>
+	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
+	<li>Participate in the global on-call rotation for the services your team owns</li>
+	<li>Research and introduce cutting-edge technologies</li>
+	<li>Contribute to open-source</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p>We are a small team, well-funded, growing and focused on building an extraordinary company. This is a systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</p>
+<p>You may be a good fit for our team if you have:</p>
 <ul>
-	<li>Experience with media handling at scale – images and video.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Expertise in data analysis and troubleshooting large-scale distributed systems.</li>
-	<li>Managing contributions to open-source projects.</li>
+	<li>Proficiency in distributed Linux environments</li>
+	<li>Proficiency in designing high-scale distributed systems</li>
+	<li>Proficiency in high-level programming languages (e.g., Golang)</li>
+	<li>Proficiency in Prometheus, Alertmanager, Thanos</li>
+	<li>Proficiency in networking protocols Layer 2-7 of the OSI model</li>
+	<li>Experience working in a fast, high-growth environment</li>
+	<li>Experience working in a 24/7/365 service environment</li>
+	<li>Exquisite written and verbal communication skills</li>
+	<li>Familiarity with Internetworking and BGP</li>
+	<li>Strong bias for action</li>
 </ul>
-<h3><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Paris or Remote France</h3>
-<p>&nbsp;</p>
+<p><strong>Bonus points if you have:</strong></p>
+<ul>
+	<li>Experience with high-bandwidth transit Internetworking and routing</li>
+	<li>Passion for code simplicity and performance</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
