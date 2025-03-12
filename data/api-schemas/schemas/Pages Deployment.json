@@ -447,7 +447,8 @@
 																"description": "The auth token for analytics.",
 																"example": "021e1057c18547eca7b79f2516f06o7x",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															}
 														},
 														"type": "object"
@@ -488,8 +489,11 @@
 															},
 															"type": {
 																"description": "What caused the deployment.",
+																"enum": [
+																	"push",
+																	"ad_hoc"
+																],
 																"example": "ad_hoc",
-																"pattern": "push|ad_hoc",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -499,39 +503,77 @@
 													},
 													"env_vars": {
 														"additionalProperties": {
-															"description": "Environment variable.",
-															"nullable": true,
-															"properties": {
-																"type": {
-																	"description": "The type of environment variable.",
-																	"type": "string"
+															"discriminator": {
+																"mapping": {
+																	"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																	"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																},
-																"value": {
-																	"description": "Environment variable value.",
-																	"type": "string"
+																"propertyName": "type"
+															},
+															"oneOf": [
+																{
+																	"description": "A plaintext environment variable.",
+																	"example": {
+																		"type": "plain_text",
+																		"value": "hello world"
+																	},
+																	"nullable": true,
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"plain_text"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Environment variable value.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "An encrypted environment variable.",
+																	"example": {
+																		"type": "secret_text",
+																		"value": ""
+																	},
+																	"nullable": true,
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"secret_text"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Secret value.",
+																			"type": "string",
+																			"x-sensitive": true
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"value"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"value"
-															],
-															"type": "object"
+															]
 														},
-														"description": "A dict of env variables to build this deploy.",
-														"example": {
-															"BUILD_VERSION": {
-																"value": "3.3"
-															},
-															"ENV": {
-																"value": "STAGING"
-															}
-														},
-														"readOnly": true,
+														"description": "Environment variables used for builds and Pages Functions.",
 														"type": "object"
 													},
 													"environment": {
 														"description": "Type of deploy.",
+														"enum": [
+															"preview",
+															"production"
+														],
 														"example": "preview",
-														"pattern": "preview|production",
 														"readOnly": true,
 														"type": "string"
 													},
@@ -560,8 +602,14 @@
 															},
 															"name": {
 																"description": "The current build stage.",
+																"enum": [
+																	"queued",
+																	"initialize",
+																	"clone_repo",
+																	"build",
+																	"deploy"
+																],
 																"example": "deploy",
-																"pattern": "queued|initialize|clone_repo|build|deploy",
 																"type": "string"
 															},
 															"started_on": {
@@ -574,8 +622,14 @@
 															},
 															"status": {
 																"description": "State of the current stage.",
+																"enum": [
+																	"success",
+																	"idle",
+																	"active",
+																	"failure",
+																	"canceled"
+																],
 																"example": "success",
-																"pattern": "success|idle|active|failure|canceled",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -719,8 +773,14 @@
 																},
 																"name": {
 																	"description": "The current build stage.",
+																	"enum": [
+																		"queued",
+																		"initialize",
+																		"clone_repo",
+																		"build",
+																		"deploy"
+																	],
 																	"example": "deploy",
-																	"pattern": "queued|initialize|clone_repo|build|deploy",
 																	"type": "string"
 																},
 																"started_on": {
@@ -733,8 +793,14 @@
 																},
 																"status": {
 																	"description": "State of the current stage.",
+																	"enum": [
+																		"success",
+																		"idle",
+																		"active",
+																		"failure",
+																		"canceled"
+																	],
 																	"example": "success",
-																	"pattern": "success|idle|active|failure|canceled",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -928,7 +994,8 @@
 																		"description": "The auth token for analytics.",
 																		"example": "021e1057c18547eca7b79f2516f06o7x",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-sensitive": true
 																	}
 																},
 																"type": "object"
@@ -969,8 +1036,11 @@
 																	},
 																	"type": {
 																		"description": "What caused the deployment.",
+																		"enum": [
+																			"push",
+																			"ad_hoc"
+																		],
 																		"example": "ad_hoc",
-																		"pattern": "push|ad_hoc",
 																		"readOnly": true,
 																		"type": "string"
 																	}
@@ -980,39 +1050,77 @@
 															},
 															"env_vars": {
 																"additionalProperties": {
-																	"description": "Environment variable.",
-																	"nullable": true,
-																	"properties": {
-																		"type": {
-																			"description": "The type of environment variable.",
-																			"type": "string"
+																	"discriminator": {
+																		"mapping": {
+																			"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																			"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																		},
-																		"value": {
-																			"description": "Environment variable value.",
-																			"type": "string"
+																		"propertyName": "type"
+																	},
+																	"oneOf": [
+																		{
+																			"description": "A plaintext environment variable.",
+																			"example": {
+																				"type": "plain_text",
+																				"value": "hello world"
+																			},
+																			"nullable": true,
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"plain_text"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Environment variable value.",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "An encrypted environment variable.",
+																			"example": {
+																				"type": "secret_text",
+																				"value": ""
+																			},
+																			"nullable": true,
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"secret_text"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Secret value.",
+																					"type": "string",
+																					"x-sensitive": true
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"value"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"value"
-																	],
-																	"type": "object"
+																	]
 																},
-																"description": "A dict of env variables to build this deploy.",
-																"example": {
-																	"BUILD_VERSION": {
-																		"value": "3.3"
-																	},
-																	"ENV": {
-																		"value": "STAGING"
-																	}
-																},
-																"readOnly": true,
+																"description": "Environment variables used for builds and Pages Functions.",
 																"type": "object"
 															},
 															"environment": {
 																"description": "Type of deploy.",
+																"enum": [
+																	"preview",
+																	"production"
+																],
 																"example": "preview",
-																"pattern": "preview|production",
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1041,8 +1149,14 @@
 																	},
 																	"name": {
 																		"description": "The current build stage.",
+																		"enum": [
+																			"queued",
+																			"initialize",
+																			"clone_repo",
+																			"build",
+																			"deploy"
+																		],
 																		"example": "deploy",
-																		"pattern": "queued|initialize|clone_repo|build|deploy",
 																		"type": "string"
 																	},
 																	"started_on": {
@@ -1055,8 +1169,14 @@
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
+																		"enum": [
+																			"success",
+																			"idle",
+																			"active",
+																			"failure",
+																			"canceled"
+																		],
 																		"example": "success",
-																		"pattern": "success|idle|active|failure|canceled",
 																		"readOnly": true,
 																		"type": "string"
 																	}
@@ -1200,8 +1320,14 @@
 																		},
 																		"name": {
 																			"description": "The current build stage.",
+																			"enum": [
+																				"queued",
+																				"initialize",
+																				"clone_repo",
+																				"build",
+																				"deploy"
+																			],
 																			"example": "deploy",
-																			"pattern": "queued|initialize|clone_repo|build|deploy",
 																			"type": "string"
 																		},
 																		"started_on": {
@@ -1214,8 +1340,14 @@
 																		},
 																		"status": {
 																			"description": "State of the current stage.",
+																			"enum": [
+																				"success",
+																				"idle",
+																				"active",
+																				"failure",
+																				"canceled"
+																			],
 																			"example": "success",
-																			"pattern": "success|idle|active|failure|canceled",
 																			"readOnly": true,
 																			"type": "string"
 																		}
@@ -1505,7 +1637,8 @@
 															"description": "The auth token for analytics.",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1546,8 +1679,11 @@
 														},
 														"type": {
 															"description": "What caused the deployment.",
+															"enum": [
+																"push",
+																"ad_hoc"
+															],
 															"example": "ad_hoc",
-															"pattern": "push|ad_hoc",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -1557,39 +1693,77 @@
 												},
 												"env_vars": {
 													"additionalProperties": {
-														"description": "Environment variable.",
-														"nullable": true,
-														"properties": {
-															"type": {
-																"description": "The type of environment variable.",
-																"type": "string"
+														"discriminator": {
+															"mapping": {
+																"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																"secret_text": "#/components/schemas/pages_secret_text_env_var"
 															},
-															"value": {
-																"description": "Environment variable value.",
-																"type": "string"
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"description": "A plaintext environment variable.",
+																"example": {
+																	"type": "plain_text",
+																	"value": "hello world"
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"plain_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"description": "An encrypted environment variable.",
+																"example": {
+																	"type": "secret_text",
+																	"value": ""
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"secret_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Secret value.",
+																		"type": "string",
+																		"x-sensitive": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"value"
-														],
-														"type": "object"
+														]
 													},
-													"description": "A dict of env variables to build this deploy.",
-													"example": {
-														"BUILD_VERSION": {
-															"value": "3.3"
-														},
-														"ENV": {
-															"value": "STAGING"
-														}
-													},
-													"readOnly": true,
+													"description": "Environment variables used for builds and Pages Functions.",
 													"type": "object"
 												},
 												"environment": {
 													"description": "Type of deploy.",
+													"enum": [
+														"preview",
+														"production"
+													],
 													"example": "preview",
-													"pattern": "preview|production",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1618,8 +1792,14 @@
 														},
 														"name": {
 															"description": "The current build stage.",
+															"enum": [
+																"queued",
+																"initialize",
+																"clone_repo",
+																"build",
+																"deploy"
+															],
 															"example": "deploy",
-															"pattern": "queued|initialize|clone_repo|build|deploy",
 															"type": "string"
 														},
 														"started_on": {
@@ -1632,8 +1812,14 @@
 														},
 														"status": {
 															"description": "State of the current stage.",
+															"enum": [
+																"success",
+																"idle",
+																"active",
+																"failure",
+																"canceled"
+															],
 															"example": "success",
-															"pattern": "success|idle|active|failure|canceled",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -1777,8 +1963,14 @@
 															},
 															"name": {
 																"description": "The current build stage.",
+																"enum": [
+																	"queued",
+																	"initialize",
+																	"clone_repo",
+																	"build",
+																	"deploy"
+																],
 																"example": "deploy",
-																"pattern": "queued|initialize|clone_repo|build|deploy",
 																"type": "string"
 															},
 															"started_on": {
@@ -1791,8 +1983,14 @@
 															},
 															"status": {
 																"description": "State of the current stage.",
+																"enum": [
+																	"success",
+																	"idle",
+																	"active",
+																	"failure",
+																	"canceled"
+																],
 																"example": "success",
-																"pattern": "success|idle|active|failure|canceled",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -1942,7 +2140,8 @@
 																	"description": "The auth token for analytics.",
 																	"example": "021e1057c18547eca7b79f2516f06o7x",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"type": "object"
@@ -1983,8 +2182,11 @@
 																},
 																"type": {
 																	"description": "What caused the deployment.",
+																	"enum": [
+																		"push",
+																		"ad_hoc"
+																	],
 																	"example": "ad_hoc",
-																	"pattern": "push|ad_hoc",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -1994,39 +2196,77 @@
 														},
 														"env_vars": {
 															"additionalProperties": {
-																"description": "Environment variable.",
-																"nullable": true,
-																"properties": {
-																	"type": {
-																		"description": "The type of environment variable.",
-																		"type": "string"
+																"discriminator": {
+																	"mapping": {
+																		"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																		"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																	},
-																	"value": {
-																		"description": "Environment variable value.",
-																		"type": "string"
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"description": "A plaintext environment variable.",
+																		"example": {
+																			"type": "plain_text",
+																			"value": "hello world"
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"plain_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Environment variable value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "An encrypted environment variable.",
+																		"example": {
+																			"type": "secret_text",
+																			"value": ""
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"secret_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Secret value.",
+																				"type": "string",
+																				"x-sensitive": true
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"value"
-																],
-																"type": "object"
+																]
 															},
-															"description": "A dict of env variables to build this deploy.",
-															"example": {
-																"BUILD_VERSION": {
-																	"value": "3.3"
-																},
-																"ENV": {
-																	"value": "STAGING"
-																}
-															},
-															"readOnly": true,
+															"description": "Environment variables used for builds and Pages Functions.",
 															"type": "object"
 														},
 														"environment": {
 															"description": "Type of deploy.",
+															"enum": [
+																"preview",
+																"production"
+															],
 															"example": "preview",
-															"pattern": "preview|production",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2055,8 +2295,14 @@
 																},
 																"name": {
 																	"description": "The current build stage.",
+																	"enum": [
+																		"queued",
+																		"initialize",
+																		"clone_repo",
+																		"build",
+																		"deploy"
+																	],
 																	"example": "deploy",
-																	"pattern": "queued|initialize|clone_repo|build|deploy",
 																	"type": "string"
 																},
 																"started_on": {
@@ -2069,8 +2315,14 @@
 																},
 																"status": {
 																	"description": "State of the current stage.",
+																	"enum": [
+																		"success",
+																		"idle",
+																		"active",
+																		"failure",
+																		"canceled"
+																	],
 																	"example": "success",
-																	"pattern": "success|idle|active|failure|canceled",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -2214,8 +2466,14 @@
 																	},
 																	"name": {
 																		"description": "The current build stage.",
+																		"enum": [
+																			"queued",
+																			"initialize",
+																			"clone_repo",
+																			"build",
+																			"deploy"
+																		],
 																		"example": "deploy",
-																		"pattern": "queued|initialize|clone_repo|build|deploy",
 																		"type": "string"
 																	},
 																	"started_on": {
@@ -2228,8 +2486,14 @@
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
+																		"enum": [
+																			"success",
+																			"idle",
+																			"active",
+																			"failure",
+																			"canceled"
+																		],
 																		"example": "success",
-																		"pattern": "success|idle|active|failure|canceled",
 																		"readOnly": true,
 																		"type": "string"
 																	}
@@ -3130,7 +3394,8 @@
 															"description": "The auth token for analytics.",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -3171,8 +3436,11 @@
 														},
 														"type": {
 															"description": "What caused the deployment.",
+															"enum": [
+																"push",
+																"ad_hoc"
+															],
 															"example": "ad_hoc",
-															"pattern": "push|ad_hoc",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -3182,39 +3450,77 @@
 												},
 												"env_vars": {
 													"additionalProperties": {
-														"description": "Environment variable.",
-														"nullable": true,
-														"properties": {
-															"type": {
-																"description": "The type of environment variable.",
-																"type": "string"
+														"discriminator": {
+															"mapping": {
+																"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																"secret_text": "#/components/schemas/pages_secret_text_env_var"
 															},
-															"value": {
-																"description": "Environment variable value.",
-																"type": "string"
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"description": "A plaintext environment variable.",
+																"example": {
+																	"type": "plain_text",
+																	"value": "hello world"
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"plain_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"description": "An encrypted environment variable.",
+																"example": {
+																	"type": "secret_text",
+																	"value": ""
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"secret_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Secret value.",
+																		"type": "string",
+																		"x-sensitive": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"value"
-														],
-														"type": "object"
+														]
 													},
-													"description": "A dict of env variables to build this deploy.",
-													"example": {
-														"BUILD_VERSION": {
-															"value": "3.3"
-														},
-														"ENV": {
-															"value": "STAGING"
-														}
-													},
-													"readOnly": true,
+													"description": "Environment variables used for builds and Pages Functions.",
 													"type": "object"
 												},
 												"environment": {
 													"description": "Type of deploy.",
+													"enum": [
+														"preview",
+														"production"
+													],
 													"example": "preview",
-													"pattern": "preview|production",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -3243,8 +3549,14 @@
 														},
 														"name": {
 															"description": "The current build stage.",
+															"enum": [
+																"queued",
+																"initialize",
+																"clone_repo",
+																"build",
+																"deploy"
+															],
 															"example": "deploy",
-															"pattern": "queued|initialize|clone_repo|build|deploy",
 															"type": "string"
 														},
 														"started_on": {
@@ -3257,8 +3569,14 @@
 														},
 														"status": {
 															"description": "State of the current stage.",
+															"enum": [
+																"success",
+																"idle",
+																"active",
+																"failure",
+																"canceled"
+															],
 															"example": "success",
-															"pattern": "success|idle|active|failure|canceled",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -3402,8 +3720,14 @@
 															},
 															"name": {
 																"description": "The current build stage.",
+																"enum": [
+																	"queued",
+																	"initialize",
+																	"clone_repo",
+																	"build",
+																	"deploy"
+																],
 																"example": "deploy",
-																"pattern": "queued|initialize|clone_repo|build|deploy",
 																"type": "string"
 															},
 															"started_on": {
@@ -3416,8 +3740,14 @@
 															},
 															"status": {
 																"description": "State of the current stage.",
+																"enum": [
+																	"success",
+																	"idle",
+																	"active",
+																	"failure",
+																	"canceled"
+																],
 																"example": "success",
-																"pattern": "success|idle|active|failure|canceled",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -3567,7 +3897,8 @@
 																	"description": "The auth token for analytics.",
 																	"example": "021e1057c18547eca7b79f2516f06o7x",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"type": "object"
@@ -3608,8 +3939,11 @@
 																},
 																"type": {
 																	"description": "What caused the deployment.",
+																	"enum": [
+																		"push",
+																		"ad_hoc"
+																	],
 																	"example": "ad_hoc",
-																	"pattern": "push|ad_hoc",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -3619,39 +3953,77 @@
 														},
 														"env_vars": {
 															"additionalProperties": {
-																"description": "Environment variable.",
-																"nullable": true,
-																"properties": {
-																	"type": {
-																		"description": "The type of environment variable.",
-																		"type": "string"
+																"discriminator": {
+																	"mapping": {
+																		"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																		"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																	},
-																	"value": {
-																		"description": "Environment variable value.",
-																		"type": "string"
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"description": "A plaintext environment variable.",
+																		"example": {
+																			"type": "plain_text",
+																			"value": "hello world"
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"plain_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Environment variable value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "An encrypted environment variable.",
+																		"example": {
+																			"type": "secret_text",
+																			"value": ""
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"secret_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Secret value.",
+																				"type": "string",
+																				"x-sensitive": true
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"value"
-																],
-																"type": "object"
+																]
 															},
-															"description": "A dict of env variables to build this deploy.",
-															"example": {
-																"BUILD_VERSION": {
-																	"value": "3.3"
-																},
-																"ENV": {
-																	"value": "STAGING"
-																}
-															},
-															"readOnly": true,
+															"description": "Environment variables used for builds and Pages Functions.",
 															"type": "object"
 														},
 														"environment": {
 															"description": "Type of deploy.",
+															"enum": [
+																"preview",
+																"production"
+															],
 															"example": "preview",
-															"pattern": "preview|production",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -3680,8 +4052,14 @@
 																},
 																"name": {
 																	"description": "The current build stage.",
+																	"enum": [
+																		"queued",
+																		"initialize",
+																		"clone_repo",
+																		"build",
+																		"deploy"
+																	],
 																	"example": "deploy",
-																	"pattern": "queued|initialize|clone_repo|build|deploy",
 																	"type": "string"
 																},
 																"started_on": {
@@ -3694,8 +4072,14 @@
 																},
 																"status": {
 																	"description": "State of the current stage.",
+																	"enum": [
+																		"success",
+																		"idle",
+																		"active",
+																		"failure",
+																		"canceled"
+																	],
 																	"example": "success",
-																	"pattern": "success|idle|active|failure|canceled",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -3839,8 +4223,14 @@
 																	},
 																	"name": {
 																		"description": "The current build stage.",
+																		"enum": [
+																			"queued",
+																			"initialize",
+																			"clone_repo",
+																			"build",
+																			"deploy"
+																		],
 																		"example": "deploy",
-																		"pattern": "queued|initialize|clone_repo|build|deploy",
 																		"type": "string"
 																	},
 																	"started_on": {
@@ -3853,8 +4243,14 @@
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
+																		"enum": [
+																			"success",
+																			"idle",
+																			"active",
+																			"failure",
+																			"canceled"
+																		],
 																		"example": "success",
-																		"pattern": "success|idle|active|failure|canceled",
 																		"readOnly": true,
 																		"type": "string"
 																	}
@@ -4147,7 +4543,8 @@
 															"description": "The auth token for analytics.",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -4188,8 +4585,11 @@
 														},
 														"type": {
 															"description": "What caused the deployment.",
+															"enum": [
+																"push",
+																"ad_hoc"
+															],
 															"example": "ad_hoc",
-															"pattern": "push|ad_hoc",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -4199,39 +4599,77 @@
 												},
 												"env_vars": {
 													"additionalProperties": {
-														"description": "Environment variable.",
-														"nullable": true,
-														"properties": {
-															"type": {
-																"description": "The type of environment variable.",
-																"type": "string"
+														"discriminator": {
+															"mapping": {
+																"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																"secret_text": "#/components/schemas/pages_secret_text_env_var"
 															},
-															"value": {
-																"description": "Environment variable value.",
-																"type": "string"
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"description": "A plaintext environment variable.",
+																"example": {
+																	"type": "plain_text",
+																	"value": "hello world"
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"plain_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"description": "An encrypted environment variable.",
+																"example": {
+																	"type": "secret_text",
+																	"value": ""
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"secret_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Secret value.",
+																		"type": "string",
+																		"x-sensitive": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"value"
-														],
-														"type": "object"
+														]
 													},
-													"description": "A dict of env variables to build this deploy.",
-													"example": {
-														"BUILD_VERSION": {
-															"value": "3.3"
-														},
-														"ENV": {
-															"value": "STAGING"
-														}
-													},
-													"readOnly": true,
+													"description": "Environment variables used for builds and Pages Functions.",
 													"type": "object"
 												},
 												"environment": {
 													"description": "Type of deploy.",
+													"enum": [
+														"preview",
+														"production"
+													],
 													"example": "preview",
-													"pattern": "preview|production",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -4260,8 +4698,14 @@
 														},
 														"name": {
 															"description": "The current build stage.",
+															"enum": [
+																"queued",
+																"initialize",
+																"clone_repo",
+																"build",
+																"deploy"
+															],
 															"example": "deploy",
-															"pattern": "queued|initialize|clone_repo|build|deploy",
 															"type": "string"
 														},
 														"started_on": {
@@ -4274,8 +4718,14 @@
 														},
 														"status": {
 															"description": "State of the current stage.",
+															"enum": [
+																"success",
+																"idle",
+																"active",
+																"failure",
+																"canceled"
+															],
 															"example": "success",
-															"pattern": "success|idle|active|failure|canceled",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -4419,8 +4869,14 @@
 															},
 															"name": {
 																"description": "The current build stage.",
+																"enum": [
+																	"queued",
+																	"initialize",
+																	"clone_repo",
+																	"build",
+																	"deploy"
+																],
 																"example": "deploy",
-																"pattern": "queued|initialize|clone_repo|build|deploy",
 																"type": "string"
 															},
 															"started_on": {
@@ -4433,8 +4889,14 @@
 															},
 															"status": {
 																"description": "State of the current stage.",
+																"enum": [
+																	"success",
+																	"idle",
+																	"active",
+																	"failure",
+																	"canceled"
+																],
 																"example": "success",
-																"pattern": "success|idle|active|failure|canceled",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -4584,7 +5046,8 @@
 																	"description": "The auth token for analytics.",
 																	"example": "021e1057c18547eca7b79f2516f06o7x",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"type": "object"
@@ -4625,8 +5088,11 @@
 																},
 																"type": {
 																	"description": "What caused the deployment.",
+																	"enum": [
+																		"push",
+																		"ad_hoc"
+																	],
 																	"example": "ad_hoc",
-																	"pattern": "push|ad_hoc",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -4636,39 +5102,77 @@
 														},
 														"env_vars": {
 															"additionalProperties": {
-																"description": "Environment variable.",
-																"nullable": true,
-																"properties": {
-																	"type": {
-																		"description": "The type of environment variable.",
-																		"type": "string"
+																"discriminator": {
+																	"mapping": {
+																		"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																		"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																	},
-																	"value": {
-																		"description": "Environment variable value.",
-																		"type": "string"
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"description": "A plaintext environment variable.",
+																		"example": {
+																			"type": "plain_text",
+																			"value": "hello world"
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"plain_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Environment variable value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "An encrypted environment variable.",
+																		"example": {
+																			"type": "secret_text",
+																			"value": ""
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"secret_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Secret value.",
+																				"type": "string",
+																				"x-sensitive": true
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"value"
-																],
-																"type": "object"
+																]
 															},
-															"description": "A dict of env variables to build this deploy.",
-															"example": {
-																"BUILD_VERSION": {
-																	"value": "3.3"
-																},
-																"ENV": {
-																	"value": "STAGING"
-																}
-															},
-															"readOnly": true,
+															"description": "Environment variables used for builds and Pages Functions.",
 															"type": "object"
 														},
 														"environment": {
 															"description": "Type of deploy.",
+															"enum": [
+																"preview",
+																"production"
+															],
 															"example": "preview",
-															"pattern": "preview|production",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -4697,8 +5201,14 @@
 																},
 																"name": {
 																	"description": "The current build stage.",
+																	"enum": [
+																		"queued",
+																		"initialize",
+																		"clone_repo",
+																		"build",
+																		"deploy"
+																	],
 																	"example": "deploy",
-																	"pattern": "queued|initialize|clone_repo|build|deploy",
 																	"type": "string"
 																},
 																"started_on": {
@@ -4711,8 +5221,14 @@
 																},
 																"status": {
 																	"description": "State of the current stage.",
+																	"enum": [
+																		"success",
+																		"idle",
+																		"active",
+																		"failure",
+																		"canceled"
+																	],
 																	"example": "success",
-																	"pattern": "success|idle|active|failure|canceled",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -4856,8 +5372,14 @@
 																	},
 																	"name": {
 																		"description": "The current build stage.",
+																		"enum": [
+																			"queued",
+																			"initialize",
+																			"clone_repo",
+																			"build",
+																			"deploy"
+																		],
 																		"example": "deploy",
-																		"pattern": "queued|initialize|clone_repo|build|deploy",
 																		"type": "string"
 																	},
 																	"started_on": {
@@ -4870,8 +5392,14 @@
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
+																		"enum": [
+																			"success",
+																			"idle",
+																			"active",
+																			"failure",
+																			"canceled"
+																		],
 																		"example": "success",
-																		"pattern": "success|idle|active|failure|canceled",
 																		"readOnly": true,
 																		"type": "string"
 																	}
@@ -5164,7 +5692,8 @@
 															"description": "The auth token for analytics.",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -5205,8 +5734,11 @@
 														},
 														"type": {
 															"description": "What caused the deployment.",
+															"enum": [
+																"push",
+																"ad_hoc"
+															],
 															"example": "ad_hoc",
-															"pattern": "push|ad_hoc",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -5216,39 +5748,77 @@
 												},
 												"env_vars": {
 													"additionalProperties": {
-														"description": "Environment variable.",
-														"nullable": true,
-														"properties": {
-															"type": {
-																"description": "The type of environment variable.",
-																"type": "string"
+														"discriminator": {
+															"mapping": {
+																"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																"secret_text": "#/components/schemas/pages_secret_text_env_var"
 															},
-															"value": {
-																"description": "Environment variable value.",
-																"type": "string"
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"description": "A plaintext environment variable.",
+																"example": {
+																	"type": "plain_text",
+																	"value": "hello world"
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"plain_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"description": "An encrypted environment variable.",
+																"example": {
+																	"type": "secret_text",
+																	"value": ""
+																},
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"secret_text"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Secret value.",
+																		"type": "string",
+																		"x-sensitive": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"value"
-														],
-														"type": "object"
+														]
 													},
-													"description": "A dict of env variables to build this deploy.",
-													"example": {
-														"BUILD_VERSION": {
-															"value": "3.3"
-														},
-														"ENV": {
-															"value": "STAGING"
-														}
-													},
-													"readOnly": true,
+													"description": "Environment variables used for builds and Pages Functions.",
 													"type": "object"
 												},
 												"environment": {
 													"description": "Type of deploy.",
+													"enum": [
+														"preview",
+														"production"
+													],
 													"example": "preview",
-													"pattern": "preview|production",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -5277,8 +5847,14 @@
 														},
 														"name": {
 															"description": "The current build stage.",
+															"enum": [
+																"queued",
+																"initialize",
+																"clone_repo",
+																"build",
+																"deploy"
+															],
 															"example": "deploy",
-															"pattern": "queued|initialize|clone_repo|build|deploy",
 															"type": "string"
 														},
 														"started_on": {
@@ -5291,8 +5867,14 @@
 														},
 														"status": {
 															"description": "State of the current stage.",
+															"enum": [
+																"success",
+																"idle",
+																"active",
+																"failure",
+																"canceled"
+															],
 															"example": "success",
-															"pattern": "success|idle|active|failure|canceled",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -5436,8 +6018,14 @@
 															},
 															"name": {
 																"description": "The current build stage.",
+																"enum": [
+																	"queued",
+																	"initialize",
+																	"clone_repo",
+																	"build",
+																	"deploy"
+																],
 																"example": "deploy",
-																"pattern": "queued|initialize|clone_repo|build|deploy",
 																"type": "string"
 															},
 															"started_on": {
@@ -5450,8 +6038,14 @@
 															},
 															"status": {
 																"description": "State of the current stage.",
+																"enum": [
+																	"success",
+																	"idle",
+																	"active",
+																	"failure",
+																	"canceled"
+																],
 																"example": "success",
-																"pattern": "success|idle|active|failure|canceled",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -5601,7 +6195,8 @@
 																	"description": "The auth token for analytics.",
 																	"example": "021e1057c18547eca7b79f2516f06o7x",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"type": "object"
@@ -5642,8 +6237,11 @@
 																},
 																"type": {
 																	"description": "What caused the deployment.",
+																	"enum": [
+																		"push",
+																		"ad_hoc"
+																	],
 																	"example": "ad_hoc",
-																	"pattern": "push|ad_hoc",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -5653,39 +6251,77 @@
 														},
 														"env_vars": {
 															"additionalProperties": {
-																"description": "Environment variable.",
-																"nullable": true,
-																"properties": {
-																	"type": {
-																		"description": "The type of environment variable.",
-																		"type": "string"
+																"discriminator": {
+																	"mapping": {
+																		"plain_text": "#/components/schemas/pages_plain_text_env_var",
+																		"secret_text": "#/components/schemas/pages_secret_text_env_var"
 																	},
-																	"value": {
-																		"description": "Environment variable value.",
-																		"type": "string"
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"description": "A plaintext environment variable.",
+																		"example": {
+																			"type": "plain_text",
+																			"value": "hello world"
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"plain_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Environment variable value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "An encrypted environment variable.",
+																		"example": {
+																			"type": "secret_text",
+																			"value": ""
+																		},
+																		"nullable": true,
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"secret_text"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Secret value.",
+																				"type": "string",
+																				"x-sensitive": true
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"value"
-																],
-																"type": "object"
+																]
 															},
-															"description": "A dict of env variables to build this deploy.",
-															"example": {
-																"BUILD_VERSION": {
-																	"value": "3.3"
-																},
-																"ENV": {
-																	"value": "STAGING"
-																}
-															},
-															"readOnly": true,
+															"description": "Environment variables used for builds and Pages Functions.",
 															"type": "object"
 														},
 														"environment": {
 															"description": "Type of deploy.",
+															"enum": [
+																"preview",
+																"production"
+															],
 															"example": "preview",
-															"pattern": "preview|production",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -5714,8 +6350,14 @@
 																},
 																"name": {
 																	"description": "The current build stage.",
+																	"enum": [
+																		"queued",
+																		"initialize",
+																		"clone_repo",
+																		"build",
+																		"deploy"
+																	],
 																	"example": "deploy",
-																	"pattern": "queued|initialize|clone_repo|build|deploy",
 																	"type": "string"
 																},
 																"started_on": {
@@ -5728,8 +6370,14 @@
 																},
 																"status": {
 																	"description": "State of the current stage.",
+																	"enum": [
+																		"success",
+																		"idle",
+																		"active",
+																		"failure",
+																		"canceled"
+																	],
 																	"example": "success",
-																	"pattern": "success|idle|active|failure|canceled",
 																	"readOnly": true,
 																	"type": "string"
 																}
@@ -5873,8 +6521,14 @@
 																	},
 																	"name": {
 																		"description": "The current build stage.",
+																		"enum": [
+																			"queued",
+																			"initialize",
+																			"clone_repo",
+																			"build",
+																			"deploy"
+																		],
 																		"example": "deploy",
-																		"pattern": "queued|initialize|clone_repo|build|deploy",
 																		"type": "string"
 																	},
 																	"started_on": {
@@ -5887,8 +6541,14 @@
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
+																		"enum": [
+																			"success",
+																			"idle",
+																			"active",
+																			"failure",
+																			"canceled"
+																		],
 																		"example": "success",
-																		"pattern": "success|idle|active|failure|canceled",
 																		"readOnly": true,
 																		"type": "string"
 																	}
