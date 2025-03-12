@@ -1,11 +1,11 @@
 {
-	"POST /accounts/{accountId}/cloudforce-one/events/tags/create": {
+	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
 		"parameters": [
 			{
 				"description": "Account ID",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",

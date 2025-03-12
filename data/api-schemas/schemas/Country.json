@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{accountId}/cloudforce-one/events/countries": {
+	"GET /accounts/{account_id}/cloudforce-one/events/countries": {
 		"operationId": "get_CountryRead",
 		"parameters": [
 			{
 				"description": "Account ID",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",

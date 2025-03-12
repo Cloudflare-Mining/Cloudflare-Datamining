@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{accountId}/cloudforce-one/events/indicatorTypes": {
+	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
 		"operationId": "get_IndicatorTypesList",
 		"parameters": [
 			{
 				"description": "Account ID",
 				"in": "path",
-				"name": "accountId",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
