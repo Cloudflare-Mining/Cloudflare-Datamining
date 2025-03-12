@@ -1032,8 +1032,7 @@
 																			},
 																			"type": {
 																				"enum": [
-																					"string",
-																					"secret"
+																					"string"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -1041,6 +1040,32 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"enum": [
+																					"secret"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"value": {
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-sensitive": true
 																			}
 																		},
 																		"required": [
@@ -1088,7 +1113,15 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"discriminator": {
+																	"mapping": {
+																		"secret": "#/components/schemas/zaraz_secret_variable",
+																		"string": "#/components/schemas/zaraz_string_variable",
+																		"worker": "#/components/schemas/zaraz_worker_variable"
+																	},
+																	"propertyName": "type"
+																}
 															},
 															"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 															"type": "object"
@@ -2693,8 +2726,7 @@
 																			},
 																			"type": {
 																				"enum": [
-																					"string",
-																					"secret"
+																					"string"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -2702,6 +2734,32 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"enum": [
+																					"secret"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"value": {
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-sensitive": true
 																			}
 																		},
 																		"required": [
@@ -2749,7 +2807,15 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"discriminator": {
+																	"mapping": {
+																		"secret": "#/components/schemas/zaraz_secret_variable",
+																		"string": "#/components/schemas/zaraz_string_variable",
+																		"worker": "#/components/schemas/zaraz_worker_variable"
+																	},
+																	"propertyName": "type"
+																}
 															},
 															"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 															"type": "object"
@@ -4291,8 +4357,7 @@
 															},
 															"type": {
 																"enum": [
-																	"string",
-																	"secret"
+																	"string"
 																],
 																"type": "string",
 																"x-auditable": true
@@ -4300,6 +4365,32 @@
 															"value": {
 																"type": "string",
 																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"value"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"enum": [
+																	"secret"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true,
+																"x-sensitive": true
 															}
 														},
 														"required": [
@@ -4347,7 +4438,15 @@
 														],
 														"type": "object"
 													}
-												]
+												],
+												"discriminator": {
+													"mapping": {
+														"secret": "#/components/schemas/zaraz_secret_variable",
+														"string": "#/components/schemas/zaraz_string_variable",
+														"worker": "#/components/schemas/zaraz_worker_variable"
+													},
+													"propertyName": "type"
+												}
 											},
 											"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 											"type": "object"
@@ -6322,8 +6421,7 @@
 																								},
 																								"type": {
 																									"enum": [
-																										"string",
-																										"secret"
+																										"string"
 																									],
 																									"type": "string",
 																									"x-auditable": true
@@ -6331,6 +6429,32 @@
 																								"value": {
 																									"type": "string",
 																									"x-auditable": true
+																								}
+																							},
+																							"required": [
+																								"name",
+																								"type",
+																								"value"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"properties": {
+																								"name": {
+																									"type": "string",
+																									"x-auditable": true
+																								},
+																								"type": {
+																									"enum": [
+																										"secret"
+																									],
+																									"type": "string",
+																									"x-auditable": true
+																								},
+																								"value": {
+																									"type": "string",
+																									"x-auditable": true,
+																									"x-sensitive": true
 																								}
 																							},
 																							"required": [
@@ -6378,7 +6502,15 @@
 																							],
 																							"type": "object"
 																						}
-																					]
+																					],
+																					"discriminator": {
+																						"mapping": {
+																							"secret": "#/components/schemas/zaraz_secret_variable",
+																							"string": "#/components/schemas/zaraz_string_variable",
+																							"worker": "#/components/schemas/zaraz_worker_variable"
+																						},
+																						"propertyName": "type"
+																					}
 																				},
 																				"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 																				"type": "object"
@@ -8440,8 +8572,7 @@
 														},
 														"type": {
 															"enum": [
-																"string",
-																"secret"
+																"string"
 															],
 															"type": "string",
 															"x-auditable": true
@@ -8449,6 +8580,32 @@
 														"value": {
 															"type": "string",
 															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"value"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"enum": [
+																"secret"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"type": "string",
+															"x-auditable": true,
+															"x-sensitive": true
 														}
 													},
 													"required": [
@@ -8496,7 +8653,15 @@
 													],
 													"type": "object"
 												}
-											]
+											],
+											"discriminator": {
+												"mapping": {
+													"secret": "#/components/schemas/zaraz_secret_variable",
+													"string": "#/components/schemas/zaraz_string_variable",
+													"worker": "#/components/schemas/zaraz_worker_variable"
+												},
+												"propertyName": "type"
+											}
 										},
 										"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 										"type": "object"
@@ -9970,8 +10135,7 @@
 																			},
 																			"type": {
 																				"enum": [
-																					"string",
-																					"secret"
+																					"string"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -9979,6 +10143,32 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"enum": [
+																					"secret"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"value": {
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-sensitive": true
 																			}
 																		},
 																		"required": [
@@ -10026,7 +10216,15 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"discriminator": {
+																	"mapping": {
+																		"secret": "#/components/schemas/zaraz_secret_variable",
+																		"string": "#/components/schemas/zaraz_string_variable",
+																		"worker": "#/components/schemas/zaraz_worker_variable"
+																	},
+																	"propertyName": "type"
+																}
 															},
 															"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 															"type": "object"
@@ -11643,8 +11841,7 @@
 																			},
 																			"type": {
 																				"enum": [
-																					"string",
-																					"secret"
+																					"string"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -11652,6 +11849,32 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"enum": [
+																					"secret"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"value": {
+																				"type": "string",
+																				"x-auditable": true,
+																				"x-sensitive": true
 																			}
 																		},
 																		"required": [
@@ -11699,7 +11922,15 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"discriminator": {
+																	"mapping": {
+																		"secret": "#/components/schemas/zaraz_secret_variable",
+																		"string": "#/components/schemas/zaraz_string_variable",
+																		"worker": "#/components/schemas/zaraz_worker_variable"
+																	},
+																	"propertyName": "type"
+																}
 															},
 															"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
 															"type": "object"
