@@ -75,6 +75,9 @@
 	"ai-gateway-prompts": {
 		"enabled": true
 	},
+	"ai-maze": {
+		"enabled": false
+	},
 	"allow-google-acm": {
 		"enabled": true
 	},
@@ -437,6 +440,13 @@
 	},
 	"dashon-118-get-started-account-home": {
 		"enabled": true
+	},
+	"dashon-124-update-support-dropdown": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"dashon-18-reduced-add-button-on-mobile": {
 		"enabled": true,
@@ -996,6 +1006,9 @@
 	},
 	"managed-challenge-ui": {
 		"enabled": true
+	},
+	"managed-robots-txt": {
+		"enabled": false
 	},
 	"managed-rules-builder": {
 		"enabled": false
