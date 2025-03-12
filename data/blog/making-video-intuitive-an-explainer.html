@@ -24,10 +24,11 @@
 		</a>
 	</div>
 	<p>Not stuttering is covered by frame rate, measured in frames-per-second (fps). Fps is the number of individual pictures displayed in a single second; many videos are encoded at somewhere between 24 and 30fps. One way to describe fps is in terms of how long a frame is shown for—commonly called the frame time. At 24fps, each frame is shown for about 41 milliseconds. At 2fps, that jumps to 500ms. Lowering fps causes frames to trend rapidly towards persisting for the full second. Smooth motion mostly comes down to the single knob of fps. Mucking about with frame rate isn’t a sporting way to achieve our goal. It’s extremely easy to tank the frame rate and ruin the experience. Humans have a low tolerance for janky motion. To get the idea, here’s what our original clip reduced to 2fps looks like; 500ms per-frame is a long time.</p>
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -r 2 -c:v h264 -c:a copy 2fps.mp4</code></p><!--kg-card-begin: html-->
-	<stream src="3500917ca1f756546103c86ca5a90348" preload="" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=3500917ca1f756546103c86ca5a90348"></script>
-	<br><!--kg-card-end: html-->
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -r 2 -c:v h264 -c:a copy 2fps.mp4</code></p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3500917ca1f756546103c86ca5a90348/iframe?poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3500917ca1f756546103c86ca5a90348%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<br>
 	<div class="flex anchor relative">
 		<h3 id="resolution">Resolution</h3>
 		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
