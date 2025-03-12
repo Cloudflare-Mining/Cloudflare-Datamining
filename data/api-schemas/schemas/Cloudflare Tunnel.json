@@ -5602,7 +5602,8 @@
 											"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									},
 									"type": "object"
@@ -5701,7 +5702,8 @@
 													"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"
@@ -9130,7 +9132,8 @@
 											"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									},
 									"type": "object"
@@ -9229,7 +9232,8 @@
 													"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"
@@ -9394,7 +9398,8 @@
 							"tunnel_secret": {
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"type": "object"
@@ -10349,7 +10354,8 @@
 							"tunnel_secret": {
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"type": "object"
@@ -11299,7 +11305,8 @@
 							"tunnel_secret": {
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -12357,7 +12364,8 @@
 											"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									},
 									"type": "object"
@@ -12456,7 +12464,8 @@
 													"description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"
