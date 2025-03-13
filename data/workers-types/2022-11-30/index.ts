@@ -1720,6 +1720,7 @@ export interface RequestInit<Cf = CfProperties> {
   integrity?: string;
   /* An AbortSignal to set request's signal. */
   signal?: AbortSignal | null;
+  encodeResponseBody?: "automatic" | "manual";
 }
 export type Service<
   T extends Rpc.WorkerEntrypointBranded | undefined = undefined,
@@ -5487,11 +5488,43 @@ export interface D1ExecResult {
   count: number;
   duration: number;
 }
+export type D1SessionConstraint =
+  // Indicates that the first query should go to the primary, and the rest queries
+  // using the same D1DatabaseSession will go to any replica that is consistent with
+  // the bookmark maintained by the session (returned by the first query).
+  | "first-primary"
+  // Indicates that the first query can go anywhere (primary or replica), and the rest queries
+  // using the same D1DatabaseSession will go to any replica that is consistent with
+  // the bookmark maintained by the session (returned by the first query).
+  | "first-unconstrained";
+export type D1SessionBookmark = string;
 export declare abstract class D1Database {
   prepare(query: string): D1PreparedStatement;
-  dump(): Promise<ArrayBuffer>;
   batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
   exec(query: string): Promise<D1ExecResult>;
+  /**
+   * Creates a new D1 Session anchored at the given constraint or the bookmark.
+   * All queries executed using the created session will have sequential consistency,
+   * meaning that all writes done through the session will be visible in subsequent reads.
+   *
+   * @param constraintOrBookmark Either the session constraint or the explicit bookmark to anchor the created session.
+   */
+  withSession(
+    constraintOrBookmark?: D1SessionBookmark | D1SessionConstraint,
+  ): D1DatabaseSession;
+  /**
+   * @deprecated dump() will be removed soon, only applies to deprecated alpha v1 databases.
+   */
+  dump(): Promise<ArrayBuffer>;
+}
+export declare abstract class D1DatabaseSession {
+  prepare(query: string): D1PreparedStatement;
+  batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
+  /**
+   * @returns The latest session bookmark across all executed queries on the session.
+   *          If no query has been executed yet, `null` is returned.
+   */
+  getBookmark(): D1SessionBookmark | null;
 }
 export declare abstract class D1PreparedStatement {
   bind(...values: unknown[]): D1PreparedStatement;
@@ -5804,35 +5837,6 @@ export type PagesPluginFunction<
 > = (
   context: EventPluginContext<Env, Params, Data, PluginArgs>,
 ) => Response | Promise<Response>;
-// Copyright (c) 2022-2023 Cloudflare, Inc.
-// Licensed under the Apache 2.0 license found in the LICENSE file or at:
-//     https://opensource.org/licenses/Apache-2.0
-export type PipelineRecord = Record<string, unknown>;
-export type PipelineBatchMetadata = {
-  pipelineId: string;
-  pipelineName: string;
-};
-export declare abstract class PipelineTransformationEntrypoint<
-  I extends PipelineRecord,
-  O extends PipelineRecord,
-> {
-  /**
-   * run recieves an array of PipelineRecord which can be
-   * mutated and returned to the pipeline
-   * @param records Incoming records from the pipeline to be transformed
-   * @param metadata Information about the specific pipeline calling the transformation entrypoint
-   * @returns A promise containing the transformed PipelineRecord array
-   */
-  public run(records: I[], metadata: PipelineBatchMetadata): Promise<O[]>;
-}
-export interface Pipeline<T extends PipelineRecord> {
-  /**
-   * The Pipeline interface represents the type of a binding to a Pipeline
-   *
-   * @param records The records to send to the pipeline
-   */
-  send(records: T[]): Promise<void>;
-}
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
 // itself.
@@ -6040,6 +6044,9 @@ export declare namespace Rpc {
       Reserved | symbol | keyof StubBase<never>
     >]: MethodOrProperty<T[K]>;
   };
+}
+export declare namespace Cloudflare {
+  interface Env {}
 }
 export declare namespace TailStream {
   interface Header {
