@@ -438,8 +438,12 @@
 	"dashon-115-live-trainings-signup-on-dash": {
 		"enabled": false
 	},
-	"dashon-118-get-started-account-home": {
-		"enabled": true
+	"dashon-118-get-started-account-home-section": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"dashon-124-update-support-dropdown": {
 		"enabled": false,
