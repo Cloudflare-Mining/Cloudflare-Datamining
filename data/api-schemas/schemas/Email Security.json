@@ -76,7 +76,8 @@
 								"SUSPICIOUS",
 								"SPOOF",
 								"SPAM",
-								"BULK"
+								"BULK",
+								"NONE"
 							],
 							"type": "string"
 						}
@@ -2426,6 +2427,10 @@
 																"type": "string"
 															}
 														]
+													},
+													"original_edf_hash": {
+														"nullable": true,
+														"type": "string"
 													},
 													"outcome": {
 														"nullable": true,
