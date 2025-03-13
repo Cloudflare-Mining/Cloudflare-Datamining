@@ -277,6 +277,247 @@
 			"Workers Scripts Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
+		"description": "Remove a secret from a script uploaded to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-delete-script-secret",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "secret_name",
+				"required": true,
+				"schema": {
+					"description": "A JavaScript variable name for the secret binding.",
+					"example": "mySecret",
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete script secret binding (Workers for Platforms)"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete script secret failure (Workers for Platforms)"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete script secret",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"description": "Delete script tag for a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-delete-script-tag",
@@ -2772,7 +3013,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
-		"description": "List secrets from a script uploaded to a Workers for Platforms namespace.",
+		"description": "List secrets bound to a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-list-script-secrets",
 		"parameters": [
 			{
@@ -2912,60 +3153,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
 								},
 								"success": {
 									"description": "Whether the API call was successful",
 									"enum": [
-										true
+										false
 									],
-									"example": true,
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -2994,7 +3259,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
-		"description": "Get secret from a script uploaded to a Workers for Platforms namespace.",
+		"description": "Get a given secret binding (value omitted) on a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-get-script-secrets",
 		"parameters": [
 			{
@@ -3134,7 +3399,7 @@
 						}
 					}
 				},
-				"description": "Get script secret"
+				"description": "Get script secret (Workers for Platforms)"
 			},
 			"4XX": {
 				"content": {
@@ -3142,66 +3407,90 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
 								},
 								"success": {
 									"description": "Whether the API call was successful",
 									"enum": [
-										true
+										false
 									],
-									"example": true,
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get script secret failure"
+				"description": "Get script secret failure (Workers for Platforms)"
 			}
 		},
 		"security": [
@@ -3213,7 +3502,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Script Secret",
+		"summary": "Get secret binding",
 		"tags": [
 			"Workers for Platforms"
 		],
@@ -11030,7 +11319,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
-		"description": "Put secrets to a script uploaded to a Workers for Platforms namespace.",
+		"description": "Add a secret to a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-put-script-secrets",
 		"parameters": [
 			{
@@ -11081,6 +11370,7 @@
 								"description": "The value of the secret.",
 								"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
 								"type": "string",
+								"writeOnly": true,
 								"x-sensitive": true
 							},
 							"type": {
@@ -11198,60 +11488,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
 								},
 								"success": {
 									"description": "Whether the API call was successful",
 									"enum": [
-										true
+										false
 									],
-									"example": true,
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -11269,7 +11583,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Put Script Secrets",
+		"summary": "Add script secret",
 		"tags": [
 			"Workers for Platforms"
 		],
