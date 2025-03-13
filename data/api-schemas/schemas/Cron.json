@@ -172,6 +172,9 @@
 		"summary": "Reads the last cron update time",
 		"tags": [
 			"Cron"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/cron": {

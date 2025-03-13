@@ -331,6 +331,9 @@
 		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {

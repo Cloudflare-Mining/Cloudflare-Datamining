@@ -462,6 +462,9 @@
 		"summary": "Updates a category",
 		"tags": [
 			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {

@@ -1379,6 +1379,9 @@
 		"summary": "Updates an event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/{insight_id}": {
@@ -1518,6 +1521,9 @@
 		"summary": "Updates an event insight",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
@@ -1647,6 +1653,9 @@
 		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events": {
