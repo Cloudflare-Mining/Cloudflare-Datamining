@@ -5,28 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal or London, UK</p>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<p><strong>About the Position</strong></p>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
-<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
-<p>Examples Of Desirable Skills, Knowledge And Experience</p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal</p>
+<p><strong>About the role&nbsp;</strong></p>
+<p>A ProdSec intern at Cloudflare will have the unique opportunity to participate in the development of security automation at scale and also in vulnerability research. The Product Security program and capabilities' purpose is to help ensure that Cloudflare’s products and platforms have the right security posture in place and continuously help drive a higher security bar that aids the Cloudflare mission.&nbsp;</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal summer intern is passionate about making the Internet a better place. You will work with a strong team of talented professionals. Your work this summer will impact hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for those who want to learn the ins and outs of Cybersecurity.&nbsp;</p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>2+ years of experience with React or equivalent frameworks (Angular, Vue)</li>
-	<li>2+ years of proven experience in hands-on server-side</li>
-	<li>Knowledge of programming languages like Python or Golang.</li>
-	<li>Familiarity with MySQL, Postgres (or equivalent SQL language)</li>
-	<li>Experience with CI/CD, containers and/or virtualization</li>
-	<li>Experience in systems Observability.</li>
+	<li>Ship and deliver projects over 12-16 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Learn and develop skills through our professional development workshops.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>You will be expected to be a contributing member of the Product Security team within the Cloudflare security organization. This internship offers students the opportunity to gain real-world experience in various aspects of security, including secure SDLC, vulnerability intelligence and application security testing. Interns will work in a structured program that emphasizes skill development and exposure to meaningful security work engaging with different security, engineering and product professionals.&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Professional experience with ClickHouse</li>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>Effective communicator to all levels of the organization</li>
+	<li>Good understanding of the software development lifecycle</li>
+	<li>Knowledge of object-oriented programming principles</li>
+	<li>Development experience with Go, Rust or Python</li>
+	<li>Some experience in security through work, education/training, or hobby</li>
+	<li>Experience leveraging and/or building RESTful APIs</li>
+	<li>Experience developing and complying with policies, standards, and processes.&nbsp;</li>
+	<li>Knowledge of common product security vulnerabilities and mitigations</li>
+	<li>Ability to switch rapidly and refocus between task</li>
+	<li>Quick learners and ready to address newer challenges</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
