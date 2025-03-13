@@ -26,7 +26,7 @@
 								},
 								"messages": {
 									"items": {
-										"type": "object"
+										"type": "string"
 									},
 									"type": "array"
 								},
@@ -52,27 +52,43 @@
 				},
 				"description": "Returns a list of authors"
 			},
-			"404": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
 								},
 								"success": {
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
+								"result",
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Object not found"
+				"description": "Bad Request"
 			}
 		},
 		"security": [
@@ -305,7 +321,7 @@
 								},
 								"messages": {
 									"items": {
-										"type": "object"
+										"type": "string"
 									},
 									"type": "array"
 								},
@@ -336,8 +352,11 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -345,7 +364,7 @@
 							},
 							"required": [
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}
@@ -410,7 +429,7 @@
 								},
 								"messages": {
 									"items": {
-										"type": "object"
+										"type": "string"
 									},
 									"type": "array"
 								},
@@ -441,8 +460,11 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -450,7 +472,7 @@
 							},
 							"required": [
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}

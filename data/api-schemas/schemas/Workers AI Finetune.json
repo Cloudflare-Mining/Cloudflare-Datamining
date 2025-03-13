@@ -329,6 +329,7 @@
 								"type": "string"
 							},
 							"public": {
+								"default": false,
 								"type": "boolean"
 							}
 						},
@@ -404,7 +405,10 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"type": "string"
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -550,15 +554,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"type": "string"
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"errors",
-								"success"
+								"success",
+								"errors"
 							],
 							"type": "object"
 						}
