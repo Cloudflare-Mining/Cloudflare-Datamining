@@ -477,6 +477,23 @@
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountBrowserIsolationUserActionsAdaptiveGroups": {
+		"__description": "Aggregated count of Browser Isolation User Actions matches",
+		"count": "Number of user actions",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountBrowserIsolationUserActionsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "",
+		"decision": "Decision applied to user action. Possible values are allow | block",
+		"type": "User action type. Possible values are copy | paste | download | upload | print"
+	},
+	"AccountBrowserIsolationUserActionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountBrowserIsolationUserActionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountBrowserRenderingEventsAdaptive": {
 		"__description": "Browser Rendering events with adaptive sampling",
 		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
@@ -1732,6 +1749,7 @@
 		"privateAppAUD": "Access private app AUD",
 		"proxyEndpoint": "The proxy endpoint used on this request",
 		"quarantined": "Indicates if the request content was quarantined",
+		"redirectTargetURI": "The URI to which the user was redirected",
 		"requestId": "The request unique identifier",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"srcIpContinent": "Continent code of the request source IP address",
@@ -4588,6 +4606,7 @@
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
+		"browserIsolationUserActionsAdaptiveGroups": "",
 		"browserRenderingEventsAdaptive": "",
 		"browserRenderingEventsAdaptiveGroups": "",
 		"callsStatusAdaptive": "",
@@ -8153,6 +8172,7 @@
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
+		"browserIsolationUserActionsAdaptiveGroups": "Aggregated count of Browser Isolation User Actions matches",
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
 		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
 		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
