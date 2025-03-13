@@ -5,44 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>Job Location: Atlanta, GA | New York, NY | Toronto, Ontario&nbsp;</h3>
-<h3>About the department</h3>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. At Cloudflare, Technical Account Managers (TAMs) are part of our Global Customer Support organization and work directly with customers to ensure a consistent and high level of support. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h3>What you'll do</h3>
-<p>The Technical Account Manager will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges. They are a dedicated technical primary point of contact for our top-tier Enterprise customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with their respective customer(s) and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs, partnering with the Customer Success and Account Team members.</p>
-<p>To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</p>
-<p>As a TAM aligned with <a href="https://www.cloudflare.com/developer-platform/products/">Cloudflare’s Developer Platform</a> products, you’ll be working closely with customers who use these solutions as an integral part of their Cloudflare configuration, addressing their primary support needs.</p>
+<h4><strong>About the Dept&nbsp;</strong></h4>
+<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<p>At most companies, you build applications “in” the Cloud - here at Cloudflare we’re building a Cloud; a uniquely performant, globally distributed and highly available Cloud. In this role, you will lead a team of passionate and talented engineers that are building the internal Control Plane used by our SREs to manage our internal IaaS platform.&nbsp; You will be responsible for tools that support the management of a growing, globally distributed fleet of servers, storage, and network gear spread across a thousand colos worldwide.&nbsp; You will play an active part in shaping the future of the infrastructure that propels Cloudflare’s scale and growth.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment. You build great relationships with your stakeholders and deeply understand their needs.&nbsp; Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Serve as primary technical support contact.</li>
-	<li>Document and maintain technical profiles for customers to ensure a globally consistent and smooth support experience.</li>
-	<li>Maintain a cooperative relationship with all cross-functional resources, such as product, engineering, and customer account teams comprising Account Executives, Customer Success, Professional Services, and Partners throughout every sales phase.</li>
-	<li>Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</li>
-	<li>Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</li>
-	<li>Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</li>
-	<li>Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</li>
-	<li>Ability to travel up to 25% of the time.&nbsp;</li>
-	<li><strong>Ability to work one weekend every quarter.&nbsp;</strong></li>
-	<li>Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</li>
-	<li>Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</li>
-	<li>Understand client sentiment, own internal and customer facing escalations, and provide product support.</li>
-	<li>Ensure support tickets are solved in a timely manner.</li>
-	<li>Maintain and expand working technical knowledge of Cloudflare products.</li>
-	<li>Single threaded owner of technical support issues, working with backend teams as needed.</li>
-	<li>Work with global TAM’s to ensure coverage on critical issues.</li>
-	<li>Ensure rapid Incident response.</li>
-	<li>Assist with preparing and communicating CSRs and formal documentation for incidents and major issues.</li>
+	<li>At least two years of engineering management experience</li>
+	<li>At least 5 years of hands on software development experience on meaningfully complex systems</li>
+	<li>Strong technical foundation: large distributed system design and operations, being comfortable interacting deeply with data (SQL, Prometheus) about how your systems are operating.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
 </ul>
-<h3>Examples of desirable skills, knowledge and experience</h3>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li>Baseline understanding of at least one programming language, preferably JavaScript.</li>
-	<li>Minimum 8 years of previous experience in a customer-facing team with technical account management responsibilities.</li>
-	<li>Familiarity with modern development tools and systems.</li>
-	<li>Have the business acumen of working with Fortune 500 companies and their leadership team.</li>
-	<li>Experience with edge computing products and technologies (serverless computing, object storage, key-value stores, SQL, etc.).</li>
-	<li>Basic troubleshooting skills and methodologies towards identifying and escalating to the necessary teams to drive towards a solution.</li>
-	<li>Fundamental understanding of how the Internet works, e.g. the OSI Model, Application and Network security, what a proxy is and how it works.</li>
-	<li>Passionate about Cloudflare products, helping customers, and building strong relationships across organizations.</li>
+	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000</span></li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
