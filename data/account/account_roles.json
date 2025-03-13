@@ -1149,6 +1149,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1168,10 +1172,6 @@
 				"edit": true
 			},
 			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"worker": {
 				"read": true,
 				"edit": true
 			},
@@ -1554,11 +1554,11 @@
 		"name": "Workers Admin",
 		"description": "Can manage Cloudflare Workers and related developer platform products.",
 		"permissions": {
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": true
 			},
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": true
 			},
@@ -1769,6 +1769,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -1811,10 +1815,6 @@
 				"edit": false
 			},
 			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"worker": {
 				"read": true,
 				"edit": false
 			},
@@ -1956,6 +1956,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1974,10 +1978,6 @@
 				"edit": true
 			},
 			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"worker": {
 				"read": true,
 				"edit": true
 			},
