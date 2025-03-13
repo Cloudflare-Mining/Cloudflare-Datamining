@@ -4440,7 +4440,12 @@ export type AIGatewayProviders =
   | "google-ai-studio"
   | "mistral"
   | "grok"
-  | "openrouter";
+  | "openrouter"
+  | "deepseek"
+  | "cerebras"
+  | "cartesia"
+  | "elevenlabs"
+  | "adobe-firefly";
 export type AIGatewayHeaders = {
   "cf-aig-metadata":
     | Record<string, number | string | boolean | null | bigint>
@@ -4476,6 +4481,7 @@ export declare abstract class AiGateway {
   run(
     data: AIGatewayUniversalRequest | AIGatewayUniversalRequest[],
   ): Promise<Response>;
+  getUrl(provider: AIGatewayProviders | string): Promise<string>; // eslint-disable-line
 }
 export interface BasicImageTransformations {
   /**
@@ -6548,6 +6554,15 @@ export declare abstract class Workflow<PARAMS = unknown> {
   public create(
     options?: WorkflowInstanceCreateOptions<PARAMS>,
   ): Promise<WorkflowInstance>;
+  /**
+   * Create a batch of instances and return handle for all of them. If a provided id exists, an error will be thrown.
+   * `createBatch` is limited at 100 instances at a time or when the RPC limit for the batch (1MiB) is reached.
+   * @param batch List of Options when creating an instance including name and params
+   * @returns A promise that resolves with a list of handles for the created instances.
+   */
+  public createBatch(
+    batch: WorkflowInstanceCreateOptions<PARAMS>[],
+  ): Promise<WorkflowInstance[]>;
 }
 export interface WorkflowInstanceCreateOptions<PARAMS = unknown> {
   /**
