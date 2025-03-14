@@ -58,7 +58,7 @@
 						}
 					}
 				},
-				"description": "Delete the Scan Config for an Account"
+				"description": "Delete a Scan Config"
 			}
 		},
 		"security": [
@@ -70,7 +70,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete the Scan Config for an Account",
+		"summary": "Delete a Scan Config",
 		"tags": [
 			"Scans"
 		],
@@ -184,7 +184,7 @@
 													},
 													"ports": {
 														"items": {
-															"example": 8080,
+															"example": "default",
 															"type": "string"
 														},
 														"type": "array"
@@ -208,7 +208,7 @@
 						}
 					}
 				},
-				"description": "Returns the Scan Config for an Account"
+				"description": "Returns all Scan Configs"
 			}
 		},
 		"security": [
@@ -220,7 +220,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get the Scan Config for An Account",
+		"summary": "List Scan Configs",
 		"tags": [
 			"Scans"
 		],
@@ -564,7 +564,7 @@
 												},
 												"ports": {
 													"items": {
-														"example": 8080,
+														"example": "default",
 														"type": "string"
 													},
 													"type": "array"
@@ -755,7 +755,7 @@
 												},
 												"ports": {
 													"items": {
-														"example": 8080,
+														"example": "default",
 														"type": "string"
 													},
 													"type": "array"
