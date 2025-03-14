@@ -168,25 +168,39 @@
 														"type": "string"
 													},
 													"frequency": {
-														"example": 1,
+														"description": "The number of days between each scan (0 = no recurring scans).",
+														"example": 7,
+														"title": "Frequency",
 														"type": "number"
 													},
 													"id": {
+														"description": "Config ID",
 														"example": "uuid",
 														"type": "string"
 													},
 													"ips": {
+														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+														"example": [
+															"1.1.1.1",
+															"2606:4700:4700::1111"
+														],
 														"items": {
-															"example": "1.1.1.1",
+															"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 															"type": "string"
 														},
+														"title": "IP List",
 														"type": "array"
 													},
 													"ports": {
+														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+														"example": [
+															"default"
+														],
 														"items": {
-															"example": "default",
+															"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
 															"type": "string"
 														},
+														"title": "Port List",
 														"type": "array"
 													}
 												},
@@ -454,24 +468,32 @@
 							"frequency": {
 								"description": "The number of days between each scan (0 = no recurring scans).",
 								"example": 7,
+								"title": "Frequency",
 								"type": "number"
 							},
 							"ips": {
 								"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+								"example": [
+									"1.1.1.1",
+									"2606:4700:4700::1111"
+								],
 								"items": {
 									"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-									"example": "1.1.1.1",
 									"type": "string"
 								},
+								"title": "IP List",
 								"type": "array"
 							},
 							"ports": {
 								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"example": [
+									"default"
+								],
 								"items": {
 									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
-									"example": "default",
 									"type": "string"
 								},
+								"title": "Port List",
 								"type": "array"
 							}
 						},
@@ -555,25 +577,39 @@
 													"type": "string"
 												},
 												"frequency": {
-													"example": 1,
+													"description": "The number of days between each scan (0 = no recurring scans).",
+													"example": 7,
+													"title": "Frequency",
 													"type": "number"
 												},
 												"id": {
+													"description": "Config ID",
 													"example": "uuid",
 													"type": "string"
 												},
 												"ips": {
+													"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+													"example": [
+														"1.1.1.1",
+														"2606:4700:4700::1111"
+													],
 													"items": {
-														"example": "1.1.1.1",
+														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
+													"title": "IP List",
 													"type": "array"
 												},
 												"ports": {
+													"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+													"example": [
+														"default"
+													],
 													"items": {
-														"example": "default",
+														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
 														"type": "string"
 													},
+													"title": "Port List",
 													"type": "array"
 												}
 											},
@@ -635,24 +671,32 @@
 							"frequency": {
 								"description": "The number of days between each scan (0 = no recurring scans).",
 								"example": 7,
+								"title": "Frequency",
 								"type": "number"
 							},
 							"ips": {
 								"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+								"example": [
+									"1.1.1.1",
+									"2606:4700:4700::1111"
+								],
 								"items": {
 									"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-									"example": "1.1.1.1",
 									"type": "string"
 								},
+								"title": "IP List",
 								"type": "array"
 							},
 							"ports": {
 								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"example": [
+									"default"
+								],
 								"items": {
 									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
-									"example": "default",
 									"type": "string"
 								},
+								"title": "Port List",
 								"type": "array"
 							}
 						},
@@ -739,25 +783,39 @@
 													"type": "string"
 												},
 												"frequency": {
-													"example": 1,
+													"description": "The number of days between each scan (0 = no recurring scans).",
+													"example": 7,
+													"title": "Frequency",
 													"type": "number"
 												},
 												"id": {
+													"description": "Config ID",
 													"example": "uuid",
 													"type": "string"
 												},
 												"ips": {
+													"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+													"example": [
+														"1.1.1.1",
+														"2606:4700:4700::1111"
+													],
 													"items": {
-														"example": "1.1.1.1",
+														"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
+													"title": "IP List",
 													"type": "array"
 												},
 												"ports": {
+													"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+													"example": [
+														"default"
+													],
 													"items": {
-														"example": "default",
+														"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
 														"type": "string"
 													},
+													"title": "Port List",
 													"type": "array"
 												}
 											},
