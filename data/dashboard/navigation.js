@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: L => (0, o.z1)(c.Mr)(L) && (0, P.z7)(L) && !!(0, P.z$)(L).length
+		hasPermission: L => (0, o.z1)(c.Mr)(L) && (0, j.z7)(L) && !!(0, j.z$)(L).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -748,7 +748,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: L => {
 				const k = (0, u.nA)(L);
-				return k ? !!(!(0, r.yD)(L) && !!(0, u.ZB)(L, "origin_reachability_dash", "dash_view") && (0, u.tU)(k, "enterprise") && !!(0, v.Ek)(L, "httpRequestsAdaptiveGroups")) : !1
+				return k ? !!(!(0, r.yD)(L) && !!(0, u.ZB)(L, "origin_reachability_dash", "dash_view") && (0, u.tU)(k, "enterprise") && !!(0, E.Ek)(L, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -756,7 +756,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: L => {
 				const k = (0, u.nA)(L);
-				return k ? !!(!(0, r.yD)(L) && !!(0, u.ZB)(L, "edge_reachability_dash", "dash_view") && (0, u.tU)(k, "enterprise") && !!(0, v.Ek)(L, "nelReportsAdaptiveGroups")) : !1
+				return k ? !!(!(0, r.yD)(L) && !!(0, u.ZB)(L, "edge_reachability_dash", "dash_view") && (0, u.tU)(k, "enterprise") && !!(0, E.Ek)(L, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.workers",
@@ -791,7 +791,7 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: $.bB,
+		tabs: V.bB,
 		hasPermission: L => !(0, r.yD)(L) && (0, U.m7)(L)
 	}, {
 		title: "navigation.zone.dns",
@@ -848,9 +848,9 @@ const navigation = {
 			const k = (0, u.nA)(L);
 			if ((0, r.yD)(L) || !(0, g.wB)(L, "zone_settings", "spectrum.app") || !k) return !1;
 			const H = !!((0, m.l8)(L) || (0, u.DQ)(L)),
-				ae = !!(0, u.ZB)(L, "spectrum", "enabled"),
-				le = !!(0, u.Ns)(k);
-			return ae || H || !le
+				oe = !!(0, u.ZB)(L, "spectrum", "enabled"),
+				ce = !!(0, u.Ns)(k);
+			return oe || H || !ce
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -897,13 +897,13 @@ const navigation = {
 			title: "navigation.zone.security.overview",
 			navigationType: "version",
 			url: "/security/overview",
-			hasPermission: L => (0, g.$n)(L, "waf", "firewall.rule") && ((0, ee.P8)(L) || !!(0, o.z1)("appsec-overview")(L)),
+			hasPermission: L => (0, g.$n)(L, "waf", "firewall.rule") && ((0, q.P8)(L) || !!(0, o.z1)("appsec-overview")(L)),
 			guidedTooltipStep: K.t.OVERVIEW
 		}, {
 			title: "navigation.zone.security.analytics",
 			navigationType: "version",
 			url: "/security/analytics",
-			tabs: q.Wu,
+			tabs: X.Wu,
 			hasPermission: L => (0, g.$n)(L, "waf", "firewall.rule"),
 			guidedTooltipStep: K.t.ANALYTICS
 		}, {
@@ -911,62 +911,62 @@ const navigation = {
 			navigationType: "version",
 			url: "/security/web-asset-discovery",
 			guidedTooltipStep: K.t.WEB_ASSET_DISCOVERY,
-			hasPermission: L => (0, ee.P8)(L) && ((0, g.$n)(L, "waf", "firewall.rule") || (0, g.$n)(L, "page_shield", "script-monitor"))
+			hasPermission: L => (0, q.P8)(L) && ((0, g.$n)(L, "waf", "firewall.rule") || (0, g.$n)(L, "page_shield", "script-monitor"))
 		}, {
 			title: "navigation.zone.security_rules",
 			navigationType: "version",
 			guidedTooltipStep: K.t.SECURITY_RULES,
 			url: "/security/security-rules",
-			hasPermission: L => (0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => (0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.events",
 			url: "/security/events",
 			navigationType: "version",
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
 			tabs: x.gn,
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
 			tabs: D.mt,
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "page_shield", "script-monitor")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
 			navigationType: "version",
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.data",
 			url: "/security/data",
 			navigationType: "global-settings",
-			hasPermission: L => !(0, ee.P8)(L) && (0, r.du)(L, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed") && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, r.du)(L, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed") && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			navigationType: "version",
-			hasPermission: L => !(0, ee.P8)(L) && (0, T.R0)(L),
+			hasPermission: L => !(0, q.P8)(L) && (0, T.R0)(L),
 			tabs: D.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
 			navigationType: "version",
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.settings",
 			url: "/security/settings",
 			navigationType: "version",
-			hasPermission: L => !(0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => !(0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.settings",
 			url: "/security/detections",
 			guidedTooltipStep: K.t.SETTINGS,
 			navigationType: "version",
-			hasPermission: L => (0, ee.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
+			hasPermission: L => (0, q.P8)(L) && (0, g.$n)(L, "waf", "firewall.rule")
 		}]
 	}, {
 		title: "navigation.zone.access",
@@ -991,7 +991,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: j.x
+			tabs: P.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -1150,7 +1150,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: L => !(0, r.yD)(L) && !!(0, v.Ek)(L, "healthCheckEventsAdaptiveGroups")
+			hasPermission: L => !(0, r.yD)(L) && !!(0, E.Ek)(L, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
@@ -1357,5 +1357,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: E.G
+	support: v.G
 }
