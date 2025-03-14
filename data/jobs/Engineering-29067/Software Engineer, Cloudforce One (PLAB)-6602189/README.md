@@ -7,9 +7,9 @@
 </div>
 <p><strong>Available Locations: </strong>Hybrid - Austin, TX or London, UK</p>
 <p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
+<p>Cloudflare’s mission is to help build a better internet and the Cloudforce One Platform Abuse Engineering (PLAB) team, lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
 <p><strong>About the Role</strong></p>
-<p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
+<p>Engineers on the Platform Abuse Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
 <p>This role will be based out of our Austin or London office</p>
 <p><strong>What you'll do</strong></p>
 <p>While the majority of our services are now written in Golang, you will also work with technologies such as Typescript, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
@@ -21,7 +21,7 @@
 	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
 	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
 	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
-	<li>Mentoring and guiding developers in the Trust and Safety Engineering team to help build collective knowledge and technical expertise</li>
+	<li>Mentoring and guiding developers in the Platform Abuse Engineering team to help build collective knowledge and technical expertise</li>
 </ul>
 <p><strong>Desirable skills and experience</strong></p>
 <ul>
