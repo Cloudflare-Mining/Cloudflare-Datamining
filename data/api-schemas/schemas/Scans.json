@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/cloudforce-one/scans/config": {
+	"DELETE /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "delete_DeleteScans",
 		"parameters": [
 			{
@@ -9,6 +9,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Config ID",
+				"in": "path",
+				"name": "config_id",
+				"required": true,
+				"schema": {
+					"description": "Config ID",
 					"type": "string"
 				}
 			}
@@ -52,6 +62,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -148,30 +161,46 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"account_id": {
-													"example": "abcd1234abcd1234abcd1234abcd1234",
-													"type": "string"
-												},
-												"frequency": {
-													"example": 1,
-													"type": "number"
-												},
-												"ips": {
-													"items": {
-														"example": "1.1.1.1",
+											"items": {
+												"properties": {
+													"account_id": {
+														"example": "abcd1234abcd1234abcd1234abcd1234",
 														"type": "string"
 													},
-													"type": "array"
-												}
+													"frequency": {
+														"example": 1,
+														"type": "number"
+													},
+													"id": {
+														"example": "uuid",
+														"type": "string"
+													},
+													"ips": {
+														"items": {
+															"example": "1.1.1.1",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"ports": {
+														"items": {
+															"example": 8080,
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"id",
+													"account_id",
+													"ips",
+													"frequency",
+													"ports"
+												],
+												"title": "Config",
+												"type": "object"
 											},
-											"required": [
-												"account_id",
-												"ips",
-												"frequency"
-											],
-											"title": "Config",
-											"type": "object"
+											"type": "array"
 										}
 									}
 								}
@@ -183,6 +212,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -197,7 +229,7 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/scans/results": {
+	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
 		"parameters": [
 			{
@@ -207,6 +239,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Config ID",
+				"in": "path",
+				"name": "config_id",
+				"required": true,
+				"schema": {
+					"description": "Config ID",
 					"type": "string"
 				}
 			}
@@ -281,6 +323,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -365,6 +410,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -394,7 +442,7 @@
 					"schema": {
 						"properties": {
 							"frequency": {
-								"description": "The number of days between each scan (0 = no recurring scans)",
+								"description": "The number of days between each scan (0 = no recurring scans).",
 								"example": 7,
 								"type": "number"
 							},
@@ -406,11 +454,19 @@
 									"type": "string"
 								},
 								"type": "array"
+							},
+							"ports": {
+								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"items": {
+									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+									"example": "default",
+									"type": "string"
+								},
+								"type": "array"
 							}
 						},
 						"required": [
-							"ips",
-							"frequency"
+							"ips"
 						],
 						"type": "object"
 					}
@@ -495,18 +551,31 @@
 													"example": 1,
 													"type": "number"
 												},
+												"id": {
+													"example": "uuid",
+													"type": "string"
+												},
 												"ips": {
 													"items": {
 														"example": "1.1.1.1",
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"ports": {
+													"items": {
+														"example": 8080,
+														"type": "string"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
+												"id",
 												"account_id",
 												"ips",
-												"frequency"
+												"frequency",
+												"ports"
 											],
 											"title": "Config",
 											"type": "object"
@@ -522,11 +591,205 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
 		],
 		"summary": "Create a new Scan Config",
+		"tags": [
+			"Scans"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
+		"operationId": "post_ConfigUpdate",
+		"parameters": [
+			{
+				"description": "Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Config ID",
+				"in": "path",
+				"name": "config_id",
+				"required": true,
+				"schema": {
+					"description": "Config ID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"frequency": {
+								"description": "The number of days between each scan (0 = no recurring scans).",
+								"example": 7,
+								"type": "number"
+							},
+							"ips": {
+								"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+								"items": {
+									"description": "A list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
+									"example": "1.1.1.1",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"ports": {
+								"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+								"items": {
+									"description": "A list of ports to scan. Allowed values:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). Default will scan the 100 most commonly open ports.",
+									"example": "default",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"example": "abcd1234abcd1234abcd1234abcd1234",
+													"type": "string"
+												},
+												"frequency": {
+													"example": 1,
+													"type": "number"
+												},
+												"id": {
+													"example": "uuid",
+													"type": "string"
+												},
+												"ips": {
+													"items": {
+														"example": "1.1.1.1",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ports": {
+													"items": {
+														"example": 8080,
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"ips",
+												"frequency",
+												"ports"
+											],
+											"title": "Config",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Returns the updated config"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update an existing Scan Config",
 		"tags": [
 			"Scans"
 		],
@@ -592,6 +855,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

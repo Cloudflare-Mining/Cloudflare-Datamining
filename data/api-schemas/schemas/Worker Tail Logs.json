@@ -278,6 +278,10 @@
 		"summary": "Delete Tail",
 		"tags": [
 			"Worker Tail Logs"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
@@ -592,6 +596,10 @@
 		"summary": "List Tails",
 		"tags": [
 			"Worker Tail Logs"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/tails": {
@@ -913,6 +921,10 @@
 		"summary": "Start Tail",
 		"tags": [
 			"Worker Tail Logs"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
 		]
 	}
 }

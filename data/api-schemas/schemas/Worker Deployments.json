@@ -476,6 +476,11 @@
 		"summary": "List Deployments",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
@@ -1044,6 +1049,9 @@
 		"summary": "Create Deployment",
 		"tags": [
 			"Worker Deployments"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	}
 }
