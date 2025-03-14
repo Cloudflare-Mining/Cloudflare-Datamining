@@ -2655,7 +2655,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Provided Workflow ID is not valid"
 			},
 			"404": {
 				"content": {
@@ -2721,6 +2721,318 @@
 			}
 		],
 		"summary": "Create a new workflow instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch": {
+		"operationId": "wor-batch-create-workflow-instance",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"instance_id": {
+									"maximum": 64,
+									"minimum": 1,
+									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+									"type": "string"
+								},
+								"params": {
+									"type": "object"
+								}
+							},
+							"type": "object"
+						},
+						"maxItems": 100,
+						"minItems": 1,
+						"type": "array"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"id": {
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+												"type": "string"
+											},
+											"status": {
+												"enum": [
+													"queued",
+													"running",
+													"paused",
+													"errored",
+													"terminated",
+													"complete",
+													"waitingForPause",
+													"waiting",
+													"unknown"
+												],
+												"type": "string"
+											},
+											"version_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"workflow_id": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"workflow_id",
+											"version_id",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Batch create workflow instances. Body is is a JSON list that contain all payloads and ids that are passed into the new instance as the event payload."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Provided Workflow ID is not valid"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow Name not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Batch create new Workflow instances",
 		"tags": [
 			"Workflows"
 		],
