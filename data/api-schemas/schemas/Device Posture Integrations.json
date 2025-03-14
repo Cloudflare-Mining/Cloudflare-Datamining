@@ -1446,7 +1446,8 @@
 											"client_secret": {
 												"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -1473,7 +1474,8 @@
 											"client_secret": {
 												"description": "The Crowdstrike client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Crowdstrike customer ID.",
@@ -1505,7 +1507,8 @@
 											"client_secret": {
 												"description": "The Uptycs client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Uptycs customer ID.",
@@ -1532,7 +1535,8 @@
 											"client_secret": {
 												"description": "The Intune client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Intune customer ID.",
@@ -1558,7 +1562,8 @@
 											"client_secret": {
 												"description": "The Kolide client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -1578,7 +1583,8 @@
 											"access_client_secret": {
 												"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
 												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"api_url": {
 												"description": "The Tanium API URL.",
@@ -1588,7 +1594,8 @@
 											"client_secret": {
 												"description": "The Tanium client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -1608,7 +1615,8 @@
 											"client_secret": {
 												"description": "The SentinelOne S2S client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -1628,7 +1636,8 @@
 											"access_client_secret": {
 												"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
 												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"api_url": {
 												"description": "The Custom Device Posture Integration  API URL.",
@@ -2197,7 +2206,8 @@
 											"client_secret": {
 												"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -2224,7 +2234,8 @@
 											"client_secret": {
 												"description": "The Crowdstrike client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Crowdstrike customer ID.",
@@ -2256,7 +2267,8 @@
 											"client_secret": {
 												"description": "The Uptycs client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Uptycs customer ID.",
@@ -2283,7 +2295,8 @@
 											"client_secret": {
 												"description": "The Intune client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"customer_id": {
 												"description": "The Intune customer ID.",
@@ -2309,7 +2322,8 @@
 											"client_secret": {
 												"description": "The Kolide client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -2329,7 +2343,8 @@
 											"access_client_secret": {
 												"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
 												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"api_url": {
 												"description": "The Tanium API URL.",
@@ -2339,7 +2354,8 @@
 											"client_secret": {
 												"description": "The Tanium client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -2359,7 +2375,8 @@
 											"client_secret": {
 												"description": "The SentinelOne S2S client secret.",
 												"example": "example client secret",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											}
 										},
 										"required": [
@@ -2379,7 +2396,8 @@
 											"access_client_secret": {
 												"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
 												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"api_url": {
 												"description": "The Custom Device Posture Integration  API URL.",

@@ -201,6 +201,7 @@
 														"type": "boolean"
 													},
 													"exclude": {
+														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
 															"properties": {
 																"address": {
@@ -269,6 +270,7 @@
 														"type": "string"
 													},
 													"include": {
+														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
 															"properties": {
 																"address": {
@@ -566,6 +568,7 @@
 																"type": "boolean"
 															},
 															"exclude": {
+																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
 																	"properties": {
 																		"address": {
@@ -634,6 +637,7 @@
 																"type": "string"
 															},
 															"include": {
+																"description": "List of routes included in the WARP client's tunnel.",
 																"items": {
 																	"properties": {
 																		"address": {
@@ -2758,6 +2762,7 @@
 														"type": "boolean"
 													},
 													"exclude": {
+														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
 															"properties": {
 																"address": {
@@ -2826,6 +2831,7 @@
 														"type": "string"
 													},
 													"include": {
+														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
 															"properties": {
 																"address": {
@@ -3123,6 +3129,7 @@
 																"type": "boolean"
 															},
 															"exclude": {
+																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
 																	"properties": {
 																		"address": {
@@ -3191,6 +3198,7 @@
 																"type": "string"
 															},
 															"include": {
+																"description": "List of routes included in the WARP client's tunnel.",
 																"items": {
 																	"properties": {
 																		"address": {
@@ -3577,6 +3585,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -3645,6 +3654,7 @@
 													"type": "string"
 												},
 												"include": {
+													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -3866,6 +3876,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -3934,6 +3945,7 @@
 															"type": "string"
 														},
 														"include": {
+															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -4286,6 +4298,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -4354,6 +4367,7 @@
 													"type": "string"
 												},
 												"include": {
+													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -4630,6 +4644,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -4698,6 +4713,7 @@
 															"type": "string"
 														},
 														"include": {
+															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -7939,10 +7955,68 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"exclude": {
+								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"exclude_office_ips": {
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
+							},
+							"include": {
+								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
 							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -8132,6 +8206,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -8200,6 +8275,7 @@
 													"type": "string"
 												},
 												"include": {
+													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -8421,6 +8497,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -8489,6 +8566,7 @@
 															"type": "string"
 														},
 														"include": {
+															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -8733,10 +8811,68 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"exclude": {
+								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"exclude_office_ips": {
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
+							},
+							"include": {
+								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices.",
@@ -8949,6 +9085,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -9017,6 +9154,7 @@
 													"type": "string"
 												},
 												"include": {
+													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -9293,6 +9431,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -9361,6 +9500,7 @@
 															"type": "string"
 														},
 														"include": {
+															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -9994,10 +10134,68 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"exclude": {
+								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"exclude_office_ips": {
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
+							},
+							"include": {
+								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
 							},
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
@@ -10225,6 +10423,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
+													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -10293,6 +10492,7 @@
 													"type": "string"
 												},
 												"include": {
+													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
 														"properties": {
 															"address": {
@@ -10569,6 +10769,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
+															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {
@@ -10637,6 +10838,7 @@
 															"type": "string"
 														},
 														"include": {
+															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
 																"properties": {
 																	"address": {

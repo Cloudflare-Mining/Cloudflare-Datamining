@@ -442,6 +442,132 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}": {
+		"operationId": "aig-config-get-gateway-url",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "0d37909e38d3e99c29fa2cd343ac421a",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "provider",
+				"required": true,
+				"schema": {
+					"example": "workers-ai",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the log details"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Gateway URL",
+		"tags": [
+			"AI Gateway Gateways"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-fetch-gateway",
 		"parameters": [
