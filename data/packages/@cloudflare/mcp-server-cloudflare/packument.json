@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/mcp-server-cloudflare",
 	"dist-tags": {
-		"latest": "0.1.10"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.3": {
@@ -593,6 +593,48 @@
 			"name": "@cloudflare/mcp-server-cloudflare",
 			"version": "0.1.10",
 			"dependencies": {
+				"zod": "^3.23.8",
+				"chalk": "^5.3.0",
+				"which": "^5.0.0",
+				"dotenv": "^16.4.5",
+				"undici": "^5.28.4",
+				"@iarna/toml": "^2.2.5",
+				"xdg-app-paths": "^8.3.0",
+				"@modelcontextprotocol/sdk": "^0.6.0"
+			},
+			"devDependencies": {
+				"shx": "^0.3.4",
+				"tsup": "^8.3.5",
+				"prettier": "^3.4.1",
+				"typescript": "^5.6.2",
+				"@types/node": "^22.10.0",
+				"@types/which": "^3.0.4",
+				"@cloudflare/workers-types": "^4.20241112.0"
+			},
+			"bin": {
+				"mcp-server-cloudflare": "dist/index.js"
+			},
+			"dist": {
+				"shasum": "3f40d270a9fa9e4ef3c6d848dbeee0964a456a5c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/mcp-server-cloudflare/-/mcp-server-cloudflare-0.1.10.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-SLGUFl2owAGUy7FQhzf/I7YqNI2iCPsSJNPmySOVvGyKrJzIcbc3UEf0zeqwuqCGurhi4OYwwWisuHOs4Tg8yA==",
+				"signatures": [
+					{
+						"sig": "MEUCID2HXqJakpEPD4f6KzG1xYhpCxF1Jev4ias7ROKzs16mAiEAkltUZCrgwvtRkQfhD4To2MWs4DsPFBOj4WQEit8lP60=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 71107
+			},
+			"engines": {
+				"node": ">=16.17.0"
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/mcp-server-cloudflare",
+			"version": "0.2.0",
+			"dependencies": {
 				"@iarna/toml": "^2.2.5",
 				"@modelcontextprotocol/sdk": "^0.6.0",
 				"chalk": "^5.3.0",
@@ -606,24 +648,27 @@
 				"@cloudflare/workers-types": "^4.20241112.0",
 				"@types/node": "^22.10.0",
 				"@types/which": "^3.0.4",
+				"@vitest/coverage-v8": "^3.0.8",
+				"msw": "^2.7.3",
 				"prettier": "^3.4.1",
 				"shx": "^0.3.4",
 				"tsup": "^8.3.5",
-				"typescript": "^5.6.2"
+				"typescript": "^5.6.2",
+				"vitest": "^3.0.8"
 			},
 			"bin": {
 				"mcp-server-cloudflare": "dist/index.js"
 			},
 			"dist": {
-				"integrity": "sha512-SLGUFl2owAGUy7FQhzf/I7YqNI2iCPsSJNPmySOVvGyKrJzIcbc3UEf0zeqwuqCGurhi4OYwwWisuHOs4Tg8yA==",
-				"shasum": "3f40d270a9fa9e4ef3c6d848dbeee0964a456a5c",
-				"tarball": "https://registry.npmjs.org/@cloudflare/mcp-server-cloudflare/-/mcp-server-cloudflare-0.1.10.tgz",
+				"integrity": "sha512-506bCOY2ZI7AINJLULbqyDRLymLag2pRuKFGBPP1yFr9+wAfqHS9fk8UkDdUYCeU5MYdv8FUWHVhdg62cMXdXg==",
+				"shasum": "e6c5da1ed116f714d15ed3710eb0b42e2e9b3584",
+				"tarball": "https://registry.npmjs.org/@cloudflare/mcp-server-cloudflare/-/mcp-server-cloudflare-0.2.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 71107,
+				"unpackedSize": 276652,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCID2HXqJakpEPD4f6KzG1xYhpCxF1Jev4ias7ROKzs16mAiEAkltUZCrgwvtRkQfhD4To2MWs4DsPFBOj4WQEit8lP60="
+						"sig": "MEUCIB5AOOfysSseJffXc0R4qLqOp/G2jHUYkMSNHC09RyoGAiEAk0n2lucJ7YoShs+uAWl0UKfXRcP0EuNOqWEzbVCyb5c="
 					}
 				]
 			},
