@@ -2,7 +2,7 @@
 	"description": "Rules maintained by bots team that can run for all plans",
 	"id": "3e677e63d4e9479382576f3fa66279e7",
 	"kind": "managed",
-	"last_updated": "2025-02-26T22:39:05.140283Z",
+	"last_updated": "2025-03-14T18:07:24.348762Z",
 	"name": "Cloudflare Bot Management rules for all plans",
 	"phase": "http_request_sbfm",
 	"rules": [
@@ -14,8 +14,17 @@
 			"last_updated": "2025-02-26T22:39:05.140283Z",
 			"ref": "ai-bots-block",
 			"version": "11"
+		},
+		{
+			"action": "log",
+			"description": "Manage Crawlers",
+			"enabled": false,
+			"id": "e3c2e7a758734f60999130aedc92276c",
+			"last_updated": "2025-03-14T18:07:24.348762Z",
+			"ref": "crawlers-link-maze",
+			"version": "1"
 		}
 	],
 	"source": "firewall_managed",
-	"version": "11"
+	"version": "12"
 }
