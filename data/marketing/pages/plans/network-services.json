@@ -2935,7 +2935,32 @@
 										"modalName": "Magic WAN Product Page Modal Form",
 										"modalId": "magic-wan-product-page-modal-form",
 										"modalType": "single-form",
-										"marketoForm": null,
+										"marketoForm": {
+											"contentTypeId": "marketoEmbeddedForm",
+											"contentfulId": "6kbApogZ0tZvhcgtVWw8JU",
+											"bladeName": "Magic WAN Product Page Marketo Form",
+											"backgroundColor": "white",
+											"marketoFormId": 1341,
+											"marketoFormLeadSource": "Inbound - Product Interest/Beta",
+											"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - Magic WAN Product Page",
+											"marketoFormHeaderText": "Contact us",
+											"marketoFormDefaultComment": null,
+											"showCommentBox": null,
+											"marketoFormThankYouText": null,
+											"marketoFormCustomSuccessMessage": null,
+											"marketoFormPdfDownload": null,
+											"marketoFormPdfDownloadI18n": [],
+											"marketoFormAssetDownloadButtonText": null,
+											"marketoFormSuccessRedirectUrl": null,
+											"sendAdRoll": null,
+											"meta_adRollCustomSegment": null,
+											"enableSandbox": null,
+											"marketoFormSubmitButtonText": null,
+											"marketoFormSubmitButtonColor": null,
+											"enableEmailVerification": null,
+											"disableEnterpriseEmailNotification": null,
+											"enableRingout": null
+										},
 										"title": "Cloudflare Magic Wan",
 										"regularCopy": "Request Magic Wan demo",
 										"splitFormDefaultTab": null,
@@ -2992,6 +3017,20 @@
 										{
 											"contentTypeId": "feature",
 											"title": "Interconnects with > %{NetworkInterconnects} networks, major ISPs, cloud services, and enterprises",
+											"description": null,
+											"displayBorder": null,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Connect using a variety of network on-ramps, including WAN connector, Anycast-enabled IPsec/GRE tunnels, and direct connection",
 											"description": null,
 											"displayBorder": null,
 											"learnMoreUrl": null,
@@ -3143,9 +3182,125 @@
 								"supportResponse": null,
 								"bottomCtaLinkUrl": "https://www.cloudflare.com/magic-firewall/",
 								"bottomCtaLinkText": "Learn more",
-								"bottomCtaLink": null,
+								"bottomCtaLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "47H8uYAzvmTazekI8zwVjl",
+									"elementName": "Plans&Pricing-Product_Category-Network Services-Magic Firewall",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/magic-firewall/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"hideTopDivider": true,
-								"featureList1": null,
+								"featureList1": {
+									"contentTypeId": "featureList",
+									"contentfulId": "5YwnEGdVjCB2s1OBlBiKsM",
+									"title": "KEY FEATURES",
+									"description": null,
+									"features": [
+										{
+											"contentTypeId": "feature",
+											"title": "Static firewall rules for your entire network for any device, location (branch or HQ), or application",
+											"description": null,
+											"displayBorder": null,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Configured rules deploy in < 500ms globally",
+											"description": null,
+											"displayBorder": null,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Allow or block traffic based on: protocol, source or destination IP and port, packet length, bit field match",
+											"description": null,
+											"displayBorder": null,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Managed threat intelligence IP lists",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Geo-blocking based on user location by country",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Protocol validation rules to inspect traffic validity",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Seamless integration with Cloudflare One Zero Trust services",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										}
+									],
+									"supplementaryCallToAction": null
+								},
 								"featureList2": null,
 								"featureList3": null
 							}
@@ -3385,7 +3540,17 @@
 								},
 								"category": "Reliability",
 								"pricingText": "Free",
-								"learnMoreLink": null,
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "RFJsxOC1PamCAyvuanSTc",
+									"elementName": "Learn More Link - Cloudflare Interconnect",
+									"standardText": "Learn More",
+									"text": "https://www.cloudflare.com/network-interconnect/",
+									"url": "https://www.cloudflare.com/network-interconnect/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"callToAction": null
 							}
 						]
@@ -3476,6 +3641,47 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
 										},
 										"description": "Ease of use orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2oUmE3Ht4pO8B1nvUEmGuR",
+								"title": "Integrated security & performance ",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deeply integrated products that form a unified control plane. Unified layered security across all endpoints & users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MxzX9y4MJemRhgGHPMzN/4137e213ac13d0b833e9aa332f16680f/icon-product-page-blue.png"
+									},
+									"description": "icon product page blue"
+								},
+								"iconAssetFile": {
+									"id": "888981a6-dd85-5b86-af64-6ec8fa0d848e",
+									"altText": "Internet browser blue",
+									"title": "Internet browser blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17tDJ5kPaGE8eLFJvByBgR/c28fb006fa3ddfba75b2009591559296/internet-browser.svg"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
