@@ -476,30 +476,6 @@
 										"showIconOnly": false,
 										"hideOnChinaSite": false,
 										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "CaJqwhkMiGPfNVjzkcAz0",
-										"locale": "en-US",
-										"name": "Connectivity cloud",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "ZjoG6DQjlqHqBMrPWZyGs",
-											"locale": "en-US",
-											"title": "Connectivity cloud",
-											"description": null,
-											"url": "https://www.cloudflare.com/connectivity-cloud/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
 									}
 								],
 								"mainLink": null,
@@ -2045,18 +2021,6 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "3TUBKRF4MdcxybTg9QrwrE",
-												"locale": "en-US",
-												"title": "Technology partners",
-												"description": "Explore our ecosystem of technology partnerships and integrations",
-												"url": "https://www.cloudflare.com/partners/technology-partners/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "7w6FaWDKWmcohncR0qXwXr",
 												"locale": "en-US",
 												"title": "Global system integrators",
@@ -3189,6 +3153,71 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Magic Firewall",
+								"contentfulId": "2NoNKQbgMrTjhe6OrhiY8M",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "7b71cbeb-32fc-5e7a-8e81-505da7e88fdf",
+									"altText": "Magic Firewall - outline icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bF9fQUQMqtKJL7RPSij1q/b0659da7a520c0848627d51df5746c57/Group_48097316.png"
+										},
+										"description": "Magic Firewall - outline icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Magic Firewall",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "1Nc4dZqkrgAJny10QXRFxk",
+									"elementName": "Magic Firewall - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/network-services/products/magic-firewall/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							}
 						]
 					},
@@ -3418,6 +3447,60 @@
 						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Half & Half",
 						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2DnBEJDDX1wtmRtsW8e1Ww",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Applied Systems had a complex security stack that resulted in a tangle of network paths. They consolidated their Zero Trust services onto Cloudflare's cloud-native platform.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Now, they're saving money on bandwidth and hardware, and enforcing default-deny access policies across their entire corporate network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "w0vWWUcUOBITQXiwVQX8S",
