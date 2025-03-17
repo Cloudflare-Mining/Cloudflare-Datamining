@@ -8347,49 +8347,42 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"A": [
+													"20"
+												],
+												"AAAA": [
+													"20"
+												],
+												"HTTPS": [
+													"20"
+												],
+												"NS": [
+													"20"
+												],
+												"PTR": [
+													"20"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
 											"properties": {
-												"A": {
+												"timestamps": {
 													"items": {
-														"example": "20",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"AAAA": {
-													"items": {
-														"example": "20",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"HTTPS": {
-													"items": {
-														"example": "20",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"NS": {
-													"items": {
-														"example": "20",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"PTR": {
-													"items": {
-														"example": "20",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"A",
-												"AAAA",
-												"HTTPS",
-												"PTR",
-												"NS"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -8765,49 +8758,42 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"NOERROR": [
+													"70"
+												],
+												"NOTIMP": [
+													"5"
+												],
+												"NXDOMAIN": [
+													"10"
+												],
+												"REFUSED": [
+													"5"
+												],
+												"SERVFAIL": [
+													"5"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
 											"properties": {
-												"NOERROR": {
+												"timestamps": {
 													"items": {
-														"example": "70",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"NOTIMP": {
-													"items": {
-														"example": "5",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"NXDOMAIN": {
-													"items": {
-														"example": "10",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"REFUSED": {
-													"items": {
-														"example": "5",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"SERVFAIL": {
-													"items": {
-														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"NOERROR",
-												"NXDOMAIN",
-												"SERVFAIL",
-												"REFUSED",
-												"NOTIMP"
+												"timestamps"
 											],
 											"type": "object"
 										}
