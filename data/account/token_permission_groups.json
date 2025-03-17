@@ -1704,6 +1704,22 @@
 		]
 	},
 	{
+		"id": "5e33b7d77788455c9fdf18cbd38ee5a0",
+		"name": "Secrets Store Read",
+		"description": "Grants read access to Secrets Store",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "adc8fa2bc6124928a8b3314dc63a1235",
+		"name": "Secrets Store Write",
+		"description": "Grants write access to Secrets Store",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "595409c54a24444b80a495620b2d614c",
 		"name": "Select Configuration Read",
 		"description": "Grants read access to select configuration",
