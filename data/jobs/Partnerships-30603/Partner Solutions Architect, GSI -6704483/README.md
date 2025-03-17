@@ -5,68 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available locations: Austin TX, San Francisco, CA</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>We are growing our Total Rewards team and looking for someone with a background in compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Available location: Paris&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p><strong>About Solutions Engineering at Cloudflare</strong></p>
+<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team. <strong>&nbsp;</strong></p>
+<p>The Partner Solutions Engineer is an experienced PreSales role within the Solutions Engineering team. Partner Solutions Engineers work closely with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
+<h4><strong>What you'll do as a Partner Solutions Architect</strong></h4>
+<p>The Partner Solutions Architect is a senior role within the Solutions Engineering team aligned with Global System Integrators (GSIs). You have deep experience influencing enterprise solution architecture across various senior stakeholders at partner and customer organizations. You are a partner and customer-facing hands-on technologist with credibility built on industry expertise across Cloudflare’s security, reliability and performance solutions.&nbsp;</p>
+<p>Your role will be to build passionate champions within the technology ranks at your Global Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
+<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
+<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with Global Partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
+<p><strong>Specifically, we are looking for you to:</strong></p>
+<h4>&nbsp;</h4>
 <ul>
-	<li>Participate in compensation surveys and analyze market data&nbsp;&nbsp;</li>
-	<li>Audit, maintain, enhance and refresh compensation databases and systems</li>
-	<li>Support day to day ad hoc analytical data analysis</li>
-	<li>Work with data to develop compensation models in order to derive useful compensation insights that will drive our decision making&nbsp;</li>
-	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
-	<li>Partner with the People Operations and Systems team to configure and administer compensation systems, including Workday for compensation planning&nbsp;</li>
-	<li>Help with the implementation and administration of compensation policies and programs&nbsp;&nbsp;</li>
-	<li>Assist with development of total compensation communications, including training, compensation statements, videos and other material</li>
-	<li>Support the administration of the Company’s compensation cycles&nbsp;&nbsp;</li>
+	<li>Evangelize and represent Cloudflare with GSI partners through technical thought leadership and expertise on Cloudflare solutions</li>
+	<li>Build and maintain long term technical relationships with our partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
+	<li>Drive technical solution design conversations and guide partners through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
+	<li>Engage with GSI partners to qualify opportunities, define Scope of Work for service offerings, and design reference architectures incorporating Cloudflare solutions</li>
+	<li>Be the voice of GSI partners internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
+	<li>Travel occasionally throughout the quarter to support partner engagements, attend conferences and industry events, and to collaborate with your Cloudflare teammates</li>
+	<li>Be flexible in this global role. Meetings supporting time zones around the world will occasionally occur early and late in the work day. While this is not a regular occurrence, flexibility will be required</li>
+	<li>English and French fluency, spoken and written is required. Bonus: Spanish fluency</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5+ years of Compensation experience</li>
-	<li>Experience with salary structure design and market pricing</li>
-	<li>Exposure to with equity program administration</li>
-	<li>Knowledge of Radford survey benchmark jobs and database</li>
-	<li>Strong analytical skills; the ability to synthesize data and develop insights</li>
-	<li>Ability to work independently as well as work collaboratively</li>
-	<li>Exceptional communication skills both written and oral</li>
-	<li>Microsoft Excel and Google sheets guru, proficient in PowerPoint and presentation software</li>
-	<li>Working knowledge of Workday, especially for Compensation Planning</li>
+	<li>Deep experience with any of the core industry components of Cloudflare solutions (and passion to learn more):</li>
+	<ul>
+		<li>Internet security and networking technologies</li>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
+		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
+		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development</li>
+		<li>SASE concepts and Zero Trust Networking architectures</li>
+		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
+	</ul>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Bay Area-based hires: Estimated annual salary of $129,000 - $157,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

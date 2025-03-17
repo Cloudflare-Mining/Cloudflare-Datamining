@@ -9,7 +9,7 @@
 <p>The Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate should have previous experience in both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company.</p>
 <p>You will work cross functionally to build customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
 <p>The candidate is an individual contributor who will work closely with the global Customer Advocacy team, who are driving all Customer Marketing and Customer Advocacy programs. Success is measured by quantity and quality of content, amount of engagement with each account, brand equity, and levels/titles of participating customers.</p>
-<p><strong>Locations: Austin, San Francisco, DC</strong></p>
+<p><strong>Locations: Austin, San Francisco</strong></p>
 <p>The main responsibilities are:</p>
 <p><strong>Customer References:</strong></p>
 <ul>

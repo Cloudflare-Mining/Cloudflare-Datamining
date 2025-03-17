@@ -5,42 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations: New York, Austin, San Francisco, Denver<br><br></strong><strong>About the Role</strong></p>
-<p>Cloudflare’s Americas Marketing Team is searching for an Industry Programs Lead to help activate our presence in vertical markets such as financial services, healthcare, retail, and others.</p>
-<p>The Industry Programs Lead will work closely with our regional marketers (both in the US and globally), sales, product marketing and strategy teams to build and activate marketing programs in partnership with industry associations such as Information Sharing and Analysis Centers (ISACs), HIMSS, National Retail Federation, etc.&nbsp; Building Cloudflare’s presence in industry events and Cloudflare-hosted events, owning the calendar, content plan for the events, coordinating with Product Marketing, Content Marketing, Sales, and others.&nbsp;</p>
-<p>Programs will be a combination of industry events, collaborative content, regional roundtables, and on-line activities.&nbsp; Proven experience working in a vertical/industry marketing role is required.</p>
-<p><strong>Responsibilities:</strong></p>
+<h3><strong>Preferred Location: New York , NY</strong></h3>
+<h3><strong>Additional Locations: Austin, TX | Denver, CO | New York, NY | San Francisco, CA<br></strong></h3>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare’s Americas Marketing Team is looking for a strategic and results-driven <strong>Industry Programs Lead</strong> to expand our presence within key vertical markets, including <strong>financial services, healthcare, retail, and others</strong>. This role will be instrumental in shaping and executing targeted industry marketing programs that drive awareness, engagement, and pipeline growth.</p>
+<p>As the <strong>Industry Programs Lead</strong>, you will collaborate closely with <strong>regional marketing teams, sales, product marketing, and strategy teams</strong> to develop and activate industry-specific initiatives. You will also manage partnerships with <strong>key industry associations</strong> such as <strong>Information Sharing and Analysis Centers (ISACs), HIMSS, National Retail Federation (NRF),</strong> and others, ensuring Cloudflare’s brand and solutions are effectively positioned within these communities.</p>
+<h3><strong>Key Responsibilities</strong></h3>
+<p>✅ <strong>Industry Engagement &amp; Events Strategy</strong></p>
 <ul>
-	<li>Planning &amp; execution: demonstrable skill working with teams to build &amp; execute quarterly and yearly plans including budget management, event coordination, and projection of results</li>
-	<li>Performance monitoring &amp; management: proven track record using enterprise analytics to monitor and optimize program performance, including investment rationalization, based on past performance and results.&nbsp; Creating monthly summary reports to show progress and status of industry programs.</li>
-	<li>Sales alignment &amp; partnership: experience working in partnership with partners, sales leaders, including BDR leadership, to enable sellers and channel partners with account engagement programs leading to opportunity discovery and pipeline generation.&nbsp;</li>
-	<li>Opportunity &amp; Market Development: proven track record working with industry associations to build Cloudflare’s brand and position solutions specific to industry use-cases and pain points</li>
-	<li>Enable greater transparency across business lines: Build strong relationships with cross-functional teams to deliver timely updates before and after events, share key learnings, and refine best practices—continuously elevating the impact and effectiveness of Industry Programs.</li>
+	<li>Lead Cloudflare’s presence at <strong>industry events, conferences, and Cloudflare-hosted experiences</strong>, ensuring a strong brand footprint.</li>
+	<li>Develop and own the <strong>event calendar, content strategy, and execution</strong> in partnership with cross-functional teams.</li>
+	<li>Drive engagement in key verticals through <strong>regional roundtables, collaborative content, and digital marketing initiatives</strong>.</li>
 </ul>
-<p><strong>Your Qualifications:</strong></p>
+<p>✅ <strong>Program Planning &amp; Execution</strong></p>
 <ul>
-	<li>7-10 years in field or industry marketing role in $1B+ BtoB technology organization in cybersecurity or networking</li>
-	<li>Direct experience with industry associations such as ISACs, HIMSS, NRF, etc including national and regional events.</li>
-	<li>Proven results achieving quantifiable contribution metrics such as qualified leads, pipeline, closed business</li>
-	<li>Hands on experience with predominant sales and marketing systems such as budget management, reporting &amp; analytics, CRM, and ABM.</li>
-	<li>Able to be effective working across organizational boundaries and building relationships to accomplish objectives</li>
-	<li>Thorough knowledge and understanding of enterprise lead-management processes and marketing attribution approaches</li>
-	<li>Experience designing and building field-focused marketing programs across digital, first &amp; third party events, and partner ecosystem including resellers, tech partners, and GSIs</li>
-	<li>BA/BS in Marketing, Business, Communications, Engineering or other related fields.&nbsp; MBA a plus.</li>
+	<li>Build and execute <strong>quarterly and annual industry marketing plans</strong>, managing budgets, program timelines, and success metrics.</li>
+	<li>Ensure seamless coordination with <strong>Product Marketing, Content Marketing, Sales, and Partnerships teams</strong> to create impactful campaigns.</li>
 </ul>
-<p></p>
-<p><strong>Compensation</strong></p>
+<p>✅ <strong>Performance Tracking &amp; Optimization</strong></p>
+<ul>
+	<li>Monitor and measure program effectiveness using <strong>enterprise analytics tools</strong>, continuously optimizing for impact.</li>
+	<li>Deliver <strong>monthly reports</strong> summarizing program performance, key learnings, and next steps.</li>
+</ul>
+<p>✅ <strong>Sales &amp; Partner Collaboration</strong></p>
+<ul>
+	<li>Work closely with <strong>Sales, Business Development (BDR) teams, and partners</strong> to align industry marketing efforts with pipeline and revenue goals.</li>
+	<li>Equip sales teams with <strong>industry-specific messaging, tools, and campaigns</strong> to enhance account engagement.</li>
+</ul>
+<h4>✅ <strong>Market Development &amp; Brand Positioning</strong></h4>
+<ul>
+	<li>Strengthen Cloudflare’s <strong>brand positioning within key verticals</strong> by addressing specific industry challenges and use cases.</li>
+	<li>Cultivate strong relationships with <strong>industry associations and partners</strong> to drive strategic opportunities.</li>
+</ul>
+<h4>✅ <strong>Cross-Functional Alignment &amp; Communication</strong></h4>
+<ul>
+	<li>Foster collaboration across <strong>regional marketing, product, sales, and executive teams</strong> to ensure transparency and alignment.</li>
+	<li>Share key learnings, best practices, and post-event insights to refine and elevate future industry programs.</li>
+</ul>
+<h3><strong>Your Qualifications</strong></h3>
+<p>✔ <strong>7-10 years of experience</strong> in <strong>field or industry marketing</strong> within a <strong>$1B+ B2B technology company</strong> (cybersecurity or networking preferred).<br>✔ Proven success in developing <strong>vertical-specific marketing programs</strong> with measurable business impact.<br>✔ Direct experience working with <strong>industry associations</strong> such as <strong>ISACs, HIMSS, NRF,</strong> and participating in national and regional events.<br>✔ Strong understanding of <strong>lead management, marketing attribution, and enterprise analytics tools</strong>.<br>✔ Hands-on expertise in <strong>CRM, ABM, budget management, and reporting platforms</strong>.<br>✔ Ability to <strong>build cross-functional relationships</strong> and effectively collaborate across teams.<br>✔ Experience designing <strong>integrated marketing programs</strong>, including <strong>digital, in-person events, and partner-driven initiatives</strong>.<br>✔ <strong>Bachelor’s degree</strong> in Marketing, Business, Communications, Engineering, or a related field (<strong>MBA a plus</strong>).</p>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Colorado-based hires: Estimated annual salary of $139<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $169<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span></li>
 	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $142<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:252000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $174<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:308000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">,000</span></li>
 	<li>For Bay Area-based hires: Estimated annual salary of $149<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:266000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $183<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:325000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">,000</span></li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -51,23 +66,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p></p>
-<p><strong><br><br><br></strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
