@@ -907,10 +907,10 @@ const navigation = {
 			hasPermission: v => (0, y.$n)(v, "waf", "firewall.rule"),
 			guidedTooltipStep: V.t.ANALYTICS
 		}, {
-			title: "navigation.zone.security.web_asset_discovery",
+			title: "navigation.zone.security.web_assets",
 			navigationType: "version",
-			url: "/security/web-asset-discovery",
-			guidedTooltipStep: V.t.WEB_ASSET_DISCOVERY,
+			url: "/security/web-assets",
+			guidedTooltipStep: V.t.WEB_ASSETS,
 			hasPermission: v => (0, ee.P8)(v) && ((0, y.$n)(v, "waf", "firewall.rule") || (0, y.$n)(v, "page_shield", "script-monitor"))
 		}, {
 			title: "navigation.zone.security_rules",
