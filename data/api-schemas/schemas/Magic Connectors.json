@@ -7,7 +7,6 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -76,9 +75,11 @@
 													"maxLength": 0,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -140,9 +141,11 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -210,9 +213,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -280,9 +285,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -350,9 +357,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -420,9 +429,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -459,7 +470,6 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -536,9 +546,11 @@
 													"maxLength": 0,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -597,9 +609,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -667,9 +681,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -737,9 +753,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -807,9 +825,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -877,9 +897,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3891,7 +3913,6 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3995,9 +4016,11 @@
 													"maxLength": 0,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -4056,9 +4079,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4126,9 +4151,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4196,9 +4223,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4266,9 +4295,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4336,9 +4367,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4374,7 +4407,6 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4478,9 +4510,11 @@
 													"maxLength": 0,
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -4539,9 +4573,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4609,9 +4645,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4679,9 +4717,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4749,9 +4789,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4819,9 +4861,11 @@
 											"nullable": true,
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
