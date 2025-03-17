@@ -623,6 +623,10 @@ const navigation = {
 			title: "navigation.account.tag_management.plans",
 			url: "/tag-management/plans",
 			hasPermission: v => (0, y.iY)(v)
+		}, {
+			title: "navigation.account.tag_management.gmt_fp",
+			url: "/tag-management/googletagfirstparty",
+			hasPermission: v => (0, y.iY)(v) && !!(0, e.Le)(v, "tag_management", "gtm_first_party")
 		}]
 	}, {
 		title: "account.home",
@@ -1357,5 +1361,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: A.G
+	support: A.Gj
 }
