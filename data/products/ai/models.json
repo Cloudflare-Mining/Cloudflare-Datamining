@@ -26,6 +26,19 @@
 		]
 	},
 	{
+		"id": "eed32bc1-8775-4985-89ce-dd1405508ad8",
+		"source": 1,
+		"name": "@cf/baai/bge-m3",
+		"description": "Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.",
+		"task": {
+			"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
+			"name": "Text Embeddings",
+			"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+		},
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "eaf31752-a074-441f-8b70-d593255d2811",
 		"source": 1,
 		"name": "@cf/huggingface/distilbert-sst-2-int8",
@@ -1284,12 +1297,7 @@
 			"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
 		},
 		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			}
-		]
+		"properties": []
 	},
 	{
 		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
@@ -1408,6 +1416,19 @@
 				"value": "https://github.com/runwayml/stable-diffusion/blob/main/LICENSE"
 			}
 		]
+	},
+	{
+		"id": "145337e7-cec3-4ebb-8e78-16ddfc75e580",
+		"source": 1,
+		"name": "@cf/baai/bge-reranker-base",
+		"description": "Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in [0,1] by sigmoid function.\n\n",
+		"task": {
+			"id": "19606750-23ed-4371-aab2-c20349b53a60",
+			"name": "Text Classification",
+			"description": "Sentiment analysis or text classification is a common NLP task that classifies a text input into labels or classes."
+		},
+		"tags": [],
+		"properties": []
 	},
 	{
 		"id": "0f002249-7d86-4698-aabf-8529ed86cefb",
