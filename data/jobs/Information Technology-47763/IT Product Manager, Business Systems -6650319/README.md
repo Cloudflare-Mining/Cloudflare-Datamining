@@ -5,29 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas | Lisbon, Portugal | London, United Kingdom</strong></p>
-<h4><strong>About the Department</strong></h4>
-<p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<h4>What you'll do</h4>
-<p>We are looking for an Engineering Manager to join Cloudflare, in charge of a new project. You will lead a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals. &nbsp;You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Lisbon, Portugal</p>
+<p><strong>About the role:</strong></p>
+<p>We are seeking an&nbsp;<strong>IT Product Manager, GTM Systems</strong> to lead a variety of strategic systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of GTM business areas such as Sales, Marketing, Partners/Alliances, and Post-Sales and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the main technology functional expert for all GTM internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM teams, it would also have to partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM process operates effectively and cohesively.&nbsp; The PDM will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Experience leading a team</li>
-	<li>Comfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Operates as the main point of contact and partner to both the business (Sales, Marketing, Partners/Alliances, and Post-Sales) and the IT Enterprise Application team.</li>
+	<li>Gathers and documents business requirements and user stories through in depth stakeholder interviews and subject matter expert (SME) deep dives.&nbsp; Obtains the necessary stakeholder sign-off before and technology reviews prior to transferring projects to delivery teams for execution.</li>
+	<li>Contributes to the overall GTM business system roadmap ensuring the focus is on business performance and scalability while limiting IT risk.&nbsp;</li>
+	<li>Provides knowledge transfers to technical teams and technical program managers (TPMs) ensuring clean and clear requirements are understood by those responsible for project management of implementation and go-live.</li>
+	<li>Contributes value to the GTM portfolio and plots roadmap deliverables using a blend of business priority, end-to-end product strategy, and a holistic consideration of Cloudflare’s techstack.</li>
+	<li>Maintains routine communication with business stakeholders and the IT delivery leads ensuring constant alignment on system roadmap placement and timelines.</li>
+	<li>Track the technology market discovering and staying attuned to newly released GTM applications and/or new product capabilities that align with existing technology in Cloudflare’s techstack.</li>
+	<li>Partner with the TPMs to maintain constant alignment of GTM projects’ health including leading any discussions regarding roadblock removals, risks, and overall keeping momentum on the deliverables.</li>
+	<li>Partners with the Procurement team and helps lead the vendor selection process for onboarding new tech.&nbsp; This includes vendor research, scoring, participating on demos, and presenting recommendations to leadership.</li>
+	<li>Adheres to and instills the IT Planning and Governance structure including contributing to monthly GTM steering committee meetings, meeting with functional leaders on a routine basis, and providing routine alignment between the GTM business and IT teams.</li>
+	<li>Participates in weekly roadmap meetings with delivery leads to collaborate on business priorities and roadmap placement and works with the appropriate teams to manage risks and capacity related issues.&nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>Experience building massive distributed systems</li>
-	<li>Experience leading teams using any of the following: modern JavaScript, C++, Web Assembly. Rust or Go&nbsp;</li>
+	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
+	<li>Minimum of 5 years experience with GTM system experience including complex knowledge and deep understanding of sales operations.</li>
+	<li>Customer first attitude.&nbsp;</li>
+	<li>Strong sense of urgency, ability to manage priorities and tight deadlines in a fast-paced and ambiguous environment.</li>
+	<li>Highly organized and able to juggle many tasks without losing sight of the highest priority items.</li>
+	<li>Experience in implementing technology to solve business problems.</li>
+	<li>Business knowledge of sales and marketing functions and cycles.</li>
+	<li>Experience with GTM systems such as Salesforce, are required.&nbsp;</li>
+	<li>Strong leadership skills, being success oriented, and having a strategic mindset to bring business benefit and efficiencies through IT systems.</li>
+	<li>Demonstrated ability to communicate clearly to technical and non-technical audiences, and project manage multiple concurrent projects with varying internal stakeholders and demands.</li>
+	<li>Independent self-starter with history of accountability of project timeline and results.</li>
+	<li>Excellent written and verbal communication skills with the ability to communicate effectively and efficiently in a global fragmented environment.</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
