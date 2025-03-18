@@ -16,7 +16,6 @@
 <p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
 <p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with Global Partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
 <p><strong>Specifically, we are looking for you to:</strong></p>
-<h4>&nbsp;</h4>
 <ul>
 	<li>Evangelize and represent Cloudflare with GSI partners through technical thought leadership and expertise on Cloudflare solutions</li>
 	<li>Build and maintain long term technical relationships with our partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
