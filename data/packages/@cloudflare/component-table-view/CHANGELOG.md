@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.45
+
+### Patch Changes
+
+- @cloudflare/builder-table@4.0.45
+
 ## 2.0.44
 
 ### Patch Changes

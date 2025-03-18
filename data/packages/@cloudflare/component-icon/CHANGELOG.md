@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.28.0
+
+### Minor Changes
+
+- a829f00071: cloudflare-share-outline icon
+
 ## 12.27.0
 
 ### Minor Changes

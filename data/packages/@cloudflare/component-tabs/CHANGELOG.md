@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.56
+
+### Patch Changes
+
+- @cloudflare/component-forms@6.1.44
+- @cloudflare/util-responsive@3.0.29
+
 ## 6.0.55
 
 ### Patch Changes
