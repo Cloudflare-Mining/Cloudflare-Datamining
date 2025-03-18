@@ -151,6 +151,7 @@ import SecurityBots from './SecurityBots';
 import SecurityWafSolid from './SecurityWafSolid';
 import SecurityWaf from './SecurityWaf';
 import ServerOrigin from './ServerOrigin';
+import ShareArrowOutline from './ShareArrowOutline';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
@@ -352,6 +353,7 @@ export default {
   'security-waf-solid': SecurityWafSolid,
   'security-waf': SecurityWaf,
   'server-origin': ServerOrigin,
+  'share-arrow-outline': ShareArrowOutline,
   shield: Shield,
   spectrum: Spectrum,
   speech: Speech,
