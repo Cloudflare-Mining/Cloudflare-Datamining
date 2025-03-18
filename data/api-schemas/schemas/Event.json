@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{event_id}": {
+		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list) endpoint.",
 		"operationId": "delete_EventDelete",
 		"parameters": [
 			{
@@ -1659,6 +1660,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events": {
+		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list) endpoint.",
 		"operationId": "post_EventList",
 		"parameters": [
 			{
@@ -2663,6 +2665,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
+		"description": "Events must be created in a client-specific dataset, which means the `datasetId` parameter must be defined. To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint.",
 		"operationId": "post_EventCreate",
 		"parameters": [
 			{
@@ -2980,6 +2983,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
+		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list) endpoint.",
 		"operationId": "post_EventCreateBulk",
 		"parameters": [
 			{

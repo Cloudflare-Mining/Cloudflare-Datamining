@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -45,10 +47,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -64,7 +68,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -73,7 +78,8 @@
 									"enum": [
 										true
 									],
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -98,10 +104,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -117,7 +125,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -127,7 +136,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -171,7 +181,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -183,7 +194,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -195,7 +207,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -216,10 +229,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -235,7 +250,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -244,7 +260,8 @@
 									"enum": [
 										true
 									],
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -269,10 +286,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -288,7 +307,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -298,7 +318,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -342,7 +363,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -365,10 +387,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -384,7 +408,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -393,7 +418,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -413,25 +439,29 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"created_on": {
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"queue_id": {
 																			"description": "A Resource identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"script": {
 																			"allOf": [
 																				{
 																					"description": "Name of a Worker",
 																					"example": "my-consumer-worker",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"readOnly": true,
@@ -445,41 +475,48 @@
 																				{
 																					"description": "Name of a Worker",
 																					"example": "my-consumer-worker",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"type": "string",
 																					"writeOnly": true
 																				}
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-auditable": true
 																		},
 																		"settings": {
 																			"properties": {
 																				"batch_size": {
 																					"description": "The maximum number of messages to include in a batch.",
 																					"example": 50,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"max_concurrency": {
 																					"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																					"example": 10,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"max_retries": {
 																					"description": "The maximum number of retries",
 																					"example": 3,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"max_wait_time_ms": {
 																					"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																					"example": 5000,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"retry_delay": {
 																					"description": "The number of seconds to delay before making the message available for another attempt.",
 																					"example": 10,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -488,7 +525,8 @@
 																			"enum": [
 																				"worker"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -500,40 +538,47 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"created_on": {
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"queue_id": {
 																			"description": "A Resource identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"settings": {
 																			"properties": {
 																				"batch_size": {
 																					"description": "The maximum number of messages to include in a batch.",
 																					"example": 50,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"max_retries": {
 																					"description": "The maximum number of retries",
 																					"example": 3,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"retry_delay": {
 																					"description": "The number of seconds to delay before making the message available for another attempt.",
 																					"example": 10,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"visibility_timeout_ms": {
 																					"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																					"example": 6000,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -542,7 +587,8 @@
 																			"enum": [
 																				"http_pull"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -559,11 +605,13 @@
 													},
 													"created_on": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"producers": {
 														"items": {
@@ -571,13 +619,15 @@
 																{
 																	"properties": {
 																		"script": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": {
 																			"enum": [
 																				"worker"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -585,13 +635,15 @@
 																{
 																	"properties": {
 																		"bucket_name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": {
 																			"enum": [
 																				"r2_bucket"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -604,27 +656,32 @@
 													},
 													"producers_total_count": {
 														"readOnly": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"queue_id": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"queue_name": {
 														"example": "example-queue",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"settings": {
 														"properties": {
 															"delivery_delay": {
 																"description": "Number of seconds to delay delivery of all messages to consumers.",
 																"example": 5,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"message_retention_period": {
 																"description": "Number of seconds after which an unconsumed message will be delayed.",
 																"example": 345600,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -690,10 +747,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -709,7 +768,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -719,7 +779,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -765,7 +826,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -777,7 +839,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -800,10 +863,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -819,7 +884,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -828,7 +894,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -847,25 +914,29 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"queue_id": {
 																		"description": "A Resource identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"script": {
 																		"allOf": [
 																			{
 																				"description": "Name of a Worker",
 																				"example": "my-consumer-worker",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"readOnly": true,
@@ -879,41 +950,48 @@
 																			{
 																				"description": "Name of a Worker",
 																				"example": "my-consumer-worker",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"type": "string",
 																				"writeOnly": true
 																			}
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-auditable": true
 																	},
 																	"settings": {
 																		"properties": {
 																			"batch_size": {
 																				"description": "The maximum number of messages to include in a batch.",
 																				"example": 50,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_concurrency": {
 																				"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_retries": {
 																				"description": "The maximum number of retries",
 																				"example": 3,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_wait_time_ms": {
 																				"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																				"example": 5000,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"retry_delay": {
 																				"description": "The number of seconds to delay before making the message available for another attempt.",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -922,7 +1000,8 @@
 																		"enum": [
 																			"worker"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -934,40 +1013,47 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"queue_id": {
 																		"description": "A Resource identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"settings": {
 																		"properties": {
 																			"batch_size": {
 																				"description": "The maximum number of messages to include in a batch.",
 																				"example": 50,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_retries": {
 																				"description": "The maximum number of retries",
 																				"example": 3,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"retry_delay": {
 																				"description": "The number of seconds to delay before making the message available for another attempt.",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"visibility_timeout_ms": {
 																				"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																				"example": 6000,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -976,7 +1062,8 @@
 																		"enum": [
 																			"http_pull"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -993,11 +1080,13 @@
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"producers": {
 													"items": {
@@ -1005,13 +1094,15 @@
 															{
 																"properties": {
 																	"script": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"enum": [
 																			"worker"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1019,13 +1110,15 @@
 															{
 																"properties": {
 																	"bucket_name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"enum": [
 																			"r2_bucket"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1038,27 +1131,32 @@
 												},
 												"producers_total_count": {
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"queue_id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queue_name": {
 													"example": "example-queue",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"properties": {
 														"delivery_delay": {
 															"description": "Number of seconds to delay delivery of all messages to consumers.",
 															"example": 5,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"message_retention_period": {
 															"description": "Number of seconds after which an unconsumed message will be delayed.",
 															"example": 345600,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1092,10 +1190,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -1111,7 +1211,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -1121,7 +1222,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -1167,7 +1269,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1179,7 +1282,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1202,10 +1306,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1221,7 +1327,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -1230,7 +1337,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -1247,25 +1355,29 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"queue_id": {
 																"description": "A Resource identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"script": {
 																"allOf": [
 																	{
 																		"description": "Name of a Worker",
 																		"example": "my-consumer-worker",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"readOnly": true,
@@ -1279,41 +1391,48 @@
 																	{
 																		"description": "Name of a Worker",
 																		"example": "my-consumer-worker",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"type": "string",
 																		"writeOnly": true
 																	}
 																],
-																"type": "object"
+																"type": "object",
+																"x-auditable": true
 															},
 															"settings": {
 																"properties": {
 																	"batch_size": {
 																		"description": "The maximum number of messages to include in a batch.",
 																		"example": 50,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"max_concurrency": {
 																		"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																		"example": 10,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"max_retries": {
 																		"description": "The maximum number of retries",
 																		"example": 3,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"max_wait_time_ms": {
 																		"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																		"example": 5000,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"retry_delay": {
 																		"description": "The number of seconds to delay before making the message available for another attempt.",
 																		"example": 10,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1322,7 +1441,8 @@
 																"enum": [
 																	"worker"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1334,40 +1454,47 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"queue_id": {
 																"description": "A Resource identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"settings": {
 																"properties": {
 																	"batch_size": {
 																		"description": "The maximum number of messages to include in a batch.",
 																		"example": 50,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"max_retries": {
 																		"description": "The maximum number of retries",
 																		"example": 3,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"retry_delay": {
 																		"description": "The number of seconds to delay before making the message available for another attempt.",
 																		"example": 10,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"visibility_timeout_ms": {
 																		"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																		"example": 6000,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1376,7 +1503,8 @@
 																"enum": [
 																	"http_pull"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1412,10 +1540,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -1431,7 +1561,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -1441,7 +1572,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -1487,7 +1619,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1498,7 +1631,8 @@
 						"properties": {
 							"queue_name": {
 								"example": "example-queue",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1528,10 +1662,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1547,7 +1683,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -1556,7 +1693,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -1575,25 +1713,29 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"queue_id": {
 																		"description": "A Resource identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"script": {
 																		"allOf": [
 																			{
 																				"description": "Name of a Worker",
 																				"example": "my-consumer-worker",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"readOnly": true,
@@ -1607,41 +1749,48 @@
 																			{
 																				"description": "Name of a Worker",
 																				"example": "my-consumer-worker",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"type": "string",
 																				"writeOnly": true
 																			}
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-auditable": true
 																	},
 																	"settings": {
 																		"properties": {
 																			"batch_size": {
 																				"description": "The maximum number of messages to include in a batch.",
 																				"example": 50,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_concurrency": {
 																				"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_retries": {
 																				"description": "The maximum number of retries",
 																				"example": 3,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_wait_time_ms": {
 																				"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																				"example": 5000,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"retry_delay": {
 																				"description": "The number of seconds to delay before making the message available for another attempt.",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1650,7 +1799,8 @@
 																		"enum": [
 																			"worker"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1662,40 +1812,47 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"queue_id": {
 																		"description": "A Resource identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"settings": {
 																		"properties": {
 																			"batch_size": {
 																				"description": "The maximum number of messages to include in a batch.",
 																				"example": 50,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"max_retries": {
 																				"description": "The maximum number of retries",
 																				"example": 3,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"retry_delay": {
 																				"description": "The number of seconds to delay before making the message available for another attempt.",
 																				"example": 10,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"visibility_timeout_ms": {
 																				"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																				"example": 6000,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1704,7 +1861,8 @@
 																		"enum": [
 																			"http_pull"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1721,11 +1879,13 @@
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"producers": {
 													"items": {
@@ -1733,13 +1893,15 @@
 															{
 																"properties": {
 																	"script": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"enum": [
 																			"worker"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1747,13 +1909,15 @@
 															{
 																"properties": {
 																	"bucket_name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"enum": [
 																			"r2_bucket"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1766,27 +1930,32 @@
 												},
 												"producers_total_count": {
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"queue_id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queue_name": {
 													"example": "example-queue",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"properties": {
 														"delivery_delay": {
 															"description": "Number of seconds to delay delivery of all messages to consumers.",
 															"example": 5,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"message_retention_period": {
 															"description": "Number of seconds after which an unconsumed message will be delayed.",
 															"example": 345600,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1820,10 +1989,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -1839,7 +2010,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -1849,7 +2021,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -1893,7 +2066,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1905,7 +2079,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1923,25 +2098,29 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"created_on": {
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"queue_id": {
 												"description": "A Resource identifier.",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"script": {
 												"allOf": [
 													{
 														"description": "Name of a Worker",
 														"example": "my-consumer-worker",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"readOnly": true,
@@ -1955,41 +2134,48 @@
 													{
 														"description": "Name of a Worker",
 														"example": "my-consumer-worker",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"type": "string",
 														"writeOnly": true
 													}
 												],
-												"type": "object"
+												"type": "object",
+												"x-auditable": true
 											},
 											"settings": {
 												"properties": {
 													"batch_size": {
 														"description": "The maximum number of messages to include in a batch.",
 														"example": 50,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_concurrency": {
 														"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_retries": {
 														"description": "The maximum number of retries",
 														"example": 3,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_wait_time_ms": {
 														"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 														"example": 5000,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"retry_delay": {
 														"description": "The number of seconds to delay before making the message available for another attempt.",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1998,7 +2184,8 @@
 												"enum": [
 													"worker"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2010,40 +2197,47 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"created_on": {
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"queue_id": {
 												"description": "A Resource identifier.",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"settings": {
 												"properties": {
 													"batch_size": {
 														"description": "The maximum number of messages to include in a batch.",
 														"example": 50,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_retries": {
 														"description": "The maximum number of retries",
 														"example": 3,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"retry_delay": {
 														"description": "The number of seconds to delay before making the message available for another attempt.",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"visibility_timeout_ms": {
 														"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 														"example": 6000,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2052,7 +2246,8 @@
 												"enum": [
 													"http_pull"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2064,7 +2259,8 @@
 								"properties": {
 									"dead_letter_queue": {
 										"example": "example-queue",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2094,10 +2290,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2113,7 +2311,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -2122,7 +2321,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2138,25 +2338,29 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_id": {
 															"description": "A Resource identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"script": {
 															"allOf": [
 																{
 																	"description": "Name of a Worker",
 																	"example": "my-consumer-worker",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"readOnly": true,
@@ -2170,41 +2374,48 @@
 																{
 																	"description": "Name of a Worker",
 																	"example": "my-consumer-worker",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"type": "string",
 																	"writeOnly": true
 																}
 															],
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														},
 														"settings": {
 															"properties": {
 																"batch_size": {
 																	"description": "The maximum number of messages to include in a batch.",
 																	"example": 50,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_concurrency": {
 																	"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_retries": {
 																	"description": "The maximum number of retries",
 																	"example": 3,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_wait_time_ms": {
 																	"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																	"example": 5000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retry_delay": {
 																	"description": "The number of seconds to delay before making the message available for another attempt.",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2213,7 +2424,8 @@
 															"enum": [
 																"worker"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2225,40 +2437,47 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_id": {
 															"description": "A Resource identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"settings": {
 															"properties": {
 																"batch_size": {
 																	"description": "The maximum number of messages to include in a batch.",
 																	"example": 50,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_retries": {
 																	"description": "The maximum number of retries",
 																	"example": 3,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retry_delay": {
 																	"description": "The number of seconds to delay before making the message available for another attempt.",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"visibility_timeout_ms": {
 																	"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																	"example": 6000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2267,7 +2486,8 @@
 															"enum": [
 																"http_pull"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2301,10 +2521,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2320,7 +2542,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -2330,7 +2553,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -2374,7 +2598,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2386,7 +2611,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2401,7 +2627,8 @@
 										"lease_id": {
 											"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
 											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2414,12 +2641,14 @@
 										"delay_seconds": {
 											"description": "The number of seconds to delay before making the message available for another attempt.",
 											"example": 10,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"lease_id": {
 											"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
 											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2451,10 +2680,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2470,7 +2701,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -2479,7 +2711,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2533,10 +2766,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2552,7 +2787,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -2562,7 +2798,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -2606,7 +2843,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2618,7 +2856,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2630,12 +2869,14 @@
 							"batch_size": {
 								"description": "The maximum number of messages to include in a batch.",
 								"example": 50,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"visibility_timeout_ms": {
 								"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 								"example": 6000,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2662,10 +2903,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2681,7 +2924,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -2690,7 +2934,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2703,7 +2948,8 @@
 													"attempts": {
 														"example": 1,
 														"readOnly": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"body": {
 														"example": "hello world",
@@ -2713,12 +2959,14 @@
 													"id": {
 														"example": "b01b5594f784d0165c2985833f5660dd",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"lease_id": {
 														"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
 														"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"metadata": {
 														"example": {
@@ -2731,7 +2979,8 @@
 													"timestamp_ms": {
 														"example": 1710950954154,
 														"readOnly": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2764,10 +3013,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -2783,7 +3034,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -2793,7 +3045,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -2837,7 +3090,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2849,7 +3103,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2868,25 +3123,29 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queue_id": {
 													"description": "A Resource identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"script": {
 													"allOf": [
 														{
 															"description": "Name of a Worker",
 															"example": "my-consumer-worker",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"readOnly": true,
@@ -2900,41 +3159,48 @@
 														{
 															"description": "Name of a Worker",
 															"example": "my-consumer-worker",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"type": "string",
 															"writeOnly": true
 														}
 													],
-													"type": "object"
+													"type": "object",
+													"x-auditable": true
 												},
 												"settings": {
 													"properties": {
 														"batch_size": {
 															"description": "The maximum number of messages to include in a batch.",
 															"example": 50,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"max_concurrency": {
 															"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"max_retries": {
 															"description": "The maximum number of retries",
 															"example": 3,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"max_wait_time_ms": {
 															"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 															"example": 5000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"retry_delay": {
 															"description": "The number of seconds to delay before making the message available for another attempt.",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2943,7 +3209,8 @@
 													"enum": [
 														"worker"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2955,40 +3222,47 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queue_id": {
 													"description": "A Resource identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"settings": {
 													"properties": {
 														"batch_size": {
 															"description": "The maximum number of messages to include in a batch.",
 															"example": 50,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"max_retries": {
 															"description": "The maximum number of retries",
 															"example": 3,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"retry_delay": {
 															"description": "The number of seconds to delay before making the message available for another attempt.",
 															"example": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"visibility_timeout_ms": {
 															"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 															"example": 6000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2997,7 +3271,8 @@
 													"enum": [
 														"http_pull"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3014,11 +3289,13 @@
 							},
 							"created_on": {
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"modified_on": {
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"producers": {
 								"items": {
@@ -3026,13 +3303,15 @@
 										{
 											"properties": {
 												"script": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"worker"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3040,13 +3319,15 @@
 										{
 											"properties": {
 												"bucket_name": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"r2_bucket"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3059,27 +3340,32 @@
 							},
 							"producers_total_count": {
 								"readOnly": true,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"queue_id": {
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"queue_name": {
 								"example": "example-queue",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"settings": {
 								"properties": {
 									"delivery_delay": {
 										"description": "Number of seconds to delay delivery of all messages to consumers.",
 										"example": 5,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"message_retention_period": {
 										"description": "Number of seconds after which an unconsumed message will be delayed.",
 										"example": 345600,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -3109,10 +3395,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3128,7 +3416,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -3137,7 +3426,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -3158,25 +3448,29 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"created_on": {
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"queue_id": {
 																				"description": "A Resource identifier.",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"script": {
 																				"allOf": [
 																					{
 																						"description": "Name of a Worker",
 																						"example": "my-consumer-worker",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"readOnly": true,
@@ -3190,41 +3484,48 @@
 																					{
 																						"description": "Name of a Worker",
 																						"example": "my-consumer-worker",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"type": "string",
 																						"writeOnly": true
 																					}
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-auditable": true
 																			},
 																			"settings": {
 																				"properties": {
 																					"batch_size": {
 																						"description": "The maximum number of messages to include in a batch.",
 																						"example": 50,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"max_concurrency": {
 																						"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																						"example": 10,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"max_retries": {
 																						"description": "The maximum number of retries",
 																						"example": 3,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"max_wait_time_ms": {
 																						"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																						"example": 5000,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"retry_delay": {
 																						"description": "The number of seconds to delay before making the message available for another attempt.",
 																						"example": 10,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -3233,7 +3534,8 @@
 																				"enum": [
 																					"worker"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3245,40 +3547,47 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"created_on": {
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"queue_id": {
 																				"description": "A Resource identifier.",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"settings": {
 																				"properties": {
 																					"batch_size": {
 																						"description": "The maximum number of messages to include in a batch.",
 																						"example": 50,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"max_retries": {
 																						"description": "The maximum number of retries",
 																						"example": 3,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"retry_delay": {
 																						"description": "The number of seconds to delay before making the message available for another attempt.",
 																						"example": 10,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					},
 																					"visibility_timeout_ms": {
 																						"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																						"example": 6000,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -3287,7 +3596,8 @@
 																				"enum": [
 																					"http_pull"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3304,11 +3614,13 @@
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"producers": {
 															"items": {
@@ -3316,13 +3628,15 @@
 																	{
 																		"properties": {
 																			"script": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": {
 																				"enum": [
 																					"worker"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3330,13 +3644,15 @@
 																	{
 																		"properties": {
 																			"bucket_name": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": {
 																				"enum": [
 																					"r2_bucket"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -3349,27 +3665,32 @@
 														},
 														"producers_total_count": {
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"queue_id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_name": {
 															"example": "example-queue",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"settings": {
 															"properties": {
 																"delivery_delay": {
 																	"description": "Number of seconds to delay delivery of all messages to consumers.",
 																	"example": 5,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"message_retention_period": {
 																	"description": "Number of seconds after which an unconsumed message will be delayed.",
 																	"example": 345600,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3406,10 +3727,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -3425,7 +3748,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -3435,7 +3759,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -3479,7 +3804,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3491,7 +3817,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3503,7 +3830,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3521,25 +3849,29 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"created_on": {
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"queue_id": {
 												"description": "A Resource identifier.",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"script": {
 												"allOf": [
 													{
 														"description": "Name of a Worker",
 														"example": "my-consumer-worker",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"readOnly": true,
@@ -3553,41 +3885,48 @@
 													{
 														"description": "Name of a Worker",
 														"example": "my-consumer-worker",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"type": "string",
 														"writeOnly": true
 													}
 												],
-												"type": "object"
+												"type": "object",
+												"x-auditable": true
 											},
 											"settings": {
 												"properties": {
 													"batch_size": {
 														"description": "The maximum number of messages to include in a batch.",
 														"example": 50,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_concurrency": {
 														"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_retries": {
 														"description": "The maximum number of retries",
 														"example": 3,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_wait_time_ms": {
 														"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 														"example": 5000,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"retry_delay": {
 														"description": "The number of seconds to delay before making the message available for another attempt.",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -3596,7 +3935,8 @@
 												"enum": [
 													"worker"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3608,40 +3948,47 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"created_on": {
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"queue_id": {
 												"description": "A Resource identifier.",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"settings": {
 												"properties": {
 													"batch_size": {
 														"description": "The maximum number of messages to include in a batch.",
 														"example": 50,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"max_retries": {
 														"description": "The maximum number of retries",
 														"example": 3,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"retry_delay": {
 														"description": "The number of seconds to delay before making the message available for another attempt.",
 														"example": 10,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"visibility_timeout_ms": {
 														"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 														"example": 6000,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -3650,7 +3997,8 @@
 												"enum": [
 													"http_pull"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3662,7 +4010,8 @@
 								"properties": {
 									"dead_letter_queue": {
 										"example": "example-queue",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -3693,10 +4042,12 @@
 												"properties": {
 													"code": {
 														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3712,7 +4063,8 @@
 										"messages": {
 											"example": [],
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -3721,7 +4073,8 @@
 											"enum": [
 												true
 											],
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -3737,25 +4090,29 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_id": {
 															"description": "A Resource identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"script": {
 															"allOf": [
 																{
 																	"description": "Name of a Worker",
 																	"example": "my-consumer-worker",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"readOnly": true,
@@ -3769,41 +4126,48 @@
 																{
 																	"description": "Name of a Worker",
 																	"example": "my-consumer-worker",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"type": "string",
 																	"writeOnly": true
 																}
 															],
-															"type": "object"
+															"type": "object",
+															"x-auditable": true
 														},
 														"settings": {
 															"properties": {
 																"batch_size": {
 																	"description": "The maximum number of messages to include in a batch.",
 																	"example": 50,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_concurrency": {
 																	"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_retries": {
 																	"description": "The maximum number of retries",
 																	"example": 3,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_wait_time_ms": {
 																	"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
 																	"example": 5000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retry_delay": {
 																	"description": "The number of seconds to delay before making the message available for another attempt.",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3812,7 +4176,8 @@
 															"enum": [
 																"worker"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3824,40 +4189,47 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"queue_id": {
 															"description": "A Resource identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"settings": {
 															"properties": {
 																"batch_size": {
 																	"description": "The maximum number of messages to include in a batch.",
 																	"example": 50,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"max_retries": {
 																	"description": "The maximum number of retries",
 																	"example": 3,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retry_delay": {
 																	"description": "The number of seconds to delay before making the message available for another attempt.",
 																	"example": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"visibility_timeout_ms": {
 																	"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
 																	"example": 6000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3866,7 +4238,8 @@
 															"enum": [
 																"http_pull"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3900,10 +4273,12 @@
 										"properties": {
 											"code": {
 												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"message": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -3919,7 +4294,8 @@
 								"messages": {
 									"example": [],
 									"items": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"type": "array"
 								},
@@ -3929,7 +4305,8 @@
 										false
 									],
 									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
