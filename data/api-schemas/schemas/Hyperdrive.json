@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -244,7 +246,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -378,7 +381,8 @@
 																				"properties": {
 																					"disabled": {
 																						"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																						"type": "boolean"
+																						"type": "boolean",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -392,7 +396,8 @@
 																				"properties": {
 																					"disabled": {
 																						"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																						"type": "boolean"
+																						"type": "boolean",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -402,12 +407,14 @@
 																					"max_age": {
 																						"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 																						"example": 60,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					},
 																					"stale_while_revalidate": {
 																						"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 																						"example": 15,
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -423,25 +430,29 @@
 																"example": "2017-01-01T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "When the Hyperdrive configuration was last modified.",
 																"example": "2017-01-01T00:00:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"example": "example-hyperdrive",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"origin": {
 																"oneOf": [
@@ -454,7 +465,8 @@
 																							"database": {
 																								"description": "The name of your origin database.",
 																								"example": "postgres",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"password": {
 																								"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -468,12 +480,14 @@
 																									"postgres",
 																									"postgresql"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"user": {
 																								"description": "The user of your origin database.",
 																								"example": "postgres",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"title": "Connection Options",
@@ -493,12 +507,14 @@
 																					"host": {
 																						"description": "The host (hostname or IP) of your origin database.",
 																						"example": "database.example.com",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"port": {
 																						"description": "The port (default: 5432 for Postgres) of your origin database.",
 																						"example": "5432",
-																						"type": "integer"
+																						"type": "integer",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -520,7 +536,8 @@
 																							"database": {
 																								"description": "The name of your origin database.",
 																								"example": "postgres",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"password": {
 																								"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -534,12 +551,14 @@
 																									"postgres",
 																									"postgresql"
 																								],
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"user": {
 																								"description": "The user of your origin database.",
 																								"example": "postgres",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"title": "Connection Options",
@@ -559,7 +578,8 @@
 																					"access_client_id": {
 																						"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																						"example": "0123456789abcdef0123456789abcdef.access",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"access_client_secret": {
 																						"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -571,7 +591,8 @@
 																					"host": {
 																						"description": "The host (hostname or IP) of your origin database.",
 																						"example": "database.example.com",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -740,7 +761,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -752,7 +774,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -852,7 +875,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -866,7 +890,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -876,12 +901,14 @@
 																				"max_age": {
 																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 																					"example": 60,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
 																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 																					"example": 15,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -897,25 +924,29 @@
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When the Hyperdrive configuration was last modified.",
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example-hyperdrive",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"origin": {
 															"oneOf": [
@@ -928,7 +959,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -942,12 +974,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -967,12 +1001,14 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"port": {
 																					"description": "The port (default: 5432 for Postgres) of your origin database.",
 																					"example": "5432",
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -994,7 +1030,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -1008,12 +1045,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -1033,7 +1072,8 @@
 																				"access_client_id": {
 																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"access_client_secret": {
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -1045,7 +1085,8 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1212,7 +1253,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1224,7 +1266,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1248,7 +1291,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1262,7 +1306,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1272,12 +1317,14 @@
 													"max_age": {
 														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 														"example": 60,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"stale_while_revalidate": {
 														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 														"example": 15,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1290,7 +1337,8 @@
 							},
 							"name": {
 								"example": "example-hyperdrive",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"origin": {
 								"anyOf": [
@@ -1299,7 +1347,8 @@
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"password": {
 												"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -1313,12 +1362,14 @@
 													"postgres",
 													"postgresql"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"user": {
 												"description": "The user of your origin database.",
 												"example": "postgres",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"title": "Connection Options",
@@ -1331,12 +1382,14 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"port": {
 														"description": "The port (default: 5432 for Postgres) of your origin database.",
 														"example": "5432",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1351,7 +1404,8 @@
 													"access_client_id": {
 														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"access_client_secret": {
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -1363,7 +1417,8 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1478,7 +1533,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1492,7 +1548,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1502,12 +1559,14 @@
 																				"max_age": {
 																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 																					"example": 60,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
 																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 																					"example": 15,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1523,25 +1582,29 @@
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When the Hyperdrive configuration was last modified.",
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example-hyperdrive",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"origin": {
 															"oneOf": [
@@ -1554,7 +1617,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -1568,12 +1632,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -1593,12 +1659,14 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"port": {
 																					"description": "The port (default: 5432 for Postgres) of your origin database.",
 																					"example": "5432",
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1620,7 +1688,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -1634,12 +1703,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -1659,7 +1730,8 @@
 																				"access_client_id": {
 																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"access_client_secret": {
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -1671,7 +1743,8 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1837,7 +1910,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1861,7 +1935,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1875,7 +1950,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1885,12 +1961,14 @@
 													"max_age": {
 														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 														"example": 60,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"stale_while_revalidate": {
 														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 														"example": 15,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1906,25 +1984,29 @@
 								"example": "2017-01-01T00:00:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Identifier",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"modified_on": {
 								"description": "When the Hyperdrive configuration was last modified.",
 								"example": "2017-01-01T00:00:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"example": "example-hyperdrive",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"origin": {
 								"oneOf": [
@@ -1937,7 +2019,8 @@
 															"database": {
 																"description": "The name of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"password": {
 																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -1951,12 +2034,14 @@
 																	"postgres",
 																	"postgresql"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"user": {
 																"description": "The user of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "Connection Options",
@@ -1976,12 +2061,14 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"port": {
 														"description": "The port (default: 5432 for Postgres) of your origin database.",
 														"example": "5432",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2003,7 +2090,8 @@
 															"database": {
 																"description": "The name of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"password": {
 																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2017,12 +2105,14 @@
 																	"postgres",
 																	"postgresql"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"user": {
 																"description": "The user of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "Connection Options",
@@ -2042,7 +2132,8 @@
 													"access_client_id": {
 														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"access_client_secret": {
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -2054,7 +2145,8 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2179,7 +2271,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2193,7 +2286,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2203,12 +2297,14 @@
 																				"max_age": {
 																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 																					"example": 60,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
 																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 																					"example": 15,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2224,25 +2320,29 @@
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When the Hyperdrive configuration was last modified.",
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example-hyperdrive",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"origin": {
 															"oneOf": [
@@ -2255,7 +2355,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2269,12 +2370,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -2294,12 +2397,14 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"port": {
 																					"description": "The port (default: 5432 for Postgres) of your origin database.",
 																					"example": "5432",
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -2321,7 +2426,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2335,12 +2441,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -2360,7 +2468,8 @@
 																				"access_client_id": {
 																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"access_client_secret": {
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -2372,7 +2481,8 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -2538,7 +2648,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2550,7 +2661,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2574,7 +2686,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2588,7 +2701,8 @@
 												"properties": {
 													"disabled": {
 														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2598,12 +2712,14 @@
 													"max_age": {
 														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 														"example": 60,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"stale_while_revalidate": {
 														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 														"example": 15,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2619,25 +2735,29 @@
 								"example": "2017-01-01T00:00:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Identifier",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"modified_on": {
 								"description": "When the Hyperdrive configuration was last modified.",
 								"example": "2017-01-01T00:00:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"example": "example-hyperdrive",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"origin": {
 								"oneOf": [
@@ -2650,7 +2770,8 @@
 															"database": {
 																"description": "The name of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"password": {
 																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2664,12 +2785,14 @@
 																	"postgres",
 																	"postgresql"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"user": {
 																"description": "The user of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "Connection Options",
@@ -2689,12 +2812,14 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"port": {
 														"description": "The port (default: 5432 for Postgres) of your origin database.",
 														"example": "5432",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2716,7 +2841,8 @@
 															"database": {
 																"description": "The name of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"password": {
 																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2730,12 +2856,14 @@
 																	"postgres",
 																	"postgresql"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"user": {
 																"description": "The user of your origin database.",
 																"example": "postgres",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "Connection Options",
@@ -2755,7 +2883,8 @@
 													"access_client_id": {
 														"description": "The Client ID of the Access token to use when connecting to the origin database.",
 														"example": "0123456789abcdef0123456789abcdef.access",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"access_client_secret": {
 														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -2767,7 +2896,8 @@
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2892,7 +3022,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2906,7 +3037,8 @@
 																			"properties": {
 																				"disabled": {
 																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2916,12 +3048,14 @@
 																				"max_age": {
 																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
 																					"example": 60,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
 																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
 																					"example": 15,
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2937,25 +3071,29 @@
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When the Hyperdrive configuration was last modified.",
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example-hyperdrive",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"origin": {
 															"oneOf": [
@@ -2968,7 +3106,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -2982,12 +3121,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -3007,12 +3148,14 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"port": {
 																					"description": "The port (default: 5432 for Postgres) of your origin database.",
 																					"example": "5432",
-																					"type": "integer"
+																					"type": "integer",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -3034,7 +3177,8 @@
 																						"database": {
 																							"description": "The name of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"password": {
 																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
@@ -3048,12 +3192,14 @@
 																								"postgres",
 																								"postgresql"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"user": {
 																							"description": "The user of your origin database.",
 																							"example": "postgres",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"title": "Connection Options",
@@ -3073,7 +3219,8 @@
 																				"access_client_id": {
 																					"description": "The Client ID of the Access token to use when connecting to the origin database.",
 																					"example": "0123456789abcdef0123456789abcdef.access",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"access_client_secret": {
 																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
@@ -3085,7 +3232,8 @@
 																				"host": {
 																					"description": "The host (hostname or IP) of your origin database.",
 																					"example": "database.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
