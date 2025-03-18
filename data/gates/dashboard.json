@@ -444,6 +444,14 @@
 	"dashon-115-live-trainings-signup-on-dash": {
 		"enabled": false
 	},
+	"dashon-117-account-header-on-empty-state-page": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"with-tab-switcher",
+			"without-tab-switcher"
+		]
+	},
 	"dashon-118-get-started-account-home-section": {
 		"enabled": false,
 		"branches": [
@@ -496,7 +504,7 @@
 			"experiment"
 		]
 	},
-	"data-one-click-logpush-r2": {
+	"data-access-account-check": {
 		"enabled": true
 	},
 	"davids-problem": {
@@ -530,7 +538,7 @@
 		]
 	},
 	"deprecate-security-level": {
-		"enabled": true
+		"enabled": false
 	},
 	"deprecate-workers-usage-models": {
 		"enabled": true
