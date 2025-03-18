@@ -2164,7 +2164,7 @@
 	"security_analytics.sidebar.bot_upsell_cta": "Try bot management",
 	"security_analytics.sidebar.bot_upsell": "Gain deeper control over your automated traffic with granular bot protection, anomaly detection, and path-level control.",
 	"security_analytics.sidebar.all_requests": "HTTP requests",
-	"security_analytics.sidebar.ai_assistant": "AI Assistant",
+	"security_analytics.sidebar.ai_assistant": "Cloudy analysis",
 	"security_analytics.sidebar.account_takeover": "Account takeover analysis",
 	"security_analytics.sidebar.bot_detection_tags": "Bot detection tags",
 	"security_analytics.sidebar.traffic_analysis": "Traffic analysis",
@@ -2237,7 +2237,7 @@
 	"security_analytics.sidebar.shortcuts.not_scored": "Not scored",
 	"security_analytics.sidebar.upgrade_description": "Gain deeper control with granular attack scores, including various sub attack vectors such as SQLi, XSS and RCE.",
 	"security_analytics.sidebar.upgrade": "Upgrade to Enterprise",
-	"security_analytics.ai_assistant.intro": "**AI Assistant for Security Analytics** helps you craft custom filters using natural language. Enter queries into the input below to create and compare data series. **AI Assistant** only operates on filters u2014 it currently has no ability to analyse your data for top or most frequent occurrences.\n\nFor more information, see the [announcement post here](https://blog.cloudflare.com/security-analytics-ai-assistant).",
+	"security_analytics.ai_assistant.intro": "**Cloudy for Security Analytics** helps you craft custom filters using natural language. Enter queries into the input below to create and compare data series. **Cloudy** only operates on filters u2014 it currently has no ability to analyse your data for top or most frequent occurrences.",
 	"security_analytics.timeseries.requests": "Not mitigated",
 	"security_analytics.timeseries.requests.tooltip": "HTTP requests that were not blocked or challenged by Cloudflare's security platform.",
 	"security_analytics.timeseries.mitigations": "Mitigated",
@@ -3108,5 +3108,12 @@
 	"security_analytics.insights.attack_score_attack": "Not mitigated requests scored as attack",
 	"security_analytics.insights.account_takeover": "Login requests are likely account takeover attacks",
 	"security_analytics.insights.malicious_uploads": "Uploaded content scanned and identified as malicious",
-	"security_analytics.insights.filter_requests": "Filter requests"
+	"security_analytics.insights.filter_requests": "Filter requests",
+	"security.ai_agent": "Cloudy",
+	"security.ai_agent.summarize": "Summarize with Cloudy",
+	"security.ai_agent.generating_rule_summary": "Generating your rules summaryu2026",
+	"security.ai_agent.rule_summary_error": "Something went wrong summarizing your rules.",
+	"security.ai_agent.rules_summary": "Rules summary",
+	"security.ai_agent.insights": "Insights",
+	"security.ai_agent.recommendations": "Recommendations"
 }
