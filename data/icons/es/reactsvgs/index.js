@@ -36,6 +36,7 @@ import CloudInternet from './CloudInternet';
 import CloudMulti from './CloudMulti';
 import CloudSecurity from './CloudSecurity';
 import CloudflareAccess from './CloudflareAccess';
+import CloudflareBrowserOutline from './CloudflareBrowserOutline';
 import CloudflareDex from './CloudflareDex';
 import CloudflareEmailSecurity from './CloudflareEmailSecurity';
 import CloudflareMagicWan from './CloudflareMagicWan';
@@ -236,6 +237,7 @@ export default {
   'cloud-multi': CloudMulti,
   'cloud-security': CloudSecurity,
   'cloudflare-access': CloudflareAccess,
+  'cloudflare-browser-outline': CloudflareBrowserOutline,
   'cloudflare-dex': CloudflareDex,
   'cloudflare-email-security': CloudflareEmailSecurity,
   'cloudflare-magic-wan': CloudflareMagicWan,

@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.27.0
+
+### Minor Changes
+
+- c566ef1b0c: cloudflare-browser-outline icon
+
 ## 12.26.0
 
 ### Minor Changes

@@ -38,6 +38,7 @@ declare const _default: {
     'cloud-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloudflare-browser-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-dex': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-email-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-magic-wan': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
