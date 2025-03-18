@@ -164,6 +164,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -192,7 +197,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -350,7 +355,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -420,6 +425,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -680,6 +688,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -708,7 +721,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -866,7 +879,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -936,6 +949,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -1196,6 +1212,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -1224,7 +1245,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -1382,7 +1403,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -1452,6 +1473,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -1712,6 +1736,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -1740,7 +1769,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -1898,7 +1927,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -1968,6 +1997,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -2228,6 +2260,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -2256,7 +2293,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -2414,7 +2451,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -2484,6 +2521,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -2744,6 +2784,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -2772,7 +2817,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -2930,7 +2975,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -3000,6 +3045,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -3260,6 +3308,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -3288,7 +3341,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -3446,7 +3499,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -3516,6 +3569,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -3776,6 +3832,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -3804,7 +3865,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -3962,7 +4023,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -4032,6 +4093,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -4292,6 +4356,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -4320,7 +4389,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -4478,7 +4547,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -4548,6 +4617,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -4808,6 +4880,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -4836,7 +4913,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -4994,7 +5071,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -5064,6 +5141,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -5324,6 +5404,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -5352,7 +5437,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -5510,7 +5595,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -5580,6 +5665,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -5840,6 +5928,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -5868,7 +5961,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -6026,7 +6119,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -6096,6 +6189,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -6356,6 +6452,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -6384,7 +6485,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -6542,7 +6643,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -6612,6 +6713,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -6872,6 +6976,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -6900,7 +7009,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -7058,7 +7167,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -7128,6 +7237,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -7388,6 +7500,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -7416,7 +7533,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -7574,7 +7691,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -7644,6 +7761,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -7904,6 +8024,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -7932,7 +8057,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -8090,7 +8215,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -8160,6 +8285,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -8420,6 +8548,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -8448,7 +8581,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -8606,7 +8739,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -8676,6 +8809,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -8936,6 +9072,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -8964,7 +9105,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -9122,7 +9263,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -9192,6 +9333,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -9452,6 +9596,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -9480,7 +9629,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -9638,7 +9787,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -9708,6 +9857,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -10471,6 +10623,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -10499,7 +10656,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -10657,7 +10814,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -10727,6 +10884,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -10987,6 +11147,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -11015,7 +11180,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -11173,7 +11338,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -11243,6 +11408,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -11503,6 +11671,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -11531,7 +11704,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -11689,7 +11862,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -11759,6 +11932,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -12232,6 +12408,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -12260,7 +12441,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -12418,7 +12599,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -12488,6 +12669,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -12748,6 +12932,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -12776,7 +12965,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -12934,7 +13123,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -13004,6 +13193,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -13264,6 +13456,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -13292,7 +13489,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -13450,7 +13647,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -13520,6 +13717,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -13780,6 +13980,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -13808,7 +14013,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -13966,7 +14171,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -14036,6 +14241,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -14296,6 +14504,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -14324,7 +14537,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -14482,7 +14695,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -14552,6 +14765,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -14812,6 +15028,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -14840,7 +15061,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -14998,7 +15219,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -15068,6 +15289,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -15328,6 +15552,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -15356,7 +15585,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -15514,7 +15743,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -15584,6 +15813,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -15844,6 +16076,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -15872,7 +16109,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -16030,7 +16267,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -16100,6 +16337,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -16360,6 +16600,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -16388,7 +16633,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -16546,7 +16791,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -16616,6 +16861,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -16876,6 +17124,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -16904,7 +17157,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -17062,7 +17315,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -17132,6 +17385,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -17392,6 +17648,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -17420,7 +17681,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -17578,7 +17839,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -17648,6 +17909,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -17908,6 +18172,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -17936,7 +18205,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -18094,7 +18363,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -18164,6 +18433,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -18424,6 +18696,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -18452,7 +18729,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -18610,7 +18887,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -18680,6 +18957,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -18940,6 +19220,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -18968,7 +19253,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -19126,7 +19411,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -19196,6 +19481,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -19456,6 +19744,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -19484,7 +19777,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -19642,7 +19935,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -19712,6 +20005,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -19972,6 +20268,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -20000,7 +20301,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -20158,7 +20459,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -20228,6 +20529,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -20488,6 +20792,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -20516,7 +20825,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -20674,7 +20983,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -20744,6 +21053,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -21004,6 +21316,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -21032,7 +21349,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -21190,7 +21507,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -21260,6 +21577,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -21520,6 +21840,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -21548,7 +21873,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -21706,7 +22031,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -21776,6 +22101,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -22036,6 +22364,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -22064,7 +22397,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -22222,7 +22555,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -22292,6 +22625,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -22552,6 +22888,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -22580,7 +22921,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -22738,7 +23079,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -22808,6 +23149,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -23068,6 +23412,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -23096,7 +23445,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -23254,7 +23603,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -23324,6 +23673,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -23584,6 +23936,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -23612,7 +23969,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -23770,7 +24127,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -23840,6 +24197,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -24100,6 +24460,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -24128,7 +24493,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -24286,7 +24651,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -24356,6 +24721,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
@@ -24616,6 +24984,11 @@
 										"minimum": 0,
 										"type": "number"
 									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
 									"repetition_penalty": {
 										"description": "Penalty for repeated tokens; higher values discourage repetition.",
 										"maximum": 2,
@@ -24644,7 +25017,7 @@
 									},
 									"stream": {
 										"default": false,
-										"description": "If true, the response will be streamed back incrementally.",
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 										"type": "boolean"
 									},
 									"temperature": {
@@ -24802,7 +25175,7 @@
 										"type": "integer"
 									},
 									"top_p": {
-										"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 										"maximum": 2,
 										"minimum": 0,
 										"type": "number"
@@ -24872,6 +25245,9 @@
 													"type": "object"
 												}
 											},
+											"required": [
+												"response"
+											],
 											"type": "object"
 										},
 										{
