@@ -2847,6 +2847,14 @@
 						"compatDisableFlag": "allow_importable_env",
 						"compatEnableFlag": "disallow_importable_env"
 					}
+				},
+				{
+					"name": "assetsSecFetchModeNavigateHeaderPrefersAssetServing",
+					"annotations": {
+						"compatDisableFlag": "assets_navigation_has_no_effect",
+						"compatEnableDate": "2025-04-01",
+						"compatEnableFlag": "assets_navigation_prefers_asset_serving"
+					}
 				}
 			]
 		},
