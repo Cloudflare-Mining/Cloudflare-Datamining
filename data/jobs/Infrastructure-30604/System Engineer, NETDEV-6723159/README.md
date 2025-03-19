@@ -11,8 +11,7 @@
 <h3>Examples Of Desirable Skills, Knowledge And Experience</h3>
 <ul>
 	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of proven experience in hands-on server-side</li>
-	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
+	<li>2+ years of proven experience in hands-on server-side</li>
 	<li>Knowledge of programming languages like Python or Golang.</li>
 	<li>Experience with MySQL, Postgres (or equivalent SQL language)</li>
 	<li>Experience with CI/CD, containers and/or virtualization</li>
@@ -20,6 +19,7 @@
 </ul>
 <h3>Bonus Points but not required:</h3>
 <ul>
+	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
 	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
 	<li>Experience building and maintaining large distributed systems</li>
 	<li>Experience managing internal and/or external customer requirements and expectations</li>
