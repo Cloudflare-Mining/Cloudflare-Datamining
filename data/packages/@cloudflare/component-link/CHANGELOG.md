@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.1.22
+
+### Patch Changes
+
+- Updated dependencies [6be54263cf]
+  - @cloudflare/component-button@8.5.21
+
 ## 8.1.21
 
 ### Patch Changes

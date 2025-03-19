@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.0.12
+
+### Patch Changes
+
+- Updated dependencies [6be54263cf]
+  - @cloudflare/component-button@8.5.21
+  - @cloudflare/component-modal@8.0.45
+  - @cloudflare/component-progress@9.0.50
+
 ## 5.0.11
 
 ### Patch Changes

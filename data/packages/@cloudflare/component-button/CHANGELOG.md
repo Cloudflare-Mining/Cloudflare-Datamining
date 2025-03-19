@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.5.21
+
+### Patch Changes
+
+- 6be54263cf: update storybook documenation for the button
+
 ## 8.5.20
 
 ## 8.5.19
