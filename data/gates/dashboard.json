@@ -820,7 +820,7 @@
 		"enabled": true
 	},
 	"event-hub-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"exposed-credentials-module": {
 		"enabled": true
@@ -1407,10 +1407,10 @@
 	"queues-clipboard": {
 		"enabled": true
 	},
-	"queues-delivery-control-config": {
+	"queues-message-pausing": {
 		"enabled": true
 	},
-	"queues-http-pull-consumer-config": {
+	"queues-message-purging": {
 		"enabled": true
 	},
 	"queues-send-from-dash": {
