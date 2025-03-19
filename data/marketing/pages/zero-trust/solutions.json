@@ -825,15 +825,63 @@
 										"contentTypeId": "navNavigationItem",
 										"contentfulId": "2hr0XDGlelPF6ax9r7Ce4f",
 										"locale": "en-US",
-										"name": "Enterprise plan",
+										"name": "For enterprise",
 										"description": null,
 										"mainLink": {
 											"contentTypeId": "elementNavLink",
 											"contentfulId": "2QNu1cnQ21JvcIe0JZhbIP",
 											"locale": "en-US",
-											"title": "Enterprise plans",
+											"title": "For enterprise",
 											"description": null,
 											"url": "plans/enterprise",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "3VWB2RL9whvdtSGQPAT9jK",
+										"locale": "en-US",
+										"name": "For small business",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6WiE3O0PaGY3MUro24gXtV",
+											"locale": "en-US",
+											"title": "For small business",
+											"description": null,
+											"url": "https://www.cloudflare.com/small-business/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "kb0RMf1cqMOZdIlHYzozy",
+										"locale": "en-US",
+										"name": "For hobbyists and individuals",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "7bR2sK7ytzS2RKzyiD82wr",
+											"locale": "en-US",
+											"title": "For hobbyists and individuals",
+											"description": null,
+											"url": "https://www.cloudflare.com/personal/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
@@ -983,7 +1031,7 @@
 												"contentfulId": "4cIe1truf62he5WfDvLoZ5",
 												"locale": "en-US",
 												"title": "Industry analysts on Cloudflare",
-												"description": "Explore industry analysis of our products",
+												"description": "Explore industry analysis",
 												"url": "/analysts/",
 												"badges": null,
 												"specialLinkType": null,
@@ -997,6 +1045,18 @@
 												"title": "Webinars",
 												"description": "Explore past & upcoming webinars",
 												"url": "/resource-hub/?resourcetype=Webinar",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "6k94HvLpOWSk22lb1Tv4FY",
+												"locale": "en-US",
+												"title": "Events",
+												"description": "Upcoming events",
+												"url": "/events",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -2057,18 +2117,6 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "3TUBKRF4MdcxybTg9QrwrE",
-												"locale": "en-US",
-												"title": "Technology partners",
-												"description": "Explore our ecosystem of technology partnerships and integrations",
-												"url": "https://www.cloudflare.com/partners/technology-partners/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "7w6FaWDKWmcohncR0qXwXr",
 												"locale": "en-US",
 												"title": "Global system integrators",
@@ -2574,10 +2622,10 @@
 								"subMenuItems": []
 							},
 							{
-								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
-								"linkText": "Pricing",
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
 								"page": null,
-								"url": "/plans/zero-trust-services/",
+								"url": "/zero-trust/solutions/",
 								"subMenuItems": []
 							},
 							{
@@ -2585,13 +2633,6 @@
 								"linkText": "Products",
 								"page": null,
 								"url": "/zero-trust/products/",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
-								"linkText": "Solutions",
-								"page": null,
-								"url": "/zero-trust/solutions/",
 								"subMenuItems": []
 							},
 							{
@@ -2661,6 +2702,13 @@
 										"url": "/industry-solutions/"
 									}
 								]
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
 							}
 						]
 					},
