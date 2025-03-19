@@ -1712,5 +1712,142 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"POST /accounts/{account_id}/ai/tomarkdown": {
+		"operationId": "workers-ai-post-to-markdown",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/octet-stream": {
+					"schema": {
+						"format": "binary",
+						"type": "string"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"applications/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"data": {
+												"type": "string"
+											},
+											"format": {
+												"type": "string"
+											},
+											"mimeType": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"tokens": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"mimeType",
+											"format",
+											"tokens",
+											"data"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Model Schema"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Convert Files into Markdown",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }
