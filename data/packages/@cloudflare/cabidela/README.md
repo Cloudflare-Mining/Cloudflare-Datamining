@@ -280,6 +280,9 @@ Resolves to:
 {
   "type": "object",
   "properties": {
+    "p": {
+      "type": "string" }
+    },
     "q": {
       "type": "number"
     }
@@ -293,6 +296,8 @@ To use `$merge` set the `useMerge` flag to true when creating the instance.
 ```js
 new Cabidela(schema, { useMerge: true });
 ```
+
+You can combine `$merge` with `$id` and `$ref` keywords, which get resolved first, for even more flexibility.
 
 ## Custom errors
 

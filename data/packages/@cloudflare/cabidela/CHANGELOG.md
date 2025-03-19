@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.3] - 2025-03-19
+
+### Changed
+
+- Documentation typos
+
+### Added
+
+- Benchmarking tests for $merge
+
 ## [0.1.2] - 2025-03-07
 
 ### Added
