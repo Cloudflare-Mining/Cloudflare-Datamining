@@ -1,0 +1,59 @@
+{
+	"name": "@cloudflare/workers-oauth-provider",
+	"dist-tags": {
+		"latest": "0.0.2"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "0.0.1",
+			"dependencies": {
+				"@cloudflare/workers-types": "^4.20250311.0"
+			},
+			"devDependencies": {
+				"tsup": "^8.4.0",
+				"vitest": "^1.2.2",
+				"typescript": "^5.8.2"
+			},
+			"dist": {
+				"shasum": "e1009576529e56f1757423c21e30043062c3092c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.0.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-N3qJxHO9eP6KvfjEl6FcqVXdn4bhbpbiJR+bOzQLKocsVrSy9ka6PAd6litoraQKS6dwQCeqjVaUO7NZAULJlw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDoPH+N8pPa5cwT61LutUSJ8QTPdX0xwiaOSQIDdL9IgAiEAqbvmD5dnz/DRPqhjn/4/YkKBEsLajiQlpFJbWfCvquw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 77486
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "0.0.2",
+			"dependencies": {
+				"@cloudflare/workers-types": "^4.20250311.0"
+			},
+			"devDependencies": {
+				"prettier": "^3.5.3",
+				"tsup": "^8.4.0",
+				"typescript": "^5.8.2",
+				"vitest": "^3.0.8"
+			},
+			"dist": {
+				"integrity": "sha512-/4ITlItqtmG077CBdo/14c4GNrhLDQ9Y/+mDMEppzXz5g0gVbYjzZGtXrQFQG1mfOHNfXmNxgVwin2eh0X423Q==",
+				"shasum": "034eb77fa2544012cd7391948f56d8adbd69ac4d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.0.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 86086,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIC8eJT1tCjp1ylh/6XTdaTQn42IXsEnbch9FHc4O3hcEAiAVgWOippydzeiicpiFXFeghpMqjsBroQpg7NzHERDrUQ=="
+					}
+				]
+			}
+		}
+	}
+}
