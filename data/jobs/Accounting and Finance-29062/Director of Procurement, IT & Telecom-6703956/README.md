@@ -5,45 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: This role may be located in Austin, TX, Denver, CO or San Francisco, CA</strong></p>
-<p><strong>About The Role:</strong></p>
-<p>We are seeking a Principal Global Partner Account Manager to join our Global System Integrator (GSI) team. The role is based out of North America and will report to the Sr. Director, Global Partners.&nbsp;&nbsp;</p>
-<p>The Global Partner Account Manager will be responsible for managing and optimizing strategic relationships with our key partners such as Deloitte, NTT, IBM, and Accenture. This role will focus on developing and executing partnership strategies that enhance collaboration, drive revenue growth, and leverage the combined strengths of our organizations to deliver exceptional value to clients.</p>
-<p>The ideal candidate will have strong executive presence, established relationships and experience leading GSI partnerships, preferably in the technology and/or security and networking sector. They can work independently to build a strategy and execute the plan leveraging stakeholders both internally and externally. They will have the ability to influence decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Partner Managers, Customer Success teams, Sales Operations, Marketing teams and external partner executives.&nbsp;&nbsp;</p>
-<p>You will be expected to travel as required. The ideal candidate will have a network of existing partner contacts within the key GSI partnerships, including client leads and decision makers.&nbsp;&nbsp;</p>
-<p>Key Accountability: Achieve and exceed partner booked sales goals.</p>
-<p><strong>Responsibilities:&nbsp;</strong></p>
+<p><strong>Available Locations:</strong></p>
 <ul>
-	<li>Create and implement strategic account plans for each partner that align with overall business &nbsp; objectives and growth targets</li>
-	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner</li>
-	<li>Build the joint go-to-market services and solution stack offerings working closely with the global alliances team and services team</li>
-	<li>Relationship development including building executive key influencer and sales relationships that peer with Cloudflare leadership</li>
-	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration</li>
-	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and territories</li>
-	<li>Own and run business and quarterly planning / reviews both internally and externally</li>
-	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact</li>
-	<li>Own the plan for ongoing training and support for client leads and technical resources</li>
-	<li>Work with GSI partnerships and/or field sales on RFPs, proactive account planning, deal registrations and forecasting</li>
+	<li>Austin</li>
+	<li>Dallas</li>
+	<li>Houston</li>
+	<li>New York</li>
+	<li>San Antonio</li>
+	<li>San Francisco</li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience:</strong></p>
+<h4><strong>About the role</strong></h4>
+<p>The Director of Procurement – IT &amp; Telecom will be responsible for Cloudflare’s global information technology and telecom spending of approximately $200 million annually across the entire footprint. Lead a team of Category Leaders responsible for strategic sourcing activities and supplier management functions. Develop a sourcing strategy aligned with functional / business objectives, build organizational strength, create robust sourcing strategies, negotiate agreements, manage strategic supplier relationships, and drive continuous improvement and year-over-year savings. Act as a critical business partner to the IT Leadership Team.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Relevant Bachelor Degree&nbsp;</li>
-	<li>15+ years experience working with Global System Integrator partnerships</li>
-	<li>Existing relationships with Accenture, NTT and Kyndryl</li>
-	<li>Executive presence with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation</li>
-	<li>Experience working in the technology sector. Network and/or security vendor experience a bonus</li>
-	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels</li>
-	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions</li>
-	<li>Ability to work independently and collaboratively across various teams in a fast-paced environment</li>
-	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions</li>
+	<li>Act as the key global IT and telecom sourcing interface with all Cloudflare divisions, ensuring<br>alignment of strategies and commitments.</li>
+	<ul>
+		<li>Understand the company’s IT Strategy and Plan objectives, timelines, and goals. Align the<br>Strategic Sourcing plans to enable IT investments and operations.</li>
+		<li>Analyze cross-divisional spend and develop global strategic sourcing plans to reduce the total<br>cost of ownership for all business units.</li>
+		<li>Demonstrate a measurable reduction in year-over-year total cost of ownership for the goods and<br>services being sourced without compromising quality and service levels.</li>
+	</ul>
+	<li>Provide thought leadership in developing and implementing sourcing strategies.<br>o Create subcategory strategies using cross-functional teams and sourcing process diligence.</li>
+	<ul>
+		<li>Manage contracting process and lead coordination with Legal, Compliance, and Privacy to ensure commercial relationships are appropriately documented.</li>
+		<li>Champion the use of e-sourcing, Spend Visibility, and P2P tools company-wide</li>
+		<li>Manage the supplier qualification, RFP, supplier selection, contract development, implementation, compliance, and ongoing supply base management process related to IT &amp; Telecom.</li>
+	</ul>
+	<li>Drive functional excellence across the IT &amp; Telecom portfolio, including skills development and identifying training needs.</li>
+	<ul>
+		<li>Manage relationships with the IT senior management and the suppliers.</li>
+		<li>Create and maintain communication mechanisms to ensure coordination with IT and reporting of sourcing impact.</li>
+	</ul>
+	<li>Leads the Global Sourcing IT &amp; Telecom Team</li>
+	<ul>
+		<li>Develop staff to create expertise in both the areas of spend being managed and in strategic sourcing processes.</li>
+		<li>Mentor and develop staff through counseling and training program development that addresses individual improvement areas.</li>
+	</ul>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>A bachelor’s degree is required, as well as a graduate degree in engineering, supply chain, or “hard”<br>technical field (STEM). Soft degrees (B.A., B.F.A., etc.) not accepted.</li>
+	<li>Minimum 12 years of experience in procurement or supply chain leadership roles.</li>
+	<li>Concrete experience in IT hardware, software, SaaS, Cloud, and professional service categories.</li>
+	<li>Solid experience in global matrix organizations with a worldwide operation footprint.</li>
+	<li>Experience in a continuous improvement environment with a track record of achieving significant P&amp;L savings year over year.</li>
+	<li>Strong negotiation and presentation skills, proven experience driving the strategic sourcing process and category strategies (A.R.Q.S.C.I.).</li>
+	<li>Proven track record in building and leading multicultural, global, high-performance teams.</li>
+	<li>Customer-centric mindset and problem-solver.</li>
+	<li>Adaptability to work across all functions and levels of an organization (from C-Level to buyer planner).</li>
+	<li>Industry: Financial Services and Retail Banking, Life Science, Healthcare, Pharmaceuticals, Aerospace &amp; Defense, Automotive</li>
+</ul>
+<p></p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado based hires: Estimated annual salary of $257,000 - $314,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $287,000 - $380.000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $237,000 - $289,000</li>
+	<li>For New York City hires: Estimated annual salary of $225,000 - $275,000</li>
 </ul>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
