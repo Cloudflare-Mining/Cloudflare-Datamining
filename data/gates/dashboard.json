@@ -968,6 +968,9 @@
 	"lmm-fields": {
 		"enabled": false
 	},
+	"load-balancing-endpoint-port": {
+		"enabled": false
+	},
 	"load-balancing-least-connections": {
 		"enabled": true
 	},
@@ -1386,7 +1389,7 @@
 		]
 	},
 	"prg-zero-trust-account-home": {
-		"enabled": false
+		"enabled": true
 	},
 	"prg-zone-plan-change-cta-copy": {
 		"enabled": false,
@@ -1417,10 +1420,10 @@
 		"enabled": true
 	},
 	"queues-send-from-dash": {
-		"enabled": true
+		"enabled": false
 	},
 	"queues-ui": {
-		"enabled": true
+		"enabled": false
 	},
 	"quick-scan-in-background": {
 		"enabled": true,
