@@ -1695,6 +1695,205 @@
 			"pro": true
 		}
 	},
+	"GET /radar/bgp/routes/realtime": {
+		"description": "Retrieves realtime routes for prefixes using public realtime data collectors (RouteViews and RIPE RIS).",
+		"operationId": "radar-get-bgp-routes-realtime",
+		"parameters": [
+			{
+				"description": "Network prefix, IPv4 or IPv6.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"description": "Network prefix, IPv4 or IPv6.",
+					"example": "1.1.1.0/24",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"collectors": {
+													"items": {
+														"properties": {
+															"collector": {
+																"description": "public route collector ID",
+																"type": "string"
+															},
+															"latest_realtime_ts": {
+																"description": "latest realtime stream timestamp for this collector",
+																"type": "string"
+															},
+															"latest_rib_ts": {
+																"description": "latest RIB dump MRT file timestamp for this collector",
+																"type": "string"
+															},
+															"latest_updates_ts": {
+																"description": "latest BGP updates MRT file timestamp for this collector",
+																"type": "string"
+															}
+														},
+														"required": [
+															"collector",
+															"latest_realtime_ts",
+															"latest_updates_ts",
+															"latest_rib_ts"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"collectors"
+											],
+											"type": "object"
+										},
+										"routes": {
+											"items": {
+												"properties": {
+													"as_path": {
+														"description": "AS-level path for this route, from collector to origin",
+														"items": {
+															"type": "integer"
+														},
+														"type": "array"
+													},
+													"collector": {
+														"description": "public collector ID for this route",
+														"type": "string"
+													},
+													"communities": {
+														"description": "BGP community values",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"prefix": {
+														"description": "IP prefix of this query",
+														"type": "string"
+													},
+													"timestamp": {
+														"description": "latest timestamp of change for this route ",
+														"type": "string"
+													}
+												},
+												"required": [
+													"timestamp",
+													"collector",
+													"prefix",
+													"as_path",
+													"communities"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"routes",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get realtime routes for prefixes",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/bgp/routes/stats": {
 		"description": "Retrieves the BGP routing table stats.",
 		"operationId": "radar-get-bgp-routes-stats",
