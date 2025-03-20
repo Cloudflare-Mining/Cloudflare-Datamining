@@ -105,6 +105,15 @@
 																			"example": "block",
 																			"type": "string"
 																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
@@ -184,6 +193,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -269,6 +287,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -359,6 +386,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -535,6 +571,15 @@
 																					"example": "block",
 																					"type": "string"
 																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
+																					"type": "string"
+																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
@@ -614,6 +659,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
@@ -699,6 +753,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
@@ -789,6 +852,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
@@ -1009,6 +1081,7 @@
 							"summary": "Bot Fight Mode default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"crawler_protection": "disabled",
 								"enable_js": true,
 								"fight_mode": true
 							}
@@ -1017,6 +1090,7 @@
 							"summary": "SBFM Pro plan default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"crawler_protection": "disabled",
 								"enable_js": true,
 								"sbfm_definitely_automated": "block",
 								"sbfm_static_resource_protection": true,
@@ -1027,6 +1101,7 @@
 							"summary": "SBFM Biz plan default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"crawler_protection": "disabled",
 								"enable_js": true,
 								"sbfm_definitely_automated": "block",
 								"sbfm_likely_automated": "managed_challenge",
@@ -1039,6 +1114,7 @@
 							"value": {
 								"ai_bots_protection": "disabled",
 								"auto_update_model": true,
+								"crawler_protection": "disabled",
 								"enable_js": true
 							}
 						},
@@ -1093,6 +1169,15 @@
 															"disabled"
 														],
 														"example": "block",
+														"type": "string"
+													},
+													"crawler_protection": {
+														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
 														"type": "string"
 													},
 													"enable_js": {
@@ -1174,6 +1259,15 @@
 															"disabled"
 														],
 														"example": "block",
+														"type": "string"
+													},
+													"crawler_protection": {
+														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
 														"type": "string"
 													},
 													"enable_js": {
@@ -1259,6 +1353,15 @@
 															"disabled"
 														],
 														"example": "block",
+														"type": "string"
+													},
+													"crawler_protection": {
+														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
 														"type": "string"
 													},
 													"enable_js": {
@@ -1349,6 +1452,15 @@
 															"disabled"
 														],
 														"example": "block",
+														"type": "string"
+													},
+													"crawler_protection": {
+														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
 														"type": "string"
 													},
 													"enable_js": {
@@ -1520,6 +1632,15 @@
 																			"example": "block",
 																			"type": "string"
 																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
@@ -1599,6 +1720,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -1684,6 +1814,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -1774,6 +1913,15 @@
 																				"disabled"
 																			],
 																			"example": "block",
+																			"type": "string"
+																		},
+																		"crawler_protection": {
+																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
 																			"type": "string"
 																		},
 																		"enable_js": {
@@ -1950,6 +2098,15 @@
 																					"example": "block",
 																					"type": "string"
 																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
+																					"type": "string"
+																				},
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
@@ -2029,6 +2186,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
@@ -2114,6 +2280,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
@@ -2204,6 +2379,15 @@
 																						"disabled"
 																					],
 																					"example": "block",
+																					"type": "string"
+																				},
+																				"crawler_protection": {
+																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
+																					"enum": [
+																						"enabled",
+																						"disabled"
+																					],
+																					"example": "enabled",
 																					"type": "string"
 																				},
 																				"enable_js": {
