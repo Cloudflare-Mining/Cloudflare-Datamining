@@ -486,10 +486,11 @@
 				"in": "query",
 				"name": "origin",
 				"schema": {
-					"description": "* `ML` - Discovered operation was sourced using ML API Discovery * `SessionIdentifier` - Discovered operation was sourced using Session Identifier API Discovery\n",
+					"description": "* `ML` - Discovered operation was sourced using ML API Discovery * `SessionIdentifier` - Discovered operation was sourced using Session Identifier API Discovery * `LabelDiscovery` - Discovered operation was identified to have a specific label\n",
 					"enum": [
 						"ML",
-						"SessionIdentifier"
+						"SessionIdentifier",
+						"LabelDiscovery"
 					],
 					"type": "string"
 				}
@@ -688,10 +689,11 @@
 															"origin": {
 																"description": "API discovery engine(s) that discovered this operation",
 																"items": {
-																	"description": "* `ML` - Discovered operation was sourced using ML API Discovery * `SessionIdentifier` - Discovered operation was sourced using Session Identifier API Discovery\n",
+																	"description": "* `ML` - Discovered operation was sourced using ML API Discovery * `SessionIdentifier` - Discovered operation was sourced using Session Identifier API Discovery * `LabelDiscovery` - Discovered operation was identified to have a specific label\n",
 																	"enum": [
 																		"ML",
-																		"SessionIdentifier"
+																		"SessionIdentifier",
+																		"LabelDiscovery"
 																	],
 																	"type": "string"
 																},
