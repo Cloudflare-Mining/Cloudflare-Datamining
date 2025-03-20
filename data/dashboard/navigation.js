@@ -209,7 +209,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		testId: "sidenav-waf-link",
-		tabs: f.DW
+		tabs: g.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -261,7 +261,7 @@ const navigation = {
 		iconType: "magic-firewall",
 		testId: "sidenav-magic-firewall-link",
 		hasPermission: v => !!(0, p.zJ)(v),
-		tabs: f.$$
+		tabs: g.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -271,7 +271,7 @@ const navigation = {
 			const Z = !!(0, p.Wq)(v) && !!(0, p.fO)(v);
 			return !!(0, p.us)(v) || Z
 		},
-		tabs: f.Dn,
+		tabs: g.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
@@ -280,7 +280,7 @@ const navigation = {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection",
 			hasPermission: v => (0, p.us)(v),
-			tabs: f.O1
+			tabs: g.O1
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -1368,5 +1368,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: g.Gj
+	support: f.Gj
 }
