@@ -5,38 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, Texas | Lisbon, Portugal | London, UK</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Cloudflare’s <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team is where <strong>bold, innovative products</strong> are built and launched. Rather than being limited by the structures of a large, established business, we <strong>leverage Cloudflare’s global edge network</strong> to solve problems at an <strong>unparalleled scale and efficiency</strong>.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>In this role, you will build <strong>Durable Objects</strong>, the <strong>Cloudflare Developer Platform's product for building stateful serverless applications</strong>. As a member of this team, you will:</p>
-<p>&nbsp;part of a top-notch systems engineering team you will create the low level routing and storage systems that enable Cloudflare’s customers to build. Your job is to drive the continual evolution of the system which improves reliability, performance, and provides new features. For a recent summary of these changes take a look at <a href="https://blog.cloudflare.com/sqlite-in-durable-objects/">this</a>.</p>
+<p><strong>Available Locations:</strong> Lisbon or London&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
+<p><strong>What you'll do&nbsp;</strong></p>
+<p>The Cloudflare Senior Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>Build the Durable Objects runtime</strong> which enables Cloudflare customers to build real-time chat applications, multiplayer games, and AI agents.&nbsp;</li>
-	<li><strong>Improve reliability, scalability, and performance</strong> by developing new system capabilities.</li>
-	<li><strong>Own your code end-to-end</strong> from design to production.</li>
-	<li><strong>Solve complex technical challenges</strong> with production distributed systems.</li>
-	<li>Develop software in <strong>JavaScript, TypeScript, Rust, and C++.</strong></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide coverage (shift rotation including weekends) for technical troubleshooting of escalated issues&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Triage Customer Escalation issues to find the quickest most efficient path of resolution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross-functionally with various teams across the company from engineering to sales</span></li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li><strong>5+ years of experience</strong> writing systems software.</li>
-	<li><strong>Operational mindset</strong> – we don’t just write code, we <strong>own it in production</strong>.</li>
-	<li>Strong foundation in <strong>data structures, algorithms, and system design</strong>.</li>
-	<li><strong>Deep expertise</strong> in at least one <strong>systems programming language</strong> (e.g., C/C++ or Rust).</li>
-	<li>Experience <strong>designing and architecting large-scale distributed systems</strong>.</li>
-	<li>Familiarity with <strong>cloud platforms, particularly serverless architectures</strong>.</li>
-	<li>Experience as a <strong>technical leader or team lead</strong>, driving engineering decisions.</li>
+	<li style="font-weight: 400;">Minimum 2 years of customer-facing technical experience, preferably technical support or system reliability engineering</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to manage multiple priorities, commitments, and projects</span></li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
 <ul>
-	<li>Experience working on <strong>database internals</strong> (specifically SQLite).</li>
-	<li>Deep understanding of <strong>web technologies</strong> (browsers, HTTP, JavaScript, WebAssembly).</li>
-	<li>Background in <strong>low-latency, real-time environments</strong> (e.g., game streaming, high-frequency trading, payment systems).</li>
-	<li>Experience debugging, optimizing, and identifying failure modes in <strong>large-scale Linux-based distributed systems</strong>.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive technical support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting application protocols (L7 - DNS, HTTP, etc)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network infrastructure (L3/L4)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert at analyzing data using tools like grafana, kibana, and SQL</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to clarify complex technical issues and coordinate efforts to resolve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to identify and share/suggest process improvements&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated leadership, prior mentoring experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable handling inbound and outbound customer calls</span></li>
 </ul>
-<p>This is a <strong>high-impact role</strong> for engineers who thrive in <strong>fast-paced, distributed environments</strong> and want to <strong>shape the future of cloud computing</strong>. If that sounds like you, we’d love to hear from you!</p>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"></h3>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with regular expressions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
