@@ -1745,6 +1745,23 @@ interface KVNamespace<Key extends string = string> {
     key: Key,
     options?: KVNamespaceGetOptions<"stream">,
   ): Promise<ReadableStream | null>;
+  get(key: Array<Key>, type: "text"): Promise<Map<string, string | null>>;
+  get<ExpectedValue = unknown>(
+    key: Array<Key>,
+    type: "json",
+  ): Promise<Map<string, ExpectedValue | null>>;
+  get(
+    key: Array<Key>,
+    options?: Partial<KVNamespaceGetOptions<undefined>>,
+  ): Promise<Map<string, string | null>>;
+  get(
+    key: Array<Key>,
+    options?: KVNamespaceGetOptions<"text">,
+  ): Promise<Map<string, string | null>>;
+  get<ExpectedValue = unknown>(
+    key: Array<Key>,
+    options?: KVNamespaceGetOptions<"json">,
+  ): Promise<Map<string, ExpectedValue | null>>;
   list<Metadata = unknown>(
     options?: KVNamespaceListOptions,
   ): Promise<KVNamespaceListResult<Metadata, Key>>;
@@ -1789,6 +1806,30 @@ interface KVNamespace<Key extends string = string> {
     key: Key,
     options: KVNamespaceGetOptions<"stream">,
   ): Promise<KVNamespaceGetWithMetadataResult<ReadableStream, Metadata>>;
+  getWithMetadata<Metadata = unknown>(
+    key: Array<Key>,
+    type: "text",
+  ): Promise<Map<string, KVNamespaceGetWithMetadataResult<string, Metadata>>>;
+  getWithMetadata<ExpectedValue = unknown, Metadata = unknown>(
+    key: Array<Key>,
+    type: "json",
+  ): Promise<
+    Map<string, KVNamespaceGetWithMetadataResult<ExpectedValue, Metadata>>
+  >;
+  getWithMetadata<Metadata = unknown>(
+    key: Array<Key>,
+    options?: Partial<KVNamespaceGetOptions<undefined>>,
+  ): Promise<Map<string, KVNamespaceGetWithMetadataResult<string, Metadata>>>;
+  getWithMetadata<Metadata = unknown>(
+    key: Array<Key>,
+    options?: KVNamespaceGetOptions<"text">,
+  ): Promise<Map<string, KVNamespaceGetWithMetadataResult<string, Metadata>>>;
+  getWithMetadata<ExpectedValue = unknown, Metadata = unknown>(
+    key: Array<Key>,
+    options?: KVNamespaceGetOptions<"json">,
+  ): Promise<
+    Map<string, KVNamespaceGetWithMetadataResult<ExpectedValue, Metadata>>
+  >;
   delete(key: Key): Promise<void>;
 }
 interface KVNamespaceListOptions {
@@ -5818,19 +5859,19 @@ declare module "assets:*" {
 declare module "cloudflare:pipelines" {
   export abstract class PipelineTransformationEntrypoint<
     Env = unknown,
-    I extends PipelineRecord = {},
-    O extends PipelineRecord = {},
+    I extends PipelineRecord = PipelineRecord,
+    O extends PipelineRecord = PipelineRecord,
   > {
+    protected env: Env;
+    protected ctx: ExecutionContext;
+    constructor(ctx: ExecutionContext, env: Env);
     /**
      * run recieves an array of PipelineRecord which can be
-     * mutated and returned to the pipeline
+     * transformed and returned to the pipeline
      * @param records Incoming records from the pipeline to be transformed
      * @param metadata Information about the specific pipeline calling the transformation entrypoint
      * @returns A promise containing the transformed PipelineRecord array
      */
-    protected env: Env;
-    protected ctx: ExecutionContext;
-    constructor(ctx: ExecutionContext, env: Env);
     public run(records: I[], metadata: PipelineBatchMetadata): Promise<O[]>;
   }
   export type PipelineRecord = Record<string, unknown>;
@@ -5838,7 +5879,7 @@ declare module "cloudflare:pipelines" {
     pipelineId: string;
     pipelineName: string;
   };
-  export interface Pipeline<T extends PipelineRecord> {
+  export interface Pipeline<T extends PipelineRecord = PipelineRecord> {
     /**
      * The Pipeline interface represents the type of a binding to a Pipeline
      *
