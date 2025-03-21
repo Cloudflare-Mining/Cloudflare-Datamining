@@ -5,58 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
-<p>London, UK</p>
-<p>Lisbon, Portugal&nbsp;</p>
-<p>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
+<p><strong>Available Locations: Lisbon or London</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
 <h4><strong>What you'll do</strong></h4>
-<p>You will lead a team of passionate, talented engineers that are building innovative products that touch billions of web requests each day. In this role, you will introduce tools and processes to make our engineers’ lives better. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>About the team</strong></p>
-<p>The Engineering Productivity Team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and serve high volumes of requests every day.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p>Our ideal candidate is a sharp, thoughtful, and collaborative problem solver, who enjoys identifying key business levers and challenges, and then building data science and analytics frameworks to enable strategic decision making. You will work closely with the product, marketing, and the BI teams to help develop analytics solutions and scale internal data processes. You also have a strong combination of business acumen and data science background, as well as an intense hunger to make a significant business impact by owning and driving business outcomes.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>4+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Familiarity with networking terminology, tooling, patterns, and technologies.</li>
+	<li>Well balanced skills - People have trouble pinning you down. Both business and technical/ data teams claim you as their own. You are equal parts technical and functional. You are equally comfortable and effective in persuading both technical and business audiences.</li>
+	<li>Data science analytics expertise - You excel at designing and building new and impactful customer-centric KPIs and metrics to measure customer and competitive dynamics. You are equally strong at getting into the weeds and making sure that the data needed to support these metrics is consistent and available.&nbsp;</li>
+	<li>Proactively manage the analytics program for the self-service business. This requires working closely across different product teams and data engineers to improve the data collection and quality.&nbsp;</li>
+	<li>You are very comfortable rolling up your sleeves when needed to write complex SQL queries and strive to balance speed with effective code design. You are adept at leveraging data science and algorithms frameworks in a practical business setting and have mastery over the fundamentals of machine learning techniques (such as regression, clustering algorithms and/or causal inference) along with cohort analyses, supervised, unsupervised learning and/or causal inference</li>
+	<li>Write product requirements for measuring experiments, establishing baselines to move, define performance goals for each project for the self-service business</li>
+	<li>Design, build, and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to A/B test reporting, product adoption scoring, product performance reporting, billing forecasting, and GTM metrics reporting automation</li>
+	<li>Clearly identify data challenges and propose scaling solutions / programs from incubation stage to a longer-team high performing state. You will be building an airplane while flying it.</li>
+	<li>Great presentation skills - share the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner in WBRs, MBRs, QBRs.&nbsp;</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Who you are</strong></p>
 <ul>
-	<li>Experience building and running Platform engineering teams</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Cloudflare is a large company but the self-serve team is a small and mighty startup within. You should have worked in startups and helped them achieve data scalability in the past.</li>
+	<li>You should enjoy bringing order to a chaotic data landscape. This means you are well organized and thorough in your documentation. Your structure to our data should enable any other team member to replicate the results of your analytical work.</li>
+	<li>Extreme ownership - You are the go-to-person for all things data within your organization. As one of the founding analytics team members on the self-serve team, you will be driving and advising the team towards their north star</li>
+	<li>5 + years of data analyst experience with 1+ years on product analytics on a large scale for a PLG business.</li>
+	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
+	<li>Presentation experience and a proven track record of using insights to influence stakeholders and colleagues</li>
+	<li>Work with our AI teams to make this data self-serviceable through LLMs</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

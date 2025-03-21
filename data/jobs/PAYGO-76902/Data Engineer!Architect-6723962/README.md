@@ -5,31 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Bengaluru, India</strong></p>
-<p><strong>Company: Cloudflare Capability Center (India) Private Limited</strong></p>
-<p>Cloudflare, a global leader in internet security, performance, and reliability, is seeking a dynamic and experienced digital engagement manager to join our APAC &amp; JAPAN team on an 11-month contract basis. This role is a pivotal part of our strategy to engage and convert top-of-funnel inquiries with a focus on cybersecurity decision-makers in enterprise companies across Asia Pacific and Japan.The Manager will report directly to the APJC Leadership in Singapore and will carry out tasks assigned to them from time to time including:<br><strong><br>Responsibilities:</strong></p>
+<p><strong>Available Locations: Lisbon or London</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves 8M+ customers across 20% of the internet. Our team is responsible for growth marketing, product growth, and growth insights with the goal of building a world class experience for our self-serve customers across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
+<p>You may have heard of the cliche that teams call themselves a “startup within a startup”. Except that the self-serve engineering team is fairly young at Cloudflare with established ROI. You will be the founding data engineer for the team.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>This is a highly autonomous role that enables the self-serve team to personalize user journeys through precise targeting.&nbsp;</p>
+<p>Think of a user that clicked X, visited Y, and purchased Z. We want to predict what they want to do next and then offer that next product in a live product A/B test to improve conversions. If you have worked with tools such as Posthog, Amplitude, Heap, or better yet, have built something similar, we want to hear from you. Our primary use-case is to capture and process thousands of user events in a native architecture and then serve it to internal audiences - both for productional use-cases and for internal reporting.&nbsp;</p>
+<p>You must be comfortable with setting up data lakes, understanding A/B testing architectures, and building the cloud tools that you may have otherwise used in the past. Because Cloudflare is the cloud that we sell to our developers.</p>
+<p>As the founding data engineer, you will have the opportunity to pick an existing data architecture to build upon, build a new one from scratch, or choose a hybrid approach. You tell us what the best system looks like. You will learn about the many data tools and architectures that are being used across the company - traditional databases, modern architectures to manage 20% of the internet traffic, BI summaries, real-user monitoring offered to our customers.</p>
+<p>Bonus points if you have done this to scale a startup.</p>
+<p><strong>Who you are</strong></p>
 <ul>
-	<li>Webinar Management: Plan, promote, and produce high-impact webinars that align with Cloudflare’s goals to attract, inform, and engage our target audience. This includes managing all aspects of webinar logistics from initial concept to post-event follow-up.</li>
-	<li>Media Management: Work with the digital marketing team to manage media owner support and delivery of webinar content through paid, owned and earned media channels; publishers will help create and host new content, and promote existing content.</li>
-	<li>Speaker Coordination: Identify, invite, and prepare internal/external speakers, ensuring content is relevant, engaging, and tailored to the interests of cybersecurity decision-makers in the APJC region.</li>
-	<li>Audience Development: Strategically attract the right audience for each webinar through effective promotion and collaboration with marketing and sales teams.</li>
-	<li>Lead Development: Work closely with regional marketing and sales leaders to ensure webinar content and follow-up activities contribute to pipeline progression and conversion of MQLs into opportunities.</li>
-	<li>Measurement and Optimisation: Use CRM and marketing automation tools to measure the performance of webinars across KPIs including MQLs, pipeline and sales accepted leads.</li>
-	<li>Cross-Functional Collaboration: Liaise with global &amp; local marketing, sales, product teams, and external partners to ensure webinars are integrated into broader marketing and sales strategies.</li>
-	<li>Reporting and Analysis: Monitor and report on webinar performance, using insights to optimize future webinars and lead follow-up strategies.</li>
+	<li>BA/BS in Computer Science or equivalent experience</li>
+	<li>Build realtime data capturing architecture from various user events - UI events, backend events and stitch them together for advanced analytics and personalization systems</li>
+	<li>Experience building/expanding analytics systems at lakehouse scale, ideally with OSS systems - Apache Iceberg, Clickhouse, or similar</li>
+	<li>Data modeling using different methods (dimensional data modeling, ER modeling, etc)</li>
+	<li>Experience implementing quality measurement processes</li>
+	<li>Familiarity with batch-style OSS ELT/ETL system (dbt/airflow/etc) and experience managing them</li>
+	<li>Familiarity with marketing attribution system and tag management</li>
+	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<p><strong>Required Skills &amp; Experience</strong></p>
-<ul>
-	<li>Experience: At least 4 years of experience in webinar production or similar roles, preferably within the technology or cybersecurity industry.</li>
-	<li>Communication Skills: Exceptional verbal and written communication skills in English, with the ability to engage and persuade a senior-level audience.</li>
-	<li>Technical Proficiency: Proficiency with webinar hosting platforms and tools, as well as CRM and marketing automation platforms, including Goldcast, ON24, Zoom Webinar, Marketo, and Salesforce etc.</li>
-	<li>Project Management: Strong organizational and project management skills, with a proven track record of managing multiple projects simultaneously.</li>
-	<li>Team Collaboration: Ability to work effectively in a cross-functional team, building strong relationships with stakeholders across different regions and functions.</li>
-	<li>Audience Insight: A deep understanding of the cybersecurity market and the challenges faced by decision-makers in enterprise companies across the APJC region.</li>
-	<li>Language Skills: Fluency in English is required. Additional language skills relevant to the APJC region are a plus.</li>
-</ul>
-<p><strong>Reporting:</strong> This position reports into the Senior Manager, Demand Center for APJC.</p>
-<p><strong>Contract duration:</strong> 11 month contract, with the potential for extension based on performance and business needs.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
