@@ -5,40 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Title</strong>: Associate Solutions Engineer - New Grad - Austin (On-site)</p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>Available location(s): Austin , TX</strong></p>
-<p><strong>About the team</strong></p>
-<p>Our Solutions Engineers come from a wide range of backgrounds: Engineering, Software development, Science, Product management, Business, Finance, Customer support &amp; project&nbsp; delivery. We're serious about building a diverse team. When hiring we look for a diverse of background and experience combined with genuine curiosity for our technology.</p>
-<p>&nbsp;</p>
-<p>Solutions Engineers are the technical customer advocates within Cloudflare. To aid our customers, we work closely with every team at Cloudflare, from Sales and Product to Engineering and Customer Support. Our goal of customer success drives us through the entire organization to seek out and create scalable solutions for our customer’s needs.&nbsp; This role will be a part of the sales team, and customer facing at all times.</p>
-<h4><strong>What you'll do:</strong></h4>
-<h4>You will join Cloudflare’s Solutions Engineering Team as an Associate Solutions Engineer (ASE), starting July 7th in Austin, Texas.</h4>
-<p>As part of this ASE program, you will gain in-depth technical and functional skills training where you will learn about Cloudflare’s solutions, products and underlying technologies, shadowing other technology professionals.</p>
-<p>Throughout the program you will complete a series of learning assessments in order to receive guidance and feedback from your manager and colleagues. After successful completion of the program you are expected to transition to one of the Solutions Engineering teams in the region, based on business requirements.</p>
-<p>After completing the Program, you will:</p>
-<ul>
-	<li>Act as a trusted advisor to customers, translate business requirements into technical solutions</li>
-	<li>Work closely with Account Executives or Customer Success Managers to cover a territory or range of customers</li>
-	<li>Conduct technical discussions with our customers</li>
-	<li>Design solutions, run demos and webinars</li>
-	<li>Implement proof of concepts or onboard new products to demonstrate value and meet defined success criteria</li>
-	<li>Work with channel partners to position Cloudflare as their preferred vendor</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
-<ul>
-	<li>Bachelor or Masters Graduates of technical and engineering degrees including but not limited to, Computer, Software, Electronics, Communications, Telecommunications, Information Technology Mathematics Engineering and Science degrees, or relevant subjects.</li>
-	<li>Good understanding of how the Internet works.&nbsp;</li>
-	<li>Have intellectual curiosity and strong desire and determination to learn.</li>
-	<li>Good communication skills. Ability to present in front of an audience.</li>
-	<li>Demonstrated understanding in internet technologies: OSI Model layers 1-7,TCP/UDP, DNS , HTTP(S), SSL / TLS.</li>
-	<li>Comfortable with command line interfaces, APIs, and some scripting/programming experience with one or more of JavaScript, Python, Golang, BASH, and cloud computing technologies.</li>
-</ul>
-<p><strong>Bonus</strong>:&nbsp;</p>
-<p>Cloud Technologies Certification , Emphasis on Cybersecurity is a plus</p>
-<p><strong>Graduating in Fall 2024, or Spring of 2025 candidates only</strong></p>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;"><strong>Available Location: Mexico City</strong></span></div>
+<div>
+	<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+	<strong><span style="color: #000000; font-family: tahoma, sans-serif;">About the Role</span></strong>
+</div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;"><strong>&nbsp;<br></strong>Cloudflare’s Corporate Procurement Specialist is responsible for administering our procurement policies and processes, as well as purchasing vital goods and services at optimal pricing. We are seeking an experienced professional to handle the tactical execution of the end-to-end procurement process and conduct supplier management activities. This role will serve as the internal point of contact for key business functions.</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">An effective Procurement Specialist develops efficient procurement solutions and supports senior management in the development and implementation of sourcing strategies. This role requires excellent communication skills, strong analytical abilities, and a deep understanding of the company’s Enterprise Resource Planning (ERP) system, particularly Coupa.&nbsp;</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+<div><strong><span style="color: #000000; font-family: tahoma, sans-serif;">What You'll Do<br></span></strong>
+	<ul>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Facilitate the creation of Purchase Requisitions and Purchase Orders within Coupa.<br></span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Maintains vendor relations by resolving problems with orders.<br></span></li>
+		<li>Establishing and maintaining strong relationships with stakeholders.&nbsp;</li>
+		<li>Lead procurement administration efforts, with a strong focus on Coupa.</li>
+		<li>Partner with Legal and Security teams during new vendor onboarding to ensure business requirements are met from the outset.</li>
+	</ul>
+	<strong><span style="color: #000000; font-family: tahoma, sans-serif;">Requirements</span></strong><br>
+	<ul>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Bachelor’s Degree with a minimum of 2+ years of experience in a Procurement function.</span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Strong analytical skills, with the ability to develop and implement efficient procurement solutions.</span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Excellent communication skills and the ability to operate independently.</span></li>
+		<li>Excellent interpersonal and communication skills to articulate contractual, technical, financial and value points. Self-directed and self-motivated; excellent communicator and ability to build trust with both internal and external stakeholders.&nbsp;</li>
+		<li>Proficiency in Coupa software.</li>
+	</ul>
+</div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
