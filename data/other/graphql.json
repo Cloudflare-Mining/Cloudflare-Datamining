@@ -2581,7 +2581,8 @@
 		"datetime": "Hyperdrive query event timestamp",
 		"datetimeHour": "Hyperdrive query event timestamp, truncated to start of hour",
 		"datetimeMinute": "Hyperdrive query event timestamp, truncated to start of minute",
-		"eventStatus": "The result of the Hyperdrive event: 'error' or 'complete'. Error events may not have complete data."
+		"eventStatus": "The result of the Hyperdrive event: 'error' or 'complete'. Error events may not have complete data.",
+		"isFree": "Whether the query originates from a Hyperdrive config on the free tier"
 	},
 	"AccountHyperdriveQueriesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3473,6 +3474,66 @@
 		"__description": ""
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
+		"count": "Snapshot DHCP lease count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID of the device the IP Address was leased to",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"hostname": "Hostname of the device the IP Address was leased to",
+		"interface": "Name of the network interface",
+		"ipAddress": "IP Address that was leased",
+		"macAddress": "MAC Address of the device the IP Address was leased to"
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsMax": {
+		"__description": "",
+		"expiryTime": "Expiry time of the DHCP lease (seconds since the Unix epoch)"
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
+		"count": "Snapshot DHCP lease count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID of the device the IP Address was leased to",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"hostname": "Hostname of the device the IP Address was leased to",
+		"interface": "Name of the network interface",
+		"ipAddress": "IP Address that was leased",
+		"macAddress": "MAC Address of the device the IP Address was leased to"
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"expiryTime": "Expiry time of the DHCP lease (seconds since the Unix epoch)"
+	},
+	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroups": {
@@ -4733,6 +4794,8 @@
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
 		"mconnTelemetryEventsAdaptiveGroups": "",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": "",
+		"mconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDisksAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotMountsAdaptiveGroups": "",
@@ -8301,6 +8364,8 @@
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"mconnTelemetryEventsAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
+		"mconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
+		"mconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
 		"mconnTelemetrySnapshotDisksAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotMountsAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
