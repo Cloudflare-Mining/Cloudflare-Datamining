@@ -10,7 +10,8 @@
 					"description": "The FQDN of the name server.",
 					"example": "ns1.example.com",
 					"format": "hostname",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -137,7 +139,8 @@
 										"result": {
 											"items": {
 												"description": "Unused",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"maxItems": 0,
 											"type": "array"
@@ -257,7 +260,8 @@
 												"result": {
 													"items": {
 														"description": "Unused",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxItems": 0,
 													"type": "array"
@@ -388,7 +392,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -509,12 +514,14 @@
 																		"AAAA"
 																	],
 																	"example": "A",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"value": {
 																	"description": "DNS record contents (an IPv4 or IPv6 address).",
 																	"example": "1.1.1.1",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -524,7 +531,8 @@
 														"description": "The FQDN of the name server.",
 														"example": "ns1.example.com",
 														"format": "hostname",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ns_set": {
 														"default": 1,
@@ -532,7 +540,8 @@
 														"example": 1,
 														"maximum": 5,
 														"minimum": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"status": {
 														"deprecated": true,
@@ -543,7 +552,8 @@
 															"verified"
 														],
 														"example": "verified",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zone_tag": {
 														"description": "Identifier",
@@ -690,12 +700,14 @@
 																				"AAAA"
 																			],
 																			"example": "A",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "DNS record contents (an IPv4 or IPv6 address).",
 																			"example": "1.1.1.1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -705,7 +717,8 @@
 																"description": "The FQDN of the name server.",
 																"example": "ns1.example.com",
 																"format": "hostname",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ns_set": {
 																"default": 1,
@@ -713,7 +726,8 @@
 																"example": 1,
 																"maximum": 5,
 																"minimum": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"status": {
 																"deprecated": true,
@@ -724,7 +738,8 @@
 																	"verified"
 																],
 																"example": "verified",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone_tag": {
 																"description": "Identifier",
@@ -866,378 +881,6 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/custom_ns/availability": {
-		"operationId": "account-level-custom-nameservers-get-eligible-zones-for-account-custom-nameservers",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account identifier tag.",
-					"example": "372e67954025e0ba6aaa6d586b9e0b59",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"description": "Name of zone based on which account custom nameservers can be created. For example, if example.com is returned, then ns1.example.com can be used as an account custom nameserver.",
-												"example": "example.com",
-												"format": "hostname",
-												"readOnly": true,
-												"type": "string"
-											},
-											"type": "array"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get Eligible Zones for Account Custom Nameservers response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"description": "Name of zone based on which account custom nameservers can be created. For example, if example.com is returned, then ns1.example.com can be used as an account custom nameserver.",
-														"example": "example.com",
-														"format": "hostname",
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get Eligible Zones for Account Custom Nameservers response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Eligible Zones for Account Custom Nameservers",
-		"tags": [
-			"Account-Level Custom Nameservers"
-		],
-		"x-api-token-group": [
-			"Account Settings Write",
-			"Account Settings Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#organization:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": false,
-			"pro": false
-		}
-	},
 	"POST /accounts/{account_id}/custom_ns": {
 		"operationId": "account-level-custom-nameservers-add-account-custom-nameserver",
 		"parameters": [
@@ -1250,7 +893,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1263,7 +907,8 @@
 								"description": "The FQDN of the name server.",
 								"example": "ns1.example.com",
 								"format": "hostname",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ns_set": {
 								"default": 1,
@@ -1271,7 +916,8 @@
 								"example": 1,
 								"maximum": 5,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1370,12 +1016,14 @@
 																	"AAAA"
 																],
 																"example": "A",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "DNS record contents (an IPv4 or IPv6 address).",
 																"example": "1.1.1.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													},
@@ -1385,7 +1033,8 @@
 													"description": "The FQDN of the name server.",
 													"example": "ns1.example.com",
 													"format": "hostname",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ns_set": {
 													"default": 1,
@@ -1393,7 +1042,8 @@
 													"example": 1,
 													"maximum": 5,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"status": {
 													"deprecated": true,
@@ -1404,7 +1054,8 @@
 														"verified"
 													],
 													"example": "verified",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"zone_tag": {
 													"description": "Identifier",
@@ -1519,12 +1170,14 @@
 																			"AAAA"
 																		],
 																		"example": "A",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "DNS record contents (an IPv4 or IPv6 address).",
 																		"example": "1.1.1.1",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -1534,7 +1187,8 @@
 															"description": "The FQDN of the name server.",
 															"example": "ns1.example.com",
 															"format": "hostname",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ns_set": {
 															"default": 1,
@@ -1542,7 +1196,8 @@
 															"example": 1,
 															"maximum": 5,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"status": {
 															"deprecated": true,
@@ -1553,7 +1208,8 @@
 																"verified"
 															],
 															"example": "verified",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_tag": {
 															"description": "Identifier",

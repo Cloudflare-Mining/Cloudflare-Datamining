@@ -121,7 +121,8 @@
 										"enabled": {
 											"description": "Whether zone uses account-level custom nameservers.",
 											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"ns_set": {
 											"default": 1,
@@ -129,7 +130,8 @@
 											"example": 1,
 											"maximum": 5,
 											"minimum": 1,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -246,7 +248,8 @@
 												"enabled": {
 													"description": "Whether zone uses account-level custom nameservers.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"ns_set": {
 													"default": 1,
@@ -254,7 +257,8 @@
 													"example": 1,
 													"maximum": 5,
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -440,7 +444,8 @@
 							"enabled": {
 								"description": "Whether zone uses account-level custom nameservers.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"ns_set": {
 								"default": 1,
@@ -448,7 +453,8 @@
 								"example": 1,
 								"maximum": 5,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -562,7 +568,8 @@
 										"result": {
 											"items": {
 												"description": "Unused",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"maxItems": 0,
 											"type": "array"
@@ -682,7 +689,8 @@
 												"result": {
 													"items": {
 														"description": "Unused",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxItems": 0,
 													"type": "array"
