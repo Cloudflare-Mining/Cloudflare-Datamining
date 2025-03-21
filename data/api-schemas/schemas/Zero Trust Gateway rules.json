@@ -442,7 +442,8 @@
 															"l4_override",
 															"egress",
 															"resolve",
-															"quarantine"
+															"quarantine",
+															"redirect"
 														],
 														"example": "allow",
 														"type": "string"
@@ -908,6 +909,24 @@
 																},
 																"type": "object"
 															},
+															"redirect": {
+																"description": "Settings that apply to redirect rules",
+																"properties": {
+																	"preserve_path_and_query": {
+																		"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																		"type": "boolean"
+																	},
+																	"target_uri": {
+																		"description": "URI to which the user will be redirected",
+																		"format": "uri",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"target_uri"
+																],
+																"type": "object"
+															},
 															"resolve_dns_internally": {
 																"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																"properties": {
@@ -1152,7 +1171,8 @@
 																	"l4_override",
 																	"egress",
 																	"resolve",
-																	"quarantine"
+																	"quarantine",
+																	"redirect"
 																],
 																"example": "allow",
 																"type": "string"
@@ -1618,6 +1638,24 @@
 																		},
 																		"type": "object"
 																	},
+																	"redirect": {
+																		"description": "Settings that apply to redirect rules",
+																		"properties": {
+																			"preserve_path_and_query": {
+																				"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																				"type": "boolean"
+																			},
+																			"target_uri": {
+																				"description": "URI to which the user will be redirected",
+																				"format": "uri",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"target_uri"
+																		],
+																		"type": "object"
+																	},
 																	"resolve_dns_internally": {
 																		"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																		"properties": {
@@ -1959,7 +1997,8 @@
 														"l4_override",
 														"egress",
 														"resolve",
-														"quarantine"
+														"quarantine",
+														"redirect"
 													],
 													"example": "allow",
 													"type": "string"
@@ -2425,6 +2464,24 @@
 															},
 															"type": "object"
 														},
+														"redirect": {
+															"description": "Settings that apply to redirect rules",
+															"properties": {
+																"preserve_path_and_query": {
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
@@ -2637,7 +2694,8 @@
 																"l4_override",
 																"egress",
 																"resolve",
-																"quarantine"
+																"quarantine",
+																"redirect"
 															],
 															"example": "allow",
 															"type": "string"
@@ -3103,6 +3161,24 @@
 																	},
 																	"type": "object"
 																},
+																"redirect": {
+																	"description": "Settings that apply to redirect rules",
+																	"properties": {
+																		"preserve_path_and_query": {
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
@@ -3360,7 +3436,8 @@
 									"l4_override",
 									"egress",
 									"resolve",
-									"quarantine"
+									"quarantine",
+									"redirect"
 								],
 								"example": "allow",
 								"type": "string"
@@ -3808,6 +3885,24 @@
 										},
 										"type": "object"
 									},
+									"redirect": {
+										"description": "Settings that apply to redirect rules",
+										"properties": {
+											"preserve_path_and_query": {
+												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "URI to which the user will be redirected",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"target_uri"
+										],
+										"type": "object"
+									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
@@ -4005,7 +4100,8 @@
 														"l4_override",
 														"egress",
 														"resolve",
-														"quarantine"
+														"quarantine",
+														"redirect"
 													],
 													"example": "allow",
 													"type": "string"
@@ -4471,6 +4567,24 @@
 															},
 															"type": "object"
 														},
+														"redirect": {
+															"description": "Settings that apply to redirect rules",
+															"properties": {
+																"preserve_path_and_query": {
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
@@ -4683,7 +4797,8 @@
 																"l4_override",
 																"egress",
 																"resolve",
-																"quarantine"
+																"quarantine",
+																"redirect"
 															],
 															"example": "allow",
 															"type": "string"
@@ -5147,6 +5262,24 @@
 																			"type": "array"
 																		}
 																	},
+																	"type": "object"
+																},
+																"redirect": {
+																	"description": "Settings that apply to redirect rules",
+																	"properties": {
+																		"preserve_path_and_query": {
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
 																	"type": "object"
 																},
 																"resolve_dns_internally": {
@@ -5487,7 +5620,8 @@
 														"l4_override",
 														"egress",
 														"resolve",
-														"quarantine"
+														"quarantine",
+														"redirect"
 													],
 													"example": "allow",
 													"type": "string"
@@ -5953,6 +6087,24 @@
 															},
 															"type": "object"
 														},
+														"redirect": {
+															"description": "Settings that apply to redirect rules",
+															"properties": {
+																"preserve_path_and_query": {
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
@@ -6162,7 +6314,8 @@
 																"l4_override",
 																"egress",
 																"resolve",
-																"quarantine"
+																"quarantine",
+																"redirect"
 															],
 															"example": "allow",
 															"type": "string"
@@ -6628,6 +6781,24 @@
 																	},
 																	"type": "object"
 																},
+																"redirect": {
+																	"description": "Settings that apply to redirect rules",
+																	"properties": {
+																		"preserve_path_and_query": {
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
+																	"type": "object"
+																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
@@ -6896,7 +7067,8 @@
 									"l4_override",
 									"egress",
 									"resolve",
-									"quarantine"
+									"quarantine",
+									"redirect"
 								],
 								"example": "allow",
 								"type": "string"
@@ -7344,6 +7516,24 @@
 										},
 										"type": "object"
 									},
+									"redirect": {
+										"description": "Settings that apply to redirect rules",
+										"properties": {
+											"preserve_path_and_query": {
+												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "URI to which the user will be redirected",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"target_uri"
+										],
+										"type": "object"
+									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
@@ -7541,7 +7731,8 @@
 														"l4_override",
 														"egress",
 														"resolve",
-														"quarantine"
+														"quarantine",
+														"redirect"
 													],
 													"example": "allow",
 													"type": "string"
@@ -8007,6 +8198,24 @@
 															},
 															"type": "object"
 														},
+														"redirect": {
+															"description": "Settings that apply to redirect rules",
+															"properties": {
+																"preserve_path_and_query": {
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"type": "boolean"
+																},
+																"target_uri": {
+																	"description": "URI to which the user will be redirected",
+																	"format": "uri",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"target_uri"
+															],
+															"type": "object"
+														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
@@ -8219,7 +8428,8 @@
 																"l4_override",
 																"egress",
 																"resolve",
-																"quarantine"
+																"quarantine",
+																"redirect"
 															],
 															"example": "allow",
 															"type": "string"
@@ -8683,6 +8893,24 @@
 																			"type": "array"
 																		}
 																	},
+																	"type": "object"
+																},
+																"redirect": {
+																	"description": "Settings that apply to redirect rules",
+																	"properties": {
+																		"preserve_path_and_query": {
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "URI to which the user will be redirected",
+																			"format": "uri",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"target_uri"
+																	],
 																	"type": "object"
 																},
 																"resolve_dns_internally": {

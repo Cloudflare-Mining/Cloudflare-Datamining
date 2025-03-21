@@ -879,7 +879,7 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
-																			"description": "Block page background color in #rrggbb format.",
+																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
@@ -888,39 +888,57 @@
 																			"type": "boolean"
 																		},
 																		"footer_text": {
-																			"description": "Block page footer text.",
+																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
-																			"description": "Block page header text.",
+																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
+																		"include_context": {
+																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																			"type": "boolean"
+																		},
 																		"logo_path": {
-																			"description": "Full URL to the logo file.",
+																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
-																			"description": "Admin email for users to contact.",
+																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
-																			"description": "Subject line for emails created from block page.",
+																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
 																		},
+																		"mode": {
+																			"default": "customized_block_page",
+																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																			"enum": [
+																				"customized_block_page",
+																				"redirect_uri"
+																			],
+																			"type": "string"
+																		},
 																		"name": {
-																			"description": "Block page title.",
+																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
 																			"type": "string"
 																		},
 																		"suppress_footer": {
-																			"description": "Suppress detailed info at the bottom of the block page.",
+																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																			"format": "uri",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -1227,7 +1245,7 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
-																					"description": "Block page background color in #rrggbb format.",
+																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
@@ -1236,39 +1254,57 @@
 																					"type": "boolean"
 																				},
 																				"footer_text": {
-																					"description": "Block page footer text.",
+																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
-																					"description": "Block page header text.",
+																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
+																				"include_context": {
+																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																					"type": "boolean"
+																				},
 																				"logo_path": {
-																					"description": "Full URL to the logo file.",
+																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
-																					"description": "Admin email for users to contact.",
+																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
-																					"description": "Subject line for emails created from block page.",
+																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
 																				},
+																				"mode": {
+																					"default": "customized_block_page",
+																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																					"enum": [
+																						"customized_block_page",
+																						"redirect_uri"
+																					],
+																					"type": "string"
+																				},
 																				"name": {
-																					"description": "Block page title.",
+																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
 																					"type": "string"
 																				},
 																				"suppress_footer": {
-																					"description": "Suppress detailed info at the bottom of the block page.",
+																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"target_uri": {
+																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																					"format": "uri",
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"
@@ -2592,7 +2628,7 @@
 										"description": "Block page layout settings.",
 										"properties": {
 											"background_color": {
-												"description": "Block page background color in #rrggbb format.",
+												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 												"type": "string"
 											},
 											"enabled": {
@@ -2601,39 +2637,57 @@
 												"type": "boolean"
 											},
 											"footer_text": {
-												"description": "Block page footer text.",
+												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
 												"type": "string"
 											},
 											"header_text": {
-												"description": "Block page header text.",
+												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
 												"type": "string"
 											},
+											"include_context": {
+												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+												"type": "boolean"
+											},
 											"logo_path": {
-												"description": "Full URL to the logo file.",
+												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
 												"type": "string"
 											},
 											"mailto_address": {
-												"description": "Admin email for users to contact.",
+												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
 												"type": "string"
 											},
 											"mailto_subject": {
-												"description": "Subject line for emails created from block page.",
+												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
 												"type": "string"
 											},
+											"mode": {
+												"default": "customized_block_page",
+												"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+												"enum": [
+													"customized_block_page",
+													"redirect_uri"
+												],
+												"type": "string"
+											},
 											"name": {
-												"description": "Block page title.",
+												"description": "If mode is customized_block_page: block page title.",
 												"example": "Cloudflare",
 												"type": "string"
 											},
 											"suppress_footer": {
-												"description": "Suppress detailed info at the bottom of the block page.",
+												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
 												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+												"format": "uri",
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -2917,7 +2971,7 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
-																			"description": "Block page background color in #rrggbb format.",
+																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
@@ -2926,39 +2980,57 @@
 																			"type": "boolean"
 																		},
 																		"footer_text": {
-																			"description": "Block page footer text.",
+																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
-																			"description": "Block page header text.",
+																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
+																		"include_context": {
+																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																			"type": "boolean"
+																		},
 																		"logo_path": {
-																			"description": "Full URL to the logo file.",
+																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
-																			"description": "Admin email for users to contact.",
+																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
-																			"description": "Subject line for emails created from block page.",
+																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
 																		},
+																		"mode": {
+																			"default": "customized_block_page",
+																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																			"enum": [
+																				"customized_block_page",
+																				"redirect_uri"
+																			],
+																			"type": "string"
+																		},
 																		"name": {
-																			"description": "Block page title.",
+																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
 																			"type": "string"
 																		},
 																		"suppress_footer": {
-																			"description": "Suppress detailed info at the bottom of the block page.",
+																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																			"format": "uri",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -3265,7 +3337,7 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
-																					"description": "Block page background color in #rrggbb format.",
+																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
@@ -3274,39 +3346,57 @@
 																					"type": "boolean"
 																				},
 																				"footer_text": {
-																					"description": "Block page footer text.",
+																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
-																					"description": "Block page header text.",
+																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
+																				"include_context": {
+																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																					"type": "boolean"
+																				},
 																				"logo_path": {
-																					"description": "Full URL to the logo file.",
+																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
-																					"description": "Admin email for users to contact.",
+																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
-																					"description": "Subject line for emails created from block page.",
+																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
 																				},
+																				"mode": {
+																					"default": "customized_block_page",
+																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																					"enum": [
+																						"customized_block_page",
+																						"redirect_uri"
+																					],
+																					"type": "string"
+																				},
 																				"name": {
-																					"description": "Block page title.",
+																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
 																					"type": "string"
 																				},
 																				"suppress_footer": {
-																					"description": "Suppress detailed info at the bottom of the block page.",
+																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"target_uri": {
+																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																					"format": "uri",
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"
@@ -4423,7 +4513,7 @@
 										"description": "Block page layout settings.",
 										"properties": {
 											"background_color": {
-												"description": "Block page background color in #rrggbb format.",
+												"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 												"type": "string"
 											},
 											"enabled": {
@@ -4432,39 +4522,57 @@
 												"type": "boolean"
 											},
 											"footer_text": {
-												"description": "Block page footer text.",
+												"description": "If mode is customized_block_page: block page footer text.",
 												"example": "--footer--",
 												"type": "string"
 											},
 											"header_text": {
-												"description": "Block page header text.",
+												"description": "If mode is customized_block_page: block page header text.",
 												"example": "--header--",
 												"type": "string"
 											},
+											"include_context": {
+												"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+												"type": "boolean"
+											},
 											"logo_path": {
-												"description": "Full URL to the logo file.",
+												"description": "If mode is customized_block_page: full URL to the logo file.",
 												"example": "https://logos.com/a.png",
 												"type": "string"
 											},
 											"mailto_address": {
-												"description": "Admin email for users to contact.",
+												"description": "If mode is customized_block_page: admin email for users to contact.",
 												"example": "admin@example.com",
 												"type": "string"
 											},
 											"mailto_subject": {
-												"description": "Subject line for emails created from block page.",
+												"description": "If mode is customized_block_page: subject line for emails created from block page.",
 												"example": "Blocked User Inquiry",
 												"type": "string"
 											},
+											"mode": {
+												"default": "customized_block_page",
+												"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+												"enum": [
+													"customized_block_page",
+													"redirect_uri"
+												],
+												"type": "string"
+											},
 											"name": {
-												"description": "Block page title.",
+												"description": "If mode is customized_block_page: block page title.",
 												"example": "Cloudflare",
 												"type": "string"
 											},
 											"suppress_footer": {
-												"description": "Suppress detailed info at the bottom of the block page.",
+												"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 												"example": false,
 												"type": "boolean"
+											},
+											"target_uri": {
+												"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+												"format": "uri",
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -4748,7 +4856,7 @@
 																	"description": "Block page layout settings.",
 																	"properties": {
 																		"background_color": {
-																			"description": "Block page background color in #rrggbb format.",
+																			"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																			"type": "string"
 																		},
 																		"enabled": {
@@ -4757,39 +4865,57 @@
 																			"type": "boolean"
 																		},
 																		"footer_text": {
-																			"description": "Block page footer text.",
+																			"description": "If mode is customized_block_page: block page footer text.",
 																			"example": "--footer--",
 																			"type": "string"
 																		},
 																		"header_text": {
-																			"description": "Block page header text.",
+																			"description": "If mode is customized_block_page: block page header text.",
 																			"example": "--header--",
 																			"type": "string"
 																		},
+																		"include_context": {
+																			"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																			"type": "boolean"
+																		},
 																		"logo_path": {
-																			"description": "Full URL to the logo file.",
+																			"description": "If mode is customized_block_page: full URL to the logo file.",
 																			"example": "https://logos.com/a.png",
 																			"type": "string"
 																		},
 																		"mailto_address": {
-																			"description": "Admin email for users to contact.",
+																			"description": "If mode is customized_block_page: admin email for users to contact.",
 																			"example": "admin@example.com",
 																			"type": "string"
 																		},
 																		"mailto_subject": {
-																			"description": "Subject line for emails created from block page.",
+																			"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																			"example": "Blocked User Inquiry",
 																			"type": "string"
 																		},
+																		"mode": {
+																			"default": "customized_block_page",
+																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																			"enum": [
+																				"customized_block_page",
+																				"redirect_uri"
+																			],
+																			"type": "string"
+																		},
 																		"name": {
-																			"description": "Block page title.",
+																			"description": "If mode is customized_block_page: block page title.",
 																			"example": "Cloudflare",
 																			"type": "string"
 																		},
 																		"suppress_footer": {
-																			"description": "Suppress detailed info at the bottom of the block page.",
+																			"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"target_uri": {
+																			"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																			"format": "uri",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -5096,7 +5222,7 @@
 																			"description": "Block page layout settings.",
 																			"properties": {
 																				"background_color": {
-																					"description": "Block page background color in #rrggbb format.",
+																					"description": "If mode is customized_block_page: block page background color in #rrggbb format.",
 																					"type": "string"
 																				},
 																				"enabled": {
@@ -5105,39 +5231,57 @@
 																					"type": "boolean"
 																				},
 																				"footer_text": {
-																					"description": "Block page footer text.",
+																					"description": "If mode is customized_block_page: block page footer text.",
 																					"example": "--footer--",
 																					"type": "string"
 																				},
 																				"header_text": {
-																					"description": "Block page header text.",
+																					"description": "If mode is customized_block_page: block page header text.",
 																					"example": "--header--",
 																					"type": "string"
 																				},
+																				"include_context": {
+																					"description": "If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.",
+																					"type": "boolean"
+																				},
 																				"logo_path": {
-																					"description": "Full URL to the logo file.",
+																					"description": "If mode is customized_block_page: full URL to the logo file.",
 																					"example": "https://logos.com/a.png",
 																					"type": "string"
 																				},
 																				"mailto_address": {
-																					"description": "Admin email for users to contact.",
+																					"description": "If mode is customized_block_page: admin email for users to contact.",
 																					"example": "admin@example.com",
 																					"type": "string"
 																				},
 																				"mailto_subject": {
-																					"description": "Subject line for emails created from block page.",
+																					"description": "If mode is customized_block_page: subject line for emails created from block page.",
 																					"example": "Blocked User Inquiry",
 																					"type": "string"
 																				},
+																				"mode": {
+																					"default": "customized_block_page",
+																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
+																					"enum": [
+																						"customized_block_page",
+																						"redirect_uri"
+																					],
+																					"type": "string"
+																				},
 																				"name": {
-																					"description": "Block page title.",
+																					"description": "If mode is customized_block_page: block page title.",
 																					"example": "Cloudflare",
 																					"type": "string"
 																				},
 																				"suppress_footer": {
-																					"description": "Suppress detailed info at the bottom of the block page.",
+																					"description": "If mode is customized_block_page: suppress detailed info at the bottom of the block page.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"target_uri": {
+																					"description": "If mode is redirect_uri: URI to which the user should be redirected.",
+																					"format": "uri",
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"

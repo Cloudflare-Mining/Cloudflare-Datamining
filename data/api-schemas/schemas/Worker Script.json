@@ -920,6 +920,16 @@
 												"config": {
 													"description": "Configuration for assets within a Worker.",
 													"properties": {
+														"_headers": {
+															"description": "The contents of a _headers file (used to attach custom headers on asset responses)",
+															"example": "/dashboard/*\nX-Frame-Options: DENY\n\n/static/*\nAccess-Control-Allow-Origin: *",
+															"type": "string"
+														},
+														"_redirects": {
+															"description": "The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)",
+															"example": "/foo /bar 301\n/news/* /blog/:splat",
+															"type": "string"
+														},
 														"html_handling": {
 															"description": "Determines the redirects and rewrites of requests for HTML content.",
 															"enum": [
@@ -9499,6 +9509,16 @@
 											"config": {
 												"description": "Configuration for assets within a Worker.",
 												"properties": {
+													"_headers": {
+														"description": "The contents of a _headers file (used to attach custom headers on asset responses)",
+														"example": "/dashboard/*\nX-Frame-Options: DENY\n\n/static/*\nAccess-Control-Allow-Origin: *",
+														"type": "string"
+													},
+													"_redirects": {
+														"description": "The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)",
+														"example": "/foo /bar 301\n/news/* /blog/:splat",
+														"type": "string"
+													},
 													"html_handling": {
 														"description": "Determines the redirects and rewrites of requests for HTML content.",
 														"enum": [
