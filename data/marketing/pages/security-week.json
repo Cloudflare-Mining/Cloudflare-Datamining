@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-03-14T18:32:34.875Z",
-					"updatedAt": "2025-03-20T12:29:55.306Z"
+					"updatedAt": "2025-03-21T11:59:03.422Z"
 				},
 				"contentfulId": "4AgYY1Ow6rXppk134jWBFF",
 				"contentTypeId": "page",
@@ -198,7 +198,7 @@
 						]
 					},
 					{
-						"contentfulId": "3RPvKEMzwQv7cmtktZJWo8",
+						"contentfulId": "6uAwkkYu9SFEb88ImQj76O",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
@@ -214,13 +214,13 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4AGXtbUnI2Kq7TYX9UxUxw",
-								"title": "Introducing Cloudy, Cloudflare's AI agent for simplifying complex configurations",
+								"contentfulId": "3gRSklcHTewCKb3rM7rM9l",
+								"title": "Getting a grip on sensitive data proliferation in AWS and GCP",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Meet Cloudflare's first AI agent, Cloudy! It simplifies complex configurations, making them simpler and more accessible for administrators to understand and manage.\n",
-								"learnMoreUrl": "https://blog.cloudflare.com/introducing-ai-agent",
+								"description": "Cloudflare CASB now allows you to scan cloud storage for sensitive data at-rest, helping prevent data exfiltration and ensuring compliance.",
+								"learnMoreUrl": "https://blog.cloudflare.com/scan-cloud-dlp-with-casb",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -230,16 +230,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "3b9f3022-f7a6-5710-9327-d06b1a826f7a",
-									"altText": "Cloudflare AI Agent Story",
+									"id": "55110efd-c7b3-57e5-a107-79b1cca67459",
+									"altText": "Getting a grip on sensitive data proliferation in AWS and GCP",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rO4RrScdAyGTBrTvYADu/e36368cb7ffbdb3f613f6c31b48d7a9c/BLOG-2692.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3B01F28VUtuYZ1LUVO6TZW/a2bb3c153ac653c94176874c652ea4e7/BLOG-2677.png"
 										},
-										"description": "Cloudflare AI Agent Story"
+										"description": "Getting a grip on sensitive data proliferation in AWS and GCP"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -250,13 +250,13 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5ONHje36qpDKSHvk5jlJVz",
-								"title": "Introducing a new Application Security experience",
+								"contentfulId": "2y0zgsJOibXWoenbfeNZIa",
+								"title": "RDP without the risk: Cloudflare's browser-based solution for secure third-party access",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "We're introducing a new Application Security experience with a reworked UI, organized by use cases, making it easier for customers to navigate and secure their accounts, APIs, and more.",
-								"learnMoreUrl": "https://blog.cloudflare.com/new-application-security-experience",
+								"description": "Cloudflare now offers clientless, browser-based support for Remote Desktop Protocol (RDP), providing secure, remote Windows server access without the need for VPNs or RDP clients. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/browser-based-rdp",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -266,16 +266,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "7d7e98e4-434e-5095-be22-509291fc28f4",
-									"altText": "Introducing a new Application Security experience",
+									"id": "52aa84d0-29be-575a-9f45-e5c7ff1436de",
+									"altText": "RDP without the risk: Cloudflare's browser-based solution for secure contractor access",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KalAWFUH2E18ymMW5VDJO/c02334ab055d60f257e74b9b8752c33e/BLOG-2766.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jvNO1ZobFCjZ8WbxOwW4D/3359b11c1b015e94bbfec8dcf7dccf88/rdp.png"
 										},
-										"description": "Introducing a new Application Security experience"
+										"description": "RDP without the risk: Cloudflare's browser-based solution for secure contractor access"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -286,13 +286,13 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4qe9IBMpRVcq8jequQYUcW",
-								"title": "Cloudflare Access now supports private hostname & IP address-defined applications and reusable access policies ",
+								"contentfulId": "2HgOfVzlTmG18Dhno8wOhW",
+								"title": "Improving Data Loss Prevention accuracy with AI context analysis",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "We're introducing support for private hostname/IP-defined applications and reusable access policies, boosting Access's protection and making policy management easier for admins.",
-								"learnMoreUrl": "https://blog.cloudflare.com/improved-support-for-private-applications-and-reusable-access-policies-with-cloudflare-access",
+								"description": "Cloudflare's Data Loss Prevention reduces false positives by using AI context analysis on the Developer Platform, improving detection accuracy with a self-improving, AI-powered algorithm.",
+								"learnMoreUrl": "https://blog.cloudflare.com/improving-data-loss-prevention-accuracy-with-ai-context-analysis",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -302,16 +302,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "bec7764c-a597-55b0-9ccf-7584e3bafb13",
-									"altText": "Cloudflare Access now supports private hostname & IP address-defined applications and reusable access policies",
+									"id": "b23261d0-1c43-5315-9557-28f4b66dcd50",
+									"altText": "Improving Data Loss Prevention accuracy with AI context analysis",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HgS8TDuZAJ4zh2nBV2pvj/5d2b77aed6f68fdbdc19ccd1b5dcef90/BLOG-2658.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hNxvqYoSFq86hJUDQAoju/d1a5c83ab866212b9c5f5f42639b724f/BLOG-2684.png"
 										},
-										"description": "Cloudflare Access now supports private hostname & IP address-defined applications and reusable access policies"
+										"description": "Improving Data Loss Prevention accuracy with AI context analysis"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -322,13 +322,13 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7mQ6xnB8LHxDyrh4AxWlTC",
-								"title": "HTTPS-only for Cloudflare APIs: shutting the door on cleartext traffic",
+								"contentfulId": "47X5RxernjztaiQM02Sl0H",
+								"title": "Enhanced data protection in Microsoft Outlook with DLP Assist",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "We're closing cleartext HTTP ports for Cloudflare API traffic to prevent the unintentional leakage of secret API keys before connections are rejected on the server side, enhancing security.",
-								"learnMoreUrl": "https://blog.cloudflare.com/https-only-for-cloudflare-apis-shutting-the-door-on-cleartext-traffic",
+								"description": "Customers can now easily safeguard sensitive data in Microsoft Outlook with Cloudflare's new DLP Assist feature.",
+								"learnMoreUrl": "https://blog.cloudflare.com/enhance-data-protection-in-microsoft-outlook-with-cloudflare-ones-new-dlp",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -338,16 +338,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "42729c37-f8f5-504a-ae08-ddbe4d791d94",
-									"altText": "HTTPS-only for Cloudflare APIs: shutting the door on cleartext traffic",
+									"id": "1f151392-241b-530f-8265-4ad3c99769cd",
+									"altText": "Enhance data protection in Microsoft Outlook with Cloudflare One's new DLP Assist",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/40uJXaQBpPXjYT5Q06IEdY/387de0dc31cf09eee25fc987a895f7e9/BLOG-2695.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/212AhM9AjdIEVJkKEqVFmr/5567f1f275fe089eb8771d535a5d4096/BLOG-2678.png"
 										},
-										"description": "HTTPS-only for Cloudflare APIs: shutting the door on cleartext traffic"
+										"description": "Enhance data protection in Microsoft Outlook with Cloudflare One's new DLP Assist"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -358,13 +358,13 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4aZMcNzLQ91wtpRoMmMkj5",
-								"title": "Lock down origin access with Cloudflare Aegis",
+								"contentfulId": "3flUGVHwFJWHgzWzUIBMHO",
+								"title": "Prepping for post-quantum: a beginner's guide to lattice cryptography",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare Aegis provides dedicated egress IPs for Zero Trust strategies and improved observability, giving customers visibility into egress traffic for compliance with data residency and access control regulations.",
-								"learnMoreUrl": "https://blog.cloudflare.com/aegis-deep-dive",
+								"description": "This beginner's guide to lattices explores the math behind post-quantum (PQ) cryptography, offering a step-by-step explanation of lattice-based encryption and authentication from scratch.",
+								"learnMoreUrl": "https://blog.cloudflare.com/lattice-crypto-primer",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -374,16 +374,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "0150e08b-9a66-5da0-a7b9-fffff9848fee",
-									"altText": "Lock down origin access with Cloudflare Aegis",
+									"id": "db10deeb-3408-598b-991d-e0e8e7667d00",
+									"altText": "Prepping for post-quantum: a beginner's guide to lattice cryptography",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28WJ7X5S8VUJ6NDiXbtnSO/d17fd26e3a64d1de622c9e344c1b2726/BLOG-2609.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZGBNbmXd4wqRoQ0gYDB85/a513250dbc3d3b33d77f0bb3ba6f6477/BLOG-2703.png"
 										},
-										"description": "Lock down origin access with Cloudflare Aegis"
+										"description": "Prepping for post-quantum: a beginner's guide to lattice cryptography"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -394,13 +394,13 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4cB5wb5VirwfrL5HuRKYk8",
-								"title": "Cloudflare named a leader in Web Application Firewall Solutions in 2025 Forrester report",
+								"contentfulId": "3QVFleANprI0HC4hp4NKCk",
+								"title": "Cloudflare is now IRAP assessed at the PROTECTED level, furthering our commitment to the global public sector",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Forrester Research has recognized Cloudflare as a Leader in its latest report, The Forrester Wave™: Web Application Firewall Solutions, Q1 2025.",
-								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2025",
+								"description": "Cloudflare is now assessed at the IRAP PROTECTED level, bringing our products and services to the Australian Public Sector.",
+								"learnMoreUrl": "https://blog.cloudflare.com/irap-protected-assessment",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -410,16 +410,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2f0b2199-afdf-572d-98d3-28fbc4fb0b81",
-									"altText": "Cloudflare remains a leader in Web Application Firewall Solutions in latest Forrester report",
+									"id": "95f29855-b06a-5d70-bac2-fc2993b66010",
+									"altText": "Cloudflare is now IRAP assessed at the PROTECTED level, furthering our commitment to the global public sector",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2y3XC6V85ej54iGSCeDrDU/68722181936648e08ad076cc7dc5fdf1/BLOG-2681.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/MWDHkaln9uIwhpxK85Vfe/98bd8c9e47a2625237a6853ab6766103/BLOG-2787.png"
 										},
-										"description": "Cloudflare remains a leader in Web Application Firewall Solutions in latest Forrester report"
+										"description": "Cloudflare is now IRAP assessed at the PROTECTED level, furthering our commitment to the global public sector"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
