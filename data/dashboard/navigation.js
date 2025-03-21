@@ -626,7 +626,8 @@ const navigation = {
 		}, {
 			title: "navigation.account.tag_management.gmt_fp",
 			url: "/tag-management/googletagfirstparty",
-			hasPermission: E => (0, p.iY)(E) && !!(0, e.Le)(E, "tag_management", "gtm_first_party")
+			labels: ["beta"],
+			hasPermission: E => (0, p.iY)(E)
 		}]
 	}, {
 		title: "navigation.account.event_hub",
