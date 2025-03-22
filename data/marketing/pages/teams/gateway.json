@@ -37,7 +37,24 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Secure Web Gateway | Threat Protection",
+					"metaDescription": "Filter, inspect, and isolate Internet traffic with Cloudflare's Secure Web Gateway (SWG). Block ransomware, phishing, and other malware. Discover how.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f10MKhHhQZEwoZxuirOMC/ec805e5ba400481288ecbd06819f1154/teams-gateway_1.svg"
+						},
+						"description": null
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f10MKhHhQZEwoZxuirOMC/ec805e5ba400481288ecbd06819f1154/teams-gateway_1.svg"
+						},
+						"description": null
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2020-07-23T18:13:03.546Z",
 					"updatedAt": "2025-03-21T21:43:35.191Z"
@@ -2660,6 +2677,20 @@
 						"htmlId": null,
 						"menuItems": [
 							{
+								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/zero-trust",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Products",
+								"page": null,
+								"url": "/zero-trust/products/",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "38FbNwxqUkURwrP9nrDmLO",
 								"linkText": "Use cases",
 								"page": null,
@@ -2772,6 +2803,38 @@
 										"linkText": "Cloudflare vs. Cisco",
 										"page": null,
 										"url": "products/zero-trust/cloudflare-vs-cisco-umbrella"
+									}
+								]
+							},
+							{
+								"contentfulId": "6IyJLCs3YY1MTniTWVCGfZ",
+								"linkText": "Case studies",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "6ek9uKLsxHWRCy6FFlFoPK",
+										"linkText": "All Zero Trust case studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "5296MAHd8OFpaieW2MXdyu",
+										"linkText": "Technology",
+										"page": null,
+										"url": "/case-studies?industry=High+Technology&usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "7ia2I0uTM5JelkOklLq7Jv",
+										"linkText": "Financial services",
+										"page": null,
+										"url": "/case-studies?industry=Financial+Services&usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "1F6lQEkWk6MkXgnM7ssDFt",
+										"linkText": "Ecommerce",
+										"page": null,
+										"url": "/case-studies?industry=eCommerce&usecase=Enable+zero+trust+security+for+workforce"
 									}
 								]
 							},
