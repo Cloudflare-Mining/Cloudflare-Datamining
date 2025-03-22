@@ -7833,8 +7833,7 @@
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
-				"name": "string",
-				"_prototype": {}
+				"name": "string"
 			},
 			"lookupService": {
 				"__proto": "function",
@@ -7945,15 +7944,13 @@
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
-				"name": "string",
-				"_prototype": {}
+				"name": "string"
 			},
 			"getDefaultResultOrder": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
-				"name": "string",
-				"_prototype": {}
+				"name": "string"
 			},
 			"setServers": {
 				"__proto": "function",
@@ -8182,22 +8179,29 @@
 						"name": "string"
 					},
 					"getDefaultResultOrder": {
-						"__proto": "object",
+						"__proto": "function",
 						"__type": "function",
 						"length": "number",
-						"name": "string"
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
 					},
 					"setDefaultResultOrder": {
-						"__proto": "object",
+						"__proto": "function",
 						"__type": "function",
 						"length": "number",
-						"name": "string"
+						"name": "string",
+						"_prototype": {}
 					},
 					"lookup": {
-						"__proto": "object",
+						"__proto": "function",
 						"__type": "function",
 						"length": "number",
-						"name": "string"
+						"name": "string",
+						"_prototype": {}
 					},
 					"lookupService": {
 						"__proto": "object",
@@ -8206,10 +8210,11 @@
 						"name": "string"
 					},
 					"resolve": {
-						"__proto": "object",
+						"__proto": "function",
 						"__type": "function",
 						"length": "number",
-						"name": "string"
+						"name": "string",
+						"_prototype": {}
 					},
 					"resolveAny": {
 						"__proto": "object",
@@ -8329,10 +8334,15 @@
 					"V4MAPPED": "number"
 				},
 				"getDefaultResultOrder": {
-					"__proto": "object",
+					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string"
+					"name": "string",
+					"_prototype": {
+						"length": "undefined",
+						"name": "undefined",
+						"prototype": "undefined"
+					}
 				},
 				"getServers": {
 					"__proto": "object",
@@ -8341,10 +8351,11 @@
 					"name": "string"
 				},
 				"lookup": {
-					"__proto": "object",
+					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string"
+					"name": "string",
+					"_prototype": {}
 				},
 				"lookupService": {
 					"__proto": "object",
@@ -8353,10 +8364,11 @@
 					"name": "string"
 				},
 				"resolve": {
-					"__proto": "object",
+					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string"
+					"name": "string",
+					"_prototype": {}
 				},
 				"resolve4": {
 					"__proto": "function",
@@ -8449,10 +8461,11 @@
 					"_prototype": {}
 				},
 				"setDefaultResultOrder": {
-					"__proto": "object",
+					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string"
+					"name": "string",
+					"_prototype": {}
 				},
 				"setServers": {
 					"__proto": "object",
