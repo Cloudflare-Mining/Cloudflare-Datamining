@@ -278,7 +278,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "5b70ecf8-9f1e-54d6-bb18-d52935114329",
+							"altText": "Magic Firewall - How it works",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eY9o64IG4HIIiINvJ1JnA/2e527dc2017dc3262fb08df74cfbc9b7/BDES-4907_-_teams-gateway-build-for-the-cloud-spot-illustration.svg"
+								},
+								"description": "Magic Firewall - How it works"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "HOW IT WORKS",
@@ -729,6 +743,166 @@
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "6q6FT5b2wTK1OxvLT6xVGS",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4PvCQpjG6vVcBDm5ReC5mU",
+								"title": "Developing a strategy for your network modernization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "The enterprise network long remained stubbornly resistant to change. But as networks begin to modernize, how should CIOs define the scope of the project, and what key use cases should they consider?",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "a618b9ad-2541-5737-86a8-b0f45ac90847",
+									"altText": "Thin top orange line - image",
+									"title": "Resources card 2 elements - Thin top orange line - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSE1zk7R4ynGwaEPLhmN2/c99cea3b8ad205cac6c93f5ac2fdf2a0/element-feature-topbar-two-reources_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "22sgvCdrPE4OHt8sJPAXWS",
+								"title": "Developing a strategy for your network modernization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to develop a strategy for your network modernization",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "a618b9ad-2541-5737-86a8-b0f45ac90847",
+									"altText": "Thin top orange line - image",
+									"title": "Resources card 2 elements - Thin top orange line - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSE1zk7R4ynGwaEPLhmN2/c99cea3b8ad205cac6c93f5ac2fdf2a0/element-feature-topbar-two-reources_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5FkewdE0wVwHHsBjT76Gks",
+						"title": "Get Magic Firewall for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "47rhZdpAmhpH9IaDBVchNx",
+							"elementName": "Magic Firewall - CTA - Talk to an expert",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "1qQV1cU3OwPoqNWcHUWgdR",
+								"modalName": "Magic Firewall Modal Form",
+								"modalId": "magic-firewall-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5I3KiwYZlZhFd3xFlA5vfL",
+									"bladeName": "Magic Firewall Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - Magic Firewall Product Page",
+									"marketoFormHeaderText": "Cloudflare Magic Firewall",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Talk to an expert",
+								"regularCopy": "Request Magic Firewall demo",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
