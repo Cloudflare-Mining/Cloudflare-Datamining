@@ -278,6 +278,31 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
+	"AccountAegisIpUtilizationAdaptiveGroups": {
+		"__description": "Beta. Aegis IP utilization metrics",
+		"avg": "The avg of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountAegisIpUtilizationAdaptiveGroupsAvg": {
+		"__description": "",
+		"utilization": "Average utilization (%)"
+	},
+	"AccountAegisIpUtilizationAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"popUtilizationKey": "PoP, Aegis IP and origin. Can be used as a grouping key"
+	},
+	"AccountAegisIpUtilizationAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAegisIpUtilizationAdaptiveGroupsMax": {
+		"__description": "",
+		"utilization": "Maximum utilization (%) in a single datacenter"
+	},
+	"AccountAegisIpUtilizationAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountAiGatewayCacheAdaptiveGroups": {
 		"__description": "AI Gateway Cache",
 		"count": "Total number of requests for an account with caching enabled: including hits and misses",
@@ -1406,6 +1431,8 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -1487,6 +1514,8 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -2328,6 +2357,8 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -2426,6 +2457,8 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -4735,6 +4768,7 @@
 		"accessLoginRequestsAdaptiveGroups": "",
 		"advancedDnsProtectionNetworkAnalyticsAdaptiveGroups": "",
 		"advancedTcpProtectionNetworkAnalyticsAdaptiveGroups": "",
+		"aegisIpUtilizationAdaptiveGroups": "",
 		"aiGatewayCacheAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
@@ -5926,6 +5960,8 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -6545,6 +6581,8 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -6598,6 +6636,8 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"description": "The description of the rule triggered by this request",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -6677,6 +6717,8 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -7207,6 +7249,8 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -7304,6 +7348,8 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -8305,6 +8351,7 @@
 		"accountTag": "",
 		"advancedDnsProtectionNetworkAnalyticsAdaptiveGroups": "Network analytics data for Advanced DNS Protection",
 		"advancedTcpProtectionNetworkAnalyticsAdaptiveGroups": "<small>DEPRECATED (This node is an alias for <code>advancedTcpProtectionNetworkAnalyticsAdaptiveGroups</code>; prefer using the new name instead):</small> Network analytics data for Advanced TCP Protection",
+		"aegisIpUtilizationAdaptiveGroups": "Beta. Aegis IP utilization metrics",
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
