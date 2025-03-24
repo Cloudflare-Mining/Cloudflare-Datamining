@@ -7,7 +7,7 @@
 		"legacy": "3.20250310.1",
 		"legacy-beta": "0.0.0-6f8e89209",
 		"latest": "4.20250320.0",
-		"beta": "0.0.0-dfbf03f87"
+		"beta": "0.0.0-75005e3dc"
 	},
 	"versions": {
 		"0.1.0": {
@@ -83481,6 +83481,82 @@
 			"name": "miniflare",
 			"version": "0.0.0-dfbf03f87",
 			"dependencies": {
+				"ws": "8.18.0",
+				"zod": "3.22.3",
+				"acorn": "8.14.0",
+				"youch": "3.2.3",
+				"undici": "^5.28.5",
+				"workerd": "1.20250321.0",
+				"exit-hook": "2.2.1",
+				"stoppable": "1.1.0",
+				"acorn-walk": "8.3.2",
+				"glob-to-regexp": "0.4.1",
+				"@cspotcode/source-map-support": "0.8.1"
+			},
+			"devDependencies": {
+				"ava": "^6.0.1",
+				"mime": "^3.0.0",
+				"kleur": "^4.1.5",
+				"which": "^2.0.2",
+				"eslint": "^8.57.1",
+				"rimraf": "^5.0.10",
+				"devalue": "^4.3.0",
+				"esbuild": "0.24.2",
+				"heap-js": "^2.5.0",
+				"capnp-es": "^0.0.7",
+				"get-port": "^7.1.0",
+				"@types/ws": "^8.5.7",
+				"source-map": "^0.6.1",
+				"typescript": "^5.7.2",
+				"@types/mime": "^3.0.4",
+				"@types/node": "^18.19.75",
+				"expect-type": "^0.15.0",
+				"@types/debug": "^4.1.7",
+				"@types/which": "^2.0.1",
+				"concurrently": "^8.2.2",
+				"pretty-bytes": "^6.0.0",
+				"@types/estree": "^1.0.0",
+				"@ava/typescript": "^4.1.0",
+				"@types/stoppable": "^1.1.1",
+				"eslint-plugin-es": "^4.1.0",
+				"devtools-protocol": "^0.0.1182435",
+				"http-cache-semantics": "^4.1.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-prettier": "^5.0.1",
+				"@microsoft/api-extractor": "7.49.1",
+				"@cloudflare/workers-types": "^4.20250321.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-shared": "0.0.0-dfbf03f87",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@cloudflare/kv-asset-handler": "0.4.0",
+				"@cloudflare/workflows-shared": "0.3.1",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"shasum": "2fad5c54dd873d9a6940a43e8ee179c943d0d3dc",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-dfbf03f87.tgz",
+				"fileCount": 44,
+				"integrity": "sha512-4DTNc+bOiXeP9uTMXIxFPB7HLbjadPj0FXmOTf5qc624XBC2qsLm5QEzvZsMKRaI7XGeNfhT2w8Ae7/kgFC3YQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGvyxZUcT0gatqLeJtjWhzFn+RjePOSYuIsp3wu32ZNBAiEAqSjTa1nfSqnL17NCyFTZpSd1dpYb4LHqZTN24D5JriM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2952734
+			},
+			"engines": {
+				"node": ">=18.0.0"
+			}
+		},
+		"0.0.0-75005e3dc": {
+			"name": "miniflare",
+			"version": "0.0.0-75005e3dc",
+			"dependencies": {
 				"@cspotcode/source-map-support": "0.8.1",
 				"acorn": "8.14.0",
 				"acorn-walk": "8.3.2",
@@ -83529,23 +83605,23 @@
 				"source-map": "^0.6.1",
 				"typescript": "^5.7.2",
 				"which": "^2.0.2",
-				"@cloudflare/kv-asset-handler": "0.4.0",
-				"@cloudflare/workers-shared": "0.0.0-dfbf03f87",
-				"@cloudflare/workflows-shared": "0.3.1"
+				"@cloudflare/workers-shared": "0.0.0-75005e3dc",
+				"@cloudflare/workflows-shared": "0.3.1",
+				"@cloudflare/kv-asset-handler": "0.4.0"
 			},
 			"bin": {
 				"miniflare": "bootstrap.js"
 			},
 			"dist": {
-				"integrity": "sha512-4DTNc+bOiXeP9uTMXIxFPB7HLbjadPj0FXmOTf5qc624XBC2qsLm5QEzvZsMKRaI7XGeNfhT2w8Ae7/kgFC3YQ==",
-				"shasum": "2fad5c54dd873d9a6940a43e8ee179c943d0d3dc",
-				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-dfbf03f87.tgz",
+				"integrity": "sha512-NncEUmTJch5vZ7CJTsPrhTAHISOQyQ6cRVebQ7HUQhptMUWVU2mOH3ynKGdVnZd1liG2ECBMFtGq2uqN7sMKsg==",
+				"shasum": "bb837e0b0eb13ccfbd90ceb464e80d4a7ae9c831",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-0.0.0-75005e3dc.tgz",
 				"fileCount": 44,
-				"unpackedSize": 2952734,
+				"unpackedSize": 2952994,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGvyxZUcT0gatqLeJtjWhzFn+RjePOSYuIsp3wu32ZNBAiEAqSjTa1nfSqnL17NCyFTZpSd1dpYb4LHqZTN24D5JriM="
+						"sig": "MEUCIQCtNdxz2mliSb6pDQCCeEDv60Zm5GGl9JOS63qOuIWohAIgEqGSCZ4rD1XOhfnWrDzPZO9qsCbAOUb3KvXdzM/DdzQ="
 					}
 				]
 			},
