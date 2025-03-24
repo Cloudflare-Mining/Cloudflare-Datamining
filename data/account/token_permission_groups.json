@@ -1968,6 +1968,22 @@
 		]
 	},
 	{
+		"id": "45db74139a62490b9b60eb7c4f34994b",
+		"name": "Workers R2 Data Catalog Read",
+		"description": "Grants read access to R2 Data Catalog",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
+		"name": "Workers R2 Data Catalog Write",
+		"description": "Grants write access to R2 Data Catalog",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "6a018a9f2fc74eb6b293b0c548f38b39",
 		"name": "Workers R2 Storage Bucket Item Read",
 		"description": "Grants read access to Cloudflare R2 Bucket Scoped Storage",

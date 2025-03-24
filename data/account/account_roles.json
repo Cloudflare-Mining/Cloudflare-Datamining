@@ -438,6 +438,10 @@
 		"name": "Cloudflare R2 Read",
 		"description": "Can read R2 buckets, objects, and associated configurations.",
 		"permissions": {
+			"r2_bucket_warehouse": {
+				"read": true,
+				"edit": false
+			},
 			"r2_bucket_item": {
 				"read": true,
 				"edit": false
@@ -469,6 +473,10 @@
 		"name": "Cloudflare R2 Admin",
 		"description": "Can edit R2 buckets, objects, and associated configurations.",
 		"permissions": {
+			"r2_bucket_warehouse": {
+				"read": true,
+				"edit": true
+			},
 			"r2_bucket_item": {
 				"read": true,
 				"edit": true
@@ -1149,6 +1157,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"r2_bucket_warehouse": {
+				"read": true,
+				"edit": true
+			},
 			"resilience": {
 				"read": true,
 				"edit": true
@@ -1773,6 +1785,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"r2_bucket_warehouse": {
+				"read": true,
+				"edit": false
+			},
 			"resilience": {
 				"read": true,
 				"edit": false
@@ -1964,6 +1980,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"r2_bucket_warehouse": {
+				"read": true,
+				"edit": true
+			},
 			"resilience": {
 				"read": true,
 				"edit": false
