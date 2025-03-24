@@ -1,0 +1,94 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/estonian-railways-et-ee/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Estonian Railways - et-EE",
+				"contentfulId": "6eatTiwpCHIs5njvjQD5kj",
+				"nameUrlSlug": "estonian-railways-et-ee",
+				"metaTags": {
+					"metaTitle": "Estonian Railways & Cloudflare | Customer Story",
+					"metaDescription": "Estonian Railways reduces complexity by modernizing application access and network security with Cloudflare",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Q2jDIxwhZ0fuaNVNiL0cw/915f2d5c5f0d328503429d87b028fcc5/estonian_railways_image.png"
+						},
+						"description": "Estonian Railways - Meta image"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2025-02-28",
+				"homepageUrl": "https://www.evr.ee/en",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Estonian Railways reduces complexity by modernizing application access and network security with Cloudflare",
+				"longDescription": "## Eesti Raudtee ajakohastab Cloudflare'i abil kriitilise IT-infrastruktuuri ühendamise ja turvamise viisi\n\n1870. aastast on riigile kuuluv Eesti Raudtee vastutanud raudtee tõrgeteta ja ohutu toimimise eest. Praegu haldab ettevõte enam kui 1200 km raudteed, muu hulgas 61 raudteejaama, millest kolm on piirijaamad (kaks Venemaa ja üks Läti piiril).\n\nRiigi raudteeinfrastruktuuri omanikuna tegutseb Eesti Raudtee partnerina ka piiriüleste küsimuste lahendamisel, transiidistandardite kehtestamisel ning Eesti reisijate- ja kaubaveo äri edendamisel.\n\n### Ülesanne: vähendada IT keerukust ning edendada turvalist juurdepääsu ja hübriidtööd\n\n155-aastase ajalooga kriitilise infrastruktuuri pakkujana on Eesti Raudtee omandanud mitmed tehnoloogiad, millest paljude [nt vanade virtuaalsete privaatvõrkude (VPN-ide)] hooldamine on järjest tülikam. Kuid COVID-pandeemia ja algselt isoleeritud operatsioonitehnoloogia (ingl Operational Technology, OT) süsteemide internetti ühendamisega seoses tekkis vajadus oma IT-süsteeme ajakohastada ning nende keerukust vähendada.\n\nEesti Raudtee on täheldanud ka piirkonna geopoliitilistest konfliktidest tulenevate küberriskide suurenemist. IT-juht Tõnu Tammer ütleb: „Ohumaastik muutub mitmekesisemaks. Kriitilise infrastruktuuri pakkujana oleme mitte ainult küberkurjategijate, vaid ka omaalgatuslike ja riiklikult toetatavate häkkerite pideva rünnaku all.\"\n\nEt toetada organisatsiooni missiooni saada regiooni digitaalselt kõige arenenumaks raudteeinfrastruktuuriks – kaitstes end samas ka küberriskide eest – seadis Eesti Raudtee järgmised eesmärgid.\n- Kaasajastada oma kasutajate, rakenduste ja võrkude turvalisust, minnes üle nullusalduse mudelile\n- Lihtsustada IT-haldust ja säästa aega, koondades turbelahenduste tarnijaid\n- Parandada oma turvalisust, suurendades pilverakenduste kasutamise nähtavust\n\nNende eesmärkide saavutamiseks kasutas Eesti Raudtee Cloudflare'i [ühenduvuspilve](https://www.cloudflare.com/connectivity-cloud/), et tagada kõigi ühenduste turvalisus.\n\n### Kiirendatud üleminek nullusaldusega turvalise juurdepääsu jaoks\n\nKui Tammer Eesti Raudteega liitus, mõistis ta, et pärandtehnoloogiate kombinatsiooni haldamine on tema väikese meeskonna jaoks pikas perspektiivis ülejõukäiv. „Meil on palju pärand-IT-d, mis on väga tavaline OT ning järelevalve- ja andmehõive (ingl *supervisory control and data acquisition*, SCADA) süsteemide puhul. Näiteks üks leping on üle 50 aasta vana,\" märgib ta. Peale selle suurendab riski ka ettevõttes hübriidtöö osakaalu suurenemine (muu hulgas kaugtöötajad ning kolmandatest pooltest töövõtjad ning partnerid).\n\nEesti Raudtee otsustas vähendada oma liigset sõltuvust aegunud perimeetripõhisest võrguturbest ja minna rakenduste turvaliseks juurdepääsuks üle nullusaldusele.\n\nPärast riigihankemenetlust otsustas Eesti Raudtee liituda Cloudflare'i [turvalise juurdepääsu teenuseserva (ingl *Security Service Edge*, SSE)](https://www.cloudflare.com/learning/access-management/security-service-edge-sse/) platvormiga, nimelt [nullusalduse võrgujuurdepääsu (ingl *Zero Trust Network Access*, ZTNA)](https://www.cloudflare.com/learning/access-management/what-is-ztna/), [turvalise veebilüüsi (ingl *Secure Web Gateway*, SWG)](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/), [pilvejuurdepääsu turbevahendaja (ingl *Cloud Access Security Broker*, CASB)](https://www.cloudflare.com/learning/access-management/what-is-a-casb/), ja [kaugbrauseri eraldamisega (ingl *Remote Browser Isolation*, RBI)](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/). Cloudflare tegi tarnimisel koostööd kohaliku tarkvarapartneri Mosaic OÜ-ga.\n\nKasutuselevõtu esimeses etapis on Eesti Raudtee teinud juba edusamme peamiste nullusalduse juurdepääsu algatuste osas, mille hulka kuuluvad järgmised.\n- [Mitmefaktorilise autentimise (ingl *multi-factor authentication*, MFA](https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/) jõustamine kriitiliste rakenduste jaoks\n- Seadme riskitaseme haldamine ja jõustamine\n- Turvalise juurdepääsu pakkumine asutusesisestele ja avalikele veebirakendustele\n\n„Me ei saa anda kõigile VPN-i juurdepääsu, et nad saaksid seda igal ajal kasutada. Üks võti ei tohi avada kõiki uksi. Igal kasutajal peab olema juurdepääs ainult sellele, mida ta tingimata vajab,\" rõhutab Tammer. „Cloudflare'iga on meil parem kontroll ja nähtavus selle üle, kes, millele ja kuidas rakendustele juurde pääseb.\"  \n\nKuna Eesti Raudtee viib töö pilve, aitab [võrgu segmentimine](https://www.cloudflare.com/learning/access-management/what-is-network-segmentation/) säilitada äritegevuse järjepidevust. „Oleme VPN-e kasutanud paljude erinevate kohapealsete teenuste ühendamiseks, kuid turvalisuse seisukohalt on need sama tugevad nagu papp,\" ütleb Tammer. „Liikudes nullusalduse ülesehitusele, võimaldab Cloudflare meil ehitada pärandrakenduste ümber betoonseinu.\"\n\nLisaks on nad ühendanud Cloudflare'i ning Microsoft Entra ja Intune'i võimalused, et autentida lõpp-punkti kasutaja seadmeliiklust ja jõustada ühtseid seadme asendipoliitikaid. Tammer ütleb: „Leidsime, et Cloudflare'i ja Microsofti ühendamine on lihtsaim lahendus, mis pakub kõiki nullusalduse võimalusi – ilma keerukuseta. Olen meeldivalt üllatunud, kui sujuvalt see kõik töötab.\n\n### Andmekao ja SaaS-i haavatavuste leevendamine\n\nCloudflare'i CASB-teenus on andnud Eesti Raudteele parema arusaama nende SaaS-i turvapositsioonist, tuvastades võimalikud andmelekked ja valekonfiguratsioonid lihtsa API-integreerimisega.\n\nNäiteks Cloudflare'i kasutuselevõtu eelse aja kohta ütleb Tammer: „Oletame, et olid tundlikud SharePointi failid, mis oleksid pidanud olema piiratud väikese kasutajarühmaga, kuid mida tegelikult jagati asutuse sees laialt. CASB paljastab sellised juhtumid kiiresti. Saame tegutseda kiiremini, et vältida volitamata tegevust ja minimeerida andmekadu.\n\nCloudflare'i CASB API integratsioonid kriitiliste platvormide, nagu Microsoft, Atlassian ja ServiceNow, jälgimiseks säästavad samuti aega. „Cloudflare'i ühenduvuspilv aitab meil erinevaid pilvi kokku panna viisil, mida me ise teha ei saaks,\" kirjeldab Tammer. „Võiksime proovida integratsioone ise üles ehitada, aga minu töö ei ole põhifunktsioonide täitmiseks erinevaid asju kombineerida,\" kirjeldab Tammer. „Cloudflare võimaldab mul keskenduda rohkem põhitööle – veenduda, et kogu süsteem töötab ja loob väärtust.\"\n\nCloudflare'i üldine kasutuslihtsus laieneb ka selle tsentraalsele haldamisele. Tammer ütleb: „Erinevalt teistest pilveteenustest, mille armatuurlaud võib liiga keeruline olla, on Cloudflare'il lihtne leida õigeid nuppe, kui ma neid vajan. See on kõikehõlmav – mitte kohmakas.\"\n\n### Veebirakenduste kiirendamine ja kaitsmine\n\nEesti Raudtee on veelgi keerukust vähendanud, koondades peamised veebirakenduste teenused Cloudflare'i. Nagu Tammer märgib: „Ärivajadused muutuvad ja meie tööviis muutub. Kasutades jätkuvalt palju tarnijaid, on keeruline kõiki meie organisatsiooni riske minimeerida. Cloudflare on aidanud meil vähendada lahenduste hulka ja tehnilist keerukust.\"\n\nInternetiühenduse loomiseks kasutatava mitmepunktilahenduse asemel kasutab organisatsioon nüüd Cloudflare'i [sisu edastamise võrku (ingl *Content Delivery Network*, CDN)](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), [veebirakenduse tulemüüri (ingl *Web Application Firewall*, WAF)](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/), [DDoS-kaitset](https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks/) ja reaalajas [nutikat marsruutimist](https://www.cloudflare.com/learning/performance/routing-vs-smart-routing/). \n\n„Kaitse peab olema kihiline, nagu sibul. Nii saame loota sellele, et kui üks kiht ebaõnnestub, on alati järgmine ja järgmine,\" lisab Tammer. „Cloudflare aitab kõiki neid kihte kooskõlastada, et halvad asjad meie organisatsiooni rööpast välja ei viiks.\"\n\nTammerile on avaldanud erilist muljet Cloudflare'i võrgu mastaapsus DDoS-i ja muude veebirünnakute eest kaitsmisel, latentsusaja vähendamisel ning sisu Eesti Raudtee klientidele lähemale viimisel.\n\n„Cloudflare'iga töödeldakse õigupoolest Eestis enamik, kui mitte kogu meie kasutajate liiklus. Meil pole vaja liiklust tagasi mõnda teise andmekeskusesse suunata, seega kulub võrguliikluse edasi-tagasi suunamisele vähem aega,\" selgitab Tammer. „Cloudflare'i võrgu reageerimisvõime on kõrgem tase.\"\n\n### Mis edasi: SASE arhitektuuri arendamine\n\nEt jätkata esmase nullusalduse edu kasutamist esmatähtsate kasutusjuhtude puhul, plaanib Eesti Raudtee lõpuks saavutada [turvalise juurdepääsu teenuseserva (SASE) arhitektuuri](https://developers.cloudflare.com/reference-architecture/architectures/sase/). Võrreldes traditsioonilise võrguturbega, pakub [SASE](https://www.cloudflare.com/learning/access-management/what-is-sase/) mitmeid eeliseid, nagu väiksem risk, suurem operatiivsus, tugevam andmepoliitika jõustamine ja parem hübriidtöökogemus.\n\nSASE teekonda kirjeldades ütleb Tammer, et Eesti Raudtee loob „meie lõppkasutajatele ühtse lähenemisviisi meie teenustega ühenduse loomiseks, olenemata nende asukohast.\"\n\nTa lisab: „Peame eraldama võrguteed, mida töötajad ja partnerid kasutavad töörakendustega ühenduse loomiseks, isiklikust internetikasutusest. Sest kui nad loovad ühenduse meie infrastruktuuriga, peab sellel olema kogu vajalik võrgu krüptimine, turvalisus ja jõudlus.\" \n\n„Pärandarhitektuuri üleviimine ei ole lihtne,\" ütleb Tammer kokkuvõtteks. „Igal äri kasutusjuhtumil on palju nüansse ja sama lähenemine ei sobi kõigile. Kuid Cloudflare pakub tööriistakasti, mida vajame oma lähenemisviisi kaasajastamiseks.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Asendati mitu pärandturbesüsteemi, koondades võtmeteenused ühenduvuspilve\n\n- Vähendati haldamise keerukust ja VPN-idest sõltuvust, välistades kasutajatele (nt töövõtjatele) täieliku võrgujuurdepääsu andmisest tulenevad riskid\n\n- Lühemad laadimisajad HTTP/3, CDN ja muu kasutamise kaudu, mis parandavad veebisaidi külastajate kasutuskogemust, suurendades samal ajal küberturvalisust WAF-i, DDoS-i kaitse kasutamise ning juurdepääsu abil\n\n- Täiustatud üldine turvalisus ja minimeeritud andmekadu, suurendades SaaS-i rakenduste nähtavust",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/zero-trust/products/access/"
+					},
+					{
+						"title": "Gateway",
+						"url": "/zero-trust/products/gateway/"
+					},
+					{
+						"title": "Browser Isolation",
+						"url": "/zero-trust/products/browser-isolation/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/application-services/products/argo-smart-routing/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/application-services/products/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Tonu Tammer",
+				"employeeQuoteText": "Üks võti ei tohi avada kõiki uksi; iga kasutaja või seade peab jõudma ainult selleni, mida ta tingimata vajab. Cloudflare'iga on meil nüüd parem kontroll ja nähtavus selle üle, kes, millele ja kuidas juurde pääseb.",
+				"employeeQuoteJobTitle": "IT-juht",
+				"employeeQuoteName2": "Tonu Tammer",
+				"employeeQuoteText2": "Cloudflare'i ühenduvuspilv aitab meil erinevaid pilvi kokku panna viisil, mida me ise teha ei saaks.",
+				"employeeQuoteJobTitle2": "IT-juht",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5g3RFVSGwVYo8xce59SNhL/6e8c6abecb1d0f8bca78d6639a7d6794/estonian.png"
+					},
+					"description": "Estonian Railways -  Logo"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6eatTiwpCHIs5njvjQD5kj",
+			"pathname": "/case-studies/estonian-railways-et-ee/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
