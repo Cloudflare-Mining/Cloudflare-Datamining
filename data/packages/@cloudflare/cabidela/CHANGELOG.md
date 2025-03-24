@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.4] - 2025-03-24
+
+### Changed
+
+- Fixed a bug where root level $ref's were not being resolved correctly
+
 ## [0.2.3] - 2025-03-19
 
 ### Changed
