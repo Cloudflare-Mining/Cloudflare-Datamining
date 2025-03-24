@@ -462,11 +462,13 @@
 		"costMetricName2": "Name for cost metric 2",
 		"costMetricValue1": "Value for cost metric 1",
 		"costMetricValue2": "Value for cost metric 2",
-		"date": "The date when starts the inference",
+		"date": "The date when the inference starts",
+		"datetime": "The date when the inference starts",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"datetimeSixHours": "The date and time truncated to six hours",
 		"errorCode": "Error code",
 		"inferenceTimeMs": "Inference time ms",
 		"modelId": "ModelId that was trigger to inference",
@@ -500,6 +502,21 @@
 		"totalTiles": "Total tiles"
 	},
 	"AccountAiInferenceAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountBrowserIsolationSessionsAdaptiveGroups": {
+		"__description": "Aggregated count of Browser Isolation sessions",
+		"count": "Number of browser sessions",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountBrowserIsolationSessionsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": ""
+	},
+	"AccountBrowserIsolationSessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountBrowserIsolationSessionsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountBrowserIsolationUserActionsAdaptiveGroups": {
@@ -4775,6 +4792,7 @@
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
+		"browserIsolationSessionsAdaptiveGroups": "",
 		"browserIsolationUserActionsAdaptiveGroups": "",
 		"browserRenderingEventsAdaptive": "",
 		"browserRenderingEventsAdaptiveGroups": "",
@@ -8358,6 +8376,7 @@
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
+		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
 		"browserIsolationUserActionsAdaptiveGroups": "Aggregated count of Browser Isolation User Actions matches",
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
 		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
