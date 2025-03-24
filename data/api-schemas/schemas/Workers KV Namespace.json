@@ -903,6 +903,12 @@
 										"result": {
 											"items": {
 												"properties": {
+													"beta": {
+														"description": "True if new beta namespace, with additional preview features.",
+														"example": true,
+														"readOnly": true,
+														"type": "boolean"
+													},
 													"id": {
 														"description": "Namespace identifier tag.",
 														"example": "0f2ac74b498b48028cb68387c421e279",
@@ -1146,6 +1152,12 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"beta": {
+													"description": "True if new beta namespace, with additional preview features.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
 												"id": {
 													"description": "Namespace identifier tag.",
 													"example": "0f2ac74b498b48028cb68387c421e279",
@@ -2075,6 +2087,12 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"beta": {
+													"description": "True if new beta namespace, with additional preview features.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
 												"id": {
 													"description": "Namespace identifier tag.",
 													"example": "0f2ac74b498b48028cb68387c421e279",
