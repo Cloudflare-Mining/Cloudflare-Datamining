@@ -5,40 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Lisbon Hybrid&nbsp;</p>
-<h4><strong>Role Summary&nbsp;</strong></h4>
-<p>We are hiring a Product Manager for <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>. Cloudflare Tunnel easily and securely connects our customers' infrastructure to the Cloudflare Global Network. Today, there are a half a million active Tunnels deployed across hundreds of thousands of our customer’s accounts.</p>
-<p>Our connector is also flexible enough to support a variety of use cases whether that be connecting a local HTTP server, web services served by a Kubernetes cluster, or an entire private network segment to Cloudflare. The goal of our connector is not just to create software that is reliable and performant for administrators, but something that is also ridiculously easy to use by any individual around the world.&nbsp;</p>
-<p>In this role you will shape the product, working closely with the development team and other functions across Cloudflare, to listen to customer problems and devise solutions that solve them. You will work to ensure the connector, which has been deployed on millions of networks, is simple, secure, and performant for all use cases. You will solve problems that have wide impact and significance, shaping the future of connectivity on the Internet.</p>
-<p>We operate with small teams of highly motivated and experienced engineers and product professionals. You will need an understanding of networking and, what deployment of software looks like in all sizes of companies and the ability to help customers troubleshoot complex deployment issues. As a product that has low level network interactions with all parts of the enterprise stack, candidates will need both technical depth, and empathy and understanding to work with customers of all levels of sophistication.&nbsp;</p>
-<h4><strong>Role Responsibilities&nbsp;</strong></h4>
-<p>As a member of the growing team of product managers your responsibilities include:&nbsp;</p>
+<p><strong>Available Locations: Mexico City</strong></p>
+<p>Cloudflare’s P2P department is housed within the Finance team, but our reach is global, supporting thousands of purchases across our global offices per quarter. We use an integrated platform for purchase-orders and approvals, and a contract management and collaboration tool for negotiated, signed contracts. We interact daily with stakeholders from Finance, Commercial Legal, Privacy, Security, and IT to get critical purchases over the line. The majority of our purchases involve technology and internet infrastructure, so we ensure we are familiar with industry trends and challenges faced by our internal customers. Our team is responsible for setting policies, defining new processes, reviewing &amp; negotiating vendor agreements to ensure that the Procurement function aligns to Cloudflare’s long-term strategic vision and goals. We are a small and growing team, presenting lots of opportunity for professional growth and visibility across multiple departments.</p>
+<p><br><br></p>
+<p><strong>What you'll do</strong></p>
+<p>Cloudflare’s Contracts Negotiator will support the end-to-end contracting process including contract negotiations, contract management, contract administration, and supplier relationship management functions across all business segments within Cloudflare. Because we are growing, applicants should anticipate that this role may evolve over time. This person will be the internal point of contact for key procurement functions such as contracts, RFPs, and other projects. They will work closely with the Sourcing and Commercial Legal team.&nbsp;</p>
+<p><strong>Who You Are:</strong></p>
+<p>We are looking for business-driven, experienced contracts professionals who love KPIs, are strong collaborators, can manage vendor contracts, draft a redline, and bring relentless attention to detail. We are seeking an experienced procurement professional who can support the end-to-end process from planning to signature through post-signature contract reviews and vendor performance management. The ideal candidate for this role is a proactive problem solver, fearless, approachable, and adaptable. You enjoy contracts, seek out metrics to maximize value, exercise judgment and operate independently.&nbsp; The negotiator handles legal tasks and ensures contract processing with high professionalism under pressure.<br><br></p>
+<p><strong>Key Functions:</strong></p>
 <ul>
-	<li>Own the product vision for your area. Ensure that it aligns with the overall product and company vision.</li>
-	<li>Represent the customer. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer’s voice into the creation process.</li>
-	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
-	<li>Author use cases and prioritize requirements. Translate market observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
-	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and other stakeholders. A collaborative attitude is essential to the job.</li>
-	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
-	<li>Develop new opportunities. With your finger on the pulse of the market, the customers and the engineering teams, you are uniquely positioned to bring new products to market that solve real customer problems.</li>
+	<li><strong>Contract Negotiation &amp; Management</strong> – Draft, review, and negotiate procurement contracts, including security and data privacy agreements.</li>
+	<li><strong>Dispute Resolution</strong> – Lead discussions with stakeholders, vendors, and legal teams to resolve contract disputes.</li>
+	<li><strong>Legal &amp; Risk Assessment</strong> – Conduct legal reviews, ensure compliance, and identify potential risks in contracts.</li>
+	<li><strong>Compliance &amp; Ethics</strong> – Uphold ethical standards and regulatory requirements in negotiations and daily operations.</li>
+	<li><strong>Cross-functional Collaboration</strong> – Align legal requirements with business goals, engaging in negotiation strategies across departments.</li>
+	<li><strong>Contract Lifecycle Management</strong> – Oversee all contract stages from intake to signatures, working with Legal, Finance, and other business units.</li>
 </ul>
-<h4><strong>Role Requirements</strong></h4>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Qualifications</strong><strong><br></strong><strong>Required Knowledge, Skills, and Experience:</strong></p>
 <ul>
-	<li>5+ years of experience in product management working alongside engineering, sales engineering, and design teams</li>
-	<li>Demonstrated ability to lead, drive consensus and deliver in an organization with multiple stakeholders</li>
-	<li>Ability to to support customers in all phases: pre-sales, piloting and post sales support</li>
-	<li>Working knowledge of VPNs, Routing, DNS, Firewalls, Client/Server architectures is required</li>
-	<li>Exceptional empathy, curiosity, attention to detail, and problem solving abilities</li>
-</ul>
-<p><strong>Bonus points if you also have:&nbsp;</strong></p>
-<ul>
-	<li>Working knowledge of how the Internet works at network layers 3 through 7.</li>
-	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
-	<li>Domain expertise (e.g. as a practitioner or technology provider) in several of: HTTP content delivery, network performance, browser technologies and Internet security.</li>
-	<li>A solid understanding of RESTful API design &amp; documentation.</li>
-	<li>Pricing strategy and revenue forecasting experience.</li>
-	<li>BS/MS in computer science or engineering</li>
+	<li><strong>Experience</strong> – 2+ years in commercial contracts within a Procurement, Sourcing, or a legal setting.</li>
+	<li><strong>Education</strong> – Bachelor’s or Law degree (JD) from an accredited law school or equivalent legal experience (preferred).</li>
+	<li><strong>Industry Knowledge</strong> – SaaS, internet infrastructure, OEM suppliers, media, and marketing tools (a plus).</li>
+	<li><strong>Legal Skills</strong> – Strong grasp of contract terms, data security, and privacy regulations.</li>
+	<li><strong>Contracting Expertise</strong> – Proven drafting and negotiation skills with attention to detail.</li>
+	<li><strong>Problem-Solving</strong> – Ability to assess risks, provide solutions, and work independently.</li>
+	<li><strong>Collaboration</strong> – Strong communication and legal drafting skills for cross-team coordination.</li>
+	<li><strong>Adaptability</strong> – Organized, detail-oriented, and able to manage multiple projects in high-pressure environments.</li>
+	<li><strong>Tech Proficiency</strong> – Experience with Ironclad, Zip or similar CLM software preferred.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -31,13 +31,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Denver, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6630159,
-	"updated_at": "2025-03-24T17:14:53-04:00",
+	"updated_at": "2025-03-25T11:48:42-04:00",
 	"requisition_id": null,
 	"title": "Cloudforce One - Technical Writer (Threat Intelligence)",
 	"company_name": "Cloudflare",
@@ -55,6 +58,27 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
