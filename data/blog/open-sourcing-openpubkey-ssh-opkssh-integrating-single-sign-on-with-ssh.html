@@ -23,7 +23,10 @@
 	<p><a href="https://openid.net/developers/how-connect-works"><u>OpenID Connect (OIDC)</u></a> is the main protocol used for SSO. As shown below, in OIDC the IdP, called an OpenID Provider (OP), issues the user an ID Token which contains identity claims about the user, such as “email is alice@example.com”. These claims are digitally signed by the OP, so anyone who receives the ID Token can check that it really was issued by the OP.</p>
 	<p>Unfortunately, while ID Tokens <i>do </i>include identity claims like name, organization, and email address, they <i>do not</i> include the user’s public key. This prevents them from being used to directly secure protocols like SSH or <a href="https://www.cloudflare.com/learning/privacy/what-is-end-to-end-encryption"><u>End-to-End Encrypted messaging</u></a>.</p>
 	<p>Note that throughout this post we use the term OpenID Provider (OP) rather than IdP, as OP specifies the exact type of IdP we are using, i.e., an OpenID IdP. We use Google as an example OP, but OpenID Connect works with Google, Azure, Okta, etc.</p>
-	<p><i>Shows a user Alice signing in to Google using OpenID Connect and receiving an ID Token</i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zfixdknoL3a9HqBzcsmAY/605f469bdd25b4b8cfaf29dac3561c4f/image1.png" alt="Shows a user Alice signing in to Google using OpenID Connect/OpenPubkey and then producing a PK Token" class="kg-image" width="2000" height="1078" loading="lazy">
+	</figure>
+	<p><sup><i>Shows a user Alice signing in to Google using OpenID Connect and receiving an ID Token</i></sup></p>
 	<div class="flex anchor relative">
 		<h3 id="openpubkey">OpenPubkey</h3>
 		<a href="https://blog.cloudflare.com/#openpubkey" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -34,7 +37,7 @@
 	</div>
 	<p>OpenPubkey, shown below, adds public keys to ID Tokens. This enables ID Tokens to be used like certificates, e.g. “Google says <code>alice@example.com</code> is using public key 0x123.” We call an ID token that contains a public key a <i>PK Token</i>. The beauty of OpenPubkey is that, unlike other approaches, OpenPubkey does not require any changes to existing SSO protocols and supports any OpenID Connect compliant OP.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zfixdknoL3a9HqBzcsmAY/605f469bdd25b4b8cfaf29dac3561c4f/image1.png" alt="Shows a user Alice signing in to Google using OpenID Connect/OpenPubkey and then producing a PK Token" class="kg-image" width="2000" height="1078" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HNkaW8vPE26KQrNwNOzNo/ef00f91dc983f3f2ac3c3a00b223b3e5/image3.png" alt="" class="kg-image" width="2000" height="1079" loading="lazy">
 	</figure>
 	<p><sup><i>Shows a user Alice signing in to Google using OpenID Connect/OpenPubkey and then producing a PK Token</i></sup>
 		While OpenPubkey enables ID Tokens to be used as certificates, OPKSSH extends this functionality so that these ID Tokens can be used as SSH keys in the SSH protocol. This adds SSO authentication to SSH without requiring changes to the SSH protocol.</p>
