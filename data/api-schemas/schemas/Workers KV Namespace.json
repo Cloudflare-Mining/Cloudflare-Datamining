@@ -2662,39 +2662,9 @@
 										"result": {
 											"oneOf": [
 												{
-													"additionalProperties": {
-														"description": "The value associated with the key",
-														"oneOf": [
-															{
-																"type": "string"
-															},
-															{
-																"type": "number"
-															},
-															{
-																"type": "boolean"
-															},
-															{
-																"additionalProperties": true,
-																"type": "object"
-															}
-														]
-													},
-													"description": "Requested keys are paired with their values in an object",
-													"example": {
-														"key1": "value1",
-														"key2": "value2"
-													},
-													"type": "object"
-												},
-												{
-													"additionalProperties": {
-														"properties": {
-															"metadata": {
-																"description": "The metadata associated with the key",
-																"type": "string"
-															},
-															"value": {
+													"properties": {
+														"values": {
+															"additionalProperties": {
 																"description": "The value associated with the key",
 																"oneOf": [
 																	{
@@ -2711,24 +2681,76 @@
 																		"type": "object"
 																	}
 																]
-															}
-														},
-														"type": "object"
+															},
+															"description": "Requested keys are paired with their values in an object",
+															"example": {
+																"key1": "value1",
+																"key2": "value2"
+															},
+															"type": "object"
+														}
 													},
-													"description": "Requested keys are paired with their values and metadata in an object",
-													"example": {
-														"key1": {
-															"expiration": 1577836800,
-															"metadata": {
-																"someMetadataKey": "someMetadataValue"
+													"type": "object"
+												},
+												{
+													"properties": {
+														"values": {
+															"additionalProperties": {
+																"nullable": true,
+																"properties": {
+																	"expiration": {
+																		"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
+																		"example": 1578435000,
+																		"type": "number"
+																	},
+																	"metadata": {
+																		"additionalProperties": true,
+																		"description": "The metadata associated with the key",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	"value": {
+																		"description": "The value associated with the key",
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"additionalProperties": true,
+																				"type": "object"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"value",
+																	"metadata"
+																],
+																"type": "object"
 															},
-															"value": "value1"
-														},
-														"key2": {
-															"metadata": {
-																"anotherKey": "anotherValue"
+															"description": "Requested keys are paired with their values and metadata in an object",
+															"example": {
+																"key1": {
+																	"expiration": 1577836800,
+																	"metadata": {
+																		"someMetadataKey": "someMetadataValue"
+																	},
+																	"value": "value1"
+																},
+																"key2": {
+																	"metadata": {
+																		"anotherKey": "anotherValue"
+																	},
+																	"value": "value2"
+																}
 															},
-															"value": "value2"
+															"type": "object"
 														}
 													},
 													"type": "object"
