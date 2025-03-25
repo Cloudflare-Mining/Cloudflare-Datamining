@@ -1172,22 +1172,6 @@
 					"useCase": "security"
 				},
 				{
-					"contentType": "analysts",
-					"date": "2022-09-27",
-					"description": "Cloudflare has been recognized as a Leader in The Forrester Wave™: Web Application Firewalls, Q3 2022, and received the highest score in the strategy category of all assessed vendors.",
-					"id": "6c94bff9-edac-5c9d-9b1a-a6ece7362e02",
-					"pageUrl": "analysts",
-					"relatedContentBlogPost": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2022/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://www.cloudflare.com/lp/forrester-wave-for-waf-2022/",
-					"relatedContentProductPageLabel": "Analyst Report",
-					"relatedProduct": null,
-					"title": "The Forrester Wave™: Web Application Firewalls, Q3 2022",
-					"locale": "en-US",
-					"useCase": null
-				},
-				{
 					"contentType": "product",
 					"date": "2022-09-27",
 					"description": "Cloudflare Queues allows developers to send and receive messages with guaranteed delivery. It offers at-least once delivery, message batching, and does not charge for egress bandwidth.\n\nFloods of message requests can overwhelm your functions and services with too much traffic. Cloudflare Queues reliably sends and receives messages at the appropriate pace needed to ensure your services are not overwhelmed. The SQS-compatible service streamlines configuration for existing integrations and architectures, all with zero-egress fees, as a way to batch and process information.  The tight integration with Cloudflare Workers allows your developers to filter and modify any sent or received message.",
@@ -1250,6 +1234,22 @@
 					"title": "Next Generation of Page Rules",
 					"locale": "en-US",
 					"useCase": "reliability"
+				},
+				{
+					"contentType": "analysts",
+					"date": "2022-09-27",
+					"description": "Cloudflare has been recognized as a Leader in The Forrester Wave™: Web Application Firewalls, Q3 2022, and received the highest score in the strategy category of all assessed vendors.",
+					"id": "6c94bff9-edac-5c9d-9b1a-a6ece7362e02",
+					"pageUrl": "analysts",
+					"relatedContentBlogPost": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2022/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://www.cloudflare.com/lp/forrester-wave-for-waf-2022/",
+					"relatedContentProductPageLabel": "Analyst Report",
+					"relatedProduct": null,
+					"title": "The Forrester Wave™: Web Application Firewalls, Q3 2022",
+					"locale": "en-US",
+					"useCase": null
 				},
 				{
 					"contentType": "blog",
@@ -1670,22 +1670,6 @@
 				{
 					"contentType": "blog",
 					"date": "2022-03-18",
-					"description": "Now, traffic from devices with our Zero Trust client installed can route automatically to any network connected with an IP-layer on-ramp, e.g., Anycast GRE, IPsec, or CNI. This option increases the flexibility you have to connect existing network infrastructure and serves as another way to help you transition away from a traditional VPN architecture over time.",
-					"id": "0c648ad3-faed-5020-821d-f055e9d78b9e",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/bridge-to-zero-trust/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": null,
-					"relatedContentProductPageLabel": null,
-					"relatedProduct": "Cloudflare Zero Trust",
-					"title": "New on-ramp available via Zero Trust device client and Magic IP-layer tunnels",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
-					"contentType": "blog",
-					"date": "2022-03-18",
 					"description": "Secure Shell Protocol (SSH) command logging is now in closed beta, and we will be opening this feature up to users in the coming weeks. It provides a full replay of all commands run during an SSH session to help paint a clear picture in the event of an accident, suspected breach, or attack. As an extension of Cloudflare's secure Web Gateway, it provides SSH visibility at a network layer. All commands are automatically captured without complex logging software installed on individual remote machines.",
 					"id": "f99793db-af70-582d-8102-982e40f0990a",
 					"pageUrl": null,
@@ -1728,6 +1712,22 @@
 					"relatedContentProductPageLabel": null,
 					"relatedProduct": "Cloudflare Access",
 					"title": "Zero Trust: Client-based sessions now generally available",
+					"locale": "en-US",
+					"useCase": "security"
+				},
+				{
+					"contentType": "blog",
+					"date": "2022-03-18",
+					"description": "Now, traffic from devices with our Zero Trust client installed can route automatically to any network connected with an IP-layer on-ramp, e.g., Anycast GRE, IPsec, or CNI. This option increases the flexibility you have to connect existing network infrastructure and serves as another way to help you transition away from a traditional VPN architecture over time.",
+					"id": "0c648ad3-faed-5020-821d-f055e9d78b9e",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/bridge-to-zero-trust/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": null,
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": "Cloudflare Zero Trust",
+					"title": "New on-ramp available via Zero Trust device client and Magic IP-layer tunnels",
 					"locale": "en-US",
 					"useCase": "security"
 				},
