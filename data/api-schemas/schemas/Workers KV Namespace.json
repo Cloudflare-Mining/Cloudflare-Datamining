@@ -2845,6 +2845,10 @@
 		"summary": "Get multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
