@@ -438,7 +438,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: E => {
 				const Z = (0, l.tJ)(E);
-				return !(0, v.ky)(Z, [h.uD.EnterpriseTrial])
+				return !(0, y.ky)(Z, [h.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -761,7 +761,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: E => {
 				const Z = (0, d.nA)(E);
-				return Z ? !!(!(0, r.yD)(E) && !!(0, d.ZB)(E, "origin_reachability_dash", "dash_view") && (0, d.tU)(Z, "enterprise") && !!(0, y.Ek)(E, "httpRequestsAdaptiveGroups")) : !1
+				return Z ? !!(!(0, r.yD)(E) && !!(0, d.ZB)(E, "origin_reachability_dash", "dash_view") && (0, d.tU)(Z, "enterprise") && !!(0, v.Ek)(E, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -769,7 +769,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: E => {
 				const Z = (0, d.nA)(E);
-				return Z ? !!(!(0, r.yD)(E) && !!(0, d.ZB)(E, "edge_reachability_dash", "dash_view") && (0, d.tU)(Z, "enterprise") && !!(0, y.Ek)(E, "nelReportsAdaptiveGroups")) : !1
+				return Z ? !!(!(0, r.yD)(E) && !!(0, d.ZB)(E, "edge_reachability_dash", "dash_view") && (0, d.tU)(Z, "enterprise") && !!(0, v.Ek)(E, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.workers",
@@ -1163,7 +1163,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: E => !(0, r.yD)(E) && !!(0, y.Ek)(E, "healthCheckEventsAdaptiveGroups")
+			hasPermission: E => !(0, r.yD)(E) && !!(0, v.Ek)(E, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
