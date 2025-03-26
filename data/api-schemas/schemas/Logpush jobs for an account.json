@@ -546,7 +546,6 @@
 										"record_delimiter": "",
 										"record_prefix": "{",
 										"record_suffix": "}\n",
-										"record_template": "",
 										"sample_rate": 1,
 										"timestamp_format": "unixnano"
 									}
@@ -741,19 +740,16 @@
 																"type": "boolean"
 															},
 															"batch_prefix": {
-																"default": "",
 																"description": "String to be prepended before each batch.",
 																"nullable": true,
 																"type": "string"
 															},
 															"batch_suffix": {
-																"default": "",
 																"description": "String to be appended after each batch.",
 																"nullable": true,
 																"type": "string"
 															},
 															"field_delimiter": {
-																"default": ",",
 																"description": "String to join fields. This field be ignored when `record_template` is set.",
 																"nullable": true,
 																"type": "string"
@@ -781,26 +777,22 @@
 																"type": "string"
 															},
 															"record_delimiter": {
-																"default": "",
 																"description": "String to be inserted in-between the records as separator.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_prefix": {
-																"default": "{",
 																"description": "String to be prepended before each record.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_suffix": {
-																"default": "}\n",
 																"description": "String to be appended after each record.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_template": {
-																"default": "",
-																"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 																"nullable": true,
 																"type": "string"
 															},
@@ -1013,7 +1005,6 @@
 										"record_delimiter": "",
 										"record_prefix": "{",
 										"record_suffix": "}\n",
-										"record_template": "",
 										"sample_rate": 1,
 										"timestamp_format": "unixnano"
 									}
@@ -1208,19 +1199,16 @@
 																"type": "boolean"
 															},
 															"batch_prefix": {
-																"default": "",
 																"description": "String to be prepended before each batch.",
 																"nullable": true,
 																"type": "string"
 															},
 															"batch_suffix": {
-																"default": "",
 																"description": "String to be appended after each batch.",
 																"nullable": true,
 																"type": "string"
 															},
 															"field_delimiter": {
-																"default": ",",
 																"description": "String to join fields. This field be ignored when `record_template` is set.",
 																"nullable": true,
 																"type": "string"
@@ -1248,26 +1236,22 @@
 																"type": "string"
 															},
 															"record_delimiter": {
-																"default": "",
 																"description": "String to be inserted in-between the records as separator.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_prefix": {
-																"default": "{",
 																"description": "String to be prepended before each record.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_suffix": {
-																"default": "}\n",
 																"description": "String to be appended after each record.",
 																"nullable": true,
 																"type": "string"
 															},
 															"record_template": {
-																"default": "",
-																"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 																"nullable": true,
 																"type": "string"
 															},
@@ -1489,7 +1473,6 @@
 									"record_delimiter": "",
 									"record_prefix": "{",
 									"record_suffix": "}\n",
-									"record_template": "",
 									"sample_rate": 1,
 									"timestamp_format": "unixnano"
 								}
@@ -1687,19 +1670,16 @@
 															"type": "boolean"
 														},
 														"batch_prefix": {
-															"default": "",
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"batch_suffix": {
-															"default": "",
 															"description": "String to be appended after each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"field_delimiter": {
-															"default": ",",
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
 															"type": "string"
@@ -1727,26 +1707,22 @@
 															"type": "string"
 														},
 														"record_delimiter": {
-															"default": "",
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_prefix": {
-															"default": "{",
 															"description": "String to be prepended before each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_suffix": {
-															"default": "}\n",
 															"description": "String to be appended after each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_template": {
-															"default": "",
-															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
 															"type": "string"
 														},
@@ -1948,7 +1924,6 @@
 							"record_delimiter": "",
 							"record_prefix": "{",
 							"record_suffix": "}\n",
-							"record_template": "",
 							"sample_rate": 1,
 							"timestamp_format": "unixnano"
 						},
@@ -2052,19 +2027,16 @@
 										"type": "boolean"
 									},
 									"batch_prefix": {
-										"default": "",
 										"description": "String to be prepended before each batch.",
 										"nullable": true,
 										"type": "string"
 									},
 									"batch_suffix": {
-										"default": "",
 										"description": "String to be appended after each batch.",
 										"nullable": true,
 										"type": "string"
 									},
 									"field_delimiter": {
-										"default": ",",
 										"description": "String to join fields. This field be ignored when `record_template` is set.",
 										"nullable": true,
 										"type": "string"
@@ -2092,26 +2064,22 @@
 										"type": "string"
 									},
 									"record_delimiter": {
-										"default": "",
 										"description": "String to be inserted in-between the records as separator.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_prefix": {
-										"default": "{",
 										"description": "String to be prepended before each record.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_suffix": {
-										"default": "}\n",
 										"description": "String to be appended after each record.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_template": {
-										"default": "",
-										"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 										"nullable": true,
 										"type": "string"
 									},
@@ -2188,7 +2156,6 @@
 									"record_delimiter": "",
 									"record_prefix": "{",
 									"record_suffix": "}\n",
-									"record_template": "",
 									"sample_rate": 1,
 									"timestamp_format": "unixnano"
 								}
@@ -2386,19 +2353,16 @@
 															"type": "boolean"
 														},
 														"batch_prefix": {
-															"default": "",
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"batch_suffix": {
-															"default": "",
 															"description": "String to be appended after each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"field_delimiter": {
-															"default": ",",
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
 															"type": "string"
@@ -2426,26 +2390,22 @@
 															"type": "string"
 														},
 														"record_delimiter": {
-															"default": "",
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_prefix": {
-															"default": "{",
 															"description": "String to be prepended before each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_suffix": {
-															"default": "}\n",
 															"description": "String to be appended after each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_template": {
-															"default": "",
-															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
 															"type": "string"
 														},
@@ -3906,7 +3866,6 @@
 							"record_delimiter": "",
 							"record_prefix": "{",
 							"record_suffix": "}\n",
-							"record_template": "",
 							"sample_rate": 1,
 							"timestamp_format": "unixnano"
 						},
@@ -4002,19 +3961,16 @@
 										"type": "boolean"
 									},
 									"batch_prefix": {
-										"default": "",
 										"description": "String to be prepended before each batch.",
 										"nullable": true,
 										"type": "string"
 									},
 									"batch_suffix": {
-										"default": "",
 										"description": "String to be appended after each batch.",
 										"nullable": true,
 										"type": "string"
 									},
 									"field_delimiter": {
-										"default": ",",
 										"description": "String to join fields. This field be ignored when `record_template` is set.",
 										"nullable": true,
 										"type": "string"
@@ -4042,26 +3998,22 @@
 										"type": "string"
 									},
 									"record_delimiter": {
-										"default": "",
 										"description": "String to be inserted in-between the records as separator.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_prefix": {
-										"default": "{",
 										"description": "String to be prepended before each record.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_suffix": {
-										"default": "}\n",
 										"description": "String to be appended after each record.",
 										"nullable": true,
 										"type": "string"
 									},
 									"record_template": {
-										"default": "",
-										"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 										"nullable": true,
 										"type": "string"
 									},
@@ -4135,7 +4087,6 @@
 									"record_delimiter": "",
 									"record_prefix": "{",
 									"record_suffix": "}\n",
-									"record_template": "",
 									"sample_rate": 1,
 									"timestamp_format": "unixnano"
 								}
@@ -4333,19 +4284,16 @@
 															"type": "boolean"
 														},
 														"batch_prefix": {
-															"default": "",
 															"description": "String to be prepended before each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"batch_suffix": {
-															"default": "",
 															"description": "String to be appended after each batch.",
 															"nullable": true,
 															"type": "string"
 														},
 														"field_delimiter": {
-															"default": ",",
 															"description": "String to join fields. This field be ignored when `record_template` is set.",
 															"nullable": true,
 															"type": "string"
@@ -4373,26 +4321,22 @@
 															"type": "string"
 														},
 														"record_delimiter": {
-															"default": "",
 															"description": "String to be inserted in-between the records as separator.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_prefix": {
-															"default": "{",
 															"description": "String to be prepended before each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_suffix": {
-															"default": "}\n",
 															"description": "String to be appended after each record.",
 															"nullable": true,
 															"type": "string"
 														},
 														"record_template": {
-															"default": "",
-															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
 															"nullable": true,
 															"type": "string"
 														},
