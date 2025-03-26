@@ -1,4 +1,5 @@
 import Dlp from './Dlp';
+import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -40,6 +41,7 @@ import CloudflareBrowserOutline from './CloudflareBrowserOutline';
 import CloudflareDex from './CloudflareDex';
 import CloudflareEmailSecurity from './CloudflareEmailSecurity';
 import CloudflareMagicWan from './CloudflareMagicWan';
+import CloudflarePipelines from './CloudflarePipelines';
 import CloudflareRulesetEngine from './CloudflareRulesetEngine';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
@@ -167,7 +169,6 @@ import ThumbsDownSolid from './ThumbsDownSolid';
 import ThumbsUpOutline from './ThumbsUpOutline';
 import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
-import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -201,6 +202,7 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
+  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -242,6 +244,7 @@ export default {
   'cloudflare-dex': CloudflareDex,
   'cloudflare-email-security': CloudflareEmailSecurity,
   'cloudflare-magic-wan': CloudflareMagicWan,
+  'cloudflare-pipelines': CloudflarePipelines,
   'cloudflare-ruleset-engine': CloudflareRulesetEngine,
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
@@ -369,7 +372,6 @@ export default {
   'thumbs-up-outline': ThumbsUpOutline,
   'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
-  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,

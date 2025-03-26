@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.29.0
+
+### Minor Changes
+
+- 22fd3f2cd3: Add "cloudflare-pipelines" icon
+
 ## 12.28.0
 
 ### Minor Changes

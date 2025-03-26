@@ -1,6 +1,7 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -42,6 +43,7 @@ declare const _default: {
     'cloudflare-dex': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-email-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-magic-wan': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloudflare-pipelines': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-ruleset-engine': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-application': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-network': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -169,7 +171,6 @@ declare const _default: {
     'thumbs-up-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-up-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
