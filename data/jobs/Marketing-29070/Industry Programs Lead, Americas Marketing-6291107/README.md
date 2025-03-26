@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h3><strong>Preferred Location: New York , NY</strong></h3>
-<h3><strong>Additional Locations: Austin, TX | Denver, CO | New York, NY | San Francisco, CA<br></strong></h3>
+<h3><strong>Additional Locations: Austin, TX | Denver, CO | San Francisco, CA<br></strong></h3>
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare’s Americas Marketing Team is looking for a strategic and results-driven <strong>Industry Programs Lead</strong> to expand our presence within key vertical markets, including <strong>financial services, healthcare, retail, and others</strong>. This role will be instrumental in shaping and executing targeted industry marketing programs that drive awareness, engagement, and pipeline growth.</p>
 <p>As the <strong>Industry Programs Lead</strong>, you will collaborate closely with <strong>regional marketing teams, sales, product marketing, and strategy teams</strong> to develop and activate industry-specific initiatives. You will also manage partnerships with <strong>key industry associations</strong> such as <strong>Information Sharing and Analysis Centers (ISACs), HIMSS, National Retail Federation (NRF),</strong> and others, ensuring Cloudflare’s brand and solutions are effectively positioned within these communities.</p>
