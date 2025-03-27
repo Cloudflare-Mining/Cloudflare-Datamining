@@ -5,59 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This Role is available in the following Locations:&nbsp;</strong></h4>
-<p>London, UK</p>
-<p>Lisbon, Portugal&nbsp;</p>
-<p>Austin, TX</p>
+<h3><strong>Available Locations: Aarhus, Denmark | Austin, TX | Lisbon, Portugal | London, UK | Munich, Germany</strong></h3>
+<h3><strong>Principal VM Engineer – Workers Runtime Team</strong></h3>
 <h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>You will lead a team of passionate, talented engineers that are building innovative products that touch billions of web requests each day. In this role, you will introduce tools and processes to make our engineers’ lives better. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>About the team</strong></p>
-<p>The Engineering Productivity Team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and serve high volumes of requests every day.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<p>The <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team at Cloudflare builds and launches bold, new products that push the boundaries of what’s possible on the internet. By leveraging Cloudflare’s massive network and edge computing capabilities, we solve complex problems at a scale few others can achieve.</p>
+<h4><strong>About the Team</strong></h4>
+<p>The <strong>Workers Runtime team</strong> is responsible for the execution environment that runs customer code at the edge. We focus on <strong>performance, security, and scalability</strong>, enhancing <strong>JavaScript APIs, WebAssembly support, and system optimizations</strong> to prepare for the next <strong>10x scale increase</strong>. Our runtime operates in a <strong>resource-constrained, highly secure environment</strong>, requiring careful management of <strong>memory, CPU, and I/O</strong>.</p>
+<h4><strong>What You'll Do</strong></h4>
+<p>We are looking for a <strong>VM Engineer</strong> to help improve and embed the <strong>V8 virtual machine</strong> in our runtime. You’ll work on <strong>low-level optimizations, performance enhancements, garbage collection, and language support</strong> to ensure our platform remains cutting-edge. This role is ideal for engineers who love tackling <strong>high-performance, low-latency challenges</strong> in distributed environments.</p>
+<h4><strong>Key Responsibilities</strong></h4>
 <ul>
-	<li>4+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Familiarity with networking terminology, tooling, patterns, and technologies.</li>
+	<li><strong>Optimize and embed the V8 VM</strong> within Cloudflare’s Workers Runtime.</li>
+	<li>Improve <strong>JavaScript execution performance</strong> and <strong>WebAssembly integration</strong>.</li>
+	<li>Debug, optimize, and enhance <strong>low-latency, real-time environments</strong>.</li>
+	<li>Ensure the reliability and efficiency of <strong>large-scale, Linux-based distributed systems</strong>.</li>
+	<li>Collaborate with engineers across <strong>runtime, security, and networking teams</strong> to push the boundaries of edge computing.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h4><strong>What We're Looking For</strong></h4>
 <ul>
-	<li>Experience building and running Platform engineering teams</li>
+	<li><strong>6+ years of professional experience with C++.</strong></li>
+	<li><strong>4+ years of hands-on VM/compiler experience</strong>, ideally with <strong>V8</strong>.</li>
+	<li>Strong knowledge of <strong>computer science fundamentals</strong>, including <strong>data structures, algorithms, and system architecture</strong>.</li>
+	<li>Experience with <strong>low-latency environments</strong> (e.g., game streaming, trading systems, high-performance computing).</li>
+	<li>Operational mindset – you build <strong>scalable, production-ready</strong> solutions.</li>
+	<li>Deep understanding of <strong>web technologies</strong> (HTTP, JavaScript, WASM).</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Experience working with <strong>Rust</strong> in high-performance distributed systems.</li>
+	<li>Familiarity with <strong>serverless platforms</strong> and <strong>cloud computing</strong>.</li>
+	<li>Deep knowledge of <strong>JS engine internals</strong> (V8, SpiderMonkey, JavaScriptCore).</li>
+	<li>Experience with <strong>standalone WebAssembly runtimes</strong> (Wasmtime, Wasmer, Lucet).</li>
+	<li>Strong expertise in <strong>Linux/UNIX systems, kernels, and networking</strong>.</li>
+	<li>Contributions to <strong>large open-source projects</strong>.</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>This is an exciting opportunity to work on <strong>cutting-edge compiler and runtime technologies</strong> at an <strong>unmatched scale</strong>. If you're passionate about <strong>high-performance computing, distributed systems, and compilers</strong>, we’d love to hear from you!</p>
+<h3><br><br></h3>
+<h3 id="CopyofSeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

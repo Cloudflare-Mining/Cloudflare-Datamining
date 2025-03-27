@@ -5,43 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Aarhus, Denmark | Austin, TX | Lisbon, Portugal | London, UK | Munich, Germany</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>The <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team at Cloudflare builds and launches bold, new products that push the boundaries of what’s possible on the internet. By leveraging Cloudflare’s massive network and edge computing capabilities, we solve complex problems at a scale few others can achieve.</p>
-<h3><strong>About the Team</strong></h3>
-<p>The <strong>Workers Runtime team</strong> is responsible for the execution environment that runs customer code at the edge. We focus on <strong>performance, security, and scalability</strong>, enhancing <strong>JavaScript APIs, WebAssembly support, and system optimizations</strong> to prepare for the next <strong>10x scale increase</strong>. Our runtime operates in a <strong>resource-constrained, highly secure environment</strong>, requiring careful management of <strong>memory, CPU, and I/O</strong>.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>We are looking for a <strong>Compiler Engineer</strong> to help improve and embed the <strong>V8 compiler</strong> in our runtime. You’ll work on <strong>low-level optimizations, performance enhancements, and language support</strong> to ensure our platform remains cutting-edge. This role is ideal for engineers who love tackling <strong>high-performance, low-latency challenges</strong> in distributed environments.</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Location: </strong>London, UK</p>
+<p><strong>Role Summary</strong></p>
+<p>Lead and line-manage a small team of engineers responsible for a core part of the Cloudflare platform - the rulesets system. This is a performance and security sensitive system which provides facilities for selecting traffic and applying actions to that traffic. The system handles tens of millions of requests per second and supports over 20 product teams across the whole range of Cloudflare’s product offerings.</p>
+<p>You will guide the career growth of the team members, and ensure we have the right skills and behaviours in the team. You will need to identify high level strategies to meet the needs of the company, and apply those to balance short and long term priorities for the team.</p>
+<p>It also involves building relationships with teams across the company, to identify their needs and support them in building products for customers. You will also be involved in direct product development for customers, working closely with our product, support and customer facing teams.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><strong>Optimize and embed the V8 compiler</strong> within Cloudflare’s Workers Runtime.</li>
-	<li>Improve <strong>JavaScript execution performance</strong> and <strong>WebAssembly integration</strong>.</li>
-	<li>Debug, optimize, and enhance <strong>low-latency, real-time environments</strong>.</li>
-	<li>Ensure the reliability and efficiency of <strong>large-scale, Linux-based distributed systems</strong>.</li>
-	<li>Collaborate with engineers across <strong>runtime, security, and networking teams</strong> to push the boundaries of edge computing.</li>
+	<li>Prioritise short and long term tasks to balance the immediate needs and long term strategic goals of the company.</li>
+	<li>Support and guide the career growth of the team.</li>
+	<li>Hire new team members.</li>
+	<li>Ensure quality of engineering.</li>
+	<li>Participate in our incident management process.</li>
+	<li>Organise the team to provide effective 24/7 escalation support for the system in case of critical incidents.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p>This is not a hands-on engineering role; you will not be writing code. However, you will need to guide the team to make appropriate engineering and architectural decisions, which requires strong technical skills.</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li><strong>6+ years of professional experience with C++.</strong></li>
-	<li><strong>4+ years of hands-on compiler experience</strong>, ideally with <strong>V8</strong>.</li>
-	<li>Strong knowledge of <strong>computer science fundamentals</strong>, including <strong>data structures, algorithms, and system architecture</strong>.</li>
-	<li>Experience with <strong>low-latency environments</strong> (e.g., game streaming, trading systems, high-performance computing).</li>
-	<li>Operational mindset – you build <strong>scalable, production-ready</strong> solutions.</li>
-	<li>Deep understanding of <strong>web technologies</strong> (HTTP, JavaScript, WebAssembly).</li>
+	<li>Minimum 2 years experience in engineering management.</li>
+	<li>Significant experience as a hands-on engineer.</li>
+	<li>Excellent at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Experience of managing multiple concurrent projects with competing priorities.</li>
+	<li>Track record of managing a diverse team including hiring, onboarding, and professional development. You inspire your team to reach higher and to get there by collaborating. You’re as good at explaining “why” as you are “how”.</li>
+	<li>Working with other managers, maintaining clear lines of communication across and upwards in an organisation.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Experience working with <strong>Rust</strong> in high-performance distributed systems.</li>
-	<li>Familiarity with <strong>serverless platforms</strong> and <strong>cloud computing</strong>.</li>
-	<li>Deep knowledge of <strong>JS engine internals</strong> (V8, SpiderMonkey, JavaScriptCore).</li>
-	<li>Experience with <strong>standalone WebAssembly runtimes</strong> (Wasmtime, Wasmer, Lucet).</li>
-	<li>Strong expertise in <strong>Linux/UNIX systems, kernels, and networking</strong>.</li>
-	<li>Contributions to <strong>large open-source projects</strong>.</li>
+	<li>Experience of operating high performance and large scale software systems.</li>
+	<li>Customer focussed experience - managing difficult conversations with customers.</li>
 </ul>
-<p>This is an exciting opportunity to work on <strong>cutting-edge compiler and runtime technologies</strong> at an <strong>unmatched scale</strong>. If you're passionate about <strong>high-performance computing, distributed systems, and compilers</strong>, we’d love to hear from you!</p>
-<p>&nbsp;</p>
-<h3 id="CopyofSeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
