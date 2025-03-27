@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.10.1
+
+### Patch Changes
+
+- 29a7842944: export V2 colors
+
 ## 5.10.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.0.52
+
+### Patch Changes
+
+- @cloudflare/component-link@8.1.24
+- @cloudflare/component-visually-hidden@1.0.92
+
 ## 9.0.51
 
 ### Patch Changes

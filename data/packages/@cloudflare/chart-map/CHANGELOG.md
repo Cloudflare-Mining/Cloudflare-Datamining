@@ -1,5 +1,14 @@
 # Change Log
 
+## 9.0.1
+
+### Patch Changes
+
+- @cloudflare/chart-color-legend@5.0.7
+- @cloudflare/component-box@4.0.7
+- @cloudflare/component-tooltip@5.1.3
+- @cloudflare/component-text@4.0.7
+
 ## 9.0.0
 
 ### Major Changes

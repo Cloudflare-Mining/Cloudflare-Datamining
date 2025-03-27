@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.1
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.7
+
 ## 4.0.0
 
 ### Major Changes
