@@ -5,36 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Texas<strong>; </strong>Lisbon, Portugal; London, UK&nbsp;</p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
-<p><strong>The Team</strong></p>
-<p>Security Compliance is seen as a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
-<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. You will join as a member focused on developing and maintaining an internal control framework, aligned with security and privacy standards and internal security requirements. This team is part of Security Compliance and is part of the greater Security Team under Cloudflare’s Chief Security Officer. We guarantee that you will be challenged and have room for growth on our team!&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal</p>
+<h4><strong>About the team</strong></h4>
+<p>In the realm of Cloudflare's global network, capacity engineering takes center stage as the conductor of orchestrated growth and maintenance of Cloudflare’s global infrastructure. This critical role involves forecasting diverse workloads, collaborating closely with engineering teams to optimize resources, and meticulously planning and deploying hardware, including compute, GPU, storage, and network components. The ultimate goal: ensuring Cloudflare's customers enjoy a consistently seamless online experience.</p>
+<h4><strong>About the Role</strong></h4>
+<p>The Infrastructure Capacity Engineer in Infrastructure Forecasting &amp; Insights ensures that different internal teams are aligned with the organization's mission, strategy, and objectives. The Forecasting &amp; Insights team analyzes data and its key drivers for both internal and external users. They take charge of the long-term forecasting of Infrastructure Capacity and develop advanced analytics and models to improve overall forecasts and operational analytics. This position will focus specifically on the forecasting to support the Compute, Storage and Artificial Intelligence needs for Cloudflare’s suite of products.&nbsp; Additionally, they will have to be able to leverage their software engineering skills to connect to various upstream and downstream systems ensuring the forecasting plan matches the execution.</p>
+<h4><strong>Core Responsibilities</strong></h4>
+<p>Delivers multi-year forecasting plan end-to-end of our Edge Infrastructure capacity plan, including data center expansions, supply chain requirements, and data center management workflows aligned with various internal engineering teams.</p>
 <ul>
-	<li>Manage and oversee all security policies and standards at Cloudflare</li>
-	<li>Develop, implement, and maintain security policies and standards to ensure compliance with industry standards and regulatory requirements, and address emerging threats and changes in the regulatory landscape</li>
-	<li>Collaborate with cross-functional teams (e.g. Security, Engineering, IT, Legal, People) to integrate security policies into business processes and systems, and</li>
-	<li>&nbsp;ensure alignment and effective risk management</li>
-	<li>Improve the maturity of Cloudflare’s Security program with a focus on our policies and controls</li>
-	<li>Collaborate with security, risk, and compliance specialists to develop policy review and exceptions processes</li>
-	<li>Help maintain and mature Cloudflare’s security and privacy controls</li>
-	<li>Help guide our overall security and privacy policies and governance architecture</li>
-	<li>Have input and contribute to the overall security compliance strategy and roadmap</li>
+	<li>Collaborate with major partners including Engineering, Product, Data Center Selectin,Finance, Operations and Business Expansion teams to develop a strategic approach to create and capacity planning verticals</li>
+	<li>Run an excellent organization and set-up mechanisms to lead teams across multiple locations globally.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>3-6 years working in security compliance, with a strong emphasis on developing and managing security policies</li>
-	<li>Knowledge of Security Compliance Frameworks and previous experience managing security control frameworks</li>
-	<li>Strong communication skills and the ability to work cross-functionally with internal stakeholders</li>
-	<li>Experience in drafting technical policies, standards, or procedures</li>
-	<li>Experience in auditing of network, operating system, and application security</li>
-	<li>Familiarity with security standards and frameworks such as ISO 27000 family, SOC 2, PCI DSS, NIST 800-53</li>
-	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
-	<li>CISA, CRISC, CISSP, CIPP, CIPM, or CIPT are a plus</li>
+	<li>5+ years of working experience in an Executive Data Management, Data Analytics or Cloud leadership position within a fast-paced and complex Organization.</li>
+	<li>Experience in leading large infrastructure architecture programs, teams and cloud infrastructure architecture management.</li>
+	<li>Experience building and leading data &amp; analytics organization or practices as well as successful experience evangelizing/advocating for data analytics value across an Organization and to diverse audiences.</li>
+	<li>Direct experience driving continuous improvements in process and operational efficiencies. Lead process-improvement efforts and manage the implementation of both business processes and technical solutions. Drive standards across cross functional teams.</li>
+	<li>Proven and successful experience in a consulting role for senior Organization leadership and executives. As well as experience with hands-on leadership roles directly managing data and analytics teams, and driving change within a large, complex Organization’s.</li>
+	<li>An understanding of cloud architecture, underlying markets and key market drivers, and global megatrends and the value of data &amp; analytics in acting on external disruption and market trends</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
