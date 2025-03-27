@@ -1129,9 +1129,10 @@
 													"type": {
 														"description": "The type of actor.",
 														"enum": [
-															"user",
 															"account",
-															"cloudflare-admin"
+															"cloudflare_admin",
+															"system",
+															"user"
 														],
 														"example": "user",
 														"type": "string"
