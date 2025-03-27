@@ -1,5 +1,7 @@
 # Change Log
 
+## 12.29.1
+
 ## 12.29.0
 
 ### Minor Changes
