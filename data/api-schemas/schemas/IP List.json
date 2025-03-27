@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -142,14 +143,17 @@
 											"items": {
 												"properties": {
 													"description": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"name": {
 														"example": "Malware",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -292,14 +296,17 @@
 													"items": {
 														"properties": {
 															"description": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
 																"example": "Malware",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"

@@ -8,7 +8,8 @@
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -98,7 +100,8 @@
 								{
 									"properties": {
 										"result": {
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										}
 									}
 								}
@@ -184,7 +187,8 @@
 										{
 											"properties": {
 												"result": {
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												}
 											}
 										}
@@ -306,7 +310,8 @@
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"x-auditable": true
 				}
 			},
 			{
@@ -318,7 +323,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -329,7 +335,8 @@
 						"schema": {
 							"properties": {
 								"asn": {
-									"type": "integer"
+									"type": "integer",
+									"x-auditable": true
 								},
 								"count": {
 									"description": "Total results returned based on your search parameters.",
@@ -374,7 +381,8 @@
 								{
 									"properties": {
 										"asn": {
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"count": {
 											"description": "Total results returned based on your search parameters.",

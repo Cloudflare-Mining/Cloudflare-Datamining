@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -27,7 +28,8 @@
 										"description": "URL(s) to filter submissions results by",
 										"example": "https://www.cloudflare.com",
 										"format": "uri",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -121,7 +123,8 @@
 															"url": {
 																"description": "URL that was excluded.",
 																"example": "https://developers.cloudflare.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -135,12 +138,14 @@
 															"url": {
 																"description": "URL that was skipped.",
 																"example": "https://www.cloudflare.com/developer-week/",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"url_id": {
 																"description": "ID of the submission of that URL that is currently scanning.",
 																"example": 2,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -154,12 +159,14 @@
 															"url": {
 																"description": "URL that was submitted.",
 																"example": "https://www.cloudflare.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"url_id": {
 																"description": "ID assigned to this URL submission. Used to retrieve scanning results.",
 																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -261,7 +268,8 @@
 																	"url": {
 																		"description": "URL that was excluded.",
 																		"example": "https://developers.cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -275,12 +283,14 @@
 																	"url": {
 																		"description": "URL that was skipped.",
 																		"example": "https://www.cloudflare.com/developer-week/",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"url_id": {
 																		"description": "ID of the submission of that URL that is currently scanning.",
 																		"example": 2,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -294,12 +304,14 @@
 																	"url": {
 																		"description": "URL that was submitted.",
 																		"example": "https://www.cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"url_id": {
 																		"description": "ID assigned to this URL submission. Used to retrieve scanning results.",
 																		"example": 1,
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

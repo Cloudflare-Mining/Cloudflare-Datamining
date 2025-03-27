@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,13 +25,15 @@
 							"description": "Defaults to the current date.",
 							"example": "2021-04-30",
 							"format": "date",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						"start": {
 							"description": "Defaults to 30 days before the end parameter value.",
 							"example": "2021-04-01",
 							"format": "date",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					},
 					"type": "object"
@@ -189,17 +192,20 @@
 																"description": "First seen date of the DNS record during the time period.",
 																"example": "2021-04-01",
 																"format": "date",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"hostname": {
 																"description": "Hostname that the IP was observed resolving to.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"last_seen": {
 																"description": "Last seen date of the DNS record during the time period.",
 																"example": "2021-04-30",
 																"format": "date",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -346,17 +352,20 @@
 																		"description": "First seen date of the DNS record during the time period.",
 																		"example": "2021-04-01",
 																		"format": "date",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"hostname": {
 																		"description": "Hostname that the IP was observed resolving to.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"last_seen": {
 																		"description": "Last seen date of the DNS record during the time period.",
 																		"example": "2021-04-30",
 																		"format": "date",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

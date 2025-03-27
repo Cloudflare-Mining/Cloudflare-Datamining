@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -132,12 +133,14 @@
 															"category": {
 																"description": "Name of the category applied.",
 																"example": "PHISHING",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"verification_status": {
 																"description": "Result of human review for this categorization.",
 																"example": "confirmed",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -151,7 +154,8 @@
 															"model_name": {
 																"description": "Name of the model.",
 																"example": "MACHINE_LEARNING_v2",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"model_score": {
 																"description": "Score output by the model for this submission.",
@@ -178,12 +182,14 @@
 															"description": {
 																"description": "Description of the signature that matched.",
 																"example": "Match frequently used social followers phishing kit",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the signature that matched.",
 																"example": "phishkit.social_followers",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -196,7 +202,8 @@
 														"last_processed": {
 															"description": "Timestamp of when the submission was processed.",
 															"example": "Wed, 26 Oct 2022 16:04:51 GMT",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"scan_complete": {
 															"description": "For internal use.",
@@ -204,11 +211,13 @@
 														},
 														"status_code": {
 															"description": "Status code that the crawler received when loading the submitted URL.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"submission_id": {
 															"description": "ID of the most recent submission.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -224,7 +233,8 @@
 												"url": {
 													"description": "URL that was submitted.",
 													"example": "https://www.cloudflare.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -321,12 +331,14 @@
 																	"category": {
 																		"description": "Name of the category applied.",
 																		"example": "PHISHING",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"verification_status": {
 																		"description": "Result of human review for this categorization.",
 																		"example": "confirmed",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -340,7 +352,8 @@
 																	"model_name": {
 																		"description": "Name of the model.",
 																		"example": "MACHINE_LEARNING_v2",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"model_score": {
 																		"description": "Score output by the model for this submission.",
@@ -367,12 +380,14 @@
 																	"description": {
 																		"description": "Description of the signature that matched.",
 																		"example": "Match frequently used social followers phishing kit",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Name of the signature that matched.",
 																		"example": "phishkit.social_followers",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -385,7 +400,8 @@
 																"last_processed": {
 																	"description": "Timestamp of when the submission was processed.",
 																	"example": "Wed, 26 Oct 2022 16:04:51 GMT",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scan_complete": {
 																	"description": "For internal use.",
@@ -393,11 +409,13 @@
 																},
 																"status_code": {
 																	"description": "Status code that the crawler received when loading the submitted URL.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"submission_id": {
 																	"description": "ID of the most recent submission.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -413,7 +431,8 @@
 														"url": {
 															"description": "URL that was submitted.",
 															"example": "https://www.cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

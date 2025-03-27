@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -160,15 +161,18 @@
 														"properties": {
 															"country": {
 																"example": "US",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"example": "CLOUDFLARENET",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "Infrastructure type of this ASN.",
@@ -178,10 +182,12 @@
 																	"organization"
 																],
 																"example": "hosting_provider",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -191,15 +197,18 @@
 															{
 																"example": "192.0.2.0",
 																"format": "ipv4",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"example": "2001:0DB8::",
 																"format": "ipv6",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"risk_types": {
 														"example": [
@@ -215,7 +224,8 @@
 																	"type": "number"
 																},
 																"name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"super_category_id": {
 																	"type": "number"
@@ -370,15 +380,18 @@
 																"properties": {
 																	"country": {
 																		"example": "US",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"description": {
 																		"example": "CLOUDFLARENET",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "Infrastructure type of this ASN.",
@@ -388,10 +401,12 @@
 																			"organization"
 																		],
 																		"example": "hosting_provider",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -401,15 +416,18 @@
 																	{
 																		"example": "192.0.2.0",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"example": "2001:0DB8::",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"risk_types": {
 																"example": [
@@ -425,7 +443,8 @@
 																			"type": "number"
 																		},
 																		"name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"super_category_id": {
 																			"type": "number"

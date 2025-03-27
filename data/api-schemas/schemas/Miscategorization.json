@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -27,7 +28,8 @@
 									82
 								],
 								"items": {
-									"type": "integer"
+									"type": "integer",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -37,7 +39,8 @@
 									155
 								],
 								"items": {
-									"type": "integer"
+									"type": "integer",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -49,12 +52,14 @@
 									"url"
 								],
 								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip": {
 								"description": "Provide only if indicator_type is `ipv4` or `ipv6`.",
 								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"security_adds": {
 								"description": "Security category IDs to add.",
@@ -63,7 +68,8 @@
 									131
 								],
 								"items": {
-									"type": "integer"
+									"type": "integer",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -73,13 +79,15 @@
 									83
 								],
 								"items": {
-									"type": "integer"
+									"type": "integer",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
 							"url": {
 								"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"

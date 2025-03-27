@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -162,12 +163,14 @@
 																"end": {
 																	"example": "2021-04-30",
 																	"format": "date",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"start": {
 																	"example": "2021-04-01",
 																	"format": "date",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -176,7 +179,8 @@
 													},
 													"domain": {
 														"example": "cloudflare.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -332,12 +336,14 @@
 																		"end": {
 																			"example": "2021-04-30",
 																			"format": "date",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"start": {
 																			"example": "2021-04-01",
 																			"format": "date",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -346,7 +352,8 @@
 															},
 															"domain": {
 																"example": "cloudflare.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"

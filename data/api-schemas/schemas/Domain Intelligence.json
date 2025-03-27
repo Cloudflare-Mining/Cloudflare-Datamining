@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -104,7 +105,8 @@
 														"suspected_malware_family": {
 															"description": "Suspected DGA malware family.",
 															"example": "",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -113,11 +115,13 @@
 													"description": "Application that the hostname belongs to.",
 													"properties": {
 														"id": {
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "CLOUDFLARE",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -134,13 +138,16 @@
 														"description": "Current content categories.",
 														"properties": {
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"super_category_id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -149,20 +156,24 @@
 												},
 												"domain": {
 													"example": "cloudflare.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"inherited_content_categories": {
 													"example": [],
 													"items": {
 														"properties": {
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"super_category_id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -171,20 +182,24 @@
 												},
 												"inherited_from": {
 													"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"inherited_risk_types": {
 													"example": [],
 													"items": {
 														"properties": {
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"super_category_id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -193,7 +208,8 @@
 												},
 												"popularity_rank": {
 													"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"resolves_to_refs": {
 													"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
@@ -202,12 +218,14 @@
 															"id": {
 																"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
 																"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"value": {
 																"description": "IP address or domain name.",
 																"example": "192.0.2.0",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -223,13 +241,16 @@
 													"items": {
 														"properties": {
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"super_category_id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -330,7 +351,8 @@
 																"suspected_malware_family": {
 																	"description": "Suspected DGA malware family.",
 																	"example": "",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -339,11 +361,13 @@
 															"description": "Application that the hostname belongs to.",
 															"properties": {
 																"id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"name": {
 																	"example": "CLOUDFLARE",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -360,13 +384,16 @@
 																"description": "Current content categories.",
 																"properties": {
 																	"id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"super_category_id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -375,20 +402,24 @@
 														},
 														"domain": {
 															"example": "cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"inherited_content_categories": {
 															"example": [],
 															"items": {
 																"properties": {
 																	"id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"super_category_id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -397,20 +428,24 @@
 														},
 														"inherited_from": {
 															"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"inherited_risk_types": {
 															"example": [],
 															"items": {
 																"properties": {
 																	"id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"super_category_id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -419,7 +454,8 @@
 														},
 														"popularity_rank": {
 															"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"resolves_to_refs": {
 															"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
@@ -428,12 +464,14 @@
 																	"id": {
 																		"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
 																		"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "IP address or domain name.",
 																		"example": "192.0.2.0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -449,13 +487,16 @@
 															"items": {
 																"properties": {
 																	"id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"super_category_id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -589,7 +630,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -731,7 +773,8 @@
 															"suspected_malware_family": {
 																"description": "Suspected DGA malware family.",
 																"example": "",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -740,11 +783,13 @@
 														"description": "Application that the hostname belongs to.",
 														"properties": {
 															"id": {
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"name": {
 																"example": "CLOUDFLARE",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -761,13 +806,16 @@
 															"description": "Current content categories.",
 															"properties": {
 																"id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"super_category_id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -776,20 +824,24 @@
 													},
 													"domain": {
 														"example": "cloudflare.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"inherited_content_categories": {
 														"example": [],
 														"items": {
 															"properties": {
 																"id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"super_category_id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -798,20 +850,24 @@
 													},
 													"inherited_from": {
 														"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"inherited_risk_types": {
 														"example": [],
 														"items": {
 															"properties": {
 																"id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"super_category_id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -820,7 +876,8 @@
 													},
 													"popularity_rank": {
 														"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"risk_score": {
 														"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
@@ -831,13 +888,16 @@
 														"items": {
 															"properties": {
 																"id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																},
 																"name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"super_category_id": {
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -989,7 +1049,8 @@
 																	"suspected_malware_family": {
 																		"description": "Suspected DGA malware family.",
 																		"example": "",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -998,11 +1059,13 @@
 																"description": "Application that the hostname belongs to.",
 																"properties": {
 																	"id": {
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"example": "CLOUDFLARE",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1019,13 +1082,16 @@
 																	"description": "Current content categories.",
 																	"properties": {
 																		"id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"super_category_id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1034,20 +1100,24 @@
 															},
 															"domain": {
 																"example": "cloudflare.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inherited_content_categories": {
 																"example": [],
 																"items": {
 																	"properties": {
 																		"id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"super_category_id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1056,20 +1126,24 @@
 															},
 															"inherited_from": {
 																"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inherited_risk_types": {
 																"example": [],
 																"items": {
 																	"properties": {
 																		"id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"super_category_id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1078,7 +1152,8 @@
 															},
 															"popularity_rank": {
 																"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"risk_score": {
 																"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
@@ -1089,13 +1164,16 @@
 																"items": {
 																	"properties": {
 																		"id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		},
 																		"name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"super_category_id": {
-																			"type": "integer"
+																			"type": "integer",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
