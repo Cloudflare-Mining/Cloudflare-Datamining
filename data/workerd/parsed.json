@@ -2864,6 +2864,13 @@
 						"compatEnableDate": "2025-04-19",
 						"compatEnableFlag": "cache_api_compat_flags"
 					}
+				},
+				{
+					"name": "pythonWorkersDurableObjects",
+					"annotations": {
+						"compatEnableFlag": "python_workers_durable_objects",
+						"experimental": "true"
+					}
 				}
 			]
 		},
