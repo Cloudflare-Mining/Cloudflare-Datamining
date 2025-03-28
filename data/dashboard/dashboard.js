@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e8e38e5c-6835-5c92-a0cc-9de4ce14ea23")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f4f8d765-0de3-59ed-8cf2-250ad7804f6e")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1018,10 +1018,10 @@
 					t.g.build = Dn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "d70e92041bafb955c45b86e4f3b941bef6b7cbcf",
-						dashVersion: "32107756",
+						commit: "7f07e80af90fbfa060d0acf60bf18e93c6d01e16",
+						dashVersion: "32110315",
 						env: "production",
-						builtAt: 1743193870159,
+						builtAt: 1743200523845,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -2839,14 +2839,15 @@
 						color: "white"
 					})) : K === "text-icon" || K === "icon-only-with-add-button" ? o().createElement(l.zx, {
 						type: "primary",
-						mr: K === "icon-only-with-add-button" ? 3 : 0
+						mr: K === "text-icon" ? 2 : 3
 					}, o().createElement(o().Fragment, null, o().createElement(s.J, {
 						label: "plus",
 						type: "plus"
 					}), " ", o().createElement(i.cC, {
 						id: "common.add"
 					}))) : o().createElement(l.zx, {
-						type: "primary"
+						type: "primary",
+						mr: 2
 					}, o().createElement(i.cC, {
 						id: "common.add"
 					}), " ", o().createElement(s.J, {
@@ -20099,4 +20100,4 @@
 	}
 ]);
 
-//# debugId=e8e38e5c-6835-5c92-a0cc-9de4ce14ea23
+//# debugId=f4f8d765-0de3-59ed-8cf2-250ad7804f6e
