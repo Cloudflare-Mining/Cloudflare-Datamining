@@ -3513,24 +3513,24 @@
 			"name": "@cloudflare/util-http-file",
 			"version": "1.2.62",
 			"dependencies": {
-				"@cloudflare/util-http": "^2.0.16",
-				"@cloudflare/util-sparrow": "^6.0.0",
-				"dom-to-image": "^2.6.0",
 				"flat": "5.0.2",
-				"papaparse": "^5.3.1"
+				"papaparse": "^5.3.1",
+				"dom-to-image": "^2.6.0",
+				"@cloudflare/util-http": "^2.0.16",
+				"@cloudflare/util-sparrow": "^6.0.0"
 			},
 			"dist": {
 				"shasum": "ca1114b2d49a6a0a5c3fd019e2dea7b636e1895e",
-				"integrity": "sha512-jubt5qhzgqQpTaHDx7Sn+DxHk1AJiGsErv/jAOmVKXi3qrZJTsE5qFtfuotiDJ1p2RWaYmbdQBfrE1OgjHAlGQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-http-file/-/util-http-file-1.2.62.tgz",
 				"fileCount": 11,
-				"unpackedSize": 58357,
+				"integrity": "sha512-jubt5qhzgqQpTaHDx7Sn+DxHk1AJiGsErv/jAOmVKXi3qrZJTsE5qFtfuotiDJ1p2RWaYmbdQBfrE1OgjHAlGQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIANE5D3rEsA/OldLFcmekMp4rv3mtFZ2xTOux0Iiav6IAiEAiRj3P7U9dpF1j2Bz67vNU77d+ebqnrSPhltZrIpddN0="
+						"sig": "MEUCIANE5D3rEsA/OldLFcmekMp4rv3mtFZ2xTOux0Iiav6IAiEAiRj3P7U9dpF1j2Bz67vNU77d+ebqnrSPhltZrIpddN0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58357
 			},
 			"stratus": {
 				"srcDirectory": "./src",

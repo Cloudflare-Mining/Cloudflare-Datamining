@@ -11,37 +11,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-nB4DBdou4bFrb8QDQ7ar6rU1tK8hZJ68uEZRCMJFbcZGgiGxcMcGDsd8rdd8k07SBLcXh5RcIzTD0Rr1yd1AxA==",
 				"shasum": "c1be2366633b6ef84d3d177596d9afa2da7c4c21",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.1.tgz",
 				"fileCount": 25,
-				"unpackedSize": 94709,
+				"integrity": "sha512-nB4DBdou4bFrb8QDQ7ar6rU1tK8hZJ68uEZRCMJFbcZGgiGxcMcGDsd8rdd8k07SBLcXh5RcIzTD0Rr1yd1AxA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBnuTHzwvbfyxj5U9ztr9bch/iktJg7bA1jEObtJtcFiAiACes2duFgPSKRv+VXwO2ZsLUlBfcJ/IfQXAMAe/WL6Cw=="
+						"sig": "MEQCIBnuTHzwvbfyxj5U9ztr9bch/iktJg7bA1jEObtJtcFiAiACes2duFgPSKRv+VXwO2ZsLUlBfcJ/IfQXAMAe/WL6Cw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 94709,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjbTyXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoU6Q/+Khmw6gKCo1AsKp7rC3bPFayQIVAfAZ9bxSeQVObl39mDvok6\r\nYbz9d0EO5vJtrMFAKAA4FHExh16uAZOxAp0ZvRoq85eTXMophuAItufikXcX\r\nbHWkqkqDi/loQDLTzwzw3KAlJlrxSQD71f2NI5RbhblustaXKmSkDmaOC823\r\nRjwBwSVyI9T3p0/iDewXR2s2WxOqZA+m+PvHybd7A+WHBJlkQGgsLp+fh7oo\r\nT3XSrfIHG3EYMUUoI7IZgSqALG9/xacYxCm4ONES32QfwYl7ptWhNtysNS4D\r\nlYKzvqqxGqr7tRywo+dulaH+oNFOjmxa1XDmd6yf8g6lfapJHKGDUUGyLt9R\r\n4o1736L0BY0ln5FY8SNxjpZdkN1xc3HcaKAXmllW4vpDqtDcFnTuxWY3aF7Z\r\ndD9nc7HbVk5sjJ205mV7O1l5Xt/0lJl2/Be0yY4ZBbzpEXRtj8jadSj6oM0U\r\n8kj2RW2DR08oj3XtCeNYc0EUD6bnJ25vF/rlvfZXMK64dJY9rOs3C1yBl+SE\r\n/0FQ3tAAKBuQ/BVkP1pdw5SdN29wN59vxKhA7pHYkxYz9wEDwYn1ZCDh9t5s\r\nC7sHo/ULQSTTdCqoK3k+Bz1JtzjO9jYb4i5/GAUgZbNUOUNsHdXO9mw7535T\r\n4aQB5J2rHHvqvzj1fX0GcO6MtbDr5yud3JY=\r\n=TGnC\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -52,37 +52,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-izJ1RvsWQRfjJbC2fuvWA6Rq2qWbOM7NFM64We3SxZVlcG5/elygIynVZ2amSftIBgJclGn5ZpwupK+j72a+7A==",
 				"shasum": "54d1af7373f9732a717a9db5929c2cd44a8a6466",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.2.tgz",
 				"fileCount": 25,
-				"unpackedSize": 94964,
+				"integrity": "sha512-izJ1RvsWQRfjJbC2fuvWA6Rq2qWbOM7NFM64We3SxZVlcG5/elygIynVZ2amSftIBgJclGn5ZpwupK+j72a+7A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQC+6GpTKHI21lCmlBsvbNUdsk82uv+5sF/WRh3XBjY8uwIhALt7mcGjRZaoOo8RNKyRqoEFgSUUVnKhp7G69GUj/K7d"
+						"sig": "MEYCIQC+6GpTKHI21lCmlBsvbNUdsk82uv+5sF/WRh3XBjY8uwIhALt7mcGjRZaoOo8RNKyRqoEFgSUUVnKhp7G69GUj/K7d",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 94964,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjbURcACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrRbw/7BbPyfMysEn8CyadtO6mzlGLsQ1RYlKJhZ9UdsfBja7xVVAJs\r\nBfXi2qcUrLuUeK9L2spkdZk1JXTfkPxlQ34uHsc22FjBYBD5pWnYt+lrXXX/\r\n0LcsQEVh+NZ6Lcg23K+Lxsm/wYSkZ1a+cn2nWcwon2TMENmvghDvSViwkOKL\r\n3JpUqRjX0CMoAbVj2hX8veLqQCrbjRjX054G6pJ+vltsYHNk2jTDN7vF9mTe\r\nSTXrJK/q3yyVhI4ysezf0amKP0Kugdx2q1m8cwlNzMEJD6QgPdueCPckvDf0\r\nDbAP7njJi2TPuBwfKxMeBalsBQ+xGUMLW7dXNNtm3sl19htSWyN7WJCp5hQo\r\nG00j/9vbPRJxXDhN15531H2xN9Cl/8mBdQEBfqHMt8yAdf1CXCpgBMI28tC4\r\nyFNAk1V1HG0eauRW/ASzm4pXnllMdoZqNSUp7mgq18elOfrW+Z5ACR0ou0fV\r\nWsfAroW85NjMzZsfdWHupGBB3i53kQ7zba8bwI36euQnHNanS+pzd+iNz7Cy\r\n4WlG31zVlHXAAVw0oYlTMTCBdsWKu+6g7Zw4iz0aFL8JhxFjG75mOM7uE6Qs\r\nSJmXXFH8w9YJb+Galbgm1sSI2F05M6WDc4teBUbZ//q+tI/V3RBSqUUPdfE1\r\nqNr7rp8BlJs9Qo0BjLTFvES0ezQxU+M8rK0=\r\n=FeU0\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -93,37 +93,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-JEqZ9psA3qUozUSCSd/CiTVzUOJcawHZe9xrKKfw92r9iFz4vTFWtqe8PfPzGz3gPja1IEo47xs5/Yj61C4IWg==",
 				"shasum": "da884074d87834c53d81832030d7e6b84343adbf",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.3.tgz",
 				"fileCount": 25,
-				"unpackedSize": 107307,
+				"integrity": "sha512-JEqZ9psA3qUozUSCSd/CiTVzUOJcawHZe9xrKKfw92r9iFz4vTFWtqe8PfPzGz3gPja1IEo47xs5/Yj61C4IWg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBZe01bC6r0eGMswPddpYY+OyV6oa+FoOSRvh91m5dBSAiEAjQ+q6DvB3AkeX5FEBLt4CIlHHCH7nLw83wjB85mgUFU="
+						"sig": "MEUCIBZe01bC6r0eGMswPddpYY+OyV6oa+FoOSRvh91m5dBSAiEAjQ+q6DvB3AkeX5FEBLt4CIlHHCH7nLw83wjB85mgUFU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 107307,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjbhxbACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoG9A//UVw50V1VMFRmcCiwPrfRXjeQKpNUqzUT07txr2DrpXOYXgba\r\nYHm6Epn9AYKpqwyhaZdOKwo0YkFuLNu3o+gK/zGrhMGVAGRq02LXCf16sdNy\r\nLg80sStJN3EE5zkZ7Xd/dVdMLJlS8ejvytnkWOTWT4reE711yzfQcz0X733T\r\nLKCX5apQtS6LbQXWfA9VfO/2NMnuILbXRj2y4RivknhXhWBn8bpFqV21v5cH\r\n+KcV+O0WOZCtoG74g1w2K5jf3CvSJFXfBsBUpW/docIkGmZmKLsUlRDEH4Cj\r\nex29r9jEnXzVhYAubxJ7pz/gHakrh+9uTH3spgaU2nAhsZ+Tc+U+kyvqerCO\r\n1iF1sOjzlHmFRzhCi2DrkGmy0HzSRuTNCccNpcCEnDGzVSxAfaZ+2FUc8BW/\r\nEAqjbBUEJCeEGjGJ5Ty68SXBkeJDjWzR+pugV20mnKhCv7i1igef/l/pnpsb\r\ntQx0kzrw7Nn2/ecWlUmo7bgYFTwC+f6YiqRDfrm6P+FaDPi76T3n/uPXm5sD\r\nT0WbM7dMp/CM/myZSHoxCZdjwnynfKsiUWfYb01eX+oL5B5iSiVMTe3erjIF\r\na6ZMtD6hh3T4yRAgBtttBqmaC1lBvxLjVYkDQXI2b51um51u1VYSZMLGkkgj\r\nNUNRR5ow4thTLt409pY6PQZy22veTrKLXkc=\r\n=yTDd\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -134,37 +134,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-AxQXel5BXnvtLzacOsxEb8VmaS0Hp+ZUA9Lkm7RPcamsL2G4frD2RN02SOewoTJD+7/tnLmImVdYkBdVoa6N0A==",
 				"shasum": "1e86bfc00fb4ab70524163f94a46701d36b84526",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.4.tgz",
 				"fileCount": 25,
-				"unpackedSize": 103810,
+				"integrity": "sha512-AxQXel5BXnvtLzacOsxEb8VmaS0Hp+ZUA9Lkm7RPcamsL2G4frD2RN02SOewoTJD+7/tnLmImVdYkBdVoa6N0A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIH2fKajxz30Kt+MY2UcD6b7vMUwtZoLHyVmr56gyCskfAiAmdEWQjZz8tf9vb3GlO3CKpttKq8ufki6DxxtBs9ImfA=="
+						"sig": "MEQCIH2fKajxz30Kt+MY2UcD6b7vMUwtZoLHyVmr56gyCskfAiAmdEWQjZz8tf9vb3GlO3CKpttKq8ufki6DxxtBs9ImfA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 103810,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjc7xjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp0Qg//UkRQGgLPaMKMv9xeb4u9yKSEt10gJZsm3RQlD8WA3RyxLRSQ\r\nIhmi32ToWM1lvXMs0+aMM52ucBezzKjYFLg0uXWGnxGy5TEwT6fXQ3B4yDBm\r\ndRI7bt4fU0BgE73RVGwPNfPJJRXN5Jce25s/C1HNEJCTottkQADJI+4NV7x+\r\n4fGZqeyTBDWmFHLAgwV8RYN4E4W+EStJC9RaGNImIwY6MP/oJxfQTECwYIiF\r\n6IEcCguPXx8ZYOeHK8a+Hz3ihCN2EdLfEb/EUasF6DH9VVnZTVkSAiZckvCl\r\njfvNsu4TK4jjQtaYSQZCdh8n/bTemm5Q7qRbpXOab0lM94B+SXvf41oj6xbv\r\nFqrFJlXfbxnWZrQzTybYozWUi+GKBY9NvEPyA7CQhXT+zxTsUr7Mzx5mHWVh\r\nK/q6dk/qETfG2HQ8FAGMlynM8R/EgK3lyAjerZjknpNcDJuU09eFU8siH795\r\n3CGLkJNCqFg0k3AhX8MVEmVWID3Jqi4iiGiuBGZ/gtNWLaoC1d4e5JtBkurL\r\nZ2gQsgoktP8R3o6ruic5AwE14Z1KNkYbEExrjsBKc7h08NIRYbfREdBtx4C1\r\nqruwiLmzF2wHulJkDuwfa2nj+DTq011KsJ0IjeWaOTXWfTPCTEbHxv92Z6dO\r\n/bGQ37uwN3FO+eH4jljxqdWymYjLkCR2LZ8=\r\n=/jHt\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -175,37 +175,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-47JqYV4E1SjPb0lRB/mhOPiOZTv+jwsPl8wswLOLuWxNhed/5taVWg538FpNaSZ4GRMVyQTxSAhS9k2FA+vwmg==",
 				"shasum": "67aa460fbc938abeb005f55bb9abfd4e321fca31",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.5.tgz",
 				"fileCount": 25,
-				"unpackedSize": 120424,
+				"integrity": "sha512-47JqYV4E1SjPb0lRB/mhOPiOZTv+jwsPl8wswLOLuWxNhed/5taVWg538FpNaSZ4GRMVyQTxSAhS9k2FA+vwmg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCZYHrdVk/Lhy1F3l+KjLB9NuRmyP11WTwKPd1FI35b3QIgK3rLaLIpKGZOMddmUQAy7zxDlxeg28THm1H65AMtbtY="
+						"sig": "MEUCIQCZYHrdVk/Lhy1F3l+KjLB9NuRmyP11WTwKPd1FI35b3QIgK3rLaLIpKGZOMddmUQAy7zxDlxeg28THm1H65AMtbtY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 120424,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjdRjxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpc4g/+MFNZ65eR/Uxzgr8zbHJl8DxviQ99NBQGgRorTgDUBTJ0Y94I\r\nDxlv4ARb/a94u2D1ezneo3uJL5SNFIbG03OdeFO/F7lxgTsFIH78le19tsCK\r\nHktSLmAzKTnB5xGWRR+GS2c7iBNztvEZ6nmLEXlMm8ROBYH6WomVqoESExKT\r\nd1raPbR1AK9gclV601dE9It+5vyWM1Xf25KN1rOCZVGxI7aswvxohNjlLilU\r\n1LTPDR3+p4d55z5a0RvhAkEqBxFRyGNfuxhIpMVzpn8IS3ylrwVmEXq3aYoe\r\nrWC8gbZZBP5/QL0zYfwlhqsFwl/yIqMgTWXL3/0c8RKiq7xurC5/RKiNFlxM\r\niyL4rBOjtEfBK7vYx51/nNS1Mwvm8JAWa2WflobX5fiXsgP9BL2zDZpnH9f0\r\nqtlYm1DnV47rBR6k51/c44eoSaWQhCwIHNKG7PhoOo0lbouMa2PiXUkfZl3X\r\npkM6wRQKG0mq6dlm0smtj5cgPp6lmJtIZTXJSUoLQyuBJOxf1684VVEEOzDI\r\n0QMlwjdtBUSjGe1lu9nLUkSU+/1CAKKoVLXueG5wtsUSvqmZA80SqUpo4nlt\r\nBa7LdsXU9Sqz3cqOXkWDGTtB6PnDHI1L8T1oOJss2yp/Xmdb9mshXvYACkVc\r\n9vXObdSlNKFopAjs5NZREe7oFfD6V/V8gSk=\r\n=TuZC\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -216,37 +216,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-2viEDoR5mtF4nrM1+pMYIGLqNHd0UIgcU+5GiWhzB4gfGbwdvDAh56ej4Srs74jiVO3ZBT3C9BhwMshYsmwwSA==",
 				"shasum": "45d94ac69473635bc886880b8ad7a9fb3f0cd376",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.6.tgz",
 				"fileCount": 25,
-				"unpackedSize": 128499,
+				"integrity": "sha512-2viEDoR5mtF4nrM1+pMYIGLqNHd0UIgcU+5GiWhzB4gfGbwdvDAh56ej4Srs74jiVO3ZBT3C9BhwMshYsmwwSA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICU8TWfwGUFUeRPREUcIoLAWb/ZYuWTNjYl4zim2407NAiBEaETfyzlV3c4braqDafxOx0VBD1cP3vEr1nJY2cYsEg=="
+						"sig": "MEQCICU8TWfwGUFUeRPREUcIoLAWb/ZYuWTNjYl4zim2407NAiBEaETfyzlV3c4braqDafxOx0VBD1cP3vEr1nJY2cYsEg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 128499,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjgLA4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqcCxAAlTqm0BEr3KhA7001bR3sAXWdqh5VXkuCXQVI5lMXd051qR3K\r\nNMLhcOtAsVOPTpsXMH8t2/y3iEyVMDpCB6oJ2vrenQZEgLBKK03fbkWxu6Pg\r\nmQY0L0g1JZR9lZVyZm6oADpn+Gdd5KTCblv58wUXbEL10LagbkKqI2SuL9Cf\r\nD98bbxGHLzrCWeVLxMdn9mV7wD4jevuy5r5A1DOfTV+SgJ756vSeGgVT76rw\r\n24QEqbrJqW6tdclUuT8bILpzamWHSGUWRCovfqEp+x7jnw0shkO/ki97RkT4\r\n6pV/irejBj11FXf7XhpSv4/wlYNLPzgZXHA8/WJLCPSvOgqJkM5o2vds54f4\r\nQwzys8Ak6wCd84bzqS0GGw5LAgP3ss/l8ZjmotzHXGbIMMxqY5b1sDLN3Gtu\r\nTQ+QGstbdfHRlv+N9L0BRSNf5/SSwPUAyD9vBw4a+JcH8p08izyc8VcYcNM3\r\n9yBsk1RvhspPri2DPQ9xOe8gVme8TwGu5wgvNwkiqh68mFyjiBQjV9xkIFnG\r\nno4mgOcyE+Bqpn/G0xfR/VWyVyraEGNqqLNYLdwb32V8+JRG3CBSD0QdXku/\r\nthkN0uy7z6F4u45o07tR1J/0Jv9dlSljF1k0pSTMmou2MNLDzSvO9BhYLRbQ\r\n3Ct1Jq4QeelfZ0vBNGvnKRTMiPMVAllvGtg=\r\n=dD2+\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -257,37 +257,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-uigKwfrSiEEQxhd5Dgn87Ud8AsO1/3qI3dx4ho4JYkSqIRE/SzW4MuRfy5aq9eHziqtyihETc3lBTNtLFmODsw==",
 				"shasum": "9b6a922f75c477d37e6019a279107cf86c25b761",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.7.tgz",
 				"fileCount": 25,
-				"unpackedSize": 145269,
+				"integrity": "sha512-uigKwfrSiEEQxhd5Dgn87Ud8AsO1/3qI3dx4ho4JYkSqIRE/SzW4MuRfy5aq9eHziqtyihETc3lBTNtLFmODsw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDl0d8Dy4L8LyY6AVNAwACd8Ljfo93E3+dlpDfKSKIT3QIhAKZwtgIMwd3HCGeL/h3KvFj7C1j9jFnFnM3iCi7m0C4d"
+						"sig": "MEYCIQDl0d8Dy4L8LyY6AVNAwACd8Ljfo93E3+dlpDfKSKIT3QIhAKZwtgIMwd3HCGeL/h3KvFj7C1j9jFnFnM3iCi7m0C4d",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 145269,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhOBqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoheQ//cT+rAakvkwAtRdoOn/d4AEXAUdXRBpfNNhyRpRlcqRxFQ7lk\r\nZoYvurfIz1eKFxes7JpZu9TXrpi4Bmu8oE0T9vLQP+9Aa7BX/QSiacCwyjpV\r\nhhp6Wxe1aZbZTgL6T5wZ/ohrYu13PQP/brbONAF0fUVtJP2Q0SoxFul4d3iM\r\nsSwCn1zNZh9GtpR3GmC8bAJQDxgAdHpTkv8l/WsoBp8QImgQZ8Vz5T3Kv2iH\r\nmv7ZpOmiVRb3IBmJuIGM27tr3c9WILAtGwXR/H//HC6f1VwRqwYZbC0q8ktP\r\ntcSY0qHyjb9MVu35nGQb16IfxsiTrQj2WRjrxR5qFPjNwmIIzWYmeIOLGWc/\r\nqDY5gX2+wOPlj94wPrMvdOB2HXJGvqOes9VbSknPt+w5JKkHyxGYl9Tmk/+b\r\nB+Vv6owcms1FPC4vQDnslqWNqKp0F/gfA3YOi1jGxtsR5xhX/DUueuQOj7XF\r\nn2394DQdBAs8JYMIUgv68oej1k42LH1sRCcrcHP1BDN/Oqc41onHdPC5dzPd\r\n3GSmLknBnwjBqapsaTopcQD1z+O3HSYOwY4nhUBB4Uu458uYO93NeUvzgel/\r\nPvuY2YNbqUDHR2dMYGNbBIKxCtpO+FJ4NpbIXTp1aKM7mOvBatmuFkfGd46Q\r\nE5phN5ktYq+edVZEfvg3JIlGe4h1CI74A7A=\r\n=Ki4m\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -298,37 +298,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-0t2gbHXLeutUbYPz7bK5ek2AMaqw8mYI6idGDSGjvJEf/I7RRWgYcxtA3dUNcZTmQQJEIiXbT+5JLIqTQF2ntA==",
 				"shasum": "2e97a6eea53bfa670964377bb40bf7039cf4d793",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.8.tgz",
 				"fileCount": 25,
-				"unpackedSize": 100416,
+				"integrity": "sha512-0t2gbHXLeutUbYPz7bK5ek2AMaqw8mYI6idGDSGjvJEf/I7RRWgYcxtA3dUNcZTmQQJEIiXbT+5JLIqTQF2ntA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCICTQx6uX1Gr2alFZgSc85Kj0dmH7rc1WRDy6r9XWiBLSAiEA6B1HKgPdcSKX5XPyumrxIpdIhaZyxzpQ+T+J+ctRdKQ="
+						"sig": "MEUCICTQx6uX1Gr2alFZgSc85Kj0dmH7rc1WRDy6r9XWiBLSAiEA6B1HKgPdcSKX5XPyumrxIpdIhaZyxzpQ+T+J+ctRdKQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 100416,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhecTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq6GRAAnPocR2ODzjjEsnDW32GLkUInflct5ZEScgLn6YdkUS9+WoBW\r\neOzI9gVoSfxUcxTF0KC21rPkSU0a5znhEQ4+HcOUC1B+tETHvwU3KLcC9mm/\r\n189jbknz+xpmRHQeBNwAh5ZDjVcKm/x56kmk6vGSavtnr6UjO3X5qXnViF5+\r\nVlDAE2e6IT5MFTyrJXKAj1egBDcB2/Cvwo9koXheNiE1MvmjSwfgybyn6c7K\r\n/pwUsmBmrrCS+Zqlw4dlJ/4R1H9JzXHzsU5yDUJOuut3F/zJwK+/qakrCKDS\r\n8Apuvz6xPwRv7xINYbvHV0LQyCpD0SIuK0JLrylX6MAWwvvJllhVJ9UP0mzF\r\nDn5B+Kjbf0n291dSlg43Oq98ykAHLDlJNKY1Da4auX7GnpZmjG+z9G4Bkh8i\r\n8co8YS1j4IFEtoig57IHfIXpSgezjKcxflXdWQkWnvAYmTIiwaKIWz1XXoE0\r\n+5rk5vbxR1SZG5PUxg2auBTvfN4C6puwaWdJn+71w1k7yrJ7pG88h2s57XPt\r\nQysrgJhbhCfMOc09YC4X4sAmOtF7x5fSrJcEkZvhOX0r3Iwn/plRZ1MuR2yC\r\nYCA3fiC71NzUoRoYPuPC3mbaYRMuXprzHEZs9xFBR1ntGDBfLmHEXBISEaWZ\r\nPZ0ziOivtVNDIqQ/eadn+lz4HL26LgpPKkc=\r\n=9akd\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -339,37 +339,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-U3mx4C+6PMKbd0XBMkZMvmC/GTvbUsmv+RZvvUMk+L/TfUoSMuOnCPDlETxkUHCpZ+K9EFee9ethsJ5AultWYw==",
 				"shasum": "a1091aa12c79c51b0f74848b58a40024cf83525a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.9.tgz",
 				"fileCount": 25,
-				"unpackedSize": 97465,
+				"integrity": "sha512-U3mx4C+6PMKbd0XBMkZMvmC/GTvbUsmv+RZvvUMk+L/TfUoSMuOnCPDlETxkUHCpZ+K9EFee9ethsJ5AultWYw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCww5onIjLQ3P5XdekqfWnI2Ta30UHyc6iMe3M+6maiiAIhAJll2WZM8c/HSTceMxtH9mLkOTk0PelC/9PqSwM1gBKX"
+						"sig": "MEYCIQCww5onIjLQ3P5XdekqfWnI2Ta30UHyc6iMe3M+6maiiAIhAJll2WZM8c/HSTceMxtH9mLkOTk0PelC/9PqSwM1gBKX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 97465,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhi0jACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq2dw/+PFGW4OtVLTxipCGavlWv2yHiJ/0t3J62ORDOdCFfrO0nFKX8\r\n+C61nXf0VuCwHXmALH3qsE6nXMaxmY4t35Pa3rIQnDv0v4Q5OIRaJrCcU8/v\r\n8jugk5DV3FifqSIVBxdwPemzehE4tqzDYUFBd+RObR0WnDb0/VswE28Re5zs\r\n/czdT3jXdDcGL94/XAHLv7x4+Ug1vqPTD+LyBeW2gDwUY02CRTkFg+qdLw9R\r\n9XLLgNe8HkHoOnHE9Caonuhcd0Y6uFtKMw4D1g8FWMjm0ZZpkKvCOn0JFcYQ\r\nATOXVaZV8HuwmbGjmf5rrEf7V2fkK1fb+LSsCjUQS5ho4QYcJnWqRYzBMT90\r\nkdjj5emuhStDC1rkIYZC9S0Wo/cti8VndmDfKE84QEw45244tkYha5NWURt+\r\n4g51bE3/PpXya6kzBQOQ6ya+CpkyewvTyRgsuIqoq08vDhGzf1BysgR00Bby\r\nX/kVMduhqMfK+lZBBU9E8YdqR06jPGfW05c/c4a2u3fAf8Gi+P004Meo09SF\r\nibyoLzI3Z1Ojy7iXAiJ+pDQ55MYOMsG2THHM2i29hB2dE7kI2HPZx1LRKiMb\r\nyzMxn8ckRugpzmSYzYXF+nCTGqI+oObKJyz4jJiEBYNDyHR/7zdWqKVdUdJM\r\nRXfaueuadFGxzc33lJJ0q9tn3636Em3rmu8=\r\n=IzP7\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -380,37 +380,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-bfn6Vq8Rn1PoSNJHiqNN1XXgE5O65/wk5DGNizBzUt4bYLVPEhbXVBkbeJDgLvtfbpUOqwCPTB9JEmDkOKnCnQ==",
 				"shasum": "92ce7c885f0609ad0416cb4d816a483c6fc5b530",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.10.tgz",
 				"fileCount": 25,
-				"unpackedSize": 97372,
+				"integrity": "sha512-bfn6Vq8Rn1PoSNJHiqNN1XXgE5O65/wk5DGNizBzUt4bYLVPEhbXVBkbeJDgLvtfbpUOqwCPTB9JEmDkOKnCnQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCH1zlR1W+j19hXB8Xu56uCZ9kYmgXDu2aciSABkQux/gIgUr+t5mhbBLlR910arIr1ffVB7oy3ZIi4Q5W6cK74bII="
+						"sig": "MEUCIQCH1zlR1W+j19hXB8Xu56uCZ9kYmgXDu2aciSABkQux/gIgUr+t5mhbBLlR910arIr1ffVB7oy3ZIi4Q5W6cK74bII=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 97372,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhi+KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpOOg//SYvcubBc0+VQdLnnbpIDl94cK8qnduSaclEmeQWY4mnhvhGt\r\nh5A+8viJR3QunPUmrKb8lnUuNxJZuTtyAViwpVCx4hzdrpADz2WUiMcP7Wzv\r\nqI1G1A+PSrvshEjE6eBpYPTODv7F658pZMmL5vqkPxhYfcLjrFLaeZonpPaI\r\neZ0ROR1pToeitV7+lRCSYN9H9yobUJPeDcukdjQOpdDGJ0acv9iXUOV34ITD\r\nqMaw2bz56MBte9uZ17VFUtP9XHyBvAMyS8Z4O4noUlEROwpafjYOKsIX3OCY\r\nYo1RrGyxv4YPAcWP6yH5d/0Ll6atYQo4jMErxDAsX9YqGNUNS2ZzFEGzIC/a\r\n1ZApHcEeMlIdtWpNxT4dKu8Woyno3MSopYXnxyLS6+dVf0IVZwGTE/3DEC3v\r\nOzu9jpEqHklI2u4IaJlpM83zUyMyj0KqPHTLBIXUtewgiv1OW5eXTlBifIyo\r\nK5sW87JLcLcMAKGZ9vCQuulfNXy8wBMgW9HE/48ohTMvlDRupH+Rfgfq8aUF\r\n8G7fPevHG5qV/pjiRwkJ7t4w0PrJqc5coxsLONkQcIjz/FzqdidQOFoKYYTp\r\ncOZSbz2/JO+6vGL1O4fRpIMiF0N4LVB3o+kW1lvR3LcgkiGnuEpiBODpMG39\r\nqerfQ3+RoFCHgRHMvTM1z3X9D13vOMxqN38=\r\n=MXce\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -421,37 +421,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-jTVSTZc5J/sEqjeNkz6lpJoCLvN8sMuHT7JSi8l7ZSU66oyXrSQt6fVHFu4E7FV3YCtvuDS2yUEYG8nDp1n+sw==",
 				"shasum": "606b48e58756b289230eece50c8c83c830afde7f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.11.tgz",
 				"fileCount": 25,
-				"unpackedSize": 97586,
+				"integrity": "sha512-jTVSTZc5J/sEqjeNkz6lpJoCLvN8sMuHT7JSi8l7ZSU66oyXrSQt6fVHFu4E7FV3YCtvuDS2yUEYG8nDp1n+sw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIFfZxBbALAyIIZ5EzVqXLvzzVKAs1o3m2ua/0SsQXlu3AiEAs2125jwiIKQbANLyey03jmwHhNTf7yqBw/w9PYTGqUQ="
+						"sig": "MEUCIFfZxBbALAyIIZ5EzVqXLvzzVKAs1o3m2ua/0SsQXlu3AiEAs2125jwiIKQbANLyey03jmwHhNTf7yqBw/w9PYTGqUQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 97586,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjjhVZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpqaA/9HZq7yqpJKNlX79sT3eqyzk6RA2h5lGMt881dVhFWa1MMIdmM\r\nwTwlKng8aeWdr0u3NloVwALndhsnRFBLgAL1XbFlMCzQxEPhV39Fe9mWw5za\r\nvmaj9VnY+RkTUOFjsej3IKZWtOHg3iZE8Mk/GRgYtlXXA6THZKRRUzgOU3j2\r\n/qakYRGCrlrJnzvijlvh9q3huIP3n+YL3HYPzZ+kai01VtGEyon3MixzuJW/\r\nX9ryMBgfTO0Dbi4RgOfL3nEMRANZkohZcfzK/f1LHzx8EhQvH3eOlHKmvCpR\r\n5+4FJxUe4nOaX8/jkLYD1qQlFq9fdD4fERjm7O4dpWsCTLUiSQVP0ul3wJPv\r\ny/CKdScC35rzJHrrcM2sIyjovPgl4SgIx078h0R4gApajWNW2J6/vJgUrMqm\r\n8ByyB7SEjAiqp+lDbWuryA0l4KH4ChpvjUC3y0LNnrABkmHCJFi/0L7B+bUc\r\nS4N8Ro6XAHTRjVm0wy2Xfzsyl7AOH7y7yZaUgY9sfCvlNjyaWL9Tc2j4Q+va\r\nv1s+Dcfrq/RejNPe78X750TPdIrCrK5iwmColXpArOza8xQDWJ3Z0QYTBqJI\r\nBk1Bg+oSMlnAJhudiwggpzgPULAixq/Xa4bmyAj5BYYVUlmP3fu//p852cid\r\nJwom6cFX72Y3qLKwfxdfvlFGrmJKntosHCU=\r\n=vrGa\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -462,37 +462,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-99s06cKNMhtepwgfsmtJTU3QaPOzfNfbQ53kNX2+P7pQucmF8VhSupEWUZufTy+WAFvwDsJCu9y+yKtRn8edmw==",
 				"shasum": "698195157023d745236d163613fee9279456a96f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.12.tgz",
 				"fileCount": 25,
-				"unpackedSize": 98290,
+				"integrity": "sha512-99s06cKNMhtepwgfsmtJTU3QaPOzfNfbQ53kNX2+P7pQucmF8VhSupEWUZufTy+WAFvwDsJCu9y+yKtRn8edmw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDbWgEhN6F2QSqlgAv6FxYDU4xa8Vdw680PQzd4TXsVEQIgXdLQ3dAwvEW4bNPpOUe4WTzdM/XNWU6FvfgMMEjQPPY="
+						"sig": "MEUCIQDbWgEhN6F2QSqlgAv6FxYDU4xa8Vdw680PQzd4TXsVEQIgXdLQ3dAwvEW4bNPpOUe4WTzdM/XNWU6FvfgMMEjQPPY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 98290,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjkMoIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpRBg/8DgcqtPg7WmXQpn6rRfX/zzDBtSCKq+4wisNSpQnzcVGvXppb\r\n8pchifqmi8r0lpFctbUAhzvuAKDTRx+wS79qIkAWxbx6mvpw8qq5XZ11jXlU\r\nbg0LYEp5AjcLsH4Cs6yQ0jIj5q0VLFtapSux/mVNmIySqq9pqMBKYMXwe3ik\r\nUeIC5GGMrWQihOhqgbRwKEAP4o5K8LAYaaSGcAFODcJcVvU6E0jF5T9SPO08\r\naxsLMqW4v9ApEHwLDkpRm2tIoc/ZZXCrTQTtosRSjc77Zs5LQK+68t+YQDZS\r\nSKAcBMVrfLUP2soZIVEjqJHE/1JoUH9VCJJ1WFjjCRkZ+uFZPrRtZ/ueeDFb\r\nlmWOxieS8EMZUFsgOdnfTSxa4t07GD/TlfXVCJihN3VoK1OYkif7ljAOZFgn\r\nG9HZBqbJBsheXKu1ubFulVSJfjcIPZQKQpVr4PTKmcBUSA7O6n9z3SbYjZ69\r\nvmECbgrhDUt6iY+na7XlJX1Y9+Pa20iAx9CYmgdEOKN42C2OpCU9WWvs3Esg\r\nhMXTEjlDNkFlqY/BUYayAxC+zsFMmoldd2NTMLtNPuWH8t2QL6CTlkBJhl+/\r\n19TIyKfKtCdmAHziTUl65SwkevBUfLKrnNcXtlxgogHRlCShvj7kIlW89Ak2\r\nLMDUpfBDRyesoWZKB3XCqKvVnlWxc/2NARY=\r\n=aVKw\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -503,37 +503,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-F+jZeSjBvpF3PoQVR1ObHgq2Jg8/rb3h0XirZ9BlcAWXHRjS4EXrZQ/zgLXZh96f0GxZ63W+DhSfm8ACqdWbGQ==",
 				"shasum": "101e0b567414f7f4205e2013a3a07ebfd3be68a0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.13.tgz",
 				"fileCount": 25,
-				"unpackedSize": 98946,
+				"integrity": "sha512-F+jZeSjBvpF3PoQVR1ObHgq2Jg8/rb3h0XirZ9BlcAWXHRjS4EXrZQ/zgLXZh96f0GxZ63W+DhSfm8ACqdWbGQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDmp2SdJH2HAPTPXFz4ZH7SDzAeebPDnFuYFScJEby05wIhALPexukl99sUWZgYpntmaukoEZOxf8QHO8EalyqB4J9w"
+						"sig": "MEYCIQDmp2SdJH2HAPTPXFz4ZH7SDzAeebPDnFuYFScJEby05wIhALPexukl99sUWZgYpntmaukoEZOxf8QHO8EalyqB4J9w",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 98946,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtAYEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqJvA/+IPSG3Uer5DASqYdXt2dR1dANi4aZjhwZdupoP7mf9zB/SCmO\r\neiSZitVDFModke8Zbh+NiySrj06biBBaF3eX8VVUu87nZoJbHsTtlo1fO3Yx\r\nBtu7YeZ10/BzdXb2hBhE2jVDRUrJ2UjLbQXumQTqjtaUX+47FiXKGK4ZrCQH\r\noJa0yl6M9m1BoiwCdyR3zpj4RRfrQKl0Qh/eLQvpLzzGzfAdbuPoAv36KhdT\r\ndqSzqgz+dCj7U8sLhMBfPUXu2jlhwMtCfNV2eW3/pfEQeDFhaon69EKCEDv/\r\na+aM6FkIjPnIoQHbYtaxdYd8SIUYr1aL3V4FkpKl3chNKWqivRkMzRcbgJo7\r\nZEHlEzBNZv1hw22ssbNCd838e5nasdyDVIhdLPcg/xLLQiBZSuk2nXb1iRIH\r\nK/LKVbE1p/r+ZDr14V+X6AygBCxUrZwIHT+vAOQDScPAO/Ei061tl64Mbq2H\r\nHnkP30BsrGjr8ThxHPSnCDjhsbx/qtZ9zszhaEJNDLW9fm1cOoyVpACMlspd\r\nG0Z34kGEsnGhV4w1mHGuvzipV6Mkfqp2GqBYpSuELr4pYd2XJw8tahG93jRO\r\nIXfkVBBCmjHpKv956bsXKcL+XJbVPT3+wYQwux5beHNi61zDXwNffKol7Tbc\r\nlN2rEnbIfiaJtCrKYMT0w2P2asMxGxlkFPc=\r\n=q8Jl\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -544,37 +544,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-+GxdM/No1NI1qZRT2AwMXpZ5cWVINJBO8kaCXqim2/BBfAvAOsw1oE72j2gtvzY+zE/Gr3Mrf9u+ECDb85Dcbg==",
 				"shasum": "0a0d2b29c4da968d526448cedd0ef52f71374a29",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.14.tgz",
 				"fileCount": 25,
-				"unpackedSize": 99381,
+				"integrity": "sha512-+GxdM/No1NI1qZRT2AwMXpZ5cWVINJBO8kaCXqim2/BBfAvAOsw1oE72j2gtvzY+zE/Gr3Mrf9u+ECDb85Dcbg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCB+iUyFFAjaTvlm5/xs2ssdcwhoZXCaY1/NNVNKzqpxAIgCqXQb+grx4jde/WUdZIrmxEx8SbZQs4a+Z7NahSUI1A="
+						"sig": "MEUCIQCB+iUyFFAjaTvlm5/xs2ssdcwhoZXCaY1/NNVNKzqpxAIgCqXQb+grx4jde/WUdZIrmxEx8SbZQs4a+Z7NahSUI1A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 99381,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjvDU8ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqnPg//Upj7e0dtuB3VpB4OC6hCTh0q0C23FKvZD7iK6U0Y8eKfuuv6\r\ntChz3jhLENM3VXWzb5wgxShoZHDqZW5BeBB13FSDH6LZZd7zyse7ZtifSWYg\r\n2+spadoWDi+RFqL385ZZeITTUbm+bNvf/A6lgFNMj0ZKMpn57cac2R323Odd\r\n+ZcCVJDhVEX+uJ1tYGbxE25TaMEtrHmvuPCXeBLhWpSXjw027O1cepsFo3SS\r\n+68fwpMDnDIi2+zpXAkIeZPETkb9L5QUyZ2KNUoGXQujnZtp+qHOPxkN3Jl9\r\ni/u+NkVqNwuXDv4Dnnqi6PVfM9T3ds3aMOha/HAmTeJ5iDV78tXBu6ew7GNJ\r\nUyu0PsNmfmRByVL4Rwjvea910IXz0ZZXuV/iisvrQ6SGKvTA8JuvdZvhA93z\r\nux+LhzZvOxIN8J9KFpied8lB+bqjSZMG/cwVzLNEeaGOKCQFAxfn9kWLdELG\r\nZ3dCWnTKFmrURAjDObLI/PzzIb3481ZTPX1peV/fvxCXOd1VrPMeCdFn2nS0\r\nyYA103PfRrkPpvKcz1Zf3i5FHTGkibnKZuEn1P2mIuftwo33eGAuDygkL8OL\r\nv6TKSgqBQtLNXDKJYVM3uKLTSpka2+iBaXLgrxqWvsYWlWelBodRf2FGhm2w\r\ns8UcCxxFOQ0qfUEee1KoV69zjWt293lQci8=\r\n=aaQu\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -585,37 +585,37 @@
 				"itty-router": "^2.6.6"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
-				"eslint": "^7.32.0",
-				"eslint-config-prettier": "^8.3.0",
-				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
 				"jest": "^28.1.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^7.32.0",
 				"ts-jest": "^28.0.5",
+				"webpack": "^5.52.1",
+				"prettier": "^2.4.0",
 				"ts-loader": "^9.2.5",
 				"typescript": "^4.4.3",
-				"webpack": "^5.52.1",
-				"webpack-cli": "^4.8.0"
+				"@types/jest": "^27.0.1",
+				"webpack-cli": "^4.8.0",
+				"@commitlint/cli": "^13.1.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@typescript-eslint/parser": "^4.31.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-Npu/dQ1jOqhuQCkiWQZK/iYG68335D0zRf4i4ejfhjZfIjuRLgaGGfDAGyK88Bn03XBZH3ywI9k5g8tnesdDrA==",
 				"shasum": "51e490fb2f80470e78fa33a906b2864e0850218f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.0.15.tgz",
 				"fileCount": 25,
-				"unpackedSize": 99687,
+				"integrity": "sha512-Npu/dQ1jOqhuQCkiWQZK/iYG68335D0zRf4i4ejfhjZfIjuRLgaGGfDAGyK88Bn03XBZH3ywI9k5g8tnesdDrA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD/WIN0Ot3JeFOzMb0ngpwlr0EjOPsavlPp7v7IzQygfAIgZGuDQARsL3xVIcjYoOGyvPyyjdNbBTqoqzbqswBUwKg="
+						"sig": "MEUCIQD/WIN0Ot3JeFOzMb0ngpwlr0EjOPsavlPp7v7IzQygfAIgZGuDQARsL3xVIcjYoOGyvPyyjdNbBTqoqzbqswBUwKg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 99687,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkAdByACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoi3A//e4cx3PtWYgKuW4ciVC8Gfh2VmQ2iGUIOTL+JOJPX4GnRpGZh\r\noykU1gJnCiKWCECQg23iCjA/20HU8AkjPjRxp53yH1R44972MpcMjmLWdtcJ\r\noVkpXaGDTTjdxjC6/EliVCmtegQkut8aKYwrOOzUkl1C7O1iZSVgWRTc5sDT\r\ngZNbAEpPgrN7OqG7wr67rmB3UTlmR/J2DWWGi+LgmTxfU1rQXcJ6h605c/Jp\r\nrZH/7ht6MH20R1QxlO8gLU7xV4yNSQ6CK0PgC/0VROzqjj3hxLpfuAYeBjgb\r\n0vx7HSHq8uOfHIGN10YvG14ujdVwNUS0Robh0SKZSA/kTcgFUdu4M2l66874\r\n0aZIVlj7+wHBHdHAJUDGvWFZhs5lfWYppCMYYKf4Si38YIoYV2uwe6pw3tVx\r\ncwXD9fbhq05limjhSez9B7QmsIcp9bApiE4gBjtv0altM6F4PAIYTgggwehP\r\nT3jc8SwCZO/z0E3GAvfItPhaw5bgxUXubd2ILDkCXlH09UKDEDsmBpy70rG5\r\n/M74JGvLEL0oiUOtKQBPdhmuC8F2aFB/5+BNQM3hgA2V9cJ/L70DWbMVha7T\r\n40BmcZ44R+7RCuhf6I7I9VRu/bXVe2spfwumVPb4hIIT+XBPZuWXIB79Xxn+\r\nvbGgbQjy3tlf1ZygToRl6PjiqZD82wVOJOI=\r\n=AgRt\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -626,38 +626,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-7SaET9THG/n0p+ze7cV3Qwly2hUJCVxn9s6sEF4LXXbpW5/aqg68pLdQCb4LmByb1FlgHxTCWByrc8pVsk8mxQ==",
 				"shasum": "20a82465a33728ff321d789cc72f636f5914f450",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.0.tgz",
 				"fileCount": 12,
-				"unpackedSize": 57461,
+				"integrity": "sha512-7SaET9THG/n0p+ze7cV3Qwly2hUJCVxn9s6sEF4LXXbpW5/aqg68pLdQCb4LmByb1FlgHxTCWByrc8pVsk8mxQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQChhgTDQIgNu9CUeSMP64nf/ShiCxmNF77TpqQiwoePZgIgbpPEqInWucB1CUMN8zeneNtcfTsF1EloLitOkzbiDC0="
+						"sig": "MEUCIQChhgTDQIgNu9CUeSMP64nf/ShiCxmNF77TpqQiwoePZgIgbpPEqInWucB1CUMN8zeneNtcfTsF1EloLitOkzbiDC0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 57461,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkLDAdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrlIA/8DQtL8f34fiiwm1ckOlCEyD30ZKr8EyxmTJWqzQY58Sb0B+QF\r\nfrHiKA4SX7nR9fD7dj4U5EUhFnSMZrsEMuFMOLnTtuxDV9Q4miLG3R1zby6R\r\nSrId8hR4AyMSOhueu8gi/o96SOr+v0VMQZebuZz2UKWkEYx7KHqbv1zSCefF\r\n2+3zF1R4eKDBr5UwhPqNPAFAgIH4lw3jTgagosp32wnXMa0y6ylX3RHPwl9b\r\nUrwKVMmAOkdnRtWQTB2zZk48K+eTRzfk9X2rsTjrmQ2zbw/9hPn6Zlv0iZXo\r\nF+GMm/CRSH9JSeDWF0DB7cC9bQapGexbGhwMivAbbUDhPb+zugaNtZk8HjPz\r\nM9dFMCfqnQu7c2ii4g/+2EE4CMtFbjw8egImw3D71UctXQqz/HJAhVYDEdld\r\nkIftUJodQE934tAv+hiMlLq44W/P36PKj1tACniq8htkKLXAoitAMaOPxvol\r\n26wclaCwI5lxYo1EnJDOsBVA4uznmIy9qpjsQgE7x4L97MqV3MlqipA0idYP\r\nStA+BAxu1x+ZIQuMLmym/+LOYy8t598biS1wF4c2qbtj3c5dQCxUDifZ8ZEf\r\nRNUXAALmL852b71klqC36YVqzOMDeCLP8UjXIr5SKrKfhDMoP+22x5E9mxj3\r\nPv3+TxyraqeSNcE8DD1chn0A25HtOVWZ97k=\r\n=V0ia\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -668,38 +668,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-JJm252pub4KZSVSEvWsap1wOtNG7t5x+dx49FPOKhiJ4likEemqJdfJ32OoW1dWUlfi2UukYTCdj70/tMJyanQ==",
 				"shasum": "db19c05a685f31314ea781c3557203f462b69cbf",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.1.tgz",
 				"fileCount": 12,
-				"unpackedSize": 59785,
+				"integrity": "sha512-JJm252pub4KZSVSEvWsap1wOtNG7t5x+dx49FPOKhiJ4likEemqJdfJ32OoW1dWUlfi2UukYTCdj70/tMJyanQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCGYKPmDD8adSaUbO4hTPckbpEs/EtV1mhWjNlhioKwJgIgDVv+le8vC9Aehhf3dK4ptoYPdi6VJbjm3e18NZ+zjqw="
+						"sig": "MEUCIQCGYKPmDD8adSaUbO4hTPckbpEs/EtV1mhWjNlhioKwJgIgDVv+le8vC9Aehhf3dK4ptoYPdi6VJbjm3e18NZ+zjqw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 59785,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkLv5kACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqSNg/+N3zZcQ4h0uJKuDmoS5IilnlQ2X8cQmhdyB2q+PTKcfn054Xv\r\n+eD8zDQ7mBvKq1stfDXcb5wRNjAgmpwZeeZBC42pb2M85CJQXY3xYMfif16F\r\nUwAqyqqpC/WYjPKJFI+9h8SWvDdwAAk7lbTRAI2XPeWVJpByVm/SgufI3phJ\r\nrLCyF7K3QKl1n5N1hccC5xXjthXDhCY9fqqUQ+Y1NfmgT2monHsDakJxq6cf\r\nVCucpTarBHHXh9uDBTz3JnZTkrY2JJo1q1QCmodelr1TaWq1mAh4ki+PfpBH\r\nEoSeaUxNceE097RoxU4pfZcl2yb487UsTtx/ajW0DJZDaKeYPjZxgNVQ1a0J\r\n0ChcBSTRbMagUzcS4fSs/Umok0ese+OSd5Xh+dDwmQyrWNpX0WzePOCBObTc\r\nbEydIjlYFsXfLpQYujZQaJ3mKQ2HpJ9NuYJJ5qEGpcaovcsAVfs75buEPJhw\r\nL7IIq8UZsx0JmP7GKP15kXAyykdNMQBybnDRGwik0uGLlJqVRkxsaf/XSD23\r\n0MH9YoJqkLwbXMt7B/iXrqDnnAQHo6Qog8DubVmMjWZLnLStmS3lqN5J/pwh\r\nZHbqI6+Yrt/DB2pjHQNsu1ujD7VppIY+R0bFBYFSLEZ4rx7nzRpCK3Yleghm\r\nHNmE0h0gbDgbKX0DdSdnuId6gvzYkCLfha8=\r\n=KvJO\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -710,38 +710,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-BYILT4M2Tj7fd0pVPr5M8YwSYmuAxOI10FMcbc6nzgTT9XYY2qIVW0FFyo+BNG4zUi9adrFJQRhlfvISuogGsA==",
 				"shasum": "9605a849bc73151b62861ea9940621f890b3bdf0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.2.tgz",
 				"fileCount": 12,
-				"unpackedSize": 65390,
+				"integrity": "sha512-BYILT4M2Tj7fd0pVPr5M8YwSYmuAxOI10FMcbc6nzgTT9XYY2qIVW0FFyo+BNG4zUi9adrFJQRhlfvISuogGsA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIExko22UEkxt5Lg0T9mXD9Cv6gLtJ94L33bE35FGwzhRAiEAxSwZovPj7dRI63Fhh3zalpVXVWQ1GBOU/VQq13sqtfA="
+						"sig": "MEUCIExko22UEkxt5Lg0T9mXD9Cv6gLtJ94L33bE35FGwzhRAiEAxSwZovPj7dRI63Fhh3zalpVXVWQ1GBOU/VQq13sqtfA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 65390,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkOTzxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpTHQ//aSefxv28mlqfwpd3LJBXfzfmKZn6asiDcMHK00OwReWtEO2n\r\nQXc9W7oMFzC6tfxx0qjG5cHoBKIpRJgPqtkKNP1Bd6UMGAEAwLodDmz6Dngf\r\noiuJoJc/KBifEJJrKHOog+GkplK8nwDx4jX5Wwkg1WYXPcPy4tKUn2r4gMiA\r\n1pCL0k+WmCIYPuLn/mEhbNWpmjOXTGSc0GD6xx7I0fjrAbpVmRHjVT5kXrWo\r\nLPeabuEi7IyTXz5m+Qsr9W/Vs7KKwwKuYEJUF4UUkqVdIiNs31WvUu3P96cl\r\nR1GGF5MUwEbpyV2N0XLpbyQoEqA6WmU5tPuZDM9qLLJ2C/HzKRPNVTJfXDrE\r\n41WXxM8o43D0erwyFuvMjD8X60kqOZ2juAG326VbzzNYcvnYM0GvNfhtCthk\r\nSuluTOa85nY/kKzqO6CFtO/PxjUFXnh9kF7KuVKaSwiW/ClOFoCdlgcUeYui\r\nw5D1fKS4dYHQzTDP7dQcZkF+ikkzZ50pSjWZsrAPcIBoJA9FP+wn8sWdNRS1\r\neN4C4aZRkYa7E/nqZLnOx9GPPN4wY5Q26wuKyTK/jLpebu835NF8UhQ0pB/C\r\ncO2gIOsS6KTu2CdOiM4HBo8i7choeOE8T3l/E5IW1x491t5P17cgLyGAl3vp\r\n6GuvbooHqeEgQl2Wzm6a8sRw1eeVMdFqKjg=\r\n=SdYK\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -752,38 +752,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-rE2Ghrv9cTY+E7Qu5pX8qDCwgVJryB6GplK3D0/RYS/uZ33ZuqhizHid60t7YETS1lKDS3ZZuX2s1CA/ULxC5g==",
 				"shasum": "227a4ffc5c91eb1581fe67e28762446b2788e372",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.3.tgz",
 				"fileCount": 12,
-				"unpackedSize": 75316,
+				"integrity": "sha512-rE2Ghrv9cTY+E7Qu5pX8qDCwgVJryB6GplK3D0/RYS/uZ33ZuqhizHid60t7YETS1lKDS3ZZuX2s1CA/ULxC5g==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIG5/1nfKlGrumlJz6QYXXgk9fObAPsfQmQ5Li21L1gzkAiAmGWbUTBxseOzV56LaJIvNVuyP9YmEiGbSEQiJQV8X2w=="
+						"sig": "MEQCIG5/1nfKlGrumlJz6QYXXgk9fObAPsfQmQ5Li21L1gzkAiAmGWbUTBxseOzV56LaJIvNVuyP9YmEiGbSEQiJQV8X2w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 75316,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSQ+1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp9ORAAh7pq2TJ1tyZaIvWYDhEjetNNr+AWBAA31lMwWlt7NRWUJzey\r\n/aMxzIXrGuf/Ak0Fpkdk3DNEqUSBb8yc/3Q/RMdCmFvTXrsdokdHY2Wua47f\r\nzeTpRGvlfkwRKh5DuJ0QpHnA6J85I33qV7CweEE10HjJGEsH7NvFySJiRerD\r\ny8jPCgxyG7Gmtmo9DdshrpCgM8Iwl70+/sgF5eP6Q/k8VpCg3w+W3COPMKoL\r\nYWZ0OTeuk3r5/E+d3tnMMuQkfOTJqElbnwt9EP6ddpNRc0jzvMKFSGNl85tu\r\nyQxvoH/X7Do7aBU42/Kfua3sosJee+jgCrm1PLxMA138hgKv9bUb6WvyRy7q\r\noTCpmg6vII+03VyTr3BoIvHZB/DZ/DCIWnDuq+bw1Wx6IcjxVRs/+TjlV575\r\nodi3PyBIVwYdVUxzQmqyY0X7CeZbBYrUw8eyo30oJHR6QSzofX2RyYcTVduo\r\nFe4hpV1kGqUWaGao/24NcEPGiGxjkWisynWtlZp150gB2eOOCZYScY4fgvsV\r\nlEf7o5Y/AGey7EN123kMNuvrTRIIqWN8JJZNXwKh4Ff6K696RcZsip3/hbSt\r\nVI07GHhzKdymuDO4l9hIOMCp95o11irQ2eBIgCRZ05IQqeAiKFIKEa3HVXo/\r\nZlldRnVwEePoB4QmCCQp0lPVH7Ks503gloE=\r\n=ibkq\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		},
@@ -794,38 +794,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-NtnFBepdNxjPDtQ0iDIRH854ANA9fvbzMGl2MEW1DPX6w3ZGF24s6qA6bb0NFUnvgYq8vUW4+nNzx0sS76YYwg==",
 				"shasum": "c209f4b21d403509db8a448e825f2a6a2e720a65",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.4.tgz",
 				"fileCount": 12,
-				"unpackedSize": 76698,
+				"integrity": "sha512-NtnFBepdNxjPDtQ0iDIRH854ANA9fvbzMGl2MEW1DPX6w3ZGF24s6qA6bb0NFUnvgYq8vUW4+nNzx0sS76YYwg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCUjRzPySBL7ThsO/t4yrFw/RHqkiYys9nS891Y3+5irwIhAMmxi15C+tWT+0XCryWafQwriohKVLh/B6SztDpxeq2R"
+						"sig": "MEYCIQCUjRzPySBL7ThsO/t4yrFw/RHqkiYys9nS891Y3+5irwIhAMmxi15C+tWT+0XCryWafQwriohKVLh/B6SztDpxeq2R",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 76698
 			}
 		},
 		"0.1.5": {
@@ -835,38 +835,38 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^27.0.1",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^28.1.2",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^28.0.5",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^27.0.1",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^28.1.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^28.0.5",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-lDbz8H5v3OZSE04fhhLHYKVhv4+CX9xnPF+RgIwB2PDD1Eyy7RFh2Ejv5zzZ5+ciNGcys2K8wfRSIz2iE0L6sQ==",
 				"shasum": "6158ef4ac85ee1e6ce38f9ad02f0dd6a1644451a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.5.tgz",
 				"fileCount": 12,
-				"unpackedSize": 78095,
+				"integrity": "sha512-lDbz8H5v3OZSE04fhhLHYKVhv4+CX9xnPF+RgIwB2PDD1Eyy7RFh2Ejv5zzZ5+ciNGcys2K8wfRSIz2iE0L6sQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCrqrfe+joggSAIiIrotHtdsAMli+MXH6JLFQyXb2btqwIhANQwEAoO0RBBVBtYUl035vm+Pu6Jm9FqCz3kkLclqaV9"
+						"sig": "MEYCIQCrqrfe+joggSAIiIrotHtdsAMli+MXH6JLFQyXb2btqwIhANQwEAoO0RBBVBtYUl035vm+Pu6Jm9FqCz3kkLclqaV9",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 78095
 			}
 		},
 		"0.1.6": {
@@ -876,39 +876,39 @@
 				"itty-router": "^3.0.12"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^29.0.0",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^29.0.0",
+				"jest-openapi": "^0.14.2",
+				"@commitlint/cli": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^29.0.0",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-5lw8bSb4nqKgmK2kplmpZSYyQC0hIu7lemqMfzM5VMNVJEnMGiuPm7e6e0rzmN424FQduIaLEbN/Y7TH27YaQg==",
 				"shasum": "c0ca5526d7434a5067b4fa1fef0a6ed603ac265b",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.6.tgz",
 				"fileCount": 12,
-				"unpackedSize": 78472,
+				"integrity": "sha512-5lw8bSb4nqKgmK2kplmpZSYyQC0hIu7lemqMfzM5VMNVJEnMGiuPm7e6e0rzmN424FQduIaLEbN/Y7TH27YaQg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDQNcoymWnUhDCld1mEQ8Oy7a/5PlwerGoUT7rQ9pL50AIgXCwMIaVXBOCxJJm3roSMORe9iKwuJDSwW+fV/m+c3Jg="
+						"sig": "MEUCIQDQNcoymWnUhDCld1mEQ8Oy7a/5PlwerGoUT7rQ9pL50AIgXCwMIaVXBOCxJJm3roSMORe9iKwuJDSwW+fV/m+c3Jg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 78472
 			}
 		},
 		"0.1.7": {
@@ -918,40 +918,40 @@
 				"itty-router": "^4.0.11"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^3.18.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@typescript-eslint/eslint-plugin": "^4.31.1",
-				"@typescript-eslint/parser": "^4.31.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
 				"eslint": "^7.32.0",
+				"rollup": "^3.8.1",
+				"ts-jest": "^29.0.0",
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^29.0.0",
+				"jest-openapi": "^0.14.2",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"@rollup/plugin-terser": "^0.2.1",
 				"eslint-config-prettier": "^8.3.0",
 				"eslint-plugin-prettier": "^4.0.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.8.1",
+				"@cloudflare/workers-types": "^3.18.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^4.31.1",
 				"rollup-plugin-bundle-size": "^1.0.3",
-				"ts-jest": "^29.0.0",
-				"typescript": "^4.8.4"
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1"
 			},
 			"dist": {
-				"integrity": "sha512-ER4MJw+3K4hgu/aGmA9kYciUdW0cOWsgOJFSOoUzsEhRMckf2pHxggfU8bHjJ3Jw/VySI1kMicDM9LVnHGW/pw==",
 				"shasum": "910d3f44b40a527bc27f63bd0937983b4a2d39a7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.7.tgz",
 				"fileCount": 12,
-				"unpackedSize": 78514,
+				"integrity": "sha512-ER4MJw+3K4hgu/aGmA9kYciUdW0cOWsgOJFSOoUzsEhRMckf2pHxggfU8bHjJ3Jw/VySI1kMicDM9LVnHGW/pw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD4UMXxV3xj9Zf9SNN0CEQ4fp5HfoubZiFOLIAtQaqjFgIhAJa1b3ZCo3GYxg/Qo9Gq3iWB+AAO9pF11E/U88JsE9C8"
+						"sig": "MEYCIQD4UMXxV3xj9Zf9SNN0CEQ4fp5HfoubZiFOLIAtQaqjFgIhAJa1b3ZCo3GYxg/Qo9Gq3iWB+AAO9pF11E/U88JsE9C8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 78514
 			}
 		},
 		"0.1.8": {
@@ -961,41 +961,41 @@
 				"itty-router": "^4.0.11"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@typescript-eslint/eslint-plugin": "^5.59.8",
-				"@typescript-eslint/parser": "^5.59.8",
-				"eslint": "^8.41.0",
-				"eslint-config-prettier": "^8.8.0",
-				"globby": "^13.2.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^8.41.0",
+				"globby": "^13.2.0",
 				"rollup": "^3.8.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.0.0",
-				"typescript": "^4.8.4"
+				"prettier": "^2.4.0",
+				"typescript": "^4.8.4",
+				"@types/jest": "^29.0.0",
+				"jest-openapi": "^0.14.2",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.59.8",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.59.8"
 			},
 			"dist": {
-				"integrity": "sha512-afCld9a9PJvT3Jo05pTIM11Z2mTx0/Lz7VQ50G6m2APQgJ/nvccLSkOCachybYs4bd2WEeTc3CY4piCkjeBjlw==",
 				"shasum": "d8f7d3cbcf0430cc3d860b88a2b8861c2e0d10e5",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.8.tgz",
 				"fileCount": 33,
-				"unpackedSize": 267547,
+				"integrity": "sha512-afCld9a9PJvT3Jo05pTIM11Z2mTx0/Lz7VQ50G6m2APQgJ/nvccLSkOCachybYs4bd2WEeTc3CY4piCkjeBjlw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCKKnbIh4nn1zfwWsfckG9eNEBOKnBNlJy8Kx09MlDpdwIgO7LPUzCx51RphjNxVqtdPBFTXqZ/0M+6OO8+idJjKjE="
+						"sig": "MEUCIQCKKnbIh4nn1zfwWsfckG9eNEBOKnBNlJy8Kx09MlDpdwIgO7LPUzCx51RphjNxVqtdPBFTXqZ/0M+6OO8+idJjKjE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 267547
 			}
 		},
 		"0.1.9": {
@@ -1005,42 +1005,42 @@
 				"itty-router": "^4.0.13"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"globby": "^13.2.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"globby": "^13.2.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-QsJpENJNmrK8CIRazF6zIcJlKuQOUTr9D1eAoEjThIdTwo5J5q/IJAhlnQvUkPpwNlJOwjPWOoGSNUWReRNJdQ==",
 				"shasum": "eba4b49785ef7e00cf94c3192c5c142616fd05a4",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.9.tgz",
 				"fileCount": 26,
-				"unpackedSize": 174830,
+				"integrity": "sha512-QsJpENJNmrK8CIRazF6zIcJlKuQOUTr9D1eAoEjThIdTwo5J5q/IJAhlnQvUkPpwNlJOwjPWOoGSNUWReRNJdQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDGiuTwUksWGKWuP9MxBoubJA6Is1OKURKePadHIe3yAAiEAsnr7iG7W855YCwpXfC0+W9R76B7Kdm8f8E1KaXHGLII="
+						"sig": "MEUCIDGiuTwUksWGKWuP9MxBoubJA6Is1OKURKePadHIe3yAAiEAsnr7iG7W855YCwpXfC0+W9R76B7Kdm8f8E1KaXHGLII=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 174830
 			}
 		},
 		"0.1.10": {
@@ -1050,42 +1050,42 @@
 				"itty-router": "^4.0.13"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"globby": "^13.2.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"globby": "^13.2.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-tFp5wyQHzxdzse5Uc7h4kPF8WcqJSGYJ68u+xkO9OcZPaNk84vYARlij1v+APdaFbQfSrQe6IxSAbdn9o0SHXA==",
 				"shasum": "91933079802ed484f7a4cad40c5a661ceb11643d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.10.tgz",
 				"fileCount": 26,
-				"unpackedSize": 175870,
+				"integrity": "sha512-tFp5wyQHzxdzse5Uc7h4kPF8WcqJSGYJ68u+xkO9OcZPaNk84vYARlij1v+APdaFbQfSrQe6IxSAbdn9o0SHXA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDz6DG0YplOYse7OWEreVKOX9WYKMLLgtZtnwLaA/hsxQIhAM0l4deAQ+zcnpXrFykJB4OuKawg5m5oVYOYR/4iJrjT"
+						"sig": "MEYCIQDz6DG0YplOYse7OWEreVKOX9WYKMLLgtZtnwLaA/hsxQIhAM0l4deAQ+zcnpXrFykJB4OuKawg5m5oVYOYR/4iJrjT",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 175870
 			}
 		},
 		"0.1.11": {
@@ -1095,872 +1095,872 @@
 				"itty-router": "^4.0.13"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"globby": "^13.2.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"globby": "^13.2.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-bmeUFBKmm90b+4BCOCQ+lXqVHvRzN9Mf2p2/DV2plMZnsnlxr4xGiWPsfVfacJ0f6VzFqPA8zqxfB9du+0y6cg==",
 				"shasum": "a881a994c513a9bb150590b56a31648c190f8fb3",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.11.tgz",
 				"fileCount": 26,
-				"unpackedSize": 176759,
+				"integrity": "sha512-bmeUFBKmm90b+4BCOCQ+lXqVHvRzN9Mf2p2/DV2plMZnsnlxr4xGiWPsfVfacJ0f6VzFqPA8zqxfB9du+0y6cg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDctm497rlHIxcPgYRYMxocxQ0TUdILRTfMiJLqUhD4QAIhAPaOVR1KoyT7VJ0yVak6wyaAo2hxQHrfq7qG2zhCh5KB"
+						"sig": "MEYCIQDctm497rlHIxcPgYRYMxocxQ0TUdILRTfMiJLqUhD4QAIhAPaOVR1KoyT7VJ0yVak6wyaAo2hxQHrfq7qG2zhCh5KB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 176759
 			}
 		},
 		"1.0.0": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.0",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.14",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-JZ61rVnRMjOlQzE4GfROKU4N5yYb3MZ+RQlaRSlmhh1fMkqBOI/gJgGiMMXS7TuQ6o0ngeVAI448rXQrhettOg==",
 				"shasum": "7b2063874bafa3249eab062e8edda30d10559f9f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.0.tgz",
 				"fileCount": 17,
-				"unpackedSize": 57689,
+				"integrity": "sha512-JZ61rVnRMjOlQzE4GfROKU4N5yYb3MZ+RQlaRSlmhh1fMkqBOI/gJgGiMMXS7TuQ6o0ngeVAI448rXQrhettOg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD3dNV1WYl3E6osGwbyJWbLeb/dnT05WhV/MWxJv2SrdQIgCtyXA4HAWD388dwywMnvE22yGqraoBrXopfqKb86n2c="
+						"sig": "MEUCIQD3dNV1WYl3E6osGwbyJWbLeb/dnT05WhV/MWxJv2SrdQIgCtyXA4HAWD388dwywMnvE22yGqraoBrXopfqKb86n2c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 57689
 			}
 		},
 		"1.0.1": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.1",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-6qGUraCHdx/8/S2LZ4wziidd8POWEqID5yPVmxnN5NlSIvw6bqXjgh2LF+Ev21YKkHnoA6w01zEVvgTUg7qJsA==",
 				"shasum": "61f7263f27148593048c3e99e1a79cfa185397a9",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.1.tgz",
 				"fileCount": 17,
-				"unpackedSize": 57599,
+				"integrity": "sha512-6qGUraCHdx/8/S2LZ4wziidd8POWEqID5yPVmxnN5NlSIvw6bqXjgh2LF+Ev21YKkHnoA6w01zEVvgTUg7qJsA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIERNF4DjQJKnF+1E4GMB0v49oCXI4YDADGqEEjTaCZAkAiB8ARRkP7YExeZPVFSP7bfflvUxDgAsh++eCUfwzcLdWw=="
+						"sig": "MEQCIERNF4DjQJKnF+1E4GMB0v49oCXI4YDADGqEEjTaCZAkAiB8ARRkP7YExeZPVFSP7bfflvUxDgAsh++eCUfwzcLdWw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 57599
 			}
 		},
 		"1.0.2": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.2",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-eBmLuEzJMRj5Jua1U83uMkrrwYERyNXwrk5912QvXB8kN1eLUTZCs9MBGEYD4OVCxFwB9OHQnUBnlAV7WUqlXg==",
 				"shasum": "5e0022cb321c35461c622d8f00fc381f46e2729a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.2.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58066,
+				"integrity": "sha512-eBmLuEzJMRj5Jua1U83uMkrrwYERyNXwrk5912QvXB8kN1eLUTZCs9MBGEYD4OVCxFwB9OHQnUBnlAV7WUqlXg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDWJ+Lh+UqL72PJk3abAizp4XEVIvC1JSpw4J/NbgAspQIhALf887DFotoREpWPevXc79+nDHql1g3r1xbIem84Wg0O"
+						"sig": "MEYCIQDWJ+Lh+UqL72PJk3abAizp4XEVIvC1JSpw4J/NbgAspQIhALf887DFotoREpWPevXc79+nDHql1g3r1xbIem84Wg0O",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58066
 			}
 		},
 		"1.0.3": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.3",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-lNsxqJ+qrk6VPIWZ9FssHnDyPXvk12FAeqdsSCqTk1AI5OIq4DBAOl/JNsc7AN1JrGcvfm31zCSZ6oo8OXNaJA==",
 				"shasum": "3fdaea7b7a4d3c415d6c47c51c65ed9a37aae0ff",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.3.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58070,
+				"integrity": "sha512-lNsxqJ+qrk6VPIWZ9FssHnDyPXvk12FAeqdsSCqTk1AI5OIq4DBAOl/JNsc7AN1JrGcvfm31zCSZ6oo8OXNaJA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDjo2H16Dh0QvxTlh/MpAG6741lfDqA8Rgf/kJGmo2flQIhAICRIvdYu8R4GGeWIjGbtlhCNwPXOM/e7vnanqdtQlsc"
+						"sig": "MEYCIQDjo2H16Dh0QvxTlh/MpAG6741lfDqA8Rgf/kJGmo2flQIhAICRIvdYu8R4GGeWIjGbtlhCNwPXOM/e7vnanqdtQlsc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58070
 			}
 		},
 		"1.0.4": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.4",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-GYEvVzn/W8s2wUlF+iXWRmfWN+dEWy97jAL4Kpl2+va81198xVpf4XFs+Ap+d+fOid72MrKWLl0UA+TS7t9IAw==",
 				"shasum": "1d43a195748ccc5b624b886a147d74a066573038",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.4.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58087,
+				"integrity": "sha512-GYEvVzn/W8s2wUlF+iXWRmfWN+dEWy97jAL4Kpl2+va81198xVpf4XFs+Ap+d+fOid72MrKWLl0UA+TS7t9IAw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIDmvLg+zqW4xPjcpB67ix7B8/eD/ukB9XJoM1r+sXXUlAiBxT4nK+3H+Dk2aHjXbLb77LY+ValBIW0wXGBou8YWyIA=="
+						"sig": "MEQCIDmvLg+zqW4xPjcpB67ix7B8/eD/ukB9XJoM1r+sXXUlAiBxT4nK+3H+Dk2aHjXbLb77LY+ValBIW0wXGBou8YWyIA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58087
 			}
 		},
 		"1.0.5": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.5",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-PQa49dapBtOUxxxW0xWEW0+M8a4RKgoU50K/6OmGsinTMnZ59wfMfzTlzjFDycX/sz1Z3lxTSBYx0LjdHKu3Og==",
 				"shasum": "7bd58cf84633b29a87b2358628d800e2fca85e8a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.5.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58117,
+				"integrity": "sha512-PQa49dapBtOUxxxW0xWEW0+M8a4RKgoU50K/6OmGsinTMnZ59wfMfzTlzjFDycX/sz1Z3lxTSBYx0LjdHKu3Og==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHqKCYAAy/HtKXppYcH1+yi8edvoHfL2ejSptfbuQrEGAiAIejT9hNV9yVSIZDlChtjSI8iwYzDzqK54mc68ZFGong=="
+						"sig": "MEQCIHqKCYAAy/HtKXppYcH1+yi8edvoHfL2ejSptfbuQrEGAiAIejT9hNV9yVSIZDlChtjSI8iwYzDzqK54mc68ZFGong==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58117
 			}
 		},
 		"1.0.6": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.6",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "^4.0.22",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-5s+4QFnOrCzaeoFWAIHgc5Va+gJ6rbOGh/7y2UH+C3tAn3SUkliNVbugSmlMewEGOzk4AhhdJgUvYenneIJ8vw==",
 				"shasum": "cb7beb6975c35a827f47826d7e70d6781628aa4b",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.6.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58119,
+				"integrity": "sha512-5s+4QFnOrCzaeoFWAIHgc5Va+gJ6rbOGh/7y2UH+C3tAn3SUkliNVbugSmlMewEGOzk4AhhdJgUvYenneIJ8vw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDkeYRQJ2BZ5nrsPPoIiVu9gg7EK6rakyy3d1JmNAAHwAIhAKSRDiTJCK6ce2OLc3Y+uXDNwh/CMVq56IydbJ5ua9JY"
+						"sig": "MEYCIQDkeYRQJ2BZ5nrsPPoIiVu9gg7EK6rakyy3d1JmNAAHwAIhAKSRDiTJCK6ce2OLc3Y+uXDNwh/CMVq56IydbJ5ua9JY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58119
 			}
 		},
 		"1.0.7": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.7",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
+				"zod": "^3.21.4",
 				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-yBvaaNg4AepeqIPp5Dl7QpvxI/Wdq/bZHmQF7BPvRolAoCq+snL8ivIBJVExL33EuHIh2eIXGSbHI2w9yt33wQ==",
 				"shasum": "0fc8bf0f4970662fff2a65791a49f44a02e85012",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.7.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58118,
+				"integrity": "sha512-yBvaaNg4AepeqIPp5Dl7QpvxI/Wdq/bZHmQF7BPvRolAoCq+snL8ivIBJVExL33EuHIh2eIXGSbHI2w9yt33wQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD6p1Q2jvvusQ5xiA//bGxQ483mCg5Z2xoaK22I9qaecQIgRt+rBlvX94ahK+UdVdR9uaH1OM3Ig7iw/AM+A1B1yac="
+						"sig": "MEUCIQD6p1Q2jvvusQ5xiA//bGxQ483mCg5Z2xoaK22I9qaecQIgRt+rBlvX94ahK+UdVdR9uaH1OM3Ig7iw/AM+A1B1yac=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58118
 			}
 		},
 		"1.0.8": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.8",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-2P1pa8MJhxfjlpHcVBJ5ivlTlDVnmM/O0pyH8Wzsz8fBDMwW04GvjAoNgmjtdChBdtb8yOeyKDcDJPIdgVk9sw==",
 				"shasum": "c4bff69c9f7553eec349afbc61a63874670473d0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.8.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58625,
+				"integrity": "sha512-2P1pa8MJhxfjlpHcVBJ5ivlTlDVnmM/O0pyH8Wzsz8fBDMwW04GvjAoNgmjtdChBdtb8yOeyKDcDJPIdgVk9sw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCUAbCAOVvEcQ3bJs+0b8hpQ+ebHLQcKs+OptBhrEmOBwIhAOZZs8ZTzYvXc3QmuGkoxOQieiAEO5498fXW8Snp35KS"
+						"sig": "MEYCIQCUAbCAOVvEcQ3bJs+0b8hpQ+ebHLQcKs+OptBhrEmOBwIhAOZZs8ZTzYvXc3QmuGkoxOQieiAEO5498fXW8Snp35KS",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58625
 			}
 		},
 		"1.0.9": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.9",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-USBQ6Se4RjqqlPcIDSpu4EIvX8LdoYHVGc8kYDBCTzSRSZG3LVMP0V2MfRd44FsIKL0Lh/zCM3ClEFd80qOMYA==",
 				"shasum": "bb8f7e80a98a7dd3a11c2c5714ca4cd0550d0f68",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.9.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58729,
+				"integrity": "sha512-USBQ6Se4RjqqlPcIDSpu4EIvX8LdoYHVGc8kYDBCTzSRSZG3LVMP0V2MfRd44FsIKL0Lh/zCM3ClEFd80qOMYA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDoF7jVsYr1etzeB7mMhv/ujtr7U9o1sW50wyRfCh9o2AIgRxx7TgFv++3I7UtEdylKNdURL+fbylD4nM38W+Mn7qg="
+						"sig": "MEUCIQDoF7jVsYr1etzeB7mMhv/ujtr7U9o1sW50wyRfCh9o2AIgRxx7TgFv++3I7UtEdylKNdURL+fbylD4nM38W+Mn7qg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58729
 			}
 		},
 		"1.0.10": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.10",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-nOcDi9qTMJy+hZdr6vaVJfTblhS/JBAI40z70gwCoutXnO5msqUFXt92m4KT0t/kD11v5CTcAuc7Rjm3tAcVfA==",
 				"shasum": "5dd8d678844bb67f31bf1210ef6507b7a5faa94c",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.10.tgz",
 				"fileCount": 17,
-				"unpackedSize": 58762,
+				"integrity": "sha512-nOcDi9qTMJy+hZdr6vaVJfTblhS/JBAI40z70gwCoutXnO5msqUFXt92m4KT0t/kD11v5CTcAuc7Rjm3tAcVfA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIF4U+rHE8d8U3x4tkJ2Dc8r+bkvqjSbzjsvMwOtuuUM8AiAWTyb4eEyYep9onVBsupUIwFY0xGBQkpsVLiO8IvuIAQ=="
+						"sig": "MEQCIF4U+rHE8d8U3x4tkJ2Dc8r+bkvqjSbzjsvMwOtuuUM8AiAWTyb4eEyYep9onVBsupUIwFY0xGBQkpsVLiO8IvuIAQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 58762
 			}
 		},
 		"1.0.11": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.11",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
+				"jest": "^29.0.0",
+				"husky": "^7.0.2",
+				"pinst": "^2.1.6",
+				"eslint": "^8.43.0",
+				"rollup": "^3.25.1",
+				"ts-jest": "^29.1.0",
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
 				"@types/jest": "^29.0.0",
 				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
-				"jest": "^29.0.0",
 				"jest-openapi": "^0.14.2",
-				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
-				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
 				"rollup-plugin-copy": "^3.4.0",
-				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-jQv5tNqkhC9byBi1Hlo+odx3HCoDXlYGqSYpvDC+t+2QFPL3eANbZi8cbjmjpEA98nbI7zYtSkbVMHFH77SsVQ==",
 				"shasum": "21ae061f0341dfbd00cdae3d07c00931493c4113",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.11.tgz",
 				"fileCount": 17,
-				"unpackedSize": 59016,
+				"integrity": "sha512-jQv5tNqkhC9byBi1Hlo+odx3HCoDXlYGqSYpvDC+t+2QFPL3eANbZi8cbjmjpEA98nbI7zYtSkbVMHFH77SsVQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCjzs8Ebj+rR/8DlvskiOi7NiFbecZQ0gjTQCG1ZulLFwIhANHOnwlSZD/s0dNPbZA4LMh/MCvxZsLo5ukne661epXT"
+						"sig": "MEYCIQCjzs8Ebj+rR/8DlvskiOi7NiFbecZQ0gjTQCG1ZulLFwIhANHOnwlSZD/s0dNPbZA4LMh/MCvxZsLo5ukne661epXT",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 59016
 			}
 		},
 		"1.0.12": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.12",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^8.43.0",
 				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-Uw5PryeJijllxfZ319b1G8wzFRvla2AoLdM87+9DaCDxPkkHI1q37NW3uidAaxQmIwzoXyUqSRY/Z6IBnHIDEw==",
 				"shasum": "9e6a8b19b68bf5fa2f3151a1cd0a8f1a8d8b62fa",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.12.tgz",
 				"fileCount": 17,
-				"unpackedSize": 59038,
+				"integrity": "sha512-Uw5PryeJijllxfZ319b1G8wzFRvla2AoLdM87+9DaCDxPkkHI1q37NW3uidAaxQmIwzoXyUqSRY/Z6IBnHIDEw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIGlyHC7p2h+j+hy1gKymase8VZqZMG+gjCR2bCnUIJXHAiBi5MDjpfP304YBkgdhmRWw65aVdCy9/DcOWdYaUvR01Q=="
+						"sig": "MEQCIGlyHC7p2h+j+hy1gKymase8VZqZMG+gjCR2bCnUIJXHAiBi5MDjpfP304YBkgdhmRWw65aVdCy9/DcOWdYaUvR01Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 59038
 			}
 		},
 		"1.0.13": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.13",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^8.43.0",
 				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-bk50G3GBIAbNejqWjrlPROwYgOdX6dfGDDA3276AdiySvafOKWdNplR8emdsUZvfMUkyK7FWFREyrwmwcuRQWw==",
 				"shasum": "a9d92e245f81f6f07d94bd864cccaa1e9a4c4522",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.13.tgz",
 				"fileCount": 17,
-				"unpackedSize": 60059,
+				"integrity": "sha512-bk50G3GBIAbNejqWjrlPROwYgOdX6dfGDDA3276AdiySvafOKWdNplR8emdsUZvfMUkyK7FWFREyrwmwcuRQWw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBB/Arx9Bc3Yj64ZVqwt2FWofLt72SDOHLPfhnSRNU9DAiEAxmgwlCqm/K2+DJRn6l1R5nF9vRcd5XIdNS/pg03oIJU="
+						"sig": "MEUCIBB/Arx9Bc3Yj64ZVqwt2FWofLt72SDOHLPfhnSRNU9DAiEAxmgwlCqm/K2+DJRn6l1R5nF9vRcd5XIdNS/pg03oIJU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 60059
 			}
 		},
 		"1.0.14": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.0.14",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^2.4.0",
+				"eslint": "^8.43.0",
 				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"prettier": "^2.4.0",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-OqRNm1bjP1PFGvUu1/fVJp8mYaDLHVVVDajkCKyV+pAlZMoztTPitbbMPRrUoMNqfs3MQM/0x8E69702qiI1Eg==",
 				"shasum": "e5c9e9f0d147c779dff59f56e366cb1ff81edb0d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.0.14.tgz",
 				"fileCount": 17,
-				"unpackedSize": 60131,
+				"integrity": "sha512-OqRNm1bjP1PFGvUu1/fVJp8mYaDLHVVVDajkCKyV+pAlZMoztTPitbbMPRrUoMNqfs3MQM/0x8E69702qiI1Eg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDOuKE3Ta2a54LjszMj8eXypl8FxhJuulLYAERs8s8oWAIgXyKIu8+ubF6vxaDG7mPNca86hiEiNb/5crifqOeaw48="
+						"sig": "MEUCIQDOuKE3Ta2a54LjszMj8eXypl8FxhJuulLYAERs8s8oWAIgXyKIu8+ubF6vxaDG7mPNca86hiEiNb/5crifqOeaw48=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 60131
 			}
 		},
 		"1.1.0": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.1.0",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^5.3.1",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^5.3.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^3.1.0",
+				"eslint": "^8.43.0",
 				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"prettier": "^3.1.0",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-/IzpWbHN02zupUfoQZ8gSXUkX4n0+xQFEPlMPKXGd2K78+rDL/DpJbUYza0QtQIAQuT0sbyqrAJo51VtDu3nlw==",
 				"shasum": "ebaeac8b5812ef10add44fd0d916be62593af460",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.1.0.tgz",
 				"fileCount": 17,
-				"unpackedSize": 64099,
+				"integrity": "sha512-/IzpWbHN02zupUfoQZ8gSXUkX4n0+xQFEPlMPKXGd2K78+rDL/DpJbUYza0QtQIAQuT0sbyqrAJo51VtDu3nlw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIB9uPFRIuvvq5/TEvbdq8t0tnu6iavH5hZEW1JmQ/xEBAiEArCyH+ktCWETqeACI7acq0xvYhHpVm4Nl4jUxU5oHw1o="
+						"sig": "MEUCIB9uPFRIuvvq5/TEvbdq8t0tnu6iavH5hZEW1JmQ/xEBAiEArCyH+ktCWETqeACI7acq0xvYhHpVm4Nl4jUxU5oHw1o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 64099
 			}
 		},
 		"1.1.1": {
 			"name": "@cloudflare/itty-router-openapi",
 			"version": "1.1.1",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^6.4.0",
-				"itty-router": "4.0.26",
+				"zod": "^3.21.4",
 				"js-yaml": "^4.1.0",
+				"itty-router": "4.0.26",
 				"openapi3-ts": "^4.1.2",
-				"zod": "^3.21.4"
+				"@asteasolutions/zod-to-openapi": "^6.4.0"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20230518.0",
-				"@commitlint/cli": "^13.1.0",
-				"@commitlint/config-conventional": "^13.1.0",
-				"@rollup/plugin-terser": "^0.2.1",
-				"@rollup/plugin-typescript": "^10.0.1",
-				"@types/jest": "^29.0.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "^20.3.1",
-				"@types/service-worker-mock": "^2.0.1",
-				"@typescript-eslint/eslint-plugin": "^5.60.0",
-				"@typescript-eslint/parser": "^5.60.0",
-				"eslint": "^8.43.0",
-				"eslint-config-prettier": "^8.8.0",
-				"husky": "^7.0.2",
-				"isomorphic-fetch": "^3.0.0",
 				"jest": "^29.0.0",
-				"jest-openapi": "^0.14.2",
+				"husky": "^7.0.2",
 				"pinst": "^2.1.6",
-				"prettier": "^3.1.0",
+				"eslint": "^8.43.0",
 				"rollup": "^3.25.1",
-				"rollup-plugin-bundle-size": "^1.0.3",
-				"rollup-plugin-copy": "^3.4.0",
 				"ts-jest": "^29.1.0",
-				"typescript": "^5.1.3"
+				"prettier": "^3.1.0",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@commitlint/cli": "^13.1.0",
+				"isomorphic-fetch": "^3.0.0",
+				"rollup-plugin-copy": "^3.4.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@typescript-eslint/parser": "^5.60.0",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-iJKV7vIaJctMykyiNC89W+ZR3cQ5q8tQL1rVejtkXSj+/AuJYX0l7NrrM3D3u+SijbvsNsNMjFsoCGIzG7tpmQ==",
 				"shasum": "0bcaef5726d09435340fcb8446111ed4d2b1d368",
 				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-1.1.1.tgz",
 				"fileCount": 17,
-				"unpackedSize": 64099,
+				"integrity": "sha512-iJKV7vIaJctMykyiNC89W+ZR3cQ5q8tQL1rVejtkXSj+/AuJYX0l7NrrM3D3u+SijbvsNsNMjFsoCGIzG7tpmQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAjYSroMq5C3HGKB11jrPxrNyNvFOrXUCeOQ4Pz44FxzAiEAxJGk4mEzuoFInE6btXqDkRmg36QaXG08jRVmRaptl74="
+						"sig": "MEUCIAjYSroMq5C3HGKB11jrPxrNyNvFOrXUCeOQ4Pz44FxzAiEAxJGk4mEzuoFInE6btXqDkRmg36QaXG08jRVmRaptl74=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 64099
 			}
 		}
 	}

@@ -115,23 +115,23 @@
 				"firebase": "^10.7.2"
 			},
 			"devDependencies": {
-				"@types/cloudflare-turnstile": "^0.1.3",
-				"@types/node": "20.8.2",
 				"gts": "^5.2.0",
-				"typescript": "^5.3.3"
+				"typescript": "^5.3.3",
+				"@types/node": "20.8.2",
+				"@types/cloudflare-turnstile": "^0.1.3"
 			},
 			"dist": {
 				"shasum": "fed8acab6868df5240c0ae4fd826d68bbae49868",
-				"integrity": "sha512-OnlqtYTf52vA34k9cUBH8nEyJAd1ZwEwJMUIxr2Yvm8Tsbml34uz7rqNssSLUvgWyKGQdj/y/3FzHgSEl/MhPQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/turnstile-firebase-app-check/-/turnstile-firebase-app-check-0.0.5.tgz",
 				"fileCount": 10,
-				"unpackedSize": 156187,
+				"integrity": "sha512-OnlqtYTf52vA34k9cUBH8nEyJAd1ZwEwJMUIxr2Yvm8Tsbml34uz7rqNssSLUvgWyKGQdj/y/3FzHgSEl/MhPQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHYT5sd18IHkDyv0N92AZrX+f5iEkefY52FHLfXL8xORAiEA7+W8u6wsHwbJpT6JN/NB0aJw3Qj0eazI0fXGtQ1rVAw="
+						"sig": "MEUCIHYT5sd18IHkDyv0N92AZrX+f5iEkefY52FHLfXL8xORAiEA7+W8u6wsHwbJpT6JN/NB0aJw3Qj0eazI0fXGtQ1rVAw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 156187
 			}
 		}
 	}

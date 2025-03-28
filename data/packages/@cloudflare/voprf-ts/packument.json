@@ -161,37 +161,37 @@
 			"name": "@cloudflare/voprf-ts",
 			"version": "1.0.0",
 			"devDependencies": {
+				"jest": "29.7.0",
+				"sjcl": "1.0.8",
+				"eslint": "8.57.0",
+				"prettier": "3.3.3",
+				"benchmark": "2.1.4",
 				"@eslint/js": "9.8.0",
+				"typescript": "5.5.4",
+				"@types/jest": "29.5.12",
 				"@noble/curves": "1.5.0",
 				"@noble/hashes": "1.4.0",
 				"@types/benchmark": "2.1.5",
 				"@types/eslint__js": "8.42.3",
-				"@types/jest": "29.5.12",
-				"benchmark": "2.1.4",
-				"eslint": "8.57.0",
-				"eslint-config-prettier": "9.1.0",
+				"typescript-eslint": "7.15.0",
 				"eslint-plugin-jest": "28.8.0",
-				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-config-prettier": "9.1.0",
 				"eslint-plugin-prettier": "5.2.1",
 				"eslint-plugin-security": "3.0.1",
-				"jest": "29.7.0",
-				"prettier": "3.3.3",
-				"sjcl": "1.0.8",
-				"typescript": "5.5.4",
-				"typescript-eslint": "7.15.0"
+				"eslint-plugin-jest-formatting": "3.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-OvvWlnm5bjwPr7KaJ8MItQDaMz4DgN6BuOO3x/WXLVqCwM4rn6H/8Mgdbxq2XAEAi3BAh58XWDlAfmHL+AZTBA==",
 				"shasum": "35aee826c66379e55ca5a0bcfdf04d04aa789927",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voprf-ts/-/voprf-ts-1.0.0.tgz",
 				"fileCount": 262,
-				"unpackedSize": 676323,
+				"integrity": "sha512-OvvWlnm5bjwPr7KaJ8MItQDaMz4DgN6BuOO3x/WXLVqCwM4rn6H/8Mgdbxq2XAEAi3BAh58XWDlAfmHL+AZTBA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDnZX/u4qzVjd+9lHEg7HLpQmdRPsp3Lu7nC37+bKTfMAiEAoQDv+fecGYP31ZbYNxXCyx1QhPX3ItBitlE/tEDrReM="
+						"sig": "MEUCIDnZX/u4qzVjd+9lHEg7HLpQmdRPsp3Lu7nC37+bKTfMAiEAoQDv+fecGYP31ZbYNxXCyx1QhPX3ItBitlE/tEDrReM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 676323
 			},
 			"engines": {
 				"node": ">=20"

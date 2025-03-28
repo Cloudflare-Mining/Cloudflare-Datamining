@@ -1022,25 +1022,25 @@
 			"name": "@cloudflare/megaphone",
 			"version": "0.3.3",
 			"dependencies": {
-				"@cloudflare/cli-helpers": "^2.3.3",
 				"axios": "^0.21.3",
 				"chalk": "^2.4.1",
 				"commander": "^2.19.0",
-				"cosmiconfig": "^5.0.6"
+				"cosmiconfig": "^5.0.6",
+				"@cloudflare/cli-helpers": "^2.3.3"
 			},
 			"bin": "./src/cli.js",
 			"dist": {
 				"shasum": "3855c4814baa3e5f9eda1761215b86061ad70d50",
-				"integrity": "sha512-qEJJck1rvY0Xt/G/hvxlrk5TsL9ZsZCSMDob0vQP0LoicwdH2kMAJ5JcAq1C5zHWPNZkemvl+AS9ySzfCRqBvQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.3.3.tgz",
 				"fileCount": 11,
-				"unpackedSize": 32119,
+				"integrity": "sha512-qEJJck1rvY0Xt/G/hvxlrk5TsL9ZsZCSMDob0vQP0LoicwdH2kMAJ5JcAq1C5zHWPNZkemvl+AS9ySzfCRqBvQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCSEisaocc4Hkww6/YxV7HEpbcTe+5Tu0sBWDx5Krrt0AIhANDjO4oiEYsz3ND6qRe+QqYbddVkl2Q6gNbsyuaUcyKr"
+						"sig": "MEYCIQCSEisaocc4Hkww6/YxV7HEpbcTe+5Tu0sBWDx5Krrt0AIhANDjO4oiEYsz3ND6qRe+QqYbddVkl2Q6gNbsyuaUcyKr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 32119
 			},
 			"stratus": {
 				"srcDirectory": "./src",

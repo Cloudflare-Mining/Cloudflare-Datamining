@@ -245,27 +245,27 @@
 			"name": "@cloudflare/cabidela",
 			"version": "0.2.4",
 			"devDependencies": {
-				"@types/node": "^22.13.1",
-				"@vitest/ui": "^3.0.3",
 				"ajv": "^8.17.1",
-				"ajv-errors": "^3.0.0",
-				"ajv-merge-patch": "^5.0.1",
 				"tsup": "^8.3.6",
+				"vitest": "^3.0.3",
+				"@vitest/ui": "^3.0.3",
+				"ajv-errors": "^3.0.0",
 				"typescript": "^5.7.3",
-				"vitest": "^3.0.3"
+				"@types/node": "^22.13.1",
+				"ajv-merge-patch": "^5.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-u/1OwwqfcMvjmUFOcb6QtFzVVGpncHJxwl254wjzp0JC5CUlBkV6r5BbRrHI5ZYJEAgu8NeeorirxngmMFPZjQ==",
 				"shasum": "9a3e9212e636a24d796a8f16741c24885b326a1a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/cabidela/-/cabidela-0.2.4.tgz",
 				"fileCount": 8,
-				"unpackedSize": 50003,
+				"integrity": "sha512-u/1OwwqfcMvjmUFOcb6QtFzVVGpncHJxwl254wjzp0JC5CUlBkV6r5BbRrHI5ZYJEAgu8NeeorirxngmMFPZjQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIF5P4ZHkt9EDqf7tm58tx1XR3okWuKW8l9pe1tCYOoDzAiBRtR4+rtpWH5Kg/arZuYh0u2UFTL7zslHqC7aG8PEuNg=="
+						"sig": "MEQCIF5P4ZHkt9EDqf7tm58tx1XR3okWuKW8l9pe1tCYOoDzAiBRtR4+rtpWH5Kg/arZuYh0u2UFTL7zslHqC7aG8PEuNg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 50003
 			}
 		}
 	}

@@ -8265,37 +8265,37 @@
 			"name": "@cloudflare/component-forms-redux-form",
 			"version": "6.0.59",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.5.23",
-				"@cloudflare/component-forms": "^6.1.47",
-				"@cloudflare/elements": "^3.0.9",
 				"lodash.get": "^4.4.2",
-				"redux-form": "^8.2.4"
+				"redux-form": "^8.2.4",
+				"@cloudflare/elements": "^3.0.9",
+				"@cloudflare/component-forms": "^6.1.47",
+				"@cloudflare/component-button": "^8.5.23"
 			},
 			"devDependencies": {
-				"@types/react-redux": "7.1.1",
-				"react-redux": "7.1.0"
+				"react-redux": "7.1.0",
+				"@types/react-redux": "7.1.1"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"redux": "^3.7.2 || ^4.0.0",
 				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
 				"react-redux": "^7.1.0",
-				"redux": "^3.7.2 || ^4.0.0"
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "de283dba75560da4dea486f93ecedfdf0e85dfca",
-				"integrity": "sha512-T31OtIU9oO++RNeny7OpDAmmV3xdHFq/P80cPe2GxyNO2+qjlGLuMQl47zgzfEcVxzsd/xjPprc7cd6U+hquCw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-redux-form/-/component-forms-redux-form-6.0.59.tgz",
 				"fileCount": 67,
-				"unpackedSize": 174380,
+				"integrity": "sha512-T31OtIU9oO++RNeny7OpDAmmV3xdHFq/P80cPe2GxyNO2+qjlGLuMQl47zgzfEcVxzsd/xjPprc7cd6U+hquCw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFfh0QFbJP4DsGDQ49zguBXfEopoLSUSD+jCvFlRRCX/AiBmqnOVW6vdU/9XmRS8qba2Dm0ZWzRNeQGNiAzC6MT/cw=="
+						"sig": "MEQCIFfh0QFbJP4DsGDQ49zguBXfEopoLSUSD+jCvFlRRCX/AiBmqnOVW6vdU/9XmRS8qba2Dm0ZWzRNeQGNiAzC6MT/cw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 174380
 			},
 			"stratus": {
 				"srcDirectory": "./src",

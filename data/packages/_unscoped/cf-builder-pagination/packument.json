@@ -8,9 +8,9 @@
 			"name": "cf-builder-pagination",
 			"version": "1.0.0",
 			"dependencies": {
+				"react": "^0.14.2",
 				"cf-component-icon": "^1.1.1",
-				"cf-component-pagination": "^2.0.0",
-				"react": "^0.14.2"
+				"cf-component-pagination": "^2.0.0"
 			},
 			"devDependencies": {
 				"react-dom": "^0.14.2"
@@ -21,8 +21,8 @@
 				"integrity": "sha512-bLLbW9uYiycuQnhgyZxajI1mJOip8th+VRmwNQGVBgZG6k+by/GEiCd3bpn/x0V3lN3z++QGx+7z0FzKdUKz8w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDYSHzdCqo2y9ENF1oFs442Tn5/iqb+7EzLwaF4trsbVgIhAP+eTcOnC4zbz/8rkhX0kbLvEvMMQ0EbBOumMLaauLqF"
+						"sig": "MEYCIQDYSHzdCqo2y9ENF1oFs442Tn5/iqb+7EzLwaF4trsbVgIhAP+eTcOnC4zbz/8rkhX0kbLvEvMMQ0EbBOumMLaauLqF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -31,9 +31,9 @@
 			"name": "cf-builder-pagination",
 			"version": "1.0.1",
 			"dependencies": {
+				"react": "^0.14.2",
 				"cf-component-icon": "^1.1.2",
-				"cf-component-pagination": "^2.0.1",
-				"react": "^0.14.2"
+				"cf-component-pagination": "^2.0.1"
 			},
 			"devDependencies": {
 				"react-dom": "^0.14.2"
@@ -44,8 +44,8 @@
 				"integrity": "sha512-NSNHitykznBjZfRkYcllwmpGhyWKVxuQpzjxHPpsW04zG59DyNZpFVmLvVC5SXkg6J4ExezjNFp5Jb4Mzi7RIA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCo6ZvOnID0N7ilGB6WFsCZp3E0X/wd29LcxJRvaiQllwIhAJjlRHX+Li9uOMrnbb3Sd4rn5QHeWaRT90t03fVfXSRl"
+						"sig": "MEYCIQCo6ZvOnID0N7ilGB6WFsCZp3E0X/wd29LcxJRvaiQllwIhAJjlRHX+Li9uOMrnbb3Sd4rn5QHeWaRT90t03fVfXSRl",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -54,15 +54,15 @@
 			"name": "cf-builder-pagination",
 			"version": "1.0.2",
 			"dependencies": {
+				"react": "^0.14.2",
 				"cf-component-icon": "^1.1.2",
-				"cf-component-pagination": "^2.0.1",
-				"react": "^0.14.2"
+				"cf-component-pagination": "^2.0.1"
 			},
 			"devDependencies": {
-				"cf-test-stub": "^1.0.1",
 				"enzyme": "^2.3.0",
-				"react-addons-test-utils": "^0.14.2",
-				"react-dom": "^0.14.2"
+				"react-dom": "^0.14.2",
+				"cf-test-stub": "^1.0.1",
+				"react-addons-test-utils": "^0.14.2"
 			},
 			"dist": {
 				"shasum": "0c001d910d1ca46e54a10a4b97e029b5071a5c53",
@@ -70,8 +70,8 @@
 				"integrity": "sha512-85fnHgpV31gpNo7NVCIZBhGG0CXzxmSp3ZKKTo99uQtwrTt9QgSTFgUBnt8Tt6qxoCRD0RMotwnnXg5oGCS8WQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCgWVBHCmRyc3qnGU6aV+qU/Kl/JhuIsx8xymVJJU5fqgIgJpbZn+MbOqas0fn4UrHkqZbmcmnKvp929J+KKQ99jMo="
+						"sig": "MEUCIQCgWVBHCmRyc3qnGU6aV+qU/Kl/JhuIsx8xymVJJU5fqgIgJpbZn+MbOqas0fn4UrHkqZbmcmnKvp929J+KKQ99jMo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -80,15 +80,15 @@
 			"name": "cf-builder-pagination",
 			"version": "2.0.0",
 			"dependencies": {
+				"react": "^0.14.2 || ^15.0.0-0",
 				"cf-component-icon": "^2.0.0",
-				"cf-component-pagination": "^3.0.0",
-				"react": "^0.14.2 || ^15.0.0-0"
+				"cf-component-pagination": "^3.0.0"
 			},
 			"devDependencies": {
-				"cf-test-stub": "^2.0.0",
 				"enzyme": "^2.3.0",
-				"react-addons-test-utils": "^15.0.0-0",
-				"react-dom": "^15.0.0-0"
+				"react-dom": "^15.0.0-0",
+				"cf-test-stub": "^2.0.0",
+				"react-addons-test-utils": "^15.0.0-0"
 			},
 			"dist": {
 				"shasum": "3b0ac7d27328ad1e48bd5d4b9c6881d2b672b862",
@@ -96,8 +96,8 @@
 				"integrity": "sha512-iXSFXcf9a5PrLCOGl/A3gJjIwI3B16BdeKPM1kv3h8kTJWHP3zCKkpZxpyQi78vgzPxn+lLeV6xaZB+zW2/ciQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDsM2PQE/Xkuyjc/98ArQJYzc7yvKgQHtqn6AQxyVbvcAIhAL6q/VLK48qsz/1jqUaB4DyzhGM9aWZv+m2l+dx3dW72"
+						"sig": "MEYCIQDsM2PQE/Xkuyjc/98ArQJYzc7yvKgQHtqn6AQxyVbvcAIhAL6q/VLK48qsz/1jqUaB4DyzhGM9aWZv+m2l+dx3dW72",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -106,15 +106,15 @@
 			"name": "cf-builder-pagination",
 			"version": "2.0.1",
 			"dependencies": {
+				"react": "^0.14.2 || ^15.0.0-0",
 				"cf-component-icon": "^2.0.1",
-				"cf-component-pagination": "^3.0.1",
-				"react": "^0.14.2 || ^15.0.0-0"
+				"cf-component-pagination": "^3.0.1"
 			},
 			"devDependencies": {
-				"cf-test-stub": "^2.0.0",
 				"enzyme": "^2.3.0",
-				"react-addons-test-utils": "^15.0.0-0",
-				"react-dom": "^15.0.0-0"
+				"react-dom": "^15.0.0-0",
+				"cf-test-stub": "^2.0.0",
+				"react-addons-test-utils": "^15.0.0-0"
 			},
 			"dist": {
 				"shasum": "7d25353a0991c68a15787c80bc55179aa5abf94a",
@@ -122,8 +122,8 @@
 				"integrity": "sha512-sb4I17DyI8wnkWnlAqUQwgpkwz2go8G1GdVeldvBJ0f+rIOLfXNnuPJpj3H4SnlE8Bg6QCw+x9iuPo78ewm8Tw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCBE6IXPMLFsFjRE4V4Wyj1j0ap7z9rKsmoWC50QL9YKgIgf5nQgYywbcWxjgKlwzGnhZwnLExsiNj8gZv/JUxwCHw="
+						"sig": "MEUCIQCBE6IXPMLFsFjRE4V4Wyj1j0ap7z9rKsmoWC50QL9YKgIgf5nQgYywbcWxjgKlwzGnhZwnLExsiNj8gZv/JUxwCHw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -144,8 +144,8 @@
 				"integrity": "sha512-on8nAWmXwSrde1A6eejyeqcoiTc9JbVNGIg2hM0mbIE1QxAGAMrYllvJE7BDDKCy2m4OE6qhi9M2VHGKhG/7lA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBa9CIojTmWAxiWFnGnJbumq636w61pvtrvAET+XjKeLAiAXo1nJndDN/4hGHGgo8bmPcNiwz0tln6v3nRopBujusA=="
+						"sig": "MEQCIBa9CIojTmWAxiWFnGnJbumq636w61pvtrvAET+XjKeLAiAXo1nJndDN/4hGHGgo8bmPcNiwz0tln6v3nRopBujusA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -166,8 +166,8 @@
 				"integrity": "sha512-WVSOO7fRtnDXsSNJURnPBf3kEa2dfSz7lcpfSuVlgxkhycRa8q4Tw1vzvgpLI/LZE4hyonoLAJ1yxVbcXbyicg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCmzuizS9pUcdqUTUnahetpYIvfVk5exPw0XV/L1T/+EQIhAMcaeiw6ss5o8b+CPTbSOIDpyYYzXFI+LowurKWPv9O8"
+						"sig": "MEYCIQCmzuizS9pUcdqUTUnahetpYIvfVk5exPw0XV/L1T/+EQIhAMcaeiw6ss5o8b+CPTbSOIDpyYYzXFI+LowurKWPv9O8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -188,8 +188,8 @@
 				"integrity": "sha512-0kIgLu+GBgXF8OWOOwhRSgJw3pso7dXGkCAfEPP+P2qnefYqD9fF1DBfdpnDKchv3fdYPODfcvKgUbCu4p35dw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCdzBPp5OKpsBYniCgYgk31H5yngInzePTKgoGZx219fQIhAKx1+GQWWugXENwOBZwwszj066ykykZCtMmxKf1wFELp"
+						"sig": "MEYCIQCdzBPp5OKpsBYniCgYgk31H5yngInzePTKgoGZx219fQIhAKx1+GQWWugXENwOBZwwszj066ykykZCtMmxKf1wFELp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -210,8 +210,8 @@
 				"integrity": "sha512-8Gly0Zadyw5Mg9hDkB+HkxFxHVV3XK6cJOiX+WW2ClrIwvZnQ7xdxNMxVuGSHyhb2O+5TLu/85pV9lhcF8MzOQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFEJp6Enf5h0pTXkXwP2z0oaBl2/UyWipGhJMhvx/a0tAiBNpE9qYVfruAOHR9CrkT3TsKqI7ELthZVDgdu6k0ub5w=="
+						"sig": "MEQCIFEJp6Enf5h0pTXkXwP2z0oaBl2/UyWipGhJMhvx/a0tAiBNpE9qYVfruAOHR9CrkT3TsKqI7ELthZVDgdu6k0ub5w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -232,8 +232,8 @@
 				"integrity": "sha512-R6WQlnDd0n+TDSVgHMZfDfem6ZGq5LUelsa3y+bSx/HRl9Zu2er7ZJTFvdtPi863t9rrgRmUt10N+LfP8d+l2A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCJexfxiO1RYfGWxZ14mTg3owSWF+uXyr+NmvJv/HmnwgIgSH24MjoGsn8MaMPBbrf0mnPOSpYLqp6V7C3vqA4a4A0="
+						"sig": "MEUCIQCJexfxiO1RYfGWxZ14mTg3owSWF+uXyr+NmvJv/HmnwgIgSH24MjoGsn8MaMPBbrf0mnPOSpYLqp6V7C3vqA4a4A0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -254,8 +254,8 @@
 				"integrity": "sha512-tdUS8nDdZtboEkR2aXcaWeHjBztKlcpGzkfqsoto+ala6edXosl1NaEgHHI6J+FeJCQkL0sHlLPUX31LFJlpdQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBweZnZa5UvSQO+ZoM38QgJ9Prl+hByqzu3kSeRN7090AiADqMdYQZ+pOF3/PsuBfCDtSYp9y2Mqbi2e/QYNE1gv8A=="
+						"sig": "MEQCIBweZnZa5UvSQO+ZoM38QgJ9Prl+hByqzu3kSeRN7090AiADqMdYQZ+pOF3/PsuBfCDtSYp9y2Mqbi2e/QYNE1gv8A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -264,9 +264,9 @@
 			"name": "cf-builder-pagination",
 			"version": "3.3.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.2.1",
-				"cf-component-pagination": "^4.3.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^4.3.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -277,8 +277,8 @@
 				"integrity": "sha512-zEZC7Rftk6OkbzpDgWh1PGNQ5ntTzo9E37/1ppEUioB912AuRTZNpESMr1vKxfHMQtfBl7Mx5xe1Yic+vChkoA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCID35Ylhe6Ph+bHRnLwaCXzf1t9wyTyssrZMDqiKAagGxAiEAmGGqtrjrI4e/iuUbcM0WlTPuEkLXZnoZTOL3XsVvRP4="
+						"sig": "MEUCID35Ylhe6Ph+bHRnLwaCXzf1t9wyTyssrZMDqiKAagGxAiEAmGGqtrjrI4e/iuUbcM0WlTPuEkLXZnoZTOL3XsVvRP4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -287,9 +287,9 @@
 			"name": "cf-builder-pagination",
 			"version": "3.3.2",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.2.1",
-				"cf-component-pagination": "^4.3.2",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^4.3.2"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -300,8 +300,8 @@
 				"integrity": "sha512-fN0cU765C/DID26YkplksBKlzWv4Iz2X7aKkWLET/TADeQA7QrLrQJBiW+t2NY5UgOmTU3jLwm6twWu8k/4YmQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIDy9Khvjvv20ylbcIhYT5GOhMgYfWOogWPN0KbcuEKqnAiAoZWlvS8VVID6GVSJeJbtcRwALLDhky5F2jRCzKvOnGA=="
+						"sig": "MEQCIDy9Khvjvv20ylbcIhYT5GOhMgYfWOogWPN0KbcuEKqnAiAoZWlvS8VVID6GVSJeJbtcRwALLDhky5F2jRCzKvOnGA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -310,9 +310,9 @@
 			"name": "cf-builder-pagination",
 			"version": "3.3.3",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.2.2",
-				"cf-component-pagination": "^4.3.3",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^4.3.3"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -323,8 +323,8 @@
 				"integrity": "sha512-G/1SV0yzw/CBKWEz9/MOAssx+wn8WLw48Fv29Jn637l79IZLFAv9jRFHOaLr5CWaZspC1yZiE29L9Op//6JmNQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCICf1Y9KSOdTlpgMXgMdx3B/SLAhXD8V9vqXPfeouVl9tAiEA1/T8tCpE9AQOX6SRG+dgeigX6dDDYRr2IR6hmZvVRvU="
+						"sig": "MEUCICf1Y9KSOdTlpgMXgMdx3B/SLAhXD8V9vqXPfeouVl9tAiEA1/T8tCpE9AQOX6SRG+dgeigX6dDDYRr2IR6hmZvVRvU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -333,9 +333,9 @@
 			"name": "cf-builder-pagination",
 			"version": "3.4.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.3.0",
-				"cf-component-pagination": "^4.4.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^4.4.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -346,8 +346,8 @@
 				"integrity": "sha512-qTEEvr307UykzCwcnoASjt0jwBevn6Ooj/HT0X9NDZ6CGscLwywRuYoxMsqGtkvqCaZRWygM1fX6Y4TZEUWHEw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHTNh3bK3mzfd+X0foEkIll5JZb0v53XLcWLnusmZ8etAiBqLZ4I0RtPCT0qrOvaB+BKr2MLbAvkHbwA78xe2pW5rg=="
+						"sig": "MEQCIHTNh3bK3mzfd+X0foEkIll5JZb0v53XLcWLnusmZ8etAiBqLZ4I0RtPCT0qrOvaB+BKr2MLbAvkHbwA78xe2pW5rg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -356,21 +356,21 @@
 			"name": "cf-builder-pagination",
 			"version": "4.0.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.3.1",
-				"cf-component-pagination": "^5.0.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.0.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-6mzVOL5bM2Vh3Gz+kL+9KLtTWJvbA4WrFN28tKyFSpEdNg+wV9w784bB5mQmg6vkCnsM/dvtjiARQBUw2BIviw==",
 				"shasum": "12044eb42b20f776909f0f350863ab806e703b09",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-4.0.0.tgz",
+				"integrity": "sha512-6mzVOL5bM2Vh3Gz+kL+9KLtTWJvbA4WrFN28tKyFSpEdNg+wV9w784bB5mQmg6vkCnsM/dvtjiARQBUw2BIviw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAueG4utUu8F5PBel6mDOHYJesT0OmA9KMoHa8WJA+YbAiEApfzXH7QlLJTVmOo/d53/8JK1tAfgA/K/elvBtksodeA="
+						"sig": "MEUCIAueG4utUu8F5PBel6mDOHYJesT0OmA9KMoHa8WJA+YbAiEApfzXH7QlLJTVmOo/d53/8JK1tAfgA/K/elvBtksodeA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -379,9 +379,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.0.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.3.2",
-				"cf-component-pagination": "^5.0.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.0.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -392,8 +392,8 @@
 				"integrity": "sha512-VfkXvUiz2a4jr8f3PZu41gU8dw3PUyRr2qtTotRe3X1ifQWr4B34SD+E1Pf2RUb9elAlSVwD2v+B0FsPJWZtrg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDRrwdEIZtn866nWppZz+BrUWkNfoZyOAF947tbKVKW5QIhAMUUxwKyvhnscSLHiSUs8u0Hj/8IFc6nEoAgW1AIOBVr"
+						"sig": "MEYCIQDRrwdEIZtn866nWppZz+BrUWkNfoZyOAF947tbKVKW5QIhAMUUxwKyvhnscSLHiSUs8u0Hj/8IFc6nEoAgW1AIOBVr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -402,9 +402,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.1.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.0",
-				"cf-component-pagination": "^5.1.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.1.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -415,8 +415,8 @@
 				"integrity": "sha512-CCJ8J4IvASr1I9GgLhH3GoXYEeZNI/cCjDSUM5TebYrnSKO6YCKoC8VHxOyf9FdV2aYi1UXHqNzqT8sKbGi0gQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICaWRbVwYPBOYk5h/6PiG5IJfSZq2aS2D/LvPqooIfaoAiBwQ6ZbFdmgY+mSACCp5khzB94W5IbvDfAfkAYtRviCLw=="
+						"sig": "MEQCICaWRbVwYPBOYk5h/6PiG5IJfSZq2aS2D/LvPqooIfaoAiBwQ6ZbFdmgY+mSACCp5khzB94W5IbvDfAfkAYtRviCLw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -425,21 +425,21 @@
 			"name": "cf-builder-pagination",
 			"version": "4.1.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.1.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.1.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-IdljYrNlX2DHtjXU0deVSCKZLHkZHOFlBGhPsj8xx6bdOjXUXdu0/jO8TOteDW8UAAiOoFXKRezzMP0R6NXf0w==",
 				"shasum": "63ffb6932d166cf69051af3f2fe1c652475aa56e",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-4.1.1.tgz",
+				"integrity": "sha512-IdljYrNlX2DHtjXU0deVSCKZLHkZHOFlBGhPsj8xx6bdOjXUXdu0/jO8TOteDW8UAAiOoFXKRezzMP0R6NXf0w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQC627MqPTcZ3GAIUMJmUUijZ1hhqilPiLvt6I5l2kDXgQIgW+pxxPl3JdVFht4yQIVVyiy2rbXPEoJIflUOqj+LjWE="
+						"sig": "MEUCIQC627MqPTcZ3GAIUMJmUUijZ1hhqilPiLvt6I5l2kDXgQIgW+pxxPl3JdVFht4yQIVVyiy2rbXPEoJIflUOqj+LjWE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -448,9 +448,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.1.2",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.1.2",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.1.2"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -461,8 +461,8 @@
 				"integrity": "sha512-NyzLcfuOeA2HpnkFW5O8bJKW19kzHMO7AYp+k86/JDQkWAEIxHAiS7B85Fg5YKvEQiVoTElzo+FWTvtxD0yBdw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIGk7btTVpz/gw8Wo1PK79yukswpQ9f+mi0YDdkYGAdR/AiB+J7rZvlEH4LYYtkQD/v2v2q3hdqlrr1sa7toBub3wig=="
+						"sig": "MEQCIGk7btTVpz/gw8Wo1PK79yukswpQ9f+mi0YDdkYGAdR/AiB+J7rZvlEH4LYYtkQD/v2v2q3hdqlrr1sa7toBub3wig==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -471,9 +471,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.1.3",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.1.3",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.1.3"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -484,8 +484,8 @@
 				"integrity": "sha512-ZsNdzeZvYTq0rY2m17XLmK9YIpoBQk55Z1AHT4Wbo5JSnIc+PQUzUqOM+uvkCcDtdpkusGkxtOFRPGPZdisyMQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD0PZuHrsE1I+IZQPKPW1RkfCwe3wreGekFFXlWGCus+gIgJ2pBoSk5zoHkh2FppMbw4gHZJDaZ9Pax+v2JWZRginU="
+						"sig": "MEUCIQD0PZuHrsE1I+IZQPKPW1RkfCwe3wreGekFFXlWGCus+gIgJ2pBoSk5zoHkh2FppMbw4gHZJDaZ9Pax+v2JWZRginU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -494,9 +494,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -507,8 +507,8 @@
 				"integrity": "sha512-qdBcJKnHPyMoyymHJH6VgCubXi875BoxU7kZd1Ci2QZeoCuBFsiP62ddoJye0C0a0aWrETSKmZh3VToMujzapw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCeQJlmKAkHdDnxf/hcEyk2ODQH0GVGRTYRi2bIs+yywwIhAOgX21lDENY0EwJxTZtnwcdMTMNtIw/vESAv31Ly7uf/"
+						"sig": "MEYCIQCeQJlmKAkHdDnxf/hcEyk2ODQH0GVGRTYRi2bIs+yywwIhAOgX21lDENY0EwJxTZtnwcdMTMNtIw/vESAv31Ly7uf/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -517,9 +517,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -530,8 +530,8 @@
 				"integrity": "sha512-V7mL1KJTvrSK46mgsbeiTm2edMpzG2xQlIfR3kKD1wf4WdDfRt9RmnF5Vxth0WU+uqTExSGQT6U1UMk/vAyddw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQC19jgTSxu3RrChMeJYiGPU7Q7WCrfePtx9tlaGJC8wRAIhAN0NmzXJQkKiCaQqIDaWnOzVyu954cQcoOhF6ainQGWd"
+						"sig": "MEYCIQC19jgTSxu3RrChMeJYiGPU7Q7WCrfePtx9tlaGJC8wRAIhAN0NmzXJQkKiCaQqIDaWnOzVyu954cQcoOhF6ainQGWd",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -540,9 +540,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.3",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.3",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.3"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -553,8 +553,8 @@
 				"integrity": "sha512-DgqkEimsaHvANPYrSnQg+0w1GwpalryqgTjVc6bYPRzl+rJJ5xwGRFkurdJFSan8NXVKJtG7p/Ta90YZ/O1TzA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIE55gjeZgLSXNUJ8gHIyPcNEbAjvWlQTZXN+45xAcWKhAiAcoUorgH6bq2XGvVBmItopUSLecufz9cZQuhKbTMvIxA=="
+						"sig": "MEQCIE55gjeZgLSXNUJ8gHIyPcNEbAjvWlQTZXN+45xAcWKhAiAcoUorgH6bq2XGvVBmItopUSLecufz9cZQuhKbTMvIxA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -563,9 +563,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.4",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.4",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.4"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -576,8 +576,8 @@
 				"integrity": "sha512-yLrwkUXlUF6nRSZ7Y55VFDsQdkDj4xL6mnAvDcMeILVLqtgti6qkIG/mektj09FW2po7JxZVSw0IgA9NVS3awA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCByPsnS0D28QUyn/NMQ5Nzn8biPnnKytp3WnBCP6dUPAIgY6buFbT02xSQyFGZk/DEHiUP3PG+HCyBkpn+ih72KJI="
+						"sig": "MEUCIQCByPsnS0D28QUyn/NMQ5Nzn8biPnnKytp3WnBCP6dUPAIgY6buFbT02xSQyFGZk/DEHiUP3PG+HCyBkpn+ih72KJI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -586,9 +586,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.5",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.5",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.5"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -599,8 +599,8 @@
 				"integrity": "sha512-dpyNgnhzqC3PL4fsICFxYGFPd5QghKeSxZpPL4bimnANydbYgQweRspnx1/WJfewv5KsD6zASeMu7lV9ecMeIg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDgbm/xFyME5fgImcy4Ivsd6Lf0HE58829eMjuMAAuUjAIgKeAQnKiME94rLcsl0xHEid92/hEC3cSEUV5oCSDguSc="
+						"sig": "MEUCIQDgbm/xFyME5fgImcy4Ivsd6Lf0HE58829eMjuMAAuUjAIgKeAQnKiME94rLcsl0xHEid92/hEC3cSEUV5oCSDguSc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -609,9 +609,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.2.6",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.2.6",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.2.6"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -622,8 +622,8 @@
 				"integrity": "sha512-y9i/ecngbcS5kTAUXgjJdDXR523fZdXk+Wy00YjhlIg0LH0KGFdV06e2VZYGx/y67dLVItcXhGZl2UljJozLig==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCHCgEhzJWSPzGganS2b6mXsvlKQMy7VB8dkflmlmgimAIgbDCmK16pJKMO5YemHWOfsKLHwqXc0I8SMDltYppPlKM="
+						"sig": "MEUCIQCHCgEhzJWSPzGganS2b6mXsvlKQMy7VB8dkflmlmgimAIgbDCmK16pJKMO5YemHWOfsKLHwqXc0I8SMDltYppPlKM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -632,21 +632,21 @@
 			"name": "cf-builder-pagination",
 			"version": "4.3.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.3.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.3.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-jJBwicQxEz1XUO6/c3vOCwl9qYmHuQtUeVUeUyb2y2YpuMGIigpG/PpJxsxEkoyTko2p3gvCvroGStcj5Jkoig==",
 				"shasum": "0d223c9e10bb681ba18e129e4cbab8b5935fc417",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-4.3.0.tgz",
+				"integrity": "sha512-jJBwicQxEz1XUO6/c3vOCwl9qYmHuQtUeVUeUyb2y2YpuMGIigpG/PpJxsxEkoyTko2p3gvCvroGStcj5Jkoig==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCt2MuLvSYqeo0ugp9I428DMzhORnjlulNl/71iMnTmvwIgMklJihpARYbgoX63GQ1cn+q1mYB3ttfu/fLDI4kBoVQ="
+						"sig": "MEUCIQCt2MuLvSYqeo0ugp9I428DMzhORnjlulNl/71iMnTmvwIgMklJihpARYbgoX63GQ1cn+q1mYB3ttfu/fLDI4kBoVQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -655,21 +655,21 @@
 			"name": "cf-builder-pagination",
 			"version": "4.3.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.3.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.3.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-Dwx0RmCNm1y0iOdZGWb5mfgn0miquiUB+qH+oJxZlxrGdDP1eFdXXl2K9+keruZDQE84ObaIwUdrX/1GDx3mGQ==",
 				"shasum": "172c5605ec8bbd457ec026a6178ae886ddf77ffa",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-4.3.1.tgz",
+				"integrity": "sha512-Dwx0RmCNm1y0iOdZGWb5mfgn0miquiUB+qH+oJxZlxrGdDP1eFdXXl2K9+keruZDQE84ObaIwUdrX/1GDx3mGQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD/+ec+CcDBEUKsp5PiXN4G78brwuQb6KI1aPrKAWmTUAIgO9Zw0McUAKIf/aO2y+T+ShUR4HksYEK9PJhPgVuYGWc="
+						"sig": "MEUCIQD/+ec+CcDBEUKsp5PiXN4G78brwuQb6KI1aPrKAWmTUAIgO9Zw0McUAKIf/aO2y+T+ShUR4HksYEK9PJhPgVuYGWc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -678,9 +678,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.4.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.4.0",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.0"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -691,8 +691,8 @@
 				"integrity": "sha512-8db9+SDv5yyXz3uMg6LSYlZB0c9oh5YleLOxDE12EAEhFOT2keBrc1H/U00Fs1FZE/vsbeX6C5uLoQZj/+HviA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIF3SAUbF8SpKKWeimOXto+1gsQEIGhgIFf4iU/j1KakcAiEAjHcKSz0HKeOE1rqaN8nuT411YaGtuP8sOJGtBRonMyM="
+						"sig": "MEUCIF3SAUbF8SpKKWeimOXto+1gsQEIGhgIFf4iU/j1KakcAiEAjHcKSz0HKeOE1rqaN8nuT411YaGtuP8sOJGtBRonMyM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -701,9 +701,9 @@
 			"name": "cf-builder-pagination",
 			"version": "4.4.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^2.4.1",
-				"cf-component-pagination": "^5.4.1",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.1"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -714,8 +714,8 @@
 				"integrity": "sha512-zYJ6sF4+ABdtmovdl5LvrjYLaDD92GyBGmnBKaUR3kftug7IVJ2qQypibLNLeZYlY0B4jhaLFfbKuS1b9ghztg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAe7IJeNcBG1OtmmlzF7lcwAsKH/qPbqMoN14L2/YzkjAiEA0pTs+aAqD+GUa0s0gXLahiKifvttgHf5o+HyW4FTKF0="
+						"sig": "MEUCIAe7IJeNcBG1OtmmlzF7lcwAsKH/qPbqMoN14L2/YzkjAiEA0pTs+aAqD+GUa0s0gXLahiKifvttgHf5o+HyW4FTKF0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -724,21 +724,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.0",
-				"cf-component-pagination": "^5.4.2",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.2"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-TvrRUBunkLFGycdF1MvenbIrz9J1FocK1hmTAinL/RCYedQxK/CDZcRDqc/sNO5EL7l9kqJcb+gWk4xkDCaA6Q==",
 				"shasum": "8815e36c08471dfc86d849828d8e40c9e34993e5",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.0.tgz",
+				"integrity": "sha512-TvrRUBunkLFGycdF1MvenbIrz9J1FocK1hmTAinL/RCYedQxK/CDZcRDqc/sNO5EL7l9kqJcb+gWk4xkDCaA6Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD7YpCXt9zr0TBw5c7mBd4LXjfGjjy+6ENkYvqIWYI6HwIhAJT6rYohbif+Fz96s8FPt9rWMAvkPHr+jRaeJw5hB5f9"
+						"sig": "MEYCIQD7YpCXt9zr0TBw5c7mBd4LXjfGjjy+6ENkYvqIWYI6HwIhAJT6rYohbif+Fz96s8FPt9rWMAvkPHr+jRaeJw5hB5f9",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -747,21 +747,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.1",
-				"cf-component-pagination": "^5.4.3",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.3"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-QuII4u33widEPGCFnw81ivWYbkBt3wUCUNDrDeJ46O9IoLOIiRa/xkCYx4qGrC2PbktSUdxi2LUUvNmEJCw8sQ==",
 				"shasum": "8e311e8b2974f40052be4068a64d45088ebdeb93",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.1.tgz",
+				"integrity": "sha512-QuII4u33widEPGCFnw81ivWYbkBt3wUCUNDrDeJ46O9IoLOIiRa/xkCYx4qGrC2PbktSUdxi2LUUvNmEJCw8sQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBaUedRoHKibpYIwP3Ai4/snja69LkQBrcRRbh9Ou8yUAiBN3fHigTp8+3kZqScV26J4B9d6wnXEodg0JVayj6sD8w=="
+						"sig": "MEQCIBaUedRoHKibpYIwP3Ai4/snja69LkQBrcRRbh9Ou8yUAiBN3fHigTp8+3kZqScV26J4B9d6wnXEodg0JVayj6sD8w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -770,21 +770,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.2",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.2",
-				"cf-component-pagination": "^5.4.4",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.4"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-xYfds02BUAbG6HvXVOV2WTFh+kPJI/MKIrlwCr2cuaZay9Ypk8Smqt+4AZHKsV2eot4vf/hJEbT/CGB3EmR5dg==",
 				"shasum": "16f6a47528d9a56fc888ba3e5bd54a8817083ec0",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.2.tgz",
+				"integrity": "sha512-xYfds02BUAbG6HvXVOV2WTFh+kPJI/MKIrlwCr2cuaZay9Ypk8Smqt+4AZHKsV2eot4vf/hJEbT/CGB3EmR5dg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDNBMj2xg1BgDh4cY86RBz6YzZBiH4g4ZRjbD2Wp4AsdQIgZzodKeC2Hg4aiG0mpsjM93Ko97lhjtUYgub7+0VBOX4="
+						"sig": "MEUCIQDNBMj2xg1BgDh4cY86RBz6YzZBiH4g4ZRjbD2Wp4AsdQIgZzodKeC2Hg4aiG0mpsjM93Ko97lhjtUYgub7+0VBOX4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -793,9 +793,9 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.3",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.3",
-				"cf-component-pagination": "^5.4.5",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.5"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -806,8 +806,8 @@
 				"integrity": "sha512-YQVCi6kn6lSwwMP4Ynj9OtkAL9DK6nxjE3n5A4kufcSa+MC1wmlDkHnmuH/yT34vhzElIeM34nLYdufj25m3bA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCbYH347MeCeB85T0e7nd9vrOK4xNLtO1SN8npBuiG3+QIgc7eWEjzZZHl2/zWfWH29qW6V8rwsD1OWpHCLpM1UocY="
+						"sig": "MEUCIQCbYH347MeCeB85T0e7nd9vrOK4xNLtO1SN8npBuiG3+QIgc7eWEjzZZHl2/zWfWH29qW6V8rwsD1OWpHCLpM1UocY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -816,21 +816,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.4",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.4",
-				"cf-component-pagination": "^5.4.6",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.6"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-4NHdpWsjPJ7gF25EIadsGEuRDplMZSncWFN4f1Is83+8Bgl5Isa4nrjHhHSu0Npfcv7SqnGtBbWCbCantsUilA==",
 				"shasum": "0624f6f85846c038acf6ed32ab337c36101dd9c5",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.4.tgz",
+				"integrity": "sha512-4NHdpWsjPJ7gF25EIadsGEuRDplMZSncWFN4f1Is83+8Bgl5Isa4nrjHhHSu0Npfcv7SqnGtBbWCbCantsUilA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCICAODRH+RpvuWqPuO2NnEbp1gA9axSdDmcrFTC4L+R/BAiBxKLJ1qZB2c70PNKUlklaw6rF/CVt8QQ7jZfzbNuGYxg=="
+						"sig": "MEQCICAODRH+RpvuWqPuO2NnEbp1gA9axSdDmcrFTC4L+R/BAiBxKLJ1qZB2c70PNKUlklaw6rF/CVt8QQ7jZfzbNuGYxg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -839,9 +839,9 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.5",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.5",
-				"cf-component-pagination": "^5.4.7",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.7"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
@@ -852,8 +852,8 @@
 				"integrity": "sha512-ZtUpq3B3GVFw5SqLE6N0NkE0HI1LQtWGAf0pu7xaLbBnoX1D0z099f+D0h8VphIg9JjZ+0MJnhrFb4T8v5vAwg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCp0IxxEsgFxg6mEs3lEHDTsL5fj/8GUKWbwpPRf/+yIgIhAKVZDQgWjHILlhfc1vd2ElpSVw37gR1Y+BbpBbBYRNAX"
+						"sig": "MEYCIQCp0IxxEsgFxg6mEs3lEHDTsL5fj/8GUKWbwpPRf/+yIgIhAKVZDQgWjHILlhfc1vd2ElpSVw37gR1Y+BbpBbBYRNAX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -862,21 +862,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.6",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.0.6",
-				"cf-component-pagination": "^5.4.8",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.8"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-KjfWh3XS9wsgrhT+f1Wn7y57eLwqJ6+rBTIqqMGGPh93h/gCMccFuVN9Hd7v5mkYc808JS1PERsCypltSw558Q==",
 				"shasum": "9f42df0e4f5b433b49caddc7ab735a9a48487b51",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.6.tgz",
+				"integrity": "sha512-KjfWh3XS9wsgrhT+f1Wn7y57eLwqJ6+rBTIqqMGGPh93h/gCMccFuVN9Hd7v5mkYc808JS1PERsCypltSw558Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCy1GvWc+38s/AWwVDRTiore84aSd5yC/kfEH4b+8ILGAIgS5e9eVM7c4lepoISHQsHc8u3KcbZO3HBDH5p0ykzqEs="
+						"sig": "MEUCIQCy1GvWc+38s/AWwVDRTiore84aSd5yC/kfEH4b+8ILGAIgS5e9eVM7c4lepoISHQsHc8u3KcbZO3HBDH5p0ykzqEs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -885,21 +885,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.7",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.1.0",
-				"cf-component-pagination": "^5.4.9",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.9"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-ZXqSw9uVU56OeENXRF1uM9yEe9wzYpLVd3wge587kBYX5UePn4H/IbuQSKRb+nJ8d+V6NHCwo+s7O1s6wah4kA==",
 				"shasum": "f195a21d4a14a9387d4798953ace33a3b91208ca",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.7.tgz",
+				"integrity": "sha512-ZXqSw9uVU56OeENXRF1uM9yEe9wzYpLVd3wge587kBYX5UePn4H/IbuQSKRb+nJ8d+V6NHCwo+s7O1s6wah4kA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD/6rtz4VnkirlRU4fHAXhrlA8LoHA6eCD2Q54WDUxk4gIhALUMMfDtXcvaxWtT9h0b8o5FiyaHFQlQuVKxLfoMeW1R"
+						"sig": "MEYCIQD/6rtz4VnkirlRU4fHAXhrlA8LoHA6eCD2Q54WDUxk4gIhALUMMfDtXcvaxWtT9h0b8o5FiyaHFQlQuVKxLfoMeW1R",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -908,21 +908,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.8",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^3.1.1",
-				"cf-component-pagination": "^5.4.10",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.10"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-jupea9h0zJy7kxztn9r0IzAowofDMPhYC9htXNGf6RHKM5+Fg0JNyKct5VGvCRVa/XEH9BfAgimi16Tko6JgJA==",
 				"shasum": "f299cfccdee8694107599941967c424b2cce28ae",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.8.tgz",
+				"integrity": "sha512-jupea9h0zJy7kxztn9r0IzAowofDMPhYC9htXNGf6RHKM5+Fg0JNyKct5VGvCRVa/XEH9BfAgimi16Tko6JgJA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD12xkzth1jbZ641OXC/zecPCKI2bhik6lY/mtyFs9kMAIhAPAwdKR/vp/kagro/d9HLVlziC+WYp0mgcauVrpW/Ju4"
+						"sig": "MEYCIQD12xkzth1jbZ641OXC/zecPCKI2bhik6lY/mtyFs9kMAIhAPAwdKR/vp/kagro/d9HLVlziC+WYp0mgcauVrpW/Ju4",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -931,21 +931,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.9",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^4.0.0",
-				"cf-component-pagination": "^5.4.11",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.11"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-8HUvtQQMSdrnEh1/8Fn0LuTfQKWc1TJQgKsME2Ny/wrCJnUe2u2PLgm/zlb/2XjpTurFEtj/EljJyY3fxkOLKQ==",
 				"shasum": "e1b35ce9c144eda6356b160e6d9820faa2698f74",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.9.tgz",
+				"integrity": "sha512-8HUvtQQMSdrnEh1/8Fn0LuTfQKWc1TJQgKsME2Ny/wrCJnUe2u2PLgm/zlb/2XjpTurFEtj/EljJyY3fxkOLKQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIE2Mo+Q/WSHG5SvgtYVIKli6liq1VL9Ih9CcKi7DqTM/AiBYHbckQjFJYaKloQhWg7cMSfmopRvgGF488wsk15/frw=="
+						"sig": "MEQCIE2Mo+Q/WSHG5SvgtYVIKli6liq1VL9Ih9CcKi7DqTM/AiBYHbckQjFJYaKloQhWg7cMSfmopRvgGF488wsk15/frw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -954,21 +954,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.11",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^4.0.2",
-				"cf-component-pagination": "^5.4.13",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.13"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-gx1t8IHv5cE6eAidtUsFFJIzpiHJQvo9t05JrlSe0bjmK3nh943QhMnUvGkqZsc4fX5o+3pksAz1S9605us8Eg==",
 				"shasum": "383485a685ae11916c57f58a70dd0a6cf9432703",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.11.tgz",
+				"integrity": "sha512-gx1t8IHv5cE6eAidtUsFFJIzpiHJQvo9t05JrlSe0bjmK3nh943QhMnUvGkqZsc4fX5o+3pksAz1S9605us8Eg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCkQe3dMpcmXJw1lhSjcT1SVHuzfjhNPNgKJaVHo1oE8QIhAOhz32A64AkrfIrlMOaygL8j5rAXZZhJksPH5HhD4k5n"
+						"sig": "MEYCIQCkQe3dMpcmXJw1lhSjcT1SVHuzfjhNPNgKJaVHo1oE8QIhAOhz32A64AkrfIrlMOaygL8j5rAXZZhJksPH5HhD4k5n",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -977,21 +977,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.0.12",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^4.0.3",
-				"cf-component-pagination": "^5.4.14",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.14"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-tmbELwicH3a9r0VHFg5T2r32ehGj+zuUErRdoqUsjuUDEAAP7kl9VDphUvH12mvB7Q2Ll9L30ShWv2rBzMLXPA==",
 				"shasum": "1e2f65dbc1f734e2c80e63c04bf53e254dbd0254",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.0.12.tgz",
+				"integrity": "sha512-tmbELwicH3a9r0VHFg5T2r32ehGj+zuUErRdoqUsjuUDEAAP7kl9VDphUvH12mvB7Q2Ll9L30ShWv2rBzMLXPA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHZXjbRjQdnBtrWDrttbcGISmS6GkS4BDB+3MzKCVe0KAiEAjJ4EKf5Q8OFlRAAzL5jfyR5VwteeJtLYIAVNaCQ81Nc="
+						"sig": "MEUCIHZXjbRjQdnBtrWDrttbcGISmS6GkS4BDB+3MzKCVe0KAiEAjJ4EKf5Q8OFlRAAzL5jfyR5VwteeJtLYIAVNaCQ81Nc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1000,21 +1000,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.0",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^4.1.0",
-				"cf-component-pagination": "^5.4.15",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.15"
 			},
 			"peerDependencies": {
 				"react": "^0.14.9 || ^15.0.0-0 || ^16.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-7X9ZtoMYqYAi1S5Z5xomo/MBDBTXoTktdICC1nESYCN2nK4mno/ctC4Ln+Vhdgn236HLwbg3uahlum0IPVCFXA==",
 				"shasum": "bf2659790445fef6d9552297dfa3756b10c3cac5",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.0.tgz",
+				"integrity": "sha512-7X9ZtoMYqYAi1S5Z5xomo/MBDBTXoTktdICC1nESYCN2nK4mno/ctC4Ln+Vhdgn236HLwbg3uahlum0IPVCFXA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCa8EI8ku2i1QYKnDfXOFGHMZ1igNlE88tuHRhFsn+D2AIgLZIqi/g/mpsKU7RkysU9J9rQwNkS85915hWnfNvksAs="
+						"sig": "MEUCIQCa8EI8ku2i1QYKnDfXOFGHMZ1igNlE88tuHRhFsn+D2AIgLZIqi/g/mpsKU7RkysU9J9rQwNkS85915hWnfNvksAs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1023,21 +1023,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.1",
 			"dependencies": {
+				"prop-types": "^15.5.8",
 				"cf-component-icon": "^4.1.1",
-				"cf-component-pagination": "^5.4.16",
-				"prop-types": "^15.5.8"
+				"cf-component-pagination": "^5.4.16"
 			},
 			"peerDependencies": {
 				"react": "^0.14.2 || ^15.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-l9U6/2N4fYJwOxWE6ZLZdvP3aLy/MFax8IKvmytThrN5PEWyh1TdXL1vvyvy9RYnz3e7PJ9/T6oUYYxu1KMeOQ==",
 				"shasum": "e07bb2b92d35e0ba7928b224ece05c924576de9f",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.1.tgz",
+				"integrity": "sha512-l9U6/2N4fYJwOxWE6ZLZdvP3aLy/MFax8IKvmytThrN5PEWyh1TdXL1vvyvy9RYnz3e7PJ9/T6oUYYxu1KMeOQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDAyT8pSd4cSZCNjZ4Qp9n3/kfVDjsvz/h6q4retyZLBwIgVMJ9ax6ezc3dkg/4X7Ty4WKmZiWbjvI7COCAl069chM="
+						"sig": "MEUCIQDAyT8pSd4cSZCNjZ4Qp9n3/kfVDjsvz/h6q4retyZLBwIgVMJ9ax6ezc3dkg/4X7Ty4WKmZiWbjvI7COCAl069chM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1046,21 +1046,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.2",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.1.2",
-				"cf-component-pagination": "^5.4.17",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.17"
 			},
 			"peerDependencies": {
 				"react": "^0.14.2 || ^15.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-TkVB18jdWEh/ct74myP6/LS/S/sFWqXnZTpO8WOZO8tNFTmKRDICSPQrYjjXKXoOe0MGRUw+Nw2vLO5CGGQfPg==",
 				"shasum": "2fa884ec0f6ba95bab0ca9d57d3689dc78fad7a9",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.2.tgz",
+				"integrity": "sha512-TkVB18jdWEh/ct74myP6/LS/S/sFWqXnZTpO8WOZO8tNFTmKRDICSPQrYjjXKXoOe0MGRUw+Nw2vLO5CGGQfPg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCIpjMvhREnqHBvJTaCZi0OVN/fuOMEmj/4FM3+QvCDWgIhAKYGX22odqQEcEVsbs5FMO8xhKuX+Lw5nmvrIue7wF8i"
+						"sig": "MEYCIQCIpjMvhREnqHBvJTaCZi0OVN/fuOMEmj/4FM3+QvCDWgIhAKYGX22odqQEcEVsbs5FMO8xhKuX+Lw5nmvrIue7wF8i",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1069,21 +1069,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.3",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.1.3",
-				"cf-component-pagination": "^5.4.18",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.18"
 			},
 			"peerDependencies": {
 				"react": "^0.14.2 || ^15.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-8UQq9Gr9kLhtnoZ/mwztWOykKAKxh9mnFVWZKf4mMfJDcGR9/t4IBa1rnT6Ow6yVf7NlmUdz4iCcYr94NYyTIQ==",
 				"shasum": "9d97aa938ef20882733256ffb5702a5e8740d0e7",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.3.tgz",
+				"integrity": "sha512-8UQq9Gr9kLhtnoZ/mwztWOykKAKxh9mnFVWZKf4mMfJDcGR9/t4IBa1rnT6Ow6yVf7NlmUdz4iCcYr94NYyTIQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIA6YoM1T+LD9Tb9JPPf7eseVSVPkZQ+ZKTJFGvRGwkDMAiBYYzo6KL/BD3mynRRXNMqbdqc+t70yEYAUvrxHjyqSpA=="
+						"sig": "MEQCIA6YoM1T+LD9Tb9JPPf7eseVSVPkZQ+ZKTJFGvRGwkDMAiBYYzo6KL/BD3mynRRXNMqbdqc+t70yEYAUvrxHjyqSpA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1092,21 +1092,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.4",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.1.4",
-				"cf-component-pagination": "^5.4.19",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.19"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-MJimWwBn2t5T2IaWZ09pDke23vzCDkrg+V2lsSmBTGnLz3BSQr+xTR+MK1KX4ZjXnsS5ifLvpcoUtTAZj/kzbQ==",
 				"shasum": "19ab4c2d79508e5205aa75bc9af719869ca4443a",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.4.tgz",
+				"integrity": "sha512-MJimWwBn2t5T2IaWZ09pDke23vzCDkrg+V2lsSmBTGnLz3BSQr+xTR+MK1KX4ZjXnsS5ifLvpcoUtTAZj/kzbQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAQlZdgnGFVXKH3i0Q2aj3E2CLxFCR0i165/ufbgiBBfAiEA9dJrLLwEauHXFcdPMMcpIom1Cuk3omcyY5rK+9aQ/9A="
+						"sig": "MEUCIAQlZdgnGFVXKH3i0Q2aj3E2CLxFCR0i165/ufbgiBBfAiEA9dJrLLwEauHXFcdPMMcpIom1Cuk3omcyY5rK+9aQ/9A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1115,21 +1115,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.5",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.2.0",
-				"cf-component-pagination": "^5.4.20",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.20"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-gMjNdGA9VaMJ2ph0+K2l+fjclegQOz+5AUTbHfDbubETUusWJ0BQhFSy9Ut/8STV0SzX9fx8/uYoHy9uZV8OLA==",
 				"shasum": "fe0be43e71491743528514546bcdcd1fc4caa0e5",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.5.tgz",
+				"integrity": "sha512-gMjNdGA9VaMJ2ph0+K2l+fjclegQOz+5AUTbHfDbubETUusWJ0BQhFSy9Ut/8STV0SzX9fx8/uYoHy9uZV8OLA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCICiTSm08alI+MPNwttupCBJ7fFDLcrpl7JrBFrMUdKVSAiEA/z833G7yy2xN+7V7R+22bv9Hqk9B9PAnAB42CyOogqs="
+						"sig": "MEUCICiTSm08alI+MPNwttupCBJ7fFDLcrpl7JrBFrMUdKVSAiEA/z833G7yy2xN+7V7R+22bv9Hqk9B9PAnAB42CyOogqs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1138,21 +1138,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.6",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.2.1",
-				"cf-component-pagination": "^5.4.21",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.21"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-w0wPPUv079CfuvGvI9c2xfb5Ze4f1J1VhYtreXgHjYDYvpIxeIY2H6guSDfJQG0T53C5i6XgedhOhTCglxywqw==",
 				"shasum": "bae0b8dc98ef24437edfb3fb0aec45754e2e9f8e",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.6.tgz",
+				"integrity": "sha512-w0wPPUv079CfuvGvI9c2xfb5Ze4f1J1VhYtreXgHjYDYvpIxeIY2H6guSDfJQG0T53C5i6XgedhOhTCglxywqw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEcVwg0fElpd6GDafeZCzwUjzvu22LqWCsk5hsKpBQv3AiEAxsNSOG6IiTJrBfaJj0+/N4t+4YyLR3bIYqgHe4Daq40="
+						"sig": "MEUCIEcVwg0fElpd6GDafeZCzwUjzvu22LqWCsk5hsKpBQv3AiEAxsNSOG6IiTJrBfaJj0+/N4t+4YyLR3bIYqgHe4Daq40=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1161,21 +1161,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.7",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.2.1",
-				"cf-component-pagination": "^5.4.22",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.22"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-ps3hEFuLoDDYQLIV5Et+jTcwUZSdfYdgE7QesGgI2aKzP0hUHgaOGCkOMu1ll1C39W/nkssbS0We+hJBRx0Zsg==",
 				"shasum": "ca38f615564f3a082eeedbb607f003d5ab454a15",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.7.tgz",
+				"integrity": "sha512-ps3hEFuLoDDYQLIV5Et+jTcwUZSdfYdgE7QesGgI2aKzP0hUHgaOGCkOMu1ll1C39W/nkssbS0We+hJBRx0Zsg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIGkiyotmupKtk6XxgKsYc9uw9+hPBBMKNbo8E/g500VFAiBEMjHXtuU4fR6Clae+zbzHjkgiCZsx3LMdDX1z0f+jOw=="
+						"sig": "MEQCIGkiyotmupKtk6XxgKsYc9uw9+hPBBMKNbo8E/g500VFAiBEMjHXtuU4fR6Clae+zbzHjkgiCZsx3LMdDX1z0f+jOw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1184,21 +1184,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.8",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.2.1",
-				"cf-component-pagination": "^5.4.23",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.23"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-2Fg+kIQzZ6KGukyNqHcl3kAEWRcnKdJ2iBPbA2WUrdNhaRhrnoKKF/N/S0SVBh4613usdqONbTn9PuC2JL8IoQ==",
 				"shasum": "86eebd98fad868d5cabf9c63aad511f689d27725",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.8.tgz",
+				"integrity": "sha512-2Fg+kIQzZ6KGukyNqHcl3kAEWRcnKdJ2iBPbA2WUrdNhaRhrnoKKF/N/S0SVBh4613usdqONbTn9PuC2JL8IoQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCGHG/1jBsStpInHgFVOZScbDGDg1yqJa3rOzzrLSAKtgIgSu7I40rnksY9exgUgO3lOWfog7IIROEA85DmvtO37AE="
+						"sig": "MEUCIQCGHG/1jBsStpInHgFVOZScbDGDg1yqJa3rOzzrLSAKtgIgSu7I40rnksY9exgUgO3lOWfog7IIROEA85DmvtO37AE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}
@@ -1207,21 +1207,21 @@
 			"name": "cf-builder-pagination",
 			"version": "5.1.9",
 			"dependencies": {
+				"prop-types": "^15.6.0",
 				"cf-component-icon": "^4.2.2",
-				"cf-component-pagination": "^5.4.24",
-				"prop-types": "^15.6.0"
+				"cf-component-pagination": "^5.4.24"
 			},
 			"peerDependencies": {
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"integrity": "sha512-ps9witEavJ8PtH1K6NXQyfxVA6YJV2aMYi2bCmSFx+3S2d8/oZUyIWlXBGZ3Kje3npqZ2mAKwGif8EQ5AFp9/Q==",
 				"shasum": "ece29e1b4c3792c597dd15f7be86c412de1f9e23",
 				"tarball": "https://registry.npmjs.org/cf-builder-pagination/-/cf-builder-pagination-5.1.9.tgz",
+				"integrity": "sha512-ps9witEavJ8PtH1K6NXQyfxVA6YJV2aMYi2bCmSFx+3S2d8/oZUyIWlXBGZ3Kje3npqZ2mAKwGif8EQ5AFp9/Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFK2yPNR7JxG08p+YEYl2wY819zmRYxSBUeALAP2TbizAiAL4tIH94M9n0MDZjO8maEY8EvIInWzu27dAnX9G0T7+w=="
+						"sig": "MEQCIFK2yPNR7JxG08p+YEYl2wY819zmRYxSBUeALAP2TbizAiAL4tIH94M9n0MDZjO8maEY8EvIInWzu27dAnX9G0T7+w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				]
 			}

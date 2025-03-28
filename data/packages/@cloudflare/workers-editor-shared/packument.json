@@ -53,39 +53,39 @@
 				"react-split-pane": "^0.1.92"
 			},
 			"devDependencies": {
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "7.12.2",
-				"@types/react": "^18.3.3",
-				"@typescript-eslint/eslint-plugin": "^6.9.0",
-				"@typescript-eslint/parser": "^6.9.0",
-				"@vitejs/plugin-react": "^4.0.1",
-				"eslint": "^8.49.0",
-				"react": "^18.3.1",
-				"react-dom": "^18.3.1",
 				"vite": "^5.0.12",
+				"react": "^18.3.1",
+				"eslint": "^8.49.0",
+				"react-dom": "^18.3.1",
+				"@types/react": "^18.3.3",
 				"vite-plugin-dts": "^4.0.1",
+				"@vitejs/plugin-react": "^4.0.1",
+				"@cloudflare/style-const": "^5.7.2",
 				"vite-plugin-rewrite-all": "^1.0.1",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/style-container": "7.12.2",
+				"@cloudflare/workers-tsconfig": "0.0.0",
 				"@cloudflare/eslint-config-worker": "1.1.0",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
 			},
 			"peerDependencies": {
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.12.1",
 				"react": "^17.0.2 || ^18.2.21",
-				"react-dom": "^17.0.2 || ^18.2.21"
+				"react-dom": "^17.0.2 || ^18.2.21",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/style-container": "^7.12.1"
 			},
 			"dist": {
-				"integrity": "sha512-tk7dZ3rj61o8oPL2JIfJbjAldBOJZNHHIWlkfY5X5ftw7QhAIccACz4zW7LFcMyw6HHexmHhIPlcdENqqnp28w==",
 				"shasum": "b71594bce9eb782e52e029f0e02e0c0d78b599b0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workers-editor-shared/-/workers-editor-shared-0.1.1.tgz",
 				"fileCount": 10,
-				"unpackedSize": 103760,
+				"integrity": "sha512-tk7dZ3rj61o8oPL2JIfJbjAldBOJZNHHIWlkfY5X5ftw7QhAIccACz4zW7LFcMyw6HHexmHhIPlcdENqqnp28w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDmHqDXOCuQLdoXWZX6f6d2GBBvjIIC1giqybHgoM7+VwIgKsHTMikjE21iBiL8eHT10AGTA+n+T0/HLw5sV87rU2s="
+						"sig": "MEUCIQDmHqDXOCuQLdoXWZX6f6d2GBBvjIIC1giqybHgoM7+VwIgKsHTMikjE21iBiL8eHT10AGTA+n+T0/HLw5sV87rU2s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 103760
 			}
 		}
 	}
