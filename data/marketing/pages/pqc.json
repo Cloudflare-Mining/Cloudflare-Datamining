@@ -37,22 +37,10 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": {
-					"metaTitle": "Post quantum cryptography",
-					"metaDescription": "Explore post-quantum cryptography (PQC) and how it safeguards data against future quantum threats with next-gen security.",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					},
-					"facebookCustomImage": null,
-					"author": []
-				},
+				"metaTags": null,
 				"sys": {
 					"createdAt": "2025-03-17T04:23:54.045Z",
-					"updatedAt": "2025-03-25T20:17:11.928Z"
+					"updatedAt": "2025-03-28T12:31:55.393Z"
 				},
 				"contentfulId": "3sYg7mOmnQyjArT7mCxsIQ",
 				"contentTypeId": "page",
@@ -132,22 +120,7 @@
 						"title": "Today's encrypted secrets are tomorrow's security breaches",
 						"copy": "Conventional cryptography that underpins today's Internet — namely RSA and ECC — faces an existential threat as quantum computing advances, leading standards bodies to call for them to be deprecated by the year 2030. \"Harvest now, decrypt later\" adversaries can actively collect encrypted communications today with the expectation that quantum computers will be able to decrypt the harvested communications in the future. ",
 						"toggleText": null,
-						"button": [
-							{
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "5dVDZKKJpY6RmcO0cpHV7C",
-								"elementName": "Topic page - Post Quantum Cryptography (PQC) - Problem statement - Button",
-								"standardText": null,
-								"text": "Read article",
-								"url": "/the-net/top-of-mind-technology/post-quantum-security/",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							}
-						],
+						"button": null,
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -315,59 +288,6 @@
 						],
 						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
-					},
-					{
-						"contentfulId": "6pgJ2yt6v5zh0XkciTZoXn",
-						"title": "Secure your future today with Cloudflare's built-in crypto agility",
-						"copy": "Seamlessly transition to post-quantum cryptography while protecting against emerging threats — without disrupting performance or requiring specialized expertise — with Cloudflare.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "01812d51-63e9-5080-9324-7cfeafbc6d2f",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/78TdQwwD5GNo9E0WOmJuZq/af06b590128e7836fb4983cf056201ed/PQC_topic_page_-_Solution.svg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "SOLUTION",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
 					},
 					{
 						"contentfulId": "12cl4JC7uC9neq48MkeQlK",
@@ -860,38 +780,6 @@
 						"sectionPadding": null
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3koXoO22rAEI3n4p1TjjtJ",
-						"title": "Ready to have a conversation with a specialist?",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1heT7cW3ke8wR0sw2XrSSl",
-							"elementName": "Topic page - Post Quantum Cryptography (PQC) - Enablement - Button",
-							"standardText": null,
-							"text": "Request a consultation",
-							"url": "/lp/pqc/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
 						"contentfulId": "2CTyIl8G7Dhzu34U7CGKj1",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "Cloudflare's connectivity cloud simplifies PQC adoption",
@@ -931,78 +819,6 @@
 						"textLayout": "center",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5gkxBmIRMX8LV3W8vvtbY6",
-								"title": "Secure web traffic with quantum-resistant encryption",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Gain immediate protection against harvest now, decrypt later attacks through Cloudflare via TLS 1.3 with post-quantum key agreement (ML-KEM). All websites and APIs served through Cloudflare are automatically protected, providing immediate security against future quantum threats without requiring any configuration changes.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "2e3e2039-0977-53eb-9e5b-85455341aa9b",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UluJNq5XZ2RHTGg6emmIc/f139baad9ff49ce47dda8aa809f11333/cloudflare-carbon-impact.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2wMCxiZBpeJDVA1qoOiBzz",
-								"title": "Enable post-quantum Zero Trust access",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Provide employees with secure access to internal apps across office, on-prem, and cloud environments, even before your systems are PQC-ready. Cloudflare's clientless access applies post-quantum protection without changes to your web apps, while our client solution enables quantum-safe tunneling for any protocol from user devices to your environments.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6ENNBrAFxxZ3K4MDCPbJJt",
@@ -1092,17 +908,7 @@
 								"heading": "Blog",
 								"description": "Upgrade to post-quantum cryptography with Cloudflare Zero Trust",
 								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3iStudEYWLl5QhUU992tmP",
-									"elementName": "Topic page - Post Quantum Cryptography (PQC) - Blog post - link",
-									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/post-quantum-zero-trust/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
+								"link": null,
 								"image": {
 									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
 									"altText": "Blog  thumbnail",
@@ -1112,39 +918,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "4u6BScRhuTKoMJDHn90zfG",
-								"heading": "Insight",
-								"description": "Why quantum computing threatens today's encryption",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "QnRO5JyKx5ybsnc7WhKdg",
-									"elementName": "Topic page - Post Quantum Cryptography (PQC) - theNET article - Link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "/the-net/top-of-mind-technology/post-quantum-security/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
-									"altText": "Cloudflare insights",
-									"title": "Cloudflare insights",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
 										"description": null
 									},
@@ -1158,17 +931,7 @@
 								"heading": "Blog",
 								"description": "The state of the post-quantum Internet",
 								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4vEaCTGsZaBinTLFUUzyue",
-									"elementName": "Topic page - Post Quantum Cryptography (PQC) - PQC blog",
-									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/pq-2024/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
+								"link": null,
 								"image": {
 									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
 									"altText": "Blog  thumbnail",
@@ -1184,67 +947,6 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								}
-							}
-						]
-					},
-					{
-						"contentfulId": "BdPIyEvzfPesczRfTm3tv",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Learn about other ways our connectivity cloud can meet your business' needs",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 2 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7souSTPO56WBqVSmKY0PqU",
-								"title": "Digital modernization",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Modernize your applications and networks, and gain efficiency and cost savings via platform consolidation",
-								"learnMoreUrl": "/modernization/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1LNNSQygyHRLbireH4tvfq",
-								"title": "Data compliance",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Streamline regulatory compliance, improve privacy practices, and reduce risk. ",
-								"learnMoreUrl": "/data/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					}
