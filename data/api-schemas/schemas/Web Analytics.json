@@ -96,7 +96,8 @@
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -244,7 +245,8 @@
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -254,7 +256,8 @@
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -328,7 +331,8 @@
 												"id": {
 													"description": "The Web Analytics rule identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -548,13 +552,15 @@
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
@@ -564,27 +570,32 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
@@ -592,13 +603,15 @@
 																	"*"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"priority": {
 																"example": 1000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -615,7 +628,8 @@
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"example": "example.com",
@@ -624,7 +638,8 @@
 														"zone_tag": {
 															"description": "The zone identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -632,17 +647,20 @@
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
 													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -886,13 +904,15 @@
 													"auto_install": {
 														"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"created": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"rules": {
 														"description": "A list of rules.",
@@ -902,27 +922,32 @@
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"host": {
 																	"description": "The hostname the rule will be applied to.",
 																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The Web Analytics rule identifier.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"inclusive": {
 																	"description": "Whether the rule includes or excludes traffic from being measured.",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"is_paused": {
 																	"description": "Whether the rule is paused or not.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"paths": {
 																	"description": "The paths the rule will be applied to.",
@@ -930,13 +955,15 @@
 																		"*"
 																	],
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"priority": {
 																	"example": 1000,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -953,7 +980,8 @@
 															"id": {
 																"description": "The Web Analytics ruleset identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone_name": {
 																"example": "example.com",
@@ -962,7 +990,8 @@
 															"zone_tag": {
 																"description": "The zone identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -970,17 +999,20 @@
 													"site_tag": {
 														"description": "The Web Analytics site identifier.",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"site_token": {
 														"description": "The Web Analytics site token.",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"snippet": {
 														"description": "Encoded JavaScript snippet.",
 														"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1161,7 +1193,8 @@
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1240,27 +1273,32 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
@@ -1268,13 +1306,15 @@
 																	"*"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"priority": {
 																"example": 1000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1291,7 +1331,8 @@
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"example": "example.com",
@@ -1300,7 +1341,8 @@
 														"zone_tag": {
 															"description": "The zone identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1515,12 +1557,14 @@
 												},
 												"id": {
 													"example": "rum",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "Current state of RUM. Returns On, Off, or Manual",
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1753,12 +1797,14 @@
 												},
 												"id": {
 													"example": "rum",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"value": {
 													"description": "Current state of RUM. Returns On, Off, or Manual",
 													"example": "on",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1908,17 +1954,20 @@
 							"auto_install": {
 								"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"host": {
 								"description": "The hostname to use for gray-clouded sites.",
 								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"zone_tag": {
 								"description": "The zone identifier.",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1997,13 +2046,15 @@
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
@@ -2013,27 +2064,32 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
@@ -2041,13 +2097,15 @@
 																	"*"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"priority": {
 																"example": 1000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2064,7 +2122,8 @@
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"example": "example.com",
@@ -2073,7 +2132,8 @@
 														"zone_tag": {
 															"description": "The zone identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2081,17 +2141,20 @@
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
 													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2239,7 +2302,8 @@
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2349,27 +2413,32 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"host": {
 													"description": "The hostname the rule will be applied to.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The Web Analytics rule identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"inclusive": {
 													"description": "Whether the rule includes or excludes traffic from being measured.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_paused": {
 													"description": "Whether the rule is paused or not.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"paths": {
 													"description": "The paths the rule will be applied to.",
@@ -2377,13 +2446,15 @@
 														"*"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"priority": {
 													"example": 1000,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2528,7 +2599,8 @@
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2542,7 +2614,8 @@
 								"items": {
 									"description": "The Web Analytics rule identifier.",
 									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							},
@@ -2557,7 +2630,8 @@
 										"id": {
 											"description": "The Web Analytics rule identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"inclusive": {
 											"example": true,
@@ -2663,27 +2737,32 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
@@ -2691,13 +2770,15 @@
 																	"*"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"priority": {
 																"example": 1000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2714,7 +2795,8 @@
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"example": "example.com",
@@ -2723,7 +2805,8 @@
 														"zone_tag": {
 															"description": "The zone identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2887,26 +2970,31 @@
 							"auto_install": {
 								"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Enables or disables RUM. This option can be used only when auto_install is set to true.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"host": {
 								"description": "The hostname to use for gray-clouded sites.",
 								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"lite": {
 								"description": "If enabled, the JavaScript snippet will not be injected for visitors from the EU.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"zone_tag": {
 								"description": "The zone identifier.",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -2985,13 +3073,15 @@
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
@@ -3001,27 +3091,32 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
@@ -3029,13 +3124,15 @@
 																	"*"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
 															"priority": {
 																"example": 1000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3052,7 +3149,8 @@
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone_name": {
 															"example": "example.com",
@@ -3061,7 +3159,8 @@
 														"zone_tag": {
 															"description": "The zone identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3069,17 +3168,20 @@
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
 													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3227,7 +3329,8 @@
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3237,7 +3340,8 @@
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3347,27 +3451,32 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"host": {
 													"description": "The hostname the rule will be applied to.",
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "The Web Analytics rule identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"inclusive": {
 													"description": "Whether the rule includes or excludes traffic from being measured.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"is_paused": {
 													"description": "Whether the rule is paused or not.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"paths": {
 													"description": "The paths the rule will be applied to.",
@@ -3375,13 +3484,15 @@
 														"*"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"priority": {
 													"example": 1000,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
