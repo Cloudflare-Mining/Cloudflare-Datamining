@@ -44,6 +44,7 @@
 	"workers_and_pages.template_configuration.configure_repository": "Configure repository",
 	"workers_and_pages.template_configuration.configure_repository.error.existing": "A repository with that name already exists. Choose a different name.",
 	"workers_and_pages.template_configuration.configure_hyperdrive_connection_string.error": "Please enter a <0>valid connection string</0>.",
+	"workers_and_pages.template_configuration.configure_vectorize_dimensions.error": "Please enter a valid <0>dimension</0>.",
 	"workers_and_pages.template_configuration.name_your_application": "Name your application",
 	"workers_and_pages.template_configuration.worker_name": "Worker name",
 	"workers_and_pages.template_configuration.create_private_git_repository": "Create private Git repository",
@@ -707,9 +708,16 @@
 	"workers_and_pages.Database connection string": "Database connection string",
 	"workers_and_pages.Caching disabled": "Caching disabled",
 	"workers_and_pages.Create Hyperdrive": "Create Hyperdrive",
+	"workers_and_pages.Caching max age": "Caching max age",
+	"workers_and_pages.Caching stale-while-revalidate": "Caching stale-while-revalidate",
 	"workers_and_pages.Name your R2 Bucket": "Name your R2 Bucket",
 	"workers_and_pages.Location hint": "Location hint",
 	"workers_and_pages.Create R2 Bucket": "Create R2 Bucket",
 	"workers_and_pages.Name your Queue": "Name your Queue",
-	"workers_and_pages.Create Queue": "Create Queue"
+	"workers_and_pages.Create Queue": "Create Queue",
+	"workers_and_pages.Name your Vectorize index": "Name your Vectorize index",
+	"workers_and_pages.Create Vectorize": "Create Vectorize",
+	"workers_and_pages.Describe your Vectorize index": "Describe your Vectorize index",
+	"workers_and_pages.Dimensions": "Dimensions",
+	"workers_and_pages.Metric": "Metric"
 }

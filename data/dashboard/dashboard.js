@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "4cadf0f0-7172-50c6-b0cb-079a078bfa06")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e8e38e5c-6835-5c92-a0cc-9de4ce14ea23")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1018,10 +1018,10 @@
 					t.g.build = Dn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "e25e1a62f0510a00715dd94db052c6c70da60c7d",
-						dashVersion: "32091880",
+						commit: "d70e92041bafb955c45b86e4f3b941bef6b7cbcf",
+						dashVersion: "32107756",
 						env: "production",
-						builtAt: 1743162280793,
+						builtAt: 1743193870159,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -17236,6 +17236,7 @@
 					certificates: (0, e.BC)`/zones/${"zoneId"}/ssl/certificate_packs/${"certId"}`,
 					createApiToken: (0, e.BC)`/user/tokens`,
 					createTail: (0, e.BC)`/accounts/${"accountId"}/workers/scripts/${"workerId"}/tails`,
+					getApiToken: (0, e.BC)`/user/tokens/${"tokenId"}`,
 					deleteApiToken: (0, e.BC)`/user/tokens/${"tokenId"}`,
 					deleteTail: (0, e.BC)`/accounts/${"accountId"}/workers/scripts/${"workerId"}/tails/${"tailId"}`,
 					deployments: (0, e.BC)`/accounts/${"accountId"}/workers/scripts/${"scriptName"}/deployments`,
@@ -20098,4 +20099,4 @@
 	}
 ]);
 
-//# debugId=4cadf0f0-7172-50c6-b0cb-079a078bfa06
+//# debugId=e8e38e5c-6835-5c92-a0cc-9de4ce14ea23
