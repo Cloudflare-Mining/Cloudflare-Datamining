@@ -5,62 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Atlanta, GA | Austin, TX | Denver, CO | Washington, DC | Lisbon, Portugal | London, United Kingdom&nbsp;</p>
-<h4><strong>About the Role</strong></h4>
-<p>Cloudflare’s Dashboard plays a central role in helping Cloudflare 5x its revenue in the next 5 years. As the product leader of the Cloudflare Dashboard, you will measure and grow the engagement of customers and prospects with our products and with Cloudflare itself.&nbsp;</p>
-<h4>Problems you may face:&nbsp;</h4>
+<p><strong>Available Locations: </strong>Austin (Hybrid)</p>
+<p><strong>About the Department</strong></p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h4><strong>About The Team</strong></h4>
+<p>Workers AI is Cloudflare’s AI inference service, enabling customers to use a wide variety of AI models both within Cloudflare’s Workers developer platform and via API. The Workers AI team owns the whole stack that powers the product, from front-end development all the way to low-level inference code. Accordingly we’re a team with a diverse array of technical skills, but everyone on the team is curious and passionate about the possibilities of generative AI</p>
+<p><strong>What You’ll Do</strong></p>
+<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will lead the team to use quantitative metrics to deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing. This is a small team and the ideal candidate is capable of high-level technical contributions as well as team leadership.<br><br>This role is based in Austin, Texas and requires at least two days a week in-office.</p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>How can the dashboard provide individual product teams at Cloudflare with a powerful canvas to deliver world-class experiences? Can we maintain a tech stack and common design language that empowers teams to build great experiences rather than constrain them?</li>
-	<li>Can we simultaneously educate customers about our products, convince them to pay, then onboard and upsell them to new offerings, as well as encourage them to onboard their colleagues and friends?&nbsp;</li>
-	<li>Can we manage adjacent cost drivers like customer support and outbound sales? Can we be confident that moving the needle on these fronts is doing more good than harm?</li>
+	<li>Experience leading high performing teams</li>
+	<li>Strong communication skills</li>
+	<li>Comfortable with tight deadlines and short release cycles</li>
+	<li>Strong systems-level programming skills</li>
+	<li>Experience building large-scale distributed systems</li>
+	<li>Expert-level knowledge in a modern compiled language like Go, Rust or modern C++</li>
 </ul>
-<p>As the Product Manager, Dashboard, you’ll partner with a committed set of engineering, design, and go-to-market teams as well as product teams from around the company to meet these challenges. At the same time, you’ll be expected to contribute to a high performance culture and citizenship at Cloudflare - sharing your knowledge and energy to accelerate the organization.&nbsp;</p>
-<p><strong>Key Competencies</strong></p>
-<p>We want to find someone who is curious, can learn quickly, think creatively, and work cross-functionally with engineering, design and other teams. A few key responsibilities:</p>
-<ul>
-	<li>Product vision and strategy: Define and communicate the vision and strategic direction for the Cloudflare Dashboard, prioritizing investment in specific, high-leverage platform capabilities</li>
-	<li>Roadmap prioritization: Develop and maintain a product roadmap that balances short-term dashboard improvements with projects that contribute to the long-term strategic vision</li>
-	<li>Data-informed decisions: Run thoughtful experiments, create dashboards to analyze user behavior and experiment results, and collaborate with the business intelligence team to analyze backend metrics impacted by new dashboard features</li>
-	<li>First-class execution: Gets things done and has a track-record of driving excellence and impact</li>
-	<li>Voice of the customer: Conduct qualitative user research through customer calls and surveys to understand the needs, workflows, and challenges of different Cloudflare Dashboard users. Additionally, gather feedback internally from various channels and customer-facing teams to develop insights on customer challenges and new product requirements</li>
-	<li>Cross-functional partnership: Collaborate with engineering, product design, and context experience design to draft and review product requirement documents, design specs, and engineering specs. Also, partner with marketing, sales, customer support, business intelligence, and other cross-functional teams to ensure successful product launches, user adoption, and experiment analysis</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
-	<li>Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $140,000 - $172,000</span></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
+<p>Medical/Rx InsuranceDental InsuranceVision InsuranceFlexible Spending AccountsCommuter Spending AccountsFertility &amp; Family Forming BenefitsOn-demand mental health support and Employee Assistance ProgramGlobal Travel Medical Insurance</p>
 <p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
+<p>Short and Long Term Disability InsuranceLife &amp; Accident Insurance401(k) Retirement Savings PlanEmployee Stock Participation Plan</p>
 <p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>Flexible paid time off covering vacation and sick leaveLeave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
