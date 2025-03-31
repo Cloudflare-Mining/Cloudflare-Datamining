@@ -9,8 +9,8 @@
 <h3><strong>About the Department</strong></h3>
 <p>Cloudflare’s <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team is where <strong>bold, innovative products</strong> are built and launched. Rather than being limited by the structures of a large, established business, we <strong>leverage Cloudflare’s global edge network</strong> to solve problems at an <strong>unparalleled scale and efficiency</strong>.</p>
 <h3><strong>What You’ll Do</strong></h3>
-<p>In this role, you will build <strong>Durable Objects</strong>, the <strong>Cloudflare Developer Platform's product for building stateful serverless applications</strong>. As a member of this team, you will:</p>
-<p>&nbsp;part of a top-notch systems engineering team you will create the low level routing and storage systems that enable Cloudflare’s customers to build. Your job is to drive the continual evolution of the system which improves reliability, performance, and provides new features. For a recent summary of these changes take a look at <a href="https://blog.cloudflare.com/sqlite-in-durable-objects/">this</a>.</p>
+<p>In this role, you will build <strong>Durable Objects</strong>, the <strong>Cloudflare Developer Platform's product for building stateful serverless applications</strong>. As a member of this top-notch systems engineering team, you will <strong>design and develop the low-level routing</strong> and <strong>storage systems</strong> that power Cloudflare’s customers' ability to build and scale. Your job is to drive the continual evolution of the system which improves reliability, performance, and provides new features. For a recent summary of these changes take a look at <a href="https://blog.cloudflare.com/sqlite-in-durable-objects/">this</a>.</p>
+<h3><strong>As a key engineer on this team, you will:</strong></h3>
 <ul>
 	<li><strong>Build the Durable Objects runtime</strong> which enables Cloudflare customers to build real-time chat applications, multiplayer games, and AI agents.&nbsp;</li>
 	<li><strong>Improve reliability, scalability, and performance</strong> by developing new system capabilities.</li>

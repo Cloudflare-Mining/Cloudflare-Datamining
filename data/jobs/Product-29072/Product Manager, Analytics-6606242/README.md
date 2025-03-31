@@ -5,73 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations : Austin, TX, Houston, TX, Dallas, TX, San Antonio, TX</h4>
-<h4>About the position</h4>
-<p>At Cloudflare we are committed to excellence and innovation, not just as it relates to products we sell to our customers, but also for our internal processes and systems. We are seeking a highly motivated and experienced Procure to Pay Global Process Owner to join our dynamic team and take ownership of optimizing and standardizing procure to pay business processes, working with business owners, across our global operations with a focus on aligning upstream and downstream processes, change management, process documentation and assisting with identification of optimization opportunities.&nbsp;</p>
-<h4>What you'll do</h4>
-<p>End to End Process Ownership:</p>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin</p>
+<h4>About the Role</h4>
+<p>Cloudflare runs one of the largest networks in the world, and the telemetry we gather from that network is broad in variety and deep in cardinality. We're looking for a Product Manager who can help build an Analytics experience that enables customers to achieve unparalleled visibility into their users, applications, and networks.&nbsp;</p>
+<p>The Analytics PM will be responsible for building a set of analytics, logging, and reporting features that allow Cloudflare customers to quickly and intuitively answer questions about their Cloudflare One deployments. You will partner closely with many stakeholders across Cloudflare One to understand their product’s unique needs and create a consistent data-driven throughline. You will own creating Cloudflare One’s visibility story transforming this into a differentiator within the rapidly developing SASE landscape. You'll work with engineering and design providing clear requirements to create outcome-based dashboard experience that provides an authoritative perspective on the data that matters while also being extensible to any question a customer may have.&nbsp;&nbsp;</p>
+<p>As a member of a growing team of analytics and monitoring product managers your responsibilities include:</p>
 <ul>
-	<li>Work with key stakeholders to define the end to end procure to pay process taxonomy and owners of various parts of the end to end procure to pay process.</li>
-	<li>Develop deep relationships with key business process owners to develop a holistic procure to pay roadmap.</li>
-	<li>Develop an in-depth understanding of the procure to pay process, including its inputs, outputs, and key performance indicators (KPIs).</li>
+	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
+	<li>Develop the platform vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.</li>
+	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
 </ul>
-<p>Strategy Alignment:</p>
+<h4>Examples of desirable skills, knowledge and experience:</h4>
+<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment. You have a deep technical understanding of the analytics and monitoring space and outstanding communication and collaboration skills. You are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.</p>
 <ul>
-	<li>Align the procure to pay process with the organization's strategic goals and objectives through collaboration with business process owners and senior management to ensure that the process supports the overall business strategy.</li>
+	<li>Domain expertise in the analytics, monitoring, or observability. You have been there, done that as either an architecture or product owner for analytics or very closely related technology space</li>
+	<li>Distributed systems experience that allows you to drive the scaling strategy for analytics as our scale grows both on volume and number of internal customers supporting.</li>
+	<li>Experience presenting new products and features to customers - whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
+	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
+	<li>Exceptional communication, presentation, organizational and analytical skills</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
+	<li>Ability to communicate complex technical concepts to all audiences</li>
+	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.). You are skilled at proving points with data and can quickly show others how to do so.</li>
 </ul>
-<p>Standardization:</p>
+<h4><strong>Bonus Points if you also have:&nbsp;</strong></h4>
 <ul>
-	<li>Work with business owners of various parts of the process to establish and maintain standardized process documentation, including policies, procedures, and guidelines.</li>
-	<li>Promote best practices and minimize process variations across regions and business segments.&nbsp;&nbsp;</li>
-</ul>
-<p>Process Improvement:</p>
-<ul>
-	<li>Continuously analyze the procure to pay process leveraging process mining tools and other knowledge of best practices to identify areas for improvement and optimization.</li>
-	<li>Work with business owners to implement process enhancements to streamline operations, improve efficiency, and reduce costs.</li>
-</ul>
-<p>Change Management:</p>
-<ul>
-	<li>Lead change initiatives related to prioritized procure to pay initiatives, working with cross-functional teams to drive successful process improvements.</li>
-	<li>Manage resistance to change and ensure smooth implementation of process changes.</li>
-</ul>
-<p>Performance Monitoring:</p>
-<ul>
-	<li>Establish and monitor performance metrics and KPIs to assess the effectiveness and efficiency of the end to end procure to pay process.</li>
-	<li>Analyze data and provide regular reports to management and other key stakeholders, identifying areas for improvement and celebrating successes.</li>
-</ul>
-<p>Stakeholder Management:</p>
-<ul>
-	<li>Collaborate with various stakeholders, including senior management, business owners, subject matter experts, and technology teams.</li>
-	<li>Engage with business owners of various parts of the end to end procure to pay process to understand their needs, address concerns, and foster a culture of continuous improvement.</li>
-	<li>Ensure that decisions made related to any single part of the procure to pay process make sense for the process end to end, and ensure that downstream changes are well communicated and addressed.&nbsp;</li>
-</ul>
-<p>Compliance and Risk Management:</p>
-<ul>
-	<li>Ensure that the procure to pay process complies with relevant laws, regulations, and internal policies.</li>
-	<li>Work with legal, compliance, and risk management teams to mitigate risks and implement necessary controls.</li>
-</ul>
-<p>Technology Enablement:</p>
-<ul>
-	<li>Collaborate with IT teams to leverage technology solutions and automation to enhance the end to end procure to pay process.</li>
-	<li>Work with IT and business owners to prioritize system / automation related initiatives.&nbsp;</li>
-	<li>Collaborate with business and IT teams as business requirements are documented to ensure business owners of various parts of the process all work together to form a cohesive end to end solution.&nbsp;</li>
-</ul>
-<p>Training and Communication:</p>
-<ul>
-	<li>Develop and deliver training programs to educate employees about the procure to pay process, its importance, and how to execute it effectively.</li>
-	<li>Facilitate clear and timely communication regarding process changes, updates, and performance to ensure organization-wide awareness and alignment.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelor's degree in Business Administration, Accounting, Finance, or Economics</li>
-	<li>8+ years of experience in process management, with a track record of successfully optimizing and standardizing global processes</li>
-	<li>Deep understanding of the procure to pay process and experience working on transformational programs;&nbsp;experience with direct and indirect procurement as well as supply chain management is a bonus&nbsp;&nbsp;</li>
-	<li>Proven ability to lead change initiatives and drive process improvements</li>
-	<li>Excellent communication and stakeholder management skills, with the ability to collaborate with cross-functional teams</li>
-	<li>Strong analytical and problem-solving abilities, with a data-driven approach to decision-making</li>
-	<li>Experience in technology enablement, ERP implementation experience in the P2P space is a plus,&nbsp; and familiarity with process automation tools</li>
-	<li>Ability to work in a fast-paced and dynamic environment, adapting to evolving business needs</li>
-	<li>Looking for someone who is a self-starter, willing to bring ideas to the table with proven success in execution … If you are a strategic thinker with a passion for continuous improvement, we encourage you to apply!<br><br></li>
+	<li>BS/MS in a technology- or business-related field</li>
+	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
+	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
+	<li>Working knowledge of how the Internet works at network layers 3 through 7</li>
+	<li>A solid understanding of API design &amp; documentation</li>
+	<li>An eye for design to translate users needs into intuitive designs</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
