@@ -1110,6 +1110,22 @@
 				{
 					"contentType": "product",
 					"date": "2022-09-28",
+					"description": "Magic Network Monitoring gives you better visibility into your own network and helps you with capacity planning, network and security forensics and identifying potential DDoS attacks. By sending Netflow or sFlow records to Cloudflare, you can gain detailed insights into your network performance through your Cloudflare dashboard. This free version is available to all users with a Cloudflare account — contact us using the link in the blog post for early access.",
+					"id": "54ba07ca-be88-5821-80b2-f4a5ffbe5de4",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/free-magic-network-monitoring/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": null,
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": null,
+					"title": "Magic Network Monitoring",
+					"locale": "en-US",
+					"useCase": "insights"
+				},
+				{
+					"contentType": "product",
+					"date": "2022-09-28",
 					"description": "Get started with Turnstile, our free CAPTCHA replacement that confirms visitors are real without the data privacy concerns or awful UX that CAPTCHAs thrust on users.",
 					"id": "29d2de8a-b11b-539f-b043-ce6c4b732650",
 					"pageUrl": null,
@@ -1156,20 +1172,20 @@
 					"useCase": "security"
 				},
 				{
-					"contentType": "product",
-					"date": "2022-09-28",
-					"description": "Magic Network Monitoring gives you better visibility into your own network and helps you with capacity planning, network and security forensics and identifying potential DDoS attacks. By sending Netflow or sFlow records to Cloudflare, you can gain detailed insights into your network performance through your Cloudflare dashboard. This free version is available to all users with a Cloudflare account — contact us using the link in the blog post for early access.",
-					"id": "54ba07ca-be88-5821-80b2-f4a5ffbe5de4",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/free-magic-network-monitoring/",
+					"contentType": "analysts",
+					"date": "2022-09-27",
+					"description": "Cloudflare has been recognized as a Leader in The Forrester Wave™: Web Application Firewalls, Q3 2022, and received the highest score in the strategy category of all assessed vendors.",
+					"id": "6c94bff9-edac-5c9d-9b1a-a6ece7362e02",
+					"pageUrl": "analysts",
+					"relatedContentBlogPost": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2022/",
 					"relatedContentCollateral": null,
 					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": null,
-					"relatedContentProductPageLabel": null,
+					"relatedContentProductPage": "https://www.cloudflare.com/lp/forrester-wave-for-waf-2022/",
+					"relatedContentProductPageLabel": "Analyst Report",
 					"relatedProduct": null,
-					"title": "Magic Network Monitoring",
+					"title": "The Forrester Wave™: Web Application Firewalls, Q3 2022",
 					"locale": "en-US",
-					"useCase": "insights"
+					"useCase": null
 				},
 				{
 					"contentType": "product",
@@ -1234,22 +1250,6 @@
 					"title": "Next Generation of Page Rules",
 					"locale": "en-US",
 					"useCase": "reliability"
-				},
-				{
-					"contentType": "analysts",
-					"date": "2022-09-27",
-					"description": "Cloudflare has been recognized as a Leader in The Forrester Wave™: Web Application Firewalls, Q3 2022, and received the highest score in the strategy category of all assessed vendors.",
-					"id": "6c94bff9-edac-5c9d-9b1a-a6ece7362e02",
-					"pageUrl": "analysts",
-					"relatedContentBlogPost": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2022/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://www.cloudflare.com/lp/forrester-wave-for-waf-2022/",
-					"relatedContentProductPageLabel": "Analyst Report",
-					"relatedProduct": null,
-					"title": "The Forrester Wave™: Web Application Firewalls, Q3 2022",
-					"locale": "en-US",
-					"useCase": null
 				},
 				{
 					"contentType": "blog",
@@ -4580,22 +4580,6 @@
 					"useCase": null
 				},
 				{
-					"contentType": "feature",
-					"date": "2018-04-12",
-					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
-					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
-					"pageUrl": null,
-					"relatedContentBlogPost": null,
-					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
-					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
-					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
-					"relatedContentProductPageLabel": "Help Center article",
-					"relatedProduct": "SSL for SaaS",
-					"title": "Support full SSL (Strict) mode validation for CNAME domains",
-					"locale": "en-US",
-					"useCase": null
-				},
-				{
 					"contentType": "product",
 					"date": "2018-04-12",
 					"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network. \n",
@@ -4610,6 +4594,22 @@
 					"title": "Cloudflare Spectrum",
 					"locale": "en-US",
 					"useCase": "performance"
+				},
+				{
+					"contentType": "feature",
+					"date": "2018-04-12",
+					"description": "Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.",
+					"id": "cc630795-4df9-52d6-8968-21eb33ddc515",
+					"pageUrl": null,
+					"relatedContentBlogPost": null,
+					"relatedContentCollateral": "https://www.cloudflare.com/ssl-for-saas-providers",
+					"relatedContentCollateralLabel": "Read more about SSL for SaaS",
+					"relatedContentProductPage": "https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-",
+					"relatedContentProductPageLabel": "Help Center article",
+					"relatedProduct": "SSL for SaaS",
+					"title": "Support full SSL (Strict) mode validation for CNAME domains",
+					"locale": "en-US",
+					"useCase": null
 				},
 				{
 					"contentType": "feature",
