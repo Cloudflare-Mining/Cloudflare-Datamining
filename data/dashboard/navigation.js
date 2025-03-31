@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: E => (0, o.z1)(u.Mr)(E) && (0, S.z7)(E) && !!(0, S.z$)(E).length
+		hasPermission: E => (0, o.z1)(u.Mr)(E) && (0, w.z7)(E) && !!(0, w.z$)(E).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -247,7 +247,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
-			tabs: I.Lx.concat(I.SF, I.Jg)
+			tabs: O.Lx.concat(O.SF, O.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
@@ -343,7 +343,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
-			tabs: I.SF.concat(I.Jg)
+			tabs: O.SF.concat(O.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
@@ -594,7 +594,27 @@ const navigation = {
 		url: "/calls",
 		iconType: "calls",
 		testId: "sidenav-calls-link",
-		hasPermission: E => (0, f.iY)(E)
+		hasPermission: E => (0, f.iY)(E) && !(0, s.GU)(E, "realtime-ui")
+	}, {
+		title: "navigation.account.realtime",
+		url: "/realtime",
+		iconType: "calls",
+		testId: "sidenav-realtime-link",
+		hasPermission: E => (0, f.iY)(E) && (0, s.GU)(E, "realtime-ui"),
+		pages: [{
+			title: "navigation.account.realtime.kit",
+			url: "/realtime/kit",
+			testId: "sidenav-realtime-kit-link",
+			labels: ["beta"]
+		}, {
+			title: "navigation.account.realtime.turn",
+			url: "/realtime/turn",
+			testId: "sidenav-realtime-turn-link"
+		}, {
+			title: "navigation.account.realtime.sfu",
+			url: "/realtime/sfu",
+			testId: "sidenav-realtime-sfu-link"
+		}]
 	}, {
 		title: "navigation.account.tag_management",
 		url: "/tag-management",
@@ -683,7 +703,7 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: E => (0, w.K)(E, "account")
+			hasPermission: E => (0, S.K)(E, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn/integrations",
@@ -1061,7 +1081,7 @@ const navigation = {
 			title: "navigation.zone.rules.templates",
 			url: "/rules/templates",
 			labels: ["new"],
-			tabs: O.HI,
+			tabs: I.HI,
 			navigationType: "version",
 			hasPermission: E => !(0, o.z1)("rules-overview")(E) && ((0, f.$n)(E, "waf", "firewall.rule") || (0, f.$n)(E, "zone_settings", "page-rule"))
 		}, {
@@ -1079,13 +1099,13 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: O.mI,
+			tabs: I.mI,
 			hasPermission: E => !(0, o.z1)("rules-overview")(E)
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",
 			navigationType: "version",
-			tabs: O.KZ,
+			tabs: I.KZ,
 			hasPermission: E => !(0, o.z1)("rules-overview")(E) && (0, f.$n)(E, "zone_settings", "page-rule")
 		}, {
 			title: "navigation.zone.rules.origin_rules",
@@ -1123,7 +1143,7 @@ const navigation = {
 			title: "navigation.zone.rules.settings",
 			url: "/rules/settings",
 			navigationType: "version",
-			tabs: O.od
+			tabs: I.od
 		}]
 	}, {
 		title: "navigation.zone.network",
