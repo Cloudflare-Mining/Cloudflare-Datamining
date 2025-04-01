@@ -1876,15 +1876,48 @@
 													"description": "Logging settings by rule type.",
 													"properties": {
 														"dns": {
-															"description": "Logging settings for DNS firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														},
 														"http": {
-															"description": "Logging settings for HTTP/HTTPS firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														},
 														"l4": {
-															"description": "Logging settings for Network firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -1986,15 +2019,48 @@
 															"description": "Logging settings by rule type.",
 															"properties": {
 																"dns": {
-																	"description": "Logging settings for DNS firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"http": {
-																	"description": "Logging settings for HTTP/HTTPS firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"l4": {
-																	"description": "Logging settings for Network firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -5584,15 +5650,48 @@
 								"description": "Logging settings by rule type.",
 								"properties": {
 									"dns": {
-										"description": "Logging settings for DNS firewall.",
+										"properties": {
+											"log_all": {
+												"description": "Log all requests to this service.",
+												"example": false,
+												"type": "boolean"
+											},
+											"log_blocks": {
+												"description": "Log only blocking requests to this service.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
 										"type": "object"
 									},
 									"http": {
-										"description": "Logging settings for HTTP/HTTPS firewall.",
+										"properties": {
+											"log_all": {
+												"description": "Log all requests to this service.",
+												"example": false,
+												"type": "boolean"
+											},
+											"log_blocks": {
+												"description": "Log only blocking requests to this service.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
 										"type": "object"
 									},
 									"l4": {
-										"description": "Logging settings for Network firewall.",
+										"properties": {
+											"log_all": {
+												"description": "Log all requests to this service.",
+												"example": false,
+												"type": "boolean"
+											},
+											"log_blocks": {
+												"description": "Log only blocking requests to this service.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
 										"type": "object"
 									}
 								},
@@ -5689,15 +5788,48 @@
 													"description": "Logging settings by rule type.",
 													"properties": {
 														"dns": {
-															"description": "Logging settings for DNS firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														},
 														"http": {
-															"description": "Logging settings for HTTP/HTTPS firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														},
 														"l4": {
-															"description": "Logging settings for Network firewall.",
+															"properties": {
+																"log_all": {
+																	"description": "Log all requests to this service.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"log_blocks": {
+																	"description": "Log only blocking requests to this service.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -5799,15 +5931,48 @@
 															"description": "Logging settings by rule type.",
 															"properties": {
 																"dns": {
-																	"description": "Logging settings for DNS firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"http": {
-																	"description": "Logging settings for HTTP/HTTPS firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"l4": {
-																	"description": "Logging settings for Network firewall.",
+																	"properties": {
+																		"log_all": {
+																			"description": "Log all requests to this service.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"log_blocks": {
+																			"description": "Log only blocking requests to this service.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
