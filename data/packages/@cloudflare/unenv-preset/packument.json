@@ -2,7 +2,7 @@
 	"name": "@cloudflare/unenv-preset",
 	"dist-tags": {
 		"latest": "2.3.1",
-		"beta": "0.0.0-8dcc50f50"
+		"beta": "0.0.0-39933740e"
 	},
 	"versions": {
 		"0.0.1": {
@@ -12867,27 +12867,56 @@
 			"name": "@cloudflare/unenv-preset",
 			"version": "0.0.0-8dcc50f50",
 			"devDependencies": {
-				"@types/node-unenv": "npm:@types/node@^22.13.9",
-				"typescript": "^5.7.2",
-				"unbuild": "^3.2.0",
 				"undici": "^5.28.5",
 				"vitest": "~3.0.8",
-				"wrangler": "0.0.0-8dcc50f50"
+				"unbuild": "^3.2.0",
+				"wrangler": "0.0.0-8dcc50f50",
+				"typescript": "^5.7.2",
+				"@types/node-unenv": "npm:@types/node@^22.13.9"
 			},
 			"peerDependencies": {
 				"unenv": "2.0.0-rc.15",
 				"workerd": "^1.20250320.0"
 			},
 			"dist": {
-				"integrity": "sha512-Dt5PogSOgpuntWmSDxCaJNC6lFAMD5ygA42T482vQ+g9XzueFJDHkWaNREpwqoN+B7dGzL4yp3PcjGu1d3XzEg==",
 				"shasum": "4249a00e330b5bba32b25ad6783c8db9491f2146",
 				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-8dcc50f50.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-Dt5PogSOgpuntWmSDxCaJNC6lFAMD5ygA42T482vQ+g9XzueFJDHkWaNREpwqoN+B7dGzL4yp3PcjGu1d3XzEg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDepm1Tv2E7u+Et19Flesxs5J0MriX74KXe/xALj+GxrQIhANmLgCZbqcc6tuq0WIRI0sNtJzlfPbUTB0ErtmE3+ggP",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 28258
+			}
+		},
+		"0.0.0-39933740e": {
+			"name": "@cloudflare/unenv-preset",
+			"version": "0.0.0-39933740e",
+			"devDependencies": {
+				"@types/node-unenv": "npm:@types/node@^22.13.9",
+				"typescript": "^5.7.2",
+				"unbuild": "^3.2.0",
+				"undici": "^5.28.5",
+				"vitest": "~3.0.8",
+				"wrangler": "0.0.0-39933740e"
+			},
+			"peerDependencies": {
+				"unenv": "2.0.0-rc.15",
+				"workerd": "^1.20250320.0"
+			},
+			"dist": {
+				"integrity": "sha512-vM+boNdKq4Ls/MXJvUjBCHoC93v/YzL1pP0wEJyHEDHMBtAZuZ0TYV6MZnGpHkwIIQKkh7tvrFcareBmWo5ydg==",
+				"shasum": "323c1d4df9f7a6b68d5b6bfa4989daf49f7bc932",
+				"tarball": "https://registry.npmjs.org/@cloudflare/unenv-preset/-/unenv-preset-0.0.0-39933740e.tgz",
 				"fileCount": 22,
 				"unpackedSize": 28258,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDepm1Tv2E7u+Et19Flesxs5J0MriX74KXe/xALj+GxrQIhANmLgCZbqcc6tuq0WIRI0sNtJzlfPbUTB0ErtmE3+ggP"
+						"sig": "MEUCIBolyzoYMul3vPri1i526FAlMPjvIb08ZYXSMD97/YEcAiEAupvimkeCltDHKQMfHS5nLBBXKJNKxiZGUvJqhh1KKls="
 					}
 				]
 			}
