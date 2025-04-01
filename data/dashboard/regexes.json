@@ -19,6 +19,8 @@
 	"/@\\^[0-9]+(\\.[0-9]+){0,2}(?=\\/|$)/",
 	"/@cloudflare\\.com$/",
 	"/Cannot read properties of undefined \\(reading '(setCurrentPosition|setDefaultPosition|setMaxSize|setScreenSize|fireEvent|fireReadyEvent|audioVolumeChange|fireChangeEvent)'\\)/",
+	"/[-a-zA-Z0-9@:%._\\+~#=]{1,256}(\\.[a-zA-Z0-9()]{1,6})?([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/",
+	"/[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/",
 	"/[\\x00-\\x0F]/g",
 	"/[\\x10-\\x1F\\x7F-\\x9F]/g",
 	"/[^0-9.-]+/g",
