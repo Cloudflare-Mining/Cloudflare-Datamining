@@ -472,22 +472,6 @@
 		]
 	},
 	{
-		"id": "efea2ab8357b47888938f101ae5e053f",
-		"name": "Argo Tunnel Read",
-		"description": "Grants access to view Argo Tunnels",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "c07321b023e944ff818fec44d8203567",
-		"name": "Argo Tunnel Write",
-		"description": "Grants access to create and delete Argo Tunnels",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "d7887c7a417e4cf2a69f1d01c1a1dc3b",
 		"name": "Auto Rag Read",
 		"description": "Grants access to reading data from Auto Rag",
@@ -713,16 +697,32 @@
 	},
 	{
 		"id": "c1968d31028d4239976ec3bc4750bbf6",
-		"name": "Cloudflare One cloudflared Connectors Read",
-		"description": "Grants read access to cloudflared Connectors",
+		"name": "Cloudflare One Connector: cloudflared Read",
+		"description": "Grants read access to cloudflared connectors",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
 		"id": "037b9e348b3b42d4b46ea2fcb1cfb3e7",
-		"name": "Cloudflare One cloudflared Connectors Write",
-		"description": "Grants write access to cloudflared Connectors",
+		"name": "Cloudflare One Connector: cloudflared Write",
+		"description": "Grants write access to cloudflared connectors",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "1cd960c063a0448481343372c963d8c7",
+		"name": "Cloudflare One Connector: WARP Read",
+		"description": "Grants read access to WARP Connectors",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5b5c774a5d174ca88d046c8889648b3f",
+		"name": "Cloudflare One Connector: WARP Write",
+		"description": "Grants write access to WARP Connectors",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -730,7 +730,7 @@
 	{
 		"id": "07cf1c1952a84b13b2cd542f3d2f29ab",
 		"name": "Cloudflare One Connectors Read",
-		"description": "Grants read access to Cloudflare One Connectors",
+		"description": "Grants read access to Cloudflare One connectors",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -738,7 +738,7 @@
 	{
 		"id": "a7030c9c98d544e092d8b099fabb1f06",
 		"name": "Cloudflare One Connectors Write",
-		"description": "Grants write access to Cloudflare One Connectors",
+		"description": "Grants write access to Cloudflare One connectors",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -760,17 +760,17 @@
 		]
 	},
 	{
-		"id": "1cd960c063a0448481343372c963d8c7",
-		"name": "Cloudflare One Warp Connectors Read",
-		"description": "Grants read access to Warp Connectors",
+		"id": "efea2ab8357b47888938f101ae5e053f",
+		"name": "Cloudflare Tunnel Read",
+		"description": "Grants access to view Cloudflare Tunnels",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
-		"id": "5b5c774a5d174ca88d046c8889648b3f",
-		"name": "Cloudflare One Warp Connectors Write",
-		"description": "Grants write access to Warp Connectors",
+		"id": "c07321b023e944ff818fec44d8203567",
+		"name": "Cloudflare Tunnel Write",
+		"description": "Grants access to create and delete Cloudflare Tunnels",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
