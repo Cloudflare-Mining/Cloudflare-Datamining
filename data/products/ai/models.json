@@ -65,8 +65,14 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.026,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -329,8 +335,19 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.56,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 6.67,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "context_window",
@@ -360,8 +377,19 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.11,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 0.19,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "context_window",
@@ -432,8 +460,14 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per audio minute",
+						"price": 0.00045,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -861,8 +895,14 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per inference request",
+						"price": 0.0000025,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -1076,8 +1116,19 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "false"
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.34,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 0.34,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
