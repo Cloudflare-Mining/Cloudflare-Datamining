@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-19T21:08:07.422Z",
-					"updatedAt": "2024-11-01T22:47:56.504Z"
+					"updatedAt": "2025-04-01T16:56:27.147Z"
 				},
 				"contentfulId": "7cgyYFfMqkSTHyCQqZ8g8Z",
 				"contentTypeId": "page",
@@ -2749,7 +2749,7 @@
 						"titleSize": null,
 						"subtitle": "Unified, consistent data loss prevention (DLP)",
 						"subtitleSize": null,
-						"copy": "Cloudflare DLP protects sensitive data consistently across all networks, SaaS applications, users, and devices, while minimizing security risks and compliance issues.",
+						"copy": "Cloudflare DLP protects sensitive data consistently across all networks, SaaS and cloud applications, users, and outbound emails, while seamlessly integrating within a Zero Trust architecture. This ensures comprehensive data protection across all channels, minimizing security risks and compliance issues.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Try it out",
@@ -2899,7 +2899,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Apply granular controls to your sensitive data with context analysis, exact data matches, OCR, and behavior-based user risk scoring. ",
+								"description": "Leverage AI-driven context analysis, exact data matches, OCR, and behavioral-based risk scoring for real-time, granular data protection with minimal false positives.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2970,14 +2970,14 @@
 					},
 					{
 						"contentfulId": "2Z5YNw3u8L5U0apxp9mnmL",
-						"title": "Protect sensitive data across your SaaS environment",
-						"copy": "Built into a composable SSE platform, it automatically inspects HTTP/S traffic and files, enhances visibility across your organization, and enables you to consolidate critical data protection measures.",
+						"title": "Protect sensitive data across your environment",
+						"copy": "It inspects HTTP/S traffic, files, and email content automatically, adapting to evolving threats with context-aware protection. Cloudflare DLP seamlessly integrates within a Zero Trust framework, enhancing visibility, ensuring data is protected across all channels, and enabling organizations to consolidate critical data protection measures in a unified platform.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
-						"subheadline": "Cloudflare DLP helps detect and secure sensitive data across all of your applications and devices with customizable, granular policies and controls",
+						"subheadline": "Cloudflare DLP helps secure sensitive data across all environments—networks, SaaS and cloud applications, users, and outbound emails—by applying customizable, granular policies and real-time, AI-powered detection.",
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
@@ -3001,7 +3001,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JRcQ8CiAf1DA8SMItzHQu/d9966aa6d5639afbc927fc167a89758a/How_it_works_Diagram_for_DLP.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JRcQ8CiAf1DA8SMItzHQu/44f47e0c2c9c316ced182d62a9185506/How_it_works_Diagram_for_DLP.svg"
 								},
 								"description": ""
 							},
@@ -3238,7 +3238,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Today, Cloudflare helps prevent our users from sharing sensitive data and code with tools like ChatGPT and Bard, enabling us to take advantage of AI safely. Going forward, we are excited for Cloudflare's continued innovations to protect data, and in particular, their vision and roadmap for services like DLP and CASB.\" ",
+															"value": "\"Today, Cloudflare helps prevent our users from sharing sensitive data and code with tools like ChatGPT and Gemini, enabling us to take advantage of AI safely. Going forward, we are excited for Cloudflare's continued innovations to protect data, and in particular, their vision and roadmap for services like DLP and CASB.\" ",
 															"marks": [],
 															"content": null
 														}
@@ -3534,7 +3534,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Minimize data breaches and ensure compliance with regulations like the GDPR, CCPA, HIPAA, and more. Identify, control, and track regulated data classes with detailed audit trails and SIEM analysis.",
+								"description": "Cloudflare DLP automates tracking, control, and auditing of sensitive data to maintain compliance with evolving regulations like GDPR, CCPA, and HIPAA, offering detailed audit trails and seamless SIEM integrations to minimize regulatory risk.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3566,11 +3566,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3avkCWNAkdj3jmMjsPy2jh",
-								"title": "Enable secure use of AI ",
+								"title": "Enable secure use of AI",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Prevent users from uploading sensitive data into generative AI tools like ChatGPT and Bard.",
+								"description": "Prevent sensitive data from being uploaded or exposed in Gen AI tools like ChatGPT and Gemini with granular application access control and real-time AI-powered protection.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
