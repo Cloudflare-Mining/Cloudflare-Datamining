@@ -2,7 +2,7 @@
 	{
 		"id": "7ea222f6d5064cfa89ea366d7c1fee89",
 		"name": "Access: Apps and Policies Read",
-		"description": "Grants read access to Cloudflare Access account resources",
+		"description": "Grants read access to Cloudflare Access applications and policies",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -18,7 +18,7 @@
 	{
 		"id": "6c9d1cfcfc6840a987d1b5bfb880a841",
 		"name": "Access: Apps and Policies Revoke",
-		"description": "Grants ability to revoke all tokens to Cloudflare Access account resources",
+		"description": "Grants ability to revoke Cloudflare Access application tokens",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -34,7 +34,7 @@
 	{
 		"id": "1e13c5124ca64b72b1969a67e8829049",
 		"name": "Access: Apps and Policies Write",
-		"description": "Grants write access to Cloudflare Access account resources",
+		"description": "Grants write access to Cloudflare Access applications and policies",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -56,24 +56,8 @@
 		]
 	},
 	{
-		"id": "4f3196a5c95747b6ad82e34e1d0a694f",
-		"name": "Access: Certificates Read",
-		"description": "Grants read access to Cloudflare Access MTLS certificates",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "29d3afbfd4054af9accdd1118815ed05",
-		"name": "Access: Certificates Write",
-		"description": "Grants write access to Cloudflare Access MTLS certificates",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "08e61dabe81a422dab0dea6fdef1a98a",
-		"name": "Access: Custom Page Read",
+		"name": "Access: Custom Pages Read",
 		"description": "Grants read access to Cloudflare Access Custom Pages",
 		"scopes": [
 			"com.cloudflare.api.account"
@@ -81,7 +65,7 @@
 	},
 	{
 		"id": "4e5fd8ac327b4a358e48c66fcbeb856d",
-		"name": "Access: Custom Page Write",
+		"name": "Access: Custom Pages Write",
 		"description": "Grants write access to Cloudflare Access Custom Pages",
 		"scopes": [
 			"com.cloudflare.api.account"
@@ -99,6 +83,22 @@
 		"id": "2fc1072ee6b743828db668fcb3f9dee7",
 		"name": "Access: Device Posture Write",
 		"description": "Grants write access to Cloudflare Access Device Posture",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "4f3196a5c95747b6ad82e34e1d0a694f",
+		"name": "Access: Mutual TLS Certificates Read",
+		"description": "Grants read access to Cloudflare Access mTLS certificates",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "29d3afbfd4054af9accdd1118815ed05",
+		"name": "Access: Mutual TLS Certificates Write",
+		"description": "Grants write access to Cloudflare Access mTLS certificates",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -185,16 +185,16 @@
 	},
 	{
 		"id": "99ff99e4e30247a99d3777a8c4c18541",
-		"name": "Access: SSH Auditing CA Read",
-		"description": "Grants read access to Cloudflare Access SSH Auditing Certificate Authorities",
+		"name": "Access: SSH Auditing Read",
+		"description": "Grants read access to Cloudflare Access SSH certificate authorities (CAs)",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
 		"id": "d30c9ad8b5224e7cb8d41bcb4757effc",
-		"name": "Access: SSH Auditing CA Write",
-		"description": "Grants write access to Cloudflare Access SSH Auditing Certificate Authorities",
+		"name": "Access: SSH Auditing Write",
+		"description": "Grants write access to Cloudflare Access SSH certificate authorities (CAs)",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -2130,7 +2130,7 @@
 	{
 		"id": "a1a6298e52584c8fb6313760a30c681e",
 		"name": "Zero Trust: Seats Write",
-		"description": "Grants write access to Cloudflare Access and Gateway seats",
+		"description": "Grants write access to the Zero Trust seats your organization can use (and be billed for)",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
