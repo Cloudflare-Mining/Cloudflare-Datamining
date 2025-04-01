@@ -190,7 +190,7 @@
 	<p><i>[...]</i></p>
 	<p><i>Note that updating both of the servers at the same time might cause inconsistency of their databases. That is, you should use one main as a "active main" and the other as a "standby main".</i></p>
 	<p>Said in other words: When dual <i>main</i> is enabled all writes should always go to the same root node and a switch should be performed manually to promote the standby <i>main</i> when the root node dies.</p>
-	<p>Unfortunately that violates our principles of high availability. With no capability for automatic zero-downtime failover it wasn’t possible to handle the failure of the KT top root node without some amount of configuration propagation delay.</p>
+	<p>Unfortunately that violates our principles of <a href="https://www.cloudflare.com/learning/performance/glossary/application-availability">high availability</a>. With no capability for automatic zero-downtime failover it wasn’t possible to handle the failure of the KT top root node without some amount of configuration propagation delay.</p>
 	<div class="flex anchor relative">
 		<h3 id="building-quicksilver">Building Quicksilver</h3>
 		<a href="https://blog.cloudflare.com/#building-quicksilver" aria-hidden="true" class="relative sm:absolute sm:-left-5">
