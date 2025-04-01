@@ -6,16 +6,16 @@
 	</div>
 </div>
 <p><strong>Available Locations:</strong> Lisbon, Portugal or London, UK</p>
-<p><strong>Responsibilities</strong>:</p>
+<p><strong>About the role</strong></p>
 <p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
-<p><strong>This position will be responsible for:&nbsp;</strong></p>
+<p><strong>This position will be responsible for</strong></p>
 <ul>
 	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
 	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
 	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
 	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
 </ul>
-<p><strong>Requirements</strong>:</p>
+<p><strong>Requirements</strong></p>
 <ul>
 	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
 	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
@@ -24,7 +24,7 @@
 	<li>Experience in working as part of a team in a customer-facing role,</li>
 	<li>Ability to prioritise when faced with high pressure scenarios.</li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
+<p><strong>Bonus Points but not required</strong></p>
 <ul>
 	<li>Understanding of anycast routing,</li>
 	<li>Good working knowledge of&nbsp; Junos, IOS-XR, NX-OS, EOS and SONIC,</li>

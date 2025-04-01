@@ -5,24 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Job Location: Austin, TX</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<p><strong>Job Location: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
 <p>The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What you'll do&nbsp;</strong></h3>
+<h4><strong>What you'll do&nbsp;</strong></h4>
 <p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
-<h3><strong>Responsibilities</strong></h3>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
 	<li>Triage Customer Escalation issues to find the quickest most efficient path of resolution</li>
 	<li>Work cross-functionally with various teams across the company from engineering to sales</li>
 </ul>
-<h3><strong>Requirements</strong></h3>
+<h4><strong>Requirements</strong></h4>
 <ul>
 	<li>2-3 years of technical troubleshooting experience, preferably in technical support or system reliability engineering</li>
 	<li>Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</li>
 	<li>Able to manage multiple priorities, commitments, and projects</li>
 </ul>
-<h3><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h3>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
 <ul>
 	<li>Extensive technical support experience</li>
 	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc)</li>
@@ -35,7 +35,7 @@
 	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</li>
 	<li>Comfortable handling inbound and outbound customer calls</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
 	<li>Experience with regular expressions</li>
 	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</li>

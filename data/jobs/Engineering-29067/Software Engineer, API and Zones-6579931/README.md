@@ -5,38 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Finance Business Partner, G&amp;A</strong></h3>
-<p><strong>Locations -&nbsp;</strong>Hiring for this role in Austin, Texas&nbsp;</p>
-<p><strong>Level:</strong> Individual Contributor</p>
-<h4><strong>About the role</strong></h4>
-<p>The FP&amp;A and Business Operations Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. Team members in G&amp;A Finance partner closely with business leaders in IT, CFO org, Legal, People &amp; Places and cross-functionally with R&amp;D, Sales &amp; Marketing Finance teams. Members of this team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
-<h4><strong>What you'll do</strong></h4>
+<h3><strong>Available Locations: </strong>Hybrid - Austin, TX | Lisbon, Portugal</h3>
+<h3><strong>What you'll do</strong></h3>
+<p>Cloudflare is looking for a backend engineer on our control plan product platform to help us build our customer APIs and our internal service APIs. This is a role for engineers that are familiar with standard backend backend architecture, and capable in database design and interaction. Our API platform is under constant load and scrutiny, so experience and commitment to easily understood and test code is also a key part of the role. Your ability to visualize the flow of data through a complex application is critical to your success, and to the team’s. You will be working closely with the product team to understand and document the functional needs of their product requirements, developing new code to solve new problems, as well as maintaining existing code to squash bugs. Our tech stack includes services built using Go, Redis, Postgres, and Cloudflare products (e.g. Workers). We are looking for proficiency in RESTful API design, relational databases (SQL), and modern containerized deployment practices.&nbsp;</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Be a thought partner to business leaders helping to resolve competing business priorities and determine optimal investment allocation by function.</li>
-	<li>Prepare financial analysis, business insights and presentation materials for regular financial and business updates to G&amp;A business leadership.&nbsp;</li>
-	<li>Partner with accounting to support month-end close, flux review processes, and deliver high-quality financial reporting.</li>
-	<li>Design, automate, and optimize flexible finance processes to meet the needs of a dynamic and fast-growing business environment.</li>
-	<li>Work with cross-functional teams to support the company's growth initiatives.</li>
-	<li>This role reports to the G&amp;A Finance leader and does not have any direct reports.&nbsp;</li>
+	<li>3-5 years of professional experience building and managing software applications at large scale.</li>
+	<li>Deep knowledge of at least one modern programming language such as Go, Rust, JavaScript, PHP with strong computer science fundamentals.</li>
+	<li>Experience in designing and architecting large-scale distributed systems.</li>
+	<li>Passion for Observability (experience with Prometheus, Grafana, and Kibana are a plus, but not required).</li>
+	<li>Experience designing, implementing, and documenting customer-facing APIs are a huge plus.</li>
+	<li>Solid knowledge of SQL and common relational database systems such as PostgreSQL.</li>
+	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
+	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc).</li>
+	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Min. 3 years of experience as a Financial Analyst, total atleast 5 years of financial experience&nbsp;</li>
-	<li>Bachelor's degree (MBA preferred)</li>
-	<li>Prior financial analyst experience working in a tech multinational/ global company highly preferable</li>
-	<li>Prior G&amp;A finance/ finance business partner experience preferred, not mandatory</li>
-	<li>Financial Modeling: High Proficiency with MS Excel and Google Sheets; ability to build thoughtful, complex and auditable financial model</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Strong partnering capabilities, with the ability to influence business partners without direct authority and to appropriately push back when required.</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
-	<li>Tools &amp; Systems: Proficiency with Enterprise Financial Planning Tools &amp; Systems; experience with Anaplan, Netsuite, Workday a plus</li>
-</ul>
-<p><strong>Equity</strong></p>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -47,19 +37,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

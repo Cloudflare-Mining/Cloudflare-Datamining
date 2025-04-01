@@ -9,16 +9,66 @@
 <p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
 <p>&nbsp;</p>
 <p><strong>What you'll do</strong></p>
-<p>At most companies, you build applications “in” the Cloud - here at Cloudflare we’re building a Cloud; a uniquely performant, globally distributed and highly available Cloud. In this role, you will lead a team of passionate and talented engineers that are building the internal Control Plane used by our SREs to manage our internal IaaS platform.&nbsp; You will be responsible for tools that support the management of a growing, globally distributed fleet of servers, storage, and network gear spread across a thousand colos worldwide.&nbsp; You will play an active part in shaping the future of the infrastructure that propels Cloudflare’s scale and growth.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment. You build great relationships with your stakeholders and deeply understand their needs.&nbsp; Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p>An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale.&nbsp; We believe that with our talented team, we can solve some of the biggest security, reliability and performance problems facing the Internet. Just how big?&nbsp;&nbsp;</p>
+<ul>
+	<li>We have in excess of 340 Terabits of network transit capacity</li>
+	<li>We operate 330+ Points-of-presence around the world</li>
+	<li>We serve more traffic than <em>Twitter, Amazon, Apple, Instagram, Bing, &amp; Wikipedia </em>combined</li>
+	<li>Anytime we push code, it immediately affects over 200 million internet users</li>
+	<li>Every day, up to 20,000 new customers sign-up for Cloudflare service</li>
+	<li>Every week, the average Internet user touches us more than 500 times</li>
+</ul>
+<p>We are looking for talented Software Engineers to build and develop the platform which makes Cloudflare customers place their trust in us.&nbsp; Our Software Engineers come from a variety of technical backgrounds and have built up their knowledge working in different environments. But the common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence.&nbsp; Our Infrastructure Software Systems and Automation team focuses on the automation to scale our infrastructure.</p>
+<p>Our team is well-funded and focused on building an extraordinary company.&nbsp; This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.&nbsp; You will build tools to constantly improve our scale and speed of deployment.&nbsp; You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale.&nbsp;&nbsp;&nbsp;</p>
+<p>Cloudflare Software Engineers focus on automating our infrastructure installations and decommissions at scale.&nbsp; We enable our Data Centre Engineering teams by allowing them to install new data centers, replace servers and networking in existing data centers as quickly and efficiently as possible while not impacting existing infrastructure and customer services.&nbsp; While our focus is on automation and accurate asset tracking, there is an element of ongoing operational support of Data Center Engineers and other teams.&nbsp; We also review upcoming hardware changes and update automation and configuration management to cater to these advances.</p>
+<p>Many of our Software Engineers have had the opportunity to work at multiple offices on interim and long-term project assignments. The ideal Software Engineering candidate has strong knowledge of Rust, with Python, Golang, and Typescript being an advantage. As we are automating server and networking installations, knowledge of Linux, Hardware and Networking is ideal.&nbsp; We prefer to hire experienced candidates; however raw skill trumps experience and we welcome strong junior applicants.</p>
+<p>&nbsp;</p>
+<p><strong>Requisite Skills</strong></p>
+<ul>
+	<li>Confidence to work in multiple programming languages - bonus points for Rust as well as Python, Golang and/or Typescript experience</li>
+	<li>5 years of relevant Development experience</li>
+	<li>Strong skills in network services, including Rest APIs and HTTP</li>
+</ul>
 <p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong><em>Strong systems level programming skills</em></strong></p>
 <ul>
-	<li>At least two years of engineering management experience</li>
-	<li>At least 5 years of hands on software development experience on meaningfully complex systems</li>
-	<li>Strong technical foundation: large distributed system design and operations, being comfortable interacting deeply with data (SQL, Prometheus) about how your systems are operating.</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li><em>Experience (and love) for debugging to ensure the system works in all cases</em></li>
+	<li><em>Experience with a continuous integration workflow and using source control (we use git)</em></li>
+	<li>Linux systems administration experience</li>
+	<li>Experience with Kubernetes and docker</li>
+	<li>Tooling and automation development experience</li>
+	<li>Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6</li>
+	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
+	<li>SQL databases (Postgres or MySQL)</li>
+	<li>Time series databases (OpenTSDB, Graphite, Prometheus)</li>
+	<li>The ability to understand service and device metrics and visualize them using Grafana</li>
+	<li><em>Great oral and written communications skills</em></li>
+	<li><em>Desire to learn and improve</em></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with continuous / rapid release engineering</li>
+	<li>Experience developing systems that are highly available and redundant across regions</li>
+	<li>Performance analysis and debugging with tools like perf, sar, strace, dtrace</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Internetworking and BGP experience</li>
+	<li>Key/Value stores (Redis, KyotoTycoon, Cassandra, LevelDB)</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
+</ul>
+<p><strong>Some tools that we use</strong></p>
+<ul>
+	<li>Netbox</li>
+	<li>Apache Airflow</li>
+	<li>Temporal</li>
+	<li>Salt</li>
+	<li>Docker, Kubernetes</li>
+	<li>Nginx</li>
+	<li>Golang</li>
+	<li>Django</li>
+	<li>PostgreSQL</li>
+	<li>Redis</li>
+	<li>Prometheus</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
