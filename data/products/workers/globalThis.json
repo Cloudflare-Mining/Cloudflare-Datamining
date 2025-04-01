@@ -10941,7 +10941,32 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"env": {},
+			"env": {
+				"BROWSER_BINDING": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"METADATA_BINDING": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"MTLS_CERT_BINDING": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"SERVICE_BINDING": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"VERSION_METADATA_BINDING": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"ASSETS": {
+					"__proto": "object",
+					"__type": "string"
+				}
+			},
 			"exit": {
 				"__proto": "function",
 				"__type": "function",
