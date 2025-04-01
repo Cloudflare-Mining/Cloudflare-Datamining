@@ -197,7 +197,8 @@
 										"properties": {
 											"password": {
 												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"username": {
 												"minLength": 1,
@@ -771,6 +772,2357 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/browser-rendering/json": {
+		"description": "Gets json from a webpage from a provided URL or HTML. Pass `prompt` or `schema` in the body. Control page loading with `gotoOptions` and `waitFor*` options.",
+		"operationId": "brapi-post_Json",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cache TTL default is 5s. Set to 0 to disable.",
+				"in": "query",
+				"name": "cacheTTL",
+				"schema": {
+					"default": 5,
+					"description": "Cache TTL default is 5s. Set to 0 to disable.",
+					"maximum": 86400,
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"addScriptTag": {
+										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"addStyleTag": {
+										"description": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"allowRequestPattern": {
+										"description": "Only allow requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"allowResourceTypes": {
+										"description": "Only allow requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"authenticate": {
+										"description": "Provide credentials for HTTP authentication.",
+										"properties": {
+											"password": {
+												"minLength": 1,
+												"type": "string",
+												"x-sensitive": true
+											},
+											"username": {
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"username",
+											"password"
+										],
+										"type": "object"
+									},
+									"bestAttempt": {
+										"description": "Attempt to proceed when 'awaited' events fail or timeout.",
+										"type": "boolean"
+									},
+									"cookies": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie).",
+										"items": {
+											"properties": {
+												"domain": {
+													"type": "string"
+												},
+												"expires": {
+													"type": "number"
+												},
+												"httpOnly": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"partitionKey": {
+													"type": "string"
+												},
+												"path": {
+													"type": "string"
+												},
+												"priority": {
+													"anyOf": [
+														{
+															"enum": [
+																"Low"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Medium"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"High"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"sameParty": {
+													"type": "boolean"
+												},
+												"sameSite": {
+													"anyOf": [
+														{
+															"enum": [
+																"Strict"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Lax"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"None"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"secure": {
+													"type": "boolean"
+												},
+												"sourcePort": {
+													"type": "number"
+												},
+												"sourceScheme": {
+													"anyOf": [
+														{
+															"enum": [
+																"Unset"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"NonSecure"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Secure"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"url": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"emulateMediaType": {
+										"type": "string"
+									},
+									"gotoOptions": {
+										"default": {},
+										"description": "Check [options](https://pptr.dev/api/puppeteer.gotooptions).",
+										"properties": {
+											"referer": {
+												"type": "string"
+											},
+											"referrerPolicy": {
+												"type": "string"
+											},
+											"timeout": {
+												"default": 30000,
+												"maximum": 60000,
+												"type": "number"
+											},
+											"waitUntil": {
+												"anyOf": [
+													{
+														"enum": [
+															"load"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"domcontentloaded"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle0"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle2"
+														],
+														"type": "string"
+													},
+													{
+														"items": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"load"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"domcontentloaded"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle0"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle2"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"type": "array"
+													}
+												],
+												"default": "domcontentloaded"
+											}
+										},
+										"type": "object"
+									},
+									"html": {
+										"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"prompt": {
+										"type": "string"
+									},
+									"rejectRequestPattern": {
+										"description": "Block undesired requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"rejectResourceTypes": {
+										"description": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"response_format": {
+										"properties": {
+											"schema": {
+												"additionalProperties": {
+													"nullable": true,
+													"type": "object"
+												},
+												"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+												"type": "object"
+											},
+											"type": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									},
+									"setExtraHTTPHeaders": {
+										"additionalProperties": {
+											"type": "string"
+										},
+										"type": "object"
+									},
+									"setJavaScriptEnabled": {
+										"type": "boolean"
+									},
+									"url": {
+										"description": "URL to navigate to, eg. `https://example.com`.",
+										"format": "uri",
+										"type": "string"
+									},
+									"userAgent": {
+										"default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+										"type": "string"
+									},
+									"viewport": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
+										"properties": {
+											"deviceScaleFactor": {
+												"type": "number"
+											},
+											"hasTouch": {
+												"type": "boolean"
+											},
+											"height": {
+												"type": "number"
+											},
+											"isLandscape": {
+												"type": "boolean"
+											},
+											"isMobile": {
+												"type": "boolean"
+											},
+											"width": {
+												"type": "number"
+											}
+										},
+										"required": [
+											"width",
+											"height"
+										],
+										"type": "object"
+									},
+									"waitForSelector": {
+										"description": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector).",
+										"properties": {
+											"hidden": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											},
+											"selector": {
+												"type": "string"
+											},
+											"timeout": {
+												"maximum": 60000,
+												"type": "number"
+											},
+											"visible": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"selector"
+										],
+										"type": "object"
+									},
+									"waitForTimeout": {
+										"description": "Waits for a specified timeout before continuing.",
+										"maximum": 60000,
+										"type": "number"
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": {
+										"nullable": true,
+										"type": "object"
+									},
+									"type": "object"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the JSON based on a user prompt or json schema"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request contains errors or didn't properly encode content."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get json.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/browser-rendering/links": {
+		"description": "Get links from a web page.",
+		"operationId": "brapi-post_Links",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cache TTL default is 5s. Set to 0 to disable.",
+				"in": "query",
+				"name": "cacheTTL",
+				"schema": {
+					"default": 5,
+					"description": "Cache TTL default is 5s. Set to 0 to disable.",
+					"maximum": 86400,
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"addScriptTag": {
+										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"addStyleTag": {
+										"description": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"allowRequestPattern": {
+										"description": "Only allow requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"allowResourceTypes": {
+										"description": "Only allow requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"authenticate": {
+										"description": "Provide credentials for HTTP authentication.",
+										"properties": {
+											"password": {
+												"minLength": 1,
+												"type": "string",
+												"x-sensitive": true
+											},
+											"username": {
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"username",
+											"password"
+										],
+										"type": "object"
+									},
+									"bestAttempt": {
+										"description": "Attempt to proceed when 'awaited' events fail or timeout.",
+										"type": "boolean"
+									},
+									"cookies": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie).",
+										"items": {
+											"properties": {
+												"domain": {
+													"type": "string"
+												},
+												"expires": {
+													"type": "number"
+												},
+												"httpOnly": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"partitionKey": {
+													"type": "string"
+												},
+												"path": {
+													"type": "string"
+												},
+												"priority": {
+													"anyOf": [
+														{
+															"enum": [
+																"Low"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Medium"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"High"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"sameParty": {
+													"type": "boolean"
+												},
+												"sameSite": {
+													"anyOf": [
+														{
+															"enum": [
+																"Strict"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Lax"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"None"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"secure": {
+													"type": "boolean"
+												},
+												"sourcePort": {
+													"type": "number"
+												},
+												"sourceScheme": {
+													"anyOf": [
+														{
+															"enum": [
+																"Unset"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"NonSecure"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Secure"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"url": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"emulateMediaType": {
+										"type": "string"
+									},
+									"gotoOptions": {
+										"default": {},
+										"description": "Check [options](https://pptr.dev/api/puppeteer.gotooptions).",
+										"properties": {
+											"referer": {
+												"type": "string"
+											},
+											"referrerPolicy": {
+												"type": "string"
+											},
+											"timeout": {
+												"default": 30000,
+												"maximum": 60000,
+												"type": "number"
+											},
+											"waitUntil": {
+												"anyOf": [
+													{
+														"enum": [
+															"load"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"domcontentloaded"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle0"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle2"
+														],
+														"type": "string"
+													},
+													{
+														"items": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"load"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"domcontentloaded"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle0"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle2"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"type": "array"
+													}
+												],
+												"default": "domcontentloaded"
+											}
+										},
+										"type": "object"
+									},
+									"html": {
+										"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"rejectRequestPattern": {
+										"description": "Block undesired requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"rejectResourceTypes": {
+										"description": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"setExtraHTTPHeaders": {
+										"additionalProperties": {
+											"type": "string"
+										},
+										"type": "object"
+									},
+									"setJavaScriptEnabled": {
+										"type": "boolean"
+									},
+									"url": {
+										"description": "URL to navigate to, eg. `https://example.com`.",
+										"format": "uri",
+										"type": "string"
+									},
+									"userAgent": {
+										"default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+										"type": "string"
+									},
+									"viewport": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
+										"properties": {
+											"deviceScaleFactor": {
+												"type": "number"
+											},
+											"hasTouch": {
+												"type": "boolean"
+											},
+											"height": {
+												"type": "number"
+											},
+											"isLandscape": {
+												"type": "boolean"
+											},
+											"isMobile": {
+												"type": "boolean"
+											},
+											"width": {
+												"type": "number"
+											}
+										},
+										"required": [
+											"width",
+											"height"
+										],
+										"type": "object"
+									},
+									"visibleLinksOnly": {
+										"type": "boolean"
+									},
+									"waitForSelector": {
+										"description": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector).",
+										"properties": {
+											"hidden": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											},
+											"selector": {
+												"type": "string"
+											},
+											"timeout": {
+												"maximum": 60000,
+												"type": "number"
+											},
+											"visible": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"selector"
+										],
+										"type": "object"
+									},
+									"waitForTimeout": {
+										"description": "Waits for a specified timeout before continuing.",
+										"maximum": 60000,
+										"type": "number"
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the links"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request contains errors or didn't properly encode content."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Links.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/browser-rendering/markdown": {
+		"description": "Gets markdown of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options.",
+		"operationId": "brapi-post_Markdown",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cache TTL default is 5s. Set to 0 to disable.",
+				"in": "query",
+				"name": "cacheTTL",
+				"schema": {
+					"default": 5,
+					"description": "Cache TTL default is 5s. Set to 0 to disable.",
+					"maximum": 86400,
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"addScriptTag": {
+										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"addStyleTag": {
+										"description": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content.",
+										"items": {
+											"properties": {
+												"content": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"allowRequestPattern": {
+										"description": "Only allow requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"allowResourceTypes": {
+										"description": "Only allow requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"authenticate": {
+										"description": "Provide credentials for HTTP authentication.",
+										"properties": {
+											"password": {
+												"minLength": 1,
+												"type": "string",
+												"x-sensitive": true
+											},
+											"username": {
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"username",
+											"password"
+										],
+										"type": "object"
+									},
+									"bestAttempt": {
+										"description": "Attempt to proceed when 'awaited' events fail or timeout.",
+										"type": "boolean"
+									},
+									"cookies": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie).",
+										"items": {
+											"properties": {
+												"domain": {
+													"type": "string"
+												},
+												"expires": {
+													"type": "number"
+												},
+												"httpOnly": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"partitionKey": {
+													"type": "string"
+												},
+												"path": {
+													"type": "string"
+												},
+												"priority": {
+													"anyOf": [
+														{
+															"enum": [
+																"Low"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Medium"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"High"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"sameParty": {
+													"type": "boolean"
+												},
+												"sameSite": {
+													"anyOf": [
+														{
+															"enum": [
+																"Strict"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Lax"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"None"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"secure": {
+													"type": "boolean"
+												},
+												"sourcePort": {
+													"type": "number"
+												},
+												"sourceScheme": {
+													"anyOf": [
+														{
+															"enum": [
+																"Unset"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"NonSecure"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"Secure"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"url": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"emulateMediaType": {
+										"type": "string"
+									},
+									"gotoOptions": {
+										"default": {},
+										"description": "Check [options](https://pptr.dev/api/puppeteer.gotooptions).",
+										"properties": {
+											"referer": {
+												"type": "string"
+											},
+											"referrerPolicy": {
+												"type": "string"
+											},
+											"timeout": {
+												"default": 30000,
+												"maximum": 60000,
+												"type": "number"
+											},
+											"waitUntil": {
+												"anyOf": [
+													{
+														"enum": [
+															"load"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"domcontentloaded"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle0"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"networkidle2"
+														],
+														"type": "string"
+													},
+													{
+														"items": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"load"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"domcontentloaded"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle0"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"networkidle2"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"type": "array"
+													}
+												],
+												"default": "domcontentloaded"
+											}
+										},
+										"type": "object"
+									},
+									"html": {
+										"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"rejectRequestPattern": {
+										"description": "Block undesired requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"rejectResourceTypes": {
+										"description": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'.",
+										"items": {
+											"anyOf": [
+												{
+													"enum": [
+														"document"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"stylesheet"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"image"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"media"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"font"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"script"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"texttrack"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"xhr"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"fetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"prefetch"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"eventsource"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"websocket"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"manifest"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"signedexchange"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"ping"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"cspviolationreport"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"preflight"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"other"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"setExtraHTTPHeaders": {
+										"additionalProperties": {
+											"type": "string"
+										},
+										"type": "object"
+									},
+									"setJavaScriptEnabled": {
+										"type": "boolean"
+									},
+									"url": {
+										"description": "URL to navigate to, eg. `https://example.com`.",
+										"format": "uri",
+										"type": "string"
+									},
+									"userAgent": {
+										"default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+										"type": "string"
+									},
+									"viewport": {
+										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
+										"properties": {
+											"deviceScaleFactor": {
+												"type": "number"
+											},
+											"hasTouch": {
+												"type": "boolean"
+											},
+											"height": {
+												"type": "number"
+											},
+											"isLandscape": {
+												"type": "boolean"
+											},
+											"isMobile": {
+												"type": "boolean"
+											},
+											"width": {
+												"type": "number"
+											}
+										},
+										"required": [
+											"width",
+											"height"
+										],
+										"type": "object"
+									},
+									"waitForSelector": {
+										"description": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector).",
+										"properties": {
+											"hidden": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											},
+											"selector": {
+												"type": "string"
+											},
+											"timeout": {
+												"maximum": 60000,
+												"type": "number"
+											},
+											"visible": {
+												"enum": [
+													true
+												],
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"selector"
+										],
+										"type": "object"
+									},
+									"waitForTimeout": {
+										"description": "Waits for a specified timeout before continuing.",
+										"maximum": 60000,
+										"type": "number"
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Markdown",
+									"type": "string"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the page markdown"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request contains errors or didn't properly encode content."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get markdown.",
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/browser-rendering/pdf": {
 		"description": "Fetches rendered PDF from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour.",
 		"operationId": "brapi-post_Pdf",
@@ -969,7 +3321,8 @@
 										"properties": {
 											"password": {
 												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"username": {
 												"minLength": 1,
@@ -1709,7 +4062,8 @@
 										"properties": {
 											"password": {
 												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"username": {
 												"minLength": 1,
@@ -2570,7 +4924,8 @@
 										"properties": {
 											"password": {
 												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"username": {
 												"minLength": 1,
@@ -3460,7 +5815,8 @@
 										"properties": {
 											"password": {
 												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"x-sensitive": true
 											},
 											"username": {
 												"minLength": 1,

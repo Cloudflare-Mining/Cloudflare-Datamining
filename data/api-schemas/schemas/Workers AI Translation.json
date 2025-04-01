@@ -10,6 +10,14 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
