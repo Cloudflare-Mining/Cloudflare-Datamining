@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -108,7 +110,8 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -200,7 +203,8 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -331,7 +335,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -443,17 +448,20 @@
 													"id": {
 														"example": "23ff594956f20c2a721606e94745a8aa",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip_range": {
 														"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 														"example": "192.0.2.53/28",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the acl.",
 														"example": "my-acl-1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -582,17 +590,20 @@
 															"id": {
 																"example": "23ff594956f20c2a721606e94745a8aa",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ip_range": {
 																"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 																"example": "192.0.2.53/28",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the acl.",
 																"example": "my-acl-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -731,7 +742,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -741,7 +753,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -823,17 +836,20 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 													"example": "192.0.2.53/28",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the acl.",
 													"example": "my-acl-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -930,17 +946,20 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 															"example": "192.0.2.53/28",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the acl.",
 															"example": "my-acl-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1077,7 +1096,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1089,12 +1109,14 @@
 							"ip_range": {
 								"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 								"example": "192.0.2.53/28",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the acl.",
 								"example": "my-acl-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1185,17 +1207,20 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 													"example": "192.0.2.53/28",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the acl.",
 													"example": "my-acl-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1292,17 +1317,20 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 															"example": "192.0.2.53/28",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the acl.",
 															"example": "my-acl-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1438,7 +1466,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1448,7 +1477,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1460,17 +1490,20 @@
 							"id": {
 								"example": "23ff594956f20c2a721606e94745a8aa",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip_range": {
 								"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 								"example": "192.0.2.53/28",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the acl.",
 								"example": "my-acl-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1562,17 +1595,20 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 													"example": "192.0.2.53/28",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the acl.",
 													"example": "my-acl-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1669,17 +1705,20 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
 															"example": "192.0.2.53/28",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the acl.",
 															"example": "my-acl-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

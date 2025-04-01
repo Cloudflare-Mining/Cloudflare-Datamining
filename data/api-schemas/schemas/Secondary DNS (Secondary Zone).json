@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -98,7 +99,8 @@
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -190,7 +192,8 @@
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -323,7 +326,8 @@
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -405,32 +409,38 @@
 												"auto_refresh_seconds": {
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"checked_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
 													"example": "www.example.com.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
@@ -441,14 +451,16 @@
 													"items": {
 														"example": "269d8f4853475ca241c4e730be286b20",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
 													"example": 2019102400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -540,32 +552,38 @@
 														"auto_refresh_seconds": {
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"checked_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
 															"example": "www.example.com.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
@@ -576,14 +594,16 @@
 															"items": {
 																"example": "269d8f4853475ca241c4e730be286b20",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
 															"example": 2019102400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -718,7 +738,8 @@
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -804,7 +825,8 @@
 										"result": {
 											"description": "When force_axfr query parameter is set to true, the response is a simple string",
 											"example": "OK",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									}
 								}
@@ -891,7 +913,8 @@
 												"result": {
 													"description": "When force_axfr query parameter is set to true, the response is a simple string",
 													"example": "OK",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1021,7 +1044,8 @@
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1033,17 +1057,20 @@
 							"auto_refresh_seconds": {
 								"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 								"example": 86400,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"id": {
 								"example": "269d8f4853475ca241c4e730be286b20",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Zone name.",
 								"example": "www.example.com.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"peers": {
 								"description": "A list of peer tags.",
@@ -1054,7 +1081,8 @@
 								"items": {
 									"example": "269d8f4853475ca241c4e730be286b20",
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1149,32 +1177,38 @@
 												"auto_refresh_seconds": {
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"checked_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
 													"example": "www.example.com.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
@@ -1185,14 +1219,16 @@
 													"items": {
 														"example": "269d8f4853475ca241c4e730be286b20",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
 													"example": 2019102400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1284,32 +1320,38 @@
 														"auto_refresh_seconds": {
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"checked_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
 															"example": "www.example.com.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
@@ -1320,14 +1362,16 @@
 															"items": {
 																"example": "269d8f4853475ca241c4e730be286b20",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
 															"example": 2019102400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1460,7 +1504,8 @@
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1472,17 +1517,20 @@
 							"auto_refresh_seconds": {
 								"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 								"example": 86400,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"id": {
 								"example": "269d8f4853475ca241c4e730be286b20",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Zone name.",
 								"example": "www.example.com.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"peers": {
 								"description": "A list of peer tags.",
@@ -1493,7 +1541,8 @@
 								"items": {
 									"example": "269d8f4853475ca241c4e730be286b20",
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1588,32 +1637,38 @@
 												"auto_refresh_seconds": {
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"checked_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
 													"example": "2019-10-24T17:09:42.883908+01:00",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
 													"example": "www.example.com.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
@@ -1624,14 +1679,16 @@
 													"items": {
 														"example": "269d8f4853475ca241c4e730be286b20",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
 													"example": 2019102400,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1723,32 +1780,38 @@
 														"auto_refresh_seconds": {
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"checked_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
 															"example": "2019-10-24T17:09:42.883908+01:00",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
 															"example": "www.example.com.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
@@ -1759,14 +1822,16 @@
 															"items": {
 																"example": "269d8f4853475ca241c4e730be286b20",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
 															"example": 2019102400,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

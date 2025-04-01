@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -108,7 +110,8 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -200,7 +203,8 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -331,7 +335,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -443,32 +448,38 @@
 													"id": {
 														"example": "23ff594956f20c2a721606e94745a8aa",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip": {
 														"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 														"example": "192.0.2.53",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ixfr_enable": {
 														"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the peer.",
 														"example": "my-peer-1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"port": {
 														"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 														"example": 53,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"tsig_id": {
 														"description": "TSIG authentication will be used for zone transfer if configured.",
 														"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -596,32 +607,38 @@
 															"id": {
 																"example": "23ff594956f20c2a721606e94745a8aa",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ip": {
 																"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 																"example": "192.0.2.53",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ixfr_enable": {
 																"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the peer.",
 																"example": "my-peer-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"port": {
 																"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 																"example": 53,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"tsig_id": {
 																"description": "TSIG authentication will be used for zone transfer if configured.",
 																"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -759,7 +776,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -769,7 +787,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -851,32 +870,38 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 													"example": "192.0.2.53",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ixfr_enable": {
 													"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the peer.",
 													"example": "my-peer-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"port": {
 													"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 													"example": 53,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"tsig_id": {
 													"description": "TSIG authentication will be used for zone transfer if configured.",
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -972,32 +997,38 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 															"example": "192.0.2.53",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ixfr_enable": {
 															"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the peer.",
 															"example": "my-peer-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 															"example": 53,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tsig_id": {
 															"description": "TSIG authentication will be used for zone transfer if configured.",
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1133,7 +1164,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1145,7 +1177,8 @@
 							"name": {
 								"description": "The name of the peer.",
 								"example": "my-peer-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1234,32 +1267,38 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 													"example": "192.0.2.53",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ixfr_enable": {
 													"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the peer.",
 													"example": "my-peer-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"port": {
 													"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 													"example": 53,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"tsig_id": {
 													"description": "TSIG authentication will be used for zone transfer if configured.",
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1355,32 +1394,38 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 															"example": "192.0.2.53",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ixfr_enable": {
 															"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the peer.",
 															"example": "my-peer-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 															"example": 53,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tsig_id": {
 															"description": "TSIG authentication will be used for zone transfer if configured.",
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1515,7 +1560,8 @@
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1525,7 +1571,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1537,32 +1584,38 @@
 							"id": {
 								"example": "23ff594956f20c2a721606e94745a8aa",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip": {
 								"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 								"example": "192.0.2.53",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ixfr_enable": {
 								"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the peer.",
 								"example": "my-peer-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"port": {
 								"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 								"example": 53,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"tsig_id": {
 								"description": "TSIG authentication will be used for zone transfer if configured.",
 								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1653,32 +1706,38 @@
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 													"example": "192.0.2.53",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ixfr_enable": {
 													"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the peer.",
 													"example": "my-peer-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"port": {
 													"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 													"example": 53,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"tsig_id": {
 													"description": "TSIG authentication will be used for zone transfer if configured.",
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1774,32 +1833,38 @@
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
 															"example": "192.0.2.53",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ixfr_enable": {
 															"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the peer.",
 															"example": "my-peer-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
 															"example": 53,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"tsig_id": {
 															"description": "TSIG authentication will be used for zone transfer if configured.",
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

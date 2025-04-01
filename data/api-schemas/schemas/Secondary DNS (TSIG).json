@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -20,7 +21,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -108,7 +110,8 @@
 												"id": {
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -200,7 +203,8 @@
 														"id": {
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -331,7 +335,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -443,22 +448,26 @@
 													"algo": {
 														"description": "TSIG algorithm.",
 														"example": "hmac-sha512.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "TSIG key name.",
 														"example": "tsig.customer.cf.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"secret": {
 														"description": "TSIG secret.",
 														"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													}
 												},
 												"required": [
@@ -588,22 +597,26 @@
 															"algo": {
 																"description": "TSIG algorithm.",
 																"example": "hmac-sha512.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "TSIG key name.",
 																"example": "tsig.customer.cf.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"secret": {
 																"description": "TSIG secret.",
 																"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-																"type": "string"
+																"type": "string",
+																"x-sensitive": true
 															}
 														},
 														"required": [
@@ -743,7 +756,8 @@
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -753,7 +767,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -835,22 +850,26 @@
 												"algo": {
 													"description": "TSIG algorithm.",
 													"example": "hmac-sha512.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "TSIG key name.",
 													"example": "tsig.customer.cf.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "TSIG secret.",
 													"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"required": [
@@ -948,22 +967,26 @@
 														"algo": {
 															"description": "TSIG algorithm.",
 															"example": "hmac-sha512.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "TSIG key name.",
 															"example": "tsig.customer.cf.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"secret": {
 															"description": "TSIG secret.",
 															"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"required": [
@@ -1101,7 +1124,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1113,22 +1137,26 @@
 							"algo": {
 								"description": "TSIG algorithm.",
 								"example": "hmac-sha512.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "TSIG key name.",
 								"example": "tsig.customer.cf.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secret": {
 								"description": "TSIG secret.",
 								"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -1221,22 +1249,26 @@
 												"algo": {
 													"description": "TSIG algorithm.",
 													"example": "hmac-sha512.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "TSIG key name.",
 													"example": "tsig.customer.cf.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "TSIG secret.",
 													"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"required": [
@@ -1334,22 +1366,26 @@
 														"algo": {
 															"description": "TSIG algorithm.",
 															"example": "hmac-sha512.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "TSIG key name.",
 															"example": "tsig.customer.cf.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"secret": {
 															"description": "TSIG secret.",
 															"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"required": [
@@ -1486,7 +1522,8 @@
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1496,7 +1533,8 @@
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1508,22 +1546,26 @@
 							"algo": {
 								"description": "TSIG algorithm.",
 								"example": "hmac-sha512.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "TSIG key name.",
 								"example": "tsig.customer.cf.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"secret": {
 								"description": "TSIG secret.",
 								"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-								"type": "string"
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -1616,22 +1658,26 @@
 												"algo": {
 													"description": "TSIG algorithm.",
 													"example": "hmac-sha512.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "TSIG key name.",
 													"example": "tsig.customer.cf.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"secret": {
 													"description": "TSIG secret.",
 													"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"required": [
@@ -1729,22 +1775,26 @@
 														"algo": {
 															"description": "TSIG algorithm.",
 															"example": "hmac-sha512.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "TSIG key name.",
 															"example": "tsig.customer.cf.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"secret": {
 															"description": "TSIG secret.",
 															"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"required": [
