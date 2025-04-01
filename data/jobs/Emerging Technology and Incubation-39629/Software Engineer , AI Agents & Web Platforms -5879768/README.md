@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: London or Lisbon </strong></p>
+<p><strong>Available locations: Lisbon&nbsp;</strong></p>
 <p><strong>About the Department</strong><strong><br></strong> Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p><strong>About the Team</strong><strong><br></strong> Our team is focused on helping developers fuel the data-driven growth of their Internet properties while respecting privacy. We build on top of the Cloudflare development platform, pushing its limits to deliver tooling that ranges from open source contributions to high-impact, Enterprise-grade product solutions for massive-traffic volumes and bespoke customer requirements.</p>
 <p>Originally starting with Cloudflare Zaraz—to enable engineers and product teams to integrate 3rd party tooling while maintaining high performance and minimizing security risks—our remit has since expanded. We now manage CDNJS, drive the open source Managed Components initiative, and lead a variety of special projects. Most notably, our team is now responsible for shipping cutting-edge AI agent platform primitives, including the Cloudflare Browser Rendering API, which is designed to deliver seamless, efficient rendering and interaction for AI-driven applications.</p>
@@ -46,7 +46,7 @@
 	<li>Experience contributing to or maintaining open source software projects.</li>
 	<li>Exposure to AI frameworks or experience in shipping AI-driven platform primitives (e.g., developing or enhancing the Cloudflare Browser Rendering API).</li>
 </ul>
-<p><strong>Locations:</strong> Lisbon or London</p>
+<p><strong>Locations:</strong> Lisbon&nbsp;</p>
 <p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
