@@ -291,7 +291,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"GET /accounts/{account_id}/slurper/jobs/{jobId}": {
+	"GET /accounts/{account_id}/slurper/jobs/{job_id}": {
 		"operationId": "slurper-get-job",
 		"parameters": [
 			{
@@ -304,7 +304,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -573,7 +573,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"GET /accounts/{account_id}/slurper/jobs/{jobId}/logs": {
+	"GET /accounts/{account_id}/slurper/jobs/{job_id}/logs": {
 		"operationId": "slurper-get-job-logs",
 		"parameters": [
 			{
@@ -586,7 +586,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -789,7 +789,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"GET /accounts/{account_id}/slurper/jobs/{jobId}/progress": {
+	"GET /accounts/{account_id}/slurper/jobs/{job_id}/progress": {
 		"operationId": "slurper-get-job-progress",
 		"parameters": [
 			{
@@ -802,7 +802,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1202,7 +1202,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"jobId": {
+												"id": {
 													"type": "string"
 												}
 											},
@@ -1347,7 +1347,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"PUT /accounts/{account_id}/slurper/jobs/{jobId}/abort": {
+	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/abort": {
 		"operationId": "slurper-abort-job",
 		"parameters": [
 			{
@@ -1360,7 +1360,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1509,7 +1509,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"PUT /accounts/{account_id}/slurper/jobs/{jobId}/pause": {
+	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/pause": {
 		"operationId": "slurper-pause-job",
 		"parameters": [
 			{
@@ -1522,7 +1522,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1729,7 +1729,7 @@
 			"R2 Super Slurper"
 		]
 	},
-	"PUT /accounts/{account_id}/slurper/jobs/{jobId}/resume": {
+	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/resume": {
 		"operationId": "slurper-resume-job",
 		"parameters": [
 			{
@@ -1742,7 +1742,7 @@
 			},
 			{
 				"in": "path",
-				"name": "jobId",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"

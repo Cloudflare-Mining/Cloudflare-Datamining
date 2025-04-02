@@ -426,7 +426,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
@@ -961,8 +961,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare One Networks Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
@@ -1870,7 +1870,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {
@@ -2317,7 +2317,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	}
 }

@@ -216,7 +216,7 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write"
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates": {
@@ -494,8 +494,8 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write",
-			"Access: Certificates Read"
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates/{certificate_id}": {
@@ -752,8 +752,8 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write",
-			"Access: Certificates Read"
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates/settings": {
@@ -1015,8 +1015,8 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write",
-			"Access: Certificates Read"
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/certificates": {
@@ -1296,7 +1296,7 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write"
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/certificates/{certificate_id}": {
@@ -1581,7 +1581,7 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write"
+			"Access: Mutual TLS Certificates Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/certificates/settings": {
@@ -1888,7 +1888,7 @@
 			"Access mTLS authentication"
 		],
 		"x-api-token-group": [
-			"Access: Certificates Write"
+			"Access: Mutual TLS Certificates Write"
 		]
 	}
 }

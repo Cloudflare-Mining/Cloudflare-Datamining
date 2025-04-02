@@ -221,7 +221,7 @@
 			"Gateway CA"
 		],
 		"x-api-token-group": [
-			"Access: SSH Auditing CA Write"
+			"Access: SSH Auditing Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {
@@ -469,8 +469,8 @@
 			"Gateway CA"
 		],
 		"x-api-token-group": [
-			"Access: SSH Auditing CA Write",
-			"Access: SSH Auditing CA Read"
+			"Access: SSH Auditing Write",
+			"Access: SSH Auditing Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
@@ -686,7 +686,7 @@
 			"Gateway CA"
 		],
 		"x-api-token-group": [
-			"Access: SSH Auditing CA Write"
+			"Access: SSH Auditing Write"
 		]
 	}
 }

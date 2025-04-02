@@ -424,7 +424,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -894,7 +894,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		],
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
@@ -1588,8 +1588,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare One Networks Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
@@ -2513,8 +2513,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare One Networks Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
@@ -2983,7 +2983,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -3410,7 +3410,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		],
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
@@ -3872,7 +3872,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -4337,7 +4337,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
-			"Argo Tunnel Write"
+			"Cloudflare Tunnel Write"
 		],
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	}

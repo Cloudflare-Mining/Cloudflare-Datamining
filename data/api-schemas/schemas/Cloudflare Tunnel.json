@@ -938,8 +938,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One cloudflared Connectors Write",
-			"Argo Tunnel Write"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -1300,8 +1300,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One cloudflared Connectors Write",
-			"Argo Tunnel Write"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -2243,7 +2243,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One Warp Connectors Write"
+			"Cloudflare One Connector: WARP Write"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
@@ -3356,10 +3356,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
@@ -4292,10 +4292,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -4920,10 +4920,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
@@ -5478,10 +5478,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
@@ -5820,10 +5820,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/tunnels": {
@@ -6960,10 +6960,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One cloudflared Connectors Write",
-			"Cloudflare One cloudflared Connectors Read",
-			"Argo Tunnel Write",
-			"Argo Tunnel Read"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare One Connector: cloudflared Read",
+			"Cloudflare Tunnel Write",
+			"Cloudflare Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/warp_connector": {
@@ -8076,8 +8076,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One Warp Connectors Write",
-			"Cloudflare One Warp Connectors Read"
+			"Cloudflare One Connector: WARP Write",
+			"Cloudflare One Connector: WARP Read"
 		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -9010,8 +9010,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One Warp Connectors Write",
-			"Cloudflare One Warp Connectors Read"
+			"Cloudflare One Connector: WARP Write",
+			"Cloudflare One Connector: WARP Read"
 		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
@@ -9350,8 +9350,8 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
-			"Cloudflare One Warp Connectors Write",
-			"Cloudflare One Warp Connectors Read"
+			"Cloudflare One Connector: WARP Write",
+			"Cloudflare One Connector: WARP Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
@@ -10306,8 +10306,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One cloudflared Connectors Write",
-			"Argo Tunnel Write"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -11262,7 +11262,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One Warp Connectors Write"
+			"Cloudflare One Connector: WARP Write"
 		]
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
@@ -12216,8 +12216,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One cloudflared Connectors Write",
-			"Argo Tunnel Write"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
@@ -12581,8 +12581,8 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One cloudflared Connectors Write",
-			"Argo Tunnel Write"
+			"Cloudflare One Connector: cloudflared Write",
+			"Cloudflare Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/warp_connector": {
@@ -13520,7 +13520,7 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
-			"Cloudflare One Warp Connectors Write"
+			"Cloudflare One Connector: WARP Write"
 		]
 	}
 }
