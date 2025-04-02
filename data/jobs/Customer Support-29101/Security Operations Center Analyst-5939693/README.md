@@ -5,32 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Role Location: Lisbon, Portugal</strong></p>
-<p><strong>About the team</strong>&nbsp;&nbsp;</p>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Go To Market teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives</p>
-<p><strong>About the role</strong></p>
-<p>We are looking for a Full Stack Engineer to join our Lisbon team to scale our development efforts on marketing prospect insights initiatives. You will work on building full stack data applications which empowers our Sales and Marketing teams. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, Typescript, and GraphQL</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>Job Locations: Remote, Mexico City, MX</strong></h4>
+<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>Description</strong></h4>
+<p>Security Operations Center Analysts provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact the SOC as a Service team for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</p>
+<p>Security Operations Center Analysts analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Design and implement key features of our internal applications</li>
-	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
-	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
-	<li>Continuously involved in knowledge sharing and mentorship</li>
+	<li>Monitor and investigate the alerts to identify attacks</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Work with Engineering and Product teams to improve the products and tools</li>
+	<li>Extensive communications with customers via chat, email, and phone&nbsp;</li>
+	<li>Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</li>
+	<li>Configure / Manage security monitoring rules and contribute to tool improvements</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>Participation in a weekend and holiday rotation required with main working hours 9 to 5 Pacific time&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>Key skill sets</strong></h4>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
-	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Experience with Javascript, Typescript, and React</li>
-	<li>Experience with Search Query Engine such as Milliesearch and Redis Search&nbsp;</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+	<li>Strong understanding of the OSI model, TCP, UDP, BGP, QUIC</li>
+	<li>Advanced understanding of iptables</li>
+	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
+	<li>Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</li>
+	<li>At least 2 years of technical support experience and customer support experience is a must</li>
+	<li>Strong communication skills with high-value customers&nbsp;</li>
+	<li>Command line / Bash shell</li>
+	<li>Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</li>
+	<li>Security skills and certifications preferred: CISSP, GCIA GCIH, GCFA, GCFE, etc.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4>Bonus Points:</h4>
 <ul>
-	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Familiarity with Google Cloud Platform or something similar</li>
+	<li>Previous DDoS mitigation for OSI layers 3,4, &amp; 7, filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting is a plus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

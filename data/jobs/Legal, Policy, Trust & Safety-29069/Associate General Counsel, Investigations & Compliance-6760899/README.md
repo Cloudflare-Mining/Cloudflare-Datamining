@@ -5,43 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Atlanta, Austin, New York, Washington DC, Toronto, Lisbon, London</p>
-<h4>About the Role</h4>
-<p>Cloudflare runs one of the largest networks in the world, and the telemetry we gather from that network is broad in variety and deep in cardinality. We're looking for a Product Manager who can help build an Analytics experience that enables customers to achieve unparalleled visibility into their users, applications, and networks.&nbsp;</p>
-<p>The Analytics PM will be responsible for building a set of analytics, logging, and reporting features that allow Cloudflare customers to quickly and intuitively answer questions about their Cloudflare One deployments. You will partner closely with many stakeholders across Cloudflare One to understand their product’s unique needs and create a consistent data-driven throughline. You will own creating Cloudflare One’s visibility story transforming this into a differentiator within the rapidly developing SASE landscape. You'll work with engineering and design providing clear requirements to create outcome-based dashboard experience that provides an authoritative perspective on the data that matters while also being extensible to any question a customer may have.&nbsp;&nbsp;</p>
-<p>As a member of a growing team of analytics and monitoring product managers your responsibilities include:</p>
+<p><strong>Available Locations: Washington DC, Austin Texas</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s business requires a world class legal team to help the company deal with complex matters by anticipating complications and distractions and guiding the company around those obstacles. We’re looking for a new team member who can help foster our unique corporate philosophy and approach, in which the security and privacy of our customers are paramount. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team.</p>
+<p>We are looking for an exceptionally talented, energetic, and strategic compliance professional to join our legal team as an&nbsp;Associate General Counsel, Investigations &amp; Compliance based either in Washington, DC or Austin, TX. You will play a key role in leading and managing our global legal compliance program, including internal investigations, conflicts of interest disclosures, gifts and entertainment requests, training and communications, policy management, and other cross-functional compliance initiatives. The perfect candidate is passionate about compliance and can channel that passion into solving complex problems and novel legal issues in a fast-paced environment.&nbsp;</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
-	<li>Develop the platform vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.</li>
-	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
-	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
-	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
-	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
-	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>Lead Cloudflare’s <strong>internal investigations program</strong>, not only conducting investigations, but acting as a thought leader setting best practices for our global, cross-functional investigative team, strategically utilizing metrics to communicate with leadership and justify resource allocation;</li>
+	<li>Oversee the administration of Cloudflare’s <strong>compliance training and education program</strong>, including the design of company-wide compliance training content, target audience identification, and effectiveness measurement as well as conducting live and recorded training sessions;</li>
+	<li>Own Cloudflare’s Policy Hub, overseeing annual review and approval of all <strong>company policies</strong> with stakeholders;</li>
+	<li>Drive Cloudflare’s <strong>conflict of interest disclosure process</strong>, including review and approval of potential employee conflicts and gift and entertainment requests,<strong> </strong>as well as policy training;&nbsp;</li>
+	<li>Execution of our <strong>compliance communications strategy</strong>;&nbsp;</li>
+	<li>Conduct annual compliance program<strong> risk assessments</strong>;&nbsp;</li>
+	<li><strong>Manage reporting and analytics of compliance initiatives</strong> including responding to auditing requests; and</li>
+	<li>Track Cloudflare’s <strong>company compliance with new laws and regulations, specifically with regard to anti-bribery and corruption and other relevant compliance topics, </strong>working closely with our public policy, legal compliance and regional legal teams;&nbsp;</li>
+	<li><strong>Manage a global team</strong> of talented compliance professionals;</li>
+	<li>Establish and maintain <strong>cross-functional relationships with key stakeholders</strong>;</li>
 </ul>
-<h4>Examples of desirable skills, knowledge and experience:</h4>
-<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment. You have a deep technical understanding of the analytics and monitoring space and outstanding communication and collaboration skills. You are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.</p>
+<p>Lead and contribute to a variety of other <strong>cross-functional compliance initiatives</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Domain expertise in the analytics, monitoring, or observability. You have been there, done that as either an architecture or product owner for analytics or very closely related technology space</li>
-	<li>Distributed systems experience that allows you to drive the scaling strategy for analytics as our scale grows both on volume and number of internal customers supporting.</li>
-	<li>Experience presenting new products and features to customers - whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
-	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
-	<li>Exceptional communication, presentation, organizational and analytical skills</li>
-	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
-	<li>Ability to communicate complex technical concepts to all audiences</li>
-	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.). You are skilled at proving points with data and can quickly show others how to do so.</li>
-</ul>
-<h4><strong>Bonus Points if you also have:&nbsp;</strong></h4>
-<ul>
-	<li>BS/MS in a technology- or business-related field</li>
-	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
-	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
-	<li>Working knowledge of how the Internet works at network layers 3 through 7</li>
-	<li>A solid understanding of API design &amp; documentation</li>
-	<li>An eye for design to translate users needs into intuitive designs</li>
+	<li>6+ years experience with an in-house legal department preferred; experience at a tech company, especially as part of a compliance team, is a huge plus;</li>
+	<li>Demonstrated track record of managing people and developing talent;</li>
+	<li>Experience conducting and participating in complex investigations;</li>
+	<li>Detail-oriented, well-organized, and technically-adept;</li>
+	<li>Excellent written and oral communication skills;</li>
+	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, with lawyers and non-lawyers, including engineering teams, sales teams, and product teams, to establish effective solutions efficiently and in an amenable manner.&nbsp;</li>
+	<li>Experience with the following software tools helpful butt not required: Google Suite, Navex EthicsPoint, Certa, Zip, Moody's RDC, Workday LMS;</li>
+	<li>The ability to manage multiple matters / projects for multiple teams;</li>
+	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision;&nbsp;</li>
+	<li>An ambitious mindset that enables you to successfully work independently with little guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $221,000 - $270,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $243,000 - $297,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

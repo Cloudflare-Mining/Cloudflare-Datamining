@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon&nbsp;</strong></p>
+<p><strong>Role Location: Lisbon, Portugal</strong></p>
 <p><strong>About the team&nbsp;&nbsp;</strong></p>
 <p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
 <p><strong>About the role</strong></p>
