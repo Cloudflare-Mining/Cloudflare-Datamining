@@ -699,6 +699,8 @@
 	"workers_and_pages.deploy_to_workers.steps.select_a_repository": "Select a repository",
 	"workers_and_pages.deploy_to_workers.steps.configure_project": "Configure project",
 	"workers_and_pages.repository_creation_explainer": "A Git repository will be created for you and connected to your application. Every push to your production branch will be deployed automatically.",
+	"workers_and_pages.repository_created_notification.title": "u{1F389}  We've created the repository <0>%{repositoryName}</0> on your %{provider} account",
+	"workers_and_pages.repository_created_notification.body": "**To continue developing:**\n\n1. Clone your repository\n2. Commit and push changes to your repository\n\n\nCloudflare will build and deploy your changes automatically.",
 	"workers_and_pages.form_fields.env_vars.errors.max_length": "Maximum length for environment variable values is 5000 characters",
 	"workers_and_pages.form_fields.env_vars.errors.duplicate_name": "Duplicated environment variable name: %{name}",
 	"workers_and_pages.share_application": "Share application",
