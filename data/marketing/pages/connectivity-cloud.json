@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-25T18:33:38.335Z",
-					"updatedAt": "2025-02-13T18:23:13.330Z"
+					"updatedAt": "2025-04-02T19:41:36.909Z"
 				},
 				"contentfulId": "6uaQczf0ul5MHIZFti7zy1",
 				"contentTypeId": "page",
@@ -2714,7 +2714,7 @@
 						"titleSize": "medium",
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Today's enterprises face a crisis of complexity. They need to securely connect local and remote workers, on-prem and cloud apps, and far flung networks everywhere. Maintaining visibility and control has never been more difficult. Cloudflare's connectivity cloud helps you regain control, improve visibility and security, and consolidate vendors to reduce costs.\n",
+						"copy": "Today's enterprises face a crisis of complexity. Legacy network modernization, global expansions, and AI adoption have severely complicated their IT environment. Cloudflare's connectivity cloud can help. It's a unified platform for security, connectivity, and development that accelerates time-to-value for organizations digital investments.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Watch webinar",
@@ -2778,16 +2778,16 @@
 						"eyebrowHeading": null,
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "50XsOhoH249OtHmUmsuyBB",
-								"title": "Integration with all networks",
+								"title": "One network, one control plane",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Get a direct line to the Internet and every other app, cloud, and ISP, giving you secure, low-latency, infinitely scalable networking. Connect remote users, on-prem apps, multiple clouds and all your customers and vendors easily and securely.",
+								"description": "Accelerate user experiences and block attacks close to their source with services built to run in every location in our %{DataCenterCount} city cloud network.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2795,14 +2795,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6a3960ee-a810-5100-a55a-ffcb4d676e43",
-									"altText": "network virtual backbone",
-									"title": "network virtual backbone",
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7j3V0dpNG4OkCE8ko2DhoE",
+								"title": "Global scale and network resilience",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Ensure service availability globally with %{NetworkCapacity} of network capacity, Anycast networking, and a dedicated fiber backbone.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "e32dab88-a3a3-5807-9cac-6b8a1bf92327",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/CkLyY6q1HXN55s43SIWIo/cb5618f644a9f8aa08f02566e51b4e8c/network-virtual-backbone.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
 										},
 										"description": null
 									},
@@ -2818,12 +2854,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7j3V0dpNG4OkCE8ko2DhoE",
-								"title": "Built-in intelligence",
+								"contentfulId": "4FSZimXsnIz9f4hBfC06pn",
+								"title": "Composable, programmable services",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "A connectivity cloud has a wide range of services built in at a foundational level, and analyzes extremely high volumes and varieties of traffic in order to automatically update intelligence. This helps you easily adapt to new threats and traffic patterns.\n",
+								"description": "Customize policy enforcement, decryption, caching, and more for specific regions. Fully API programmable Layer 2-7 connectivity.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2831,16 +2867,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
+									"id": "bfdae3ad-fb79-5f09-af76-54a60b58ae4b",
+									"altText": "code api icon blue",
+									"title": "code api icon blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/c87ebb5a5125cfeafaeec3473c091da4/innovation-intelligence.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ugq45RoIF8Tbbt3QlP5Yk/6aa7c9d9aa38d0f77b426a6bb27645a2/code-api.svg"
 										},
-										"description": "Thought bubble icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2854,12 +2890,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4FSZimXsnIz9f4hBfC06pn",
-								"title": "Unified, simplified interface",
+								"contentfulId": "7aKWk5MspqySqV0MALt6tA",
+								"title": "Simplified management interface",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "small",
-								"description": "See and manage much of your IT environment from one interface, greatly reducing tool sprawl and dashboard overload.",
+								"titleSize": null,
+								"description": "Accelerate innovation by managing every Cloudflare service via a single UI or API. Integrate log data for improved visibility.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2867,16 +2903,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
+									"id": "888981a6-dd85-5b86-af64-6ec8fa0d848e",
+									"altText": "Internet browser blue",
+									"title": "Internet browser blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17tDJ5kPaGE8eLFJvByBgR/c28fb006fa3ddfba75b2009591559296/internet-browser.svg"
 										},
-										"description": "Ease of use orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2889,7 +2925,7 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"htmlId": "how-it-works"
 					},
 					{
@@ -2926,8 +2962,8 @@
 															"locale": "en-US",
 															"title": "Marketecture Expanded",
 															"file": {
-																"name": "CC marki.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HU0PX1Z4662QPpcXyDNjU/9f159e7bb4af8439265129ffcb6b1d7c/CC_marki.png",
+																"name": "Marketecture_Expanded  1.7.25.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HU0PX1Z4662QPpcXyDNjU/8a4ecd61af35bc1328cb66a63c328242/Marketecture_Expanded__1.7.25.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -3027,25 +3063,7 @@
 									"content": [
 										{
 											"nodeType": "text",
-											"value": "Better control of IT and security environments delivers more value to the business. "
-										}
-									]
-								},
-								{
-									"nodeType": "paragraph",
-									"content": [
-										{
-											"nodeType": "text",
-											"value": ""
-										}
-									]
-								},
-								{
-									"nodeType": "paragraph",
-									"content": [
-										{
-											"nodeType": "text",
-											"value": "Better control means quicker adoption of new tech requirements. It means establishing more effective security policies and responding faster when novel attacks strike. And it means less money spent on duplicative tools and the people required to manage them."
+											"value": "Cloudflare's connectivity cloud helps enterprises achieve stronger security, better performance and resilience, easier compliance, and increased operational agility — among many other benefits. All of these help organizations launch new digital projects faster, and get better returns from their existing ones. "
 										}
 									]
 								}
@@ -3085,8 +3103,8 @@
 						},
 						"statistics": [
 							{
-								"statistic": "238%",
-								"description": "ROI from Cloudflare's connectivity cloud"
+								"statistic": "Millions",
+								"description": "Saved by consolidating IT services"
 							},
 							{
 								"statistic": "29%",
@@ -3101,7 +3119,7 @@
 								"description": "Reduction in breach risk"
 							}
 						],
-						"sectionPadding": "default",
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": "statistics"
 					},
 					{
@@ -3302,41 +3320,45 @@
 						"sectionPadding": "tile--no-top-bottom-padding",
 						"featuredCaseStudies": [
 							{
-								"id": "f0b8fe55-bfb7-542d-9bf3-d3f935afb03e",
-								"contentfulId": "1H43KOVhSYFliXe0gYpDFa",
+								"id": "defc09e8-7427-5cd2-8685-4e519d2a10ea",
+								"contentfulId": "6vH9LlrALlRvEjgRFMNxx",
 								"logo": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDSPSSsnB7C5aL2KHgZG7/7c548df6cd07a691d6b9042e2ee391e7/sage_logo.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yUNNcm4R4mXsEu9peDFNi/53ff1c4743556c777025221561a97491/Telus-logo.png"
 									},
-									"description": "Sage Intacct logo"
+									"description": "Telus logo"
 								},
-								"nameUrlSlug": "sage",
-								"shortDescription": "Sage leverages Cloudflare to improve application performance and security, enhance product development, secure user data, and streamline their digital footprint.",
-								"longDescription": "## __Sage helps businesses to thrive — Sage partners with Cloudflare to support the security of business management applications for millions of users__\n\nSage is a leader in accounting, financial, HR, and payroll technology for small and mid-sized businesses (SMBs). Its technology automates accounting, payroll and payment practices. \n\nSupporting millions of businesses across 21 countries, Sage helps SMBs thrive in a complex digital landscape. The Sage ecosystem allows entrepreneurs to offload their administrative processes and free up time and resources to focus on core business objectives. Sage's purpose is to knock down barriers so everyone can thrive and good security built into the products from the outset is the foundation of this. \n\n### __Challenge: Securing business application access to millions of users__\n\nAs providers of cloud-based financial and business management tools, Sage is responsible for the security of their clients' financial information. It is a charge they take seriously, especially as online threats become more sophisticated and automated threats increase in frequency.\n\n\"A key cybersecurity focus is the rise of criminal groups that try to hold companies to ransom by making data unavailable or simply by profiting from stolen data,\" says Sage  Chief Information Security Officer (CISO), Gustavo Zeidan. \"Our challenge is to protect our customers' data, as well as their own customers' data, by staying ahead in technology evolution and anticipating changes in the threat landscape — always monitoring the environment and ensuring that Sage and our customers' data stay secure.\"\n\nAs Sage's product portfolio grew, so did their need to secure and integrate their new offerings without hindering development efforts or user access to financial tools and information. \n\n\"We are constantly evolving our business processes and technology, and a significant part of that initiative involved a strong push towards a Zero Trust network architecture,\" Zeidan explains. \"We have been consistently and relentlessly decommissioning legacy ways of working and old technologies such as VPN and modernising how our business colleagues and development teams use technology to deliver their work.\" \n\nLooking for a like-minded partner dedicated to innovation, Sage chose Cloudflare to help them achieve their security and development goals.   \n\n### __Solution: Mitigating automated threats and reducing network complexity with Cloudflare integrated security and analysis tools__\n\nUsing Cloudflare, Sage was able to reduce maintenance costs and streamline their digital footprint.\n\n\"The amount of insight we gained from Cloudflare's integrated solutions such as DNS Analytics is impressive,\" says Zeidan. \"With that added visibility, we could build an understanding of our footprint at the host level and make data driven business decisions on what to keep and what to decommission, enabling us to greatly simplify our external presence.\"  \n\nSage initially had adopted the core Cloudflare [application services](https://www.cloudflare.com/application-services/) like the Web Application Firewall (WAF) and global Content Delivery Network (CDN) to bolster product performance and secure their websites and APIs. Based on their early successes, Sage began onboarding additional Cloudflare tools — like Bot Management and DDoS mitigation — to [proactively defend against threats](https://www.cloudflare.com/products/zero-trust/threat-defense/) using behavioral analysis, fingerprinting, and machine learning to monitor traffic.\n\n\"Cloudflare gives us the ability to identify what is human and what is automated traffic,\" says Zeidan. \"That helps protect our websites from automated attacks and filter out traffic when they are attempting to use our platform in a different way it was designed for.\"\n\n### __Simplifying application security and development with Cloudflare Workers__\n\nWith its comprehensive set of enterprise management tools, ensuring effortless access while maintaining [stringent application security](https://www.cloudflare.com/application-services/solutions/) and protecting data for a user base of millions was critical to Sage's success. \n\nToday, the Cloudflare-Sage partnership extends beyond security — the Cloudflare Workers development platform gives Sage DevOps an environment in which they can innovate and safely test and deploy additional layers of code straight from the network edge.\n\n\"Cloudflare Workers has brought immense flexibility to our engineering teams,\" says Zeidan. \"This solution alone enabled operations teams to provide fast response to various architecture challenges without having to go anywhere near application code or making changes to core infrastructure.\" \n\nSage's and Cloudflare share a focus on innovation and creating solutions that bring clear benefits to their end users.\n\n\"Sage has the ambition to knock down barriers and transform the way people think and work, enabling their organisations to thrive.\" \n",
-								"cloudflareStreamVideoId": "48db2b290180d222320c681b6e6cf571",
-								"orderDate": "2023-07-12",
+								"nameUrlSlug": "telus",
+								"shortDescription": "Cloudflare's connectivity cloud helps TELUS improve their security team's agility, block attacks sooner, and cut the security budget by over C$11 million.",
+								"longDescription": "## __TELUS strengthens security and improves digital experiences while eliminating legacy IT complexity with Cloudflare__\n\nTELUS is growing rapidly. Headquartered in Canada, TELUS Corporation is a dynamic, world-leading global communications technology company with more than 19 million customer connections across wireline, wireless, Internet, security, entertainment and TV services. The company is also expanding into new verticals, including health technology, agricultural technology, energy, and smart home technology.\n\nTo succeed in highly competitive markets, TELUS technology leaders are focused on building a world-class engineering organization. That team is responsible for developing innovative products and delivering outstanding digital experiences to customers across Canada and beyond. \n\n### __Defending a high-value target while facing IT complexity__\n\nAmong other technology investments, TELUS is currently migrating key workloads from on-premises data centers to the cloud. \"Moving to the cloud creates great opportunities for accelerating our pace and improving the quality of our services,\" says Steve Tannock, director of platform at TELUS. \n\nHowever, the cloud migration and other initiatives also have the potential for amplifying security challenges by expanding the company's attack surface. \"TELUS is a high-value target for attackers,\" says Tannock. \"In particular, the volume, quality, and sophistication of Distributed Denial of Service (DDoS) attacks are always increasing. Addressing those threats is a high priority.\"\n\nAnother challenge was a heterogeneous IT and security environment — which stemmed in part from the company's growth through acquisitions. \"Initially, we had very piecemeal, uneven protection. Every team, every application and every surface had its own solutions,\" says Tannock. \"Some of those solutions were delivered as physical appliances that were no longer relevant to a cloud approach.\"\n\nThe complexity of this security environment slowed incident responses and even affected retention of employees. \"We were seeing an increased number of DDoS attacks that were not mitigated. As a result, our team was spending lots of time on call, which was stressful and led to burnout,\" says Tannock. \"We needed to completely rethink how we were protecting the company.\"\n\n### __Strengthening security and consolidating tools with Cloudflare__\n\nTo transform their security strategy, TELUS began working with Cloudflare. The team implemented DDoS protection and bot management capabilities to stop attacks and prevent malicious bot activity. TELUS also deployed Cloudflare Advanced Certificate Management to secure applications with TLS certificates while avoiding manual administration. Meanwhile, the Cloudflare content delivery network (CDN) helps deliver exceptional experiences to users everywhere.\n\nThe move to Cloudflare was widely appreciated by the TELUS team. \"Many of our team members had used Cloudflare with previous companies,\" says Tannock. \"When we decided to make the move to Cloudflare at TELUS, we were all excited to work with a company that has prioritized strong engineering. We are closely aligned with Cloudflare's engineering-first culture.\" \n\nBecause Cloudflare offers a single, unified connectivity cloud, the TELUS team immediately recognized the opportunity to consolidate security tools. \"Consolidation helps us be lighter and faster,\" says Tannock. \"We can be more responsive to issues. And at the same time, with fewer tools to manage, we're reducing our team's cognitive load.\"\n\n### __Eliminating C$11.8 million in direct costs over three years__\n\nConsolidating security tools is having a tangible impact on costs. \"With our previous security providers, we had experienced increasing costs and diminishing returns,\" says Tannock. \"By moving to Cloudflare, we anticipate reducing direct costs by C$11.8 million over three years. That is a massive savings for us.\"\n\nTELUS is also driving down operational costs by reducing the need for staff overtime. \"In the first five months of this year, we saved more than a hundred hours of overtime compared with previous years,\" says Tannock. \"That's both a cost reduction and an improvement in quality of life for our teams. It's really a tremendous win.\"\n\n### __Spending less time on urgent incidents and more time on strategic priorities__\n\nWith Cloudflare security capabilities in place, the TELUS team automatically mitigates many more attacks than before — reducing the time to handle attacks by 95% for one high-traffic event. \"Two years ago on Black Friday, we spent 48 hours just putting out fires,\" says Tannock. \"This past year, attackers targeted us even more — but Cloudflare automatically mitigated every attack except one. For the remaining attack, we stopped it within an hour just by quickly adding a configuration rule.\"\n\nIncreased visibility helps the TELUS team handle threats before they escalate. \"Using the Cloudflare dashboard, we can easily see where the problems are and rapidly configure new rules to monitor or block a threat,\" says Tannock. \"Cloudflare has really transformed the way we work. Now we can spend more of our time working on strategic projects.\"\n\n### __Enhancing customer experiences by delivering better performance__\n\nWhile TELUS is using Cloudflare security capabilities to address threats, the Cloudflare network helps deliver better digital experiences for websites and apps. \"We're always thinking about our customer experiences,\" says Tannock. \"When we added Cloudflare to our website, we immediately saw a 1.4-second improvement in page response time, which is huge for us — and a very noticeable improvement for our customers.\"\n\nOn average, the move to Cloudflare has contributed to a 65% reduction in page load times so far. Tannock's team anticipates another 40% reduction in the future. \"Our goal is for all of our properties to load in under two seconds,\" says Tannock. \"Two years ago, we were averaging about 10 seconds. Now it's about three-and-a-half seconds. We think we can reach our goal with Cloudflare.\"\n\nThe TELUS team hopes to achieve that performance goal by moving apps to the edge. \"We're exploring ways to use Cloudflare Workers to serve apps closer to users,\" says Tannock. \"Canada is a large country, and we want to make sure that customers have responsive experiences whether they are on the West Coast, East Coast, or somewhere in between. With Cloudflare, we're rethinking how we deliver our software so we can provide a much faster experience for customers everywhere.\" \n\n### __Securing a distributed workforce and enabling continued innovation__\n\nThe TELUS team has also been investigating a Zero Trust security approach to better protect employees, whether they are working in corporate offices, retail locations, call centers, or elsewhere. \"TELUS has a globally distributed workforce, and we need to ensure that we can safeguard employees and provide the right levels of network access,\" says Tannock. \"We believe that the Cloudflare connectivity cloud will be instrumental in empowering our global employees while maintaining tight security. We can continue to deliver exceptional service and develop innovative products from anywhere.\"\n",
+								"cloudflareStreamVideoId": "bc8c2772f6aadc832ff74536002b8057",
+								"orderDate": "2024-11-11",
 								"ref_streamVideoThumbnail": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ILLvFjlVSKYB4Gp5utCeb/32fd2f9b0547d7c2b534d0d8cad192f3/sage_meta.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xbbCKLej8Ie7Ty2d1NfCh/471c4d9fd80cbf7e1903f137ca488e1a/Telus-thumb.png"
 									},
-									"description": "Photo of person using Sage Intacct on a laptop"
+									"description": null
 								},
 								"twoCardPreviewImage": null,
 								"industryNew52420": [
 									"High Technology"
 								],
 								"regionNew52520": [
-									"Europe, Middle East & Africa"
+									"North America"
 								],
 								"primaryUseCases": [
 									"Accelerate digital properties",
-									"Enable zero trust security for workforce",
+									"Deliver rich media experiences",
+									"Deploy custom code at the Edge",
+									"Protect network infrastructure",
 									"Secure websites & applications",
-									"Deploy custom code at the Edge"
+									"Secure workforce applications, devices and networks"
 								],
 								"product": [
+									"CDN",
+									"DDoS Protection",
 									"Bot Management",
-									"Workers"
+									"SSL/TLS"
 								]
 							},
 							{
