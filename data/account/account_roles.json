@@ -1157,6 +1157,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"r2_bucket_warehouse": {
 				"read": true,
 				"edit": true
@@ -1184,10 +1188,6 @@
 				"edit": true
 			},
 			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"magic": {
 				"read": true,
 				"edit": true
 			},
@@ -1785,6 +1785,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": false
+			},
 			"r2_bucket_warehouse": {
 				"read": true,
 				"edit": false
@@ -1807,10 +1811,6 @@
 				"edit": false
 			},
 			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"magic": {
 				"read": true,
 				"edit": false
 			},
@@ -1980,6 +1980,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"r2_bucket_warehouse": {
 				"read": true,
 				"edit": true
@@ -2006,10 +2010,6 @@
 				"edit": true
 			},
 			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"magic": {
 				"read": true,
 				"edit": true
 			},
