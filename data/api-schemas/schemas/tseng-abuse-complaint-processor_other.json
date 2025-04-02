@@ -168,6 +168,18 @@
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
 												"type": "string"
 											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
 												"type": "string"
@@ -395,6 +407,18 @@
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
 												"type": "string"
 											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
 												"type": "string"
@@ -611,6 +635,18 @@
 											},
 											"ports_protocols": {
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
+												"type": "string"
+											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
 												"type": "string"
 											},
 											"signature": {
@@ -831,6 +867,18 @@
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
 												"type": "string"
 											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
 												"type": "string"
@@ -1046,6 +1094,18 @@
 											},
 											"ports_protocols": {
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
+												"type": "string"
+											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
 												"type": "string"
 											},
 											"signature": {
@@ -1273,6 +1333,18 @@
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
 												"type": "string"
 											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
 												"type": "string"
@@ -1490,6 +1562,18 @@
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
 												"type": "string"
 											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
 												"type": "string"
@@ -1698,6 +1782,18 @@
 											},
 											"ports_protocols": {
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
+												"type": "string"
+											},
+											"reported_country": {
+												"description": "Text containing 2 characters",
+												"maxLength": 2,
+												"minLength": 2,
+												"type": "string"
+											},
+											"reported_user_agent": {
+												"description": "Text not exceeding 255 characters",
+												"maxLength": 255,
+												"minLength": 1,
 												"type": "string"
 											},
 											"signature": {
