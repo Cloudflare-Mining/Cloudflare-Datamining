@@ -247,6 +247,77 @@
 						"togglesTo": []
 					},
 					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "75tgJz6T2Tol111LoV9NYO",
+						"title": "If you're an analytics provider interested in becoming a partner, please get in touch.",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5KFBWTrWipd4DUNMEK4g7u",
+							"elementName": "Analytics - Become a Partner Modal Button",
+							"standardText": null,
+							"text": "Contact us",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "G0Q6GjrjIsc0XUBdGBnMX",
+								"modalName": "[Partners] - Analytics: Contact Us - Form Modal",
+								"modalId": "partners-contact-us-form-modal",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "hUFpk6AbkMyAHh2s5Y48d",
+									"bladeName": "[Partners] - Analytics: Contact Us - Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Contact Us Analytics Partnerships",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Contact Us",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
 						"backgroundColor": "white",
 						"contentfulId": "2I6WUvVQxZgysWwNtVDSKg",
 						"contentTypeId": "bladeThreeFeatures",
@@ -316,6 +387,77 @@
 						},
 						"learnMoreUrl3": null,
 						"features": []
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "5tEHmy8UYY0MD7biZ50zJG",
+						"quote": "\"The dashboards are very well structured — we couldn't track the data with this level of granularity before, which is useful for monitoring on a day-to-day basis, but also in the context of new feature launches or troubleshooting. The app doesn't require my constant intervention, and data flows in automatically, which is a big bonus for my time management. This has brought us value that we didn't have before.\"",
+						"quoteAuthor": "Diana Streche",
+						"quoteTitle": "Data Engineer, Adore Me",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2axFxzr6rDqFRWtKDG11V5/fae23f29fb3374ff1c5eef6e173c0b7c/logo-adoreme-black.png"
+							},
+							"description": "Adore Me"
+						},
+						"imageAssetFile": {
+							"id": "f27224a2-e8a1-5aa9-9692-5599cd7ab0c5",
+							"altText": "logo-adoreme-black",
+							"title": "logo-adoreme-black",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2axFxzr6rDqFRWtKDG11V5/fae23f29fb3374ff1c5eef6e173c0b7c/logo-adoreme-black.png"
+								},
+								"description": "Adore Me"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "5EixSKcLM9duQTDPFL3ATp",
+								"quote": "\"The Cloudflare integration and dashboard for Sumo Logic have helped us keep our eye directly on traffic, security, and performance. The integration was simple and worked straight out of the box. This collection of dashboards saves me hours of work and has provided value since day one.\"",
+								"quoteAuthor": "Matthew Justice",
+								"quoteTitle": "Director of Engineering, TicketCity",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fGowbvRemXtiEmk4R3beY/7e3ea49bc31064823e68ac63c9083d8b/TicketCityLogo.png"
+									},
+									"description": "TicketCity logo"
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "7irSrNaWeaVvbZg39KgcbO",
+								"quote": "\"Cloudflare's Logpush and Dashboard App with Sumo Logic allows us to obtain complete end-to-end visibility of our logs and ensures we can build a holistic threat intel view for our entire platform.\"",
+								"quoteAuthor": "Steven Rogers",
+								"quoteTitle": "Senior Systems Security Specialist, Ansarada",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AmwHccYWSBkgWWhJ3P8Gm/cd6767d056940903a8047847c77ab106/logo-ansarada-color.png"
+									},
+									"description": "Ansarada logo"
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "3XZsjyxnnzmkNIQwxIPpAo",
