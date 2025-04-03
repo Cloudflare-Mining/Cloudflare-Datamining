@@ -504,6 +504,34 @@
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountAutoRAGEngineAdaptiveGroups": {
+		"__description": "AutoRAG Engine Ingestion Analytics",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountAutoRAGEngineAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"rag": "AutoRAG Id",
+		"sourceType": "AutoRAG Source Type"
+	},
+	"AccountAutoRAGEngineAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAutoRAGEngineAdaptiveGroupsMax": {
+		"__description": "",
+		"completed": "Max of completed items",
+		"errored": "Max of errored items",
+		"queued": "Max of queued items",
+		"running": "Max of running items"
+	},
+	"AccountAutoRAGEngineAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountBrowserIsolationSessionsAdaptiveGroups": {
 		"__description": "Aggregated count of Browser Isolation sessions",
 		"count": "Number of browser sessions",
@@ -832,6 +860,9 @@
 	"AccountCloudchamberMetricsAdaptiveGroupsMax": {
 		"__description": "",
 		"cpuLoad": "Maximum CPU load",
+		"diskAvailable": "Total disk space available, in bytes",
+		"diskUsage": "Disk usage, in bytes",
+		"diskUsagePercentage": "Disk usage as a percentage of total disk space",
 		"gpuMemory": "Maximum GPU memory usage",
 		"memory": "Maximum memory usage",
 		"rxBandwidth": "Maximum RX bandwidth",
@@ -847,6 +878,12 @@
 		"cpuLoadP50": "CPU load (50th percentile)",
 		"cpuLoadP90": "CPU load (90th percentile)",
 		"cpuLoadP99": "CPU load (99th percentile)",
+		"diskUsageP50": "Disk usage in bytes (50th percentile)",
+		"diskUsageP90": "Disk usage in bytes (90th percentile)",
+		"diskUsageP99": "Disk usage in bytes (99th percentile)",
+		"diskUsagePercentageP50": "Disk usage as a percentage of total disk space (50th percentile)",
+		"diskUsagePercentageP90": "Disk usage as a percentage of total disk space (90th percentile)",
+		"diskUsagePercentageP99": "Disk usage as a percentage of total disk space (99th percentile)",
 		"gpuMemoryP50": "GPU memory usage (50th percentile)",
 		"gpuMemoryP90": "GPU memory usage (90th percentile)",
 		"gpuMemoryP99": "GPU memory usage (99th percentile)",
@@ -4792,6 +4829,7 @@
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
+		"autoRAGEngineAdaptiveGroups": "",
 		"browserIsolationSessionsAdaptiveGroups": "",
 		"browserIsolationUserActionsAdaptiveGroups": "",
 		"browserRenderingEventsAdaptive": "",
@@ -5771,14 +5809,17 @@
 	},
 	"AccountWorkflowsAdaptive": {
 		"__description": "Workflows analytics",
+		"cpuTime": "CPU time in timestamp (ms)",
 		"datetime": "The date when trigger was triggered",
 		"endTimestamp": "Instance end timestamp(seconds)",
 		"eventType": "Event type",
+		"executionDuration": "Execution duration in timestamp (GB*s)",
 		"instanceId": "Instance Id",
+		"retryCount": "Number of retries in timestamp",
 		"sampleInterval": "ABR sample interval",
 		"startTimestamp": "Instance start timestamp(seconds)",
-		"stepCount": "Step number",
-		"stepName": "Step name",
+		"stepCount": "Steps ran in timestamp",
+		"storageRate": "Instance storage size growth in timestamp (bytes)",
 		"wallTime": "Wall time in seconds",
 		"workflowName": "Workflow name"
 	},
@@ -5787,21 +5828,24 @@
 	},
 	"AccountWorkflowsAdaptiveGroups": {
 		"__description": "Workflows analytics",
+		"avg": "",
 		"count": "Number of events(workflow invocations) per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
 	},
+	"AccountWorkflowsAdaptiveGroupsAvg": {
+		"__description": "",
+		"cpuTime": "Average CPU time per dimension",
+		"wallTime": "Average wall time per dimension"
+	},
 	"AccountWorkflowsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"date": "The date when trigger was triggered",
+		"date": "The date when instance was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
-		"eventType": "Event type",
 		"instanceId": "Instance Id",
-		"stepCount": "Step number",
-		"stepName": "Step name",
 		"workflowName": "Workflow name"
 	},
 	"AccountWorkflowsAdaptiveGroupsFilter_InputObject": {
@@ -5812,6 +5856,11 @@
 	},
 	"AccountWorkflowsAdaptiveGroupsSum": {
 		"__description": "",
+		"cpuTime": "CPU time per dimension (ms)",
+		"executionDuration": "Execution duration per dimension (GB*s)",
+		"retryCount": "Number of retries per dimension",
+		"stepCount": "Total steps per dimension",
+		"storageRate": "Total instance storage growth rate per dimension",
 		"wallTime": "Total wall time per dimension"
 	},
 	"AccountWorkflowsAdaptiveOrderBy": {
@@ -8376,6 +8425,7 @@
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
+		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
 		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
 		"browserIsolationUserActionsAdaptiveGroups": "Aggregated count of Browser Isolation User Actions matches",
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
