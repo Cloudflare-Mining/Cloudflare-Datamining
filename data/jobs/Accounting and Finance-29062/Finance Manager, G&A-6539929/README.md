@@ -5,20 +5,73 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></h4>
+<h3><strong>Finance Manager, G&amp;A</strong></h3>
+<p><strong>Locations - </strong>Austin, Houston, Dallas, San Antonio TX</p>
+<p><strong>Level:</strong> Individual Contributor</p>
+<h4><strong>About the team</strong></h4>
+<p>The G&amp;A Finance team is part of Cloudflare’s FP&amp;A and Business Operations org, responsible for enterprise-wide planning, forecasting, and capital allocation. We partner across G&amp;A functions—including Legal, People, IT, and Finance—to drive strategic decisions and help scale operations in a high-growth environment. We’re not just number crunchers—we’re business partners who shape how Cloudflare invests and operates.</p>
+<p><strong>About the role</strong></p>
+<p>We’re looking for a high-performing Finance Manager to join our G&amp;A Finance team. In this role, you’ll work directly with Cloudflare’s CFO, CLO, CIO, CPO, and other senior leaders to support critical decision-making across our corporate functions. This is more than just reporting the numbers—you’ll build models that guide investment strategy, improve operational efficiency, and help shape how the business scales.</p>
+<p>The ideal candidate is analytical, proactive, and eager to grow into a trusted advisor. If you thrive in fast-paced environments, love untangling complex problems, and want direct exposure to executive leadership, this is your opportunity to make a real impact.</p>
 <h4><strong>What you'll do</strong></h4>
-<p>You will lead the engineering and people behind Cloudflare's storage and transactional data products. This is an organization consisting of numerous teams that design, build, and operate the foundational building blocks that enable developers to build stateful applications on Cloudflare. You will play an active part in shaping both the product, and design of these systems. You will mentor, grow, and challenge managers, and engineers of all levels of seniority.&nbsp;</p>
-<p>You excel at understanding how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering a wide array of software from scalable distributed systems all the way to client side libraries. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<ul>
+	<li>Partner with senior G&amp;A leaders (CFO, CLO, CIO, CPO) to support strategic decision-making, budgeting, and resource allocation.</li>
+	<li>Build and maintain financial models that drive strategy, planning, and investment decisions.</li>
+	<li>Deliver clear and actionable financial insights through monthly reporting, variance analysis, and business reviews.</li>
+	<li>Collaborate with Accounting on month-end close and flux analysis, ensuring accuracy and clarity in reporting.</li>
+	<li>Design and implement scalable, repeatable processes that support our rapid growth.</li>
+	<li>Work cross-functionally with FP&amp;A teams supporting GTM, R&amp;D, and Product to ensure alignment and holistic financial planning.</li>
+	<li>Contribute to long-range planning and annual operating plan development for G&amp;A functions.</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excel at building high performing teams, recruit top talent, and retain key engineers and managers</li>
-	<li>Strong technical background in systems engineering, including hands-on experience building storage and data systems</li>
-	<li>Skilled at strategic planning, overseeing execution of complex projects that span many teams, and commitment to delivering results on tight deadlines</li>
-	<li>Obsessed with building products that customers love</li>
-	<li>Demonstrated ability to implement tools, processes, and internal systems which enable your teams to remove blockages and deliver reliable software predictably</li>
-	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
-	<li>Establishes and upholds high-performance standards by identifying KPIs, setting ambitious yet achievable goals, delivering continuous feedback, and fostering a culture of accountability.</li>
+	<li>5+ years of progressive experience in FP&amp;A, strategic finance, or related roles; ideally with 3+ years as a Financial Analyst</li>
+	<li>Experience in high-growth, public SaaS or multinational environments preferred</li>
+	<li>Strong operational mindset with a passion for process optimization, execution, and scale</li>
+	<li>Intellectually curious with a problem-solving orientation—ability to break down complex issues and build data-driven solutions</li>
+	<li>Excellent verbal and written communication skills; able to distill financial data into actionable insights for cross-functional stakeholders</li>
+	<li>Comfortable playing “up and down the stack”—can zoom in on data accuracy and process detail, while also supporting leadership-level discussions</li>
+	<li>Thrives in fast-paced, ambiguous environments; brings structure and prioritization without being told what to do</li>
+	<li>Advanced Excel / Google Sheets required; strong modeling, scenario analysis, and data manipulation capabilities</li>
+	<li>Familiarity with Anaplan, Workday, NetSuite, and Tableau a plus</li>
+	<li>Bachelor’s degree required; MBA or master’s in finance/accounting a plus but not required</li>
 </ul>
+<p><strong>Why this role?</strong></p>
+<ul>
+	<li>You’ll be on the front lines of key decisions shaping Cloudflare’s growth.</li>
+	<li>High visibility: direct collaboration with executive G&amp;A leadership.</li>
+	<li>Career upside: a launchpad into strategic finance leadership.</li>
+	<li>Be part of a high-performance team in a mission-driven company transforming the Internet.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

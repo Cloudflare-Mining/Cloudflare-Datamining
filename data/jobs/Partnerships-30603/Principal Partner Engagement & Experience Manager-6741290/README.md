@@ -5,29 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the role</h4>
-<p>The FP&amp;A and Business Operations Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. Team members in R&amp;D Finance partner closely with business leaders in Engineering, Infrastructure, Product, and Strategy and cross-functionally with G&amp;A and Sales &amp; Marketing Finance teams. Members of this team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
-<h4>What you'll do</h4>
+<p><strong>Available Locations: This is a remote-based role that can be based in the United States</strong></p>
+<p>&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is looking for a Principal Partner Engagement &amp; Experience Manager to drive meaningful interactions and amplify engagement within our partner ecosystem. In this role, you will develop and execute strategies to energize our partners, enhance their experience, and ensure they have the tools, resources, and awareness needed to succeed with Cloudflare. This role requires collaboration across partner programs, marketing, and sales operations and enablement teams to drive partner loyalty, awareness, and activation</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Be a thought partner to business leaders helping to resolve competing business priorities and determine optimal investment allocation by function.</li>
-	<li>Prepare financial analysis, business insights and presentation materials for regular financial and business updates to R&amp;D business leadership.&nbsp;</li>
-	<li>Partner with accounting to support month-end close, flux review processes, and deliver high-quality financial reporting.</li>
-	<li>Design, automate, and optimize flexible finance processes to meet the needs of a dynamic and fast-growing business environment.</li>
-	<li>Work with cross-functional teams to support the company's growth initiatives.</li>
-	<li>This role reports to the R&amp;D Finance leader and does not have any direct reports.&nbsp;</li>
+	<li>Drive Partner Engagement: Develop and implement strategies to increase partner engagement with Cloudflare’s tools, resources, and enablement programs.</li>
+	<li>Create Impactful Content: Own the design, promotion, and execution of awareness materials that empower partners and contribute to their success.</li>
+	<li>Enhance Partner Experience: Collaborate with the partner programs team to drive partner loyalty and ensure seamless partner interactions.</li>
+	<li>Support Field Readiness: Work with partner marketing, product marketing, and sales enablement teams to identify and develop partner-facing content that enhances field readiness.</li>
+	<li>Champion Partner Success: Serve as an advocate for partners, ensuring their feedback is heard and incorporated into engagement strategies.</li>
+	<li>Create and implement strategies that will energize our partner community to increase their engagement with our tools and resources.</li>
+	<li>Own Cross-Functional Liaison &amp; Change Management: Act as the primary liaison for the Partner Experience team with cross functional teams such as IT and Operations, ensuring alignment across internal initiatives, advocating for partner needs, and leading change management efforts to ensure the team is fully informed, engaged, and driving key initiatives forward.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>High proficiency with financial systems and tools. Anaplan, Netsuite, RevPro, Salesforce and Tableau experience is a plus.</li>
-	<li>High proficiency in building integrated models from scratch, in Excel or in other planning applications.</li>
-	<li>Strong executive presence and interpersonal skills with proficiency in distilling complex business information into consumable and actionable takeaways.</li>
-	<li>Intellectually curious with problem solving orientation. Strong analytical capabilities and business acumen with ability to apply rigorous logic and sound methods to solve multi-faceted problems.</li>
-	<li>BA/BS in Finance, Accounting, Economics or quantitative field</li>
+	<li>10+ years of experience in partner-focused roles (marketing, communications, experience, programs, project management, or analytics).</li>
+	<li>Deep understanding of various partner types and their routes to revenue.</li>
+	<li>Strong analytical mindset with exceptional organizational skills and attention to detail.</li>
+	<li>Proven ability to influence and collaborate across multiple stakeholders in a fast-paced, dynamic environment.</li>
+	<li>Excellent written and presentation skills, with the ability to craft compelling narratives for partners</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>MBA or Masters degree</li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $257,000 - $314,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $282,000 - $345,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $310,000 - $379,000.</li>
 </ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -55,8 +62,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
-<h4>&nbsp;</h4>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
