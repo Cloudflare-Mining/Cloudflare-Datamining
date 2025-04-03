@@ -1,7 +1,7 @@
 {
 	"ClientResponseCode": "int; Integer value of the response code Cloudflare presents to the client. Response code follows [IANA parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).",
 	"ClusterID": "string; The ID of the cluster which handled this request.",
-	"ColoCode": "string; IATA airport code of data center that received the request.",
+	"ColoCode": "string; IATA airport code of the data center that received the request.",
 	"EDNSSubnet": "string; IPv4 or IPv6 address information corresponding to the [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/glossary/?term=ecs) forwarded by recursive resolvers. Not all resolvers send this information.",
 	"EDNSSubnetLength": "int; Size of the [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/glossary/?term=ecs) in bits. For example, if the last octet of an IPv4 address is omitted (`192.0.2.x.`), the subnet length will be 24.",
 	"QueryDO": "bool; Indicates if the client is capable of handling a signed response (DNSSEC answer OK).",

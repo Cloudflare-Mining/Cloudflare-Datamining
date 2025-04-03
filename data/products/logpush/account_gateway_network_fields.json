@@ -19,6 +19,7 @@
 	"PolicyID": "string; Identifier of the policy/rule that was applied, if any.",
 	"PolicyName": "string; The name of the gateway policy applied to the request, if any.",
 	"ProxyEndpoint": "string; The proxy endpoint used on this network session, if any.",
+	"RegistrationID": "string; The UUID of the device registration from which the network session originated.",
 	"SNI": "string; Content of the SNI for the TLS network session, if any.",
 	"SessionID": "string; The session identifier of this network session.",
 	"SourceIP": "string; Source IP of the network session.",

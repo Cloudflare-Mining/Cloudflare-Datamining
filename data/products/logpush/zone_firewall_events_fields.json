@@ -21,7 +21,7 @@
 	"ContentScanObjTypes": "array[string]; List of content types.",
 	"Datetime": "int or string; The date and time the event occurred at the edge.",
 	"Description": "string; The description of the rule triggered by this request.",
-	"EdgeColoCode": "string; The airport code of the Cloudflare datacenter that served this request.",
+	"EdgeColoCode": "string; The airport code of the Cloudflare data center that served this request.",
 	"EdgeResponseStatus": "int; HTTP response status code returned to browser.",
 	"Kind": "string; The kind of event, currently only possible values are: firewall.",
 	"LeakedCredentialCheckResult": "string; Result of the check for [leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/). Possible results are: password_leaked | username_and_password_leaked | username_password_similar | username_leaked | clean.",
