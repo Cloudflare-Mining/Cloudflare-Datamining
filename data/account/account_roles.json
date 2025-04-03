@@ -1,5 +1,50 @@
 [
 	{
+		"id": "b0825febc8edc7216a8023813f69a987",
+		"name": "Secrets Store Reporter",
+		"description": "Can read Secrets from the Secrets Store",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "360eb4ab6f4d6130c39367e030b0f0b9",
+		"name": "Secrets Store Deployer",
+		"description": "Can deploy Secrets from the Secrets Store",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1319d079df965f0c7b695e91330b3b89",
+		"name": "Secrets Store Admin",
+		"description": "Can perform all CRUD actions on a Secret from the Secrets Store",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "524d8604ba35958b4a8d9e5fb06d5eeb",
 		"name": "Brand Protection",
 		"description": "Grants access to abuse reports and brand protection",
