@@ -444,21 +444,24 @@
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_time": {
 																"description": "When the view was last modified.",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the view.",
 																"example": "my view",
 																"maxLength": 255,
 																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zones": {
 																"description": "The list of zones linked to this view.",
@@ -467,7 +470,8 @@
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"minLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															}
@@ -622,21 +626,24 @@
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"modified_time": {
 																		"description": "When the view was last modified.",
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The name of the view.",
 																		"example": "my view",
 																		"maxLength": 255,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"zones": {
 																		"description": "The list of zones linked to this view.",
@@ -645,7 +652,8 @@
 																			"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																			"maxLength": 32,
 																			"minLength": 32,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -909,21 +917,24 @@
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "When the view was last modified.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the view.",
 															"example": "my view",
 															"maxLength": 255,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zones": {
 															"description": "The list of zones linked to this view.",
@@ -932,7 +943,8 @@
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
@@ -1055,21 +1067,24 @@
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_time": {
 																	"description": "When the view was last modified.",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The name of the view.",
 																	"example": "my view",
 																	"maxLength": 255,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"zones": {
 																	"description": "The list of zones linked to this view.",
@@ -1078,7 +1093,8 @@
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -1270,21 +1286,24 @@
 										"example": "2014-01-01T05:20:00.12345Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"modified_time": {
 										"description": "When the view was last modified.",
 										"example": "2014-01-01T05:20:00.12345Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "The name of the view.",
 										"example": "my view",
 										"maxLength": 255,
 										"minLength": 1,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"zones": {
 										"description": "The list of zones linked to this view.",
@@ -1293,7 +1312,8 @@
 											"example": "372e67954025e0ba6aaa6d586b9e0b59",
 											"maxLength": 32,
 											"minLength": 32,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -1389,21 +1409,24 @@
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "When the view was last modified.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the view.",
 															"example": "my view",
 															"maxLength": 255,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zones": {
 															"description": "The list of zones linked to this view.",
@@ -1412,7 +1435,8 @@
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
@@ -1535,21 +1559,24 @@
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_time": {
 																	"description": "When the view was last modified.",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The name of the view.",
 																	"example": "my view",
 																	"maxLength": 255,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"zones": {
 																	"description": "The list of zones linked to this view.",
@@ -1558,7 +1585,8 @@
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -1738,21 +1766,24 @@
 										"example": "2014-01-01T05:20:00.12345Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"modified_time": {
 										"description": "When the view was last modified.",
 										"example": "2014-01-01T05:20:00.12345Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "The name of the view.",
 										"example": "my view",
 										"maxLength": 255,
 										"minLength": 1,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"zones": {
 										"description": "The list of zones linked to this view.",
@@ -1761,7 +1792,8 @@
 											"example": "372e67954025e0ba6aaa6d586b9e0b59",
 											"maxLength": 32,
 											"minLength": 32,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -1861,21 +1893,24 @@
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_time": {
 															"description": "When the view was last modified.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the view.",
 															"example": "my view",
 															"maxLength": 255,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zones": {
 															"description": "The list of zones linked to this view.",
@@ -1884,7 +1919,8 @@
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
@@ -2007,21 +2043,24 @@
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"modified_time": {
 																	"description": "When the view was last modified.",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The name of the view.",
 																	"example": "my view",
 																	"maxLength": 255,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"zones": {
 																	"description": "The list of zones linked to this view.",
@@ -2030,7 +2069,8 @@
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}

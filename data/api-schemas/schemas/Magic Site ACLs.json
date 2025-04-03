@@ -409,6 +409,11 @@
 			"Magic WAN Write",
 			"Magic Transit Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1226,6 +1231,11 @@
 			"Magic Transit Read",
 			"Magic Transit Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1781,6 +1791,11 @@
 			"Magic WAN Write",
 			"Magic Transit Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2325,6 +2340,10 @@
 		"summary": "Create a new Site ACL",
 		"tags": [
 			"Magic Site ACLs"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2881,6 +2900,11 @@
 			"Magic WAN Write",
 			"Magic Transit Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

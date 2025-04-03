@@ -203,27 +203,45 @@
 													"exclude": {
 														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
-															"properties": {
-																"address": {
-																	"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+															"oneOf": [
+																{
+																	"properties": {
+																		"address": {
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"address"
+																	],
+																	"type": "object"
 																},
-																"description": {
-																	"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																	"example": "Exclude testing domains from the tunnel",
-																	"maxLength": 100,
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																	"example": "*.example.com",
-																	"type": "string"
+																{
+																	"properties": {
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"example": "*.example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"address",
-																"description"
 															],
 															"type": "object"
 														},
@@ -272,27 +290,45 @@
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
-															"properties": {
-																"address": {
-																	"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+															"oneOf": [
+																{
+																	"properties": {
+																		"address": {
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"address"
+																	],
+																	"type": "object"
 																},
-																"description": {
-																	"description": "A description of the split tunnel item, displayed in the client UI.",
-																	"example": "Include testing domains from the tunnel",
-																	"maxLength": 100,
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																	"example": "*.example.com",
-																	"type": "string"
+																{
+																	"properties": {
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"example": "*.example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"address",
-																"description"
 															],
 															"type": "object"
 														},
@@ -310,7 +346,7 @@
 													},
 													"match": {
 														"description": "The wirefilter expression to match devices.",
-														"example": "user.identity == \"test@cloudflare.com\"",
+														"example": "identity.email == \"test@cloudflare.com\"",
 														"maxLength": 500,
 														"type": "string"
 													},
@@ -570,27 +606,45 @@
 															"exclude": {
 																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
-																	"properties": {
-																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"address": {
+																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"address"
+																			],
+																			"type": "object"
 																		},
-																		"description": {
-																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																			"example": "*.example.com",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				},
+																				"host": {
+																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"example": "*.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"address",
-																		"description"
 																	],
 																	"type": "object"
 																},
@@ -639,27 +693,45 @@
 															"include": {
 																"description": "List of routes included in the WARP client's tunnel.",
 																"items": {
-																	"properties": {
-																		"address": {
-																			"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"address": {
+																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"address"
+																			],
+																			"type": "object"
 																		},
-																		"description": {
-																			"description": "A description of the split tunnel item, displayed in the client UI.",
-																			"example": "Include testing domains from the tunnel",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																			"example": "*.example.com",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				},
+																				"host": {
+																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"example": "*.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"address",
-																		"description"
 																	],
 																	"type": "object"
 																},
@@ -677,7 +749,7 @@
 															},
 															"match": {
 																"description": "The wirefilter expression to match devices.",
-																"example": "user.identity == \"test@cloudflare.com\"",
+																"example": "identity.email == \"test@cloudflare.com\"",
 																"maxLength": 500,
 																"type": "string"
 															},
@@ -2764,27 +2836,45 @@
 													"exclude": {
 														"description": "List of routes excluded in the WARP client's tunnel.",
 														"items": {
-															"properties": {
-																"address": {
-																	"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+															"oneOf": [
+																{
+																	"properties": {
+																		"address": {
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"address"
+																	],
+																	"type": "object"
 																},
-																"description": {
-																	"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																	"example": "Exclude testing domains from the tunnel",
-																	"maxLength": 100,
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																	"example": "*.example.com",
-																	"type": "string"
+																{
+																	"properties": {
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"example": "*.example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"address",
-																"description"
 															],
 															"type": "object"
 														},
@@ -2833,27 +2923,45 @@
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
-															"properties": {
-																"address": {
-																	"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+															"oneOf": [
+																{
+																	"properties": {
+																		"address": {
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"address"
+																	],
+																	"type": "object"
 																},
-																"description": {
-																	"description": "A description of the split tunnel item, displayed in the client UI.",
-																	"example": "Include testing domains from the tunnel",
-																	"maxLength": 100,
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																	"example": "*.example.com",
-																	"type": "string"
+																{
+																	"properties": {
+																		"description": {
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																			"example": "Exclude testing domains from the tunnel",
+																			"maxLength": 100,
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"example": "*.example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"address",
-																"description"
 															],
 															"type": "object"
 														},
@@ -2871,7 +2979,7 @@
 													},
 													"match": {
 														"description": "The wirefilter expression to match devices.",
-														"example": "user.identity == \"test@cloudflare.com\"",
+														"example": "identity.email == \"test@cloudflare.com\"",
 														"maxLength": 500,
 														"type": "string"
 													},
@@ -3131,27 +3239,45 @@
 															"exclude": {
 																"description": "List of routes excluded in the WARP client's tunnel.",
 																"items": {
-																	"properties": {
-																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"address": {
+																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"address"
+																			],
+																			"type": "object"
 																		},
-																		"description": {
-																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																			"example": "*.example.com",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				},
+																				"host": {
+																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"example": "*.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"address",
-																		"description"
 																	],
 																	"type": "object"
 																},
@@ -3200,27 +3326,45 @@
 															"include": {
 																"description": "List of routes included in the WARP client's tunnel.",
 																"items": {
-																	"properties": {
-																		"address": {
-																			"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"address": {
+																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"address"
+																			],
+																			"type": "object"
 																		},
-																		"description": {
-																			"description": "A description of the split tunnel item, displayed in the client UI.",
-																			"example": "Include testing domains from the tunnel",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																			"example": "*.example.com",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"description": {
+																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																					"example": "Exclude testing domains from the tunnel",
+																					"maxLength": 100,
+																					"type": "string"
+																				},
+																				"host": {
+																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"example": "*.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"address",
-																		"description"
 																	],
 																	"type": "object"
 																},
@@ -3238,7 +3382,7 @@
 															},
 															"match": {
 																"description": "The wirefilter expression to match devices.",
-																"example": "user.identity == \"test@cloudflare.com\"",
+																"example": "identity.email == \"test@cloudflare.com\"",
 																"maxLength": 500,
 																"type": "string"
 															},
@@ -3587,27 +3731,45 @@
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -3656,27 +3818,45 @@
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -3878,27 +4058,45 @@
 														"exclude": {
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -3947,27 +4145,45 @@
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
-																		"example": "Include testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -4300,27 +4516,45 @@
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -4369,27 +4603,45 @@
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -4407,7 +4659,7 @@
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices.",
-													"example": "user.identity == \"test@cloudflare.com\"",
+													"example": "identity.email == \"test@cloudflare.com\"",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -4646,27 +4898,45 @@
 														"exclude": {
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -4715,27 +4985,45 @@
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
-																		"example": "Include testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -4753,7 +5041,7 @@
 														},
 														"match": {
 															"description": "The wirefilter expression to match devices.",
-															"example": "user.identity == \"test@cloudflare.com\"",
+															"example": "identity.email == \"test@cloudflare.com\"",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -5086,27 +5374,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the Split Tunnel item, displayed in the client UI.",
-														"example": "Exclude testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -5245,27 +5551,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -5978,27 +6302,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
-														"example": "Include testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -6137,27 +6479,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -6410,27 +6770,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the Split Tunnel item, displayed in the client UI.",
-														"example": "Exclude testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -6569,27 +6947,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -7280,27 +7676,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
-														"example": "Include testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -7439,27 +7853,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -7958,27 +8390,45 @@
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -7992,27 +8442,45 @@
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -8208,27 +8676,45 @@
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -8277,27 +8763,45 @@
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -8499,27 +9003,45 @@
 														"exclude": {
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -8568,27 +9090,45 @@
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
-																		"example": "Include testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -8814,27 +9354,45 @@
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -8848,27 +9406,45 @@
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -8876,7 +9452,7 @@
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices.",
-								"example": "user.identity == \"test@cloudflare.com\"",
+								"example": "identity.email == \"test@cloudflare.com\"",
 								"maxLength": 500,
 								"type": "string"
 							},
@@ -9087,27 +9663,45 @@
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -9156,27 +9750,45 @@
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -9194,7 +9806,7 @@
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices.",
-													"example": "user.identity == \"test@cloudflare.com\"",
+													"example": "identity.email == \"test@cloudflare.com\"",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -9433,27 +10045,45 @@
 														"exclude": {
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -9502,27 +10132,45 @@
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
-																		"example": "Include testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -9540,7 +10188,7 @@
 														},
 														"match": {
 															"description": "The wirefilter expression to match devices.",
-															"example": "user.identity == \"test@cloudflare.com\"",
+															"example": "identity.email == \"test@cloudflare.com\"",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -10137,27 +10785,45 @@
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -10171,27 +10837,45 @@
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
-									"properties": {
-										"address": {
-											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+									"oneOf": [
+										{
+											"properties": {
+												"address": {
+													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												}
+											},
+											"required": [
+												"address"
+											],
+											"type": "object"
 										},
-										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
-											"example": "Exclude testing domains from the tunnel",
-											"maxLength": 100,
-											"type": "string"
-										},
-										"host": {
-											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-											"example": "*.example.com",
-											"type": "string"
+										{
+											"properties": {
+												"description": {
+													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"example": "Exclude testing domains from the tunnel",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"host": {
+													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"example": "*.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"host"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"address",
-										"description"
 									],
 									"type": "object"
 								},
@@ -10209,7 +10893,7 @@
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices.",
-								"example": "user.identity == \"test@cloudflare.com\"",
+								"example": "identity.email == \"test@cloudflare.com\"",
 								"maxLength": 500,
 								"type": "string"
 							},
@@ -10425,27 +11109,45 @@
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -10494,27 +11196,45 @@
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -10532,7 +11252,7 @@
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices.",
-													"example": "user.identity == \"test@cloudflare.com\"",
+													"example": "identity.email == \"test@cloudflare.com\"",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -10771,27 +11491,45 @@
 														"exclude": {
 															"description": "List of routes excluded in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -10840,27 +11578,45 @@
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
-																"properties": {
-																	"address": {
-																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																"oneOf": [
+																	{
+																		"properties": {
+																			"address": {
+																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
 																	},
-																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
-																		"example": "Include testing domains from the tunnel",
-																		"maxLength": 100,
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																		"example": "*.example.com",
-																		"type": "string"
+																	{
+																		"properties": {
+																			"description": {
+																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																				"example": "Exclude testing domains from the tunnel",
+																				"maxLength": 100,
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"example": "*.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"address",
-																	"description"
 																],
 																"type": "object"
 															},
@@ -10878,7 +11634,7 @@
 														},
 														"match": {
 															"description": "The wirefilter expression to match devices.",
-															"example": "user.identity == \"test@cloudflare.com\"",
+															"example": "identity.email == \"test@cloudflare.com\"",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -11773,27 +12529,45 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"properties": {
-								"address": {
-									"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-									"example": "192.0.2.0/24",
-									"type": "string"
+							"oneOf": [
+								{
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										}
+									},
+									"required": [
+										"address"
+									],
+									"type": "object"
 								},
-								"description": {
-									"description": "A description of the Split Tunnel item, displayed in the client UI.",
-									"example": "Exclude testing domains from the tunnel",
-									"maxLength": 100,
-									"type": "string"
-								},
-								"host": {
-									"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-									"example": "*.example.com",
-									"type": "string"
+								{
+									"properties": {
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"host"
+									],
+									"type": "object"
 								}
-							},
-							"required": [
-								"address",
-								"description"
 							],
 							"type": "object"
 						},
@@ -11927,27 +12701,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the Split Tunnel item, displayed in the client UI.",
-														"example": "Exclude testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -12086,27 +12878,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -12736,27 +13546,45 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"properties": {
-								"address": {
-									"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-									"example": "192.0.2.0/24",
-									"type": "string"
+							"oneOf": [
+								{
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Include testing domains in the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										}
+									},
+									"required": [
+										"address"
+									],
+									"type": "object"
 								},
-								"description": {
-									"description": "A description of the split tunnel item, displayed in the client UI.",
-									"example": "Include testing domains from the tunnel",
-									"maxLength": 100,
-									"type": "string"
-								},
-								"host": {
-									"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-									"example": "*.example.com",
-									"type": "string"
+								{
+									"properties": {
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Include testing domains in the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"host"
+									],
+									"type": "object"
 								}
-							},
-							"required": [
-								"address",
-								"description"
 							],
 							"type": "object"
 						},
@@ -12890,27 +13718,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
-														"example": "Include testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -13049,27 +13895,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -13202,27 +14066,45 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"properties": {
-								"address": {
-									"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-									"example": "192.0.2.0/24",
-									"type": "string"
+							"oneOf": [
+								{
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										}
+									},
+									"required": [
+										"address"
+									],
+									"type": "object"
 								},
-								"description": {
-									"description": "A description of the Split Tunnel item, displayed in the client UI.",
-									"example": "Exclude testing domains from the tunnel",
-									"maxLength": 100,
-									"type": "string"
-								},
-								"host": {
-									"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-									"example": "*.example.com",
-									"type": "string"
+								{
+									"properties": {
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"host"
+									],
+									"type": "object"
 								}
-							},
-							"required": [
-								"address",
-								"description"
 							],
 							"type": "object"
 						},
@@ -13356,27 +14238,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the Split Tunnel item, displayed in the client UI.",
-														"example": "Exclude testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -13515,27 +14415,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																"example": "Exclude testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Exclude testing domains from the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},
@@ -14143,27 +15061,45 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"properties": {
-								"address": {
-									"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-									"example": "192.0.2.0/24",
-									"type": "string"
+							"oneOf": [
+								{
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Include testing domains in the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										}
+									},
+									"required": [
+										"address"
+									],
+									"type": "object"
 								},
-								"description": {
-									"description": "A description of the split tunnel item, displayed in the client UI.",
-									"example": "Include testing domains from the tunnel",
-									"maxLength": 100,
-									"type": "string"
-								},
-								"host": {
-									"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-									"example": "*.example.com",
-									"type": "string"
+								{
+									"properties": {
+										"description": {
+											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"example": "Include testing domains in the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"host"
+									],
+									"type": "object"
 								}
-							},
-							"required": [
-								"address",
-								"description"
 							],
 							"type": "object"
 						},
@@ -14297,27 +15233,45 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"address": {
-														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-														"example": "192.0.2.0/24",
-														"type": "string"
+												"oneOf": [
+													{
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															}
+														},
+														"required": [
+															"address"
+														],
+														"type": "object"
 													},
-													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
-														"example": "Include testing domains from the tunnel",
-														"maxLength": 100,
-														"type": "string"
-													},
-													"host": {
-														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-														"example": "*.example.com",
-														"type": "string"
+													{
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"example": "Include testing domains in the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"address",
-													"description"
 												],
 												"type": "object"
 											},
@@ -14456,27 +15410,45 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"address": {
-																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+														"oneOf": [
+															{
+																"properties": {
+																	"address": {
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"address"
+																],
+																"type": "object"
 															},
-															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
-																"example": "Include testing domains from the tunnel",
-																"maxLength": 100,
-																"type": "string"
-															},
-															"host": {
-																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
-																"example": "*.example.com",
-																"type": "string"
+															{
+																"properties": {
+																	"description": {
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																		"example": "Include testing domains in the tunnel",
+																		"maxLength": 100,
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
+																		"example": "*.example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"host"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"address",
-															"description"
 														],
 														"type": "object"
 													},

@@ -97,12 +97,14 @@
 																"flatten_all_cnames": {
 																	"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"foundation_dns": {
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"internal_dns": {
 																	"description": "Settings for this internal zone.",
@@ -123,19 +125,22 @@
 																"multi_provider": {
 																	"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ns_ttl": {
 																	"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																	"example": 86400,
 																	"maximum": 86400,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"secondary_overrides": {
 																	"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"soa": {
 																	"description": "Components of the zone's SOA record.",
@@ -145,45 +150,52 @@
 																			"example": 604800,
 																			"maximum": 2419200,
 																			"minimum": 86400,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"min_ttl": {
 																			"description": "The time to live (TTL) for negative caching of records within the zone.",
 																			"example": 1800,
 																			"maximum": 86400,
 																			"minimum": 60,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"mname": {
 																			"description": "The primary nameserver, which may be used for outbound zone transfers.",
 																			"example": "kristina.ns.cloudflare.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"refresh": {
 																			"description": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.",
 																			"example": 10000,
 																			"maximum": 86400,
 																			"minimum": 600,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"retry": {
 																			"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																			"example": 2400,
 																			"maximum": 86400,
 																			"minimum": 600,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"rname": {
 																			"description": "The email address of the zone administrator, with the first label representing the local part of the email address.",
 																			"example": "admin.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ttl": {
 																			"description": "The time to live (TTL) of the SOA record itself.",
 																			"example": 3600,
 																			"maximum": 86400,
 																			"minimum": 300,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -205,7 +217,8 @@
 																		"dns_only"
 																	],
 																	"example": "dns_only",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -224,7 +237,8 @@
 																				"custom.tenant"
 																			],
 																			"example": "cloudflare.standard",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -332,12 +346,14 @@
 																		"flatten_all_cnames": {
 																			"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"foundation_dns": {
 																			"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
@@ -358,19 +374,22 @@
 																		"multi_provider": {
 																			"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"ns_ttl": {
 																			"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																			"example": 86400,
 																			"maximum": 86400,
 																			"minimum": 30,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"secondary_overrides": {
 																			"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"soa": {
 																			"description": "Components of the zone's SOA record.",
@@ -380,45 +399,52 @@
 																					"example": 604800,
 																					"maximum": 2419200,
 																					"minimum": 86400,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"min_ttl": {
 																					"description": "The time to live (TTL) for negative caching of records within the zone.",
 																					"example": 1800,
 																					"maximum": 86400,
 																					"minimum": 60,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"mname": {
 																					"description": "The primary nameserver, which may be used for outbound zone transfers.",
 																					"example": "kristina.ns.cloudflare.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"refresh": {
 																					"description": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.",
 																					"example": 10000,
 																					"maximum": 86400,
 																					"minimum": 600,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"retry": {
 																					"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																					"example": 2400,
 																					"maximum": 86400,
 																					"minimum": 600,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"rname": {
 																					"description": "The email address of the zone administrator, with the first label representing the local part of the email address.",
 																					"example": "admin.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"ttl": {
 																					"description": "The time to live (TTL) of the SOA record itself.",
 																					"example": 3600,
 																					"maximum": 86400,
 																					"minimum": 300,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -440,7 +466,8 @@
 																				"dns_only"
 																			],
 																			"example": "dns_only",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -459,7 +486,8 @@
 																						"custom.tenant"
 																					],
 																					"example": "cloudflare.standard",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -625,12 +653,14 @@
 											"flatten_all_cnames": {
 												"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"foundation_dns": {
 												"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"internal_dns": {
 												"description": "Settings for this internal zone.",
@@ -651,19 +681,22 @@
 											"multi_provider": {
 												"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"ns_ttl": {
 												"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 												"example": 86400,
 												"maximum": 86400,
 												"minimum": 30,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"secondary_overrides": {
 												"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"soa": {
 												"description": "Components of the zone's SOA record.",
@@ -673,45 +706,52 @@
 														"example": 604800,
 														"maximum": 2419200,
 														"minimum": 86400,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"min_ttl": {
 														"description": "The time to live (TTL) for negative caching of records within the zone.",
 														"example": 1800,
 														"maximum": 86400,
 														"minimum": 60,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"mname": {
 														"description": "The primary nameserver, which may be used for outbound zone transfers.",
 														"example": "kristina.ns.cloudflare.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"refresh": {
 														"description": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.",
 														"example": 10000,
 														"maximum": 86400,
 														"minimum": 600,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"retry": {
 														"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 														"example": 2400,
 														"maximum": 86400,
 														"minimum": 600,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"rname": {
 														"description": "The email address of the zone administrator, with the first label representing the local part of the email address.",
 														"example": "admin.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ttl": {
 														"description": "The time to live (TTL) of the SOA record itself.",
 														"example": 3600,
 														"maximum": 86400,
 														"minimum": 300,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -733,7 +773,8 @@
 													"dns_only"
 												],
 												"example": "dns_only",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -752,7 +793,8 @@
 															"custom.tenant"
 														],
 														"example": "cloudflare.standard",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -854,12 +896,14 @@
 																"flatten_all_cnames": {
 																	"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"foundation_dns": {
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"internal_dns": {
 																	"description": "Settings for this internal zone.",
@@ -880,19 +924,22 @@
 																"multi_provider": {
 																	"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ns_ttl": {
 																	"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																	"example": 86400,
 																	"maximum": 86400,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"secondary_overrides": {
 																	"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"soa": {
 																	"description": "Components of the zone's SOA record.",
@@ -902,45 +949,52 @@
 																			"example": 604800,
 																			"maximum": 2419200,
 																			"minimum": 86400,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"min_ttl": {
 																			"description": "The time to live (TTL) for negative caching of records within the zone.",
 																			"example": 1800,
 																			"maximum": 86400,
 																			"minimum": 60,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"mname": {
 																			"description": "The primary nameserver, which may be used for outbound zone transfers.",
 																			"example": "kristina.ns.cloudflare.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"refresh": {
 																			"description": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.",
 																			"example": 10000,
 																			"maximum": 86400,
 																			"minimum": 600,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"retry": {
 																			"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																			"example": 2400,
 																			"maximum": 86400,
 																			"minimum": 600,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"rname": {
 																			"description": "The email address of the zone administrator, with the first label representing the local part of the email address.",
 																			"example": "admin.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ttl": {
 																			"description": "The time to live (TTL) of the SOA record itself.",
 																			"example": 3600,
 																			"maximum": 86400,
 																			"minimum": 300,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -962,7 +1016,8 @@
 																		"dns_only"
 																	],
 																	"example": "dns_only",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -981,7 +1036,8 @@
 																				"custom.tenant"
 																			],
 																			"example": "cloudflare.standard",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1089,12 +1145,14 @@
 																		"flatten_all_cnames": {
 																			"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"foundation_dns": {
 																			"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
@@ -1115,19 +1173,22 @@
 																		"multi_provider": {
 																			"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"ns_ttl": {
 																			"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																			"example": 86400,
 																			"maximum": 86400,
 																			"minimum": 30,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"secondary_overrides": {
 																			"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"soa": {
 																			"description": "Components of the zone's SOA record.",
@@ -1137,45 +1198,52 @@
 																					"example": 604800,
 																					"maximum": 2419200,
 																					"minimum": 86400,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"min_ttl": {
 																					"description": "The time to live (TTL) for negative caching of records within the zone.",
 																					"example": 1800,
 																					"maximum": 86400,
 																					"minimum": 60,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"mname": {
 																					"description": "The primary nameserver, which may be used for outbound zone transfers.",
 																					"example": "kristina.ns.cloudflare.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"refresh": {
 																					"description": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.",
 																					"example": 10000,
 																					"maximum": 86400,
 																					"minimum": 600,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"retry": {
 																					"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																					"example": 2400,
 																					"maximum": 86400,
 																					"minimum": 600,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"rname": {
 																					"description": "The email address of the zone administrator, with the first label representing the local part of the email address.",
 																					"example": "admin.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"ttl": {
 																					"description": "The time to live (TTL) of the SOA record itself.",
 																					"example": 3600,
 																					"maximum": 86400,
 																					"minimum": 300,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -1197,7 +1265,8 @@
 																				"dns_only"
 																			],
 																			"example": "dns_only",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1216,7 +1285,8 @@
 																						"custom.tenant"
 																					],
 																					"example": "cloudflare.standard",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
