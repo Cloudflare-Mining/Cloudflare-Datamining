@@ -2871,6 +2871,13 @@
 						"compatEnableFlag": "python_workers_durable_objects",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "streamingTailWorker",
+					"annotations": {
+						"compatEnableFlag": "streaming_tail_worker",
+						"experimental": "true"
+					}
 				}
 			]
 		},
