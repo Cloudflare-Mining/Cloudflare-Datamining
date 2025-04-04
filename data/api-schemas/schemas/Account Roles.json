@@ -12,7 +12,8 @@
 					"example": "eb78d65290b24279ba6f44721b3ea3c4",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -55,8 +56,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -76,8 +88,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -90,7 +113,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -146,20 +169,23 @@
 														"description": "Description of role's permissions.",
 														"example": "Administrative access to the entire Account",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Role identifier tag.",
 														"example": "3536bcfad5faccb999b47003c79917fb",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Role name.",
 														"example": "Account Administrator",
 														"maxLength": 120,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"permissions": {
 														"allOf": [
@@ -183,11 +209,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -200,11 +228,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -217,11 +247,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -234,11 +266,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -251,11 +285,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -268,11 +304,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -285,11 +323,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -302,11 +342,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -319,11 +361,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -336,11 +380,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -353,11 +399,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -370,11 +418,13 @@
 																		"properties": {
 																			"read": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"write": {
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -422,8 +472,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -454,8 +515,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -478,7 +550,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -532,7 +604,8 @@
 					"description": "Role identifier tag.",
 					"example": "3536bcfad5faccb999b47003c79917fb",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -544,7 +617,8 @@
 					"example": "eb78d65290b24279ba6f44721b3ea3c4",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -566,8 +640,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -587,8 +672,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -601,7 +697,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -627,20 +723,23 @@
 													"description": "Description of role's permissions.",
 													"example": "Administrative access to the entire Account",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Role identifier tag.",
 													"example": "3536bcfad5faccb999b47003c79917fb",
 													"maxLength": 32,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Role name.",
 													"example": "Account Administrator",
 													"maxLength": 120,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"permissions": {
 													"allOf": [
@@ -664,11 +763,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -681,11 +782,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -698,11 +801,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -715,11 +820,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -732,11 +839,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -749,11 +858,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -766,11 +877,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -783,11 +896,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -800,11 +915,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -817,11 +934,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -834,11 +953,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -851,11 +972,13 @@
 																	"properties": {
 																		"read": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"write": {
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -901,8 +1024,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -933,8 +1067,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -957,7 +1102,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],

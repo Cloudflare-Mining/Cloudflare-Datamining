@@ -29,8 +29,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -50,8 +61,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -64,7 +86,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -121,8 +143,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -153,8 +186,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -177,7 +221,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -290,8 +334,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -311,8 +366,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -325,7 +391,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -382,7 +448,8 @@
 														"example": "2014-03-01T12:21:02.0000Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier",
@@ -402,7 +469,8 @@
 														"properties": {
 															"abuse_contact_email": {
 																"description": "Sets an abuse contact email to notify for abuse reports.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"default_nameservers": {
 																"default": "cloudflare.standard",
@@ -418,7 +486,8 @@
 															"enforce_twofactor": {
 																"default": false,
 																"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"use_account_custom_ns_by_default": {
 																"default": false,
@@ -463,8 +532,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -495,8 +575,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -519,7 +610,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -570,7 +661,8 @@
 					"example": "eb78d65290b24279ba6f44721b3ea3c4",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -592,8 +684,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -613,8 +716,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -627,7 +741,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -654,7 +768,8 @@
 													"example": "2014-03-01T12:21:02.0000Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -674,7 +789,8 @@
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"default_nameservers": {
 															"default": "cloudflare.standard",
@@ -690,7 +806,8 @@
 														"enforce_twofactor": {
 															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"use_account_custom_ns_by_default": {
 															"default": false,
@@ -733,8 +850,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -765,8 +893,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -789,7 +928,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -881,7 +1020,8 @@
 									"standard",
 									"enterprise"
 								],
-								"example": "standard"
+								"example": "standard",
+								"x-auditable": true
 							},
 							"unit": {
 								"description": "information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/",
@@ -889,7 +1029,8 @@
 									"id": {
 										"description": "Tenant unit ID",
 										"example": "f267e341f3dd4697bd3b9f71dd96247f",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -925,8 +1066,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -946,8 +1098,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -960,7 +1123,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -987,7 +1150,8 @@
 													"example": "2014-03-01T12:21:02.0000Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -1007,7 +1171,8 @@
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"default_nameservers": {
 															"default": "cloudflare.standard",
@@ -1023,7 +1188,8 @@
 														"enforce_twofactor": {
 															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"use_account_custom_ns_by_default": {
 															"default": false,
@@ -1066,8 +1232,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1098,8 +1275,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1122,7 +1310,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1173,7 +1361,8 @@
 					"example": "eb78d65290b24279ba6f44721b3ea3c4",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1189,7 +1378,8 @@
 										"example": "2014-03-01T12:21:02.0000Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "Identifier",
@@ -1209,7 +1399,8 @@
 										"properties": {
 											"abuse_contact_email": {
 												"description": "Sets an abuse contact email to notify for abuse reports.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"default_nameservers": {
 												"default": "cloudflare.standard",
@@ -1225,7 +1416,8 @@
 											"enforce_twofactor": {
 												"default": false,
 												"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"use_account_custom_ns_by_default": {
 												"default": false,
@@ -1267,8 +1459,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1288,8 +1491,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1302,7 +1516,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1329,7 +1543,8 @@
 													"example": "2014-03-01T12:21:02.0000Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
@@ -1349,7 +1564,8 @@
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"default_nameservers": {
 															"default": "cloudflare.standard",
@@ -1365,7 +1581,8 @@
 														"enforce_twofactor": {
 															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"use_account_custom_ns_by_default": {
 															"default": false,
@@ -1408,8 +1625,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1440,8 +1668,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1464,7 +1703,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],

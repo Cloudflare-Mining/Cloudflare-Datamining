@@ -2118,7 +2118,8 @@
 								"enum": [
 									"resume",
 									"pause",
-									"terminate"
+									"terminate",
+									"restart"
 								],
 								"type": "string"
 							}
@@ -2406,7 +2407,7 @@
 						}
 					}
 				},
-				"description": "Instance not in a terminable state"
+				"description": "Instance not in a restartable state"
 			}
 		},
 		"security": [

@@ -38,8 +38,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -59,8 +70,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -73,7 +95,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -130,8 +152,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -162,8 +195,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -186,7 +230,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -288,8 +332,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -309,8 +364,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -323,7 +389,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -399,7 +465,8 @@
 																		"items": {
 																			"description": "IPv4/IPv6 CIDR.",
 																			"example": "199.27.128.0/21",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -412,7 +479,8 @@
 																		"items": {
 																			"description": "IPv4/IPv6 CIDR.",
 																			"example": "199.27.128.0/21",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -426,7 +494,8 @@
 														"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 														"example": "2020-01-01T00:00:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Token identifier tag.",
@@ -440,21 +509,24 @@
 														"example": "2018-07-01T05:20:00Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"last_used_on": {
 														"description": "Last time the token was used.",
 														"example": "2020-01-02T12:34:00Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "Last time the token was modified.",
 														"example": "2018-07-02T05:20:00Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Token name.",
@@ -466,7 +538,8 @@
 														"description": "The time before which the token MUST NOT be accepted for processing.",
 														"example": "2018-07-01T05:20:00Z",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"policies": {
 														"description": "List of access policies assigned to the token.",
@@ -479,13 +552,15 @@
 																		"deny"
 																	],
 																	"example": "allow",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Policy identifier.",
 																	"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"permission_groups": {
 																	"description": "A set of permission groups that are specified to the policy.",
@@ -513,7 +588,8 @@
 																			"id": {
 																				"description": "Identifier of the group.",
 																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"meta": {
 																				"description": "Attributes associated to the permission group.",
@@ -535,7 +611,8 @@
 																				"description": "Name of the group.",
 																				"example": "Load Balancer",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"required": [
@@ -576,7 +653,8 @@
 															"expired"
 														],
 														"example": "active",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -608,8 +686,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -640,8 +729,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -664,7 +764,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -745,8 +845,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -766,8 +877,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -780,7 +902,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -826,7 +948,8 @@
 																	"items": {
 																		"description": "IPv4/IPv6 CIDR.",
 																		"example": "199.27.128.0/21",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -839,7 +962,8 @@
 																	"items": {
 																		"description": "IPv4/IPv6 CIDR.",
 																		"example": "199.27.128.0/21",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -853,7 +977,8 @@
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 													"example": "2020-01-01T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
@@ -867,21 +992,24 @@
 													"example": "2018-07-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_used_on": {
 													"description": "Last time the token was used.",
 													"example": "2020-01-02T12:34:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Last time the token was modified.",
 													"example": "2018-07-02T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Token name.",
@@ -893,7 +1021,8 @@
 													"description": "The time before which the token MUST NOT be accepted for processing.",
 													"example": "2018-07-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"policies": {
 													"description": "List of access policies assigned to the token.",
@@ -906,13 +1035,15 @@
 																	"deny"
 																],
 																"example": "allow",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
@@ -940,7 +1071,8 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"meta": {
 																			"description": "Attributes associated to the permission group.",
@@ -962,7 +1094,8 @@
 																			"description": "Name of the group.",
 																			"example": "Load Balancer",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1003,7 +1136,8 @@
 														"expired"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1033,8 +1167,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1065,8 +1210,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1089,7 +1245,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1156,8 +1312,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1177,8 +1344,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1191,7 +1369,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1296,11 +1474,13 @@
 												"properties": {
 													"id": {
 														"description": "Public ID.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Permission Group Name",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"scopes": {
 														"description": "Resources to which the Permission Group is scoped",
@@ -1311,7 +1491,8 @@
 																"com.cloudflare.api.user",
 																"com.cloudflare.edge.r2.bucket"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													}
@@ -1344,8 +1525,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1376,8 +1568,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1400,7 +1603,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1467,8 +1670,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1488,8 +1702,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1502,7 +1727,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1528,7 +1753,8 @@
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 													"example": "2020-01-01T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
@@ -1541,7 +1767,8 @@
 													"description": "The time before which the token MUST NOT be accepted for processing.",
 													"example": "2018-07-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the token.",
@@ -1551,7 +1778,8 @@
 														"expired"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1583,8 +1811,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1615,8 +1854,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -1639,7 +1889,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1708,7 +1958,8 @@
 												"items": {
 													"description": "IPv4/IPv6 CIDR.",
 													"example": "199.27.128.0/21",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": "array"
 											},
@@ -1721,7 +1972,8 @@
 												"items": {
 													"description": "IPv4/IPv6 CIDR.",
 													"example": "199.27.128.0/21",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"type": "array"
 											}
@@ -1735,7 +1987,8 @@
 								"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 								"example": "2020-01-01T00:00:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "Token name.",
@@ -1747,7 +2000,8 @@
 								"description": "The time before which the token MUST NOT be accepted for processing.",
 								"example": "2018-07-01T05:20:00Z",
 								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"policies": {
 								"description": "List of access policies assigned to the token.",
@@ -1760,13 +2014,15 @@
 												"deny"
 											],
 											"example": "allow",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Policy identifier.",
 											"example": "f267e341f3dd4697bd3b9f71dd96247f",
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"permission_groups": {
 											"description": "A set of permission groups that are specified to the policy.",
@@ -1794,7 +2050,8 @@
 													"id": {
 														"description": "Identifier of the group.",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"meta": {
 														"description": "Attributes associated to the permission group.",
@@ -1816,7 +2073,8 @@
 														"description": "Name of the group.",
 														"example": "Load Balancer",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1878,8 +2136,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1899,8 +2168,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1913,7 +2193,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1961,7 +2241,8 @@
 																			"items": {
 																				"description": "IPv4/IPv6 CIDR.",
 																				"example": "199.27.128.0/21",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -1974,7 +2255,8 @@
 																			"items": {
 																				"description": "IPv4/IPv6 CIDR.",
 																				"example": "199.27.128.0/21",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -1988,7 +2270,8 @@
 															"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 															"example": "2020-01-01T00:00:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Token identifier tag.",
@@ -2002,21 +2285,24 @@
 															"example": "2018-07-01T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"last_used_on": {
 															"description": "Last time the token was used.",
 															"example": "2020-01-02T12:34:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time the token was modified.",
 															"example": "2018-07-02T05:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "Token name.",
@@ -2028,7 +2314,8 @@
 															"description": "The time before which the token MUST NOT be accepted for processing.",
 															"example": "2018-07-01T05:20:00Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"policies": {
 															"description": "List of access policies assigned to the token.",
@@ -2041,13 +2328,15 @@
 																			"deny"
 																		],
 																		"example": "allow",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Policy identifier.",
 																		"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"permission_groups": {
 																		"description": "A set of permission groups that are specified to the policy.",
@@ -2075,7 +2364,8 @@
 																				"id": {
 																					"description": "Identifier of the group.",
 																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"meta": {
 																					"description": "Attributes associated to the permission group.",
@@ -2097,7 +2387,8 @@
 																					"description": "Name of the group.",
 																					"example": "Load Balancer",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"required": [
@@ -2138,7 +2429,8 @@
 																"expired"
 															],
 															"example": "active",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2184,8 +2476,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2216,8 +2519,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2240,7 +2554,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2333,7 +2647,8 @@
 														"items": {
 															"description": "IPv4/IPv6 CIDR.",
 															"example": "199.27.128.0/21",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -2346,7 +2661,8 @@
 														"items": {
 															"description": "IPv4/IPv6 CIDR.",
 															"example": "199.27.128.0/21",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													}
@@ -2360,7 +2676,8 @@
 										"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 										"example": "2020-01-01T00:00:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "Token identifier tag.",
@@ -2374,21 +2691,24 @@
 										"example": "2018-07-01T05:20:00Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"last_used_on": {
 										"description": "Last time the token was used.",
 										"example": "2020-01-02T12:34:00Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"modified_on": {
 										"description": "Last time the token was modified.",
 										"example": "2018-07-02T05:20:00Z",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "Token name.",
@@ -2400,7 +2720,8 @@
 										"description": "The time before which the token MUST NOT be accepted for processing.",
 										"example": "2018-07-01T05:20:00Z",
 										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"policies": {
 										"description": "List of access policies assigned to the token.",
@@ -2413,13 +2734,15 @@
 														"deny"
 													],
 													"example": "allow",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Policy identifier.",
 													"example": "f267e341f3dd4697bd3b9f71dd96247f",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"permission_groups": {
 													"description": "A set of permission groups that are specified to the policy.",
@@ -2447,7 +2770,8 @@
 															"id": {
 																"description": "Identifier of the group.",
 																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"meta": {
 																"description": "Attributes associated to the permission group.",
@@ -2469,7 +2793,8 @@
 																"description": "Name of the group.",
 																"example": "Load Balancer",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2510,7 +2835,8 @@
 											"expired"
 										],
 										"example": "active",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2550,8 +2876,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2571,8 +2908,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2585,7 +2933,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2631,7 +2979,8 @@
 																	"items": {
 																		"description": "IPv4/IPv6 CIDR.",
 																		"example": "199.27.128.0/21",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -2644,7 +2993,8 @@
 																	"items": {
 																		"description": "IPv4/IPv6 CIDR.",
 																		"example": "199.27.128.0/21",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -2658,7 +3008,8 @@
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 													"example": "2020-01-01T00:00:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
@@ -2672,21 +3023,24 @@
 													"example": "2018-07-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"last_used_on": {
 													"description": "Last time the token was used.",
 													"example": "2020-01-02T12:34:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Last time the token was modified.",
 													"example": "2018-07-02T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Token name.",
@@ -2698,7 +3052,8 @@
 													"description": "The time before which the token MUST NOT be accepted for processing.",
 													"example": "2018-07-01T05:20:00Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"policies": {
 													"description": "List of access policies assigned to the token.",
@@ -2711,13 +3066,15 @@
 																	"deny"
 																],
 																"example": "allow",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
@@ -2745,7 +3102,8 @@
 																		"id": {
 																			"description": "Identifier of the group.",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"meta": {
 																			"description": "Attributes associated to the permission group.",
@@ -2767,7 +3125,8 @@
 																			"description": "Name of the group.",
 																			"example": "Load Balancer",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -2808,7 +3167,8 @@
 														"expired"
 													],
 													"example": "active",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2838,8 +3198,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2870,8 +3241,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2894,7 +3276,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2984,8 +3366,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3005,8 +3398,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3019,7 +3423,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3072,8 +3476,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3104,8 +3519,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -3128,7 +3554,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],

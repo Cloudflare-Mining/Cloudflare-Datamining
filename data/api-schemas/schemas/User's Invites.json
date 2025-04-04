@@ -20,8 +20,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -41,8 +52,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -55,7 +77,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -112,26 +134,30 @@
 														"example": "2014-01-01T05:20:00Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Invite identifier tag.",
 														"example": "4f5f0c14a2a41d5063dd301b2f829f04",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"invited_by": {
 														"description": "The email address of the user who created the invite.",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"invited_member_email": {
 														"description": "Email address of the user to add to the organization.",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"invited_member_id": {
 														"description": "ID of the user to add to the organization.",
@@ -146,7 +172,8 @@
 														"example": "2014-01-01T05:20:00Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"organization_id": {
 														"description": "ID of the organization the user will be added to.",
@@ -171,7 +198,8 @@
 														"items": {
 															"example": "Account Administrator",
 															"maxLength": 120,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"readOnly": true,
 														"type": "array"
@@ -219,8 +247,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -251,8 +290,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -275,7 +325,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -330,7 +380,8 @@
 					"example": "4f5f0c14a2a41d5063dd301b2f829f04",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -352,8 +403,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -373,8 +435,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -387,7 +460,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -414,26 +487,30 @@
 													"example": "2014-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Invite identifier tag.",
 													"example": "4f5f0c14a2a41d5063dd301b2f829f04",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_by": {
 													"description": "The email address of the user who created the invite.",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_member_email": {
 													"description": "Email address of the user to add to the organization.",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_member_id": {
 													"description": "ID of the user to add to the organization.",
@@ -448,7 +525,8 @@
 													"example": "2014-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization_id": {
 													"description": "ID of the organization the user will be added to.",
@@ -473,7 +551,8 @@
 													"items": {
 														"example": "Account Administrator",
 														"maxLength": 120,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readOnly": true,
 													"type": "array"
@@ -519,8 +598,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -551,8 +641,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -575,7 +676,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -630,7 +731,8 @@
 					"example": "4f5f0c14a2a41d5063dd301b2f829f04",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -675,8 +777,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -696,8 +809,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -710,7 +834,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -737,26 +861,30 @@
 													"example": "2014-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Invite identifier tag.",
 													"example": "4f5f0c14a2a41d5063dd301b2f829f04",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_by": {
 													"description": "The email address of the user who created the invite.",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_member_email": {
 													"description": "Email address of the user to add to the organization.",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"invited_member_id": {
 													"description": "ID of the user to add to the organization.",
@@ -771,7 +899,8 @@
 													"example": "2014-01-01T05:20:00Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"organization_id": {
 													"description": "ID of the organization the user will be added to.",
@@ -796,7 +925,8 @@
 													"items": {
 														"example": "Account Administrator",
 														"maxLength": 120,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readOnly": true,
 													"type": "array"
@@ -842,8 +972,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -874,8 +1015,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -898,7 +1050,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
