@@ -8,7 +8,7 @@
 				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -19,7 +19,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -50,8 +50,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -71,8 +82,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -85,7 +107,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -108,7 +130,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier",
+													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"type": "string"
@@ -142,8 +164,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -163,8 +196,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -177,7 +221,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -200,7 +244,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Identifier",
+															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"type": "string"
@@ -223,8 +267,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -255,8 +310,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -279,7 +345,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -336,7 +402,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -382,8 +448,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -403,8 +480,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -417,7 +505,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -437,22 +525,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -478,13 +566,15 @@
 																	"enabled": {
 																		"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"only_when_upstream_unhealthy": {
 																		"default": true,
 																		"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -492,12 +582,14 @@
 															"deprecate_any_requests": {
 																"description": "Whether to refuse to answer queries for the ANY type",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"ecs_fallback": {
 																"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"maximum_cache_ttl": {
 																"default": 900,
@@ -505,7 +597,8 @@
 																"example": 900,
 																"maximum": 36000,
 																"minimum": 30,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"minimum_cache_ttl": {
 																"default": 60,
@@ -513,14 +606,16 @@
 																"example": 60,
 																"maximum": 36000,
 																"minimum": 30,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "DNS Firewall cluster name",
 																"example": "My Awesome DNS Firewall cluster",
 																"maxLength": 160,
 																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"negative_cache_ttl": {
 																"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -528,7 +623,8 @@
 																"maximum": 36000,
 																"minimum": 30,
 																"nullable": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"ratelimit": {
 																"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -536,7 +632,8 @@
 																"maximum": 1000000000,
 																"minimum": 100,
 																"nullable": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"retries": {
 																"default": 2,
@@ -544,7 +641,8 @@
 																"example": 2,
 																"maximum": 2,
 																"minimum": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"upstream_ips": {
 																"example": [
@@ -558,13 +656,15 @@
 																			"description": "Upstream DNS Server IPv4 address",
 																			"example": "192.0.2.1",
 																			"format": "ipv4",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "Upstream DNS Server IPv6 address",
 																			"example": "2001:DB8:100::CF",
 																			"format": "ipv6",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																},
@@ -589,20 +689,22 @@
 																			"description": "Cloudflare-assigned DNS IPv4 address",
 																			"example": "203.0.113.1",
 																			"format": "ipv4",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "Cloudflare-assigned DNS IPv6 address",
 																			"example": "2001:DB8:ab::CF",
 																			"format": "ipv6",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																},
 																"type": "array"
 															},
 															"id": {
-																"description": "Identifier",
+																"description": "Identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"type": "string"
@@ -611,7 +713,8 @@
 																"description": "Last modification of DNS Firewall cluster",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -664,8 +767,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -685,8 +799,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -699,7 +824,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -719,22 +844,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -760,13 +885,15 @@
 																			"enabled": {
 																				"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"only_when_upstream_unhealthy": {
 																				"default": true,
 																				"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -774,12 +901,14 @@
 																	"deprecate_any_requests": {
 																		"description": "Whether to refuse to answer queries for the ANY type",
 																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"ecs_fallback": {
 																		"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"maximum_cache_ttl": {
 																		"default": 900,
@@ -787,7 +916,8 @@
 																		"example": 900,
 																		"maximum": 36000,
 																		"minimum": 30,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"minimum_cache_ttl": {
 																		"default": 60,
@@ -795,14 +925,16 @@
 																		"example": 60,
 																		"maximum": 36000,
 																		"minimum": 30,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "DNS Firewall cluster name",
 																		"example": "My Awesome DNS Firewall cluster",
 																		"maxLength": 160,
 																		"minLength": 1,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"negative_cache_ttl": {
 																		"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -810,7 +942,8 @@
 																		"maximum": 36000,
 																		"minimum": 30,
 																		"nullable": true,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"ratelimit": {
 																		"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -818,7 +951,8 @@
 																		"maximum": 1000000000,
 																		"minimum": 100,
 																		"nullable": true,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"retries": {
 																		"default": 2,
@@ -826,7 +960,8 @@
 																		"example": 2,
 																		"maximum": 2,
 																		"minimum": 0,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"upstream_ips": {
 																		"example": [
@@ -840,13 +975,15 @@
 																					"description": "Upstream DNS Server IPv4 address",
 																					"example": "192.0.2.1",
 																					"format": "ipv4",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "Upstream DNS Server IPv6 address",
 																					"example": "2001:DB8:100::CF",
 																					"format": "ipv6",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
@@ -871,20 +1008,22 @@
 																					"description": "Cloudflare-assigned DNS IPv4 address",
 																					"example": "203.0.113.1",
 																					"format": "ipv4",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "Cloudflare-assigned DNS IPv6 address",
 																					"example": "2001:DB8:ab::CF",
 																					"format": "ipv6",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			]
 																		},
 																		"type": "array"
 																	},
 																	"id": {
-																		"description": "Identifier",
+																		"description": "Identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
@@ -893,7 +1032,8 @@
 																		"description": "Last modification of DNS Firewall cluster",
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -935,8 +1075,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -967,8 +1118,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -991,7 +1153,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1049,7 +1211,7 @@
 				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1060,7 +1222,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1085,8 +1247,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1106,8 +1279,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1120,7 +1304,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1151,13 +1335,15 @@
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1165,12 +1351,14 @@
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
@@ -1178,7 +1366,8 @@
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
@@ -1186,14 +1375,16 @@
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -1201,7 +1392,8 @@
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -1209,7 +1401,8 @@
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
@@ -1217,7 +1410,8 @@
 															"example": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"upstream_ips": {
 															"example": [
@@ -1231,13 +1425,15 @@
 																		"description": "Upstream DNS Server IPv4 address",
 																		"example": "192.0.2.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Upstream DNS Server IPv6 address",
 																		"example": "2001:DB8:100::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -1262,20 +1458,22 @@
 																		"description": "Cloudflare-assigned DNS IPv4 address",
 																		"example": "203.0.113.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Cloudflare-assigned DNS IPv6 address",
 																		"example": "2001:DB8:ab::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
 															"type": "array"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"type": "string"
@@ -1284,7 +1482,8 @@
 															"description": "Last modification of DNS Firewall cluster",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1335,8 +1534,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1356,8 +1566,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1370,7 +1591,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1401,13 +1622,15 @@
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
 																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1415,12 +1638,14 @@
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
 																	"default": 900,
@@ -1428,7 +1653,8 @@
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
 																	"default": 60,
@@ -1436,14 +1662,16 @@
 																	"example": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -1451,7 +1679,8 @@
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -1459,7 +1688,8 @@
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retries": {
 																	"default": 2,
@@ -1467,7 +1697,8 @@
 																	"example": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"upstream_ips": {
 																	"example": [
@@ -1481,13 +1712,15 @@
 																				"description": "Upstream DNS Server IPv4 address",
 																				"example": "192.0.2.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Upstream DNS Server IPv6 address",
 																				"example": "2001:DB8:100::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
@@ -1512,20 +1745,22 @@
 																				"description": "Cloudflare-assigned DNS IPv4 address",
 																				"example": "203.0.113.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Cloudflare-assigned DNS IPv6 address",
 																				"example": "2001:DB8:ab::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
 																	"type": "array"
 																},
 																"id": {
-																	"description": "Identifier",
+																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
@@ -1534,7 +1769,8 @@
 																	"description": "Last modification of DNS Firewall cluster",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1574,8 +1810,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1606,8 +1853,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1630,7 +1888,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1688,7 +1946,7 @@
 				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1699,7 +1957,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -1724,8 +1982,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1745,8 +2014,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1759,7 +2039,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1827,8 +2107,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1848,8 +2139,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1862,7 +2164,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1919,8 +2221,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1951,8 +2264,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1975,7 +2299,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2033,7 +2357,7 @@
 				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2044,7 +2368,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2065,13 +2389,15 @@
 											"enabled": {
 												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"only_when_upstream_unhealthy": {
 												"default": true,
 												"description": "Only mitigate attacks when upstream servers seem unhealthy",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2079,12 +2405,14 @@
 									"deprecate_any_requests": {
 										"description": "Whether to refuse to answer queries for the ANY type",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"ecs_fallback": {
 										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"maximum_cache_ttl": {
 										"default": 900,
@@ -2092,7 +2420,8 @@
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"minimum_cache_ttl": {
 										"default": 60,
@@ -2100,14 +2429,16 @@
 										"example": 60,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "DNS Firewall cluster name",
 										"example": "My Awesome DNS Firewall cluster",
 										"maxLength": 160,
 										"minLength": 1,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"negative_cache_ttl": {
 										"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -2115,7 +2446,8 @@
 										"maximum": 36000,
 										"minimum": 30,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"ratelimit": {
 										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -2123,7 +2455,8 @@
 										"maximum": 1000000000,
 										"minimum": 100,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"retries": {
 										"default": 2,
@@ -2131,7 +2464,8 @@
 										"example": 2,
 										"maximum": 2,
 										"minimum": 0,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"upstream_ips": {
 										"example": [
@@ -2145,13 +2479,15 @@
 													"description": "Upstream DNS Server IPv4 address",
 													"example": "192.0.2.1",
 													"format": "ipv4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												{
 													"description": "Upstream DNS Server IPv6 address",
 													"example": "2001:DB8:100::CF",
 													"format": "ipv6",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											]
 										},
@@ -2186,8 +2522,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2207,8 +2554,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2221,7 +2579,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2252,13 +2610,15 @@
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2266,12 +2626,14 @@
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
@@ -2279,7 +2641,8 @@
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
@@ -2287,14 +2650,16 @@
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -2302,7 +2667,8 @@
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -2310,7 +2676,8 @@
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
@@ -2318,7 +2685,8 @@
 															"example": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"upstream_ips": {
 															"example": [
@@ -2332,13 +2700,15 @@
 																		"description": "Upstream DNS Server IPv4 address",
 																		"example": "192.0.2.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Upstream DNS Server IPv6 address",
 																		"example": "2001:DB8:100::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -2363,20 +2733,22 @@
 																		"description": "Cloudflare-assigned DNS IPv4 address",
 																		"example": "203.0.113.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Cloudflare-assigned DNS IPv6 address",
 																		"example": "2001:DB8:ab::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
 															"type": "array"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"type": "string"
@@ -2385,7 +2757,8 @@
 															"description": "Last modification of DNS Firewall cluster",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2436,8 +2809,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2457,8 +2841,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2471,7 +2866,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2502,13 +2897,15 @@
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
 																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2516,12 +2913,14 @@
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
 																	"default": 900,
@@ -2529,7 +2928,8 @@
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
 																	"default": 60,
@@ -2537,14 +2937,16 @@
 																	"example": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -2552,7 +2954,8 @@
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -2560,7 +2963,8 @@
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retries": {
 																	"default": 2,
@@ -2568,7 +2972,8 @@
 																	"example": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"upstream_ips": {
 																	"example": [
@@ -2582,13 +2987,15 @@
 																				"description": "Upstream DNS Server IPv4 address",
 																				"example": "192.0.2.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Upstream DNS Server IPv6 address",
 																				"example": "2001:DB8:100::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
@@ -2613,20 +3020,22 @@
 																				"description": "Cloudflare-assigned DNS IPv4 address",
 																				"example": "203.0.113.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Cloudflare-assigned DNS IPv6 address",
 																				"example": "2001:DB8:ab::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
 																	"type": "array"
 																},
 																"id": {
-																	"description": "Identifier",
+																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
@@ -2635,7 +3044,8 @@
 																	"description": "Last modification of DNS Firewall cluster",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -2675,8 +3085,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2707,8 +3128,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2731,7 +3163,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2788,7 +3220,7 @@
 				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2799,7 +3231,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2849,8 +3281,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2870,8 +3313,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2884,7 +3338,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2952,8 +3406,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2973,8 +3438,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2987,7 +3463,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3044,8 +3520,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3076,8 +3563,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3100,7 +3598,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3157,7 +3655,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -3178,13 +3676,15 @@
 											"enabled": {
 												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"only_when_upstream_unhealthy": {
 												"default": true,
 												"description": "Only mitigate attacks when upstream servers seem unhealthy",
 												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3192,12 +3692,14 @@
 									"deprecate_any_requests": {
 										"description": "Whether to refuse to answer queries for the ANY type",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"ecs_fallback": {
 										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"maximum_cache_ttl": {
 										"default": 900,
@@ -3205,7 +3707,8 @@
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"minimum_cache_ttl": {
 										"default": 60,
@@ -3213,14 +3716,16 @@
 										"example": 60,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "DNS Firewall cluster name",
 										"example": "My Awesome DNS Firewall cluster",
 										"maxLength": 160,
 										"minLength": 1,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"negative_cache_ttl": {
 										"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -3228,7 +3733,8 @@
 										"maximum": 36000,
 										"minimum": 30,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"ratelimit": {
 										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -3236,7 +3742,8 @@
 										"maximum": 1000000000,
 										"minimum": 100,
 										"nullable": true,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"retries": {
 										"default": 2,
@@ -3244,7 +3751,8 @@
 										"example": 2,
 										"maximum": 2,
 										"minimum": 0,
-										"type": "number"
+										"type": "number",
+										"x-auditable": true
 									},
 									"upstream_ips": {
 										"example": [
@@ -3258,13 +3766,15 @@
 													"description": "Upstream DNS Server IPv4 address",
 													"example": "192.0.2.1",
 													"format": "ipv4",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												{
 													"description": "Upstream DNS Server IPv6 address",
 													"example": "2001:DB8:100::CF",
 													"format": "ipv6",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											]
 										},
@@ -3303,8 +3813,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3324,8 +3845,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3338,7 +3870,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3369,13 +3901,15 @@
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3383,12 +3917,14 @@
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
@@ -3396,7 +3932,8 @@
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
@@ -3404,14 +3941,16 @@
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -3419,7 +3958,8 @@
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -3427,7 +3967,8 @@
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
@@ -3435,7 +3976,8 @@
 															"example": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"upstream_ips": {
 															"example": [
@@ -3449,13 +3991,15 @@
 																		"description": "Upstream DNS Server IPv4 address",
 																		"example": "192.0.2.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Upstream DNS Server IPv6 address",
 																		"example": "2001:DB8:100::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
@@ -3480,20 +4024,22 @@
 																		"description": "Cloudflare-assigned DNS IPv4 address",
 																		"example": "203.0.113.1",
 																		"format": "ipv4",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	{
 																		"description": "Cloudflare-assigned DNS IPv6 address",
 																		"example": "2001:DB8:ab::CF",
 																		"format": "ipv6",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															},
 															"type": "array"
 														},
 														"id": {
-															"description": "Identifier",
+															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"type": "string"
@@ -3502,7 +4048,8 @@
 															"description": "Last modification of DNS Firewall cluster",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3553,8 +4100,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -3574,8 +4132,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -3588,7 +4157,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3619,13 +4188,15 @@
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
 																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
 																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3633,12 +4204,14 @@
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
 																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
 																	"default": 900,
@@ -3646,7 +4219,8 @@
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
 																	"default": 60,
@@ -3654,14 +4228,16 @@
 																	"example": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
@@ -3669,7 +4245,8 @@
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
@@ -3677,7 +4254,8 @@
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"retries": {
 																	"default": 2,
@@ -3685,7 +4263,8 @@
 																	"example": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"upstream_ips": {
 																	"example": [
@@ -3699,13 +4278,15 @@
 																				"description": "Upstream DNS Server IPv4 address",
 																				"example": "192.0.2.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Upstream DNS Server IPv6 address",
 																				"example": "2001:DB8:100::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
@@ -3730,20 +4311,22 @@
 																				"description": "Cloudflare-assigned DNS IPv4 address",
 																				"example": "203.0.113.1",
 																				"format": "ipv4",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "Cloudflare-assigned DNS IPv6 address",
 																				"example": "2001:DB8:ab::CF",
 																				"format": "ipv6",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		]
 																	},
 																	"type": "array"
 																},
 																"id": {
-																	"description": "Identifier",
+																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
@@ -3752,7 +4335,8 @@
 																	"description": "Last modification of DNS Firewall cluster",
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -3792,8 +4376,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3824,8 +4419,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -3848,7 +4454,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],

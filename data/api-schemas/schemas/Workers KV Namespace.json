@@ -12,7 +12,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -237,7 +239,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -249,7 +252,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -524,7 +528,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -536,7 +541,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -748,7 +754,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -907,25 +914,29 @@
 														"description": "True if new beta namespace, with additional preview features.",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Namespace identifier tag.",
 														"example": "0f2ac74b498b48028cb68387c421e279",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"supports_url_encoding": {
 														"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"title": {
 														"description": "A human-readable string name for a Namespace.",
 														"example": "My Own Namespace",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1066,7 +1077,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1078,7 +1090,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1156,25 +1169,29 @@
 													"description": "True if new beta namespace, with additional preview features.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Namespace identifier tag.",
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"supports_url_encoding": {
 													"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"title": {
 													"description": "A human-readable string name for a Namespace.",
 													"example": "My Own Namespace",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1313,7 +1330,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1325,7 +1343,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1611,7 +1630,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1623,7 +1643,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1843,7 +1864,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1855,7 +1877,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1993,7 +2016,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2005,7 +2029,8 @@
 							"title": {
 								"description": "A human-readable string name for a Namespace.",
 								"example": "My Own Namespace",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2091,25 +2116,29 @@
 													"description": "True if new beta namespace, with additional preview features.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Namespace identifier tag.",
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"supports_url_encoding": {
 													"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"title": {
 													"description": "A human-readable string name for a Namespace.",
 													"example": "My Own Namespace",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2247,7 +2276,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2259,7 +2289,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2523,7 +2554,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2535,7 +2567,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2886,7 +2919,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2898,7 +2932,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2910,7 +2945,8 @@
 							"title": {
 								"description": "A human-readable string name for a Namespace.",
 								"example": "My Own Namespace",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3124,7 +3160,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3136,7 +3173,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3449,7 +3487,8 @@
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3461,7 +3500,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
