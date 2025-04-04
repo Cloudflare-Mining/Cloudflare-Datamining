@@ -76,10 +76,17 @@
 	"hyperdrive.create.inputs.clientCert.label": "Client verification",
 	"hyperdrive.create.inputs.clientCert.select": "Client certificate and key pair",
 	"hyperdrive.create.inputs.clientCert.error": "Must be valid",
+	"hyperdrive.create.input.sslmodeSelector.require.label": "Require",
+	"hyperdrive.create.input.sslmodeSelector.verifyCa.label": "Verify CA",
+	"hyperdrive.create.input.sslmodeSelector.verifyFull.label": "Verify full",
+	"hyperdrive.create.input.sslmode.label": "SSL Mode",
+	"hyperdrive.create.input.sslmode.description": "Specify the SSL mode that Hyperdrive uses to securely connect to your database. If required, configure the certificate files required for your SSL mode.",
+	"hyperdrive.create.public.ca.sslmode.link": "Learn more about SSL Modes",
 	"hyperdrive.settings.ca.heading": "Custom certificates",
 	"hyperdrive.settings.ca.subheading": "Use custom certificates to secure your connection with server verification and client verification.",
 	"hyperdrive.settings.ca.label": "Certificate authority:",
 	"hyperdrive.settings.client_cert.label": "Client certificate:",
+	"hyperdrive.settings.sslmode.label": "SSL Mode:",
 	"hyperdrive.table.config_name.header": "Configuration Name",
 	"hyperdrive.table.hostname.header": "Hostname",
 	"hyperdrive.table.scheme.header": "Database Type",
@@ -157,5 +164,7 @@
 	"hyperdrive.resources.quick_links.discord": "Discord server",
 	"hyperdrive.resources.quick_links.community_forum": "Community forum",
 	"hyperdrive.resources.discord": "Join Discord server",
-	"hyperdrive.resources.community_forum": "View community forum"
+	"hyperdrive.resources.community_forum": "View community forum",
+	"hyperdrive.overview.queries.free_tooltip": "Your account is limited to %{maxQueries} queries per day. To remove this limit, <0>upgrade your plan</0>.",
+	"hyperdrive.overview.queries.paid_tooltip": "Unlimited queries via Hyperdrive are included in your plan. To learn more visit the Hyperdrive <0>documentation</0>."
 }
