@@ -5,40 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Atlanta, GA | Austin, TX | Denver, CO | Washington, DC | Lisbon, Portugal | London, United Kingdom&nbsp;</p>
-<h4><strong>About the Role</strong></h4>
-<p>Cloudflare’s Dashboard plays a central role in helping Cloudflare 5x its revenue in the next 5 years. As the product leader of the Cloudflare Dashboard, you will measure and grow the engagement of customers and prospects with our products and with Cloudflare itself.&nbsp;</p>
-<h4>Problems you may face:&nbsp;</h4>
+<h3><strong>Available Locations: Austin, TX | San Francisco, CA&nbsp;</strong></h3>
+<h3><strong>About the Role</strong></h3>
+<p>We’re looking for a <strong>Senior Product Marketing Manager</strong> to drive the cybersecurity product marketing strategy across key verticals, including healthcare, media, and telecommunications.</p>
+<p>This is a hybrid role for a <strong>T-shaped marketer</strong>—someone who combines <strong>deep technical fluency</strong> in cloud security, networking, and threat prevention with the <strong>storytelling expertise</strong> to craft compelling narratives for CxOs, IT leaders, and security practitioners alike.</p>
+<p>You’ll work cross-functionally with <strong>Product, Sales, Field, and Demand Generation teams</strong> to lead go-to-market execution, shape product positioning, and create content that cuts through complexity and resonates with customer pain points.</p>
+<h3><strong>Key Responsibilities</strong></h3>
+<h4><strong>Messaging &amp; Positioning</strong></h4>
 <ul>
-	<li>How can the dashboard provide individual product teams at Cloudflare with a powerful canvas to deliver world-class experiences? Can we maintain a tech stack and common design language that empowers teams to build great experiences rather than constrain them?</li>
-	<li>Can we simultaneously educate customers about our products, convince them to pay, then onboard and upsell them to new offerings, as well as encourage them to onboard their colleagues and friends?&nbsp;</li>
-	<li>Can we manage adjacent cost drivers like customer support and outbound sales? Can we be confident that moving the needle on these fronts is doing more good than harm?</li>
+	<li>Develop differentiated messaging that translates technical capabilities into clear, compelling value propositions for audiences ranging from CISOs to security architects.</li>
+	<li>Craft product narratives and positioning frameworks across cybersecurity use cases, including <strong>Zero Trust, SASE, SD-WAN, and secure networking</strong>.</li>
+	<li>Create technically credible content (e.g., <strong>solution briefs, whitepapers, demo scripts, and competitive comparisons</strong>) to support sales engineers and field marketing.</li>
+	<li>Tailor messaging for regulated industries (e.g., <strong>HIPAA, PCI-DSS, SOC 2</strong>) and industry-specific threat models.</li>
+	<li>Work closely with <strong>technical sellers and product managers</strong> to align messaging with the roadmap, feature differentiation, and customer pain points.</li>
 </ul>
-<p>As the Product Manager, Dashboard, you’ll partner with a committed set of engineering, design, and go-to-market teams as well as product teams from around the company to meet these challenges. At the same time, you’ll be expected to contribute to a high performance culture and citizenship at Cloudflare - sharing your knowledge and energy to accelerate the organization.&nbsp;</p>
-<p><strong>Key Competencies</strong></p>
-<p>We want to find someone who is curious, can learn quickly, think creatively, and work cross-functionally with engineering, design and other teams. A few key responsibilities:</p>
+<h3><strong>Go-to-Market Strategy &amp; Execution</strong></h3>
 <ul>
-	<li>Product vision and strategy: Define and communicate the vision and strategic direction for the Cloudflare Dashboard, prioritizing investment in specific, high-leverage platform capabilities</li>
-	<li>Roadmap prioritization: Develop and maintain a product roadmap that balances short-term dashboard improvements with projects that contribute to the long-term strategic vision</li>
-	<li>Data-informed decisions: Run thoughtful experiments, create dashboards to analyze user behavior and experiment results, and collaborate with the business intelligence team to analyze backend metrics impacted by new dashboard features</li>
-	<li>First-class execution: Gets things done and has a track-record of driving excellence and impact</li>
-	<li>Voice of the customer: Conduct qualitative user research through customer calls and surveys to understand the needs, workflows, and challenges of different Cloudflare Dashboard users. Additionally, gather feedback internally from various channels and customer-facing teams to develop insights on customer challenges and new product requirements</li>
-	<li>Cross-functional partnership: Collaborate with engineering, product design, and context experience design to draft and review product requirement documents, design specs, and engineering specs. Also, partner with marketing, sales, customer support, business intelligence, and other cross-functional teams to ensure successful product launches, user adoption, and experiment analysis</li>
+	<li>Define and execute <strong>launch plans</strong>, including messaging, sales enablement, web content, analyst briefings, and campaign themes.</li>
+	<li>Lead <strong>industry-specific GTM motions</strong> for high-value verticals (e.g., healthcare, media, financial services), based on buyer insights, compliance needs, and pain points.</li>
+	<li>Collaborate with industry specialists and customer-facing teams to develop <strong>use case collateral, personas, and segment-specific messaging</strong>.</li>
+	<li>Build <strong>sales assets</strong> such as battle cards, ROI tools, customer stories, vertical playbooks, and objection-handling guides.</li>
+	<li>Deliver field training and participate in <strong>key customer engagements</strong> as a subject matter expert.</li>
+	<li>Work with <strong>demand generation and campaign teams</strong> to drive pipeline and revenue growth.</li>
+	<li>Support analyst and customer briefings, partnering with <strong>AR, PR, and customer marketing teams</strong>.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
+<h3><strong>Qualifications</strong></h3>
 <ul>
-	<li>Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
-	<li>Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+	<li><strong>8–12+ years</strong> in product marketing, with direct experience in <strong>cybersecurity and networking</strong> (cloud security, endpoint security, Zero Trust, etc.).</li>
+	<li><strong>Technical fluency</strong>—able to confidently engage with security architects at a deep level while effectively simplifying complex topics for executives.</li>
+	<li><strong>Strategic storyteller</strong>—skilled in crafting crisp, audience-tailored messaging that drives both <strong>rational and emotional buy-in</strong>.</li>
+	<li><strong>Industry GTM expertise</strong>—experience developing vertical-specific marketing strategies and assets.</li>
+	<li><strong>Cross-functional leader</strong>—proven ability to align product, field, demand gen, and executive stakeholders around a unified narrative.</li>
+	<li><strong>Customer-obsessed and intellectually curious</strong>—not afraid to challenge assumptions or dive deep into technical discussions.</li>
+	<li><strong>Entrepreneurial mindset</strong>—high sense of urgency and a results-driven approach to driving business outcomes.</li>
+	<li><strong>Impeccable verbal and written communication skills</strong>, with an obsessive attention to detail.</li>
+	<li><strong>Confident presenter</strong>—comfortable speaking on stage, in webinars, and on video.</li>
+	<li><strong>Team player—</strong>collaborative and willing to go the extra mile to ensure success.</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
-<p><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $140,000 - $172,000</span></p>
-<p><strong>Equity</strong></p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $172,000 - $210,000</span></li>
+</ul>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -49,14 +62,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

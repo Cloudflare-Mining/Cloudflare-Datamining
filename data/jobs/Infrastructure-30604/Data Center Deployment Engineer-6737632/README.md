@@ -11,7 +11,7 @@
 <p><strong>Other Responsibilities May Include</strong></p>
 <ul>
 	<li>Provisioning, monitoring and maintaining hardware, software, and network in new Cloudflare data centers.</li>
-	<li>Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 275+ growing datacenter locations</li>
+	<li>Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 335+ growing datacenter locations</li>
 	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</li>
 	<li>Planning and implementing network and server installations, including in the areas of facility power (AC/DC), cooling, security/access, rack layout and cable management.</li>
 	<li>Providing technical leadership and guidance during deployment activities.</li>
