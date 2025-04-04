@@ -1088,6 +1088,22 @@
 		]
 	},
 	{
+		"id": "a2c61201f92a4e06a901f156795388a9",
+		"name": "Firewall for AI Read",
+		"description": "Grants read access to Firewall for AI settings.",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "5af6a2f284144e95a89840408439adef",
+		"name": "Firewall for AI Write",
+		"description": "Grants full access to Firewall for AI settings.",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
 		"id": "4ec32dfcb35641c5bb32d5ef1ab963b4",
 		"name": "Firewall Services Read",
 		"description": "Grants read access to Firewall resources",
