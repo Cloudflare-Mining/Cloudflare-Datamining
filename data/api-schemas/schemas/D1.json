@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -236,7 +238,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -349,24 +352,28 @@
 														"example": "2022-11-15T18:25:44.442097Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "D1 database name.",
 														"example": "my-database",
 														"pattern": "^[a-z0-9][a-z0-9-_]*$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"uuid": {
 														"description": "D1 database identifier (UUID).",
 														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"version": {
 														"example": "production",
 														"pattern": "^(alpha|beta|production)$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -529,7 +536,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -542,13 +550,15 @@
 							"description": "D1 database identifier (UUID).",
 							"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 							"readOnly": true,
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						},
 						{
 							"description": "D1 database name.",
 							"example": "my-database",
 							"pattern": "^[a-z0-9][a-z0-9-_]*$",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -633,33 +643,39 @@
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
 													"example": 12,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
 													"pattern": "^[a-z0-9][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"num_tables": {
 													"example": 12,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"version": {
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -795,7 +811,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -808,7 +825,8 @@
 								"description": "D1 database name.",
 								"example": "my-database",
 								"pattern": "^[a-z0-9][a-z0-9-_]*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"primary_location_hint": {
 								"description": "Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.",
@@ -821,7 +839,8 @@
 									"oc"
 								],
 								"example": "wnam",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -912,33 +931,39 @@
 													"example": "2022-11-15T18:25:44.442097Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
 													"example": 12,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
 													"pattern": "^[a-z0-9][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"num_tables": {
 													"example": 12,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"version": {
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1073,7 +1098,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1084,7 +1110,8 @@
 					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1095,22 +1122,26 @@
 						"properties": {
 							"current_bookmark": {
 								"description": "To poll an in-progress export, provide the current bookmark (returned by your first polling response)",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"dump_options": {
 								"properties": {
 									"no_data": {
 										"description": "Export only the table definitions, not their contents",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"no_schema": {
 										"description": "Export only each table's contents, not its definition",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"tables": {
 										"description": "Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables.",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -1122,7 +1153,8 @@
 								"enum": [
 									"polling"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1210,16 +1242,19 @@
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"error": {
 													"description": "Only present when status = 'error'. Contains the error message.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1228,7 +1263,8 @@
 													"properties": {
 														"filename": {
 															"description": "The generated SQL filename.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"signed_url": {
 															"description": "The URL to download the exported SQL. Available for one hour.",
@@ -1242,16 +1278,19 @@
 														"complete",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"export"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1339,12 +1378,14 @@
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1352,16 +1393,19 @@
 													"enum": [
 														"active"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"export"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1493,7 +1537,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1504,7 +1549,8 @@
 					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1520,11 +1566,13 @@
 										"enum": [
 											"init"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"etag": {
 										"description": "Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -1540,15 +1588,18 @@
 										"enum": [
 											"ingest"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"etag": {
 										"description": "An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"filename": {
 										"description": "The filename you have successfully uploaded.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -1565,11 +1616,13 @@
 										"enum": [
 											"poll"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"current_bookmark": {
 										"description": "This identifies the currently-running import, checking its status.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -1660,20 +1713,24 @@
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"error": {
 													"description": "Only present when status = 'error'. Contains the error message that prevented the import from succeeding.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"filename": {
 													"description": "Derived from the database ID and etag, to use in avoiding repeated uploads. Only returned when for the 'init' action.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1682,37 +1739,46 @@
 													"properties": {
 														"final_bookmark": {
 															"description": "The time-travel bookmark if you need restore your D1 to directly after the import succeeded.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"meta": {
 															"properties": {
 																"changed_db": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"changes": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"duration": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"last_row_id": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"rows_read": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"rows_written": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"size_after": {
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"num_queries": {
 															"description": "The total number of queries that were executed during the import.",
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1722,16 +1788,19 @@
 														"complete",
 														"error"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"import"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"upload_url": {
 													"description": "The R2 presigned URL to use for uploading. Only returned when for the 'init' action.",
@@ -1823,12 +1892,14 @@
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1836,16 +1907,19 @@
 													"enum": [
 														"active"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"success": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"type": {
 													"enum": [
 														"import"
 													],
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1977,7 +2051,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1988,7 +2063,8 @@
 					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2100,25 +2176,32 @@
 													"meta": {
 														"properties": {
 															"changed_db": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"changes": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"duration": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"last_row_id": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rows_read": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rows_written": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"size_after": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2268,7 +2351,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2279,7 +2363,8 @@
 					"description": "D1 database identifier (UUID).",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2391,25 +2476,32 @@
 													"meta": {
 														"properties": {
 															"changed_db": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"changes": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"duration": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"last_row_id": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rows_read": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rows_written": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"size_after": {
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
