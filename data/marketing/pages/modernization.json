@@ -37,10 +37,22 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Digital Modernization Services | Reduce IT Spend",
+					"metaDescription": "Digital modernization using a connectivity cloud simplifies and secures networks and applications. Reduce IT costs today with digital modernization.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2024-01-26T22:55:14.529Z",
-					"updatedAt": "2025-04-01T23:20:08.364Z"
+					"updatedAt": "2025-04-05T12:22:04.224Z"
 				},
 				"contentfulId": "2hO5ySRYgrZMojzW8NWGRO",
 				"contentTypeId": "page",
@@ -553,6 +565,12 @@
 						"togglesTo": []
 					},
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4ixtXpe5augPIzp71OFCjU",
+						"htmlContent": "\n  <div style=\"text-align:center; padding-top: 64px;\" class=\"headline-2\">\n        Speedier incident response times, reduced cost and faster innovation\n        </div>",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeNetworkStats",
 						"contentfulId": "6Kf67TJ88j7iJ5qCnti9x9",
 						"title": null,
@@ -572,6 +590,14 @@
 						"networkLocationImageAssetFile": null,
 						"networkLocationText": null,
 						"statsFeatures": [
+							{
+								"title": "75%",
+								"description": " improvement of response times to performance and security incidents\n"
+							},
+							{
+								"title": "48%",
+								"description": "reduction in total cost of ownership (TCO) of security and IT investments"
+							},
 							{
 								"title": "54%",
 								"description": "improved Time-to-Market (TTM) of new innovations"
@@ -1132,6 +1158,12 @@
 						"htmlId": null
 					},
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "30Uq6DsajfDipb0KnaL1je",
+						"htmlContent": "<div style=\"text-align:left; padding-top: 64px;\" class=\"headline-2\">\nPerformance, simplicity, and security for Caliente.mx with a single-vendor solution from Cloudflare\n</div>",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "lYK54mQeCciKkZfi75hz7",
 						"htmlId": null,
@@ -1502,6 +1534,114 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "31iScVCPULHlJZKLaisq5b",
+						"title": "Resources",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5tPpvjWWwzfHdjrpN44V4C",
+								"heading": "Whitepaper",
+								"description": "Developing a strategy for your network modernization",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6uomMB1fQ2LqddK6wRHLvW",
+									"elementName": "Get white paper - modernization link",
+									"standardText": null,
+									"text": "Get whitepaper",
+									"url": "/lp/developing-a-strategy-for-network-modernization/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "9fb40caf-7018-5ed9-b1f8-0701b07d3d88",
+									"altText": "Digital modernization resources 1 - thumbnail",
+									"title": "Digital modernization resources 1 - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "SQtIskilUngeh5cMEkEGu",
+								"heading": "Infographic",
+								"description": "How a connectivity cloud helps restore control of security and IT",
+								"category": "Resources",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7kTrhqEt7JY5mJwoFp4wcf",
+									"elementName": "Infographic card link",
+									"standardText": null,
+									"text": "Download infographic",
+									"url": "https://cfl.re/472whOa",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "09321c22-bf09-5048-9255-ca5659c313b2",
+									"altText": "Cloudflare infographic thumbnail",
+									"title": "Cloudflare infographic thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q1cQoV79vPJwvEVPKXvfo/142e6b0a27bacfe52123e3b446de3d7f/thumbnail-2.png"
+										},
+										"description": "Cloudflare infographic thumbnail"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7q2Cf39rOzzs8C9bTpsscN",
+								"heading": "Solution brief",
+								"description": "Consolidate, simplify, and modernize your tech stack",
+								"category": "Resources",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1w1TC4pkYynX7Vw40jvWVx",
+									"elementName": " Get solution brief -  card link",
+									"standardText": null,
+									"text": " Get solution brief",
+									"url": "https://cfl.re/3MnIN0Z",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "a35606b0-3619-5937-8492-ce8b16bc369b",
+									"altText": "Digital modernization resources 3 - thumbnail",
+									"title": "Digital modernization resources 3 - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/CucKvS7vbgOtsW7xYlb00/cb317715ac18552c975091cf83e28658/Solution_brief_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
