@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-06-25T12:58:07.097Z",
-					"updatedAt": "2025-04-02T09:55:49.329Z"
+					"updatedAt": "2025-04-05T07:37:22.423Z"
 				},
 				"contentfulId": "4u5suQbReCzrqfs46gCePw",
 				"contentTypeId": "page",
@@ -205,48 +205,6 @@
 						]
 					},
 					{
-						"contentfulId": "5iciKkujWfYOnSEbiOauFM",
-						"title": "Get insights using pre-built dashboards",
-						"copy": "The Cloudflare App for each of our analytics partners offers pre-built dashboards that help you analyze detailed web traffic attributes, understand attacks and mitigations, and get performance insights for your websites and applications on the Cloudflare network.\n\nFully customizable dashboards provide you with the flexibility to configure to your own specifications, and advanced filters help you narrow your analysis by various attributes for debugging and tracing. \n\nUse insights from the dashboards to fine tune your Cloudflare configuration and provide a performant and reliable experience for your end users.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2h8fU5bg9iACEndCQc2RER/e407143d843f5b8326c6c98e8c131f70/dashboards_partner-analytics.png"
-							},
-							"description": "Screenshots of pre-built dashboards in the Cloudflare App"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "75tgJz6T2Tol111LoV9NYO",
 						"title": "If you're an analytics provider interested in becoming a partner, please get in touch.",
@@ -329,7 +287,21 @@
 						"locale": "en-US",
 						"htmlId": null,
 						"image1": null,
-						"imageAssetFile1": null,
+						"imageAssetFile1": {
+							"id": "242e7c8b-2bc5-5a5a-8dfa-8798e0b2b0bb",
+							"altText": "Analytics network",
+							"title": "Analytics network ",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/9992969dcf14d61f8c151a799c1c694c/analytics-network.png"
+								},
+								"description": "Analytics network orange"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"learnMoreUrl1": null,
 						"title2": "End-to-end visibility",
 						"copy2": "Combine Cloudflare logs with other data, such as your origin server logs, for better end-to-end visibility.",
@@ -565,46 +537,6 @@
 						},
 						"title": "Contact Us",
 						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					},
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "1Llcy4tXC7trEUvqGXg0eD",
-						"modalName": "[Partners] - Analytics: Become an Analytics Partner - Form Modal",
-						"modalId": "partners-analytics-partnerships-form-modal",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "4fNgXm5Zn9XkmcRzEB14Ra",
-							"bladeName": "[Partners] - Analytics: Become an Analytics Partner - Marketo Form (1343)",
-							"backgroundColor": "white",
-							"marketoFormId": 1343,
-							"marketoFormLeadSource": "Partner - Integration",
-							"marketoFormLeadSourceDetail": "Become an Analytics Partner",
-							"marketoFormHeaderText": null,
-							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Become an Analytics Partner",
-						"regularCopy": "Analytics Partnerships",
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
