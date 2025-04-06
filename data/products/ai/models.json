@@ -1861,6 +1861,40 @@
 		]
 	},
 	{
+		"id": "06455e78-19f7-487b-93cd-c05a3dd07813",
+		"source": 1,
+		"name": "@cf/meta/llama-4-scout-17b-16e-instruct",
+		"description": "Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2025-04-05 20:25:56.137",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
+			},
+			{
+				"property_id": "terms",
+				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE"
+			}
+		]
+	},
+	{
 		"id": "01bc2fb0-4bca-4598-b985-d2584a3f46c0",
 		"source": 1,
 		"name": "@cf/baai/bge-large-en-v1.5",
