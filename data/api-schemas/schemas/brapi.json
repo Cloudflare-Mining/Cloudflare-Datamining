@@ -667,7 +667,7 @@
 				},
 				"description": "Returns the page's content"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1466,7 +1466,7 @@
 				},
 				"description": "Returns the JSON based on a user prompt or json schema"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2245,7 +2245,7 @@
 				},
 				"description": "Returns the links"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3018,7 +3018,7 @@
 				},
 				"description": "Returns the page markdown"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3759,7 +3759,7 @@
 				},
 				"description": "Returns the pdf"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4621,7 +4621,7 @@
 				},
 				"description": "Returns the scraped elements"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5512,7 +5512,7 @@
 				},
 				"description": "Returns the screenshot"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6372,7 +6372,7 @@
 				},
 				"description": "Returns the screenshot"
 			},
-			"400": {
+			"422": {
 				"content": {
 					"application/json": {
 						"schema": {
