@@ -214,8 +214,8 @@
 													"type": "object"
 												},
 												"vlan_tag": {
-													"description": "VLAN port number.",
-													"example": 0,
+													"description": "VLAN ID. Use zero for untagged.",
+													"example": 42,
 													"type": "integer",
 													"x-auditable": true
 												}
@@ -325,7 +325,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete Site WAN",
@@ -546,8 +547,8 @@
 														"type": "object"
 													},
 													"vlan_tag": {
-														"description": "VLAN port number.",
-														"example": 0,
+														"description": "VLAN ID. Use zero for untagged.",
+														"example": 42,
 														"type": "integer",
 														"x-auditable": true
 													}
@@ -659,7 +660,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Site WANs",
@@ -888,8 +890,8 @@
 													"type": "object"
 												},
 												"vlan_tag": {
-													"description": "VLAN port number.",
-													"example": 0,
+													"description": "VLAN ID. Use zero for untagged.",
+													"example": 42,
 													"type": "integer",
 													"x-auditable": true
 												}
@@ -999,7 +1001,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Site WAN Details",
@@ -1106,8 +1109,8 @@
 								"type": "object"
 							},
 							"vlan_tag": {
-								"description": "VLAN port number.",
-								"example": 0,
+								"description": "VLAN ID. Use zero for untagged.",
+								"example": 42,
 								"type": "integer",
 								"x-auditable": true
 							}
@@ -1286,8 +1289,8 @@
 													"type": "object"
 												},
 												"vlan_tag": {
-													"description": "VLAN port number.",
-													"example": 0,
+													"description": "VLAN ID. Use zero for untagged.",
+													"example": 42,
 													"type": "integer",
 													"x-auditable": true
 												}
@@ -1397,7 +1400,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Patch Site WAN",
@@ -1490,15 +1494,14 @@
 								"type": "object"
 							},
 							"vlan_tag": {
-								"description": "VLAN port number.",
-								"example": 0,
+								"description": "VLAN ID. Use zero for untagged.",
+								"example": 42,
 								"type": "integer",
 								"x-auditable": true
 							}
 						},
 						"required": [
-							"physport",
-							"vlan_tag"
+							"physport"
 						],
 						"type": "object"
 					}
@@ -1675,8 +1678,8 @@
 														"type": "object"
 													},
 													"vlan_tag": {
-														"description": "VLAN port number.",
-														"example": 0,
+														"description": "VLAN ID. Use zero for untagged.",
+														"example": 42,
 														"type": "integer",
 														"x-auditable": true
 													}
@@ -1788,7 +1791,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create a new Site WAN",
@@ -1888,8 +1892,8 @@
 								"type": "object"
 							},
 							"vlan_tag": {
-								"description": "VLAN port number.",
-								"example": 0,
+								"description": "VLAN ID. Use zero for untagged.",
+								"example": 42,
 								"type": "integer",
 								"x-auditable": true
 							}
@@ -2068,8 +2072,8 @@
 													"type": "object"
 												},
 												"vlan_tag": {
-													"description": "VLAN port number.",
-													"example": 0,
+													"description": "VLAN ID. Use zero for untagged.",
+													"example": 42,
 													"type": "integer",
 													"x-auditable": true
 												}
@@ -2179,7 +2183,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Site WAN",
