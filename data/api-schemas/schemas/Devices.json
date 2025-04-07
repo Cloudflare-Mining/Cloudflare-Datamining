@@ -8,7 +8,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -294,13 +293,13 @@
 																{
 																	"properties": {
 																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
+																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		}
@@ -314,12 +313,12 @@
 																	"properties": {
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
+																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		},
 																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
 																			"type": "string"
 																		}
@@ -357,7 +356,6 @@
 														"type": "string"
 													},
 													"policy_id": {
-														"description": "Device ID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
@@ -697,13 +695,13 @@
 																		{
 																			"properties": {
 																				"address": {
-																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
 																					"type": "string"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																					"example": "Exclude testing domains from the tunnel",
+																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
 																					"type": "string"
 																				}
@@ -717,12 +715,12 @@
 																			"properties": {
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																					"example": "Exclude testing domains from the tunnel",
+																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
 																					"type": "string"
 																				},
 																				"host": {
-																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
 																					"type": "string"
 																				}
@@ -760,7 +758,6 @@
 																"type": "string"
 															},
 															"policy_id": {
-																"description": "Device ID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
@@ -936,7 +933,8 @@
 		]
 	},
 	"GET /accounts/{account_id}/devices": {
-		"description": "Fetches a list of enrolled devices.",
+		"deprecated": true,
+		"description": "List WARP registrations.\n\n**Deprecated**: please use one of the following endpoints instead:\n- GET /accounts/{account_id}/devices/physical-devices\n- GET /accounts/{account_id}/devices/registrations\n",
 		"operationId": "devices-list-devices",
 		"parameters": [
 			{
@@ -1096,7 +1094,7 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Device ID.",
+														"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
@@ -1364,7 +1362,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Device ID.",
+																"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
@@ -1576,7 +1574,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List devices",
+		"summary": "List registrations (deprecated)",
 		"tags": [
 			"Devices"
 		],
@@ -1586,7 +1584,8 @@
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
-		"description": "Fetches details for a single device.",
+		"deprecated": true,
+		"description": "Fetches a single WARP registration.\n\n**Deprecated**: please use one of the following endpoints instead:\n- GET /accounts/{account_id}/devices/physical-devices/{device_id}\n- GET /accounts/{account_id}/devices/registrations/{registration_id}\n",
 		"operationId": "devices-device-details",
 		"parameters": [
 			{
@@ -1594,7 +1593,7 @@
 				"name": "device_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
+					"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -1754,8 +1753,9 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Device ID.",
-													"example": "LM63E90AXfafe14643cbbbc-4a0ed4fc8415A",
+													"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
 													"type": "string"
 												},
 												"ip": {
@@ -2000,8 +2000,9 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Device ID.",
-															"example": "LM63E90AXfafe14643cbbbc-4a0ed4fc8415A",
+															"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
 															"type": "string"
 														},
 														"ip": {
@@ -2193,7 +2194,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get device details",
+		"summary": "Get registration (deprecated)",
 		"tags": [
 			"Devices"
 		],
@@ -2203,7 +2204,8 @@
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
-		"description": "Fetches a one-time use admin override code for a device. This relies on the **Admin Override** setting being enabled in your device configuration.",
+		"deprecated": true,
+		"description": "Fetches a one-time use admin override code for a registration. This relies on the **Admin Override** setting being enabled in your device configuration.   \n\n**Deprecated:** please use GET /accounts/{account_id}/devices/registrations/{registration_id}/override_codes instead.\n",
 		"operationId": "devices-list-admin-override-code-for-device",
 		"parameters": [
 			{
@@ -2211,7 +2213,7 @@
 				"name": "device_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
+					"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2640,7 +2642,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get an admin override code for a device",
+		"summary": "Get override codes (deprecated)\n",
 		"tags": [
 			"Devices"
 		],
@@ -2927,13 +2929,13 @@
 																{
 																	"properties": {
 																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
+																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		}
@@ -2947,12 +2949,12 @@
 																	"properties": {
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																			"example": "Exclude testing domains from the tunnel",
+																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		},
 																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
 																			"type": "string"
 																		}
@@ -2990,7 +2992,6 @@
 														"type": "string"
 													},
 													"policy_id": {
-														"description": "Device ID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
@@ -3330,13 +3331,13 @@
 																		{
 																			"properties": {
 																				"address": {
-																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																					"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
 																					"type": "string"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																					"example": "Exclude testing domains from the tunnel",
+																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
 																					"type": "string"
 																				}
@@ -3350,12 +3351,12 @@
 																			"properties": {
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																					"example": "Exclude testing domains from the tunnel",
+																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
 																					"type": "string"
 																				},
 																				"host": {
-																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																					"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
 																					"type": "string"
 																				}
@@ -3393,7 +3394,6 @@
 																"type": "string"
 															},
 															"policy_id": {
-																"description": "Device ID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
@@ -3822,13 +3822,13 @@
 															{
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	}
@@ -3842,12 +3842,12 @@
 																"properties": {
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -4149,13 +4149,13 @@
 																	{
 																		"properties": {
 																			"address": {
-																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
 																				"type": "string"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			}
@@ -4169,12 +4169,12 @@
 																		"properties": {
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			},
 																			"host": {
-																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
 																				"type": "string"
 																			}
@@ -4346,7 +4346,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4607,13 +4606,13 @@
 															{
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	}
@@ -4627,12 +4626,12 @@
 																"properties": {
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -4670,7 +4669,6 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"description": "Device ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -4989,13 +4987,13 @@
 																	{
 																		"properties": {
 																			"address": {
-																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
 																				"type": "string"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			}
@@ -5009,12 +5007,12 @@
 																		"properties": {
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			},
 																			"host": {
-																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
 																				"type": "string"
 																			}
@@ -5052,7 +5050,6 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"description": "Device ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -5235,7 +5232,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -5714,7 +5710,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -6163,7 +6158,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -8446,13 +8440,13 @@
 										{
 											"properties": {
 												"address": {
-													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
 													"type": "string"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												}
@@ -8466,12 +8460,12 @@
 											"properties": {
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												},
 												"host": {
-													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
 													"type": "string"
 												}
@@ -8767,13 +8761,13 @@
 															{
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	}
@@ -8787,12 +8781,12 @@
 																"properties": {
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -9094,13 +9088,13 @@
 																	{
 																		"properties": {
 																			"address": {
-																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
 																				"type": "string"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			}
@@ -9114,12 +9108,12 @@
 																		"properties": {
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			},
 																			"host": {
-																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
 																				"type": "string"
 																			}
@@ -9290,7 +9284,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -9410,13 +9403,13 @@
 										{
 											"properties": {
 												"address": {
-													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
 													"type": "string"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												}
@@ -9430,12 +9423,12 @@
 											"properties": {
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												},
 												"host": {
-													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
 													"type": "string"
 												}
@@ -9754,13 +9747,13 @@
 															{
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	}
@@ -9774,12 +9767,12 @@
 																"properties": {
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -9817,7 +9810,6 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"description": "Device ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -10136,13 +10128,13 @@
 																	{
 																		"properties": {
 																			"address": {
-																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
 																				"type": "string"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			}
@@ -10156,12 +10148,12 @@
 																		"properties": {
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			},
 																			"host": {
-																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
 																				"type": "string"
 																			}
@@ -10199,7 +10191,6 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"description": "Device ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -10841,13 +10832,13 @@
 										{
 											"properties": {
 												"address": {
-													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
 													"type": "string"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												}
@@ -10861,12 +10852,12 @@
 											"properties": {
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
-													"example": "Exclude testing domains from the tunnel",
+													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
 													"type": "string"
 												},
 												"host": {
-													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
 													"type": "string"
 												}
@@ -11200,13 +11191,13 @@
 															{
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	}
@@ -11220,12 +11211,12 @@
 																"properties": {
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																		"example": "Exclude testing domains from the tunnel",
+																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -11263,7 +11254,6 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"description": "Device ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -11582,13 +11572,13 @@
 																	{
 																		"properties": {
 																			"address": {
-																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
 																				"type": "string"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			}
@@ -11602,12 +11592,12 @@
 																		"properties": {
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
-																				"example": "Exclude testing domains from the tunnel",
+																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
 																				"type": "string"
 																			},
 																			"host": {
-																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
 																				"type": "string"
 																			}
@@ -11645,7 +11635,6 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"description": "Device ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -11819,7 +11808,8 @@
 		]
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
-		"description": "Revokes a list of devices.",
+		"deprecated": true,
+		"description": "Revokes a list of registrations.\n\n**Deprecated**: please use POST /accounts/{account_id}/devices/registrations/revoke instead.\n",
 		"operationId": "devices-revoke-devices",
 		"parameters": [
 			{
@@ -11835,9 +11825,9 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A list of device ids to revoke.",
+						"description": "A list of Registration IDs to revoke.",
 						"items": {
-							"description": "Device ID.",
+							"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
 							"type": "string"
@@ -12151,7 +12141,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Revoke devices",
+		"summary": "Revoke registrations (deprecated)",
 		"tags": [
 			"Devices"
 		],
@@ -12160,7 +12150,8 @@
 		]
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
-		"description": "Unrevokes a list of devices.",
+		"deprecated": true,
+		"description": "Unrevokes a list of registrations.\n\n**Deprecated**: please use POST /accounts/{account_id}/devices/registrations/unrevoke instead.\n",
 		"operationId": "devices-unrevoke-devices",
 		"parameters": [
 			{
@@ -12176,9 +12167,9 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A list of device ids to unrevoke.",
+						"description": "A list of Registration IDs to unrevoke.",
 						"items": {
-							"description": "Device ID.",
+							"description": "Registration ID. Equal to Device ID except for accounts which enabled [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
 							"type": "string"
@@ -12492,7 +12483,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Unrevoke devices",
+		"summary": "Unrevoke registrations (deprecated)",
 		"tags": [
 			"Devices"
 		],
@@ -12509,7 +12500,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -13040,7 +13030,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -13526,7 +13515,6 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
