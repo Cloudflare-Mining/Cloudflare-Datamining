@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-05-11T12:04:29.252Z",
-					"updatedAt": "2025-04-02T11:06:12.351Z"
+					"updatedAt": "2025-04-07T11:51:14.257Z"
 				},
 				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
@@ -256,7 +256,7 @@
 					{
 						"contentfulId": "6KAs90xZejQAeogTx8xZhD",
 						"title": "Avoid vendor lock-in with our global object storage",
-						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.",
+						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.\n<br>\n\n[View reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -402,7 +402,27 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"After investigating a wide range of alternatives, we went with Cloudflare's R2 storage — and as a result are thrilled that our engine distribution costs have decreased by 98%, while delivering top-notch performance.\"",
+															"value": "\"",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Developers can create a bucket directly in Laravel Cloud without having to create and integrate a separate account and objects are streamed directly from the front end without even touching the back end for a more streamlined experience. R2 ticked all the boxes from a performance perspective and its zero egress fees made it a natural choice to provide the object storage resource for Laravel Cloud.",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
 															"marks": [],
 															"content": null
 														}
@@ -446,7 +466,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Prisma",
+													"value": "Laravel",
 													"marks": [],
 													"content": null
 												}
@@ -651,18 +671,18 @@
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "R2 helps you create portable multicloud architectures, effortlessly move data between cloud providers, and optimize content storage and delivery.",
 						"eyebrowHeading": "Top R2 use cases",
-						"description": null,
+						"description": "R2 offers more than just storage. It helps you create portable multicloud architectures, effortlessly move data between cloud providers, and build exceptional user experiences into your applications. When you combine R2's cost-effective solution with Cloudflare's global network and Cloudflare Workers, you can innovate freely, scale efficiently, and deploy applications faster without the burden of managing infrastructure.",
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6RMJ9ruC8LQkvdlN8CtYoX",
-								"title": "Migrate data from S3 and Google Cloud Storage (GCS)",
+								"title": "Store and train AI data ",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Move your data (including training data for AI models) to R2 and take advantage of our zero egress fee policy — whether you are permanently migrating your data or not.",
+								"description": "Use R2 to store your AI/ML training datasets and model checkpoints – with zero egress fees. Easily leverage GPU compute in any cloud or region without worrying about data transfer costs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -698,7 +718,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With our Cache API and Workers, you can significantly extend cache lifetimes for large files and provide low-latency access to assets.",
+								"description": "Whether your content is generated by users or produced or produced by diffusion models, R2 helps you store your data securely and serve it with low latency. We take advantage of Cloudflare's global network - and the fact that our storage APIs are built on Workers - to cache data close to your users, so your data feels global without sacrificing consistency.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -730,11 +750,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "1e63ADYz8E8wTy3c9MnpiZ",
-								"title": "Build event-driven applications",
+								"title": "Unify storage with data analytics, and query your data in place",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "<br>\nTrigger workflows that react to changes in your data with event notifications and Queues.",
+								"description": "\nYour R2 bucket isn't just storage anymore - it's now your data warehouse. R2 now integrates Apache Iceberg and transforms your object storage into a fully functional data warehouse without any management overhead. You can now enable a data catalog on any R2 bucket and handle analytics workloads directly, without moving your data elsewhere.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -770,7 +790,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "17ht0gKiAF2eZCLP4wtlMf",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://workers.cloudflare.com/built-with/collections/r2\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://workers.cloudflare.com/built-with/collections/r2\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
@@ -963,14 +983,14 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
-								"title": "Explore the developer's guide to media optimization",
+								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
+								"title": "Train AI models smarter with zero egress fees",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
-								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
-								"learnMoreText": "Get the guide",
+								"description": "Character AI uses R2 as the glue between multiple cloud providers to build the next generation of conversational AI. Read the Built With R2 story ",
+								"learnMoreUrl": "https://workers.cloudflare.com/built-with/projects/character-ai",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -999,14 +1019,14 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
-								"title": "Train LLMs on any cloud provider, anywhere in the world",
+								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
+								"title": "Explore the developer's guide to media optimization",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Building large language models (LLMs) requires robust data storage infrastructure. Cloudflare R2 can help.",
-								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-r2-mosaicml-train-llms-anywhere-faster-cheaper",
-								"learnMoreText": "Read the blog post",
+								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
+								"learnMoreText": "Get the guide",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,

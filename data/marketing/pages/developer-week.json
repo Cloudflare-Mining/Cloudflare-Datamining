@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-04-04T19:09:12.396Z",
-					"updatedAt": "2025-04-06T14:25:03.228Z"
+					"updatedAt": "2025-04-07T12:55:17.591Z"
 				},
 				"contentfulId": "3ONhyCIhr9BuaSK0Epo9Wv",
 				"contentTypeId": "page",
@@ -205,7 +205,7 @@
 						]
 					},
 					{
-						"contentfulId": "3hBnkfR22TY89QyLoNRCLf",
+						"contentfulId": "7m4OVecWMNls4Sq66QUJBi",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
@@ -221,13 +221,13 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5iBEAw6CePY2RJfVUFFPN6",
-								"title": "Welcome to Developer Week 2025",
+								"contentfulId": "1Czbico3RaqfMNROVA6KWD",
+								"title": "Piecing together the Agent puzzle: MCP, authentication & authorization, and Durable Objects free tier",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "We're kicking off Cloudflare's 2025 Developer Week — our innovation week dedicated to announcements for developers.",
-								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-developer-week-2025",
+								"description": "Cloudflare delivers the toolkit for AI agents with new Agents SDK support for MCP (Model Context Protocol) clients, authentication/authorization/hibernation for MCP servers, and Durable Objects free tier.",
+								"learnMoreUrl": "https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
@@ -237,16 +237,124 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "d519747a-811c-5c8e-9fae-6f077bb3a40c",
-									"altText": "Welcome to Developer Week 2025",
+									"id": "fd712097-3bd4-5dee-98ef-6add8e524f6c",
+									"altText": "Piecing together the Agent puzzle: MCP, Authentication & Authorization & Durable Objects Free tier",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XVajslw92PrKzyDNdvMWU/a74c4e2ba9b95688dbbdc7a1b2f936eb/DevWk25_logo.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PUjEVmN3a4PhUYTEQXwnN/9eaadd53903a0490cfd0edb2d206aa54/Piecing_together_the_Agent_puzzle-_MCP__Authentication___Authorization___Durable_Objects_Free_tier.png"
 										},
-										"description": "Developer Week 2025 logo"
+										"description": "Piecing together the Agent puzzle: MCP, Authentication & Authorization & Durable Objects Free tier"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1HDkqfC9z3eo9tSya8GqV7",
+								"title": "Introducing AutoRAG: fully managed Retrieval-Augmented Generation on Cloudflare",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "AutoRAG is here: fully managed Retrieval-Augmented Generation (RAG) pipelines powered by Cloudflare's global network and powerful developer ecosystem. Simplify how you build and scale RAG pipelines to power your context-aware AI chatbots and search applications.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-autorag-on-cloudflare",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "177ce2eb-a2c3-584d-a286-23fb1c5ba139",
+									"altText": "Introducing AutoRAG: fully managed Retrieval-Augmented Generation on Cloudflare",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/38C3d9wdhN12ZNn6LZOsQu/db46b207cfacefee8538825856da37a8/Introducing_AutoRAG-_fully_managed_Retrieval-Augmented_Generation_on_Cloudflare.png"
+										},
+										"description": "Introducing AutoRAG: fully managed Retrieval-Augmented Generation on Cloudflare"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7aSZcXv3VKZ85CfzT59pRZ",
+								"title": "Cloudflare Workflows is now GA: production-ready durable execution",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Workflows — a durable execution engine built directly on top of Workers — is now Generally Available. We've landed new human-in-the-loop capabilities, more scale, and more metrics: just what you need for a production-ready service.",
+								"learnMoreUrl": "https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "c81f33ec-53d7-5b59-8765-95d5d7ecf250",
+									"altText": "Cloudflare Workflows is now GA: production-ready durable execution",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ghlmJ1f0U87RorROPmzZw/e1b8442001c5b3f3b8dae5e67d2abfcd/Cloudflare_Workflows_is_now_GA-_production-ready_durable_execution_.png"
+										},
+										"description": "Cloudflare Workflows is now GA: production-ready durable execution\n"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "359mpwiOFvGAOxa0OdVK7m",
+								"title": "Cloudflare acquires Outerbase to expand database and agent developer experience capabilities",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare has acquired Outerbase, expanding our database and agent developer experience capabilities.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-acquires-outerbase-database-dx",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "e766baf6-a10c-5a5f-9118-b68c468c610b",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/52wG3DYTWPEWSiwWqiDooM/3dff45782e2b70037bef889cde8a35ee/Cfxouterbase.png"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
