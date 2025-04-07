@@ -1313,6 +1313,72 @@
 															"trigger"
 														],
 														"type": "object"
+													},
+													{
+														"properties": {
+															"end": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"error": {
+																"nullable": true,
+																"properties": {
+																	"message": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"message"
+																],
+																"type": "object"
+															},
+															"finished": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"output": {
+																"anyOf": [
+																	{
+																		"type": "object"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
+															"start": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"type": {
+																"enum": [
+																	"waitForEvent"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"start",
+															"end",
+															"finished",
+															"type",
+															"output",
+															"error"
+														],
+														"type": "object"
 													}
 												]
 											},
@@ -2118,8 +2184,7 @@
 								"enum": [
 									"resume",
 									"pause",
-									"terminate",
-									"restart"
+									"terminate"
 								],
 								"type": "string"
 							}
