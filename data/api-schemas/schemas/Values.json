@@ -1,7 +1,18 @@
 {
-	"POST /telemetry/values": {
+	"POST /accounts/{account_id}/workers/observability/telemetry/values": {
 		"description": "List unique values found in your events",
 		"operationId": "telemetry.values.list",
+		"parameters": [
+			{
+				"description": "Your Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -371,6 +382,9 @@
 		"summary": "List values",
 		"tags": [
 			"Values"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }

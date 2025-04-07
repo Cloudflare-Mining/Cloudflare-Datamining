@@ -1,7 +1,18 @@
 {
-	"POST /telemetry/query": {
+	"POST /accounts/{account_id}/workers/observability/telemetry/query": {
 		"description": "Runs a temporary or saved query",
 		"operationId": "telemetry.query",
+		"parameters": [
+			{
+				"description": "Your Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2284,6 +2295,9 @@
 		"summary": "Run a query",
 		"tags": [
 			"Query run"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }

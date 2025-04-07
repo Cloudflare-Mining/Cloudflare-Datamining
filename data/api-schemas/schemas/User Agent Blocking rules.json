@@ -12,7 +12,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -157,7 +158,8 @@
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -294,7 +296,8 @@
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -448,7 +451,8 @@
 						{
 							"description": "A string to search for in the description of existing rules.",
 							"example": "abusive",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -461,7 +465,8 @@
 						{
 							"description": "A string to search for in the description of existing rules.",
 							"example": "abusive",
-							"type": "string"
+							"type": "string",
+							"x-auditable": true
 						}
 					]
 				}
@@ -641,7 +646,8 @@
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mode": {
 																"description": "The action to apply to a matched request.",
@@ -657,7 +663,8 @@
 															"paused": {
 																"description": "When true, indicates that the rule is currently paused.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															}
 														}
 													}
@@ -830,7 +837,8 @@
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"mode": {
 																		"description": "The action to apply to a matched request.",
@@ -846,7 +854,8 @@
 																	"paused": {
 																		"description": "When true, indicates that the rule is currently paused.",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -985,7 +994,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1447,7 +1457,8 @@
 											"value": {
 												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 												"example": "US",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"title": "A country configuration."
@@ -1465,7 +1476,8 @@
 									"managed_challenge"
 								],
 								"example": "challenge",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1831,7 +1843,8 @@
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1935,7 +1948,8 @@
 											"value": {
 												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 												"example": "US",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"title": "A country configuration."
@@ -1960,7 +1974,8 @@
 									"managed_challenge"
 								],
 								"example": "challenge",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [

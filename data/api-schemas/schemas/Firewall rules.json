@@ -4336,7 +4336,8 @@
 													"managed_challenge"
 												],
 												"example": "challenge",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"response": {
 												"anyOf": [
@@ -4352,7 +4353,8 @@
 																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																"example": "text/xml",
 																"maxLength": 50,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -4366,7 +4368,8 @@
 												"example": 86400,
 												"maximum": 86400,
 												"minimum": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -5869,7 +5872,8 @@
 													"managed_challenge"
 												],
 												"example": "challenge",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"response": {
 												"anyOf": [
@@ -5885,7 +5889,8 @@
 																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																"example": "text/xml",
 																"maxLength": 50,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -5899,7 +5904,8 @@
 												"example": 86400,
 												"maximum": 86400,
 												"minimum": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"type": "object"

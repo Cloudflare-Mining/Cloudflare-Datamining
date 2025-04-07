@@ -159,7 +159,8 @@
 																						"managed_challenge"
 																					],
 																					"example": "challenge",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"response": {
 																					"anyOf": [
@@ -175,7 +176,8 @@
 																									"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																									"example": "text/xml",
 																									"maxLength": 50,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -189,7 +191,8 @@
 																					"example": 86400,
 																					"maximum": 86400,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -223,19 +226,22 @@
 																	"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																	"example": "Prevent multiple login failures to mitigate brute force attacks",
 																	"maxLength": 1024,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"disabled": {
 																	"description": "When true, indicates that the rate limit is currently disabled.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The unique identifier of the rate limit.",
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"match": {
 																	"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -248,7 +254,8 @@
 																							"name": {
 																								"description": "The name of the response header to match.",
 																								"example": "Cf-Cache-Status",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"op": {
 																								"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -257,12 +264,14 @@
 																									"ne"
 																								],
 																								"example": "ne",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"value": {
 																								"description": "The value of the response header, which must match exactly.",
 																								"example": "HIT",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -289,7 +298,8 @@
 																									"_ALL_"
 																								],
 																								"example": "GET",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": "array"
 																						},
@@ -304,13 +314,15 @@
 																								"example": "HTTPS",
 																								"type": "string"
 																							},
-																							"type": "array"
+																							"type": "array",
+																							"x-auditable": true
 																						},
 																						"url": {
 																							"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																							"example": "*.example.org/path*",
 																							"maxLength": 1024,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -319,7 +331,8 @@
 																					"properties": {
 																						"origin_traffic": {
 																							"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -335,13 +348,15 @@
 																	"example": 900,
 																	"maximum": 86400,
 																	"minimum": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"threshold": {
 																	"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																	"example": 60,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -362,7 +377,8 @@
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -500,7 +516,8 @@
 																								"managed_challenge"
 																							],
 																							"example": "challenge",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"response": {
 																							"anyOf": [
@@ -516,7 +533,8 @@
 																											"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																											"example": "text/xml",
 																											"maxLength": 50,
-																											"type": "string"
+																											"type": "string",
+																											"x-auditable": true
 																										}
 																									},
 																									"type": "object"
@@ -530,7 +548,8 @@
 																							"example": 86400,
 																							"maximum": 86400,
 																							"minimum": 1,
-																							"type": "number"
+																							"type": "number",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -564,19 +583,22 @@
 																			"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																			"example": "Prevent multiple login failures to mitigate brute force attacks",
 																			"maxLength": 1024,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"disabled": {
 																			"description": "When true, indicates that the rate limit is currently disabled.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "The unique identifier of the rate limit.",
 																			"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"match": {
 																			"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -589,7 +611,8 @@
 																									"name": {
 																										"description": "The name of the response header to match.",
 																										"example": "Cf-Cache-Status",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"op": {
 																										"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -598,12 +621,14 @@
 																											"ne"
 																										],
 																										"example": "ne",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"value": {
 																										"description": "The value of the response header, which must match exactly.",
 																										"example": "HIT",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -630,7 +655,8 @@
 																											"_ALL_"
 																										],
 																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"type": "array"
 																								},
@@ -645,13 +671,15 @@
 																										"example": "HTTPS",
 																										"type": "string"
 																									},
-																									"type": "array"
+																									"type": "array",
+																									"x-auditable": true
 																								},
 																								"url": {
 																									"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																									"example": "*.example.org/path*",
 																									"maxLength": 1024,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -660,7 +688,8 @@
 																							"properties": {
 																								"origin_traffic": {
 																									"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																									"type": "boolean"
+																									"type": "boolean",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -676,13 +705,15 @@
 																			"example": 900,
 																			"maximum": 86400,
 																			"minimum": 10,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"threshold": {
 																			"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																			"example": 60,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -703,7 +734,8 @@
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													}
 												}
@@ -1003,7 +1035,8 @@
 																					"managed_challenge"
 																				],
 																				"example": "challenge",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"response": {
 																				"anyOf": [
@@ -1019,7 +1052,8 @@
 																								"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																								"example": "text/xml",
 																								"maxLength": 50,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1033,7 +1067,8 @@
 																				"example": 86400,
 																				"maximum": 86400,
 																				"minimum": 1,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1067,19 +1102,22 @@
 																"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																"example": "Prevent multiple login failures to mitigate brute force attacks",
 																"maxLength": 1024,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"disabled": {
 																"description": "When true, indicates that the rate limit is currently disabled.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "The unique identifier of the rate limit.",
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"match": {
 																"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -1092,7 +1130,8 @@
 																						"name": {
 																							"description": "The name of the response header to match.",
 																							"example": "Cf-Cache-Status",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"op": {
 																							"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -1101,12 +1140,14 @@
 																								"ne"
 																							],
 																							"example": "ne",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"value": {
 																							"description": "The value of the response header, which must match exactly.",
 																							"example": "HIT",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1133,7 +1174,8 @@
 																								"_ALL_"
 																							],
 																							"example": "GET",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"type": "array"
 																					},
@@ -1148,13 +1190,15 @@
 																							"example": "HTTPS",
 																							"type": "string"
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"x-auditable": true
 																					},
 																					"url": {
 																						"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																						"example": "*.example.org/path*",
 																						"maxLength": 1024,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -1163,7 +1207,8 @@
 																				"properties": {
 																					"origin_traffic": {
 																						"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																						"type": "boolean"
+																						"type": "boolean",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -1179,13 +1224,15 @@
 																"example": 900,
 																"maximum": 86400,
 																"minimum": 10,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"threshold": {
 																"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																"example": 60,
 																"minimum": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														}
 													}
@@ -1345,7 +1392,8 @@
 																							"managed_challenge"
 																						],
 																						"example": "challenge",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"response": {
 																						"anyOf": [
@@ -1361,7 +1409,8 @@
 																										"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																										"example": "text/xml",
 																										"maxLength": 50,
-																										"type": "string"
+																										"type": "string",
+																										"x-auditable": true
 																									}
 																								},
 																								"type": "object"
@@ -1375,7 +1424,8 @@
 																						"example": 86400,
 																						"maximum": 86400,
 																						"minimum": 1,
-																						"type": "number"
+																						"type": "number",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -1409,19 +1459,22 @@
 																		"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																		"example": "Prevent multiple login failures to mitigate brute force attacks",
 																		"maxLength": 1024,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"disabled": {
 																		"description": "When true, indicates that the rate limit is currently disabled.",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "The unique identifier of the rate limit.",
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"match": {
 																		"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -1434,7 +1487,8 @@
 																								"name": {
 																									"description": "The name of the response header to match.",
 																									"example": "Cf-Cache-Status",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"op": {
 																									"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -1443,12 +1497,14 @@
 																										"ne"
 																									],
 																									"example": "ne",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"value": {
 																									"description": "The value of the response header, which must match exactly.",
 																									"example": "HIT",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -1475,7 +1531,8 @@
 																										"_ALL_"
 																									],
 																									"example": "GET",
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								},
 																								"type": "array"
 																							},
@@ -1490,13 +1547,15 @@
 																									"example": "HTTPS",
 																									"type": "string"
 																								},
-																								"type": "array"
+																								"type": "array",
+																								"x-auditable": true
 																							},
 																							"url": {
 																								"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																								"example": "*.example.org/path*",
 																								"maxLength": 1024,
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1505,7 +1564,8 @@
 																						"properties": {
 																							"origin_traffic": {
 																								"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																								"type": "boolean"
+																								"type": "boolean",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -1521,13 +1581,15 @@
 																		"example": 900,
 																		"maximum": 86400,
 																		"minimum": 10,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"threshold": {
 																		"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																		"example": 60,
 																		"minimum": 1,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -1805,7 +1867,8 @@
 																				"managed_challenge"
 																			],
 																			"example": "challenge",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"response": {
 																			"anyOf": [
@@ -1821,7 +1884,8 @@
 																							"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																							"example": "text/xml",
 																							"maxLength": 50,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -1835,7 +1899,8 @@
 																			"example": 86400,
 																			"maximum": 86400,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1869,19 +1934,22 @@
 															"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 															"example": "Prevent multiple login failures to mitigate brute force attacks",
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"disabled": {
 															"description": "When true, indicates that the rate limit is currently disabled.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier of the rate limit.",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"match": {
 															"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -1894,7 +1962,8 @@
 																					"name": {
 																						"description": "The name of the response header to match.",
 																						"example": "Cf-Cache-Status",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"op": {
 																						"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -1903,12 +1972,14 @@
 																							"ne"
 																						],
 																						"example": "ne",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value of the response header, which must match exactly.",
 																						"example": "HIT",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -1935,7 +2006,8 @@
 																							"_ALL_"
 																						],
 																						"example": "GET",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				},
@@ -1950,13 +2022,15 @@
 																						"example": "HTTPS",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"type": "array",
+																					"x-auditable": true
 																				},
 																				"url": {
 																					"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																					"example": "*.example.org/path*",
 																					"maxLength": 1024,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1965,7 +2039,8 @@
 																			"properties": {
 																				"origin_traffic": {
 																					"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1981,13 +2056,15 @@
 															"example": 900,
 															"maximum": 86400,
 															"minimum": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"threshold": {
 															"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 															"example": 60,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													}
 												}
@@ -2126,7 +2203,8 @@
 																						"managed_challenge"
 																					],
 																					"example": "challenge",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"response": {
 																					"anyOf": [
@@ -2142,7 +2220,8 @@
 																									"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																									"example": "text/xml",
 																									"maxLength": 50,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -2156,7 +2235,8 @@
 																					"example": 86400,
 																					"maximum": 86400,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2190,19 +2270,22 @@
 																	"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																	"example": "Prevent multiple login failures to mitigate brute force attacks",
 																	"maxLength": 1024,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"disabled": {
 																	"description": "When true, indicates that the rate limit is currently disabled.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The unique identifier of the rate limit.",
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"match": {
 																	"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -2215,7 +2298,8 @@
 																							"name": {
 																								"description": "The name of the response header to match.",
 																								"example": "Cf-Cache-Status",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"op": {
 																								"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -2224,12 +2308,14 @@
 																									"ne"
 																								],
 																								"example": "ne",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"value": {
 																								"description": "The value of the response header, which must match exactly.",
 																								"example": "HIT",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -2256,7 +2342,8 @@
 																									"_ALL_"
 																								],
 																								"example": "GET",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": "array"
 																						},
@@ -2271,13 +2358,15 @@
 																								"example": "HTTPS",
 																								"type": "string"
 																							},
-																							"type": "array"
+																							"type": "array",
+																							"x-auditable": true
 																						},
 																						"url": {
 																							"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																							"example": "*.example.org/path*",
 																							"maxLength": 1024,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -2286,7 +2375,8 @@
 																					"properties": {
 																						"origin_traffic": {
 																							"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -2302,13 +2392,15 @@
 																	"example": 900,
 																	"maximum": 86400,
 																	"minimum": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"threshold": {
 																	"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																	"example": 60,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -2469,7 +2561,8 @@
 													"managed_challenge"
 												],
 												"example": "challenge",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"response": {
 												"anyOf": [
@@ -2485,7 +2578,8 @@
 																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																"example": "text/xml",
 																"maxLength": 50,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -2499,7 +2593,8 @@
 												"example": 86400,
 												"maximum": 86400,
 												"minimum": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -2519,7 +2614,8 @@
 														"name": {
 															"description": "The name of the response header to match.",
 															"example": "Cf-Cache-Status",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"op": {
 															"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -2528,12 +2624,14 @@
 																"ne"
 															],
 															"example": "ne",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the response header, which must match exactly.",
 															"example": "HIT",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2560,7 +2658,8 @@
 																"_ALL_"
 															],
 															"example": "GET",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -2575,13 +2674,15 @@
 															"example": "HTTPS",
 															"type": "string"
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"url": {
 														"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 														"example": "*.example.org/path*",
 														"maxLength": 1024,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2590,7 +2691,8 @@
 												"properties": {
 													"origin_traffic": {
 														"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -2606,13 +2708,15 @@
 								"example": 900,
 								"maximum": 86400,
 								"minimum": 10,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"threshold": {
 								"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 								"example": 60,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2749,7 +2853,8 @@
 																				"managed_challenge"
 																			],
 																			"example": "challenge",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"response": {
 																			"anyOf": [
@@ -2765,7 +2870,8 @@
 																							"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																							"example": "text/xml",
 																							"maxLength": 50,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -2779,7 +2885,8 @@
 																			"example": 86400,
 																			"maximum": 86400,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2813,19 +2920,22 @@
 															"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 															"example": "Prevent multiple login failures to mitigate brute force attacks",
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"disabled": {
 															"description": "When true, indicates that the rate limit is currently disabled.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier of the rate limit.",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"match": {
 															"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -2838,7 +2948,8 @@
 																					"name": {
 																						"description": "The name of the response header to match.",
 																						"example": "Cf-Cache-Status",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"op": {
 																						"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -2847,12 +2958,14 @@
 																							"ne"
 																						],
 																						"example": "ne",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value of the response header, which must match exactly.",
 																						"example": "HIT",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -2879,7 +2992,8 @@
 																							"_ALL_"
 																						],
 																						"example": "GET",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				},
@@ -2894,13 +3008,15 @@
 																						"example": "HTTPS",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"type": "array",
+																					"x-auditable": true
 																				},
 																				"url": {
 																					"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																					"example": "*.example.org/path*",
 																					"maxLength": 1024,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2909,7 +3025,8 @@
 																			"properties": {
 																				"origin_traffic": {
 																					"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -2925,13 +3042,15 @@
 															"example": 900,
 															"maximum": 86400,
 															"minimum": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"threshold": {
 															"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 															"example": 60,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													}
 												}
@@ -3070,7 +3189,8 @@
 																						"managed_challenge"
 																					],
 																					"example": "challenge",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"response": {
 																					"anyOf": [
@@ -3086,7 +3206,8 @@
 																									"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																									"example": "text/xml",
 																									"maxLength": 50,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -3100,7 +3221,8 @@
 																					"example": 86400,
 																					"maximum": 86400,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3134,19 +3256,22 @@
 																	"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																	"example": "Prevent multiple login failures to mitigate brute force attacks",
 																	"maxLength": 1024,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"disabled": {
 																	"description": "When true, indicates that the rate limit is currently disabled.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The unique identifier of the rate limit.",
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"match": {
 																	"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -3159,7 +3284,8 @@
 																							"name": {
 																								"description": "The name of the response header to match.",
 																								"example": "Cf-Cache-Status",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"op": {
 																								"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -3168,12 +3294,14 @@
 																									"ne"
 																								],
 																								"example": "ne",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"value": {
 																								"description": "The value of the response header, which must match exactly.",
 																								"example": "HIT",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -3200,7 +3328,8 @@
 																									"_ALL_"
 																								],
 																								"example": "GET",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": "array"
 																						},
@@ -3215,13 +3344,15 @@
 																								"example": "HTTPS",
 																								"type": "string"
 																							},
-																							"type": "array"
+																							"type": "array",
+																							"x-auditable": true
 																						},
 																						"url": {
 																							"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																							"example": "*.example.org/path*",
 																							"maxLength": 1024,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3230,7 +3361,8 @@
 																					"properties": {
 																						"origin_traffic": {
 																							"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3246,13 +3378,15 @@
 																	"example": 900,
 																	"maximum": 86400,
 																	"minimum": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"threshold": {
 																	"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																	"example": 60,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -3424,7 +3558,8 @@
 													"managed_challenge"
 												],
 												"example": "challenge",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"response": {
 												"anyOf": [
@@ -3440,7 +3575,8 @@
 																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																"example": "text/xml",
 																"maxLength": 50,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -3454,7 +3590,8 @@
 												"example": 86400,
 												"maximum": 86400,
 												"minimum": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -3474,7 +3611,8 @@
 														"name": {
 															"description": "The name of the response header to match.",
 															"example": "Cf-Cache-Status",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"op": {
 															"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -3483,12 +3621,14 @@
 																"ne"
 															],
 															"example": "ne",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"value": {
 															"description": "The value of the response header, which must match exactly.",
 															"example": "HIT",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3515,7 +3655,8 @@
 																"_ALL_"
 															],
 															"example": "GET",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"type": "array"
 													},
@@ -3530,13 +3671,15 @@
 															"example": "HTTPS",
 															"type": "string"
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"url": {
 														"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 														"example": "*.example.org/path*",
 														"maxLength": 1024,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -3545,7 +3688,8 @@
 												"properties": {
 													"origin_traffic": {
 														"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -3561,13 +3705,15 @@
 								"example": 900,
 								"maximum": 86400,
 								"minimum": 10,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"threshold": {
 								"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 								"example": 60,
 								"minimum": 1,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3705,7 +3851,8 @@
 																				"managed_challenge"
 																			],
 																			"example": "challenge",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"response": {
 																			"anyOf": [
@@ -3721,7 +3868,8 @@
 																							"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																							"example": "text/xml",
 																							"maxLength": 50,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -3735,7 +3883,8 @@
 																			"example": 86400,
 																			"maximum": 86400,
 																			"minimum": 1,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3769,19 +3918,22 @@
 															"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 															"example": "Prevent multiple login failures to mitigate brute force attacks",
 															"maxLength": 1024,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"disabled": {
 															"description": "When true, indicates that the rate limit is currently disabled.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "The unique identifier of the rate limit.",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"match": {
 															"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -3794,7 +3946,8 @@
 																					"name": {
 																						"description": "The name of the response header to match.",
 																						"example": "Cf-Cache-Status",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"op": {
 																						"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -3803,12 +3956,14 @@
 																							"ne"
 																						],
 																						"example": "ne",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"value": {
 																						"description": "The value of the response header, which must match exactly.",
 																						"example": "HIT",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
@@ -3835,7 +3990,8 @@
 																							"_ALL_"
 																						],
 																						"example": "GET",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					"type": "array"
 																				},
@@ -3850,13 +4006,15 @@
 																						"example": "HTTPS",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"type": "array",
+																					"x-auditable": true
 																				},
 																				"url": {
 																					"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																					"example": "*.example.org/path*",
 																					"maxLength": 1024,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3865,7 +4023,8 @@
 																			"properties": {
 																				"origin_traffic": {
 																					"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																					"type": "boolean"
+																					"type": "boolean",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -3881,13 +4040,15 @@
 															"example": 900,
 															"maximum": 86400,
 															"minimum": 10,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"threshold": {
 															"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 															"example": 60,
 															"minimum": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													}
 												}
@@ -4026,7 +4187,8 @@
 																						"managed_challenge"
 																					],
 																					"example": "challenge",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"response": {
 																					"anyOf": [
@@ -4042,7 +4204,8 @@
 																									"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																									"example": "text/xml",
 																									"maxLength": 50,
-																									"type": "string"
+																									"type": "string",
+																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
@@ -4056,7 +4219,8 @@
 																					"example": 86400,
 																					"maximum": 86400,
 																					"minimum": 1,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -4090,19 +4254,22 @@
 																	"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																	"example": "Prevent multiple login failures to mitigate brute force attacks",
 																	"maxLength": 1024,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"disabled": {
 																	"description": "When true, indicates that the rate limit is currently disabled.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The unique identifier of the rate limit.",
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"match": {
 																	"description": "Determines which traffic the rate limit counts towards the threshold.",
@@ -4115,7 +4282,8 @@
 																							"name": {
 																								"description": "The name of the response header to match.",
 																								"example": "Cf-Cache-Status",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"op": {
 																								"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
@@ -4124,12 +4292,14 @@
 																									"ne"
 																								],
 																								"example": "ne",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"value": {
 																								"description": "The value of the response header, which must match exactly.",
 																								"example": "HIT",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							}
 																						},
 																						"type": "object"
@@ -4156,7 +4326,8 @@
 																									"_ALL_"
 																								],
 																								"example": "GET",
-																								"type": "string"
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"type": "array"
 																						},
@@ -4171,13 +4342,15 @@
 																								"example": "HTTPS",
 																								"type": "string"
 																							},
-																							"type": "array"
+																							"type": "array",
+																							"x-auditable": true
 																						},
 																						"url": {
 																							"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																							"example": "*.example.org/path*",
 																							"maxLength": 1024,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -4186,7 +4359,8 @@
 																					"properties": {
 																						"origin_traffic": {
 																							"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-																							"type": "boolean"
+																							"type": "boolean",
+																							"x-auditable": true
 																						}
 																					},
 																					"type": "object"
@@ -4202,13 +4376,15 @@
 																	"example": 900,
 																	"maximum": 86400,
 																	"minimum": 10,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"threshold": {
 																	"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																	"example": 60,
 																	"minimum": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															}
 														}

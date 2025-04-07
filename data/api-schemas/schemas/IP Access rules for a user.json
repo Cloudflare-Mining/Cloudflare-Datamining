@@ -132,7 +132,8 @@
 													"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -257,7 +258,8 @@
 															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -394,7 +396,8 @@
 						"managed_challenge"
 					],
 					"example": "challenge",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -633,7 +636,8 @@
 																"managed_challenge"
 															],
 															"example": "challenge",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"readOnly": true,
 														"type": "array"
@@ -721,7 +725,8 @@
 																	"value": {
 																		"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																		"example": "US",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"title": "A country configuration."
@@ -741,7 +746,8 @@
 														"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"mode": {
 														"description": "The action to apply to a matched request.",
@@ -753,7 +759,8 @@
 															"managed_challenge"
 														],
 														"example": "challenge",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "The timestamp of when the rule was last modified.",
@@ -765,7 +772,8 @@
 													"notes": {
 														"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 														"example": "This rule is enabled because of an event that occurred on date X.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -931,7 +939,8 @@
 																		"managed_challenge"
 																	],
 																	"example": "challenge",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"readOnly": true,
 																"type": "array"
@@ -1019,7 +1028,8 @@
 																			"value": {
 																				"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																				"example": "US",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"title": "A country configuration."
@@ -1039,7 +1049,8 @@
 																"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mode": {
 																"description": "The action to apply to a matched request.",
@@ -1051,7 +1062,8 @@
 																	"managed_challenge"
 																],
 																"example": "challenge",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The timestamp of when the rule was last modified.",
@@ -1063,7 +1075,8 @@
 															"notes": {
 																"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 																"example": "This rule is enabled because of an event that occurred on date X.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1223,12 +1236,14 @@
 									"managed_challenge"
 								],
 								"example": "challenge",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"notes": {
 								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 								"example": "This rule is enabled because of an event that occurred on date X.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						}
 					}
@@ -1361,7 +1376,8 @@
 															"managed_challenge"
 														],
 														"example": "challenge",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readOnly": true,
 													"type": "array"
@@ -1449,7 +1465,8 @@
 																"value": {
 																	"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"title": "A country configuration."
@@ -1469,7 +1486,8 @@
 													"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "The action to apply to a matched request.",
@@ -1481,7 +1499,8 @@
 														"managed_challenge"
 													],
 													"example": "challenge",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1493,7 +1512,8 @@
 												"notes": {
 													"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 													"example": "This rule is enabled because of an event that occurred on date X.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1638,7 +1658,8 @@
 																	"managed_challenge"
 																],
 																"example": "challenge",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"readOnly": true,
 															"type": "array"
@@ -1726,7 +1747,8 @@
 																		"value": {
 																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																			"example": "US",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "A country configuration."
@@ -1746,7 +1768,8 @@
 															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"mode": {
 															"description": "The action to apply to a matched request.",
@@ -1758,7 +1781,8 @@
 																"managed_challenge"
 															],
 															"example": "challenge",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
@@ -1770,7 +1794,8 @@
 														"notes": {
 															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 															"example": "This rule is enabled because of an event that occurred on date X.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1987,7 +2012,8 @@
 											"value": {
 												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 												"example": "US",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"title": "A country configuration."
@@ -2005,12 +2031,14 @@
 									"managed_challenge"
 								],
 								"example": "challenge",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"notes": {
 								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 								"example": "This rule is enabled because of an event that occurred on date X.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2147,7 +2175,8 @@
 															"managed_challenge"
 														],
 														"example": "challenge",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"readOnly": true,
 													"type": "array"
@@ -2235,7 +2264,8 @@
 																"value": {
 																	"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"title": "A country configuration."
@@ -2255,7 +2285,8 @@
 													"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"mode": {
 													"description": "The action to apply to a matched request.",
@@ -2267,7 +2298,8 @@
 														"managed_challenge"
 													],
 													"example": "challenge",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -2279,7 +2311,8 @@
 												"notes": {
 													"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 													"example": "This rule is enabled because of an event that occurred on date X.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2424,7 +2457,8 @@
 																	"managed_challenge"
 																],
 																"example": "challenge",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"readOnly": true,
 															"type": "array"
@@ -2512,7 +2546,8 @@
 																		"value": {
 																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																			"example": "US",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"title": "A country configuration."
@@ -2532,7 +2567,8 @@
 															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"mode": {
 															"description": "The action to apply to a matched request.",
@@ -2544,7 +2580,8 @@
 																"managed_challenge"
 															],
 															"example": "challenge",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
@@ -2556,7 +2593,8 @@
 														"notes": {
 															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 															"example": "This rule is enabled because of an event that occurred on date X.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [

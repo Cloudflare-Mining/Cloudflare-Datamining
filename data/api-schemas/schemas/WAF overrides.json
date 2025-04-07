@@ -13,7 +13,8 @@
 					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -48,7 +49,8 @@
 											"example": "de677e5818985db1285d0e80225f06e5",
 											"maxLength": 32,
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									}
 								}
@@ -73,7 +75,8 @@
 													"example": "de677e5818985db1285d0e80225f06e5",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											}
 										}
@@ -362,7 +365,8 @@
 																"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 																"maxLength": 1024,
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"groups": {
 																"additionalProperties": true,
@@ -377,18 +381,21 @@
 																"example": "de677e5818985db1285d0e80225f06e5",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"paused": {
 																"description": "When true, indicates that the WAF package is currently paused.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"priority": {
 																"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 																"example": 1,
 																"maximum": 1000000000,
 																"minimum": -1000000000,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rewrite_action": {
 																"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -401,7 +408,8 @@
 																			"simulate",
 																			"disable",
 																			"default"
-																		]
+																		],
+																		"x-auditable": true
 																	},
 																	"challenge": {
 																		"description": "The WAF rule action to apply.",
@@ -411,7 +419,8 @@
 																			"simulate",
 																			"disable",
 																			"default"
-																		]
+																		],
+																		"x-auditable": true
 																	},
 																	"default": {
 																		"description": "The WAF rule action to apply.",
@@ -421,7 +430,8 @@
 																			"simulate",
 																			"disable",
 																			"default"
-																		]
+																		],
+																		"x-auditable": true
 																	},
 																	"disable": {
 																		"description": "The WAF rule action to apply.",
@@ -431,7 +441,8 @@
 																			"simulate",
 																			"disable",
 																			"default"
-																		]
+																		],
+																		"x-auditable": true
 																	},
 																	"simulate": {
 																		"description": "The WAF rule action to apply.",
@@ -441,7 +452,8 @@
 																			"simulate",
 																			"disable",
 																			"default"
-																		]
+																		],
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -472,7 +484,8 @@
 																"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 																"items": {
 																	"example": "shop.example.com/*",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															}
@@ -636,7 +649,8 @@
 																		"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 																		"maxLength": 1024,
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"groups": {
 																		"additionalProperties": true,
@@ -651,18 +665,21 @@
 																		"example": "de677e5818985db1285d0e80225f06e5",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"paused": {
 																		"description": "When true, indicates that the WAF package is currently paused.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 																		"example": 1,
 																		"maximum": 1000000000,
 																		"minimum": -1000000000,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"rewrite_action": {
 																		"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -675,7 +692,8 @@
 																					"simulate",
 																					"disable",
 																					"default"
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"challenge": {
 																				"description": "The WAF rule action to apply.",
@@ -685,7 +703,8 @@
 																					"simulate",
 																					"disable",
 																					"default"
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"default": {
 																				"description": "The WAF rule action to apply.",
@@ -695,7 +714,8 @@
 																					"simulate",
 																					"disable",
 																					"default"
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"disable": {
 																				"description": "The WAF rule action to apply.",
@@ -705,7 +725,8 @@
 																					"simulate",
 																					"disable",
 																					"default"
-																				]
+																				],
+																				"x-auditable": true
 																			},
 																			"simulate": {
 																				"description": "The WAF rule action to apply.",
@@ -715,7 +736,8 @@
 																					"simulate",
 																					"disable",
 																					"default"
-																				]
+																				],
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -746,7 +768,8 @@
 																		"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 																		"items": {
 																			"example": "shop.example.com/*",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -899,7 +922,8 @@
 					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1026,7 +1050,8 @@
 													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 													"maxLength": 1024,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"groups": {
 													"additionalProperties": true,
@@ -1041,18 +1066,21 @@
 													"example": "de677e5818985db1285d0e80225f06e5",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the WAF package is currently paused.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"priority": {
 													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 													"example": 1,
 													"maximum": 1000000000,
 													"minimum": -1000000000,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"rewrite_action": {
 													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -1065,7 +1093,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"challenge": {
 															"description": "The WAF rule action to apply.",
@@ -1075,7 +1104,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"default": {
 															"description": "The WAF rule action to apply.",
@@ -1085,7 +1115,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -1095,7 +1126,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"simulate": {
 															"description": "The WAF rule action to apply.",
@@ -1105,7 +1137,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1136,7 +1169,8 @@
 													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 													"items": {
 														"example": "shop.example.com/*",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -1266,7 +1300,8 @@
 															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"groups": {
 															"additionalProperties": true,
@@ -1281,18 +1316,21 @@
 															"example": "de677e5818985db1285d0e80225f06e5",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the WAF package is currently paused.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 															"example": 1,
 															"maximum": 1000000000,
 															"minimum": -1000000000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"rewrite_action": {
 															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -1305,7 +1343,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"challenge": {
 																	"description": "The WAF rule action to apply.",
@@ -1315,7 +1354,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"default": {
 																	"description": "The WAF rule action to apply.",
@@ -1325,7 +1365,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -1335,7 +1376,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"simulate": {
 																	"description": "The WAF rule action to apply.",
@@ -1345,7 +1387,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1376,7 +1419,8 @@
 															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 															"items": {
 																"example": "shop.example.com/*",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
@@ -1529,7 +1573,8 @@
 								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 								"items": {
 									"example": "shop.example.com/*",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1654,7 +1699,8 @@
 													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 													"maxLength": 1024,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"groups": {
 													"additionalProperties": true,
@@ -1669,18 +1715,21 @@
 													"example": "de677e5818985db1285d0e80225f06e5",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the WAF package is currently paused.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"priority": {
 													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 													"example": 1,
 													"maximum": 1000000000,
 													"minimum": -1000000000,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"rewrite_action": {
 													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -1693,7 +1742,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"challenge": {
 															"description": "The WAF rule action to apply.",
@@ -1703,7 +1753,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"default": {
 															"description": "The WAF rule action to apply.",
@@ -1713,7 +1764,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -1723,7 +1775,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"simulate": {
 															"description": "The WAF rule action to apply.",
@@ -1733,7 +1786,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1764,7 +1818,8 @@
 													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 													"items": {
 														"example": "shop.example.com/*",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -1894,7 +1949,8 @@
 															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"groups": {
 															"additionalProperties": true,
@@ -1909,18 +1965,21 @@
 															"example": "de677e5818985db1285d0e80225f06e5",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the WAF package is currently paused.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 															"example": 1,
 															"maximum": 1000000000,
 															"minimum": -1000000000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"rewrite_action": {
 															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -1933,7 +1992,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"challenge": {
 																	"description": "The WAF rule action to apply.",
@@ -1943,7 +2003,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"default": {
 																	"description": "The WAF rule action to apply.",
@@ -1953,7 +2014,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -1963,7 +2025,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"simulate": {
 																	"description": "The WAF rule action to apply.",
@@ -1973,7 +2036,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2004,7 +2068,8 @@
 															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 															"items": {
 																"example": "shop.example.com/*",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
@@ -2143,7 +2208,8 @@
 					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2182,7 +2248,8 @@
 											"simulate",
 											"disable",
 											"default"
-										]
+										],
+										"x-auditable": true
 									},
 									"challenge": {
 										"description": "The WAF rule action to apply.",
@@ -2192,7 +2259,8 @@
 											"simulate",
 											"disable",
 											"default"
-										]
+										],
+										"x-auditable": true
 									},
 									"default": {
 										"description": "The WAF rule action to apply.",
@@ -2202,7 +2270,8 @@
 											"simulate",
 											"disable",
 											"default"
-										]
+										],
+										"x-auditable": true
 									},
 									"disable": {
 										"description": "The WAF rule action to apply.",
@@ -2212,7 +2281,8 @@
 											"simulate",
 											"disable",
 											"default"
-										]
+										],
+										"x-auditable": true
 									},
 									"simulate": {
 										"description": "The WAF rule action to apply.",
@@ -2222,7 +2292,8 @@
 											"simulate",
 											"disable",
 											"default"
-										]
+										],
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2253,7 +2324,8 @@
 								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 								"items": {
 									"example": "shop.example.com/*",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -2381,7 +2453,8 @@
 													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 													"maxLength": 1024,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"groups": {
 													"additionalProperties": true,
@@ -2396,18 +2469,21 @@
 													"example": "de677e5818985db1285d0e80225f06e5",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the WAF package is currently paused.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"priority": {
 													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 													"example": 1,
 													"maximum": 1000000000,
 													"minimum": -1000000000,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"rewrite_action": {
 													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -2420,7 +2496,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"challenge": {
 															"description": "The WAF rule action to apply.",
@@ -2430,7 +2507,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"default": {
 															"description": "The WAF rule action to apply.",
@@ -2440,7 +2518,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -2450,7 +2529,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														},
 														"simulate": {
 															"description": "The WAF rule action to apply.",
@@ -2460,7 +2540,8 @@
 																"simulate",
 																"disable",
 																"default"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2491,7 +2572,8 @@
 													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 													"items": {
 														"example": "shop.example.com/*",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												}
@@ -2621,7 +2703,8 @@
 															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 															"maxLength": 1024,
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"groups": {
 															"additionalProperties": true,
@@ -2636,18 +2719,21 @@
 															"example": "de677e5818985db1285d0e80225f06e5",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the WAF package is currently paused.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"priority": {
 															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 															"example": 1,
 															"maximum": 1000000000,
 															"minimum": -1000000000,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"rewrite_action": {
 															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
@@ -2660,7 +2746,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"challenge": {
 																	"description": "The WAF rule action to apply.",
@@ -2670,7 +2757,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"default": {
 																	"description": "The WAF rule action to apply.",
@@ -2680,7 +2768,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -2690,7 +2779,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"simulate": {
 																	"description": "The WAF rule action to apply.",
@@ -2700,7 +2790,8 @@
 																		"simulate",
 																		"disable",
 																		"default"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2731,7 +2822,8 @@
 															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 															"items": {
 																"example": "shop.example.com/*",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": "array"
 														}
