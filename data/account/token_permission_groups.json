@@ -1984,6 +1984,30 @@
 		]
 	},
 	{
+		"id": "66c1ed49f4ed46098b75696a6d4ee3c9",
+		"name": "Workers Observability Read",
+		"description": "Grants read access to Cloudflare Workers Observability",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "29c629fb7b5e4c408ca0f7b545724fcc",
+		"name": "Workers Observability Telemetry Write",
+		"description": "Grants write access for Telemetry to Cloudflare Workers Observability",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "82c075da3f4647a2a03becd0fe240f8a",
+		"name": "Workers Observability Write",
+		"description": "Grants read and write access to Cloudflare Workers Observability",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "45db74139a62490b9b60eb7c4f34994b",
 		"name": "Workers R2 Data Catalog Read",
 		"description": "Grants read access to R2 Data Catalog",
