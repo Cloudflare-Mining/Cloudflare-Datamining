@@ -6,15 +6,13 @@
 	</div>
 </div>
 <h4>Available locations:<strong> Lisbon, Portugal</strong></h4>
-<h4>About the department</h4>
-<p>The Threat Intelligence team is responsible for helping teams build security intelligence into their products and delivering new, innovative products to our customers. The team fuses threat intelligence from a swath of external sources with intelligence mined from Cloudflare's world class data to provide threat intelligence used across a number of Cloudflare products. The team's core disciplines are data engineering, data science, devops, and security. We use data science and machine learning to process large volumes of data and build intelligence into Cloudflare's products.<br><br>Intel team consumes approximately 35 different threat data feeds, runs 5 different machine learning models, and has data integrated into six different products in the Cloudflare portfolio.&nbsp;</p>
-<h4>What you'll do</h4>
-<p>Initially this is a very tactical role, focused on supporting Intel Team's day-to-day operations.</p>
-<h4 id="Role:SecurityResearcher&amp;AnalystCloudflareOneAnalystTeam-KeyResponsibilities">Key Responsibilities include;</h4>
+<h3 id="Role:SecurityResearcher&amp;AnalystEmailThreats-Overview">Overview</h3>
+<p>Our research an analyst team will be focused on email threats that are directed at customers protected by the Cloudflare Email Security products. New email threats are constantly emerging as phishing remains the number one source of breaches. Evaluating new threats and the efficacy of our email detections will be part of the day-to-day in this role. This will involve how to stop new and novel techniques by threat actors and ensuring our detections are targeted and highly effective.</p>
+<p>As part of the larger Intel team the role will work to develop new AI and machine learning models to scale the system defenses as well as scale our ability to evaluate customer detection feedback.</p>
+<h3 id="Role:SecurityResearcher&amp;AnalystEmailThreats-KeyResponsibilities">Key Responsibilities</h3>
 <ul>
-	<li>Review domain miscategorizations</li>
-	<li>Maintain Application classifications</li>
-	<li>Review email miscategorizations</li>
+	<li>Experience with email analysis</li>
+	<li>Ability to understand the latest security trends as they relate to email-borne threats</li>
 	<li>Submit IOCs to data pipeline based on external reports</li>
 	<li>Define automations and software requirements for support tooling</li>
 	<li>Define processes and procedures to create 24x7 coverage of miscategorizations</li>
@@ -22,22 +20,13 @@
 	<li>Research observed IoCs and network behavior patterns and label data</li>
 	<li>Work with data scientists to identify security threats and create machine learning models</li>
 	<li>Be a team SME and resource for data scientists building security models and application developers building security products</li>
-	<li>Become a subject matter expert for internal teams consuming Intel team security and categorization data</li>
-	<li>Become the owner for Intel Team's strategy for false positive controls
-		<ul>
-			<li>Learn and understand current processes</li>
-			<li>Identify gaps and risk areas</li>
-			<li>Work the data scientists to test remediation strategies</li>
-			<li>Work the engineering teams to implement remediation strategies</li>
-		</ul>
-	</li>
+	<li>Become a subject matter expert for email threats and categorization data</li>
 	<li>Define and implement metrics for product efficacy
 		<ul>
 			<li>Research and plan potential software, data science or machine learning projects to improve false positive and false negative rates</li>
 			<li>Continually monitor data quality and bring data quality issues and proposed solutions to team leadership</li>
 		</ul>
 	</li>
-	<li>Identify topical areas in cybersecurity where Cloudflare's unique network can be leveraged to improve user security</li>
 	<li>Write blog posts and communicate both internally and externally about Intel Team's work</li>
 	<li>Execute daily operational tasks and define automations to streamline operational tasks</li>
 	<li>Work with team to define technical requirements for security products
@@ -46,9 +35,13 @@
 		</ul>
 	</li>
 </ul>
-<h4 id="Role:SecurityResearcher&amp;AnalystCloudflareOneAnalystTeam-RequiredSkills&amp;Abilities">Required Skills &amp; Abilities</h4>
+<h3 id="Role:SecurityResearcher&amp;AnalystEmailThreats-RequiredSkills&amp;Abilities">Required Skills &amp; Abilities</h3>
 <ul>
-	<li>Scripting in Python and Node/Javascript</li>
+	<li>Experience analyzing, tracking and defending against phishing attacks</li>
+	<li>Familiarity with regular expressions and their practical application in tracking malicious activity</li>
+	<li>Working knowledge of SQL and devising SQL queries</li>
+	<li>Experience with detection development using YARA</li>
+	<li>Working knowledge of email authentication protocols (SPF, DMARC, DKIM), and experience in email header analysis</li>
 	<li>Able to use git to create, edit, and review pull requests</li>
 	<li>Basic front-end or full-stack development skills preferred but not required</li>
 	<li>Knowledge of and passion for cybersecurity</li>
@@ -63,7 +56,6 @@
 			<li>DNS, HTTP, TCP/IP, TLS, public key encryption</li>
 		</ul>
 	</li>
-	<li>Ability to reliably execute several hours a day of operational support tasks</li>
 	<li>Ability to communicate to stakeholders and management when priorities change</li>
 </ul>
 <div class="content-conclusion">

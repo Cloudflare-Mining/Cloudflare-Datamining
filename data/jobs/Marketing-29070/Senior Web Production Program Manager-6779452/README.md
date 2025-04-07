@@ -5,37 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location(s): Austin, TX, US</strong></p>
-<p><strong>About The Role</strong></p>
-<p>The Strategic Events Intern, reporting to the team’s Senior Director, will work closely with the various program owners across the organization. This will include planning and administrative duties relating to Cloudflare’s inaugural user conference, our presence at large scale Industry Events, and early support of our Sales Kick-off.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
-<p>This role will have the opportunity to not only work on a variety of projects and programs, but will engage with cross-functional teams that are the Strategic Events Team’s internal partners and stakeholders. You should gain some varied experience via this internship.&nbsp;</p>
-<ul>
-	<li>Cloudflare Connect (inaugural user conference)</li>
-	<ul>
-		<li>Support hotel room block concessions, add/change/delete requests, and employee housing</li>
-		<li>Manage onsite staffing grid to include times, dates, roles, and employee names</li>
-		<li>Track event supplies, materials, other physical resources, and freight planning.&nbsp;</li>
-		<li>Support the event’s marketing communications efforts via editorial calendar maintenance, social media planning and inspration, copy writing, and cross promotional research</li>
-		<li>Maintain growing registration data analytics</li>
-	</ul>
-	<li>Other programs</li>
-	<ul>
-		<li>Support distillation or summarization of future program availability grids&nbsp;</li>
-		<li>Maintain industry event metrics</li>
-	</ul>
-</ul>
-<p><strong>Requirements&nbsp;</strong></p>
-<ul>
-	<li>Strong organizational skills with a bias to detail</li>
-	<li>Communication skills for copy writing and internal emails, chat, and meetings</li>
-	<li>Proficiency with standard office software, g-suite preferred, and the ability to learn new tools quickly</li>
-	<li>Experience in professional hospitality from an event planning perspective (hotel banquets, catering, restaurant private dining, special events or entertainment venue, etc)</li>
-	<ul>
-		<li>OR</li>
-	</ul>
-	<li>Event planning experience for an association or organization with which you are affiliated (University Orientation planning, Greek system, volunteer organization, etc)</li>
-</ul>
+<h3><strong>Available Locations: Bengaluru, India | Lisbon, Portugal | Mexico City, MX</strong></h3>
+<p><strong>About the role</strong></p>
+<p>As the Sr. Web Production Program Manager on the Web Strategy team, you will be responsible for the intake, grooming, prioritization, and delivery of web facing initiatives in an operationally efficient manner for our marketing website. The role is 50% program management and 50% hands-on web production.&nbsp;</p>
+<p>You will act as a key partner to x-functional stakeholders for their web facing needs and help drive those initiatives with a strategic lens in a standardized, timely and operationally efficient manner. This is a highly visible role, which requires a growth mindset, great attention to detail, ability to multi-task, strong communication, and organizational skills.</p>
+<p>The web production team is globally distributed and this role requires close coordination with other team members to ensure on-time, high quality publishing with full QA and governance.</p>
+<p><strong>Primary responsibilities</strong></p>
+<ol>
+	<li>Manage end-to-end content production from intake to delivery for the website</li>
+	<li>Groom web production requests with stakeholders to ensure that requirements are complete and ready for execution</li>
+	<li>Lead discussions with stakeholders on open ended requirements and shepherd towards a strategically aligned, operational efficient solution, which is best for UX and website visitors.</li>
+	<li>Triage and prioritize tickets on a daily basis, use judgement to determine execution priority to ensure delivery of time sensitive requests</li>
+	<li>Project manage large scope web-facing projects to ensure streamlined and timely delivery</li>
+	<li>Personally execute day-to-day as well as high priority content updates in the CMS</li>
+	<li>Ensure proper review / QA before publishing content to the web</li>
+	<li>Proactively and periodically assess the web production workflow and optimize for efficiency and productivity</li>
+	<li>Partner with engineering to drive improvements in the CMS UI to enable faster and error free authoring experience for web producers</li>
+	<li>Partner with localization and growth teams to execute personalization campaigns on regional sites</li>
+	<li>Provide operational reporting for monthly and quarterly leadership reviews</li>
+</ol>
+<p><strong>Experience and requirements</strong></p>
+<ol>
+	<li>6+ years experience in a web production or content management role at a large B2B or B2C enterprise</li>
+	<li>2+ years of experience in project management or web production management preferably on a marketing team</li>
+	<li>2+ years hands-on experience using one or more CMS(s) in a large enterprise environment. Familiarity with Contentful is a plus</li>
+	<li>Experience scaling web production operations and managing resource allocation for optimal delivery</li>
+	<li>Experience managing large ticket queues and efficiently triaging and expediently processing requests, using good business judgement and a long term vision.</li>
+	<li>Solid experience with Jira and kanban / agile methodologies</li>
+	<li>Strong communication, organizational and project management skills with attention to detail</li>
+	<li>Take ownership and feel responsible for the quality of work published to the web, free of bugs, errors and visual defects</li>
+	<li>Comfortable managing competing priorities and multiple communication streams at the same time</li>
+</ol>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
