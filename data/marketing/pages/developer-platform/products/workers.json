@@ -140,7 +140,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Spin up applications in hours not days with no tuning necessary. Code is automatically placed for optimal performance. ",
+								"description": "Deploy to Workers directly from any Git repository and spin up applications in hours not days without additional tooling. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -208,11 +208,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5D5pLfuEt5w6EIo3lZG6G0",
-								"title": "Improve reliability",
+								"title": "Improve performance and reliability",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Gradually deploy code change to improve reliability and catch errors before they impact end users.",
+								"description": "Gradually deploy code to an optimal location automatically to improve performance and reliability.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -312,12 +312,7 @@
 							"title": "Cloudflare Orange Background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
+							"contentfulAsset": null,
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
@@ -641,8 +636,8 @@
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "From fast and light to longer running and more CPU-intensive workloads, deploy and execute code globally.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"learnMoreUrl": "https://workers.cloudflare.com/playground",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
@@ -676,9 +671,9 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Upload and serve HTML, CSS and client-side JS with native support for static files.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"description": "Upload and serve HTML, CSS and client-side JS with native support for static files with React Router, OpenNext, or the Vite plugin.",
+								"learnMoreUrl": "https://developers.cloudflare.com/workers/frameworks/",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
@@ -712,11 +707,11 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Collect, filtersearch, and query Workers logs to troubleshoot and resolve problems faster.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"description": "Collect logs, filter, search, and run queries to understand what's happening across all your Workers.",
+								"learnMoreUrl": "/developer-platform/products/workers-observability",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": false,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
@@ -725,12 +720,7 @@
 									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
-										},
-										"description": "Performance acceleration rocket orange"
-									},
+									"contentfulAsset": null,
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
@@ -1104,20 +1094,6 @@
 														},
 														{
 															"contentTypeId": "feature",
-															"title": "Integrated CI/CD",
-															"description": null,
-															"displayBorder": false,
-															"learnMoreUrl": null,
-															"learnMoreText": null,
-															"streamId": null,
-															"openLinkInNewTab": null,
-															"streamThumbnail": null,
-															"icon": null,
-															"iconAssetFile": null,
-															"imageAssetFile": null
-														},
-														{
-															"contentTypeId": "feature",
 															"title": "Gradually rollout changes",
 															"description": null,
 															"displayBorder": false,
@@ -1436,20 +1412,6 @@
 														{
 															"contentTypeId": "feature",
 															"title": "Preview URLs ",
-															"description": null,
-															"displayBorder": false,
-															"learnMoreUrl": null,
-															"learnMoreText": null,
-															"streamId": null,
-															"openLinkInNewTab": null,
-															"streamThumbnail": null,
-															"icon": null,
-															"iconAssetFile": null,
-															"imageAssetFile": null
-														},
-														{
-															"contentTypeId": "feature",
-															"title": "Integrated CI/CD",
 															"description": null,
 															"displayBorder": false,
 															"learnMoreUrl": null,
@@ -2636,6 +2598,12 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6pre75j6VHcVWI2tvpRNsh",
+						"htmlContent": "<style>\n  #resources-carousel .feature-card .headline-5 {\n    margin-top: 32px;\n    color: #000000 !important;\n    font-weight: 600 !important;\n  }\n</style>",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
