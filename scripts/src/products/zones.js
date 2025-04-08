@@ -24,7 +24,11 @@ const reqs = [
 		name: 'zones-permissions',
 		url: 'https://api.cloudflare.com/client/v4/zones/{zone_id}',
 		method: 'GET',
-		transform: json => json.result.permissions,
+		transform: (json) => {
+			const rawPermissions = json.result.permissions;
+			const sortedPermissions = rawPermissions.sort((permA, permB) => permA.localeCompare(permB));
+			return sortedPermissions;
+		},
 	},
 	{
 		name: 'zones-settings',
