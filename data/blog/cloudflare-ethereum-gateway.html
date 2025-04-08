@@ -10,7 +10,7 @@
 	<p>This setup makes it possible to add interactive elements to sites powered by <a href="https://blockgeeks.com/guides/smart-contracts">Ethereum smart contracts</a>, a decentralized computing platform. And, in conjunction with the IPFS gateway, this allows hosting websites and resources in a decentralized manner, and has the extra bonus of the added speed, security, and reliability provided by the Cloudflare edge network. You can access our Ethereum gateway directly at <a href="https://cloudflare-eth.com">https://cloudflare-eth.com</a>.</p>
 	<p>This brief primer on how Ethereum and smart contracts work has examples of the many possibilities of using the Cloudflare Distributed Web Gateway.</p>
 	<div class="flex anchor relative">
-		<h3 id="primer-on-ethereum">Primer on Ethereum</h3>
+		<h3 id="primer-on-ethereum"><b>Primer on Ethereum</b></h3>
 		<a href="https://blog.cloudflare.com/#primer-on-ethereum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -47,7 +47,7 @@
 	<p>The "smart" part of a smart contract is they run autonomously. The "contract" part is the guarantee that the code runs as written.</p>
 	<p>Because this contract is enforced cryptographically, maintained in the tamper-resistant medium of the blockchain and verified by the consensus of the network, these contracts are more reliable than regular contracts which can provoke dispute.</p>
 	<div class="flex anchor relative">
-		<h3 id="ethereum-smart-contracts-vs-traditional-contracts">Ethereum Smart Contracts vs. Traditional Contracts</h3>
+		<h3 id="ethereum-smart-contracts-vs-traditional-contracts"><b>Ethereum Smart Contracts vs. Traditional Contracts</b></h3>
 		<a href="https://blog.cloudflare.com/#ethereum-smart-contracts-vs-traditional-contracts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -57,7 +57,7 @@
 	<p>A regular contract is enforced by the court system, litigated by lawyers. The outcome is uncertain; different courts rule differently and hiring more or better lawyers can swing the odds in your favor.</p>
 	<p>Smart contract outcomes are predetermined and are nearly incorruptible. However, here be dragons: though the outcome can be predetermined and incorruptible, a poorly written contract might not have the intended behavior, and because contracts are immutable, this is difficult to fix.</p>
 	<div class="flex anchor relative">
-		<h3 id="how-are-smart-contracts-written">How are smart contracts written?</h3>
+		<h3 id="how-are-smart-contracts-written"><b>How are smart contracts written?</b></h3>
 		<a href="https://blog.cloudflare.com/#how-are-smart-contracts-written" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -120,7 +120,7 @@
 	<p>Besides defining what a Kitty is, this contract defines two basic functions for transferring and creating kitties. Both are internal and can only be called by contracts that implement <code>KittyBase</code>. The <code>KittyOwnership</code> contract implements both ERC-721 and <code>KittyBase</code>, and implements an external <code>transfer</code> function that calls the internal <code>_transfer</code> function. This code is compiled into bytecode written to the blockchain.</p>
 	<p>By implementing a standardised interface like ERC-721, smart contracts that aren’t specifically aware of CryptoKitties can still interact with the KittyVerse. The CryptoKitties ABI functions allow users to create distributed apps (dApps), of their own design on top of the KittyVerse, and allow other users to use their dApps. This extensibility helps demonstrate the potential of smart contracts.</p>
 	<div class="flex anchor relative">
-		<h3 id="how-is-this-so-different">How is this so different?</h3>
+		<h3 id="how-is-this-so-different"><b>How is this so different?</b></h3>
 		<a href="https://blog.cloudflare.com/#how-is-this-so-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -132,7 +132,7 @@
 	<p>The trust placed in consensus-based algorithms is based on the assumption that most people are honest, or more accurately, that no sufficiently large subset of people can collude to produce a malicious outcome. This is the democratisation of trust.</p>
 	<p>In the case of the DAO attack, a majority of nodes <i>agreed</i> to accept an “irregular” state transition. This effectively undid the damage of the attack and demonstrates how, at least in the world of blockchain, perception is reality. Because most people “believed” (accepted) this irregular block, it became a “real,” valid block. Most people think of the blockchain as immutable, and trust the power of consensus to ensure correctness, however if enough people agree to do something irregular, they don't have to keep the rules.</p>
 	<div class="flex anchor relative">
-		<h3 id="so-where-does-cloudflare-fit-in">So where does Cloudflare fit in?</h3>
+		<h3 id="so-where-does-cloudflare-fit-in"><b>So where does Cloudflare fit in?</b></h3>
 		<a href="https://blog.cloudflare.com/#so-where-does-cloudflare-fit-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -149,7 +149,7 @@
 	</blockquote>
 	<p>By providing a gateway to the Ethereum network, we help users make the jump from general web-user to cryptocurrency native, and eventually make the distributed web a fundamental part of the Internet.</p>
 	<div class="flex anchor relative">
-		<h3 id="what-can-you-do-with-cloudflares-gateway">What can you do with Cloudflare's Gateway?</h3>
+		<h3 id="what-can-you-do-with-cloudflares-gateway"><b>What can you do with Cloudflare's Gateway?</b></h3>
 		<a href="https://blog.cloudflare.com/#what-can-you-do-with-cloudflares-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -167,7 +167,7 @@
 }</code></pre>
 	<p>We also invite developers to build dApps based on our Ethereum gateway using our API. Our API allows developers to build websites powered by the Ethereum blockchain. Check out <a href="https://developers.cloudflare.com/distributed-web/ethereum-gateway">developer docs</a> to get started. If you want to read more about how Ethereum works check out this <a href="https://medium.com/@preethikasireddy/how-does-ethereum-work-anyway-22d1df506369">deep dive</a>.</p>
 	<div class="flex anchor relative">
-		<h3 id="the-architecture">The architecture</h3>
+		<h3 id="the-architecture"><b>The architecture</b></h3>
 		<a href="https://blog.cloudflare.com/#the-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>

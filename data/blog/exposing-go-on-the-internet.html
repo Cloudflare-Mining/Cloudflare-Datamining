@@ -5,7 +5,7 @@
 	<p>At Cloudflare we recently experimented with exposing pure Go services to the hostile wide area network. With the Go 1.8 release, <code>net/http</code> and <code>crypto/tls</code> proved to be stable, performant and flexible.</p>
 	<p>However, the defaults are tuned for local services. In this articles we'll see how to tune and harden a Go server for Internet exposure.</p>
 	<div class="flex anchor relative">
-		<h3 id="crypto-tls">crypto/tls</h3>
+		<h3 id="crypto-tls"><code>crypto/tls</code></h3>
 		<a href="https://blog.cloudflare.com/#crypto-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
@@ -55,7 +55,7 @@
 go func() { log.Fatal(srv.ListenAndServe()) }()</code></pre>
 	<p>You can use the <a href="https://www.ssllabs.com/ssltest">SSL Labs test</a> to check that everything is configured correctly.</p>
 	<div class="flex anchor relative">
-		<h3 id="net-http">net/http</h3>
+		<h3 id="net-http"><code>net/http</code></h3>
 		<a href="https://blog.cloudflare.com/#net-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
