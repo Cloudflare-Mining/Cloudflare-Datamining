@@ -451,6 +451,7 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"deleted_at": {
@@ -912,6 +913,10 @@
 															"redirect": {
 																"description": "Settings that apply to redirect rules",
 																"properties": {
+																	"include_context": {
+																		"description": "If true, context information will be passed as query parameters",
+																		"type": "boolean"
+																	},
 																	"preserve_path_and_query": {
 																		"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																		"type": "boolean"
@@ -1024,6 +1029,7 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"version": {
@@ -1180,6 +1186,7 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
+																"readOnly": true,
 																"type": "string"
 															},
 															"deleted_at": {
@@ -1641,6 +1648,10 @@
 																	"redirect": {
 																		"description": "Settings that apply to redirect rules",
 																		"properties": {
+																			"include_context": {
+																				"description": "If true, context information will be passed as query parameters",
+																				"type": "boolean"
+																			},
 																			"preserve_path_and_query": {
 																				"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																				"type": "boolean"
@@ -1753,6 +1764,7 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
+																"readOnly": true,
 																"type": "string"
 															},
 															"version": {
@@ -2006,6 +2018,7 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -2467,6 +2480,10 @@
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
 															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
 																"preserve_path_and_query": {
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
@@ -2579,6 +2596,7 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"version": {
@@ -2703,6 +2721,7 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -3164,6 +3183,10 @@
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
 																		"preserve_path_and_query": {
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
@@ -3276,6 +3299,7 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"version": {
@@ -3888,6 +3912,10 @@
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
 										"properties": {
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
+												"type": "boolean"
+											},
 											"preserve_path_and_query": {
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
@@ -4109,6 +4137,7 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -4570,6 +4599,10 @@
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
 															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
 																"preserve_path_and_query": {
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
@@ -4682,6 +4715,7 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"version": {
@@ -4806,6 +4840,7 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -5267,6 +5302,10 @@
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
 																		"preserve_path_and_query": {
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
@@ -5379,6 +5418,7 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"version": {
@@ -5629,6 +5669,7 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -6090,6 +6131,10 @@
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
 															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
 																"preserve_path_and_query": {
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
@@ -6202,6 +6247,7 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"version": {
@@ -6323,6 +6369,7 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -6784,6 +6831,10 @@
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
 																		"preserve_path_and_query": {
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
@@ -6896,6 +6947,7 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"version": {
@@ -7519,6 +7571,10 @@
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
 										"properties": {
+											"include_context": {
+												"description": "If true, context information will be passed as query parameters",
+												"type": "boolean"
+											},
 											"preserve_path_and_query": {
 												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 												"type": "boolean"
@@ -7740,6 +7796,7 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -8201,6 +8258,10 @@
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
 															"properties": {
+																"include_context": {
+																	"description": "If true, context information will be passed as query parameters",
+																	"type": "boolean"
+																},
 																"preserve_path_and_query": {
 																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																	"type": "boolean"
@@ -8313,6 +8374,7 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
+													"readOnly": true,
 													"type": "string"
 												},
 												"version": {
@@ -8437,6 +8499,7 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -8898,6 +8961,10 @@
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
 																	"properties": {
+																		"include_context": {
+																			"description": "If true, context information will be passed as query parameters",
+																			"type": "boolean"
+																		},
 																		"preserve_path_and_query": {
 																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
 																			"type": "boolean"
@@ -9010,6 +9077,7 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
+															"readOnly": true,
 															"type": "string"
 														},
 														"version": {

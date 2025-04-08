@@ -8,7 +8,7 @@
 				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -19,7 +19,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -44,8 +44,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -65,8 +76,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -79,7 +101,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -102,7 +124,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "UUID",
+													"description": "UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -133,8 +155,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -165,8 +198,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -189,7 +233,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -233,7 +277,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -267,8 +311,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -288,8 +343,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -302,7 +368,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -322,22 +388,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -363,7 +429,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -527,7 +593,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -679,7 +745,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -790,7 +856,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -901,7 +967,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1038,7 +1104,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1185,7 +1251,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1296,7 +1362,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1469,7 +1535,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1621,7 +1687,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1768,7 +1834,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -1915,7 +1981,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -2070,7 +2136,7 @@
 																		"type": "object"
 																	},
 																	"id": {
-																		"description": "UUID",
+																		"description": "UUID.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
@@ -2201,8 +2267,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2233,8 +2310,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -2257,7 +2345,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2302,7 +2390,7 @@
 				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2313,7 +2401,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -2338,8 +2426,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2359,8 +2458,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -2373,7 +2483,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2404,7 +2514,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -2568,7 +2678,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -2720,7 +2830,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -2831,7 +2941,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -2942,7 +3052,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3079,7 +3189,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3226,7 +3336,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3337,7 +3447,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3510,7 +3620,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3662,7 +3772,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3809,7 +3919,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -3956,7 +4066,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -4111,7 +4221,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -4222,7 +4332,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -4346,8 +4456,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4378,8 +4499,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4402,7 +4534,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4447,7 +4579,7 @@
 				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4458,7 +4590,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4510,8 +4642,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -4531,8 +4674,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -4545,7 +4699,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4565,22 +4719,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -4669,8 +4823,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4701,8 +4866,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -4725,7 +4901,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -4770,7 +4946,7 @@
 				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -4781,7 +4957,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -4851,8 +5027,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -4872,8 +5059,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -4886,7 +5084,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4906,22 +5104,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -5039,8 +5237,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -5071,8 +5280,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -5095,7 +5315,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -5140,7 +5360,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -5161,7 +5381,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5325,7 +5545,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5477,7 +5697,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5588,7 +5808,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5699,7 +5919,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5836,7 +6056,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -5983,7 +6203,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6094,7 +6314,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6267,7 +6487,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6419,7 +6639,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6566,7 +6786,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6713,7 +6933,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6868,7 +7088,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -6979,7 +7199,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -7102,8 +7322,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -7123,8 +7354,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -7137,7 +7379,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7168,7 +7410,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7332,7 +7574,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7484,7 +7726,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7595,7 +7837,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7706,7 +7948,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7843,7 +8085,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -7990,7 +8232,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8101,7 +8343,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8274,7 +8516,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8426,7 +8668,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8573,7 +8815,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8720,7 +8962,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8875,7 +9117,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -8986,7 +9228,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -9110,8 +9352,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -9142,8 +9395,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -9166,7 +9430,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -9210,7 +9474,7 @@
 				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -9221,7 +9485,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -9242,7 +9506,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -9406,7 +9670,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -9558,7 +9822,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -9669,7 +9933,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -9780,7 +10044,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -9917,7 +10181,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10064,7 +10328,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10175,7 +10439,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10348,7 +10612,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10500,7 +10764,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10647,7 +10911,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10794,7 +11058,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -10949,7 +11213,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -11060,7 +11324,7 @@
 												"type": "object"
 											},
 											"id": {
-												"description": "UUID",
+												"description": "UUID.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"maxLength": 36,
 												"type": "string"
@@ -11183,8 +11447,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -11204,8 +11479,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -11218,7 +11504,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -11249,7 +11535,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -11413,7 +11699,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -11565,7 +11851,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -11676,7 +11962,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -11787,7 +12073,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -11924,7 +12210,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12071,7 +12357,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12182,7 +12468,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12355,7 +12641,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12507,7 +12793,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12654,7 +12940,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12801,7 +13087,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -12956,7 +13242,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -13067,7 +13353,7 @@
 																	"type": "object"
 																},
 																"id": {
-																	"description": "UUID",
+																	"description": "UUID.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
 																	"type": "string"
@@ -13191,8 +13477,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -13223,8 +13520,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -13247,7 +13555,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
