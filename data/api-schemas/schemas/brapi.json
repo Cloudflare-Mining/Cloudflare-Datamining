@@ -667,7 +667,7 @@
 				},
 				"description": "Returns the page's content"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -705,6 +705,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -1466,7 +1505,7 @@
 				},
 				"description": "Returns the JSON based on a user prompt or json schema"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1504,6 +1543,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -2245,7 +2323,7 @@
 				},
 				"description": "Returns the links"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2283,6 +2361,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -3018,7 +3135,7 @@
 				},
 				"description": "Returns the page markdown"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3056,6 +3173,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -3759,7 +3915,7 @@
 				},
 				"description": "Returns the pdf"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3797,6 +3953,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -4621,7 +4816,7 @@
 				},
 				"description": "Returns the scraped elements"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4659,6 +4854,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -5512,7 +5746,7 @@
 				},
 				"description": "Returns the screenshot"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5550,6 +5784,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
@@ -6372,7 +6645,7 @@
 				},
 				"description": "Returns the screenshot"
 			},
-			"422": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6410,6 +6683,45 @@
 					}
 				},
 				"description": "The request contains errors or didn't properly encode content."
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error Message",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"description": "Response status",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
 			"500": {
 				"content": {
