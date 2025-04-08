@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Washington, Remote</strong></p>
+<p><strong>Available Locations: Washington</strong></p>
 <p><strong>About the role</strong></p>
 <p>People need to Trust Cloudflare. Our team is responsible for trust in everything that Cloudflare does. Trust &amp; Safety responds to claims of abuse and legal requests for private customer data for a vast and diverse customer base while maintaining Cloudflare’s core principles of transparency, consistency, and due process. We navigate the complex web of country-specific law enforcement demands and content-related regulations on a global scale.</p>
 <p>We are looking for a global leader of Cloudflare’s Trust and Safety Platform Operations team. In this role, you will manage a team of Trust &amp; Safety investigators who triage sensitive and nuanced allegations of abuse. This role reports to the VP, Global Head of Trust &amp; Safety.&nbsp;&nbsp;</p>
