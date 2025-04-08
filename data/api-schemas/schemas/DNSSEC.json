@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -39,8 +39,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -60,8 +71,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -74,7 +96,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -125,8 +147,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -146,8 +179,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -160,7 +204,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -200,8 +244,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -232,8 +287,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -256,7 +322,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -313,7 +379,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -338,8 +404,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -359,8 +436,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -373,7 +461,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -400,66 +488,76 @@
 													"example": "13",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest": {
 													"description": "Digest hash.",
 													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest_algorithm": {
 													"description": "Type of digest algorithm.",
 													"example": "SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest_type": {
 													"description": "Coded type for digest algorithm.",
 													"example": "2",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"dnssec_multi_signer": {
 													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"dnssec_presigned": {
 													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"ds": {
 													"description": "Full DS record.",
 													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"flags": {
 													"description": "Flag for DNSSEC record.",
 													"example": 257,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_tag": {
 													"description": "Code for key tag.",
 													"example": 42,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_type": {
 													"description": "Algorithm key type.",
 													"example": "ECDSAP256SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When DNSSEC was last modified.",
@@ -467,14 +565,16 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"public_key": {
 													"description": "Public key for DS record.",
 													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
@@ -485,7 +585,8 @@
 														"pending-disabled",
 														"error"
 													],
-													"example": "active"
+													"example": "active",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -517,8 +618,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -538,8 +650,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -552,7 +675,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -579,66 +702,76 @@
 															"example": "13",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest": {
 															"description": "Digest hash.",
 															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest_algorithm": {
 															"description": "Type of digest algorithm.",
 															"example": "SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest_type": {
 															"description": "Coded type for digest algorithm.",
 															"example": "2",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"dnssec_multi_signer": {
 															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"dnssec_presigned": {
 															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ds": {
 															"description": "Full DS record.",
 															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"flags": {
 															"description": "Flag for DNSSEC record.",
 															"example": 257,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"key_tag": {
 															"description": "Code for key tag.",
 															"example": 42,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"key_type": {
 															"description": "Algorithm key type.",
 															"example": "ECDSAP256SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When DNSSEC was last modified.",
@@ -646,14 +779,16 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"public_key": {
 															"description": "Public key for DS record.",
 															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
@@ -664,7 +799,8 @@
 																"pending-disabled",
 																"error"
 															],
-															"example": "active"
+															"example": "active",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -685,8 +821,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -717,8 +864,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -741,7 +899,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -799,7 +957,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
@@ -814,12 +972,14 @@
 							"dnssec_multi_signer": {
 								"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"dnssec_presigned": {
 								"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"status": {
 								"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
@@ -853,8 +1013,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -874,8 +1045,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -888,7 +1070,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -915,66 +1097,76 @@
 													"example": "13",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest": {
 													"description": "Digest hash.",
 													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest_algorithm": {
 													"description": "Type of digest algorithm.",
 													"example": "SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"digest_type": {
 													"description": "Coded type for digest algorithm.",
 													"example": "2",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"dnssec_multi_signer": {
 													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"dnssec_presigned": {
 													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"ds": {
 													"description": "Full DS record.",
 													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"flags": {
 													"description": "Flag for DNSSEC record.",
 													"example": 257,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_tag": {
 													"description": "Code for key tag.",
 													"example": 42,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"key_type": {
 													"description": "Algorithm key type.",
 													"example": "ECDSAP256SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When DNSSEC was last modified.",
@@ -982,14 +1174,16 @@
 													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"public_key": {
 													"description": "Public key for DS record.",
 													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
@@ -1000,7 +1194,8 @@
 														"pending-disabled",
 														"error"
 													],
-													"example": "active"
+													"example": "active",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1032,8 +1227,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1053,8 +1259,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1067,7 +1284,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1094,66 +1311,76 @@
 															"example": "13",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest": {
 															"description": "Digest hash.",
 															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest_algorithm": {
 															"description": "Type of digest algorithm.",
 															"example": "SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"digest_type": {
 															"description": "Coded type for digest algorithm.",
 															"example": "2",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"dnssec_multi_signer": {
 															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"dnssec_presigned": {
 															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"ds": {
 															"description": "Full DS record.",
 															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"flags": {
 															"description": "Flag for DNSSEC record.",
 															"example": 257,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"key_tag": {
 															"description": "Code for key tag.",
 															"example": 42,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"key_type": {
 															"description": "Algorithm key type.",
 															"example": "ECDSAP256SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When DNSSEC was last modified.",
@@ -1161,14 +1388,16 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"public_key": {
 															"description": "Public key for DS record.",
 															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
@@ -1179,7 +1408,8 @@
 																"pending-disabled",
 																"error"
 															],
-															"example": "active"
+															"example": "active",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1200,8 +1430,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1232,8 +1473,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -1256,7 +1508,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
