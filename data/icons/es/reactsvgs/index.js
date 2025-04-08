@@ -1,5 +1,4 @@
 import Dlp from './Dlp';
-import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -108,6 +107,7 @@ import Lock from './Lock';
 import Logs from './Logs';
 import MachineLearningContextualOutline from './MachineLearningContextualOutline';
 import MagicFirewall from './MagicFirewall';
+import MagicNetworkMonitoring from './MagicNetworkMonitoring';
 import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
 import Minus from './Minus';
@@ -124,6 +124,7 @@ import Ok from './Ok';
 import OptimizationScale from './OptimizationScale';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
+import PerformanceArrowUp from './PerformanceArrowUp';
 import PlatformApps from './PlatformApps';
 import Plus from './Plus';
 import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
@@ -169,6 +170,7 @@ import ThumbsDownSolid from './ThumbsDownSolid';
 import ThumbsUpOutline from './ThumbsUpOutline';
 import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
+import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -202,7 +204,6 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
-  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -311,6 +312,7 @@ export default {
   logs: Logs,
   'machine-learning-contextual-outline': MachineLearningContextualOutline,
   'magic-firewall': MagicFirewall,
+  'magic-network-monitoring': MagicNetworkMonitoring,
   'magic-transit-logo': MagicTransitLogo,
   mail: Mail,
   minus: Minus,
@@ -327,6 +329,7 @@ export default {
   'optimization-scale': OptimizationScale,
   'pages-logo': PagesLogo,
   pause: Pause,
+  'performance-arrow-up': PerformanceArrowUp,
   'platform-apps': PlatformApps,
   plus: Plus,
   'podcast-microphone-outline': PodcastMicrophoneOutline,
@@ -372,6 +375,7 @@ export default {
   'thumbs-up-outline': ThumbsUpOutline,
   'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
+  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,

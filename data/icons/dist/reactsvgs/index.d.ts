@@ -1,7 +1,6 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -110,6 +109,7 @@ declare const _default: {
     logs: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'machine-learning-contextual-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-firewall': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'magic-network-monitoring': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-transit-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     mail: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     minus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -126,6 +126,7 @@ declare const _default: {
     'optimization-scale': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pages-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     pause: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'performance-arrow-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'platform-apps': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     plus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'podcast-microphone-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -171,6 +172,7 @@ declare const _default: {
     'thumbs-up-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-up-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
