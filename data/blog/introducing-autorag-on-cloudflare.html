@@ -248,9 +248,8 @@ return new Response('Please send a POST request with a target URL', { status: 40
 			</svg>
 		</a>
 	</div>
-	<p>During the open beta, AutoRAG is <b>free to enable</b>. Compute operations for indexing, retrieval and augmentation incur no additional cost during this phase.</p>
-	<p>AutoRAG is built entirely on top of Cloudflare’s Developer Platform, using the same tools you’d reach for if you were building a RAG pipeline yourself. When you create an AutoRAG instance, it provisions and runs on top of Cloudflare services within your own account, giving you full visibility into performance, cost, and behavior with fewer black boxes.</p>
-	<p>These services include:</p>
+	<p>During the open beta, AutoRAG is <b>free to enable</b>.&nbsp;</p>
+	<p>AutoRAG is built entirely on top of Cloudflare’s Developer Platform, using the same tools you’d reach for if you were building a RAG pipeline yourself. When you create an AutoRAG instance, it provisions and runs on top of Cloudflare resources within your own account. These created resources are <b>billed as part of your Cloudflare usage</b>.These resources include:</p>
 	<ul>
 		<li>
 			<p><a href="https://developers.cloudflare.com/r2"><b><u>R2</u></b></a><b>: </b>stores your source data.</p>
@@ -259,7 +258,7 @@ return new Response('Please send a POST request with a target URL', { status: 40
 			<p><a href="https://developers.cloudflare.com/vectorize"><b><u>Vectorize</u></b></a><b>:</b> stores vector embeddings and powers semantic retrieval.</p>
 		</li>
 		<li>
-			<p><a href="https://developers.cloudflare.com/workers-ai"><b><u>Workers AI</u></b></a><b>: </b>converts images to markdown, generates embeddings, rewrites queries, and generates responses.</p>
+			<p><a href="https://developers.cloudflare.com/workers-ai"><b><u>Workers AI</u></b></a><b>: </b>converts images to Markdown, generates embeddings, rewrites queries, and generates responses.</p>
 		</li>
 		<li>
 			<p><a href="https://developers.cloudflare.com/ai-gateway"><b><u>AI Gateway</u></b></a><b>:</b> tracks and controls your model’s usage.</p>
@@ -274,7 +273,7 @@ return new Response('Please send a POST request with a target URL', { status: 40
 			</svg>
 		</a>
 	</div>
-	<p>We’re just getting started with AutoRAG and we have more planned throughout 2025 to make it more powerful and flexible. Here are a few things we’re actively working on:</p>
+	<p>We’re just getting started with AutoRAG, and we have more planned throughout 2025 to make it more powerful and flexible. Here are a few things we’re actively working on:</p>
 	<ul>
 		<li>
 			<p><b>More data source integrations:</b> We’re expanding beyond R2, with support for new input types like direct website URL parsing (powered by browser rendering) and structured data sources like Cloudflare <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>.</p>
@@ -293,5 +292,5 @@ return new Response('Please send a POST request with a target URL', { status: 40
 		</a>
 	</div>
 	<p>Get started with AutoRAG today by visiting the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fautorag"><u>Cloudflare Dashboard</u></a>, navigate to AI &gt; AutoRAG, and select Create AutoRAG. Whether you’re building an AI-powered search experience, an internal knowledge assistant, or just experimenting with LLMs, AutoRAG gives you a fast and flexible way to get started with RAG on Cloudflare’s global network. For more details, refer to the <a href="https://developers.cloudflare.com/autorag"><u>Developer Docs</u></a>. Also, try out the <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering API</u></a> that is now generally available for your browser action needs.</p>
-	<p>We’re excited to see what you build and we’re here to help. Have questions or feedback? Join the conversation on the <a href="https://discord.com/channels/595317990191398933/1356674457355423895"><u>Cloudflare Developers Discord</u></a>.</p>
+	<p>We’re excited to see what you build, and we’re here to help. Have questions or feedback? Join the conversation on the <a href="https://discord.com/channels/595317990191398933/1356674457355423895"><u>Cloudflare Developers Discord</u></a>.</p>
 </div>
