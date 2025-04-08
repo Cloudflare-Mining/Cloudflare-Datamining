@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.30.0
+
+### Minor Changes
+
+- 8526e9a823: Add the magic networking and performance arrow
+
 ## 12.29.1
 
 ## 12.29.0

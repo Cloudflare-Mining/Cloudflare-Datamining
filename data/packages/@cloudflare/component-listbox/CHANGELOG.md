@@ -1,5 +1,7 @@
 # Change Log
 
+## 2.1.32
+
 ## 2.1.31
 
 ### Patch Changes

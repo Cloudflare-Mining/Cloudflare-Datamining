@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.1.24
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@8.1.21
+- @cloudflare/component-button@8.5.24
+
 ## 5.1.23
 
 ### Patch Changes
