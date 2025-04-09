@@ -637,6 +637,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "The details of the D1 database.",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
@@ -663,6 +664,25 @@
 													"example": 12,
 													"type": "number",
 													"x-auditable": true
+												},
+												"read_replication": {
+													"description": "Configuration for D1 read replication.",
+													"properties": {
+														"mode": {
+															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"enum": [
+																"auto",
+																"disabled"
+															],
+															"example": "auto",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object"
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
@@ -798,6 +818,320 @@
 			"D1 Write"
 		]
 	},
+	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
+		"description": "Updates partially the specified D1 database.",
+		"operationId": "cloudflare-d1-update-partial-database",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"description": "D1 database identifier (UUID).",
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"read_replication": {
+								"description": "Configuration for D1 read replication.",
+								"properties": {
+									"mode": {
+										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"enum": [
+											"auto",
+											"disabled"
+										],
+										"example": "auto",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"mode"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The details of the D1 database.",
+											"properties": {
+												"created_at": {
+													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"file_size": {
+													"description": "The D1 database's size, in bytes.",
+													"example": 12,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "D1 database name.",
+													"example": "my-database",
+													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"num_tables": {
+													"example": 12,
+													"type": "number",
+													"x-auditable": true
+												},
+												"read_replication": {
+													"description": "Configuration for D1 read replication.",
+													"properties": {
+														"mode": {
+															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"enum": [
+																"auto",
+																"disabled"
+															],
+															"example": "auto",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object"
+												},
+												"uuid": {
+													"description": "D1 database identifier (UUID).",
+													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"version": {
+													"example": "production",
+													"pattern": "^(alpha|beta|production)$",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Database details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update D1 database response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update D1 Database partially",
+		"tags": [
+			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
+		]
+	},
 	"POST /accounts/{account_id}/d1/database": {
 		"description": "Returns the created D1 database.",
 		"operationId": "cloudflare-d1-create-database",
@@ -925,6 +1259,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "The details of the D1 database.",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
@@ -951,6 +1286,25 @@
 													"example": 12,
 													"type": "number",
 													"x-auditable": true
+												},
+												"read_replication": {
+													"description": "Configuration for D1 read replication.",
+													"properties": {
+														"mode": {
+															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"enum": [
+																"auto",
+																"disabled"
+															],
+															"example": "auto",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object"
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
@@ -1745,32 +2099,69 @@
 														"meta": {
 															"properties": {
 																"changed_db": {
+																	"description": "Denotes if the database has been altered in some way, like deleting rows.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"changes": {
+																	"description": "Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`.",
 																	"type": "number",
 																	"x-auditable": true
 																},
 																"duration": {
+																	"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																	"type": "number",
 																	"x-auditable": true
 																},
 																"last_row_id": {
+																	"description": "The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this.",
 																	"type": "number",
 																	"x-auditable": true
 																},
 																"rows_read": {
+																	"description": "Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned).",
 																	"type": "number",
 																	"x-auditable": true
 																},
 																"rows_written": {
+																	"description": "Number of rows written during the SQL query execution, including indices.",
 																	"type": "number",
 																	"x-auditable": true
 																},
+																"served_by_primary": {
+																	"description": "Denotes if the query has been handled by the database primary instance.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"served_by_region": {
+																	"description": "Region location hint of the database instance that handled the query.",
+																	"enum": [
+																		"WNAM",
+																		"ENAM",
+																		"WEUR",
+																		"EEUR",
+																		"APAC",
+																		"OC"
+																	],
+																	"example": "EEUR",
+																	"type": "string",
+																	"x-auditable": true
+																},
 																"size_after": {
+																	"description": "Size of the database after the query committed, in bytes.",
 																	"type": "number",
 																	"x-auditable": true
+																},
+																"timings": {
+																	"description": "Various durations for the query.",
+																	"properties": {
+																		"sql_duration_ms": {
+																			"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
+																			"type": "number",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -2176,32 +2567,69 @@
 													"meta": {
 														"properties": {
 															"changed_db": {
+																"description": "Denotes if the database has been altered in some way, like deleting rows.",
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"changes": {
+																"description": "Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"duration": {
+																"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"last_row_id": {
+																"description": "The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"rows_read": {
+																"description": "Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned).",
 																"type": "number",
 																"x-auditable": true
 															},
 															"rows_written": {
+																"description": "Number of rows written during the SQL query execution, including indices.",
 																"type": "number",
 																"x-auditable": true
 															},
+															"served_by_primary": {
+																"description": "Denotes if the query has been handled by the database primary instance.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"served_by_region": {
+																"description": "Region location hint of the database instance that handled the query.",
+																"enum": [
+																	"WNAM",
+																	"ENAM",
+																	"WEUR",
+																	"EEUR",
+																	"APAC",
+																	"OC"
+																],
+																"example": "EEUR",
+																"type": "string",
+																"x-auditable": true
+															},
 															"size_after": {
+																"description": "Size of the database after the query committed, in bytes.",
 																"type": "number",
 																"x-auditable": true
+															},
+															"timings": {
+																"description": "Various durations for the query.",
+																"properties": {
+																	"sql_duration_ms": {
+																		"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
+																		"type": "number",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -2476,32 +2904,69 @@
 													"meta": {
 														"properties": {
 															"changed_db": {
+																"description": "Denotes if the database has been altered in some way, like deleting rows.",
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"changes": {
+																"description": "Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"duration": {
+																"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"last_row_id": {
+																"description": "The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this.",
 																"type": "number",
 																"x-auditable": true
 															},
 															"rows_read": {
+																"description": "Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned).",
 																"type": "number",
 																"x-auditable": true
 															},
 															"rows_written": {
+																"description": "Number of rows written during the SQL query execution, including indices.",
 																"type": "number",
 																"x-auditable": true
 															},
+															"served_by_primary": {
+																"description": "Denotes if the query has been handled by the database primary instance.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"served_by_region": {
+																"description": "Region location hint of the database instance that handled the query.",
+																"enum": [
+																	"WNAM",
+																	"ENAM",
+																	"WEUR",
+																	"EEUR",
+																	"APAC",
+																	"OC"
+																],
+																"example": "EEUR",
+																"type": "string",
+																"x-auditable": true
+															},
 															"size_after": {
+																"description": "Size of the database after the query committed, in bytes.",
 																"type": "number",
 																"x-auditable": true
+															},
+															"timings": {
+																"description": "Various durations for the query.",
+																"properties": {
+																	"sql_duration_ms": {
+																		"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
+																		"type": "number",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -2656,6 +3121,323 @@
 		"summary": "Raw D1 Database query",
 		"tags": [
 			"D1"
+		]
+	},
+	"PUT /accounts/{account_id}/d1/database/{database_id}": {
+		"description": "Updates the specified D1 database.",
+		"operationId": "cloudflare-d1-update-database",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"description": "D1 database identifier (UUID).",
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"read_replication": {
+								"description": "Configuration for D1 read replication.",
+								"properties": {
+									"mode": {
+										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"enum": [
+											"auto",
+											"disabled"
+										],
+										"example": "auto",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"mode"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"read_replication"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The details of the D1 database.",
+											"properties": {
+												"created_at": {
+													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"file_size": {
+													"description": "The D1 database's size, in bytes.",
+													"example": 12,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "D1 database name.",
+													"example": "my-database",
+													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"num_tables": {
+													"example": 12,
+													"type": "number",
+													"x-auditable": true
+												},
+												"read_replication": {
+													"description": "Configuration for D1 read replication.",
+													"properties": {
+														"mode": {
+															"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+															"enum": [
+																"auto",
+																"disabled"
+															],
+															"example": "auto",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object"
+												},
+												"uuid": {
+													"description": "D1 database identifier (UUID).",
+													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"version": {
+													"example": "production",
+													"pattern": "^(alpha|beta|production)$",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Database details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update D1 database response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update D1 Database",
+		"tags": [
+			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	}
 }

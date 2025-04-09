@@ -261,21 +261,19 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"address1",
-											"agent_name",
-											"signature",
-											"original_work",
-											"host_notification",
-											"owner_notification",
-											"city",
-											"state",
-											"country",
-											"agree"
-										]
 									}
+								],
+								"required": [
+									"address1",
+									"agent_name",
+									"signature",
+									"original_work",
+									"host_notification",
+									"owner_notification",
+									"city",
+									"state",
+									"country",
+									"agree"
 								],
 								"type": "object"
 							},
@@ -495,17 +493,15 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"justification",
-											"trademark_symbol",
-											"trademark_number",
-											"trademark_office",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"justification",
+									"trademark_symbol",
+									"trademark_number",
+									"trademark_office",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -728,14 +724,12 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"justification",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"justification",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -957,14 +951,12 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"justification",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"justification",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -1193,15 +1185,13 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"justification",
-											"ncmec_notification",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"justification",
+									"ncmec_notification",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -1423,14 +1413,12 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"justification",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"justification",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -1647,12 +1635,10 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"owner_notification"
 								],
 								"type": "object"
 							},
@@ -1875,14 +1861,12 @@
 												]
 											}
 										}
-									},
-									{
-										"required": [
-											"ncsei_subject_representation",
-											"host_notification",
-											"owner_notification"
-										]
 									}
+								],
+								"required": [
+									"ncsei_subject_representation",
+									"host_notification",
+									"owner_notification"
 								],
 								"type": "object"
 							}
