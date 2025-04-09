@@ -82,8 +82,8 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fZv7cpSGntSQadS761Zkv/31707075a85d393f4883b190599581f7/1.png" alt="" class="kg-image" width="1999" height="1031" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
-		<h2 id="new-snippets-secrets-store">New: Snippets + Secrets Store</h2>
-		<a href="https://blog.cloudflare.com/#new-snippets-secrets-store" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="new-snippets-trace">New: Snippets + Trace</h2>
+		<a href="https://blog.cloudflare.com/#new-snippets-trace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -91,6 +91,10 @@
 	</div>
 	<p><a href="https://developers.cloudflare.com/fundamentals/trace-request/#_top"><u>Cloudflare Trace</u></a> now shows exactly which Snippets were triggered on a request. This makes it easier to debug traffic behavior, verify logic execution, and understand how your Snippets interact with other products in the request pipeline.</p>
 	<p>Whether you’re fine-tuning header logic or troubleshooting a routing issue, Trace gives you real-time insight into how your edge logic behaves in production.</p>
+	<div style="position: relative; padding-top: 41.72453703703704%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ef9a151a67a362fc2b7591c9573538f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ef9a151a67a362fc2b7591c9573538f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
 	<div class="flex anchor relative">
 		<h2 id="coming-soon-snippets-secrets-store">Coming soon: Snippets + Secrets Store</h2>
 		<a href="https://blog.cloudflare.com/#coming-soon-snippets-secrets-store" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -100,9 +104,6 @@
 		</a>
 	</div>
 	<p>In the third quarter, you’ll be able to securely access API keys, authentication tokens, and other sensitive values from <a href="https://blog.cloudflare.com/secrets-store-beta"><u>Secrets Store</u></a> directly in your Snippets. No more plaintext secrets in your code, no more workarounds.</p>
-	<div style="position: relative; padding-top: 41.72453703703704%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ef9a151a67a362fc2b7591c9573538f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ef9a151a67a362fc2b7591c9573538f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51QyhWrvtGEQ568lzuqRD/f8eb60c0258d28ef1431fad7f5d03b12/2.png" alt="" class="kg-image" width="1999" height="886" loading="lazy">
 	</figure>
@@ -306,7 +307,7 @@
     modifiedRequest.headers.set("X-Hex-Timestamp", timestamp); // send HEX timestamp to upstream
 
     const response = await fetch(modifiedRequest);
-    const newResponse = new Response(response.body, response); // make response from upstream immutable
+    const newResponse = new Response(response.body, response); // make response from upstream mutable
 
     newResponse.headers.append("x-snippets-hello", "Hello from Cloudflare Snippets"); // add new response header
     newResponse.headers.delete("x-header-to-delete"); // delete response header
