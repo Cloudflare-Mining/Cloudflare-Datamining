@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Delete a Pipeline.",
+		"description": "Delete a pipeline.",
 		"operationId": "deleteV4AccountsByAccount_idPipelinesByPipeline_name",
 		"parameters": [
 			{
@@ -18,7 +18,7 @@
 				"name": "pipeline_name",
 				"required": true,
 				"schema": {
-					"description": "Defines the name of Pipeline.",
+					"description": "Defines the name of the pipeline.",
 					"example": "sample_pipeline",
 					"maxLength": 128,
 					"minLength": 1,
@@ -28,10 +28,10 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Indicates a successfully Deleted Pipeline."
+				"description": "Indicates a successfully deleted pipeline."
 			},
 			"4XX": {
-				"description": "Indicates an error creating Pipeline."
+				"description": "Indicates an error in deleting a pipeline."
 			}
 		},
 		"security": [
@@ -58,7 +58,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/pipelines": {
-		"description": "List, filter, and paginate Pipelines in an account.",
+		"description": "List, filter, and paginate pipelines in an account.",
 		"operationId": "getV4AccountsByAccount_idPipelines",
 		"parameters": [
 			{
@@ -75,7 +75,7 @@
 				"in": "query",
 				"name": "search",
 				"schema": {
-					"description": "Specifies the prefix of Pipeline name to search.",
+					"description": "Specifies the prefix of pipeline name to search.",
 					"type": "string"
 				}
 			},
@@ -93,7 +93,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": "25",
-					"description": "Specifies the number of Pipelines per page.",
+					"description": "Specifies the number of pipelines per page.",
 					"type": "string"
 				}
 			}
@@ -137,7 +137,7 @@
 								},
 								"results": {
 									"items": {
-										"description": "Describes the configuration of a Pipeline.",
+										"description": "Describes the configuration of a pipeline.",
 										"properties": {
 											"destination": {
 												"properties": {
@@ -260,12 +260,12 @@
 												"type": "string"
 											},
 											"id": {
-												"description": "Specifies the Pipeline identifier.",
+												"description": "Specifies the pipeline identifier.",
 												"example": "123f8a8258064ed892a347f173372359",
 												"type": "string"
 											},
 											"name": {
-												"description": "Defines the name of Pipeline.",
+												"description": "Defines the name of the pipeline.",
 												"example": "sample_pipeline",
 												"maxLength": 128,
 												"minLength": 1,
@@ -275,8 +275,8 @@
 												"items": {
 													"discriminator": {
 														"mapping": {
-															"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-															"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+															"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+															"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 														},
 														"propertyName": "type"
 													},
@@ -284,7 +284,7 @@
 														{
 															"properties": {
 																"authentication": {
-																	"description": "Specifies authentication is required to send to this Pipeline.",
+																	"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 																	"type": "boolean"
 																},
 																"cors": {
@@ -384,7 +384,7 @@
 						}
 					}
 				},
-				"description": "Lists the Pipelines."
+				"description": "Lists the pipelines."
 			},
 			"4XX": {
 				"content": {
@@ -435,7 +435,7 @@
 						}
 					}
 				},
-				"description": "Indicates the error trying to list Pipelines."
+				"description": "Indicates the error trying to list pipelines."
 			}
 		},
 		"security": [
@@ -463,7 +463,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Get configuration details of a Pipeline.",
+		"description": "Get configuration of a pipeline.",
 		"operationId": "getV4AccountsByAccount_idPipelinesByPipeline_name",
 		"parameters": [
 			{
@@ -481,7 +481,7 @@
 				"name": "pipeline_name",
 				"required": true,
 				"schema": {
-					"description": "Defines the name of Pipeline.",
+					"description": "Defines the name of the pipeline.",
 					"example": "sample_pipeline",
 					"maxLength": 128,
 					"minLength": 1,
@@ -496,7 +496,7 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a Pipeline.",
+									"description": "Describes the configuration of a pipeline.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -619,12 +619,12 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "Specifies the Pipeline identifier.",
+											"description": "Specifies the pipeline identifier.",
 											"example": "123f8a8258064ed892a347f173372359",
 											"type": "string"
 										},
 										"name": {
-											"description": "Defines the name of Pipeline.",
+											"description": "Defines the name of the pipeline.",
 											"example": "sample_pipeline",
 											"maxLength": 128,
 											"minLength": 1,
@@ -634,8 +634,8 @@
 											"items": {
 												"discriminator": {
 													"mapping": {
-														"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-														"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 													},
 													"propertyName": "type"
 												},
@@ -643,7 +643,7 @@
 													{
 														"properties": {
 															"authentication": {
-																"description": "Specifies authentication is required to send to this Pipeline.",
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 																"type": "boolean"
 															},
 															"cors": {
@@ -740,7 +740,7 @@
 						}
 					}
 				},
-				"description": "Describes the details of a Pipeline."
+				"description": "Describes the configuration of a pipeline."
 			},
 			"404": {
 				"content": {
@@ -791,7 +791,7 @@
 						}
 					}
 				},
-				"description": "Indicates that the Pipeline was not found."
+				"description": "Indicates that the pipeline was not found."
 			}
 		},
 		"security": [
@@ -819,7 +819,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/pipelines": {
-		"description": "Create a new Pipeline.",
+		"description": "Create a new pipeline.",
 		"operationId": "postV4AccountsByAccount_idPipelines",
 		"parameters": [
 			{
@@ -972,7 +972,7 @@
 								"type": "object"
 							},
 							"name": {
-								"description": "Defines the name of Pipeline.",
+								"description": "Defines the name of the pipeline.",
 								"example": "sample_pipeline",
 								"maxLength": 128,
 								"minLength": 1,
@@ -982,8 +982,8 @@
 								"items": {
 									"discriminator": {
 										"mapping": {
-											"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-											"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+											"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+											"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 										},
 										"propertyName": "type"
 									},
@@ -991,7 +991,7 @@
 										{
 											"properties": {
 												"authentication": {
-													"description": "Specifies authentication is required to send to this Pipeline.",
+													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 													"type": "boolean"
 												},
 												"cors": {
@@ -1076,7 +1076,7 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a Pipeline.",
+									"description": "Describes the configuration of a pipeline.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -1199,12 +1199,12 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "Specifies the Pipeline identifier.",
+											"description": "Specifies the pipeline identifier.",
 											"example": "123f8a8258064ed892a347f173372359",
 											"type": "string"
 										},
 										"name": {
-											"description": "Defines the name of Pipeline.",
+											"description": "Defines the name of the pipeline.",
 											"example": "sample_pipeline",
 											"maxLength": 128,
 											"minLength": 1,
@@ -1214,8 +1214,8 @@
 											"items": {
 												"discriminator": {
 													"mapping": {
-														"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-														"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 													},
 													"propertyName": "type"
 												},
@@ -1223,7 +1223,7 @@
 													{
 														"properties": {
 															"authentication": {
-																"description": "Specifies authentication is required to send to this Pipeline.",
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 																"type": "boolean"
 															},
 															"cors": {
@@ -1320,7 +1320,7 @@
 						}
 					}
 				},
-				"description": "Indicates a successfully Created Pipeline."
+				"description": "Indicates a successfully created pipeline."
 			},
 			"4XX": {
 				"content": {
@@ -1371,7 +1371,7 @@
 						}
 					}
 				},
-				"description": "Indicates an error creating Pipeline."
+				"description": "Indicates an error in creating a pipeline."
 			}
 		},
 		"security": [
@@ -1398,7 +1398,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Update an existing Pipeline.",
+		"description": "Update an existing pipeline.",
 		"operationId": "putV4AccountsByAccount_idPipelinesByPipeline_name",
 		"parameters": [
 			{
@@ -1416,7 +1416,7 @@
 				"name": "pipeline_name",
 				"required": true,
 				"schema": {
-					"description": "Defines the name of Pipeline.",
+					"description": "Defines the name of the pipeline.",
 					"example": "sample_pipeline",
 					"maxLength": 128,
 					"minLength": 1,
@@ -1562,7 +1562,7 @@
 								"type": "object"
 							},
 							"name": {
-								"description": "Defines the name of Pipeline.",
+								"description": "Defines the name of the pipeline.",
 								"example": "sample_pipeline",
 								"maxLength": 128,
 								"minLength": 1,
@@ -1572,8 +1572,8 @@
 								"items": {
 									"discriminator": {
 										"mapping": {
-											"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-											"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+											"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+											"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 										},
 										"propertyName": "type"
 									},
@@ -1581,7 +1581,7 @@
 										{
 											"properties": {
 												"authentication": {
-													"description": "Specifies authentication is required to send to this Pipeline.",
+													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 													"type": "boolean"
 												},
 												"cors": {
@@ -1666,7 +1666,7 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a Pipeline.",
+									"description": "Describes the configuration of a pipeline.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -1789,12 +1789,12 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "Specifies the Pipeline identifier.",
+											"description": "Specifies the pipeline identifier.",
 											"example": "123f8a8258064ed892a347f173372359",
 											"type": "string"
 										},
 										"name": {
-											"description": "Defines the name of Pipeline.",
+											"description": "Defines the name of the pipeline.",
 											"example": "sample_pipeline",
 											"maxLength": 128,
 											"minLength": 1,
@@ -1804,8 +1804,8 @@
 											"items": {
 												"discriminator": {
 													"mapping": {
-														"binding": "#/components/schemas/workers-pipelines_workers_pipelines_binding_source",
-														"http": "#/components/schemas/workers-pipelines_workers_pipelines_http_source"
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
 													},
 													"propertyName": "type"
 												},
@@ -1813,7 +1813,7 @@
 													{
 														"properties": {
 															"authentication": {
-																"description": "Specifies authentication is required to send to this Pipeline.",
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
 																"type": "boolean"
 															},
 															"cors": {
@@ -1910,7 +1910,7 @@
 						}
 					}
 				},
-				"description": "Indicates a successfully updated Pipeline."
+				"description": "Indicates a successfully updated pipeline."
 			},
 			"4XX": {
 				"content": {
@@ -1961,7 +1961,7 @@
 						}
 					}
 				},
-				"description": "Indicates an error updating Pipeline."
+				"description": "Indicates an error updating pipeline."
 			}
 		},
 		"security": [
