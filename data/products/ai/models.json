@@ -322,6 +322,16 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per inference request",
+						"price": 0.0000075,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
@@ -421,7 +431,18 @@
 		},
 		"created_at": "2024-07-19 15:51:04.819",
 		"tags": [],
-		"properties": []
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per audio minute",
+						"price": 0.0002,
+						"currency": "USD"
+					}
+				]
+			}
+		]
 	},
 	{
 		"id": "c58c317b-0c15-4bda-abb6-93e275f282d9",
@@ -605,6 +626,10 @@
 		"tags": [],
 		"properties": [
 			{
+				"property_id": "context_window",
+				"value": "80000"
+			},
+			{
 				"property_id": "price",
 				"value": [
 					{
@@ -645,6 +670,16 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per step",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -936,6 +971,16 @@
 				"value": "true"
 			},
 			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per step",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
+			},
+			{
 				"property_id": "info",
 				"value": "https://huggingface.co/ByteDance/SDXL-Lightning"
 			}
@@ -1009,6 +1054,10 @@
 		"tags": [],
 		"properties": [
 			{
+				"property_id": "context_window",
+				"value": "24000"
+			},
+			{
 				"property_id": "price",
 				"value": [
 					{
@@ -1072,6 +1121,16 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per step",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -1735,6 +1794,16 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
@@ -1754,6 +1823,16 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per step",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "info",
@@ -1777,7 +1856,18 @@
 		},
 		"created_at": "2025-02-14 12:28:19.009",
 		"tags": [],
-		"properties": []
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.0031,
+						"currency": "USD"
+					}
+				]
+			}
+		]
 	},
 	{
 		"id": "0f002249-7d86-4698-aabf-8529ed86cefb",
@@ -1881,6 +1971,10 @@
 		"created_at": "2025-04-05 20:25:56.137",
 		"tags": [],
 		"properties": [
+			{
+				"property_id": "context_window",
+				"value": "131000"
+			},
 			{
 				"property_id": "price",
 				"value": [
