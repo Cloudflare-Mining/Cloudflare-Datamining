@@ -3579,7 +3579,7 @@
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"hostname": "Hostname of the device the IP Address was leased to",
-		"interface": "Name of the network interface",
+		"interfaceName": "Name of the network interface",
 		"ipAddress": "IP Address that was leased",
 		"macAddress": "MAC Address of the device the IP Address was leased to"
 	},
@@ -3609,7 +3609,7 @@
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"hostname": "Hostname of the device the IP Address was leased to",
-		"interface": "Name of the network interface",
+		"interfaceName": "Name of the network interface",
 		"ipAddress": "IP Address that was leased",
 		"macAddress": "MAC Address of the device the IP Address was leased to"
 	},
@@ -3706,6 +3706,104 @@
 		"sectorsWritten": "Sectors written successfully (delta)",
 		"writes": "Writes completed (delta)",
 		"writesMerged": "Writes merged (delta)"
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
+		"count": "Snapshot Interface Address count",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"interfaceName": "Name of the network interface",
+		"ipAddress": "IP address of the network interface"
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
+		"count": "Snapshot Interface Address count",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"interfaceName": "Name of the network interface",
+		"ipAddress": "IP address of the network interface"
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
+		"count": "Snapshot Interface count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"name": "Name of the network interface",
+		"operstate": "UP/DOWN state of the network interface"
+	},
+	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsMax": {
+		"__description": "",
+		"speed": "Speed of the network interface (bits per second)"
+	},
+	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroups": {
+		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
+		"count": "Snapshot Interface count",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"connectorId": "Connector identifier",
+		"datetimeFifteenMinutes": "Timestamp bucketed by 15 minutes",
+		"datetimeFiveMinutes": "Timestamp bucketed by 5 minutes",
+		"datetimeHour": "Timestamp bucketed by hour",
+		"datetimeMinute": "Timestamp bucketed by minute",
+		"datetimeSixHours": "Timestamp bucketed by 6 hours",
+		"name": "Name of the network interface",
+		"operstate": "UP/DOWN state of the network interface"
+	},
+	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"speed": "Speed of the network interface (bits per second)"
+	},
+	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
 	},
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
@@ -4888,6 +4986,10 @@
 		"mconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDisksAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotInterfaceAddressesAdaptiveGroups": "",
+		"mconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroups": "",
+		"mconnTelemetrySnapshotInterfacesAdaptiveGroups": "",
+		"mconnTelemetrySnapshotInterfacesStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotMountsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotNetdevsAdaptiveGroups": "",
@@ -5845,6 +5947,7 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"eventType": "Event type",
 		"instanceId": "Instance Id",
 		"workflowName": "Workflow name"
 	},
@@ -5964,7 +6067,6 @@
 	"OrganizationHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -5978,12 +6080,6 @@
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": ""
-	},
-	"OrganizationHttpRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"OrganizationHttpRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6087,10 +6183,6 @@
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
-	},
-	"OrganizationHttpRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"OrganizationSettings": {
 		"__description": "Access and limitations for an organization",
@@ -8484,6 +8576,10 @@
 		"mconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
 		"mconnTelemetrySnapshotDisksAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotDisksStagingAdaptiveGroups": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotInterfaceAddressesAdaptiveGroups": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroups": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotInterfacesAdaptiveGroups": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
+		"mconnTelemetrySnapshotInterfacesStagingAdaptiveGroups": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotMountsAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotMountsStagingAdaptiveGroups": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotNetdevsAdaptiveGroups": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
