@@ -1355,7 +1355,8 @@
 															"default",
 															"tunnel"
 														],
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": "array"
 												},
@@ -1363,24 +1364,28 @@
 													"default": 5,
 													"description": "Maximum file size (in MB) for the capture file. Specifies the maximum file size of the warp-diag zip artifact that can be uploaded. If the zip artifact exceeds the specified max file size, it will NOT be uploaded",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"packet-size-bytes": {
 													"default": 160,
 													"description": "Maximum number of bytes to save for each packet",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												},
 												"test-all-routes": {
 													"default": true,
 													"description": "Test an IP address from all included or excluded ranges. Tests an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>'' and collecting the results. This option may increase the time taken to collect the warp-diag",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"time-limit-min": {
 													"default": 5,
 													"description": "Limit on capture duration (in minutes)",
 													"minimum": 1,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1391,7 +1396,8 @@
 												"pcap",
 												"warp-diag"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"device_id": {
 											"description": "Unique identifier for the device",
