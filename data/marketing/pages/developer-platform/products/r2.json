@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-05-11T12:04:29.252Z",
-					"updatedAt": "2025-04-07T11:51:14.257Z"
+					"updatedAt": "2025-04-09T17:24:48.472Z"
 				},
 				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
@@ -78,7 +78,7 @@
 						"buttonUrl1": "https://dash.cloudflare.com/sign-up/r2",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "View Documentation",
+						"buttonText2": "View documentation",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "https://developers.cloudflare.com/r2/",
 						"button2ExtraClass": null,
@@ -345,7 +345,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
@@ -402,27 +402,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"",
-															"marks": [],
-															"content": null
-														},
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Developers can create a bucket directly in Laravel Cloud without having to create and integrate a separate account and objects are streamed directly from the front end without even touching the back end for a more streamlined experience. R2 ticked all the boxes from a performance perspective and its zero egress fees made it a natural choice to provide the object storage resource for Laravel Cloud.",
-															"marks": [],
-															"content": null
-														},
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"",
+															"value": "\"No egress fees is a big advantage, as surprise costs from surging traffic can be annoying [..] one has to be careful about surging costs for DDoS or viral traffic, but with Cloudflare, these worries are eliminated. Thanks to Cloudflare, startups don't need to scale up dramatically or set up their own servers. This results in significant cost savings and eliminates the need for our own infrastructure.\"",
 															"marks": [],
 															"content": null
 														}
@@ -466,7 +446,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Laravel",
+													"value": "LunarCrush",
 													"marks": [],
 													"content": null
 												}
