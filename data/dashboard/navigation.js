@@ -405,7 +405,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.workflows",
 			url: "/workers/workflows",
-			labels: ["beta"],
 			hasPermission: M => !!(0, o.z1)("workflows-ui")(M)
 		}, {
 			title: "navigation.account.workers.queues",
@@ -1084,7 +1083,7 @@ const navigation = {
 		}, {
 			title: "navigation.zone.rules.snippets",
 			url: "/rules/snippets",
-			navigationType: "version",
+			navigationType: "global-settings",
 			hasPermission: M => (0, m.$n)(M, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
