@@ -2669,6 +2669,51 @@
 													"description": "Time spent in user mode (milliseconds)",
 													"type": "number"
 												},
+												"dhcp_leases": {
+													"items": {
+														"description": "Snapshot DHCP lease",
+														"properties": {
+															"client_id": {
+																"description": "Client ID of the device the IP Address was leased to",
+																"type": "string"
+															},
+															"connector_id": {
+																"description": "Connector identifier",
+																"type": "string"
+															},
+															"expiry_time": {
+																"description": "Expiry time of the DHCP lease (seconds since the Unix epoch)",
+																"type": "number"
+															},
+															"hostname": {
+																"description": "Hostname of the device the IP Address was leased to",
+																"type": "string"
+															},
+															"interface_name": {
+																"description": "Name of the network interface",
+																"type": "string"
+															},
+															"ip_address": {
+																"description": "IP Address that was leased",
+																"type": "string"
+															},
+															"mac_address": {
+																"description": "MAC Address of the device the IP Address was leased to",
+																"type": "string"
+															}
+														},
+														"required": [
+															"interface_name",
+															"expiry_time",
+															"mac_address",
+															"ip_address",
+															"hostname",
+															"client_id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
 												"disks": {
 													"items": {
 														"description": "Snapshot Disk",
@@ -2766,7 +2811,6 @@
 															"name",
 															"reads",
 															"sectors_read",
-															"sectors_read",
 															"sectors_written",
 															"time_in_progress_ms",
 															"time_reading_ms",
@@ -2786,6 +2830,60 @@
 												"ha_value": {
 													"description": "Numeric value associated with high availability state (0 = unknown, 1 = active, 2 = standby, 3 = disabled, 4 = fault)",
 													"type": "number"
+												},
+												"interfaces": {
+													"items": {
+														"description": "Snapshot Interface",
+														"properties": {
+															"connector_id": {
+																"description": "Connector identifier",
+																"type": "string"
+															},
+															"ip_addresses": {
+																"items": {
+																	"description": "Snapshot Interface Address",
+																	"properties": {
+																		"connector_id": {
+																			"description": "Connector identifier",
+																			"type": "string"
+																		},
+																		"interface_name": {
+																			"description": "Name of the network interface",
+																			"type": "string"
+																		},
+																		"ip_address": {
+																			"description": "IP address of the network interface",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"interface_name",
+																		"ip_address"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"name": {
+																"description": "Name of the network interface",
+																"type": "string"
+															},
+															"operstate": {
+																"description": "UP/DOWN state of the network interface",
+																"type": "string"
+															},
+															"speed": {
+																"description": "Speed of the network interface (bits per second)",
+																"type": "number"
+															}
+														},
+														"required": [
+															"name",
+															"operstate"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"io_pressure_full_10s": {
 													"description": "Percentage of time over a 10 second window that all tasks were stalled",
@@ -3517,6 +3615,41 @@
 														},
 														"required": [
 															"label"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"tunnels": {
+													"items": {
+														"description": "Snapshot Tunnels",
+														"properties": {
+															"connector_id": {
+																"description": "Connector identifier",
+																"type": "string"
+															},
+															"health_state": {
+																"description": "Name of tunnel health state (unknown, healthy, degraded, down)",
+																"type": "string"
+															},
+															"health_value": {
+																"description": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)",
+																"type": "number"
+															},
+															"interface_name": {
+																"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+																"type": "string"
+															},
+															"tunnel_id": {
+																"description": "Tunnel identifier",
+																"type": "string"
+															}
+														},
+														"required": [
+															"tunnel_id",
+															"interface_name",
+															"health_state",
+															"health_value"
 														],
 														"type": "object"
 													},
