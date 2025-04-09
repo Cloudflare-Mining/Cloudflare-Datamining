@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/load-balancing/",
+	"path": "/developer-platform/products/workers-for-platforms/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Load Balancing - Product Page ",
+				"pageName": "Product - Workers for Platforms",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/load-balancing/",
+				"relativePath": "/developer-platform/products/workers-for-platforms/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Load Balancing | DNS-Based Load Balancer",
-					"metaDescription": "Cloudflare Load Balancing is a DNS-based load balancing solution that maximizes uptime and reduces costs. Explore benefits, use cases, and pricing.",
+					"metaTitle": "Workers for Platform",
+					"metaDescription": "Workers for Platform",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2018-12-12T21:09:32.213Z",
-					"updatedAt": "2025-04-05T03:09:47.461Z"
+					"createdAt": "2025-04-09T04:22:51.387Z",
+					"updatedAt": "2025-04-09T04:22:51.387Z"
 				},
-				"contentfulId": "1TkMywxXLaw2aAkquAasSM",
+				"contentfulId": "7bIOt8jkqnYqXLF68zA1Rj",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,31 +64,34 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "1NaQMnIGMgeIYao26SmukY",
+						"contentfulId": "TvQO1KOGOWAg6TutiuxUu",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Load Balancing",
+						"title": "Workers for Platforms",
 						"titleSize": null,
-						"subtitle": "A global, always-on load balancer",
+						"subtitle": "Make your platform programmable",
 						"subtitleSize": null,
-						"copy": "Cloudflare Load Balancing ensures better performance, uptime and user experience by dynamically balancing traffic across geographically-distributed data centers and servers.\n",
-						"buttonColor": null,
+						"copy": "Give your customers the ability to write, deploy, and run custom code at scale on Cloudflare's global network.",
+						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing",
+						"buttonText1": "Start building",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/account-id/workers-for-platforms",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get the whitepaper",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions? ",
-						"buttonUrl2": "https://www.cloudflare.com/lp/load-balancing-best-practices/",
+						"buttonText2": "Read the docs",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"includeVideo": true,
+						"streamVideoId": "c8afb7a0a811f07db4b4ffaf56c277bc",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
@@ -96,9 +99,14 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": false,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Rsm95WhF91Plk59BTDOva/c36d66773b8c571c2406d489d291ebb3/Workers-for-platforms.png"
+							},
+							"description": ""
+						},
+						"imageSize": null,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -108,39 +116,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "4e50d397-d6f1-5f06-9ae2-1ae8b9b93c89",
-							"altText": "load-balancing-hero",
-							"title": "load-balancing-hero",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rHTL3xnl6084cOiYgcyeU/af8508b64db079cabe50d3d81e01a5ea/BDES-4889-load-balancing-hero-illustration.svg"
-								},
-								"description": "Load balancing hero"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "7nM29EE3bPVZF02Lu4cHFa",
+						"contentfulId": "4NMhPJhGS8JO53J2rjckiM",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOAD BALANCING",
+						"eyebrowHeading": "BENEFITS OF WORKERS FOR PLATFORMS",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3fkMxFagRfgLzlx56N7au4",
-								"title": "Improved performance and resiliency",
+								"contentfulId": "ojzgKylJaQIq0LWwAsvid",
+								"title": "Customize at scale",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "As soon as an origin server or server pool goes down, requests proxied through Cloudflare get instantly rerouted to the nearest data center — helping maximize performance and resiliency.",
+								"description": "No need to build out dedicated infrastructure and engineering teams for customer code execution. Workers for Platforms automatically scales on demand.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -148,16 +142,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "f5307774-0846-5238-a3c7-d4da0a685dd6",
-									"altText": "Performance arrow up",
-									"title": "Performance arrow up",
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gpwto8WV76iRI4GJ9xlPS/d2f9700bb6e89cd972dc8c1b6d8722d3/performance-arrow-up.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
 										},
-										"description": "Improved performance icon"
+										"description": "Orange icon of a globe"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -171,12 +165,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4OPZ0A8OaLVb9CdIIAHipa",
-								"title": "Increased flexibility",
+								"contentfulId": "64j7diw7VflYMExFjEcQnX",
+								"title": "Empower your customers",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Load balance traffic across multiple L4-7 protocols — including HTTP(S), TCP or UDP — and tailor your configuration to support evolving business needs.",
+								"description": "Customers can customize experiences, trigger actions based on events, or extend your platform without your engineers having to write code.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -184,16 +178,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "c2f507a5-5305-554c-90cc-277775190f98",
+									"altText": "Premium success offering",
+									"title": "Premium success offering ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/zxVOnZQl89Rn83JV7mqLt/6d9d9af497be774b8d049e65e33ccd04/premium-success-offering.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -207,12 +201,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6e8YtanVdV171VsMGDlY9L",
-								"title": "Quick, simple configuration and management",
+								"contentfulId": "hcPeRnt1g5OHRByarIOvh",
+								"title": "Run untrusted code securely",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Set up a customizable and scalable load balancing infrastructure using the Cloudflare Dashboard or REST API — no additional hardware or software required.",
+								"description": "Customer code executes in an isolated environment with built-in controls to eliminate security and compliance risks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -220,14 +214,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "d2b32cbc-f943-5e9e-9085-1aab95c79802",
-									"altText": "configuration",
-									"title": "configuration",
+									"id": "6177f6bc-b04b-5b79-aee5-000775bda020",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mbB3plryIUBjzOv6eX04H/089dfc12bcb1e144e97b0a34436c435d/optimization-gear.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
 										},
 										"description": null
 									},
@@ -246,9 +240,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6zk4Yu5GWNsXzdbysX9tLP",
-						"title": "Improve availability and web performance with our global, cloud-based load balancer",
-						"copy": "Load Balancing intelligently distributes traffic across your multicloud deployments to reduce server strain, enhance [application availability](https://www.cloudflare.com/learning/performance/glossary/application-availability/) and user experience, and minimize bandwidth consumption and latency.\n\nIt runs in each of our data centers across %{DataCenterCount}+ cities worldwide and is backed by our [DDoS-resilient DNS](https://www.cloudflare.com/application-services/products/dns/) — the fastest authoritative DNS in the world.",
+						"contentfulId": "1gIAythb8DdhGYTWfEXLI3",
+						"title": "Deploy and run customer code at scale",
+						"copy": "Workers for Platforms provides a managed execution environment where your customers can deploy and run their own code on Cloudflare's global network. \n\nBuild custom logic, event-driven automation, and full-stack applications using Workers and primitives including storage, databases, and logging.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -261,29 +255,26 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DtsbzZuXhp10jg8oJhoqj/de2a4824fae910e96e0bb6987d42a7be/illustration_network-map_animation.gif"
-							},
-							"description": null
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "c1b7141c-d432-5097-b65c-fe776cf32ebe",
-							"altText": "Network map spot hero illustration",
-							"title": "Network map spot hero illustration",
+							"id": "e3191331-82ce-59b2-af66-f0d37d91fbea",
+							"altText": "Workers for Platforms - How it works",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/684JwC6JCxvi1E8ofkgvsJ/a86c37444b225f2cb22a349cc9483c12/BDES-4906_-_network-map-spot-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dwyd7MJ2zmfNVvKTIRHJc/06798d3d10b173f2334db956a8966456/programmable-platforms-2.BqwUXe3M_ZYXQFB.svg"
 								},
-								"description": null
+								"description": "Workers for Platforms - How it works"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -297,55 +288,62 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "medium",
+						"imageSize": "extra-large",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "73Zerzz54XgCNus6dYUmHl",
-						"title": "Learn how you can elevate application performance and scalability with Cloudflare",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "453mpu1PJastmhwPZTx1Y2",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "Learn how to leverage Cloudflare for your platform.",
+						"description": "Learn how to leverage Cloudflare for your platform.",
+						"variant": "inline",
 						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
+						"sectionPadding": null,
+						"backgroundImage": {
+							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
+							"altText": "Generic Lead Generation background",
+							"title": "Generic Lead Generation background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
+								},
+								"description": "Lead generation background generic"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4xRwSGWdavcwiDvzkQGaQg",
-							"elementName": "Load Balancing - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "5rNhj1oAkMC8xF8p3aOBUh",
+							"elementName": "CTA 1 - See design guide",
 							"standardText": null,
-							"text": "Watch the webinar",
-							"url": "https://cloudflare.ondemand.goldcast.io/on-demand/1c4e9657-f1c3-42f9-a0dc-f94feee797dc",
+							"text": "See design guide",
+							"url": "https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
+						"secondaryCtaButton": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "2e8wxcLPQJuT1qkwpxtMXC",
+						"contentfulId": "38DG7aQR7F1Dezzu9LDdOC",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "1mUzJKr4ukvIks8JHNcP99",
+								"contentfulId": "fHUlCdF1mOeXgU3YWheqa",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -397,7 +395,27 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"The combination of Load Balancing's geolocation steering and Cloudflare's caching makes sure customers are getting the fastest load times possible.\" ",
+															"value": "\"",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "For Shopify, the real challenge is not about how many different pieces of complex technology we can use but the opposite. Cloudflare helps us find a simple way to achieve something very complex that we can scale and maintain.",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
 															"marks": [],
 															"content": null
 														}
@@ -441,7 +459,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Active Solutions, Managing Director — Nigel Hepworth",
+													"value": "Duncan Davidson, VP of Developer Productivity, Shopify",
 													"marks": [],
 													"content": null
 												}
@@ -642,22 +660,22 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "XhTu64vqQDgXc6BvGFSl8",
+						"contentfulId": "4f2ERKqyJjyj7YfkBLXiiw",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Load Balancing helps you maximize application availability while reducing server strain and eliminating hardware-related costs",
-						"eyebrowHeading": "TOP LOAD BALANCING USE CASES",
+						"title": "Workers for Platforms helps you run customer code at scale.",
+						"eyebrowHeading": "Top Workers for Platform use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1Nyzvhe3xtRyXnVArkbnX2",
-								"title": "Global traffic management (GTM)",
+								"contentfulId": "18GP7VORFPg4lHRlrSNq0m",
+								"title": "Host static or full-stack applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Load balance traffic across geographically-distributed data centers to ensure application uptime and resiliency, even during surges, outages, or attacks.",
+								"description": "Extend static sites into full-stack applications with databases, KV-namespaces, and object storage.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -665,16 +683,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
 										},
-										"description": "Global traffic management icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -688,12 +706,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3WqOPr5AsKjSE8F3hfHX0U",
-								"title": "Private Network Load Balancing (PNLB)",
+								"contentfulId": "9ycwZmlSMFxjbr7iP9ejV",
+								"title": "Personalize experiences",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With private IP support, get near real-time failover across multiple servers, whether they are deployed in a private, public or hybrid cloud.",
+								"description": "Offer custom logic and enable customers to tailor sites for their needs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -701,16 +719,52 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b0331808-1f0c-54d6-8df1-60b11c7567d1",
-									"altText": null,
-									"title": null,
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/frcF2i75lu5RopYE9cSlY/a504da78027ed77ad5d6b9e591f370b1/analytics-data__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
 										},
-										"description": null
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4Y6fk9hDyRqEpP6S9xmKvX",
+								"title": "Create custom integrations",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Extend your platform's capabilities with custom integrations without dedicated infrastructure.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "65784c24-911b-5457-82eb-bbbe030aba15",
+									"altText": "icon-integrations -mint.png",
+									"title": "icon-integrations -mint.png",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bKP4zNFzmyxq1o0YJYF0P/ecc9f33d7efed7da6286fbe0d6b4c826/process-stack.svg"
+										},
+										"description": "icon integrations  mint"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -723,63 +777,18 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "6fECb5ShIHlNXItyQhI2ZM",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Trusted by millions of Internet properties",
-						"variant": "inline",
-						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5F8OaHL12z8VP2aSWm2r0v",
-							"elementName": "China Network  - CASE STUDIES - CTA",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?China+Network=China+Network",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentfulId": "4ziXZpy7t84etnolh4RUCB",
+						"contentfulId": "1oMskdvNOkhJekwI6STpt4",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
@@ -788,50 +797,14 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5Hc9A4b6Kq1WdRwWrgdTQw",
-								"title": "Improve web performance and reliability with load balancing",
+								"contentfulId": "1xK0C3IqKzGQVX9XlvrLek",
+								"title": "Workers for Platforms documentation",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how cloud-based load balancing can help minimize latency and downtime — and find a solution that works for you.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/optimize-web-performance-and-reliability-with-load-balancing/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6EiDdeHoqpr6vX5q6j8v1s",
-								"title": "Learn more about Load Balancing with Cloudflare",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Tune in for live weekly application performance demos — hosted by our Solution Engineering team.",
-								"learnMoreUrl": "https://eventhub.goldcast.io/?eventHubId=0dc82d0e-bb7c-4aa6-b853-a096322ed37c",
-								"learnMoreText": "Register now",
+								"description": "Get technical details on how you can make your platform more programmable.",
+								"learnMoreUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
+								"learnMoreText": "See documentation",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
@@ -840,9 +813,9 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -860,25 +833,97 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3UTUr1612awm4qsaQMNYL9",
-								"title": "Drive business agility and growth with Cloudflare Load Balancing",
+								"contentfulId": "7wkL0JV7C4ltccBkGRr4lR",
+								"title": "Community of developers",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Growing traffic demands, unexpected attacks, and geographic distance can negatively impact your business. See how Cloudflare's edge-hosted load balancer solves for these challenges.",
-								"learnMoreUrl": "/lp/idc-effective-load-balancing/",
-								"learnMoreText": "Read the report",
+								"description": "Share what you're building or ask questions with the community and Cloudflare employees on the developers discord.",
+								"learnMoreUrl": "http://discord.cloudflare.com",
+								"learnMoreText": "Join today",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4J2Ng6A1y859NkKwUHbCm8",
+								"title": "Multi-tenant applications",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See how Cloudflare provides a secure, scalable solution for multi-tenant applications.",
+								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/",
+								"learnMoreText": "View reference architectures",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1DkY8EicEGlsrK8jbwaK6h",
+								"title": " Build a sample app",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Explore how you can manage thousands of Workers from a single account.",
+								"learnMoreUrl": "https://github.com/cloudflare/workers-for-platforms-example",
+								"learnMoreText": "View the code",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -898,8 +943,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "20GdEYztPal465FAPWL5dt",
-						"title": "Get Cloudflare Load Balancing for your enterprise",
+						"contentfulId": "3MPNsarB5CchJmaWQ5eUBD",
+						"title": "Get Workers for Platforms for your app",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -914,27 +959,27 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "10Apk9DqF5iWdBWPt4oiOO",
-							"elementName": "Load Balancing - Talk to an expert (modal form) - CTA",
+							"contentfulId": "64p1cmXPLMMcw9QHcrmOPZ",
+							"elementName": "Workers for Platforms - Get Workers for Platforms for your app - CTA",
 							"standardText": null,
 							"text": "Talk to an expert",
-							"url": null,
+							"url": "#",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "39G5Bl2CVZVeylVSwBgL5E",
-								"modalName": "Load Balancing - Talk to an expert (modal form) - Modal form",
-								"modalId": "load-balancing-talk-to-an-expert-modal-form-modal-form",
+								"contentfulId": "3gYUXBJhuKOOfYi0SJJAoo",
+								"modalName": "Product - Workers for Platforms - Talk to an expert - Form",
+								"modalId": "product-workers-for-platforms-talk-to-an-expert-form",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "2lfBTOPlj2oAcb3HmXqGzd",
-									"bladeName": "Load Balancing - Talk to an expert (modal form) - Marketo form modal",
+									"contentfulId": "1TwqftOM8c3HLdxj0xcwZ7",
+									"bladeName": "Product - Workers for Platforms - Talk to an expert - Form Maketo",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Yes We Can Subscribers",
+									"marketoFormLeadSource": "Inbound - Web Form",
 									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert ",
+									"marketoFormHeaderText": "Request an Workers for Platforms discussion",
 									"marketoFormDefaultComment": null,
 									"showCommentBox": null,
 									"marketoFormThankYouText": null,
@@ -952,7 +997,7 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": null,
+								"title": "Request a Workers for Platforms discussion",
 								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
@@ -969,49 +1014,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "39G5Bl2CVZVeylVSwBgL5E",
-						"modalName": "Load Balancing - Talk to an expert (modal form) - Modal form",
-						"modalId": "load-balancing-talk-to-an-expert-modal-form-modal-form",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "2lfBTOPlj2oAcb3HmXqGzd",
-							"bladeName": "Load Balancing - Talk to an expert (modal form) - Marketo form modal",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Yes We Can Subscribers",
-							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-							"marketoFormHeaderText": "Talk to an expert ",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1022,8 +1026,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/load-balancing/",
-			"contentfulId": "1TkMywxXLaw2aAkquAasSM",
+			"pathname": "/developer-platform/products/workers-for-platforms/",
+			"contentfulId": "7bIOt8jkqnYqXLF68zA1Rj",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
