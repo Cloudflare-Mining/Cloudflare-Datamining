@@ -57,7 +57,15 @@
 				"contentfulId": "2I7gLKp1OUwqCQAIKW68qK",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "4J5OgKFLWIKtegwFUbX9gV",
+					"text": "Cloudflare will deprecate Railgun on January 31, 2024. Learn how to migrate to better alternatives in our blog.",
+					"learnMoreText": "Read the announcement",
+					"learnMoreUrl": "https://cfl.re/railgun-deprecation-blog",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -8511,7 +8519,7 @@
 				"zh-Hans-CN",
 				"pl-PL"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
