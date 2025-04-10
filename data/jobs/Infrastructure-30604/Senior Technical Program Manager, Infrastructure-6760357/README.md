@@ -5,31 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Location: Mexico City, MX</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>The Cloudflare Billing specialist team solves complicated billing problems and answers questions via email, chat and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You’ll do</strong></h3>
-<p>You will focus on helping Cloudflare customers with their basic to complex questions about financial, billing, and invoicing issues.</p>
-<h3><strong>Desirable skills, knowledge and experience</strong></h3>
+<h4><strong>Senior Technical Program Manager - Infrastructure Engineering Organization</strong></h4>
+<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.&nbsp;</p>
+<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
+<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
+<p><strong>This position will be based in Austin TX, or Atlanta GA with the expectation of ~2 days/week in office if in Austin. You will be reporting into the Infrastructure Engineering organization. If relocation is required (Austin only), it is expected to occur within ~6 months of starting employment.</strong></p>
+<p><strong>Major areas of responsibilities</strong></p>
 <ul>
-	<li>College degree in Computer Science, Information Technology, Business Administration or related fields&nbsp;</li>
-	<li>2+ years in customer-facing roles, preferably from tech support or customer support</li>
-	<li>Ability to work efficiently in a fast-paced environment</li>
-	<li>Experience researching and resolving client billing issues</li>
-	<li>Strong understanding of modern accounting standards</li>
-	<li>Exceptional attention to detail and accuracy</li>
-	<li>Excellent communication skills in English, including written, verbal, and interpersonal abilities, effective at all organizational levels.</li>
-	<li>Work cross-functionally with accounting and engineering teams</li>
-	<li>Basic understanding of technical troubleshooting steps</li>
-	<li>Develop and maintain process and training documentation for improving billing procedures</li>
-	<li>Strong analytical skills, with an ability to present analysis clearly</li>
+	<li>Understand technical requirements of assigned engineering programs</li>
+	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
+	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
+	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
+	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
+	<li>Provide regular status updates to stakeholders and senior management</li>
 </ul>
-<h3><strong>Additional skills</strong></h3>
+<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
 <ul>
-	<li>Proficiency in standard billing tools; experience with Stripe is preferred</li>
-	<li>Basic understanding of SQL</li>
-	<li>Knowledge of technology-based services such as CDN is a plus</li>
-	<li>Good understanding of Domain Registration terminology</li>
+	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
+	<li>Knowledge of network architecture and working with infrastructure teams a plus</li>
+	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
+	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
+	<li>Experience working with multiple time zones and multiple cross functional teams</li>
+	<li>Strong competency with Confluence, JIRA, and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

@@ -5,32 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon, Portugal</strong></h4>
-<h4><strong>About the team</strong></h4>
-<p>You will be part of the Network Strategy team within Cloudflare’s Infrastructure Engineering department. The Network Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and cost. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding the resource consumption and cost of Cloudflare’s broad product portfolio.</p>
-<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>About the Team</strong></h4>
+<p>In this role, you will be focused on the build out and expansion of our global network. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, Infrastructure Engineering team, Project Managers and with various vendors and partners (including hardware vendors, logistics, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure, and to plan and aggressively execute on the expansion of our network. You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, physical and logical networking, linux, and basic experience with data analysis and project management.</p>
+<p>To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p><strong>Other Responsibilities May Include</strong></p>
 <ul>
-	<li>Design and implement data pipelines that take unprocessed data and make it usable for advanced analytics</li>
-	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics</li>
-	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
-	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams</li>
+	<li>Provisioning, monitoring and maintaining hardware, software, and network in new Cloudflare data centers.</li>
+	<li>Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 335+ growing datacenter locations</li>
+	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</li>
+	<li>Planning and implementing network and server installations, including in the areas of facility power (AC/DC), cooling, security/access, rack layout and cable management.</li>
+	<li>Providing technical leadership and guidance during deployment activities.</li>
+	<li>Creating and maintaining documentation, plans, SOP’s, MOP’s etc.</li>
+	<li>Collaborating with internal teams (infrastructure engineering, network engineering and SRE) for day to day activities.&nbsp;</li>
+	<li>Coordinating installation of cross-connects globally in support of physical network expansion.</li>
+	<li>Assisting with the definition, documentation and implementation of consistent processes across all regions.</li>
+	<li>Limited travel</li>
+</ul>
+<p><strong>Required Experience</strong></p>
+<ul>
+	<li>Minimum of 3 years of prior relevant experience in Data Center Operations, Site Reliability Engineering, Linux systems administration, Network Engineering, and/or DevOps experience</li>
+	<li>Familiarity with day-to-day tasks and projects common in Data Center Operations.</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Configuration management tool experience like Saltstack, Chef, Puppet or Ansible</li>
+	<li>Network hardware administration.</li>
+	<li>Knowledge and exposure to Network Protocols, Topologies and Enterprise architecture.&nbsp;</li>
+	<li>Experience writing network configuration and design documentation.</li>
+	<li>Experience solving problems through automation.</li>
+	<li>Ability to write scripts for internal tools.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excellent Python and SQL (one of the interviews will be a code review)</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
-	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+	<li>Bachelor’s degree, technical background in engineering, computer science, or MIS a plus.</li>
+	<li>Direct experience executing on datacenter / infrastructure projects with many moving parts.</li>
+	<li>Previous experience installing / maintaining datacenter (and other IT) infrastructure and DCIM tools.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
+	<li>Strong understanding of BGP and anycast routing</li>
+	<li>Professional level network certification(s) (JNCIP, CCNP, etc) or higher</li>
+	<li>Good working knowledge of Juniper Junos, Cisco IOS, Cisco NX-OS and Arista EOS</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
+	<li>Proficient in one or more programming languages and willing to learn new ones when required</li>
+	<li>Strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</li>
+	<li>Must be proactive with proven ability to learn fast and execute on multiple tasks simultaneously.</li>
+	<li>Ability to manage MS excel and Google spreadsheets.</li>
+	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</li>
+	<li>Experience managing remote contractors</li>
+	<li>Must be a team player.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Familiarity with Airflow&nbsp;</li>
-	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
+	<li>Multi-lingual; experience working with infrastructure in multiple countries.</li>
+	<li>Experience with continuous / rapid deployment</li>
+	<li>Experience working in a 24/7/365 mission-critical service environment</li>
+	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
+	<li>Linux certifications.</li>
+	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
