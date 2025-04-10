@@ -5,33 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon, Portugal, London, United Kingdom, Austin, United States</strong></p>
-<p><strong>What you'll do</strong></p>
-<p>As a Senior Software Engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
-<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
+<p><strong>Position location: London or Lisbon</strong></p>
+<p><strong>Software Engineer, All Levels</strong></p>
+<p><strong>Hiring Process &amp; Cloudflare's Engineering Teams</strong></p>
+<p>If you want to build things at Cloudflare but are unsure about which team to apply for, this role will give you the best opportunity to match with a team that is most aligned to your experience, skill, and ambition. We've created a hiring process designed to find great candidates and figure out where they fit best as we go along. At the end of the hiring process you will have the opportunity to meet with one or more teams to find out if there is a fit, but if you discover during the interview process that a particular team or product area is interesting to you let us know.</p>
+<p><strong>About Engineering at Cloudflare</strong></p>
+<p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Software Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to <a href="https://www.cloudflare.com/network/">330+ cities</a> around the world.</p>
+<p><strong>Examples of software systems at Cloudflare:</strong></p>
+<p>Since we don't know what team you'll be working on quite yet, here's some things that we do at Cloudflare. This is not a complete list, but gives a good indica<br>tion of the wide variety of things you might work on.</p>
+<ul>
+	<li>A TLS/HTTP proxy to make the connection from eyeball to edge as fast and secure as possible</li>
+	<li>Filtering malicious traffic and handling good traffic according to customer configuration</li>
+	<li>Content optimization that takes content served from customer sites and makes it more performant</li>
+	<li>A platform that runs “serverless” Workers and provides a key value store</li>
+	<li>A reverse-proxy system that caches customer website content according to customer configuration</li>
+	<li>Optimization of connections from Cloudflare to our customers' origin servers to reduce their load and increase performance</li>
+	<li>Our Authoritative DNS server and our public resolver 1.1.1.1.</li>
+	<li>Data Science diving deep into HTTP request data, identifying malicious and fraudulent traffic patterns, and building novel solutions for mitigating such attacks.</li>
+	<li>Full Machine Learning platform and model development, from feature engineering to model development to release and monitoring.</li>
+	<li>One of the biggest data pipelines in the world, operating at well over 250M events per second</li>
+	<li>We operate some of the fastest, and most widely distributed services on the Internet. Your work will focus on building robust, secure, and high performance distributed systems. We are a small engineering team operating at a massive scale, so what you do will have a huge impact.</li>
+</ul>
+<p><strong>Requirements for any role</strong></p>
+<p>If you think some of this list describes you (or what you aspire to be) we would love to talk to you. While not listed as a requirement, we also want to call out that most roles need the flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<ul>
+	<li>First and foremost curiosity and critical thinking</li>
+	<li>Experience (and love for) debugging to ensure the system works in all cases</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Designing and building APIs</li>
+	<li>Understanding of what it takes to build secure systems</li>
+	<li>Confidence to work in multiple programming languages - bonus points for Go and/or Rust</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Some team-specific things we think are interesting and want to highlight.</p>
 <ul>
-	<li>At least 3 years of experience of technical leadership</li>
-	<li>Experience managing high available systems with disaster recovery support.</li>
-	<li>Experience in at least of the following languages: Go, Rust</li>
-	<li>Experience in Typescript</li>
-	<li>Experience designing and integrating RESTful APIs at scale</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Knowledge on distributed NoSQL databases</li>
-	<li>Excellent debugging experience and optimization skills</li>
-	<li>Experience with Kubernetes</li>
+	<li>Understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
+	<li>Strong systems level programming skills</li>
+	<li>Optimization of complex solutions</li>
+	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
+	<li>Understanding what it takes to build and maintain distributed systems</li>
+	<li>Good Unix knowledge, having submitted patches to Operating Systems a huge plus for some roles</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Understanding of security and fraud detection systems</li>
 </ul>
-<p><strong>Responsibilities</strong></p>
-<ul>
-	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
-	<li>Provide technical leadership to the team projects and objectives</li>
-	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
-	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
-	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
-	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
-</ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
