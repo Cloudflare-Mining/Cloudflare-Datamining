@@ -1163,6 +1163,13 @@
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
 													"properties": {
+														"last_analyzed_at": {
+															"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"example": "2025-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
 														"mode": {
 															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
 															"enum": [
