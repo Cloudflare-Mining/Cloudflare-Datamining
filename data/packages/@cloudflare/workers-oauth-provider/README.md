@@ -2,9 +2,9 @@
 
 This is a TypeScript library that implements the provider side of the OAuth 2.1 protocol with PKCE support. The library is intended to be used on Cloudflare Workers.
 
-## EXPERIMENTAL
+## Beta
 
-As of March, 2025, this library is very new. Please use with caution as additional security reviews are still in progress.
+As of March, 2025, this library is very new, prerelease software. The API is still subject to change.
 
 ## Benefits of this library
 
@@ -262,11 +262,34 @@ The `accessTokenTTL` override is particularly useful when the application is als
 
 The `props` values are end-to-end encrypted, so they can safely contain sensitive information.
 
-## Written by Claude
+## Custom Error Responses
 
-This library (including the schema documentation) was largely written by [Claude](https://claude.ai), the AI model by Anthropic. Claude's output was thoroughly reviewed by Cloudflare engineers with careful attention paid to security and compliance with standards. Many improvements were made on the initial output, mostly again by prompting Claude (and reviewing the results). Check out the commit history to see how Claude was prompted and what code it produced.
+By using the `onError` option, you can emit notifications or take other actions when an error response was to be emitted:
 
-(@kentonv, the lead engineer, was actually an AI skeptic, and started this project with the intent to prove that LLMs cannot code. He ended up deciding he had proven himself wrong.)
+```ts
+new OAuthProvider({
+  // ... other options ...
+  onError({ code, description, status, headers }) {
+    Sentry.captureMessage(/* ... */)
+  }
+})
+```
+
+By returning a `Response` you can also override what the OAuthProvider returns to your users:
+
+```ts
+new OAuthProvider({
+  // ... other options ...
+  onError({ code, description, status, headers }) {
+    if (code === 'unsupported_grant_type') {
+      return new Response('...', { status, headers })
+    }
+    // returning undefined (i.e. void) uses the default Response generation
+  }
+})
+```
+
+By default, the `onError` callback is set to ``({ status, code, description }) => console.warn(`OAuth error response: ${status} ${code} - ${description}`)``.
 
 ## Implementation Notes
 
@@ -286,3 +309,17 @@ OAuth 2.1 requires that refresh tokens are either "cryptographically bound" to t
 This requirement is seemingly fundamentally flawed as it assumes that every refresh request will complete with no errors. In the real world, a transient network error, machine failure, or software fault could mean that the client fails to store the new refresh token after a refresh request. In this case, the client would be permanently unable to make any further requests, as the only token it has is no longer valid.
 
 This library implements a compromise: At any particular time, a grant may have two valid refresh tokens. When the client uses one of them, the other one is invalidated, and a new one is generated and returned. Thus, if the client correctly uses the new refresh token each time, then older refresh tokens are continuously invalidated. But if a transient failure prevents the client from updating its token, it can always retry the request with the token it used previously.
+
+## Written using Claude
+
+This library (including the schema documentation) was largely written with the help of [Claude](https://claude.ai), the AI model by Anthropic. Claude's output was thoroughly reviewed by Cloudflare engineers with careful attention paid to security and compliance with standards. Many improvements were made on the initial output, mostly again by prompting Claude (and reviewing the results). Check out the commit history to see how Claude was prompted and what code it produced.
+
+**"NOOOOOOOO!!!! You can't just use an LLM to write an auth library!"**
+
+"haha gpus go brrr"
+
+In all seriousness, two months ago (January 2025), I ([@kentonv](https://github.com/kentonv)) would have agreed. I was an AI skeptic. I thoughts LLMs were glorified Markov chain generators that didn't actually understand code and couldn't produce anything novel. I started this project on a lark, fully expecting the AI to produce terrible code for me to laugh at. And then, uh... the code actually looked pretty good. Not perfect, but I just told the AI to fix things, and it did. I was shocked.
+
+To emphasize, **this is not "vibe coded"**. Every line was thoroughly reviewed and cross-referenced with relevant RFCs, by security experts with previous experience with those RFCs. I was *trying* to validate my skepticism. I ended up proving myself wrong.
+
+Again, please check out the commit history -- especially early commits -- to understand how this went.
