@@ -1,0 +1,70 @@
+{
+	"name": "@flarelabs-net/vite-environment-provider-cloudflare",
+	"dist-tags": {
+		"latest": "0.0.1"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@flarelabs-net/vite-environment-provider-cloudflare",
+			"version": "0.0.0",
+			"dependencies": {
+				"cjs-module-lexer": "^1.3.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.11.19",
+				"@cloudflare/workers-types": "^4.20240424.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.0.0-alpha.18",
+				"wrangler": "^3.57.2",
+				"miniflare": "^3.20240129.3"
+			},
+			"dist": {
+				"shasum": "4d89356b1774a9a3f7dd431120d79365da0c1108",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/vite-environment-provider-cloudflare/-/vite-environment-provider-cloudflare-0.0.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-oEZn9JPUFB7niq/sY/civwCEkURKlv09tDGwZ5C4ZVKJc5PYrbVu/JJUj+M2pMh41739Hb+w/3NEe4JSQIuWcA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC8cZ017uZZLhK6T+vhXwXiRfubflhgEPXTulJF2kCRJQIgO62xlWj9Qk9cBhpcvu6WufCYuluQv328Zr+oCU0vhvQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70585
+			}
+		},
+		"0.0.1": {
+			"name": "@flarelabs-net/vite-environment-provider-cloudflare",
+			"version": "0.0.1",
+			"dependencies": {
+				"cjs-module-lexer": "^1.3.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"typescript": "^5.1.6",
+				"@types/node": "^20.11.19",
+				"@cloudflare/workers-types": "^4.20240424.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.0.0-alpha.18",
+				"wrangler": "^3.57.2",
+				"miniflare": "^3.20240129.3"
+			},
+			"dist": {
+				"shasum": "41f5e67d237734568680aca2ca578b0da6e04446",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/vite-environment-provider-cloudflare/-/vite-environment-provider-cloudflare-0.0.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-UEnV4IcFmOFYlzRuSdjCjXuTLptK5q1HuZ1jwQo9N3vmk5TOICkWvWVgwfUh/HihF9+B3lCIuJWNylakKUQbHg==",
+				"signatures": [
+					{
+						"sig": "MEQCIE7f/zmwG+a2v8ZiheU7+pTjOAs0V985JhxU5dtNUf0+AiAfpZ9Ln09w7lnN2xQhi1M3+GYk1jZBtXvyHMvhknUeVg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 70596
+			}
+		}
+	}
+}
