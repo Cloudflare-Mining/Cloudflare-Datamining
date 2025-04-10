@@ -60,19 +60,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -512,19 +499,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -976,19 +950,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -1428,19 +1389,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -1887,19 +1835,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -2245,19 +2180,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -2695,19 +2617,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -3181,19 +3090,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -3567,19 +3463,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -3965,19 +3848,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -4351,19 +4221,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -4750,19 +4607,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -5063,19 +4907,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -5452,19 +5283,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -5768,19 +5586,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -6096,19 +5901,6 @@
 				}
 			},
 			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
 				"description": "Comma-separated list of locations (alpha-2 codes). Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
@@ -6411,19 +6203,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Comma-separated list of Autonomous System Numbers (ASNs). Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
