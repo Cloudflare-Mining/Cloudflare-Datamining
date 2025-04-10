@@ -185,7 +185,7 @@ export default {
 	<p>You can even wait for multiple events, using the <code>type</code> parameter, and/or race multiple events using <code>Promise.race</code> to continue on depending on which event was received first:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
 	async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
-		let state = await step.do("get some data", () =&gt; { /* step call here /* })
+		let state = await step.do("get some data", () =&gt; { /* step call here */ })
 		// Race the events, resolving the Promise based on which event
 // we receive first
 		let value = Promise.race([
@@ -201,7 +201,7 @@ step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout:
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64dgTwe9V6bAfKUDQgJ1z3/e0a897623a8ca452139f00dd2cff9733/1.png" alt="" class="kg-image" width="1999" height="860" loading="lazy">
 	</figure>
 	<p><sup><i>Without waitForEvent, it’s harder to send data to a Workflow instance that’s running</i></sup></p>
-	<p>If we modified that same example to incorporate the new waitForEvent API, we could use it to wait for human approval before making a mutating change:&nbsp;</p>
+	<p>If we modified that same example to incorporate the new waitForEvent API, we could use it to wait for human approval before making a mutating change:&nbsp; </p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BIuiSytb7roytyDhHVioz/0e005829fea9e60d772dcb6888acac2c/2.png" alt="" class="kg-image" width="1999" height="860" loading="lazy">
 	</figure>
