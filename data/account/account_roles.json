@@ -45,6 +45,25 @@
 		}
 	},
 	{
+		"id": "94a8a5ccfcb2ade88ad5154d09f27715",
+		"name": "Cloudflare Zero Trust Secure DNS Locations Write",
+		"description": "Can access all Cloudflare for Zero Trust DNS Locations but only edit Secure DNS Locations.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "524d8604ba35958b4a8d9e5fb06d5eeb",
 		"name": "Brand Protection",
 		"description": "Grants access to abuse reports and brand protection",
