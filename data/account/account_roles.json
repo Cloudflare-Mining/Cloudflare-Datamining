@@ -1,5 +1,35 @@
 [
 	{
+		"id": "a4154d230e664f8b3e6e5c95a8cc812f",
+		"name": "Cloudchamber Admin Read Only",
+		"description": "Can manage Cloudchamber deployments in read only mode",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "a9f7f84d75bddf998c6cb2e357bdf3cc",
+		"name": "Cloudchamber Admin",
+		"description": "Can manage Cloudchamber deployments",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "b0825febc8edc7216a8023813f69a987",
 		"name": "Secrets Store Reporter",
 		"description": "Can read Secrets from the Secrets Store",
