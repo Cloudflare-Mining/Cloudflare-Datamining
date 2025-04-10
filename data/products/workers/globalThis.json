@@ -269,6 +269,7 @@
 			"blob_standard_mime_type": "boolean",
 			"brotli_content_encoding": "boolean",
 			"cache_api_compat_flags": "boolean",
+			"cache_api_request_cf_overrides_cache_rules": "boolean",
 			"cache_option_enabled": "boolean",
 			"capture_async_api_throws": "boolean",
 			"crypto_preserve_public_exponent": "boolean",
@@ -2168,6 +2169,7 @@
 		"name": "string"
 	},
 	"navigator": {
+		"hardwareConcurrency": "number",
 		"sendBeacon": {
 			"__proto": "function",
 			"__type": "function",
@@ -9264,19 +9266,14 @@
 					},
 					"writableLength": "number",
 					"bytesRead": "undefined",
-					"bytesWritten": "number",
+					"_bytesDispatched": "undefined",
+					"bytesWritten": "undefined",
 					"remoteAddress": "undefined",
 					"remoteFamily": "undefined",
 					"remotePort": "undefined",
-					"localAddress": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"localPort": "number",
-					"localFamily": {
-						"__proto": "object",
-						"__type": "string"
-					},
+					"localAddress": "undefined",
+					"localPort": "undefined",
+					"localFamily": "undefined",
 					"write": {
 						"__proto": "function",
 						"__type": "function",
@@ -9780,12 +9777,15 @@
 							"of": "undefined"
 						}
 					},
+					"_handle": "object",
 					"connecting": "boolean",
 					"_hadError": "boolean",
 					"_parent": "object",
 					"_host": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
+					"_pendingData": "object",
+					"_pendingEncoding": "string",
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
@@ -10134,19 +10134,14 @@
 					},
 					"writableLength": "number",
 					"bytesRead": "undefined",
-					"bytesWritten": "number",
+					"_bytesDispatched": "undefined",
+					"bytesWritten": "undefined",
 					"remoteAddress": "undefined",
 					"remoteFamily": "undefined",
 					"remotePort": "undefined",
-					"localAddress": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"localPort": "number",
-					"localFamily": {
-						"__proto": "object",
-						"__type": "string"
-					},
+					"localAddress": "undefined",
+					"localPort": "undefined",
+					"localFamily": "undefined",
 					"write": {
 						"__proto": "function",
 						"__type": "function",
@@ -10650,12 +10645,15 @@
 							"of": "undefined"
 						}
 					},
+					"_handle": "object",
 					"connecting": "boolean",
 					"_hadError": "boolean",
 					"_parent": "object",
 					"_host": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
+					"_pendingData": "object",
+					"_pendingEncoding": "string",
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
@@ -10942,27 +10940,11 @@
 				"_prototype": {}
 			},
 			"env": {
-				"BROWSER_BINDING": {
-					"__proto": "object",
-					"__type": "string"
-				},
 				"METADATA_BINDING": {
 					"__proto": "object",
 					"__type": "string"
 				},
-				"MTLS_CERT_BINDING": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"SERVICE_BINDING": {
-					"__proto": "object",
-					"__type": "string"
-				},
 				"VERSION_METADATA_BINDING": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"ASSETS": {
 					"__proto": "object",
 					"__type": "string"
 				}
@@ -10984,6 +10966,13 @@
 			"platform": {
 				"__proto": "object",
 				"__type": "string"
+			},
+			"features": {
+				"cached_builtins": "boolean",
+				"debug": "boolean",
+				"inspector": "boolean",
+				"require_module": "boolean",
+				"tls": "boolean"
 			}
 		},
 		"stream": {
@@ -16568,19 +16557,14 @@
 					},
 					"writableLength": "number",
 					"bytesRead": "undefined",
-					"bytesWritten": "number",
+					"_bytesDispatched": "undefined",
+					"bytesWritten": "undefined",
 					"remoteAddress": "undefined",
 					"remoteFamily": "undefined",
 					"remotePort": "undefined",
-					"localAddress": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"localPort": "number",
-					"localFamily": {
-						"__proto": "object",
-						"__type": "string"
-					},
+					"localAddress": "undefined",
+					"localPort": "undefined",
+					"localFamily": "undefined",
 					"write": {
 						"__proto": "function",
 						"__type": "function",
@@ -17093,16 +17077,19 @@
 					"servername": "object",
 					"authorized": "boolean",
 					"encrypted": "boolean",
+					"_handle": "object",
 					"connecting": "boolean",
 					"_hadError": "boolean",
 					"_parent": "object",
 					"_host": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
+					"_pendingData": "object",
+					"_pendingEncoding": "string",
 					"_readableState": "object",
 					"_writableState": "object",
 					"allowHalfOpen": "boolean",
-					"ssl": "undefined",
+					"ssl": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -17216,6 +17203,17 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
+			},
+			"convertALPNProtocols": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
 			}
 		},
 		"zlib": {
