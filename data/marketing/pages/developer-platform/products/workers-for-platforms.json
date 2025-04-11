@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-04-09T04:22:51.387Z",
-					"updatedAt": "2025-04-09T04:22:51.387Z"
+					"updatedAt": "2025-04-11T12:51:05.181Z"
 				},
 				"contentfulId": "7bIOt8jkqnYqXLF68zA1Rj",
 				"contentTypeId": "page",
@@ -781,163 +781,143 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1oMskdvNOkhJekwI6STpt4",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "5WTeOWlXSZCrE6I00UfTtH",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1xK0C3IqKzGQVX9XlvrLek",
-								"title": "Workers for Platforms documentation",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "78UV9bqolyGIYZrakkmTqc",
+								"heading": "Documentation",
 								"description": "Get technical details on how you can make your platform more programmable.",
-								"learnMoreUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
-								"learnMoreText": "See documentation",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1em9HEjDFGEGu6MAhC3gWZ",
+									"elementName": "See documentation",
+									"standardText": null,
+									"text": "See documentation",
+									"url": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
+									"altText": "Insight documentation illustration",
+									"title": "Insight documentation illustration",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7wkL0JV7C4ltccBkGRr4lR",
-								"title": "Community of developers",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2hkxj1yvH4TSpoM4rGE14i",
+								"heading": "Insight",
 								"description": "Share what you're building or ask questions with the community and Cloudflare employees on the developers discord.",
-								"learnMoreUrl": "http://discord.cloudflare.com",
-								"learnMoreText": "Join today",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"category": "Insights",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4fLkatICipyhaPhVEGOhCh",
+									"elementName": "Join today",
+									"standardText": null,
+									"text": "Join today",
+									"url": "http://discord.cloudflare.com",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "debaf283-5a96-54fe-8e6c-4af695d18f32",
+									"altText": "Documentation and News - thumbnail",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cjUWD1XYnEQPLfBBphpbz/6664e5677d1165cd5e48ccaf57d344f2/News_Thumbnails_Opt-3.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Documentation and News - thumbnail"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4J2Ng6A1y859NkKwUHbCm8",
-								"title": "Multi-tenant applications",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6ORuz8mcjhGdDi84MpRUqU",
+								"heading": "Explore",
 								"description": "See how Cloudflare provides a secure, scalable solution for multi-tenant applications.",
-								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/",
-								"learnMoreText": "View reference architectures",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6atpirkzrZHnXA0rJaNNZu",
+									"elementName": "View reference architectures",
+									"standardText": null,
+									"text": "View architectures",
+									"url": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "debaf283-5a96-54fe-8e6c-4af695d18f32",
+									"altText": "Documentation and News - thumbnail",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cjUWD1XYnEQPLfBBphpbz/6664e5677d1165cd5e48ccaf57d344f2/News_Thumbnails_Opt-3.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Documentation and News - thumbnail"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1DkY8EicEGlsrK8jbwaK6h",
-								"title": " Build a sample app",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2z5n7fZGHgr8zTsTTViHjZ",
+								"heading": "Documentation",
 								"description": "Explore how you can manage thousands of Workers from a single account.",
-								"learnMoreUrl": "https://github.com/cloudflare/workers-for-platforms-example",
-								"learnMoreText": "View the code",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "56zWvxfNqLqBH9rkpF1gNZ",
+									"elementName": "View the code",
+									"standardText": null,
+									"text": "View the code",
+									"url": "https://github.com/cloudflare/workers-for-platforms-example",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
+									"altText": "Insight documentation illustration",
+									"title": "Insight documentation illustration",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							}
 						]
 					},
