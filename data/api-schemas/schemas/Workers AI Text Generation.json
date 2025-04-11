@@ -462,7 +462,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -994,7 +994,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -1526,7 +1526,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -2058,7 +2058,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -2590,7 +2590,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -2640,6 +2640,561 @@
 			}
 		],
 		"summary": "Execute @cf/google/gemma-2b-it-lora model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/google/gemma-3-12b-it": {
+		"operationId": "workers-ai-post-run-cf-google-gemma-3-12b-it",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fufilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"description": "The input text prompt for the model to generate a response.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Prompt"
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fufilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"messages": {
+										"description": "An array of message objects representing the conversation history.",
+										"items": {
+											"properties": {
+												"content": {
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"items": {
+																"properties": {
+																	"image_url": {
+																		"properties": {
+																			"url": {
+																				"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																				"pattern": "^data:*",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"text": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content provided",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"properties": {
+																"image_url": {
+																	"properties": {
+																		"url": {
+																			"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																			"pattern": "^data:*",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"text": {
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of the content provided",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"role": {
+													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"description": "A list of tools available for the assistant to use.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"description": "A brief description of what the tool does.",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the tool. More descriptive the better.",
+															"type": "string"
+														},
+														"parameters": {
+															"description": "Schema defining the parameters accepted by the tool.",
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"description": "A description of the expected parameter.",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The data type of the parameter.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Definitions of each parameter.",
+																	"type": "object"
+																},
+																"required": {
+																	"description": "List of required parameter names.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"description": "The type of the parameters object (usually 'object').",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"description": "Details of the function tool.",
+															"properties": {
+																"description": {
+																	"description": "A brief description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "Schema defining the parameters accepted by the function.",
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"description": "A description of the expected parameter.",
+																						"type": "string"
+																					},
+																					"type": {
+																						"description": "The data type of the parameter.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Definitions of each parameter.",
+																			"type": "object"
+																		},
+																		"required": {
+																			"description": "List of required parameter names.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"description": "The type of the parameters object (usually 'object').",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "Specifies the type of tool (e.g., 'function').",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								],
+								"title": "Messages"
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"description": "The generated text response from the model",
+													"type": "string"
+												},
+												"tool_calls": {
+													"description": "An array of tool calls requests made during the response generation",
+													"items": {
+														"properties": {
+															"arguments": {
+																"description": "The arguments passed to be passed to the tool call request",
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the tool to be called",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"response"
+											],
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/google/gemma-3-12b-it model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -3122,7 +3677,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -3654,7 +4209,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -4186,7 +4741,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -4718,7 +5273,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -5250,7 +5805,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -5782,7 +6337,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -6314,7 +6869,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -6846,7 +7401,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -7378,7 +7933,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -7910,7 +8465,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -8442,7 +8997,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -8974,7 +9529,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -9506,7 +10061,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -10038,7 +10593,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -10549,7 +11104,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -11081,7 +11636,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -11613,7 +12168,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -11663,538 +12218,6 @@
 			}
 		],
 		"summary": "Execute @cf/meta/llama-3.2-3b-instruct model.",
-		"tags": [
-			"Workers AI Text Generation"
-		],
-		"x-api-token-group": [
-			"Workers AI Write",
-			"Workers AI Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.ai"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
-		"operationId": "workers-ai-post-run-cf-meta-llama-3-3-70b-instruct-fp8-fast",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "queueRequest",
-				"schema": {
-					"example": "true",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"oneOf": [
-							{
-								"properties": {
-									"frequency_penalty": {
-										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"lora": {
-										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
-										"type": "string"
-									},
-									"max_tokens": {
-										"default": 256,
-										"description": "The maximum number of tokens to generate in the response.",
-										"type": "integer"
-									},
-									"presence_penalty": {
-										"description": "Increases the likelihood of the model introducing new topics.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"prompt": {
-										"description": "The input text prompt for the model to generate a response.",
-										"minLength": 1,
-										"type": "string"
-									},
-									"raw": {
-										"default": false,
-										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
-										"type": "boolean"
-									},
-									"repetition_penalty": {
-										"description": "Penalty for repeated tokens; higher values discourage repetition.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"response_format": {
-										"properties": {
-											"json_schema": {},
-											"type": {
-												"enum": [
-													"json_object",
-													"json_schema"
-												],
-												"type": "string"
-											}
-										},
-										"title": "JSON Mode",
-										"type": "object"
-									},
-									"seed": {
-										"description": "Random seed for reproducibility of the generation.",
-										"maximum": 9999999999,
-										"minimum": 1,
-										"type": "integer"
-									},
-									"stream": {
-										"default": false,
-										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
-										"type": "boolean"
-									},
-									"temperature": {
-										"default": 0.6,
-										"description": "Controls the randomness of the output; higher values produce more random results.",
-										"maximum": 5,
-										"minimum": 0,
-										"type": "number"
-									},
-									"top_k": {
-										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
-										"maximum": 50,
-										"minimum": 1,
-										"type": "integer"
-									},
-									"top_p": {
-										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									}
-								},
-								"required": [
-									"prompt"
-								],
-								"title": "Prompt"
-							},
-							{
-								"properties": {
-									"frequency_penalty": {
-										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"functions": {
-										"items": {
-											"properties": {
-												"code": {
-													"type": "string"
-												},
-												"name": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"code"
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
-									"max_tokens": {
-										"default": 256,
-										"description": "The maximum number of tokens to generate in the response.",
-										"type": "integer"
-									},
-									"messages": {
-										"description": "An array of message objects representing the conversation history.",
-										"items": {
-											"properties": {
-												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
-												},
-												"role": {
-													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
-													"type": "string"
-												}
-											},
-											"required": [
-												"role",
-												"content"
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
-									"presence_penalty": {
-										"description": "Increases the likelihood of the model introducing new topics.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"raw": {
-										"default": false,
-										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
-										"type": "boolean"
-									},
-									"repetition_penalty": {
-										"description": "Penalty for repeated tokens; higher values discourage repetition.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									},
-									"response_format": {
-										"properties": {
-											"json_schema": {},
-											"type": {
-												"enum": [
-													"json_object",
-													"json_schema"
-												],
-												"type": "string"
-											}
-										},
-										"title": "JSON Mode",
-										"type": "object"
-									},
-									"seed": {
-										"description": "Random seed for reproducibility of the generation.",
-										"maximum": 9999999999,
-										"minimum": 1,
-										"type": "integer"
-									},
-									"stream": {
-										"default": false,
-										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
-										"type": "boolean"
-									},
-									"temperature": {
-										"default": 0.6,
-										"description": "Controls the randomness of the output; higher values produce more random results.",
-										"maximum": 5,
-										"minimum": 0,
-										"type": "number"
-									},
-									"tools": {
-										"description": "A list of tools available for the assistant to use.",
-										"items": {
-											"oneOf": [
-												{
-													"properties": {
-														"description": {
-															"description": "A brief description of what the tool does.",
-															"type": "string"
-														},
-														"name": {
-															"description": "The name of the tool. More descriptive the better.",
-															"type": "string"
-														},
-														"parameters": {
-															"description": "Schema defining the parameters accepted by the tool.",
-															"properties": {
-																"properties": {
-																	"additionalProperties": {
-																		"properties": {
-																			"description": {
-																				"description": "A description of the expected parameter.",
-																				"type": "string"
-																			},
-																			"type": {
-																				"description": "The data type of the parameter.",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"type",
-																			"description"
-																		],
-																		"type": "object"
-																	},
-																	"description": "Definitions of each parameter.",
-																	"type": "object"
-																},
-																"required": {
-																	"description": "List of required parameter names.",
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
-																},
-																"type": {
-																	"description": "The type of the parameters object (usually 'object').",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type",
-																"properties"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"name",
-														"description",
-														"parameters"
-													]
-												},
-												{
-													"properties": {
-														"function": {
-															"description": "Details of the function tool.",
-															"properties": {
-																"description": {
-																	"description": "A brief description of what the function does.",
-																	"type": "string"
-																},
-																"name": {
-																	"description": "The name of the function.",
-																	"type": "string"
-																},
-																"parameters": {
-																	"description": "Schema defining the parameters accepted by the function.",
-																	"properties": {
-																		"properties": {
-																			"additionalProperties": {
-																				"properties": {
-																					"description": {
-																						"description": "A description of the expected parameter.",
-																						"type": "string"
-																					},
-																					"type": {
-																						"description": "The data type of the parameter.",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"type",
-																					"description"
-																				],
-																				"type": "object"
-																			},
-																			"description": "Definitions of each parameter.",
-																			"type": "object"
-																		},
-																		"required": {
-																			"description": "List of required parameter names.",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"type": {
-																			"description": "The type of the parameters object (usually 'object').",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type",
-																		"properties"
-																	],
-																	"type": "object"
-																}
-															},
-															"required": [
-																"name",
-																"description",
-																"parameters"
-															],
-															"type": "object"
-														},
-														"type": {
-															"description": "Specifies the type of tool (e.g., 'function').",
-															"type": "string"
-														}
-													},
-													"required": [
-														"type",
-														"function"
-													]
-												}
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
-									"top_k": {
-										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
-										"maximum": 50,
-										"minimum": 1,
-										"type": "integer"
-									},
-									"top_p": {
-										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
-										"maximum": 2,
-										"minimum": 0,
-										"type": "number"
-									}
-								},
-								"required": [
-									"messages"
-								],
-								"title": "Messages"
-							}
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"description": "The generated text response from the model",
-													"type": "string"
-												},
-												"tool_calls": {
-													"description": "An array of tool calls requests made during the response generation",
-													"items": {
-														"properties": {
-															"arguments": {
-																"description": "The arguments passed to be passed to the tool call request",
-																"type": "object"
-															},
-															"name": {
-																"description": "The name of the tool to be called",
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"usage": {
-													"description": "Usage statistics for the inference request",
-													"properties": {
-														"completion_tokens": {
-															"default": 0,
-															"description": "Total number of tokens in output",
-															"type": "number"
-														},
-														"prompt_tokens": {
-															"default": 0,
-															"description": "Total number of tokens in input",
-															"type": "number"
-														},
-														"total_tokens": {
-															"default": 0,
-															"description": "Total number of input and output tokens",
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											},
-											"required": [
-												"response"
-											],
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
-							"type": "object"
-						}
-					},
-					"text/event-stream": {
-						"schema": {
-							"type": "object"
-						}
-					}
-				},
-				"description": "Object with user data."
-			},
-			"400": {
-				"content": {
-					"applications/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad request"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Execute @cf/meta/llama-3.3-70b-instruct-fp8-fast model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -12327,7 +12350,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Prompt"
+								"title": "Ai_Cf_Meta_Llama_4_Prompt"
 							},
 							{
 								"properties": {
@@ -12643,7 +12666,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Messages"
+								"title": "Ai_Cf_Meta_Llama_4_Messages"
 							}
 						],
 						"type": "object"
@@ -12733,7 +12756,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -12954,7 +12977,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -13486,7 +13509,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -14018,7 +14041,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -14550,7 +14573,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -14600,6 +14623,566 @@
 			}
 		],
 		"summary": "Execute @cf/mistral/mistral-7b-instruct-v0.2-lora model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/mistralai/mistral-small-3.1-24b-instruct": {
+		"operationId": "workers-ai-post-run-cf-mistralai-mistral-small-3-1-24b-instruct",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fulfilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"description": "The input text prompt for the model to generate a response.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.15,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Prompt"
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fufilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"messages": {
+										"description": "An array of message objects representing the conversation history.",
+										"items": {
+											"properties": {
+												"content": {
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"items": {
+																"properties": {
+																	"image_url": {
+																		"properties": {
+																			"url": {
+																				"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																				"pattern": "^data:*",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"text": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content provided",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"properties": {
+																"image_url": {
+																	"properties": {
+																		"url": {
+																			"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																			"pattern": "^data:*",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"text": {
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of the content provided",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"role": {
+													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+													"type": "string"
+												},
+												"tool_call_id": {
+													"description": "The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001",
+													"pattern": "[a-zA-Z0-9]{9}",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.15,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"description": "A list of tools available for the assistant to use.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"description": "A brief description of what the tool does.",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the tool. More descriptive the better.",
+															"type": "string"
+														},
+														"parameters": {
+															"description": "Schema defining the parameters accepted by the tool.",
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"description": "A description of the expected parameter.",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The data type of the parameter.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Definitions of each parameter.",
+																	"type": "object"
+																},
+																"required": {
+																	"description": "List of required parameter names.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"description": "The type of the parameters object (usually 'object').",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"description": "Details of the function tool.",
+															"properties": {
+																"description": {
+																	"description": "A brief description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "Schema defining the parameters accepted by the function.",
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"description": "A description of the expected parameter.",
+																						"type": "string"
+																					},
+																					"type": {
+																						"description": "The data type of the parameter.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Definitions of each parameter.",
+																			"type": "object"
+																		},
+																		"required": {
+																			"description": "List of required parameter names.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"description": "The type of the parameters object (usually 'object').",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "Specifies the type of tool (e.g., 'function').",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								],
+								"title": "Messages"
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"description": "The generated text response from the model",
+													"type": "string"
+												},
+												"tool_calls": {
+													"description": "An array of tool calls requests made during the response generation",
+													"items": {
+														"properties": {
+															"arguments": {
+																"description": "The arguments passed to be passed to the tool call request",
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the tool to be called",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"response"
+											],
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/mistralai/mistral-small-3.1-24b-instruct model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -15082,7 +15665,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -15614,7 +16197,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -16146,7 +16729,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -16678,7 +17261,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -17210,7 +17793,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -17260,6 +17843,1098 @@
 			}
 		],
 		"summary": "Execute @cf/qwen/qwen1.5-7b-chat-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen2.5-coder-32b-instruct": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen2-5-coder-32b-instruct",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"lora": {
+										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"description": "The input text prompt for the model to generate a response.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"response_format": {
+										"properties": {
+											"json_schema": {},
+											"type": {
+												"enum": [
+													"json_object",
+													"json_schema"
+												],
+												"type": "string"
+											}
+										},
+										"title": "JSON Mode",
+										"type": "object"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Prompt"
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"messages": {
+										"description": "An array of message objects representing the conversation history.",
+										"items": {
+											"properties": {
+												"content": {
+													"description": "The content of the message as a string.",
+													"type": "string"
+												},
+												"role": {
+													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"response_format": {
+										"properties": {
+											"json_schema": {},
+											"type": {
+												"enum": [
+													"json_object",
+													"json_schema"
+												],
+												"type": "string"
+											}
+										},
+										"title": "JSON Mode",
+										"type": "object"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"description": "A list of tools available for the assistant to use.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"description": "A brief description of what the tool does.",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the tool. More descriptive the better.",
+															"type": "string"
+														},
+														"parameters": {
+															"description": "Schema defining the parameters accepted by the tool.",
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"description": "A description of the expected parameter.",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The data type of the parameter.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Definitions of each parameter.",
+																	"type": "object"
+																},
+																"required": {
+																	"description": "List of required parameter names.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"description": "The type of the parameters object (usually 'object').",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"description": "Details of the function tool.",
+															"properties": {
+																"description": {
+																	"description": "A brief description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "Schema defining the parameters accepted by the function.",
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"description": "A description of the expected parameter.",
+																						"type": "string"
+																					},
+																					"type": {
+																						"description": "The data type of the parameter.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Definitions of each parameter.",
+																			"type": "object"
+																		},
+																		"required": {
+																			"description": "List of required parameter names.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"description": "The type of the parameters object (usually 'object').",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "Specifies the type of tool (e.g., 'function').",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								],
+								"title": "Messages"
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"description": "The generated text response from the model",
+													"type": "string"
+												},
+												"tool_calls": {
+													"description": "An array of tool calls requests made during the response generation",
+													"items": {
+														"properties": {
+															"arguments": {
+																"description": "The arguments passed to be passed to the tool call request",
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the tool to be called",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"response"
+											],
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen2.5-coder-32b-instruct model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwq-32b": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwq-32b",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fulfilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"description": "The input text prompt for the model to generate a response.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.15,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Prompt"
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"guided_json": {
+										"description": "JSON schema that should be fufilled for the response.",
+										"type": "object"
+									},
+									"max_tokens": {
+										"default": 256,
+										"description": "The maximum number of tokens to generate in the response.",
+										"type": "integer"
+									},
+									"messages": {
+										"description": "An array of message objects representing the conversation history.",
+										"items": {
+											"properties": {
+												"content": {
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"items": {
+																"properties": {
+																	"image_url": {
+																		"properties": {
+																			"url": {
+																				"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																				"pattern": "^data:*",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"text": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content provided",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"properties": {
+																"image_url": {
+																	"properties": {
+																		"url": {
+																			"description": "image uri with data (e.g. data:image/jpeg;base64,/9j/...). HTTP URL will not be accepted",
+																			"pattern": "^data:*",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"text": {
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of the content provided",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"role": {
+													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
+													"type": "string"
+												},
+												"tool_call_id": {
+													"description": "The tool call id. Must be supplied for tool calls for Mistral-3. If you don't know what to put here you can fall back to 000000001",
+													"pattern": "[a-zA-Z0-9]{9}",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"description": "Increases the likelihood of the model introducing new topics.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"raw": {
+										"default": false,
+										"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"description": "Penalty for repeated tokens; higher values discourage repetition.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"description": "Random seed for reproducibility of the generation.",
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.15,
+										"description": "Controls the randomness of the output; higher values produce more random results.",
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"description": "A list of tools available for the assistant to use.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"description": "A brief description of what the tool does.",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the tool. More descriptive the better.",
+															"type": "string"
+														},
+														"parameters": {
+															"description": "Schema defining the parameters accepted by the tool.",
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"description": "A description of the expected parameter.",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The data type of the parameter.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Definitions of each parameter.",
+																	"type": "object"
+																},
+																"required": {
+																	"description": "List of required parameter names.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"description": "The type of the parameters object (usually 'object').",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"description": "Details of the function tool.",
+															"properties": {
+																"description": {
+																	"description": "A brief description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "Schema defining the parameters accepted by the function.",
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"description": "A description of the expected parameter.",
+																						"type": "string"
+																					},
+																					"type": {
+																						"description": "The data type of the parameter.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Definitions of each parameter.",
+																			"type": "object"
+																		},
+																		"required": {
+																			"description": "List of required parameter names.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"description": "The type of the parameters object (usually 'object').",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "Specifies the type of tool (e.g., 'function').",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								],
+								"title": "Messages"
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"description": "The generated text response from the model",
+													"type": "string"
+												},
+												"tool_calls": {
+													"description": "An array of tool calls requests made during the response generation",
+													"items": {
+														"properties": {
+															"arguments": {
+																"description": "The arguments passed to be passed to the tool call request",
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the tool to be called",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage": {
+													"description": "Usage statistics for the inference request",
+													"properties": {
+														"completion_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in output",
+															"type": "number"
+														},
+														"prompt_tokens": {
+															"default": 0,
+															"description": "Total number of tokens in input",
+															"type": "number"
+														},
+														"total_tokens": {
+															"default": 0,
+															"description": "Total number of input and output tokens",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"response"
+											],
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwq-32b model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -17742,7 +19417,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -18274,7 +19949,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -18806,7 +20481,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -19338,7 +21013,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -19870,7 +21545,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -20402,7 +22077,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -20934,7 +22609,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -21466,7 +23141,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -21998,7 +23673,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -22530,7 +24205,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -23062,7 +24737,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -23594,7 +25269,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -24126,7 +25801,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -24658,7 +26333,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -25190,7 +26865,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -25722,7 +27397,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -26254,7 +27929,7 @@
 			},
 			"400": {
 				"content": {
-					"applications/json": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"errors": {
