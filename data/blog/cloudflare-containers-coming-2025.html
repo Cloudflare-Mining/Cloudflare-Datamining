@@ -156,18 +156,18 @@ export default {
 	<p>You can manually start, stop, and execute commands on a specific container by calling RPC methods on its Durable Object, which now has a new object at <code>this.ctx.container</code>:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">class MyContainer extends DurableObject {
 	// these RPC methods are callable from a Worker
-async customBoot(entrypoint, envVars) {
-	this.ctx.container.start({ entrypoint, env: envVars });
-}
+        async customBoot(entrypoint, envVars) {
+	            this.ctx.container.start({ entrypoint, env: envVars });
+        }
 
-async stopContainer() {
-const SIGTERM = 15;
-	this.ctx.container.signal(SIGTERM);
-}
+       async stopContainer() {
+                   const SIGTERM = 15;
+	           this.ctx.container.signal(SIGTERM);
+        }
 
-async startBackupScript() {
-	await this.ctx.container.exec(["./backup"]);
-}
+        async startBackupScript() {
+	            await this.ctx.container.exec(["./backup"]);
+        }
 }</code></pre>
 	<p>You can also monitor your container and run hooks in response to Container status changes.</p>
 	<p>For instance, say you have a CI job that runs builds in a Container. You want to post a message to a <a href="https://developers.cloudflare.com/queues"><u>Queue</u></a> based on the exit status. You can easily program this behavior:</p>
