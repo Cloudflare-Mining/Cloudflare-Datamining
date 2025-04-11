@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: </strong>Austin, TX, San Francisco, CA or New York City, NY</p>
+<p><strong>Location: </strong>Austin, TX or San Francisco, CA&nbsp;</p>
 <p><strong>About the department</strong></p>
 <p>Emerging Technology and Incubation (ETI) helps shape the future of the Internet. Cloudflare secures, accelerates, and powers millions of destinations on the Internet from small blogs to 35% of the Fortune 500. ETI is responsible for shipping the technologies we think those customers, and the rest of the Internet, will need over the next decade.</p>
 <p>We created ETI years ago as a small, autonomous team that could equip Cloudflare to break into new markets and industries as the Internet evolves. The team is not just a home for science experiments. ETI takes new research and applies it to build something people want - or will want in the future. Ultimately, the success of the team is measured by its ability to both create new revenue streams for the company and to help Cloudflare secure and connect an increasing percentage of the Internet.</p>
@@ -47,7 +47,7 @@
 	<li>Embrace the ambiguity of the unknown. Don’t wait to be told what to build. Seek out and explore the areas where you think we should move.</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>The compensation range in the San Francisco bat area for this position is $330,000 - $380,000</p>
+<p>The compensation range in the San Francisco bay area for this position is $330,000 - $380,000</p>
 <p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
